@@ -104,7 +104,7 @@ Start using Red Pitaya streaming feature
 
             .. code-block:: console
 
-            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
+                rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
 
             .. image:: img/tcp_client2.png
                 :width: 60%
@@ -120,7 +120,7 @@ Start using Red Pitaya streaming feature
 
             .. code-block:: console
 
-            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
+                rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
 
             .. image:: img/tcp_client3.png
                 :width: 60%
