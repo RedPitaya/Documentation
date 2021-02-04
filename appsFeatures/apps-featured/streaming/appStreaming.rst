@@ -122,18 +122,23 @@ Start using Red Pitaya streaming feature
 
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
 
+
             .. image:: img/tcp_client3.png
                 :width: 60%
             
+
             The application saves data from board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
             
             .. image:: img/csv_list.png
                 :width: 60%
 
+
             Created csv file can be opened with any text editor or spreadsheet editor:
 
             .. image:: img/csv_view.png
                 :width: 80%
+
+
 
             .. note::
 
@@ -141,6 +146,7 @@ Start using Red Pitaya streaming feature
 
                 .. image:: img/csv_list.png
                     :width: 60%
+
 
                 In this application, you can also see the structure of the received file and the state of the file.
 
