@@ -126,12 +126,18 @@ Start using Red Pitaya streaming feature
             .. image:: img/tcp_client3.png
                 :width: 60%
             
+            .. raw:: html
+
+                <br />
 
             The application saves data from board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
             
             .. image:: img/csv_list.png
                 :width: 60%
 
+            .. raw:: html
+
+                <br />
 
             Created csv file can be opened with any text editor or spreadsheet editor:
 
@@ -139,6 +145,9 @@ Start using Red Pitaya streaming feature
                 :width: 80%
 
 
+            .. raw:: html
+
+                <br />
 
             .. note::
 
@@ -147,6 +156,9 @@ Start using Red Pitaya streaming feature
                 .. image:: img/csv_list.png
                     :width: 60%
 
+                .. raw:: html
+
+                    <br />
 
                 In this application, you can also see the structure of the received file and the state of the file.
 
