@@ -88,17 +88,17 @@ Start using Red Pitaya streaming feature
 
             .. code-block:: console
 
-            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
+                rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
 
             .. image:: img/tcp_client.png
-            :width: 60%
+                :width: 60%
 
             Data streaming can be stopped by pressing Ctrl + C
 
             Created wav file can be read or visualized using `Audacity software <https://www.audacityteam.org/>`__:
 
             .. image:: img/audacity.png
-            :width: 80%
+                :width: 80%
 
         .. group-tab:: TDMS
 
@@ -107,14 +107,14 @@ Start using Red Pitaya streaming feature
             rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
 
             .. image:: img/tcp_client2.png
-            :width: 60%
+                :width: 60%
 
             Data streaming can be stopped by pressing Ctrl + C
 
             Created tdms file can be read or visualized using `DIAdem software <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__:
 
             .. image:: img/diadem_tdms_file_viewer.png
-            :width: 80%
+                :width: 80%
         
         .. group-tab:: CSV
 
@@ -123,29 +123,29 @@ Start using Red Pitaya streaming feature
             rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
 
             .. image:: img/tcp_client3.png
-            :width: 60%
+                :width: 60%
             
             The application saves data from board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
             
             .. image:: img/csv_list.png
-            :width: 60%
+                :width: 60%
 
             Created csv file can be opened with any text editor or spreadsheet editor:
 
             .. image:: img/csv_view.png
-            :width: 80%
+                :width: 80%
 
             .. note::
 
                 The binary file can be converted using the *convert_tool* application.
 
                 .. image:: img/csv_list.png
-                :width: 60%
+                    :width: 60%
 
                 In this application, you can also see the structure of the received file and the state of the file.
 
                 .. image:: img/csv_state.png
-                :width: 60%
+                    :width: 60%
 
 
 *******************
