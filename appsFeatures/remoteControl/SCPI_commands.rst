@@ -196,7 +196,7 @@ Sampling rate & decimation
 
 Parameter options:
 
-* ``<decimation> = {1,8,64,1024,8192,65536}`` Default: ``1``
+* ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
 * ``<average> = {OFF,ON}`` Default: ``ON``
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|

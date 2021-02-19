@@ -93,7 +93,7 @@ compensation. Usage instructions:
             Usage: acquire  size <dec>
 
                 size     Number of samples to acquire [0 - 16384].
-                dec      Decimation [1,8,64,1024,8192,65536] (default=1).
+                dec      Decimation [1,2,4,8,16...65536] (default=1).
         
 
         Example (acquire 1024 samples with decimation 8):
@@ -114,21 +114,25 @@ compensation. Usage instructions:
             redpitaya> acquire 
 
             Usage: acquire [OPTION]... SIZE <DEC>
-                --equalization  -e      Use equalization filter in FPGA (default: disabled).
-                --shaping       -s      Use shaping filter in FPGA (default: disabled).
-                --atten1=a      -1 a    Use Channel 1 attenuator setting a [1, 20] (default: 1).
-                --atten2=a      -2 a    Use Channel 2 attenuator setting a [1, 20] (default: 1).
-                --dc=c          -d c    Enable DC mode. Setting c use for channels [1, 2, B(Both channels)]. By default, AC mode is turned on.
-                --tr_ch=c       -t c    Enable trigger by channel. Setting c use for channels [1P, 1N, 2P, 2N, EP (external channel), EN (external channel)]. P - positive edge, N -negative edge. By default trigger no set
-                --tr_level=c    -l c    Set trigger level (default: 0).
-                --version       -v      Print version info.
-                --help          -h      Print this message.
-                --hex           -x      Print value in hex.
-                --volt          -o      Print value in volt.
-                --no_reg        -r      Disable load registers config for DAC and ADC.
-                --calib         -c      Disable calibration parameters
-                SIZE                    Number of samples to acquire [0 - 16384].
-                DEC                     Decimation [1,8,64,1024,8192,65536] (default: 1).
+
+                --equalization  -e    Use equalization filter in FPGA (default: disabled).
+                --shaping       -s    Use shaping filter in FPGA (default: disabled).
+                --atten1=a      -1 a  Use Channel 1 attenuator setting a [1, 20] (default: 1).
+                --atten2=a      -2 a  Use Channel 2 attenuator setting a [1, 20] (default: 1).
+                --dc=c          -d c  Enable DC mode. Setting c use for channels [1, 2, B(Both channels)].
+                                        By default, AC mode is turned on.
+                --tr_ch=c       -t c  Enable trigger by channel. Setting c use for channels [1P, 1N, 2P, 2N, EP (external channel), EN (external channel)].
+                                        P - positive edge, N -negative edge. By default trigger no set
+                --tr_level=c    -l c  Set trigger level (default: 0).
+                --version       -v    Print version info.
+                --help          -h    Print this message.
+                --hex           -x    Print value in hex.
+                --volt          -o    Print value in volt.
+                --no_reg        -r    Disable load registers config for DAC and ADC.
+                --calib         -c    Disable calibration parameters
+                    SIZE                Number of samples to acquire [0 - 16384].
+                    DEC                 Decimation [1,2,4,8,16,...] (default: 1). Valid values are from 1 to 65536
+
 
         
         Example (acquire 1024 samples with decimation 8, ch1 with at 1:20, results displayed in voltage):
