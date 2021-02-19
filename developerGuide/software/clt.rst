@@ -93,7 +93,7 @@ compensation. Usage instructions:
             Usage: acquire  size <dec>
 
                 size     Number of samples to acquire [0 - 16384].
-                dec      Decimation [1,2,4,8,16...65536] (default=1).
+                dec      Decimation [1,8,64,1024,8192,65536] (default=1).
         
 
         Example (acquire 1024 samples with decimation 8):
