@@ -14,13 +14,6 @@ smartphone, tablet or a PC running any popular operating system (MAC, Linux, Win
      To use the Logic analyzer PRO application an additional extension module is needed. Module can be purchased from
      Red Pitaya `store <http://store.redpitaya.com/>`_.
 
-Logic Analyzer application possibilities:
-
-   1. **Logic Analyzer Basic - Logic Analyzer extension module not reacquired** – Using directly the GPIO expansion
-      connector of the Red Pitaya board. **For STEMlab 125-10 only!**
-   2. **Logic Analyzer PRO - Logic Analyzer extension module reacquired** – Enabling different logic levels, board
-      protection and higher performances. **Works with STEMlab 125-14 & SDRlab 122-16**
-
 The graphical user interface of the Logic Analyzer fits well into the overall design of the Red Pitaya applications
 providing the same operating concept. The Logic Analyzer user interface is shown below.
 
@@ -116,15 +109,15 @@ SPECIFICATIONS
 **************
 
 +-------------------------+----------------------+----------------------+
-|                         | Logic Analyzer Basic | Logic Analyzer PRO   |
+|                         | Direct E1 connection | LA extension module  |
 +-------------------------+----------------------+----------------------+
 | Channels                | 8th                  | 8th                  |
 +-------------------------+----------------------+----------------------+
-| Sampling rate (max.)    | 12MS/s               | 125MS/s              |
+| Sampling rate (max.)    | 125MS/s              | 125MS/s              |
 +-------------------------+----------------------+----------------------+
-| Maximum Input Frequency | 3MHz                 | 50MHz                |
+| Maximum Input Frequency | 50MHz                | 50MHz                |
 +-------------------------+----------------------+----------------------+
-| Supported bus protocols | I2C, SPI, UART       | I2C, SPI, UART       |
+| Supported bus protocols | I2C, SPI, UART, CAN  | I2C, SPI, UART, CAN  |
 +-------------------------+----------------------+----------------------+
 | Input voltage           | 3.3V                 | 2.5 ... 5.5V         |
 +-------------------------+----------------------+----------------------+
@@ -139,9 +132,9 @@ SPECIFICATIONS
 +-------------------------+----------------------+----------------------+
 | Memory depth            | 1 MS (typical)       | 1 MS (typical)       |
 +-------------------------+----------------------+----------------------+
-| Sampling interval       | 84ns                 | 8ns                  |
+| Sampling interval       | 8ns                  | 8ns                  |
 +-------------------------+----------------------+----------------------+
-| Minimum pulse duration  | 100ns                | 10ns                 |
+| Minimum pulse duration  | 10ns                 | 10ns                 |
 +-------------------------+----------------------+----------------------+
 
 
@@ -149,12 +142,12 @@ Hardware/Connections
 ====================
 
 Alongside the Logic analyzer application for maximal performance and protection of your Red Pitaya board the Logic
-analyzer extension module (Logic Analyzer PRO) is recommended. Using the LA extension module is straightforward, just
+analyzer extension module is recommended. Using the LA extension module is straightforward, just
 plug it on your Red Pitaya and connect the leads to the desired measurement points.
 
 .. image:: Slika_09_LA.png
 
-To use the Logic analyzer without the extension module (Logic Analyzer Basic) you need to be more careful in
+To use the Logic analyzer without the extension module you need to be more careful in
 connecting the Logic analyzer probes to the extension connector :ref:`E1 <E1>` on the Red Pitaya board. The pins used for Logic
 analyzer board are shown in picture below.
 
