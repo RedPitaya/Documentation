@@ -288,6 +288,7 @@ driver was copied from the Raspberry PI repository and applied as a patch.
 Other WiFi USB devices might also be supported by upstream kernel drivers,
 but there is no comprehensive list for now.
 
+
 ============
 DNS Resolver
 ============
@@ -432,6 +433,8 @@ After plugging an USB Wi-Fi adapter use ``dmesg`` and ``lsusb`` to check
 if the adapter was properly recognized by the Linux kernel.
 
 To check what modes (managed, AP, ...) are supported by an adapter use ``iw``.
+
+.. note:: If it is not possible to simply add support for v2, please state that it is not compatible with v2 `here <https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un_v2/>`_
 
 ================
 BCM43143 chipset
