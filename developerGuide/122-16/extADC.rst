@@ -2,7 +2,7 @@ External ADC clock
 ##################
 
 ADC clock can be provided by:
-  * On board 125MHz XO (default)
+  * On board 122.88MHz XO (default)
   * From external source / through extension connector (instructions provided bellow)
 
 
