@@ -5,4 +5,5 @@ SIGNALlab 250-12
    :maxdepth: 6
    
    shem
+   mechSpec
    

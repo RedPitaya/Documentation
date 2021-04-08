@@ -5,5 +5,6 @@ SDRlab 122-16
    :maxdepth: 6
    
    shem
+   mechSpec
    extADC
    
