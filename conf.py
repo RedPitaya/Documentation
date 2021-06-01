@@ -154,9 +154,7 @@ html_context = {
         'css_files': [
             'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
             'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
-            '_static/page_width.css',
-            '_static/sphinx_tabs/tabs.css',
-            '_static/sphinx_tabs/tabs.js'
+            '_static/page_width.css'
         ],
     }
 
