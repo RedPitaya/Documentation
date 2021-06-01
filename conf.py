@@ -156,9 +156,7 @@ html_context = {
             'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
             '_static/page_width.css',
             '_static/sphinx_tabs/tabs.css',
-            '_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css',
-            '_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css',
-            '_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css',
+            '_static/sphinx_tabs/tabs.js'
         ],
     }
 
