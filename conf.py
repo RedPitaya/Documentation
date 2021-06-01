@@ -41,6 +41,8 @@ extensions = [
 
 sphinx_tabs_valid_builders = ['linkcheck']
 
+sphinx_tabs_disable_tab_closing = True
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -159,14 +161,6 @@ html_context = {
             '_static/page_width.css'
         ],
     }
-
-html_css_files = [
-    'tabs.css',
-]
-
-html_js_files = [
-    'tabs.js',
-] 
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
