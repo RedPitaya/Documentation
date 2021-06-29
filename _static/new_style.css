@@ -3,3 +3,7 @@
 html, body, html * {
   font-family: 'Barlow Semi Condensed'
 }
+
+.wy-side-nav-search, .wy-nav-top{
+    background-color: rgb(208,35,33);
+}

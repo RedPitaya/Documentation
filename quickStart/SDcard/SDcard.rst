@@ -17,7 +17,6 @@ STEMlab 125-14 & STEMlab 125-10
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-9_beta.img.zip>`_  - `CHANGELOG <https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md>`_
 
 STEMlab 125-14-Z7020
-
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-2_beta.img.zip>`_  - `CHANGELOG <https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md>`_
 
 SDRlab 122-16
