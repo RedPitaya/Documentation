@@ -4,6 +4,9 @@ html, body, html * {
   font-family: 'Barlow Semi Condensed'
 }
 
-.wy-side-nav-search, .wy-nav-top{
+.wy-side-nav-search{
+    background-color: #00000000;
+}
+.wy-nav-top{
     background-color: rgb(208,35,33);
 }
