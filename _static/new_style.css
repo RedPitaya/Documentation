@@ -18,3 +18,11 @@ html, body, html * {
 .wy-menu-vertical li.current>a {
     color: rgb(208,35,33);
 }
+
+.rst-current-version{
+    background-color: rgb(208,35,33);
+}
+
+.rst-versions{
+    background-color: rgb(143, 21, 19);
+}
