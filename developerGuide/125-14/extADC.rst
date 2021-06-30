@@ -10,7 +10,6 @@ ADC clock can be provided by:
 .. figure:: External_clk.png
     :alt: Logo
     :align: center
-    :width:  300px
 
     Schematic
 
@@ -18,7 +17,6 @@ ADC clock can be provided by:
 .. figure:: External_clock_top.png
     :alt: Logo
     :align: center
-    :width:  300px
 
     Top side
 
@@ -26,10 +24,11 @@ ADC clock can be provided by:
 .. figure:: External_clock_bottom.png
     :alt: Logo
     :align: center
-    :width:  300px
 
     Bottom side
 
 .. figure:: External_clock_bottom_photo.png
-    :width:  300px
+    :alt: Logo
+    :align: center
+    :width:  400px
     

@@ -253,22 +253,11 @@ scripts::
            45870551            45870551          1016267064          1016267064 
 
 You can write changed calibration parameters using **calib -w** command:
-1. Type calib -w in to command line (terminal)
-2. Press enter
-3. Paste or write new calibration parameters
-4. Press enter
 
- 
-   Usage: calib [OPTION]...
-   
-   OPTIONS:
-   
-    -r    Read calibration values from eeprom (to stdout).
-    -w    Write calibration values to eeprom (from stdin).
-    -f    Use factory address space.
-    -d    Reset calibration values in eeprom with factory defaults.
-    -v    Produce verbose output.
-    -h    Print this info.
+1. Type calib -w in to command line (terminal)
+#. Press enter
+#. Paste or write new calibration parameters
+#. Press enter
 
 The EEPROM is a non-volatile memory, therefore the calibration coefficients
 will not change during Red Pitaya power cycles,
