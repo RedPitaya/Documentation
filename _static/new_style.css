@@ -44,7 +44,7 @@ html, body, html * {
 }
 
   
-[role="tablist"] {
+/* [role="tablist"] {
 border-bottom: 1px solid rgb(208,35,33);
 }
 
@@ -60,5 +60,5 @@ border: 1px solid rgb(208,35,33);
 
 .sphinx-tabs-panel {
 border: 1px solid rgb(208,35,33);
-}
+} */
     
