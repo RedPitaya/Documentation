@@ -26,3 +26,23 @@ html, body, html * {
 .rst-versions{
     background-color: rgb(143, 21, 19);
 }
+
+  
+[role="tablist"] {
+border-bottom: 1px solid rgb(208,35,33);
+}
+
+.sphinx-tabs-tab {
+font-family: 'Barlow Semi Condensed';
+color: rgb(208,35,33);
+}
+
+.sphinx-tabs-tab[aria-selected="true"] {
+border: 1px solid rgb(208,35,33);
+}
+
+
+.sphinx-tabs-panel {
+border: 1px solid rgb(208,35,33);
+}
+    
