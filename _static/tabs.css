@@ -3,7 +3,7 @@
 }
 
 [role="tablist"] {
-  border-bottom: 1px solid #a0b3bf;
+  border-bottom: 1px solid rgb(208,35,33);
 }
 
 .sphinx-tabs-tab {
@@ -23,7 +23,7 @@
 
 .sphinx-tabs-tab[aria-selected="true"] {
   font-weight: 700;
-  border: 1px solid #a0b3bf;
+  border: 1px solid rgb(208,35,33);
   border-bottom: 1px solid white;
   margin: -1px;
   background-color: white;
@@ -37,7 +37,7 @@
 .sphinx-tabs-panel {
   position: relative;
   padding: 1rem;
-  border: 1px solid #a0b3bf;
+  border: 1px solid rgb(208,35,33);
   margin: 0px -1px -1px -1px;
   border-radius: 0 0 5px 5px;
   border-top: 0;
