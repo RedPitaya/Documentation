@@ -84,9 +84,10 @@ Parameter options:
 * ``<count> = {1...50000, INF}`` ``INF`` = infinity/continuous, Default: ``1``
 * ``<time> = {1us-500s}`` Value in *us*.
 * ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}``
-   * ``EXT`` = External
-   * ``INT`` = Internal
-   * ``GATED`` = gated busts
+
+   - ``EXT`` = External
+   - ``INT`` = Internal
+   - ``GATED`` = gated busts
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
