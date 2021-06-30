@@ -19,7 +19,7 @@ html, body, html * {
     color: rgb(208,35,33);
 }
 
-.rst-current-version{
+.rst-versions .rst-current-version{
     background-color: rgb(208,35,33);
 }
 
