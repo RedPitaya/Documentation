@@ -11,6 +11,22 @@ html, body, html * {
     background-color: rgb(208,35,33);
 }
 
+.wy-menu-vertical li.current a {
+    color: #444444;
+}
+
+.wy-menu-vertical a {
+    color: #444444;
+}
+
+.wy-menu-vertical a:hover {
+    background-color: rgb(208,35,33);
+}
+
+.wy-nav-side {
+    background: #fcfcfc;
+}
+
 .wy-side-scroll{
     background-color: #fcfcfc;
 }
