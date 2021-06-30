@@ -223,23 +223,29 @@ Examples
 ********
 
 1. `Drive LEDs <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/led.ipynb>`_
-#. `Control GPIO s <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gpio.ipynb>`_
-#. `Write slow analog I/Os <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_output.ipynb>`_
-#. `Read slow analog I/Os <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_input.ipynb>`_
-#. Generator:
+2. `Control GPIO s <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gpio.ipynb>`_
+3. `Write slow analog I/Os <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_output.ipynb>`_
+4. `Read slow analog I/Os <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_input.ipynb>`_
+5. Generator:
+
     #. `Generate periodic sine wave <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_sine_signal.ipynb>`_
     #. `Generate periodic arbitrary signal <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_arbitrary_signal.ipynb>`_
     #. `Two synchronized generators <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_sync_two_channel.ipynb>`_
     #. `Burst mode <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_bursts.ipynb>`_
-#. Oscilloscope:
+
+6. Oscilloscope:
+
     #. `Forced trigger <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_trigger_forced.ipynb>`_
     #. `Level trigger <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_trigger_level.ipynb>`_
     #. `Two synchronized channels <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_sync_two_channel.ipynb>`_
     #. `Synchronized with generator <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_sync_with_gen.ipynb>`_
-#. Demo applications using widgets:
+
+7. Demo applications using widgets:
+
     #. `Generator <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/generator_widget.ipynb>`_
     #. `Oscilloscope <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/oscilloscope_widget.ipynb>`_
-#. Grove sensors
+
+8. Grove sensors
     #. `Temperature sensor <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/exam_temp.ipynb>`__
     #. `Home heating automation <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/home_automation.ipynb>`_
     

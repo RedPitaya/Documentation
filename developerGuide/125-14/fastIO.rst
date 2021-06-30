@@ -356,12 +356,16 @@ Red Pitaya board analog frontend features 2 fast analog output.
     #. Sample rate: 125 Msps 
     #. DAC resolution: 14 bits 
     #. Output coupling: DC 
-    #. Load impedance: 50 Ω 
+    #. Load impedance: 50 Ω
+
         The output channels are designed to drive 50 Ω loads. Terminate outputs when channels are not used. Connect parallel 50 Ω load (SMA tee junction) in high impedance load applications.
-    #. Full scale power: > 9 dBm 
+    #. Full scale power: > 9 dBm
+
         Typical power level with 1 MHz sine is 9.5 dBm. Output power is subject to slew rate limitations.
+    
     #. Output slew rate limit: 200 V/us 
-    #. Connector type: SMA 
+    #. Connector type: SMA
+    
        SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. It’s Important that central pin is of suitable length, otherwise the SMA connector installed in Red Pitaya will mechanically damage the SMA connector. Central pin of the SMA connector on Red Pitaya will loose contact to the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
     
        .. figure:: Outputs.png

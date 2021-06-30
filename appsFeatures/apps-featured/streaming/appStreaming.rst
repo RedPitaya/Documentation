@@ -210,6 +210,7 @@ The configuration for streaming is automatically created and saved in the file: 
 .. note::
 
     Streaming always creates two files:
+    
         * first stores streamed data
         * second data transfer report
 
