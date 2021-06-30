@@ -17,6 +17,7 @@ html, body, html * {
 
 .wy-menu-vertical a {
     color: #444444;
+    font-size: 100%;
 }
 
 .wy-menu-vertical a:hover {
