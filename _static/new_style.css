@@ -10,3 +10,11 @@ html, body, html * {
 .wy-nav-top{
     background-color: rgb(208,35,33);
 }
+
+.wy-side-scroll{
+    background-color: #fcfcfc;
+}
+
+.wy-menu-vertical li.current>a {
+    color: rgb(208,35,33);
+}
