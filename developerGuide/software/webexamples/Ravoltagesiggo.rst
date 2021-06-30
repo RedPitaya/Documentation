@@ -16,7 +16,7 @@ Without gain some measurements may be very low and offset can set minimal voltag
 .. code-block:: html
 
         
-    < div id='gain_setup'>
+    <div id='gain_setup'>
         < div>Gain: </div>
         <input id='gain_set' type="range" size="2" value="1" min = "1" max = "100">
     </div>

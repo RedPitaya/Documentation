@@ -12,15 +12,15 @@ In **index.html** there are three new blocks - **frequency_setup, amplitude_setu
 
 .. code-block:: html
 
-    < div id='frequency_setup'>
+    <div id='frequency_setup'>
         < div>Frequency: Hz</div>
         <input id='frequency_set' type="range" size="2" value="1" min = "1" max = "20">
     </div>
-    < div id='amplitude_setup'>
+    <div id='amplitude_setup'>
         < div>Amplitude: V</div>
         <input id='amplitude_set' type="range" step="0.01" size="2" value="0.5" min = "0" max = "0.5">
     </div>
-    < div id='waveform_setup'>
+    <div id='waveform_setup'>
         < div>Waveform</div>
         <select size="1" id="waveform_set">
             <option selected value="0">Sine</option>

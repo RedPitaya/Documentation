@@ -22,7 +22,7 @@ Add graph placeholder using this string in **index.html**:
 
 .. code-block:: html
 
-    < div id='placeholder'></div>
+    <div id='placeholder'></div>
 
 In **app.js** we should draw signal value on graph. Change **APP.ws.onmessage()** callback. Now we should decompress
 message and push it to stack. Data arrives quite faster than we can process it. That’s why we should firsly save it,

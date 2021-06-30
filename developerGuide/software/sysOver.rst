@@ -39,6 +39,7 @@ calculations inside UI. Let your Red Pitaya do this. So here is typical workflow
       something else
     - Controller (= Backend) applies them to internal variabale and change device state (if necessary)
     - Controller does some calculation according algorithms and as result it can return
+
         - Change of some parameters
         - New signals
     - Controller sends parameters and signals to WebUI in JSON format
@@ -63,6 +64,7 @@ Here is typical workflow of executing application:
 
     - Nginx always works as web server for providing Web UI.
     - When you click on your application in main menu Nginx will proceed with this steps:
+    
         - It opens your application user interface
         - It loads specified FPGA image using APIs. If there was not any image specified it leaves current image. Make sure that you're using correct image when you're developing your own application
         - It loads controller of your application

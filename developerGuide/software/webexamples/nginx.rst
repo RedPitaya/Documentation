@@ -12,7 +12,7 @@ In index.html create a new block:
 
 .. code-block:: html
    
-   < div id="file_system"></div> 
+   <div id="file_system"></div> 
    
 It will show content of current folder.
 

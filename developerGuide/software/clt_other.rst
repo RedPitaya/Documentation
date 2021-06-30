@@ -37,18 +37,21 @@ Alternatively Linux users can use graphical SCP/SFTP clients, such as Nautilus f
 access the address line, type [CTRL + L] and type in the following URL: sftp://root@<ip_address>
 
 .. figure:: Nautilus_address_bar.png
-    
-    Figure: Nautilus URL/address bar.
+   :align: center
+   
+   Nautilus URL/address bar.
     
 Type the Red Pitaya password (next Figure). The default Red Pitaya password for the root account is »root«. For 
 changing the root password, refer to buildroot configuration - a mechanism for building the Red Pitaya root 
 file-system, including the /etc/passwd file hosing the root password.
 
-.. image:: Nautilus_password_window.png
+.. figure:: Nautilus_password_window.png
+   :align: center
 
 After logging in, the main screen will show the directory content of Red Pitaya’s root filesystem. Navigate to select your stored data and use the intuitive copy-paste and drag & drop principles to manipulate the files on Red Pitaya (see next Figure).
 
-.. image:: Nautilus_root_fs.png
+.. figure:: Nautilus_root_fs.png
+   :align: center
 
 ----------------------------
 Copying data - Windows users
@@ -58,19 +61,22 @@ Windows users should use an SCP client such as `WinSCP <http://winscp.net/downlo
 install it, following its installation instructions. To log in to Red Pitaya, see example screen in next Figure.
 
 .. figure:: WinSCP_login_screen.png
+   :align: center
 
-    Figure: WinSCP login screen.
+   WinSCP login screen.
 
 After logging in, the main screen will show the content of the Red Pitaya root filesystem. Navigate to select your
 stored data and use the intuitive copy-paste and drag & drop principles to manipulate the files on Red Pitaya (see 
 next Figure).
 
 .. figure:: WinSCP_directory_content.png
+   :align: center
 
-    Figure: Directory content on Red Pitaya.
+   Directory content on Red Pitaya.
 
 Select the destination (local) directory to save the data file to (see next Figure).
 
 .. figure::  WinSCP_filesave.png
+   :align: center
 
-    Figure: Select file copy destination.
+   Select file copy destination.

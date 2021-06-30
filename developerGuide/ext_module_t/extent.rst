@@ -5,6 +5,7 @@ Extension module template
 Red Pitaya software and hardware modules enabling the access to and control of auxiliary digital and analog signals
 
 **Preliminary design specifications:**
+
     - 16 bidirectional digital I/O lines with individual direction control and 3-state outputs for flexible digital signal acquisition and generation
     - Up to 420 Mbps (voltage level dependent)
     - 16 k samples buffer
