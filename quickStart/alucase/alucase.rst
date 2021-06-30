@@ -10,7 +10,8 @@ Red Pitaya Aluminum Case assembly parts
 ***************************************
 
 .. figure:: rp_alucase_02.jpg
-    
+    :align: center
+
     Red Pitaya Aluminum Case asembly parts.
     
 It includes:
@@ -21,8 +22,9 @@ It includes:
     - a transparent plastic rod, the light of red LED (Ready / CPU activity) guided to the top of the caseing
 
 .. figure:: rp_alucase_03.jpg
+   :align: center
 
-    Interior of the Red Pitaya Aluminum Case.
+   Interior of the Red Pitaya Aluminum Case.
     
 
 On the Interior, there is a block located in the upper part of the housing (right)
@@ -34,10 +36,12 @@ Apertures in the case expose connections to the expansion ports **E1** and **E2*
 
 .. figure:: rp_alucase_04.jpg
     :width: 49%
+    :align: center
 
 .. figure:: rp_alucase_05.jpg
     :width: 49%
-    
+    :align: center
+
 ********
 Assembly
 ********
@@ -46,7 +50,8 @@ Assembly
    a small pair of pliers and push the feet down.
    
    .. figure:: rp_alucase_07.jpg
-
+      :align: center
+      
       Bottom of the Red Pitaya board showing the plastic feet.
 
 #. For STEMlab 125 -14 repeat the procedure with the heat sink by pressing the clips together on the bottom
@@ -56,10 +61,12 @@ Assembly
    the picture below, until it comes loose.
    
 .. figure:: STEMlab_10_heatsink.png
+   :align: center
 
 .. figure:: rp_alucase_08.jpg
-    
-    Top of the Red Pitaya board showing the removed heat sink.
+   :align: center
+   
+   Top of the Red Pitaya board showing the removed heat sink.
 
 4. Remove the remainder of the thermal paste.
 
@@ -77,3 +84,4 @@ Assembly
 #. Stick rubber feet.
 
 .. figure:: rp_alucase.jpg
+   :align: center

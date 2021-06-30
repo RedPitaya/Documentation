@@ -48,7 +48,7 @@ SIGNALlab 250-12:
 4. Insert the SD card into Red Pitaya.
 
    .. figure:: pitaya-quick-start-insert-sd-card.png
-
+      :align: center
 
 =======
 Windows
@@ -57,22 +57,27 @@ Windows
 #. Insert SD card into your PC or SD card reader.
 
    .. figure:: SDcard_insert.jpg
+      :align: center
 
 #. Download `Win32 Disk Imager <https://sourceforge.net/projects/win32diskimager/>`_ and extract it.
 
    .. figure:: SDcard_Win_Win32DiskImager.png
+      :align: center
 
 #. Open unzipped folder, right-click on the ``WinDisk32Imager``, and select **Run as Administrator**.
 
    .. figure:: SDcard_Win_RunAsAdmin.png
+      :align: center
 
 #. Under image file box select unzipped Red Pitaya image file.
 
    .. figure:: SDcard_Win_SelectImg.png
+      :align: center
 
 #. Under device box select the drive letter of the SD card.
 
    .. figure:: SDcard_Win_SelectDrive.png
+      :align: center
 
    .. note::
 
@@ -83,14 +88,17 @@ Windows
       by looking in the left column of Windows Explorer.
 
    .. figure:: SDcard_Win_DriveLetter.png
+      :align: center
 
 #. Click Write and wait for the write to complete.
 
    .. figure:: SDcard_Win_Write.png
+      :align: center
 
 #. Exit the Imager.
 
    .. figure:: SDcard_Win_Exit.png
+      :align: center
 
 =====
 Linux
@@ -126,6 +134,7 @@ Command line
 #. Insert SD card into your PC or SD card reader.
 
    .. figure:: SDcard_insert.jpg
+      :align: center
 
 #. Open the Terminal and check the available disks with ``df -h``.
    Our SD card is 4GB, it is named ``/dev/sdx`` and
@@ -172,6 +181,7 @@ Using ApplePi-Baker
 #. Insert SD card into your PC or SD card reader.
 
    .. figure:: SDcard_insert.jpg
+      :align: center
 
 #. Download `ApplePi-Baker <https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2/>`_. Direct link:
 
@@ -181,34 +191,37 @@ Using ApplePi-Baker
 #. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
    .. figure:: SDcard_macOS_open.png
+      :align: center
 
 #. Drag and drop *ApplePi-Baker* for install it.
 
    .. figure:: SDcard_macOS_install.png
+      :align: center
 
 #. Enter your admin password and click OK.
 
    .. figure:: SDcard_macOS_password.png
+      :align: center
 
-  
 #. Select SD card drive. This can be recognized by the size of the card that is 8GB.
 
    .. figure:: SDcard_macOS_ApplePi-Baker_drive.png
-
+      :align: center
 
 #. Select Red Pitaya OS image file.
 
    .. figure:: SDcard_macOS_ApplePi-Baker_image.png
-
+      :align: center
 
 #. It's coffee time, application will show you Estimated Time for Accomplishment.
 
    .. figure:: SDcard_macOS_ApplePi-Baker_wait.png
+      :align: center
 
 #. When operation is completed you can see status Idle.
 
    .. figure:: SDcard_macOS_ApplePi-Baker_quit.png
-
+      :align: center
 
 .. _macos_cli:
 
@@ -219,11 +232,13 @@ Command line
 #. Insert SD card into your PC or SD card reader.
 
    .. figure:: SDcard_insert.jpg
+      :align: center
 
 #. Click **cmd + space**, type **Disk Utility** into the search box and press enter.
    From the menu select your SD card and click on **Erase** button (be careful not to delete your disk!).
 
    .. figure:: SDcard_macOS_DiskUtility.png
+      :align: center
 
 #. Click **cmd + space**, type in **Terminal** and press enter.
    In the terminal window type: ``cd``, press enter,
@@ -234,17 +249,20 @@ Command line
    This will show you the list of all memory devices.
 
    .. figure:: Screen-Shot-2015-08-07-at-16.59.50.png
+      :align: center
 
    Unmount with: ``diskutil UnmountDisk /dev/diskn``
    (insert the number ``n`` of your disk correctly!)
 
    .. figure:: Screen-Shot-2015-08-07-at-17.14.34.png
+      :align: center
 
 #. Type in: ``sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn``
    (Remember to replace ``n`` with the number that you noted before!)
    (notice there is letter ``r`` in front of the disk name, use that as well!)
 
    .. figure:: Screen-Shot-2015-08-07-at-17.14.45.png
+      :align: center
 
 #. Type in your password and wait a few minutes for the image to be written.
 
@@ -307,10 +325,12 @@ Users can also check for updates manually.
 #. Click on the **upgrade alert** or on the **ecosystem version label** in bottom right corner.
 
    .. figure:: SDcard_upgrade_desktop.png
+      :align: center
 
 #. Select ecosystem version and start OS updater
 
    .. figure:: SDcard_update_manager.png
+      :align: center
 
 #. Follow the steps in the OS updater app in order to install new OS.
 

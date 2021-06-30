@@ -23,15 +23,18 @@ Simply follow this 3 simple steps:
 
          .. figure:: connect/125_router.png
             :width: 50%
+            :align: center
 
       #. Connect power supply to the Red Pitaya board
       #. Open your web browser and in the URL filed type ``rp-xxxxxx.local/``
 
          .. figure:: connect/125_stiker.png
             :width: 70%
+            :align: center
 
          .. figure:: connect/125_stiker_2.png
             :width: 70%
+            :align: center
 
    .. tab:: 250-12
 
@@ -39,13 +42,14 @@ Simply follow this 3 simple steps:
 
          .. figure:: connect/250_router.png
             :width: 50%
+            :align: center
 
       #. Connect power supply to the Red Pitaya board
       #. Open your web browser and in the URL filed type ``rp-xxxxxx.local/``
 
          .. figure:: connect/250_stiker.png
             :width: 90%
-
+            :align: center
        
 .. note::
 
@@ -55,8 +59,9 @@ Simply follow this 3 simple steps:
 After the **third step** you will get a Red Pitaya main page as shown below.
 
 .. figure:: connect/connect-3.png
+   :align: center
 
-   Figure 1: Red Pitaya main page user interface.
+   Red Pitaya main page user interface.
 
 .. note::
 
