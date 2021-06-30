@@ -120,7 +120,7 @@ The acquired signals are analyzed using the DFT algorithm and
 the frequency response of the DUT is plotted on the GUI.
 This application is very useful for filter measurements and similar.
 
-.. image:: 600px-F_analyzer.png
+.. figure:: 600px-F_analyzer.png
 
 Frequency response analyzer enables measurements of frequency amplitude response of desired DUT (Device Under Test).
 The measurements of frequency response are in range from 0Hz to 60MHz.
@@ -128,7 +128,7 @@ Measurements are in real time and the frequency range is NOT adjustable.
 Measurement can be done for each channel independently, i.e it enables simultaneously measurements of two DUTs.
 How to connect DUT to the Red Pitaya when using Frequency Response analyser is shown in picture below.
 
-.. image:: 600px-Frequency_response_analyzer_connections.png
+.. figure:: 600px-Frequency_response_analyzer_connections.png
 
 ==========
 Teslameter
@@ -162,7 +162,7 @@ The impedance range is from 0.1 Ohm to 10 Mohm.
 When using the Impedance analyzer application with the LCR Extension module,
 insert 0 in the shunt resistor field.
 
-.. image:: LCR_2.png
+.. figure:: LCR_2.png
 
 Impedance analyzer application enables measurements of Impedance,
 Phase and other parameters of selected DUT (Device Under Test).
@@ -184,13 +184,13 @@ insert 0 in the shunt resistor field.
    Impedance analyzer application is calibrated for 1 m Kelvin probes.
    More accurate measurements can be performed in Measurement sweep at constant frequency.
 
-.. image:: LCR_range.png
+.. figure:: LCR_range.png
 
 When using Impedance analyzer application optimal results are achieved wheni
 the Red Pitaya GND is connected to your mains EARTH lead as is shown below.
 We also recommend shielding of Red Pitaya and LCR extension module.
 
-.. image:: 600px-E_module_connection.png
+.. figure:: 600px-E_module_connection.png
 
 On pictures below are shown comparison measurements of the selected DUT.
 Measurements are taken with Red Pitaya and Keysight precision LCR meter.
@@ -200,9 +200,9 @@ From this plots you can extract basic Red Pitaya accuracy.
 
     Red Pitaya LCR meter/Impedance analyzer are not certificated for certain accuracy or range.
 
-.. image:: 300px-LCR_100R.png
-.. image:: 300px-LCR_100K.png
-.. image:: 300px-LCR_1M.png
+.. figure:: 300px-LCR_100R.png
+.. figure:: 300px-LCR_100K.png
+.. figure:: 300px-LCR_1M.png
 
 Impedance analyzer application can be used without LCR Extension module
 using manual setting of shunt resistor. This option is described below.
@@ -211,7 +211,7 @@ using manual setting of shunt resistor. This option is described below.
 
    You will need to change ``C_cable`` parameter in the code when using your setup.
 
-.. image:: 600px-Impedance_analyzer_manaul_R_Shunt.png
+.. figure:: 600px-Impedance_analyzer_manaul_R_Shunt.png
 
 =====================================================
 Multichannel Pulse Height Analyzer – (by Pavel Demin)

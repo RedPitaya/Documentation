@@ -18,7 +18,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. image:: output_y49qDi.gif
+.. figure:: output_y49qDi.gif
 
 ***************
 Code - MATLAB ®
@@ -164,7 +164,7 @@ Code - Scilab
 Code - LabVIEW
 **************
 
-.. image:: Blink_LV.png
+.. figure:: Blink_LV.png
 
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Blink.vi>`_

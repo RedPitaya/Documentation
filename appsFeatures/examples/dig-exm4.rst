@@ -15,7 +15,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. image:: RP-circuit-e1421258707736-300x212.png
+.. figure:: RP-circuit-e1421258707736-300x212.png
 
 Code - MATLAB®
 **************
@@ -124,6 +124,6 @@ MATLAB editor, input value p save project and press run. Change p with slider ba
 Code - LabVIEW
 **************
 
-.. image:: Interactive-LED-bar-graph_LV.png
+.. figure:: Interactive-LED-bar-graph_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Interactive%20LED%20bar%20graph.vi>`_

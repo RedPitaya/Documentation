@@ -5,7 +5,7 @@ System overview
 Almost all applications on Red Pitaya are made of two parts. We call them frontend and backend. You can see them on 
 the picture below.
 
-.. image:: Common.png
+.. figure:: Common.png
 
 Everything that works in your browser and you can see it this is the frontend. This is the part that can visualise 
 data on screen or change some parameters to adjust settings inside your applications. Other things that are connected
@@ -22,13 +22,13 @@ of some rules. You can read about this rules in How to
 Frontend
 ********
 
-.. image:: Frontend-1.png
+.. figure:: Frontend-1.png
 
 Frontend is that thing that you can see on your screen. We prefer to use high technologies for creating modern looking 
 applications with lots of possibilities. It's HTML5 for layout, CSS3 for element styles and JavaScript for
 creating fast and reliable web applications. Using all these tools you can create lots of innovative applications.
 
-.. image:: Frontend-2.png
+.. figure:: Frontend-2.png
 
 The basic idea of the frontend is to visualize data from Red Pitaya. And this should be it! You don't need to do lots of 
 calculations inside UI. Let your Red Pitaya do this. So here is typical workflow of application:
@@ -55,7 +55,7 @@ called Parameters and Signals. First of them are needed for handling state of im
 Another one are needed for collecting number of data inside one container. You can use lots of them at the same time. 
 None of them are necessary, so if you don't need singlas in your application you may not use them.
 
-  .. image:: Backend.png
+  .. figure:: Backend.png
   
 System base on Nginx as fast platform for Web applications. Nginx allows us to load modules in runtime without 
 restarting system.

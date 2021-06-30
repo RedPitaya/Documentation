@@ -102,7 +102,7 @@ Pin  Description            FPGA pin number FPGA pin description Voltage levels
 \ :sup:`1` Red Pitaya Version 1.0 has -3.3V on pin 2. Red Pitaya Version 1.1 has -3.4V on pin 2.
 Schematics of extension connectors is shown in picture bellow.
 
-.. image:: Extension_connector.png
+.. figure:: Extension_connector.png
 
 **Notes:**
 
@@ -192,7 +192,7 @@ Powering Red Pitaya through extension connector
 Red Pitaya can be also powered through pin1 of the extension connector :ref:`E2 <E2>`, but in such case external protection must
 be provided by the user in order to protect the board!
 
-.. image:: Protection.png
+.. figure:: Protection.png
 
 Protection circuit between +5V that is provided over micro USB power connector and +5VD that is connected to pin1 of 
 the extension connector :ref:`E2 <E2>`.

@@ -19,11 +19,11 @@ Required hardware
     - RedPitaya_Push_button
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
-.. image:: RedPitaya_Push_button.png
+.. figure:: RedPitaya_Push_button.png
     
 Circuit
 
-.. image:: RedPitaya_Push_button_circuit.png
+.. figure:: RedPitaya_Push_button_circuit.png
 
 Code - MATLAB®
 **************
@@ -143,6 +143,6 @@ Code - Python
 Code - LabVIEW
 **************
 
-.. image:: Push-button-and-turn-on-LED_LV.png
+.. figure:: Push-button-and-turn-on-LED_LV.png
 
 `Dowload <https://downloads.redpitaya.com/downloads/Clients/labview/Push%20button%20and%20turn%20on%20LED.vi>`_

@@ -19,12 +19,12 @@ Required hardware
     
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
-.. image:: on_given_external_trigger_acquire_signal_on_fast_analog_input.png
+.. figure:: on_given_external_trigger_acquire_signal_on_fast_analog_input.png
 
 Circuit
 *******
 
-.. image:: on_given_external_trigger_acquire_signal_on_fast_analog_input_circuit.png
+.. figure:: on_given_external_trigger_acquire_signal_on_fast_analog_input_circuit.png
 
 
 Code - MATLAB®
@@ -154,6 +154,6 @@ Code - Python
 Code - LabVIEW
 **************
 
-.. image:: Signal-acquisition-on-external-trigger_LV.png
+.. figure:: Signal-acquisition-on-external-trigger_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Signal%20acquisition%20on%20external%20trigger.vi>`_

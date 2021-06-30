@@ -15,7 +15,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. image:: output_y49qDi.gif
+.. figure:: output_y49qDi.gif
 
 Code - MATLAB®
 **************
@@ -149,6 +149,6 @@ Code - C
 Code - LabVIEW
 **************
 
-.. image:: Custom-wavefrom-signal-generator_LV.png
+.. figure:: Custom-wavefrom-signal-generator_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Custom%20waveform%20signal%20generation.vi>`_

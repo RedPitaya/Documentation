@@ -3,13 +3,13 @@ Red Pitaya boards comparison
 
 .. _rp-board-comp:
 
-.. image:: vs_10.jpg
+.. figure:: vs_10.jpg
    :width: 30%
    
-.. image:: vs_14.jpg
+.. figure:: vs_14.jpg
    :width: 30%
    
-.. image:: vs_16.jpg
+.. figure:: vs_16.jpg
    :width: 30%
 
 Red Pitaya is available in three versions, all offer the same functions and features with the difference in technical specification
@@ -20,7 +20,7 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 
 .. -> http://redpitaya.com/boards/stemlab-boards/
 
-.. image:: boards_1.jpg
+.. figure:: boards_1.jpg
 
 
 .. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|

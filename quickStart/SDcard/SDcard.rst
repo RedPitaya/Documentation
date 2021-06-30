@@ -33,7 +33,7 @@ SIGNALlab 250-12:
 
 
 
-.. image:: microSDcard-RP.png
+.. figure:: microSDcard-RP.png
     :width: 10%
 
 #. Unzip the SD card image.
@@ -47,7 +47,7 @@ SIGNALlab 250-12:
 
 4. Insert the SD card into Red Pitaya.
 
-   .. image:: pitaya-quick-start-insert-sd-card.png
+   .. figure:: pitaya-quick-start-insert-sd-card.png
 
 
 =======
@@ -56,23 +56,23 @@ Windows
 
 #. Insert SD card into your PC or SD card reader.
 
-   .. image:: SDcard_insert.jpg
+   .. figure:: SDcard_insert.jpg
 
 #. Download `Win32 Disk Imager <https://sourceforge.net/projects/win32diskimager/>`_ and extract it.
 
-   .. image:: SDcard_Win_Win32DiskImager.png
+   .. figure:: SDcard_Win_Win32DiskImager.png
 
 #. Open unzipped folder, right-click on the ``WinDisk32Imager``, and select **Run as Administrator**.
 
-   .. image:: SDcard_Win_RunAsAdmin.png
+   .. figure:: SDcard_Win_RunAsAdmin.png
 
 #. Under image file box select unzipped Red Pitaya image file.
 
-   .. image:: SDcard_Win_SelectImg.png
+   .. figure:: SDcard_Win_SelectImg.png
 
 #. Under device box select the drive letter of the SD card.
 
-   .. image:: SDcard_Win_SelectDrive.png
+   .. figure:: SDcard_Win_SelectDrive.png
 
    .. note::
 
@@ -82,15 +82,15 @@ Windows
       You can easily see the drive letter (for example E:)
       by looking in the left column of Windows Explorer.
 
-   .. image:: SDcard_Win_DriveLetter.png
+   .. figure:: SDcard_Win_DriveLetter.png
 
 #. Click Write and wait for the write to complete.
 
-   .. image:: SDcard_Win_Write.png
+   .. figure:: SDcard_Win_Write.png
 
 #. Exit the Imager.
 
-   .. image:: SDcard_Win_Exit.png
+   .. figure:: SDcard_Win_Exit.png
 
 =====
 Linux
@@ -125,7 +125,7 @@ Command line
 
 #. Insert SD card into your PC or SD card reader.
 
-   .. image:: SDcard_insert.jpg
+   .. figure:: SDcard_insert.jpg
 
 #. Open the Terminal and check the available disks with ``df -h``.
    Our SD card is 4GB, it is named ``/dev/sdx`` and
@@ -171,7 +171,7 @@ Using ApplePi-Baker
 
 #. Insert SD card into your PC or SD card reader.
 
-   .. image:: SDcard_insert.jpg
+   .. figure:: SDcard_insert.jpg
 
 #. Download `ApplePi-Baker <https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2/>`_. Direct link:
 
@@ -180,34 +180,34 @@ Using ApplePi-Baker
 
 #. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
-   .. image:: SDcard_macOS_open.png
+   .. figure:: SDcard_macOS_open.png
 
 #. Drag and drop *ApplePi-Baker* for install it.
 
-   .. image:: SDcard_macOS_install.png
+   .. figure:: SDcard_macOS_install.png
 
 #. Enter your admin password and click OK.
 
-   .. image:: SDcard_macOS_password.png
+   .. figure:: SDcard_macOS_password.png
 
   
 #. Select SD card drive. This can be recognized by the size of the card that is 8GB.
 
-   .. image:: SDcard_macOS_ApplePi-Baker_drive.png
+   .. figure:: SDcard_macOS_ApplePi-Baker_drive.png
 
 
 #. Select Red Pitaya OS image file.
 
-   .. image:: SDcard_macOS_ApplePi-Baker_image.png
+   .. figure:: SDcard_macOS_ApplePi-Baker_image.png
 
 
 #. It's coffee time, application will show you Estimated Time for Accomplishment.
 
-   .. image:: SDcard_macOS_ApplePi-Baker_wait.png
+   .. figure:: SDcard_macOS_ApplePi-Baker_wait.png
 
 #. When operation is completed you can see status Idle.
 
-   .. image:: SDcard_macOS_ApplePi-Baker_quit.png
+   .. figure:: SDcard_macOS_ApplePi-Baker_quit.png
 
 
 .. _macos_cli:
@@ -218,12 +218,12 @@ Command line
 
 #. Insert SD card into your PC or SD card reader.
 
-   .. image:: SDcard_insert.jpg
+   .. figure:: SDcard_insert.jpg
 
 #. Click **cmd + space**, type **Disk Utility** into the search box and press enter.
    From the menu select your SD card and click on **Erase** button (be careful not to delete your disk!).
 
-   .. image:: SDcard_macOS_DiskUtility.png
+   .. figure:: SDcard_macOS_DiskUtility.png
 
 #. Click **cmd + space**, type in **Terminal** and press enter.
    In the terminal window type: ``cd``, press enter,
@@ -233,18 +233,18 @@ Command line
    In Terminal type: ``diskutil list`` and press enter.
    This will show you the list of all memory devices.
 
-   .. image:: Screen-Shot-2015-08-07-at-16.59.50.png
+   .. figure:: Screen-Shot-2015-08-07-at-16.59.50.png
 
    Unmount with: ``diskutil UnmountDisk /dev/diskn``
    (insert the number ``n`` of your disk correctly!)
 
-   .. image:: Screen-Shot-2015-08-07-at-17.14.34.png
+   .. figure:: Screen-Shot-2015-08-07-at-17.14.34.png
 
 #. Type in: ``sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn``
    (Remember to replace ``n`` with the number that you noted before!)
    (notice there is letter ``r`` in front of the disk name, use that as well!)
 
-   .. image:: Screen-Shot-2015-08-07-at-17.14.45.png
+   .. figure:: Screen-Shot-2015-08-07-at-17.14.45.png
 
 #. Type in your password and wait a few minutes for the image to be written.
 
@@ -306,11 +306,11 @@ Users can also check for updates manually.
 
 #. Click on the **upgrade alert** or on the **ecosystem version label** in bottom right corner.
 
-   .. image:: SDcard_upgrade_desktop.png
+   .. figure:: SDcard_upgrade_desktop.png
 
 #. Select ecosystem version and start OS updater
 
-   .. image:: SDcard_update_manager.png
+   .. figure:: SDcard_update_manager.png
 
 #. Follow the steps in the OS updater app in order to install new OS.
 

@@ -15,7 +15,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. image:: output_y49qDi.gif
+.. figure:: output_y49qDi.gif
 
 Code - MATLAB®
 **************
@@ -131,6 +131,6 @@ Code - Python
 Code - LabVIEW
 **************
 
-.. image:: Generate-signal-on-external-trigger_LV.png
+.. figure:: Generate-signal-on-external-trigger_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Generate%20signal%20on%20external%20trigger.vi>`_

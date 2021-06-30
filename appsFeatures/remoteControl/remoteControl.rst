@@ -4,7 +4,7 @@ Remote control (Matlab, Labview, Scilab or Python)
 
 .. https://owncloud.redpitaya.com/index.php/apps/files/?dir=%2FWEB%20page%2Fapps%2FSCPI
 
-.. image:: SCPI_web_lr.png
+.. figure:: SCPI_web_lr.png
 
 Red Pitaya board can be controlled remotely over LAN or wireless interface
 using Matlab, Labview, Scilab or Python via Red Pitaya
@@ -41,16 +41,16 @@ To run an examples follow instructions bellow:
 
 #. Go to your Red Pitaya main page and Select SCPI server.
 
-   .. image:: scpi-homepage.png
+   .. figure:: scpi-homepage.png
 
-   .. image:: scpi-development.png
+   .. figure:: scpi-development.png
 
 #. Start SCPI server by selecting RUN button.
    Please notice the IP of your Red Pitaya (192.168.178.100) board as it will be needed to connect to your board.
 
-   .. image:: scpi-app-run.png
+   .. figure:: scpi-app-run.png
 
-   .. image:: scpi-app-stop.png
+   .. figure:: scpi-app-stop.png
 
 #. Follow the instructions bellow sutable to your environment.
 
@@ -118,7 +118,7 @@ To install them do:
       Without having this script in the same folder as your python script
       the execution of your script will fail.
 
-   .. image:: scpi-examples.png
+   .. figure:: scpi-examples.png
 
 #. Open the Terminal and go to the folder containing your python script
    (``examples_py``) and run: ``python blink.py IP`` where you give an Red Pitaya IP
@@ -130,7 +130,7 @@ To install them do:
       cd /home/zumy/Desktop/exmples_py
       python blink.py 192.168.178.108
 
-   .. image:: scpi-example-cli.png
+   .. figure:: scpi-example-cli.png
 
 More examples about how to control Red Pitaya from MATLAB can be find :ref:`here <examples>`.
 
@@ -207,7 +207,7 @@ and start SCPI server with the following command:
 
    systemctl start redpitaya_scpi &
 
-.. image:: scpi-ssh.png
+.. figure:: scpi-ssh.png
 
 .. _scpiCommand:
 

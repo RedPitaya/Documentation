@@ -164,7 +164,7 @@ If the script returns the following error:
 open the project GUI(see below), go to menu Reports-> Report IP Status. A new tab opens below the code window.
 If all IPs are not up-to-date, they need to be updated. 
 
-.. image:: IPupdate.png
+.. figure:: IPupdate.png
 
 When IPs are up-to-date, go to the tab Tcl console and run command:
 
@@ -184,7 +184,7 @@ To generate and open a Vivado project using GUI, run:
    
 Building the project from GUI is effectively the same as from CLI, except that the user has to click three buttons on the side of the GUI window:
 
-.. image:: vivadoGUI.png
+.. figure:: vivadoGUI.png
 
 1. Run Synthesis
 2. Run Implementation

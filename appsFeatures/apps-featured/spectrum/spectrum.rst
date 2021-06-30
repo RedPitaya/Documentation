@@ -1,7 +1,7 @@
 Spectrum Analyzer
 #################
 
-.. image:: 01_iPad_Combo_Spectrum.jpg
+.. figure:: 01_iPad_Combo_Spectrum.jpg
 
 This application will turn your RedPitaya board into a 2-channel DFT Spectrum Analyzer. It is the perfect tool for 
 educators, students, makers, hobbyists and professionals seeking affordable, highly functional test and measurement
@@ -26,7 +26,7 @@ The graphical interface is divided into 4 main areas:
        on the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful to enable 
        the representation of a signal spectrum in a time dependency.
 
-.. image:: Slika_02_SA.png
+.. figure:: Slika_02_SA.png
 
 FEATURES
 ********
@@ -43,13 +43,13 @@ spectrum plot will show the lowest values of the signal spectrum taken after ena
 is used for the “MAX” signal where the MAX values of the signal spectrum are shown. This feature is mostly used for 
 detecting signal glitches and the max/min spectrum amplitude values during the measurement.
 
-.. image:: Slika_03_SA.png
+.. figure:: Slika_03_SA.png
 
 For SIGNALlab 250-12 there are additional settings available where user can select:
 - **Input attenuation**
 - **Coupling**
 
-.. image:: Slika_09_SA.png
+.. figure:: Slika_09_SA.png
 
 
 CURSORS:
@@ -62,7 +62,7 @@ The cursors are interactive and they can be set on any part of the graph while t
 corresponding to the place where the X cursors are set, and the amplitude value where the Y cursors are set. Cursor 
 delta values are useful for measuring signal harmonics and relative ratios between amplitudes and frequencies.
 
-.. image:: Slika_04_SA.png
+.. figure:: Slika_04_SA.png
 
 RANGE:
 ======
@@ -70,7 +70,7 @@ RANGE:
 The range settings are used to set a frequency span. This feature is useful when the frequency range of interest is 
 smaller than the full frequency range of the Spectrum analyzer application.
 
-.. image:: Slika_05_SA.png
+.. figure:: Slika_05_SA.png
 
 PEAK DETECTION:
 ===============
@@ -79,7 +79,7 @@ During the measurement, peak values of the signal spectrum are measured and show
 values are max values of the signals spectrum regardless of the selected frequency range. This peak finding prevents 
 not seeing peak values which are outside the selected frequency span.
 
-.. image:: Slika_06_SA.png
+.. figure:: Slika_06_SA.png
 
 WATERFALL PLOTS:
 ================
@@ -96,7 +96,7 @@ Horizontal +/- buttons are used to select the span of the X (frequency) axis (zo
 buttons change the Y (amplitude)-axis range. Reset button when selected reset frequency and amplitude span do default
 values.
 
-.. image:: Slika_07_SA.png
+.. figure:: Slika_07_SA.png
 
 OUTPUTS:
 ========
@@ -110,7 +110,7 @@ External ref. Clock (only SIGNALlab 250-12):
 External ref. Clock input can be enabled through the settings menu, once enabled it’s status is displayed
 in the main interface. Green status indicates that the sampling clock is locked to external ref. clock.
 
-.. image:: Slika_08_SA.png
+.. figure:: Slika_08_SA.png
     :width: 30%
 
 SPECIFICATIONS

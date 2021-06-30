@@ -89,82 +89,82 @@ Click here_ to download Power SDR installation package.
 		
 On Windows 10 you might get warning of Unknown Publisher you can procede with installation by clicking on "more info" and then "Run anyway".
  
-	.. image:: PowerSDRinstallation3.PNG
+	.. figure:: PowerSDRinstallation3.PNG
 		:scale: 75 %
    		:align: center
 	
-	.. image:: PowerSDRinstallation4.PNG
+	.. figure:: PowerSDRinstallation4.PNG
 		:scale: 75 %
    		:align: center
 	
 
 3. Follow the instructions of the setup routine and accept the license agreements if asked for.
 
-	.. image:: Capture1.PNG
+	.. figure:: Capture1.PNG
 		:scale: 75 %
    		:align: center
 
-	.. image:: Capture2.PNG
+	.. figure:: Capture2.PNG
 		:scale: 75 %
    		:align: center
 		
-	.. image:: Capture3.PNG
+	.. figure:: Capture3.PNG
 		:scale: 75 %
    		:align: center
 
-	.. image:: Capture4.PNG
+	.. figure:: Capture4.PNG
 		:scale: 75 %
    		:align: center
 
-	.. image:: Capture5.PNG
+	.. figure:: Capture5.PNG
 		:scale: 75 %
    		:align: center
 
-	.. image:: Capture6.PNG
+	.. figure:: Capture6.PNG
 		:scale: 75 %
    		:align: center
 
-	.. image:: Capture7.PNG
+	.. figure:: Capture7.PNG
 		:scale: 75 %
    		:align: center
 
-	.. image:: Capture8.PNG
+	.. figure:: Capture8.PNG
 		:scale: 75 %
 		:align: center
 
 4. At the end of the installation you are asked if you want to run PowerSDR software immediately, feel free to do so.
 
-	.. image:: Capture9.PNG
+	.. figure:: Capture9.PNG
 		:scale: 75 %
    		:align: center
 
 5. PowerSDR software will start with the calculation of the FFT wisdom file, **which will take a while** depending on the CPU power of your computer. This is only done once, even after updating the software to a new version in the future:
 
-	.. image:: Capture10.PNG
+	.. figure:: Capture10.PNG
 		:scale: 75 %
    		:align: center
 
 6. After starting the PowerSDR software you will be led through the PowerSDR software specific setup wizard which lets you configure the software to use it with your Red Pitaya. Pick the HAMlab/RedPitaya radio model.
 
-	.. image:: Capture11.PNG
+	.. figure:: Capture11.PNG
 		:scale: 75 %
    		:align: center
 
 7. Select the region where you are using your Red Pitaya, this is important due to the different frequency ranges your are allowed to transmit in the different countries all over the world:
 
-	.. image:: Capture12.PNG
+	.. figure:: Capture12.PNG
 		:scale: 75 %
    		:align: center
 
 8. Your initial setup is completed click finish.
 
-	.. image:: Capture13.PNG
+	.. figure:: Capture13.PNG
 		:scale: 75 %
    		:align: center
 
 9. Click Power to connect Power SDR with Red Pitaya. On the screen the input singnal should appear.
 
-	.. image:: Capture20.PNG
+	.. figure:: Capture20.PNG
 		:scale: 75 %
    		:align: center
 
@@ -349,7 +349,7 @@ General Specifications
 .. ####################################
 .. 
 .. 
-.. .. image:: Front_panel_controls_and_connections.png
+.. .. figure:: Front_panel_controls_and_connections.png
 .. 
 .. Power button
 .. ************ 
@@ -369,7 +369,7 @@ General Specifications
 .. The HAMlab 80-10 10W front microphone connector **(2)** can support Kenwood KMC 30 electret microphone
 .. or compatible types.
 .. 
-.. .. image:: microfono-kmc-30-ml.jpg
+.. .. figure:: microfono-kmc-30-ml.jpg
 .. 
 .. Front panel view microphone pinout
 .. 
@@ -474,7 +474,7 @@ General Specifications
 .. ###################################
 .. 
 .. 
-.. .. image:: Back_panel_controls_and_connections.png
+.. .. figure:: Back_panel_controls_and_connections.png
 .. 
 .. 
 .. ANT - TRANSCEIVER ANTENNA PORTS [1,2]
@@ -549,9 +549,9 @@ General Specifications
 .. There are two internal fuses in the HAMlab. One is protecting whole system while the other one is just for the transceiver. If you ever need to replace the internal fuse, remove the top cover and the shield of the power board.  
 .. 
 .. 
-.. .. image:: IMG_20161202_105403.jpg
+.. .. figure:: IMG_20161202_105403.jpg
 .. 
-.. .. image:: IMG_20161202_105424.jpg
+.. .. figure:: IMG_20161202_105424.jpg
 .. 
 .. .. danger::
 .. 
@@ -640,7 +640,7 @@ General Specifications
 .. +-------------------------------+-------------------------------------------------------------------------------------------------------------+
 .. 
 
-.. image:: SDRBlockDiagram.PNG
+.. figure:: SDRBlockDiagram.PNG
         :scale: 75 %
         :align: center
 

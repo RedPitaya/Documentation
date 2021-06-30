@@ -2,7 +2,7 @@
 LCR meter
 *********
 
-.. image:: 01_iPad_Combo_LCR.jpg
+.. figure:: 01_iPad_Combo_LCR.jpg
 
 This application will turn your Red Pitaya into an affordable LCR meter. It is the perfect tool for educators, students, 
 makers, hobbyists and professionals seeking affordable, highly functional test and measurement equipment. The 
@@ -20,7 +20,7 @@ them via a browser using their smartphone, tablet or a PC running any popular op
 Android and iOS). The elements on the LCR meter application are arranged logically and offer a familiar user interface
 similar to bench LCR meters.
 
-.. image:: Slika_01_LCR_meter_WEB_page.png
+.. figure:: Slika_01_LCR_meter_WEB_page.png
 
 The graphical interface is divided into 6 main areas:
 
@@ -50,7 +50,7 @@ The graphical interface is divided into 6 main areas:
 Connecting the LCR module
 *************************
 
-.. image:: E_module_connection.png
+.. figure:: E_module_connection.png
        
 FEATURES
 ********

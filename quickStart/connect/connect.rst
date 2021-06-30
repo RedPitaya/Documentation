@@ -19,7 +19,7 @@ Red Pitaya boards can be connected over:
 #. Wireless Network client - Requires an additional WiFi dongle available at Red Pitaya store
 #. Access Point Mode - Red Pitaya board creates its own WiFi network
 
-.. image:: connect-1.png
+.. figure:: connect-1.png
 
 *****
 Wired
@@ -69,7 +69,7 @@ a possibility to directly connect to your Red Pitaya board.
 were necessary in order to set connection correctly. 
 This step has been eliminated with the NEW OS 0.97 (and newer) and the only step needed is to plug the ethernet cable from your PC to the Red Pitaya board. 
 
-.. image:: connect-10.png
+.. figure:: connect-10.png
 
 **Here is the procedure for Direct Ethernet Connection**
 
@@ -120,7 +120,7 @@ First step in connecting Red Pitaya board directly to LAN network and setting a 
    open Network Manager and chose ``Static`` option.
    Input the static IP and click **Apply**.
 
-   .. image:: connect-11.png
+   .. figure:: connect-11.png
 
 2. Second step is to set a network setting on the PC.
    Here we give an example on the Ubuntu 14.04 but it is very similar on the other OS also.
@@ -131,15 +131,15 @@ First step in connecting Red Pitaya board directly to LAN network and setting a 
       **(There is no need to create new network since you can set
       static IP settings on the existing network and skip all steps up to step 5.)**
 
-   .. image:: connect-12.png
+   .. figure:: connect-12.png
 
 3. Select **Ethernet** connection and press **Create** button
 
-   .. image:: connect-13.png
+   .. figure:: connect-13.png
 
 4. Select the name of the new Ethernet connections
 
-   .. image:: connect-14.png
+   .. figure:: connect-14.png
 
 5. Select **Method – Manual**, Press **Add** button and insert:
 
@@ -148,7 +148,7 @@ First step in connecting Red Pitaya board directly to LAN network and setting a 
    - Getaway (can be left empty)
    - DNS servers (can be left empty) and click **Save** button.
 
-   .. image:: connect-15.png 
+   .. figure:: connect-15.png 
 
 .. note::
 
@@ -158,7 +158,7 @@ First step in connecting Red Pitaya board directly to LAN network and setting a 
     chosen Red Pitaya board static IP (in our example ``192.168.0.15``)
     and press enter.
 
-.. image:: connect-16.png 
+.. figure:: connect-16.png 
 
 ********
 Wireless
@@ -182,7 +182,7 @@ after the restart of the Red Pitaya board it will connect to the preset WiFi net
    Connecting the Red Pitaya via WiFi network the additional WiFi dongle is needed.
    WiFi dongle is available here [Link to RS or similar].    
 
-.. image:: connect-4.png
+.. figure:: connect-4.png
 
 Steps on how to connect your Red Pitaya board over WiFi network are described bellow:
  
@@ -192,12 +192,12 @@ Steps on how to connect your Red Pitaya board over WiFi network are described be
    Recommended WIFI USB dongle is Edimax EW7811Un.
    In general all WIFI USB dongles that use RTL8188CUS chipset should work.
     
-    .. image:: connect-5.png
+    .. figure:: connect-5.png
 
 4. When the USB WiFi dongle is plugged in, the system will recognize it and enabled additional settings.
 5. Select Client Mode, Desired WiFi network,  Insert password and click Connect.
 
-   .. image:: connect-6.png
+   .. figure:: connect-6.png
 
 6. When your Red Pitaya board is connected
    the IP address will be shown on the user interface.
@@ -205,7 +205,7 @@ Steps on how to connect your Red Pitaya board over WiFi network are described be
    You can check the connection by inputting a WiFi IP address
    in the web browser URL field (press enter after inputting). 
    
-   .. image:: connect-7.png   
+   .. figure:: connect-7.png   
 
 Now you have WiFi connection established.
 If you restart Red Pitaya board it will connect to selected network 
@@ -233,7 +233,7 @@ This will allow you to connect your PC/Laptop, Tablet or smart phone to the Red 
 
    To use Red Pitaya as an access point a `Raspberry Pi USB WiFi <https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle/>`_ dongle is needed.
 
-.. image:: connect-8.png
+.. figure:: connect-8.png
 
 Follow the steps bellow to enable Access Point and connect to it.
 
@@ -252,4 +252,4 @@ Follow the steps bellow to enable Access Point and connect to it.
     
    IP address in Access Point mode is always the same: 192.168.128.1
 
-.. image:: connect-9.png
+.. figure:: connect-9.png

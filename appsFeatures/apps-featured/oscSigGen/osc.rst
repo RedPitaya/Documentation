@@ -1,7 +1,7 @@
 Oscilloscope & Signal Generator
 ###############################
 
-.. image:: 01_iPad_Combo_Oscilloscope.jpg
+.. figure:: 01_iPad_Combo_Oscilloscope.jpg
 
 This application will turn your Red Pitaya board into a 2-channel Oscilloscope and 2-channel Signal generator. It is the
 perfect tool for educators, students, makers, hobbyists and professionals seeking affordable, highly functional test 
@@ -12,7 +12,7 @@ is web-based and doesn’t require installation of any native software. Users ca
 Linux, Windows, Android and iOS). The elements on the Oscilloscope&Sig. Generator application are arranged logically 
 and offer a familiar user interface.
 
-.. image:: Slika_02_OSC.png
+.. figure:: Slika_02_OSC.png
 
 Apart from the graph there are five areas in which the surface is divided:
 
@@ -48,10 +48,10 @@ Autoscale
 Automatically sets up the Oscilloscope to best display the input signal. By pressing this button, the voltage axis and
 the time axis are set so that at least one full period of the signal will fill the screen.
 
-.. image:: Slika_03_OSC_left.png
+.. figure:: Slika_03_OSC_left.png
     :width: 49%
 
-.. image:: Slika_03_OSC_right.png
+.. figure:: Slika_03_OSC_right.png
     :width: 49%
 
 Inputs
@@ -67,7 +67,7 @@ The available settings by device model:
 
   .. group-tab:: STEMlab 125-10, 125-14
            
-      .. image:: Slika_05_OSC_125.png
+      .. figure:: Slika_05_OSC_125.png
           :height: 280px
 
 
@@ -79,7 +79,7 @@ The available settings by device model:
 
   .. group-tab:: SDRlab 122-16
      
-      .. image:: Slika_05_OSC_122.png
+      .. figure:: Slika_05_OSC_122.png
           :height: 280px
           
 
@@ -90,7 +90,7 @@ The available settings by device model:
 
   .. group-tab:: SIGNALlab 250-12
 
-      .. image:: Slika_05_OSC_250.png
+      .. figure:: Slika_05_OSC_250.png
           :height: 280px
 
 
@@ -117,7 +117,7 @@ The available settings are the following:
 
   .. group-tab:: STEMlab 125-10, 125-14
            
-      .. image:: Slika_06_OSC_125.png
+      .. figure:: Slika_06_OSC_125.png
           :height: 360px
 
 
@@ -133,7 +133,7 @@ The available settings are the following:
 
   .. group-tab:: SDRlab 122-16
      
-      .. image:: Slika_06_OSC_122.png
+      .. figure:: Slika_06_OSC_122.png
           :height: 360px
           
 
@@ -147,7 +147,7 @@ The available settings are the following:
 
   .. group-tab:: SIGNALlab 250-12
 
-      .. image:: Slika_06_OSC_250.png
+      .. figure:: Slika_06_OSC_250.png
           :height: 360px
 
 
@@ -166,7 +166,7 @@ The available settings are the following:
 Trigger
 =======
 
-.. image:: Slika_07_OSC.png
+.. figure:: Slika_07_OSC.png
     :width: 30%
     :align: right
 
@@ -209,7 +209,7 @@ External ref. clock (only SIGNALlab 250-12)
 External ref. Clock input can be enabled through the settings menu, once enabled it’s status is displayed
 in the main interface. Green status indicates that the sampling clock is locked to external ref. clock.
 
-.. image:: Silka_EXT_CLOCK.png
+.. figure:: Silka_EXT_CLOCK.png
     :width: 30%
 
 
@@ -226,7 +226,7 @@ Among the more interesting features of a digital oscilloscope is the "math" chan
     - **ydt** Gives an time integration of the selected signal. 
     - **INVERT** Inverts the signal.
 
-.. image:: Slika_08_OSC.png
+.. figure:: Slika_08_OSC.png
 
 Cursor
 ======
@@ -234,7 +234,7 @@ Cursor
 This feature enables the user to easily get the data of relevant basic measurements such is: signal period, amplitude,
 time delay, amplitude difference between two points, time difference between two points and etc.
 
-.. image:: Slika_09_OSC.png
+.. figure:: Slika_09_OSC.png
 
 
 Navigate
@@ -243,7 +243,7 @@ Navigate
 When you have a lot of data to analyze, it is very important to get through them easily. Navigate left and right by 
 dragging the data where you want and effortlessly zoom in and out by using your mouse scroll wheel.
 
-.. image:: Slika_04_OSC.png
+.. figure:: Slika_04_OSC.png
 
 Measurements
 ============
@@ -262,7 +262,7 @@ among the following:
  - **PERIOD:** Displays the period length, the time length of a vibration. 
  - **FREQ:** The frequency of the signal.
 
-.. image:: Slika_10_OSC.png
+.. figure:: Slika_10_OSC.png
 
 Specifications
 **************

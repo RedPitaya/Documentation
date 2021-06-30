@@ -39,14 +39,14 @@ Start using Red Pitaya streaming feature
 
 #. ) Run streaming app from Red Pitaya WEB interface
 
-    .. image:: img/redpitaya_main_page.png
+    .. figure:: img/redpitaya_main_page.png
         :width: 60%
 
 #. ) Stream locally to a file
 
     #. ) Set app properties & click RUN
     
-        .. image:: img/to_file_settings.png
+        .. figure:: img/to_file_settings.png
            :width: 40%
     
         Example: streaming on ch1, 8bit resolution 5.208Msps into TDMS file format
@@ -55,13 +55,13 @@ Start using Red Pitaya streaming feature
 
     #. ) Click Browse to open file browser and download streaming data file
 
-        .. image:: img/capture.png
+        .. figure:: img/capture.png
            :width: 50%
 
     #. ) Open file in `DIAdem software <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__
          that supports TDMS file reading, visualization & processing.
 
-        .. image:: img/diadem_tdms_file_viewer.png
+        .. figure:: img/diadem_tdms_file_viewer.png
            :width: 80%
 
 #. ) Streaming to remote computer
@@ -79,7 +79,7 @@ Start using Red Pitaya streaming feature
 
     #. ) Set app properties & click RUN
 
-        .. image:: img/tcp_settings.png
+        .. figure:: img/tcp_settings.png
            :width: 50%
         
         Example: streaming on ch1, 16bit resolution 5Msps, TCP
@@ -94,14 +94,14 @@ Start using Red Pitaya streaming feature
 
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
 
-            .. image:: img/tcp_client.png
+            .. figure:: img/tcp_client.png
                 :width: 60%
 
             Data streaming can be stopped by pressing Ctrl + C
 
             Created wav file can be read or visualized using `Audacity software <https://www.audacityteam.org/>`__:
 
-            .. image:: img/audacity.png
+            .. figure:: img/audacity.png
                 :width: 80%
 
         .. group-tab:: TDMS
@@ -110,14 +110,14 @@ Start using Red Pitaya streaming feature
 
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
 
-            .. image:: img/tcp_client2.png
+            .. figure:: img/tcp_client2.png
                 :width: 60%
 
             Data streaming can be stopped by pressing Ctrl + C
 
             Created tdms file can be read or visualized using `DIAdem software <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__:
 
-            .. image:: img/diadem_tdms_file_viewer.png
+            .. figure:: img/diadem_tdms_file_viewer.png
                 :width: 80%
         
         .. group-tab:: CSV
@@ -127,21 +127,21 @@ Start using Red Pitaya streaming feature
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
 
 
-            .. image:: img/tcp_client3.png
+            .. figure:: img/tcp_client3.png
                 :width: 60%
             
             |br|
 
             The application saves data from board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
             
-            .. image:: img/csv_list.png
+            .. figure:: img/csv_list.png
                 :width: 60%
 
             |br|
 
             Created csv file can be opened with any text editor or spreadsheet editor:
 
-            .. image:: img/csv_view.png
+            .. figure:: img/csv_view.png
                 :width: 80%
 
             |br|
@@ -150,14 +150,14 @@ Start using Red Pitaya streaming feature
 
                 The binary file can be converted using the *convert_tool* application.
 
-                .. image:: img/csv_list.png
+                .. figure:: img/csv_list.png
                     :width: 60%
 
                 |br|
 
                 In this application, you can also see the structure of the received file and the state of the file.
 
-                .. image:: img/csv_state.png
+                .. figure:: img/csv_state.png
                     :width: 60%
 
 

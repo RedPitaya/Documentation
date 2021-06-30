@@ -1,7 +1,7 @@
 Bode Analyzer
 #############
 
-.. image:: 01_iPad_Combo_Bode.jpg
+.. figure:: 01_iPad_Combo_Bode.jpg
 
 This application will turn your Red Pitaya into an affordable Bode analyzer. It is the perfect tool for educators, 
 students, makers, hobbyists and professionals seeking affordable, highly functional test and measurement equipment. 
@@ -17,18 +17,18 @@ The graphical user interface of the Bode analyzer application is shown below.
 
 The graphical interface is divided into 5 areas:
 
-.. image:: BA_Slika_01.png
+.. figure:: BA_Slika_01.png
 
 1. **Stop/Run button:** It is used to start and stop measurement. **Calibrate button:** When the selected calibration 
    of the setup is started.
 2. **Measurement settings panel:** It is used for setting the measurement parameters such as the frequency range, 
    scale, number of steps, excitation signal amplitude, excitation signal DC bias and averaging number.
 
-.. image:: BA_Slika_02.png
+.. figure:: BA_Slika_02.png
 
 3. **Plot settings panel:** It is used to set the Gain and Phase graph ranges as also manual or auto scale mode.
 
-.. image:: BA_Slika_03.png
+.. figure:: BA_Slika_03.png
 
 4. **Gain graph:** The Gain frequency response of the DUT (device under test) is plotted for the selected frequency 
    range.
@@ -52,7 +52,7 @@ Main feature of the Bode analyzer application are described below:
     - The calibration function enables calibrating long leads and to remove leads and cables effect on final 
       measurements. The calibration will also calibrate your Red Pitaya if any parasitics effects are present.   
    
-.. image:: BA_Slika_05.png
+.. figure:: BA_Slika_05.png
    
    
 Specifications
@@ -92,4 +92,4 @@ HW connections
 When using the Bode analyzer application, please follow the connection diagram described below. Also use the 50 Ohm 
 termination on the OUT1.
 
-.. image:: BA_Slika_04.png
+.. figure:: BA_Slika_04.png

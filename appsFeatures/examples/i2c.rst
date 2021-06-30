@@ -14,7 +14,7 @@ Required hardware
 
     - Red Pitaya
 
-.. image:: output_y49qDi.gif
+.. figure:: output_y49qDi.gif
 
 Code - C
 ********

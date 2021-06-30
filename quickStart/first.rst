@@ -21,29 +21,29 @@ Simply follow this 3 simple steps:
 
       #. Connect Red Pitaya board to the router
 
-         .. image:: connect/125_router.png
+         .. figure:: connect/125_router.png
             :width: 50%
 
       #. Connect power supply to the Red Pitaya board
       #. Open your web browser and in the URL filed type ``rp-xxxxxx.local/``
 
-         .. image:: connect/125_stiker.png
+         .. figure:: connect/125_stiker.png
             :width: 70%
 
-         .. image:: connect/125_stiker_2.png
+         .. figure:: connect/125_stiker_2.png
             :width: 70%
 
    .. tab:: 250-12
 
       #. Connect Red Pitaya board to the router
 
-         .. image:: connect/250_router.png
+         .. figure:: connect/250_router.png
             :width: 50%
 
       #. Connect power supply to the Red Pitaya board
       #. Open your web browser and in the URL filed type ``rp-xxxxxx.local/``
 
-         .. image:: connect/250_stiker.png
+         .. figure:: connect/250_stiker.png
             :width: 90%
 
        

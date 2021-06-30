@@ -8,7 +8,7 @@ Troubleshooting
 Problems connecting to Red Pitaya
 *********************************
 
-.. image:: blinking-pitaya-eth.gif
+.. figure:: blinking-pitaya-eth.gif
 
 #. First check the LEDs:
 
@@ -61,7 +61,7 @@ please check the following:
    #. Enter ``cat /proc/net/wireless`` command in order to get
       information about link quality and signal strength.
 
-      .. image:: Screen-Shot-2015-09-26-at-20.28.27.png
+      .. figure:: Screen-Shot-2015-09-26-at-20.28.27.png
 
       Link quality measures the number of packet errors that occur.
       The lower the number of packet errors, the higher this will be.
@@ -148,7 +148,7 @@ the same local network as your Red Pitaya and try the following:
       If you have cable connection, then your MAC address
       is written on your Red Pitaya LAN connector.
 
-   .. image:: MAC.png
+   .. figure:: MAC.png
 
 .. note:: 
 
@@ -158,7 +158,7 @@ the same local network as your Red Pitaya and try the following:
 
 3. Type your Red Pitaya IP into your WEB browser and connect to it.
 
-   .. image:: Screen-Shot-2015-09-26-at-09.34.00.png
+   .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
 
 If your Red Pitaya is not listed on the list of your local network devices in the local network,
 then it is necessary to check that your Red Pitaya is connected to your local network.
@@ -172,7 +172,7 @@ with last 6 digits of MAC address that is written on the sticker.
 
 If RP MAC address is ``00:26:33:F1:13:D5``, last 6 digits are ``F113D5`` and URL is ``rp-f113d5.local``.
 
-.. image:: Screen-Shot-2016-08-17-at-09.50.31-503x600.png
+.. figure:: Screen-Shot-2016-08-17-at-09.50.31-503x600.png
 
 
 .. TODO zumre pripravi teks za Is Red Pitaya connected to my local network 
@@ -193,5 +193,5 @@ Is Red Pitaya connected to my local network?
 
 3. Type Red Pitaya IP to your WEB browser to see if you can connect to it
 
-   .. image:: Screen-Shot-2015-09-26-at-09.34.00.png
+   .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
    

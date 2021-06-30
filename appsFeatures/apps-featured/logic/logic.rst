@@ -1,7 +1,7 @@
 Logic Analyzer
 ##############
 
-.. image:: Slika_01_LA.jpg
+.. figure:: Slika_01_LA.jpg
 
 The Logic Analyzer application enables the representation of the binary states of digital signals. The Logic Analyzer
 can both deal with purely binary signals, such as GPIO outputs of the Raspberry Pi or Arduino board, as well as
@@ -17,7 +17,7 @@ smartphone, tablet or a PC running any popular operating system (MAC, Linux, Win
 The graphical user interface of the Logic Analyzer fits well into the overall design of the Red Pitaya applications
 providing the same operating concept. The Logic Analyzer user interface is shown below.
 
-.. image:: Slika_02_LA.png
+.. figure:: Slika_02_LA.png
 
 Apart from the actual graph, there are again 5 key areas/elements, in which the surface is divided:
 
@@ -36,7 +36,7 @@ FEATURES
 ANALYZING BINARY SIGNALS
 ========================
 
-.. image:: Slika_03_LA.png
+.. figure:: Slika_03_LA.png
 
 By selecting the gear button behind the DIGITAL selection field you enter the menu for the channel configuration. In
 the LINES register, the channels can be activated or deactivated by simply clicking the check mark. As long as no bus
@@ -49,7 +49,7 @@ the sampling rate determines how many values are recorded per second. If we choo
 we get a 0.008 second time window. With a sampling rate of 1MS/s, the time window of the recorded signal will be one
 full second.
 
-.. image:: Slika_04_LA.png
+.. figure:: Slika_04_LA.png
 
 When the Pre-sample data buffer value is set, at which point of the recording the trigger event is located. This makes
 particular sense if you want to find out what happened before the defined trigger event. To illustrate with an
@@ -60,7 +60,7 @@ the Pre-sample data buffer is set to 10ms, then the recorded signal shows what h
 TRIGGER:
 ========
 
-.. image:: Slika_05_LA.png
+.. figure:: Slika_05_LA.png
 
 By clicking the gear behind TRIG settings, the trigger menu is opened. Each channel can be set as a trigger source
 with the desired condition. For acquisition to start, the Trigger source and Rising Edge needs to be defined.
@@ -86,14 +86,14 @@ In the DIGITAL → BUS menu the decoding of the desired lines can be selected. U
 available decoding protocols are I2C, UART, and SPI. By selecting the desired protocol, the setting menu for the
 selected protocol is opened.
 
-.. image:: Slika_06_LA.png
+.. figure:: Slika_06_LA.png
 
 Two options are possible for the display of the decoded data: firstly, the data is placed as a separate layer in the
 graph directly on the signal. Secondly, using the DIGITAL → DATA menu where the decoded data are represented in a
 table format. You can select ASCII, DEC, BIN and HEX data formatting. With the EXPORT button the decoded data can be
 packed into a CSV file. This then ends up directly in the download folder and can be used for further analysis.
 
-.. image:: Slika_07_LA.png
+.. figure:: Slika_07_LA.png
 
 CURSORS:
 ========
@@ -103,7 +103,7 @@ variable amplitude readings but only discrete signal levels, the cursors are ava
 When enabled, the cursors will show the relative time respectively to zero point (trigger event) and the difference
 between the two.
 
-.. image:: Slika_08_LA.png
+.. figure:: Slika_08_LA.png
 
 SPECIFICATIONS
 **************
@@ -145,7 +145,7 @@ Alongside the Logic analyzer application for maximal performance and protection 
 analyzer extension module is recommended. Using the LA extension module is straightforward, just
 plug it on your Red Pitaya and connect the leads to the desired measurement points.
 
-.. image:: Slika_09_LA.png
+.. figure:: Slika_09_LA.png
 
 To use the Logic analyzer without the extension module you need to be more careful in
 connecting the Logic analyzer probes to the extension connector :ref:`E1 <E1>` on the Red Pitaya board. The pins used for Logic
@@ -156,4 +156,4 @@ analyzer board are shown in picture below.
     Using directly the GPIO expansion connector :ref:`E1 <E1>` pins of the Red Pitaya board works only with STEMlab 125-10! Picture
     bellow(left) shows connection for the STEMlab 125 – 10 board.
 
-.. image:: Slika_10_LA.png
+.. figure:: Slika_10_LA.png

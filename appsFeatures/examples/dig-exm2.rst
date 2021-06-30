@@ -15,7 +15,7 @@ Required hardware
 
     -  Red Pitaya device
 
-.. image:: RP-circuit-e1421258707736-300x212.png
+.. figure:: RP-circuit-e1421258707736-300x212.png
 
 Code - MATLAB®
 **************
@@ -110,6 +110,6 @@ Code - Python
 Code - LabVIEW
 **************
 
-.. image:: Bar-graph-with-LEDs_LV.png
+.. figure:: Bar-graph-with-LEDs_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Bar%20graph%20with%20LEDs.vi>`_

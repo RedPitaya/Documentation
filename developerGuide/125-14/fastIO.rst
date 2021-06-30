@@ -39,7 +39,7 @@ Red Pitaya board analog frontend features 2 fast analog inputs.
         
         Gain can be individually adjusted for both input channels. The adjustment is done by bridging the jumpers located behind the corresponding input SMA connector.
     
-        .. image:: Jumper_settings.png 
+        .. figure:: Jumper_settings.png 
             
         .. figure:: Jumper_settings_photo.png
             
@@ -330,7 +330,7 @@ DC OFFSET @ 122 kS/s        HV              ± 5 mV
 
 AC gain accuracy can be extracted form Frequency response - Bandwidth. 
 
-.. image:: 800px-Bandwidth_of_Fast_Analog_Inputs.png
+.. figure:: 800px-Bandwidth_of_Fast_Analog_Inputs.png
 
 
 *************
@@ -381,7 +381,7 @@ Red Pitaya board analog frontend features 2 fast analog output.
        Red Pitaya board OUT1 is used with 0 dBm output power. Second output channel and both input channels are terminated with 50 Ohm termination.
        Red Pitaya board is grounded trough Oscilloscope ground. Oscilloscope input mus be set to 50 Ohm input impedance
 
-       .. image:: Fast_Analog_Outputs_Bandwidt.png
+       .. figure:: Fast_Analog_Outputs_Bandwidt.png
        
     #. Harmonics: typical performance: (at ­8 dBm) 
 

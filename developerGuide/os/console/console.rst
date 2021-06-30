@@ -39,11 +39,11 @@ Hardware setup
    For STEMlab 125-14 you need additional USB to microUSB cable,
    for STEMlab 125-10 additional serial to USB adapter.
 
-.. image:: console-connector.png
+.. figure:: console-connector.png
 
 Connect your Red Pitaya and PC with micro USB B to USB A cable and follow the instructions for your OS.
 
-.. image:: pitaya-USB-connection-300x164.png
+.. figure:: pitaya-USB-connection-300x164.png
 
 -------
 Windows

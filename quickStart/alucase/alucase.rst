@@ -32,10 +32,10 @@ On the lower part there are fits to a few air vents (left).
 
 Apertures in the case expose connections to the expansion ports **E1** and **E2**.
 
-.. image:: rp_alucase_04.jpg
+.. figure:: rp_alucase_04.jpg
     :width: 49%
 
-.. image:: rp_alucase_05.jpg
+.. figure:: rp_alucase_05.jpg
     :width: 49%
     
 ********
@@ -55,7 +55,7 @@ Assembly
 #. The heat sink STEMlab 125 -10 is bonded with the FPGA, slightly turn the heat sink, as shown in
    the picture below, until it comes loose.
    
-.. image:: STEMlab_10_heatsink.png
+.. figure:: STEMlab_10_heatsink.png
 
 .. figure:: rp_alucase_08.jpg
     
@@ -76,4 +76,4 @@ Assembly
 
 #. Stick rubber feet.
 
-.. image:: rp_alucase.jpg
+.. figure:: rp_alucase.jpg

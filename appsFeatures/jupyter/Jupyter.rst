@@ -50,7 +50,7 @@ an extension module compatible with **Grove** modules from `Seeed® <http://wiki
 need is to select the desired module, find the correct connector and get going with your project. 
 We have also placed Arduino shields headers on the Extension module.
 
-.. image:: img/extension_module_and_sensors.png
+.. figure:: img/extension_module_and_sensors.png
 
 The headers enable you to directly connect a variety of different Arduino Uno shields. There are a wide range of 
 Arduino Uno shields.
@@ -73,7 +73,7 @@ and there are two rows of gray connectors at the center
 which provide digital I/O, UART, I2C or analog outputs.
 On the bottom there are connectors to the Red Pitaya board.
 
-.. image:: img/extension_module.png
+.. figure:: img/extension_module.png
 
 ~~~~~~~~~~~~~~~~~~~~~~~
 Grove module connectors
