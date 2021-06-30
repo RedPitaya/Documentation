@@ -79,3 +79,7 @@ background: white;
     font-size: 14px;
     line-height: normal;
 }
+
+code, .rst-content tt, .rst-content code {
+    font-size: 90%;
+}
