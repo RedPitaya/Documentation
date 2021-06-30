@@ -262,6 +262,7 @@ You can write changed calibration parameters using **calib -w** command:
    Usage: calib [OPTION]...
    
    OPTIONS:
+   
     -r    Read calibration values from eeprom (to stdout).
     -w    Write calibration values to eeprom (from stdin).
     -f    Use factory address space.
@@ -365,7 +366,7 @@ Red Pitaya board analog frontend features 2 fast analog output.
     
     #. Output slew rate limit: 200 V/us 
     #. Connector type: SMA
-    
+
        SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. It’s Important that central pin is of suitable length, otherwise the SMA connector installed in Red Pitaya will mechanically damage the SMA connector. Central pin of the SMA connector on Red Pitaya will loose contact to the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
     
        .. figure:: Outputs.png
