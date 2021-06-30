@@ -292,10 +292,12 @@ Block diagram
 -------------
 
 .. figure:: img/TFT_connection.svg
+   :align: center
 
     Graphical representation of how to connect Red Pitayas :ref:`E2 <E2>` connetor to the Adafruit PiTFT 3.5".
 
 .. figure:: img/TFT_connection-table.svg
+   :align: center
 
     Simplified graphical representation of Red Pitayas :ref:`E2 <E2>` connetor to the Adafruit PiTFT 3.5". For pin
     locations please look at the top picture.
@@ -369,6 +371,7 @@ Channels:
 3. 3.3V (it takes about 1.5ms to ramp up from 0V to 3.3V).
 
 .. figure:: img/POR_SPI_config.png
+   :align: center
 
 ~~~~~~~~~~~~~
 Modifications
@@ -388,6 +391,7 @@ The next image shows a TFT board with a rised LDO power output
 and pin 1 on the JP1 connector connected to an unmounted resistor pad.
 
 .. figure:: img/assembled_hw_mod.jpg
+   :align: center
 
 *************************
 Debugging/Troubleshooting

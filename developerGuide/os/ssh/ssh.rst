@@ -28,8 +28,9 @@ Run PuTTy and enter the Red Pitaya's IP address into
 **Host Name (or IP address)** field.
 
 .. figure:: 445px-PuTTy_connection_settings.png
+   :align: center
 
-   Figure: PuTTy SSH connection settings.
+   PuTTy SSH connection settings.
     
 If you attempt to connect to Red Pitaya for the first time,
 a security alert will pop-up asking you to confirm the connection.
@@ -37,8 +38,9 @@ At this time, the ssh-key will be added to the registry in your computer.
 Command prompt pops-up after login is successful.
 
 .. figure:: 445px-Win_putty_logged.png
+   :align: center
 
-   Figure: SSH connection via PuTTy
+   SSH connection via PuTTy
 
 =====
 Linux
