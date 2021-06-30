@@ -294,13 +294,12 @@ Block diagram
 .. figure:: img/TFT_connection.svg
    :align: center
 
-    Graphical representation of how to connect Red Pitayas :ref:`E2 <E2>` connetor to the Adafruit PiTFT 3.5".
+   Graphical representation of how to connect Red Pitayas :ref:`E2 <E2>` connetor to the Adafruit PiTFT 3.5".
 
 .. figure:: img/TFT_connection-table.svg
    :align: center
 
-    Simplified graphical representation of Red Pitayas :ref:`E2 <E2>` connetor to the Adafruit PiTFT 3.5". For pin
-    locations please look at the top picture.
+   Simplified graphical representation of Red Pitayas :ref:`E2 <E2>` connetor to the Adafruit PiTFT 3.5". For pin locations please look at the top picture.
 
 .. _assembled_hw_mods:
 
