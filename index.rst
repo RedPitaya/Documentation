@@ -8,4 +8,3 @@ Welcome to the Red Pitaya documentation.
     ./quickStart/quickStart.rst
     ./appsFeatures/appsFeatures.rst
     ./developerGuide/devGuideTop.rst
-    ./teaching/teaching.rst

@@ -9,6 +9,7 @@ Problems connecting to Red Pitaya
 *********************************
 
 .. figure:: blinking-pitaya-eth.gif
+   :align: center
 
 #. First check the LEDs:
 
@@ -151,7 +152,7 @@ the same local network as your Red Pitaya and try the following:
 
    .. figure:: MAC.png
       :align: center
-      
+
 .. note:: 
 
    If you have established wireless connection, then you should check the MAC
