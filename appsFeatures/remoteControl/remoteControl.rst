@@ -147,7 +147,7 @@ download the
 `Red_Pitaya_LabVIEW_Driver&Examples.zip <https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip>`_ file.
 Unpack it and copy the Red Pitaya folder to your LabVIEW installations ``instr.lib`` folder
 e.g. ``C:/Program Files/National Instruments/LabVIEW 2010/instr.lib``. When using the 64-bit LabVIEW version (mostly
-paid). Or here : C:\Program Files (x86)\National Instruments\LabVIEW 2020\instr.lib
+paid). Or here : C:\\Program Files (x86)\\National Instruments\\LabVIEW 2020\\instr.lib
 when using the 32-bit LabVIEW version, like the free Community Edition.
 
 The Red Pitaya driver should appear after restarting LabVIEW in
