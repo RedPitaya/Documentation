@@ -68,7 +68,7 @@ Code - MATLAB®
 
     fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
 
-    % for SIGNALlab device there is a possiblity to set trigger threshold 
+    % for SIGNALlab device there is a possibility to set trigger threshold 
     % fprintf(tcpipObj,'ACQ:TRIG:EXT:LEV 1')
 
 
@@ -79,7 +79,7 @@ Code - MATLAB®
     fprintf(tcpipObj,'ACQ:START');
     % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
     % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
-    % length and smaling rate
+    % length and sampling rate
     pause(1)
 
     fprintf(tcpipObj,'ACQ:TRIG EXT_PE');  

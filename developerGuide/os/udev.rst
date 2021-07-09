@@ -33,7 +33,7 @@ to ``/sys/*`` files, but it does not work very well.
 For example some files are created as needed,
 but it takes some time for permission changes to be applied,
 so it is possible to attempt write access to a file,
-before permissions are granged.
+before permissions are granted.
 This issue affects current GPIO, LED, EEPROM and IIO (XADC) drivers.
 
 =======
@@ -51,7 +51,7 @@ UIO devices
 https://www.kernel.org/doc/html/latest/driver-api/uio-howto.html
 
 The Linux UIO subsystem provides a generic driver,
-which can ge used to ``mmap`` a specified memory mapped device
+which can be used to ``mmap`` a specified memory mapped device
 into user space and it also provides support for
 a single interrupt per UIO device.
 UIO devices are listed in the device tree,
@@ -62,7 +62,7 @@ Device tree |uio-api.dtsi|_ for example is used by our API.
 Users should be added into the ``xdevcfg`` group.
 
 By default Linux kernel enumerates UIO devices in the order
-they apper in the device tree ``/dev/uio[012...]``.
+they appear in the device tree ``/dev/uio[012...]``.
 The provided UDEV rule also creates a symbolic link ``/dev/uio/uio-device-name``
 with the name of the device extracted from the device tree.
 
@@ -76,7 +76,7 @@ which give different users different access rights for each UIO device.
 LED
 ===
 
-Modyfying LED status requires write access to some ``/sys/*`` files.
+Modifying LED status requires write access to some ``/sys/*`` files.
 
 The UDEV rules for LED are present in |10-redpitaya.rule|_ for review,
 but are currently commented out.
@@ -85,8 +85,8 @@ but are currently commented out.
 GPIO
 ====
 
-Modyfying GPIO status requires write access to some ``/sys/*`` files.
-Additionaly each GPIO must be exported before it can be used.
+Modifying GPIO status requires write access to some ``/sys/*`` files.
+Additionally each GPIO must be exported before it can be used.
 Exporting creates new files which require access rights modifications.
 This change takes time which makes it unreliable.
 

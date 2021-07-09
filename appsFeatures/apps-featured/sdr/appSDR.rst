@@ -43,7 +43,7 @@ Connecting the cables
 	
 
 1. connect Tx of SDR transciver module to Red Pitaya OUT1
-2. connect Rx of SDR ransciver module to Red Pitaya IN1 (notice this cable has a transformer)
+2. connect Rx of SDR transceiver module to Red Pitaya IN1 (notice this cable has a transformer)
 3. connect control cable from SDR transceiver to Red Pitaya
 
 identify pin with arrow and connect the cable as on the image bellow.
@@ -87,7 +87,7 @@ Click here_ to download Power SDR installation package.
 		:scale: 70%
    		:align: center
 		
-On Windows 10 you might get warning of Unknown Publisher you can procede with installation by clicking on "more info" and then "Run anyway".
+On Windows 10 you might get warning of Unknown Publisher you can proceed with installation by clicking on "more info" and then "Run anyway".
  
 	.. figure:: PowerSDRinstallation3.PNG
 		:scale: 75 %
@@ -162,7 +162,7 @@ On Windows 10 you might get warning of Unknown Publisher you can procede with in
 		:scale: 75 %
    		:align: center
 
-9. Click Power to connect Power SDR with Red Pitaya. On the screen the input singnal should appear.
+9. Click Power to connect Power SDR with Red Pitaya. On the screen the input signal should appear.
 
 	.. figure:: Capture20.PNG
 		:scale: 75 %
@@ -410,7 +410,7 @@ General Specifications
 .. 
 .. .. note::
 .. 
-.. 	Currently keyer is not supported by software. Software support for it will be availabe in one of incomming software updates. 
+.. 	Currently keyer is not supported by software. Software support for it will be available in one of incoming software updates. 
 .. 
 .. 
 .. Phones
@@ -666,7 +666,7 @@ Receiver Specifications
 +-------------------------------+-------------------------------------------------+
 |                               | More MDS measurements.                          |
 +-------------------------------+-------------------------------------------------+
-| Preselectors:                 | Available as add-on module (comming soon)       |
+| Preselectors:                 | Available as add-on module (coming soon)       |
 +-------------------------------+-------------------------------------------------+
 |                               | User can also connect own preselectors/filters  |   
 +-------------------------------+-------------------------------------------------+
@@ -702,4 +702,4 @@ Transmitter Specifications
 
 
 .. note::
-	C25 also supports 6m operation and has all necessary output filters for 6m, anyhow STEMlab 125-14 ouput signal is not pure enough to comply harmonic regulations for 6m
+	C25 also supports 6m operation and has all necessary output filters for 6m, anyhow STEMlab 125-14 output signal is not pure enough to comply harmonic regulations for 6m

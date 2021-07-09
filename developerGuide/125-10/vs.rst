@@ -1,14 +1,14 @@
-Red Pitaya boards comparison 
+Red Pitaya boards comparison
 ##############################################################
 
 .. _rp-board-comp:
 
 .. figure:: vs_10.jpg
    :width: 30%
-   
+
 .. figure:: vs_14.jpg
    :width: 30%
-   
+
 .. figure:: vs_16.jpg
    :width: 30%
 
@@ -108,7 +108,7 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 | Voltage range                 | ±1V            | ±1V            | ±1V                  | 1Vpp/ +4 dBm         | +-2V / +-10V (Hi-Z load)     |
 |                               |                |                |                      |                      | (software selectable)        |
 +-------------------------------+----------------+----------------+----------------------+----------------------+------------------------------+
-| Short circut protection       | Yes            | Yes            | Yes                  | N/A, RF transformer  |                              |
+| Short circuit protection      | Yes            | Yes            | Yes                  | N/A, RF transformer  |                              |
 |                               |                |                |                      | & AC-coupled         | Yes                          |
 +-------------------------------+----------------+----------------+----------------------+----------------------+------------------------------+
 | Connector type                | SMA            | SMA            | SMA                  | SMA                  | BNC                          |
@@ -117,7 +117,7 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 +-------------------------------+----------------+----------------+----------------------+----------------------+------------------------------+
 | Bandwidth                     | DC-50MHz       | DC-60MHz       | DC-60MHz             | 300 kHz - 60 MHz     | DC - 60MHz                   |
 +-------------------------------+----------------+----------------+----------------------+----------------------+------------------------------+
- 
+
 .. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
 
 +------------------------------+-------------------+----------------+----------------------+----------------+---------------------+
@@ -163,7 +163,7 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 
 
 .. note::
-    
+
    RedPitaya devices:
 
    * should be operated at normal conditions with ambient temperatures not exceeding 30°C (86°F) and should not be covered.

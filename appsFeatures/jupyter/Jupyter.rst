@@ -3,7 +3,7 @@ Jupyter Notebook
 #################
 
 The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live
-code, equations, visualizations, explanatory text and direct controll or monitor hardware. 
+code, equations, visualizations, explanatory text and direct control or monitor hardware. 
 Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning and much 
 more. 
 

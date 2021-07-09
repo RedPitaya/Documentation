@@ -52,7 +52,7 @@ To run an examples follow instructions bellow:
 
    .. figure:: scpi-app-stop.png
 
-#. Follow the instructions bellow sutable to your environment.
+#. Follow the instructions bellow suitable to your environment.
 
    .. note::
 
@@ -97,7 +97,7 @@ To install them do:
 
             $ python --version
             Python 2.7.17
-         
+
          Then, in order to run the examples, specify explicitly the python version
 
          .. code-block:: shell-session
@@ -135,7 +135,7 @@ To install them do:
 More examples about how to control Red Pitaya from MATLAB can be find :ref:`here <examples>`.
 
    .. note::
-   
+
       Python examples can also be run directly from RP device itself. To do so fist start SCPI server and then use local device IP: 127.0.0.1
 
 =======
@@ -173,13 +173,13 @@ To use the SCPI commands you will need to set up Scilab sockets. The procedure i
 #. Go to the extracted Scilab folder then to folder named ``contrib``
 #. Copy socket_toolbox zip file to contrib folder
 #. Extract socket_toolbox zip file inside the contrib folder
-#. Delete socket_toolbox zip file because we dont need it any more
+#. Delete socket_toolbox zip file because we don't need it any more
 #. Go to socket_toolbox folder
-#. Open loader.sce with your Scilab and press RUN (grey run button on SCILAB editor gui)
+#. Open loader.sce with your Scilab and press RUN (gray run button on SCILAB editor gui)
 
 These last two steps must be executed each time you start Scilab.
 To install installing you must have an internet connection.
-Running the examples is same as on MATALB
+Running the examples is same as on MATLAB
 
 #. Copy the Code from :ref:`blink <blink>` tutorial example to MATLAB workspace
 #. Replace the IP in the example with the IP of your Red Pitaya board

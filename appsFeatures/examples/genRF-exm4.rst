@@ -20,7 +20,7 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code to MATLAB editor 
+The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code to MATLAB editor
 and press run.
 
 .. code-block:: matlab
@@ -44,7 +44,7 @@ and press run.
     fopen(tcpipObj);
     tcpipObj.Terminator = 'CR/LF';
 
-    %% Calcualte arbitrary waveform with 16384 samples
+    %% Calculate arbitrary waveform with 16384 samples
     % Values of arbitrary waveform must be in range from -1 to 1.
     N=16383;
     t=0:(2*pi)/N:2*pi;
@@ -68,7 +68,7 @@ and press run.
     fprintf(tcpipObj,'SOUR1:FUNC ARBITRARY');       % Set function of output signal
     fprintf(tcpipObj,'SOUR2:FUNC ARBITRARY');       % {sine, square, triangle, sawu, sawd}
 
-    fprintf(tcpipObj,['SOUR1:TRAC:DATA:DATA ' waveform_ch_1])  % Send waveforms to Red Pitya
+    fprintf(tcpipObj,['SOUR1:TRAC:DATA:DATA ' waveform_ch_1])  % Send waveforms to Red Pitaya
     fprintf(tcpipObj,['SOUR2:TRAC:DATA:DATA ' waveform_ch_2])
 
     fprintf(tcpipObj,'SOUR1:VOLT 0.7');             % Set amplitude of output signal
@@ -88,7 +88,7 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages.
     Instructions on how to compile the code are here -> `link <https://redpitaya.readthedocs.io/en/latest/developerGuide/comC.html>`_
 
 .. code-block:: c

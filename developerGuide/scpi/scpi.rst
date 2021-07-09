@@ -5,7 +5,7 @@ SCPI
 This is a new SCPI server based on API1.
 
 TODO:
-- link to the standard, 
+- link to the standard,
 
 ********************
 Install dependencies
@@ -75,7 +75,7 @@ After cloning the Git repository and changing into the directory do:
    cd builddir
    ninja
 
-The server can be installed using the nect commands:
+The server can be installed using the next commands:
 
 .. code-block:: shell-session
 
@@ -158,7 +158,7 @@ Description
 -----------
 
 Select either periodic or burst mode for generator.
-Query returns generator mode in the same format as the parameters. 
+Query returns generator mode in the same format as the parameters.
 
 ----------
 Parameters
@@ -260,7 +260,7 @@ regardless of the current shape setting.
 
 The ``SQUare`` and the ``TRIangle`` shapes support the ``<duty_cycle>`` parameter.
 The ``<duty_cycle>`` parameter is unitless in the range from 0 to 1 by default.
-Optional units are ``PCT`` (%) and ``PPM`` (parts per milion).
+Optional units are ``PCT`` (%) and ``PPM`` (parts per million).
 
 For ``SQUare`` the waveform is ``1`` for ``<duty_cycle>``\*period
 and ``-1`` for the rest.
@@ -299,7 +299,7 @@ Description
 Specify the the arbitrary waveform table.
 An arbitrary number (between 1 and table size) of data points
 in the normalized range [-1,+1] can be provided.
-The number of data points will also initilalize in internal
+The number of data points will also initialize in internal
 periodic mode table size register.
 For burst mode data length needs to be set separately.
 

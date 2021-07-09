@@ -83,10 +83,10 @@ FPGA sub-projects
 
 There are multiple FPGA sub-projects they mostly contain incremental changes
 on the first Red Pitaya release.
-It is reccommended to use 0.94 release as default project.
+It is recommended to use 0.94 release as default project.
 
 +-------------------+------------------------------------------------------------------+
-| ``prj/name``      | desctiption                                                      |
+| ``prj/name``      | description                                                      |
 +===================+==================================================================+
 | 0.93              | This is the original Red Pitaya release including all bugs.      |
 |                   | For deprecated application backward compatibility only.          |
@@ -111,7 +111,7 @@ It is reccommended to use 0.94 release as default project.
 |                   | transfer data to man DDR3 RAM. ADC and DAS code is unfinished.   |
 +-------------------+------------------------------------------------------------------+
 | axi4lite          | Image intended for testing various AXI4 bus implementations.     |
-|                   | It contains a Vivado ILA (integrated logic ananlyzer) to         |
+|                   | It contains a Vivado ILA (integrated logic analyzer) to         |
 |                   | observe and review the performance of the bus implementation.    |
 +-------------------+------------------------------------------------------------------+
 
@@ -328,7 +328,7 @@ General purpose inputs
 GPIO and LEDs
 =============
 
-Handling of GPIO and LED signals depends on wether they are connected to
+Handling of GPIO and LED signals depends on whether they are connected to
 Zynq-7000 PS (MIO) or PL (EMIO or FPGA) block.
 
 MIO pins signals are controlled by the PS block.

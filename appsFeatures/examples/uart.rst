@@ -75,14 +75,14 @@ Code - C
         *	CLOCAL - Ignore modem status lines
         * 	CREAD - Enable receiver
         *	IGNPAR = Ignore characters with parity errors
-        *	ICRNL - Map CR to NL on input (Use for ASCII comms where you want to auto correct end of line characters - don't use for bianry comms!)
+        *	ICRNL - Map CR to NL on input (Use for ASCII comms where you want to auto correct end of line characters - don't use for binary comms!)
         *	PARENB - Parity enable
         *	PARODD - Odd parity (else even) */
 
         /* Set baud rate - default set to 9600Hz */
         speed_t baud_rate = B9600;
 
-        /* Baud rate fuctions
+        /* Baud rate functions
         * cfsetospeed - Set output speed
         * cfsetispeed - Set input speed
         * cfsetspeed  - Set both output and input speed */
@@ -122,7 +122,7 @@ Code - C
 
             if (rx_length < 0){
 
-                /* No data yet avaliable, check again */
+                /* No data yet available, check again */
                 if(errno == EAGAIN){
                     fprintf(stderr, "AGAIN!\n");
                     continue;

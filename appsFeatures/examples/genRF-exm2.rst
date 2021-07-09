@@ -37,7 +37,7 @@ MATLAB editor, save project and press run.
     fopen(tcpipObj);
     tcpipObj.Terminator = 'CR/LF';
 
-    %% The example generate sine bursts every 0.5 seconds indefinety
+    %% The example generate sine bursts every 0.5 seconds indefinitely
     %fprintf(tcpipObj,'GEN:RST');
 
     fprintf(tcpipObj,'SOUR1:FUNC SINE');                                                 

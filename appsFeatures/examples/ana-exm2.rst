@@ -87,7 +87,7 @@ Code - C
             return EXIT_FAILURE;
         }
 
-        // Setting a voltage for each ananlog output
+        // Setting a voltage for each analog output
         for (int i=0; i<4; i++) {
             int status = rp_AOpinSetValue(i, value[i]);
             if (status != RP_OK) {

@@ -82,7 +82,7 @@ Code - C
 
         /* Release resources */
         if(release_spi() < 0){
-            printf("Relase of SPI resources failed, Error: %s\n", strerror(errno));
+            printf("Release of SPI resources failed, Error: %s\n", strerror(errno));
             return -1;
         }
 

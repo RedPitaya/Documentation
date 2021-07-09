@@ -144,7 +144,7 @@ Lcr meter can be used from console.
 
       freq               Signal frequency used for measurement [ 100 , 1000, 10000 , 100000 ] Hz.
       r_shunt            Shunt resistor value in Ohms [ 10, 100, 1000, 10000, 100000, 1000000 ]. If set to 0, Automatic ranging is used.
-                        Automatic ranging demands Extenson module.
+                        Automatic ranging demands Extension module.
 
    Output:	Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
 

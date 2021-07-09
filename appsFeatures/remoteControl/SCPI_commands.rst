@@ -1,8 +1,8 @@
 *******************************
-List of supported SCPI commands 
+List of supported SCPI commands
 *******************************
 
-.. (link - https://dl.dropboxusercontent.com/s/eiihbzicmucjtlz/SCPI_commands_beta_release.pdf)
+   .. (link - https://dl.dropboxusercontent.com/s/eiihbzicmucjtlz/SCPI_commands_beta_release.pdf)
 
 ==============
 LEDs and GPIOs
@@ -11,22 +11,22 @@ LEDs and GPIOs
 Parameter options:
 
 * ``<dir> = {OUT,IN}``
-* ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
-* ``<led> = {LED0...LED8}``
-* ``<pin> = {gpio, led}``
-* ``<state> = {0,1}``
+  * ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
+    * ``<led> = {LED0...LED8}``
+      * ``<pin> = {gpio, led}``
+        * ``<state> = {0,1}``
 
-Table of correlated SCPI and API commands on Red Pitaya.
+        Table of correlated SCPI and API commands on Red Pitaya.
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+   .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
 +------------------------------------+-------------------------+------------------------------------------------------+
 | SCPI                               | API                     | description                                          |
 +====================================+=========================+======================================================+
 | | ``DIG:PIN:DIR <dir>,<gpio>``     | ``rp_DpinSetDirection`` | Set direction of digital pins to output or input.    |
-| | Examples:                        |                         |                                                      |                       
-| | ``DIG:PIN:DIR OUT,DIO0_N``       |                         |                                                      |  
-| | ``DIG:PIN:DIR IN,DIO1_P``        |                         |                                                      |                  
+| | Examples:                        |                         |                                                      |
+| | ``DIG:PIN:DIR OUT,DIO0_N``       |                         |                                                      |
+| | ``DIG:PIN:DIR IN,DIO1_P``        |                         |                                                      |
 +------------------------------------+-------------------------+------------------------------------------------------+
 | | ``DIG:PIN <pin>,<state>``        | ``rp_DpinSetState``     | Set state of digital outputs to 1 (HIGH) or 0 (LOW). |
 | | Examples:                        |                         |                                                      |
@@ -46,11 +46,11 @@ Analog Inputs and Outputs
 Parameter options:
 
 * ``<ain> = {AIN0, AIN1, AIN2, AIN3}``
-* ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
-* ``<pin> = {ain, aout}``
-* ``<value> = {value in Volts}``
-   
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+  * ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
+    * ``<pin> = {ain, aout}``
+      * ``<value> = {value in Volts}``
+
+   .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+---------------------+------------------------------------------------------+
 | SCPI                                  | API                 | description                                          |
@@ -72,24 +72,24 @@ Signal Generator
 Parameter options:
 
 * ``<n> = {1,2}`` (set channel OUT1 or OUT2)
-* ``<state> = {ON,OFF}`` Default: ``OFF``
-* ``<frequency> = {0Hz...62.5e6Hz}`` Default: ``1000``
-* ``<func> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
-* ``<amplitude> = {-1V...1V}`` Default: ``1`` for SIGNALlab 250-12 this value {-5V...5V}
-* ``<offset> = {-1V...1V}`` Default: ``0``
-* ``<phase> = {-360deg ... 360deg}`` Default: ``0``
-* ``<dcyc> = {0...1}`` Default: ``0.5`` Where 1 corresponds to 100%
-* ``<array> = {value1, ...}`` max. 16k values, floats in the range -1 to 1
-* ``<burst> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
-* ``<count> = {1...50000, INF}`` ``INF`` = infinity/continuous, Default: ``1``
-* ``<time> = {1us-500s}`` Value in *us*.
-* ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}``
+  * ``<state> = {ON,OFF}`` Default: ``OFF``
+    * ``<frequency> = {0Hz...62.5e6Hz}`` Default: ``1000``
+      * ``<func> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
+        * ``<amplitude> = {-1V...1V}`` Default: ``1`` for SIGNALlab 250-12 this value {-5V...5V}
+          * ``<offset> = {-1V...1V}`` Default: ``0``
+            * ``<phase> = {-360deg ... 360deg}`` Default: ``0``
+              * ``<dcyc> = {0...1}`` Default: ``0.5`` Where 1 corresponds to 100%
+                * ``<array> = {value1, ...}`` max. 16k values, floats in the range -1 to 1
+                  * ``<burst> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
+                    * ``<count> = {1...50000, INF}`` ``INF`` = infinity/continuous, Default: ``1``
+                      * ``<time> = {1us-500s}`` Value in *us*.
+                        * ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}``
 
-   - ``EXT`` = External
-   - ``INT`` = Internal
-   - ``GATED`` = gated busts
+                        - ``EXT`` = External
+                          - ``INT`` = Internal
+                            - ``GATED`` = gated busts
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+   .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
 | SCPI                                 | API                        | description                                                                |
@@ -175,11 +175,11 @@ Parameter options:
 
 * ``<n> = {1,2}`` (set channel IN1 or IN2)
 
--------
-Control
--------
+  -------
+  Control
+  -------
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+   .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
 +---------------+-----------------+--------------------------------------------------------------+
 | SCPI          | API             | description                                                  |
@@ -198,9 +198,9 @@ Sampling rate & decimation
 Parameter options:
 
 * ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
-* ``<average> = {OFF,ON}`` Default: ``ON``
+  * ``<average> = {OFF,ON}`` Default: ``ON``
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+   .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------+-----------------------------+-----------------------------------+
 | SCPI                                | API                         | description                       |
@@ -225,9 +225,9 @@ Trigger
 Parameter options:
 
 * ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
-* ``<status> = {WAIT, TD}``
-* ``<time> = {value in ns}``
-* ``<counetr> = {value in samples}``
+  * ``<status> = {WAIT, TD}``
+    * ``<time> = {value in ns}``
+      * ``<counter> = {value in samples}``
 * ``<gain> = {LV, HV}``
 * ``<level> = {value in V}``
 * ``<mode> = {AC,DC}``
@@ -364,4 +364,4 @@ Data read
 | | ``ACQ:BUF:SIZE?`` > ``<size>``  | ``rp_AcqGetBufSize``         |  Returns buffer size.                                                                    |
 | | Example:                        |                              |                                                                                          |
 | | ``ACQ:BUF:SIZE?`` > ``16384``   |                              |                                                                                          |
-+-----------------------------------+------------------------------+------------------------------------------------------------------------------------------+ 
++-----------------------------------+------------------------------+------------------------------------------------------------------------------------------+
