@@ -90,7 +90,7 @@ care, since it can result in data loose.
 Decimation
 ----------
 
-If input sampling frequency can not be configuret, than this module decimates
+If input sampling frequency can not be configured, than this module decimates
 the data rate.
 
 ---------------------
@@ -103,7 +103,7 @@ take a few samples. A delay buffer is provided, to delay the data stream
 by the same amount.
 The next equations describe trigger conditions. Comparator is used to allow
 triggering only if the current masked data is equal to the required value.
-Edge detection alows detecting positive (data_old==0, data==1) and negative
+Edge detection allows detecting positive (data_old==0, data==1) and negative
 (data_old==1, data==0) edges. It is possible to trigger on both edges. If
 edge detection is enabled on more than one bit, then an edge on any of the
 active bits will cause a trigger event. Both the comparator and edge
@@ -121,8 +121,8 @@ only one of them can be used for the trigger condition.
 Acquire
 -------
 
-This is the same block used in the osciloscope. It packs the input stream
-into packets with a known trigger position. Should support at leaset the
+This is the same block used in the oscilloscope. It packs the input stream
+into packets with a known trigger position. Should support at least the
 next functionality.
 
 1. sending the stream continuously (continuous mode)
@@ -136,14 +136,14 @@ Realign
 -------
 
 Realigning moves data bits inside the whole data vector, so that all used
-bits are moved togather, and the unused part of the vector, can be skipped
+bits are moved together, and the unused part of the vector, can be skipped
 in the byter.
 
 ---
 RLE
 ---
 
-Run length encoding is a simple loseless data compression technique. Which
+Run length encoding is a simple lossless data compression technique. Which
 can be applied to a continuous data stream.
 
 -----
@@ -269,7 +269,7 @@ The current plan is to create an API function for each configuration option,
 some options like trigger will be combined into a single API function.
 
 The other option would be to provide a configuration structure similar to the
-memmory map, containing all configuration option, and then provide a single
+memory map, containing all configuration option, and then provide a single
 API function, which would accept this structure as argument.
 
 int rp_la_cfg (int unsigned channel, rp_la_cfg_t cfg);
@@ -288,7 +288,7 @@ Programming sequence
 
 1. program output stage registers
 2. program trigger condition and trigger source (mask allows multiple sources)
-3. program input stage registers to enable the data folow
+3. program input stage registers to enable the data flow
 4. run rp_la_dat (data) and wait for it to return, some applications will have
    to run is in a separate thread due to blocking
 

@@ -24,7 +24,7 @@ In **index.html** add:
     <script src="js/pako.js"></script>
     <script src="js/app.js"></script>
     
-Our mesurement result will be in this block:
+Our measurement result will be in this block:
 
 .. code-block:: html
 

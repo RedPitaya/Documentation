@@ -113,11 +113,11 @@ Ubuntu using Image Writer
 #. Right click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
 #. In the **Restore Disk Image** window select your SD card in the **Destination** pull down menu.
-   Be carefull to select the correct device, use the size for orientation (for example 4GB SD card).
+   Be careful to select the correct device, use the size for orientation (for example 4GB SD card).
 
 #. You will be asked to confirm your choice and enter a password.
-   Additiona dialog windows will again show the selected destination drive,
-   take the oportunity to think again if you choose the right device.
+   Additional dialog windows will again show the selected destination drive,
+   take the opportunity to think again if you choose the right device.
 
 
 .. _linux_cli:
@@ -140,7 +140,7 @@ Command line
    Our SD card is 4GB, it is named ``/dev/sdx`` and
    divided into two partitions ``/dev/sdx1`` and ``/dev/sdx2``.
    The drive mounted at ``/`` is your main drive,
-   be carefull not to use it.
+   be careful not to use it.
 
    .. code-block:: shell-session
 

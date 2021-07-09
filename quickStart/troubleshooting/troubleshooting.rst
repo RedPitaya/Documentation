@@ -25,7 +25,7 @@ Problems connecting to Red Pitaya
       In this case there is an error while loading Red Pitaya system from the SD card. Make sure that:
 
        * you have properly inserted Red Pitaya SD card and that it has properly installed Red Pitaya OS 
-         (Notice that Red Pitayas already comes with pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - 
+         (Notice that Red Pitaya already comes with pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - 
          in such case follow :ref:`these instructions <prepareSD>` to properly re-install Red Pitaya OS to SD card)
        
        * try to use another SD card
@@ -84,7 +84,7 @@ please check the following:
 
 .. note::
     
-    For full preformence the wired connection is preffered. 
+    For full performance the wired connection is preferred. 
    
 ###
 FAQ
@@ -156,7 +156,7 @@ the same local network as your Red Pitaya and try the following:
 .. note:: 
 
    If you have established wireless connection, then you should check the MAC
-   address of your wireless USB dongle. Ususaly MAC address shuld be written 
+   address of your wireless USB dongle. Usually MAC address should be written 
    on the USB dongle.
 
 3. Type your Red Pitaya IP into your WEB browser and connect to it.

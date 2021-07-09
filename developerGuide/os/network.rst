@@ -265,10 +265,10 @@ there are two lines to enable IP forwarding and masquerading.
    IPMasquerade=yes
 
 An iptables configuration `/etc/iptables/iptables.rules </OS/debian/overlay/etc/iptables/iptables.rules>`_
-is enbled by the iptables service `/etc/systemd/system/iptables.service </OS/debian/overlay/etc/systemd/system/iptables.service>`_.
+is enabled by the iptables service `/etc/systemd/system/iptables.service </OS/debian/overlay/etc/systemd/system/iptables.service>`_.
 
 .. note:: This functionality combined with default passwords can be a serious security issue.
-   And since it is not needed to provide advertized functionality, we might remove it in the future.
+   And since it is not needed to provide advertised functionality, we might remove it in the future.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Supported USB WiFi adapters

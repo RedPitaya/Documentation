@@ -45,8 +45,8 @@ the second for the buffer. The ``reg-names`` attribute provides window names.
 
 Optionally an interrupt can be provided. ``interrupt-parent`` links
 to the interrupt controller the signals is connected to.
-In argument ``interrupts`` the first value specifis the index of the interrupt signal
-on the connected interrupt controller, the cecond value is interrupt type.
+In argument ``interrupts`` the first value specifies the index of the interrupt signal
+on the connected interrupt controller, the second value is interrupt type.
 
 ****
 UDEV
@@ -56,7 +56,7 @@ The Linux kernel will index each UIO device in the order it processed it.
 So devices like ``/dev/uio0``, ``/dev/uio1``, ... will be present on the system.
 Since this names depend on the loading order, and can change if new devices are added,
 an `UDEV configuration file </OS/debian/overlay/etc/udev/rules.d/10-redpitaya.rules>`_
-can be used to give each device a symbolink link, containing the name specified in the device tree.
+can be used to give each device a symbolic link, containing the name specified in the device tree.
 
 .. code-block:: c
 
@@ -155,7 +155,7 @@ map the physical memory window into virtual address space.
            return -1;
        }
        // map buffer memory window
-       // each consecutive memory window reqiures an offset of (index * PAGESIZE)
+       // each consecutive memory window requires an offset of (index * PAGESIZE)
        offset = sysconf(_SC_PAGESIZE);
        size = 0x10000;
        *buffer = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, *fd, offset);

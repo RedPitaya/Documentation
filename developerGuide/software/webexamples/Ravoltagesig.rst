@@ -25,7 +25,7 @@ Add graph placeholder using this string in **index.html**:
     <div id='placeholder'></div>
 
 In **app.js** we should draw signal value on graph. Change **APP.ws.onmessage()** callback. Now we should decompress
-message and push it to stack. Data arrives quite faster than we can process it. That’s why we should firsly save it,
+message and push it to stack. Data arrives quite faster than we can process it. That’s why we should firstly save it,
 and then process.
 
 .. code-block:: html

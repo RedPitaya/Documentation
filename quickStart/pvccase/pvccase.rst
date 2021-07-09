@@ -2,16 +2,16 @@
 Red Pitaya Acrylic case assembly
 #################################
 
-Regardless whether you bought your Red Pitaya Acrylic case in a kit or as a separate add on, you will need to manually asembile it.
+Regardless whether you bought your Red Pitaya Acrylic case in a kit or as a separate add on, you will need to manually assemble it.
 
 ***************************************
-Red Pitaya Acrylic Case asembly parts.
+Red Pitaya Acrylic Case assembly parts.
 ***************************************
 
 .. figure:: rp_pvccase.jpg
     :align: center
 
-    Red Pitaya Acrylic Case asembly parts.
+    Red Pitaya Acrylic Case assembly parts.
     
 It includes:
 

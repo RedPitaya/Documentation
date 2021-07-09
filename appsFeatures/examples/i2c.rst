@@ -5,7 +5,7 @@ I2C
 
 Description
 
-This example demonstrates communication with the EEPROM memory on red pitaya using the I2C protocol. The code below 
+This example demonstrates communication with the EEPROM memory on red pitaya using the I2C protocol. The code below
 writes a message to a given address inside the EEPROM and then prints the entire EEPROM contents.
 
 
@@ -21,14 +21,14 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages.
     Instructions on how to compile the code are here -> `link <https://redpitaya.readthedocs.io/en/latest/developerGuide/comC.html>`_
 
 .. code-block:: c
 
     /* @brief This is a simple application for testing IIC communication on a RedPitaya
     * @Author Luka Golinar <luka.golinar@redpitaya.com>
-    * 
+    *
     * (c) Red Pitaya  http://www.redpitaya.com
     *
     * This part of code is written in C programming language.
@@ -36,7 +36,7 @@ Code - C
     * for more details on the language used herein.
     */
 
-    
+
     #include <fcntl.h>
     #include <stdio.h>
     #include <stdlib.h>
@@ -47,16 +47,16 @@ Code - C
     #include <unistd.h>
     #include <errno.h>
     #include <stdint.h>
-    
-    
+
+
     #define I2C_SLAVE_FORCE 		   0x0706
     #define I2C_SLAVE    			   0x0703    /* Change slave address            */
     #define I2C_FUNCS    			   0x0705    /* Get the adapter functionality */
     #define I2C_RDWR    			   0x0707    /* Combined R/W transfer (one stop only)*/
-    
+
 
     #define EEPROM_ADDR            	   0x50
-    
+
     /*
     * Page size of the EEPROM. This depends on the type of the EEPROM available
     * on board.
@@ -64,26 +64,26 @@ Code - C
     #define PAGESIZE                   32
     /* eeprom size on a redpitaya */
     #define EEPROMSIZE                 64*1024/8
-    
 
-    /* Inline functions definition */ 
+
+    /* Inline functions definition */
     static int iic_read(char *buffer, int offset, int size);
     static int iic_write(char *data, int offset, int size);
-    
+
     /*
     * File descriptors
     */
-    int fd; 
-    
+    int fd;
+
     int main(int argc, char *argv[])
     {
         int status;
-        
+
         /* Read buffer to hold the data */
         char *buffer = (char *)malloc(EEPROMSIZE * sizeof(char));
 
-        char data[] = "THIS IS A TEST MESSAGE FOR THE I2C PROTOCOL COMMUNICATION WITH A EEPROM. IT WAS WRITTEN FOR A 
-        REDPITAYA MEASURMENT TOOL.";
+        char data[] = "THIS IS A TEST MESSAGE FOR THE I2C PROTOCOL COMMUNICATION WITH A EEPROM. IT WAS WRITTEN FOR A
+        REDPITAYA MEASUREMENT TOOL.";
         size_t size = strlen(data);
 
         /* Sample offset inside an eeprom */
@@ -114,7 +114,7 @@ Code - C
             close(fd);
             return -1;
         }
-        
+
         /* Read from redpitaya eeprom */
         status = iic_read(buffer, EEPROM_ADDR, EEPROMSIZE);
         if (status)
@@ -123,16 +123,16 @@ Code - C
             close(fd);
             return 1;
         }
-    
-        printf("eerprom test successfull.\n");
-        
+
+        printf("eeprom test successful.\n");
+
         /* Release allocations */
         close(fd);
         free(buffer);
 
         return 0;
     }
-    
+
     /* Read the data from the EEPROM.
     *
     *  @param    read buffer -- input buffer for data storage
@@ -143,13 +143,13 @@ Code - C
     *  @note     None. */
 
     static int iic_read(char *buffer, int offset, int size)
-    {   
+    {
         ssize_t bytes_written;
         ssize_t bytes_read;
         uint8_t write_buffer[2];
 
         /*
-        * Load the offset address inside EEPROM where data need to be written. 
+        * Load the offset address inside EEPROM where data need to be written.
         * Supported for BigEndian and LittleEndian CPU's
         */
         write_buffer[0] = (uint8_t)(offset >> 8);
@@ -174,7 +174,7 @@ Code - C
             return -1;
         }
 
-        printf("Read EEPROM Succesful\n");
+        printf("Read EEPROM Successful\n");
 
         return 0;
     }
@@ -186,7 +186,7 @@ Code - C
         int bytes_written;
         int write_bytes;
         int index;
-        
+
         /* Check for limits */
         if(size > PAGESIZE){
             write_bytes = PAGESIZE;
@@ -204,7 +204,7 @@ Code - C
             uint8_t write_buffer[32 + 2];
 
             /*
-            * Load the offset address inside EEPROM where data need to be written. 
+            * Load the offset address inside EEPROM where data need to be written.
             * Supported for BigEndian and LittleEndian CPU's
             */
             write_buffer[0] = (uint8_t)(offset >> 8);
@@ -224,7 +224,7 @@ Code - C
                 return -1;
             }
 
-            /* written bytes minus the offset addres of two */
+            /* written bytes minus the offset address of two */
             size -= bytes_written - 2;
             /* Increment offset */
             offset += PAGESIZE;
@@ -239,7 +239,7 @@ Code - C
             loop++;
         }
 
-        printf("\nWrite EEPROM Succesful\n");
+        printf("\nWrite EEPROM Successful\n");
 
         return 0;
     }

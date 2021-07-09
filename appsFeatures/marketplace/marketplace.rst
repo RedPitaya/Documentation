@@ -186,7 +186,7 @@ insert 0 in the shunt resistor field.
 
 .. figure:: LCR_range.png
 
-When using Impedance analyzer application optimal results are achieved wheni
+When using Impedance analyzer application optimal results are achieved when
 the Red Pitaya GND is connected to your mains EARTH lead as is shown below.
 We also recommend shielding of Red Pitaya and LCR extension module.
 

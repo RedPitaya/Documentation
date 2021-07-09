@@ -37,23 +37,23 @@ calculations inside UI. Let your Red Pitaya do this. So here is typical workflow
     - Web UI may apply them immediately on the screen or
     - Web UI may send them to controller for some specific calculations on device, for changing device state or for 
       something else
-    - Controller (= Backend) applies them to internal variabale and change device state (if necessary)
+    - Controller (= Backend) applies them to internal variable and change device state (if necessary)
     - Controller does some calculation according algorithms and as result it can return
 
         - Change of some parameters
         - New signals
     - Controller sends parameters and signals to WebUI in JSON format
-    - Web UI recieves these parameters signals and then applies them on the screen
+    - Web UI receives these parameters signals and then applies them on the screen
     
 *******
 Backend
 *******
 
 In general backend is your Red Pitaya. But when we're talking about your application backend is controller of your
-application. Controller is shared linux library with .so extension. It operates with specific memebers which are 
+application. Controller is shared linux library with .so extension. It operates with specific members which are 
 called Parameters and Signals. First of them are needed for handling state of important variables of your app. 
 Another one are needed for collecting number of data inside one container. You can use lots of them at the same time. 
-None of them are necessary, so if you don't need singlas in your application you may not use them.
+None of them are necessary, so if you don't need signals in your application you may not use them.
 
   .. figure:: Backend.png
   

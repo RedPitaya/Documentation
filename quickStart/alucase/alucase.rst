@@ -3,7 +3,7 @@ Red Pitaya Aluminum Case assembly
 #################################
 
 Regardless whether you bought your Red Pitaya aluminum case in a kit or as 
-a separate add on, you will need to manually asembile it.
+a separate add on, you will need to manually assemble it.
 
 ***************************************
 Red Pitaya Aluminum Case assembly parts
@@ -12,14 +12,14 @@ Red Pitaya Aluminum Case assembly parts
 .. figure:: rp_alucase_02.jpg
     :align: center
 
-    Red Pitaya Aluminum Case asembly parts.
+    Red Pitaya Aluminum Case assembly parts.
     
 It includes:
 
     - 4 screws that close the housing and hold the board
     - 4 rubber feet for secure positioning on the desk
     - a thermal pad (just barely be seen in the photo)
-    - a transparent plastic rod, the light of red LED (Ready / CPU activity) guided to the top of the caseing
+    - a transparent plastic rod, the light of red LED (Ready / CPU activity) guided to the top of the casing
 
 .. figure:: rp_alucase_03.jpg
    :align: center
@@ -77,7 +77,7 @@ Assembly
 #. Turn the top part of the casing upside down and place the light guiding plastic.
 
 #. Close it up with the bottom part of casing including the Red Pitaya board.
-   Make sure that holes from the board and the caseing are aligned.
+   Make sure that holes from the board and the casing are aligned.
 
 #. Screw the 4 screws.
 

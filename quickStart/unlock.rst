@@ -16,6 +16,6 @@ Unlocking apps or extending the license
 
 .. note::
 
-   Aplication may not be yet present in your current Red Pitaya OS.
+   Applications may not be yet present in your current Red Pitaya OS.
    Make sure you are using latest OS version!
-   It is available :ref:`here <prepareSD>`. 
+   It is available :ref:`here <prepareSD>`.

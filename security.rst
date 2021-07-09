@@ -57,7 +57,7 @@ System users for running applications
 ``root`` user
 =============
 
-Aftert the first boot the ``root`` user does not have a password
+After the first boot the ``root`` user does not have a password
 and is therefore disabled.
 Setting ``root`` user password enables access to the account:
 

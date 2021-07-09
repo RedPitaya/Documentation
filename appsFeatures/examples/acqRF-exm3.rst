@@ -53,7 +53,7 @@ Code - MATLAB®
 
     %% Loop back for testing Generate 
 
-    %% The example generate sine bursts every 0.5 seconds indefinety
+    %% The example generate sine bursts every 0.5 seconds indefinitely
     fprintf(tcpipObj,'GEN:RST');
     fprintf(tcpipObj,'ACQ:RST');
 

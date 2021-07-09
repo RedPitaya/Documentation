@@ -139,7 +139,7 @@ How to set sockets is described on Blink example
     
     // Define value p from 0 - 100 //
             
-            p = volts *(100/3.3) ;   // Set value of p in respect to readed voltage
+            p = volts *(100/3.3) ;   // Set value of p in respect to read voltage
             
             if p >=(100/7)
             SOCKET_write(tcpipObj,'DIG:PIN LED1,1')

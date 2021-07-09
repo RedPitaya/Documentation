@@ -81,7 +81,7 @@ and press run.
    fprintf(tcpipObj,'ACQ:START');
    % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
    % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
-   % length and smaling rate
+   % length and sampling rate
    pause(1)
    
    fprintf(tcpipObj,'ACQ:TRIG CH1_PE');  
@@ -171,7 +171,7 @@ Code - C
     
             /* After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer*/
             /* Here we have used time delay of one second but you can calculate exact value taking in to account buffer*/
-            /*length and smaling rate*/
+            /*length and sampling rate*/
     
             sleep(1);
             rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
