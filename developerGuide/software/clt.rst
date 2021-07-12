@@ -241,4 +241,39 @@ monitor commands checks, modifies and verifies the acquisition decimation parame
     possible interference with Red Pitaya applications, reading or acting upon these same FPGA registers. For simple 
     tasks, however, the monitor utility can be used by high level scripts (Bash, Python, Matlab...) to communicate
     directly with FPGA if necessary.
-    
+
+
+==========================
+LED enable/disable utility
+==========================
+
+The Red Pitaya LEDs indications can be enabled or disabled through the led_control command-line utility.
+Disabling LEDs is important for applications where noise level needs to be reduced to its minimum.
+
+Usage instructions:
+
+.. code-block:: shell-session
+
+    root@rp-f09508:~# led_control
+
+    Usage: led_control -y[=State] | -r[=State] | -e [=State]
+
+        -y    9 Yellow LED. Responsible for the status of reading the memory card.
+        -r    Red LED, which is responsible for the heartbeat.
+        -e    LEDs on ethernet connector.
+
+    Optional parameter:
+        State = [Off | On]  Turns LEDs on or off
+
+
+For disable:
+
+.. code-block:: shell-session
+
+    root@rp-f09508:~# led_control -y=Off -e=Off -r=Off
+
+For enable:
+
+.. code-block:: shell-session
+
+    root@rp-f09508:~# led_control -y=On -e=On -r=On
