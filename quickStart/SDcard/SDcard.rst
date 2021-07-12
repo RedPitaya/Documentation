@@ -112,8 +112,26 @@ Ubuntu using Image Writer
 
 #. Right click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
+.. figure:: DIW_1.png
+      :align: center
+      :width: 50%
+
+      Context menu
+
+.. figure:: DIW_2.png
+      :align: center
+      :width: 50%
+
+      Select tool dialog
+
 #. In the **Restore Disk Image** window select your SD card in the **Destination** pull down menu.
    Be carefull to select the correct device, use the size for orientation (for example 4GB SD card).
+
+.. figure:: DIW_3.png
+      :align: center
+      :width: 50%
+
+      Select drive dialog
 
 #. You will be asked to confirm your choice and enter a password.
    Additiona dialog windows will again show the selected destination drive,
