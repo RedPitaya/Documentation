@@ -166,12 +166,19 @@ The choice of specific branches or tags is up to the user.
    To build an ecosystem for board 125-14:
 
    .. code-block:: shell-session
-   
+
       cd ./RedPitaya/build_scripts
       sudo ./build_Z10.sh
 
-   To build an ecosystem for board 122-16:
+   To build an ecosystem for board 125-14 (Z7020):
+
+   .. code-block:: shell-session
    
+      cd ./RedPitaya/build_scripts
+      sudo ./build_Z20_125.sh
+
+   To build an ecosystem for board 122-16:
+
    .. code-block:: shell-session
    
       cd ./RedPitaya/build_scripts
@@ -209,7 +216,7 @@ Correct file permissions are required for ``schroot`` to work properly.
 
 .. code-block:: shell-session
 
-   wget https://downloads.redpitaya.com/downloads/STEMlab-125-1x/old/redpitaya_ubuntu_13-14-23_25-sep-2017.tar.gz
+   wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_17-00-00_02-aug-2021.tar.gz
    sudo chown root:root redpitaya_ubuntu_13-14-23_25-sep-2017.tar.gz
    sudo chmod 664 redpitaya_ubuntu_13-14-23_25-sep-2017.tar.gz
 
