@@ -1,5 +1,5 @@
 ##################################################
-Remote control (Matlab, Labview, Scilab or Python)
+Remote control (MATLAB, Labview, Scilab or Python)
 ##################################################
 
 .. https://owncloud.redpitaya.com/index.php/apps/files/?dir=%2FWEB%20page%2Fapps%2FSCPI
@@ -7,7 +7,7 @@ Remote control (Matlab, Labview, Scilab or Python)
 .. figure:: SCPI_web_lr.png
 
 Red Pitaya board can be controlled remotely over LAN or wireless interface
-using Matlab, Labview, Scilab or Python via Red Pitaya
+using MATLAB, Labview, Scilab or Python via Red Pitaya
 SCPI (Standard Commands for Programmable Instrumentation) list of commands.
 SCPI interface/environment is commonly used to control T&M instruments
 for development, research or test automation purposes.
@@ -21,8 +21,8 @@ and SCPI commands simple access to raw data acquired on Red Pitaya board.
 
 **Features**
 
-- Quickly write control routines and programs using  Matlab, Labview, Scilab or Python
-- Use powerful data analysis tools of Matlab, Labview, Scilab or Python to analyze raw signals
+- Quickly write control routines and programs using  MATLAB, Labview, Scilab or Python
+- Use powerful data analysis tools of MATLAB, Labview, Scilab or Python to analyze raw signals
   acquired by Red Pitaya board
 - Write testing scripts and routines
 - Incorporate your Red Pitaya and Labview  into testing and production lines

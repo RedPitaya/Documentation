@@ -88,7 +88,7 @@ and press run.
    % Wait for trigger
    % Until trigger is true wait with acquiring
    % Be aware of while loop if trigger is not achieved
-   % Ctrl+C will stop code executing in Matlab
+   % Ctrl+C will stop code executing in MATLAB
    
    while 1
         trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')

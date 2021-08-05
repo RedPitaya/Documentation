@@ -239,7 +239,7 @@ monitor commands checks, modifies and verifies the acquisition decimation parame
     
     The CPU algorithms communicate with FPGA through these registers. Therefore, the user should be aware of a 
     possible interference with Red Pitaya applications, reading or acting upon these same FPGA registers. For simple 
-    tasks, however, the monitor utility can be used by high level scripts (Bash, Python, Matlab...) to communicate
+    tasks, however, the monitor utility can be used by high level scripts (Bash, Python, MATLAB...) to communicate
     directly with FPGA if necessary.
 
 
