@@ -1,5 +1,5 @@
 ##################################################
-Remote control (MATLAB, Labview, Scilab or Python)
+Remote control (MATLAB, LabVIEW, Scilab or Python)
 ##################################################
 
 .. https://owncloud.redpitaya.com/index.php/apps/files/?dir=%2FWEB%20page%2Fapps%2FSCPI
@@ -7,7 +7,7 @@ Remote control (MATLAB, Labview, Scilab or Python)
 .. figure:: SCPI_web_lr.png
 
 Red Pitaya board can be controlled remotely over LAN or wireless interface
-using MATLAB, Labview, Scilab or Python via Red Pitaya
+using MATLAB, LabVIEW, Scilab or Python via Red Pitaya
 SCPI (Standard Commands for Programmable Instrumentation) list of commands.
 SCPI interface/environment is commonly used to control T&M instruments
 for development, research or test automation purposes.
@@ -21,11 +21,11 @@ and SCPI commands simple access to raw data acquired on Red Pitaya board.
 
 **Features**
 
-- Quickly write control routines and programs using  MATLAB, Labview, Scilab or Python
-- Use powerful data analysis tools of MATLAB, Labview, Scilab or Python to analyze raw signals
+- Quickly write control routines and programs using  MATLAB, LabVIEW, Scilab or Python
+- Use powerful data analysis tools of MATLAB, LabVIEW, Scilab or Python to analyze raw signals
   acquired by Red Pitaya board
 - Write testing scripts and routines
-- Incorporate your Red Pitaya and Labview  into testing and production lines
+- Incorporate your Red Pitaya and LabVIEW  into testing and production lines
 - Take quick measurements directly with your PC
 
 ***********
@@ -90,15 +90,15 @@ To install them do:
 
    .. note::
 
-         To run the examples, you need python version 3. Make sure the python versions before running.
-         If the system has python version 2.7, this version will be used by default.
+         To run the examples, you need Python version 3. Make sure the Python versions before running.
+         If the system has Python version 2.7, this version will be used by default.
 
          .. code-block:: shell-session
 
             $ python --version
             Python 2.7.17
          
-         Then, in order to run the examples, specify explicitly the python version
+         Then, in order to run the examples, specify explicitly the Python version
 
          .. code-block:: shell-session
 
@@ -115,13 +115,13 @@ To install them do:
 
       ``redpitaya_scpi.py`` script is a standard script needed to
       establish the connection between your PC and Red Pitaya board.
-      Without having this script in the same folder as your python script
+      Without having this script in the same folder as your Python script
       the execution of your script will fail.
 
    .. figure:: scpi-examples.png
 
-#. Open the Terminal and go to the folder containing your python script
-   (``examples_py``) and run: ``python blink.py IP`` where you give an Red Pitaya IP
+#. Open the Terminal and go to the folder containing your Python script
+   (``examples_py``) and run: ``Python blink.py IP`` where you give an Red Pitaya IP
    as the argument when calling an execution of the ``blink.py`` example.
    Example is given bellow where ``192.168.178.108`` is the IP of the Red Pitaya board.
 
