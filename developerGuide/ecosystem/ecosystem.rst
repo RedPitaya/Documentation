@@ -217,8 +217,8 @@ Correct file permissions are required for ``schroot`` to work properly.
 .. code-block:: shell-session
 
    wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_17-00-00_02-aug-2021.tar.gz
-   sudo chown root:root redpitaya_ubuntu_13-14-23_25-sep-2017.tar.gz
-   sudo chmod 664 redpitaya_ubuntu_13-14-23_25-sep-2017.tar.gz
+   sudo chown root:root redpitaya_ubuntu_17-00-00_02-aug-2021.tar.gz
+   sudo chmod 664 redpitaya_ubuntu_17-00-00_02-aug-2021.tar.gz
 
 **5.** Create schroot configuration file ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``.
 Replace the tarball path stub with the absolute path of the previously downloaded image.
@@ -246,7 +246,7 @@ Replace user names with a comma separated list of users whom should be able to c
       [red-pitaya-ubuntu]
       description= Red pitaya
       type=file
-      file=/home/user/RedPitaya/redpitaya_ubuntu_13-14-23_25-sep-2017.tar.gz
+      file=/home/user/RedPitaya/redpitaya_ubuntu_17-00-00_02-aug-2021.tar.gz
       users=root
       root-users=root
       root-groups=root
