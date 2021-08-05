@@ -79,6 +79,7 @@ background: white;
 .rst-content pre.literal-block, .rst-content div[class^='highlight'] pre, .rst-content .linenodiv pre {
     font-size: 14px;
     line-height: normal;
+    font-family: 'Barlow Semi Condensed'
 }
 
 code, .rst-content tt, .rst-content code {
