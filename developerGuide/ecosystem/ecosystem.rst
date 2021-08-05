@@ -41,31 +41,31 @@ Programmable" paradigm and the way several components are interrelated,
 some components might be spread across many directories or found at
 different places one would expect.
 
-+--------------+-------------------------------------------------------------------------------------------------------+
-| directories  | contents                                                                                              |
-+==============+=======================================================================================================+
-| rp-api       | API source code for ``librp.so``,``librp2.so``,``librp-gpio.so``,``librp-i2c.so``,``librp-spi.so``    |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| apps-free    | WEB application for the old environment (also with controller modules & GUI clients)                  |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| apps-tools   | WEB interface home page and some system management applications                                       |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| Bazaar       | Nginx server with dependencies, Bazaar module & application controller module loader                  |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| fpga         | FPGA design (RTL, bench, simulation and synthesis scripts) SystemVerilog based for newer applications |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| OS           | GNU/Linux operating system components                                                                 |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| patches      | Directory containing patches                                                                          |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| scpi-server  | SCPI server                                                                                           |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| Test         | Command line utilities (acquire, generate, ...), tests                                                |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| Exmaples     | Examples in different programming languages for working with peripherals                              |
-+--------------+-------------------------------------------------------------------------------------------------------+
-| build_scripts| Scripts for building an ecosystem and preparing an image for writing to a memory card                 |
-+--------------+-------------------------------------------------------------------------------------------------------+
++--------------+---------------------------------------------------------------------------------------------------------------+
+| directories  | contents                                                                                                      |
++==============+===============================================================================================================+
+| rp-api       | API source code for ``librp.so`` , ``librp2.so`` , ``librp-gpio.so`` , ``librp-i2c.so`` , ``librp-spi.so``    |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| apps-free    | WEB application for the old environment (also with controller modules & GUI clients)                          |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| apps-tools   | WEB interface home page and some system management applications                                               |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| Bazaar       | Nginx server with dependencies, Bazaar module & application controller module loader                          |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| fpga         | FPGA design (RTL, bench, simulation and synthesis scripts) SystemVerilog based for newer applications         |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| OS           | GNU/Linux operating system components                                                                         |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| patches      | Directory containing patches                                                                                  |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| scpi-server  | SCPI server                                                                                                   |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| Test         | Command line utilities (acquire, generate, ...), tests                                                        |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| Exmaples     | Examples in different programming languages for working with peripherals                                      |
++--------------+---------------------------------------------------------------------------------------------------------------+
+| build_scripts| Scripts for building an ecosystem and preparing an image for writing to a memory card                         |
++--------------+---------------------------------------------------------------------------------------------------------------+
 
 -------------------
 Supported platforms
