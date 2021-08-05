@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Barlow%20Semi%20Condensed:400,100,100italic,300,300ita%E2%80%8C%E2%80%8Blic,400italic,500,500italic,700,700italic,900italic,900);
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 
 html, body, html * {
   font-family: 'Barlow Semi Condensed'
@@ -79,7 +81,7 @@ background: white;
 .rst-content pre.literal-block, .rst-content div[class^='highlight'] pre, .rst-content .linenodiv pre {
     font-size: 14px;
     line-height: normal;
-    font-family: 'Barlow Semi Condensed'
+    font-family: 'Ubuntu'
 }
 
 code, .rst-content tt, .rst-content code {
