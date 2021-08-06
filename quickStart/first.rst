@@ -1,7 +1,7 @@
 .. _ConnectSTEMlab:
 
-How can I start using RP measurement applications?
-##################################################
+Connect to Red Pitaya
+#####################
 
 This is the most common and recommended way of
 connecting and using your Red Pitaya boards.

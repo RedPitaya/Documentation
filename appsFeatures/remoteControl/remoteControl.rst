@@ -1,5 +1,5 @@
-How to control RP remotely using LabVIEW, MATLAB, Python?
-#########################################################
+Remote control (MATLAB, LabVIEW, Scilab or Python)
+##################################################
 
 .. https://owncloud.redpitaya.com/index.php/apps/files/?dir=%2FWEB%20page%2Fapps%2FSCPI
 

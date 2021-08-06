@@ -1,5 +1,5 @@
-How to get started with RP?
-###########################
+Quick start
+###########
 
 .. toctree::
    :maxdepth: 1

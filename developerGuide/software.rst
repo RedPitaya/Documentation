@@ -1,5 +1,5 @@
-How to start with FPGA development?
-###################################
+Software
+########
 
 .. toctree::
    :maxdepth: 2

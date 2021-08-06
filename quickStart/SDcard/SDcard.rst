@@ -1,7 +1,7 @@
 .. _prepareSD:
 
-How to upgrade OS?
-##################
+Prepare SD card
+###############
 
 **********************************
 Download and install SD card image
