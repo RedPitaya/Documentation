@@ -1,94 +1,7 @@
-.. _troubleshooting:
-
-###############
-Troubleshooting
-###############
-
-*********************************
-Problems connecting to Red Pitaya
-*********************************
-
-.. figure:: blinking-pitaya-eth.gif
-   :align: center
-
-#. First check the LEDs:
-
-   a. If **green LED** is not **ON** or it is **blinking**.
-      Seems like something is wrong with the power supply or maybe it’s USB cable.
-      Make sure that:
-
-       1. you have plugged the USB cable into the right USB connector on Red Pitaya
-       2. your power supply is 5V/2A
-       3. try to replace USB cable and also USB power supply
-
-   #. If **green LED** is **ON**, but **blue LED** is **OFF**.
-      In this case there is an error while loading Red Pitaya system from the SD card. Make sure that:
-
-       * you have properly inserted Red Pitaya SD card and that it has properly installed Red Pitaya OS 
-         (Notice that Red Pitayas already comes with pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - 
-         in such case follow :ref:`these instructions <prepareSD>` to properly re-install Red Pitaya OS to SD card)
-       
-       * try to use another SD card
-
-   #. If **green** and **blue** LEDs are **ON**, but **red** and **orange** LEDs are **not blinking**.
-      Red LED is indicating CPU heartbeat, while orange LED indicates access to SD card.
-      Notice that this two LEDs always starts blinking 10s after green and blue LEDs are turned ON.
-
-#. Make sure your Red Pitaya and computer are connected to same :ref:`local network <faqConnected>`.
-
-#. If you are a Windows users make sure you have installed `Bonjour Print Services <http://redpitaya.com/bonjour>`_.
-
-**************************************************
-Problems with upgrading OS, accessing market place
-**************************************************
-
-1. Make sure your Red Pitaya has access to the internet. :ref:`How <internetAccess>`?
-#. Force refresh of the Red Pitaya application page. `How <http://www.wikihow.com/Force-Refresh-in-Your-Internet-Browser>`_? 
-
-
-********************
-Slow WIFI connection
-********************
-
-If your wireless connection with Red Pitaya works very slowly and
-all the applications seems very unresponsive and are not running smoothly,
-please check the following:
-
-* check the wifi signal strength on your PC/tablet/smartphone
-* check the wifi signal strength of your Red Pitaya.
-
-   1. Connect to your Red Pitaya via SSH connection. :ref:`SSH connection <ssh>`
-
-   #. Enter ``cat /proc/net/wireless`` command in order to get
-      information about link quality and signal strength.
-
-      .. figure:: Screen-Shot-2015-09-26-at-20.28.27.png
-         :align: center
-
-      Link quality measures the number of packet errors that occur.
-      The lower the number of packet errors, the higher this will be.
-      Link quality goes from 0-100%.
-
-      Level or signal strength is a simple measure of the amplitude of the signal that is received.
-      The closer you are to the access point, the higher this will be.
-
-* If you are in the area with many routers around you
-  it might happen that more of them operate at the same wifi channel
-  which drastically decreases data throughput and slows down connection.
-  Here are the instructions how to
-  `change your wifi router channel in order to optimize your wireless signal
-  <http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/>`_.
-  For MAC users we recommend using diagnosed using Scan feature of
-  `Wireless diagnostic <http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/>`_
-  tool in order to find best wifi channel.
-
-.. note::
-    
-    For full preformence the wired connection is preffered. 
-   
 ###
 FAQ
 ###
+
 
 .. _internetAccess:
 
@@ -199,3 +112,87 @@ Is Red Pitaya connected to my local network?
 
    .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
       :align: center
+
+.. _troubleshooting:
+
+*********************************
+Problems connecting to Red Pitaya
+*********************************
+
+.. figure:: blinking-pitaya-eth.gif
+   :align: center
+
+#. First check the LEDs:
+
+   a. If **green LED** is not **ON** or it is **blinking**.
+      Seems like something is wrong with the power supply or maybe it’s USB cable.
+      Make sure that:
+
+       1. you have plugged the USB cable into the right USB connector on Red Pitaya
+       2. your power supply is 5V/2A
+       3. try to replace USB cable and also USB power supply
+
+   #. If **green LED** is **ON**, but **blue LED** is **OFF**.
+      In this case there is an error while loading Red Pitaya system from the SD card. Make sure that:
+
+       * you have properly inserted Red Pitaya SD card and that it has properly installed Red Pitaya OS 
+         (Notice that Red Pitayas already comes with pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - 
+         in such case follow :ref:`these instructions <prepareSD>` to properly re-install Red Pitaya OS to SD card)
+       
+       * try to use another SD card
+
+   #. If **green** and **blue** LEDs are **ON**, but **red** and **orange** LEDs are **not blinking**.
+      Red LED is indicating CPU heartbeat, while orange LED indicates access to SD card.
+      Notice that this two LEDs always starts blinking 10s after green and blue LEDs are turned ON.
+
+#. Make sure your Red Pitaya and computer are connected to same :ref:`local network <faqConnected>`.
+
+#. If you are a Windows users make sure you have installed `Bonjour Print Services <http://redpitaya.com/bonjour>`_.
+
+**************************************************
+Problems with upgrading OS, accessing market place
+**************************************************
+
+1. Make sure your Red Pitaya has access to the internet. :ref:`How <internetAccess>`?
+#. Force refresh of the Red Pitaya application page. `How <http://www.wikihow.com/Force-Refresh-in-Your-Internet-Browser>`_? 
+
+
+********************
+Slow WIFI connection
+********************
+
+If your wireless connection with Red Pitaya works very slowly and
+all the applications seems very unresponsive and are not running smoothly,
+please check the following:
+
+* check the wifi signal strength on your PC/tablet/smartphone
+* check the wifi signal strength of your Red Pitaya.
+
+   1. Connect to your Red Pitaya via SSH connection. :ref:`SSH connection <ssh>`
+
+   #. Enter ``cat /proc/net/wireless`` command in order to get
+      information about link quality and signal strength.
+
+      .. figure:: Screen-Shot-2015-09-26-at-20.28.27.png
+         :align: center
+
+      Link quality measures the number of packet errors that occur.
+      The lower the number of packet errors, the higher this will be.
+      Link quality goes from 0-100%.
+
+      Level or signal strength is a simple measure of the amplitude of the signal that is received.
+      The closer you are to the access point, the higher this will be.
+
+* If you are in the area with many routers around you
+  it might happen that more of them operate at the same wifi channel
+  which drastically decreases data throughput and slows down connection.
+  Here are the instructions how to
+  `change your wifi router channel in order to optimize your wireless signal
+  <http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/>`_.
+  For MAC users we recommend using diagnosed using Scan feature of
+  `Wireless diagnostic <http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/>`_
+  tool in order to find best wifi channel.
+
+.. note::
+    
+    For full preformence the wired connection is preffered.
