@@ -50,6 +50,14 @@ SIGNALlab 250-12:
    .. figure:: pitaya-quick-start-insert-sd-card.png
       :align: center
 
+.. note::
+
+   .. raw:: html
+
+    <div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
+        <iframe src="https://www.youtube.com/embed/Qq_YRv2nk3c" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
+
 =======
 Windows
 =======
