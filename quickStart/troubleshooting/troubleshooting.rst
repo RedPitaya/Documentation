@@ -115,9 +115,9 @@ Is Red Pitaya connected to my local network?
 
 .. _troubleshooting:
 
-******************************************************************************************************************************
-Problems connecting to RP? (and you can even list other FAQs here, like what to try and what to check, from LEDs to browser..)
-******************************************************************************************************************************
+**************************
+Problems connecting to RP?
+**************************
 
 .. figure:: blinking-pitaya-eth.gif
    :align: center
@@ -197,6 +197,19 @@ please check the following:
     
     For full preformence the wired connection is preffered.
 
+
+**********************************************************************
+Web interface not functioning properly or experimenting with freezing?
+**********************************************************************
+
+Please check if Ad blocker has been disabled on your browser and also check your proxy
+settings. For local connection to Red Pitaya unit proxy settings should not be required.
+
+*******************************
+Red Pitaya not booting anymore?
+*******************************
+
+Possible cause can be a corrupted card, and the recommendation is a manual OS re-write: :ref:`How to upgrade OS? <prepareSD>`
 
 ********************
 How to report a bug?
