@@ -1,8 +1,7 @@
 .. _ConnectSTEMlab:
 
-#####################
-Connect to Red Pitaya
-#####################
+How can I start using RP measurement applications?
+##################################################
 
 This is the most common and recommended way of
 connecting and using your Red Pitaya boards.
@@ -62,6 +61,12 @@ After the **third step** you will get a Red Pitaya main page as shown below.
    :align: center
 
    Red Pitaya main page user interface.
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
+        <iframe src="https://www.youtube.com/embed/I21xyTCiZ-8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 
 .. note::
 
