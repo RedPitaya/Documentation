@@ -1,3 +1,5 @@
+.. _remoteControl:
+
 Remote control (MATLAB, LabVIEW, Scilab or Python)
 ##################################################
 

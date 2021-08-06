@@ -2,6 +2,42 @@
 FAQ
 ###
 
+***************************
+How to get started with RP?
+***************************
+
+:ref:`Quick start <quick_start>`
+
+**************************************************
+How can I start using RP measurement applications?
+**************************************************
+
+:ref:`Connect to Red Pitaya <ConnectSTEMlab>`
+
+*********************************************************
+How to control RP remotely using LabVIEW, MATLAB, Python?
+*********************************************************
+
+:ref:`Remote control (MATLAB, LabVIEW, Scilab or Python) <remoteControl>`
+
+***********************************
+How to start with FPGA development?
+***********************************
+
+:ref:`Software <software>`
+
+******************
+How to upgrade OS?
+******************
+
+:ref:`Prepare SD card <prepareSD>`
+
+****************************************
+How to connect the external clock to RP?
+****************************************
+
+* :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 <external_125_14>`
+* :ref:`SDRlab 122-16 <external_122_16>`
 
 .. _internetAccess:
 
@@ -229,7 +265,7 @@ Please check if Ad blocker has been disabled on your browser and also check your
 Red Pitaya not booting anymore?
 *******************************
 
-Possible cause can be a corrupted card, and the recommendation is a manual OS re-write: :ref:`How to upgrade OS? <prepareSD>`
+Possible cause can be a corrupted card, and the recommendation is a manual OS re-write: :ref:`Prepare SD card <prepareSD>`
 
 ***********************************************************************************
 Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?
@@ -248,7 +284,13 @@ We recommend testing on a different computer, check the state of the Ethernet ca
 Red Pitaya not booting even after OS update?
 ********************************************
 
-Please use the BalenaEtcher application to re-write manually the OS. Disk imager is reported broken by the latest windows update. :ref:`How to upgrade OS? <prepareSD>`
+Please use the BalenaEtcher application to re-write manually the OS. Disk imager is reported broken by the latest windows update. :ref:`Prepare SD card <prepareSD>`
+
+*****************************
+Red Pitaya failing to update?
+*****************************
+
+Please use the BalenaEtcher application to re-write manually the OS. Disk imager is reported broken by the latest windows update. :ref:`Prepare SD card <prepareSD>`
 
 
 ********************

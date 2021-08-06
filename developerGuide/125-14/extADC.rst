@@ -1,3 +1,5 @@
+.. _external_125_14:
+
 External ADC clock
 ##################
 
