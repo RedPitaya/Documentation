@@ -115,9 +115,8 @@ Is Red Pitaya connected to my local network?
 
 .. _troubleshooting:
 
-*********************************
-Problems connecting to Red Pitaya
-*********************************
+Problems connecting to RP? (and you can even list other FAQs here, like what to try and what to check, from LEDs to browser..)
+******************************************************************************************************************************
 
 .. figure:: blinking-pitaya-eth.gif
    :align: center
