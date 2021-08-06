@@ -1,3 +1,5 @@
+.. _schematics_125_10:
+
 Schematics
 ##########
 

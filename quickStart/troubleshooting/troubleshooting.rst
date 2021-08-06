@@ -197,19 +197,59 @@ please check the following:
     
     For full preformence the wired connection is preffered.
 
+*************************
+WIFI dongle not detected?
+*************************
+
+Please note that not all are compatible, list is in the documentation: :ref:`Supported USB Wi-Fi adapters <support_wifi_adapter>`
+
+***************************************
+Where can I find Red Pitaya schematics?
+***************************************
+
+* :ref:`STEMlab 125-10 <schematics_125_10>`
+* :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 <schematics_125_14>`
+* :ref:`SDRlab 122-16 <schematics_122_16>`
+* :ref:`SIGNALlab 250-12 <schematics_250_12>`
+
+***********************************************************
+My device shows wrong measurements, how can I calibrate it?
+***********************************************************
+
+Red Pitaya can be calibrated using calibration tool.
+
 
 **********************************************************************
 Web interface not functioning properly or experimenting with freezing?
 **********************************************************************
 
-Please check if Ad blocker has been disabled on your browser and also check your proxy
-settings. For local connection to Red Pitaya unit proxy settings should not be required.
+Please check if Ad blocker has been disabled on your browser and also check your proxy settings. For local connection to Red Pitaya unit proxy settings should not be required.
 
 *******************************
 Red Pitaya not booting anymore?
 *******************************
 
 Possible cause can be a corrupted card, and the recommendation is a manual OS re-write: :ref:`How to upgrade OS? <prepareSD>`
+
+***********************************************************************************
+Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?
+***********************************************************************************
+
+No, the hardware is identical, the only difference is that the later would have been sent to a certification lab and the appropriate measurements were made.
+
+*************************
+Undesired disconnections?
+*************************
+
+We recommend testing on a different computer, check the state of the Ethernet cables and power supply, proxy settings, re-write OS.
+
+
+********************************************
+Red Pitaya not booting even after OS update?
+********************************************
+
+Please use the BalenaEtcher application to re-write manually the OS. Disk imager is reported broken by the latest windows update. :ref:`How to upgrade OS? <prepareSD>`
+
 
 ********************
 How to report a bug?

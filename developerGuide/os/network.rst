@@ -270,6 +270,8 @@ is enbled by the iptables service `/etc/systemd/system/iptables.service </OS/deb
 .. note:: This functionality combined with default passwords can be a serious security issue.
    And since it is not needed to provide advertized functionality, we might remove it in the future.
 
+.. _support_wifi_adapter:
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Supported USB WiFi adapters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
