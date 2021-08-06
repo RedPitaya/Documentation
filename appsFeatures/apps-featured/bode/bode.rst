@@ -95,7 +95,6 @@ termination on the OUT1.
 .. figure:: BA_Slika_04.png
 
 
-*******************
 Console application
 *******************
 
@@ -103,7 +102,7 @@ Bode Analyzer can be used from console.
 
 .. code-block:: console
 
-   root@rp-f01c35:~# lcr
+   root@rp-f01c35:~# bode
    Too few arguments!
 
    Bode analyzer version 1.04-133-feaf63b43, compiled at Fri Jan 22 04:25:24 2021

@@ -2,9 +2,9 @@
 Marketplace and contributed apps
 ################################
 
-********
+========
 Overview
-********
+========
 
 More Red Pitaya applications can be obtained from the Red Pitaya marketplace that is
 accessible through the Red Pitaya WEB interface or from other websites where Red
