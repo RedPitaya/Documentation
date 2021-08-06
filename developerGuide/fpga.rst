@@ -86,7 +86,7 @@ on the first Red Pitaya release.
 It is reccommended to use 0.94 release as default project.
 
 +-------------------+------------------------------------------------------------------+
-| ``prj/name``      | desctiption                                                      |
+| prj/name          | desctiption                                                      |
 +===================+==================================================================+
 | 0.93              | This is the original Red Pitaya release including all bugs.      |
 |                   | For deprecated application backward compatibility only.          |
