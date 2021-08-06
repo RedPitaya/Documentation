@@ -81,7 +81,7 @@ If your Red Pitaya is not listed on the list of your local network devices in th
 then it is necessary to check that your Red Pitaya is connected to your local network.
 
 ***********************************************************
-How to find Red Pitaya URL if it is not written on sticker.
+How to find Red Pitaya URL if it is not written on sticker?
 ***********************************************************
 
 Red Pitaya URL is ``rp-xxxxxx.local`` where ``xxxxxx`` must be replaced
@@ -149,17 +149,17 @@ Problems connecting to RP?
 
 #. If you are a Windows users make sure you have installed `Bonjour Print Services <http://redpitaya.com/bonjour>`_.
 
-**************************************************
-Problems with upgrading OS, accessing market place
-**************************************************
+***************************************************
+Problems with upgrading OS, accessing market place?
+***************************************************
 
 1. Make sure your Red Pitaya has access to the internet. :ref:`How <internetAccess>`?
 #. Force refresh of the Red Pitaya application page. `How <http://www.wikihow.com/Force-Refresh-in-Your-Internet-Browser>`_? 
 
 
-********************
-Slow WIFI connection
-********************
+*********************
+Slow WIFI connection?
+*********************
 
 If your wireless connection with Red Pitaya works very slowly and
 all the applications seems very unresponsive and are not running smoothly,
