@@ -115,6 +115,7 @@ Is Red Pitaya connected to my local network?
 
 .. _troubleshooting:
 
+******************************************************************************************************************************
 Problems connecting to RP? (and you can even list other FAQs here, like what to try and what to check, from LEDs to browser..)
 ******************************************************************************************************************************
 
