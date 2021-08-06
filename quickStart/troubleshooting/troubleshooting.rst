@@ -196,3 +196,15 @@ please check the following:
 .. note::
     
     For full preformence the wired connection is preffered.
+
+
+********************
+How to report a bug?
+********************
+
+To report a bug, please send us more information about:
+
+* Red Pitaya model used
+* Red Pitaya OS version
+* Information about bug
+* Clear instructions about how to reproduce it  via contact form.
