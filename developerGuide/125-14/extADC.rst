@@ -1,5 +1,5 @@
-External ADC clock
-##################
+How to connect the external clock to RP?
+########################################
 
 ADC clock can be provided by:
 
