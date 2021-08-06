@@ -149,7 +149,7 @@ Lcr meter can be used from console.
    Output:	Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
 
 
-For run the lcr, you need to do 23 steps:
+For run the lcr, you need to do 2 steps:
 
     #. ) Load the FPGA image of streaming
 

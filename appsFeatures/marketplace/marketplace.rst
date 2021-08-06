@@ -1,108 +1,143 @@
-###########
-Marketplace
-###########
+################################
+Marketplace and contributed apps
+################################
 
 ********
 Overview
 ********
 
-The Marketplace contains applications that were developed by the Red Pitaya community.
-Please note that the contributed applications are not supplied and tested by the Red Pitaya team.
-However, we are constantly in contact with the application developers
-and we strive to make these applications work in the best possible way.
-What do I need to use the Marketplace? To use the Red Pitaya Marketplace
-only one version of the Red Pitaya board is needed (STEM 125-10 or STEM 125-14).
-Some applications may require additional hardware/software.
-For additional guidance and information get in touch with the
-Red Pitaya community via the `forum <http://forum.redpitaya.com/>`_.
+More Red Pitaya applications can be obtained from the Red Pitaya marketplace that is
+accessible through the Red Pitaya WEB interface or from other websites where Red
+Pitaya community members share code or complete software packages that can be
+installed and run-on Red Pitaya hardware platforms.
+Notice that applications developed by the Red Pitaya community are not distributed or
+tested by the Red Pitaya team and that our team doesn’t take any responsibilities about.
+If you’d like to share feedback, report bugs or need help on contributed projects, apps
+and software, we highly recommend contacting project authors.
 
-==============
-PID controller
-==============
+=============================================
+SDR – Software Defined Radio (by Pavel Demin)
+=============================================
 
-A proportional–integral–derivative controller (PID controller) is a
-control loop feedback mechanism (controller) commonly used in industrial control systems.
-A PID controller continuously calculates an error value
-as the difference between a desired set point
-and a measured process variable and applies a correction
-based on proportional, integral, and derivative terms respectively
-(sometimes denoted P, I, and D) which give their name to the controller type.
-The MIMO PID controller consists of 4 standard PID controllers
-with P, I, and D parameter settings and integrator reset control.
-The output of each controller is summed with the output of the arbitrary signal generator.
-The PID can be controlled through FPGA registers that are described
-inside the PID controller section of the FPGA register map.
+Alongside other instruments, the Red Pitaya board can be used as a SDR platform. A
+simple installation of the SDR Transceiver application will transform your RedPitaya
+board into a SDR platform. To run the SDR on the RedPitaya board you will need to
+install one of the following types of SDR software such as HDSDR, SDR#, PowerSDR
+mRX PS, GNU Radio or similar.
+
+You can find more about the SDR software on the link:
+
+   http://pavel-demin.github.io/red-pitaya-notes/
 
 ========================================
 Vector Network Analyzer (by Pavel Demin)
 ========================================
 
-A vector network analyzer (VNA) is an instrument that measures
-the network parameters of electrical networks (commonly s-parameters).
-Vector network analyzers are often used to characterize two-port networks
-such as amplifiers and filters, but they can be used on
-networks with an arbitrary number of ports.
-This application will enable measurements of the desired DUT (Device Under Test)
-providing the measured results/parameters, such as:
+A vector network analyzer (VNA) is an instrument that measures the network
+parameters of electrical networks (commonly s-parameters). Vector network analyzers
+are often used to characterize two-port networks such as amplifiers and filters, but they
+can be used on networks with an arbitrary number of ports. This application will enable
+measurements of the desired DUT (Device Under Test) providing the measured
+results/parameters, such as:
 
 * Impedance
 * SWR
 * Reflection coefficient - Gama
 * Return loss.
 
-The measurements are nicely represented on the Smith chart.
-You can find more about the vector network analyzer at this link:
+The measurements are nicely represented on the Smith chart. You can find more about
+the vector network analyzer at this link:
 
    http://pavel-demin.github.io/red-pitaya-notes/vna/
 
-=============================================
-SDR – Software Defined Radio (by Pavel Demin)
-=============================================
 
-Alongside other instruments, the Red Pitaya board can be used as a SDR platform.
-A simple installation of the SDR Transceiver application will transform your RedPitaya board into a SDR platform.
-To run the SDR on the RedPitaya board you will need to install
-one of the following types of SDR software such as HDSDR, SDR#, PowerSDR mRX PS, GNU Radio or similar.
+========================================================================
+PyRPL (Lock-in amplifiers, digital filters and more by Leonhard Neuhaus)
+========================================================================
 
-You can find more about the SDR on the Red Pitaya at the links below:
+PyRPL is an open-source software package providing many instruments on Red Pitaya platform
+boards (e.g. oscilloscope, network analyzers, lock-in amplifiers, multiple automatic feedback
+controllers, digital filters and more). PyRPL is already used in many research groups all over
+the world, comes with a graphical interface and convenient Python API.
 
-   http://blog.redpitaya.com/red-pitaya-and-software-defined-radio/
+You can find more about the PyRPL at this link:
 
-   http://pavel-demin.github.io/red-pitaya-notes/ 
+   https://pyrpl.readthedocs.io/en/latest/
 
-============================
-RadioBox - (by Urlich Habel)
-============================
+===============================
+Lock-in + PID (by Marcelo Luda)
+===============================
 
-The RadioBox is a complete transmitter and receiver done in the FPGA.
-You can directly connect an antenna at the SMA RF In 2 port for receiving.
-At the SMA RF Out 2 port you can listen to the demodulated signal.
-The transmitter does it at the same time on the SMA In/Out 1 connectors.
-When an external SDR-software is desired, you can select the Linux AC97 sound driver
-as stereo channels in both directions to feed the FPGA or to grab the data streams.
-To connect a SDR you can set the two AC97 channels to the I- and Q-signals of the QMIXers modulation.
+**Lock-in+PID** is an application for the `RedPitaya <https://redpitaya.com/>`_ STEMlab 125-14 board that
+implements an Oscilloscope application and a Lock-in amplifier. It’s based on `relese0.95 scope application <https://github.com/RedPitaya/RedPitaya/tree/release-v0.95/apps-free/scope>`_ of the RedPitaya project.
 
-More details about the project can be found at the Wiki of RadioBox at the following link: 
+More about this project can be found here:
 
-   https://github.com/DF4IAH/RedPitaya_RadioBox/wiki
+   https://marceluda.github.io/rp_lock-in_pid/
 
-=================
-LTI DSP Workbench
-=================
+.. note::
 
-This application will model a physical system,
-turning the Red Pitaya board into almost any linear system
-that can be included into a measuring and control circuitry.
-The modeling of the physical system is done by simulating
-the system H(z) transfer function with the Red Pitaya board.
-In the application there are some predefined H(z) functions
-which will help you describe/simulate the desired system.
-Changing the parameters of the H(z) transfer function
-is done quickly through the application’s web interface.
+   Lock-in + PID application is available on Red Pitaya marketplace
 
-More about this application can be fund here:
 
-   http://blog.redpitaya.com/physical-system-modelling/
+==========================================================
+DSP sandbox ( free graphical DSP design tool by Pau Gomez)
+==========================================================
+
+Canvas is a free graphical DSP design tool that gives access to custom FPGA
+designs, specially suited for prototyping and users without prior knowledge on
+HDL languages or FPGA architectures.
+In short, a Canvas project consists of a DSP drawing, which is sent to a remote
+server for automatic VHDL generation, synthesis and implementation. The
+configuration and loading of the generated output products onto the host FPGA
+(Red Pitaya STEMLab 125-14) is performed through an intuitive graphical user
+interface (GUI).
+
+You can find more about the DSP sandbox at this link:
+
+   https://www.dspsandbox.org/Canvas/
+
+==============
+PID controller
+==============
+
+A proportional–integral–derivative controller (PID controller) is a control loop feedback
+mechanism (controller) commonly used in industrial control systems. A PID controller
+continuously calculates an error value as the difference between a desired set point and
+a measured process variable and applies a correction based on proportional, integral,
+and derivative terms respectively (sometimes denoted P, I, and D) which give their
+name to the controller type. The MIMO PID controller consists of 4 standard PID
+controllers with P, I, and D parameter settings and integrator reset control. The output of
+each controller is summed with the output of the arbitrary signal generator. The PID can
+be controlled through FPGA registers that are described inside the PID controller
+section of the FPGA register map.
+
+==========================================================
+OCRA – Open Source Console for Real-Time Acquisition / MRI
+==========================================================
+
+OCRA stands for Open-source Console for Real-time Acquisition. It is a low-cost, open-source
+console (hardware controller) for MRI running on `STEMLab/Red Pitaya 125-14 <https://redpitaya.com/shop/>`_ board.
+Conventional MRI consoles may be high cost, closed-source, and inflexible, in that it is not
+possible to change acquisition parameters once the scan is started. In contrast, OCRA is under
+$500, open-source, and capable of real-time updates: the console can make changes to the
+pulse sequence based on the acquired data, enabling closed-loop control of the scan. 
+
+More information about OCRA can be found here:
+
+   https://www.opensourceimaging.org/project/ocra-open-source-console-for-real-time-acquisition/
+
+==============
+Power analyzer
+==============
+
+More about Teslameter can be found here:
+
+   https://repozitorij.uni-lj.si/IzpisGradiva.php?id=85012&lang=slv
+
+.. note::
+
+   Power analyzer application is available on Red Pitaya marketplace.
 
 ===========================
 Frequency Response analyzer
@@ -130,22 +165,9 @@ How to connect DUT to the Red Pitaya when using Frequency Response analyser is s
 
 .. figure:: 600px-Frequency_response_analyzer_connections.png
 
-==========
-Teslameter
-==========
+.. note::
 
-EMC or electromagnetic compatibility is the property of the equipment
-telling us about the devices' emission of unwanted electromagnetic energy
-and how they behave in an interfered environment.
-It also tells us what effects the emitted energy induces.
-This application is used for measuring the magnetic field
-that is part of unintended or unwanted electromagnetic emissions.
-When using this application, an additional front-end is needed
-where the application (trough gain parameters) can be adjusted to the users of front-ends.
-
-More about this application can be found here:
-
-   http://blog.redpitaya.com/emc-measurements-teslameter-project/
+   Frequency response analyzer application is available on Red Pitaya marketplace.
 
 ==================
 Impedance analyzer
@@ -213,6 +235,32 @@ using manual setting of shunt resistor. This option is described below.
 
 .. figure:: 600px-Impedance_analyzer_manaul_R_Shunt.png
 
+.. note::
+
+   Impedance analyzer application is available on Red Pitaya marketplace.
+
+=================
+LTI DSP Workbench
+=================
+
+This application will model a physical system,
+turning the Red Pitaya board into almost any linear system
+that can be included into a measuring and control circuitry.
+The modeling of the physical system is done by simulating
+the system H(z) transfer function with the Red Pitaya board.
+In the application there are some predefined H(z) functions
+which will help you describe/simulate the desired system.
+Changing the parameters of the H(z) transfer function
+is done quickly through the application’s web interface.
+
+More about this application can be fund here:
+
+   http://blog.redpitaya.com/physical-system-modelling/
+
+.. note::
+
+   LTI DSP workbench application is available on Red Pitaya marketplace.
+
 =====================================================
 Multichannel Pulse Height Analyzer – (by Pavel Demin)
 =====================================================
@@ -229,5 +277,97 @@ whose period can be in the range from 1us to 1s.
 More about this application can be found here:
 
    http://pavel-demin.github.io/red-pitaya-notes/mcpha/
+
+
+=====================================================
+Multiband WSPR transceiver – (by Pavel Demin)
+=====================================================
+
+WSPR implements a protocol designed for probing potential propagation paths
+with low-power transmissions.
+
+You can find more about the WSPR transceiver software on the link:
+
+   http://pavel-demin.github.io/red-pitaya-notes/
+
+
+============================
+RadioBox - (by Urlich Habel)
+============================
+
+The RadioBox is a complete transmitter and receiver done in the FPGA.
+You can directly connect an antenna at the SMA RF In 2 port for receiving.
+At the SMA RF Out 2 port you can listen to the demodulated signal.
+The transmitter does it at the same time on the SMA In/Out 1 connectors.
+When an external SDR-software is desired, you can select the Linux AC97 sound driver
+as stereo channels in both directions to feed the FPGA or to grab the data streams.
+To connect a SDR you can set the two AC97 channels to the I- and Q-signals of the QMIXers modulation.
+
+More details about the project can be found at the Wiki of RadioBox at the following link: 
+
+   https://github.com/DF4IAH/RedPitaya_RadioBox/wiki
+
+.. note::
+
+   RadioBox application is available on Red Pitaya marketplace.
+
+============================
+Open source Red Pitaya Radar
+============================
+
+Radar using Red Pitaya for RF and Raspberry Pi 3 / 4 for quad-core signal processing. Initially
+used for ionospheric imaging at HF but via frequency translation could be used at microwave
+and other frequencies.
+
+More about PiRadar can be found here:
+
+   https://www.scivision.dev/open-source-radar/
+
+   https://github.com/space-physics/piradar
+
+
+=============================================
+EPICS driver for Red Pitaya (by Andraz Pozar)
+=============================================
+
+EPICS driver support for Red Pitaya based on asynPortDriver. This module is to be run on the
+Red Pitaya itself.
+
+More about EPICS driver can be found here:
+
+   https://github.com/AustralianSynchrotron/redpitaya-epics
+
+====================================================
+Qt GUI application on Red Pitaya (by Primoz Beltram)
+====================================================
+
+Purpose of this project is to demonstrate usage of Qt GUI application on Red Piatya Zynq based
+system. Such system becomes standalone, portable, battery power-supply system.
+
+More information can be found here:
+
+   https://github.com/pbeltram/redpitaya_gui
+
+
+==========
+Teslameter
+==========
+
+EMC or electromagnetic compatibility is the property of the equipment
+telling us about the devices' emission of unwanted electromagnetic energy
+and how they behave in an interfered environment.
+It also tells us what effects the emitted energy induces.
+This application is used for measuring the magnetic field
+that is part of unintended or unwanted electromagnetic emissions.
+When using this application, an additional front-end is needed
+where the application (trough gain parameters) can be adjusted to the users of front-ends.
+
+More about this application can be found here:
+
+   https://dl.dropboxusercontent.com/s/6akk0nzebsa93u6/EMC%26Teslameter_doc.pdf
+
+
+
+
 
 
