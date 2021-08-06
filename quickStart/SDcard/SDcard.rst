@@ -51,6 +51,8 @@ SIGNALlab 250-12:
       :align: center
 
 .. note::
+   
+   The video shows how to identify the RedPitaya model and write a memory card.
 
    .. raw:: html
 
