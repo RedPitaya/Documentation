@@ -2,9 +2,9 @@
 Marketplace and contributed apps
 ################################
 
-========
+********
 Overview
-========
+********
 
 More Red Pitaya applications can be obtained from the Red Pitaya marketplace that is
 accessible through the Red Pitaya WEB interface or from other websites where Red
@@ -15,9 +15,9 @@ tested by the Red Pitaya team and that our team doesn’t take any responsibilit
 If you’d like to share feedback, report bugs or need help on contributed projects, apps
 and software, we highly recommend contacting project authors.
 
-=============================================
+*********************************************
 SDR – Software Defined Radio (by Pavel Demin)
-=============================================
+*********************************************
 
 Alongside other instruments, the Red Pitaya board can be used as a SDR platform. A
 simple installation of the SDR Transceiver application will transform your RedPitaya
@@ -29,9 +29,10 @@ You can find more about the SDR software on the link:
 
    http://pavel-demin.github.io/red-pitaya-notes/
 
-========================================
+
+****************************************
 Vector Network Analyzer (by Pavel Demin)
-========================================
+****************************************
 
 A vector network analyzer (VNA) is an instrument that measures the network
 parameters of electrical networks (commonly s-parameters). Vector network analyzers
@@ -51,9 +52,9 @@ the vector network analyzer at this link:
    http://pavel-demin.github.io/red-pitaya-notes/vna/
 
 
-========================================================================
+************************************************************************
 PyRPL (Lock-in amplifiers, digital filters and more by Leonhard Neuhaus)
-========================================================================
+************************************************************************
 
 PyRPL is an open-source software package providing many instruments on Red Pitaya platform
 boards (e.g. oscilloscope, network analyzers, lock-in amplifiers, multiple automatic feedback
@@ -64,9 +65,9 @@ You can find more about the PyRPL at this link:
 
    https://pyrpl.readthedocs.io/en/latest/
 
-===============================
+*******************************
 Lock-in + PID (by Marcelo Luda)
-===============================
+*******************************
 
 **Lock-in+PID** is an application for the `RedPitaya <https://redpitaya.com/>`_ STEMlab 125-14 board that
 implements an Oscilloscope application and a Lock-in amplifier. It’s based on `relese0.95 scope application <https://github.com/RedPitaya/RedPitaya/tree/release-v0.95/apps-free/scope>`_ of the RedPitaya project.
@@ -80,9 +81,9 @@ More about this project can be found here:
    Lock-in + PID application is available on Red Pitaya marketplace
 
 
-==========================================================
+**********************************************************
 DSP sandbox ( free graphical DSP design tool by Pau Gomez)
-==========================================================
+**********************************************************
 
 Canvas is a free graphical DSP design tool that gives access to custom FPGA
 designs, specially suited for prototyping and users without prior knowledge on
@@ -97,9 +98,9 @@ You can find more about the DSP sandbox at this link:
 
    https://www.dspsandbox.org/Canvas/
 
-==============
+**************
 PID controller
-==============
+**************
 
 A proportional–integral–derivative controller (PID controller) is a control loop feedback
 mechanism (controller) commonly used in industrial control systems. A PID controller
@@ -112,9 +113,9 @@ each controller is summed with the output of the arbitrary signal generator. The
 be controlled through FPGA registers that are described inside the PID controller
 section of the FPGA register map.
 
-==========================================================
+**********************************************************
 OCRA – Open Source Console for Real-Time Acquisition / MRI
-==========================================================
+**********************************************************
 
 OCRA stands for Open-source Console for Real-time Acquisition. It is a low-cost, open-source
 console (hardware controller) for MRI running on `STEMLab/Red Pitaya 125-14 <https://redpitaya.com/shop/>`_ board.
@@ -127,9 +128,9 @@ More information about OCRA can be found here:
 
    https://www.opensourceimaging.org/project/ocra-open-source-console-for-real-time-acquisition/
 
-==============
+**************
 Power analyzer
-==============
+**************
 
 More about Teslameter can be found here:
 
@@ -139,9 +140,9 @@ More about Teslameter can be found here:
 
    Power analyzer application is available on Red Pitaya marketplace.
 
-===========================
+***************************
 Frequency Response analyzer
-===========================
+***************************
 
 The Frequency Response analyzer enables the measurements of
 the frequency amplitude response of the desired DUT (Device Under Test).
@@ -169,9 +170,9 @@ How to connect DUT to the Red Pitaya when using Frequency Response analyser is s
 
    Frequency response analyzer application is available on Red Pitaya marketplace.
 
-==================
+******************
 Impedance analyzer
-==================
+******************
 
 The Impedance analyzer application enables measurements of
 Impedance, Phase and other parameters of the selected DUT (Device Under Test).
@@ -239,9 +240,9 @@ using manual setting of shunt resistor. This option is described below.
 
    Impedance analyzer application is available on Red Pitaya marketplace.
 
-=================
+*****************
 LTI DSP Workbench
-=================
+*****************
 
 This application will model a physical system,
 turning the Red Pitaya board into almost any linear system
@@ -261,9 +262,9 @@ More about this application can be fund here:
 
    LTI DSP workbench application is available on Red Pitaya marketplace.
 
-=====================================================
+*****************************************************
 Multichannel Pulse Height Analyzer – (by Pavel Demin)
-=====================================================
+*****************************************************
 
 The Multichannel Pulse Height Analyzer (MCPHA) is an instrument used for the analysis of electrical signals
 in the form of pulses of varying heights which may come from different sensors and similar.
@@ -279,9 +280,9 @@ More about this application can be found here:
    http://pavel-demin.github.io/red-pitaya-notes/mcpha/
 
 
-=====================================================
+*****************************************************
 Multiband WSPR transceiver – (by Pavel Demin)
-=====================================================
+*****************************************************
 
 WSPR implements a protocol designed for probing potential propagation paths
 with low-power transmissions.
@@ -291,9 +292,9 @@ You can find more about the WSPR transceiver software on the link:
    http://pavel-demin.github.io/red-pitaya-notes/
 
 
-============================
+****************************
 RadioBox - (by Urlich Habel)
-============================
+****************************
 
 The RadioBox is a complete transmitter and receiver done in the FPGA.
 You can directly connect an antenna at the SMA RF In 2 port for receiving.
@@ -311,9 +312,9 @@ More details about the project can be found at the Wiki of RadioBox at the follo
 
    RadioBox application is available on Red Pitaya marketplace.
 
-============================
+****************************
 Open source Red Pitaya Radar
-============================
+****************************
 
 Radar using Red Pitaya for RF and Raspberry Pi 3 / 4 for quad-core signal processing. Initially
 used for ionospheric imaging at HF but via frequency translation could be used at microwave
@@ -326,9 +327,9 @@ More about PiRadar can be found here:
    https://github.com/space-physics/piradar
 
 
-=============================================
+*********************************************
 EPICS driver for Red Pitaya (by Andraz Pozar)
-=============================================
+*********************************************
 
 EPICS driver support for Red Pitaya based on asynPortDriver. This module is to be run on the
 Red Pitaya itself.
@@ -337,9 +338,9 @@ More about EPICS driver can be found here:
 
    https://github.com/AustralianSynchrotron/redpitaya-epics
 
-====================================================
+****************************************************
 Qt GUI application on Red Pitaya (by Primoz Beltram)
-====================================================
+****************************************************
 
 Purpose of this project is to demonstrate usage of Qt GUI application on Red Piatya Zynq based
 system. Such system becomes standalone, portable, battery power-supply system.
@@ -349,9 +350,9 @@ More information can be found here:
    https://github.com/pbeltram/redpitaya_gui
 
 
-==========
+**********
 Teslameter
-==========
+**********
 
 EMC or electromagnetic compatibility is the property of the equipment
 telling us about the devices' emission of unwanted electromagnetic energy
