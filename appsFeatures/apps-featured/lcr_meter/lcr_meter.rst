@@ -127,9 +127,9 @@ the user expects some value in creating ranges, then the Manual mode can be used
     - Min, Max, Average measurements  
     - 1000 logging points   
 
-=========================
+
 Console application
-=========================
+************************
 
 Lcr meter can be used from console.
 
