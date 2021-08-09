@@ -15,160 +15,20 @@ tested by the Red Pitaya team and that our team doesn’t take any responsibilit
 If you’d like to share feedback, report bugs or need help on contributed projects, apps
 and software, we highly recommend contacting project authors.
 
-*********************************************
-SDR – Software Defined Radio (by Pavel Demin)
-*********************************************
+.. toctree::
+   :maxdepth: 2
 
-Alongside other instruments, the Red Pitaya board can be used as a SDR platform. A
-simple installation of the SDR Transceiver application will transform your RedPitaya
-board into a SDR platform. To run the SDR on the RedPitaya board you will need to
-install one of the following types of SDR software such as HDSDR, SDR#, PowerSDR
-mRX PS, GNU Radio or similar.
-
-You can find more about the SDR software on the link:
-
-   http://pavel-demin.github.io/red-pitaya-notes/
-
-
-****************************************
-Vector Network Analyzer (by Pavel Demin)
-****************************************
-
-A vector network analyzer (VNA) is an instrument that measures the network
-parameters of electrical networks (commonly s-parameters). Vector network analyzers
-are often used to characterize two-port networks such as amplifiers and filters, but they
-can be used on networks with an arbitrary number of ports. This application will enable
-measurements of the desired DUT (Device Under Test) providing the measured
-results/parameters, such as:
-
-* Impedance
-* SWR
-* Reflection coefficient - Gama
-* Return loss.
-
-The measurements are nicely represented on the Smith chart. You can find more about
-the vector network analyzer at this link:
-
-   http://pavel-demin.github.io/red-pitaya-notes/vna/
+   sdr.rst
+   vna.rst
+   PyRPL.rst
+   Lock-in.rst
+   dsp.rst
+   pid.rst
+   ocra.rst
+   power_anal.rst
+   freq_res_anal.rst
 
 
-************************************************************************
-PyRPL (Lock-in amplifiers, digital filters and more by Leonhard Neuhaus)
-************************************************************************
-
-PyRPL is an open-source software package providing many instruments on Red Pitaya platform
-boards (e.g. oscilloscope, network analyzers, lock-in amplifiers, multiple automatic feedback
-controllers, digital filters and more). PyRPL is already used in many research groups all over
-the world, comes with a graphical interface and convenient Python API.
-
-You can find more about the PyRPL at this link:
-
-   https://pyrpl.readthedocs.io/en/latest/
-
-*******************************
-Lock-in + PID (by Marcelo Luda)
-*******************************
-
-**Lock-in+PID** is an application for the `RedPitaya <https://redpitaya.com/>`_ STEMlab 125-14 board that
-implements an Oscilloscope application and a Lock-in amplifier. It’s based on `relese0.95 scope application <https://github.com/RedPitaya/RedPitaya/tree/release-v0.95/apps-free/scope>`_ of the RedPitaya project.
-
-More about this project can be found here:
-
-   https://marceluda.github.io/rp_lock-in_pid/
-
-.. note::
-
-   Lock-in + PID application is available on Red Pitaya marketplace
-
-
-**********************************************************
-DSP sandbox ( free graphical DSP design tool by Pau Gomez)
-**********************************************************
-
-Canvas is a free graphical DSP design tool that gives access to custom FPGA
-designs, specially suited for prototyping and users without prior knowledge on
-HDL languages or FPGA architectures.
-In short, a Canvas project consists of a DSP drawing, which is sent to a remote
-server for automatic VHDL generation, synthesis and implementation. The
-configuration and loading of the generated output products onto the host FPGA
-(Red Pitaya STEMLab 125-14) is performed through an intuitive graphical user
-interface (GUI).
-
-You can find more about the DSP sandbox at this link:
-
-   https://www.dspsandbox.org/Canvas/
-
-**************
-PID controller
-**************
-
-A proportional–integral–derivative controller (PID controller) is a control loop feedback
-mechanism (controller) commonly used in industrial control systems. A PID controller
-continuously calculates an error value as the difference between a desired set point and
-a measured process variable and applies a correction based on proportional, integral,
-and derivative terms respectively (sometimes denoted P, I, and D) which give their
-name to the controller type. The MIMO PID controller consists of 4 standard PID
-controllers with P, I, and D parameter settings and integrator reset control. The output of
-each controller is summed with the output of the arbitrary signal generator. The PID can
-be controlled through FPGA registers that are described inside the PID controller
-section of the FPGA register map.
-
-**********************************************************
-OCRA – Open Source Console for Real-Time Acquisition / MRI
-**********************************************************
-
-OCRA stands for Open-source Console for Real-time Acquisition. It is a low-cost, open-source
-console (hardware controller) for MRI running on `STEMLab/Red Pitaya 125-14 <https://redpitaya.com/shop/>`_ board.
-Conventional MRI consoles may be high cost, closed-source, and inflexible, in that it is not
-possible to change acquisition parameters once the scan is started. In contrast, OCRA is under
-$500, open-source, and capable of real-time updates: the console can make changes to the
-pulse sequence based on the acquired data, enabling closed-loop control of the scan. 
-
-More information about OCRA can be found here:
-
-   https://www.opensourceimaging.org/project/ocra-open-source-console-for-real-time-acquisition/
-
-**************
-Power analyzer
-**************
-
-More about Teslameter can be found here:
-
-   https://repozitorij.uni-lj.si/IzpisGradiva.php?id=85012&lang=slv
-
-.. note::
-
-   Power analyzer application is available on Red Pitaya marketplace.
-
-***************************
-Frequency Response analyzer
-***************************
-
-The Frequency Response analyzer enables the measurements of
-the frequency amplitude response of the desired DUT (Device Under Test).
-The measurements of the frequency response are in the range from 0Hz to 60MHz.
-The measurements are done in real time and the frequency range is NOT adjustable.
-Measuring can be done for each channel independently,
-i.e. it enables simultaneous measurements of two DUTs.
-The application works in such way that it is generating band noise signals on OUT1 and OUT2,
-this signal is fed to the DUT where the DUT’s response is acquired on IN1 and IN2.
-The acquired signals are analyzed using the DFT algorithm and
-the frequency response of the DUT is plotted on the GUI.
-This application is very useful for filter measurements and similar.
-
-.. figure:: 600px-F_analyzer.png
-
-Frequency response analyzer enables measurements of frequency amplitude response of desired DUT (Device Under Test).
-The measurements of frequency response are in range from 0Hz to 60MHz.
-Measurements are in real time and the frequency range is NOT adjustable.
-Measurement can be done for each channel independently, i.e it enables simultaneously measurements of two DUTs.
-How to connect DUT to the Red Pitaya when using Frequency Response analyser is shown in picture below.
-
-.. figure:: 600px-Frequency_response_analyzer_connections.png
-
-.. note::
-
-   Frequency response analyzer application is available on Red Pitaya marketplace.
 
 ******************
 Impedance analyzer
