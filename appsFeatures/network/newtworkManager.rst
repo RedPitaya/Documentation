@@ -29,7 +29,7 @@ Red Pitaya boards can be connected over:
 .. figure:: ../../quickStart/connect/connect-1.png
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
 
    ../../quickStart/connect/connect.rst

@@ -5,8 +5,17 @@ Applications and Features
 .. toctree::
    :maxdepth: 2
 
-   apps-featured/apps-featured
-   network/newtworkManager.rst
+   applications/apps-featured.rst
    jupyter/Jupyter.rst
    remoteControl/remoteControl
    supportedFeaturesAndApps
+
+
+#########################
+System tools
+#########################
+
+.. toctree::
+   :maxdepth: 2
+
+   network/newtworkManager.rst
