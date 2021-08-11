@@ -1,26 +1,3 @@
-##########################
-Connect to your Red Pitaya
-##########################
-
-.. TODO preveri slovnico
-
-Red Pitaya boards are network attachable devices focused
-on simple connectivity and quick accessibility.
-Having a graphical user interface for your Oscilloscope,
-Signal Generator, LCR meter and other Red Pitaya applications,
-directly on your PC without any limitations such are limited
-commands or controls or any installation of additional
-software will provide you with a unique working experience.
-
-Red Pitaya boards can be connected over:
-
-#. Local Area Network (LAN) - Requires a DHCP server on your LAN router
-#. Direct Ethernet cable connection - Requires additional setting on users PC and Red Pitaya board
-#. Wireless Network client - Requires an additional WiFi dongle available at Red Pitaya store
-#. Access Point Mode - Red Pitaya board creates its own WiFi network
-
-.. figure:: connect-1.png
-
 *****
 Wired
 *****
@@ -56,7 +33,9 @@ After the **third step** you will get a Red Pitaya main page as shown below.
 .. figure:: connect-3.png
 
    Figure 2: Red Pitaya main page user interface.
-    
+
+.. _dir_cab_connect:
+
 ================================
 Direct Ethernet cable connection
 ================================

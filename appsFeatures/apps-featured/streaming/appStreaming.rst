@@ -30,7 +30,7 @@ Streamed data can be stored into:
 Max. streaming speeds are limited to:
 
     * 10MB/s for streaming to SD card (SD card class 10 recommended for best streaming performance)
-    * 20MB/s for streaming over 1Gbit network (`direct ethernet connection is recommended to achieve best streaming performance <https://redpitaya.readthedocs.io/en/latest/quickStart/connect/connect.html#direct-ethernet-cable-connection>`__.)
+    * 20MB/s for streaming over 1Gbit network (:ref:`direct ethernet connection is recommended to achieve best streaming performance <_dir_cab_connect>`.)
 
 
 **********************************************

@@ -6,7 +6,7 @@ Applications and Features
    :maxdepth: 2
 
    apps-featured/apps-featured
-   newtworkManager
+   network/newtworkManager.rst
    jupyter/Jupyter.rst
    remoteControl/remoteControl
    supportedFeaturesAndApps
