@@ -8,10 +8,10 @@ Applications
    
    ./oscSigGen/osc.rst
    ./spectrum/spectrum.rst
-   ./bode/bode.rst
    ./logic/logic.rst
+   ./bode/bode.rst
    ./lcr_meter/lcr_meter.rst
-   ./sdr/appSDR.rst
-   ./marketplace/marketplace.rst
-   ./vna/appVNA.rst
    ./streaming/appStreaming.rst
+   ./sdr/appSDR.rst
+   ./vna/appVNA.rst
+   ./marketplace/marketplace.rst
