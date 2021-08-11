@@ -10,12 +10,3 @@ Applications and Features
    remoteControl/remoteControl
    supportedFeaturesAndApps
 
-
-#########################
-System tools
-#########################
-
-.. toctree::
-   :maxdepth: 2
-
-   network/newtworkManager.rst
