@@ -26,10 +26,10 @@ Red Pitaya boards can be connected over:
 #. Wireless Network client - Requires an additional WiFi dongle available at Red Pitaya store
 #. Access Point Mode - Red Pitaya board creates its own WiFi network
 
-.. figure:: ../quickStart/connect/connect-1.png
+.. figure:: ../../quickStart/connect/connect-1.png
 
 .. toctree::
    :maxdepth: 2
    
 
-   ../quickStart/connect/connect.rst
+   ../../quickStart/connect/connect.rst
