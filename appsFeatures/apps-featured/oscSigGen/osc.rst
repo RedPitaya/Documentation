@@ -32,6 +32,7 @@ Features
 ********
 
 Oscilloscope & signal generator main features are listed below:
+
     - Run/stop and auto set functionality
     - Signals position and scale controls
     - Trigger controls (source, level, slope)
@@ -319,5 +320,10 @@ Signal generator
 | Output load      | 50 Ω                 | 50 Ω                 | 50 Ω                 | 50 Ω                                    |
 +------------------+----------------------+----------------------+----------------------+-----------------------------------------+
 
-.. [#f1] jumper selectable
-.. [#f2] software selectable
+.. [#f1]
+
+    jumper selectable
+
+.. [#f2]
+
+    software selectable
