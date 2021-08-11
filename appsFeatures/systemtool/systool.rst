@@ -6,3 +6,4 @@ System tools
    :maxdepth: 2
 
    newtworkManager.rst
+   :ref:`Software update<softwareupdate>`

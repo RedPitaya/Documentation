@@ -332,6 +332,7 @@ The OS is changed less frequently.
    A list of new features, bugfixes and known bugs for each Red Pitaya release
    can be found in our `CHANGELOG`_.
 
+.. _softwareupdate:
 
 #############################
 Upgrading Red Pitaya software
