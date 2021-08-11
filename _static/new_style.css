@@ -90,3 +90,10 @@ code, .rst-content tt, .rst-content code {
 pre span {
     font-family: 'Fira Mono', monospace;
 }
+
+.rst-content dl:not(.docutils) dt {
+    border-top: none;
+    color: #404040;
+    font-weight: 400;
+    background: none;
+}
