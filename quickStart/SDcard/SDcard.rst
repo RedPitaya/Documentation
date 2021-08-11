@@ -330,18 +330,15 @@ The OS is changed less frequently.
 .. note::
 
    A list of new features, bugfixes and known bugs for each Red Pitaya release
-   can be found in our `CHANGELOG`_.
+   can be found in our `CHANGELOG <https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md>`_.
 
-#############################
-Upgrading Red Pitaya software
-#############################
-
-Instead of writing the whole SD card image,
-it is possible to upgrade only the ecosystem.
 
 **************
 Manual upgrade
 **************
+
+Instead of writing the whole SD card image,
+it is possible to upgrade only the ecosystem.
 
 A manual upgrade allows you to fix a corrupted SD card image
 (if only the FAT partition is corrupted) or to install
