@@ -11,4 +11,4 @@ Red Pitaya platforms
    125-14-Z20/top.rst
    122-16/top.rst
    250-12/top.rst
-   vs/vs.rst
+   compares/vs.rst
