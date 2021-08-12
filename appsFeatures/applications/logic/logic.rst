@@ -30,7 +30,7 @@ Apart from the actual graph, there are again 5 key areas/elements, in which the 
       displayed.
    #. **Status Display:** Displays information about the current state of the recording (stop, wait, ready).
 
-FEATURES
+Features
 ********
 
 ANALYZING BINARY SIGNALS
@@ -105,7 +105,7 @@ between the two.
 
 .. figure:: Slika_08_LA.png
 
-SPECIFICATIONS
+Specifications
 **************
 
 +-------------------------+----------------------+----------------------+

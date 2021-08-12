@@ -28,7 +28,7 @@ The graphical interface is divided into 4 main areas:
 
 .. figure:: Slika_02_SA.png
 
-FEATURES
+Features
 ********
 
 The main features of the DFT Spectrum analyzer are described below:
@@ -113,7 +113,7 @@ in the main interface. Green status indicates that the sampling clock is locked 
 .. figure:: Slika_08_SA.png
     :width: 30%
 
-SPECIFICATIONS
+Specifications
 **************
 
 +-------------------------------+----------------------+----------------------+----------------------+--------------------------------+
