@@ -7,7 +7,6 @@ Applications and Features
 
    applications/apps-featured.rst
    systemtool/systool.rst
-   jupyter/Jupyter.rst
-   remoteControl/remoteControl
-   supportedFeaturesAndApps
+   remoteControl/remoteAndProg.rst
+   supportedFeaturesAndApps.rst
 

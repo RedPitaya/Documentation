@@ -1,6 +1,6 @@
 .. _remoteControl:
 
-Remote control (MATLAB, LabVIEW, Scilab or Python)
+SCPI server (MATLAB, LabVIEW, Scilab or Python)
 ##################################################
 
 .. https://owncloud.redpitaya.com/index.php/apps/files/?dir=%2FWEB%20page%2Fapps%2FSCPI
