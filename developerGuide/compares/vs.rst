@@ -3,14 +3,27 @@ Red Pitaya boards comparison
 
 .. _rp-board-comp:
 
-.. figure:: vs_10.jpg
-   :width: 30%
+.. tabs::
+
+   .. group-tab:: STEMlab 125-10  
+
+      .. figure:: vs_10.jpg
+         :width: 30%
+         :align: center
+
+   .. group-tab:: STEMlab 125-14 and STEMlab 125-14-Z7020
+
+      .. figure:: vs_14.jpg
+         :width: 30%
+         :align: center
    
-.. figure:: vs_14.jpg
-   :width: 30%
+   .. group-tab:: SDRlab 122-16
+
+      .. figure:: vs_16.jpg
+         :width: 30%
+         :align: center
    
-.. figure:: vs_16.jpg
-   :width: 30%
+
 
 Red Pitaya is available in three versions, all offer the same functions and features with the difference in technical specification
 of high-frequency inputs and outputs, RAM capacity some other differences (find more info in the comparison table bellow).
@@ -18,9 +31,8 @@ They are addressed to target different groups and / or needs. Where STEMlab 14 h
 highly accurate measurement results in professional environment, STEMlab 10 has 10bit input / output channels and is perfect
 for universities,students and makers, SDRlab 122-16 is tailored for SDR applications.
 
-.. -> http://redpitaya.com/boards/stemlab-boards/
-
 .. figure:: boards_1.jpg
+   :align: center
 
 
 .. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
