@@ -5,5 +5,5 @@ Hardware
    :maxdepth: 2
    
 
-   platforms.rst
-   ext_modules.rst
+   hardware/platforms.rst
+   hardware/ext_modules.rst
