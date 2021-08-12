@@ -5,5 +5,5 @@ Developers guide
     :maxdepth: 2
 
     hardware
-    software
+    software/software.rst
     examples
