@@ -1,8 +1,8 @@
 .. _ssh:
 
-##############
-SSH connection
-##############
+###############################
+Establish remote SSH connection
+###############################
 
 Access information for SSH connection:
 

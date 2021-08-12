@@ -7,14 +7,14 @@ Software
    :maxdepth: 2
 
    console/console_con.rst
-   software/webApps
-   software/clt
-   ecosystem/ecosystem
-   os/debian
+   build/build.rst
+
+
+   
+   
    os/release   
    os/network
-   fpga
-   comC
+
    gpio/gpio
    software/manualApps.rst
 

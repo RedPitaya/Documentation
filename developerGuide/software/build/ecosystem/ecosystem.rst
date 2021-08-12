@@ -1,8 +1,8 @@
 .. _ecosystem:
 
-###############
-Ecosystem Guide
-###############
+##########################
+Build Red Pitaya ecosystem
+##########################
 
 Go to red pitaya (git) directory.
 

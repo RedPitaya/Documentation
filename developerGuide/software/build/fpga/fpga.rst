@@ -1,6 +1,7 @@
-####
-FPGA
-####
+################
+Build FPGA image
+################
+
 The following build instructions were tested on Ubuntu 18.04.
 
 Before trying to build the FPGA project, please refer to :ref:`Ecosystem Guide <ecosystem>`, :ref:`Software requirements <sys-req-label>` and :ref:`Building process <build-proc-label>`.

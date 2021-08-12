@@ -1,8 +1,8 @@
 .. _console:
 
-*************
-Debug console
-*************
+*************************
+Setting up serial console
+*************************
 
 The debug console can be used to follow the boot process:
 
