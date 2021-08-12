@@ -8,5 +8,4 @@ Other useful information
     os/network.rst
     gpio/gpio.rst
     manualApps/manualApps.rst
-    os/release.rst
     tft/TFT.rst
