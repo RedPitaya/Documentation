@@ -54,7 +54,7 @@ Connecting the LCR module
 
 .. figure:: E_module_connection.png
        
-FEATURES
+Features
 ********
 
 The main features of the LCR meter applications are described below:

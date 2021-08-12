@@ -37,7 +37,7 @@ The graphical interface is divided into 5 areas:
 #. **Phase graph:** The Phase frequency response of the DUT (device under test) is plotted for the selected frequency 
    range.
 
-FEATURES
+Features
 ********
 
 Main feature of the Bode analyzer application are described below:
