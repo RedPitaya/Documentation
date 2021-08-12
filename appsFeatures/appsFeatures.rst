@@ -8,5 +8,7 @@ Applications and Features
    applications/apps-featured.rst
    systemtool/systool.rst
    remoteControl/remoteAndProg.rst
+   command_line_tools/com_line_tool.rst
    supportedFeaturesAndApps.rst
+   
 
