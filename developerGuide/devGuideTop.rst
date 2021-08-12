@@ -6,4 +6,3 @@ Developers guide
 
     hardware
     software/software.rst
-    examples

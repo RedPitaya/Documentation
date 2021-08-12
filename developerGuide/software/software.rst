@@ -8,13 +8,7 @@ Software
 
    console/console_con.rst
    build/build.rst
+   other_info/info.rst
 
 
-   
-   
-   os/release   
-   os/network
-
-   gpio/gpio
-   software/manualApps.rst
 
