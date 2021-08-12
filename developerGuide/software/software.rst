@@ -6,13 +6,12 @@ Software
 .. toctree::
    :maxdepth: 2
 
+   console/console_con.rst
    software/webApps
    software/clt
    ecosystem/ecosystem
    os/debian
-   os/release
-   os/ssh/ssh
-   os/console/console
+   os/release   
    os/network
    fpga
    comC
