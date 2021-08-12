@@ -7,3 +7,4 @@ System tools
 
    newtworkManager.rst
    softwareupdate.rst
+   calibration.rst

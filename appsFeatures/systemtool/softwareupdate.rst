@@ -20,6 +20,9 @@ Users can also check for updates manually.
 
 #. Follow the steps in the OS updater app in order to install new OS.
 
-.. note::
+   .. note::
 
-   OS upgrade might cause your Red Pitaya desktop to freeze for a few minutes.
+      OS upgrade might cause your Red Pitaya desktop to freeze for a few minutes.
+
+
+#. If update manager reports that Linux version needs to be updated too, please follow :ref:`"Download and install SD card image"<prepareSD>` instructions and manually reinstall SD card.
