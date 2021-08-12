@@ -199,8 +199,8 @@ The –ams switch provides access to analog mixed signals including Zynq SoC tem
     
    redpitaya> monitor -sdac 0.9 0.8 0.7 0.6
 
-Monitor utility for accessing FPGA registers
-============================================
+Accessing FPGA registers
+========================
 
 Red Pitaya signal processing is based on two computational engines: the FPGA and the dual core processor in order to
 effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building 
@@ -225,3 +225,179 @@ monitor commands checks, modifies and verifies the acquisition decimation parame
     possible interference with Red Pitaya applications, reading or acting upon these same FPGA registers. For simple 
     tasks, however, the monitor utility can be used by high level scripts (Bash, Python, MATLAB...) to communicate
     directly with FPGA if necessary.
+
+
+
+=============
+Bode Analyzer
+=============
+
+Bode Analyzer can be used from console. 
+
+.. note::
+   
+   The preparation of the environment can be found in this :ref:`chapter<bode_app>`.
+
+.. code-block:: console
+
+   root@rp-f01c35:~# bode
+   Too few arguments!
+
+   Bode analyzer version 1.04-133-feaf63b43, compiled at Fri Jan 22 04:25:24 2021
+
+   Usage:	bode [channel] [amplitude] [dc bias] [averaging] [count/steps] [start freq] [stop freq] [scale type]
+   or
+      bode -calib
+
+      channel            Channel to generate signal on [1 / 2].
+      amplitude          Signal amplitude in V [0 - 1, which means max 2Vpp].
+      dc bias            DC bias/offset/component in V [0 - 1].
+                        Max sum of amplitude and DC bias is (0-1]V.
+      averaging          Number of samples per one measurement [>1].
+      count/steps        Number of measurements [>2].
+      start freq         Lower frequency limit in Hz [3 - 62.5e6].
+      stop freq          Upper frequency limit in Hz [3 - 62.5e6].
+      scale type         0 - linear, 1 - logarithmic.
+      -calib             Starts calibration mode. The calibration values will be saved in:/tmp/ba_calib.data
+   Output:	frequency [Hz], phase [deg], amplitude [dB]
+
+
+
+For run the bode, you need to do 2 steps:
+
+    #. ) Load the FPGA image of streaming
+
+        .. code-block:: console
+
+            root@rp-f01c35:/# cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+    #. ) Launch a console application.
+
+        .. code-block:: console
+
+            root@rp-f09508:~# bode 1 1 0 1 10 1000 100000 0
+            1000.00     0.00025    0.34855
+            12000.00    0.00090    0.34481
+            23000.00    0.00209    0.32803
+            34000.00    0.00859    0.33696
+            45000.00    0.00335    0.26568
+            56000.00    -0.00580   0.38830
+            67000.00    -0.01751   0.36922
+            78000.00    0.00635    0.32767
+            89000.00    0.00521    0.38478
+            100000.00   -0.00933   0.36610
+
+=========
+Lcr meter
+=========
+
+Lcr meter can be used from console.
+
+.. note::
+   
+   The preparation of the environment can be found in this :ref:`chapter<lrc_app>`.
+
+.. code-block:: console
+
+   root@rp-f01c35:~# lcr
+   Too few arguments!
+
+   LCR meter version 0.00-0000, compiled at Fri Aug 14 03:29:10 2020
+
+   Usage:	lcr [freq] [r_shunt] 
+
+      freq               Signal frequency used for measurement [ 100 , 1000, 10000 , 100000 ] Hz.
+      r_shunt            Shunt resistor value in Ohms [ 10, 100, 1000, 10000, 100000, 1000000 ]. If set to 0, Automatic ranging is used.
+                        Automatic ranging demands Extenson module.
+
+   Output:	Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
+
+
+For run the lcr, you need to do 2 steps:
+
+    #. ) Load the FPGA image of streaming
+
+        .. code-block:: console
+
+            root@rp-f01c35:/# cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+    #. ) Launch a console application.
+
+        .. code-block:: console
+
+            root@rp-f01c35:~# lcr 100 100000 -v
+            Frequency       100 Hz
+            Z       5.424000 kOmh
+            Phase   1.364216 deg
+            L(s)    205.533997 mH
+            C(s)    -12.324000 uF
+            R(s)    5.422000 kOmh
+            L(p)    0.000000 H
+            C(p)    0.000000 F
+            R(p)    5.425000 kOmh
+            Q       0.023815
+            D       -41.991112
+            X_s     129.141129
+            G_p     0.000184
+            B_p     0.000000
+            |Y|     0.000184
+            -P_Y    -1.364216 deg
+
+=====================
+Streaming application
+=====================
+
+The server for streaming can be started not only using the web interface, but also through the command line.
+
+.. code-block:: console
+
+    root@rp-f07167:/# streaming-server 
+    Missing parameters: Configuration file
+    Usage: streaming-server
+	    -b run service in background
+	    -c path to config file
+
+To start the server, you need to do 3 steps:
+
+    #. ) Load the FPGA image of streaming
+
+        .. code-block:: console
+
+            root@rp-f07167:/# cat /opt/redpitaya/fpga/fpga_streaming.bit > /dev/xdevcfg
+            root@rp-f07167:/# /opt/redpitaya/sbin/mkoverlay.sh stream_app
+
+
+    #. ) Prepare a configuration file.
+
+    #. ) Launch a console application.
+
+        .. code-block:: console
+
+            root@rp-f07167:/# streaming-server -c /root/.streaming_config 
+            streaming-server started
+            Lost rate: 0 / 763 (0 %)
+            Lost rate: 0 / 766 (0 %)
+            Lost rate: 0 / 766 (0 %)
+            Lost rate: 0 / 766 (0 %)
+
+The configuration for streaming is automatically created and saved in the file: **/root/.streaming_config** during editing the parameters in the web application.
+
+
+.. note::
+
+    Any changes to the web application will automatically modify the configuration file. If you want to save the configuration, then make a copy of the file.
+
+.. note::
+
+    The server can be started in the background. To do this, use the -b parameter. In this mode, the application can be used as a service at system startup. Service information from the application is saved in the syslog file (by default, the syslog is not installed on RP).
+
+.. note::
+
+    Streaming always creates two files:
+    
+        * first stores streamed data
+        * second data transfer report
+
+.. note::
+
+    Streaming app source are available here: `streaming app <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager>`__.
