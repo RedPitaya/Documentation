@@ -297,9 +297,9 @@ Please use the BalenaEtcher application to re-write manually the OS. Disk imager
 How to report a bug?
 ********************
 
-To report a bug, please send us more information about:
+To report a bug, please send us an e-mail at support@redpitaya.com with the following information:
 
 * Red Pitaya model used
 * Red Pitaya OS version
 * Information about bug
-* Clear instructions about how to reproduce it  via contact form.
+* Clear instructions about how to reproduce it.
