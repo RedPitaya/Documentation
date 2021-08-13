@@ -3,46 +3,12 @@ Red Pitaya boards comparison
 
 .. _rp-board-comp:
 
-.. tabs::
-
-   .. group-tab:: STEMlab 125-10  
-
-      .. figure:: vs_10.jpg
-         :width: 30%
-         :align: center
-
-   .. group-tab:: STEMlab 125-14 and STEMlab 125-14-Z7020
-
-      .. figure:: vs_14.jpg
-         :width: 30%
-         :align: center
-   
-   .. group-tab:: SDRlab 122-16
-
-      .. figure:: vs_16.jpg
-         :width: 30%
-         :align: center
-   
-
-
-Red Pitaya is available in three versions, all offer the same functions and features with the difference in technical specification
-of high-frequency inputs and outputs, RAM capacity some other differences (find more info in the comparison table bellow).
-They are addressed to target different groups and / or needs. Where STEMlab 14 has 14bit input / output channels for
-highly accurate measurement results in professional environment, STEMlab 10 has 10bit input / output channels and is perfect
-for universities,students and makers, SDRlab 122-16 is tailored for SDR applications.
-
-.. figure:: boards_1.jpg
-   :align: center
-
-
-.. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
-
 +--------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 | Basic                                                                                                                                                                                                       |
 +====================+====================================+====================================+====================================+====================================+====================================+
 |                    | STEMlab 125-10                     | STEMlab 125-14                     | STEMlab 125-14-Z7020               | SDRlab 122-16                      | SIGNALlab 250-12                   |
 +--------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
-| Processor          | Processor DUAL CORE ARM CORTEX A9  | Processor DUAL CORE ARM CORTEX A9  | Processor DUAL CORE ARM CORTEX A9  | Processor DUAL CORE ARM CORTEX A9  | Processor DUAL CORE ARM CORTEX A9  |
+| Processor          | DUAL CORE ARM CORTEX A9            | DUAL CORE ARM CORTEX A9            | DUAL CORE ARM CORTEX A9            | DUAL CORE ARM CORTEX A9            | DUAL CORE ARM CORTEX A9            |
 +--------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 | FPGA               | FPGA Xilinx Zynq 7010 SOC          | FPGA Xilinx Zynq 7010 SOC          | FPGA Xilinx Zynq 7020 SOC          | FPGA Xilinx Zynq 7020 SOC          | FPGA Xilinx Zynq 7020 SOC          |
 +--------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
@@ -57,7 +23,6 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 | Power consumption  | 5V, 1,5A max                       | 5V, 2A max                         | 5V, 2A max                         | 5V, 2A max                         | 24V, 0.5A max                      |
 +--------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 
-.. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
 
 +-----------------+----------------------+---------------------------------------+---------------------------------------+---------------------------------------+---------------------------------------+
 | Connectivity                                                                                                                                                                                           |
@@ -73,7 +38,6 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 | Synchronisation | /                    | Daisy chain connector (up to 500 Mbps)| Daisy chain connector (up to 500 Mbps)| Daisy chain connector (up to 500 Mbps)| Daisy chain connector (up to 500 Mbps)|
 +-----------------+----------------------+---------------------------------------+---------------------------------------+---------------------------------------+---------------------------------------+
 
-.. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
 
 +-----------------------------------+------------------------+------------------------+------------------------+------------------------+------------------------------------+
 | RF inputs                                                                                                                                                                  |
@@ -102,7 +66,6 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 | Bandwidth                         | DC-50MHz               | DC-60MHz               | DC-60MHz               | 300 kHz - 550 MHz      | DC - 60MHz                         |
 +-----------------------------------+------------------------+------------------------+------------------------+------------------------+------------------------------------+
 
-.. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
 
 +-------------------------------+----------------+----------------+----------------------+----------------------+------------------------------+
 | RF outputs                                                                                                                                   |
@@ -130,7 +93,6 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 | Bandwidth                     | DC-50MHz       | DC-60MHz       | DC-60MHz             | 300 kHz - 60 MHz     | DC - 60MHz                   |
 +-------------------------------+----------------+----------------+----------------------+----------------------+------------------------------+
  
-.. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
 
 +------------------------------+-------------------+----------------+----------------------+----------------+---------------------+
 | Extension connector                                                                                                             |
@@ -159,7 +121,6 @@ for universities,students and makers, SDRlab 122-16 is tailored for SDR applicat
 +------------------------------+-------------------+----------------+----------------------+----------------+---------------------+
 
 
-.. tabularcolumns:: |p{30mm}|p{40mm}|p{40mm}|p{40mm}|p{40mm}|
 
 +------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+-------------------------+
 | Synchronisation                                                                                                                                                                    |
