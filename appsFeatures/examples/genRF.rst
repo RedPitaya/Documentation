@@ -10,3 +10,4 @@ Generating signals at RF outputs
    genRF-exm3
    genRF-exm4
    genRF-exm5
+   genRF-exm6
