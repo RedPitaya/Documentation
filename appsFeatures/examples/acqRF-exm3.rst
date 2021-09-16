@@ -61,7 +61,7 @@ Code - MATLAB®
     fprintf(tcpipObj,'SOUR1:FREQ:FIX 1000000');     % Set frequency of output signal
     fprintf(tcpipObj,'SOUR1:VOLT 1');          % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR1:BURS:STAT ON');    % Set burst mode to ON
+    fprintf(tcpipObj,'SOUR1:BURS:STAT BURST');    % Set burst mode to ON
     fprintf(tcpipObj,'SOUR1:BURS:NCYC 3');       % Set 3 pulses of sine wave
 
     %% Set Acquire

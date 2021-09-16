@@ -81,8 +81,8 @@ Parameter options:
 * ``<dcyc> = {0...1}`` Default: ``0.5`` Where 1 corresponds to 100%
 * ``<array> = {value1, ...}`` max. 16k values, floats in the range -1 to 1
 * ``<burst> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
-* ``<count> = {1...50000, INF}`` ``INF`` = infinity/continuous, Default: ``1``
-* ``<time> = {1us-500s}`` Value in *us*.
+* ``<count> = {1...50000}`` , Default: ``1``
+* ``<time> = {1µs-500s}`` Value in *µs*.
 * ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}``
 
    - ``EXT`` = External
@@ -150,7 +150,7 @@ Parameter options:
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
 | | ``SOUR<n>:TRIG:SOUR <trigger>``    | ``rp_GenTriggerSource``    | Set trigger source for selected signal.                                    |
 | | Examples:                          |                            |                                                                            |
-| | ``SOUR1:TRIG:SOUR EXT``            |                            |                                                                            |
+| | ``SOUR1:TRIG:SOUR EXT_PE``         |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
 | | ``SOUR:TRIG:IMM``                  | ``rp_GenTrigger``          | | Triggers selected source immediately for two channels                    |
 | |                                    |                            |                                                                            |
@@ -162,9 +162,9 @@ Parameter options:
 | | Examples:                          |                            |                                                                            |
 | | ``SOUR1:TRIG:IMM``                 |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
-| | ``GEN:RST``                        |                            | Reset generator to default settings.                                       |
+| | ``GEN:RST``                        | ``rp_GenReset``            | Reset generator to default settings.                                       |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
-| | ``GEN:SYNC``                       |                            | Reset two generators at the simultaneously.                                |
+| | ``PHAS:ALIGN``                     | ``rp_GenSynchronise``      | Aligning output phase of dual channels.                                    |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
 
 =======

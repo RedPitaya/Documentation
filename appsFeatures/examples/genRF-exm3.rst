@@ -49,7 +49,7 @@ and press run.
 
     fprintf(tcpipObj,'SOUR1:BURS:NCYC 1');        % Set 1 pulses of sine wave
     fprintf(tcpipObj,'OUTPUT1:STATE ON');         % Set output to ON
-    fprintf(tcpipObj,'SOUR1:BURS:STAT ON');       % Set burst mode to ON
+    fprintf(tcpipObj,'SOUR1:BURS:STAT BURST');       % Set burst mode to ON
     
     fprintf(tcpipObj,'SOUR1:TRIG:SOUR EXT_PE');   % Set generator trigger to external
 
@@ -124,7 +124,7 @@ Code - Python
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
     rp_s.tx_txt('SOUR1:BURS:NCYC 2')
-    rp_s.tx_txt('SOUR1:BURS:STAT ON')
+    rp_s.tx_txt('SOUR1:BURS:STAT BURST')
     rp_s.tx_txt('SOUR1:TRIG:SOUR EXT_PE')
     rp_s.tx_txt('OUTPUT1:STATE ON')
     

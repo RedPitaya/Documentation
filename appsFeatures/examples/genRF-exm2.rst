@@ -44,7 +44,7 @@ MATLAB editor, save project and press run.
     fprintf(tcpipObj,'SOUR1:FREQ:FIX 1000');     % Set frequency of output signal
     fprintf(tcpipObj,'SOUR1:VOLT 1');            % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR1:BURS:STAT ON');      % Set burst mode to ON
+    fprintf(tcpipObj,'SOUR1:BURS:STAT BURST');      % Set burst mode to ON
     fprintf(tcpipObj,'SOUR1:BURS:NCYC 1');       % Set 1 pulses of sine wave
     fprintf(tcpipObj,'SOUR1:BURS:NOR 1000');     % Infinity number of sine wave pulses
     fprintf(tcpipObj,'SOUR1:BURS:INT:PER 5000'); % Set time of burst period in microseconds = 5 * 1/Frequency * 1000000
@@ -121,7 +121,7 @@ Code - Python
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
     rp_s.tx_txt('SOUR1:BURS:NCYC 2')
-    rp_s.tx_txt('SOUR1:BURS:STAT ON')
+    rp_s.tx_txt('SOUR1:BURS:STAT BURST')
     rp_s.tx_txt('SOUR1:TRIG:SOUR INT')
     rp_s.tx_txt('SOUR1:TRIG:IMM')
     rp_s.tx_txt('OUTPUT1:STATE ON')
