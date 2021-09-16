@@ -319,6 +319,5 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 intersphinx_mapping = {
-    'sref': ('https://activelearning.readthedocs.io/en/latest/', None),
-    'teaching': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None)
+    'sref': ('https://activelearning.readthedocs.io/en/latest/', None)
 }
