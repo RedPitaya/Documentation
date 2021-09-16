@@ -152,15 +152,15 @@ Parameter options:
 | | Examples:                          |                            |                                                                            |
 | | ``SOUR1:TRIG:SOUR EXT_PE``         |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
-| | ``SOUR:TRIG:IMM``                  | ``rp_GenTrigger``          | | Triggers selected source immediately for two channels                    |
+| | ``SOUR:TRIG:INT``                  | ``rp_GenTrigger``          | | Triggers selected source immediately for two channels                    |
 | |                                    |                            |                                                                            |
 | | Examples:                          |                            |                                                                            |
-| | ``SOUR:TRIG:IMM``                  |                            |                                                                            |
+| | ``SOUR:TRIG:INT``                  |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
-| | ``SOUR<n>:TRIG:IMM``               | ``rp_GenTrigger``          | | Triggers selected source immediately for selected channel                |
+| | ``SOUR<n>:TRIG:INT``               | ``rp_GenTrigger``          | | Triggers selected source immediately for selected channel                |
 | |                                    |                            |                                                                            |
 | | Examples:                          |                            |                                                                            |
-| | ``SOUR1:TRIG:IMM``                 |                            |                                                                            |
+| | ``SOUR1:TRIG:INT``                 |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
 | | ``GEN:RST``                        | ``rp_GenReset``            | Reset generator to default settings.                                       |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+

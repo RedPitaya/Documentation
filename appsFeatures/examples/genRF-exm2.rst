@@ -48,7 +48,7 @@ MATLAB editor, save project and press run.
     fprintf(tcpipObj,'SOUR1:BURS:NCYC 1');       % Set 1 pulses of sine wave
     fprintf(tcpipObj,'SOUR1:BURS:NOR 1000');     % Infinity number of sine wave pulses
     fprintf(tcpipObj,'SOUR1:BURS:INT:PER 5000'); % Set time of burst period in microseconds = 5 * 1/Frequency * 1000000
-    fprintf(tcpipObj,'SOUR1:TRIG:IMM');          % Set generator trigger to immediately
+    fprintf(tcpipObj,'SOUR1:TRIG:INT');          % Set generator trigger to immediately
     fprintf(tcpipObj,'OUTPUT1:STATE ON');        % Set output to ON
 
 
@@ -123,7 +123,7 @@ Code - Python
     rp_s.tx_txt('SOUR1:BURS:NCYC 2')
     rp_s.tx_txt('SOUR1:BURS:STAT BURST')
     rp_s.tx_txt('SOUR1:TRIG:SOUR INT')
-    rp_s.tx_txt('SOUR1:TRIG:IMM')
+    rp_s.tx_txt('SOUR1:TRIG:INT')
     rp_s.tx_txt('OUTPUT1:STATE ON')
 
 Code - LabVIEW
