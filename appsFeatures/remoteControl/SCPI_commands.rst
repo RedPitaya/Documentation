@@ -319,7 +319,7 @@ Data read
 
 
 * ``<units> = {RAW, VOLTS}``
-* ``<format> = {FLOAT, ASCII}`` Default ``FLOAT``
+* ``<format> = {BIN, ASCII}`` Default ``BIN``
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
