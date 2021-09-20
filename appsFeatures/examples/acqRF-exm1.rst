@@ -199,7 +199,7 @@ Code - Python
 *************
 .. tabs::
 
-   .. tab:: ASCII/VOLTS mode
+    .. tab:: ASCII/VOLTS mode
 
         .. code-block:: python
 
