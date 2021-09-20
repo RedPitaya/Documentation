@@ -197,40 +197,108 @@ Code - C
         
 Code - Python
 *************
+.. tabs::
 
-.. code-block:: python
+   .. tab:: ASCII/VOLTS mode
 
-    #!/usr/bin/python
+        .. code-block:: python
 
-    import sys
-    import redpitaya_scpi as scpi
-    import matplotlib.pyplot as plot
+            #!/usr/bin/python
 
-    rp_s = scpi.scpi(sys.argv[1])
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
 
-    # there is an option to select coupling when using SIGNALlab 250-12 
-    # rp_s.tx_txt('ACQ:SOUR1:COUP AC') # enables AC coupling on channel 1
+            rp_s = scpi.scpi(sys.argv[1])
 
-    # by default LOW level gain is selected
-    # rp_s.tx_txt('ACQ:SOUR1:GAIN LV') # user can switch gain using this command
+            rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
+            rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
+            rp_s.tx_txt('ACQ:DEC 1')
 
-    rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRIG NOW')
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG NOW')
 
-    while 1:
-        rp_s.tx_txt('ACQ:TRIG:STAT?')
-        if rp_s.rx_txt() == 'TD':
-            break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
 
-    rp_s.tx_txt('ACQ:SOUR1:DATA?')
-    buff_string = rp_s.rx_txt()
-    buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
-    buff = list(map(float, buff_string))
+            rp_s.tx_txt('ACQ:SOUR1:DATA?')
+            buff_string = rp_s.rx_txt()
+            buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
+            buff = list(map(float, buff_string))
 
-    plot.plot(buff)
-    plot.ylabel('Voltage')
-    plot.show()
-    view rawacquire_trigger_posedge.py
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: BIN/VOLTS mode
+
+        .. code-block:: python
+
+            #!/usr/bin/python
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+            import struct
+
+            rp_s = scpi.scpi(sys.argv[1])
+
+            rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
+            rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
+            rp_s.tx_txt('ACQ:DEC 1')
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG NOW')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            rp_s.tx_txt('ACQ:SOUR1:DATA?')
+            buff_byte = rp_s.rx_arb()
+            buff = [struct.unpack('!f',bytearray(buff_byte[i:i+4]))[0] for i in range(0, len(buff_byte), 4)]
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: BIN/RAW mode
+
+        .. code-block:: python
+        
+            #!/usr/bin/python
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+            import struct
+
+            rp_s = scpi.scpi(sys.argv[1])
+
+            rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
+            rp_s.tx_txt('ACQ:DATA:UNITS RAW')
+            rp_s.tx_txt('ACQ:DEC 1')
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG NOW')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            rp_s.tx_txt('ACQ:SOUR1:DATA?')
+            buff_byte = rp_s.rx_arb()
+            buff = [struct.unpack('!h',bytearray(buff_byte[i:i+2]))[0] for i in range(0, len(buff_byte), 2)]
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+
 
 Code - Scilab
 *************
