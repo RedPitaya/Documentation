@@ -174,7 +174,7 @@ and press run.
             % length and smaling rate
             pause(1)
             
-            fprintf(tcpipObj,'ACQ:TRIG NOW');
+            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
@@ -257,7 +257,7 @@ and press run.
             % length and smaling rate
             pause(1)
             
-            fprintf(tcpipObj,'ACQ:TRIG NOW');
+            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
