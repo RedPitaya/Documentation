@@ -28,7 +28,7 @@ Xilinx SDK is available from Xilinx downloads page:
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2020-1.html
 
 
-3. *Xilinx SDK development environments 2019.2*
+3. *Xilinx SDK development environments 2019.1*
 Xilinx SDK is available from Xilinx downloads page:
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html
 
