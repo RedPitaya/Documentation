@@ -47,6 +47,10 @@ Windows users only
     * Download and unpack the `control program <https://downloads.redpitaya.com/downloads/Clients/vna/vna-windows-tool.zip>`__.
     * Run the ``vna.exe`` program.
 
+    .. note:: 
+
+        VNA app is not the latest and fails on updated new Win 10. We need to replace it with new one from `here <http://pavel-demin.github.io/red-pitaya-notes/vna/>`_.
+
 ----------------
 Linux users only
 ----------------
