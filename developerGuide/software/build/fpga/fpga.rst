@@ -118,6 +118,7 @@ Building process
 ****************
 
 The following table shows which projects are available on which boards.
+
 +-------------------+-------------------+-------------------+
 | Build name        | Z10-14 (125 MHz)  |                   |
 |                   | Z20-14 (125 MHz)  |                   |
@@ -146,6 +147,7 @@ The following table shows which projects are available on which boards.
 
 
 Table of required build flags for FPGA projects per board
+
 +------------------+---------------------+
 | Model            | Build flag          |
 +==================+=====================+
