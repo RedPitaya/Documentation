@@ -2,14 +2,8 @@
 Build FPGA image
 ################
 
-The following build instructions were tested on Ubuntu 18.04.
-
-Before trying to build the FPGA project, please refer to :ref:`Ecosystem Guide <ecosystem>`, :ref:`Software requirements <sys-req-label>` and :ref:`Building process <build-proc-label>`.
-In addition to running settings64.sh, it might be also necessary to add SDK bin folder to ``$PATH`` environment variable.
-
-.. code-block:: shell-session
-
-   # export PATH=name>/Xilinx/SDK/2017.2/bin:$PATH
+The following build instructions were tested on Ubuntu 20.04.
+It is important to install the correct Vivado and SDK versions as the projects and scripts are made for those versions and may return errors during build.
 
 *************
 Prerequisites
@@ -24,7 +18,7 @@ Install libraries:
    # apt-get install unixodbc unixodbc-dev libncurses-dev libzmq3-dev libxext6 libasound2 libxml2 libx11-6 libxtst6 libedit-dev libxft-dev libxi6 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft-dev:i386 libxrender-dev:i386 libxt6:i386 libxtst6:i386
 
 2. *Xilinx Vivado 2020.1*
-Xilinx SDK is available from Xilinx downloads page:
+Xilinx Vivado is available from Xilinx downloads page:
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2020-1.html
 
 
@@ -103,7 +97,7 @@ It is reccommended to use 0.94 release as default project.
 |                   |    support.                                                      |
 +-------------------+------------------------------------------------------------------+
 | classic           | 1. A lot of the code was rewritten in SystemVerilog.             |
-|                   | 2. Removed GPIO and LED registers from housekeeping, instead the |   
+|                   | 2. Removed GPIO and LED registers from housekeeping, instead the |
 |                   |    GPIO controller inside PL is used. This enables the use of    |
 |                   |    Linux kernel features for GPIO (IRQ, SPI, I2C, 1-wire) and    |
 |                   |    LED (triggers).                                               |
@@ -122,12 +116,61 @@ It is reccommended to use 0.94 release as default project.
 ****************
 Building process
 ****************
-    
+
+The following table shows which projects are available on which boards.
++-------------------+-------------------+-------------------+
+| Build name        | Z10-14 (125 MHz)  |                   |
+|                   | Z20-14 (125 MHz)  |                   |
+|                   | Z20-16 (122 MHz)  | Z20-12 (250 MHz)  |
++===================+===================+===================+
+| 0.94              | X                 |                   |
++-------------------+-------------------+-------------------+
+| 0.94_250          |                   | X                 |
++-------------------+-------------------+-------------------+
+| stream_app        | X                 |                   |
++-------------------+-------------------+-------------------+
+| stream_app_250    |                   | X                 |
++-------------------+-------------------+-------------------+
+| logic             | X                 |                   |
++-------------------+-------------------+-------------------+
+| logic_250         |                   | X                 |
++-------------------+-------------------+-------------------+
+| tft               | X                 |                   |
++-------------------+-------------------+-------------------+
+| axi4lite          | X                 |                   |
++-------------------+-------------------+-------------------+
+| classic           | X                 |                   |
++-------------------+-------------------+-------------------+
+| mercury           | X                 |                   |
++-------------------+-------------------+-------------------+
+
+
+Table of required build flags for FPGA projects per board
++------------------+---------------------+
+| Model            | Build flag          |
++==================+=====================+
+| Z10-10 (125 MHz) | MODEL=Z10 OR        |
+| Z10-14 (125 MHz) | without MODEL flag  |
++------------------+---------------------+
+| Z20-14 (125 MHz) | MODEL=Z20_14        |
++------------------+---------------------+
+| Z20-16 (122 MHz) | MODEL=Z20           |
++------------------+---------------------+
+| Z20-12 (250 MHz) | MODEL=Z20_250       |
++------------------+---------------------+
+
+
 If Xilinx Vivado is installed at the default location, then the next command will properly configure system variables:
 
 .. code-block:: shell-session
 
    $ . /opt/Xilinx/Vivado/2020.1/settings64.sh
+
+In addition to running settings64.sh, it might be also necessary to add SDK bin folder to ``$PATH`` environment variable.
+
+.. code-block:: shell-session
+
+   # export PATH=<Xilinx install path>/Xilinx/SDK/2019.1/bin:$PATH
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
 Non project mode is used, to avoid the generation of project files,
@@ -150,11 +193,12 @@ The following scripts perform various tasks:
 | ``red_pitaya_hsi_dts.tcl``        | creates device tree sources                    |
 +-----------------------------------+------------------------------------------------+
 
-To generate a bit file, reports, device tree and FSBL, run (replace ``name`` with project name):
+First, change your directory to /<path to Red Pitaya repository>/redpitaya-public/fpga.
+To generate a bit file, reports, device tree and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
 .. code-block:: shell-session
 
-   $ make PRJ=name
+   $ make PRJ=name MODEL=model
 
 If the script returns the following error:
 
@@ -173,7 +217,7 @@ When IPs are up-to-date, go to the tab Tcl console and run command:
 
    write_bd_tcl systemZ10.tcl
 
-Of course, the script may also be named systemZ20.tcl, depending on your board.
+Of course, the script may also be named systemZ20.tcl systemZ20_14.tcl, depending on your board.
 
 This generates a new tcl script that replaces the old script in fpga/prj/<name of subproject>/ip
 
@@ -181,7 +225,7 @@ To generate and open a Vivado project using GUI, run:
 
 .. code-block:: shell-session
 
-   $ make project PRJ=name
+   $ make project PRJ=name MODEL=model
    
 Building the project from GUI is effectively the same as from CLI, except that the user has to click three buttons on the side of the GUI window:
 
@@ -430,5 +474,3 @@ which can be used to modify MIO functionality at runtime.
 .. include:: regset_common.rst
 
 .. include:: regset_common_streaming.rst
-
-
