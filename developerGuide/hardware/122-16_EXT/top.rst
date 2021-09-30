@@ -4,7 +4,7 @@ SDRlab 122-16 external clock
 #############################
 
 
-This SDRlab version is standard SDRlab 122-16 modified in such a way that the ADC and
+This SDRlab version is standard STEMlab 122-16 modified in such a way that the ADC and
 DAC clock can be provided from an external source clock.
 External clock should be connected to Ext ADC CLK- and + pins.
 External clock signal levels should be LVDS in the range from 1MHz to 122.8MHz according to
