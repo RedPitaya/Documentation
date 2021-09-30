@@ -16,6 +16,6 @@ ADC spec.
 For more information please refer to:
 
 * `ADC specifications <https://www.analog.com/media/en/technical-documentation/data-sheets/21454314fa.pdf>`_
-* `RP clock wiring <https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extADC.html>`_
+* :ref:`RP clock wiring <external_125_14>`
 
 For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.
