@@ -46,9 +46,9 @@ Red Pitaya boards comparison
 +-----------------------------------+------------------------+---------------------------+-------------------------+------------------------+------------------------------------+
 | RF inputs                                                                                                                                                                      |
 +===================================+========================+===========================+=========================+========================+====================================+
-|                                   | STEMlab 125-10         || STEMlab 125-14           | STEMlab 125-14-Z7020-LN || SDRlab 122-16         | SIGNALlab 250-12                   |
-|                                   |                        || STEMlab 125-14 LN        |                         || SDRlab 122-16 ext clk |                                    |
-|                                   |                        || STEMlab 125-14 ext. clk  |                         |                        |                                    |
+|                                   | STEMlab 125-10         | STEMlab 125-14 |br|       | STEMlab 125-14-Z7020-LN | SDRlab 122-16 |br|     | SIGNALlab 250-12                   |
+|                                   |                        | STEMlab 125-14 LN |br|    |                         | SDRlab 122-16 ext clk  |                                    |
+|                                   |                        | STEMlab 125-14 ext. clk   |                         |                        |                                    |
 +-----------------------------------+------------------------+---------------------------+-------------------------+------------------------+------------------------------------+
 | RF input channels                 | 2                      | 2                         | 2                       | 2                      | 2                                  |
 +-----------------------------------+------------------------+---------------------------+-------------------------+------------------------+------------------------------------+
@@ -167,3 +167,8 @@ Red Pitaya boards comparison
 
    * STEMlab 125-14, STEMlab 125-14-Z7020, STEMlab 125-10, SDRlab 122-16 shall only be powered by an isolated external power supply providing 5 volts direct current, and a maximum current of 2 amperes. The KA23-0502000DES model is recommended. Any other external power supply used with Red Pitaya must comply with relevant regulations and standards applicable in the country of use.
    * SIGNALlab 250-12 shall only be powered by an original KA2401A 24V/1A isolated power supply.
+
+
+   .. |br| raw:: html
+
+      <br/>
