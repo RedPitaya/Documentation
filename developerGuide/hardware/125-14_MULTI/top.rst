@@ -12,4 +12,4 @@ Multi-channel STEMlab 125-14 system consists of:
 
 For detailed hardware specifications for STEMlab 125-14 devices used in the STEMlab 125-14 multi-channel system plese refer to :ref:`STEMlab 125-14 standard specs <top_125_14>`.
 
-For more information about software please refer to: :ref:`Multi-channel streaming <streaming_top>`
+For more information about software please refer to: :ref:`Multi-channel streaming <mch_streaming_top>`
