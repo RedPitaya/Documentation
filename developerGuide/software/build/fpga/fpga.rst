@@ -19,7 +19,7 @@ Install libraries:
 
 2. *Xilinx Vivado 2020.1*
 Xilinx Vivado is available from Xilinx downloads page:
-https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2020-1.html
+https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html
 
 
 3. *Xilinx SDK development environments 2019.1*
@@ -80,35 +80,39 @@ There are multiple FPGA sub-projects they mostly contain incremental changes
 on the first Red Pitaya release.
 It is reccommended to use 0.94 release as default project.
 
-+-------------------+------------------------------------------------------------------+
-| prj/name          | desctiption                                                      |
-+===================+==================================================================+
-| 0.93              | This is the original Red Pitaya release including all bugs.      |
-|                   | For deprecated application backward compatibility only.          |
-+-------------------+------------------------------------------------------------------+
-| 0.94              | 1. The CDC (clock domain crossing) code on the custom CPU bus    |
-|                   |    was removed. Instead CDC for GP0 port already available in    |
-|                   |    PS was used. This improves speed and reliability and reduces  |
-|                   |    RTL complexity.                                               |
-|                   | 2. A value increment bug in the generator was fixed, this should |
-|                   |    improve generated frequencies near half sampling rate.        |
-|                   | 3. XADC custom RTL wrapper was replaced with Xilinx AXI XADC.    |
-|                   |    This enables the use of the Linux driver with IIO streaming   |
-|                   |    support.                                                      |
-+-------------------+------------------------------------------------------------------+
-| classic           | 1. A lot of the code was rewritten in SystemVerilog.             |
-|                   | 2. Removed GPIO and LED registers from housekeeping, instead the |
-|                   |    GPIO controller inside PL is used. This enables the use of    |
-|                   |    Linux kernel features for GPIO (IRQ, SPI, I2C, 1-wire) and    |
-|                   |    LED (triggers).                                               |
-+-------------------+------------------------------------------------------------------+
-| logic             | This image is used by the logic analyzer, it is using DMA to     |
-|                   | transfer data to man DDR3 RAM. ADC and DAS code is unfinished.   |
-+-------------------+------------------------------------------------------------------+
-| axi4lite          | Image intended for testing various AXI4 bus implementations.     |
-|                   | It contains a Vivado ILA (integrated logic ananlyzer) to         |
-|                   | observe and review the performance of the bus implementation.    |
-+-------------------+------------------------------------------------------------------+
++-------------------+------------------------------------------------------------------+--------------------+
+| prj/name          | Description                                                      | Application        |
++===================+==================================================================+====================+
+| 0.93              | This is the original Red Pitaya release including all bugs.      |                    |
+|                   | For deprecated application backward compatibility only.          |                    |
++-------------------+------------------------------------------------------------------+--------------------+
+| 0.94              | 1. The CDC (clock domain crossing) code on the custom CPU bus    | Oscilloscope       |
+|                   |    was removed. Instead CDC for GP0 port already available in    | Signal generator   |
+|                   |    PS was used. This improves speed and reliability and reduces  | Spectrum analyzer  |
+|                   |    RTL complexity.                                               | Bode analyzer      |
+|                   | 2. A value increment bug in the generator was fixed, this should | LCR meter          |
+|                   |    improve generated frequencies near half sampling rate.        |                    | 
+|                   | 3. XADC custom RTL wrapper was replaced with Xilinx AXI XADC.    |                    |
+|                   |    This enables the use of the Linux driver with IIO streaming   |                    |
+|                   |    support.                                                      |                    |
++-------------------+------------------------------------------------------------------+--------------------+
+| stream_app        | 1. Streaming ADC and DAC data to/from DDR3 memory buffers.       | Streaming manager  |
+|                   | 2. Streaming GPIO inputs and outputs to/from DDR3 memory buffers;|                    |
+|                   | 3.                                                               |                    |
++-------------------+------------------------------------------------------------------+--------------------+
+| classic           | 1. A lot of the code was rewritten in SystemVerilog.             |                    |
+|                   | 2. Removed GPIO and LED registers from housekeeping, instead the |                    |
+|                   |    GPIO controller inside PL is used. This enables the use of    |                    |
+|                   |    Linux kernel features for GPIO (IRQ, SPI, I2C, 1-wire) and    |                    |
+|                   |    LED (triggers).                                               |                    |
++-------------------+------------------------------------------------------------------+--------------------+
+| logic             | This image is used by the logic analyzer, it is using DMA to     | Logic analyzer     |
+|                   | transfer data to main DDR3 RAM. ADC and DAS code is unfinished.  |                    |
++-------------------+------------------------------------------------------------------+--------------------+
+| axi4lite          | Image intended for testing various AXI4 bus implementations.     |                    |
+|                   | It contains a Vivado ILA (integrated logic ananlyzer) to         |                    |
+|                   | observe and review the performance of the bus implementation.    |                    |
++-------------------+------------------------------------------------------------------+--------------------+
 
 
 .. _buildprocess:
@@ -118,46 +122,47 @@ Building process
 ****************
 
 The following table shows which projects are available on which boards.
-
-+-------------------+---------------------------------------------------------------+-------------------+
-| Build name        | Z10-14 (125 MHz) |br| Z20-14 (125 MHz) |br| Z20-16 (122 MHz)  |  Z20-12 (250 MHz) |
-+===================+===============================================================+===================+
-| 0.94              | X                                                             |                   |
-+-------------------+---------------------------------------------------------------+-------------------+
-| 0.94_250          |                                                               | X                 |
-+-------------------+---------------------------------------------------------------+-------------------+
-| stream_app        | X                                                             |                   |
-+-------------------+---------------------------------------------------------------+-------------------+
-| stream_app_250    |                                                               | X                 |
-+-------------------+---------------------------------------------------------------+-------------------+
-| logic             | X                                                             |                   |
-+-------------------+---------------------------------------------------------------+-------------------+
-| logic_250         |                                                               | X                 |
-+-------------------+---------------------------------------------------------------+-------------------+
-| tft               | X                                                             |                   |
-+-------------------+---------------------------------------------------------------+-------------------+
-| axi4lite          | X                                                             |                   |
-+-------------------+---------------------------------------------------------------+-------------------+
-| classic           | X                                                             |                   |
-+-------------------+---------------------------------------------------------------+-------------------+
-| mercury           | X                                                             |                   |
-+-------------------+---------------------------------------------------------------+-------------------+
++-------------------+----------------------+-------------------+
+| Build name        | STEMlab 125-10       |                   |
+|                   | STEMlab 125-14       |                   |
+|                   | STEMlab 125-14-Z7020 |                   |
+|                   | SDRlab 122-16        | SIGNALlab 250-12  |
++===================+======================+===================+
+| 0.94              | X                    |                   |
++-------------------+----------------------+-------------------+
+| 0.94_250          |                      | X                 |
++-------------------+----------------------+-------------------+
+| stream_app        | X                    |                   |
++-------------------+----------------------+-------------------+
+| stream_app_250    |                      | X                 |
++-------------------+----------------------+-------------------+
+| logic             | X                    |                   |
++-------------------+----------------------+-------------------+
+| logic_250         |                      | X                 |
++-------------------+----------------------+-------------------+
+| tft               | X                    |                   |
++-------------------+----------------------+-------------------+
+| axi4lite          | X                    |                   |
++-------------------+----------------------+-------------------+
+| classic           | X                    |                   |
++-------------------+----------------------+-------------------+
+| mercury           | X                    |                   |
++-------------------+----------------------+-------------------+
 
 
 Table of required build flags for FPGA projects per board
-
-+-----------------------+----------------------+
-| Model                 |  Build flag          |
-+=======================+======================+
-| Z10-10 (125 MHz) |br| | MODEL=Z10 OR |br|    |
-| Z10-14 (125 MHz)      | without MODEL flag   |
-+-----------------------+----------------------+
-| Z20-14 (125 MHz)      |  MODEL=Z20_14        |
-+-----------------------+----------------------+
-| Z20-16 (122 MHz)      |  MODEL=Z20           |
-+-----------------------+----------------------+
-| Z20-12 (250 MHz)      |  MODEL=Z20_250       |
-+-----------------------+----------------------+
++----------------------+---------------------+
+| Model                | Build flag          |
++======================+=====================+
+| STEMlab 125-10       | MODEL=Z10 OR        |
+| STEMlab 125-14       | without MODEL flag  |
++----------------------+---------------------+
+| STEMlab 125-14-Z7020 | MODEL=Z20_14        |
++----------------------+---------------------+
+| SDRlab 122-16        | MODEL=Z20           |
++----------------------+---------------------+
+| SIGNALlab 250-12     | MODEL=Z20_250       |
++----------------------+---------------------+
 
 
 If Xilinx Vivado is installed at the default location, then the next command will properly configure system variables:
@@ -200,6 +205,15 @@ To generate a bit file, reports, device tree and FSBL, run (replace ``name`` wit
 
    $ make PRJ=name MODEL=model
 
+For example, build v0.94 for STEMlab 125-14:
+
+.. code-block:: shell-session
+
+   $ make project PRJ=v0.94 MODEL=Z10
+
+The resulting .bit file is located in <project folder>/out/redpitaya.bit
+This file must be copied to /opt/redpitaya/fpga.
+
 If the script returns the following error:
 
 .. code-block:: shell-session
@@ -226,7 +240,16 @@ To generate and open a Vivado project using GUI, run:
 .. code-block:: shell-session
 
    $ make project PRJ=name MODEL=model
-   
+
+For example, v0.94 project for STEMlab 125-14:
+
+.. code-block:: shell-session
+
+   $ make project PRJ=v0.94 MODEL=Z10
+
+The resulting .bit file is located in <project folder>/project/redpitaya.runs/impl_1/red_pitaya_top.bit
+This file must be copied to /opt/redpitaya/fpga.
+
 Building the project from GUI is effectively the same as from CLI, except that the user has to click three buttons on the side of the GUI window:
 
 .. figure:: vivadoGUI.png
