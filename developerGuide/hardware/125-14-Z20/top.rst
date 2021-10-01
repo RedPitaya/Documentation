@@ -1,5 +1,5 @@
-STEMlab 125-14-Z7020
-####################
+STEMlab 125-14-Z7020-LN
+#######################
 
 * :ref:`Schematics <schematics_125_14_Z20_LN>`
 
