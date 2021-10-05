@@ -1,5 +1,5 @@
-Red Pitaya boards comparison 
-############################
+Tachnical specification
+#######################
 
 .. _rp-board-comp:
 

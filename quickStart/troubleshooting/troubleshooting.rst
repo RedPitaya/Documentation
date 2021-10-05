@@ -243,10 +243,10 @@ Please note that not all are compatible, list is in the documentation: :ref:`Sup
 Where can I find Red Pitaya schematics?
 ***************************************
 
-* :ref:`STEMlab 125-10 <schematics_125_10>`
-* :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 <schematics_125_14>`
-* :ref:`SDRlab 122-16 <schematics_122_16>`
-* :ref:`SIGNALlab 250-12 <schematics_250_12>`
+* :ref:`STEMlab 125-10 <schematics>`
+* :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 <schematics>`
+* :ref:`SDRlab 122-16 <schematics>`
+* :ref:`SIGNALlab 250-12 <schematics>`
 
 ***********************************************************
 My device shows wrong measurements, how can I calibrate it?
