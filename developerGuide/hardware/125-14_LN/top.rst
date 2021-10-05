@@ -3,6 +3,7 @@
 STEMlab 125-14-LN
 #################
 
+   :ref:`Tachnical specification overview <rp-board-comp>`
 
 STEMlab 125-14 low noise is STEMlab 125-14 board that is populated with additional linear
 analog power for analog power supplies to reduce RF inputs and outputs noise and

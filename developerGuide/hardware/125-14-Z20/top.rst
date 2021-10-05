@@ -1,6 +1,7 @@
 STEMlab 125-14-Z7020-LN
 #######################
 
+* :ref:`Tachnical specification overview <rp-board-comp>`
 * :ref:`Schematics <schematics_125_14_Z20_LN>`
 
 STEMlab 125-14-Z7020-LN is a standard STEMlab 125-14 board that:

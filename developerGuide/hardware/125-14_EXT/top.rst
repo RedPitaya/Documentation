@@ -3,6 +3,7 @@
 STEMlab 125-14 external clock
 #############################
 
+   :ref:`Tachnical specification overview <rp-board-comp>`
 
 This STEMlab version is standard STEMlab 125-14 modified in such a way that the ADC and
 DAC clock can be provided from an external source clock.

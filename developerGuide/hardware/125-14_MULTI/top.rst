@@ -3,6 +3,7 @@
 STEMlab 125-14 multi-channel system
 ###################################
 
+:ref:`Tachnical specification overview <rp-board-comp>`
 
 The Multi-channel STEMlab 125-14 system consists of multiple STEMlab 125-14 devices that are modified for clock and trigger synchronization, and also comes with SATA synchronization cables and software that supports multi-channel RF signal acquisition and generation.
 
