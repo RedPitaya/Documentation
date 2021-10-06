@@ -86,7 +86,6 @@ and press run.
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
-            pause(1)
             
             fprintf(tcpipObj,'ACQ:TRIG CH1_PE');  
             % Wait for trigger
@@ -150,7 +149,7 @@ and press run.
             
             
             fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 64');
+            fprintf(tcpipObj,'ACQ:DEC 1');
             fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
             fprintf(tcpipObj,'ACQ:SOUR1:GAIN LV');
             fprintf(tcpipObj,'ACQ:DATA:FORMAT BIN');
@@ -172,7 +171,6 @@ and press run.
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
-            pause(1)
             
             fprintf(tcpipObj,'ACQ:TRIG CH1_PE');
             % Wait for trigger
@@ -200,9 +198,13 @@ and press run.
             % Reading size of data
             data_size=str2num(strcat(fread(tcpipObj,header_size,'char'))');
             % Read data
-            signal=fread(tcpipObj,data_size/4,'float');
+            signal_num=fread(tcpipObj,data_size/4,'float');
             
-            fprintf('%f\n',signal);
+            plot(signal_num)
+            hold on
+            grid on
+            ylabel('Voltage / V')
+            xlabel('samples')
             
             fclose(tcpipObj);
 
@@ -233,7 +235,7 @@ and press run.
             
             
             fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 64');
+            fprintf(tcpipObj,'ACQ:DEC 1');
             fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
             fprintf(tcpipObj,'ACQ:SOUR1:GAIN LV');
             fprintf(tcpipObj,'ACQ:DATA:FORMAT BIN');
@@ -255,7 +257,6 @@ and press run.
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
-            pause(1)
             
             fprintf(tcpipObj,'ACQ:TRIG CH1_PE');
             % Wait for trigger
@@ -283,9 +284,13 @@ and press run.
             % Reading size of data
             data_size=str2num(strcat(fread(tcpipObj,header_size,'char'))');
             % Read data
-            signal=fread(tcpipObj,data_size/2,'int16');
+            signal_num=fread(tcpipObj,data_size/2,'int16');
             
-            fprintf('%f\n',signal);
+            plot(signal_num)
+            hold on
+            grid on
+            ylabel('Voltage / V')
+            xlabel('samples')
             
             fclose(tcpipObj);
 

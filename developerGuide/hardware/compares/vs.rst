@@ -1,4 +1,4 @@
-Tachnical specification
+Tachnical
 #######################
 
 .. _rp-board-comp:
