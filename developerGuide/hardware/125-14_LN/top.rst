@@ -10,7 +10,7 @@ consequently increase ENOB.
 To find out more about the performance of STEMlab 125-14 with DC analog power supplies, we
 suggest you refer to Leonhard Neuhaus's blog.
 
-*`Red Pitaya DAC performance <https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/>`_
+* `Red Pitaya DAC performance <https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/>`_
 
 
 *********
@@ -23,7 +23,7 @@ Technical
 Schematics
 **********
 
-* `User-DOC_STEMlab_125-14_V1.1%28STEMlab%20125-14%20LN%29.PDF <https://downloads.redpitaya.com/doc/User-DOC_STEMlab_125-14_V1.1%28STEMlab%20125-14%20LN%29.PDF>`_
+* `User-DOC_STEMlab_125-14_V1.1_STEMlab 125-14 LN.PDF <https://downloads.redpitaya.com/doc/User-DOC_STEMlab_125-14_V1.1%28STEMlab%20125-14%20LN%29.PDF>`_
 
 .. note::
 
