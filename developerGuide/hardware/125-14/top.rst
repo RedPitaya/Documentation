@@ -6,10 +6,10 @@ STEMlab 125-14
 
 
 *********
-Technical
+Technical specifications
 *********
 
-* :ref:`Comparison of boards <rp-board-comp>`
+* :ref:`Product comparison table <rp-board-comp>`
 
 **********
 Schematics
@@ -109,7 +109,7 @@ the host USB connector.
 .. figure:: cooling-powerPin.jpg
     :width: 50%
     :align: center
-    
+
     | Red Pitaya power connector.
     | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
 

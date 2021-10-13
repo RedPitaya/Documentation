@@ -7,7 +7,7 @@ STEMlab 125-10
 Technical
 *********
 
-* :ref:`Comparison of boards <rp-board-comp>`
+* :ref:`Product comparison table <rp-board-comp>`
 
 **********
 Schematics

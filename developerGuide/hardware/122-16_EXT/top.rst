@@ -13,10 +13,10 @@ ADC spec.
    :align: center
 
 *********
-Technical
+Technical specifications
 *********
 
-* :ref:`Comparison of boards <rp-board-comp>`
+* :ref:`Product comparison table <rp-board-comp>`
 
 **********
 Schematics

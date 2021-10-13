@@ -1,7 +1,7 @@
 .. _rp-board-comp:
 
-Tachnical
-#########
+Product comparison table
+########################
 
 .. table::
    :widths: 10 18 18 18 18 18 

@@ -9,10 +9,10 @@ STEMlab 125-14-Z7020-LN is a standard STEMlab 125-14 board that:
 * has populated additional linear analog power for analog power supplies to reduce RF inputs and outputs noise and consequently increase ENOB.To find out more about the performance of STEMlab 125-14 with DC analog power supplies, refer to Leonhard Neuhaus's blog `Red Pitaya DAC performance <https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/>`_.
 
 *********
-Technical
+Technical specifications
 *********
 
-* :ref:`Comparison of boards <rp-board-comp>`
+* :ref:`Product comparison table <rp-board-comp>`
 
 **********
 Schematics
