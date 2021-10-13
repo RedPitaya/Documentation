@@ -1,7 +1,7 @@
-Tachnical
-#######################
-
 .. _rp-board-comp:
+
+Tachnical
+#########
 
 .. table::
    :widths: 10 18 18 18 18 18 

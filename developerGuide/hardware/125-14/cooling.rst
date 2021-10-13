@@ -1,24 +1,4 @@
-###############
-Cooling options
-###############
-
-For additional cooling we recommend a 30mm or 25mm fan. You can utilize the power connector on the board to power
-the fan, however please note that it supplies only 5 V. The power connector is located between micro-SD socket and 
-the host USB connector.
-
-.. figure:: cooling-powerPin.jpg
-    :width: 50%
-
-    | Red Pitaya power connector.
-    | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
-
-    
-.. note::
- 
-    Power connector is a standard 2-pin 0.1" connector.
-    
-    Supplies only 5V.
-    
+   
 ********
 Assembly
 ********
