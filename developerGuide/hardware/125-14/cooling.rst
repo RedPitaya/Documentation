@@ -11,10 +11,12 @@ Assembly
 #.  Attaching the fan to the heat sink using two screws as shown in the picture bellow. 
  
 .. figure:: cooling-screwon.jpg
-    
+    :align: center
+
     | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
 
 .. figure:: cooling-topdown.jpg 
+    :align: center
 
     | Red Pitaya with attached fan.
     | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
@@ -24,8 +26,7 @@ Measurements
 ************
 
 .. figure:: cooling-result.png
+    :align: center
 
-   | Temperature measured with the fan turned off and on combined with low and high CPU load.
-   | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).   
-
-    
+    | Temperature measured with the fan turned off and on combined with low and high CPU load.
+    | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).   

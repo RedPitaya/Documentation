@@ -108,7 +108,8 @@ the host USB connector.
 
 .. figure:: cooling-powerPin.jpg
     :width: 50%
-
+    :align: center
+    
     | Red Pitaya power connector.
     | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
 
@@ -116,7 +117,6 @@ the host USB connector.
 .. note::
  
     Power connector is a standard 2-pin 0.1" connector.
-
     Supplies only 5V.
     
 
