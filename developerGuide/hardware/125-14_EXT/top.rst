@@ -12,9 +12,42 @@ ADC spec.
 .. figure:: ../125-14/Extension_connector.png
    :align: center
 
-For more information please refer to:
 
-* `ADC specifications <https://www.analog.com/media/en/technical-documentation/data-sheets/21454314fa.pdf>`_
-* :ref:`RP clock wiring <external_125_14>`
+*********
+Technical
+*********
+
+* :ref:`Comparison of boards <rp-board-comp>`
+
+**********
+Schematics
+**********
+
+* `Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
+
+.. note::
+
+    Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open source code but not an open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
+
+*************************
+Mechanical specifications
+*************************
+
+* `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
+
+
+******************
+ADC specifications
+******************
+
+* `Data sheet <https://www.analog.com/media/en/technical-documentation/data-sheets/21454314fa.pdf>`_
+
+
+***************
+RP clock wiring
+***************
+
+* :ref:`External ADC clock <external_125_14>`
+
 
 For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.

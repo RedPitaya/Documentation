@@ -7,13 +7,13 @@ STEMlab 125-10
 Technical
 *********
 
-:ref:`Comparison of boards <rp-board-comp>`
+* :ref:`Comparison of boards <rp-board-comp>`
 
 **********
 Schematics
 **********
 
-`Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
+* `Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
 
 .. note::
 
@@ -23,4 +23,4 @@ Schematics
 Mechanical specifications
 *************************
 
-`RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
+* `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_

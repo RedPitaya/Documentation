@@ -9,13 +9,13 @@ STEMlab 125-14
 Technical
 *********
 
-:ref:`Comparison of boards <rp-board-comp>`
+* :ref:`Comparison of boards <rp-board-comp>`
 
 **********
 Schematics
 **********
 
-`Red_Pitaya_Schematics_v1.0.1.pdf <https://downloads.redpitaya.com/doc//Red_Pitaya_Schematics_v1.0.1.pdf>`_
+* `Red_Pitaya_Schematics_v1.0.1.pdf <https://downloads.redpitaya.com/doc//Red_Pitaya_Schematics_v1.0.1.pdf>`_
 
 .. note::
 
@@ -25,7 +25,7 @@ Schematics
 Mechanical specifications
 *************************
 
-`Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
+* `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
 
 **************
 Fast analog IO
@@ -116,7 +116,7 @@ the host USB connector.
 .. note::
  
     Power connector is a standard 2-pin 0.1" connector.
-    
+
     Supplies only 5V.
     
 
