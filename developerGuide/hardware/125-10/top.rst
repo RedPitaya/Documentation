@@ -5,7 +5,7 @@ STEMlab 125-10
 .. _top_125_14:
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
    
     :ref:`Techincal <rp-board-comp>`
     `Schematics <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
