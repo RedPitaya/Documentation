@@ -4,7 +4,7 @@ STEMlab 125-10
 ###########
 
 *********
-Technical
+Technical specifications
 *********
 
 * :ref:`Product comparison table <rp-board-comp>`
