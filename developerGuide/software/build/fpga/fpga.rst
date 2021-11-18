@@ -21,10 +21,28 @@ Install libraries:
 Xilinx Vivado is available from Xilinx downloads page:
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html
 
+On officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 instead of 18.04.
+
+If the installer glitches out anyway, your /etc/os-release file needs to be changed to "fake" the OS version.
+First, backup the file and then open it as superuser with a text editor such as nano:
+
+.. code-block:: shell-session
+   $ sudo nano /etc/os-release
+
+and change the VERSION line to “VERSION=”18.04.4 LTS (Bionic Beaver)”” and save the file. The edited file should look something like this:
+
+.. figure:: os_release.jpg
+
+After that you can either run the Xilinx_Unified_2020.1_0602_1208_Lin64.bin (Linux web-installer) or the xsetup file from the extracted folder (unified installer).
+After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.
+
+For more information on Vivado installation, see:
+https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html
 
 3. *Xilinx SDK development environments 2019.1*
 Xilinx SDK is available from Xilinx downloads page:
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html
+
 
 
 *******************
@@ -165,18 +183,36 @@ Table of required build flags for FPGA projects per board
 | SIGNALlab 250-12     | MODEL=Z20_250       |
 +----------------------+---------------------+
 
-
-If Xilinx Vivado is installed at the default location, then the next command will properly configure system variables:
-
-.. code-block:: shell-session
-
-   $ . /opt/Xilinx/Vivado/2020.1/settings64.sh
-
-In addition to running settings64.sh, it might be also necessary to add SDK bin folder to ``$PATH`` environment variable.
+On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window). 
+Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup):
 
 .. code-block:: shell-session
+   $ source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
+   $ source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
 
-   # export PATH=<Xilinx install path>/Xilinx/SDK/2019.1/bin:$PATH
+The Xilinx installation directory should be located in /opt directory (or /tools, if you used the default Vivado installation directory).
+These two commands will setup the $PATH environment variable.
+It might also be necessary to add SDK bin folder to the $PATH environment variable:
+
+.. code-block:: shell-session
+   #  export PATH=<path to Xilinx installation directory>/Xilinx/SDK/2019.1/bin:$PATH
+
+
+Check if you have Git command line tools installed on your computer:
+
+.. code-block:: shell-session
+   $ sudo apt update
+   $ sudo apt install git
+
+Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:
+
+.. code-block:: shell-session
+   $ git clone https://github.com/RedPitaya/RedPitaya.git
+
+The devicetree sources must also be downloaded and extracted by running 
+
+.. code-block:: shell-session
+   make -f Makefile.x86 devicetree 
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
 Non project mode is used, to avoid the generation of project files,
@@ -199,7 +235,7 @@ The following scripts perform various tasks:
 | ``red_pitaya_hsi_dts.tcl``        | creates device tree sources                    |
 +-----------------------------------+------------------------------------------------+
 
-First, change your directory to /<path to Red Pitaya repository>/redpitaya-public/fpga.
+First, change your directory to /<path to Red Pitaya repository>/RedPitaya/fpga.
 To generate a bit file, reports, device tree and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
 .. code-block:: shell-session
@@ -208,12 +244,10 @@ To generate a bit file, reports, device tree and FSBL, run (replace ``name`` wit
 
 For example, build v0.94 for STEMlab 125-14:
 
-.. code-block:: shell-session
-
    $ make project PRJ=v0.94 MODEL=Z10
 
-The resulting .bit file is located in <project folder>/out/redpitaya.bit
-This file must be copied to /opt/redpitaya/fpga.
+The resulting .bit file is located in /prj/<project name>/out/redpitaya.bit
+This file must be copied to /opt/redpitaya/fpga on the Red Pitaya itself.
 
 If the script returns the following error:
 
@@ -234,7 +268,7 @@ When IPs are up-to-date, go to the tab Tcl console and run command:
 
 Of course, the script may also be named systemZ20.tcl systemZ20_14.tcl, depending on your board.
 
-This generates a new tcl script that replaces the old script in fpga/prj/<name of subproject>/ip
+This generates a new tcl script that replaces the old script in fpga/prj/<project name>/ip
 
 To generate and open a Vivado project using GUI, run:
 
@@ -244,20 +278,34 @@ To generate and open a Vivado project using GUI, run:
 
 For example, v0.94 project for STEMlab 125-14:
 
-.. code-block:: shell-session
-
    $ make project PRJ=v0.94 MODEL=Z10
 
-The resulting .bit file is located in <project folder>/project/redpitaya.runs/impl_1/red_pitaya_top.bit
-This file must be copied to /opt/redpitaya/fpga.
 
-Building the project from GUI is effectively the same as from CLI, except that the user has to click three buttons on the side of the GUI window:
+.. figure:: project_make.jpg
+
+A new, blank project will automatically built and all the necessary files associated with Red Pitaya will be added. 
+You can add/write your Verilog module at the end of red_pitaya_top.sv file (or add a new source by right clicking the Design Sources folder and Add Source):
+
+.. figure:: vivado_project.jpg
+
+You can connect newly added sources in the Diagram (Block Design) section (If it is not open: Window => Design => double click system). 
+Add them to the design by right click => Add Module in the design window (for more information check the Learn FPGA programming => FPGA lessons section) 
+https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
+
+Before you try to Run Synthesis, Run Implementation or Write Bitstream, you should check Language and Region settings on your Ubuntu computer – 
+make sure you have a Format that uses a dot (“.”) as a decimal separator (United Kingdom or United States will work). 
+Otherwise the Synthesis might fail as some parts of Vivado demand a dot as the decimal separator, which will cause Vivado not to recognize certain parts of the model.
+
+The resulting .bit file is located in fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit
+This file must be copied to /opt/redpitaya/fpga.
 
 .. figure:: vivadoGUI.png
 
 1. Run Synthesis
 2. Run Implementation
 3. Generate Bitstream
+
+The resulting .bit file is located in <Red Pitaya repository>/RedPitaya/fpga/prj/<project name>/project/redpitaya.runs/impl_1/ as red_pitaya_top.bit (the name of the .bit file is the same as the top module of the design)
 
 **********
 Simulation

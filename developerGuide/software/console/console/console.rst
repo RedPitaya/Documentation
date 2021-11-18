@@ -49,9 +49,17 @@ Connect your Red Pitaya and PC with micro USB B to USB A cable and follow the in
 Windows
 -------
 
-Download and install the `FTD driver <http://www.ftdichip.com/Drivers/VCP.htm>`_ to your PC. After installation, a 
+Download and install the `FTDI driver <http://www.ftdichip.com/Drivers/VCP.htm>`_ to your PC. After installation, a 
 new COM port will appear in the Device Manager you can use in Hyperterminal or another terminal utility to connect to 
 Red Pitaya.
+
+To adjust the connection settings of serial communication right click on the COM port and select Properties.
+
+.. figure:: device_manager.png
+
+.. figure:: com_port.png
+
+Boot reference must be done through minicom or similar serial console application.
 
 -----
 Linux
@@ -81,6 +89,8 @@ The first board connected to your PC will create a device named ``/dev/ttyUSB0``
 If **N** USB to serial devices are connected, they will appear as
 ``/dev/ttyUSBn`` where **n** in in **{0, 1, ..., N-1}**.
 To access this devices programs should be run with ``sudo``.
+
+Boot reference must be done through minicom or similar serial console application.
 
 ~~~~~~~~~~~
 ``minicom``
@@ -133,6 +143,10 @@ Go to ``Serial port setup``, press **Enter** and setup the next options:
 
 ``minicom`` requires some special ``Control+a`` key sequences to operate.
 Please see the `minicom manual <https://linux.die.net/man/1/minicom>`_ for details.
+
+After you have configured the details exit the settings. 
+Minicom should connect you to Red Pitaya and you should be asked to login after pressing Enter (see “3.2.1.2/top of the page” for username and password). 
+Should that not happen, leave minicom open and unplug Red Pitaya from power – after plugging it back in you should see the boot sequence of Red Pitaya.
 
 ~~~~~~~~~~
 ``screen``
