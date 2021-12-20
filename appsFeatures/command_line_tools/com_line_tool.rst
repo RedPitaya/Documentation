@@ -218,7 +218,7 @@ For example, the following sequence of monitor commands checks, modifies and ver
     0x00000008
     redpitaya>
     
-.. note:: 
+.. note::
     
     The CPU algorithms communicate with FPGA through these registers. Therefore, the user should be aware of a 
     possible interference with Red Pitaya applications, reading or acting upon these same FPGA registers. For simple 

@@ -73,8 +73,6 @@ MATLAB
 #. Replace the IP in the example with the IP of your Red Pitaya board
 #. Hit RUN or F5 on your keyboard to run the code
 
-Check `demo <http://redpitaya.com/wp-content/themes/StemLabs/apps/scpi/videos/SCPI_Demo.ogv>`_ video.
-
 More examples about how to control Red Pitaya from MATLAB can be find :ref:`here <examples>`.
 
 ======

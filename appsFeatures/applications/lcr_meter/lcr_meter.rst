@@ -15,7 +15,7 @@ you to do that quickly and accurately just by switching from one application to 
 .. note:: 
 
     To use the LCR meter application an additional extension module is needed. Module can be purchased from
-    Red Pitaya `store <http://store.redpitaya.com/>`_. 
+    Red Pitaya `store <https://redpitaya.com/shop>`_. 
     
 All Red Pitaya applications are web-based and don’t require the installation of any native software. Users can access 
 them via a browser using their smartphone, tablet or a PC running any popular operating system (MAC, Linux, Windows,

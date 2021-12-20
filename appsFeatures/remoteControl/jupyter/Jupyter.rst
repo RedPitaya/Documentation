@@ -61,7 +61,7 @@ Red Pitaya. A full schematic of the Extension module is available on our web pag
 
 .. note:: 
 
-    The extension module can be purchased from Red Pitaya `store <http://store.redpitaya.com/>`_. 
+    The extension module can be purchased from Red Pitaya `store <https://redpitaya.com/shop/>`_. 
     
 ==========
 Connectors
