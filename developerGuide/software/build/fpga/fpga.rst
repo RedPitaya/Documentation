@@ -9,7 +9,8 @@ It is important to install the correct Vivado and SDK versions as the projects a
 Prerequisites
 *************
 
-1. *Libraries used by ModelSim-Altera*
+Libraries used by ModelSim-Altera
+=====================================
 
 Install libraries:
 
@@ -17,8 +18,11 @@ Install libraries:
 
    # apt-get install unixodbc unixodbc-dev libncurses-dev libzmq3-dev libxext6 libasound2 libxml2 libx11-6 libxtst6 libedit-dev libxft-dev libxi6 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft-dev:i386 libxrender-dev:i386 libxt6:i386 libxtst6:i386
 
-2. *Xilinx Vivado 2020.1*
+Xilinx Vivado 2020.1
+====================
+
 Xilinx Vivado is available from Xilinx downloads page:
+
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html
 
 On officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 instead of 18.04.
@@ -27,23 +31,46 @@ If the installer glitches out anyway, your /etc/os-release file needs to be chan
 First, backup the file and then open it as superuser with a text editor such as nano:
 
 .. code-block:: shell-session
+   
    $ sudo nano /etc/os-release
 
 and change the VERSION line to “VERSION=”18.04.4 LTS (Bionic Beaver)”” and save the file. The edited file should look something like this:
 
 .. figure:: os_release.png
 
-After that you can either run the Xilinx_Unified_2020.1_0602_1208_Lin64.bin (Linux web-installer) or the xsetup file from the extracted folder (unified installer).
+After that you can either run the **Xilinx_Unified_2020.1_0602_1208_Lin64.bin** (Linux web-installer) or the xsetup file from the extracted folder (unified installer).
 After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.
 
 For more information on Vivado installation, see:
+
 https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html
 
-3. *Xilinx SDK development environments 2019.1*
+Xilinx SDK development environments 2019.1
+==========================================
+
 Xilinx SDK is available from Xilinx downloads page:
+
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html
 
+Device Tree Xilinx
+==================
 
+To build fpga requires a repository with a device tree from xilinx.
+You can prepare it by running the command:
+
+.. code-block:: shell-session
+   
+   $ make -f Makefile.x86 devicetree
+
+.. note::
+
+   You can upload the file manually:
+
+   .. code-block:: shell-session
+   
+      curl -L https://github.com/Xilinx/device-tree-xlnx/archive/xilinx-v2017.2.tar.gz/ -o device-tree-xlnx-xilinx-v2017.2.tar.gz
+   
+   and extract the .tar.gz to /[redpitaya path]/tmp/device-tree-xlnx-xilinx-v2017.2
 
 *******************
 Directory structure
@@ -243,6 +270,8 @@ To generate a bit file, reports, device tree and FSBL, run (replace ``name`` wit
    $ make PRJ=name MODEL=model
 
 For example, build v0.94 for STEMlab 125-14:
+
+.. code-block:: shell-session
 
    $ make project PRJ=v0.94 MODEL=Z10
 
