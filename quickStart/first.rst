@@ -81,7 +81,7 @@ After the **third step** you will get a Red Pitaya main page as shown below.
 
 .. note::
 
-   **Windows 7/8** users should install `Bonjour Print Services <http://redpitaya.com/bonjour>`_,
+   **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_,
    otherwise access to ``*.local`` addresses will not work.
 
    **Windows 10** already supports mDNS and DNS-SD,

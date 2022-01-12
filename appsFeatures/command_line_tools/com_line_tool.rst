@@ -192,7 +192,7 @@ Example (system register reading):
     14          AO2(0-1.8V)     0x00000075	    1.350
     15          AO3(0-1.8V)     0x0000009c	    1.800
 
-You can find some detailed description of the above mentioned pins `here <https://redpitaya.readthedocs.io/en/latest/developerGuide/125-14/extent.html>`_.
+You can find some detailed description of the above mentioned pins :ref:`here <E1>`.
 The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –sadc switch:
  
 .. code-block:: shell-session
@@ -205,9 +205,8 @@ Accessing FPGA registers
 Red Pitaya signal processing is based on two computational engines: the FPGA and the dual core processor in order to
 effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building 
 blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the 
-`Red Pitaya HDL memory map <https://redpitaya.readthedocs.io/en/latest/developerGuide/regset.html#red-pitaya-modules>`_
-document. The registers can be accessed using the described monitor utility. For example, the following sequence of
-monitor commands checks, modifies and verifies the acquisition decimation parameter (at address 0x40100014):
+:ref:`Red Pitaya HDL memory map <fpga_094>` document. The registers can be accessed using the described monitor utility.
+For example, the following sequence of monitor commands checks, modifies and verifies the acquisition decimation parameter (at address 0x40100014):
  
 .. code-block:: shell-session
     
@@ -219,7 +218,7 @@ monitor commands checks, modifies and verifies the acquisition decimation parame
     0x00000008
     redpitaya>
     
-.. note:: 
+.. note::
     
     The CPU algorithms communicate with FPGA through these registers. Therefore, the user should be aware of a 
     possible interference with Red Pitaya applications, reading or acting upon these same FPGA registers. For simple 
