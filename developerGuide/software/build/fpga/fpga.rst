@@ -184,34 +184,38 @@ Table of required build flags for FPGA projects per board
 +----------------------+---------------------+
 
 On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window). 
-Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup):
+Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup:
 
 .. code-block:: shell-session
-   $ source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
-   $ source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
+   source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
+   source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
 
 The Xilinx installation directory should be located in /opt directory (or /tools, if you used the default Vivado installation directory).
 These two commands will setup the $PATH environment variable.
 It might also be necessary to add SDK bin folder to the $PATH environment variable:
 
 .. code-block:: shell-session
-   #  export PATH=<path to Xilinx installation directory>/Xilinx/SDK/2019.1/bin:$PATH
+
+   export PATH=<path to Xilinx installation directory>/Xilinx/SDK/2019.1/bin:$PATH
 
 
 Check if you have Git command line tools installed on your computer:
 
 .. code-block:: shell-session
-   $ sudo apt update
-   $ sudo apt install git
+
+   sudo apt update
+   sudo apt install git
 
 Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:
 
 .. code-block:: shell-session
-   $ git clone https://github.com/RedPitaya/RedPitaya.git
+
+   git clone https://github.com/RedPitaya/RedPitaya.git
 
 The devicetree sources must also be downloaded and extracted by running 
 
 .. code-block:: shell-session
+
    make -f Makefile.x86 devicetree 
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
@@ -253,10 +257,21 @@ If the script returns the following error:
 
 .. code-block:: shell-session
 
-   $ BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ....
+   BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ....
 
-open the project GUI(see below), go to menu Reports-> Report IP Status. A new tab opens below the code window.
+First, find the line containing 
+
+.. code-block:: none
+
+   set scripts_vivado_version 2020.1 
+
+and change 2020.1 to your version.
+This is a quick and dirty way to get the build working in other versions of Vivado. 
+However, this way could be problematic if some of the IPs used are different in your version.
+
+To update the script properly, open the project GUI(see below), go to menu Reports-> Report IP Status. A new tab opens below the code window.
 If all IPs are not up-to-date, they need to be updated. 
+Before doing this, the TCL script must still be manually modified to your Vivado version, or the block design will not be created when Vivado starts.
 
 .. figure:: IPupdate.png
 
