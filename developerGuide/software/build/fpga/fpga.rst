@@ -31,7 +31,7 @@ First, backup the file and then open it as superuser with a text editor such as 
 
 and change the VERSION line to “VERSION=”18.04.4 LTS (Bionic Beaver)”” and save the file. The edited file should look something like this:
 
-.. figure:: os_release.jpg
+.. figure:: os_release.png
 
 After that you can either run the Xilinx_Unified_2020.1_0602_1208_Lin64.bin (Linux web-installer) or the xsetup file from the extracted folder (unified installer).
 After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.
