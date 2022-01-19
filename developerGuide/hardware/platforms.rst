@@ -16,3 +16,4 @@ Red Pitaya platforms
    250-12/top.rst
    compares/vs.rst
    leds.rst
+   DeclarationOfConformity.rst
