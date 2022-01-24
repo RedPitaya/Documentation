@@ -275,9 +275,11 @@ To generate a bit file, reports, device tree and FSBL, run (replace ``name`` wit
 
 For example, build v0.94 for STEMlab 125-14:
 
+
 .. code-block:: shell-session
 
    $ make project PRJ=v0.94 MODEL=Z10
+
 
 The resulting .bit file is located in /prj/<project name>/out/redpitaya.bit
 This file must be copied to /opt/redpitaya/fpga on the Red Pitaya itself.
@@ -321,6 +323,8 @@ To generate and open a Vivado project using GUI, run:
    $ make project PRJ=name MODEL=model
 
 For example, v0.94 project for STEMlab 125-14:
+
+.. code-block:: shell-session
 
    $ make project PRJ=v0.94 MODEL=Z10
 
