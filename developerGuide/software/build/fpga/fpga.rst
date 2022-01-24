@@ -329,12 +329,12 @@ For example, v0.94 project for STEMlab 125-14:
    $ make project PRJ=v0.94 MODEL=Z10
 
 
-.. figure:: project_make.jpg
+.. figure:: project_make.png
 
 A new, blank project will automatically built and all the necessary files associated with Red Pitaya will be added. 
 You can add/write your Verilog module at the end of red_pitaya_top.sv file (or add a new source by right clicking the Design Sources folder and Add Source):
 
-.. figure:: vivado_project.jpg
+.. figure:: vivado_project.png
 
 You can connect newly added sources in the Diagram (Block Design) section (If it is not open: Window => Design => double click system). 
 Add them to the design by right click => Add Module in the design window (for more information check the Learn FPGA programming => FPGA lessons section) 
