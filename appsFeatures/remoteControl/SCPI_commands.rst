@@ -378,7 +378,7 @@ Parameter options:
 * ``<parity> = {NONE, EVEN, ODD, MARK, SPACE}``  Default: ``NONE``
 * ``<timeout> = {0...255} in (1/10 seconds)`` Default: ``0`` 
 * ``<speed> = {1200,2400,4800,9600,19200,38400,57600,115200,230400,576000,921000,1000000,1152000,1500000,2000000,2500000,3000000,3500000,4000000}`` Default: ``9600``
-* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... } Array of data separated comma ``
+* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -442,7 +442,7 @@ Parameter options:
 | | ``UART:TIMEOUT? > <timeout>``   | ``rp_UartGetTimeout``        | Gets the timeout.                                                                        |
 | | Example:                        |                              |                                                                                          |
 | | ``UART:TIMEOUT? > 10``          |                              |                                                                                          |
-------------------------------------+------------------------------+------------------------------------------------------------------------------------------+
++-----------------------------------+------------------------------+------------------------------------------------------------------------------------------+
 | | ``UART:WRITE<n> <data>``        | ``rp_UartWrite``             | Writes data to uart. <n> - Length of passed data to uart.                                |
 | | Example:                        |                              |                                                                                          |
 | | ``UART:WRITE5 1,2,3,4,5``       |                              |                                                                                          |
@@ -462,7 +462,7 @@ Parameter options:
 * ``<order> = {MSB, LSB}``  Default: ``MSB``
 * ``<bits> = {7,..}``  Default: ``8``
 * ``<speed> = {1,100000000}`` Default: ``50000000``
-* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... } Array of data separated comma ``
+* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -577,8 +577,8 @@ I2C
 Parameter options:
 
 * ``<mode>  = {OFF, ON}``  Default: ``OFF``
-* ``<value> = {XXX| #HXX | #QXXX | #BXXXXXXXX}``
-* ``<data>  = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... } Array of data separated comma ``
+* ``<value> = {XXX | #HXX | #QXXX | #BXXXXXXXX}``
+* ``<data>  = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
