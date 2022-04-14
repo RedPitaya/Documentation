@@ -3,7 +3,7 @@
 STEMlab 125-14 X-Channel system
 ###################################
 
-The X-Channel STEMlab 125-14 system consists of multiple STEMlab 125-14 devices that are modified for clock and trigger synchronization, and also comes with SATA synchronization cables and software that supports X-Channel RF signal acquisition and generation.
+The X-Channel STEMlab 125-14 system consists of multiple STEMlab 125-14 devices that are modified for clock and trigger synchronization, and also comes with SATA synchronization cables and software that supports multi channel RF signal acquisition and generation.
 
 X-Channel STEMlab 125-14 system consists of:
 
