@@ -311,7 +311,8 @@ Code - C
 .. note::
 
     C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> `link <https://redpitaya.readthedocs.io/en/latest/developerGuide/comC.html>`_
+    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    
 
 .. code-block:: c
 
