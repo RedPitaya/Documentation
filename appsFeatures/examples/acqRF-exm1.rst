@@ -46,7 +46,7 @@ and press run.
             IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
             RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
-            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically
+            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
             
             %% Open connection with your Red Pitaya
             
@@ -137,7 +137,7 @@ and press run.
             IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
             RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
-            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically
+            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
             
             %% Open connection with your Red Pitaya
             
@@ -227,29 +227,31 @@ and press run.
             clear all
             close all
             clc
-            IP= '192.168.1.106';                % Input IP of your Red Pitaya...
+            IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            tcpipObj = tcpip(IP, port);
-            tcpipObj.InputBufferSize = 16384*32;
+            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
+            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
             
             %% Open connection with your Red Pitaya
             
-            fopen(tcpipObj);
-            tcpipObj.Terminator = 'CR/LF';
+            %% Open connection with your Red Pitaya
             
-            flushinput(tcpipObj);
-            flushoutput(tcpipObj);
+            RP.ByteOrder = "big-endian";
+            configureTerminator(RP, 'CR/LF');
+            
+            flush(RP, "input");
+            flush(RP, "output");
             
             % Set decimation vale (sampling rate) in respect to you
             % acquired signal frequency
             
             
-            fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 1');
-            fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
-            fprintf(tcpipObj,'ACQ:SOUR1:GAIN LV');
-            fprintf(tcpipObj,'ACQ:DATA:FORMAT BIN');
-            fprintf(tcpipObj,'ACQ:DATA:UNITS RAW');
+            writeline(RP,'ACQ:RST');
+            writeline(RP,'ACQ:DEC 1');
+            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:SOUR1:GAIN LV');
+            writeline(RP,'ACQ:DATA:FORMAT BIN');
+            writeline(RP,'ACQ:DATA:UNITS RAW');
             
             % Set trigger delay to 0 samples
             % 0 samples delay set trigger to center of the buffer
@@ -257,25 +259,25 @@ and press run.
             % Samples from left to the center are samples before trigger
             % Samples from center to the right are samples after trigger
             
-            fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRIG:DLY 0');
             
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
             % Set trigger to source 1 positive edge
             
-            fprintf(tcpipObj,'ACQ:START');
+            writeline(RP,'ACQ:START');
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
             
-            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');
+            writeline(RP,'ACQ:TRIG CH1_PE');
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
             % Ctrl+C will stop code executing in Matlab
             
             while 1
-                trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
             
                 if strcmp('TD',trig_rsp(1:2))  % Read only TD
             
@@ -286,15 +288,19 @@ and press run.
             
             
             % Read data from buffer
-            fprintf(tcpipObj,'ACQ:SOUR1:DATA?');
+            writeline(RP,'ACQ:SOUR1:DATA?');
+            
             % Read header for binary format
-            header=fread(tcpipObj,1);
+            header = readline(RP, 1);
+            
             % Reading size of block, what informed about data size
-            header_size=str2num(strcat(fread(tcpipObj,1,'int8')));
+            header_size = str2num(strcat(readline(RP,1,'int8')));
+            
             % Reading size of data
-            data_size=str2num(strcat(fread(tcpipObj,header_size,'char'))');
+            data_size = str2num(strcat(readline(RP,header_size,'char'))');
+            
             % Read data
-            signal_num=fread(tcpipObj,data_size/2,'int16');
+            signal_num = readline(RP, data_size/2,'int16');
             
             plot(signal_num)
             hold on
@@ -302,7 +308,7 @@ and press run.
             ylabel('Voltage / V')
             xlabel('samples')
             
-            fclose(tcpipObj);
+            clear RP;
 
 
 Code - C
