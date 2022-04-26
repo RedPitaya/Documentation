@@ -85,7 +85,7 @@ Specifications
 
 .. note::
 
-    Please take care that :ref:`position <anain>` are set to the correct input rage!
+    Please take care that :ref:`position <anain>` are set to the correct input range!
     
 
 HW connections
