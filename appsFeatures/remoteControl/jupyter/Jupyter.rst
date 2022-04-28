@@ -181,40 +181,40 @@ Sensors
 ========================================================================================    ============
 Sensor information                                                                          Connector
 ========================================================================================    ============
-`Temperature sensor <http://wiki.seeedstudio.com/wiki/Grove_-_Temperature_Sensor>`_         AI
-`Motion sensor <http://wiki.seeedstudio.com/wiki/Grove_-_PIR_Motion_Sensor>`_               DIO
-`Touch sensor <http://wiki.seeedstudio.com/wiki/Grove_-_Touch_Sensor>`_                     DIO
-`Button <http://wiki.seeedstudio.com/wiki/Grove_-_Button>`_                                 DIO
-Switch
+`Temperature sensor <https://wiki.seeedstudio.com/Sensor_temperature>`_                     AI
+`Motion sensor <https://wiki.seeedstudio.com/Grove-PIR_Motion_Sensor>`_                     DIO
+`Touch sensor <https://wiki.seeedstudio.com/Grove-Touch_Sensor>`_                           DIO
+`Button <https://wiki.seeedstudio.com/Grove-Button>`_                                       DIO
+`Switch <https://wiki.seeedstudio.com/Grove-Switch-P>`_
 Digital
-`Tilt <http://wiki.seeedstudio.com/wiki/Grove_-_Tilt_Switch>`_                              DIO
-`Potentiometer <http://wiki.seeedstudio.com/wiki/Grove_-_Rotary_Angle_Sensor>`_             AI
-`Light sensor <http://wiki.seeed.cc/Grove-Light_Sensor/>`_                                  AI
-`Air quality sensor <http://wiki.seeedstudio.com/wiki/Grove_-_Air_Quality_Sensor_v1.>`_     AI
-`Vibration sensor <http://wiki.seeedstudio.com/wiki/Grove_-_Piezo_Vibration_Sensor>`_       AI
-`Moisture sensor <http://wiki.seeedstudio.com/wiki/Grove_-_Moisture_Sensor>`_               AI
-`Water sensor <http://wiki.seeedstudio.com/wiki/Grove_-_Water_Sensor>`_                     AI
-`Alcohol sensor <http://wiki.seeedstudio.com/wiki/Grove_-_Alcohol_Sensor>`_                 AI
+`Tilt <https://wiki.seeedstudio.com/Grove-Tilt_Switch>`_                                    DIO
+`Potentiometer <https://wiki.seeedstudio.com/Grove-Slide_Potentiometer>`_                   AI
+`Light sensor <http://wiki.seeed.cc/Grove-Light_Sensor>`_                                   AI
+`Air quality sensor <https://wiki.seeedstudio.com/Grove-Air_Quality_Sensor_v1.3>`_          AI
+`Vibration sensor <https://wiki.seeedstudio.com/Grove-Piezo_Vibration_Sensor>`_             AI
+`Moisture sensor <https://wiki.seeedstudio.com/Grove-Moisture_Sensor>`_                     AI
+`Water sensor <https://wiki.seeedstudio.com/Grove-Water_Sensor>`_                           AI
+`Alcohol sensor <https://wiki.seeedstudio.com/Grove-Alcohol_Sensor>`_                       AI
 Barometer ``not supported at the moment``                                                   I2C
 `Sound sensor <http://wiki.seeed.cc/Grove-Sound_Sensor/>`_                                  AI
-`UV sensor <http://wiki.seeedstudio.com/wiki/Grove_-_UV_Sensor>`_                           AI
+`UV sensor <https://wiki.seeedstudio.com/Grove-UV_Sensor>`_                                 AI
 Accelerometer ``not supported at the moment``                                               I2C
 ========================================================================================    ============
 
 ========================================================================================    ============
 Actuators                                                                                   Connector
 ========================================================================================    ============
-`Relay <http://wiki.seeedstudio.com/wiki/Grove_-_Relay>`_                                   DIO
+`Relay <https://wiki.seeedstudio.com/Grove-Relay>`_                                         DIO
 ========================================================================================    ============
 
 ========================================================================================    ============
 Indicators                                                                                  Connector
 ========================================================================================    ============
-`Buzzer <http://wiki.seeedstudio.com/wiki/Grove_-_Buzzer>`_                                 DIO
+`Buzzer <https://wiki.seeedstudio.com/Grove-Buzzer>`_                                       DIO
 `LED <https://www.seeedstudio.com/grove-led-p-767.html?cPath=156_157>`_                     DIO
 7 segment display                                                                           Digital pins
-LED bar                                                                                     Digital pins
-Groove LCD                                                                                  Digital pins
+`LED bar <https://wiki.seeedstudio.com/Grove-LED_Bar>`_                                     Digital pins
+`Groove LCD <https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight>`_                        Digital pins
 LCD                                                                                         Digital pins
 ========================================================================================    ============
 

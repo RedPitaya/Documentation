@@ -7,7 +7,7 @@ Compiling and running C applications
 You can write simple C algorithms, make executables and run them on the Red Pitaya board. A list of
 built in functions (APIs) is available providing full control over Red Pitaya board (signal generation and
 acquisition, digital I/O control, communication: I2C, SPI, UART and other).
-How to compile an C algorithm is shown in the instructions below, while a list of Examples is available
+How to compile a C algorithm is shown in the instructions below, while a list of Examples is available
 :ref:`here <list-of-supported-scpi-commands>`.
 
 Note: When you copy the source code from our repository (following instructions bellow) you will also
@@ -16,8 +16,7 @@ copy all C examples to your Red Pitaya board. After that only the compiling step
 
 **Compiling and running on Red Pitaya board**
 
-When compiling on the target no special preparations are needed. A native toolchain is available directly on the
-Debian system.
+When compiling on the target no special preparations are needed. A native toolchain is available directly on the Debian system.
 
 First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
 
