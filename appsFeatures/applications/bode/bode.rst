@@ -52,7 +52,7 @@ Main feature of the Bode analyzer application are described below:
     - excitation signal parameters (amplitude and DC bias) can be adjusted to make measurements in different 
       sensitivities and conditions (amplifiers etc.).
     - The calibration function enables calibrating long leads and to remove leads and cables effect on final 
-      measurements. The calibration will also calibrate your Red Pitaya if any parasitics effects are present.   
+      measurements. The calibration will also calibrate your Red Pitaya if any parasitics effects are present. Bode       calibration data is stored into **/tmp/ba_calib.data**.   
    
 .. figure:: BA_Slika_05.png
    
