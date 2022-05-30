@@ -119,7 +119,7 @@ Code - C
         }
 
         for (int i = 0; i < buff_size; ++i){
-            x[i] = sin(t[i]) + ((1.0/3.0) * sin(t[i] * 3))u
+            x[i] = sin(t[i]) + ((1.0/3.0) * sin(t[i] * 3));
             y[i] = (1.0/2.0) * sin(t[i]) + (1.0/4.0) * sin(t[i] * 4);
         }
 
