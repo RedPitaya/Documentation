@@ -55,6 +55,7 @@ and press run.
     fprintf(tcpipObj,'SOUR2:BURS:NCYC 2'); % Set 1 pulses of sine wave
     fprintf(tcpipObj,'SOUR2:BURS:NOR 1'); % Infinity number of sine wave pulses
     fprintf(tcpipObj,'SOUR2:BURS:INT:PER 5000'); % Set time of burst period in microseconds = 5 * 1/Frequency * 1000000
+
     fprintf(tcpipObj,'OUTPUT:STATE ON'); % Set output to ON
     pause(2)
     fprintf(tcpipObj,'SOUR1:TRIG:INT');
@@ -92,11 +93,13 @@ Code - C
                 fprintf(stderr, "Rp api init failed!\n");
         }
 
+        rp_GenSynchronise(); // The generator is reset on both channels.
+
         rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
         rp_GenFreq(RP_CH_1, 4);
         rp_GenAmp(RP_CH_1, 1.0);
 
-         rp_GenWaveform(RP_CH_2, RP_WAVEFORM_SINE);
+        rp_GenWaveform(RP_CH_2, RP_WAVEFORM_SINE);
         rp_GenFreq(RP_CH_2, 4);
         rp_GenAmp(RP_CH_2, 1.0);
 
@@ -109,14 +112,15 @@ Code - C
         rp_GenBurstCount(RP_CH_2, 2);
         rp_GenBurstRepetitions(RP_CH_2, 1);
         rp_GenBurstPeriod(RP_CH_2, 5000);
-        
+
         rp_GenOutEnableSync(true);
         sleep(2);
         rp_GenTrigger(RP_CH_1);
         sleep(2);
         rp_GenTrigger(RP_CH_2);
         sleep(1);
-        rp_GenTrigger(3); // Gen trigger on both channels
+        rp_GenSynchronise();
+
         rp_Release();
     }
 
@@ -138,6 +142,7 @@ Code - Python
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
+
     rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
