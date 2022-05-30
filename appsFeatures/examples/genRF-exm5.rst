@@ -38,7 +38,7 @@ and press run.
  
     fopen(tcpipObj);
     tcpipObj.Terminator = 'CR/LF';
-    
+
     fprintf(tcpipObj,'GEN:RST');
     fprintf(tcpipObj,'SOUR1:FUNC SINE');       % Set function of output signal
                                                % {sine, square, triangle, sawu,sawd, pwm}
@@ -49,11 +49,12 @@ and press run.
                                                % {sine, square, triangle, sawu,sawd, pwm}
     fprintf(tcpipObj,'SOUR2:FREQ:FIX 2000');   % Set frequency of output signal
     fprintf(tcpipObj,'SOUR2:VOLT 1');          % Set amplitude of output signal
-        
+
     fprintf(tcpipObj,'OUTPUT:STATE ON');       % Start two channels simultaneously
-    
+    fprintf(tcpipObj,'SOUR:TRIG:INT');         % Generate triggers
+
     %% Close connection with Red Pitaya
-    
+
     fclose(tcpipObj);
 
 Code - C
@@ -81,7 +82,9 @@ Code - C
         if(rp_Init() != RP_OK){
             fprintf(stderr, "Rp api init failed!\n");
         }
-        
+
+        rp_GenSynchronise();
+
         rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
         rp_GenFreq(RP_CH_1, 2000);
         rp_GenAmp(RP_CH_1, 1);
@@ -91,6 +94,8 @@ Code - C
         rp_GenAmp(RP_CH_2, 1);
 
         rp_GenOutEnableSync(true);
+        rp_GenTriggerOnly(RP_CH_1);
+        rp_GenTriggerOnly(RP_CH_2);
 
         /* Release rp resources */
         rp_Release();
@@ -115,13 +120,16 @@ Code - Python
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
+
     rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
     rp_s.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
     rp_s.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR2:VOLT ' + str(ampl))
+
     rp_s.tx_txt('OUTPUT:STATE ON')
+    rp_s.tx_txt('SOUR:TRIG:INT')
 
 
 

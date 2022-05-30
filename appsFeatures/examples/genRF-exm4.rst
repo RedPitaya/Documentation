@@ -77,9 +77,8 @@ and press run.
     fprintf(tcpipObj,'SOUR1:FREQ:FIX 4000');        % Set frequency of output signal
     fprintf(tcpipObj,'SOUR2:FREQ:FIX 4000');
 
-
-    fprintf(tcpipObj,'OUTPUT1:STATE ON');
-    fprintf(tcpipObj,'OUTPUT2:STATE ON');
+    fprintf(tcpipObj,'OUTPUT:STATE ON');            % Start two channels simultaneously
+    frpitnf(tcpipObj,'SOUR:TRIG:INT');              % Generate triggers
 
     fclose(tcpipObj);
 
@@ -120,9 +119,11 @@ Code - C
         }
 
         for (int i = 0; i < buff_size; ++i){
-            x[i] = sin(t[i]) + ((1.0/3.0) * sin(t[i] * 3));
+            x[i] = sin(t[i]) + ((1.0/3.0) * sin(t[i] * 3))u
             y[i] = (1.0/2.0) * sin(t[i]) + (1.0/4.0) * sin(t[i] * 4);
         }
+
+        rp_GenSynchronise();
 
         rp_GenWaveform(RP_CH_1, RP_WAVEFORM_ARBITRARY);
         rp_GenWaveform(RP_CH_2, RP_WAVEFORM_ARBITRARY);
@@ -138,6 +139,8 @@ Code - C
 
         rp_GenOutEnable(RP_CH_1);
         rp_GenOutEnable(RP_CH_2);
+        rp_GenTriggerOnly(RP_CH_1);
+        rp_GenTriggerOnly(RP_CH_2);
 
         /* Releasing resources */
         free(y);
