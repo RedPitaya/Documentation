@@ -43,76 +43,79 @@ and press run.
             clear all
             close all
             clc
-            IP= '192.168.178.111';                % Input IP of your Red Pitaya...
+            IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            tcpipObj = tcpip(IP, port);
-            tcpipObj.InputBufferSize = 16384*32;
+            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
+            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
             
             %% Open connection with your Red Pitaya
             
-            fopen(tcpipObj);
-            tcpipObj.Terminator = 'CR/LF';
+            RP.ByteOrder = "big-endian";
+            configureTerminator(RP, 'CR/LF');
             
-            flushinput(tcpipObj);
-            flushoutput(tcpipObj);
+            flush(RP, "input");
+            flush(RP, "output");
             
             % Set decimation vale (sampling rate) in respect to you 
             % acquired signal frequency
             
-            fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 1');
-            fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:RST');
+            writeline(RP,'ACQ:DEC 1');
+            writeline(RP,'ACQ:TRIG:LEV 0');
             
             % there is an option to select coupling when using SIGNALlab 250-12 
-            % fprintf(tcpipObj,'ACQ:SOUR1:COUP AC'); % enables AC coupling on channel 1
+            % writeline(RP,'ACQ:SOUR1:COUP AC');    % enables AC coupling on channel 1
 
             % by default LOW level gain is selected
-            % fprintf(tcpipObj,'ACQ:SOUR1:GAIN LV'); % user can switch gain using this command
+            % writeline(RP,'ACQ:SOUR1:GAIN LV');    % user can switch gain using this command
 
 
             % Set trigger delay to 0 samples
-            % 0 samples delay set trigger to center of the buffer
+            % 0 samples delay set trigger to the center of the buffer
             % Signal on your graph will have trigger in the center (symmetrical)
             % Samples from left to the center are samples before trigger 
             % Samples from center to the right are samples after trigger
             
-            fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRIG:DLY 0');
             
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
             % Set trigger to source 1 positive edge
             
-            fprintf(tcpipObj,'ACQ:START');
-            % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
-            % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
-            % length and smaling rate
+            writeline(RP,'ACQ:START');
             
-            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');  
+            % After acquisition is started some time delay is needed in order to acquire fresh samples in the buffer
+            % Here we have used time delay of one second, but you can calculate the exact value by taking into account buffer
+            % length and sampling rate
+            
+            writeline(RP,'ACQ:TRIG CH1_PE');
+            
             % Wait for trigger
             % Until trigger is true wait with acquiring
-            % Be aware of while loop if trigger is not achieved
+            % Be aware of the while loop if trigger is not achieved
             % Ctrl+C will stop code executing in MATLAB
             
             while 1
-                    trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')
+                    trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
                 
-                    if strcmp('TD',trig_rsp(1:2))  % Read only TD
+                    if strcmp('TD', trig_rsp(1:2))      % Read only TD
                 
-                    break
+                        break
                 
                     end
                 end
                 
                 
             % Read data from buffer 
-            signal_str=query(tcpipObj,'ACQ:SOUR1:DATA?');
-            signal_str_2=query(tcpipObj,'ACQ:SOUR2:DATA?');
+            signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
+            signal_str_2 = writeread(RP,'ACQ:SOUR2:DATA?');
             
-            % Convert values to numbers.% First character in string is “{“   
-            % and 2 latest are empty spaces and last is “}”.  
+            % Convert values to numbers.
+            % First character in the string is “{“   
+            % and the last 3 are 2 empty spaces and a “}”.  
             
-            signal_num=str2num(signal_str(1,2:length(signal_str)-3));
-            signal_num_2=str2num(signal_str_2(1,2:length(signal_str_2)-3));
+            signal_num   = str2num(signal_str  (1, 2:length(signal_str)-3));
+            signal_num_2 = str2num(signal_str_2(1, 2:length(signal_str_2)-3));
             
             plot(signal_num)
             hold on
@@ -121,7 +124,7 @@ and press run.
             ylabel('Voltage / V')
             xlabel('samples')
             
-            fclose(tcpipObj)
+            clear RP;
 
     .. tab:: BIN/VOLTS mode
 
@@ -131,74 +134,81 @@ and press run.
             clear all
             close all
             clc
-            IP= '192.168.1.106';                % Input IP of your Red Pitaya...
+            IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            tcpipObj = tcpip(IP, port);
-            tcpipObj.InputBufferSize = 16384*32;
+            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
+            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
             
             %% Open connection with your Red Pitaya
             
-            fopen(tcpipObj);
-            tcpipObj.Terminator = 'CR/LF';
+            RP.ByteOrder = "big-endian";
+            configureTerminator(RP, 'CR/LF');
             
-            flushinput(tcpipObj);
-            flushoutput(tcpipObj);
+            flush(RP, "input");
+            flush(RP, "output");
             
             % Set decimation vale (sampling rate) in respect to you
             % acquired signal frequency
             
             
-            fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 1');
-            fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
-            fprintf(tcpipObj,'ACQ:SOUR1:GAIN LV');
-            fprintf(tcpipObj,'ACQ:DATA:FORMAT BIN');
-            fprintf(tcpipObj,'ACQ:DATA:UNITS VOLTS');
+            writeline(RP,'ACQ:RST');
+            writeline(RP,'ACQ:DEC 1');
+            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:SOUR1:GAIN LV');
+            writeline(RP,'ACQ:DATA:FORMAT BIN');
+            writeline(RP,'ACQ:DATA:UNITS VOLTS');
             
             % Set trigger delay to 0 samples
-            % 0 samples delay set trigger to center of the buffer
+            % 0 samples delay set trigger to the center of the buffer
             % Signal on your graph will have trigger in the center (symmetrical)
-            % Samples from left to the center are samples before trigger
+            % Samples from left to the center are samples before trigger 
             % Samples from center to the right are samples after trigger
             
-            fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRIG:DLY 0');
+            
             
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
             % Set trigger to source 1 positive edge
             
-            fprintf(tcpipObj,'ACQ:START');
-            % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
-            % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
-            % length and smaling rate
+            writeline(RP,'ACQ:START');
             
-            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');
+            % After acquisition is started some time delay is needed in order to acquire fresh samples in the buffer
+            % Here we have used time delay of one second, but you can calculate the exact value by taking into account buffer
+            % length and sampling rate
+            
+            writeline(RP,'ACQ:TRIG CH1_PE');
+            
             % Wait for trigger
             % Until trigger is true wait with acquiring
-            % Be aware of while loop if trigger is not achieved
-            % Ctrl+C will stop code executing in Matlab
+            % Be aware of the while loop if trigger is not achieved
+            % Ctrl+C will stop code executing in MATLAB
             
             while 1
-                trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
             
-                if strcmp('TD',trig_rsp(1:2))  % Read only TD
+                if strcmp('TD', trig_rsp(1:2))      % Read only TD
             
-                break
+                    break
             
                 end
             end
             
             
             % Read data from buffer
-            fprintf(tcpipObj,'ACQ:SOUR1:DATA?');
+            writeline(RP,'ACQ:SOUR1:DATA?');
+            
             % Read header for binary format
-            header=fread(tcpipObj,1);
+            header = readline(RP, 1);
+            
             % Reading size of block, what informed about data size
-            header_size=str2num(strcat(fread(tcpipObj,1,'int8')));
+            header_size = str2double(strcat(readline(RP, 1, 'int8')));
+            
             % Reading size of data
-            data_size=str2num(strcat(fread(tcpipObj,header_size,'char'))');
+            data_size = str2double(strcat(readline(RP, header_size, 'char'))');
+            
             % Read data
-            signal_num=fread(tcpipObj,data_size/4,'float');
+            signal_num = readline(RP, data_size/4,'float');
             
             plot(signal_num)
             hold on
@@ -206,7 +216,7 @@ and press run.
             ylabel('Voltage / V')
             xlabel('samples')
             
-            fclose(tcpipObj);
+            clear RP;
 
 
     .. tab:: BIN/RAW mode
@@ -217,29 +227,31 @@ and press run.
             clear all
             close all
             clc
-            IP= '192.168.1.106';                % Input IP of your Red Pitaya...
+            IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            tcpipObj = tcpip(IP, port);
-            tcpipObj.InputBufferSize = 16384*32;
+            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
+            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
             
             %% Open connection with your Red Pitaya
             
-            fopen(tcpipObj);
-            tcpipObj.Terminator = 'CR/LF';
+            %% Open connection with your Red Pitaya
             
-            flushinput(tcpipObj);
-            flushoutput(tcpipObj);
+            RP.ByteOrder = "big-endian";
+            configureTerminator(RP, 'CR/LF');
+            
+            flush(RP, "input");
+            flush(RP, "output");
             
             % Set decimation vale (sampling rate) in respect to you
             % acquired signal frequency
             
             
-            fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 1');
-            fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
-            fprintf(tcpipObj,'ACQ:SOUR1:GAIN LV');
-            fprintf(tcpipObj,'ACQ:DATA:FORMAT BIN');
-            fprintf(tcpipObj,'ACQ:DATA:UNITS RAW');
+            writeline(RP,'ACQ:RST');
+            writeline(RP,'ACQ:DEC 1');
+            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:SOUR1:GAIN LV');
+            writeline(RP,'ACQ:DATA:FORMAT BIN');
+            writeline(RP,'ACQ:DATA:UNITS RAW');
             
             % Set trigger delay to 0 samples
             % 0 samples delay set trigger to center of the buffer
@@ -247,25 +259,25 @@ and press run.
             % Samples from left to the center are samples before trigger
             % Samples from center to the right are samples after trigger
             
-            fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRIG:DLY 0');
             
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
             % Set trigger to source 1 positive edge
             
-            fprintf(tcpipObj,'ACQ:START');
+            writeline(RP,'ACQ:START');
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
             
-            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');
+            writeline(RP,'ACQ:TRIG CH1_PE');
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
             % Ctrl+C will stop code executing in Matlab
             
             while 1
-                trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
             
                 if strcmp('TD',trig_rsp(1:2))  % Read only TD
             
@@ -276,15 +288,19 @@ and press run.
             
             
             % Read data from buffer
-            fprintf(tcpipObj,'ACQ:SOUR1:DATA?');
+            writeline(RP,'ACQ:SOUR1:DATA?');
+            
             % Read header for binary format
-            header=fread(tcpipObj,1);
+            header = readline(RP, 1);
+            
             % Reading size of block, what informed about data size
-            header_size=str2num(strcat(fread(tcpipObj,1,'int8')));
+            header_size = str2num(strcat(readline(RP,1,'int8')));
+            
             % Reading size of data
-            data_size=str2num(strcat(fread(tcpipObj,header_size,'char'))');
+            data_size = str2num(strcat(readline(RP,header_size,'char'))');
+            
             % Read data
-            signal_num=fread(tcpipObj,data_size/2,'int16');
+            signal_num = readline(RP, data_size/2,'int16');
             
             plot(signal_num)
             hold on
@@ -292,7 +308,7 @@ and press run.
             ylabel('Voltage / V')
             xlabel('samples')
             
-            fclose(tcpipObj);
+            clear RP;
 
 
 Code - C
@@ -301,7 +317,8 @@ Code - C
 .. note::
 
     C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> `link <https://redpitaya.readthedocs.io/en/latest/developerGuide/comC.html>`_
+    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    
 
 .. code-block:: c
 

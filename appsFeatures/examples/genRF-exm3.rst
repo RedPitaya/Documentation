@@ -34,7 +34,6 @@ and press run.
     port = 5000;
     tcpipObj=tcpip(IP, port);
 
-
     %% Open connection with your Red Pitaya
     fopen(tcpipObj);
     tcpipObj.Terminator = 'CR/LF';
@@ -43,20 +42,23 @@ and press run.
 
     %% Generate
 
+    fprintf(tcpipObj,'GEN:RST')
+
     fprintf(tcpipObj,'SOUR1:FUNC SINE');          % Set function of output signal {sine, square, triangle,sawu,sawd, pwm}
     fprintf(tcpipObj,'SOUR1:FREQ:FIX 200');       % Set frequency of output signal
     fprintf(tcpipObj,'SOUR1:VOLT 1');             % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR1:BURS:STAT BURST');    % Set burst mode to ON
-    fprintf(tcpipObj,'SOUR1:BURS:NCYC 1');        % Set 1 pulses of sine wave   
+    fprintf(tcpipObj,'SOUR1:BURS:NCYC 1');        % Set 1 pulses of sine wave
+    fprintf(tcpipObj,'SOUR1:BURS:STAT ON');       % Set burst mode to ON
     fprintf(tcpipObj,'SOUR1:TRIG:SOUR EXT_PE');   % Set generator trigger to external
-    fprintf(tcpipObj,'OUTPUT1:STATE ON');         % Set output to ON
+
+    fprintf(tcpipObj,'OUTPUT1:STATE ON')
+    fprintf(tcpipObj,'SOUR1:TRIG:INT')
 
     % For generating signal pulses you trigger signal frequency must be less than
-    % frequency of generating signal pulses. If you have trigger signal frequency  
+    % frequency of generating signal pulses. If you have trigger signal frequency
     % higher than frequency of generating signal pulses
     % on output you will get continuous  signal instead of pulses
-
 
     fclose(tcpipObj)
 
@@ -66,7 +68,7 @@ Code - C
 .. note::
 
     C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> `link <https://redpitaya.readthedocs.io/en/latest/developerGuide/comC.html>`_
+    Instructions on how to compile the code are here -> :ref:`link <comC>`
 
 .. code-block:: c
 
@@ -85,7 +87,9 @@ Code - C
         if(rp_Init() != RP_OK){
             fprintf(stderr, "Rp api init failed!\n");
         }
-        
+
+        rp_GenReset();
+
         rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
         rp_GenFreq(RP_CH_1, 200);
         rp_GenAmp(RP_CH_1, 1);
@@ -94,8 +98,8 @@ Code - C
         rp_GenMode(RP_CH_1, RP_GEN_MODE_BURST);
         rp_GenTriggerSource(RP_CH_1, RP_GEN_TRIG_SRC_EXT_PE);
 
-        /* Enable output channel */
         rp_GenOutEnable(RP_CH_1);
+        rp_GenTriggerOnly(RP_CH_1);
 
         /* Release rp resources */
         rp_Release();
@@ -120,14 +124,17 @@ Code - Python
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
+
     rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
     rp_s.tx_txt('SOUR1:BURS:NCYC 2')
     rp_s.tx_txt('SOUR1:BURS:STAT BURST')
     rp_s.tx_txt('SOUR1:TRIG:SOUR EXT_PE')
+
     rp_s.tx_txt('OUTPUT1:STATE ON')
-    
+    rp_s.tx_txt('SOUR1:TRIG:INT')
+
 Code - LabVIEW
 **************
 

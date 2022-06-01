@@ -35,12 +35,15 @@ MATLAB editor, save project and press run.
     fopen(tcpipObj);
     tcpipObj.Terminator = 'CR/LF';
 
-    fprintf(tcpipObj,'GEN:RST');
+    fprintf(tcpipObj,'GEN:RST');               % Reset generator
+
     fprintf(tcpipObj,'SOUR1:FUNC SINE');       % Set function of output signal
                                                % {sine, square, triangle, sawu,sawd, pwm}
-    fprintf(tcpipObj,'SOUR1:FREQ:FIX 2000');   % Set frequency of output signal
+    fprintf(tcpipObj,'SOUR1:FREQ:FIX 1000');   % Set frequency of output signal
     fprintf(tcpipObj,'SOUR1:VOLT 1');          % Set amplitude of output signal
+
     fprintf(tcpipObj,'OUTPUT1:STATE ON');      % Set output to ON
+    fprintf(tcpipObj,'SOUR1:TRIG:INT');        % Generate trigger
 
     %% Close connection with Red Pitaya
 
@@ -53,7 +56,7 @@ Code - C
 .. note::
 
     C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> `link <https://redpitaya.readthedocs.io/en/latest/developerGuide/comC.html>`_
+    Instructions on how to compile the code are here -> :ref:`link <comC>`
 
 .. code-block:: c
 
@@ -74,24 +77,30 @@ Code - C
             fprintf(stderr, "Rp api init failed!\n");
         }
 
+        /* Reset generator */
+        rp_GenReset();
+
+        /* Generating wave form */
+        rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
+
         /* Generating frequency */
         rp_GenFreq(RP_CH_1, 10000.0);
 
         /* Generating amplitude */
         rp_GenAmp(RP_CH_1, 1.0);
 
-        /* Generating wave form */
-        rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
-
         /* Enable channel */
         rp_GenOutEnable(RP_CH_1);
+
+        /* Generating trigger */
+        rp_GenTriggerOnly(RP_CH_1);
 
         /* Releasing resources */
         rp_Release();
 
         return 0;
     }
-   
+
 Code - Python
 *************
 
@@ -109,12 +118,14 @@ Code - Python
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
+
     rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
 
     #Enable output
     rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp_s.tx_txt('SOUR1:TRIG:INT')
 
 Code - LabVIEW
 **************

@@ -77,9 +77,8 @@ and press run.
     fprintf(tcpipObj,'SOUR1:FREQ:FIX 4000');        % Set frequency of output signal
     fprintf(tcpipObj,'SOUR2:FREQ:FIX 4000');
 
-
-    fprintf(tcpipObj,'OUTPUT1:STATE ON');
-    fprintf(tcpipObj,'OUTPUT2:STATE ON');
+    fprintf(tcpipObj,'OUTPUT:STATE ON');            % Start two channels simultaneously
+    frpitnf(tcpipObj,'SOUR:TRIG:INT');              % Generate triggers
 
     fclose(tcpipObj);
 
@@ -89,7 +88,7 @@ Code - C
 .. note::
 
     C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> `link <https://redpitaya.readthedocs.io/en/latest/developerGuide/comC.html>`_
+    Instructions on how to compile the code are here -> :ref:`link <comC>`
 
 .. code-block:: c
 
@@ -124,6 +123,8 @@ Code - C
             y[i] = (1.0/2.0) * sin(t[i]) + (1.0/4.0) * sin(t[i] * 4);
         }
 
+        rp_GenSynchronise();
+
         rp_GenWaveform(RP_CH_1, RP_WAVEFORM_ARBITRARY);
         rp_GenWaveform(RP_CH_2, RP_WAVEFORM_ARBITRARY);
 
@@ -138,6 +139,8 @@ Code - C
 
         rp_GenOutEnable(RP_CH_1);
         rp_GenOutEnable(RP_CH_2);
+        rp_GenTriggerOnly(RP_CH_1);
+        rp_GenTriggerOnly(RP_CH_2);
 
         /* Releasing resources */
         free(y);

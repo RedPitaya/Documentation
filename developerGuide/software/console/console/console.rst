@@ -51,7 +51,8 @@ Windows
 
 Download and install the `FTDI driver <http://www.ftdichip.com/Drivers/VCP.htm>`_ to your PC. After installation, a 
 new COM port will appear in the Device Manager you can use in Hyperterminal or another terminal utility to connect to 
-Red Pitaya.
+Red Pitaya. Connect your red pitaya to the micro USB port on the board. In your terminal utility fill the serial port name and set the speed to 115200.
+
 
 To adjust the connection settings of serial communication right click on the COM port and select Properties.
 
