@@ -12,7 +12,7 @@ Applications
    ./bode/bode.rst
    ./lcr_meter/lcr_meter.rst
    ./streaming/appStreaming.rst
-   ./streaming/appMCStreaming.rst
+   ./streaming/appXCStreaming.rst
    ./sdr/appSDR.rst
    ./vna/appVNA.rst
    ./marketplace/marketplace.rst
