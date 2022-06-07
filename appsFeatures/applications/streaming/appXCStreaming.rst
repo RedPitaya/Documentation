@@ -48,8 +48,10 @@ so on (SLAVE N to SLAVE N+1). This way we can achieve synchronization of all boa
 Important notice: MASTER and SLAVE boards do use different OS-es!
 
 MASTER runs standard Red Pitaya device OS while SLAVE boards require a special OS that only supoorts X-channel streaming.
-:ref:'MASTER board OS <>'__
-:ref:'SLAVE board OS <>'__
+
+:ref:`MASTER board OS <>`__
+:ref:`SLAVE board OS <>`__
+
 Due to frequent OS updates, it is recommended to always use latest OS software.
 
 ***********************
@@ -61,6 +63,7 @@ Connecting together:
         Improtant notice: Make sure that you network can provide enough throughput for all the data you are about to 
         stream. It is also recommnnede to use dedicated network only used only for X-channel system.
 
+
     #.  Connect SATA cables betwen master and slave devices.
 
         MASTER SATA S1 -> SLAVE 1 SATA S2
@@ -71,6 +74,7 @@ Connecting together:
 
         ...
 
+
     #.  Connect power supply to the Red Pitaya board
 
 .. figure:: img/Master_and_slaves_2.png
@@ -79,7 +83,8 @@ Connecting together:
 ***********************
 Download a X-channel streaming client to your computer
 ***********************
-#.) connect to MASTER board by typing URL on sticker to WEB browser and open streamin app
+
+#.) Connect to MASTER board by typing URL on sticker to WEB browser and open streamin app
 
 .. figure:: img/run_app.png
     :width: 80%
