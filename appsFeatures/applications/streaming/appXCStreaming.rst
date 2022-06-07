@@ -49,8 +49,8 @@ Important notice: MASTER and SLAVE boards do use different OS-es!
 
 MASTER runs standard Red Pitaya device OS while SLAVE boards require a special OS that only supoorts X-channel streaming.
 
-:ref:`MASTER board OS <>`__
-:ref:`SLAVE board OS <>`__
+| `MASTER board OS <>`__
+| `SLAVE board OS <>`__
 
 Due to frequent OS updates, it is recommended to always use latest OS software.
 
@@ -84,12 +84,12 @@ Connecting together:
 Download a X-channel streaming client to your computer
 ***********************
 
-#.) Connect to MASTER board by typing URL on sticker to WEB browser and open streamin app
+1.) Connect to MASTER board by typing URL on sticker to WEB browser and open streamin app
 
 .. figure:: img/run_app.png
     :width: 80%
 
-#.) Click CLIENTs button to get client app for Linux or Windows and download it to you client computer
+2.) Click CLIENTs button to get client app for Linux or Windows and download it to you client computer
 
 .. figure:: img/download_client.png
     :width: 80%
@@ -104,13 +104,13 @@ In this example we will acquire data from all 3 RP units which gives as 6 RF inp
 
 MASTER IP=192.168.2.141, SLAVE1_IP=192.168.2.60 SLAVE2_IP=192.168.2.25
 
-    #. Open streaming app on MASTER ana all SLAVE boards view WEB interface
+    1.) Open streaming app on MASTER ana all SLAVE boards view WEB interface
 
 Notice: streamin app can be also started via ssh by running /opt/redpitaya/bin/streaming-server.run.sh on RP
 
-    #. Open streaming app on MASTER ana all SLAVE boards view WEB interface
+    2.) Open streaming app on MASTER ana all SLAVE boards view WEB interface
 
-    #. Set streaming paramters / confirguration
+    3.) Set streaming paramters / confirguration
 
 Configuration can be set over WEB interface UI which is then stored into /root/.streaming_config on RP.
 
@@ -192,21 +192,21 @@ Used physical memory: 8130 Mb
 2022.06.02-15.25.04.545:  Streaming stopped: 192.168.2.60 [OK]
 
 2022.06.02-15.25.04.635 Total time: 0:0:2.794
-+-----------------+-------------------+-------------------+-------------------+-------------------+------------------+
-| Host            | Bytes all         | Bandwidth         | Samples CH1       | Samples CH2       | Lost             |
-+=================+===================+===================+===================+===================+==================+
-| 192.168.2.141   | 38.188 Mb         | 13.668 MB/s       | 10010624          | 10010624          |                  |
-+-----------------+-------------------+-------------------+-------------------+-------------------+------------------+
-| Lost in UDP: 0  |                   | Lost in file: 0   |                   | 0                 |                  |
-+-----------------+-------------------+-------------------+-------------------+-------------------+------------------+
-| 192.168.2.25    | 38.188 Mb         | 13.668 MB/s       | 10010624          | 10010624          |                  |
-+-----------------+-------------------+-------------------+-------------------+-------------------+------------------+
-| Lost in UDP: 0  |                   | Lost in file: 0   |                   | 0                 |                  |
-+-----------------+-------------------+-------------------+-------------------+-------------------+------------------+
-| 192.168.2.60    | 38.188 Mb         | 13.668 MB/s       | 10010624          | 10010624          |                  |
-+-----------------+-------------------+-------------------+-------------------+-------------------+------------------+
-| Lost in UDP: 0  |                   | Lost in file: 0   |                   | 0                 |                  |
-+-----------------+-------------------+-------------------+-------------------+-------------------+------------------+
+================  ================  ================  ================  ================  ================
+Host              Bytes all         Bandwidth         Samples CH1       Samples CH2       Lost
+================  ================  ================  ================  ================  ================
+192.168.2.141     38.188 Mb         13.668 MB/s       10010624          10010624
+----------------  ----------------  ----------------  ----------------  ----------------  ----------------
+Lost in UDP: 0                      Lost in file: 0                     0
+----------------  ----------------  ----------------  ----------------  ----------------  ----------------
+192.168.2.25      38.188 Mb         13.668 MB/s       10010624          10010624
+----------------  ----------------  ----------------  ----------------  ----------------  ----------------
+Lost in UDP: 0                      Lost in file: 0                     0
+----------------  ----------------  ----------------  ----------------  ----------------  ----------------
+192.168.2.60      38.188 Mb         13.668 MB/s       10010624          10010624
+----------------  ----------------  ----------------  ----------------  ----------------  ----------------
+Lost in UDP: 0                      Lost in file: 0                     0
+----------------  ----------------  ----------------  ----------------  ----------------  ----------------
 
 #.) Drag .wav files from /acq to `Audacity <https://www.audacityteam.org>`__ to observe acquired data
 
