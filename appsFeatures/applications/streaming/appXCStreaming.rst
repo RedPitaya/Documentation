@@ -104,13 +104,13 @@ In this example we will acquire data from all 3 RP units which gives as 6 RF inp
 
 MASTER IP=192.168.2.141, SLAVE1_IP=192.168.2.60 SLAVE2_IP=192.168.2.25
 
-    1.) Open streaming app on MASTER ana all SLAVE boards view WEB interface
+    1.  Open streaming app on MASTER ana all SLAVE boards view WEB interface
 
 Notice: streamin app can be also started via ssh by running /opt/redpitaya/bin/streaming-server.run.sh on RP
 
-    2.) Open streaming app on MASTER ana all SLAVE boards view WEB interface
+    2.  Open streaming app on MASTER ana all SLAVE boards view WEB interface
 
-    3.) Set streaming paramters / confirguration
+    3.  Set streaming paramters / confirguration
 
 Configuration can be set over WEB interface UI which is then stored into /root/.streaming_config on RP.
 
@@ -138,7 +138,7 @@ rpsa_client.exe -c -h 192.168.2.141,192.168.2.60,192.168.2.25 -s F -f test.conf 
 2022.06.02-15.20.21.357:  SAVE TO FILE: 192.168.2.25 [OK]
 2022.06.02-15.20.21.363:  SAVE TO FILE: 192.168.2.60 [OK]
 
-#.) Start X-channel streaming of 6 inputs
+3.) Start X-channel streaming of 6 inputs
 
 --streaming --host MASTER IP, SLAVE1 IP, SLAVE2 IP, --format=wav --dir=NAME
 --limit=SAMPLES
@@ -208,7 +208,7 @@ Lost in UDP: 0                      Lost in file: 0                     0
 Lost in UDP: 0                      Lost in file: 0                     0
 ----------------  ----------------  ----------------  ----------------  ----------------  ----------------
 
-#.) Drag .wav files from /acq to `Audacity <https://www.audacityteam.org>`__ to observe acquired data
+4.) Drag .wav files from /acq to `Audacity <https://www.audacityteam.org>`__ to observe acquired data
 
 .. figure:: img/audacity.png
     :width: 80%
