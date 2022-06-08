@@ -106,13 +106,14 @@ In this example we will acquire data from all 3 RP units which gives as 6 RF inp
 
     MASTER IP=192.168.2.141, SLAVE1_IP=192.168.2.60 SLAVE2_IP=192.168.2.25
 
-    1.  Open streaming app on MASTER ana all SLAVE boards view WEB interface
+
+1.  Open streaming app on MASTER ana all SLAVE boards view WEB interface
 
 Notice: streamin app can be also started via ssh by running /opt/redpitaya/bin/streaming-server.run.sh on RP
 
-    2.  Open streaming app on MASTER ana all SLAVE boards view WEB interface
+2.  Open streaming app on MASTER ana all SLAVE boards view WEB interface
 
-    3.  Set streaming paramters / confirguration
+3.  Set streaming paramters / confirguration
 
 Configuration can be set over WEB interface UI which is then stored into /root/.streaming_config on RP.
 
