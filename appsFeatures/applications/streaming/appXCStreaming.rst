@@ -205,7 +205,7 @@ that will set all MASTERS and SLAVES to these settings.
 
 .. code-block:: shell-session
 
-    2022.06.02-15.25.04.635 Total time: 0:0:2.794</shell>
+    2022.06.02-15.25.04.635 Total time: 0:0:2.794
 
 
 +-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
