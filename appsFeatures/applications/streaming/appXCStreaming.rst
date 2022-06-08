@@ -102,7 +102,9 @@ Symultanious acquisiton of 6 input signals
 
 In this example we will acquire data from all 3 RP units which gives as 6 RF input channels.
 
-MASTER IP=192.168.2.141, SLAVE1_IP=192.168.2.60 SLAVE2_IP=192.168.2.25
+.. code-block:: shell-session
+
+    MASTER IP=192.168.2.141, SLAVE1_IP=192.168.2.60 SLAVE2_IP=192.168.2.25
 
     1.  Open streaming app on MASTER ana all SLAVE boards view WEB interface
 
@@ -120,78 +122,90 @@ that will set all MASTERS and SLAVES to these settings.
 .. figure:: img/settings.png
     :width: 80%
 
-rpsa_client.exe -c -h 192.168.2.141,192.168.2.60,192.168.2.25 -s F -f test.conf -v
+.. code-block:: shell-session
 
-2022.06.02-15.20.21.173:  Connected: 192.168.2.141
-2022.06.02-15.20.21.176:  Connected: 192.168.2.25
-2022.06.02-15.20.21.178:  Connected: 192.168.2.60
-2022.06.02-15.20.21.278:  Send configuration to: 192.168.2.141
-2022.06.02-15.20.21.291:  Send configuration to: 192.168.2.25
-2022.06.02-15.20.21.291:  SET: 192.168.2.141 [OK]
-2022.06.02-15.20.21.303:  Send configuration to: 192.168.2.60
-2022.06.02-15.20.21.309:  Send configuration save command to: 192.168.2.141
-2022.06.02-15.20.21.324:  SET: 192.168.2.25 [OK]
-2022.06.02-15.20.21.332:  Send configuration save command to: 192.168.2.25
-2022.06.02-15.20.21.337:  SET: 192.168.2.60 [OK]
-2022.06.02-15.20.21.343:  Send configuration save command to: 192.168.2.60
-2022.06.02-15.20.21.350:  SAVE TO FILE: 192.168.2.141 [OK]
-2022.06.02-15.20.21.357:  SAVE TO FILE: 192.168.2.25 [OK]
-2022.06.02-15.20.21.363:  SAVE TO FILE: 192.168.2.60 [OK]
+    rpsa_client.exe -c -h 192.168.2.141,192.168.2.60,192.168.2.25 -s F -f test.conf -v
+
+.. code-block:: shell-session
+
+    2022.06.02-15.20.21.173:  Connected: 192.168.2.141
+    2022.06.02-15.20.21.176:  Connected: 192.168.2.25
+    2022.06.02-15.20.21.178:  Connected: 192.168.2.60
+    2022.06.02-15.20.21.278:  Send configuration to: 192.168.2.141
+    2022.06.02-15.20.21.291:  Send configuration to: 192.168.2.25
+    2022.06.02-15.20.21.291:  SET: 192.168.2.141 [OK]
+    2022.06.02-15.20.21.303:  Send configuration to: 192.168.2.60
+    2022.06.02-15.20.21.309:  Send configuration save command to: 192.168.2.141
+    2022.06.02-15.20.21.324:  SET: 192.168.2.25 [OK]
+    2022.06.02-15.20.21.332:  Send configuration save command to: 192.168.2.25
+    2022.06.02-15.20.21.337:  SET: 192.168.2.60 [OK]
+    2022.06.02-15.20.21.343:  Send configuration save command to: 192.168.2.60
+    2022.06.02-15.20.21.350:  SAVE TO FILE: 192.168.2.141 [OK]
+    2022.06.02-15.20.21.357:  SAVE TO FILE: 192.168.2.25 [OK]
+    2022.06.02-15.20.21.363:  SAVE TO FILE: 192.168.2.60 [OK]
 
 3.) Start X-channel streaming of 6 inputs
 
---streaming --host MASTER IP, SLAVE1 IP, SLAVE2 IP, --format=wav --dir=NAME
---limit=SAMPLES
+.. code-block:: shell-session
 
-rpsa_client.exe -s -h 192.168.2.141,192.168.2.60,192.168.2.25 -f wav -d ./acq -l 10000000 -v
+    --streaming --host MASTER IP, SLAVE1 IP, SLAVE2 IP, --format=wav --dir=NAME
+    --limit=SAMPLES
 
-2022.06.02-15.25.00.795:  Connected: 192.168.2.141
-2022.06.02-15.25.00.798:  Connected: 192.168.2.25
-2022.06.02-15.25.00.804:  Connected: 192.168.2.60
-2022.06.02-15.25.00.907:  Send stop command to master board 192.168.2.141
-2022.06.02-15.25.00.925:  Streaming stopped: 192.168.2.141 [OK]
-2022.06.02-15.25.01.32:  Send stop command to slave board 192.168.2.25
-2022.06.02-15.25.01.36:  Send stop command to slave board 192.168.2.60
-2022.06.02-15.25.01.37:  Streaming stopped: 192.168.2.25 [OK]
-2022.06.02-15.25.01.45:  Streaming stopped: 192.168.2.60 [OK]
-2022.06.02-15.25.01.156:  Send start command to slave board: 192.168.2.25
-2022.06.02-15.25.01.169:  Send start command to slave board: 192.168.2.60
-2022.06.02-15.25.01.286:  Streaming started: 192.168.2.25 TCP mode [OK]
-2022.06.02-15.25.01.307:  Streaming started: 192.168.2.60 TCP mode [OK]
-2022.06.02-15.25.01.407:  Send start command to master board: 192.168.2.141
-2022.06.02-15.25.01.542:  Streaming started: 192.168.2.141 TCP mode [OK]
-2022.06.02-15.25.01.639:  Send start ADC command to slave board: 192.168.2.25
-Run write to: ./1/data_file_192.168.2.25_2022-06-02_13-25-00.wav
-Run write to: ./1/data_file_192.168.2.60_2022-06-02_13-25-00.wav
-Run write to: ./1/data_file_192.168.2.141_2022-06-02_13-25-00.wav
-2022.06.02-15.25.01.659:  Send start ADC command to slave board: 192.168.2.60
-2022.06.02-15.25.01.660:  ADC is run: 192.168.2.25
-Available physical memory: 16260 Mb
-Used physical memory: 8130 Mb
-Available physical memory: 16260 Mb
-Used physical memory: 8130 Mb
-Available physical memory: 16260 Mb
-2022.06.02-15.25.01.741:  Connect 192.168.2.25
-2022.06.02-15.25.01.730:  ADC is run: 192.168.2.60
-Used physical memory: 8130 Mb
-2022.06.02-15.25.01.752:  Connect 192.168.2.141
-2022.06.02-15.25.01.764:  Connect 192.168.2.60
-2022.06.02-15.25.01.826:  Send start ADC command to master board: 192.168.2.141
-2022.06.02-15.25.01.834:  ADC is run: 192.168.2.141
-2022.06.02-15.25.04.402:  Error 192.168.2.25
-2022.06.02-15.25.04.408:  Error 192.168.2.141
-2022.06.02-15.25.04.410:  Error 192.168.2.60
-2022.06.02-15.25.04.415:  Send stop command to master board 192.168.2.141
-2022.06.02-15.25.04.420:  Streaming stopped: 192.168.2.141 [OK]
-2022.06.02-15.25.04.422:  Streaming stopped: 192.168.2.141 [OK]
-2022.06.02-15.25.04.526:  Send stop command to slave board 192.168.2.25
-2022.06.02-15.25.04.529:  Send stop command to slave board 192.168.2.60
-2022.06.02-15.25.04.530:  Streaming stopped: 192.168.2.25 [OK]
-2022.06.02-15.25.04.533:  Streaming stopped: 192.168.2.60 [OK]
-2022.06.02-15.25.04.536:  Streaming stopped: 192.168.2.25 [OK]
-2022.06.02-15.25.04.545:  Streaming stopped: 192.168.2.60 [OK]
+.. code-block:: shell-session
 
-2022.06.02-15.25.04.635 Total time: 0:0:2.794
+    rpsa_client.exe -s -h 192.168.2.141,192.168.2.60,192.168.2.25 -f wav -d ./acq -l 10000000 -v
+
+.. code-block:: shell-session
+
+    2022.06.02-15.25.00.795:  Connected: 192.168.2.141
+    2022.06.02-15.25.00.798:  Connected: 192.168.2.25
+    2022.06.02-15.25.00.804:  Connected: 192.168.2.60
+    2022.06.02-15.25.00.907:  Send stop command to master board 192.168.2.141
+    2022.06.02-15.25.00.925:  Streaming stopped: 192.168.2.141 [OK]
+    2022.06.02-15.25.01.32:  Send stop command to slave board 192.168.2.25
+    2022.06.02-15.25.01.36:  Send stop command to slave board 192.168.2.60
+    2022.06.02-15.25.01.37:  Streaming stopped: 192.168.2.25 [OK]
+    2022.06.02-15.25.01.45:  Streaming stopped: 192.168.2.60 [OK]
+    2022.06.02-15.25.01.156:  Send start command to slave board: 192.168.2.25
+    2022.06.02-15.25.01.169:  Send start command to slave board: 192.168.2.60
+    2022.06.02-15.25.01.286:  Streaming started: 192.168.2.25 TCP mode [OK]
+    2022.06.02-15.25.01.307:  Streaming started: 192.168.2.60 TCP mode [OK]
+    2022.06.02-15.25.01.407:  Send start command to master board: 192.168.2.141
+    2022.06.02-15.25.01.542:  Streaming started: 192.168.2.141 TCP mode [OK]
+    2022.06.02-15.25.01.639:  Send start ADC command to slave board: 192.168.2.25
+    Run write to: ./1/data_file_192.168.2.25_2022-06-02_13-25-00.wav
+    Run write to: ./1/data_file_192.168.2.60_2022-06-02_13-25-00.wav
+    Run write to: ./1/data_file_192.168.2.141_2022-06-02_13-25-00.wav
+    2022.06.02-15.25.01.659:  Send start ADC command to slave board: 192.168.2.60
+    2022.06.02-15.25.01.660:  ADC is run: 192.168.2.25
+    Available physical memory: 16260 Mb
+    Used physical memory: 8130 Mb
+    Available physical memory: 16260 Mb
+    Used physical memory: 8130 Mb
+    Available physical memory: 16260 Mb
+    2022.06.02-15.25.01.741:  Connect 192.168.2.25
+    2022.06.02-15.25.01.730:  ADC is run: 192.168.2.60
+    Used physical memory: 8130 Mb
+    2022.06.02-15.25.01.752:  Connect 192.168.2.141
+    2022.06.02-15.25.01.764:  Connect 192.168.2.60
+    2022.06.02-15.25.01.826:  Send start ADC command to master board: 192.168.2.141
+    2022.06.02-15.25.01.834:  ADC is run: 192.168.2.141
+    2022.06.02-15.25.04.402:  Error 192.168.2.25
+    2022.06.02-15.25.04.408:  Error 192.168.2.141
+    2022.06.02-15.25.04.410:  Error 192.168.2.60
+    2022.06.02-15.25.04.415:  Send stop command to master board 192.168.2.141
+    2022.06.02-15.25.04.420:  Streaming stopped: 192.168.2.141 [OK]
+    2022.06.02-15.25.04.422:  Streaming stopped: 192.168.2.141 [OK]
+    2022.06.02-15.25.04.526:  Send stop command to slave board 192.168.2.25
+    2022.06.02-15.25.04.529:  Send stop command to slave board 192.168.2.60
+    2022.06.02-15.25.04.530:  Streaming stopped: 192.168.2.25 [OK]
+    2022.06.02-15.25.04.533:  Streaming stopped: 192.168.2.60 [OK]
+    2022.06.02-15.25.04.536:  Streaming stopped: 192.168.2.25 [OK]
+    2022.06.02-15.25.04.545:  Streaming stopped: 192.168.2.60 [OK]
+
+.. code-block:: shell-session
+
+    2022.06.02-15.25.04.635 Total time: 0:0:2.794</shell>
 
 
 +-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
