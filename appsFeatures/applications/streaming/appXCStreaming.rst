@@ -219,7 +219,7 @@ that will set all MASTERS and SLAVES to these settings.
 
 4.) Drag .wav files from /acq to `Audacity <https://www.audacityteam.org>`__ to observe acquired data
 
-.. figure:: img/audacity.png
+.. figure:: img/audacity_2.png
     :width: 80%
 
 In this example 1kHz sinewave signal was connected to all 6 inputs.
