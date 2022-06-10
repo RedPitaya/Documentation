@@ -33,7 +33,7 @@ Red Pitaya STEMlab 125-14 X-channel system that consists of multiple STEMlab 125
 clock and trigger synchronization, and also comes with SATA synchronization cables and software thatsupports X-Channel 
 RF signal acquisition and generation.
 
-.. figure:: img/Master_and_slaves.png
+.. figure:: img/Master_and_slaves.jpg
     :width: 80%
 
 Notice that in Red Pitaya STEMlab 125-14 X-channel system inludes two types of devices:
@@ -77,7 +77,7 @@ Connecting together:
 
     #.  Connect power supply to the Red Pitaya board
 
-.. figure:: img/Master_and_slaves_2.png
+.. figure:: img/Master_and_slaves_2.jpg
     :width: 80%
 
 ***********************
