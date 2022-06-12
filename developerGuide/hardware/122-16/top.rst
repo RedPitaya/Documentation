@@ -3,9 +3,9 @@
 SDRlab 122-16
 #############
 
-*********
+************************
 Technical specifications
-*********
+************************
 
 * :ref:`Product comparison table <rp-board-comp>`
 
