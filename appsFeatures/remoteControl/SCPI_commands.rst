@@ -534,20 +534,20 @@ Parameter options:
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:MSG:SIZE? > 1``             |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m> <data>``       | ``rp_SPI_SetTX``               | | Sets data for write buffer for the specified message.                                  |
-| | ``SPI:MSG<n>:TX<m>:CS <data>``    | ``rp_SPI_SetTXCS``             | | CS - Toggles CS state after sending/receiving this message.                            |
+| | ``SPI:MSG<n>:TX<m> <data>``       | | ``rp_SPI_SetTX``             | | Sets data for write buffer for the specified message.                                  |
+| | ``SPI:MSG<n>:TX<m>:CS <data>``    | | ``rp_SPI_SetTXCS``           | | CS - Toggles CS state after sending/receiving this message.                            |
 | | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                        |
 | | ``SPI:MSG0:TX4 1,2,3,4``          |                                | | <m> - TX buffer length.                                                                |
 | | ``SPI:MSG1:TX3:CS 2,3,4``         |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m>:RX <data>``    | ``rp_SPI_SetTXRX``             | | Sets data for read and write buffers for the specified message.                        |
-| | ``SPI:MSG<n>:TX<m>:RX:CS <data>`` | ``rp_SPI_SetTXRXCS``           | | CS - Toggles CS state after sending/receiving this message.                            |
+| | ``SPI:MSG<n>:TX<m>:RX <data>``    | | ``rp_SPI_SetTXRX``           | | Sets data for read and write buffers for the specified message.                        |
+| | ``SPI:MSG<n>:TX<m>:RX:CS <data>`` | | ``rp_SPI_SetTXRXCS``         | | CS - Toggles CS state after sending/receiving this message.                            |
 | | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                        |
 | | ``SPI:MSG0:TX4:RX 1,2,3,4``       |                                | | <m> - TX buffer length.                                                                |
 | | ``SPI:MSG1:TX3:RX:CS 2,3,4``      |                                | | The read buffer is also created with the same length and initialized with zeros.       |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX<m>``              | ``rp_SPI_SetRX``               | | Initializes a buffer for reading the specified message.                                |
-| | ``SPI:MSG<n>:RX<m>:CS``           | ``rp_SPI_SetRXCS``             | | CS - Toggles CS state after receiving message.                                         |
+| | ``SPI:MSG<n>:RX<m>``              | | ``rp_SPI_SetRX``             | | Initializes a buffer for reading the specified message.                                |
+| | ``SPI:MSG<n>:RX<m>:CS``           | | ``rp_SPI_SetRXCS``           | | CS - Toggles CS state after receiving message.                                         |
 | | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                        |
 | | ``SPI:MSG0:RX4``                  |                                | | <m> - RX buffer length.                                                                |
 | | ``SPI:MSG1:RX5:CS``               |                                |                                                                                          |
