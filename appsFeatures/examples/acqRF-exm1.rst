@@ -350,7 +350,7 @@ Code - C
     
             rp_AcqReset();
             rp_AcqSetDecimation(RP_DEC_8);
-            rp_AcqSetTriggerLevel(0.1); //Trig level is set in Volts while in SCPI 
+            rp_AcqSetTriggerLevel(RP_CH_1, 0.1); //Trig level is set in Volts while in SCPI 
             rp_AcqSetTriggerDelay(0);
 
             // there is an option to select coupling when using SIGNALlab 250-12 
