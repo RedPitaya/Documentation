@@ -12,9 +12,9 @@ ADC spec.
 .. figure:: ../125-14/Extension_connector.png
    :align: center
 
-*********
+************************
 Technical specifications
-*********
+************************
 
 * :ref:`Product comparison table <rp-board-comp>`
 
