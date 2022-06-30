@@ -49,10 +49,7 @@ Important notice: MASTER and SLAVE boards do use different OS-es!
 
 MASTER runs standard Red Pitaya device OS while SLAVE boards require a special OS that only supoorts X-channel streaming.
 
-| `MASTER board OS <>`__
-| `SLAVE board OS <>`__
-
-Due to frequent OS updates, it is recommended to always use latest OS software.
+Due to frequent OS updates, it is recommended to always use `latest OS software <https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html>`__.
 
 ***********************
 Connecting together:
