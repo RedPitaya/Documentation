@@ -18,7 +18,7 @@ STEMlab 125-14 & STEMlab 125-10:
 
 STEMlab 125-14 & STEMlab 125-10 (Streaming slave board):
 
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/Streaming%20slave%20boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_beta.img.zip>`_  - |CHANGELOG|
+   - `Latest Beta <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG|
 
 STEMlab 125-14-Z7020:
 
