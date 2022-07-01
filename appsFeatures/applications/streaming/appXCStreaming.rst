@@ -9,7 +9,7 @@ X-channel streaming
     <br>
 
 ***********************
-Overview:
+Overview
 ***********************
 
 X-Channel streaming is suitable for applications that require multiple acquisition or generation channels.
@@ -25,7 +25,7 @@ streaming software also provides the ability to control streaming completely rem
     :width: 80%
 
 ***********************
-Setup preparation:
+Setup preparation
 ***********************
 
 What do I need before I start?
@@ -52,7 +52,7 @@ MASTER runs standard Red Pitaya device OS while SLAVE boards require a special O
 Due to frequent OS updates, it is recommended to always use `latest OS software <https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html>`__.
 
 ***********************
-Connecting together:
+Connecting together
 ***********************
 
     #.  Connect all Red Pitayas to same network via ethernet cables (switch or router that is connected to Client PC).
