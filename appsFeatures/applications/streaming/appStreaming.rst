@@ -43,15 +43,17 @@ Start using Red Pitaya streaming feature
 
     .. figure:: img/redpitaya_main_page.png
         :width: 60%
+        :align: center
 
 #. ) Stream locally to a file
 
     #. ) Set app properties & click RUN
     
         .. figure:: img/to_file_settings.png
-           :width: 40%
+            :width: 20%
+            :align: center
     
-        Example: streaming on ch1, 8bit resolution 5.208Msps into TDMS file format
+            Example: streaming on ch1, 8bit resolution 5.208Msps into TDMS file format
     
     #. ) Press STOP to stop streaming
 
@@ -59,32 +61,30 @@ Start using Red Pitaya streaming feature
 
         .. figure:: img/capture.png
            :width: 50%
+           :align: center
 
     #. ) Open file in `DIAdem software <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__
          that supports TDMS file reading, visualization & processing.
 
         .. figure:: img/diadem_tdms_file_viewer.png
            :width: 80%
+           :align: center
 
 #. ) Streaming to remote computer
 
-    #. ) Download streaming client to your computer.
+    #. ) Download streaming client to your computer. Clients are located on the board itself and you can download them from there.
 
-        `Linux tool <https://downloads.redpitaya.com/downloads/Clients/streaming/linux-tool.zip>`__
-
-        `Linux tool (beta) <https://downloads.redpitaya.com/downloads/Clients/streaming/linux-tool_beta.zip>`__
-
-        `Windows tool <https://downloads.redpitaya.com/downloads/Clients/streaming/windows-tool.zip>`__
-
-        `Windows tool (beta) <https://downloads.redpitaya.com/downloads/Clients/streaming/windows-tool_beta.zip>`__
-
+        .. figure:: img/download_client.png
+            :width: 50%
+            :align: center
 
     #. ) Set app properties & click RUN
 
         .. figure:: img/tcp_settings.png
-           :width: 50%
+            :width: 20%
+            :align: center
         
-        Example: streaming on ch1, 16bit resolution 5Msps, TCP
+            Example: streaming on ch1, 16bit resolution 5Msps, TCP
     
     #. ) Run streaming app on remote computer (copy IP from the WEB interface and select required file format)
 
@@ -97,7 +97,8 @@ Start using Red Pitaya streaming feature
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
 
             .. figure:: img/tcp_client.png
-                :width: 60%
+                :width: 50%
+                :align: center
 
             Data streaming can be stopped by pressing Ctrl + C
 
@@ -105,6 +106,7 @@ Start using Red Pitaya streaming feature
 
             .. figure:: img/audacity.png
                 :width: 80%
+                :align: center
 
         .. group-tab:: TDMS
 
@@ -113,7 +115,8 @@ Start using Red Pitaya streaming feature
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
 
             .. figure:: img/tcp_client2.png
-                :width: 60%
+                :width: 50%
+                :align: center
 
             Data streaming can be stopped by pressing Ctrl + C
 
@@ -121,6 +124,7 @@ Start using Red Pitaya streaming feature
 
             .. figure:: img/diadem_tdms_file_viewer.png
                 :width: 80%
+                :align: center
         
         .. group-tab:: CSV
 
@@ -130,14 +134,16 @@ Start using Red Pitaya streaming feature
 
 
             .. figure:: img/tcp_client3.png
-                :width: 60%
+                :width: 50%
+                :align: center
             
             |br|
 
             The application saves data from board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
             
             .. figure:: img/csv_list.png
-                :width: 60%
+                :width: 50%
+                :align: center
 
             |br|
 
@@ -145,6 +151,7 @@ Start using Red Pitaya streaming feature
 
             .. figure:: img/csv_view.png
                 :width: 80%
+                :align: center
 
             |br|
 
@@ -153,15 +160,42 @@ Start using Red Pitaya streaming feature
                 The binary file can be converted using the *convert_tool* application.
 
                 .. figure:: img/csv_list.png
-                    :width: 60%
+                    :width: 50%
+                    :align: center
 
                 |br|
 
                 In this application, you can also see the structure of the received file and the state of the file.
 
                 .. figure:: img/csv_state.png
-                    :width: 60%
+                    :width: 50%
+                    :align: center
 
 
+*************************************************
+Streaming application for Desktop (Linux,Windows)
+*************************************************
 
-        
+You can also use the desktop version of the client for streaming
+
+    #. ) Download clients
+
+        `Desktop clients <https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/>`__
+
+    #. ) Unzip and run clients
+
+        .. note::
+
+            For Linux clients, after unpacking, you need to make the files (rpsa_client_qt.sh,bin/rpsa_client_qt) executable.
+
+            .. figure:: img/qt1.png
+                    :width: 50%
+                    :align: center
+
+            For windows clients, you need to open access to the network
+
+    #. ) The running application automatically detects boards in the network if streaming is running on them. The boards and the client must be on the same network.
+
+        .. figure:: img/qt2.png
+                :width: 50%
+                :align: center
