@@ -24,7 +24,7 @@ Required hardware
 Code - MATLAB ®
 ***************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code from below to 
+The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to 
 MATLAB editor, save project and press run.
 
 .. code-block:: matlab
@@ -33,26 +33,26 @@ MATLAB editor, save project and press run.
             
     IP= '192.168.178.56';           % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);       % Define Red Pitaya as an TCP client object % tcpclientObj
 
     %% Open connection with your Red Pitaya
-
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+    
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP, 'CR/LF');   % defines the line terminator (end sequence of input characters)
 
     %% Send SCPI command to Red Pitaya to turn ON LED1
 
-    fprintf(tcpipObj,'DIG:PIN LED1,1');
+    writeline(RP,'DIG:PIN LED1,1');
 
     pause(5)                         % Set time of LED ON
 
     %% Send SCPI command to Red Pitaya to turn OFF LED1
-
-    fprintf(tcpipObj,'DIG:PIN LED1,0');
+    
+    writeline(RP,'DIG:PIN LED1,0');
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
 
     
 ********
