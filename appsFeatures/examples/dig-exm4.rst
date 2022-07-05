@@ -20,15 +20,15 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code from below to
+The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to
 MATLAB editor, input value p save project and press run. Change p with slider bar from 0-100.
 
 .. code-block:: matlab
 
-    function sliderDemo
+    function RP_sliderDemo
 
         f = figure(1);
-        global p
+        global p;
         
         %// initialize the slider
         h = uicontrol(...
@@ -54,71 +54,71 @@ MATLAB editor, input value p save project and press run. Change p with slider ba
 
         function  sliderCallback(~,~)
 
-        p =(get(h,'value'))
+            p = (get(h,'value'));
 
 
-        % Define Red Pitaya as TCP/IP object
+        % Define Red Pitaya as TCP client object
 
-        IP= '192.168.178.56';           % Input IP of your Red Pitaya...
-        port = 5000;
-        tcpipObj=tcpip(IP, port);
+            IP = '192.168.178.56';           % Input IP of your Red Pitaya...
+            port = 5000;
+            RP = tcpclient(IP, port);
 
         %% Open connection with your Red Pitaya
 
-        fopen(tcpipObj);
-        tcpipObj.Terminator = 'CR/LF';
+            RP.ByteOrder = 'big-endian';
+            configureTerminator(RP, 'CR/LF');
 
 
-            if p >=(100/7)
-            fprintf(tcpipObj,'DIG:PIN LED1,1')
+            if p >=(100/8)
+                writeline(RP,'DIG:PIN LED0,1')
             else
-            fprintf(tcpipObj,'DIG:PIN LED1,0') 
+                writeline(RP,'DIG:PIN LED0,0')
             end
 
-            if p >=(100/7)*2
-            fprintf(tcpipObj,'DIG:PIN LED2,1')
+            if p >=(100/8)*2
+                writeline(RP,'DIG:PIN LED1,1')
             else
-            fprintf(tcpipObj,'DIG:PIN LED2,0') 
+                writeline(RP,'DIG:PIN LED1,0')
             end
 
-            if p >=(100/7)*3
-            fprintf(tcpipObj,'DIG:PIN LED3,1')
+            if p >=(100/8)*3
+                writeline(RP,'DIG:PIN LED2,1')
             else
-            fprintf(tcpipObj,'DIG:PIN LED3,0') 
+                writeline(RP,'DIG:PIN LED2,0')
             end
 
-            if p >=(100/7)*4
-            fprintf(tcpipObj,'DIG:PIN LED4,1')
+            if p >=(100/8)*4
+                writeline(RP,'DIG:PIN LED3,1')
             else
-            fprintf(tcpipObj,'DIG:PIN LED4,0') 
+                writeline(RP,'DIG:PIN LED3,0')
             end
 
-            if p >=(100/7)*5
-            fprintf(tcpipObj,'DIG:PIN LED5,1')
+            if p >=(100/8)*5
+                writeline(RP,'DIG:PIN LED4,1')
             else
-            fprintf(tcpipObj,'DIG:PIN LED5,0') 
+                writeline(RP,'DIG:PIN LED4,0')
             end
 
-            if p >=(100/7)*6
-            fprintf(tcpipObj,'DIG:PIN LED6,1')
+            if p >=(100/8)*6
+                writeline(RP,'DIG:PIN LED5,1')
             else
-            fprintf(tcpipObj,'DIG:PIN LED6,0') 
-            end
-
-            if p >=(100/7)*7
-            fprintf(tcpipObj,'DIG:PIN LED7,1')
-            else
-            fprintf(tcpipObj,'DIG:PIN LED7,0') 
+                writeline(RP,'DIG:PIN LED5,0')
             end
 
             if p >=(100/8)*7
-            fprintf(tcpipObj,'DIG:PIN LED8,1')
+                writeline(RP,'DIG:PIN LED6,1')
             else
-            fprintf(tcpipObj,'DIG:PIN LED8,0') 
+                writeline(RP,'DIG:PIN LED6,0')
             end
-                
-    fclose(tcpipObj);
-    end
+
+            if p >=(100/8)*8
+                writeline(RP,'DIG:PIN LED7,1')
+            else
+                writeline(RP,'DIG:PIN LED7,0')
+            end
+
+            clear RP;
+        end
     end
 
 Code - LabVIEW
