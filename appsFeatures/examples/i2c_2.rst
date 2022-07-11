@@ -3,9 +3,7 @@ I2C (HW api)
 
 .. http://blog.redpitaya.com/examples-new/i2c/
 
-Description
-
-This example demonstrates communication with the EEPROM memory on red pitaya using the I2C protocol. The code below reads the calibration values from the eeprom and displays. Correct display of data only on 125-xx boards.
+This example demonstrates communication with the EEPROM memory on Red Pitaya using the I2C protocol. The code below reads the calibration values from the EEPROM and displays. The data is displayed correctly only on 125-xx boards.
 
 
 Required hardware
