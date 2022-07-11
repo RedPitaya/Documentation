@@ -48,7 +48,7 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
     writeline(RP,'SOUR1:FREQ:FIX 200');         % Set frequency of output signal
     writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
 
-    writeline(RP,'SOUR1:BURS:STAT ON');         % Set burst mode to ON
+    writeline(RP,'SOUR1:BURS:STAT CONTINUOUS'); % Set burst mode to CONTINUOUS
     writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 pulses of sine wave
     writeline(RP,'SOUR1:TRIG:SOUR EXT_PE');     % Set generator trigger to external
 
