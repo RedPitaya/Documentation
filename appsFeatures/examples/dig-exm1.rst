@@ -31,9 +31,9 @@ MATLAB editor, save project and press run.
 
     %% Define Red Pitaya as TCP/IP object
             
-    IP= '192.168.178.56';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
     port = 5000;
-    RP = tcpclient(IP, port);       % Define Red Pitaya as an TCP client object % tcpclientObj
+    RP = tcpclient(IP, port);           % Define Red Pitaya as an TCP client object
 
     %% Open connection with your Red Pitaya
     
