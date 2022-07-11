@@ -6,8 +6,7 @@ Generate signal on external trigger
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate analog signal on external trigger. Red Pitaya will first wait 
-for trigger from external source and start generating desired signal right after trigger condition is met. Voltage and frequency ranges depends on Red Pitaya model.
+This example shows how to program Red Pitaya to generate analog signal on external trigger. Red Pitaya will first wait for trigger from external source and start generating desired signal right after the trigger condition is met. Voltage and frequency ranges depend on Red Pitaya model.
 
 
 Required hardware
@@ -20,8 +19,7 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code to MATLAB editor
-and press run.
+The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy the code to MATLAB editor and press run.
 
 .. code-block:: matlab
 
@@ -30,37 +28,40 @@ and press run.
     clear all
     close all
 
-    IP= '192.168.178.56';            % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';          % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
-    flushinput(tcpipObj)
-    flushoutput(tcpipObj)
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP,'CR/LF');
+
+    flush(RP);                      % clear input & output buffers
+    % flush(RP, 'input')
+    % flush(RP, 'output')
 
     %% Generate
 
-    fprintf(tcpipObj,'GEN:RST')
+    writeline(RP, 'GEN:RST')
 
-    fprintf(tcpipObj,'SOUR1:FUNC SINE');          % Set function of output signal {sine, square, triangle,sawu,sawd, pwm}
-    fprintf(tcpipObj,'SOUR1:FREQ:FIX 200');       % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR1:VOLT 1');             % Set amplitude of output signal
+    writeline(RP,'SOUR1:FUNC SINE');            % Set function of output signal {sine, square, triangle, sawu, sawd, pwm}
+    writeline(RP,'SOUR1:FREQ:FIX 200');         % Set frequency of output signal
+    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR1:BURS:NCYC 1');        % Set 1 pulses of sine wave
-    fprintf(tcpipObj,'SOUR1:BURS:STAT ON');       % Set burst mode to ON
-    fprintf(tcpipObj,'SOUR1:TRIG:SOUR EXT_PE');   % Set generator trigger to external
+    writeline(RP,'SOUR1:BURS:STAT ON');         % Set burst mode to ON
+    writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 pulses of sine wave
+    writeline(RP,'SOUR1:TRIG:SOUR EXT_PE');     % Set generator trigger to external
 
-    fprintf(tcpipObj,'OUTPUT1:STATE ON')
-    fprintf(tcpipObj,'SOUR1:TRIG:INT')
+    writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
+    writeline(RP,'SOUR1:TRIG:INT');
 
-    % For generating signal pulses you trigger signal frequency must be less than
-    % frequency of generating signal pulses. If you have trigger signal frequency
-    % higher than frequency of generating signal pulses
-    % on output you will get continuous  signal instead of pulses
+    % For generating signal pulses, your trigger signal frequency must be less than
+    % frequency of generating signal pulses. If your trigger signal frequency
+    % is higher than the frequency of generating signal pulses
+    % you will get a continuous signal on output, instead of pulses.
 
-    fclose(tcpipObj)
+
+    clear RP;
 
 Code - C
 ********
