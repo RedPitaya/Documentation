@@ -191,19 +191,18 @@ and press run.
             writeline(RP,'ACQ:SOUR1:DATA?');
             
             % Read header for binary format
-            header = readline(RP, 1);
+            header = read(RP, 1);
             
             % Reading size of block, what informed about data size
-            header_size = str2double(strcat(readline(RP, 1, 'int8')));
+            header_size = str2double(strcat(read(RP, 1, 'int8')));
             
             % Reading size of data
-            data_size = str2double(strcat(readline(RP, header_size, 'char'))');
+            data_size = str2double(strcat(read(RP, header_size, 'char'))');
             
             % Read data
-            signal_num = readline(RP, data_size/4,'float');
+            signal_num = read(RP, data_size/4,'float');
             
             plot(signal_num)
-            hold on
             grid on
             ylabel('Voltage / V')
             xlabel('samples')
@@ -221,18 +220,14 @@ and press run.
             clc
             IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
-            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
+            RP = tcpclient(IP, port);
             
             %% Open connection with your Red Pitaya
             
-            %% Open connection with your Red Pitaya
-            
-            RP.ByteOrder = "big-endian";
+            RP.ByteOrder = 'big-endian';
             configureTerminator(RP, 'CR/LF');
             
-            flush(RP, "input");
-            flush(RP, "output");
+            flush(RP);
             
             % Set decimation vale (sampling rate) in respect to you
             % acquired signal frequency
@@ -250,7 +245,7 @@ and press run.
             % Signal on your graph will have trigger in the center (symmetrical)
             % Samples from left to the center are samples before trigger
             % Samples from center to the right are samples after trigger
-            
+
             writeline(RP,'ACQ:TRIG:DLY 0');
             
             %% Start & Trigg
@@ -261,19 +256,20 @@ and press run.
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
+            pause(1);
             
             writeline(RP,'ACQ:TRIG CH1_PE');
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
-            % Ctrl+C will stop code executing in Matlab
+            % Ctrl+C will stop code executing in MATLAB
             
             while 1
                 trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
             
                 if strcmp('TD',trig_rsp(1:2))  % Read only TD
             
-                break
+                    break;
             
                 end
             end
@@ -283,20 +279,19 @@ and press run.
             writeline(RP,'ACQ:SOUR1:DATA?');
             
             % Read header for binary format
-            header = readline(RP, 1);
+            header = read(RP, 1);
             
             % Reading size of block, what informed about data size
-            header_size = str2num(strcat(readline(RP,1,'int8')));
+            header_size = str2double(strcat(read(RP, 1, 'int8')));
             
             % Reading size of data
-            data_size = str2num(strcat(readline(RP,header_size,'char'))');
+            data_size = str2double(strcat(read(RP, header_size, 'char'))');
             
             % Read data
-            signal_num = readline(RP, data_size/2,'int16');
+            signal_num = read(RP, data_size/2, 'int16');
             
             plot(signal_num)
-            hold on
-            grid on
+            grid on;
             ylabel('Voltage / V')
             xlabel('samples')
             
