@@ -6,8 +6,7 @@ UART
 Description
 ***********
 
-This example demonstrates communication using the red pitaya uart protocol. The code below simulates a loop back
-sending a message from the uart TX connector to the uart RX connector on red pitaya.
+This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loop back by sending a message from the UART TX connector to the UART RX connector on Red Pitaya.
 
 
 Required hardware
