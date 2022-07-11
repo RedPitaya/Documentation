@@ -6,8 +6,7 @@ Interactive voltage setting on slow analog output
 Description
 ***********
 
-This example shows how to set analog voltage on slow analog Red Pitaya outputs using MATLAB slider. Slow analog 
-outputs on Red Pitaya are in range from 0 to 1.8 Volts.
+This example shows how to set analog voltage on slow analog Red Pitaya outputs using MATLAB slider. Slow analog outputs on Red Pitaya are in range from 0 to 1.8 Volts.
 
 Required hardware
 *****************
@@ -27,15 +26,14 @@ Circuit
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code from below to 
-MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to MATLAB editor, save project and press run.
 
 .. code-block:: matlab 
 
     function sliderDemo
 
-    f = figure(1);
-        global p
+        f = figure(1);
+        global p;
         
         
         %// initialize the slider
@@ -59,19 +57,19 @@ MATLAB editor, save project and press run.
 
         function  sliderCallback(~,~)
     
-        p =(get(h,'value'))
+            p =(get(h,'value'))
 
         
-        %% Define Red Pitaya as TCP/IP object
+            %% Define Red Pitaya as TCP/IP object
 
-        IP= '192.168.178.108';           % Input IP of your Red Pitaya...
-        port = 5000;
-        tcpipObj=tcpip(IP, port);
+            IP = '192.168.178.108';           % Input IP of your Red Pitaya...
+            port = 5000;
+            RP = tcpclient(IP, port);
 
-        %% Open connection with your Red Pitaya
+            %% Open connection with your Red Pitaya
 
-        fopen(tcpipObj);
-        tcpipObj.Terminator = 'CR/LF';
+            RP.ByteOrder = 'big-endian';
+            configureTerminator(RP,'CR/LF');
 
             %% Set your output voltage value and pin
 
@@ -83,11 +81,11 @@ MATLAB editor, save project and press run.
 
             %% Send SCPI command to Red Pitaya
 
-            fprintf(tcpipObj,scpi_command);
+            writeline(RP, scpi_command);
 
             %% Close connection with Red Pitaya
 
-        fclose(tcpipObj);
+            clear RP;
         end
     end
 
