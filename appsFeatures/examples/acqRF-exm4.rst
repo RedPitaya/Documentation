@@ -8,8 +8,7 @@ Generating a signal and checking its shape
 Description
 ***********
 
-This example shows how to acquire 16k samples of signal on fast analog inputs. Signal will be acquired simultaneously 
-with generated signal. The generator generates a signal with a frequency of 20 kHz and an amplitude of 1V. And on the ADC, the frequency amplitude and signal shape are checked.
+This example shows how to acquire 16k samples of signal on fast analog inputs. Signal will be acquired simultaneously with generated signal. The generator generates a signal with a frequency of 20 kHz and an amplitude of 1V. And on the ADC, the frequency, amplitude and signal shape are checked.
 
 Required hardware
 *****************
