@@ -3,6 +3,9 @@ I2C
 
 .. http://blog.redpitaya.com/examples-new/i2c/
 
+Description
+***********
+
 This example demonstrates communication with the EEPROM memory on red pitaya using the I2C protocol. The code below writes a message to a given address inside the EEPROM and then prints the entire content of EEPROM.
 
 
