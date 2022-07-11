@@ -27,30 +27,30 @@ Circuit
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code from below to 
+The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to 
 MATLAB editor, save project and press run.
 
 .. code-block:: matlab
 
     %% Define Red Pitaya as TCP/IP object
 
-    IP= '192.168.178.108';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.108';           % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
 
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP,'CR/LF');
 
-    volts0=str2num(query(tcpipObj,'ANALOG:PIN? AIN0'))
-    volts1=str2num(query(tcpipObj,'ANALOG:PIN? AIN1'))
-    volts2=str2num(query(tcpipObj,'ANALOG:PIN? AIN2'))
-    volts3=str2num(query(tcpipObj,'ANALOG:PIN? AIN3'))
+    volts0 = str2double(writeread(RP,'ANALOG:PIN? AIN0'));
+    volts1 = str2double(writeread(RP,'ANALOG:PIN? AIN1'));
+    volts2 = str2double(writeread(RP,'ANALOG:PIN? AIN2'));
+    volts3 = str2double(writeread(RP,'ANALOG:PIN? AIN3'));
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
 
 Code - C
 ********
