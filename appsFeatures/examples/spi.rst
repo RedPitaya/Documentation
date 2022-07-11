@@ -6,8 +6,7 @@ SPI
 Description
 ***********
 
-This example shows communication with the red pitaya SPI Micron flash chip. The code below simulates a simple loop 
-back writing and then getting the flash ID of red pitaya SPI flash chip operation.
+This example shows communication with the Red Pitaya SPI Micron flash chip. The code below simulates a simple loop back by writing and then getting the flash ID of Red Pitaya SPI flash chip operation.
 
 
 Required hardware
