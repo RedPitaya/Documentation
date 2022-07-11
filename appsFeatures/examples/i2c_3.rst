@@ -3,8 +3,6 @@ I2C (HW api for 250-12 only)
 
 .. http://blog.redpitaya.com/examples-new/i2c/
 
-Description
-
 This 250-12 board example shows how to switch AC/DC modes over I2C using the SMBUS protocol.
 
 Required hardware
