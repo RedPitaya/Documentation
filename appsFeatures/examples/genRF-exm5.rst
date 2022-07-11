@@ -6,7 +6,7 @@ Generate two synchronous signal
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate two synchronous analog signals. Voltage and frequency ranges depends on Red Pitaya model.
+This example shows how to program Red Pitaya to generate two synchronous analog signals. Voltage and frequency ranges depend on Red Pitaya model.
 
 
 Required hardware
@@ -19,8 +19,7 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code to MATLAB editor
-and press run.
+The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy the code to MATLAB editor and press run.
 
 .. code-block:: matlab
 
@@ -29,33 +28,33 @@ and press run.
     clear all
     close all
 
-    IP= '192.168.178.56';            % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';            % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
 
     %% Open connection with your Red Pitaya
  
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+   RP.ByteOrder = 'big-endian';
+    configureTerminator(RP, 'CR/LF');
 
-    fprintf(tcpipObj,'GEN:RST');
-    fprintf(tcpipObj,'SOUR1:FUNC SINE');       % Set function of output signal
-                                               % {sine, square, triangle, sawu,sawd, pwm}
-    fprintf(tcpipObj,'SOUR1:FREQ:FIX 2000');   % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR1:VOLT 1');          % Set amplitude of output signal
+    writeline(RP,'GEN:RST');
+    writeline(RP,'SOUR1:FUNC SINE');            % Set function of output signal
+                                                    % {sine, square, triangle, sawu, sawd, pwm}
+    writeline(RP,'SOUR1:FREQ:FIX 2000');        % Set frequency of output signal
+    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR2:FUNC SINE');       % Set function of output signal                                       
-                                               % {sine, square, triangle, sawu,sawd, pwm}
-    fprintf(tcpipObj,'SOUR2:FREQ:FIX 2000');   % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR2:VOLT 1');          % Set amplitude of output signal
+    writeline(RP,'SOUR2:FUNC SINE');            % Set function of output signal
+                                                    % {sine, square, triangle, sawu, sawd, pwm}
+    writeline(RP,'SOUR2:FREQ:FIX 2000');        % Set frequency of output signal
+    writeline(RP,'SOUR2:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'OUTPUT:STATE ON');       % Start two channels simultaneously
-    fprintf(tcpipObj,'SOUR:TRIG:INT');         % Generate triggers
+    writeline(RP,'OUTPUT:STATE ON');            % Start both channels simultaneously
+    writeline(RP,'SOUR:TRIG:INT');              % Generate triggers
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
 
 Code - C
 ********
