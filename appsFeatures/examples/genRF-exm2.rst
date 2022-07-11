@@ -7,8 +7,7 @@ Generate signal pulses
 Description
 ***********
 
-This example shows how to generate signal pulses of predefined signal waveforms like sine, triangle, square, ramp up,
-ramp down or pwm. Generated signal can be observed by an Oscilloscope.
+This example shows how to generate signal pulses of predefined signal waveforms like sine, triangle, square, ramp up, ramp down or pwm. Generated signal can be observed by an Oscilloscope.
 
 Required hardware
 *****************
@@ -21,8 +20,7 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code from below to 
-MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to MATLAB editor, save project and press run.
 
 .. code-block:: matlab
 
@@ -30,31 +28,35 @@ MATLAB editor, save project and press run.
     clc
     clear all
     close all
-    IP= '192.168.178.111';          % Input IP of your Red Pitaya...
+    IP = '192.168.178.111';         % Input IP of your Red Pitaya...
     port = 5000;                    % If you are using WiFi then IP is:
-    tcpipObj=tcpip(IP, port);       % 192.168.128.1
+    RP = tcpclient(IP, port);       % 192.168.128.1
 
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP, 'CR/LF');
 
     %% The example generate sine bursts every 0.5 seconds indefinety
-    %fprintf(tcpipObj,'GEN:RST');               % Reset generator
+    % writeline(RP,'GEN:RST');
 
-    fprintf(tcpipObj,'SOUR1:FUNC SINE');
-    fprintf(tcpipObj,'SOUR1:FREQ:FIX 1000');    % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR1:VOLT 1');           % Set amplitude of output signal
+    writeline(RP,'SOUR1:FUNC SINE');
+    writeline(RP,'SOUR1:FREQ:FIX 1000');        % Set frequency of output signal
+    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR1:BURS:STAT BURST');  % Set burst mode to ON
-    fprintf(tcpipObj,'SOUR1:BURS:NCYC 1');      % Set 1 pulses of sine wave
-    fprintf(tcpipObj,'SOUR1:BURS:NOR 10000');   % Infinity number of sine wave pulses
-    fprintf(tcpipObj,'SOUR1:BURS:INT:PER 5000');% Set time of burst period in microseconds = 5 * 1/Frequency * 1000000
+    writeline(RP,'SOUR1:BURS:STAT BURST');      % Set burst mode to ON (Red Pitaya will 
+                                                % generate R number of N periods of signal and then stop.
+                                                % Time between bursts is P.)
+                                                
+    writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 (N) pulses of sine wave
+    writeline(RP,'SOUR1:BURS:NOR 10000');       % Infinity (R) number of sine wave pulses
+    writeline(RP,'SOUR1:BURS:INT:PER 5000');    % Set time (P) of burst period in microseconds = 5 * 1/Frequency * 1000000
+    
+    writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
+    writeline(RP,'SOUR1:TRIG:INT');             % Set generator trigger to immediately
 
-    fprintf(tcpipObj,'OUTPUT1:STATE ON');       % Set output to ON
-    fprintf(tcpipObj,'SOUR1:TRIG:INT');         % Set generator trigger to immediately
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
 
 Code - C
 ********
