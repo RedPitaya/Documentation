@@ -6,7 +6,7 @@ SPI (HW api)
 Description
 ***********
 
-This example shows communication with the red pitaya SPI. This code is for testing writing and reading via SPI protocol. In order for the code to work, you need to connect the MISO and MOSI connectors.
+This example shows communication with the Red Pitaya SPI. This code is for testing writing and reading via SPI protocol. In order for the code to work, you need to connect the MISO and MOSI connectors.
 
 
 Required hardware
