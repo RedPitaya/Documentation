@@ -3,7 +3,11 @@ What do I need before I start?
 ##############################
 
 The following essential items needed to start are already included
-in each RedPitaya kits available from our `WEB store <http://redpitaya.com/#products>`_:
+in each of the RedPitaya kits available on our |WEBstore|:
+
+.. |WEBstore| raw:: html
+
+   <a href="https://redpitaya.com/shop/" target="_blank">WEB store</a>
 
 .. tabs::
 
@@ -19,7 +23,7 @@ in each RedPitaya kits available from our `WEB store <http://redpitaya.com/#prod
       * 4GB (up to 32GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
       * Ethernet cable.
 
-Additional Required Items not supplied with the RedPitaya kits:
+Additional required items not provided with the RedPitaya kits:
 
 * computer with internet browser (Chrome browser recommended),
 * router with DHCP server enabled and access to the internet.
