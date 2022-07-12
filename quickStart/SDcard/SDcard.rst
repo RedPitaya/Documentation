@@ -7,7 +7,7 @@ Prepare SD card
 Download and install SD card image
 **********************************
 
-The next procedure will create a clean SD card.
+The next procedure will create a clean SD card image.
 
 #. Download the Red Pitaya SD card image:
 
@@ -69,7 +69,7 @@ SIGNALlab 250-12:
 
 .. note::
    
-   The video shows how to identify the RedPitaya model and write a memory card.
+   This video shows how to identify your Red Pitaya model and write a memory card.
 
    .. raw:: html
 
