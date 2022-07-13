@@ -46,9 +46,7 @@ SIGNALlab 250-12:
 
 .. |CHANGELOG_Z20_250_12| raw:: html
 
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a>
-   
-   
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a> 
 
 .. figure:: microSDcard-RP.png
     :width: 10%
@@ -62,7 +60,7 @@ SIGNALlab 250-12:
     :backlinks: none
     :depth: 1
 
-4. Insert the SD card into Red Pitaya.
+#. Insert the SD card into Red Pitaya.
 
    .. figure:: pitaya-quick-start-insert-sd-card.png
       :align: center
@@ -91,8 +89,6 @@ Windows
 .. |balenaEtcher| raw:: html
 
    <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a>
-
-
 
 #. Open the newly installed Balena Etcher application.
 
@@ -256,7 +252,6 @@ Using ApplePi-Baker
 
    <a href="https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2" target="_blank">ApplePi-Baker</a>
 
-
 #. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
    .. figure:: SDcard_macOS_open.png
@@ -291,6 +286,7 @@ Using ApplePi-Baker
 
    .. figure:: SDcard_macOS_ApplePi-Baker_quit.png
       :align: center
+
 
 .. _macos_cli:
 
@@ -337,6 +333,7 @@ Command line
 #. When the image is written, type: ``diskutil eject /dev/diskn`` and press enter.
 
 #. Safely eject the SD card.
+
 
 **********
 Background
