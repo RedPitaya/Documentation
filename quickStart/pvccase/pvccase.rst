@@ -2,18 +2,18 @@
 Red Pitaya Acrylic case assembly
 #################################
 
-Regardless whether you bought your Red Pitaya Acrylic case in a kit or as a separate add on, you will need to manually asembile it.
+Regardless of whether you bought your Red Pitaya Acrylic case in a kit or as a separate add-on, you will need to manually asembile it.
 
-***************************************
-Red Pitaya Acrylic Case asembly parts.
-***************************************
+**************************************
+Red Pitaya Acrylic Case asembly parts
+**************************************
 
 .. figure:: rp_pvccase.jpg
     :align: center
 
     Red Pitaya Acrylic Case asembly parts.
     
-It includes:
+Included parts:
 
     - 8 screws that close the housing
     - 4 long brass standoffs and 4 short ones that hold the board
@@ -23,7 +23,7 @@ It includes:
 Assembly
 ********
 
-1. Remove small, white plastic feet by pressing the clips at the top, with a small pair of pliers and push the feet down.
+1. Remove the small, white plastic feet by pressing the clips at the top with a small pair of pliers and pushing the feet down.
    
     .. figure:: rp_pvccase_02.jpg
         :align: center
@@ -35,21 +35,21 @@ Assembly
     .. figure:: rp_pvccase_03.jpg
        :align: center
 
-2.1 If you have the model where the 6 pin connector is present please use included white plastic washers.
+2.1 If you have the model where the 6 pin connector is present, please use the included white plastic washers.
 
     .. figure:: rp_pvccase_04.jpg
        :align: center
     
-       Red Pitaya bottom pcb showing the 6-pin connector CN11
+       The bottom part of the Red Pitaya PCB with the 6-pin connector CN11.
 
     .. figure:: rp_pvccase_05.jpg
        :align: center
     
-       If CN11 connector is present use included plastic washers when mounting bottom part.
+       If a CN11 connector is present, use the included plastic washers when mounting the bottom part.
 
     .. figure:: rp_pvccase_06.jpg
        :align: center
 
-       Red Pitaya showing use of white plastic washers for 6-pin connector CN11 clearance
+       Red Pitaya showing the use of white plastic washers for 6-pin connector CN11 clearance.
 
-3. Stick rubber feet.
+3. Stick in the rubber feet.
