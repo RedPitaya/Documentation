@@ -88,9 +88,6 @@ Windows
 
 #. Download |balenaEtcher| and install it.
 
-   .. figure:: SDcard_Win_Win32DiskImager.png
-      :align: center
-
 .. |balenaEtcher| raw:: html
 
    <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a>
@@ -99,17 +96,17 @@ Windows
 
 #. Open the newly installed Balena Etcher application.
 
-   .. figure:: SDcard_Win_RunAsAdmin.png
+   .. figure:: SDcard_Win_BalenaEtcher.png
       :align: center
 
 #. Under **Flash from file** select an unzipped Red Pitaya image file.
 
-   .. figure:: SDcard_Win_SelectImg.png
+   .. figure:: SDcard_Win_BalEtc_FlashFromFile.png
       :align: center
 
 #. Under **Select target** choose the drive letter of the SD card. Balena Etcher will only show you external drives.
 
-   .. figure:: SDcard_Win_SelectDrive.png
+   .. figure:: SDcard_Win_BalEtc_SelectTarget.png
       :align: center
 
    .. note::
@@ -120,17 +117,17 @@ Windows
       You can easily see the drive letter (for example E:)
       by looking in the left column of Windows Explorer.
 
-   .. figure:: SDcard_Win_DriveLetter.png
+   .. figure:: SDcard_Win_BalEtc_SelectTarget2.png
       :align: center
 
 #. When you click **Flash** the computer will prompt you to allow the operation. Click **yes** and wait for the flashing and validation to be completed.
 
-   .. figure:: SDcard_Win_Write.png
+   .. figure:: SDcard_Win_BalEtc_Flash.png
       :align: center
 
 #. Close Balena Etcher.
 
-   .. figure:: SDcard_Win_Exit.png
+   .. figure:: SDcard_Win_BalEtc_FlashComplete.png
       :align: center
 
 =====
@@ -380,10 +377,6 @@ The OS is changed less frequently.
 
    A list of new features, bugfixes and known bugs for each Red Pitaya release
    can be found in our |CHANGELOG|.
-
-.. |CHANGELOG| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a>
 
 
 **************
