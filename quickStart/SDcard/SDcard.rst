@@ -1,34 +1,39 @@
 .. _prepareSD:
 
+###############
 Prepare SD card
 ###############
 
-**********************************
-Download and install SD card image
-**********************************
+**************************************
+Download and install the SD card image
+**************************************
 
 The next procedure will create a clean SD card image.
 
-#. Download the Red Pitaya SD card image:
+1. Download the Red Pitaya SD card image:
 
 STEMlab 125-14 & STEMlab 125-10:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG|
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG|
 
+
 STEMlab 125-14 & STEMlab 125-10 (Streaming slave board):
 
    - `Latest Beta <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG|
+
 
 STEMlab 125-14-Z7020:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG|
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG|
 
+
 SDRlab 122-16:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20|
    - `Latest Beta <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20|
+
 
 SIGNALlab 250-12:
 
@@ -48,19 +53,20 @@ SIGNALlab 250-12:
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a> 
 
+
 .. figure:: microSDcard-RP.png
     :width: 10%
 
-#. Unzip the SD card image.
+2. Unzip the SD card image.
 
-#. Write the image onto a SD card. Instructions are available for various operating systems:
+#. Write the image onto an SD card. Instructions are available for various operating systems:
 
 .. contents::
     :local:
     :backlinks: none
     :depth: 1
 
-#. Insert the SD card into Red Pitaya.
+#. Insert the SD card into the Red Pitaya.
 
    .. figure:: pitaya-quick-start-insert-sd-card.png
       :align: center
@@ -107,11 +113,7 @@ Windows
 
    .. note::
 
-      Balena Etcher will only show you external drives, but please be careful to select
-      the correct drive, if you have multiple cards/USBs plugged into your computer.
-      If you choose the wrong one you risk erasing data from the selected drive.
-      You can easily see the drive letter (for example E:)
-      by looking in the left column of Windows Explorer.
+      Balena Etcher will only show you external drives, but please be careful to select the correct drive if you have multiple cards or USBs plugged into your computer. If you choose the wrong one, you risk erasing data from the selected drive. You can easily see the drive letter (for example, E:) by looking in the left column of Windows Explorer.
 
    .. figure:: SDcard_Win_BalEtc_SelectTarget2.png
       :align: center
@@ -134,7 +136,7 @@ Linux
 
 .. note::
 
-      For Linux and macOS you can also use |balenaEtcher|. Instructions are under |Windows|.
+   You can also use |balenaEtcher| on Linux and macOS. Instructions are under |Windows|.
       
 .. |Windows| raw:: html
 
@@ -144,7 +146,7 @@ Linux
 Ubuntu using Image Writer
 -------------------------
 
-#. Right click on the extracted SD card image and select **Open With > Disk Image Writer**.
+#. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
 .. figure:: DIW_1.png
       :align: center
@@ -158,8 +160,8 @@ Ubuntu using Image Writer
 
       Select tool dialog
 
-#. In the **Restore Disk Image** window select your SD card in the **Destination** pull down menu.
-   Be careful to select the correct device, use the size for orientation (for example 16 GB SD card).
+#. In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
+   Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
 
 .. figure:: DIW_3.png
       :align: center
@@ -168,8 +170,8 @@ Ubuntu using Image Writer
       Select drive dialog
 
 #. You will be asked to confirm your choice and enter a password.
-   Additional dialog windows will again show the selected destination drive,
-   take the opportunity to reconsider if you chose the right device.
+   Additional dialog windows will again show the selected destination drive.
+   Take the opportunity to reconsider whether you chose the right device.
 
 
 .. _linux_cli:
@@ -179,6 +181,7 @@ Command line
 ------------
 
 .. note::
+
    Please note that the use of the ``dd`` tool can overwrite any partition of your machine.
    If you specify the wrong device in the instructions below, you could delete your primary Linux partition.
    Please be careful.
@@ -188,11 +191,10 @@ Command line
    .. figure:: SDcard_insert.jpg
       :align: center
 
-#. Open the Terminal and check the available disks with ``df -h``.
-   Our SD card is 16 GB, it is named ``/dev/sdx`` and
-   divided into two partitions ``/dev/sdx1`` and ``/dev/sdx2``.
-   The drive mounted at ``/`` is your main drive,
-   be carefull not to use it.
+#. Open the terminal and check the available disks with ``df -h``.
+   Our SD card is 16 GB. It is named ``/dev/sdx`` and divided into two partitions, ``/dev/sdx1`` and ``/dev/sdx2``. 
+   The drive mounted at ``/`` is your main drive.
+   Be careful not to use it.
 
    .. code-block:: shell-session
 
@@ -228,7 +230,7 @@ macOS
 
 .. note::
 
-      For Linux and macOS you can also use |balenaEtcher|. Instructions are under |Windows|.
+   You can also use |balenaEtcher| on Linux and macOS. Instructions are under |Windows|.
       
 .. |Windows| raw:: html
 
@@ -238,7 +240,7 @@ macOS
 Using ApplePi-Baker
 -------------------
 
-#. Insert SD card into your PC or SD card reader.
+#. Insert the SD card into your PC or SD card reader.
 
    .. figure:: SDcard_insert.jpg
       :align: center
@@ -267,7 +269,7 @@ Using ApplePi-Baker
    .. figure:: SDcard_macOS_password.png
       :align: center
 
-#. Select the SD card drive. This can be recognized by the size of the card that is 16 GB.
+#. Select the SD card drive. This can be recognised by the size of the card, which is 16 GB.
 
    .. figure:: SDcard_macOS_ApplePi-Baker_drive.png
       :align: center
@@ -277,12 +279,12 @@ Using ApplePi-Baker
    .. figure:: SDcard_macOS_ApplePi-Baker_image.png
       :align: center
 
-#. It's coffee time, application will show you the Estimated Time for accomplishment.
+#. It's coffee time. The application will show you the estimated time for accomplishment.
 
    .. figure:: SDcard_macOS_ApplePi-Baker_wait.png
       :align: center
 
-#. When the operation is complete, the status will show as Idle.
+#. When the operation is finished, the status will change to idle.
 
    .. figure:: SDcard_macOS_ApplePi-Baker_quit.png
       :align: center
@@ -300,16 +302,16 @@ Command line
       :align: center
 
 #. Click **cmd + space**, type **Disk Utility** into the search box and press enter.
-   From the menu select your SD card and click on the **Erase** button (be careful not to delete your disk!).
+   From the menu, select your SD card and click on the **Erase** button (be careful not to delete your disk!).
 
    .. figure:: SDcard_macOS_DiskUtility.png
       :align: center
 
-#. Click **cmd + space**, type ``cd`` into the **Terminal** and press enter.
-   Then type: ``cd Desktop`` and press enter again.
+#. Click **cmd + space**, then enter ``cd`` into the **Terminal**.
+   Then type ``cd Desktop`` and press enter once more.  
 
-#. Unmount the partition so that you will be allowed to overwrite the disk.
-   Into the Terminal type: ``diskutil list`` and press enter.
+#. Unmount the partition so that you will be able to overwrite the disk.
+   Type ``diskutil list`` into the Terminal and press enter.
    This will show you the list of all memory devices.
 
    .. figure:: Screen-Shot-2015-08-07-at-16.59.50.png
@@ -341,7 +343,7 @@ Background
 
 A Red Pitaya SD card contains two partitions:
 
-1. 128MB FAT contains the **ecosystem**:
+1. 128 MB FAT contains the **ecosystem**:
 
    * boot files: FSBL, FPGA images, U-Boot, Linux kernel
    * Red Pitaya API libraries and header files
@@ -349,15 +351,15 @@ A Red Pitaya SD card contains two partitions:
    * customized Nginx web server
    
 
-2. ~4GB Ext4 contains the **OS**:
+2. ~4 GB Ext4 contains the **OS**:
 
    * Ubuntu/Debian OS
    * various libraries
    * network setup customization
    * systemd services customization
 
-Most of Red Pitaya source code translates into the ecosystem,
-Therefore this is updated more often.
+Most of Red Pitaya's source code translates into the ecosystem.
+Therefore, it is updated more often.
 The OS is changed less frequently.
 
 .. note::
@@ -372,7 +374,7 @@ The OS is changed less frequently.
 
 .. note::
 
-   A list of new features, bugfixes and known bugs for each Red Pitaya release
+   A list of new features, bugfixes, and known bugs for each Red Pitaya release
    can be found in our |CHANGELOG|.
 
 
@@ -385,11 +387,11 @@ it is possible to upgrade only the ecosystem.
 
 A manual upgrade allows you to fix a corrupted SD card image
 (if only the FAT partition is corrupted) or to install
-older, newer or custom ecosystem zip files.
+older, newer, or custom ecosystem zip files.
 
 #. Download a zip file from our |download server|.
 
-#. Insert the SD card into card reader.
+#. Insert the SD card into the card reader.
 
 #. Delete all files from the FAT partition.
    Use ``Shift + Delete`` to avoid placing files
@@ -397,7 +399,7 @@ older, newer or custom ecosystem zip files.
 
 #. Extract the ecosystem zip file contents onto the now empty partition.
 
-If you wish to keep wireless settings skip deleting the next files:
+If you wish to keep wireless settings, skip deleting the next files:
 
 * ``wpa_supplicant.conf``
 * ``hostapd.conf``
@@ -407,8 +409,8 @@ If you wish to keep wireless settings skip deleting the next files:
 Resize file system
 ******************
 
-When recording an image to a flash card of any size, we get sections of the file system 4 GB in size.
-In order to increase the available free space you need to execute the following script:
+When recording an image to a flash card of any size, we get sections of the file system of 4 GB in size.
+In order to increase the available free space, you need to execute the following script:
 
       .. code-block:: shell-session
 
