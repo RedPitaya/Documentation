@@ -25,7 +25,7 @@ Simply follow this 3 simple steps:
             :align: center
 
       #. Connect the power supply to the Red Pitaya board
-      #. Open your web browser and in the URL bar type ``rp-xxxxxx.local/``
+      #. Open your web browser and type ``rp-xxxxxx.local/`` into the address bar
 
          .. figure:: connect/125_stiker.png
             :width: 70%
@@ -44,7 +44,7 @@ Simply follow this 3 simple steps:
             :align: center
 
       #. Connect the power supply to the Red Pitaya board
-      #. Open your web browser and in the URL bar type ``rp-xxxxxx.local/``
+      #. Open your web browser and type ``rp-xxxxxx.local/`` into the address bar
 
          .. figure:: connect/250_stiker.png
             :width: 90%
@@ -60,7 +60,7 @@ After the **third step** you will get a Red Pitaya main page as shown below.
 .. figure:: connect/connect-3.png
    :align: center
 
-   Red Pitaya main page user interface.
+   Red Pitaya's main page user interface.
 
 .. raw:: html
 
@@ -85,7 +85,7 @@ After the **third step** you will get a Red Pitaya main page as shown below.
 
 .. note:: 
 
-    For arranging other types of connections (wireless, direct ethernet connection) use the  
+    For arranging other types of connections (wireless, direct ethernet connection), use the  
     |NetworkManager|.
 
 .. |NetworkManager| raw:: html
