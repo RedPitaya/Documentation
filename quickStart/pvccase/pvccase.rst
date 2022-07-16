@@ -1,34 +1,34 @@
-#################################
-Red Pitaya Acrylic case assembly
-#################################
+################################
+Red Pitaya Acrylic Case Assembly
+################################
 
 Regardless of whether you bought your Red Pitaya Acrylic case in a kit or as a separate add-on, you will need to manually asembile it.
 
-**************************************
-Red Pitaya Acrylic Case asembly parts
-**************************************
+**********
+Components
+**********
 
 .. figure:: rp_pvccase.jpg
     :align: center
 
-    Red Pitaya Acrylic Case asembly parts.
+    Components of the Red Pitaya Acrylic Case.
     
-Included parts:
+Contents:
 
     - 8 screws that close the housing
     - 4 long brass standoffs and 4 short ones that hold the board
     - 4 rubber feet for secure positioning on the desk
    
-********
-Assembly
-********
+*********************
+Assembly Instructions
+*********************
 
 1. Remove the small, white plastic feet by pressing the clips at the top with a small pair of pliers and pushing the feet down.
    
     .. figure:: rp_pvccase_02.jpg
         :align: center
 
-        Bottom of the Red Pitaya board showing the plastic feet.
+        The bottom of the Red Pitaya board showing the plastic feet.
 
 2. Mount the brass standoffs as seen in the picture below:
    
