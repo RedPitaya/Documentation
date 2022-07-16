@@ -1,19 +1,19 @@
 ##################################
-Red Pitaya Aluminium Case assembly
+Red Pitaya Aluminium Case Assembly
 ##################################
 
 Regardless of whether you bought your Red Pitaya aluminium case in a kit or as a separate add-on, you will need to manually assemble it.
 
-***************************************
-Red Pitaya Aluminium Case assembly parts
-***************************************
+**********
+Components
+**********
 
 .. figure:: rp_alucase_02.jpg
     :align: center
 
-    Red Pitaya Aluminium Case assembly parts.
+    Components of the Red Pitaya Aluminium Case.
     
-It includes:
+Contents:
 
     - 4 screws that close the housing and hold the board
     - 4 rubber feet for secure positioning on the desk
@@ -26,7 +26,7 @@ It includes:
    Interior of the Red Pitaya Aluminium Case.
     
 
-On the interior, there is a block located in the upper part of the housing (right) which passes the heat to the housing, thereby the entire case acts as a heat sink.
+On the interior, there is a block located in the upper part of the housing (right) that passes the heat to the housing. Therefore, the entire case acts as a heat sink.
 
 On the lower part, there are fits for a few air vents (left).
 
@@ -40,9 +40,9 @@ Apertures in the case expose connections to the expansion ports **E1** and **E2*
     :width: 49%
     :align: center
 
-********
-Assembly
-********
+*********************
+Assembly Instructions
+*********************
 
 1. Remove the small plastic feet by pressing the clips at the top with
    a small pair of pliers and pushing the feet down.
@@ -50,7 +50,7 @@ Assembly
    .. figure:: rp_alucase_07.jpg
       :align: center
       
-      Bottom of the Red Pitaya board showing the plastic feet.
+      The bottom of the Red Pitaya board showing the plastic feet.
 
 #. Repeat the procedure for STEMlab 125-14 with the heat sink by pressing the clips together on the bottom and pushing the holder gently up.
    
@@ -62,7 +62,7 @@ Assembly
 .. figure:: rp_alucase_08.jpg
    :align: center
    
-   Top of the Red Pitaya board showing the removed heat sink.
+   The top of the Red Pitaya board showing the removed heat sink.
 
 4. Remove the remainder of the thermal paste.
 
