@@ -66,7 +66,7 @@ SIGNALlab 250-12:
     :backlinks: none
     :depth: 1
 
-#. Insert the SD card into the Red Pitaya.
+4. Insert the SD card into the Red Pitaya.
 
    .. figure:: pitaya-quick-start-insert-sd-card.png
       :align: center
@@ -95,8 +95,8 @@ Windows
 .. |balenaEtcher| raw:: html
 
    <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a>
-
-#. Open the newly installed Balena Etcher application.
+   
+3. Open the newly installed Balena Etcher application.
 
    .. figure:: SDcard_Win_BalenaEtcher.png
       :align: center
@@ -146,7 +146,7 @@ Linux
 Ubuntu using Image Writer
 -------------------------
 
-#. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
+1. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
 .. figure:: DIW_1.png
       :align: center
@@ -160,7 +160,7 @@ Ubuntu using Image Writer
 
       Select tool dialog
 
-#. In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
+2. In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
    Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
 
 .. figure:: DIW_3.png
@@ -169,7 +169,7 @@ Ubuntu using Image Writer
 
       Select drive dialog
 
-#. You will be asked to confirm your choice and enter a password.
+3. You will be asked to confirm your choice and enter a password.
    Additional dialog windows will again show the selected destination drive.
    Take the opportunity to reconsider whether you chose the right device.
 
@@ -254,7 +254,7 @@ Using ApplePi-Baker
 
    <a href="https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2" target="_blank">ApplePi-Baker</a>
 
-#. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
+3. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
    .. figure:: SDcard_macOS_open.png
       :align: center
