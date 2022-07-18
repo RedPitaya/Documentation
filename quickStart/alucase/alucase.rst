@@ -14,7 +14,6 @@ Components
     Components of the Red Pitaya Aluminium Case.
     
 Contents:
-
     - 4 screws that close the housing and hold the board
     - 4 rubber feet for secure positioning on the desk
     - a thermal pad (just barely seen in the photo)
@@ -72,12 +71,12 @@ Assembly Instructions
 
 #. Turn the top part of the casing upside down and place the light-guiding plastic.
 
-#. Close it up with the bottom part of the casing, including the Red Pitaya board.
-Make sure that the holes from the board and the casing are aligned.
+#. Close it up with the bottom part of the casing, including the Red Pitaya board. Make sure that the holes from the board and the casing are aligned.
 
 #. Install the four screws.
 
 #. Stick in the rubber feet.
+
 
 .. figure:: rp_alucase.jpg
    :align: center
