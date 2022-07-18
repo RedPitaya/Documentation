@@ -92,11 +92,11 @@ Windows
 
 #. Download |balenaEtcher| and install it.
 
-.. |balenaEtcher| raw:: html
+   .. |balenaEtcher| raw:: html
 
-   <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a>
+      <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a>
    
-3. Open the newly installed Balena Etcher application.
+#. Open the newly installed Balena Etcher application.
 
    .. figure:: SDcard_Win_BalenaEtcher.png
       :align: center
@@ -146,15 +146,15 @@ Linux
 Ubuntu using Image Writer
 -------------------------
 
-1. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
+#. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
-.. figure:: DIW_1.png
+   .. figure:: DIW_1.png
       :align: center
       :width: 50%
 
       Context menu
 
-.. figure:: DIW_2.png
+   .. figure:: DIW_2.png
       :align: center
       :width: 50%
 
@@ -163,7 +163,7 @@ Ubuntu using Image Writer
 2. In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
    Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
 
-.. figure:: DIW_3.png
+   .. figure:: DIW_3.png
       :align: center
       :width: 50%
 
@@ -250,11 +250,11 @@ Using ApplePi-Baker
    - `ApplePi-Baker-v2.2.3.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-v2.2.3.dmg>`_
    - `ApplePi-Baker-1.9.9.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-1.9.9.dmg>`_
 
-.. |ApplePi| raw:: html
+   .. |ApplePi| raw:: html
 
-   <a href="https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2" target="_blank">ApplePi-Baker</a>
+      <a href="https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2" target="_blank">ApplePi-Baker</a>
 
-3. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
+#. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
    .. figure:: SDcard_macOS_open.png
       :align: center
