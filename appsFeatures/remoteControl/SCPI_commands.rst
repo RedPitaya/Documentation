@@ -274,13 +274,13 @@ Parameter options:
 | | Example:                          |                               | (Only SIGNALlab 250-12)                                                       |
 | | ``ACQ:SOUR1:COUP?`` > ``AC``      |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:LEV <level>``          | ``rp_AcqSetTriggerLevel``     | Set trigger level in mV.                                                      |
+| | ``ACQ:TRIG:LEV <level>``          | ``rp_AcqSetTriggerLevel``     | Set trigger level in V.                                                       |
 | | Example:                          |                               |                                                                               |
-| | ``ACQ:TRIG:LEV 125 mV``           |                               |                                                                               |
+| | ``ACQ:TRIG:LEV 0.125 V``          |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:LEV?`` > ``level``     | ``rp_AcqGetTriggerLevel``     | Get trigger level in mV.                                                      |
+| | ``ACQ:TRIG:LEV?`` > ``level``     | ``rp_AcqGetTriggerLevel``     | Get trigger level in V.                                                       |
 | | Example:                          |                               |                                                                               |
-| | ``ACQ:TRIG:LEV?`` > ``123 mV``    |                               |                                                                               |
+| | ``ACQ:TRIG:LEV?`` > ``0.123 V``   |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
 | | ``ACQ:TRIG:EXT:LEV <level>``      | ``rp_AcqSetTriggerLevel``     | Set trigger external level in V.                                              |
 | | Example:                          |                               | (Only SIGNALlab 250-12)                                                       |
