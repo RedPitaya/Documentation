@@ -43,27 +43,27 @@ Apertures in the case expose connections to the expansion ports **E1** and **E2*
 Assembly Instructions
 *********************
 
-1. Remove the small plastic feet by pressing the clips at the top with
+#. Remove the small plastic feet by pressing the clips at the top with
    a small pair of pliers and pushing the feet down.
    
-   .. figure:: rp_alucase_07.jpg
-      :align: center
+    .. figure:: rp_alucase_07.jpg
+        :align: center
       
-      The bottom of the Red Pitaya board showing the plastic feet.
+        The bottom of the Red Pitaya board showing the plastic feet.
 
 #. Repeat the procedure for STEMlab 125-14 with the heat sink by pressing the clips together on the bottom and pushing the holder gently up.
    
 #. The heat sink of the STEMlab 125-10 is bonded with the FPGA. Slightly turn the heat sink, as shown in the picture below, until it comes loose.
    
-.. figure:: STEMlab_10_heatsink.png
-   :align: center
+    .. figure:: STEMlab_10_heatsink.png
+        :align: center
 
-.. figure:: rp_alucase_08.jpg
-   :align: center
+    .. figure:: rp_alucase_08.jpg
+        :align: center
    
-   The top of the Red Pitaya board showing the removed heat sink.
+        The top of the Red Pitaya board showing the removed heat sink.
 
-4. Remove the remainder of the thermal paste.
+#. Remove the remainder of the thermal paste.
 
 #. Apply the thermal pad to the CPU.
 
