@@ -6,9 +6,8 @@ Interactive LED bar graph
 Description
 ***********
 
-This example shows how to make a bar graph by controlling Red Pitaya on board LEDs.
-The number of LEDs that will be turned ON, corresponds to the value of variable p
-that can be set by MATLAB® slider bar.
+This example shows how to make a bar graph by controlling the Red Pitaya on-board LEDs.
+The number of LEDs that will be turned ON, corresponds to the value of variable p that can be set by the MATLAB® slider bar.
 
 Required hardware
 *****************
@@ -20,8 +19,7 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to
-MATLAB editor, input value p save project and press run. Change p with slider bar from 0-100.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button. Change p with slider bar from 0-100.
 
 .. code-block:: matlab
 
@@ -120,6 +118,7 @@ MATLAB editor, input value p save project and press run. Change p with slider ba
             clear RP;
         end
     end
+
 
 Code - LabVIEW
 **************
