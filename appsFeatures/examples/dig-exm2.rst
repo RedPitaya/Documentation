@@ -7,8 +7,9 @@ Bar graph with LEDs
 Description
 ***********
 
-This example shows how to make a bar graph by controlling Red Pitaya on board LEDs.
+This example shows how to make a bar graph by controlling the Red Pitaya on-board LEDs.
 The number of LEDs that will be turned ON, corresponds to the value of variable p.
+
 
 Required hardware
 *****************
@@ -17,15 +18,14 @@ Required hardware
 
 .. figure:: RP-circuit-e1421258707736-300x212.png
 
+
 Code - MATLAB®
 **************
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button. Change p from 0-100.
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to 
-MATLAB editor, input value p save project and press run. Change p from 0-100 and press run.
-
- .. code-block:: matlab
+.. code-block:: matlab
  
-    IP= '192.168.178.56';           % Input IP of your Red Pitaya...
+    IP  = '192.168.178.56';           % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
@@ -82,6 +82,7 @@ MATLAB editor, input value p save project and press run. Change p from 0-100 and
 
     clear RP;
 
+
 Code - Python
 *************
 
@@ -106,6 +107,7 @@ Code - Python
             rp_s.tx_txt('DIG:PIN LED' + str(i) + ',' + str(1))
         else:
             rp_s.tx_txt('DIG:PIN LED' + str(i) + ',' + str(0))
+
 
 Code - LabVIEW
 **************
