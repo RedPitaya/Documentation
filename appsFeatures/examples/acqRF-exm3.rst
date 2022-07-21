@@ -39,7 +39,7 @@ Code - MATLAB®
     clear all
     close all
 
-    IP= '192.168.178.111';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.111';           % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
