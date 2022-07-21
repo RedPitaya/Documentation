@@ -1,4 +1,4 @@
-Synchronised one pulse signal generation and acquisition
+Synchronised one-pulse signal generation and acquisition
 ########################################################
 
 
@@ -8,7 +8,10 @@ Synchronised one pulse signal generation and acquisition
 Description
 ***********
 
-This example shows how to acquire 16k samples of signal on fast analog inputs. Signal will be acquired simultaneously with the generated signal. Time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. Decimations and time scales of a buffer are given in the :ref:`table <s_rate_and_dec>`. Voltage and frequency ranges depend on Red Pitaya model. 
+This example shows how to acquire 16k samples of signal on fast analog inputs. The signal will be acquired simultaneously with the generated signal. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
+
+.. |sample rate and decimation| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/acqRF-samp-and-dec.html#sampling-rate-and-decimations" target="_blank">table</a>
 
 
 Required hardware
@@ -92,6 +95,68 @@ Code - MATLAB®
 
     %% Close connection with Red Pitaya
     clear RP;
+
+
+Code - Python
+*************
+
+.. code-block:: python
+
+    import sys
+    import time
+    import matplotlib.pyplot as plt
+    import redpitaya_scpi as scpi
+
+    IP = '192.168.178.111'
+    rp_s = scpi.scpi(IP)
+
+    wave_form = 'sine'
+    freq = 1000000
+    ampl = 1
+
+    # Generation
+    rp_s.tx_txt('GEN:RST')
+    rp_s.tx_txt('ACQ:RST')
+
+    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
+
+    rp_s.tx_txt('SOUR1:BURS:STAT BURST')        # Mode set to BURST
+    rp_s.tx_txt('SOUR1:BURS:NCYC 3')            # 3 periods in each burst
+
+    # Acqusition
+    rp_s.tx_txt('ACQ:DEC 1')
+    rp_s.tx_txt('ACQ:TRIG:LEV 0')
+    rp_s.tx_txt('ACQ:TRIG:DLY 0')
+
+    rp_s.tx_txt('ACQ:START')
+    time.sleep(1)
+    rp_s.tx_txt('ACQ:TRIG AWG_PE')
+    rp_s.tx_txt('OUTPUT1:STATE ON')
+    time.sleep(1)
+
+    rp_s.tx_txt('SOUR1:TRIG:INT')
+
+    # Wait for trigger
+    while 1:
+        rp_s.tx_txt('ACQ:TRIG:STAT?')           # Get Trigger Status
+        if rp_s.rx_txt() == 'TD':               # Triggerd?
+            break
+
+
+    # Read data and plot
+
+    rp_s.tx_txt('ACQ:SOUR1:DATA?')              # Read full buffer (source 1)
+    data_string = rp_s.rx_txt()                 # data into a string
+
+    # Remove brackets and empty spaces + string => float
+    data_string = data_string.strip('{}\n\r').replace("  ", "").split(',')    
+    data = list(map(float, data_string))        # transform data into float
+
+    plt.plot(data)
+    plt.show()
+
 
 
 Code - LabVIEW
