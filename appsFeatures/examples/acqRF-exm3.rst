@@ -33,7 +33,7 @@ Code - MATLAB®
 
 .. code-block:: matlab
 
-    The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code to MATLAB editor and press run.
+    The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
     clc
     clear all
