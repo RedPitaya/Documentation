@@ -6,9 +6,7 @@ Custom waveform signal generation
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate custom waveform signal. Voltage and frequency ranges depend on Red Pitaya model.
-
-
+This example shows how to program Red Pitaya to generate a custom waveform signal. Voltage and frequency ranges depend on the Red Pitaya model.
 
 Required hardware
 *****************
@@ -20,11 +18,11 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy the code to MATLAB editor and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
     clc
     clear all
     close all
@@ -42,8 +40,8 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
 
 
     RP = tcpclient(IP, port);
-    RP.ByteOrder = 'big-endian';
-    configureTerminator(RP,'CR/LF');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
     
     %% Calcualte arbitrary waveform with 16384 samples
     % Values of arbitrary waveform must be in range from -1 to 1.
@@ -62,7 +60,7 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
     waveform_ch_1 =waveform_ch_1_0(1,1:length(waveform_ch_1_0)-3);
     waveform_ch_2 =waveform_ch_2_0(1,1:length(waveform_ch_2_0)-3);
 
-    %%
+    %% Generation
 
     writeline(RP,'GEN:RST')                     % Reset to default settings
 
@@ -90,8 +88,12 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
+
 
 .. code-block:: c
 
