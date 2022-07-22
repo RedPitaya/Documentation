@@ -1,10 +1,10 @@
-Generate two burst asynced signal
-#################################
+Generate two burst asynced signals
+##################################
 
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate two asynced analog signals. Voltage and frequency ranges depend on Red Pitaya model.
+This example shows how to program Red Pitaya to generate two asynced analog signals. Voltage and frequency ranges depend on the Red Pitaya model.
 
 .. figure:: exmp6.png
     :align: center
@@ -19,11 +19,11 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy the code to MATLAB editor and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
     clc
     clear all
     close all
@@ -31,8 +31,8 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
     port = 5000;
     RP = tcpclient(IP, port);
 
-    RP.ByteOrder = 'big-endian';
-    configureTerminator(RP,'CR/LF');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
 
     %% The example generate sine bursts every 0.5 seconds indefinety
     writeline(RP,'GEN:RST');
@@ -73,13 +73,17 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
 
     clear RP;
 
+
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -129,12 +133,11 @@ Code - C
         rp_Release();
     }
 
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import time
