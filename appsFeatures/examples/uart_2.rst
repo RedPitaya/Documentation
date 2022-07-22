@@ -6,7 +6,7 @@ UART (HW api)
 Description
 ***********
 
-This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loop back by sending a message from the UART TX connector to the UART RX connector on Red Pitaya.
+This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loop back by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.
 
 
 Required hardware
@@ -21,8 +21,11 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -82,21 +85,22 @@ Code - C
         return 0;
     }
 
+
 Code - MATLAB®
 **************
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
 
-    IP= '';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
 
-    RP.ByteOrder = 'big-endian';
-    configureTerminator(RP,'CR/LF');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
 
     writeline(RP,'UART:INIT');
 
@@ -137,12 +141,11 @@ Code - MATLAB®
 
     clear RP;
 
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import redpitaya_scpi as scpi
