@@ -6,7 +6,10 @@ Signal acquisition on external trigger
 Description
 ***********
 
-This example shows how to acquire 16k samples of a signal on fast analog inputs. Signal will be acquired when the external trigger condition is meet. Time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. Decimations and time scales of a buffer are given in the :ref:`table <s_rate_and_dec>`. Voltage and frequency ranges depend on Red Pitaya model. 
+This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the external trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
+
+.. |sample rate and decimation| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/acqRF-samp-and-dec.html#sampling-rate-and-decimations" target="_blank">table</a>
 
 
 Required hardware
@@ -30,7 +33,7 @@ Code - MATLAB®
 
 .. code-block:: matlab
 
-    The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code to MATLAB editor and press run.
+    The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
     %% Define Red Pitaya as TCP/IP object
     clear all
@@ -113,13 +116,12 @@ Code - MATLAB®
     xlabel('samples')
 
     clear RP;
-    
+
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import redpitaya_scpi as scpi
@@ -145,7 +147,7 @@ Code - Python
     plot.plot(buff)
     plot.ylabel('Voltage')
     plot.show()
-    view rawacquire_trigger_external.py
+
 
 Code - LabVIEW
 **************
