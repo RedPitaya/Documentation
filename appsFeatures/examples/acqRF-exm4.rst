@@ -8,7 +8,7 @@ Generating a signal and checking its shape
 Description
 ***********
 
-This example shows how to acquire 16k samples of signal on fast analog inputs. Signal will be acquired simultaneously with generated signal. The generator generates a signal with a frequency of 20 kHz and an amplitude of 1V. And on the ADC, the frequency, amplitude and signal shape are checked.
+This example shows how to acquire 16k samples of signal on fast analog inputs. The signal will be acquired simultaneously with the generated signal. The generator generates a signal with a frequency of 20 kHz and an amplitude of 1 Volt. And on the ADC, the frequency, amplitude, and signal shape are checked.
 
 Required hardware
 *****************
@@ -29,8 +29,12 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
+
 
 .. code-block:: c
 
