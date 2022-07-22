@@ -1,12 +1,12 @@
-Generate signal on external trigger
-###################################
+Generate a signal on external trigger
+#####################################
 
 .. http://blog.redpitaya.com/examples-new/generate-signal-on-fast-analog-outputs-with-external-triggering/
 
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate analog signal on external trigger. Red Pitaya will first wait for trigger from external source and start generating desired signal right after the trigger condition is met. Voltage and frequency ranges depend on Red Pitaya model.
+This example shows how to program Red Pitaya to generate an analog signal on an external trigger. Red Pitaya will first wait for a trigger from an external source and start generating the desired signal right after the trigger condition is met. Voltage and frequency ranges depend on the Red Pitaya model.
 
 
 Required hardware
@@ -19,11 +19,11 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy the code to MATLAB editor and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
     clc
     clear all
     close all
@@ -33,8 +33,8 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
-    RP.ByteOrder = 'big-endian';
-    configureTerminator(RP,'CR/LF');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
 
     flush(RP);                      % clear input & output buffers
     % flush(RP, 'input')
@@ -63,13 +63,17 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
 
     clear RP;
 
+
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -108,12 +112,11 @@ Code - C
         return 0;
     }
 
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import redpitaya_scpi as scpi
@@ -135,6 +138,7 @@ Code - Python
 
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')
+
 
 Code - LabVIEW
 **************
