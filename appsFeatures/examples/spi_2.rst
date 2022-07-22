@@ -6,7 +6,7 @@ SPI (HW api)
 Description
 ***********
 
-This example shows communication with the Red Pitaya SPI. This code is for testing writing and reading via SPI protocol. In order for the code to work, you need to connect the MISO and MOSI connectors.
+This example shows communication with the Red Pitaya SPI. This code is for testing writing and reading via the SPI protocol. In order for the code to work, you need to connect the MISO and MOSI connectors.
 
 
 Required hardware
@@ -21,8 +21,11 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -96,76 +99,75 @@ Code - C
         return 0;
     }
 
+
 Code - MATLAB®
 **************
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
 
-    IP= '';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
 
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
-    fprintf(tcpipObj,'SPI:INIT:DEV "/dev/spidev1.0"');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
+    
+    writeline(RP,'SPI:INIT:DEV "/dev/spidev1.0"');
 
-    fprintf(tcpipObj,'SPI:SET:DEF');           % set default settings
+    writeline(RP,'SPI:SET:DEF');            % set default settings
 
-    fprintf(tcpipObj,'SPI:SET:GET');           % get default settings
+    writeline(RP,'SPI:SET:GET');            % get default settings
 
-    fprintf(tcpipObj,'SPI:SET:MODE LIST');     % set mode: Low idle level, sample on trailing edge
+    writeline(RP,'SPI:SET:MODE LIST');      % set mode: Low idle level, sample on trailing edge
 
-    fprintf('Mode %s\n', query(tcpipObj,'SPI:SET:MODE?')); % check current mode setting
+    fprintf('Mode %s\n', writeread(RP,'SPI:SET:MODE?')); % check current mode setting
 
-    fprintf(tcpipObj,'SPI:SET:SPEED 5000000'); % set spi speed
+    writeline(RP,'SPI:SET:SPEED 5000000');  % set spi speed
 
-    fprintf('Speed %s\n', query(tcpipObj,'SPI:SET:SPEED?')); % check current speed setting
+    fprintf('Speed %s\n', writeread(RP,'SPI:SET:SPEED?')); % check current speed setting
 
-    fprintf(tcpipObj,'SPI:SET:WORD 8');        % set word length
+    writeline(RP,'SPI:SET:WORD 8');         % set word length
 
-    fprintf('Word length %s\n', query(tcpipObj,'SPI:SET:WORD?')); % check current speed setting
+    fprintf('Word length %s\n', writeread(RP,'SPI:SET:WORD?')); % check current speed setting
 
-    fprintf(tcpipObj,'SPI:SET:SET');           % apply setting to spi
+    writeline(RP,'SPI:SET:SET');            % apply setting to spi
 
     %% Work with spi messages
 
-    fprintf(tcpipObj,'SPI:MSG:CREATE 2');      % create 2 messages with diffrent buffers
+    writeline(RP,'SPI:MSG:CREATE 2');       % create 2 messages with diffrent buffers
 
-    fprintf('Check message count %s\n', query(tcpipObj,'SPI:MSG:SIZE?')); 
+    fprintf('Check message count %s\n', writeread(RP,'SPI:MSG:SIZE?'));
 
-    fprintf(tcpipObj,'SPI:MSG0:TX4:RX 13,14,15,16');  % sets the first message to write and read buffers of 4 bytes
+    writeline(RP,'SPI:MSG0:TX4:RX 13,14,15,16');  % sets the first message to write and read buffers of 4 bytes
 
-    fprintf(tcpipObj,'SPI:MSG1:RX7:CS'); % Sets the buffer for the second message to read 7 bytes long and switch the CS signal level
+    writeline(RP,'SPI:MSG1:RX7:CS'); % Sets the buffer for the second message to read 7 bytes long and switch the CS signal level
 
-    fprintf(tcpipObj,'SPI:PASS'); % sends data to SPI
+    writeline(RP,'SPI:PASS');               % sends data to SPI
 
-    fprintf('TX buffer of 1 msg %s\n', query(tcpipObj,'SPI:MSG0:TX?'));
+    fprintf('TX buffer of 1 msg %s\n', writeread(RP,'SPI:MSG0:TX?'));
 
-    fprintf('RX buffer of 1 msg %s\n', query(tcpipObj,'SPI:MSG0:TX?'));
+    fprintf('RX buffer of 1 msg %s\n', writeread(RP,'SPI:MSG0:TX?'));
 
-    fprintf('RX buffer of 2 msg %s\n', query(tcpipObj,'SPI:MSG1:RX?'));
+    fprintf('RX buffer of 2 msg %s\n', writeread(RP,'SPI:MSG1:RX?'));
 
-    fprintf(tcpipObj,'SPI:MSG:DEL'); % Deletes messages
+    writeline(RP,'SPI:MSG:DEL');            % Deletes messages
 
 
     %% Close connection with Red Pitaya
 
-    fprintf(tcpipObj,'SPI:RELEASE');           % close spi
+    writeline(RP,'SPI:RELEASE');            % close spi
 
-    fclose(tcpipObj);
+    clear RP;
 
 
 Code - Python
 *************
 
 .. code-block:: python
-
-
-    #!/usr/bin/python
 
     import sys
     import time
