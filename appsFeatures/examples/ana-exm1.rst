@@ -1,19 +1,18 @@
-Read analog voltage on slow analog input
-########################################
+Read analog voltage on a slow analog input
+##########################################
 
 .. http://blog.redpitaya.com/examples-new/read-analog-voltage-on-slow-analog-input/
 
 Description
 ***********
 
-This example shows how to measure analog voltage of slow analog inputs on Red Pitaya extension connector. Analog
-inputs on Red Pitaya are rated from 0-3.3 Volts.
+This example shows how to measure the analog voltage of slow analog inputs on the Red Pitaya extension connector. The analog inputs on the Red Pitaya are rated from 0 to 3.3 Volts.
 
 Required hardware
 *****************
 
     - Red Pitaya device
-    - R1 10K potentiometer
+    - R1 10k potentiometer
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
@@ -27,12 +26,11 @@ Circuit
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to 
-MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
 
     IP = '192.168.178.108';           % Input IP of your Red Pitaya...
     port = 5000;
@@ -40,8 +38,8 @@ MATLAB editor, save project and press run.
 
     %% Open connection with your Red Pitaya
 
-    RP.ByteOrder = 'big-endian';
-    configureTerminator(RP,'CR/LF');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
 
     volts0 = str2double(writeread(RP,'ANALOG:PIN? AIN0'));
     volts1 = str2double(writeread(RP,'ANALOG:PIN? AIN1'));
@@ -57,8 +55,11 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -96,8 +97,6 @@ Code - Python
 
 .. code-block:: python
 
-    #!/usr/bin/python
-
     import sys
     import redpitaya_scpi as scpi
 
@@ -108,10 +107,11 @@ Code - Python
         value = float(rp_s.rx_txt())
         print ("Measured voltage on AI["+str(i)+"] = "+str(value)+"V")
 
+
 Code - Scilab
 *************
 
-How to set sockets is described on Blink example
+How to set sockets is described in the Blink example.
 
 .. code-block:: scilab
 
@@ -186,6 +186,7 @@ How to set sockets is described on Blink example
     // Close connection with Red Pitaya
     
     SOCKET_close(tcpipObj);
+
 
 Code - LabVIEW
 **************
