@@ -7,7 +7,7 @@ Generate signal pulses
 Description
 ***********
 
-This example shows how to generate signal pulses of predefined signal waveforms like sine, triangle, square, ramp up, ramp down or pwm. Generated signal can be observed by an Oscilloscope.
+This example shows how to generate signal pulses of predefined signal waveforms like sine, triangle, square, ramp up, ramp down, or pwm. A generated signal can be observed by an oscilloscope.
 
 Required hardware
 *****************
@@ -20,11 +20,11 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
     clc
     clear all
     close all
@@ -32,8 +32,8 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
     port = 5000;                    % If you are using WiFi then IP is:
     RP = tcpclient(IP, port);       % 192.168.128.1
 
-    RP.ByteOrder = 'big-endian';
-    configureTerminator(RP, 'CR/LF');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP, "CR/LF");
 
     %% The example generate sine bursts every 0.5 seconds indefinety
     % writeline(RP,'GEN:RST');
@@ -58,13 +58,17 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
 
     clear RP;
 
+
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -110,8 +114,6 @@ Code - Python
 
 .. code-block:: python
 
-    #!/usr/bin/python
-
     import sys
     import redpitaya_scpi as scpi
 
@@ -131,6 +133,7 @@ Code - Python
 
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')
+
 
 Code - LabVIEW
 **************
