@@ -1,5 +1,5 @@
-Set analog voltage on slow analog output
-########################################
+Set analog voltage on a slow analog output
+##########################################
 
 .. http://blog.redpitaya.com/examples-new/set-analog-voltage-on-slow-analog-output-4/
 
@@ -7,7 +7,7 @@ Set analog voltage on slow analog output
 Description
 ***********
 
-This example shows how to set analog voltage of slow analog outputs on Red Pitaya extension connector. Slow analog outputs on Red Pitaya are in range from 0 to 1.8 Volts.
+This example shows how to set the analog voltage of slow analog outputs on the Red Pitaya extension connector. Slow analog outputs on the Red Pitaya are in the range of 0 to 1.8 Volts.
 
 Required hardware
 *****************
@@ -27,19 +27,19 @@ Circuit
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
     IP= '192.168.178.108';          % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
 
-    RP.ByteOrder = 'big-endian';
-    configureTerminator(RP,'CR/LF');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
 
     writeline(RP,'ANALOG:PIN AOUT0,0.3');  % 0.3 Volts is set on output 0
     writeline(RP,'ANALOG:PIN AOUT1,0.9');
@@ -47,14 +47,18 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
     writeline(RP,'ANALOG:PIN AOUT3,1.5');
 
     clear RP;
-    
+
+
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -101,12 +105,11 @@ Code - C
         return EXIT_SUCCESS;
     }
 
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import redpitaya_scpi as scpi
@@ -121,6 +124,7 @@ Code - Python
 
     for i in range(4):
         rp_s.tx_txt('ANALOG:PIN AOUT' + str(i) + ',' + str(value[i]))
+
 
 Code - LabVIEW
 **************
