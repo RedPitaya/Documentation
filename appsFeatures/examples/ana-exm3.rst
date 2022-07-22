@@ -1,12 +1,12 @@
-Interactive voltage setting on slow analog output
-#################################################
+Interactive voltage setting on a slow analog output
+###################################################
 
 ..  http://blog.redpitaya.com/examples-new/interactive-voltage-setting-on-slow-analog-output-2/
 
 Description
 ***********
 
-This example shows how to set analog voltage on slow analog Red Pitaya outputs using MATLAB slider. Slow analog outputs on Red Pitaya are in range from 0 to 1.8 Volts.
+This example shows how to set analog voltage on slow analog Red Pitaya outputs using a MATLAB slider. Slow analog outputs on the Red Pitaya are in the range of 0 to 1.8 Volts.
 
 Required hardware
 *****************
@@ -26,7 +26,7 @@ Circuit
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP client communication. Copy code from below to MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab 
 
@@ -68,8 +68,8 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
 
             %% Open connection with your Red Pitaya
 
-            RP.ByteOrder = 'big-endian';
-            configureTerminator(RP,'CR/LF');
+            RP.ByteOrder = "big-endian";
+            configureTerminator(RP,"CR/LF");
 
             %% Set your output voltage value and pin
 
@@ -88,6 +88,7 @@ The code is written in MATLAB. In the code we use SCPI commands and TCP client c
             clear RP;
         end
     end
+
 
 Code - LabVIEW
 **************
