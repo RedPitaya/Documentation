@@ -1,3 +1,4 @@
+##############
 Logic Analyzer
 ##############
 
@@ -7,10 +8,11 @@ The Logic Analyzer application enables the representation of the binary states o
 
 .. note::
 
-     An additional extension module is needed to use the *Logic Analyzer PRO* application. The module can be purchased from the |RP store|.
+    An additional extension module is needed to use the *Logic Analyzer PRO* application. The module can be purchased from the |RP_store|.
 
-.. |RP store| raw::html
-    <a href="https://redpitaya.com/shop/" target="_blank">Red Pitaya store</a>
+.. |RP_store| raw:: html
+
+   <a href="https://redpitaya.com/shop/" target="_blank">Red Pitaya store</a>
 
 The graphical user interface of the Logic Analyzer fits well into the overall design of the Red Pitaya applications, providing the same operating concept. The Logic Analyzer user interface is shown below.
 
@@ -115,8 +117,10 @@ The Logic analyzer extension module is recommended for maximum performance of th
 
 To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyzer probes to the |E1| on the Red Pitaya board. The pins used for the logic analyzer board are shown in the picture below.
 
-.. |E1| raw::html
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1" target="_blank">extension connector E1</a>
+
+.. |E1| raw:: html
+
+   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1/" target="_blank">extension connector E1</a>
 
 .. note::
 
