@@ -64,6 +64,9 @@ The available settings by device model:
       - **Probe attenuation:** (must be selected manually) The division that was set on the probe.
       - **Vertical offset:** Moves the curve up or down.
       - **LV and HV:** Must be selected according to the jumper |analog inputs| on each channel.
+      
+      .. |analog inputs| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">position</a>
 
   .. group-tab:: SDRlab 122-16
      
@@ -111,7 +114,7 @@ The available settings are the following:
 
 
       - **ON:** Turns the output of the generator ON/OFF.
-      - **SHOW:** Displays a signal preview (notice that the signal is not phase aligned with the input/output signal).
+      - **SHOW:** Shows a signal preview (notice that the signal is not phase aligned with the input/output signal).
       - **Type:** Various waveforms are available for output: SINE (sinus), SQUARE (rectangle), TRIANGLE (triangle), SAWU (rising sawtooth), SAWD (falling sawtooth), DC and PWM (Pulse Width Modulation).
       - **Trigger:** Enables the user to select an internal or external trigger for the generator.
       - **Frequency:** Frequency of output signal.
@@ -152,12 +155,14 @@ The available settings are the following:
       - **Duty cycle:** PWM signal duty cycle.
       - **Load:** Output load.
 
+=======
 Trigger
 =======
 
 .. figure:: Slika_07_OSC.png
     :width: 30%
     :align: right
+
 
 The trigger is used to enable the scope to display changing waveforms on the screen of the scope in a steady fashion. The parameter Source defines the trigger source used for this. The trigger source can be input channel 1 (IN1), input channel 2 (IN2), or an external source. The available settings are the following:
 
@@ -176,6 +181,9 @@ The Source parameter defines the source used for this purpose. With the IN1 or t
    .. group-tab:: STEMlab 125-10, 125-14, SDRlab 122-16
 
       Pin 3 on the header row |E1|.
+      
+      .. |E1| raw::html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1" target="_blank">E1</a>
 
    .. group-tab:: SIGNALlab 250-12
 
@@ -284,7 +292,7 @@ Signal generator
 +------------------+----------------------+----------------------+----------------------+-----------------------------------------+
 | Output channels  | 2                    | 2                    | 2                    | 2                                       |
 +------------------+----------------------+----------------------+----------------------+-----------------------------------------+
-| Frequency Range  | 0-50 MHz             | 0-50 MHz             |                      | 0-60 Mhz                                |
+| Frequency Range  | 0 - 50 MHz           | 0 - 50 MHz           | 300 kHz - 60 MHz     | 0 - 60 MHz                              |
 +------------------+----------------------+----------------------+----------------------+-----------------------------------------+
 | Resolution       | 10 bit               | 14 bit               | 14 bit               | 12 bit                                  |
 +------------------+----------------------+----------------------+----------------------+-----------------------------------------+
