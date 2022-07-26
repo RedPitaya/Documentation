@@ -11,7 +11,9 @@ More information about OCRA can be found here:
    
    
 .. |STEMlab 125-14| raw:: html
+
     <a href="https://redpitaya.com/shop/" target="_blank">STEMlab 125-14</a>
 
 .. |OCRA| raw:: html
+
     <a href="https://openmri.github.io/ocra/" target="_blank">OCRA</a>
