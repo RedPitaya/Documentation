@@ -65,8 +65,6 @@ The available settings by device model:
       - **Vertical offset:** Moves the curve up or down.
       - **LV and HV:** Must be selected according to the jumper |analog inputs| on each channel.
       
-      .. |analog inputs| raw::html
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">position</a>
 
   .. group-tab:: SDRlab 122-16
      
@@ -93,7 +91,7 @@ The available settings by device model:
       - **AC/DC coupling**
 
 
-.. |analog inputs| raw::html
+.. |analog inputs| raw:: html
     <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">position</a>
 
     
@@ -182,14 +180,12 @@ The Source parameter defines the source used for this purpose. With the IN1 or t
 
       Pin 3 on the header row |E1|.
       
-      .. |E1| raw::html
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1" target="_blank">E1</a>
 
    .. group-tab:: SIGNALlab 250-12
 
       BNC connector available on the front panel
 
-.. |E1| raw::html
+.. |E1| raw:: html
     <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1" target="_blank">E1</a>
 
 
