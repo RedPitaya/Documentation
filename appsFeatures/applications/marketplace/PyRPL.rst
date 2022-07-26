@@ -9,4 +9,5 @@ You can find more about the PyRPL at this link:
    |pyrpl|
 
 .. |pyrpl| raw:: html
+
     <a href="https://pyrpl.readthedocs.io/en/latest/" target="_blank">PyRPL</a>
