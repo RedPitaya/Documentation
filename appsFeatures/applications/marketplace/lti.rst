@@ -6,7 +6,7 @@ This application will model a physical system, turning the Red Pitaya board into
 
 More about this application can be found here:
 
-   |LTI DSP| https://content.redpitaya.com/blog/physical-system-modelling
+   |LTI DSP|
    |LTI DSP forum|
 .. note::
 
