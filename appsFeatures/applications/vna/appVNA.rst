@@ -74,6 +74,7 @@ Connect by entering the Red Pitaya's IP:
 To find the IP address of the Red Pitaya board, first connect to RedPitaya by following these |quick start|.
 
 .. |quick start| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/first.html#connect-to-red-pitaya" target="_blank">instructions</a>
 
 Then go to System->Network Manager. The IP is written next to the label.
@@ -164,4 +165,5 @@ Examples:
         * |red-pitaya-notes|
      
 .. |red-pitaya-notes| raw:: html
+
     <a href="https://github.com/RedPitaya/red-pitaya-notes" target="_blank">Red Pitaya notes repository</a>
