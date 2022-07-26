@@ -13,5 +13,5 @@ The measurements are nicely represented on the Smith chart. You can find more ab
 
    |VNA|
    
-.. |VNA| raw::html
+.. |VNA| raw:: html
     <a href="http://pavel-demin.github.io/red-pitaya-notes/vna/" target="_blank">Vector Network Analyzer (by Pavel Demin)</a>  
