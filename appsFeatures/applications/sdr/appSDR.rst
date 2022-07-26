@@ -639,6 +639,7 @@ General Specifications
         :scale: 75 %
         :align: center
 
+
 Receiver Specifications
 ***********************
 
@@ -697,4 +698,5 @@ Transmitter Specifications
 
 
 .. note::
+
 	C25 also supports 6 m operation and has all the necessary output filters for 6 m. Anyhow, the STEMlab 125-14 output signal is not pure enough to comply with harmonic regulations for 6 m.
