@@ -31,6 +31,7 @@ Max. streaming speeds are limited to:
     * 20 MB/s for streaming over 1 Gbit network (A |direct connection| is recommended to achieve the best streaming performance)
 
 .. |direct connection| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/connect/connect.html#direct-ethernet-cable-connection" target="_blank">direct ethernet connection</a>
 
 
@@ -171,10 +172,12 @@ Start using the Red Pitaya streaming feature
 
 
 .. |DIAdem| raw:: html
+
     <a href="https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html" target="_blank">DIAdem</a>
 
 
 .. |Audacity| raw:: html
+
     <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
 
 
@@ -207,4 +210,5 @@ You can also use the desktop version of the client for streaming
                 :align: center
                 
 .. |Streaming Client| raw:: html
+
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">Desktop clients</a>
