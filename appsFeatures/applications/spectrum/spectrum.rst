@@ -78,7 +78,7 @@ OUTPUTS:
 
 The Spectrum Analyzer applications also includes a signal generator, so users can simultaneously generate a signal and observe the signal spectrum. For the signal generator settings and specifications, refer to |outputs|.
 
-.. |outputs| raw::html
+.. |outputs| raw:: html
     <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/applications/oscSigGen/osc.html#output-ref" target="_blank">outputs</a>
 
 External reference clock (SIGNALlab 250-12 only):
