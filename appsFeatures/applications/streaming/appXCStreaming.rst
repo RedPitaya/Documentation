@@ -47,7 +47,7 @@ In order to achieve synchronization, the MASTER device provides a clock and trig
 
     Due to frequent OS updates, it is recommended to always use the |latest OS|.
 
-.. |latest OS| raw::html
+.. |latest OS| raw:: html
     <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html" target="_blank">latest OS software</a>
 
 
@@ -117,7 +117,7 @@ Configuration can be set over the WEB interface UI, which is then stored in **/r
 
 In this example, we will show how to set configuration remotely using an already prepared |test configuration| that will set all MASTERS and SLAVES to these settings.
 
-.. |test configuration| raw::html
+.. |test configuration| raw:: html
     <a href="https://downloads.redpitaya.com/doc/streaming/test.conf" target="_blank">test.conf</a>
 
 
@@ -221,7 +221,7 @@ In this example, we will show how to set configuration remotely using an already
 4. To view acquired data, drag the .wav files from **/acq** to |Audacity|.
 
 
-.. |Audacity| raw::html
+.. |Audacity| raw:: html
     <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
     
 .. figure:: img/audacity_2.png
