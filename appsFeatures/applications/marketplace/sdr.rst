@@ -8,5 +8,5 @@ You can find more about the SDR software at this link:
 
    |red pitaya notes|
    
-.. |red pitaya notes| raw::html
+.. |red pitaya notes| raw:: html
     <a href="http://pavel-demin.github.io/red-pitaya-notes/" target="_blank">SDR application software</a>
