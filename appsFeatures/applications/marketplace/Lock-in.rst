@@ -14,7 +14,9 @@ More about this project can be found here:
    
    
  .. |release 0.95 scope| raw:: html
+ 
     <a href="https://github.com/RedPitaya/RedPitaya/tree/release-v0.95/apps-free/scope" target="_blank">relese 0.95 of the scope application</a>
     
  .. |Lock-in + PID| raw:: html
+ 
     <a href="https://marceluda.github.io/rp_lock-in_pid/" target="_blank">Lock-in + PID</a>
