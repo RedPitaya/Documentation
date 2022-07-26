@@ -92,6 +92,7 @@ The available settings by device model:
 
 
 .. |analog inputs| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">position</a>
 
     
@@ -186,6 +187,7 @@ The Source parameter defines the source used for this purpose. With the IN1 or t
       BNC connector available on the front panel
 
 .. |E1| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1" target="_blank">E1</a>
 
 
