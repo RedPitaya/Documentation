@@ -9,4 +9,5 @@ You can find more about the DSP Sandbox at this link:
    |DSP Sandbox|
    
 .. |DSP Sandbox| raw:: html
+
     <a href="https://www.dspsandbox.org/Canvas/" target="_blank">DSP Sandbox</a>
