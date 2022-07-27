@@ -53,47 +53,50 @@ The available settings by device model:
 
 .. tabs::
 
-  .. group-tab:: STEMlab 125-10, 125-14
+    .. group-tab:: STEMlab 125-10, 125-14
            
-      .. figure:: Slika_05_OSC_125.png
-          :height: 280px
+        .. figure:: Slika_05_OSC_125.png
+            :height: 280px
 
 
-      - **SHOW:** Shows or hides the curve associated with the channel.
-      - **INVERT:** Reflects the graph on the X axis.
-      - **Probe attenuation:** (must be selected manually) The division that was set on the probe.
-      - **Vertical offset:** Moves the curve up or down.
-      - **LV and HV:** Must be selected according to the jumper |analog inputs| on each channel.
-      
-      .. |analog inputs| raw:: html
+        - **SHOW:** Shows or hides the curve associated with the channel.
+        - **INVERT:** Reflects the graph on the X axis.
+        - **Probe attenuation:** (must be selected manually) The division that was set on the probe.
+        - **Vertical offset:** Moves the curve up or down.
+        - **LV and HV:** Must be selected according to the jumper |analog inputs| on each channel. |RST|
+
+        
+        .. |analog inputs| raw:: html
 
             <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">position</a>
       
 
-  .. group-tab:: SDRlab 122-16
+    .. group-tab:: SDRlab 122-16
      
-      .. figure:: Slika_05_OSC_122.png
-          :height: 280px
+        .. figure:: Slika_05_OSC_122.png
+            :height: 280px
           
 
-      - **SHOW:** Shows or hides the curve associated with the channel.
-      - **INVERT:** Reflects the graph on the X axis.
-      - **Probe attenuation:** (must be selected manually) The division that was set on the probe.
-      - **Vertical offset:** Moves the curve up or down.
+        - **SHOW:** Shows or hides the curve associated with the channel.
+        - **INVERT:** Reflects the graph on the X axis.
+        - **Probe attenuation:** (must be selected manually) The division that was set on the probe.
+        - **Vertical offset:** Moves the curve up or down.
 
   .. group-tab:: SIGNALlab 250-12
 
-      .. figure:: Slika_05_OSC_250.png
-          :height: 280px
+        .. figure:: Slika_05_OSC_250.png
+            :height: 280px
 
 
-      - **SHOW:** Shows or hides the curve associated with the channel.
-      - **INVERT:** Reflects the graph on the X axis.
-      - **Probe attenuation:** (must be selected manually) The division that was set on the probe.
-      - **Vertical offset:** Moves the curve up or down.
-      - **Input attenuation:** 1:1 (± 1V) / 1:20 (± 20V) is selected automatically when adjusting V/div setting, user can also select range manually through WEB interface settings.
-      - **AC/DC coupling**
+        - **SHOW:** Shows or hides the curve associated with the channel.
+        - **INVERT:** Reflects the graph on the X axis.
+        - **Probe attenuation:** (must be selected manually) The division that was set on the probe.
+        - **Vertical offset:** Moves the curve up or down.
+        - **Input attenuation:** 1:1 (± 1V) / 1:20 (± 20V) is selected automatically when adjusting V/div setting, user can also select range manually through WEB interface settings.
+        - **AC/DC coupling**
 
+
+.. |RST| replace:: reStructuredText
 
 .. |analog inputs| raw:: html
 
