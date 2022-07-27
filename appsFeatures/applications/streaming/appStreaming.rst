@@ -136,7 +136,6 @@ Start using the Red Pitaya streaming feature
                 :width: 50%
                 :align: center
             
-            |br|
 
             The application saves data from the board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
             
@@ -144,7 +143,6 @@ Start using the Red Pitaya streaming feature
                 :width: 50%
                 :align: center
 
-            |br|
 
             The created csv file can be opened with any text editor or spreadsheet editor:
 
@@ -152,7 +150,6 @@ Start using the Red Pitaya streaming feature
                 :width: 80%
                 :align: center
 
-            |br|
 
             .. note::
 
@@ -162,7 +159,6 @@ Start using the Red Pitaya streaming feature
                     :width: 50%
                     :align: center
 
-                |br|
 
                 In this application, you can also see the structure of the received file and the state of the file.
 
