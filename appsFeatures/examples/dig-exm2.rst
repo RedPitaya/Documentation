@@ -88,8 +88,6 @@ Code - Python
 
 .. code-block:: python
 
-    #!/usr/bin/python
-
     import sys
     import redpitaya_scpi as scpi
 
