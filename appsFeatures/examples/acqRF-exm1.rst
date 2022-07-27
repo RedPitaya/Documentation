@@ -9,7 +9,8 @@ Description
 
 This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the internal trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
 
-.. |sample rate and decimation| raw::html
+.. |sample rate and decimation| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/acqRF-samp-and-dec.html#sampling-rate-and-decimations" target="_blank">table</a>
 
 Required hardware
@@ -307,7 +308,8 @@ Code - C
     Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
     Instructions on how to compile the code are |compiling and running C|.
     
-.. |compiling and running C| raw::html
+.. |compiling and running C| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
