@@ -101,7 +101,7 @@ Start using the Red Pitaya streaming feature
 
             Data streaming can be stopped by pressing *Ctrl + C*.
 
-            The created wav file can be read or viewed in |Audacity|:
+            The created wav file can be read or viewed in `Audacity <https://www.audacityteam.org/>`__:
 
             .. figure:: img/audacity.png
                 :width: 80%
@@ -119,7 +119,7 @@ Start using the Red Pitaya streaming feature
 
             Data streaming can be stopped by pressing *Ctrl + C*.
 
-            The created tdms file can be read or viewed in |DIAdem|.
+            The created tdms file can be read or viewed in `DIAdem <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__.
 
             .. figure:: img/diadem_tdms_file_viewer.png
                 :width: 80%
