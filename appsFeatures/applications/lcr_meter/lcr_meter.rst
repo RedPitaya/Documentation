@@ -127,5 +127,5 @@ The "Tolerance" and "Relative" buttons are used for measuring in the tolerance a
 EQUIVALENT CIRCUIT CALCULATION MODE: PARALLEL, SERIES
 =====================================================
 
-The Parallel and Series measuring modes denote the use of a series or parallel equivalent circuit to calculate the parameters (R, C, L...) from the measured impedance Z. The LCR metre will only measure the complex value *Z=|Z|e(jP)*, where P is the measured phase and |Z| is the impedance amplitude. All other parameters are calculated from the series or parallel equivalent circuit.
+The Parallel and Series measuring modes denote the use of a series or parallel equivalent circuit to calculate the parameters (R, C, L...) from the measured impedance Z. The LCR metre will only measure the complex value *Z=|Z|e(jP)*, where P is the measured phase and *|Z|* is the impedance amplitude. All other parameters are calculated from the series or parallel equivalent circuit.
 
