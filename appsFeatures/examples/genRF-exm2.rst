@@ -67,7 +67,8 @@ Code - C
     Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
     Instructions on how to compile the code are |compiling and running C|.
     
-.. |compiling and running C| raw::html
+.. |compiling and running C| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
