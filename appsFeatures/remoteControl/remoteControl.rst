@@ -7,53 +7,37 @@ SCPI server (MATLAB, LabVIEW, Scilab or Python)
 
 .. figure:: SCPI_web_lr.png
 
-Red Pitaya board can be controlled remotely over LAN or wireless interface
-using MATLAB, LabVIEW, Scilab or Python via Red Pitaya
-SCPI (Standard Commands for Programmable Instrumentation) list of commands.
-SCPI interface/environment is commonly used to control T&M instruments
-for development, research or test automation purposes.
-SCPI uses a set of SCPI commands that are recognized by the instruments
-to enable specific actions to be taken
-(e.g.: acquiring data from fast analog inputs, generating signals and
-controlling other periphery of the Red Pitaya platform).
-The SCPI commands are extremely useful when complex signal analysis
-is required where SW environment such as MATLAB provides powerful data analysis tools
-and SCPI commands simple access to raw data acquired on Red Pitaya board.
+The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands. The SCPI interface/environment is commonly used to control T&M instruments for development, research, or test automation purposes. SCPI uses a set of SCPI commands that are recognised by the instruments to enable specific actions to be taken (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). The SCPI commands are extremely useful when complex signal analysis is required. An SW environment such as MATLAB provides powerful data analysis tools and SCPI commands simple access to raw data acquired on the Red Pitaya board.
 
 **Features**
 
-- Quickly write control routines and programs using  MATLAB, LabVIEW, Scilab or Python
-- Use powerful data analysis tools of MATLAB, LabVIEW, Scilab or Python to analyze raw signals
-  acquired by Red Pitaya board
+- Quickly write control routines and programs using MATLAB, LabVIEW, Scilab, or Python.
+- Use powerful data analysis tools like MATLAB, LabVIEW, Scilab, or Python to analyse raw signals acquired by the Red Pitaya board
 - Write testing scripts and routines
-- Incorporate your Red Pitaya and LabVIEW  into testing and production lines
-- Take quick measurements directly with your PC
+- Incorporate your Red Pitaya and LabVIEW into testing and production lines.
+- Take quick measurements directly on your PC.
 
 ***********
 Quick start
 ***********
 
-Start SCPI server, this is done simply by clicking the SCPI server icon and starting the SCPI server.
-When SCPI server is started the IP of your board will be shown.
-This IP you need to input in to your scripts.
-Starting SCPI server can be also done manually via Terminal(check bellow).
+Start the SCPI server. This is done simply by clicking on the SCPI server icon and starting the SCPI server. When the SCPI server is started, the IP address of your board will be shown. This IP address must be entered into your scripts. Starting the SCPI server can also be done manually via Terminal (see below).
 
-To run an examples follow instructions bellow:
+To run an example, follow the instructions below:
 
-#. Go to your Red Pitaya main page and Select SCPI server.
+#. Go to your Red Pitaya main page and select the SCPI server.
 
    .. figure:: scpi-homepage.png
 
    .. figure:: scpi-development.png
 
-#. Start SCPI server by selecting RUN button.
-   Please notice the IP of your Red Pitaya (192.168.178.100) board as it will be needed to connect to your board.
+#. Start the SCPI server by selecting the RUN button. Please note the IP of your Red Pitaya (192.168.178.100) board as it will be needed to connect to your board.
 
    .. figure:: scpi-app-run.png
 
    .. figure:: scpi-app-stop.png
 
-#. Follow the instructions bellow sutable to your environment.
+#. Follow the instructions below suitable to your environment.
 
    .. note::
 
@@ -68,20 +52,38 @@ To run an examples follow instructions bellow:
 MATLAB
 ======
 
-#. Open MATLAB on your computer
-#. Copy the Code from :ref:`blink <blink>` tutorial example to MATLAB workspace
-#. Replace the IP in the example with the IP of your Red Pitaya board
-#. Hit RUN or F5 on your keyboard to run the code
+#. Open MATLAB on your computer.
+#. In the MATLAB workspace, paste the code from the |blink| tutorial example.
+#. Replace the IP in the example with the IP of your Red Pitaya board.
+#. Hit RUN or F5 on your keyboard to run the code.
 
-More examples about how to control Red Pitaya from MATLAB can be find :ref:`here <examples>`.
+.. |blink| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/dig-exm1.html#blink" target="_blank">blink</a>
+
+More examples of how to control Red Pitaya from MATLAB can be found |examples|.
+
+.. |examples| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/remoteControl/remoteControl.html#examples" target="_blank">here</a>
 
 ======
 Python
 ======
 
-The `PyVISA <http://pyvisa.readthedocs.io/en/stable/index.html>`_ library in combination with
-the `PyVISA-py <http://pyvisa-py.readthedocs.io/en/latest/>`_ backend are used.
-To install them do:
+The |PyVISA| library, in combination with the |PyVISA-py| backend, is used.
+
+To install them, do:
+
+.. |PyVISA| raw:: html
+
+    <a href="https://pyvisa.readthedocs.io/en/latest/" target="_blank">PyVISA</a>
+    
+
+.. |PyVISA-py| raw:: html
+
+    <a href="https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/" target="_blank">PyVISA-py</a>
+
 
    .. code-block:: shell-session
 
@@ -89,40 +91,30 @@ To install them do:
 
    .. note::
 
-         To run the examples, you need Python version 3. Make sure the Python versions before running.
-         If the system has Python version 2.7, this version will be used by default.
+         To run the examples, you need Python version 3. Before running, double-check the Python versions. If the system has Python version 2.7, this version will be used by default.
 
          .. code-block:: shell-session
 
             $ python --version
             Python 2.7.17
          
-         Then, in order to run the examples, specify explicitly the Python version
+         Then, in order to run the examples, specify explicitly the Python version.
 
          .. code-block:: shell-session
 
             $ python3.5 blink.py 192.168.178.108
 
-#. Open the :ref:`blink <blink>` tutorial and copy the code to your favorite text editor
-#. Save the file as ``blink.py`` to your working folder → for example ``examples_py``
-#. Copy and save the
-   `redpitaya_scpi.py <https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py>`_
-   `` script in to the same folder where you have saved ``blink.py`` example (in our case
-   it will be ``examples_py``).
+#. Open the |blink| tutorial and copy the code to your favourite text editor.
+#. Save the file to your working folder as ``blink.py``, for example, ``examples_py``.
+Copy and save the |redpitaya_scpi.py| script in the same folder as the ``blink.py`` example (in our case, ``examples_py``). 
 
    .. note::
 
-      ``redpitaya_scpi.py`` script is a standard script needed to
-      establish the connection between your PC and Red Pitaya board.
-      Without having this script in the same folder as your Python script
-      the execution of your script will fail.
+      The ``redpitaya_scpi.py`` script is a standard script needed to establish the connection between your PC and the Red Pitaya board. The execution of your script will fail without this script being in the same folder as your Python script.
 
    .. figure:: scpi-examples.png
 
-#. Open the Terminal and go to the folder containing your Python script
-   (``examples_py``) and run: ``Python blink.py IP`` where you give an Red Pitaya IP
-   as the argument when calling an execution of the ``blink.py`` example.
-   Example is given bellow where ``192.168.178.108`` is the IP of the Red Pitaya board.
+#. Open the Terminal and navigate to the folder containing your Python script (``examples_py``), then type: ``Python blink.py IP``, passing a Red Pitaya IP as an argument when calling an execution of the ``blink.py`` example. An example is given below, where ``192.168.178.108`` is the IP of the Red Pitaya board.
 
    .. code-block:: shell-session
 
@@ -131,41 +123,38 @@ To install them do:
 
    .. figure:: scpi-example-cli.png
 
-More examples about how to control Red Pitaya from MATLAB can be find :ref:`here <examples>`.
+More examples of how to control Red Pitaya from MATLAB can be found |examples|.
 
    .. note::
    
-      Python examples can also be run directly from RP device itself. To do so fist start SCPI server and then use local device IP: 127.0.0.1
+      Python examples can also be run directly from the RP device itself. To do so, first start the SCPI server and then use the local device IP: ``127.0.0.1``
+
+
+.. |redpitaya_scpi.py| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
+
 
 =======
 LabVIEW
 =======
 
-To set up the LabVIEW driver for Red Pitaya,
-download the
-`Red_Pitaya_LabVIEW_Driver&Examples.zip <https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip>`_ file.
-Unpack it and copy the Red Pitaya folder to your LabVIEW installations ``instr.lib`` folder
-e.g. ``C:/Program Files/National Instruments/LabVIEW 2010/instr.lib``. When using the 64-bit LabVIEW version (mostly
-paid). Or here : ``C:/Program Files (x86)/National Instruments/LabVIEW 2020/instr.lib``
-when using the 32-bit LabVIEW version, like the free Community Edition.
+To install the Red Pitaya LabVIEW driver, download the `Red_Pitaya_LabVIEW_Driver&Examples.zip <https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip>`_ file.
+Unpack it and copy the Red Pitaya folder to your LabVIEW installation ``instr.lib`` folder, e.g. ``C:/Program Files/National Instruments/LabVIEW 2010/instr.lib``. When using the 64-bit LabVIEW version (mostly paid), Or here : ``C:/Program Files (x86)/National Instruments/LabVIEW 2020/instr.lib`` when using the 32-bit LabVIEW version, like the free Community Edition.
 
-The Red Pitaya driver should appear after restarting LabVIEW in
-Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya.
-Depending on your settings Instrument I/O may be hidden.
-Please consult LabVIEW Help on how to activate/deactivate those categories.
-You can access example VIs by going to:
+The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya**. Depending on your settings, instrument I/O may be hidden. Please consult LabVIEW Help on how to activate or deactivate those categories. You can access example VIs by going to:
 
 #. Help -> Find Examples...
-#. click Search tab
-#. Enter **RedPitaya** in Enter keyword(s) field
+#. select the Search tab
+#. In the Enter keyword(s) field, type **RedPitaya**. 
 
-More examples about how to control Red Pitaya from LabVIEW can be found :ref:`here <examples>`.
+More examples of how to control Red Pitaya from LabVIEW can be found |examples|.
 
 ======
 SCILAB
 ======
 
-To use the SCPI commands you will need to set up Scilab sockets. The procedure is described below.
+To use the SCPI commands, you will need to set up Scilab sockets. The procedure is described below.
 
 #. Go to `Scilab download page <http://www.scilab.org/download/>`_ and download and Install Scilab for your OS
 #. Go to `Scilab socket toolbox page <https://atoms.scilab.org/toolboxes/socket_toolbox>`_ and download the basic socket function for Scilab.
