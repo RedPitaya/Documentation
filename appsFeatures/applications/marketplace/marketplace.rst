@@ -6,14 +6,7 @@ Marketplace and contributed apps
 Overview
 ********
 
-More Red Pitaya applications can be obtained from the Red Pitaya marketplace that is
-accessible through the Red Pitaya WEB interface or from other websites where Red
-Pitaya community members share code or complete software packages that can be
-installed and run-on Red Pitaya hardware platforms.
-Notice that applications developed by the Red Pitaya community are not distributed or
-tested by the Red Pitaya team and that our team doesn’t take any responsibilities about.
-If you’d like to share feedback, report bugs or need help on contributed projects, apps
-and software, we highly recommend contacting project authors.
+More Red Pitaya applications can be obtained from the Red Pitaya marketplace that is accessible through the Red Pitaya WEB interface or from other websites where Red Pitaya community members share code or complete software packages that can be installed and run on Red Pitaya hardware platforms. It is important to note that applications developed by the Red Pitaya community are not distributed or tested by the Red Pitaya team, and that our team accepts no responsibility. If you’d like to share feedback, report bugs, or need help on contributed projects, apps, or software, we highly recommend contacting the project authors.
 
 .. toctree::
    :maxdepth: 2

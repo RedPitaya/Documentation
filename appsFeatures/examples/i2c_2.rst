@@ -4,9 +4,9 @@ I2C (HW api)
 .. http://blog.redpitaya.com/examples-new/i2c/
 
 Description
+***********
 
-This example demonstrates communication with the EEPROM memory on red pitaya using the I2C protocol. The code below reads the calibration values from the eeprom and displays. Correct display of data only on 125-xx boards.
-
+This example demonstrates communication with the EEPROM memory on the Red Pitaya using the I2C protocol. The code below reads the calibration values from the EEPROM and displays them. The data is displayed correctly only on 125-xx boards.
 
 Required hardware
 *****************
@@ -15,13 +15,18 @@ Required hardware
 
 .. figure:: output_y49qDi.gif
 
+
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -78,61 +83,62 @@ Code - C
         return 0;
     }
 
+
 Code - MATLAB®
 **************
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
 
-    IP= '';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
 
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
-    fprintf(tcpipObj,'I2C:DEV80 "/dev/i2c-0"');
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP,'CR/LF');
 
-    fprintf(tcpipObj,'I2C:FMODE ON');          % set force mode
+    writeline(RP,'I2C:DEV80 "/dev/i2c-0"');
 
-    % Eeprom 24c64 supports reading only 32 bytes of data at a time and only works through IOCTL
+    writeline(RP,'I2C:FMODE ON');       % set force mode
 
-    fprintf(tcpipObj,'I2C:IO:W:B2 0,0'); % set read address = 0
+    % EEPROM 24c64 supports reading only 32 bytes of data at a time and only works through IOCTL
+
+    writeline(RP,'I2C:IO:W:B2 0,0');    % set read address = 0
 
 
-    b1 = query(tcpipObj,'I2C:IO:R:B32'); % read 32 bytes from iic 
+    b1 = writeread(RP,'I2C:IO:R:B32');  % read 32 bytes from iic 
 
-    b2 = query(tcpipObj,'I2C:IO:R:B16'); % read 16 bytes from iic
+    b2 = writeread(RP,'I2C:IO:R:B16');  % read 16 bytes from iic
 
     b_num = str2num(b1(1,2:length(b1)-3));
 
-    b_num(33:48) = str2num(b2(1,2:length(b2)-3));
-
+    b_num(33:48) = str2num(b2(1, 2:length(b2)-3));
+ 
     calib = typecast(uint8(b_num),'int32');
 
-    fprintf('ADC Ch1 High %d\n',calib(3));
-    fprintf('ADC Ch2 High %d\n',calib(4));
-    fprintf('ADC Ch1 Low %d\n',calib(5));
-    fprintf('ADC Ch2 Low %d\n',calib(6));
-    fprintf('ADC Ch1 Low offset %d\n',calib(7));
-    fprintf('ADC Ch2 Low offset %d\n',calib(8));
-    fprintf('DAC Ch1 %d\n',calib(9));
-    fprintf('DAC Ch2 %d\n',calib(10));
-    fprintf('DAC Ch1 offset %d\n',calib(11));
-    fprintf('DAC Ch2 offset %d\n',calib(12));
+    fprintf('ADC Ch1 High %d\n', calib(3));
+    fprintf('ADC Ch2 High %d\n', calib(4));
+    fprintf('ADC Ch1 Low %d\n', calib(5));
+    fprintf('ADC Ch2 Low %d\n', calib(6));
+    fprintf('ADC Ch1 Low offset %d\n', calib(7));
+    fprintf('ADC Ch2 Low offset %d\n', calib(8));
+    fprintf('DAC Ch1 %d\n', calib(9));
+    fprintf('DAC Ch2 %d\n', calib(10));
+    fprintf('DAC Ch1 offset %d\n', calib(11));
+    fprintf('DAC Ch2 offset %d\n', calib(12));
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
+
 
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import time
@@ -164,14 +170,14 @@ Code - Python
     for s in buff:
         byte_array.append(int(s))
 
-    calib = [unpack('i',byte_array[i:i+4])[0] for i in range(0, len(byte_array), 4)]
-    print("ADC Ch1 High",calib[2])
-    print("ADC Ch2 High",calib[3])
-    print("ADC Ch1 Low",calib[4])
-    print("ADC Ch2 Low",calib[5])
-    print("ADC Ch1 Low offset",calib[6])
-    print("ADC Ch2 Low offset",calib[7])
-    print("DAC Ch1",calib[8])
-    print("DAC Ch2",calib[9])
-    print("DAC Ch1 offset",calib[10])
-    print("DAC Ch2 offset",calib[11])
+    calib = [unpack('i', byte_array[i:i+4])[0] for i in range(0, len(byte_array), 4)]
+    print("ADC Ch1 High", calib[2])
+    print("ADC Ch2 High", calib[3])
+    print("ADC Ch1 Low", calib[4])
+    print("ADC Ch2 Low", calib[5])
+    print("ADC Ch1 Low offset", calib[6])
+    print("ADC Ch2 Low offset", calib[7])
+    print("DAC Ch1", calib[8])
+    print("DAC Ch2", calib[9])
+    print("DAC Ch1 offset", calib[10])
+    print("DAC Ch2 offset", calib[11])

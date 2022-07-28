@@ -1,10 +1,10 @@
-Generate two burst asynced signal
-#################################
+Generate two burst asynced signals
+##################################
 
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate two asynced analog signals. Voltage and frequency ranges depends on Red Pitaya model.
+This example shows how to program Red Pitaya to generate two asynced analog signals. Voltage and frequency ranges depend on the Red Pitaya model.
 
 .. figure:: exmp6.png
     :align: center
@@ -19,62 +19,72 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code to MATLAB editor
-and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
     clc
     clear all
     close all
-    IP= '192.168.1.106'; % Input IP of your Red Pitaya...
-    port = 5000; % If you are using WiFi then IP is:
-    tcpipObj=tcpip(IP, port);
+    IP = '192.168.1.106';           % Input IP of your Red Pitaya...
+    port = 5000;
+    RP = tcpclient(IP, port);
 
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
 
     %% The example generate sine bursts every 0.5 seconds indefinety
-    fprintf(tcpipObj,'GEN:RST');
+    writeline(RP,'GEN:RST');
 
-    fprintf(tcpipObj,'SOUR1:FUNC SINE');
-    fprintf(tcpipObj,'SOUR1:FREQ:FIX 4'); % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR1:VOLT 1'); % Set amplitude of output signal
+    writeline(RP,'SOUR1:FUNC SINE');
+    writeline(RP,'SOUR1:FREQ:FIX 4');           % Set frequency of output signal
+    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR1:BURS:STAT BURST'); % Set burst mode to ON
-    fprintf(tcpipObj,'SOUR1:BURS:NCYC 2'); % Set 1 pulses of sine wave
-    fprintf(tcpipObj,'SOUR1:BURS:NOR 1'); % Infinity number of sine wave pulses
-    fprintf(tcpipObj,'SOUR1:BURS:INT:PER 5000'); % Set time of burst period in microseconds = 5 * 1/Frequency * 1000000
+    writeline(RP,'SOUR1:BURS:STAT BURST');      % Set burst mode to BURST - Red Pitaya will
+                                                % generate R number of N periods of signal and then stop.
+                                                % Time between bursts is P.
+                                                
+    writeline(RP,'SOUR1:BURS:NCYC 2');          % Set 2 (N) periods of sine wave in one pulse
+    writeline(RP,'SOUR1:BURS:NOR 1');           % 1 (R) sine wave pulse
+    writeline(RP,'SOUR1:BURS:INT:PER 5000');    % Set time (P) of burst period in microseconds = 5 * 1/Frequency * 1000000
 
-    fprintf(tcpipObj,'SOUR2:FUNC SINE');
-    fprintf(tcpipObj,'SOUR2:FREQ:FIX 4'); % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR2:VOLT 1'); % Set amplitude of output signal
+    writeline(RP,'SOUR2:FUNC SINE');
+    writeline(RP,'SOUR2:FREQ:FIX 4');           % Set frequency of output signal
+    writeline(RP,'SOUR2:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR2:BURS:STAT BURST'); % Set burst mode to ON
-    fprintf(tcpipObj,'SOUR2:BURS:NCYC 2'); % Set 1 pulses of sine wave
-    fprintf(tcpipObj,'SOUR2:BURS:NOR 1'); % Infinity number of sine wave pulses
-    fprintf(tcpipObj,'SOUR2:BURS:INT:PER 5000'); % Set time of burst period in microseconds = 5 * 1/Frequency * 1000000
+    writeline(RP,'SOUR2:BURS:STAT BURST');      % Set burst mode to ON
+    writeline(RP,'SOUR2:BURS:NCYC 2');          % Set 2 (N) periods of sine wave in a pulse
+    writeline(RP,'SOUR2:BURS:NOR 1');           % 1 (R) sine wave pulse
+    writeline(RP,'SOUR2:BURS:INT:PER 5000');    % Set time (P) of burst period in microseconds = 5 * 1/Frequency * 1000000
 
-    fprintf(tcpipObj,'OUTPUT:STATE ON'); % Set output to ON
+    writeline(RP,'OUTPUT:STATE ON');            % Set both outputs to ON
+
     pause(2)
-    fprintf(tcpipObj,'SOUR1:TRIG:INT');
+    writeline(RP,'SOUR1:TRIG:INT');
+
     pause(2)
-    fprintf(tcpipObj,'SOUR2:TRIG:INT');
+    writeline(RP,'SOUR2:TRIG:INT');
+
     pause(1)
-    fprintf(tcpipObj,'SOUR:TRIG:INT');
+    writeline(RP,'SOUR:TRIG:INT');
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
+
 
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -124,12 +134,11 @@ Code - C
         rp_Release();
     }
 
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import time

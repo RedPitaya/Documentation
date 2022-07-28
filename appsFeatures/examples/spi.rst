@@ -6,8 +6,7 @@ SPI
 Description
 ***********
 
-This example shows communication with the red pitaya SPI Micron flash chip. The code below simulates a simple loop 
-back writing and then getting the flash ID of red pitaya SPI flash chip operation.
+This example shows communication with the Red Pitaya SPI Micron flash chip. The code below simulates a simple loop back by writing and then getting the flash ID of the Red Pitaya SPI flash chip operation.
 
 
 Required hardware
@@ -22,8 +21,12 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 

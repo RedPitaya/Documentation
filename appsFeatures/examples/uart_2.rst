@@ -6,8 +6,7 @@ UART (HW api)
 Description
 ***********
 
-This example demonstrates communication using the red pitaya uart protocol. The code below simulates a loop back
-sending a message from the uart TX connector to the uart RX connector on red pitaya.
+This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loop back by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.
 
 
 Required hardware
@@ -22,8 +21,12 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -83,66 +86,67 @@ Code - C
         return 0;
     }
 
+
 Code - MATLAB®
 **************
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
 
-    IP= '';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
 
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
-    fprintf(tcpipObj,'UART:INIT');
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
 
-    fprintf(tcpipObj,'UART:BITS CS7');         % set size 7 bit
-    res = query(tcpipObj,'UART:BITS?');        % check current settings for bit size 
+    writeline(RP,'UART:INIT');
+
+    writeline(RP,'UART:BITS CS7');              % set size 7 bit
+    res = writeread(RP,'UART:BITS?');           % check current settings for bit size
     fprintf('Bit size %s\n', res);
 
-    fprintf(tcpipObj,'UART:SPEED 57600');      % set uart speed
-    res = query(tcpipObj,'UART:SPEED?');       % check current settings for speed
+    writeline(RP,'UART:SPEED 57600');           % set uart speed
+    res = writeread(RP,'UART:SPEED?');          % check current settings for speed
     fprintf('Speed %s\n', res);
 
-    fprintf(tcpipObj,'UART:STOPB STOP2');      % set stop bits
-    res = query(tcpipObj,'UART:STOPB?');       % check current settings for stop bits
+    writeline(RP,'UART:STOPB STOP2');           % set stop bits
+    res = writeread(RP,'UART:STOPB?');          % check current settings for stop bits
     fprintf('Stop bits %s\n', res);
 
-    fprintf(tcpipObj,'UART:PARITY ODD');       % set parity
-    res = query(tcpipObj,'UART:PARITY?');      % check current settings for parity
+    writeline(RP,'UART:PARITY ODD');            % set parity
+    res = writeread(RP,'UART:PARITY?');         % check current settings for parity
     fprintf('Parity %s\n', res);
 
-    fprintf(tcpipObj,'UART:TIMEOUT 10');       % set timeout in 1/10 sec. 10 = 1 sec 
-    res = query(tcpipObj,'UART:TIMEOUT?');     % check current settings for parity
+    writeline(RP,'UART:TIMEOUT 10');            % set timeout in 1/10 sec. 10 = 1 sec
+    res = writeread(RP,'UART:TIMEOUT?');        % check current settings for parity
     fprintf('Timeout %s\n', res);
 
-    fprintf(tcpipObj,'UART:SETUP');           % apply setting to uart 
+    writeline(RP,'UART:SETUP');                 % apply settings to uart
 
-    fprintf(tcpipObj,'UART:WRITE7 #H11,#H22,#H33,33,33,#Q11,#B11001100');  % write to uart 7 bytes
+    writeline(RP,'UART:WRITE7 #H11,#H22,#H33,33,33,#Q11,#B11001100');       % write to uart 7 bytes
     fprintf('Write 7 bytes to uart: #H11,#H22,#H33,33,33,#Q11,#B11001100\n');
 
-    res = query(tcpipObj,'UART:READ3');        % read from uart 3 bytes
+    res = writeread(RP,'UART:READ3');           % read from uart 3 bytes
     fprintf('Read: %s\n', res);
 
-    res = query(tcpipObj,'UART:READ4');        % read from uart 4 bytes
+    res = writeread(RP,'UART:READ4');           % read from uart 4 bytes
     fprintf('Read: %s\n', res);
 
-    fprintf(tcpipObj,'UART:RELEASE');          % close uart
+    writeline(RP,'UART:RELEASE');               % close uart
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
+
 
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import redpitaya_scpi as scpi
