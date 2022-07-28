@@ -6,8 +6,9 @@ This application will model a physical system, turning the Red Pitaya board into
 
 More about this application can be found here:
 
-   |LTI DSP|
-   |LTI DSP forum|
+   - |LTI DSP|
+   - |LTI DSP forum|
+   
 .. note::
 
    The LTI DSP workbench application is available on the Red Pitaya marketplace.

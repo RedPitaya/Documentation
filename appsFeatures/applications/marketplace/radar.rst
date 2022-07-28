@@ -6,9 +6,8 @@ Radar using Red Pitaya for RF and Raspberry Pi 3 / 4 for quad-core signal proces
 
 More about PiRadar can be found here:
 
-   |Open Source Radar|
-   
-   |PiRadar|
+   - |Open Source Radar|
+   - |PiRadar|
 
 
 .. |Open Source Radar| raw:: html
