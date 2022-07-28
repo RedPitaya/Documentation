@@ -6,10 +6,10 @@ What is in the box?
 
 The following accessories and materials are included with your Red Pitaya SDR transceiver module.
 
-    	* SDR transceiver 160-10 10 W module
-    	* DC power cord with an Anderson Power Pole™ connector
-    	* 4 x SMA cable for connecting the C25 module with the STEMlab 125-14 and antenna
-    	* impedance transformer board
+	* SDR transceiver 160-10 10 W module
+	* DC power cord with an Anderson Power Pole™ connector
+	* 4 x SMA cable for connecting the C25 module with the STEMlab 125-14 and antenna
+	* impedance transformer board
 
 .. _Hercules: https://www.hercules.com/en/product/djcontrolinstinctsseries/
 
