@@ -87,6 +87,15 @@ Code - MATLAB®
         end
     end
 
+    % wait for fill adc buffer
+    while 1
+        fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                
+        if strcmp('1',fill_state(1:1))
+            break            
+        end
+    end
+
     %% Read & plot
 
     signal_str = writeread(RP,'ACQ:SOUR1:DATA?');
@@ -145,6 +154,10 @@ Code - Python
         if rp_s.rx_txt() == 'TD':               # Triggerd?
             break
 
+    while 1:
+        rp_s.tx_txt('ACQ:TRIG:FILL?')
+        if rp_s.rx_txt() == '1':
+            break
 
     # Read data and plot
 

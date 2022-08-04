@@ -16,7 +16,7 @@ Simply follow this 3 simple steps:
 
 .. tabs::
 
-   .. tab:: 125-10, 125-14, 122-16
+   .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
 
       #. Connect your Red Pitaya board to the router
 
@@ -34,7 +34,7 @@ Simply follow this 3 simple steps:
          .. figure:: connect/125_stiker_2.png
             :width: 70%
             :align: center
-
+   
    .. tab:: 250-12
 
       #. Connect your Red Pitaya board to the router
