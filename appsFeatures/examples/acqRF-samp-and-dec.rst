@@ -6,7 +6,7 @@ Sampling rate and decimations
 Decimations and time scales of a buffer are given in the tables below.
 
 
-STEMlab 125-14 & STEMlab 125-10:
+STEMlab 125-14, STEMlab 125-10, STEMlab 125-14 4-Input:
 
 +-------------+----------------+-------------------------------+--------------------------+--------------------------+
 | Decimation  | Sampling Rate  | Time scale/length of a buffer | Trigger delay in samples | Trigger delay in seconds | 

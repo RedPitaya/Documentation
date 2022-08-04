@@ -28,6 +28,9 @@ STEMlab 125-14-Z7020:
    - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG|
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG|
 
+STEMlab 125-14 4-Input:
+
+   - Comming soon ...
 
 SDRlab 122-16:
 

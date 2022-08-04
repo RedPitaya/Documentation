@@ -177,6 +177,13 @@ The choice of specific branches or tags is up to the user.
       cd ./RedPitaya/build_scripts
       sudo ./build_Z20_125.sh
 
+   To build an ecosystem for board 125-14 4-Input (Z7020):
+
+   .. code-block:: shell-session
+   
+      cd ./RedPitaya/build_scripts
+      sudo ./build_Z20_4CH.sh
+
    To build an ecosystem for board 122-16:
 
    .. code-block:: shell-session
@@ -275,7 +282,18 @@ This parameter defines how to create projects and should be transferred to all m
    EOL_CHROOT
    make -f Makefile.x86 zip MODEL=Z20
 
-**8.** If you want build for 250-12 based on Z7020 xilinx, you must pass parameter FPGA MODEL=Z20_250_12 in makefile
+**8.** If you want build for 125-14 4-Input based on Z7020 xilinx, you must pass parameter FPGA MODEL=Z20_125_4CH in makefile
+This parameter defines how to create projects and should be transferred to all makefiles.
+
+.. code-block:: shell-session
+
+   make -f Makefile.x86 MODEL=Z20_125_4CH
+   schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+   make MODEL=Z20_125_4CH
+   EOL_CHROOT
+   make -f Makefile.x86 zip MODEL=Z20_125_4CH
+
+**9.** If you want build for 250-12 based on Z7020 xilinx, you must pass parameter FPGA MODEL=Z20_250_12 in makefile
 This parameter defines how to create projects and should be transferred to all makefiles.
 
 .. code-block:: shell-session

@@ -11,7 +11,7 @@ in each of the RedPitaya kits available on our |WEBstore|:
 
 .. tabs::
 
-   .. tab:: 125-10, 125-14, 122-16
+   .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
 
       * 5 V / 2 A micro USB power supply,
       * 4 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
