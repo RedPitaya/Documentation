@@ -6,6 +6,7 @@ Build & compile instructions
     :maxdepth: 2
    
     comC
+    comStreaming
     fpga/fpga.rst
     ecosystem/ecosystem.rst
     debian.rst

@@ -13,9 +13,9 @@ suggest you refer to Leonhard Neuhaus's blog.
 * `Red Pitaya DAC performance <https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/>`_
 
 
-*********
+************************
 Technical specifications
-*********
+************************
 
 * :ref:`Product comparison table <rp-board-comp>`
 

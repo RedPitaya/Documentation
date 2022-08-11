@@ -1,11 +1,11 @@
-.. _top_125_14:
+.. _top_125_10:
 
 STEMlab 125-10
-###########
+##############
 
-*********
+************************
 Technical specifications
-*********
+************************
 
 * :ref:`Product comparison table <rp-board-comp>`
 

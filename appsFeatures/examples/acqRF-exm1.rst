@@ -7,10 +7,11 @@ On trigger signal acquisition
 Description
 ***********
 
-This example shows how to acquire 16k samples of signal on fast analog inputs. Signal will be acquired when the
-internal trigger condition is meet. Time length of the acquired signal depends on the time scale of a buffer that can
-be set with a decimation factor. Decimations and time scales of a buffer are given in the :ref:`table <s_rate_and_dec>`. Voltage and frequency ranges depends on Red Pitaya model. 
+This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the internal trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
 
+.. |sample rate and decimation| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/acqRF-samp-and-dec.html#sampling-rate-and-decimations" target="_blank">table</a>
 
 Required hardware
 *****************
@@ -30,8 +31,7 @@ Cicuit
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code to MATLAB editor
-and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. tabs::
 
@@ -45,18 +45,16 @@ and press run.
             clc
             IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
-            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
+            RP = tcpclient(IP, port);
             
             %% Open connection with your Red Pitaya
             
-            RP.ByteOrder = "big-endian";
+            RP.ByteOrder = 'big-endian';
             configureTerminator(RP, 'CR/LF');
             
-            flush(RP, "input");
-            flush(RP, "output");
+            flush(RP);
             
-            % Set decimation vale (sampling rate) in respect to you 
+            % Set decimation value (sampling rate) in respect to your 
             % acquired signal frequency
             
             writeline(RP,'ACQ:RST');
@@ -67,12 +65,12 @@ and press run.
             % writeline(RP,'ACQ:SOUR1:COUP AC');    % enables AC coupling on channel 1
 
             % by default LOW level gain is selected
-            % writeline(RP,'ACQ:SOUR1:GAIN LV');    % user can switch gain using this command
+            % writeline(RP,'ACQ:SOUR1:GAIN LV');    % sets gain to LV/HV (should the same as jumpers)
 
 
             % Set trigger delay to 0 samples
-            % 0 samples delay set trigger to the center of the buffer
-            % Signal on your graph will have trigger in the center (symmetrical)
+            % 0 samples delay sets trigger to the center of the buffer
+            % Signal on your graph will have the trigger in the center (symmetrical)
             % Samples from left to the center are samples before trigger 
             % Samples from center to the right are samples after trigger
             
@@ -85,6 +83,7 @@ and press run.
             writeline(RP,'ACQ:START');
             
             % After acquisition is started some time delay is needed in order to acquire fresh samples in the buffer
+            pause(1);
             % Here we have used time delay of one second, but you can calculate the exact value by taking into account buffer
             % length and sampling rate
             
@@ -93,36 +92,42 @@ and press run.
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of the while loop if trigger is not achieved
-            % Ctrl+C will stop code executing in MATLAB
+            % Ctrl+C will stop code execution in MATLAB
             
             while 1
                     trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
                 
                     if strcmp('TD', trig_rsp(1:2))      % Read only TD
                 
-                        break
+                        break;
                 
                     end
-                end
+            end
                 
+            % wait for fill adc buffer
+            while 1
+                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                
+                if strcmp('1',fill_state(1:1))
+            
+                break
+            
+                end
+            end 
                 
             % Read data from buffer 
-            signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
-            signal_str_2 = writeread(RP,'ACQ:SOUR2:DATA?');
+            signal_str = writeread(RP,'ACQ:SOUR1:DATA?');
             
             % Convert values to numbers.
-            % First character in the string is “{“   
+            % The first character in the received string is “{“   
             % and the last 3 are 2 empty spaces and a “}”.  
             
-            signal_num   = str2num(signal_str  (1, 2:length(signal_str)-3));
-            signal_num_2 = str2num(signal_str_2(1, 2:length(signal_str_2)-3));
+            signal_num = str2num(signal_str(1, 2:length(signal_str)-3));
             
             plot(signal_num)
-            hold on
-            plot(signal_num_2,'r')
-            grid on
+            grid on;
             ylabel('Voltage / V')
-            xlabel('samples')
+            xlabel('Samples')
             
             clear RP;
 
@@ -136,18 +141,16 @@ and press run.
             clc
             IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
-            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
+            RP = tcpclient(IP, port);
             
             %% Open connection with your Red Pitaya
             
-            RP.ByteOrder = "big-endian";
+            RP.ByteOrder = 'big-endian';
             configureTerminator(RP, 'CR/LF');
             
-            flush(RP, "input");
-            flush(RP, "output");
+            flush(RP);
             
-            % Set decimation vale (sampling rate) in respect to you
+            % Set decimation value (sampling rate) in respect to your 
             % acquired signal frequency
             
             
@@ -159,8 +162,8 @@ and press run.
             writeline(RP,'ACQ:DATA:UNITS VOLTS');
             
             % Set trigger delay to 0 samples
-            % 0 samples delay set trigger to the center of the buffer
-            % Signal on your graph will have trigger in the center (symmetrical)
+            % 0 samples delay sets trigger to the center of the buffer
+            % Signal on your graph will have the trigger in the center (symmetrical)
             % Samples from left to the center are samples before trigger 
             % Samples from center to the right are samples after trigger
             
@@ -174,6 +177,7 @@ and press run.
             writeline(RP,'ACQ:START');
             
             % After acquisition is started some time delay is needed in order to acquire fresh samples in the buffer
+            pause(1);
             % Here we have used time delay of one second, but you can calculate the exact value by taking into account buffer
             % length and sampling rate
             
@@ -182,7 +186,7 @@ and press run.
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of the while loop if trigger is not achieved
-            % Ctrl+C will stop code executing in MATLAB
+            % Ctrl+C will stop code execution in MATLAB
             
             while 1
                 trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
@@ -194,24 +198,33 @@ and press run.
                 end
             end
             
+            % wait for fill adc buffer
+            while 1
+                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                
+                if strcmp('1',fill_state(1:1))
+            
+                break
+            
+                end
+            end 
             
             % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
             
             % Read header for binary format
-            header = readline(RP, 1);
+            header = read(RP, 1);
             
             % Reading size of block, what informed about data size
-            header_size = str2double(strcat(readline(RP, 1, 'int8')));
+            header_size = str2double(strcat(read(RP, 1, 'int8')));
             
             % Reading size of data
-            data_size = str2double(strcat(readline(RP, header_size, 'char'))');
+            data_size = str2double(strcat(read(RP, header_size, 'char'))');
             
             % Read data
-            signal_num = readline(RP, data_size/4,'float');
+            signal_num = read(RP, data_size/4,'float');
             
             plot(signal_num)
-            hold on
             grid on
             ylabel('Voltage / V')
             xlabel('samples')
@@ -229,18 +242,14 @@ and press run.
             clc
             IP = '192.168.178.111';                 % Input IP of your Red Pitaya...
             port = 5000;
-            RP = tcpclient(IP, port);               % Define Red Pitaya as TCP/IP object (connection to remote server)
-            % RP.InputBufferSize = 16384*32;        % Buffer sizes are calculated automatically with the new syntax
+            RP = tcpclient(IP, port);
             
             %% Open connection with your Red Pitaya
             
-            %% Open connection with your Red Pitaya
-            
-            RP.ByteOrder = "big-endian";
+            RP.ByteOrder = 'big-endian';
             configureTerminator(RP, 'CR/LF');
             
-            flush(RP, "input");
-            flush(RP, "output");
+            flush(RP);
             
             % Set decimation vale (sampling rate) in respect to you
             % acquired signal frequency
@@ -258,7 +267,7 @@ and press run.
             % Signal on your graph will have trigger in the center (symmetrical)
             % Samples from left to the center are samples before trigger
             % Samples from center to the right are samples after trigger
-            
+
             writeline(RP,'ACQ:TRIG:DLY 0');
             
             %% Start & Trigg
@@ -269,15 +278,111 @@ and press run.
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
+            pause(1);
             
             writeline(RP,'ACQ:TRIG CH1_PE');
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
-            % Ctrl+C will stop code executing in Matlab
+            % Ctrl+C will stop code executing in MATLAB
             
             while 1
                 trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+            
+                if strcmp('TD',trig_rsp(1:2))  % Read only TD
+            
+                    break;
+            
+                end
+            end
+            
+            % wait for fill adc buffer
+            while 1
+                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                
+                if strcmp('1',fill_state(1:1))
+            
+                break
+            
+                end
+            end 
+            
+            % Read data from buffer
+            writeline(RP,'ACQ:SOUR1:DATA?');
+            
+            % Read header for binary format
+            header = read(RP, 1);
+            
+            % Reading size of block, what informed about data size
+            header_size = str2double(strcat(read(RP, 1, 'int8')));
+            
+            % Reading size of data
+            data_size = str2double(strcat(read(RP, header_size, 'char'))');
+            
+            % Read data
+            signal_num = read(RP, data_size/2, 'int16');
+            
+            plot(signal_num)
+            grid on;
+            ylabel('Voltage / V')
+            xlabel('samples')
+            
+            clear RP;
+
+    .. tab:: ASCII/VOLTS mode for 4-Input
+
+        .. code-block:: matlab
+
+            %% Define Red Pitaya as TCP/IP object
+            clear all
+            close all
+            clc
+            IP= '';                % Input IP of your Red Pitaya...
+            port = 5000;
+            tcpipObj = tcpip(IP, port);
+            tcpipObj.InputBufferSize = 16384*32;
+
+            %% Open connection with your Red Pitaya
+
+            fopen(tcpipObj);
+            tcpipObj.Terminator = 'CR/LF';
+
+            flushinput(tcpipObj);
+            flushoutput(tcpipObj);
+
+            % Set decimation vale (sampling rate) in respect to you 
+            % acquired signal frequency
+
+            fprintf(tcpipObj,'ACQ:RST');
+            fprintf(tcpipObj,'ACQ:DEC 1');
+            fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
+
+            % Set trigger delay to 0 samples
+            % 0 samples delay set trigger to center of the buffer
+            % Signal on your graph will have trigger in the center (symmetrical)
+            % Samples from left to the center are samples before trigger 
+            % Samples from center to the right are samples after trigger
+
+            fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
+
+            %% Start & Trigg
+            % Trigger source setting must be after ACQ:START
+            % Set trigger to source 1 positive edge
+
+            fprintf(tcpipObj,'ACQ:START');
+            % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
+            % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
+            % length and smaling rate
+            pause(1)
+
+            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');  
+            % Wait for trigger
+            % Until trigger is true wait with acquiring
+            % Be aware of while loop if trigger is not achieved
+            % Ctrl+C will stop code executing in Matlab
+
+            while 1
+                trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')
             
                 if strcmp('TD',trig_rsp(1:2))  % Read only TD
             
@@ -286,29 +391,43 @@ and press run.
                 end
             end
             
+            % wait for fill adc buffer
+            while 1
+                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                
+                if strcmp('1',fill_state(1:1))
             
-            % Read data from buffer
-            writeline(RP,'ACQ:SOUR1:DATA?');
+                break
             
-            % Read header for binary format
-            header = readline(RP, 1);
-            
-            % Reading size of block, what informed about data size
-            header_size = str2num(strcat(readline(RP,1,'int8')));
-            
-            % Reading size of data
-            data_size = str2num(strcat(readline(RP,header_size,'char'))');
-            
-            % Read data
-            signal_num = readline(RP, data_size/2,'int16');
-            
-            plot(signal_num)
+                end
+            end 
+
+            % Read data from buffer 
+            signal_str=query(tcpipObj,'ACQ:SOUR1:DATA?');
+            signal_str_2=query(tcpipObj,'ACQ:SOUR2:DATA?');
+            signal_str_3=query(tcpipObj,'ACQ:SOUR3:DATA?');
+            signal_str_4=query(tcpipObj,'ACQ:SOUR4:DATA?');
+
+            % Convert values to numbers.% First character in string is “{“   
+            % and 2 latest are empty spaces and last is “}”.  
+
+            signal_num=str2num(signal_str(1,2:length(signal_str)-3));
+            signal_num_2=str2num(signal_str_2(1,2:length(signal_str_2)-3));
+            signal_num_3=str2num(signal_str_3(1,2:length(signal_str_3)-3));
+            signal_num_4=str2num(signal_str_4(1,2:length(signal_str_4)-3));
+
+            plot(signal_num,'r')
             hold on
+            plot(signal_num_2,'g')
+            hold on
+            plot(signal_num_3,'b')
+            hold on
+            plot(signal_num_4,'m')
             grid on
             ylabel('Voltage / V')
             xlabel('samples')
-            
-            clear RP;
+
+            fclose(tcpipObj)          
 
 
 Code - C
@@ -316,77 +435,159 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
     
+.. |compiling and running C| raw:: html
 
-.. code-block:: c
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
-    /* Red Pitaya C API example Acquiring a signal from a buffer  
-     * This application acquires a signal on a specific channel */
-    
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <unistd.h>
-    #include "rp.h"
-    
-    int main(int argc, char **argv){
-    
-            /* Print error, if rp_Init() function failed */
-            if(rp_Init() != RP_OK){
-                    fprintf(stderr, "Rp api init failed!\n");
-            }
-    
-            /*LOOB BACK FROM OUTPUT 2 - ONLY FOR TESTING*/
-            rp_GenReset();
-            rp_GenFreq(RP_CH_1, 20000.0);
-            rp_GenAmp(RP_CH_1, 1.0);
-            rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
-            rp_GenOutEnable(RP_CH_1);
-    
-    
-            uint32_t buff_size = 16384;
-            float *buff = (float *)malloc(buff_size * sizeof(float));
-    
-            rp_AcqReset();
-            rp_AcqSetDecimation(RP_DEC_8);
-            rp_AcqSetTriggerLevel(0.1); //Trig level is set in Volts while in SCPI 
-            rp_AcqSetTriggerDelay(0);
+.. tabs::
 
-            // there is an option to select coupling when using SIGNALlab 250-12 
-            // rp_AcqSetAC_DC(RP_CH_1, RP_AC); // enables AC coupling on channel 1
+    .. tab:: 125-10, 125-14, 122-16, 250-12
 
-            // by default LV level gain is selected
-            // rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
-    
-            rp_AcqStart();
-    
-            /* After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer*/
-            /* Here we have used time delay of one second but you can calculate exact value taking in to account buffer*/
-            /*length and smaling rate*/
-    
-            sleep(1);
-            rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
-            rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
-    
-            while(1){
-                    rp_AcqGetTriggerState(&state);
-                    if(state == RP_TRIG_STATE_TRIGGERED){
-                    break;
+        .. code-block:: c
+
+            /* Red Pitaya C API example Acquiring a signal from a buffer  
+            * This application acquires a signal on a specific channel */
+            
+            #include <stdio.h>
+            #include <stdlib.h>
+            #include <unistd.h>
+            #include "rp.h"
+            
+            int main(int argc, char **argv){
+            
+                    /* Print error, if rp_Init() function failed */
+                    if(rp_Init() != RP_OK){
+                            fprintf(stderr, "Rp api init failed!\n");
                     }
+            
+                    /*LOOB BACK FROM OUTPUT 2 - ONLY FOR TESTING*/
+                    rp_GenReset();
+                    rp_GenFreq(RP_CH_1, 20000.0);
+                    rp_GenAmp(RP_CH_1, 1.0);
+                    rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
+                    rp_GenOutEnable(RP_CH_1);
+            
+            
+                    uint32_t buff_size = 16384;
+                    float *buff = (float *)malloc(buff_size * sizeof(float));
+            
+                    rp_AcqReset();
+                    rp_AcqSetDecimation(RP_DEC_8);
+                    rp_AcqSetTriggerLevel(RP_CH_1, 0.1); //Trig level is set in Volts while in SCPI 
+                    rp_AcqSetTriggerDelay(0);
+
+                    // there is an option to select coupling when using SIGNALlab 250-12 
+                    // rp_AcqSetAC_DC(RP_CH_1, RP_AC); // enables AC coupling on channel 1
+
+                    // by default LV level gain is selected
+                    // rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
+            
+                    rp_AcqStart();
+            
+                    /* After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer*/
+                    /* Here we have used time delay of one second but you can calculate exact value taking in to account buffer*/
+                    /*length and smaling rate*/
+            
+                    sleep(1);
+                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
+                    rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
+            
+                    while(1){
+                            rp_AcqGetTriggerState(&state);
+                            if(state == RP_TRIG_STATE_TRIGGERED){
+                            break;
+                            }
+                    }
+
+                    bool fillState = false;
+                    while(!fillState){
+                        rp_AcqGetBufferFillState(&fillState);
+                    }
+
+                    rp_AcqGetOldestDataV(RP_CH_1, &buff_size, buff);
+                    int i;
+                    for(i = 0; i < buff_size; i++){
+                            printf("%f\n", buff[i]);
+                    }
+                    /* Releasing resources */
+                    free(buff);
+                    rp_Release();
+                    return 0;
             }
-                    
-            rp_AcqGetOldestDataV(RP_CH_1, &buff_size, buff);
-            int i;
-            for(i = 0; i < buff_size; i++){
-                    printf("%f\n", buff[i]);
-            }
-            /* Releasing resources */
-            free(buff);
-            rp_Release();
-            return 0;
-    }
-        
+
+    .. tab:: 125-14 4-Input
+
+        .. code-block:: c
+
+            /* Red Pitaya C API example Acquiring a signal from a buffer
+            * This application acquires a signal on a specific channel */
+
+            #include <stdio.h>
+            #include <stdlib.h>
+            #include <unistd.h>
+            #include "rp.h"
+
+            int main(int argc, char **argv){
+
+                    /* Print error, if rp_Init() function failed */
+                    if(rp_Init() != RP_OK){
+                            fprintf(stderr, "Rp api init failed!\n");
+                    }
+
+                    uint32_t buff_size = 16384;
+                    float *buff_ch1 = (float *)malloc(buff_size * sizeof(float));
+                    float *buff_ch2 = (float *)malloc(buff_size * sizeof(float));
+                    float *buff_ch3 = (float *)malloc(buff_size * sizeof(float));
+                    float *buff_ch4 = (float *)malloc(buff_size * sizeof(float));
+
+                    rp_AcqReset();
+                    rp_AcqSetDecimation(RP_DEC_8);
+                    rp_AcqSetTriggerDelay(0);
+
+                    rp_AcqStart();
+
+                    /* After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer*/
+                    /* Here we have used time delay of one second but you can calculate exact value taking in to account buffer*/
+                    /*length and smaling rate*/
+
+                    sleep(1);
+                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_NOW);
+                    rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
+
+                    while(1){
+                            rp_AcqGetTriggerState(&state);
+                            if(state == RP_TRIG_STATE_TRIGGERED){
+                            sleep(1);
+                            break;
+                            }
+                    }
+
+                    bool fillState = false;
+                    while(!fillState){
+                        rp_AcqGetBufferFillState(&fillState);
+                    }
+
+                    uint32_t pos = 0;        
+                    rp_AcqGetWritePointerAtTrig(&pos);
+                    rp_AcqGetDataV2(pos, &buff_size, buff_ch1,buff_ch2, buff_ch3, buff_ch4);
+
+                    int i;
+                    for(i = 0; i < buff_size; i++){
+                            printf("%f %f %f %f\n", buff_ch1[i],buff_ch2[i],buff_ch3[i],buff_ch4[i]);
+                    }
+                    /* Releasing resources */
+                    free(buff_ch1);
+                    free(buff_ch2);
+                    free(buff_ch3);
+                    free(buff_ch4);
+                    rp_Release();
+
+                    return 0;
+            }  
+
 Code - Python
 *************
 .. tabs::
@@ -395,7 +596,7 @@ Code - Python
 
         .. code-block:: python
 
-            #!/usr/bin/python
+            #!/usr/bin/python3
 
             import sys
             import redpitaya_scpi as scpi
@@ -415,6 +616,11 @@ Code - Python
                 if rp_s.rx_txt() == 'TD':
                     break
 
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
+
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_string = rp_s.rx_txt()
             buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
@@ -428,7 +634,7 @@ Code - Python
 
         .. code-block:: python
 
-            #!/usr/bin/python
+            #!/usr/bin/python3
 
             import sys
             import redpitaya_scpi as scpi
@@ -449,6 +655,11 @@ Code - Python
                 if rp_s.rx_txt() == 'TD':
                     break
 
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
+
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_byte = rp_s.rx_arb()
             buff = [struct.unpack('!f',bytearray(buff_byte[i:i+4]))[0] for i in range(0, len(buff_byte), 4)]
@@ -461,7 +672,7 @@ Code - Python
 
         .. code-block:: python
         
-            #!/usr/bin/python
+            #!/usr/bin/python3
 
             import sys
             import redpitaya_scpi as scpi
@@ -482,6 +693,11 @@ Code - Python
                 if rp_s.rx_txt() == 'TD':
                     break
 
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
+
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_byte = rp_s.rx_arb()
             buff = [struct.unpack('!h',bytearray(buff_byte[i:i+2]))[0] for i in range(0, len(buff_byte), 2)]
@@ -490,6 +706,65 @@ Code - Python
             plot.ylabel('Voltage')
             plot.show()
 
+    .. tab:: ASCII/VOLTS mode 4-Input
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+
+            rp_s = scpi.scpi(sys.argv[1])
+
+            rp_s.tx_txt('ACQ:RST')
+            rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
+            rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
+
+            rp_s.tx_txt('ACQ:DEC 1')
+            rp_s.tx_txt('ACQ:TRIG:LEV 0');
+            rp_s.tx_txt('ACQ:TRIG:DLY 0');
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
+
+            rp_s.tx_txt('ACQ:SOUR1:DATA?')
+            buff_string = rp_s.rx_txt()
+            buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
+            buff = list(map(float, buff_string))
+
+            rp_s.tx_txt('ACQ:SOUR2:DATA?')
+            buff_string = rp_s.rx_txt()
+            buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
+            buff2 = list(map(float, buff_string))
+
+            rp_s.tx_txt('ACQ:SOUR3:DATA?')
+            buff_string = rp_s.rx_txt()
+            buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
+            buff3 = list(map(float, buff_string))
+
+            rp_s.tx_txt('ACQ:SOUR4:DATA?')
+            buff_string = rp_s.rx_txt()
+            buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
+            buff4 = list(map(float, buff_string))
+
+            plot.plot(buff, 'r')
+            plot.plot(buff2, 'g')
+            plot.plot(buff3, 'b')
+            plot.plot(buff4, 'm')
+            plot.ylabel('Voltage')
+            plot.show()
 
 
 Code - Scilab
@@ -565,6 +840,7 @@ for Scilab sockets. How to set socket is described on Blink example.
     plot(signal_num)
     
     SOCKET_close(tcpipObj);
+
 
 Code - LabVIEW
 **************

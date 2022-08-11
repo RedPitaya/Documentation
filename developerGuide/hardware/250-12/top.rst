@@ -1,10 +1,10 @@
 SIGNALlab 250-12
 ################
 
-   
-*********
+
+************************
 Technical specifications
-*********
+************************
 
 * :ref:`Product comparison table <rp-board-comp>`
 

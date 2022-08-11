@@ -5,9 +5,9 @@ STEMlab 125-14
 ##############
 
 
-*********
+************************
 Technical specifications
-*********
+************************
 
 * :ref:`Product comparison table <rp-board-comp>`
 
@@ -33,7 +33,7 @@ Fast analog IO
 
 .. toctree::
    :maxdepth: 6
-   
+
    fastIO
 
 *********
@@ -42,7 +42,7 @@ Extension
 
 .. toctree::
    :maxdepth: 6
-   
+
    extent
 
 
@@ -82,19 +82,19 @@ ADC clock can be provided by:
     :alt: Logo
     :align: center
     :width:  400px
-    
+
 
 ************
 Certificates
 ************
 
-Besides the functional testing Red Pitaya passed the safety and electromagnetic compatibility (EMC) tests at an 
+Besides the functional testing Red Pitaya passed the safety and electromagnetic compatibility (EMC) tests at an
 external `testing and certification institute <http://www.siq.si/?L=3>`_.
 
 
 .. toctree::
    :maxdepth: 6
-   
+
    cets
 
 
@@ -103,7 +103,7 @@ Cooling options
 ***************
 
 For additional cooling we recommend a 30mm or 25mm fan. You can utilize the power connector on the board to power
-the fan, however please note that it supplies only 5 V. The power connector is located between micro-SD socket and 
+the fan, however please note that it supplies only 5 V. The power connector is located between micro-SD socket and
 the host USB connector.
 
 .. figure:: cooling-powerPin.jpg
@@ -113,14 +113,14 @@ the host USB connector.
     | Red Pitaya power connector.
     | Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
 
-    
+
 .. note::
- 
+
     Power connector is a standard 2-pin 0.1" connector.
     Supplies only 5V.
-    
+
 
 .. toctree::
    :maxdepth: 6
-   
+
    cooling

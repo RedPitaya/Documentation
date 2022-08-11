@@ -1,27 +1,23 @@
 .. _streaming_top:
 
-#######################
+#########
 Streaming
-#######################
+#########
 
-.. |br| raw:: html
+The Streaming application enables users to stream data from Red Pitaya to:
 
-    <br>
+    * A file saved on the Red Pitaya SD card
+    * A file saved on a remote computer via the ethernet protocol (UDP or TCP). 
 
-Streaming application enables user to stream data from Red Pitaya to :
+The user is able to set:
 
-    * Local file stored on Red Pitaya SD card
-    * Over ethernet to remote computer using UDP or TCP protocol
-
-User is able to set:
-
-    * Sampling frequency
-    * Number of input channels
-    * Input channel resolution
-    * HV/LV mode (for 125-xx need to switch the jumper)
-    * Using calibration (For 125-xx, the filter is also calibrated)
-    * RAW / Volt
-    * Number of samples or unlimited
+    * The sampling frequency (rate)
+    * Input channel count (Channel 1, Channel 2 or Both)
+    * Input channel resolution (8 or 16 bits)
+    * Input attenuation (HV/LV mode) (for 125-xx, a switch of the jumper is required)
+    * Whether to use the calibration or not (for 125-xx, the filter is also calibrated)
+    * RAW / Volt mode
+    * The number of samples or unlimited sampling
 
 Streamed data can be stored into:
 
@@ -31,62 +27,65 @@ Streamed data can be stored into:
 
 Max. streaming speeds are limited to:
 
-    * 10MB/s for streaming to SD card (SD card class 10 recommended for best streaming performance)
-    * 20MB/s for streaming over 1Gbit network (:ref:`direct ethernet connection is recommended to achieve best streaming performance <_dir_cab_connect>`.)
+    * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for the optimal streaming performance)
+    * 20 MB/s for streaming over 1 Gbit network (A |direct connection| is recommended to achieve the best streaming performance)
+
+.. |direct connection| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/connect/connect.html#direct-ethernet-cable-connection" target="_blank">direct ethernet connection</a>
 
 
-**********************************************
-Start using Red Pitaya streaming feature
-**********************************************
+********************************************
+Start using the Red Pitaya streaming feature
+********************************************
 
-#. ) Run streaming app from Red Pitaya WEB interface
+#. Run the Streaming app from the Red Pitaya Web interface
 
     .. figure:: img/redpitaya_main_page.png
         :width: 60%
+        :align: center
 
-#. ) Stream locally to a file
+#. Stream locally to a file
 
-    #. ) Set app properties & click RUN
+    #. Set the app's properties & click RUN
     
         .. figure:: img/to_file_settings.png
-           :width: 40%
+            :width: 20%
+            :align: center
     
-        Example: streaming on ch1, 8bit resolution 5.208Msps into TDMS file format
+            Example: streaming on ch1, 8 bit resolution, 5.208 MSps into TDMS file format
     
-    #. ) Press STOP to stop streaming
+    #. Press STOP to stop streaming
 
-    #. ) Click Browse to open file browser and download streaming data file
+    #. Click Browse to open the file browser and download the streaming data file
 
         .. figure:: img/capture.png
            :width: 50%
+           :align: center
 
-    #. ) Open file in `DIAdem software <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__
-         that supports TDMS file reading, visualization & processing.
+    #. Open the file in a program that supports TDMS file reading, visualization, and processing, such as |DIAdem|.
 
         .. figure:: img/diadem_tdms_file_viewer.png
            :width: 80%
+           :align: center
 
-#. ) Streaming to remote computer
+#. Streaming to a remote computer
 
-    #. ) Download streaming client to your computer.
+    #. Get the streaming client for your computer. Clients are located on the board itself, and you can download them from there.
 
-        `Linux tool <https://downloads.redpitaya.com/downloads/Clients/streaming/linux-tool.zip>`__
+        .. figure:: img/download_client.png
+            :width: 50%
+            :align: center
 
-        `Linux tool (beta) <https://downloads.redpitaya.com/downloads/Clients/streaming/linux-tool_beta.zip>`__
-
-        `Windows tool <https://downloads.redpitaya.com/downloads/Clients/streaming/windows-tool.zip>`__
-
-        `Windows tool (beta) <https://downloads.redpitaya.com/downloads/Clients/streaming/windows-tool_beta.zip>`__
-
-
-    #. ) Set app properties & click RUN
+    #. Set the app's properties & click RUN
 
         .. figure:: img/tcp_settings.png
-           :width: 50%
+            :width: 20%
+            :align: center
         
-        Example: streaming on ch1, 16bit resolution 5Msps, TCP
+            Example: streaming on ch1, 16 bit resolution 5 MSps, TCP
     
-    #. ) Run streaming app on remote computer (copy IP from the WEB interface and select required file format)
+    #. Run the streaming app on a remote computer (copy the IP address from the web interface and choose the required file format).
 
     .. tabs::
 
@@ -97,14 +96,16 @@ Start using Red Pitaya streaming feature
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
 
             .. figure:: img/tcp_client.png
-                :width: 60%
+                :width: 50%
+                :align: center
 
-            Data streaming can be stopped by pressing Ctrl + C
+            Data streaming can be stopped by pressing *Ctrl + C*.
 
-            Created wav file can be read or visualized using `Audacity software <https://www.audacityteam.org/>`__:
+            The created wav file can be read or viewed in `Audacity <https://www.audacityteam.org/>`__:
 
             .. figure:: img/audacity.png
                 :width: 80%
+                :align: center
 
         .. group-tab:: TDMS
 
@@ -113,14 +114,16 @@ Start using Red Pitaya streaming feature
                 rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
 
             .. figure:: img/tcp_client2.png
-                :width: 60%
+                :width: 50%
+                :align: center
 
-            Data streaming can be stopped by pressing Ctrl + C
+            Data streaming can be stopped by pressing *Ctrl + C*.
 
-            Created tdms file can be read or visualized using `DIAdem software <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__:
+            The created tdms file can be read or viewed in `DIAdem <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__.
 
             .. figure:: img/diadem_tdms_file_viewer.png
                 :width: 80%
+                :align: center
         
         .. group-tab:: CSV
 
@@ -130,38 +133,78 @@ Start using Red Pitaya streaming feature
 
 
             .. figure:: img/tcp_client3.png
-                :width: 60%
+                :width: 50%
+                :align: center
             
-            |br|
 
-            The application saves data from board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
+            The application saves data from the board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
             
             .. figure:: img/csv_list.png
-                :width: 60%
+                :width: 50%
+                :align: center
 
-            |br|
 
-            Created csv file can be opened with any text editor or spreadsheet editor:
+            The created csv file can be opened with any text editor or spreadsheet editor:
 
             .. figure:: img/csv_view.png
                 :width: 80%
+                :align: center
 
-            |br|
 
             .. note::
 
                 The binary file can be converted using the *convert_tool* application.
 
                 .. figure:: img/csv_list.png
-                    :width: 60%
+                    :width: 50%
+                    :align: center
 
-                |br|
 
                 In this application, you can also see the structure of the received file and the state of the file.
 
                 .. figure:: img/csv_state.png
-                    :width: 60%
+                    :width: 50%
+                    :align: center
 
 
+.. |DIAdem| raw:: html
 
-        
+    <a href="https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html" target="_blank">DIAdem</a>
+
+
+.. |Audacity| raw:: html
+
+    <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
+
+
+******************************************************
+Streaming application for the Desktop (Linux, Windows)
+******************************************************
+
+You can also use the desktop version of the client for streaming
+
+    #. Download the client
+
+        |Streaming Client|
+
+    #. Unzip and run client
+
+        .. note::
+
+            For Linux clients, after unpacking, you need to make the files (rpsa_client_qt.sh, bin/rpsa_client_qt) executable.
+
+            .. figure:: img/qt1.png
+                    :width: 50%
+                    :align: center
+
+            For Windows clients, you need to grant access to the network.
+
+    #. The running application automatically detects boards on the network if streaming is running on them. The boards and the client must be on the same network.
+
+        .. figure:: img/qt2.png
+                :width: 50%
+                :align: center
+                
+.. |Streaming Client| raw:: html
+
+    <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">Desktop clients</a>

@@ -36,7 +36,7 @@ In order to compile one example just use the source file name without the `.c` e
 .. code-block:: shell-session
 
     cd Examples/C
-    make digital_led_blink
+    make digital_led_blink # for 250-12 run 'make MODEL=Z20_250_12 digital_led_blink'
 
 Applications based on the API require a specific FPGA image to be loaded:
 

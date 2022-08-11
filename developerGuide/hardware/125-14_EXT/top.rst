@@ -13,9 +13,9 @@ ADC spec.
    :align: center
 
 
-*********
+************************
 Technical specifications
-*********
+************************
 
 * :ref:`Product comparison table <rp-board-comp>`
 

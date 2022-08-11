@@ -1,12 +1,12 @@
-Generate two synchronous signal
-###############################
+Generate two synchronous signals
+################################
 
 .. http://blog.redpitaya.com/examples-new/generate-signal-on-fast-analog-outputs-with-external-triggering/
 
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate two synchronous analog signals. Voltage and frequency ranges depends on Red Pitaya model.
+This example shows how to program Red Pitaya to generate two synchronous analog signals. Voltage and frequency ranges depend on the Red Pitaya model.
 
 
 Required hardware
@@ -19,51 +19,55 @@ Required hardware
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code to MATLAB editor
-and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
+    %% Define Red Pitaya as TCP client object
     clc
     clear all
     close all
 
-    IP= '192.168.178.56';            % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';            % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
 
     %% Open connection with your Red Pitaya
  
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+   RP.ByteOrder = "big-endian";
+    configureTerminator(RP, "CR/LF");
 
-    fprintf(tcpipObj,'GEN:RST');
-    fprintf(tcpipObj,'SOUR1:FUNC SINE');       % Set function of output signal
-                                               % {sine, square, triangle, sawu,sawd, pwm}
-    fprintf(tcpipObj,'SOUR1:FREQ:FIX 2000');   % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR1:VOLT 1');          % Set amplitude of output signal
+    writeline(RP,'GEN:RST');
+    writeline(RP,'SOUR1:FUNC SINE');            % Set function of output signal
+                                                    % {sine, square, triangle, sawu, sawd, pwm}
+    writeline(RP,'SOUR1:FREQ:FIX 2000');        % Set frequency of output signal
+    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'SOUR2:FUNC SINE');       % Set function of output signal                                       
-                                               % {sine, square, triangle, sawu,sawd, pwm}
-    fprintf(tcpipObj,'SOUR2:FREQ:FIX 2000');   % Set frequency of output signal
-    fprintf(tcpipObj,'SOUR2:VOLT 1');          % Set amplitude of output signal
+    writeline(RP,'SOUR2:FUNC SINE');            % Set function of output signal
+                                                    % {sine, square, triangle, sawu, sawd, pwm}
+    writeline(RP,'SOUR2:FREQ:FIX 2000');        % Set frequency of output signal
+    writeline(RP,'SOUR2:VOLT 1');               % Set amplitude of output signal
 
-    fprintf(tcpipObj,'OUTPUT:STATE ON');       % Start two channels simultaneously
-    fprintf(tcpipObj,'SOUR:TRIG:INT');         % Generate triggers
+    writeline(RP,'OUTPUT:STATE ON');            % Start both channels simultaneously
+    writeline(RP,'SOUR:TRIG:INT');              % Generate triggers
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
+
 
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -103,12 +107,11 @@ Code - C
         return 0;
     }
 
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import redpitaya_scpi as scpi

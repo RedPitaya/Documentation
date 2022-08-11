@@ -7,8 +7,8 @@ Push button and turn on LED diode
 Description
 ***********
 
-This example shows how to control Red Pitaya on board LEDs and read states of extension connector GPIOs.
-LED will turn ON, when button is pressed.
+This example shows how to control Red Pitaya onboard LEDs and read the states of extension connector GPIOs.
+When the button is pressed, the LED will turn on.
 
 Required hardware
 *****************
@@ -19,8 +19,9 @@ Required hardware
     - RedPitaya_Push_button
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
+
 .. figure:: RedPitaya_Push_button.png
-    
+
 Circuit
 
 .. figure:: RedPitaya_Push_button_circuit.png
@@ -28,8 +29,7 @@ Circuit
 Code - MATLAB®
 **************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code from below to
-MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
@@ -37,50 +37,54 @@ MATLAB editor, save project and press run.
             
     IP= '192.168.178.56';           % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
 
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP,'CR/LF');
 
 
-    fprintf(tcpipObj,'DIG:PIN:DIR IN,DIO5_N'); % Set DIO5_N  to be input
+    writeline(RP,'DIG:PIN:DIR IN,DIO5_N');      % Set DIO5_N  to be input
 
-    i=1;
+    i = 1;
 
     while i<1000                    			% You can set while 1 for continuous loop
 
-    state=str2num(query(tcpipObj,'DIG:PIN? DIO5_N'));
+    state = str2num(writeread(RP,'DIG:PIN? DIO5_N'));
 
         if state==1
-
-        fprintf(tcpipObj,'DIG:PIN LED5,0');
-
+        
+            writeline(RP,'DIG:PIN LED5,0');
+            
         end
 
         if state==0
 
-        fprintf(tcpipObj,'DIG:PIN LED5,1');
+            writeline(RP,'DIG:PIN LED5,1');
 
         end
 
     pause(0.1)                     				% Set time delay for Red Pitaya response
 
-    i=i+1
+    i = i+1
 
     end
 
     %% Close connection with Red Pitaya
-    fclose(tcpipObj);
+    clear RP;
 
 Code - C
 ********
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -117,12 +121,11 @@ Code - C
         return EXIT_SUCCESS;
     }
 
+
 Code - Python
 *************
 
 .. code-block:: python
-
-    #!/usr/bin/python
 
     import sys
     import redpitaya_scpi as scpi
@@ -139,6 +142,7 @@ Code - Python
             rp_s.tx_txt('DIG:PIN? DIO'+str(i)+'_N')
             state = rp_s.rx_txt()
             rp_s.tx_txt('DIG:PIN LED'+str(i)+','+str(state))
+
 
 Code - LabVIEW
 **************

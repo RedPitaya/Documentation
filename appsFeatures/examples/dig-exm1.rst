@@ -10,7 +10,7 @@ Blink
 Description
 ***********
 
-This example shows how to control one of the Red Pitaya on board LEDs and make it blink.
+This example shows how to control one of the Red Pitaya on-board LEDs and make it blink.
 
 *****************
 Required hardware
@@ -24,35 +24,34 @@ Required hardware
 Code - MATLAB ®
 ***************
 
-The code is written in MATLAB. In the code we use SCPI commands and TCP/IP communication. Copy code from below to 
-MATLAB editor, save project and press run.
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
 .. code-block:: matlab
 
     %% Define Red Pitaya as TCP/IP object
             
-    IP= '192.168.178.56';           % Input IP of your Red Pitaya...
+    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
     port = 5000;
-    tcpipObj=tcpip(IP, port);
+    RP = tcpclient(IP, port);           % Define Red Pitaya as an TCP client object
 
     %% Open connection with your Red Pitaya
-
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
+    
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP, 'CR/LF');   % defines the line terminator (end sequence of input characters)
 
     %% Send SCPI command to Red Pitaya to turn ON LED1
 
-    fprintf(tcpipObj,'DIG:PIN LED1,1');
+    writeline(RP,'DIG:PIN LED1,1');
 
     pause(5)                         % Set time of LED ON
 
     %% Send SCPI command to Red Pitaya to turn OFF LED1
-
-    fprintf(tcpipObj,'DIG:PIN LED1,0');
+    
+    writeline(RP,'DIG:PIN LED1,0');
 
     %% Close connection with Red Pitaya
 
-    fclose(tcpipObj);
+    clear RP;
 
     
 ********
@@ -61,8 +60,12 @@ Code - C
 
 .. note::
 
-    C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are here -> :ref:`link <comC>`
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are |compiling and running C|.
+
+.. |compiling and running C| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -159,6 +162,7 @@ Code - Scilab
     SOCKET_write(tcpipObj,'DIG:PIN LED1,0');
 
     SOCKET_close(tcpipObj);
+
 
 **************
 Code - LabVIEW

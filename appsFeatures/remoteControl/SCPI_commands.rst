@@ -1,5 +1,5 @@
 *******************************
-List of supported SCPI commands 
+List of supported SCPI commands
 *******************************
 
 .. (link - https://dl.dropboxusercontent.com/s/eiihbzicmucjtlz/SCPI_commands_beta_release.pdf)
@@ -24,9 +24,9 @@ Table of correlated SCPI and API commands on Red Pitaya.
 | SCPI                               | API                     | description                                          |
 +====================================+=========================+======================================================+
 | | ``DIG:PIN:DIR <dir>,<gpio>``     | ``rp_DpinSetDirection`` | Set direction of digital pins to output or input.    |
-| | Examples:                        |                         |                                                      |                       
-| | ``DIG:PIN:DIR OUT,DIO0_N``       |                         |                                                      |  
-| | ``DIG:PIN:DIR IN,DIO1_P``        |                         |                                                      |                  
+| | Examples:                        |                         |                                                      |
+| | ``DIG:PIN:DIR OUT,DIO0_N``       |                         |                                                      |
+| | ``DIG:PIN:DIR IN,DIO1_P``        |                         |                                                      |
 +------------------------------------+-------------------------+------------------------------------------------------+
 | | ``DIG:PIN <pin>,<state>``        | ``rp_DpinSetState``     | Set state of digital outputs to 1 (HIGH) or 0 (LOW). |
 | | Examples:                        |                         |                                                      |
@@ -49,7 +49,7 @@ Parameter options:
 * ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
 * ``<pin> = {ain, aout}``
 * ``<value> = {value in Volts}``
-   
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+---------------------+------------------------------------------------------+
@@ -167,6 +167,10 @@ Parameter options:
 | | ``PHAS:ALIGN``                     | ``rp_GenSynchronise``      | Aligning output phase of dual channels.                                    |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
 
+.. note::
+
+   For STEMlab 125-14 4-Input these commands are not applicable
+
 =======
 Acquire
 =======
@@ -174,6 +178,10 @@ Acquire
 Parameter options:
 
 * ``<n> = {1,2}`` (set channel IN1 or IN2)
+
+.. note::
+
+   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
 
 -------
 Control
@@ -232,6 +240,10 @@ Parameter options:
 * ``<level> = {value in V}``
 * ``<mode> = {AC,DC}``
 
+.. note::
+
+   For STEMlab 125-14 4-Input ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, CH3_PE, CH3_NE, CH4_PE, CH4_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
@@ -244,6 +256,10 @@ Parameter options:
 | | ``ACQ:TRIG:STAT?``                | ``rp_AcqGetTriggerState``     | Get trigger status. If DISABLED -> TD else WAIT.                              |
 | | Example:                          |                               |                                                                               |
 | | ``ACQ:TRIG:STAT?`` > ``WAIT``     |                               |                                                                               |
++-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
+| | ``ACQ:TRIG:FILL?``                | ``rp_AcqGetBufferFillState``  | Returns 1 if the buffer is full of data. Otherwise returns 0.                 |
+| | Example:                          |                               |                                                                               |
+| | ``ACQ:TRIG:FILL?`` > ``1``        |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
 | | ``ACQ:TRIG:DLY <time>``           | ``rp_AcqSetTriggerDelay``     | Set trigger delay in samples.                                                 |
 | | Example:                          |                               |                                                                               |
@@ -274,13 +290,13 @@ Parameter options:
 | | Example:                          |                               | (Only SIGNALlab 250-12)                                                       |
 | | ``ACQ:SOUR1:COUP?`` > ``AC``      |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:LEV <level>``          | ``rp_AcqSetTriggerLevel``     | Set trigger level in mV.                                                      |
+| | ``ACQ:TRIG:LEV <level>``          | ``rp_AcqSetTriggerLevel``     | Set trigger level in V.                                                       |
 | | Example:                          |                               |                                                                               |
-| | ``ACQ:TRIG:LEV 125 mV``           |                               |                                                                               |
+| | ``ACQ:TRIG:LEV 0.125 V``          |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:LEV?`` > ``level``     | ``rp_AcqGetTriggerLevel``     | Get trigger level in mV.                                                      |
+| | ``ACQ:TRIG:LEV?`` > ``level``     | ``rp_AcqGetTriggerLevel``     | Get trigger level in V.                                                       |
 | | Example:                          |                               |                                                                               |
-| | ``ACQ:TRIG:LEV?`` > ``123 mV``    |                               |                                                                               |
+| | ``ACQ:TRIG:LEV?`` > ``0.123 V``   |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
 | | ``ACQ:TRIG:EXT:LEV <level>``      | ``rp_AcqSetTriggerLevel``     | Set trigger external level in V.                                              |
 | | Example:                          |                               | (Only SIGNALlab 250-12)                                                       |
@@ -364,7 +380,7 @@ Data read
 | | ``ACQ:BUF:SIZE?`` > ``<size>``  | ``rp_AcqGetBufSize``         |  Returns buffer size.                                                                    |
 | | Example:                        |                              |                                                                                          |
 | | ``ACQ:BUF:SIZE?`` > ``16384``   |                              |                                                                                          |
-+-----------------------------------+------------------------------+------------------------------------------------------------------------------------------+ 
++-----------------------------------+------------------------------+------------------------------------------------------------------------------------------+
 
 
 ====
@@ -376,7 +392,7 @@ Parameter options:
 * ``<bits> = {CS6, CS7, CS8}``  Default: ``CS8``
 * ``<stop> = {STOP1, STOP2}``  Default: ``STOP1``
 * ``<parity> = {NONE, EVEN, ODD, MARK, SPACE}``  Default: ``NONE``
-* ``<timeout> = {0...255} in (1/10 seconds)`` Default: ``0`` 
+* ``<timeout> = {0...255} in (1/10 seconds)`` Default: ``0``
 * ``<speed> = {1200,2400,4800,9600,19200,38400,57600,115200,230400,576000,921000,1000000,1152000,1500000,2000000,2500000,3000000,3500000,4000000}`` Default: ``9600``
 * ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
 
@@ -476,7 +492,7 @@ Parameter options:
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:INIT``                      |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:INIT:DEV <path>``           | ``rp_SPI_InitDevice``          | | Initializes api for working with spi. <path> - Path to spi device                      |
+| | ``SPI:INIT:DEV <path>``           | ``rp_SPI_InitDev``             | | Initializes api for working with spi. <path> - Path to spi device                      |
 | | Example:                          |                                | | On some boards, it may be different from the standard: /dev/spidev1.0                  |
 | | ``SPI:INIT:DEV "/dev/spidev1.0"`` |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
@@ -484,15 +500,15 @@ Parameter options:
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:RELEASE``                   |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:DEF``              | ``rp_SPI_SetDefaultSettings``  | Sets the settings for SPI to default values.                                             |
+| | ``SPI:SETtings:DEF``              | ``rp_SPI_SetDefault``          | Sets the settings for SPI to default values.                                             |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:SET:DEF``                   |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:SET``              | ``rp_SPI_GetSettings``         | Sets the specified settings for SPI.                                                     |
+| | ``SPI:SETtings:SET``              | ``rp_SPI_SetSettings``         | Sets the specified settings for SPI.                                                     |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:SET:SET``                   |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:GET``              | ``rp_SPI_SetSettings``         | Gets the specified SPI settings.                                                         |
+| | ``SPI:SETtings:GET``              | ``rp_SPI_GetSettings``         | Gets the specified SPI settings.                                                         |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:SET:GET``                   |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
@@ -510,15 +526,15 @@ Parameter options:
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:SET:SPEED 1000000``         |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``UART:SPEED? > <speed>``         | ``rp_SPI_GetSpeed``            | Gets the speed the spi connection.                                                       |
+| | ``SPI:SET:SPEED? > <speed>``      | ``rp_SPI_GetSpeed``            | Gets the speed the spi connection.                                                       |
 | | Example:                          |                                |                                                                                          |
-| | ``UART:SPEED? > 1000000``         |                                |                                                                                          |
+| | ``SPI:SET:SPEED? > 1000000``      |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:WORD <bits>``      | ``rp_SPI_SetWordLen``          | Specifies the length of the word in bits. Must be greater than or equal to 7.            |
+| | ``SPI:SETtings:WORD <bits>``      | ``rp_SPI_SetWord``             | Specifies the length of the word in bits. Must be greater than or equal to 7.            |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:SET:WORD 8``                |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:WORD? > <bits>``   | ``rp_SPI_GetWordLen``          | Returns the length of a word.                                                            |
+| | ``SPI:SETtings:WORD? > <bits>``   | ``rp_SPI_GetWord``             | Returns the length of a word.                                                            |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:SET:WORD? > 8``             |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
@@ -534,37 +550,37 @@ Parameter options:
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:MSG:SIZE? > 1``             |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m> <data>``       | ``rp_SPI_SetBufferForMessage`` | | Sets data for write buffer for the specified message.                                  |
-| | ``SPI:MSG<n>:TX<m>:CS <data>``    |                                | | CS - Toggles CS state after sending/receiving this message.                            |
+| | ``SPI:MSG<n>:TX<m> <data>``       | | ``rp_SPI_SetTX``             | | Sets data for write buffer for the specified message.                                  |
+| | ``SPI:MSG<n>:TX<m>:CS <data>``    | | ``rp_SPI_SetTXCS``           | | CS - Toggles CS state after sending/receiving this message.                            |
 | | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                        |
 | | ``SPI:MSG0:TX4 1,2,3,4``          |                                | | <m> - TX buffer length.                                                                |
 | | ``SPI:MSG1:TX3:CS 2,3,4``         |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m>:RX <data>``    | ``rp_SPI_SetBufferForMessage`` | | Sets data for read and write buffers for the specified message.                        |
-| | ``SPI:MSG<n>:TX<m>:RX:CS <data>`` |                                | | CS - Toggles CS state after sending/receiving this message.                            |
+| | ``SPI:MSG<n>:TX<m>:RX <data>``    | | ``rp_SPI_SetTXRX``           | | Sets data for read and write buffers for the specified message.                        |
+| | ``SPI:MSG<n>:TX<m>:RX:CS <data>`` | | ``rp_SPI_SetTXRXCS``         | | CS - Toggles CS state after sending/receiving this message.                            |
 | | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                        |
 | | ``SPI:MSG0:TX4:RX 1,2,3,4``       |                                | | <m> - TX buffer length.                                                                |
 | | ``SPI:MSG1:TX3:RX:CS 2,3,4``      |                                | | The read buffer is also created with the same length and initialized with zeros.       |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX<m>``              | ``rp_SPI_SetBufferForMessage`` | | Initializes a buffer for reading the specified message.                                |
-| | ``SPI:MSG<n>:RX<m>:CS``           |                                | | CS - Toggles CS state after receiving message.                                         |
+| | ``SPI:MSG<n>:RX<m>``              | | ``rp_SPI_SetRX``             | | Initializes a buffer for reading the specified message.                                |
+| | ``SPI:MSG<n>:RX<m>:CS``           | | ``rp_SPI_SetRXCS``           | | CS - Toggles CS state after receiving message.                                         |
 | | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                        |
 | | ``SPI:MSG0:RX4``                  |                                | | <m> - RX buffer length.                                                                |
 | | ``SPI:MSG1:RX5:CS``               |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX? > <data>``       | ``rp_SPI_GetRxBuffer``         | Returns a read buffer for the specified message.                                         |
+| | ``SPI:MSG<n>:RX? > <data>``       | ``rp_SPI_GetRXBuffer``         | Returns a read buffer for the specified message.                                         |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:MSG1:RX? > {2,4,5}``        |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX? > <data>``       | ``rp_SPI_GetTxBuffer``         | Returns the write buffer for the specified message.                                      |
+| | ``SPI:MSG<n>:TX? > <data>``       | ``rp_SPI_GetTXBuffer``         | Returns the write buffer for the specified message.                                      |
 | | Example:                          |                                |                                                                                          |
-| | ``SPI:MSG1:RX? > {2,4,5}``        |                                |                                                                                          |
+| | ``SPI:MSG1:TX? > {2,4,5}``        |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
 | | ``SPI:MSG<n>:CS? > ON|OFF``       | ``rp_SPI_GetCSChangeState``    | Returns the setting for CS mode for the specified message.                               |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:MSG1:CS? > ON``             |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
-| | ``SPI:PASS``                      | ``rp_SPI_ReadWrite``           | Sends prepared messages to the SPI device.                                               |
+| | ``SPI:PASS``                      | ``rp_SPI_Pass``                | Sends prepared messages to the SPI device.                                               |
 | | Example:                          |                                |                                                                                          |
 | | ``SPI:PASS``                      |                                |                                                                                          |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------------+
