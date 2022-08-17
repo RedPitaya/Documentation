@@ -167,6 +167,10 @@ Parameter options:
 | | ``PHAS:ALIGN``                     | ``rp_GenSynchronise``      | Aligning output phase of dual channels.                                    |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
 
+.. note::
+
+   For STEMlab 125-14 4-Input these commands are not applicable
+
 =======
 Acquire
 =======
@@ -174,6 +178,10 @@ Acquire
 Parameter options:
 
 * ``<n> = {1,2}`` (set channel IN1 or IN2)
+
+.. note::
+
+   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
 
 -------
 Control
@@ -232,6 +240,10 @@ Parameter options:
 * ``<level> = {value in V}``
 * ``<mode> = {AC,DC}``
 
+.. note::
+
+   For STEMlab 125-14 4-Input ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, CH3_PE, CH3_NE, CH4_PE, CH4_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
@@ -244,6 +256,10 @@ Parameter options:
 | | ``ACQ:TRIG:STAT?``                | ``rp_AcqGetTriggerState``     | Get trigger status. If DISABLED -> TD else WAIT.                              |
 | | Example:                          |                               |                                                                               |
 | | ``ACQ:TRIG:STAT?`` > ``WAIT``     |                               |                                                                               |
++-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
+| | ``ACQ:TRIG:FILL?``                | ``rp_AcqGetBufferFillState``  | Returns 1 if the buffer is full of data. Otherwise returns 0.                 |
+| | Example:                          |                               |                                                                               |
+| | ``ACQ:TRIG:FILL?`` > ``1``        |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
 | | ``ACQ:TRIG:DLY <time>``           | ``rp_AcqSetTriggerDelay``     | Set trigger delay in samples.                                                 |
 | | Example:                          |                               |                                                                               |
