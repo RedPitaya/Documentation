@@ -89,10 +89,12 @@ Code - MATLAB®
 
     % wait for fill adc buffer
     while 1
-        fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-                
+        fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+
         if strcmp('1',fill_state(1:1))
-            break            
+
+            break;
+
         end
     end
 
@@ -111,7 +113,9 @@ Code - Python
 *************
 
 .. code-block:: python
-
+    
+    #!/usr/bin/python3
+    
     import sys
     import time
     import matplotlib.pyplot as plt
