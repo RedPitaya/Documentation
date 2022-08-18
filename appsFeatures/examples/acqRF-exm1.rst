@@ -95,22 +95,22 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Ctrl+C will stop code execution in MATLAB
             
             while 1
-                    trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
                 
-                    if strcmp('TD', trig_rsp(1:2))      % Read only TD
+                if strcmp('TD', trig_rsp(1:2))      % Read only TD
                 
-                        break;
+                    break;
                 
-                    end
+                end
             end
                 
             % wait for fill adc buffer
             while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
                 
-                if strcmp('1',fill_state(1:1))
+                if strcmp('1', fill_state(1:1))
             
-                break
+                    break;
             
                 end
             end 
@@ -200,14 +200,14 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             % wait for fill adc buffer
             while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
                 
-                if strcmp('1',fill_state(1:1))
+                if strcmp('1', fill_state(1:1))
             
-                break
+                    break;
             
                 end
-            end 
+            end  
             
             % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -298,14 +298,14 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             % wait for fill adc buffer
             while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
                 
-                if strcmp('1',fill_state(1:1))
+                if strcmp('1', fill_state(1:1))
             
-                break
+                    break;
             
                 end
-            end 
+            end
             
             % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -337,25 +337,24 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             clear all
             close all
             clc
-            IP= '';                % Input IP of your Red Pitaya...
+            IP = '192.168.178.111';           % Input IP of your Red Pitaya...
             port = 5000;
-            tcpipObj = tcpip(IP, port);
-            tcpipObj.InputBufferSize = 16384*32;
+            RP = tcpclient(IP, port);
+
 
             %% Open connection with your Red Pitaya
 
-            fopen(tcpipObj);
-            tcpipObj.Terminator = 'CR/LF';
+            RP.ByteOrder = "big-endian";
+            configureTerminator(RP,"CR/LF");
 
-            flushinput(tcpipObj);
-            flushoutput(tcpipObj);
+            flush(RP);
 
             % Set decimation vale (sampling rate) in respect to you 
             % acquired signal frequency
 
-            fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 1');
-            fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:RST');
+            writeline(RP,'ACQ:DEC 1');
+            writeline(RP,'ACQ:TRIG:LEV 0');
 
             % Set trigger delay to 0 samples
             % 0 samples delay set trigger to center of the buffer
@@ -363,58 +362,58 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Samples from left to the center are samples before trigger 
             % Samples from center to the right are samples after trigger
 
-            fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRIG:DLY 0');
 
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
             % Set trigger to source 1 positive edge
 
-            fprintf(tcpipObj,'ACQ:START');
+            writeline(RP,'ACQ:START');
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
-            pause(1)
+            pause(1);
 
-            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');  
+            writeline(RP,'ACQ:TRIG CH1_PE');  
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
             % Ctrl+C will stop code executing in Matlab
 
             while 1
-                trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')
-            
-                if strcmp('TD',trig_rsp(1:2))  % Read only TD
-            
-                break
-            
+                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+
+                if strcmp('TD', trig_rsp(1:2))  % Read only TD
+
+                    break;
+
                 end
             end
-            
+
             % wait for fill adc buffer
             while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-                
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+
                 if strcmp('1',fill_state(1:1))
-            
-                break
-            
+
+                    break;
+
                 end
             end 
 
             % Read data from buffer 
-            signal_str=query(tcpipObj,'ACQ:SOUR1:DATA?');
-            signal_str_2=query(tcpipObj,'ACQ:SOUR2:DATA?');
-            signal_str_3=query(tcpipObj,'ACQ:SOUR3:DATA?');
-            signal_str_4=query(tcpipObj,'ACQ:SOUR4:DATA?');
+            signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
+            signal_str_2 = writeread(RP,'ACQ:SOUR2:DATA?');
+            signal_str_3 = writeread(RP,'ACQ:SOUR3:DATA?');
+            signal_str_4 = writeread(RP,'ACQ:SOUR4:DATA?');
 
             % Convert values to numbers.% First character in string is “{“   
             % and 2 latest are empty spaces and last is “}”.  
 
-            signal_num=str2num(signal_str(1,2:length(signal_str)-3));
-            signal_num_2=str2num(signal_str_2(1,2:length(signal_str_2)-3));
-            signal_num_3=str2num(signal_str_3(1,2:length(signal_str_3)-3));
-            signal_num_4=str2num(signal_str_4(1,2:length(signal_str_4)-3));
+            signal_num   = str2num(signal_str(1,2:length(signal_str)-3));
+            signal_num_2 = str2num(signal_str_2(1,2:length(signal_str_2)-3));
+            signal_num_3 = str2num(signal_str_3(1,2:length(signal_str_3)-3));
+            signal_num_4 = str2num(signal_str_4(1,2:length(signal_str_4)-3));
 
             plot(signal_num,'r')
             hold on
@@ -427,8 +426,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             ylabel('Voltage / V')
             xlabel('samples')
 
-            fclose(tcpipObj)          
-
+            close(RP);
 
 Code - C
 ********
