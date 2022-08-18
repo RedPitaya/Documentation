@@ -99,14 +99,14 @@ Code - MATLAB®
     
     % wait for fill adc buffer
     while 1
-        fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-        
+        fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+
         if strcmp('1',fill_state(1:1))
-    
-            break
-    
+
+            break;
+
         end
-    end
+    end 
     
     % Read data from buffer 
     signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
@@ -133,7 +133,9 @@ Code - Python
 *************
 
 .. code-block:: python
-
+    
+    #!/usr/bin/python3
+    
     import sys
     import redpitaya_scpi as scpi
     import matplotlib.pyplot as plot
