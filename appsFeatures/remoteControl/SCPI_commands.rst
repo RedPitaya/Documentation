@@ -238,7 +238,7 @@ Parameter options:
 * ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
 * ``<status> = {WAIT, TD}``
 * ``<time> = {value in ns}``
-* ``<counetr> = {value in samples}``
+* ``<count> = {value in samples}``
 * ``<gain> = {LV, HV}``
 * ``<level> = {value in V}``
 * ``<mode> = {AC,DC}``
@@ -260,15 +260,15 @@ Parameter options:
 | | Example:                          |                               |                                                                               |
 | | ``ACQ:TRIG:STAT?`` > ``WAIT``     |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:FILL?``                | ``rp_AcqGetBufferFillState``  | Returns 1 if the buffer is full of data. Otherwise returns 0.                 |
-| | Example:                          |                               |                                                                               |
+| | ``ACQ:TRIG:FILL?``                | ``rp_AcqGetBufferFillState``  | | Returns 1 if the buffer is full of data. Otherwise returns 0.               |
+| | Example:                          |                               | | (IN FUTURE BETA VERSION)                                                    |
 | | ``ACQ:TRIG:FILL?`` > ``1``        |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:DLY <time>``           | ``rp_AcqSetTriggerDelay``     | Set the trigger delay in samples.                                             |
+| | ``ACQ:TRIG:DLY <count>``          | ``rp_AcqSetTriggerDelay``     | Set the trigger delay in samples.                                             |
 | | Example:                          |                               |                                                                               |
 | | ``ACQ:TRIG:DLY 2314``             |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:DLY?`` > ``<time>``    | ``rp_AcqGetTriggerDelay``     | Get the trigger delay in samples.                                             |
+| | ``ACQ:TRIG:DLY?`` > ``<count>``   | ``rp_AcqGetTriggerDelay``     | Get the trigger delay in samples.                                             |
 | | Example:                          |                               |                                                                               |
 | | ``ACQ:TRIG:DLY?`` > ``2314``      |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
