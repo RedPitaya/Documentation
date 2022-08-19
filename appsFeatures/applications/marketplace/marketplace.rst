@@ -10,7 +10,8 @@ More Red Pitaya applications can be obtained from the Red Pitaya marketplace tha
 
 .. toctree::
    :maxdepth: 2
-
+   
+   daq_server.rst
    sdr.rst
    vna.rst
    PyRPL.rst

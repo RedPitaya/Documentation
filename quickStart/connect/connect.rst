@@ -71,10 +71,11 @@ This step has been eliminated with the NEW OS 0.97 (and newer) and the only step
       ``xxxxxx`` are the last 6 chracters from the MAC address (on the Ethernet connector)
 
 .. warning::
-      **If you experience some problems when using the Direct Ethernet Connection described above, try to *disable the WiFi* connection on *your PC* (if it has been enabled) and *reset the Red Pitaya* board (power off/on). If the problem still persists, you can try the STATIC IP configuration described below. **
+      If you experience some problems when using the Direct Ethernet Connection described above, try to **disable the WiFi** connection on **your PC** (if it has been enabled) and **reset the Red Pitaya** board (power off/on). If the problem still persists, you can try the STATIC IP configuration described below.
 
-
-**Static IP configuration**
+-----------------------
+Static IP configuration
+-----------------------
 
 This type of connection requires additional settings on your PC and Red Pitaya board. 
 
@@ -157,7 +158,7 @@ Steps on how to connect your Red Pitaya board over a WiFi network are described 
 #. Start your Red Pitaya web user interface (Use the connection described in |LAN connection|)
 
 .. |LAN connection| raw::html
-    <a href="[insert link]" target="_blank">Local Area Network (LAN) connection</a>
+    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/connect/connect.html#local-area-network-lan" target="_blank">Local Area Network (LAN) connection</a>
 
 #. Open Network Manager application
 #. Insert the WiFi dongle into the USB plug on the Red Pitaya board.
@@ -217,6 +218,6 @@ Follow the steps below to enable the access point and connect to it.
    
 .. note::
     
-   The IP address in Access Point mode is always the same: 192.168.128.1
+   The IP address in Access Point mode is always the same: ``192.168.128.1``
 
 .. figure:: connect-9.png
