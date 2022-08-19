@@ -97,16 +97,17 @@ Code - MATLAB®
         end
     end
     
-    % wait for fill adc buffer
-    while 1
-        fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-
-        if strcmp('1',fill_state(1:1))
-
-            break;
-
-        end
-    end 
+    % % FUTURE BETA
+    % % wait for fill adc buffer
+    % while 1
+    %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+    %     
+    %     if strcmp('1', fill_state(1:1))
+    % 
+    %         break;
+    % 
+    %     end
+    % end
     
     % Read data from buffer 
     signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
@@ -152,10 +153,11 @@ Code - Python
         if rp_s.rx_txt() == 'TD':
             break
     
-    while 1:
-        rp_s.tx_txt('ACQ:TRIG:FILL?')
-        if rp_s.rx_txt() == '1':
-            break
+    ## FUTURE BETA
+    # while 1:
+    #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+    #     if rp_s.rx_txt() == '1':
+    #         break
 
     rp_s.tx_txt('ACQ:SOUR1:DATA?')
     buff_string = rp_s.rx_txt()
