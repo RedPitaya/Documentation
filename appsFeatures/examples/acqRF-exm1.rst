@@ -104,16 +104,17 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
                 
-            % wait for fill adc buffer
-            while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-                
-                if strcmp('1', fill_state(1:1))
-            
-                    break;
-            
-                end
-            end 
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
                 
             % Read data from buffer 
             signal_str = writeread(RP,'ACQ:SOUR1:DATA?');
@@ -198,16 +199,18 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
             
-            % wait for fill adc buffer
-            while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-                
-                if strcmp('1', fill_state(1:1))
             
-                    break;
-            
-                end
-            end  
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
             
             % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -296,16 +299,17 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
             
-            % wait for fill adc buffer
-            while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-                
-                if strcmp('1', fill_state(1:1))
-            
-                    break;
-            
-                end
-            end
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
             
             % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -390,16 +394,17 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
 
-            % wait for fill adc buffer
-            while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-
-                if strcmp('1',fill_state(1:1))
-
-                    break;
-
-                end
-            end 
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
 
             % Read data from buffer 
             signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
@@ -499,11 +504,13 @@ Code - C
                             break;
                             }
                     }
-
+                    
+                    /* FUTURE BETA
                     bool fillState = false;
                     while(!fillState){
                         rp_AcqGetBufferFillState(&fillState);
                     }
+                    */
 
                     rp_AcqGetOldestDataV(RP_CH_1, &buff_size, buff);
                     int i;
@@ -562,11 +569,14 @@ Code - C
                             break;
                             }
                     }
-
+                    
+                    /* FUTURE BETA
                     bool fillState = false;
                     while(!fillState){
                         rp_AcqGetBufferFillState(&fillState);
                     }
+                    */
+
 
                     uint32_t pos = 0;        
                     rp_AcqGetWritePointerAtTrig(&pos);
@@ -613,11 +623,12 @@ Code - Python
                 rp_s.tx_txt('ACQ:TRIG:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
-
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_string = rp_s.rx_txt()
@@ -653,10 +664,12 @@ Code - Python
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_byte = rp_s.rx_arb()
@@ -691,10 +704,12 @@ Code - Python
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_byte = rp_s.rx_arb()
@@ -732,10 +747,12 @@ Code - Python
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_string = rp_s.rx_txt()
