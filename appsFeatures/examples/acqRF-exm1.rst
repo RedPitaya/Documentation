@@ -431,7 +431,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             ylabel('Voltage / V')
             xlabel('samples')
 
-            close(RP);
+            clear RP;
 
 Code - C
 ********
