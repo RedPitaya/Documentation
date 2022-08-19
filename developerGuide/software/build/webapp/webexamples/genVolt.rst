@@ -58,7 +58,7 @@ In **app.js** we added three new functions: **APP.setFrequency(), APP.setAmplitu
     };
     
     
-Comtroller
+Controller
 **********
 
 In **main.cpp** (controller) we added three 3 parameters:
