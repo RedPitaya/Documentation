@@ -171,7 +171,7 @@ These last two steps must be executed each time you start Scilab. To install, yo
 #. Replace the IP in the example with the IP of your Red Pitaya board.
 #. Press RUN to run the code.
 
-Different code examples can be found on the :ref:`Examples page <examples>`.
+Different code examples can be found |examples|.
 
 .. |Scilab download page| raw:: html
 
@@ -184,8 +184,6 @@ Different code examples can be found on the :ref:`Examples page <examples>`.
 .. note::
 
    Communicating with a SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
-
-More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <examples>`.
 
 *****************************
 Starting SCPI server manually
