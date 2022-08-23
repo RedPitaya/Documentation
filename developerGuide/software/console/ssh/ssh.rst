@@ -38,6 +38,7 @@ At this time, the ssh-key will be added to the registry in your computer.
 Command prompt pops-up after login is successful.
 
 When connected to RP via SSH (PuTTy) you get the following command prompt screen:
+
 .. figure:: 445px-Win_putty_logged.png
    :align: center
 
