@@ -14,7 +14,7 @@ Unlocking apps or extending the licence
     #. Unlock an application by clicking the **UNLOCK APP** button, entering the unlock key into the pop-up window, and then clicking OK.
     #. Connect to your Red Pitaya and start the app.
 
-.. |store| raw::html
+.. |store| raw:: html
     <a href="https://redpitaya.com/my-account/" target="_blank">here</a>
 
 
@@ -24,6 +24,6 @@ Unlocking apps or extending the licence
     Make sure you are using the latest OS version!
     It can be found |prepareSD|.
     
-.. |prepareSD| raw::html
+.. |prepareSD| raw:: html
     <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#prepare-sd-card" target="_blank">here</a>
 
