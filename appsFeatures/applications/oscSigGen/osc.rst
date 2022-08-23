@@ -172,15 +172,15 @@ The available settings are the following:
 
 .. note::
 
-   On the board STEMlab 125-14 4-Input this outputs are missing
+   STEMlab 125-14 4-Input does not have any outputs.
 
 =======
 Trigger
 =======
 
-.. figure:: Slika_07_OSC.png
-    :width: 40%
-    :align: right
+   .. figure:: Slika_07_OSC.png
+      :width: 40%
+      :align: right
 
 
 The trigger is used to enable the scope to display changing waveforms on the screen of the scope in a steady fashion. The parameter Source defines the trigger source used for this. The trigger source can be input channel 1 (IN1), input channel 2 (IN2), or an external source. The available settings are the following:
@@ -278,7 +278,7 @@ Oscilloscope
 .. tabularcolumns:: |p{70mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|
 
 +-----------------------------+---------------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+
-|                             | STEMlab 125-10                  | STEMlab 125-14                  | STEMlab 125-14 4Ch Z7020 LN     | SDRlab 122-16                | SIGNALlab 250-12             |
+|                             | STEMlab 125-10                  | STEMlab 125-14                  | STEMlab 125-14 4-Input          | SDRlab 122-16                | SIGNALlab 250-12             |
 +-----------------------------+---------------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+
 | Input channels              | 2                               | 2                               | 4                               | 2                            | 2                            |
 +-----------------------------+---------------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+
@@ -306,7 +306,7 @@ Signal generator
 .. tabularcolumns:: |p{70mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|
 
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
-|                  | STEMlab 125-10       | STEMlab 125-14       | STEMlab 125-14 4Ch Z7020 LN   | SDRlab 122-16        | SIGNALlab 250-12                        |
+|                  | STEMlab 125-10       | STEMlab 125-14       | STEMlab 125-14 4-Input        | SDRlab 122-16        | SIGNALlab 250-12                        |
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
 | Output channels  | 2                    | 2                    | N/A                           | 2                    | 2                                       |
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
