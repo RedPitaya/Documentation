@@ -282,6 +282,11 @@ Parameter options:
 | | Example:                          |                               | | This gain refers to jumper settings on Red Pitaya fast analog inputs.       |
 | | ``ACQ:SOUR1:GAIN LV``             |                               |                                                                               |
 +-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
+| | ``ACQ:SOUR<n>:GAIN?`` > ``<gain>``| ``rp_AcqGetGain``             | | Get the gain setting.                                                       |
+| |                                   |                               | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |
+| | Example:                          |                               |                                                                               |
+| | ``ACQ:SOUR1:GAIN?`` > ``HV``      |                               |                                                                               |
++-------------------------------------+-------------------------------+-------------------------------------------------------------------------------+
 | | ``ACQ:SOUR<n>:COUP <mode>``       | ``rp_AcqSetAC_DC``            | Sets the AC / DC modes of input.                                              |
 | | Example:                          |                               | (Only SIGNALlab 250-12)                                                       |
 | | ``ACQ:SOUR1:COUP AC``             |                               |                                                                               |
