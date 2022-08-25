@@ -176,14 +176,6 @@ Parameter options:
 Acquire
 =======
 
-Parameter options:
-
-* ``<n> = {1,2}`` (set channel IN1 or IN2)
-
-.. note::
-
-   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
-
 -------
 Control
 -------
@@ -235,6 +227,7 @@ Trigger
 
 Parameter options:
 
+* ``<n> = {1,2}`` (set channel IN1 or IN2)
 * ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
 * ``<status> = {WAIT, TD}``
 * ``<time> = {value in ns}``
@@ -243,6 +236,10 @@ Parameter options:
 * ``<level> = {value in V}``
 * ``<mode> = {AC,DC}``
 
+.. note::
+
+   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
+   
 .. note::
 
    For STEMlab 125-14 4-Input ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, CH3_PE, CH3_NE, CH4_PE, CH4_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
@@ -338,9 +335,16 @@ Parameter options:
 Data read
 =========
 
-
+* ``<n> = {1,2}`` (set channel IN1 or IN2)
 * ``<units> = {RAW, VOLTS}``
 * ``<format> = {BIN, ASCII}`` Default ``ASCII``
+* ``<start_pos> = {0,1,...,16384}``
+* ``<stop_pos>  = {0,1,...,16384}``
+* ``<m>  = {0,1,...,16384}``
+
+.. note::
+
+   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
@@ -357,7 +361,7 @@ Data read
 +-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 | | ``ACQ:SOUR<n>:DATA:STA:END?`` > | | ``rp_AcqGetDataPosRaw``    | | Read samples from start to stop position.                                            |
 | | ``<start_pos>,<end_pos>``       | | ``rp_AcqGetDataPosV``      | | ``<start_pos> = {0,1,...,16384}``                                                    |
-| | Example:                        |                              | | ``<stop_pos>  = {0,1,...16384}``                                                     |
+| | Example:                        |                              | | ``<stop_pos>  = {0,1,...,16384}``                                                    |
 | | ``ACQ:SOUR1:GET:DATA 10,13`` >  |                              |                                                                                        |
 | | ``{123,231,-231}``              |                              |                                                                                        |
 +-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
