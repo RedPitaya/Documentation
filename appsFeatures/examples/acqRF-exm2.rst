@@ -1,4 +1,4 @@
-Signal acquisition on external trigger
+Triggering on external trigger
 ######################################
 
 .. http://blog.redpitaya.com/examples-new/on-given-external-trigger-acquire-signal-on-fast-analog-input/
@@ -55,8 +55,7 @@ Code - MATLAB®
     % acquired signal frequency
 
     writeline(RP,'ACQ:RST');
-    writeline(RP,'ACQ:DEC 1');
-    writeline(RP,'ACQ:TRIG:LEV 0');
+    writeline(RP,'ACQ:DEC 4');
 
 
     % Set trigger delay to 0 samples
@@ -143,8 +142,7 @@ Code - Python
 
     rp_s = scpi.scpi(sys.argv[1])
 
-    rp_s.tx_txt('ACQ:DEC 8')
-    rp_s.tx_txt('ACQ:TRIG:LEVEL 100')
+    rp_s.tx_txt('ACQ:DEC 4')
     rp_s.tx_txt('ACQ:START')
     rp_s.tx_txt('ACQ:TRIG EXT_PE')
 
