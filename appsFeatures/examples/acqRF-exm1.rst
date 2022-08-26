@@ -612,7 +612,9 @@ Code - Python
             import matplotlib.pyplot as plot
 
             rp_s = scpi.scpi(sys.argv[1])
-
+            
+            rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
@@ -653,7 +655,9 @@ Code - Python
             import struct
 
             rp_s = scpi.scpi(sys.argv[1])
-
+            
+            rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
@@ -694,6 +698,8 @@ Code - Python
             import struct
 
             rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
 
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
             rp_s.tx_txt('ACQ:DATA:UNITS RAW')
@@ -736,6 +742,7 @@ Code - Python
             rp_s = scpi.scpi(sys.argv[1])
 
             rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
 
@@ -812,6 +819,9 @@ for Scilab sockets. How to set socket is described on Blink example.
     
     // Set decimation value (sampling rate) in respect to you 
     // acquired signal frequency
+    
+    
+    SOCKET_write(tcpipObj,'ACQ:RST');
     
     SOCKET_write(tcpipObj,'ACQ:DEC 8');
     
