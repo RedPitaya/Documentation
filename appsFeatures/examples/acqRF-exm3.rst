@@ -141,6 +141,8 @@ Code - Python
     import matplotlib.pyplot as plot
 
     rp_s = scpi.scpi(sys.argv[1])
+    
+    rp_s.tx_txt('ACQ:RST')
 
     rp_s.tx_txt('ACQ:DEC 4')
     rp_s.tx_txt('ACQ:START')
