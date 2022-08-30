@@ -353,50 +353,54 @@ Data read
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
 
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| SCPI                              | API                          | DESCRIPTION                                                                            |
-+===================================+==============================+========================================================================================+
-| | ``ACQ:DATA:UNITS <units>``      | ``rp_AcqScpiDataUnits``      | Select units in which the acquired data will be returned.                              |
-| | Example:                        |                              |                                                                                        |
-| | ``ACQ:GET:DATA:UNITS RAW``      |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:DATA:FORMAT <format>``    | ``rp_AcqScpiDataFormat``     | Select the format in which the acquired data will be returned.                         |
-| | Example:                        |                              |                                                                                        |
-| | ``ACQ:GET:DATA:FORMAT ASCII``   |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:SOUR<n>:DATA:STA:END?`` > | | ``rp_AcqGetDataPosRaw``    | | Read samples from start to stop position.                                            |
-| | ``<start_pos>,<end_pos>``       | | ``rp_AcqGetDataPosV``      | | ``<start_pos> = {0,1,...,16384}``                                                    |
-| | Example:                        |                              | | ``<stop_pos>  = {0,1,...,16384}``                                                    |
-| | ``ACQ:SOUR1:GET:DATA 10,13`` >  |                              |                                                                                        |
-| | ``{123,231,-231}``              |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:SOUR<n>:DATA:STA:N?``     | | ``rp_AcqGetDataRaw``       | | Read ``m`` samples from the start position onwards.                                  |
-| | ``<start_pos>,<m>`` > ``...``   | | ``rp_AcqGetDataV``         |                                                                                        |
-| | Example:                        |                              |                                                                                        |
-| | ``ACQ:SOUR1:DATA? 10,3`` >      |                              |                                                                                        |
-| | ``{1.2,3.2,-1.2}``              |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:SOUR<n>:DATA?``           | | ``rp_AcqGetOldestDataRaw`` | | Read the full buffer.                                                                |
-| | Example:                        | | ``rp_AcqGetOldestDataV``   | | Starting from the oldest sample in the buffer (first sample after trigger delay).    |
-| | ``ACQ:SOUR2:DATA?`` >           |                              | | The trigger delay is set to zero by default (in samples or in seconds).              |
-| | ``{1.2,3.2,...,-1.2}``          |                              | | If the trigger delay is set to zero, it will read the full buffer size starting      |
-| |                                 |                              | | from the trigger.                                                                    |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:SOUR<n>:DATA:OLD:N? <m>`` | | ``rp_AcqGetOldestDataRaw`` | | Read ``m`` samples after the trigger delay, starting from the oldest sample          |
-| | Example:                        | | ``rp_AcqGetOldestDataV``   | | in the buffer (first sample after trigger delay).                                    |
-| | ``ACQ:SOUR2:DATA:OLD? 3`` >     |                              | | The trigger delay is set to zero by default (in samples or in seconds).              |
-| | ``{1.2,3.2,-1.2}``              |                              | | If the trigger delay is set to zero, it will read m samples starting                 |
-| |                                 |                              | | from the trigger.                                                                    |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:SOUR<n>:DATA:LAT:N? <m>`` | | ``rp_AcqGetLatestDataRaw`` | | Read ``m`` samples before the trigger delay.                                         |
-| | Example:                        | | ``rp_AcqGetLatestDataV``   | | The trigger delay is set to zero by default (in samples or in seconds).              |
-| | ``ACQ:SOUR1:DATA:LAT? 3`` >     |                              | | If the trigger delay is set to zero, it will read m samples before the trigger.      |
-| | ``{1.2,3.2,-1.2}``              |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:BUF:SIZE?`` > ``<size>``  | ``rp_AcqGetBufSize``         |  Returns the buffer size.                                                              |
-| | Example:                        |                              |                                                                                        |
-| | ``ACQ:BUF:SIZE?`` > ``16384``   |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| SCPI                                   | API                          | DESCRIPTION                                                                            |
++========================================+==============================+========================================================================================+
+| | ``ACQ:DATA:UNITS <units>``           | ``rp_AcqScpiDataUnits``      | Select units in which the acquired data will be returned.                              |
+| | Example:                             |                              |                                                                                        |
+| | ``ACQ:DATA:UNITS RAW``               |                              |                                                                                        |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:DATA:UNITS?`` > ``<units>``    | ``rp_AcqGetScpiDataUnits``   | Get units in which the acquired data will be returned.                                 |
+| | Example:                             |                              |                                                                                        |
+| | ``ACQ:DATA:UNITS?`` > ``RAW``        |                              |                                                                                        |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:DATA:FORMAT <format>``         | ``rp_AcqScpiDataFormat``     | Select the format in which the acquired data will be returned.                         |
+| | Example:                             |                              |                                                                                        |
+| | ``ACQ:DATA:FORMAT ASCII``            |                              |                                                                                        |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:SOUR<n>:DATA:STA:END?`` >      | | ``rp_AcqGetDataPosRaw``    | | Read samples from start to stop position.                                            |
+| | ``<start_pos>,<end_pos>``            | | ``rp_AcqGetDataPosV``      | | ``<start_pos> = {0,1,...,16384}``                                                    |
+| | Example:                             |                              | | ``<stop_pos>  = {0,1,...,16384}``                                                    |
+| | ``ACQ:SOUR1:DATA:STA:END? 10,13`` >  |                              |                                                                                        |
+| | ``{123,231,-231}``                   |                              |                                                                                        |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:SOUR<n>:DATA:STA:N?``          | | ``rp_AcqGetDataRaw``       | | Read ``m`` samples from the start position onwards.                                  |
+| | ``<start_pos>,<m>`` > ``...``        | | ``rp_AcqGetDataV``         |                                                                                        |
+| | Example:                             |                              |                                                                                        |
+| | ``ACQ:SOUR1:DATA? 10,3`` >           |                              |                                                                                        |
+| | ``{1.2,3.2,-1.2}``                   |                              |                                                                                        |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:SOUR<n>:DATA?``                | | ``rp_AcqGetOldestDataRaw`` | | Read the full buffer.                                                                |
+| | Example:                             | | ``rp_AcqGetOldestDataV``   | | Starting from the oldest sample in the buffer (first sample after trigger delay).    |
+| | ``ACQ:SOUR2:DATA?`` >                |                              | | The trigger delay is set to zero by default (in samples or in seconds).              |
+| | ``{1.2,3.2,...,-1.2}``               |                              | | If the trigger delay is set to zero, it will read the full buffer size starting      |
+| |                                      |                              | | from the trigger.                                                                    |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:SOUR<n>:DATA:OLD:N? <m>``      | | ``rp_AcqGetOldestDataRaw`` | | Read ``m`` samples after the trigger delay, starting from the oldest sample          |
+| | Example:                             | | ``rp_AcqGetOldestDataV``   | | in the buffer (first sample after trigger delay).                                    |
+| | ``ACQ:SOUR2:DATA:OLD:N? 3`` >        |                              | | The trigger delay is set to zero by default (in samples or in seconds).              |
+| | ``{1.2,3.2,-1.2}``                   |                              | | If the trigger delay is set to zero, it will read m samples starting                 |
+| |                                      |                              | | from the trigger.                                                                    |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:SOUR<n>:DATA:LAT:N? <m>``      | | ``rp_AcqGetLatestDataRaw`` | | Read ``m`` samples before the trigger delay.                                         |
+| | Example:                             | | ``rp_AcqGetLatestDataV``   | | The trigger delay is set to zero by default (in samples or in seconds).              |
+| | ``ACQ:SOUR1:DATA:LAT:N? 3`` >        |                              | | If the trigger delay is set to zero, it will read m samples before the trigger.      |
+| | ``{1.2,3.2,-1.2}``                   |                              |                                                                                        |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``ACQ:BUF:SIZE?`` > ``<size>``       | ``rp_AcqGetBufSize``         |  Returns the buffer size.                                                              |
+| | Example:                             |                              |                                                                                        |
+| | ``ACQ:BUF:SIZE?`` > ``16384``        |                              |                                                                                        |
++----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 
 
 ====
@@ -417,72 +421,72 @@ Parameter options:
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
 
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| SCPI                              | API                          | DESCRIPTION                                                                            |
-+===================================+==============================+========================================================================================+
-| | ``UART:INIT``                   | ``rp_UartInit``              | Initialises the API for working with UART.                                             |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:INIT``                   |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:RELEASE``                | ``rp_UartRelease``           | Releases all used resources.                                                           |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:RELEASE``                |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:SETUP``                  | ``rp_UartSetSettings``       | Applies specified settings to UART.                                                    |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:SETUP``                  |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:BITS <bits>``            | ``rp_UartSetBits``           | Sets the character size in bits.                                                       |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:BITS CS7``               |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:BITS? > <bits>``         | ``rp_UartGetBits``           | Gets the character size in bits.                                                       |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:BITS? > CS7``            |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:SPEED <speed>``          | ``rp_UartSetSpeed``          | Sets the speed of the UART connection.                                                 |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:SPEED 115200``           |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:SPEED? > <speed>``       | ``rp_UartGetSpeed``          | Gets the speed of the UART connection.                                                 |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:SPEED? > 115200``        |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:STOPB <stop>``           | ``rp_UartSetStopBits``       | Sets the length of the stop bit.                                                       |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:STOPB STOP2``            |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:STOPB? > <stop>``        | ``rp_UartGetStopBits``       | Gets the length of the stop bit.                                                       |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:STOPB? > STOP2``         |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:PARITY <parity>``        | ``rp_UartSetParityMode``     | | Sets parity check mode.                                                              |
-| | Example:                        |                              | | - NONE  = Disable parity check                                                       |
-| | ``UART:PARITY ODD``             |                              | | - EVEN  = Set even mode for parity                                                   |
-|                                   |                              | | - ODD   = Set odd mode for parity                                                    |
-|                                   |                              | | - MARK  = Set Always 1                                                               |
-|                                   |                              | | - SPACE = Set Always 0                                                               |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:PARITY? > <parity>``     | ``rp_UartGetParityMode``     | Gets parity check mode.                                                                |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:PARITY? > ODD``          |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:TIMEOUT <timeout>``      | ``rp_UartSetTimeout``        | | Sets the timeout for reading from UART. 0 - Disable timeout. 1 = 1/10 sec.           |
-| | Example:                        |                              | | Example: 10 - 1 sec. Max timout: 25.5 sec                                            |
-| | ``UART:TIMEOUT 10``             |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:TIMEOUT? > <timeout>``   | ``rp_UartGetTimeout``        | Gets the timeout.                                                                      |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:TIMEOUT? > 10``          |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:WRITE<n> <data>``        | ``rp_UartWrite``             | Writes data to UART. <n> - the length of data sent to UART.                            |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:WRITE5 1,2,3,4,5``       |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:READ<n>? > <data>``      | ``rp_UartRead``              | Reads data from UART. <n> - the length of data retrieved from UART.                    |
-| | Example:                        |                              |                                                                                        |
-| | ``UART:READ5? > {1,2,3,4,5}``   |                              |                                                                                        |
-+-----------------------------------+------------------------------+----------------------------------------------------------------------------------------+
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| SCPI                                | API                          | DESCRIPTION                                                                            |
++=====================================+==============================+========================================================================================+
+| | ``UART:INIT``                     | ``rp_UartInit``              | Initialises the API for working with UART.                                             |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:INIT``                     |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:RELEASE``                  | ``rp_UartRelease``           | Releases all used resources.                                                           |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:RELEASE``                  |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:SETUP``                    | ``rp_UartSetSettings``       | Applies specified settings to UART.                                                    |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:SETUP``                    |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:BITS <bits>``              | ``rp_UartSetBits``           | Sets the character size in bits.                                                       |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:BITS CS7``                 |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:BITS?`` > ``<bits>``       | ``rp_UartGetBits``           | Gets the character size in bits.                                                       |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:BITS?`` > ``CS7``          |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:SPEED <speed>``            | ``rp_UartSetSpeed``          | Sets the speed of the UART connection.                                                 |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:SPEED 115200``             |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:SPEED?`` > ``<speed>``     | ``rp_UartGetSpeed``          | Gets the speed of the UART connection.                                                 |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:SPEED?`` > ``115200``      |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:STOPB <stop>``             | ``rp_UartSetStopBits``       | Sets the length of the stop bit.                                                       |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:STOPB STOP2``              |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:STOPB?`` > ``<stop>``      | ``rp_UartGetStopBits``       | Gets the length of the stop bit.                                                       |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:STOPB?`` > ``STOP2``       |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:PARITY <parity>``          | ``rp_UartSetParityMode``     | | Sets parity check mode.                                                              |
+| | Example:                          |                              | | - NONE  = Disable parity check                                                       |
+| | ``UART:PARITY ODD``               |                              | | - EVEN  = Set even mode for parity                                                   |
+|                                     |                              | | - ODD   = Set odd mode for parity                                                    |
+|                                     |                              | | - MARK  = Set Always 1                                                               |
+|                                     |                              | | - SPACE = Set Always 0                                                               |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:PARITY?`` > ``<parity>``   | ``rp_UartGetParityMode``     | Gets parity check mode.                                                                |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:PARITY?`` > ``ODD``        |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:TIMEOUT <timeout>``        | ``rp_UartSetTimeout``        | | Sets the timeout for reading from UART. 0 - Disable timeout. 1 = 1/10 sec.           |
+| | Example:                          |                              | | Example: 10 - 1 sec. Max timout: 25.5 sec                                            |
+| | ``UART:TIMEOUT 10``               |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:TIMEOUT?`` > ``<timeout>`` | ``rp_UartGetTimeout``        | Gets the timeout.                                                                      |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:TIMEOUT?`` > ``10``        |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:WRITE<n> <data>``          | ``rp_UartWrite``             | Writes data to UART. <n> - the length of data sent to UART.                            |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:WRITE5 1,2,3,4,5``         |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
+| | ``UART:READ<n>?`` > ``<data>``    | ``rp_UartRead``              | Reads data from UART. <n> - the length of data retrieved from UART.                    |
+| | Example:                          |                              |                                                                                        |
+| | ``UART:READ5?`` > ``{1,2,3,4,5}`` |                              |                                                                                        |
++-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 
 
 ====
@@ -502,105 +506,105 @@ Parameter options:
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
 
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| SCPI                                | API                            | DESCRIPTION                                                                        |
-+=====================================+================================+====================================================================================+
-| | ``SPI:INIT``                      | ``rp_SPI_Init``                | Initializes the API for working with SPI.                                          |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:INIT``                      |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:INIT:DEV <path>``           | ``rp_SPI_InitDev``             | | Initializes the API for working with SPI. <path> - Path to the SPI device.       |
-| | Example:                          |                                | | On some boards, it may be different from the standard: /dev/spidev1.0            |
-| | ``SPI:INIT:DEV "/dev/spidev1.0"`` |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:RELEASE``                   | ``rp_SPI_Release``             | Releases all used resources.                                                       |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:RELEASE``                   |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:DEF``              | ``rp_SPI_SetDefault``          | Sets the settings for SPI to default values.                                       |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:DEF``                   |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:SET``              | ``rp_SPI_SetSettings``         | Sets the specified settings for SPI.                                               |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:SET``                   |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:GET``              | ``rp_SPI_GetSettings``         | Gets the specified SPI settings.                                                   |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:GET``                   |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:MODE <mode>``      | ``rp_SPI_SetMode``             | | Sets the mode for SPI.                                                           |
-| | Example:                          |                                | | - LISL = Low idle level, Sample on leading edge                                  |
-| | ``SPI:SET:MODE LIST``             |                                | | - LIST = Low idle level, Sample on trailing edge                                 |
-| |                                   |                                | | - HISL = High idle level, Sample on leading edge                                 |
-| |                                   |                                | | - HIST = High idle level, Sample on trailing edge                                |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:MODE? > <mode>``   | ``rp_SPI_GetMode``             | Gets the specified mode for SPI.                                                   |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:MODE? > LIST``          |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:SPEED <speed>``    | ``rp_SPI_SetSpeed``            | Sets the speed of the SPI connection.                                              |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:SPEED 1000000``         |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SET:SPEED? > <speed>``      | ``rp_SPI_GetSpeed``            | Gets the speed of the SPI connection.                                              |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:SPEED? > 1000000``      |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:WORD <bits>``      | ``rp_SPI_SetWord``             | Specifies the length of the word in bits. Must be greater than or equal to 7.      |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:WORD 8``                |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:WORD? > <bits>``   | ``rp_SPI_GetWord``             | Returns the length of a word.                                                      |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:SET:WORD? > 8``             |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG:CREATE <n>``            | ``rp_SPI_CreateMessage``       | | Creates a message queue for SPI. Once created, they need to be initialized.      |
-| | Example:                          |                                | | <n> - The number of messages in the queue.                                       |
-| | ``SPI:MSG:CREATE 1``              |                                | | The message queue can operate within a single CS state switch.                   |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG:DEL``                   | ``rp_SPI_DestoryMessage``      | Deletes all messages and data buffers allocated for them.                          |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:MSG:DEL``                   |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG:SIZE? > <n>``           | ``rp_SPI_GetMessageLen``       | Returns the length of the message queue.                                           |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:MSG:SIZE? > 1``             |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m> <data>``       | | ``rp_SPI_SetTX``             | | Sets data for the write buffer for the specified message.                        |
-| | ``SPI:MSG<n>:TX<m>:CS <data>``    | | ``rp_SPI_SetTXCS``           | | CS - Toggles CS state after sending/receiving this message.                      |
-| | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
-| | ``SPI:MSG0:TX4 1,2,3,4``          |                                | | <m> - TX buffer length.                                                          |
-| | ``SPI:MSG1:TX3:CS 2,3,4``         |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m>:RX <data>``    | | ``rp_SPI_SetTXRX``           | | Sets data for the read and write buffers for the specified message.              |
-| | ``SPI:MSG<n>:TX<m>:RX:CS <data>`` | | ``rp_SPI_SetTXRXCS``         | | CS - Toggles CS state after sending/receiving this message.                      |
-| | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
-| | ``SPI:MSG0:TX4:RX 1,2,3,4``       |                                | | <m> - TX buffer length.                                                          |
-| | ``SPI:MSG1:TX3:RX:CS 2,3,4``      |                                | | The read buffer is also created with the same length and initialized with zeros. |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX<m>``              | | ``rp_SPI_SetRX``             | | Initializes a buffer for reading the specified message.                          |
-| | ``SPI:MSG<n>:RX<m>:CS``           | | ``rp_SPI_SetRXCS``           | | CS - Toggles CS state after receiving message.                                   |
-| | Example:                          |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
-| | ``SPI:MSG0:RX4``                  |                                | | <m> - RX buffer length.                                                          |
-| | ``SPI:MSG1:RX5:CS``               |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX? > <data>``       | ``rp_SPI_GetRXBuffer``         | Returns a read buffer for the specified message.                                   |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:MSG1:RX? > {2,4,5}``        |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX? > <data>``       | ``rp_SPI_GetTXBuffer``         | Returns the write buffer for the specified message.                                |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:MSG1:TX? > {2,4,5}``        |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:CS? > ON|OFF``       | ``rp_SPI_GetCSChangeState``    | Returns the setting for CS mode for the specified message.                         |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:MSG1:CS? > ON``             |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:PASS``                      | ``rp_SPI_Pass``                | Sends the prepared messages to the SPI device.                                     |
-| | Example:                          |                                |                                                                                    |
-| | ``SPI:PASS``                      |                                |                                                                                    |
-+-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| SCPI                                  | API                            | DESCRIPTION                                                                        |
++=======================================+================================+====================================================================================+
+| | ``SPI:INIT``                        | ``rp_SPI_Init``                | Initializes the API for working with SPI.                                          |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:INIT``                        |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:INIT:DEV <path>``             | ``rp_SPI_InitDev``             | | Initializes the API for working with SPI. <path> - Path to the SPI device.       |
+| | Example:                            |                                | | On some boards, it may be different from the standard: /dev/spidev1.0            |
+| | ``SPI:INIT:DEV "/dev/spidev1.0"``   |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:RELEASE``                     | ``rp_SPI_Release``             | Releases all used resources.                                                       |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:RELEASE``                     |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:DEF``                | ``rp_SPI_SetDefault``          | Sets the settings for SPI to default values.                                       |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:DEF``                     |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:SET``                | ``rp_SPI_SetSettings``         | Sets the specified settings for SPI.                                               |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:SET``                     |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:GET``                | ``rp_SPI_GetSettings``         | Gets the specified SPI settings.                                                   |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:GET``                     |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:MODE <mode>``        | ``rp_SPI_SetMode``             | | Sets the mode for SPI.                                                           |
+| | Example:                            |                                | | - LISL = Low idle level, Sample on leading edge                                  |
+| | ``SPI:SET:MODE LIST``               |                                | | - LIST = Low idle level, Sample on trailing edge                                 |
+| |                                     |                                | | - HISL = High idle level, Sample on leading edge                                 |
+| |                                     |                                | | - HIST = High idle level, Sample on trailing edge                                |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:MODE?`` > ``<mode>`` | ``rp_SPI_GetMode``             | Gets the specified mode for SPI.                                                   |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:MODE?`` > ``LIST``        |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:SPEED <speed>``      | ``rp_SPI_SetSpeed``            | Sets the speed of the SPI connection.                                              |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:SPEED 1000000``           |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SET:SPEED?`` > ``<speed>``    | ``rp_SPI_GetSpeed``            | Gets the speed of the SPI connection.                                              |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:SPEED?`` > ``1000000``    |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:WORD <bits>``        | ``rp_SPI_SetWord``             | Specifies the length of the word in bits. Must be greater than or equal to 7.      |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:WORD 8``                  |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:WORD?`` > ``<bits>`` | ``rp_SPI_GetWord``             | Returns the length of a word.                                                      |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:SET:WORD?`` > ``8``           |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG:CREATE <n>``              | ``rp_SPI_CreateMessage``       | | Creates a message queue for SPI. Once created, they need to be initialized.      |
+| | Example:                            |                                | | <n> - The number of messages in the queue.                                       |
+| | ``SPI:MSG:CREATE 1``                |                                | | The message queue can operate within a single CS state switch.                   |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG:DEL``                     | ``rp_SPI_DestoryMessage``      | Deletes all messages and data buffers allocated for them.                          |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:MSG:DEL``                     |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG:SIZE?`` > ``<n>``         | ``rp_SPI_GetMessageLen``       | Returns the length of the message queue.                                           |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:MSG:SIZE?`` > ``1``           |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:TX<m> <data>``         | | ``rp_SPI_SetTX``             | | Sets data for the write buffer for the specified message.                        |
+| | ``SPI:MSG<n>:TX<m>:CS <data>``      | | ``rp_SPI_SetTXCS``           | | CS - Toggles CS state after sending/receiving this message.                      |
+| | Example:                            |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
+| | ``SPI:MSG0:TX4 1,2,3,4``            |                                | | <m> - TX buffer length.                                                          |
+| | ``SPI:MSG1:TX3:CS 2,3,4``           |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:TX<m>:RX <data>``      | | ``rp_SPI_SetTXRX``           | | Sets data for the read and write buffers for the specified message.              |
+| | ``SPI:MSG<n>:TX<m>:RX:CS <data>``   | | ``rp_SPI_SetTXRXCS``         | | CS - Toggles CS state after sending/receiving this message.                      |
+| | Example:                            |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
+| | ``SPI:MSG0:TX4:RX 1,2,3,4``         |                                | | <m> - TX buffer length.                                                          |
+| | ``SPI:MSG1:TX3:RX:CS 2,3,4``        |                                | | The read buffer is also created with the same length and initialized with zeros. |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:RX<m>``                | | ``rp_SPI_SetRX``             | | Initializes a buffer for reading the specified message.                          |
+| | ``SPI:MSG<n>:RX<m>:CS``             | | ``rp_SPI_SetRXCS``           | | CS - Toggles CS state after receiving message.                                   |
+| | Example:                            |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
+| | ``SPI:MSG0:RX4``                    |                                | | <m> - RX buffer length.                                                          |
+| | ``SPI:MSG1:RX5:CS``                 |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:RX?`` > ``<data>``     | ``rp_SPI_GetRXBuffer``         | Returns a read buffer for the specified message.                                   |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:MSG1:RX?`` > ``{2,4,5}``      |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:TX?`` > ``<data>``     | ``rp_SPI_GetTXBuffer``         | Returns the write buffer for the specified message.                                |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:MSG1:TX?`` > ``{2,4,5}``      |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:CS? > ON|OFF``         | ``rp_SPI_GetCSChangeState``    | Returns the setting for CS mode for the specified message.                         |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:MSG1:CS?`` > ``ON``           |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:PASS``                        | ``rp_SPI_Pass``                | Sends the prepared messages to the SPI device.                                     |
+| | Example:                            |                                |                                                                                    |
+| | ``SPI:PASS``                        |                                |                                                                                    |
++---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 
 
 ===
