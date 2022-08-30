@@ -747,8 +747,8 @@ Code - Python
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
 
             rp_s.tx_txt('ACQ:DEC 1')
-            rp_s.tx_txt('ACQ:TRIG:LEV 0.5');
-            rp_s.tx_txt('ACQ:TRIG:DLY 0');
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
+            rp_s.tx_txt('ACQ:TRIG:DLY 0')
 
             rp_s.tx_txt('ACQ:START')
             rp_s.tx_txt('ACQ:TRIG CH1_PE')
