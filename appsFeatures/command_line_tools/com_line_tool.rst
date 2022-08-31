@@ -6,9 +6,8 @@ Command-line tools
    
     Command line utilities must not be used in parallel with a WEB application.
    
-    For correct operation of the acquire tool, it is mandatory that the correct FPGA image is loaded. Please note,
-    the some application can change the FPGA image loaded.
-    To load the FPGA image open a terminal on the Red Pitaya and execute the following command:
+    For correct operation of the acquire tool, it is mandatory that the correct FPGA image is loaded. Please note that some applications can change the FPGA image loaded.
+    To load the FPGA image, open a terminal on the Red Pitaya and execute the following command:
     
     .. code-block:: shell-session
 
@@ -23,8 +22,12 @@ Command-line tools
 Signal generator utility
 ========================
 
-The Red Pitaya signal generator can be controlled through the
-`generate <https://github.com/RedPitaya/RedPitaya/tree/master/Test/generate>`_ command line utility.
+The Red Pitaya signal generator can be controlled through the |generate| command line utility.
+
+
+.. |generate| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Test/generate" target="_blank">generate</a>
 
 
 .. tabs::
@@ -61,8 +64,7 @@ The Red Pitaya signal generator can be controlled through the
             calib           Disable calibration [-c]. By default calibration enabled
 
 
-Performance of signal generator differs from one Red Pitaya model to another, for more
-information please refer to :ref:`red pitaya boards comparison <rp-board-comp>`
+Performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the :ref:`Red Pitaya boards comparison <rp-board-comp>`.
 
     
 ==========================
