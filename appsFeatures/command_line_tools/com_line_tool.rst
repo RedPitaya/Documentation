@@ -4,7 +4,7 @@ Command-line tools
 
 .. Note::
    
-    Command line utilities must not be used in parallel with a WEB application.
+    Command-line utilities must not be used in parallel with a WEB application.
    
     For correct operation of the acquire tool, it is mandatory that the correct FPGA image is loaded. Please note that some applications can change the FPGA image loaded.
     To load the FPGA image, open a terminal on the Red Pitaya and execute the following command:
@@ -71,9 +71,11 @@ Performance of the signal generator differs from one Red Pitaya model to another
 Signal acquisition utility
 ==========================
 
-The signal from Red Pitaya can be acquired through the `acquire <https://github.com/RedPitaya/RedPitaya/tree/master/Test/acquire>`_
-command line utility. It will return raw samples from the ADC buffer to standard output, with no calibration
-compensation. Usage instructions:
+The signal from Red Pitaya can be acquired through the |acquire| command line utility. It will return raw samples from the ADC buffer to standard output with no calibration compensation. Usage instructions:
+
+.. |acquire| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Test/acquire" target="_blank">acquire</a>
 
 .. tabs::
 
@@ -147,18 +149,22 @@ compensation. Usage instructions:
                 -0.041509   0.001099
                 ...
         
-Performance of acquisition tool differs from one Red Pitaya model to another, for more
-information please refer to :ref:`red pitaya boards comparison <rp-board-comp>`
+The performance of the acquisition tool differs from one Red Pitaya model to another.
+Please see the :ref:`Red Pitaya boards comparison <rp-board-comp>` for more information.
 
-========================
+===============
 Monitor utility
-========================
+===============
 
 Accessing system registers
 ==========================
 
-The system registers can be accessed through the 
-`monitor <https://github.com/RedPitaya/RedPitaya/tree/master/Test/monitor>`_ utility. Usage instructions:
+The system registers can be accessed through the |monitor| utility. Usage instructions:
+ 
+.. |monitor| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Test/monitor" target="_blank">monitor</a>
+
  
 .. code-block:: shell-session
     
@@ -194,8 +200,8 @@ Example (system register reading):
     14          AO2(0-1.8V)     0x00000075	    1.350
     15          AO3(0-1.8V)     0x0000009c	    1.800
 
-You can find some detailed description of the above mentioned pins :ref:`here <E1>`.
-The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –sadc switch:
+You can find a more detailed description of the above mentioned pins :ref:`here <E1>`.
+The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –sadc switch:
  
 .. code-block:: shell-session
     
@@ -204,11 +210,9 @@ The –ams switch provides access to analog mixed signals including Zynq SoC tem
 Accessing FPGA registers
 ========================
 
-Red Pitaya signal processing is based on two computational engines: the FPGA and the dual core processor in order to
-effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building 
-blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the 
+Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, in order to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the 
 :ref:`Red Pitaya HDL memory map <fpga_094>` document. The registers can be accessed using the described monitor utility.
-For example, the following sequence of monitor commands checks, modifies and verifies the acquisition decimation parameter (at address 0x40100014):
+For example, the following sequence of monitor commands checks, modifies, and verifies the acquisition decimation parameter (at address 0x40100014):
  
 .. code-block:: shell-session
     
@@ -222,10 +226,7 @@ For example, the following sequence of monitor commands checks, modifies and ver
     
 .. note::
     
-    The CPU algorithms communicate with FPGA through these registers. Therefore, the user should be aware of a 
-    possible interference with Red Pitaya applications, reading or acting upon these same FPGA registers. For simple 
-    tasks, however, the monitor utility can be used by high level scripts (Bash, Python, MATLAB...) to communicate
-    directly with FPGA if necessary.
+    The CPU algorithms communicate with the FPGA through these registers. Therefore, the user should be aware of a possible interference with Red Pitaya applications which are reading or acting upon these same FPGA registers. For simple tasks, however, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.
 
 
 
@@ -233,7 +234,7 @@ For example, the following sequence of monitor commands checks, modifies and ver
 Bode Analyzer
 =============
 
-Bode Analyzer can be used from console. 
+The Bode Analyzer can be used from the console.
 
 .. note::
    
@@ -264,15 +265,15 @@ Bode Analyzer can be used from console.
 
 
 
-For run the bode, you need to do 2 steps:
+To run the bode, you need to do 2 steps:
 
-    #. ) Load the FPGA image of streaming
+    #. Load the FPGA image of streaming
 
         .. code-block:: console
 
             root@rp-f01c35:/# cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-    #. ) Launch a console application.
+    #. Launch a console application.
 
         .. code-block:: console
 
@@ -289,10 +290,10 @@ For run the bode, you need to do 2 steps:
             100000.00   -0.00933   0.36610
 
 =========
-Lcr meter
+LCR meter
 =========
 
-Lcr meter can be used from console.
+The LCR meter can be used from the console.
 
 .. note::
    
@@ -314,15 +315,15 @@ Lcr meter can be used from console.
    Output:	Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
 
 
-For run the lcr, you need to do 2 steps:
+To run the LCR meter, you need to do 2 steps:
 
-    #. ) Load the FPGA image of streaming
+    #. Load the FPGA image of streaming
 
         .. code-block:: console
 
             root@rp-f01c35:/# cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-    #. ) Launch a console application.
+    #. Launch a console application.
 
         .. code-block:: console
 
@@ -348,7 +349,7 @@ For run the lcr, you need to do 2 steps:
 Streaming application
 =====================
 
-The server for streaming can be started not only using the web interface, but also through the command line.
+The server for streaming can be started not only using the web interface but also through the command line.
 
 .. code-block:: console
 
@@ -360,7 +361,7 @@ The server for streaming can be started not only using the web interface, but al
 
 To start the server, you need to do 3 steps:
 
-    #. ) Load the FPGA image of streaming
+    #. Load the FPGA image of streaming
 
         .. code-block:: console
 
@@ -368,9 +369,9 @@ To start the server, you need to do 3 steps:
             root@rp-f07167:/# /opt/redpitaya/sbin/mkoverlay.sh stream_app
 
 
-    #. ) Prepare a configuration file.
+    #. Prepare a configuration file.
 
-    #. ) Launch a console application.
+    #. Launch a console application.
 
         .. code-block:: console
 
@@ -381,7 +382,7 @@ To start the server, you need to do 3 steps:
             Lost rate: 0 / 766 (0 %)
             Lost rate: 0 / 766 (0 %)
 
-The configuration for streaming is automatically created and saved in the file: **/root/.streaming_config** during editing the parameters in the web application.
+The configuration for streaming is automatically created and saved in the file: **/root/.streaming_config** during editing of the parameters in the web application.
 
 
 .. note::
@@ -396,20 +397,22 @@ The configuration for streaming is automatically created and saved in the file: 
 
     Streaming always creates two files:
     
-        * first stores streamed data
-        * second data transfer report
-
+        * The first stores streamed data
+        * The second stores the data transfer report
+	
 .. note::
 
-    Streaming app source are available here: `streaming app <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager>`__.
+    Streaming app sources are available here: |streaming app|.
+.. |streaming ap| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming ap</a>
 
 
 ==========================
 LED enable/disable utility
 ==========================
 
-The Red Pitaya LEDs indications can be enabled or disabled through the led_control command-line utility.
-Disabling LEDs is important for applications where noise level needs to be reduced to its minimum.
+The Red Pitaya LED indications can be enabled or disabled through the led_control command-line utility. Disabling LEDs is important for applications where the noise level needs to be reduced to its minimum.
 
 Usage instructions:
 
@@ -427,20 +430,20 @@ Usage instructions:
         State = [Off | On]  Turns LEDs on or off
 
 
-For disable:
+To disable the LEDs:
 
 .. code-block:: shell-session
 
     root@rp-f09508:~# led_control -y=Off -e=Off -r=Off
 
-For enable:
+To enable the LEDs:
 
 .. code-block:: shell-session
 
     root@rp-f09508:~# led_control -y=On -e=On -r=On
 
 ======================================================
-Other useful information related to command line tools
+Other useful information related to command-line tools
 ======================================================
 
 .. toctree::
