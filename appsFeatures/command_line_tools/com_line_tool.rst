@@ -1,3 +1,5 @@
+.. _com_line_tools:
+
 ##################
 Command-line tools
 ##################
@@ -18,6 +20,9 @@ Command-line tools
     :backlinks: none
     :depth: 1   
     
+
+.. _sig_gen_util:
+
 ========================
 Signal generator utility
 ========================
@@ -66,7 +71,8 @@ The Red Pitaya signal generator can be controlled through the |generate| command
 
 Performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the :ref:`Red Pitaya boards comparison <rp-board-comp>`.
 
-    
+.. _sig_acq_util:
+
 ==========================
 Signal acquisition utility
 ==========================
@@ -152,6 +158,8 @@ The signal from Red Pitaya can be acquired through the |acquire| command line ut
 The performance of the acquisition tool differs from one Red Pitaya model to another.
 Please see the :ref:`Red Pitaya boards comparison <rp-board-comp>` for more information.
 
+.. _monitor_util:
+
 ===============
 Monitor utility
 ===============
@@ -229,6 +237,7 @@ For example, the following sequence of monitor commands checks, modifies, and ve
     The CPU algorithms communicate with the FPGA through these registers. Therefore, the user should be aware of a possible interference with Red Pitaya applications which are reading or acting upon these same FPGA registers. For simple tasks, however, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.
 
 
+.. _bode_util:
 
 =============
 Bode Analyzer
@@ -289,6 +298,8 @@ To run the bode, you need to do 2 steps:
             89000.00    0.00521    0.38478
             100000.00   -0.00933   0.36610
 
+.. _lcr_util:
+
 =========
 LCR meter
 =========
@@ -344,6 +355,8 @@ To run the LCR meter, you need to do 2 steps:
             B_p     0.000000
             |Y|     0.000184
             -P_Y    -1.364216 deg
+
+.. _stream_util:
 
 =====================
 Streaming application
@@ -407,6 +420,7 @@ The configuration for streaming is automatically created and saved in the file: 
 
     <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming ap</a>
 
+.. _led_util:
 
 ==========================
 LED enable/disable utility
