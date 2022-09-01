@@ -19,7 +19,7 @@ Schematics
 
 .. note::
 
-    Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open source code but not an open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
+    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
 *************************
 Mechanical specifications
@@ -52,11 +52,11 @@ Extension
 External ADC clock
 ******************
 
-ADC clock can be provided by:
+The ADC clock can be provided by:
 
     * On board 125MHz XO (default)
-    * From external source / through extension connector :ref:`E2 <E2>` (R25,R26 should be moved to location R23,R24)
-    * Directly from FPGA (R25,R26 should be moved to location R27,R28)
+    * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
+    * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
 .. figure:: External_clk.png
     :alt: Logo
@@ -88,9 +88,12 @@ ADC clock can be provided by:
 Certificates
 ************
 
-Besides the functional testing Red Pitaya passed the safety and electromagnetic compatibility (EMC) tests at an
-external `testing and certification institute <http://www.siq.si/?L=3>`_.
+Besides the functional testing, Red Pitaya passed the safety and electromagnetic compatibility (EMC) tests at an
+external |testing and certification institute|.
 
+.. |testing and certification institute| raw:: html
+
+    <a href="http://www.siq.si/?L=3" target="_blank">testing and certification institute</a>
 
 .. toctree::
    :maxdepth: 6
@@ -102,9 +105,7 @@ external `testing and certification institute <http://www.siq.si/?L=3>`_.
 Cooling options
 ***************
 
-For additional cooling we recommend a 30mm or 25mm fan. You can utilize the power connector on the board to power
-the fan, however please note that it supplies only 5 V. The power connector is located between micro-SD socket and
-the host USB connector.
+For additional cooling, we recommend a 30 mm or 25 mm fan. You can utilise the power connector on the board to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
 
 .. figure:: cooling-powerPin.jpg
     :width: 50%
@@ -116,8 +117,8 @@ the host USB connector.
 
 .. note::
 
-    Power connector is a standard 2-pin 0.1" connector.
-    Supplies only 5V.
+    The power connector is a standard 2-pin 0.1" connector.
+    Supplies only 5 V.
 
 
 .. toctree::
