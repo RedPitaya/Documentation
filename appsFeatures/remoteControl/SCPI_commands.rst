@@ -141,11 +141,11 @@ Parameter options:
 | | Examples:                          |                            |                                                                            |
 | | ``SOUR1:BURS:NCYC 3``              |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
-| | ``SOUR1:BURS:NOR <count>``         | ``rp_GenBurstRepetitions`` | Set the number of repeated bursts (**R**).                                 |
+| | ``SOUR<n>:BURS:NOR <count>``       | ``rp_GenBurstRepetitions`` | Set the number of repeated bursts (**R**).                                 |
 | | Examples:                          |                            |                                                                            |
 | | ``SOUR1:BURS:NOR 5``               |                            |                                                                            |
 +--------------------------------------+----------------------------+---------------------------+------------------------------------------------+
-| | ``SOUR1:BURS:INT:PER <time>``      | ``rp_GenBurstPeriod``      | | Set the duration of a single burst in microseconds (**P**).              |
+| | ``SOUR<n>:BURS:INT:PER <time>``    | ``rp_GenBurstPeriod``      | | Set the duration of a single burst in microseconds (**P**).              |
 | | Examples:                          |                            | | This includes the signal and delay.                                      |
 | | ``SOUR1:BURS:INT:PER 1000000``     |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
@@ -207,6 +207,8 @@ Parameter options:
 | SCPI                                | API                         | DESCRIPTION                                                          |
 +=====================================+=============================+======================================================================+
 | ``ACQ:DEC <decimation>``            | ``rp_AcqSetDecimation``     | Set the decimation factor.                                           |
+| | Example:                          |                             |                                                                      |
+| | ``ACQ:DEC 4``                     |                             |                                                                      |
 +-------------------------------------+-----------------------------+----------------------------------------------------------------------+
 | | ``ACQ:DEC?`` > ``<decimation>``   | ``rp_AcqGetDecimation``     | Get the decimation factor.                                           |
 | | Example:                          |                             |                                                                      |
@@ -368,14 +370,14 @@ Data read
 | | Example:                             |                              |                                                                                        |
 | | ``ACQ:DATA:FORMAT ASCII``            |                              |                                                                                        |
 +----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``ACQ:SOUR<n>:DATA:STA:END?`` >      | | ``rp_AcqGetDataPosRaw``    | | Read samples from start to stop position.                                            |
+| | ``ACQ:SOUR<n>:DATA:STA:END?``        | | ``rp_AcqGetDataPosRaw``    | | Read samples from start to stop position.                                            |
 | | ``<start_pos>,<end_pos>``            | | ``rp_AcqGetDataPosV``      | | ``<start_pos> = {0,1,...,16384}``                                                    |
 | | Example:                             |                              | | ``<stop_pos>  = {0,1,...,16384}``                                                    |
 | | ``ACQ:SOUR1:DATA:STA:END? 10,13`` >  |                              |                                                                                        |
 | | ``{123,231,-231}``                   |                              |                                                                                        |
 +----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 | | ``ACQ:SOUR<n>:DATA:STA:N?``          | | ``rp_AcqGetDataRaw``       | | Read ``m`` samples from the start position onwards.                                  |
-| | ``<start_pos>,<m>`` > ``...``        | | ``rp_AcqGetDataV``         |                                                                                        |
+| | ``<start_pos>,<m>``                  | | ``rp_AcqGetDataV``         |                                                                                        |
 | | Example:                             |                              |                                                                                        |
 | | ``ACQ:SOUR1:DATA? 10,3`` >           |                              |                                                                                        |
 | | ``{1.2,3.2,-1.2}``                   |                              |                                                                                        |
@@ -547,7 +549,7 @@ Parameter options:
 | | Example:                            |                                |                                                                                    |
 | | ``SPI:SET:SPEED 1000000``           |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SET:SPEED?`` > ``<speed>``    | ``rp_SPI_GetSpeed``            | Gets the speed of the SPI connection.                                              |
+| | ``SPI:SETings:SPEED?`` > ``<speed>``| ``rp_SPI_GetSpeed``            | Gets the speed of the SPI connection.                                              |
 | | Example:                            |                                |                                                                                    |
 | | ``SPI:SET:SPEED?`` > ``1000000``    |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
@@ -637,9 +639,9 @@ Parameter options:
 | | Example:                                       |                                |                                                                       |
 | | ``I2C:FMODE ON``                               |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
-| | ``I2C:FMODE? > <mode>``                        | ``rp_I2C_getForceMode``        | Gets the current forced mode setting.                                 |
+| | ``I2C:FMODE?`` > ``<mode>``                    | ``rp_I2C_getForceMode``        | Gets the current forced mode setting.                                 |
 | | Example:                                       |                                |                                                                       |
-| | ``I2C:FMODE? > ON``                            |                                |                                                                       |
+| | ``I2C:FMODE?`` > ``ON``                        |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Read<reg> > <value>``              | ``rp_I2C_SMBUS_Read``          | | Reads 8 bit data from the specified register using                  |
 | | Example:                                       |                                | | the SMBUS protocol.                                                 |
@@ -705,7 +707,7 @@ Parameter options:
 | | Example:                          |                                |                                                                                    |
 | | ``LED:MMC OFF``                   |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``LED:MMC? > <mode>``             | ``rp_GetLEDMMCState``          | Gets the state of the MMC indicator.                                               |
+| | ``LED:MMC?`` > ``<mode>``         | ``rp_GetLEDMMCState``          | Gets the state of the MMC indicator.                                               |
 | | Example:                          |                                |                                                                                    |
 | | ``LED:MMC? > ON``                 |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
@@ -713,7 +715,7 @@ Parameter options:
 | | Example:                          |                                |                                                                                    |
 | | ``LED:HB OFF``                    |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``LED:HB? > <mode>``              | ``rp_GetLEDHeartBeatState``    | Gets the state of the HeartBeat indicator.                                         |
+| | ``LED:HB?`` > ``<mode>``          | ``rp_GetLEDHeartBeatState``    | Gets the state of the HeartBeat indicator.                                         |
 | | Example:                          |                                |                                                                                    |
 | | ``LED:HB? > ON``                  |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
@@ -721,7 +723,7 @@ Parameter options:
 | | Example:                          |                                |                                                                                    |
 | | ``LED:ETH OFF``                   |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``LED:ETH? > <mode>``             | ``rp_GetLEDEthState``          | Gets the state of the Ethernet indicators.                                         |
+| | ``LED:ETH?`` > ``<mode>``         | ``rp_GetLEDEthState``          | Gets the state of the Ethernet indicators.                                         |
 | | Example:                          |                                |                                                                                    |
 | | ``LED:ETH? > ON``                 |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
