@@ -30,7 +30,7 @@ STEMlab 125-14-Z7020:
 
 STEMlab 125-14 4-Input:
 
-   - Comming soon ...
+   - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH|
 
 SDRlab 122-16:
 
@@ -56,6 +56,9 @@ SIGNALlab 250-12:
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a> 
 
+.. |CHANGELOG_Z20_4CH| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
 
 .. figure:: microSDcard-RP.png
     :width: 10%
