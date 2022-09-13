@@ -23,15 +23,15 @@ Features
 
 .. |matplotlib| raw:: html
 
-    <a href="http://matplotlib.org/" target="_blank">matplotlib</a>
+    <a href="https://matplotlib.org/" target="_blank">matplotlib</a>
     
 .. |Markdown| raw:: html
 
-    <a href="http://daringfireball.net/projects/markdown/syntax/" target="_blank">Markdown</a>
+    <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a>
     
 .. |MathJax| raw:: html
 
-    <a href="http://www.mathjax.org/" target="_blank">MathJax</a>
+    <a href="https://www.mathjax.org/" target="_blank">MathJax</a>
 
 
 ==================
@@ -46,7 +46,7 @@ the *.ipynb* extension. Since JSON is a plain text format, they can be version-c
 
 .. |JSON| raw:: html
 
-    <a href="http://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>
+    <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>
 
 
 Notebooks may be exported to a range of static formats, including HTML (for example, for blog posts), 
@@ -76,7 +76,7 @@ A set of nine JUMPERS is used for reconnecting certain extension module connecto
     
 .. |Seeed®| raw:: html
 
-    <a href="http://wiki.seeed.cc/Grove_System/" target="_blank">Seeed®</a>
+    <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Seeed®</a>
     
 .. |store| raw:: html
 
@@ -98,7 +98,7 @@ These are dedicated connectors compatible with |Grove modules|.
 
 .. |Grove modules| raw:: html
 
-    <a href="http://wiki.seeed.cc/Grove_System/" target="_blank">Grove modules</a>
+    <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Grove modules</a>
 
 There are six connector types available:
 
