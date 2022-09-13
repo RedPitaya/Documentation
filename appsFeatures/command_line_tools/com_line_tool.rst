@@ -416,9 +416,10 @@ The configuration for streaming is automatically created and saved in the file: 
 .. note::
 
     Streaming app sources are available here: |streaming app|.
-.. |streaming ap| raw:: html
+    
+.. |streaming app| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming ap</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming app</a>
 
 .. _led_util:
 
