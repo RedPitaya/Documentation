@@ -106,7 +106,7 @@ To install them, do:
 
 #. Open the |blink| tutorial and copy the code to your favourite text editor.
 #. Save the file to your working folder as ``blink.py``, for example, ``examples_py``.
-Copy and save the |redpitaya_scpi.py| script in the same folder as the ``blink.py`` example (in our case, ``examples_py``). 
+   Copy and save the |redpitaya_scpi.py| script in the same folder as the ``blink.py`` example (in our case, ``examples_py``). 
 
    .. note::
 

@@ -12,11 +12,11 @@ The Streaming application enables users to stream data from Red Pitaya to:
 The user is able to set:
 
     * The sampling frequency (rate)
-    * Input channel count (Channel 1, Channel 2 or Both)
+    * Input channel count (Channel 1, Channel 2 or Both (4 Channels for STEMlab 125-14 4-Input))
     * Input channel resolution (8 or 16 bits)
     * Input attenuation (HV/LV mode) (for 125-xx, a switch of the jumper is required)
     * Whether to use the calibration or not (for 125-xx, the filter is also calibrated)
-    * RAW / Volt mode
+    * RAW / Volts mode
     * The number of samples or unlimited sampling
 
 Streamed data can be stored into:

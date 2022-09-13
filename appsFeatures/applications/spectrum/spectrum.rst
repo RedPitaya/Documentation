@@ -30,8 +30,9 @@ Input controls are shown in the picture below. With the "SHOW" select button, di
 .. figure:: Slika_03_SA.png
 
 For SIGNALlab 250-12, there are additional settings available where the user can select:
-- **Input attenuation**
-- **Coupling**
+
+    - **Input attenuation**
+    - **Coupling**
 
 .. figure:: Slika_09_SA.png
 
@@ -94,7 +95,7 @@ Specifications
 **************
 
 +-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-|                               | STEMlab 125-10       | STEMlab 125-14       | STEMlab 125-14 4Ch Z7020 LN | SDRlab 122-16        | SIGNALlab 250-12               | 
+|                               | STEMlab 125-10       | STEMlab 125-14       | STEMlab 125-14 4-Input      | SDRlab 122-16        | SIGNALlab 250-12               | 
 +-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
 | Input channels                | 2                    | 2                    | 4                           | 2                    | 2                              | 
 +-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+

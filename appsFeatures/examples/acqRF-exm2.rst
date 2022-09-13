@@ -1,12 +1,13 @@
-Signal acquisition on external trigger
-######################################
-
-.. http://blog.redpitaya.com/examples-new/on-given-external-trigger-acquire-signal-on-fast-analog-input/
+Instant signal acquisition
+##########################
 
 Description
 ***********
 
-This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the external trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
+This example shows how to instantly acquire 16k samples of a signal on fast analog inputs.
+The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor.
+The decimations and time scales of a buffer are given in the |sample rate and decimation|.
+Voltage and frequency ranges depend on the Red Pitaya model. 
 
 .. |sample rate and decimation| raw:: html
 
@@ -21,12 +22,12 @@ Required hardware
     
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
-.. figure:: on_given_external_trigger_acquire_signal_on_fast_analog_input.png
+.. figure:: on_given_trigger_acquire_signal_on_fast_analog_input.png
 
 Circuit
 *******
 
-.. figure:: on_given_external_trigger_acquire_signal_on_fast_analog_input_circuit.png
+.. figure:: on_given_trigger_acquire_signal_on_fast_analog_input_circuit.png
 
 
 Code - MATLAB®
@@ -34,7 +35,8 @@ Code - MATLAB®
 
 .. code-block:: matlab
 
-    The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+    The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication.
+    Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
     %% Define Red Pitaya as TCP/IP object
     clear all
@@ -55,8 +57,7 @@ Code - MATLAB®
     % acquired signal frequency
 
     writeline(RP,'ACQ:RST');
-    writeline(RP,'ACQ:DEC 1');
-    writeline(RP,'ACQ:TRIG:LEV 0');
+    writeline(RP,'ACQ:DEC 4');
 
 
     % Set trigger delay to 0 samples
@@ -81,7 +82,7 @@ Code - MATLAB®
     % Here we have used time delay of one second but you can calculate the exact value taking in to account buffer
     % length and sampling rate
 
-    writeline(RP,'ACQ:TRIG EXT_PE');
+    writeline(RP,'ACQ:TRIG NOW');
     % Wait for trigger
     % Until trigger is true wait with acquiring
     % Be aware of while loop if trigger is not achieved
@@ -142,11 +143,12 @@ Code - Python
     import matplotlib.pyplot as plot
 
     rp_s = scpi.scpi(sys.argv[1])
+    
+    rp_s.tx_txt('ACQ:RST')
 
-    rp_s.tx_txt('ACQ:DEC 8')
-    rp_s.tx_txt('ACQ:TRIG:LEVEL 100')
+    rp_s.tx_txt('ACQ:DEC 4')
     rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRIG EXT_PE')
+    rp_s.tx_txt('ACQ:TRIG NOW')
 
     while 1:
         rp_s.tx_txt('ACQ:TRIG:STAT?')
@@ -167,11 +169,3 @@ Code - Python
     plot.plot(buff)
     plot.ylabel('Voltage')
     plot.show()
-
-
-Code - LabVIEW
-**************
-
-.. figure:: Signal-acquisition-on-external-trigger_LV.png
-
-`Download <https://downloads.redpitaya.com/downloads/Clients/labview/Signal%20acquisition%20on%20external%20trigger.vi>`_

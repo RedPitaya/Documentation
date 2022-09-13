@@ -27,4 +27,4 @@ At boot, Red Pitaya checks for software updates and alerts the user if a new rel
 
 .. |prepare SD| raw:: html
 
-    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#prepare-sd-card" target="_blank">"Download and install SD card image"</a>
+    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#prepare-sd-card" target="_blank">Download and install SD card image</a>

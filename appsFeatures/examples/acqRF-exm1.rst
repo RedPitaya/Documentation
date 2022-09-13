@@ -1,5 +1,5 @@
-On trigger signal acquisition
-#############################
+Triggering with treshold on channel
+###################################
 
 .. http://blog.redpitaya.com/examples-new/single-buffer-acquire/
 
@@ -23,8 +23,8 @@ Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
 .. figure:: on_given_trigger_acquire_signal_on_fast_analog_input.png
 
-Cicuit
-******
+Circuit
+*******
 
 .. figure:: on_given_trigger_acquire_signal_on_fast_analog_input_circuit.png
 
@@ -59,13 +59,13 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');       % trigger level 
             
             % there is an option to select coupling when using SIGNALlab 250-12 
             % writeline(RP,'ACQ:SOUR1:COUP AC');    % enables AC coupling on channel 1
 
             % by default LOW level gain is selected
-            % writeline(RP,'ACQ:SOUR1:GAIN LV');    % sets gain to LV/HV (should the same as jumpers)
+            writeline(RP,'ACQ:SOUR1:GAIN LV');    % sets gain to LV/HV (should the same as jumpers)
 
 
             % Set trigger delay to 0 samples
@@ -157,7 +157,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
             writeline(RP,'ACQ:DATA:FORMAT BIN');
             writeline(RP,'ACQ:DATA:UNITS VOLTS');
@@ -260,7 +260,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
             writeline(RP,'ACQ:DATA:FORMAT BIN');
             writeline(RP,'ACQ:DATA:UNITS RAW');
@@ -358,7 +358,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');
 
             % Set trigger delay to 0 samples
             % 0 samples delay set trigger to center of the buffer
@@ -479,14 +479,14 @@ Code - C
             
                     rp_AcqReset();
                     rp_AcqSetDecimation(RP_DEC_8);
-                    rp_AcqSetTriggerLevel(RP_CH_1, 0.1); //Trig level is set in Volts while in SCPI 
+                    rp_AcqSetTriggerLevel(RP_CH_1, 0.5); //Trig level is set in Volts while in SCPI 
                     rp_AcqSetTriggerDelay(0);
 
                     // there is an option to select coupling when using SIGNALlab 250-12 
                     // rp_AcqSetAC_DC(RP_CH_1, RP_AC); // enables AC coupling on channel 1
 
                     // by default LV level gain is selected
-                    // rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
+                    rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
             
                     rp_AcqStart();
             
@@ -550,6 +550,7 @@ Code - C
 
                     rp_AcqReset();
                     rp_AcqSetDecimation(RP_DEC_8);
+                    rp_AcqSetTriggerLevel(RP_CH_1, 0.5);
                     rp_AcqSetTriggerDelay(0);
 
                     rp_AcqStart();
@@ -559,7 +560,7 @@ Code - C
                     /*length and smaling rate*/
 
                     sleep(1);
-                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_NOW);
+                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
                     rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
 
                     while(1){
@@ -611,13 +612,16 @@ Code - Python
             import matplotlib.pyplot as plot
 
             rp_s = scpi.scpi(sys.argv[1])
-
+            
+            rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG NOW')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
 
             while 1:
                 rp_s.tx_txt('ACQ:TRIG:STAT?')
@@ -651,13 +655,16 @@ Code - Python
             import struct
 
             rp_s = scpi.scpi(sys.argv[1])
-
+            
+            rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG NOW')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
 
             while 1:
                 rp_s.tx_txt('ACQ:TRIG:STAT?')
@@ -691,13 +698,16 @@ Code - Python
             import struct
 
             rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
 
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
             rp_s.tx_txt('ACQ:DATA:UNITS RAW')
             rp_s.tx_txt('ACQ:DEC 1')
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG NOW')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
 
             while 1:
                 rp_s.tx_txt('ACQ:TRIG:STAT?')
@@ -732,12 +742,13 @@ Code - Python
             rp_s = scpi.scpi(sys.argv[1])
 
             rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
 
             rp_s.tx_txt('ACQ:DEC 1')
-            rp_s.tx_txt('ACQ:TRIG:LEV 0');
-            rp_s.tx_txt('ACQ:TRIG:DLY 0');
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
+            rp_s.tx_txt('ACQ:TRIG:DLY 0')
 
             rp_s.tx_txt('ACQ:START')
             rp_s.tx_txt('ACQ:TRIG CH1_PE')
@@ -809,17 +820,20 @@ for Scilab sockets. How to set socket is described on Blink example.
     // Set decimation value (sampling rate) in respect to you 
     // acquired signal frequency
     
+    
+    SOCKET_write(tcpipObj,'ACQ:RST');
+    
     SOCKET_write(tcpipObj,'ACQ:DEC 8');
     
-    // Set trigger level to 100 mV
+    // Set trigger level to 500 mV
     
-    SOCKET_write(tcpipObj,'ACQ:TRIG:LEV 0');
+    SOCKET_write(tcpipObj,'ACQ:TRIG:LEV 0.5');
     
     // there is an option to select coupling when using SIGNALlab 250-12 
     // SOCKET_write(tcpipObj,'ACQ:SOUR1:COUP AC'); // enables AC coupling on channel 1
 
     // by default LOW level gain is selected
-    // SOCKET_write(tcpipObj,'ACQ:SOUR1:GAIN LV'); // user can switch gain using this command
+    SOCKET_write(tcpipObj,'ACQ:SOUR1:GAIN LV'); // user can switch gain using this command
 
     // Set trigger delay to 0 samples
     // 0 samples delay set trigger to center of the buffer
@@ -834,7 +848,7 @@ for Scilab sockets. How to set socket is described on Blink example.
     // Set trigger to source 1 positive edge
     
     SOCKET_write(tcpipObj,'ACQ:START');
-    SOCKET_write(tcpipObj,'ACQ:TRIG NOW');  
+    SOCKET_write(tcpipObj,'ACQ:TRIG CH1_PE');  
     
     // Wait for trigger
     // Until trigger is true wait with acquiring

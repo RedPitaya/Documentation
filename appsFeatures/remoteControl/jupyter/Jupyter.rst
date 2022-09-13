@@ -2,10 +2,8 @@
 Jupyter Notebook
 #################
 
-The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live
-code, equations, visualizations, explanatory text and direct controll or monitor hardware. 
-Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning and much 
-more. 
+The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations, explanatory text, and direct control or monitor hardware.
+Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning, and much more.
 
 ********
 Features
@@ -15,63 +13,80 @@ Features
 - The ability to execute code from the browser, with the results of computations attached to the code which generated 
   them. 
 - Displaying the result of computation using rich media representations, such as HTML, LaTeX, PNG, SVG, etc. For 
-  example, publication-quality figures rendered by the `matplotlib <http://matplotlib.org/>`_ library, can be included
+  example, publication-quality figures rendered by the |matplotlib| library can be included
   inline.
-- In-browser editing for rich text using the `Markdown <http://daringfireball.net/projects/markdown/syntax>`_ markup 
+- In-browser editing for rich text using the |Markdown| markup 
   language, which can provide commentary for the code, is not limited to plain text.
 - The ability to easily include mathematical notation within markdown cells using LaTeX, and rendered natively by 
-  `MathJax <http://www.mathjax.org/>`_.
+  |MathJax|
+
+
+.. |matplotlib| raw:: html
+
+    <a href="https://matplotlib.org/" target="_blank">matplotlib</a>
+    
+.. |Markdown| raw:: html
+
+    <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a>
+    
+.. |MathJax| raw:: html
+
+    <a href="https://www.mathjax.org/" target="_blank">MathJax</a>
+
 
 ==================
 Notebook documents
 ==================
 
-Notebook documents contains the inputs and outputs of a interactive session as well as additional text that 
+Notebook documents contain the inputs and outputs of an interactive session as well as additional text that 
 accompanies the code but is not meant for execution. In this way, notebook files can serve as a complete computational
 record of a session, interleaving executable code with explanatory text, mathematics, and rich representations of
-resulting objects. These documents are internally `JSON <http://en.wikipedia.org/wiki/JSON>`_ files and are saved with 
+resulting objects. These documents are internal |JSON| files and are saved with 
 the *.ipynb* extension. Since JSON is a plain text format, they can be version-controlled and shared with colleagues.
 
-Notebooks may be exported to a range of static formats, including HTML (for example, for blog posts), 
-reStructuredText, LaTeX, PDF, and slide shows, via the `nbconvert <https://nbconvert.readthedocs.io/en/latest/>`_ 
-command.
+.. |JSON| raw:: html
 
-Furthermore, any *.ipynb* notebook document available from a public URL can be shared via the Jupyter Notebook Viewer (nbviewer). This service loads the notebook document from the URL and renders it as a static web page. The results may thus be shared with a colleague, or as a public blog post, without other users needing to install the Jupyter notebook themselves. In effect, nbviewer is simply nbconvert as a web service, so you can do your own static conversions with nbconvert, without relying on nbviewer.
+    <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>
+
+
+Notebooks may be exported to a range of static formats, including HTML (for example, for blog posts), 
+reStructuredText, LaTeX, PDF, and slide shows, via the |nbconvert| command.
+
+.. |nbconvert| raw:: html
+
+    <a href="https://nbconvert.readthedocs.io/en/latest/" target="_blank">nbconvert</a>
+
+Furthermore, any *.ipynb* notebook document available from a public URL can be shared via the Jupyter Notebook Viewer (nbviewer). This service loads the notebook document from the URL and renders it as a static web page. The results may thus be shared with a colleague, or as a public blog post, without other users needing to install the Jupyter notebook themselves. In effect, nbviewer is simply nbconvert as a web service, so you can do your own static conversions with nbconvert without relying on nbviewer.
 
 
 ***************************
 Hardware – Extension module
 ***************************
 
-Although the usage of Jupyter notebook does not require any additional hardware except the RedPitaya
-board, getting started with electronics is way more fun and interesting when you have loads of sensors that you can
-put to good use straight away. Whether you want to measure temperature, vibration, movement etc. we have 
-an extension module compatible with **Grove** modules from `Seeed® <http://wiki.seeed.cc/Grove_System/>`_.  All you 
-need is to select the desired module, find the correct connector and get going with your project. 
-We have also placed Arduino shields headers on the Extension module.
+Although the usage of the Jupyter notebook does not require any additional hardware except the RedPitaya board, getting started with electronics is way more fun and interesting when you have loads of sensors that you can put to good use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is to select the desired module, find the correct connector, and get going with your project. We have also placed the Arduino shield headers on the extension module.
 
 .. figure:: img/extension_module_and_sensors.png
 
-The headers enable you to directly connect a variety of different Arduino Uno shields. There are a wide range of 
-Arduino Uno shields.
-The Extension module can be powered from the external power supply via a micro USB connector. A set of nine JUMPERS is
-used for reconnecting certain extension module connectors to different :ref:`E1 <E1>` or :ref:`E2 <E2>` pins or 
-changing power supply settings. For example: With J1 and J3 you can set the source of VCC- external or from 
-Red Pitaya. A full schematic of the Extension module is available on our web page.
+The headers enable you to directly connect a variety of different Arduino Uno shields. There is a wide range of Arduino Uno shields. The extension module can be powered from the external power supply via a micro USB connector.
+A set of nine JUMPERS is used for reconnecting certain extension module connectors to different :ref:`E1 <E1>` or :ref:`E2 <E2>` pins or changing power supply settings. For example, with J1 and J3, you can set the source of VCC-external or from Red Pitaya. A full schematic of the extension module is available on our website.
 
 .. note:: 
 
-    The extension module can be purchased from Red Pitaya `store <https://redpitaya.com/shop/>`_. 
+    The extension module is available for purchase from Red Pitaya |store|.
+    
+.. |Seeed®| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Seeed®</a>
+    
+.. |store| raw:: html
+
+    <a href="https://redpitaya.com/shop/" target="_blank">store</a>
     
 ==========
 Connectors
 ==========
 
-The black connectors on the sides are compatible with Arduino,
-white connectors on the front provide analog inputs,
-and there are two rows of gray connectors at the center
-which provide digital I/O, UART, I2C or analog outputs.
-On the bottom there are connectors to the Red Pitaya board.
+The black connectors on the sides are compatible with Arduino. The white connectors on the front provide analog inputs, and there are two rows of grey connectors at the centre which provide digital I/O, UART, I2C, or analog outputs. On the bottom, there are connectors to the Red Pitaya board.
 
 .. figure:: img/extension_module.png
 
@@ -79,15 +94,19 @@ On the bottom there are connectors to the Red Pitaya board.
 Grove module connectors
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This are dedicated connectors compatible with `Grove modules <http://wiki.seeed.cc/Grove_System/>`_.
+These are dedicated connectors compatible with |Grove modules|.
+
+.. |Grove modules| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Grove modules</a>
 
 There are six connector types available:
 
-* **AI** Analog input (0-3.3V)
+* **AI** Analog input (0 - 3.3 V)
 * **AO** Analog output
-* **I2C** (3.3V)
-* **UART** (3.3V)
-* **DIO** Digital input/output (3.3V, not 5V tolerant)
+* **I2C** (3.3 V)
+* **UART** (3.3 V)
+* **DIO** Digital input/output (3.3 V, not 5 V tolerant)
 
 +-------+------+------+------+------+------+------+------+------+------+------+------+------+------+
 | conn. | CN0  | CN1  | CN2  | CN3  | CN4  | CN5  | CN6  | CN7  | CN8  | CN9  | CN10 | CN11 | CN12 |
@@ -162,9 +181,9 @@ This set of connectors is partially compatible with the Arduino shield connector
 +----------+-------+---------------+
 | Reset    | ``3`` | not connected |
 +----------+-------+---------------+
-| +3.3V    | ``4`` |               |
+| +3.3 V   | ``4`` |               |
 +----------+-------+---------------+
-| +5.0V    | ``5`` |               |
+| +5.0 V   | ``5`` |               |
 +----------+-------+---------------+
 | GND      | ``6`` |               |
 +----------+-------+---------------+
@@ -181,72 +200,229 @@ Sensors
 ========================================================================================    ============
 Sensor information                                                                          Connector
 ========================================================================================    ============
-`Temperature sensor <https://wiki.seeedstudio.com/Sensor_temperature>`_                     AI
-`Motion sensor <https://wiki.seeedstudio.com/Grove-PIR_Motion_Sensor>`_                     DIO
-`Touch sensor <https://wiki.seeedstudio.com/Grove-Touch_Sensor>`_                           DIO
-`Button <https://wiki.seeedstudio.com/Grove-Button>`_                                       DIO
-`Switch <https://wiki.seeedstudio.com/Grove-Switch-P>`_
+|Temperature sensor|                                                                        AI
+|Motion sensor|                                                                             DIO
+|Touch sensor|                                                                              DIO
+|Button|                                                                                    DIO
+|Switch|                                                                                    DIO
 Digital
-`Tilt <https://wiki.seeedstudio.com/Grove-Tilt_Switch>`_                                    DIO
-`Potentiometer <https://wiki.seeedstudio.com/Grove-Slide_Potentiometer>`_                   AI
-`Light sensor <http://wiki.seeed.cc/Grove-Light_Sensor>`_                                   AI
-`Air quality sensor <https://wiki.seeedstudio.com/Grove-Air_Quality_Sensor_v1.3>`_          AI
-`Vibration sensor <https://wiki.seeedstudio.com/Grove-Piezo_Vibration_Sensor>`_             AI
-`Moisture sensor <https://wiki.seeedstudio.com/Grove-Moisture_Sensor>`_                     AI
-`Water sensor <https://wiki.seeedstudio.com/Grove-Water_Sensor>`_                           AI
-`Alcohol sensor <https://wiki.seeedstudio.com/Grove-Alcohol_Sensor>`_                       AI
+|Tilt|                                                                                      DIO
+|Potentiometer|                                                                             AI
+|Light sensor|                                                                              AI
+|Air quality sensor|                                                                        AI
+|Vibration sensor|                                                                          AI
+|Moisture sensor|                                                                           AI
+|Water sensor|                                                                              AI
+|Alcohol sensor|                                                                            AI
 Barometer ``not supported at the moment``                                                   I2C
-`Sound sensor <http://wiki.seeed.cc/Grove-Sound_Sensor/>`_                                  AI
-`UV sensor <https://wiki.seeedstudio.com/Grove-UV_Sensor>`_                                 AI
+|Sound sensor|                                                                              AI
+|UV sensor|                                                                                 AI
 Accelerometer ``not supported at the moment``                                               I2C
 ========================================================================================    ============
+
+.. |Temperature sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Sensor_temperature" target="_blank">Temperature sensor</a>
+
+.. |Motion sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-PIR_Motion_Sensor" target="_blank">Motion sensor</a>
+
+.. |Touch sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Touch_Sensor" target="_blank">Touch sensor</a>
+
+.. |Button| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Button" target="_blank">Button</a>
+    
+.. |Switch| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Switch-P" target="_blank">Switch</a>
+    
+.. |Tilt| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Tilt_Switch" target="_blank">Tilt</a>
+    
+.. |Potentiometer| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Slide_Potentiometer" target="_blank">Potentiometer</a>
+    
+.. |Light sensor| raw:: html
+
+    <a href="http://wiki.seeed.cc/Grove-Light_Sensor" target="_blank">Light sensor</a>
+
+.. |Air quality sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Air_Quality_Sensor_v1.3" target="_blank">Air quality sensor</a>
+    
+.. |Vibration sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Piezo_Vibration_Sensor" target="_blank">Vibration sensor</a>
+    
+.. |Moisture sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Moisture_Sensor" target="_blank">Moisture sensor</a>
+    
+.. |Water sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Water_Sensor" target="_blank">Water sensor</a>
+    
+.. |Barometer| raw:: html
+
+    <a href="" target="_blank">Barometer</a>
+    
+.. |Alcohol sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Alcohol_Sensor" target="_blank">Alcohol sensor</a>
+    
+.. |Sound sensor| raw:: html
+
+    <a href="http://wiki.seeed.cc/Grove-Sound_Sensor" target="_blank">Sound sensor</a>
+
+.. |UV sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-UV_Sensor" target="_blank">UV sensor</a>
+
+.. |Accelerometer| raw:: html
+
+    <a href="" target="_blank">Accelerometer</a>
 
 ========================================================================================    ============
 Actuators                                                                                   Connector
 ========================================================================================    ============
-`Relay <https://wiki.seeedstudio.com/Grove-Relay>`_                                         DIO
+|Relay|                                                                                     DIO
 ========================================================================================    ============
+
+.. |Relay| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Relay" target="_blank">Relay</a>
 
 ========================================================================================    ============
 Indicators                                                                                  Connector
 ========================================================================================    ============
-`Buzzer <https://wiki.seeedstudio.com/Grove-Buzzer>`_                                       DIO
-`LED <https://www.seeedstudio.com/grove-led-p-767.html?cPath=156_157>`_                     DIO
-7 segment display                                                                           Digital pins
-`LED bar <https://wiki.seeedstudio.com/Grove-LED_Bar>`_                                     Digital pins
-`Groove LCD <https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight>`_                        Digital pins
+|Buzzer|                                                                                    DIO
+|LED|                                                                                       DIO
+|7 segment display|                                                                         Digital pins
+|LED bar|                                                                                   Digital pins
+|Groove LCD|                                                                                Digital pins
 LCD                                                                                         Digital pins
 ========================================================================================    ============
+
+.. |Buzzer| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Buzzer" target="_blank">Buzzer</a>
+
+.. |LED| raw:: html
+
+    <a href="https://www.seeedstudio.com/grove-led-p-767.html?cPath=156_157" target="_blank">LED</a>
+    
+.. |7 segment display| raw:: html
+
+    <a href="https://www.seeedstudio.com/Grove-0-54-Red-Dual-Alphanumeric-Display-p-4031.html?queryID=817e144e20d72ab54938d8288d8f4155&objectID=4031&indexName=bazaar_retailer_products" target="_blank">7 segment display</a>
+    
+.. |LED bar| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-LED_Bar" target="_blank">LED bar</a>
+    
+.. |Groove LCD| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight" target="_blank">Groove LCD</a>
+
+
 
 ********
 Examples
 ********
 
-1. `Drive LEDs <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/led.ipynb>`_
-2. `Control GPIO s <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gpio.ipynb>`_
-3. `Write slow analog I/Os <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_output.ipynb>`_
-4. `Read slow analog I/Os <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_input.ipynb>`_
+1. |Drive LEDs|
+2. |Control GPIOs|
+3. |Write slow analog I/Os|
+4. |Read slow analog I/Os|
 5. Generator:
 
-    #. `Generate periodic sine wave <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_sine_signal.ipynb>`_
-    #. `Generate periodic arbitrary signal <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_arbitrary_signal.ipynb>`_
-    #. `Two synchronized generators <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_sync_two_channel.ipynb>`_
-    #. `Burst mode <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_bursts.ipynb>`_
+    #. |Generate periodic sine wave|
+    #. |Generate periodic arbitrary signal|
+    #. |Two synchronized generators|
+    #. |Burst mode|
 
 6. Oscilloscope:
 
-    #. `Forced trigger <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_trigger_forced.ipynb>`_
-    #. `Level trigger <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_trigger_level.ipynb>`_
-    #. `Two synchronized channels <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_sync_two_channel.ipynb>`_
-    #. `Synchronized with generator <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_sync_with_gen.ipynb>`_
+    #. |Forced trigger|
+    #. |Level trigger|
+    #. |Two synchronized channels|
+    #. |Synchronized with generator|
 
 7. Demo applications using widgets:
 
-    #. `Generator <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/generator_widget.ipynb>`_
-    #. `Oscilloscope <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/oscilloscope_widget.ipynb>`_
+    #. |Generator|
+    #. |Oscilloscope|
 
 8. Grove sensors
 
-    #. `Temperature sensor <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/exam_temp.ipynb>`__
-    #. `Home heating automation <https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/home_automation.ipynb>`_
+    #. |Temperature sensor|
+    #. |Home heating automation|
+   
+.. |Drive LEDs| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/led.ipynb" target="_blank">Drive LEDs</a>
     
+.. |Control GPIOs| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gpio.ipynb" target="_blank">Control GPIOs</a>
+
+.. |Write slow analog I/Os| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_output.ipynb" target="_blank">Write slow analog I/Os</a>
+
+.. |Read slow analog I/Os| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/analog_input.ipynb" target="_blank">Read slow analog I/Os</a>
+
+.. |Generate periodic sine wave| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_sine_signal.ipynb" target="_blank">Generate periodic sine wave</a>
+
+.. |Generate periodic arbitrary signal| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_arbitrary_signal.ipynb" target="_blank">Generate periodic arbitrary signal</a>
+
+.. |Two synchronized generators| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_sync_two_channel.ipynb" target="_blank">Two synchronized generators</a>
+
+.. |Burst mode| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/gen_bursts.ipynb" target="_blank">Burst mode</a>
+
+.. |Forced trigger| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_trigger_forced.ipynb" target="_blank">Forced trigger</a>
+
+.. |Level trigger| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_trigger_level.ipynb" target="_blank">Level trigger</a>
+    
+.. |Two synchronized channels| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_sync_two_channel.ipynb" target="_blank">Two synchronized channels</a>
+
+.. |Synchronized with generator| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/osc_sync_with_gen.ipynb" target="_blank">Synchronized with generator</a>
+
+.. |Generator| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/generator_widget.ipynb" target="_blank">Generator</a>
+
+.. |Oscilloscope| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/oscilloscope_widget.ipynb" target="_blank">Oscilloscope</a>
+
+.. |Temperature sensor| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/exam_temp.ipynb" target="_blank">Temperature sensor</a>
+
+.. |Home heating automation| raw:: html
+
+    <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/home_automation.ipynb" target="_blank">Home heating automation</a>
