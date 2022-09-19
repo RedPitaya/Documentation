@@ -379,7 +379,7 @@ Data read
 | | ``ACQ:SOUR<n>:DATA:STA:N?``          | | ``rp_AcqGetDataRaw``       | | Read ``m`` samples from the start position onwards.                                  |
 | | ``<start_pos>,<m>``                  | | ``rp_AcqGetDataV``         |                                                                                        |
 | | Example:                             |                              |                                                                                        |
-| | ``ACQ:SOUR1:DATA? 10,3`` >           |                              |                                                                                        |
+| | ``ACQ:SOUR1:DATA:STA:N? 10,3`` >     |                              |                                                                                        |
 | | ``{1.2,3.2,-1.2}``                   |                              |                                                                                        |
 +----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 | | ``ACQ:SOUR<n>:DATA?``                | | ``rp_AcqGetOldestDataRaw`` | | Read the full buffer.                                                                |
