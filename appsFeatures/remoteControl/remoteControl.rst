@@ -85,24 +85,24 @@ To install them, do:
     <a href="https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/" target="_blank">PyVISA-py</a>
 
 
+.. code-block:: shell-session
+   
+   $ sudo pip3 install pyvisa pyvisa-py
+
+.. note::
+   
+   To run the examples, you need Python version 3. Before running, double-check the Python versions. If the system has Python version 2.7, this version will be used by default.
+
    .. code-block:: shell-session
 
-      $ sudo pip3 install pyvisa pyvisa-py
-
-   .. note::
-
-         To run the examples, you need Python version 3. Before running, double-check the Python versions. If the system has Python version 2.7, this version will be used by default.
-
-         .. code-block:: shell-session
-
-            $ python --version
-            Python 2.7.17
+      $ python --version
+      Python 2.7.17
          
-         Then, in order to run the examples, specify explicitly the Python version.
-
-         .. code-block:: shell-session
-
-            $ python3.5 blink.py 192.168.178.108
+      Then, in order to run the examples, specify explicitly the Python version.
+         
+   .. code-block:: shell-session
+         
+      $ python3.5 blink.py 192.168.178.108
 
 #. Open the |blink| tutorial and copy the code to your favourite text editor.
 #. Save the file to your working folder as ``blink.py``, for example, ``examples_py``.
