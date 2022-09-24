@@ -485,9 +485,9 @@ Parameter options:
 | | Example:                          |                              |                                                                                        |
 | | ``UART:WRITE5 1,2,3,4,5``         |                              |                                                                                        |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:READ<n>?`` > ``<data>``    | ``rp_UartRead``              | Reads data from UART. <n> - the length of data retrieved from UART.                    |
+| | ``UART:READ<n>`` > ``<data>``    | ``rp_UartRead``              | Reads data from UART. <n> - the length of data retrieved from UART.                    |
 | | Example:                          |                              |                                                                                        |
-| | ``UART:READ5?`` > ``{1,2,3,4,5}`` |                              |                                                                                        |
+| | ``UART:READ5`` > ``{1,2,3,4,5}`` |                              |                                                                                        |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 
 
@@ -599,7 +599,7 @@ Parameter options:
 | | Example:                            |                                |                                                                                    |
 | | ``SPI:MSG1:TX?`` > ``{2,4,5}``      |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:CS? > ON|OFF``         | ``rp_SPI_GetCSChangeState``    | Returns the setting for CS mode for the specified message.                         |
+| | ``SPI:MSG<n>:CS?`` > ``ON|OFF``     | ``rp_SPI_GetCSChangeState``    | Returns the setting for CS mode for the specified message.                         |
 | | Example:                            |                                |                                                                                    |
 | | ``SPI:MSG1:CS?`` > ``ON``           |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
@@ -631,9 +631,9 @@ Parameter options:
 | | Example:                                       |                                | | <addr> - Device address on the I2C bus in dec format.               |
 | | ``I2C:DEV80 "/dev/i2c-0"``                     |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
-| | ``I2C:DEV? > <addr>``                          | ``rp_I2C_getDevAddress``       | Returns the current address of the device.                            |
+| | ``I2C:DEV?`` > ``<addr>``                      | ``rp_I2C_getDevAddress``       | Returns the current address of the device.                            |
 | | Example:                                       |                                |                                                                       |
-| | ``I2C:DEV? > 80``                              |                                |                                                                       |
+| | ``I2C:DEV?`` > ``80``                          |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:FMODE <mode>``                           | ``rp_I2C_setForceMode``        | Enables forced bus operation even if the device is in use.            |
 | | Example:                                       |                                |                                                                       |
@@ -643,18 +643,18 @@ Parameter options:
 | | Example:                                       |                                |                                                                       |
 | | ``I2C:FMODE?`` > ``ON``                        |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
-| | ``I2C:Smbus:Read<reg> > <value>``              | ``rp_I2C_SMBUS_Read``          | | Reads 8 bit data from the specified register using                  |
+| | ``I2C:Smbus:Read<reg>`` > ``<value>``          | ``rp_I2C_SMBUS_Read``          | | Reads 8 bit data from the specified register using                  |
 | | Example:                                       |                                | | the SMBUS protocol.                                                 |
-| | ``I2C:S:R2 > 0``                               |                                | | <reg> - Register address in dec format.                             |
+| | ``I2C:S:R2`` > ``0``                           |                                | | <reg> - Register address in dec format.                             |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
-| | ``I2C:Smbus:Read<reg>:Word > <value>``         | ``rp_I2C_SMBUS_ReadWord``      | | Reads 16 bit data from the specified register using                 |
+| | ``I2C:Smbus:Read<reg>:Word`` > ``<value>``     | ``rp_I2C_SMBUS_ReadWord``      | | Reads 16 bit data from the specified register using                 |
 | | Example:                                       |                                | | the SMBUS protocol.                                                 |
-| | ``I2C:S:R2:W > 0``                             |                                | | <reg> - Register address in dec format.                             |
+| | ``I2C:S:R2:W`` > ``0``                         |                                | | <reg> - Register address in dec format.                             |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
-| | ``I2C:Smbus:Read<reg>:Buffer<size> > <data>``  | ``rp_I2C_SMBUS_ReadBuffer``    | | Reads buffer data from the specified register using                 |
-| |                                                |                                | | the SMBUS protocol.                                                 |
+| | ``I2C:Smbus:Read<reg>:Buffer<size>`` >         | ``rp_I2C_SMBUS_ReadBuffer``    | | Reads buffer data from the specified register using                 |
+| |  ``<data>``                                    |                                | | the SMBUS protocol.                                                 |
 | | Example:                                       |                                | | <reg> - Register address in dec format.                             |
-| | ``I2C:S:R2:B2 > {0,1}``                        |                                | | <size> - Read data size.                                            |
+| | ``I2C:S:R2:B2`` > ``{0,1}``                    |                                | | <size> - Read data size.                                            |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Write<reg> <value>``               | ``rp_I2C_SMBUS_Write``         | | Writes 8-bit data to the specified register using                   |
 | |                                                |                                | | the SMBUS protocol.                                                 |
@@ -671,9 +671,9 @@ Parameter options:
 | | Example:                                       |                                | | <reg> - Register address in dec format.                             |
 | | ``I2C:S:W2:B2 0,1``                            |                                | | <size> - Read data size.                                            |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
-| | ``I2C:IOctl:Read:Buffer<size> > <data>``       | ``rp_I2C_IOCTL_ReadBuffer``    | | Reads data from the I2C device through IOCTL.                       |
+| | ``I2C:IOctl:Read:Buffer<size>`` > ``<data>``   | ``rp_I2C_IOCTL_ReadBuffer``    | | Reads data from the I2C device through IOCTL.                       |
 | | Example:                                       |                                | | <size> - Read data size.                                            |
-| | ``I2C:IO:R:B2 > {0,1}``                        |                                | |                                                                     |
+| | ``I2C:IO:R:B2`` > ``{0,1}``                    |                                | |                                                                     |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:IOctl:Write:Buffer<size> <data>``        | ``rp_I2C_IOCTL_WriteBuffer``   | | Writes data to the I2C device via IOCTL.                            |
 | | Example:                                       |                                | | <size> - Read data size.                                            |
@@ -709,7 +709,7 @@ Parameter options:
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``LED:MMC?`` > ``<mode>``         | ``rp_GetLEDMMCState``          | Gets the state of the MMC indicator.                                               |
 | | Example:                          |                                |                                                                                    |
-| | ``LED:MMC? > ON``                 |                                |                                                                                    |
+| | ``LED:MMC?`` > ``ON``             |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``LED:HB <mode>``                 | ``rp_SetLEDHeartBeatState``    | Turns the red LED on or off (responsible for indicating board activity).           |
 | | Example:                          |                                |                                                                                    |
@@ -717,7 +717,7 @@ Parameter options:
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``LED:HB?`` > ``<mode>``          | ``rp_GetLEDHeartBeatState``    | Gets the state of the HeartBeat indicator.                                         |
 | | Example:                          |                                |                                                                                    |
-| | ``LED:HB? > ON``                  |                                |                                                                                    |
+| | ``LED:HB?`` > ``ON``              |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``LED:ETH <mode>``                | ``rp_SetLEDEthState``          | Turns the LED indicators on the network card on or off.                            |
 | | Example:                          |                                |                                                                                    |
@@ -725,5 +725,5 @@ Parameter options:
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``LED:ETH?`` > ``<mode>``         | ``rp_GetLEDEthState``          | Gets the state of the Ethernet indicators.                                         |
 | | Example:                          |                                |                                                                                    |
-| | ``LED:ETH? > ON``                 |                                |                                                                                    |
+| | ``LED:ETH?`` > ``ON``             |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
