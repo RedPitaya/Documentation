@@ -113,6 +113,8 @@ Code - MATLAB®
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
     
     #!/usr/bin/python3
@@ -177,7 +179,62 @@ Code - Python
     plt.plot(data)
     plt.show()
 
+Using functions:
 
+.. code-block:: python
+    
+    #!/usr/bin/python3
+    
+    import sys
+    import time
+    import matplotlib.pyplot as plt
+    import redpitaya_scpi as scpi
+
+    IP = '192.168.178.111'
+    rp_s = scpi.scpi(IP)
+
+    wave_form = 'sine'
+    freq = 1000000
+    ampl = 1
+
+    # Generation
+    rp_s.tx_txt('GEN:RST')
+    rp_s.tx_txt('ACQ:RST')
+
+    # Function for configuring Source
+    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=3)
+
+    # Acqusition
+    # Function for configuring Acquisition
+    rp_s.acq_set(dec=1, trig_lvl=0, trig_delay=0)
+
+    rp_s.tx_txt('ACQ:START')
+    time.sleep(1)
+    rp_s.tx_txt('ACQ:TRIG AWG_PE')
+    rp_s.tx_txt('OUTPUT1:STATE ON')
+    time.sleep(1)
+
+    rp_s.tx_txt('SOUR1:TRIG:INT')
+
+    # Wait for trigger
+    while 1:
+        rp_s.tx_txt('ACQ:TRIG:STAT?')           # Get Trigger Status
+        if rp_s.rx_txt() == 'TD':               # Triggerd?
+            break
+
+    ## FUTURE BETA
+    # while 1:
+    #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+    #     if rp_s.rx_txt() == '1':
+    #         break
+
+    # Read data and plot
+    # function for Data Acquisition
+    data = rp_s.acq_data(1, convert= True)
+
+    plt.plot(data)
+    plt.show()
+    
 
 Code - LabVIEW
 **************
