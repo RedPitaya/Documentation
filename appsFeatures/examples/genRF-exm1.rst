@@ -107,6 +107,8 @@ Code - C
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
 
     #!/usr/bin/python3
@@ -129,6 +131,8 @@ Code - Python
     #Enable output
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')
+
+Using functions:
 
 .. code-block:: python
 
