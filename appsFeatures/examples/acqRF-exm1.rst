@@ -599,6 +599,9 @@ Code - C
 
 Code - Python
 *************
+
+Using just SCPI commands:
+
 .. tabs::
 
     .. tab:: ASCII/VOLTS mode
@@ -784,6 +787,186 @@ Code - Python
             buff_string = rp_s.rx_txt()
             buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
             buff4 = list(map(float, buff_string))
+
+            plot.plot(buff, 'r')
+            plot.plot(buff2, 'g')
+            plot.plot(buff3, 'b')
+            plot.plot(buff4, 'm')
+            plot.ylabel('Voltage')
+            plot.show()
+
+
+Using functions:
+
+.. tabs::
+
+    .. tab:: ASCII/VOLTS mode
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+
+            rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, units='volts', form='ascii')
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+            
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+
+            # function for Data Acquisition
+            buff = rp_s.acq_data(1, bin= False, convert= True)
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: BIN/VOLTS mode
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+            import struct
+
+            rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, units='volts', form='bin')
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+            # function for Data Acquisition
+            buff = rp_s.acq_data(1, bin= True, convert= True)
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: BIN/RAW mode
+
+        .. code-block:: python
+        
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+            import struct
+
+            rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, units='raw', form='bin') 
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+
+            # function for Data Acquisition
+            buff = rp_s.acq_data(1, bin= True, convert= True)
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: ASCII/VOLTS mode 4-Input
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+
+            rp_s = scpi.scpi(sys.argv[1])
+
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            trig_delay = 0
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, trig_delay, units='volts', form='ascii', input4=True) 
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+            # function for Data Acquisition
+            buff  = rp_s.acq_data(1, bin= False, convert= True, input4 =True)
+            buff2 = rp_s.acq_data(2, bin= False, convert= True, input4 =True)
+            buff3 = rp_s.acq_data(3, bin= False, convert= True, input4 =True)
+            buff4 = rp_s.acq_data(4, bin= False, convert= True, input4 =True)
 
             plot.plot(buff, 'r')
             plot.plot(buff2, 'g')
