@@ -132,6 +132,8 @@ Code - MATLAB®
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
     
     #!/usr/bin/python3
@@ -168,6 +170,46 @@ Code - Python
     plot.ylabel('Voltage')
     plot.show()
 
+
+Using functions:
+
+.. code-block:: python
+    
+    #!/usr/bin/python3
+    
+    import sys
+    import redpitaya_scpi as scpi
+    import matplotlib.pyplot as plot
+
+    rp_s = scpi.scpi(sys.argv[1])
+    
+    rp_s.tx_txt('ACQ:RST')
+
+    dec = 4
+    
+    # Function for configuring Acquisitio
+    rp_s.acq_set(dec)
+    
+    rp_s.tx_txt('ACQ:START')
+    rp_s.tx_txt('ACQ:TRIG EXT_PE')
+
+    while 1:
+        rp_s.tx_txt('ACQ:TRIG:STAT?')
+        if rp_s.rx_txt() == 'TD':
+            break
+    
+    ## FUTURE BETA
+    # while 1:
+    #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+    #     if rp_s.rx_txt() == '1':
+    #         break
+
+    # function for Data Acquisition
+    buff = rp_s.acq_data(1, convert= True)
+
+    plot.plot(buff)
+    plot.ylabel('Voltage')
+    plot.show()
 
 Code - LabVIEW
 **************
