@@ -146,7 +146,11 @@ Code - MATLAB®
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
+
+    #!/usr/bin/python3
 
     import sys
     import redpitaya_scpi as scpi
@@ -199,6 +203,51 @@ Code - Python
 
     rp_s.tx_txt('UART:READ4')
     print("Read: ",rp_s.rx_txt())
+
+    rp_s.tx_txt('UART:RELEASE')
+    print("Release UART")
+    
+    
+Using functions:
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+
+    import sys
+    import redpitaya_scpi as scpi
+
+    rp_s = scpi.scpi(sys.argv[1])
+    
+    speed = 57600
+    bits = "CS7"
+    parity = "ODD"
+    stop = 2
+    timeout = 10
+    
+    # function for configuring UART settings
+    rp_s.uart_set(speed, bits, parity, stop, timeout)
+
+    # function to get UART settings
+    uart_set = rp_s.uart_get_setings()
+    print("\n")
+
+    rp_s.tx_txt('UART:WRITE7 #H11,#H22,#H33,33,33,#Q11,#B11001100')
+    print("Write 7 bytes to uart: #H11,#H22,#H33,33,33,#Q11,#B11001100'")
+
+    rp_s.tx_txt('UART:READ3')
+    print("Read: ",rp_s.rx_txt())
+
+    rp_s.tx_txt('UART:READ4')
+    print("Read: ",rp_s.rx_txt())
+    print("\n")
+    
+    # function to send a string through UART
+    rp_s.uart_write_string("Hello World", ascii=True)   # set the ascii parameter to True if bits == CS7 or to False if bits == CS8
+    
+    # function to read a string through UART
+    message = rp_s.uart_read_string(length = 11)
+    print(f"{message}\n")
 
     rp_s.tx_txt('UART:RELEASE')
     print("Release UART")
