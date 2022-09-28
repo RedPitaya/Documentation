@@ -45,6 +45,9 @@ General Specifications
         The central pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
 
 
+
+.. _jumper_pos:
+
 =======
 Jumpers
 =======
