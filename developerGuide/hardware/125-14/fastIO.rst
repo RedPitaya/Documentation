@@ -7,9 +7,9 @@ Analog inputs
 The Red Pitaya board analog frontend features 2 fast analog inputs. 
 
 
-***********************
-General Specifications:
-***********************
+**********************
+General Specifications
+**********************
     
 +---------------------------------+-----------------------------------------------+
 | Number of channels              | 2                                             |
@@ -51,16 +51,17 @@ Jumpers
 
 Voltage ranges are set by input jumpers, as is shown here:
 
-Gain can be adjusted independently for both input channels. The adjustment is done by bridging the jumpers located behind the corresponding input SMA connector.
-    
 .. figure:: Jumper_settings.png 
-            
+
+
+Gain can be adjusted independently for both input channels. The adjustment is done by bridging the jumpers located behind the corresponding input SMA connector.
+     
 .. figure:: Jumper_settings_photo.png
             
     Jumper setting
     
-    | The left setting (LV) adjusts to ± 1 V full scale.
-    | The right setting (HV) adjusts to ± 20 V full scale.
+    - The left setting (LV) adjusts to ± 1 V full scale.
+    - The right setting (HV) adjusts to ± 20 V full scale.
 
 
 .. warning::
@@ -72,22 +73,24 @@ Gain can be adjusted independently for both input channels. The adjustment is do
 Jumper orientation
 ------------------
 
-Jumper position can have an effect on the measurements taken with Red Pitaya. The jumpers are internally connected with a small metal plate, which acts as a capacitor and has an effect on the overall capacitance, which in trn affects the input impedance. A calibration is highly recommended if the jumpers are moved from an incorrect to a correct position.
+Jumper position can have an effect on the measurements taken with Red Pitaya. The jumpers are internally connected with a small metal plate, which acts as a capacitor and has an effect on the overall capacitance, which in turn affects the input impedance. If the jumpers are moved from an incorrect to a correct position, a calibration is highly recommended.
 
-Incorrect placement of the jumpers can cause overshooting or under cutting of the front part of the aqcuired square type signals, as shown in the picture below.
+Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square type signals, as shown in the picture below.
 
 .. figure:: Jumper_position_wrong_signal.jpg
 
-    As it can be observed, **If the jumpers are not placed correctly, the step response becomes under-compensated.**
+    As it can be observed, **if the jumpers are not placed correctly, the step response becomes under-compensated.**
 
 
-With the correct placement of the jumper pins that same waveform looks correct.
+With the correct placement of the jumper pins, that same waveform looks much better.
 
 .. figure:: Jumper_position_right_signal.jpg
+
 
 The correct placement of jumper pins can be seen in the picture below.
 
 .. figure:: Jumper_position_right.png
+
 
 And an example of incorrect jumper positioning:
 
@@ -285,7 +288,7 @@ Analog inputs calibration
 
 Calibration processes can be performed using the :ref:`Calibration app <calibration_app>`.
 or using the **calib** :ref:`command line utility <com_line_tools>`. When performing calibration with the 
-:ref: `Calibration app <calibration_app>`, just select *Settings -> Calibration* and follow the instructions.
+:ref:`Calibration app <calibration_app>`, just select *Settings -> Calibration* and follow the instructions.
 
 - Calibration using **calib** utility
     
@@ -411,13 +414,13 @@ General Specifications
     
 .. figure:: Outputs.png
        
-    Output channels Output voltage range: ± 1 V
+    Output channel Output voltage range: ± 1 V
         
 Output stage is shown in picture bellow.
     
 .. figure:: Outputs_stage.png
        
-    Output channels schematics
+    Output channel schematics
            
 ================
 Output impedance
@@ -427,7 +430,7 @@ The impedance of the output channels (output amplifier and filter) is shown in t
     
 .. figure:: Output_impedance.png
     
-    Outputs impedance
+    Output impedance
 
 =========
 Bandwidth
