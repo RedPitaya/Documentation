@@ -172,7 +172,7 @@ Using just SCPI commands:
     plot.ylabel('Voltage')
     plot.show()
 
-Using functions:
+Using functions (will be implemented soon):
 
 .. code-block:: python
     
