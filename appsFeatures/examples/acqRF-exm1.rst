@@ -796,7 +796,7 @@ Using just SCPI commands:
             plot.show()
 
 
-Using functions:
+Using functions (will be implemented soon):
 
 .. tabs::
 
