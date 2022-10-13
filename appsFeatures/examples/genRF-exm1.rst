@@ -132,7 +132,7 @@ Using just SCPI commands:
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')
 
-Using functions:
+Using functions (will be implemented soon):
 
 .. code-block:: python
 
