@@ -182,7 +182,7 @@ Using just SCPI commands:
     time.sleep(1)
     rp_s.tx_txt('SOUR:TRIG:INT')
 
-Using functions:
+Using functions (will be implemented soon):
 
 .. code-block:: python
 
