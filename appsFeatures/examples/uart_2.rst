@@ -208,7 +208,7 @@ Using just SCPI commands:
     print("Release UART")
     
     
-Using functions:
+Using functions (will be implemented soon):
 
 .. code-block:: python
 
