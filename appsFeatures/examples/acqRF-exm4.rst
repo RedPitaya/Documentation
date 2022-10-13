@@ -179,7 +179,7 @@ Using just SCPI commands:
     plt.plot(data)
     plt.show()
 
-Using functions:
+Using functions (will be implemented soon):
 
 .. code-block:: python
     
