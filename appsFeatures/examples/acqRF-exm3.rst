@@ -171,7 +171,7 @@ Using just SCPI commands:
     plot.show()
 
 
-Using functions:
+Using functions (will be implemented soon):
 
 .. code-block:: python
     
