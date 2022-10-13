@@ -117,8 +117,12 @@ Code - C
 Code - Python
 *************
 
-.. code-block:: python
+Using just SCPI commands:
 
+.. code-block:: python
+    
+    #!/usr/bin/python3
+    
     import sys
     import redpitaya_scpi as scpi
 
@@ -137,6 +141,29 @@ Code - Python
     rp_s.tx_txt('SOUR1:BURS:STAT BURST')
     rp_s.tx_txt('SOUR1:TRIG:SOUR EXT_PE')
 
+    rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp_s.tx_txt('SOUR1:TRIG:INT')
+
+Using functions (will be implemented soon):
+
+.. code-block:: python
+    
+    #!/usr/bin/python3
+    
+    import sys
+    import redpitaya_scpi as scpi
+
+    rp_s = scpi.scpi(sys.argv[1])
+
+    wave_form = 'sine'
+    freq = 10000
+    ampl = 1
+
+    rp_s.tx_txt('GEN:RST')
+
+    # Function for configuring a Source
+    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=2, trig="EXT_PE")
+    
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')
 
