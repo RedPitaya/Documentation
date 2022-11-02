@@ -6,7 +6,7 @@ Generate a signal on external trigger
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate an analog signal on an external trigger. Red Pitaya will first wait for a trigger from an external source and start generating the desired signal right after the trigger condition is met. Voltage and frequency ranges depend on the Red Pitaya model.
+This example shows how to program Red Pitaya to generate an analog signal on an external trigger. Red Pitaya will first wait for a trigger from an external source and start generating the desired signal right after the trigger condition is met. The same concept also works for continuous signal generation on external trigger Voltage and frequency ranges depend on the Red Pitaya model.
 
 
 Required hardware
@@ -48,12 +48,11 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     writeline(RP,'SOUR1:FREQ:FIX 200');         % Set frequency of output signal
     writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
 
-    writeline(RP,'SOUR1:BURS:STAT CONTINUOUS'); % Set burst mode to CONTINUOUS
+    writeline(RP,'SOUR1:BURS:STAT BURST');      % Set burst mode to CONTINUOUS for sine wave generation on External trigger
     writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 pulses of sine wave
     writeline(RP,'SOUR1:TRIG:SOUR EXT_PE');     % Set generator trigger to external
 
     writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
-    writeline(RP,'SOUR1:TRIG:INT');
 
     % For generating signal pulses, your trigger signal frequency must be less than
     % frequency of generating signal pulses. If your trigger signal frequency
@@ -105,7 +104,7 @@ Code - C
         rp_GenTriggerSource(RP_CH_1, RP_GEN_TRIG_SRC_EXT_PE);
 
         rp_GenOutEnable(RP_CH_1);
-        rp_GenTriggerOnly(RP_CH_1);
+        //rp_GenTriggerOnly(RP_CH_1);
 
         /* Release rp resources */
         rp_Release();
@@ -125,11 +124,12 @@ Using just SCPI commands:
     
     import sys
     import redpitaya_scpi as scpi
-
-    rp_s = scpi.scpi(sys.argv[1])
+    
+    IP = '192.168.178.56'
+    rp_s = scpi.scpi(IP)
 
     wave_form = 'sine'
-    freq = 10000
+    freq = 200
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
@@ -137,12 +137,14 @@ Using just SCPI commands:
     rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
-    rp_s.tx_txt('SOUR1:BURS:NCYC 2')
-    rp_s.tx_txt('SOUR1:BURS:STAT BURST')
+    
+    rp_s.tx_txt('SOUR1:BURS:STAT BURST')        # Set burst mode to CONTINUOUS/skip this section for sine wave generation on External trigger
+    rp_s.tx_txt('SOUR1:BURS:NCYC 1')
     rp_s.tx_txt('SOUR1:TRIG:SOUR EXT_PE')
 
     rp_s.tx_txt('OUTPUT1:STATE ON')
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    
+    rp_s.close()
 
 Using functions (will be implemented soon):
 
@@ -153,19 +155,21 @@ Using functions (will be implemented soon):
     import sys
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi(sys.argv[1])
+    IP = '192.168.178.56'
+    rp_s = scpi.scpi(IP)
 
     wave_form = 'sine'
-    freq = 10000
+    freq = 200
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
 
     # Function for configuring a Source
-    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=2, trig="EXT_PE")
+    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=1, trig="EXT_PE")
     
     rp_s.tx_txt('OUTPUT1:STATE ON')
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    
+    rp_s.close()
 
 
 Code - LabVIEW
