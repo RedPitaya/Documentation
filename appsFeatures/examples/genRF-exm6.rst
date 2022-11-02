@@ -148,7 +148,8 @@ Using just SCPI commands:
     import time
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi(sys.argv[1])
+    IP = '192.168.1.97'
+    rp_s = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 4
@@ -181,6 +182,8 @@ Using just SCPI commands:
     rp_s.tx_txt('SOUR2:TRIG:INT')
     time.sleep(1)
     rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()
 
 Using functions (will be implemented soon):
 
@@ -192,7 +195,8 @@ Using functions (will be implemented soon):
     import time
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi(sys.argv[1])
+    IP = '192.168.1.97'
+    rp_s = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 4
@@ -211,3 +215,5 @@ Using functions (will be implemented soon):
     rp_s.tx_txt('SOUR2:TRIG:INT')
     time.sleep(1)
     rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()
