@@ -8,6 +8,10 @@ Description
 
 This example shows how to program Red Pitaya to generate a custom waveform signal. Voltage and frequency ranges depend on the Red Pitaya model.
 
+.. note::
+
+    You can send less samples than a full buffer (16384 samples) to the Red Pitaya, but the frequency will be adjusted accordingly. This means that if you send 8192 samples instead and specify the frequency as 10 kHz, Red Pitaya will generate a 20 kHz signal.
+
 Required hardware
 *****************
 
@@ -177,8 +181,8 @@ Using just SCPI commands:
     freq = 10000
     ampl = 1
 
-    N = 16383
-    t = np.linspace(0, 1, N+1)*2*math.pi
+    N = 16384               # Number of samples
+    t = np.linspace(0, 1, N)*2*math.pi
 
     x = np.sin(t) + 1/3*np.sin(3*t)
     y = 1/2*np.sin(t) + 1/4*np.sin(4*t)
@@ -216,6 +220,8 @@ Using just SCPI commands:
 
     rp_s.tx_txt('OUTPUT:STATE ON')
     rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()
 
 Using functions (will be implemented soon):
 
@@ -235,8 +241,8 @@ Using functions (will be implemented soon):
     freq = 10000
     ampl = 1
 
-    N = 16383
-    t = np.linspace(0, 1, N+1)*2*math.pi
+    N = 16384                   # Number of samples
+    t = np.linspace(0, 1, N)*2*math.pi
 
     x = np.sin(t) + 1/3*np.sin(3*t)
     y = 1/2*np.sin(t) + 1/4*np.sin(4*t)
@@ -253,6 +259,8 @@ Using functions (will be implemented soon):
 
     rp_s.tx_txt('OUTPUT:STATE ON')
     rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()
 
 
 Code - LabVIEW

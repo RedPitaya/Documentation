@@ -137,6 +137,8 @@ Using just SCPI commands:
 
     rp_s.tx_txt('OUTPUT:STATE ON')
     rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()
 
 Using functions (will be implemented soon):
 
@@ -161,4 +163,6 @@ Using functions (will be implemented soon):
 
     rp_s.tx_txt('OUTPUT:STATE ON')
     rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()
 

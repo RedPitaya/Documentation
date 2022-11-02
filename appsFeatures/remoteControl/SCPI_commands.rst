@@ -141,7 +141,7 @@ Parameter options:
 | | Examples:                          |                            |                                                                            |
 | | ``SOUR1:BURS:NCYC 3``              |                            |                                                                            |
 +--------------------------------------+----------------------------+----------------------------------------------------------------------------+
-| | ``SOUR<n>:BURS:NOR <count>``       | ``rp_GenBurstRepetitions`` | Set the number of repeated bursts (**R**).                                 |
+| | ``SOUR<n>:BURS:NOR <count>``       | ``rp_GenBurstRepetitions`` | Set the number of repeated bursts (**R**) (65536 == INF Repetitions)       |
 | | Examples:                          |                            |                                                                            |
 | | ``SOUR1:BURS:NOR 5``               |                            |                                                                            |
 +--------------------------------------+----------------------------+---------------------------+------------------------------------------------+
