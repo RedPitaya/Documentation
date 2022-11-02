@@ -116,7 +116,7 @@ Using just SCPI commands:
     import sys
     import redpitaya_scpi as scpi
     
-    IP = "192.168.178.111";
+    IP = "192.168.178.111"
     rp_s = scpi.scpi(IP)
 
     wave_form = 'sine'
