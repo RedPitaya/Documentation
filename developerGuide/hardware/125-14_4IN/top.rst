@@ -9,7 +9,7 @@ STEMlab 125-14 4-Input is a single-board RF signal acquisition platform that off
 * RF inputs come with better performance (less crosstalk, noise, and distortions).
 * Zynq 7020 (bigger FPGA that offers more processing capabilities and more digital IO pins available on the extension connector).
 * Switching between internal and external clocks can be done using a jumper or control signal on the extension connector.
-* The internal ADC clock can be locked to an external reference clock via an extension connector (this feature is only available upon customer request). 
+* The internal ADC clock can be locked to an external reference clock via an extension connector (this feature is only available upon customer request).
 
 ************************
 Technical specifications
