@@ -71,12 +71,24 @@ Gain can be adjusted independently for both input channels. The adjustment is do
     
     Jumper settings are limited to the described positions. Any other configuration or use of different jumper types may damage the product and void the warranty.
 
-
-------------------
+==================
 Jumper orientation
-------------------
+==================
 
 Jumper position can have an effect on the measurements taken with Red Pitaya. The jumpers are internally connected with a small metal plate, which acts as a capacitor and has an effect on the overall capacitance, which in turn affects the input impedance. If the jumpers are moved from an incorrect to a correct position, a calibration is highly recommended.
+
+
+1) The position of the jumper bumps must be as indicated in this image.
+
+    .. figure:: Jumper_position_Note.png
+
+
+2) The metallic part of the jumper should look toward the PCB so that it is not visible once the jumpers are installed. Here is an example on the STEMlab 125-14 4-Input:
+
+    .. figure:: Jumper_position_4IN_0.png
+
+    .. figure:: Jumper_position_4IN_1.png
+
 
 Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square type signals, as shown in the picture below.
 
@@ -88,16 +100,6 @@ Incorrect placement of the jumpers can cause overshooting or undercutting of the
 With the correct placement of the jumper pins, that same waveform looks much better.
 
 .. figure:: Jumper_position_right_signal.jpg
-
-
-The correct placement of jumper pins can be seen in the picture below.
-
-.. figure:: Jumper_position_right.png
-
-
-And an example of incorrect jumper positioning:
-
-.. figure:: Jumper_position_wrong.png
 
 
 
@@ -113,7 +115,7 @@ Input stage schematics
 Coupling
 ========
 
-Fast analog inputs are **DC coupled**. Input impedance is given in picture below. 
+Fast analog inputs are **DC coupled**. Input impedance is given in the picture below. 
 
 .. figure:: Input_impedance_of_fast_analog_inputs.png
        
