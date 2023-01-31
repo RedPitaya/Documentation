@@ -4,9 +4,9 @@ Extension connector
 
     - Connector: 2 x 26 pins IDC (M) 
     - Power supply: 
-    - Available voltages: +5V, +3.3V, 3.3V 
-    - Current limitations: 500 mA for +5V and +3.3V (to be shared between extension module and USB devices), 50 mA 
-      for -3.3V supply. 
+    - Available voltages: +5 V, +3.3 V, -3.4 V 
+    - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA 
+      for -3.4 V supply. 
 
 .. _E1:
     
@@ -15,7 +15,7 @@ Extension connector E1
 ======================
 
 - 3v3 power source
-- 16 single ended or 8 differential digital I/Os with 3,3V logic levels
+- 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
 
 ===  =========== =============== ======================== ==============
 Pin  Description FPGA pin number FPGA pin description     Voltage levels
@@ -48,15 +48,18 @@ Pin  Description FPGA pin number FPGA pin description     Voltage levels
 26   GND
 ===  =========== =============== ======================== ==============
 
-All DIOx_y pins are LVCMOS33. abs. max. ratings are: min. –0.40V max. 3.3V + 0.55V <8 mA drive strength    
-
+All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
+    - min. -0.40V
+    - max. 3.3V + 0.55V
+    - <8 mA drive strength
+    
 .. _E2:
 
 ======================
 Extension connector E2
 ======================
 
-    - +5V & -3V3 power source
+    - +5 V & -3V4 power source
     - SPI, UART, I2C
     - 4 x slow ADCs
     - 4 x slow DACs
@@ -96,7 +99,8 @@ Pin  Description            FPGA pin number FPGA pin description Voltage levels
 ===  ====================== =============== ==================== ==============
 
 \ :sup:`1` Red Pitaya Version 1.0 has -3.3V on pin 2. Red Pitaya Version 1.1 has -3.4V on pin 2.
-Schematics of extension connectors is shown in picture bellow.
+
+Schematics of extension connectors are shown in the picture below.
 
 .. figure:: Extension_connector.png
 
@@ -104,13 +108,9 @@ Schematics of extension connectors is shown in picture bellow.
 
 #. Input capacitance depends on jumper settings and may vary. 
 #. A 50 Ω termination can be connected through an SMA tee in parallel to the input for measurements in a 50 Ω system. 
-#. Crosstalk measured with high gain jumper setting on both channels. The SMA connectors not involved in the
+#. Crosstalk measured with a high gain jumper setting on both channels. The SMA connectors not involved in the
    measurement are terminated.
-#. Measurement referred to high gain jumper setting, with limited environmental noise, inputs and outputs terminated,
-   output signals disabled, PCB grounded through SMA ground. The specified noise floor measurement is calculated from 
-   the standard deviation of 16k contiguous samples at full rate. (Typically full bandwidth std(Vn) < 2 mV). Noise 
-   floor specification does not treat separately spurious spectral components and represents time domain noise average 
-   referred to a 1 Hz bandwidth. In presence of spurious components the actual noise floor would result lower.
+#. Measurement referred to high gain jumper setting with limited environmental noise, inputs and outputs terminated, output signals disabled, and the PCB grounded through SMA ground. The specified noise floor measurement is calculated from the standard deviation of 16k contiguous samples at full rate. (Typically full bandwidth std(Vn) < 2 mV). The noise floor specification does not treat spurious spectral components separately and represents a time domain noise average referred to a 1 Hz bandwidth. In the presence of spurious components, the actual noise floor would be lower.
 #. Measurement referred at high gain jumper setting, inputs matched and outputs terminated, outputs signal disabled, 
    PCB grounded through SMA ground. 
 #. Measurement referred to high gain jumper setting, inputs and outputs terminated, outputs signal disabled, PCB 
@@ -123,29 +123,19 @@ Schematics of extension connectors is shown in picture bellow.
 #. The output channels are designed to drive 50 Ω loads. Terminate outputs when channels are not used. Connect 
    parallel 50 Ω load (SMA tee junction) in high impedance load applications. 
 #. Measured at 10 dBm output power level 
-#. Typical power level with 1 MHz sine is 9.5 dBm. Output power is subject to slew rate limitations. 
-#. Detailed scheme available within documentation (Red_Pitaya_Schematics_v1.0.1.pdf) 
-#. To avoid speed limitations on digital General Purpose Input / Output pins are directly connected to FPGA. FPGA
-   decoupling and pin protection is to be addressed within extension module designs. User is responsible for pin 
-   handling. 
-#. The use of not approved power supply may deteriorate performance or damage the product. 
-#. Heatsink must be installed and board must be operated on a flat surface without airflow obstructions. Operation at 
-   higher ambient temperatures, lower pressure conditions or within enclosures to be addressed by means of adequate 
-   ventilation. The operation of the product is automatically disabled at increased temperatures. 
+#. The typical power level with 1 MHz sine is 9.5 dBm. Output power is subject to slew rate limitations.
+#. The detailed scheme can be found in the documentation (Red_Pitaya_Schematics_v1.0.1.pdf). 
+#. To avoid speed limitations on digital General Purpose Input / Output pins are directly connected to the FPGA. FPGA decoupling and pin protection is to be addressed within extension module designs. The user is responsible for pin handling.
+#. The use of an unapproved power supply may deteriorate performance or damage the product.
+#. A heatsink must be installed and the board must be operated on a flat surface without airflow obstructions. Operation at higher ambient temperatures and lower pressure conditions within enclosures will be addressed by means of adequate ventilation. The operation of the product is automatically disabled at increased temperatures.
 #. Some parts may become hot during and after operation. Do not touch them. 
 #. Measurement performance is specified within this range. 
 #. Valid for low frequency signals. For input signals that contain frequency components beyond 1 kHz, the full scale
    value defines the maximum admissible input voltage.
-#. Jumper settings are limited to the positions described in the user manual. Any other configuration or use of
-   different jumper type may damage the product and voiding the warranty. 
-#. SMA connectors on the cables connected to Red Pitaya must correspond to the standard MILC39012. It’s Important that
-   central pin is of suitable length, otherwise the SMA connector installed in Red Pitaya will mechanically damage the
-   SMA connector. Central pin of the SMA connector on Red Pitaya will loose contact to the board and the board will 
-   not be possible to repair due to the mechanical damage (separation of the pad from the board). 
-#. Jumpers are not symmetrical, they have latches. Always install jumpers with the latch on its outer side in order to
-   avoid problems with hard to remove jumpers. 
-#. Dimensions are rounded to the nearest millimeter. For exact dimensions, please see the Technical drawings and 
-   product model. (Red_Pitaya_Dimensions_v1.0.1.pdf) 
+#. The jumper settings are limited to the positions described in the user manual. Any other configuration or use of different jumper types may damage the product and void the warranty.
+#. The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MILC39012. It’s important that the central pin is of a suitable length, otherwise the SMA connector installed on the Red Pitaya will mechanically damage the SMA connector. The central pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
+#. Jumpers are not symmetrical; they have latches. Always install jumpers with the latch on its outer side in order to avoid problems with hard to remove jumpers.
+#. Dimensions are rounded to the nearest millimeter. For exact dimensions, please see the technical drawings and product model. (Red_Pitaya_Dimensions_v1.0.1.pdf)
 
 Information furnished by Red Pitaya d.d. is believed to be accurate and reliable. However, no responsibility is 
 assumed for its use. Contents may be subject to change without any notice. 
@@ -168,7 +158,7 @@ Auxiliary analog output channels
 
     - Number of channels: 4 
     - Output type: Low pass filtered PWM (I) 
-    - PWM time resolution: 4ns (1/250 MHz)
+    - PWM time resolution: 4 ns (1/250 MHz)
     - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17,18,19,20) v - Output voltage range: 0 to +1.8 V 
     - Output coupling: DC 
 
@@ -179,17 +169,15 @@ General purpose digital input/output channels: (N)
     - Number of digital input/output pins: 16 
     - Voltage level: 3.3 V 
     - Direction: configurable 
-    - Location: IDC connector E1 (pins 324 ) 
+    - Location: IDC connector :ref:`E1 <E1>` (pins 324) 
     
 ===============================================
 Powering Red Pitaya through extension connector
 ===============================================
 
-Red Pitaya can be also powered through pin1 of the extension connector :ref:`E2 <E2>`, but in such case external protection must
-be provided by the user in order to protect the board!
+The Red Pitaya can also be powered through pin 1 of the extension connector :ref:`E2 <E2>`, but in such a case, external protection must be provided by the user in order to protect the board!
 
 .. figure:: Protection.png
 
-Protection circuit between +5V that is provided over micro USB power connector and +5VD that is connected to pin1 of 
-the extension connector :ref:`E2 <E2>`.
+Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension connector :ref:`E2 <E2>`.
 

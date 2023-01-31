@@ -8,7 +8,7 @@ Red Pitaya platforms
    125-14/top.rst
    125-14_EXT/top.rst
    125-14_LN/top.rst
-   125-14_LN-4CH/top.rst
+   125-14_4IN/top.rst
    125-14-Z20/top.rst
    125-14_MULTI/top.rst
    122-16/top.rst

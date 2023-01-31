@@ -1,14 +1,12 @@
-Synchronised one-pulse signal generation and acquisition
-########################################################
+Triggering on external trigger
+######################################
 
-
-.. http://blog.redpitaya.com/examples-new/synchronized-one-pulse-generating-and-acquiring/
-
+.. http://blog.redpitaya.com/examples-new/on-given-external-trigger-acquire-signal-on-fast-analog-input/
 
 Description
 ***********
 
-This example shows how to acquire 16k samples of signal on fast analog inputs. The signal will be acquired simultaneously with the generated signal. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
+This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the external trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
 
 .. |sample rate and decimation| raw:: html
 
@@ -19,15 +17,17 @@ Required hardware
 *****************
 
     - Red Pitaya device
+    - Signal (function) generator
+    
+Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
-Wiring example for STEMlab 125-14 & STEMlab 125-10:   
- 
-.. figure:: generate_continous_signal_on_fast_analog_output.png
+.. figure:: on_given_external_trigger_acquire_signal_on_fast_analog_input.png
 
 Circuit
 *******
 
-.. figure:: generate_continous_signal_on_fast_analog_output_circuit1.png
+.. figure:: on_given_external_trigger_acquire_signal_on_fast_analog_input_circuit.png
+
 
 Code - MATLAB®
 **************
@@ -36,146 +36,184 @@ Code - MATLAB®
 
     The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
-    clc
+    %% Define Red Pitaya as TCP/IP object
     clear all
     close all
-
-    IP = '192.168.178.111';           % Input IP of your Red Pitaya...
+    clc
+    IP = '192.168.178.111';                % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
-    RP.ByteOrder = "big-endian";
-    configureTerminator(RP,"CR/LF");
-    
+
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP,'CR/LF');
+
     flush(RP);
 
+    % Set decimation value (sampling rate) in respect to your 
+    % acquired signal frequency
 
-    %% The example generate sine bursts every 0.5 seconds
-    writeline(RP,'GEN:RST');                        % Reset Generator & Acquisition
     writeline(RP,'ACQ:RST');
+    writeline(RP,'ACQ:DEC 4');
 
-    writeline(RP,'SOUR1:FUNC SINE');
-    writeline(RP,'SOUR1:FREQ:FIX 1000000');         % Set frequency of output signal
-    writeline(RP,'SOUR1:VOLT 1');                   % Set amplitude of output signal
 
-    writeline(RP,'SOUR1:BURS:STAT BURST');      % Set burst mode to BURST
-    writeline(RP,'SOUR1:BURS:NCYC 3');          % Set 3 pulses of sine wave
+    % Set trigger delay to 0 samples
+    % 0 samples delay sets trigger to center of the buffer
+    % Signal on your graph will have trigger in the center (symmetrical)
+    % Samples from left to the center are samples before the trigger 
+    % Samples from center to the right are samples after the trigger
 
-    %% Set Acquisition
-
-    writeline(RP,'ACQ:DEC 1');
-    writeline(RP,'ACQ:TRIG:LEV 0');
     writeline(RP,'ACQ:TRIG:DLY 0');
 
+    % for SIGNALlab device there is a possiblity to set the trigger threshold 
+    % writeline(RP,'ACQ:TRIG:EXT:LEV 1')
 
-    %% Start gen % acq
+
+    %% Start & Trigg
+    % Trigger source setting must be after ACQ:START
+    % Set trigger to source 1 positive edge
 
     writeline(RP,'ACQ:START');
+    % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
     pause(1);
-    writeline(RP,'ACQ:TRIG AWG_PE');
-    writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
-    pause(1);
-    
-    writeline(RP,'SOUR1:TRIG:INT');
-    
-    %% Wait for trigger
+    % Here we have used time delay of one second but you can calculate the exact value taking in to account buffer
+    % length and sampling rate
+
+    writeline(RP,'ACQ:TRIG EXT_PE');
+    % Wait for trigger
+    % Until trigger is true wait with acquiring
+    % Be aware of while loop if trigger is not achieved
+    % Ctrl+C will stop code execution in MATLAB
+
     while 1
         trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
-        if strcmp('TD',trig_rsp(1:2))
+    
+        if strcmp('TD',trig_rsp(1:2))  % Read only TD
+    
             break;
+    
         end
     end
+    
+    % % FUTURE BETA
+    % % wait for fill adc buffer
+    % while 1
+    %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+    %     
+    %     if strcmp('1', fill_state(1:1))
+    % 
+    %         break;
+    % 
+    %     end
+    % end
+    
+    % Read data from buffer 
+    signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
+    signal_str_2 = writeread(RP,'ACQ:SOUR2:DATA?');
 
-    % wait for fill adc buffer
-    while 1
-        fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-                
-        if strcmp('1',fill_state(1:1))
-            break            
-        end
-    end
+    % Convert values to numbers.
+    % The first character in string is “{“   
+    % and the last 3 are 2 spaces and “}”.  
 
-    %% Read & plot
+    signal_num   = str2num(signal_str  (1, 2:length(signal_str)  - 3));
+    signal_num_2 = str2num(signal_str_2(1,2:length(signal_str_2) - 3));
 
-    signal_str = writeread(RP,'ACQ:SOUR1:DATA?');
-    signal_num = str2num(signal_str(1, 2:length(signal_str) - 3));
     plot(signal_num)
+    hold on
+    plot(signal_num_2,'r')
     grid on
+    ylabel('Voltage / V')
+    xlabel('samples')
 
-    %% Close connection with Red Pitaya
     clear RP;
 
 
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
-
+    
+    #!/usr/bin/python3
+    
     import sys
-    import time
-    import matplotlib.pyplot as plt
     import redpitaya_scpi as scpi
+    import matplotlib.pyplot as plot
 
-    IP = '192.168.178.111'
-    rp_s = scpi.scpi(IP)
-
-    wave_form = 'sine'
-    freq = 1000000
-    ampl = 1
-
-    # Generation
-    rp_s.tx_txt('GEN:RST')
+    rp_s = scpi.scpi(sys.argv[1])
+    
     rp_s.tx_txt('ACQ:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
-
-    rp_s.tx_txt('SOUR1:BURS:STAT BURST')        # Mode set to BURST
-    rp_s.tx_txt('SOUR1:BURS:NCYC 3')            # 3 periods in each burst
-
-    # Acqusition
-    rp_s.tx_txt('ACQ:DEC 1')
-    rp_s.tx_txt('ACQ:TRIG:LEV 0')
-    rp_s.tx_txt('ACQ:TRIG:DLY 0')
-
+    rp_s.tx_txt('ACQ:DEC 4')
     rp_s.tx_txt('ACQ:START')
-    time.sleep(1)
-    rp_s.tx_txt('ACQ:TRIG AWG_PE')
-    rp_s.tx_txt('OUTPUT1:STATE ON')
-    time.sleep(1)
-
-    rp_s.tx_txt('SOUR1:TRIG:INT')
-
-    # Wait for trigger
-    while 1:
-        rp_s.tx_txt('ACQ:TRIG:STAT?')           # Get Trigger Status
-        if rp_s.rx_txt() == 'TD':               # Triggerd?
-            break
+    rp_s.tx_txt('ACQ:TRIG EXT_PE')
 
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:FILL?')
-        if rp_s.rx_txt() == '1':
+        rp_s.tx_txt('ACQ:TRIG:STAT?')
+        if rp_s.rx_txt() == 'TD':
             break
+    
+    ## FUTURE BETA
+    # while 1:
+    #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+    #     if rp_s.rx_txt() == '1':
+    #         break
 
-    # Read data and plot
+    rp_s.tx_txt('ACQ:SOUR1:DATA?')
+    buff_string = rp_s.rx_txt()
+    buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
+    buff = list(map(float, buff_string))
 
-    rp_s.tx_txt('ACQ:SOUR1:DATA?')              # Read full buffer (source 1)
-    data_string = rp_s.rx_txt()                 # data into a string
-
-    # Remove brackets and empty spaces + string => float
-    data_string = data_string.strip('{}\n\r').replace("  ", "").split(',')    
-    data = list(map(float, data_string))        # transform data into float
-
-    plt.plot(data)
-    plt.show()
+    plot.plot(buff)
+    plot.ylabel('Voltage')
+    plot.show()
 
 
+Using functions (will be implemented soon):
+
+.. code-block:: python
+    
+    #!/usr/bin/python3
+    
+    import sys
+    import redpitaya_scpi as scpi
+    import matplotlib.pyplot as plot
+
+    rp_s = scpi.scpi(sys.argv[1])
+    
+    rp_s.tx_txt('ACQ:RST')
+
+    dec = 4
+    
+    # Function for configuring Acquisitio
+    rp_s.acq_set(dec)
+    
+    rp_s.tx_txt('ACQ:START')
+    rp_s.tx_txt('ACQ:TRIG EXT_PE')
+
+    while 1:
+        rp_s.tx_txt('ACQ:TRIG:STAT?')
+        if rp_s.rx_txt() == 'TD':
+            break
+    
+    ## FUTURE BETA
+    # while 1:
+    #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+    #     if rp_s.rx_txt() == '1':
+    #         break
+
+    # function for Data Acquisition
+    buff = rp_s.acq_data(1, convert= True)
+
+    plot.plot(buff)
+    plot.ylabel('Voltage')
+    plot.show()
 
 Code - LabVIEW
 **************
 
-.. figure:: Synchronised-one-pulse-signal-generation-and-acquisition_LV.png
+.. figure:: Signal-acquisition-on-external-trigger_LV.png
 
-`Download <https://downloads.redpitaya.com/downloads/Clients/labview/Synchronised%20one%20pulse%20signal%20generation%20and%20acquisition.vi>`_
+`Download <https://downloads.redpitaya.com/downloads/Clients/labview/Signal%20acquisition%20on%20external%20trigger.vi>`_

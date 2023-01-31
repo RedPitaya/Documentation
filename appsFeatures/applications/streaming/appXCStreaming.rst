@@ -1,7 +1,7 @@
 .. _mch_streaming_top:
 
 #######################
-X-channel streaming
+X-Channel Streaming
 #######################
 
 .. |br| raw:: html
@@ -27,12 +27,12 @@ Setup
 
 **What do I need before I start?**
 
-The Red Pitaya STEMlab 125-14 X-channel system consists of multiple STEMlab 125-14 LN devices that are modified for clock and trigger synchronization, and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
+The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple STEMlab 125-14 LN devices that are modified for clock and trigger synchronization, and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
 
 .. figure:: img/Master_and_slaves.jpg
     :width: 80%
 
-Notice that the Red Pitaya STEMlab 125-14 X-channel system includes two types of devices:
+Notice that the Red Pitaya STEMlab 125-14 X-Channel System includes two types of devices:
 
     * one STEMlab 125-14 MASTER device (standard STEMlab 125-14 device)
     * one or more STEMlab 125-14 SLAVE devices denoted by an "S" sticker 

@@ -6,7 +6,7 @@ Generate continuous signal
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate an analog 2 kHz sine wave signal with a 1V amplitude. Voltage and frequency ranges depend on the Red Pitaya model.
+This example shows how to program Red Pitaya to generate an analog 2 kHz sine wave signal with a 1 V amplitude. Voltage and frequency ranges depend on the Red Pitaya model.
 
 
 Required hardware
@@ -86,7 +86,7 @@ Code - C
         rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
 
         /* Generating frequency */
-        rp_GenFreq(RP_CH_1, 10000.0);
+        rp_GenFreq(RP_CH_1, 2000.0);
 
         /* Generating amplitude */
         rp_GenAmp(RP_CH_1, 1.0);
@@ -107,15 +107,20 @@ Code - C
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
 
+    #!/usr/bin/python3
+    
     import sys
     import redpitaya_scpi as scpi
-
-    rp_s = scpi.scpi(sys.argv[1])
+    
+    IP = "192.168.178.111"
+    rp_s = scpi.scpi(IP)
 
     wave_form = 'sine'
-    freq = 10000
+    freq = 2000
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
@@ -124,6 +129,28 @@ Code - Python
     rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
     rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
 
+    # Enable output
+    rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp_s.tx_txt('SOUR1:TRIG:INT')
+
+Using functions (will be implemented soon):
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+    
+    import sys
+    import redpitaya_scpi as scpi
+    
+    wave_form = 'sine'
+    freq = 2000
+    ampl = 1
+    
+    rp_s.tx_txt('GEN:RST')
+    
+    # Function for configuring a Source 
+    rp_s.sour_set(1, wave_form, ampl, freq)
+    
     #Enable output
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')

@@ -47,7 +47,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                                                 % Time between bursts is P.)
                                                 
     writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 (N) pulses of sine wave
-    writeline(RP,'SOUR1:BURS:NOR 10000');       % Infinity (R) number of sine wave pulses
+    writeline(RP,'SOUR1:BURS:NOR 10000');       % (R) number of sine wave pulses (set to 65536 for INF pulses)
     writeline(RP,'SOUR1:BURS:INT:PER 5000');    % Set time (P) of burst period in microseconds = 5 * 1/Frequency * 1000000
     
     writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
@@ -100,7 +100,7 @@ Code - C
 
         rp_GenMode(RP_CH_1, RP_GEN_MODE_BURST);
         rp_GenBurstCount(RP_CH_1, 1);
-        rp_GenBurstRepetitions(RP_CH_1, 10000);
+        rp_GenBurstRepetitions(RP_CH_1, 10000);     // set to 65536 for INF pulses
         rp_GenBurstPeriod(RP_CH_1, 5000);
 
         rp_GenOutEnable(RP_CH_1);
@@ -113,8 +113,40 @@ Code - C
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
 
+    #!/usr/bin/python3
+    
+    import sys
+    import redpitaya_scpi as scpi
+
+    rp_s = scpi.scpi(sys.argv[1])
+
+    wave_form = 'sine'
+    freq = 1000
+    ampl = 1
+
+    rp_s.tx_txt('GEN:RST')
+
+    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp_s.tx_txt('SOUR1:BURS:STAT BURST')                # activate Burst mode
+    rp_s.tx_txt('SOUR1:BURS:NCYC 1')                    # Signal periods in a Burst pulse
+    rp_s.tx_txt('SOUR1:BURS:NOR 10000');                # Total number of bursts (set to 65536 for INF pulses)
+    rp_s.tx_txt('SOUR1:BURS:INT:PER 5000');             # Burst period (time between two bursts (signal + delay in microseconds))
+
+    rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp_s.tx_txt('SOUR1:TRIG:INT')
+
+Using functions (will be implemented soon):
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+    
     import sys
     import redpitaya_scpi as scpi
 
@@ -125,13 +157,11 @@ Code - Python
     ampl = 1
 
     rp_s.tx_txt('GEN:RST')
-
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
-    rp_s.tx_txt('SOUR1:BURS:NCYC 2')
-    rp_s.tx_txt('SOUR1:BURS:STAT BURST')
-
+    
+    # Function for configuring a Source
+    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, nor=10000, ncyc=2, period=5000)
+    # nor=65536 for INF pulses
+    
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')
 

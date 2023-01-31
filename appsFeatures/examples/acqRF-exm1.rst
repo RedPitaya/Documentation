@@ -1,5 +1,5 @@
-On trigger signal acquisition
-#############################
+Triggering with treshold on channel
+###################################
 
 .. http://blog.redpitaya.com/examples-new/single-buffer-acquire/
 
@@ -23,8 +23,8 @@ Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
 .. figure:: on_given_trigger_acquire_signal_on_fast_analog_input.png
 
-Cicuit
-******
+Circuit
+*******
 
 .. figure:: on_given_trigger_acquire_signal_on_fast_analog_input_circuit.png
 
@@ -59,13 +59,13 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');       % trigger level 
             
             % there is an option to select coupling when using SIGNALlab 250-12 
             % writeline(RP,'ACQ:SOUR1:COUP AC');    % enables AC coupling on channel 1
 
             % by default LOW level gain is selected
-            % writeline(RP,'ACQ:SOUR1:GAIN LV');    % sets gain to LV/HV (should the same as jumpers)
+            writeline(RP,'ACQ:SOUR1:GAIN LV');    % sets gain to LV/HV (should the same as jumpers)
 
 
             % Set trigger delay to 0 samples
@@ -95,25 +95,26 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Ctrl+C will stop code execution in MATLAB
             
             while 1
-                    trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
                 
-                    if strcmp('TD', trig_rsp(1:2))      % Read only TD
+                if strcmp('TD', trig_rsp(1:2))      % Read only TD
                 
-                        break;
+                    break;
                 
-                    end
+                end
             end
                 
-            % wait for fill adc buffer
-            while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-                
-                if strcmp('1',fill_state(1:1))
-            
-                break
-            
-                end
-            end 
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
                 
             % Read data from buffer 
             signal_str = writeread(RP,'ACQ:SOUR1:DATA?');
@@ -156,7 +157,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
             writeline(RP,'ACQ:DATA:FORMAT BIN');
             writeline(RP,'ACQ:DATA:UNITS VOLTS');
@@ -198,16 +199,18 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
             
-            % wait for fill adc buffer
-            while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-                
-                if strcmp('1',fill_state(1:1))
             
-                break
-            
-                end
-            end 
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
             
             % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -257,7 +260,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
             writeline(RP,'ACQ:DATA:FORMAT BIN');
             writeline(RP,'ACQ:DATA:UNITS RAW');
@@ -296,16 +299,17 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
             
-            % wait for fill adc buffer
-            while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-                
-                if strcmp('1',fill_state(1:1))
-            
-                break
-            
-                end
-            end 
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
             
             % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -337,25 +341,24 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             clear all
             close all
             clc
-            IP= '';                % Input IP of your Red Pitaya...
+            IP = '192.168.178.111';           % Input IP of your Red Pitaya...
             port = 5000;
-            tcpipObj = tcpip(IP, port);
-            tcpipObj.InputBufferSize = 16384*32;
+            RP = tcpclient(IP, port);
+
 
             %% Open connection with your Red Pitaya
 
-            fopen(tcpipObj);
-            tcpipObj.Terminator = 'CR/LF';
+            RP.ByteOrder = "big-endian";
+            configureTerminator(RP,"CR/LF");
 
-            flushinput(tcpipObj);
-            flushoutput(tcpipObj);
+            flush(RP);
 
             % Set decimation vale (sampling rate) in respect to you 
             % acquired signal frequency
 
-            fprintf(tcpipObj,'ACQ:RST');
-            fprintf(tcpipObj,'ACQ:DEC 1');
-            fprintf(tcpipObj,'ACQ:TRIG:LEV 0');
+            writeline(RP,'ACQ:RST');
+            writeline(RP,'ACQ:DEC 1');
+            writeline(RP,'ACQ:TRIG:LEV 0.5');
 
             % Set trigger delay to 0 samples
             % 0 samples delay set trigger to center of the buffer
@@ -363,58 +366,59 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Samples from left to the center are samples before trigger 
             % Samples from center to the right are samples after trigger
 
-            fprintf(tcpipObj,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRIG:DLY 0');
 
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
             % Set trigger to source 1 positive edge
 
-            fprintf(tcpipObj,'ACQ:START');
+            writeline(RP,'ACQ:START');
             % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
             % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
             % length and smaling rate
-            pause(1)
+            pause(1);
 
-            fprintf(tcpipObj,'ACQ:TRIG CH1_PE');  
+            writeline(RP,'ACQ:TRIG CH1_PE');  
             % Wait for trigger
             % Until trigger is true wait with acquiring
             % Be aware of while loop if trigger is not achieved
             % Ctrl+C will stop code executing in Matlab
 
             while 1
-                trig_rsp=query(tcpipObj,'ACQ:TRIG:STAT?')
-            
-                if strcmp('TD',trig_rsp(1:2))  % Read only TD
-            
-                break
-            
+                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+
+                if strcmp('TD', trig_rsp(1:2))  % Read only TD
+
+                    break;
+
                 end
             end
-            
-            % wait for fill adc buffer
-            while 1
-                fill_state=query(tcpipObj,'ACQ:TRIG:FILL?')
-                
-                if strcmp('1',fill_state(1:1))
-            
-                break
-            
-                end
-            end 
+
+            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % wait for fill adc buffer
+            % while 1
+            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+            %     
+            %     if strcmp('1', fill_state(1:1))
+            % 
+            %         break;
+            % 
+            %     end
+            % end 
 
             % Read data from buffer 
-            signal_str=query(tcpipObj,'ACQ:SOUR1:DATA?');
-            signal_str_2=query(tcpipObj,'ACQ:SOUR2:DATA?');
-            signal_str_3=query(tcpipObj,'ACQ:SOUR3:DATA?');
-            signal_str_4=query(tcpipObj,'ACQ:SOUR4:DATA?');
+            signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
+            signal_str_2 = writeread(RP,'ACQ:SOUR2:DATA?');
+            signal_str_3 = writeread(RP,'ACQ:SOUR3:DATA?');
+            signal_str_4 = writeread(RP,'ACQ:SOUR4:DATA?');
 
             % Convert values to numbers.% First character in string is “{“   
             % and 2 latest are empty spaces and last is “}”.  
 
-            signal_num=str2num(signal_str(1,2:length(signal_str)-3));
-            signal_num_2=str2num(signal_str_2(1,2:length(signal_str_2)-3));
-            signal_num_3=str2num(signal_str_3(1,2:length(signal_str_3)-3));
-            signal_num_4=str2num(signal_str_4(1,2:length(signal_str_4)-3));
+            signal_num   = str2num(signal_str(1,2:length(signal_str)-3));
+            signal_num_2 = str2num(signal_str_2(1,2:length(signal_str_2)-3));
+            signal_num_3 = str2num(signal_str_3(1,2:length(signal_str_3)-3));
+            signal_num_4 = str2num(signal_str_4(1,2:length(signal_str_4)-3));
 
             plot(signal_num,'r')
             hold on
@@ -427,8 +431,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             ylabel('Voltage / V')
             xlabel('samples')
 
-            fclose(tcpipObj)          
-
+            clear RP;
 
 Code - C
 ********
@@ -476,14 +479,14 @@ Code - C
             
                     rp_AcqReset();
                     rp_AcqSetDecimation(RP_DEC_8);
-                    rp_AcqSetTriggerLevel(RP_CH_1, 0.1); //Trig level is set in Volts while in SCPI 
+                    rp_AcqSetTriggerLevel(RP_CH_1, 0.5); //Trig level is set in Volts while in SCPI 
                     rp_AcqSetTriggerDelay(0);
 
                     // there is an option to select coupling when using SIGNALlab 250-12 
                     // rp_AcqSetAC_DC(RP_CH_1, RP_AC); // enables AC coupling on channel 1
 
                     // by default LV level gain is selected
-                    // rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
+                    rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
             
                     rp_AcqStart();
             
@@ -501,11 +504,13 @@ Code - C
                             break;
                             }
                     }
-
+                    
+                    /* FUTURE BETA
                     bool fillState = false;
                     while(!fillState){
                         rp_AcqGetBufferFillState(&fillState);
                     }
+                    */
 
                     rp_AcqGetOldestDataV(RP_CH_1, &buff_size, buff);
                     int i;
@@ -545,6 +550,7 @@ Code - C
 
                     rp_AcqReset();
                     rp_AcqSetDecimation(RP_DEC_8);
+                    rp_AcqSetTriggerLevel(RP_CH_1, 0.5);
                     rp_AcqSetTriggerDelay(0);
 
                     rp_AcqStart();
@@ -554,7 +560,7 @@ Code - C
                     /*length and smaling rate*/
 
                     sleep(1);
-                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_NOW);
+                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
                     rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
 
                     while(1){
@@ -564,11 +570,14 @@ Code - C
                             break;
                             }
                     }
-
+                    
+                    /* FUTURE BETA
                     bool fillState = false;
                     while(!fillState){
                         rp_AcqGetBufferFillState(&fillState);
                     }
+                    */
+
 
                     uint32_t pos = 0;        
                     rp_AcqGetWritePointerAtTrig(&pos);
@@ -590,6 +599,9 @@ Code - C
 
 Code - Python
 *************
+
+Using just SCPI commands:
+
 .. tabs::
 
     .. tab:: ASCII/VOLTS mode
@@ -603,23 +615,27 @@ Code - Python
             import matplotlib.pyplot as plot
 
             rp_s = scpi.scpi(sys.argv[1])
-
+            
+            rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG NOW')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
 
             while 1:
                 rp_s.tx_txt('ACQ:TRIG:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
-
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_string = rp_s.rx_txt()
@@ -642,23 +658,28 @@ Code - Python
             import struct
 
             rp_s = scpi.scpi(sys.argv[1])
-
+            
+            rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG NOW')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
 
             while 1:
                 rp_s.tx_txt('ACQ:TRIG:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_byte = rp_s.rx_arb()
@@ -680,23 +701,28 @@ Code - Python
             import struct
 
             rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
 
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
             rp_s.tx_txt('ACQ:DATA:UNITS RAW')
             rp_s.tx_txt('ACQ:DEC 1')
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG NOW')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
 
             while 1:
                 rp_s.tx_txt('ACQ:TRIG:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_byte = rp_s.rx_arb()
@@ -719,12 +745,13 @@ Code - Python
             rp_s = scpi.scpi(sys.argv[1])
 
             rp_s.tx_txt('ACQ:RST')
+            
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
             rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
 
             rp_s.tx_txt('ACQ:DEC 1')
-            rp_s.tx_txt('ACQ:TRIG:LEV 0');
-            rp_s.tx_txt('ACQ:TRIG:DLY 0');
+            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
+            rp_s.tx_txt('ACQ:TRIG:DLY 0')
 
             rp_s.tx_txt('ACQ:START')
             rp_s.tx_txt('ACQ:TRIG CH1_PE')
@@ -734,10 +761,12 @@ Code - Python
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
-                if rp_s.rx_txt() == '1':
-                    break
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_string = rp_s.rx_txt()
@@ -758,6 +787,186 @@ Code - Python
             buff_string = rp_s.rx_txt()
             buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
             buff4 = list(map(float, buff_string))
+
+            plot.plot(buff, 'r')
+            plot.plot(buff2, 'g')
+            plot.plot(buff3, 'b')
+            plot.plot(buff4, 'm')
+            plot.ylabel('Voltage')
+            plot.show()
+
+
+Using functions (will be implemented soon):
+
+.. tabs::
+
+    .. tab:: ASCII/VOLTS mode
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+
+            rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, units='volts', form='ascii')
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+            
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+
+            # function for Data Acquisition
+            buff = rp_s.acq_data(1, bin= False, convert= True)
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: BIN/VOLTS mode
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+            import struct
+
+            rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, units='volts', form='bin')
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+            # function for Data Acquisition
+            buff = rp_s.acq_data(1, bin= True, convert= True)
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: BIN/RAW mode
+
+        .. code-block:: python
+        
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+            import struct
+
+            rp_s = scpi.scpi(sys.argv[1])
+            
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, units='raw', form='bin') 
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+
+            # function for Data Acquisition
+            buff = rp_s.acq_data(1, bin= True, convert= True)
+
+            plot.plot(buff)
+            plot.ylabel('Voltage')
+            plot.show()
+
+    .. tab:: ASCII/VOLTS mode 4-Input
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import sys
+            import redpitaya_scpi as scpi
+            import matplotlib.pyplot as plot
+
+            rp_s = scpi.scpi(sys.argv[1])
+
+            rp_s.tx_txt('ACQ:RST')
+            
+            dec = 1
+            trig_lvl = 0.5
+            trig_delay = 0
+            
+            # Function for configuring Acquisition
+            rp_s.acq_set(dec, trig_lvl, trig_delay, units='volts', form='ascii', input4=True) 
+
+            rp_s.tx_txt('ACQ:START')
+            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                if rp_s.rx_txt() == 'TD':
+                    break
+
+            ## FUTURE BETA
+            # while 1:
+            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
+            #     if rp_s.rx_txt() == '1':
+            #         break
+
+            # function for Data Acquisition
+            buff  = rp_s.acq_data(1, bin= False, convert= True, input4 =True)
+            buff2 = rp_s.acq_data(2, bin= False, convert= True, input4 =True)
+            buff3 = rp_s.acq_data(3, bin= False, convert= True, input4 =True)
+            buff4 = rp_s.acq_data(4, bin= False, convert= True, input4 =True)
 
             plot.plot(buff, 'r')
             plot.plot(buff2, 'g')
@@ -794,17 +1003,20 @@ for Scilab sockets. How to set socket is described on Blink example.
     // Set decimation value (sampling rate) in respect to you 
     // acquired signal frequency
     
+    
+    SOCKET_write(tcpipObj,'ACQ:RST');
+    
     SOCKET_write(tcpipObj,'ACQ:DEC 8');
     
-    // Set trigger level to 100 mV
+    // Set trigger level to 500 mV
     
-    SOCKET_write(tcpipObj,'ACQ:TRIG:LEV 0');
+    SOCKET_write(tcpipObj,'ACQ:TRIG:LEV 0.5');
     
     // there is an option to select coupling when using SIGNALlab 250-12 
     // SOCKET_write(tcpipObj,'ACQ:SOUR1:COUP AC'); // enables AC coupling on channel 1
 
     // by default LOW level gain is selected
-    // SOCKET_write(tcpipObj,'ACQ:SOUR1:GAIN LV'); // user can switch gain using this command
+    SOCKET_write(tcpipObj,'ACQ:SOUR1:GAIN LV'); // user can switch gain using this command
 
     // Set trigger delay to 0 samples
     // 0 samples delay set trigger to center of the buffer
@@ -819,7 +1031,7 @@ for Scilab sockets. How to set socket is described on Blink example.
     // Set trigger to source 1 positive edge
     
     SOCKET_write(tcpipObj,'ACQ:START');
-    SOCKET_write(tcpipObj,'ACQ:TRIG NOW');  
+    SOCKET_write(tcpipObj,'ACQ:TRIG CH1_PE');  
     
     // Wait for trigger
     // Until trigger is true wait with acquiring

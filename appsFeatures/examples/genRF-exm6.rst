@@ -138,13 +138,18 @@ Code - C
 Code - Python
 *************
 
+Using just SCPI commands:
+
 .. code-block:: python
+
+    #!/usr/bin/python3
 
     import sys
     import time
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi(sys.argv[1])
+    IP = '192.168.1.97'
+    rp_s = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 4
@@ -177,6 +182,38 @@ Code - Python
     rp_s.tx_txt('SOUR2:TRIG:INT')
     time.sleep(1)
     rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()
 
+Using functions (will be implemented soon):
 
+.. code-block:: python
 
+    #!/usr/bin/python3
+
+    import sys
+    import time
+    import redpitaya_scpi as scpi
+
+    IP = '192.168.1.97'
+    rp_s = scpi.scpi(IP)
+
+    wave_form = 'sine'
+    freq = 4
+    ampl = 1
+
+    rp_s.tx_txt('GEN:RST')
+    
+    # Function for configuring a Source 
+    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=2, nor=1, period= 5000)
+    rp_s.sour_set(2, wave_form, ampl, freq, burst=True, ncyc=2, nor=1, period= 5000)
+
+    rp_s.tx_txt('OUTPUT:STATE ON')
+    time.sleep(2)
+    rp_s.tx_txt('SOUR1:TRIG:INT')
+    time.sleep(2)
+    rp_s.tx_txt('SOUR2:TRIG:INT')
+    time.sleep(1)
+    rp_s.tx_txt('SOUR:TRIG:INT')
+    
+    rp_s.close()

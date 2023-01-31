@@ -3,15 +3,15 @@
 STEMlab 125-14-LN
 #################
 
-STEMlab 125-14 low noise is STEMlab 125-14 board that is populated with additional linear
-analog power for analog power supplies to reduce RF inputs and outputs noise and
-consequently increase ENOB.
+STEMlab 125-14 low noise is a STEMlab 125-14 board that is populated with additional linear analog power for analog power supplies to reduce RF input and output noise and consequently increase ENOB.
 
-To find out more about the performance of STEMlab 125-14 with DC analog power supplies, we
-suggest you refer to Leonhard Neuhaus's blog.
+To find out more about the performance of the STEMlab 125-14 with DC analog power supplies, we suggest you refer to Leonhard Neuhaus’s blog.
 
-* `Red Pitaya DAC performance <https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/>`_
+* |Red Pitaya DAC performance|
 
+.. |Red Pitaya DAC performance| raw:: html
+
+    <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 
 ************************
 Technical specifications
@@ -27,7 +27,7 @@ Schematics
 
 .. note::
 
-    Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open source code but not an open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
+    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
 *************************
 Mechanical specifications
@@ -35,4 +35,4 @@ Mechanical specifications
 
 * `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
 
-For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.
+For all other specifications please refer to the standard :ref:`STEMlab 125-14 specs <top_125_14>`.

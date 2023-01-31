@@ -68,13 +68,16 @@ This step has been eliminated with the NEW OS 0.97 (and newer) and the only step
    
 
 .. note::
+
       ``xxxxxx`` are the last 6 chracters from the MAC address (on the Ethernet connector)
 
 .. warning::
-      **If you experience some problems when using the Direct Ethernet Connection described above, try to *disable the WiFi* connection on *your PC* (if it has been enabled) and *reset the Red Pitaya* board (power off/on). If the problem still persists, you can try the STATIC IP configuration described below. **
 
+      If you experience some problems when using the Direct Ethernet Connection described above, try to **disable the WiFi** connection on **your PC** (if it has been enabled) and **reset the Red Pitaya** board (power off/on). If the problem still persists, you can try the STATIC IP configuration described below.
 
-**Static IP configuration**
+-----------------------
+Static IP configuration
+-----------------------
 
 This type of connection requires additional settings on your PC and Red Pitaya board. 
 
@@ -141,12 +144,15 @@ Simply select the desired WiFi network, input the password, and select connect.
 Once you have arranged a WiFi network, you don't need a LAN connection anymore, and after the restart of the Red Pitaya board, it will connect to the preset WiFi network automatically.
 
 .. note::
+
    A WiFi dongle is required to connect the Red Pitaya to a WiFi network (|RP store Dongle|). Please note that not all are |compatible|.
 
-.. |RP store Dongle| raw::html
+.. |RP store Dongle| raw:: html
+
     <a href="https://redpitaya.com/product/red-pitaya-wi-fi-dongle/" target="_blank">Red Pitaya WiFi dongle</a>
 
-.. |compatible| raw::html
+.. |compatible| raw:: html
+
     <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/other_info/os/network.html#supported-usb-wifi-adapters" target="_blank">compatible</a>
 
 
@@ -156,8 +162,9 @@ Steps on how to connect your Red Pitaya board over a WiFi network are described 
  
 #. Start your Red Pitaya web user interface (Use the connection described in |LAN connection|)
 
-.. |LAN connection| raw::html
-    <a href="[insert link]" target="_blank">Local Area Network (LAN) connection</a>
+.. |LAN connection| raw:: html
+
+    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/connect/connect.html#local-area-network-lan" target="_blank">Local Area Network (LAN) connection</a>
 
 #. Open Network Manager application
 #. Insert the WiFi dongle into the USB plug on the Red Pitaya board.
@@ -199,7 +206,8 @@ This will allow you to connect your PC, laptop, tablet, or smart phone directly 
 
    To use Red Pitaya as an access point, a |Raspberry Pi USB WiFi| dongle is needed.
    
-.. |Raspberry Pi USB WiFi| raw::html
+.. |Raspberry Pi USB WiFi| raw:: html
+
     <a href="https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle/" target="_blank">Raspberry Pi USB WiFi</a>
 
 .. figure:: connect-8.png
@@ -213,10 +221,11 @@ Follow the steps below to enable the access point and connect to it.
 5. Input the Access Point network IP address into the web browser URL field and press enter.
     
 .. note::
+
    When Access Point is enabled on Red Pitaya, it will continue to boot in Access Point configuration until it is disabled in the Network Manager.
    
 .. note::
     
-   The IP address in Access Point mode is always the same: 192.168.128.1
+   The IP address in Access Point mode is always the same: ``192.168.128.1``
 
 .. figure:: connect-9.png
