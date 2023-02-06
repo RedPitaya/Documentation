@@ -25,10 +25,10 @@ Technical specifications
 Schematics
 **********
 
-Comming soon...
+* `STEMlab_125-14-4_IN_V1r3.PDF <https://downloads.redpitaya.com/doc/STEMlab_125-14-4_IN_V1r3.PDF>`_
 
 *************************
 Mechanical specifications
 *************************
 
-Comming soon...
+* `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEMlab_125-14-4_IN_V1r3.zip>`_
