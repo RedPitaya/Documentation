@@ -26,6 +26,20 @@ Mechanical specifications
 * `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
 * `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
 
+
+**********
+Components
+**********
+* `ADC <https://www.analog.com/en/products/LTC2185.html>`_
+* `DAC <https://www.analog.com/en/products/AD9767.html>`_
+* `FPGA (Zynq 7020) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
+* `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
+* `Oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_
+* `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
+* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
+
+
+
 .. _external_122_16:
 
 ******************
