@@ -367,21 +367,20 @@ To run the bode, you need to do 2 steps:
 
     #. Load the FPGA image of streaming
 
-        .. code-block:: console
+        .. tabs::
 
-            .. tabs::
+            .. group-tab:: OS version 1.04 or older
 
-                .. group-tab:: OS version 1.04 or older
+                .. code-block:: shell-session
 
-                    .. code-block:: shell-session
+                    redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-                        redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+            .. group-tab:: OS version 2.00
 
-                .. group-tab:: OS version 2.00
+                .. code-block:: shell-session
 
-                    .. code-block:: shell-session
+                    redpitaya> overlay.sh v0.94
 
-                        redpitaya> overlay.sh v0.94
 
     #. Launch a console application.
 
@@ -431,21 +430,19 @@ To run the LCR meter, you need to do 2 steps:
 
     #. Load the FPGA image of streaming
 
-        .. code-block:: console
+        .. tabs::
 
-            .. tabs::
+            .. group-tab:: OS version 1.04 or older
 
-                .. group-tab:: OS version 1.04 or older
+                .. code-block:: shell-session
 
-                    .. code-block:: shell-session
+                    redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-                        redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+            .. group-tab:: OS version 2.00
 
-                .. group-tab:: OS version 2.00
+                .. code-block:: shell-session
 
-                    .. code-block:: shell-session
-
-                        redpitaya> overlay.sh v0.94
+                    redpitaya> overlay.sh v0.94
 
 
     #. Launch a console application.
@@ -547,7 +544,7 @@ The configuration for streaming is automatically created and saved in the file: 
 
 .. note::
 
-    For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them in the WEB streaming application on redpitai itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <_comStreaming>`.
+    For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them in the WEB streaming application on redpitai itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
 
 .. |streaming app| raw:: html
 
