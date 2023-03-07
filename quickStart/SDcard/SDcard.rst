@@ -12,9 +12,9 @@ The next procedure will create a clean SD card image.
 
 1. Download the Red Pitaya SD card image:
 
-Unify ecosystem:
+RedPitaya OS 2.0:
 
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/Unify/Unify_OS_2.00-15_beta.img.zip>`_  - |CHANGELOG|
+   - `Latest Beta <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-15_beta.img.zip>`_  - |CHANGELOG|
 
 .. note::
 
