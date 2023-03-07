@@ -34,12 +34,16 @@ Components
 
 * `ADC <https://www.analog.com/en/products/ltc2145-14.html>`_
 * `DAC <https://www.analog.com/en/products/AD9767.html>`_
-* `FPGA <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
+* `FPGA (Zynq 7010) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
 * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
 * `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
 * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
 * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
 
+
+.. note::
+
+    STEMlab 125-14 Low Noise features Zynq 7020 instead of Zynq 7010.
 
 
 **************
