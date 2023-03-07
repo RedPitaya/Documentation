@@ -43,7 +43,7 @@ Components
 
 .. note::
 
-    STEMlab 125-14 Low Noise features Zynq 7020 instead of Zynq 7010.
+    STEMlab 125-14 Low Noise and STEMlab 125-14 4-Input feature Zynq 7020 instead of Zynq 7010.
 
 
 **************
