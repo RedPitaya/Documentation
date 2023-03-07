@@ -500,7 +500,7 @@ To start the server, you need to do 3 steps:
 
                 .. code-block:: shell-session
 
-                    redpitaya> overlay.sh v0.94
+                    redpitaya> overlay.sh stream_app
 
 
     #. Prepare a configuration file.
