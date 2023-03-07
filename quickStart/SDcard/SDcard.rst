@@ -104,9 +104,13 @@ SIGNALlab 250-12:
         <iframe src="https://www.youtube.com/embed/Qq_YRv2nk3c" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
+
+
 =======
 Windows
 =======
+
+.. _windows_gui:
 
 #. Insert the SD card into your PC or SD card reader.
 
@@ -159,7 +163,7 @@ Linux
 
 .. note::
 
-   You can also use |balenaEtcher| on Linux and macOS. Instructions are under |Windows|.
+   You can also use |balenaEtcher| on Linux and macOS. Instructions are under :ref:`Windows section <windows_gui>`.
 
 .. |Windows| raw:: html
 
@@ -253,11 +257,7 @@ macOS
 
 .. note::
 
-   You can also use |balenaEtcher| on Linux and macOS. Instructions are under |Windows|.
-
-.. |Windows| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#windows" target="_blank">Windows section</a>
+   You can also use |balenaEtcher| on Linux and macOS. Instructions are under :ref:`Windows section <windows_gui>`.
 
 -------------------
 Using ApplePi-Baker
