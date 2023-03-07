@@ -7,7 +7,7 @@ Streaming
 The Streaming application enables users to stream data from Red Pitaya to:
 
     * A file saved on the Red Pitaya SD card
-    * A file saved on a remote computer via the ethernet protocol (UDP or TCP). 
+    * A file saved on a remote computer via the ethernet protocol (UDP or TCP).
 
 The user is able to set:
 
@@ -48,13 +48,13 @@ Start using the Red Pitaya streaming feature
 #. Stream locally to a file
 
     #. Set the app's properties & click RUN
-    
+
         .. figure:: img/to_file_settings.png
             :width: 20%
             :align: center
-    
+
             Example: streaming on ch1, 8 bit resolution, 5.208 MSps into TDMS file format
-    
+
     #. Press STOP to stop streaming
 
     #. Click Browse to open the file browser and download the streaming data file
@@ -82,9 +82,9 @@ Start using the Red Pitaya streaming feature
         .. figure:: img/tcp_settings.png
             :width: 20%
             :align: center
-        
+
             Example: streaming on ch1, 16 bit resolution 5 MSps, TCP
-    
+
     #. Run the streaming app on a remote computer (copy the IP address from the web interface and choose the required file format).
 
     .. tabs::
@@ -124,7 +124,7 @@ Start using the Red Pitaya streaming feature
             .. figure:: img/diadem_tdms_file_viewer.png
                 :width: 80%
                 :align: center
-        
+
         .. group-tab:: CSV
 
             .. code-block:: console
@@ -135,10 +135,10 @@ Start using the Red Pitaya streaming feature
             .. figure:: img/tcp_client3.png
                 :width: 50%
                 :align: center
-            
+
 
             The application saves data from the board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
-            
+
             .. figure:: img/csv_list.png
                 :width: 50%
                 :align: center
@@ -185,7 +185,16 @@ You can also use the desktop version of the client for streaming
 
     #. Download the client
 
-        |Streaming Client|
+        .. tabs::
+
+            .. group-tab:: OS version 1.04 or older
+
+                |Streaming Client|
+
+            .. group-tab:: OS version 2.00
+
+                Files with clients are in the streaming web application. You can download it from RP itself.
+
 
     #. Unzip and run client
 
@@ -204,7 +213,7 @@ You can also use the desktop version of the client for streaming
         .. figure:: img/qt2.png
                 :width: 50%
                 :align: center
-                
+
 .. |Streaming Client| raw:: html
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">Desktop clients</a>

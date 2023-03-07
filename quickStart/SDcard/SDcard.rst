@@ -12,6 +12,25 @@ The next procedure will create a clean SD card image.
 
 1. Download the Red Pitaya SD card image:
 
+Unify ecosystem:
+
+   - `Latest Beta <https://downloads.redpitaya.com/downloads/Unify/Unify_OS_2.00-15_beta.img.zip>`_  - |CHANGELOG|
+
+.. note::
+
+   This version of the ecosystem includes a build for all boards.
+   Boards currently supported:
+
+   - STEMlab 125-10
+   - STEMlab 125-14
+   - STEMlab 125-14-Z7020
+   - STEMlab 125-14 4-Input
+   - SDRlab 122-16
+   - SIGNALlab 250-12
+
+   Unfify ecosystem now includes master/slave functionality for streaming.
+
+
 STEMlab 125-14 & STEMlab 125-10:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG|
@@ -21,7 +40,6 @@ STEMlab 125-14 & STEMlab 125-10:
 STEMlab 125-14 (SLAVE board):
 
    - `Latest Beta <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG|
-
 
 STEMlab 125-14-Z7020:
 
@@ -36,7 +54,6 @@ SDRlab 122-16:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20|
    - `Latest Beta <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20|
-
 
 SIGNALlab 250-12:
 
@@ -54,7 +71,7 @@ SIGNALlab 250-12:
 
 .. |CHANGELOG_Z20_250_12| raw:: html
 
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a> 
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a>
 
 .. |CHANGELOG_Z20_4CH| raw:: html
 
@@ -78,7 +95,7 @@ SIGNALlab 250-12:
       :align: center
 
 .. note::
-   
+
    This video shows how to identify your Red Pitaya model and write a memory card.
 
    .. raw:: html
@@ -101,7 +118,7 @@ Windows
    .. |balenaEtcher| raw:: html
 
       <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a>
-   
+
 #. Open the newly installed Balena Etcher application.
 
    .. figure:: SDcard_Win_BalenaEtcher.png
@@ -143,7 +160,7 @@ Linux
 .. note::
 
    You can also use |balenaEtcher| on Linux and macOS. Instructions are under |Windows|.
-      
+
 .. |Windows| raw:: html
 
    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#windows" target="_blank">Windows section</a>
@@ -198,7 +215,7 @@ Command line
       :align: center
 
 #. Open the terminal and check the available disks with ``df -h``.
-   Our SD card is 16 GB. It is named ``/dev/sdx`` and divided into two partitions, ``/dev/sdx1`` and ``/dev/sdx2``. 
+   Our SD card is 16 GB. It is named ``/dev/sdx`` and divided into two partitions, ``/dev/sdx1`` and ``/dev/sdx2``.
    The drive mounted at ``/`` is your main drive.
    Be careful not to use it.
 
@@ -237,7 +254,7 @@ macOS
 .. note::
 
    You can also use |balenaEtcher| on Linux and macOS. Instructions are under |Windows|.
-      
+
 .. |Windows| raw:: html
 
    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#windows" target="_blank">Windows section</a>
@@ -314,7 +331,7 @@ Command line
       :align: center
 
 #. Click **cmd + space**, then enter ``cd`` into the **Terminal**.
-   Then type ``cd Desktop`` and press enter once more.  
+   Then type ``cd Desktop`` and press enter once more.
 
 #. Unmount the partition so that you will be able to overwrite the disk.
    Type ``diskutil list`` into the Terminal and press enter.
@@ -355,7 +372,7 @@ A Red Pitaya SD card contains two partitions:
    * Red Pitaya API libraries and header files
    * Red Pitaya web applications, scripts, tools
    * customized Nginx web server
-   
+
 
 2. ~4 GB Ext4 contains the **OS**:
 
@@ -437,4 +454,3 @@ If everything is done correctly, the system will start with an increased space s
       .. code-block:: shell-session
 
          root@rp-f03dee:~# sudo resize2fs /dev/mmcblk0p2
-

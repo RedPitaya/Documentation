@@ -7,14 +7,14 @@ X-Channel Streaming
 .. |br| raw:: html
 
     <br>
-    
+
 ********
 Overview
 ********
 
 X-Channel streaming is suitable for applications that require multiple acquisition or generation channels.
 
-Red Pitaya X-Channel streaming software provides the ability to stream analog and digital signals to client PCs from several Red Pitaya devices simultaneously, with synchronised clock and trigger among all Red Pitayas in the system. 
+Red Pitaya X-Channel streaming software provides the ability to stream analog and digital signals to client PCs from several Red Pitaya devices simultaneously, with synchronised clock and trigger among all Red Pitayas in the system.
 
 Streaming can be done in both directions. Users can stream acquired analog and digital signals from Red Pitaya devices to a client computer or stream analog and digital signals from the client to Red Pitaya device outputs. The X-Channel streaming software also provides the ability to control streaming completely remotely from client PCs.
 
@@ -35,7 +35,7 @@ The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple STEMlab 125-
 Notice that the Red Pitaya STEMlab 125-14 X-Channel System includes two types of devices:
 
     * one STEMlab 125-14 MASTER device (standard STEMlab 125-14 device)
-    * one or more STEMlab 125-14 SLAVE devices denoted by an "S" sticker 
+    * one or more STEMlab 125-14 SLAVE devices denoted by an "S" sticker
 
 In order to achieve synchronization, the MASTER device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SLAVE 1 board. SLAVE1 then passes the clock forward to SLAVE 2, SLAVE2 to SLAVE 3, and so on (SLAVE N to SLAVE N+1). This way, we can achieve synchronisation of all boards in the system.
 
@@ -57,9 +57,9 @@ Connecting together
 *******************
 
     #.  Connect all Red Pitayas to the same network via ethernet cables (switch or router that is connected to the client PC).
-        
+
         .. note::
-        
+
             Make sure that your network can provide enough throughput for all the data you are about to stream. It is also recommended to use a dedicated network only for the X-channel system.
 
 
@@ -109,12 +109,12 @@ In this example, we will acquire data from all 3 RP units, which gives us 6 RF i
 1.  Open the streaming app on the MASTER and all SLAVE boards via the WEB interface.
 
     .. note::
-    
+
         The Streaming app can also be started via ssh by running **/opt/redpitaya/bin/streaming-server.run.sh** on the Red Pitaya.
 
 2.  Configure the streaming parameters and configuration.
 
-Configuration can be set over the WEB interface UI, which is then stored in **/root/.streaming_config** on the Red Pitaya.
+Configuration can be set over the WEB interface UI, which is then stored in **/root/.streaming_config** or **/root/.config/redpitaya/apps/streaming/streaming_config.json** (for version 2.00) on the Red Pitaya.
 
 In this example, we will show how to set configuration remotely using an already prepared |test configuration| that will set all MASTERS and SLAVES to these settings.
 
@@ -226,7 +226,7 @@ In this example, we will show how to set configuration remotely using an already
 .. |Audacity| raw:: html
 
     <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
-    
+
 .. figure:: img/audacity_2.png
     :width: 80%
 
