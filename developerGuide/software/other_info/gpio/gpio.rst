@@ -15,18 +15,28 @@ There are two interfaces legacy sysfs interface and new character device based o
 PINS
 ====
 
-Pins connected to the PL block require FPGA code to function. If the pin signals are wired directly (in the FPGA sources) from PS based EMIO signals to the FPGA pads, 
+Pins connected to the PL block require FPGA code to function. If the pin signals are wired directly (in the FPGA sources) from PS based EMIO signals to the FPGA pads,
 then they can be managed using Linux drivers intended for the PS block. This is currently done with two fpga projects: classic and mercury.
 
 Apropriate fpga bitstream can be applied using bash command.
 
-.. code-block:: shell-session
+.. tabs::
 
-    cat /opt/redpitaya/fpga/classic/fpga.bit > /dev/xdevcfg 
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+    .. group-tab:: OS version 2.00
+
+        .. code-block:: shell-session
+
+            redpitaya> overlay.sh v0.94
 
 
 There are 54+64=118 GPIO provided by ZYNQ PS, MIO provides 54 GPIO,
-and EMIO provide additional 64 GPIO and only 16 out of those are accesible on board. 
+and EMIO provide additional 64 GPIO and only 16 out of those are accesible on board.
 On Extension connector E1; pins from DIO0_N to DIO7_N and DIO0_P to DIO7_P.
 
 The next formula is used to calculate the ``gpio_base`` index.
@@ -97,8 +107,8 @@ Bash example for writing to and reading from gpio value for pins from 968(DIO0_P
    $ cat /sys/class/gpio/gpio968/value
    #when done with pin you should unexport it with
    $ echo 968 > /sys/class/gpio/unexport
-   
- 
+
+
 
 SYSFS GPIO C example is available at github: https://github.com/RedPitaya/RedPitaya/tree/master/Examples/gpio_sysfs
 
