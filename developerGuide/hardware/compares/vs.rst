@@ -164,7 +164,7 @@ Product comparison table
    | Daisy chain connection  | N/A                                | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          |
    |                         |                                    | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   |
    +-------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
-   | Ref. clock input        | N/A                                | N/A                                | N/A                                | N/A                                | N/A                                | Through BNC connector              |
+   | Ref. clock input        | N/A                                | N/A                                | N/A                                | N/A                                | N/A                                | Through SMA connector              |
    +-------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 
 
