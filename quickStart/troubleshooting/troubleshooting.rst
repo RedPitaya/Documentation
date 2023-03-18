@@ -1,26 +1,30 @@
+.. _faq:
+
 ###
 FAQ
 ###
 
-***************************
-How to get started with RP?
-***************************
+***********************************
+How to get started with Red Pitaya?
+***********************************
 
-|Quickstart|
+* :ref:`Quick start <quick_start>`
 
-.. |Quickstart| raw:: html
 
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/quickStart.html#quick-start" target="_blank">Quick start</a>
+***************************************
+How to connect to Red Pitaya in 5 steps
+***************************************
+
+* :ref:`Connected to router <LAN>`
+* :ref:`Direct connection to computer <dir_cab_connect>`
+
 
 **************************************************
 How can I start using RP measurement applications?
 **************************************************
 
-|ConnectSTEMlab|
+* :ref:`Connect to Red Pitaya <ConnectSTEMlab>`
 
-.. |ConnectSTEMlab| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/first.html#connectstemlab" target="_blank">Connect to Red Pitaya</a>
 
 *********************************************************
 How to control RP remotely using LabVIEW, MATLAB, Python?

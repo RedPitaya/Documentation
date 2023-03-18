@@ -164,23 +164,24 @@ Product comparison table
    | Daisy chain connection  | N/A                                | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          |
    |                         |                                    | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   |
    +-------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
-   | Ref. clock input        | N/A                                | N/A                                | N/A                                | N/A                                | N/A                                | Through BNC connector              |
+   | Ref. clock input        | N/A                                | N/A                                | N/A                                | N/A                                | N/A                                | Through SMA connector              |
    +-------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 
 
 
 .. note::
     
-   RedPitaya devices:
+   Red Pitaya devices:
 
    * should be operated at normal conditions with ambient temperatures not exceeding 30°C (86°F) and should not be covered.
-   * are intended for Indoor use, maximum altitude: 2000 m, pollution degree 2, and relative humidity ≤90%
-   * intended for use with low-voltage energy sources and signals: it should not be used in any direct connection with voltages above 30 volts.
+   * are intended for indoor use at a maximum altitude of 2000 m, pollution degree 2, and relative humidity less than 90%.
+   * intended for use with low-voltage energy sources and signals; it should not be used in any direct connection with voltages above 30 volts.
 
 
 .. warning::
 
-   All inputs and outputs available through (SMA/BNC) connectors share a common ground connected to the power supply ground.
+   All inputs and outputs available through SMA and BNC connectors share a common ground connected to the power supply ground.
+
 
 
 .. warning::

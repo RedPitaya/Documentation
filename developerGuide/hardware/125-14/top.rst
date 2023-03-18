@@ -34,12 +34,16 @@ Components
 
 * `ADC <https://www.analog.com/en/products/ltc2145-14.html>`_
 * `DAC <https://www.analog.com/en/products/AD9767.html>`_
-* `FPGA <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
+* `FPGA (Zynq 7010) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
 * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
 * `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
 * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
 * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
 
+
+.. note::
+
+    STEMlab 125-14 Low Noise and STEMlab 125-14 4-Input feature Zynq 7020 instead of Zynq 7010.
 
 
 **************
@@ -69,7 +73,7 @@ External ADC clock
 
 The ADC clock can be provided by:
 
-    * On board 125MHz XO (default)
+    * On board 125 MHz XO (default)
     * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
     * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
@@ -98,6 +102,21 @@ The ADC clock can be provided by:
     :align: center
     :width:  400px
 
+
+.. _secondary_125_14:
+
+*************************************
+SECONDARY STEMlab 125-14 modification
+*************************************
+
+A SECONDARY device is a slightly modified version of STEMlab 125-14.
+In order to turn a normal STEMlab 125-14 device into a SECONDARY device, R25 and R26 need to be moved to locations R27 and R28 (see :ref:`the external clock chapter <external_125_14>`).
+The :ref:`X-channel <top_125_14_MULTI>` clock is provided through the SATA extension connectors and goes directly into the FPGA.
+
+
+.. note
+
+    This modification will void the warranty.
 
 ************
 Certificates

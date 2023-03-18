@@ -7,9 +7,11 @@ The X-Channel STEMlab 125-14 system consists of multiple STEMlab 125-14 devices 
 
 X-Channel STEMlab 125-14 system consists of:
 
-* one MASTER STEMlab 125-14 device, which is a standard STEMlab 125-14 device that provides a main clock and trigger to other SLAVE STEMlab 125-14 devices.
-* one or multiple SLAVE STEMlab 125-14 devices, that are modified in a way that they can receive clock and trigger from a MASTER device and distribute it to the next SLAVE device. These are marked with an “S” sticker.
+* one PRIMARY STEMlab 125-14 device, which is a standard STEMlab 125-14 device that provides a main clock and trigger to other SECONDARY STEMlab 125-14 devices.
+* one or multiple SECONDARY STEMlab 125-14 devices, that are modified in a way that they can receive clock and trigger from a PRIMARY device and distribute it to the next SECONDARY device. These are marked with an “S” sticker.
 
 For detailed hardware specifications for STEMlab 125-14 devices used in the STEMlab 125-14 X-Channel System please refer to the :ref:`STEMlab 125-14 standard specs <top_125_14>`.
 
-For more information about software please refer to: :ref:`X-Channel streaming <mch_streaming_top>`
+For turning a normal STEMlab 125-14 into a SECONDARY device please refer to: :ref:`SECONDARY STEMlab 125-14 modification <secondary_125_14>`.
+
+For more information about software please refer to: :ref:`X-Channel streaming <mch_streaming_top>`.

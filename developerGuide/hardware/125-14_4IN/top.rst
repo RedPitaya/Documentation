@@ -25,10 +25,10 @@ Technical specifications
 Schematics
 **********
 
-* `STEMlab_125-14-4_IN_V1r3.PDF <https://downloads.redpitaya.com/doc/STEMlab_125-14-4_IN_V1r3.PDF>`_
+* `STEMlab_125-14-4_IN_V1r3.PDF <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-14-4_IN_V1r3.PDF>`_
 
 *************************
 Mechanical specifications
 *************************
 
-* `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEMlab_125-14-4_IN_V1r3.zip>`_
+* `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEM125-14-4_IN_V1r3_3Dstep.zip>`_

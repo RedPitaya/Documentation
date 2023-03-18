@@ -277,7 +277,7 @@ Supported USB WiFi adapters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Our main target was a low cost USB adapter which also supports access point mode.
-The Edimax EW-7811Un adapter is also commonly used on Raspberry PI.
+The Edimax EW-7811Un **V2** adapter is also commonly used on Raspberry PI.
 
 .. code-block:: shell-session
 
