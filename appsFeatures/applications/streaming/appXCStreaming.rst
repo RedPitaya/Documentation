@@ -8,6 +8,10 @@ X-Channel Streaming
 
     <br>
 
+.. note::
+
+    We have decided to use PRIMARY and SECONDARY device terminology instead of the standard MASTER and SLAVE device.
+
 ********
 Overview
 ********
@@ -29,27 +33,23 @@ Setup
 
 The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple STEMlab 125-14 LN devices that are modified for clock and trigger synchronization, and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
 
-.. figure:: img/Master_and_slaves.jpg
+.. figure:: img/Primary_and_secondaries.jpg
     :width: 80%
 
 Notice that the Red Pitaya STEMlab 125-14 X-Channel System includes two types of devices:
 
-    * one STEMlab 125-14 MASTER device (standard STEMlab 125-14 device)
-    * one or more STEMlab 125-14 SLAVE devices denoted by an "S" sticker
+    * one STEMlab 125-14 PRIMARY device (standard STEMlab 125-14 device)
+    * one or more STEMlab 125-14 SECONDARY devices denoted by an "S" sticker
 
-In order to achieve synchronization, the MASTER device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SLAVE 1 board. SLAVE1 then passes the clock forward to SLAVE 2, SLAVE2 to SLAVE 3, and so on (SLAVE N to SLAVE N+1). This way, we can achieve synchronisation of all boards in the system.
+In order to achieve synchronization, the PRIMARY device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SECONDARY 1 board. SECONDARY1 then passes the clock forward to SECONDARY 2, SECONDARY2 to SECONDARY 3, and so on (SECONDARY N to SECONDARY N+1). This way, we can achieve synchronisation of all boards in the system.
 
 .. note::
 
-    **MASTER and SLAVE boards do use different OS-es!**
+    **PRIMARY and SECONDARY boards do use different OS-es!**
 
-    The MASTER runs the standard Red Pitaya device OS, while SLAVE boards require a special OS that only supports X-channel streaming.
+    The PRIMARY runs the standard Red Pitaya device OS, while SECONDARY boards require a special OS that only supports X-channel streaming.
 
-    Due to frequent OS updates, it is recommended to always use the |latest OS|.
-
-.. |latest OS| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html" target="_blank">latest OS software</a>
+    Due to frequent OS updates, it is recommended to always use the :ref:`latest OS <prepareSD>`.
 
 
 *******************
@@ -63,27 +63,27 @@ Connecting together
             Make sure that your network can provide enough throughput for all the data you are about to stream. It is also recommended to use a dedicated network only for the X-channel system.
 
 
-    #.  Connect the SATA cables between the master and slave devices.
+    #.  Connect the SATA cables between the PRIMARY and SECONDARY devices.
 
-        MASTER SATA S1 -> SLAVE 1 SATA S2
+        PRIMARY SATA S1 -> SECONDARY 1 SATA S2
 
-        SLAVE 1 SATA S1 -> SLAVE 2 SATA S2
+        SECONDARY 1 SATA S1 -> SECONDARY 2 SATA S2
 
-        SLAVE 2 SATA S1 -> SLAVE 3 SATA S2
+        SECONDARY 2 SATA S1 -> SECONDARY 3 SATA S2
 
         ...
 
 
     #.  Connect the power supply to the Red Pitaya board.
 
-.. figure:: img/Master_and_slaves_2.jpg
+.. figure:: img/Primary_and_secondary_2.jpg
     :width: 80%
 
 *******************************************************************
 Download and install an X-channel streaming client on your computer
 *******************************************************************
 
-1. Connect to the MASTER board by entering the URL from the sticker into a web browser and launching the streaming app.
+1. Connect to the PRIMARY board by entering the URL from the sticker into a web browser and launching the streaming app.
 
 .. figure:: img/run_app.png
     :width: 80%
@@ -103,10 +103,10 @@ In this example, we will acquire data from all 3 RP units, which gives us 6 RF i
 
 .. code-block:: shell-session
 
-    MASTER IP=192.168.2.141, SLAVE1_IP=192.168.2.60 SLAVE2_IP=192.168.2.25
+    PRIMARY_IP=192.168.2.141, SECONDARY1_IP=192.168.2.60 SECONDARY2_IP=192.168.2.25
 
 
-1.  Open the streaming app on the MASTER and all SLAVE boards via the WEB interface.
+1.  Open the streaming app on the PRIMARY and all SECONDARY boards via the WEB interface.
 
     .. note::
 
@@ -116,7 +116,7 @@ In this example, we will acquire data from all 3 RP units, which gives us 6 RF i
 
 Configuration can be set over the WEB interface UI, which is then stored in **/root/.streaming_config** or **/root/.config/redpitaya/apps/streaming/streaming_config.json** (for version 2.00) on the Red Pitaya.
 
-In this example, we will show how to set configuration remotely using an already prepared |test configuration| that will set all MASTERS and SLAVES to these settings.
+In this example, we will show how to set configuration remotely using an already prepared |test configuration| that will set all PRIMARY and SECONDARY devices to these settings.
 
 .. |test configuration| raw:: html
 
@@ -150,7 +150,7 @@ In this example, we will show how to set configuration remotely using an already
 
 .. code-block:: shell-session
 
-    --streaming --host MASTER IP, SLAVE1 IP, SLAVE2 IP, --format=wav --dir=NAME
+    --streaming --host PRIMARY IP, SECONDARY1 IP, SECONDARY2 IP, --format=wav --dir=NAME
     --limit=SAMPLES
 
     rpsa_client.exe -s -h 192.168.2.141,192.168.2.60,192.168.2.25 -f wav -d ./acq -l 10000000 -v
