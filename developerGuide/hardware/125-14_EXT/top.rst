@@ -5,6 +5,10 @@ STEMlab 125-14 external clock
 
 This STEMlab version is standard STEMlab 125-14 modified in such a way that the ADC and DAC clock can be provided from an external source clock. An external clock should be connected to the Ext ADC CLK- and + pins. According to the ADC spec, external clock signal levels should be LVDS in the range from 1MHz to 125MHz.
 
+.. note::
+
+   The OS will not boot without providing an external clock.
+
 .. figure:: ../125-14/Extension_connector.png
    :align: center
 
