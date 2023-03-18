@@ -1,5 +1,10 @@
 .. _scpi_command_list:
 
+
+
+.. TODO Add parameters for API commands!!!!
+
+
 *******************************
 List of supported SCPI commands
 *******************************
