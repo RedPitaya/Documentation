@@ -1,8 +1,12 @@
+.. _scpi_command_list:
+
 *******************************
 List of supported SCPI commands
 *******************************
 
 .. (link - https://dl.dropboxusercontent.com/s/eiihbzicmucjtlz/SCPI_commands_beta_release.pdf)
+
+.. _scpi_digital:
 
 ==============
 LEDs and GPIOs
@@ -18,7 +22,7 @@ Parameter options:
 
 Table of correlated SCPI and API commands for the Red Pitaya.
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+-------------------------+-----------------------------------------------------------+
 | SCPI                                  | API                     | DESCRIPTION                                               |
@@ -38,6 +42,8 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | | ``DIG:PIN? DIO0_N``                 |                         |                                                           |
 | | ``DIG:PIN? LED2``                   |                         |                                                           |
 +---------------------------------------+-------------------------+-----------------------------------------------------------+
+
+.. _scpi_analog:
 
 =========================
 Analog Inputs and Outputs
@@ -65,9 +71,11 @@ Parameter options:
 | | ``ANALOG:PIN? AIN1`` > ``1.12``     |                         |                                                           |
 +---------------------------------------+-------------------------+-----------------------------------------------------------+
 
-===============================
-Daisy chain clocks and triggers
-===============================
+.. _scpi_daisy:
+
+=================================================
+Daisy chain clocks and triggers (UNIFIED OS ONLY)
+=================================================
 
 Parameter options:
 
@@ -104,7 +112,15 @@ Parameter options:
 | | ``DAISY:TRIG_O:SOUR?`` > ``DAC``        |                                    |                                                                                                                                           |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. note::
 
+   The daisy chain commands only work for the X-channel system and the upcoming Mikro-E extension shields.
+   
+.. note::
+   
+   The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software. The generation and acquisition trigger fronts apply after the signals have been combined.
+
+.. _scpi_gen:
 
 ================
 Signal Generator
@@ -131,7 +147,7 @@ Parameter options:
    - ``INT`` = Internal
    - ``GATED`` = gated busts
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | SCPI                                          | API                                    | DESCRIPTION                                                                   |
@@ -140,12 +156,12 @@ Parameter options:
 | | Examples:                                   |                                        |                                                                               |
 | | ``OUTPUT:STATE ON``                         |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``OUTPUT<n>:STATE <state>``                 | | ``rp_GenOutEnable``                  | Disable or enable fast analog outputs.                                        |
-| | Examples:                                   | | ``rp_GenOutDisable``                 |                                                                               |
+| | ``OUTPUT<n>:STATE <state>``                 | | ``rp_GenOutEnable``                  | | Disable or enable fast analog outputs.                                      |
+| | Examples:                                   | | ``rp_GenOutDisable``                 | | The generator is waiting for the trigger.                                   |
 | | ``OUTPUT1:STATE ON``                        |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``SOUR<n>:FREQ:FIX <frequency>``            | ``rp_GenFreq``                         | Set the frequency of fast analog outputs.                                     |
-| | Examples:                                   |                                        |                                                                               |
+| | ``SOUR<n>:FREQ:FIX <frequency>``            | ``rp_GenFreq``                         | | Set the frequency of fast analog outputs.                                   |
+| | Examples:                                   |                                        | | For ARBITRARY waveform this is the frequency of 1 buffer (16384 samples)    |
 | | ``SOUR2:FREQ:FIX 100000``                   |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | | ``SOUR<n>:FUNC <func>``                     | ``rp_GenWaveform``                     | Set the waveform of fast analog outputs.                                      |
@@ -168,30 +184,30 @@ Parameter options:
 | | Examples:                                   |                                        |                                                                               |
 | | ``SOUR1:DCYC 0.2``                          |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``SOUR<n>:TRAC:DATA:DATA <array>``          | ``rp_GenArbWaveform``                  | Import data for arbitrary waveform generation.                                |
-| | Examples:                                   |                                        |                                                                               |
+| | ``SOUR<n>:TRAC:DATA:DATA <array>``          | ``rp_GenArbWaveform``                  | | Import data for arbitrary waveform generation (should be 16384 samples).    |
+| | Examples:                                   |                                        | | If less samples are provided the output frequency will be faster.           |
 | | ``SOUR1:TRAC:DATA:DATA``                    |                                        |                                                                               |
 | | ``1,0.5,0.2``                               |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | | ``SOUR<n>:BURS:STAT <burst>``               | ``rp_GenMode``                         | | Enable or disable burst (pulse) mode.                                       |
-| | Examples:                                   |                                        | | Red Pitaya will generate **R** bursts with **N** signal periods             |
-| | ``SOUR1:BURS:STAT BURST``                   |                                        | | before stopping. **P** is the time between bursts.                          |
+| | Examples:                                   |                                        | | Red Pitaya will generate **R** bursts with **N** signal periods.            |
+| | ``SOUR1:BURS:STAT BURST``                   |                                        | | **P** is the time between start of one and start of next burst.             |
 | | ``SOUR1:BURS:STAT CONTINUOUS``              |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``SOUR<n>:BURS:NCYC <count>``               | ``rp_GenBurstCount``                   | Set the number of periods in a burst (**N**).                                 |
+| | ``SOUR<n>:BURS:NCYC <count>``               | ``rp_GenBurstCount``                   | Set the number of cycles/periods in one burst (**N**).                        |
 | | Examples:                                   |                                        |                                                                               |
 | | ``SOUR1:BURS:NCYC 3``                       |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``SOUR<n>:BURS:NOR <count>``                | ``rp_GenBurstRepetitions``             | Set the number of repeated bursts (**R**) (65536 == INF Repetitions)          |
+| | ``SOUR<n>:BURS:NOR <count>``                | ``rp_GenBurstRepetitions``             | Set the number of repeated bursts (**R**) (65536 == INF repetitions)          |
 | | Examples:                                   |                                        |                                                                               |
 | | ``SOUR1:BURS:NOR 5``                        |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+---------------------------+---------------------------------------------------+
 | | ``SOUR<n>:BURS:INT:PER <time>``             | ``rp_GenBurstPeriod``                  | | Set the duration of a single burst in microseconds (**P**).                 |
-| | Examples:                                   |                                        | | This includes the signal and delay.                                         |
-| | ``SOUR1:BURS:INT:PER 1000000``              |                                        |                                                                               |
+| | Examples:                                   |                                        | | Time between start of one and start of next burst. If it is set to less     |
+| | ``SOUR1:BURS:INT:PER 1000000``              |                                        | | than one period then the bursts will be concatenated.                       |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``SOUR<n>:TRIG:SOUR <trigger>``             | ``rp_GenTriggerSource``                | Set the trigger source for the selected signal.                               |
-| | Examples:                                   |                                        |                                                                               |
+| | ``SOUR<n>:TRIG:SOUR <trigger>``             | ``rp_GenTriggerSource``                | | Set the trigger source for the selected signal.                             |
+| | Examples:                                   |                                        | | External trigger must be a 3V3 CMOS signal.                                 |
 | | ``SOUR1:TRIG:SOUR EXT_PE``                  |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | | ``SOUR:TRIG:INT``                           | ``rp_GenTrigger``                      | | Triggers both sources/channels immediately.                                 |
@@ -208,28 +224,34 @@ Parameter options:
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | | ``PHAS:ALIGN``                              | ``rp_GenSynchronise``                  | Align the output phases of both channels.                                     |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``SOUR:TRIG:EXT:DEBouncerUs <utime>``       | ``rp_GenSetExtTriggerDebouncerUs``     | Sets ext. trigger debouncer for generation in Us (Value must be positive).    |
-| | Example:                                    |                                        |                                                                               |
+| | ``SOUR:TRIG:EXT:DEBouncerUs <utime>``       | ``rp_GenSetExtTriggerDebouncerUs``     | | Sets ext. trigger debouncer for generation in Us (Value must be positive).  |
+| | Example:                                    |                                        | | (UNIFIED OS ONLY)                                                           |
 | | ``SOUR:TRIG:EXT:DEBouncerUs 1``             |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``<utime>``| ``rp_GenGetExtTriggerDebouncerUs``     | Gets ext. trigger debouncer for generation in Us.                             |
-| | Example:                                    |                                        |                                                                               |
+| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``<utime>``| ``rp_GenGetExtTriggerDebouncerUs``     | | Gets ext. trigger debouncer for generation in Us.                           |
+| | Example:                                    |                                        | | (UNIFIED OS ONLY)                                                           |
 | | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``1``      |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
+
+.. note::
+   
+   The SOUR:TRIG:EXT:DEBouncerUs commands are only available in the UNIFIED OS update.
 
 .. note::
 
    For STEMlab 125-14 4-Input, these commands are not applicable.
 
-=======
-Acquire
-=======
+.. _scpi_acq:
+
+===========
+Acquisition
+===========
 
 -------
 Control
 -------
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +----------------------------------+-----------------------------+------------------------------------------------------------------+
 | SCPI                             | API                         | DESCRIPTION                                                      |
@@ -241,6 +263,8 @@ Control
 | ``ACQ:RST``                      | ``rp_AcqReset``             | Stops the acquisition and sets all parameters to default values. |
 +----------------------------------+-----------------------------+------------------------------------------------------------------+
 
+.. _scpi_acq_dec:
+
 --------------------------
 Sampling rate & decimation
 --------------------------
@@ -250,13 +274,13 @@ Parameter options:
 * ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
 * ``<average> = {OFF,ON}`` Default: ``ON``
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------+-----------------------------+----------------------------------------------------------------------+
 | SCPI                                | API                         | DESCRIPTION                                                          |
 +=====================================+=============================+======================================================================+
-| | ``ACQ:DEC <decimation>``          | ``rp_AcqSetDecimation``     | Set the decimation factor.                                           |
-| | Example:                          |                             |                                                                      |
+| | ``ACQ:DEC <decimation>``          | ``rp_AcqSetDecimation``     | | Set the decimation factor.                                         |
+| | Example:                          |                             | | Should be a power of 2.                                            |
 | | ``ACQ:DEC 4``                     |                             |                                                                      |
 +-------------------------------------+-----------------------------+----------------------------------------------------------------------+
 | | ``ACQ:DEC?`` > ``<decimation>``   | ``rp_AcqGetDecimation``     | Get the decimation factor.                                           |
@@ -266,11 +290,12 @@ Parameter options:
 | | ``ACQ:AVG <average>``             | ``rp_AcqSetAveraging``      | | Enable/disable averaging.                                          |
 |                                     |                             | | Each sample is the average of skipped samples if decimation > 1.   |
 +-------------------------------------+-----------------------------+----------------------------------------------------------------------+
-| | ``ACQ:AVG?`` > ``<average>``      | ``rp_AcqGetAveraging``      | Get the averaging status.                                            |
-| | Example:                          |                             |                                                                      |
+| | ``ACQ:AVG?`` > ``<average>``      | ``rp_AcqGetAveraging``      | | Get the averaging status.                                          |
+| | Example:                          |                             | | Averages the skipped samples when ``DEC`` > 1                      |
 | | ``ACQ:AVG?`` > ``ON``             |                             |                                                                      |
 +-------------------------------------+-----------------------------+----------------------------------------------------------------------+
 
+.. _scpi_trigger:
 
 =======
 Trigger
@@ -296,7 +321,7 @@ Parameter options:
 
    For STEMlab 125-14 4-Input ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, CH3_PE, CH3_NE, CH4_PE, CH4_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | SCPI                                          | API                                    | DESCRIPTION                                                                   |
@@ -310,11 +335,11 @@ Parameter options:
 | | ``ACQ:TRIG:STAT?`` > ``WAIT``               |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | | ``ACQ:TRIG:FILL?``                          | ``rp_AcqGetBufferFillState``           | | Returns 1 if the buffer is full of data. Otherwise returns 0.               |
-| | Example:                                    |                                        | | (IN FUTURE BETA VERSION)                                                    |
+| | Example:                                    |                                        | | (UNIFIED OS)                                                                |
 | | ``ACQ:TRIG:FILL?`` > ``1``                  |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:DLY <count>``                    | ``rp_AcqSetTriggerDelay``              | Set the trigger delay in samples.                                             |
-| | Example:                                    |                                        |                                                                               |
+| | ``ACQ:TRIG:DLY <count>``                    | ``rp_AcqSetTriggerDelay``              | | Set the trigger delay in samples.                                           |
+| | Example:                                    |                                        | | Triggering moment is by default around 8192th sample                        |
 | | ``ACQ:TRIG:DLY 2314``                       |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | | ``ACQ:TRIG:DLY?`` > ``<count>``             | ``rp_AcqGetTriggerDelay``              | Get the trigger delay in samples.                                             |
@@ -363,15 +388,16 @@ Parameter options:
 | | Example:                                    |                                        | (Only SIGNALlab 250-12)                                                       |
 | | ``ACQ:TRIG:EXT:LEV?`` > ``1``               |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:EXT:DEBouncerUs <utime>``        | ``rp_AcqSetExtTriggerDebouncerUs``     | Sets ext. trigger debouncer for acquisition in Us (Value must be positive).   |
-| | Example:                                    |                                        |                                                                               |
+| | ``ACQ:TRIG:EXT:DEBouncerUs <utime>``        | ``rp_AcqSetExtTriggerDebouncerUs``     | | Sets ext. trigger debouncer for acquisition in Us (Value must be positive). |
+| | Example:                                    |                                        | | (UNIFIED OS)                                                                |
 | | ``ACQ:TRIG:EXT:DEBouncerUs 1``              |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
-| | ``ACQ:TRIG:EXT:DEBouncerUs?`` > ``<utime>`` | ``rp_AcqGetExtTriggerDebouncerUs``     | Gets ext. trigger debouncer for acquisition in Us.                            |
-| | Example:                                    |                                        |                                                                               |
+| | ``ACQ:TRIG:EXT:DEBouncerUs?`` > ``<utime>`` | ``rp_AcqGetExtTriggerDebouncerUs``     | | Gets ext. trigger debouncer for acquisition in Us.                          |
+| | Example:                                    |                                        | | (UNIFIED OS)                                                                |
 | | ``ACQ:TRIG:EXT:DEBouncerUs?`` > ``1``       |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 
+.. _scpi_data_pointers:
 
 =============
 Data pointers
@@ -395,6 +421,7 @@ Parameter options:
 | | ``ACQ:TPOS?`` > ``512``       |                                    |                                                        |
 +---------------------------------+------------------------------------+--------------------------------------------------------+
 
+.. _scpi_data:
 
 =========
 Data read
@@ -411,7 +438,7 @@ Data read
 
    For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 | SCPI                                   | API                          | DESCRIPTION                                                                            |
@@ -463,6 +490,8 @@ Data read
 +----------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 
 
+.. _scpi_uart:
+
 ====
 UART
 ====
@@ -481,6 +510,8 @@ Parameter options:
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
 
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 | SCPI                                | API                          | DESCRIPTION                                                                            |
 +=====================================+==============================+========================================================================================+
@@ -492,8 +523,8 @@ Parameter options:
 | | Example:                          |                              |                                                                                        |
 | | ``UART:RELEASE``                  |                              |                                                                                        |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:SETUP``                    | ``rp_UartSetSettings``       | Applies specified settings to UART.                                                    |
-| | Example:                          |                              |                                                                                        |
+| | ``UART:SETUP``                    | ``rp_UartSetSettings``       | | Applies specified settings to UART.                                                  |
+| | Example:                          |                              | | Should be executed after communication parameters are set                            |
 | | ``UART:SETUP``                    |                              |                                                                                        |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 | | ``UART:BITS <bits>``              | ``rp_UartSetBits``           | Sets the character size in bits.                                                       |
@@ -539,15 +570,16 @@ Parameter options:
 | | Example:                          |                              |                                                                                        |
 | | ``UART:TIMEOUT?`` > ``10``        |                              |                                                                                        |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:WRITE<n> <data>``          | ``rp_UartWrite``             | Writes data to UART. <n> - the length of data sent to UART.                            |
+| | ``UART:WRITE<n> <data>``          | ``rp_UartWrite``             | Writes data to UART. ``<n>`` - the length of data sent to UART.                        |
 | | Example:                          |                              |                                                                                        |
 | | ``UART:WRITE5 1,2,3,4,5``         |                              |                                                                                        |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
-| | ``UART:READ<n>`` > ``<data>``     | ``rp_UartRead``              | Reads data from UART. <n> - the length of data retrieved from UART.                    |
+| | ``UART:READ<n>`` > ``<data>``     | ``rp_UartRead``              | Reads data from UART. ``<n>`` - the length of data retrieved from UART.                |
 | | Example:                          |                              |                                                                                        |
 | | ``UART:READ5`` > ``{1,2,3,4,5}``  |                              |                                                                                        |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+
 
+.. _scpi_spi:
 
 ====
 SPI
@@ -565,6 +597,8 @@ Parameter options:
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
+   
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | SCPI                                  | API                            | DESCRIPTION                                                                        |
@@ -573,7 +607,7 @@ Parameter options:
 | | Example:                            |                                |                                                                                    |
 | | ``SPI:INIT``                        |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:INIT:DEV <path>``             | ``rp_SPI_InitDev``             | | Initializes the API for working with SPI. <path> - Path to the SPI device.       |
+| | ``SPI:INIT:DEV <path>``             | ``rp_SPI_InitDev``             | | Initializes the API for working with SPI. ``<path>`` - Path to the SPI device.   |
 | | Example:                            |                                | | On some boards, it may be different from the standard: /dev/spidev1.0            |
 | | ``SPI:INIT:DEV "/dev/spidev1.0"``   |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
@@ -585,8 +619,8 @@ Parameter options:
 | | Example:                            |                                |                                                                                    |
 | | ``SPI:SET:DEF``                     |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:SET``                | ``rp_SPI_SetSettings``         | Sets the specified settings for SPI.                                               |
-| | Example:                            |                                |                                                                                    |
+| | ``SPI:SETtings:SET``                | ``rp_SPI_SetSettings``         | | Sets the specified settings for SPI.                                             |
+| | Example:                            |                                | | Executed after specifying the parameters of communication.                       |
 | | ``SPI:SET:SET``                     |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``SPI:SETtings:GET``                | ``rp_SPI_GetSettings``         | Gets the specified SPI settings.                                                   |
@@ -619,9 +653,10 @@ Parameter options:
 | | Example:                            |                                |                                                                                    |
 | | ``SPI:SET:WORD?`` > ``8``           |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG:CREATE <n>``              | ``rp_SPI_CreateMessage``       | | Creates a message queue for SPI. Once created, they need to be initialized.      |
-| | Example:                            |                                | | <n> - The number of messages in the queue.                                       |
-| | ``SPI:MSG:CREATE 1``                |                                | | The message queue can operate within a single CS state switch.                   |
+| | ``SPI:MSG:CREATE <n>``              | ``rp_SPI_CreateMessage``       | | Creates a message queue for SPI (reserves the space for data buffers)            |
+| | Example:                            |                                | | Once created, they need to be initialized.                                       |
+| | ``SPI:MSG:CREATE 1``                |                                | | ``<n>`` - The number of messages in the queue.                                   |
+|                                       |                                | | The message queue can operate within a single CS state switch.                   |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``SPI:MSG:DEL``                     | ``rp_SPI_DestoryMessage``      | Deletes all messages and data buffers allocated for them.                          |
 | | Example:                            |                                |                                                                                    |
@@ -633,21 +668,27 @@ Parameter options:
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``SPI:MSG<n>:TX<m> <data>``         | | ``rp_SPI_SetTX``             | | Sets data for the write buffer for the specified message.                        |
 | | ``SPI:MSG<n>:TX<m>:CS <data>``      | | ``rp_SPI_SetTXCS``           | | CS - Toggles CS state after sending/receiving this message.                      |
-| | Example:                            |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
-| | ``SPI:MSG0:TX4 1,2,3,4``            |                                | | <m> - TX buffer length.                                                          |
-| | ``SPI:MSG1:TX3:CS 2,3,4``           |                                |                                                                                    |
+| | Example:                            |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
+| | ``SPI:MSG0:TX4 1,2,3,4``            |                                | | ``<m>`` - TX buffer length.                                                      |
+| | ``SPI:MSG1:TX3:CS 2,3,4``           |                                | | Sends ``<m>`` 'bytes' from message ``<n>``. No data is received.                 |
+| |                                     |                                | |                                                                                  |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``SPI:MSG<n>:TX<m>:RX <data>``      | | ``rp_SPI_SetTXRX``           | | Sets data for the read and write buffers for the specified message.              |
 | | ``SPI:MSG<n>:TX<m>:RX:CS <data>``   | | ``rp_SPI_SetTXRXCS``         | | CS - Toggles CS state after sending/receiving this message.                      |
-| | Example:                            |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
-| | ``SPI:MSG0:TX4:RX 1,2,3,4``         |                                | | <m> - TX buffer length.                                                          |
+| | Example:                            |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
+| | ``SPI:MSG0:TX4:RX 1,2,3,4``         |                                | | ``<m>`` - TX buffer length.                                                      |
 | | ``SPI:MSG1:TX3:RX:CS 2,3,4``        |                                | | The read buffer is also created with the same length and initialized with zeros. |
+| |                                     |                                | |                                                                                  |
+| |                                     |                                | | Sends ``<m>`` 'bytes' from message ``<n>`` and receives the same amount of data  |
+| |                                     |                                | |  from the dataline                                                               |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``SPI:MSG<n>:RX<m>``                | | ``rp_SPI_SetRX``             | | Initializes a buffer for reading the specified message.                          |
 | | ``SPI:MSG<n>:RX<m>:CS``             | | ``rp_SPI_SetRXCS``           | | CS - Toggles CS state after receiving message.                                   |
-| | Example:                            |                                | | <n> - index of message 0 <= n < msg queue size.                                  |
-| | ``SPI:MSG0:RX4``                    |                                | | <m> - RX buffer length.                                                          |
-| | ``SPI:MSG1:RX5:CS``                 |                                |                                                                                    |
+| | Example:                            |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
+| | ``SPI:MSG0:RX4``                    |                                | | ``<m>`` - RX buffer length.                                                      |
+| | ``SPI:MSG1:RX5:CS``                 |                                | |                                                                                  |
+| |                                     |                                | | Receives ``<m>`` 'bytes' into message ``<n>``. No data is transmitted.           |
+| |                                     |                                | |                                                                                  |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | | ``SPI:MSG<n>:RX?`` > ``<data>``     | ``rp_SPI_GetRXBuffer``         | Returns a read buffer for the specified message.                                   |
 | | Example:                            |                                |                                                                                    |
@@ -666,6 +707,7 @@ Parameter options:
 | | ``SPI:PASS``                        |                                |                                                                                    |
 +---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 
+.. _scpi_i2c:
 
 ===
 I2C
@@ -681,12 +723,14 @@ Parameter options:
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
+   
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | SCPI                                             | API                            | DESCRIPTION                                                           |
 +==================================================+================================+=======================================================================+
-| | ``I2C:DEV<addr> <path>``                       | ``rp_I2C_InitDevice``          | | Initialises settings for I2C. <path> - Path to the I2C device       |
-| | Example:                                       |                                | | <addr> - Device address on the I2C bus in dec format.               |
+| | ``I2C:DEV<addr> <path>``                       | ``rp_I2C_InitDevice``          | | Initializes settings for I2C. ``<path>`` - Path to the I2C device   |
+| | Example:                                       |                                | | ``<addr>`` - Device address on the I2C bus in dec format.           |
 | | ``I2C:DEV80 "/dev/i2c-0"``                     |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:DEV?`` > ``<addr>``                      | ``rp_I2C_getDevAddress``       | Returns the current address of the device.                            |
@@ -703,42 +747,40 @@ Parameter options:
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Read<reg>`` > ``<value>``          | ``rp_I2C_SMBUS_Read``          | | Reads 8 bit data from the specified register using                  |
 | | Example:                                       |                                | | the SMBUS protocol.                                                 |
-| | ``I2C:S:R2`` > ``0``                           |                                | | <reg> - Register address in dec format.                             |
+| | ``I2C:S:R2`` > ``0``                           |                                | | ``<reg>`` - Register address in dec format.                         |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Read<reg>:Word`` > ``<value>``     | ``rp_I2C_SMBUS_ReadWord``      | | Reads 16 bit data from the specified register using                 |
 | | Example:                                       |                                | | the SMBUS protocol.                                                 |
-| | ``I2C:S:R2:W`` > ``0``                         |                                | | <reg> - Register address in dec format.                             |
+| | ``I2C:S:R2:W`` > ``0``                         |                                | | ``<reg>`` - Register address in dec format.                         |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Read<reg>:Buffer<size>`` >         | ``rp_I2C_SMBUS_ReadBuffer``    | | Reads buffer data from the specified register using                 |
 | |  ``<data>``                                    |                                | | the SMBUS protocol.                                                 |
-| | Example:                                       |                                | | <reg> - Register address in dec format.                             |
-| | ``I2C:S:R2:B2`` > ``{0,1}``                    |                                | | <size> - Read data size.                                            |
+| | Example:                                       |                                | | ``<reg>`` - Register address in dec format.                         |
+| | ``I2C:S:R2:B2`` > ``{0,1}``                    |                                | | ``<size>`` - Read data size.                                        |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Write<reg> <value>``               | ``rp_I2C_SMBUS_Write``         | | Writes 8-bit data to the specified register using                   |
 | |                                                |                                | | the SMBUS protocol.                                                 |
-| | Example:                                       |                                | | <reg> - Register address in dec format.                             |
+| | Example:                                       |                                | | ``<reg>`` - Register address in dec format.                         |
 | | ``I2C:S:W2 10``                                |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Write<reg>:Word <value>``          | ``rp_I2C_SMBUS_WriteWord``     | | Writes 16-bit data to the specified register using                  |
 | |                                                |                                | | the SMBUS protocol.                                                 |
-| | Example:                                       |                                | | <reg> - Register address in dec format.                             |
+| | Example:                                       |                                | | ``<reg>`` - Register address in dec format.                         |
 | | ``I2C:S:W2:W 10``                              |                                |                                                                       |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:Smbus:Write<reg>:Buffer<size> <data>``   | ``rp_I2C_SMBUS_WriteBuffer``   | | Writes buffer data to the specified register using                  |
 | |                                                |                                | | the SMBUS protocol.                                                 |
-| | Example:                                       |                                | | <reg> - Register address in dec format.                             |
-| | ``I2C:S:W2:B2 0,1``                            |                                | | <size> - Read data size.                                            |
+| | Example:                                       |                                | | ``<reg>`` - Register address in dec format.                         |
+| | ``I2C:S:W2:B2 0,1``                            |                                | | ``<size>`` - Read data size.                                        |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:IOctl:Read:Buffer<size>`` > ``<data>``   | ``rp_I2C_IOCTL_ReadBuffer``    | | Reads data from the I2C device through IOCTL.                       |
-| | Example:                                       |                                | | <size> - Read data size.                                            |
+| | Example:                                       |                                | | ``<size>`` - Read data size.                                        |
 | | ``I2C:IO:R:B2`` > ``{0,1}``                    |                                | |                                                                     |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
 | | ``I2C:IOctl:Write:Buffer<size> <data>``        | ``rp_I2C_IOCTL_WriteBuffer``   | | Writes data to the I2C device via IOCTL.                            |
-| | Example:                                       |                                | | <size> - Read data size.                                            |
+| | Example:                                       |                                | | ``<size>`` - Read data size.                                        |
 | | ``I2C:IO:W:B2  {0,1}``                         |                                | |                                                                     |
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
-
-
 
 
 .. note::
@@ -750,6 +792,8 @@ Parameter options:
     <a href="http://smbus.org/specs/" target="_blank">SMBUS specifcations</a>
 
 
+.. _scpi_leds:
+
 =============
 Specific LEDs
 =============
@@ -758,10 +802,11 @@ Parameter options:
 
 * ``<mode> = {OFF, ON}``  Default: ``ON``
 
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 | SCPI                                | API                            | DESCRIPTION                                                                        |
 +=====================================+================================+====================================================================================+
-| | ``LED:MMC <mode>``                | ``rp_SetLEDMMCState``          | Turns the yellow LED on or off (responsible for indicating the read memory card).  |
+| | ``LED:MMC <mode>``                | ``rp_SetLEDMMCState``          | Turns the Orange LED on or off (responsible for indicating the read memory card).  |
 | | Example:                          |                                |                                                                                    |
 | | ``LED:MMC OFF``                   |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
@@ -769,15 +814,15 @@ Parameter options:
 | | Example:                          |                                |                                                                                    |
 | | ``LED:MMC?`` > ``ON``             |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``LED:HB <mode>``                 | ``rp_SetLEDHeartBeatState``    | Turns the red LED on or off (responsible for indicating board activity).           |
+| | ``LED:HB <mode>``                 | ``rp_SetLEDHeartBeatState``    | Turns the Red LED on or off (responsible for indicating board activity).           |
 | | Example:                          |                                |                                                                                    |
 | | ``LED:HB OFF``                    |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``LED:HB?`` > ``<mode>``          | ``rp_GetLEDHeartBeatState``    | Gets the state of the HeartBeat indicator.                                         |
+| | ``LED:HB?`` > ``<mode>``          | ``rp_GetLEDHeartBeatState``    | Gets the state of the HeartBeat indicator (Red LED).                               |
 | | Example:                          |                                |                                                                                    |
 | | ``LED:HB?`` > ``ON``              |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``LED:ETH <mode>``                | ``rp_SetLEDEthState``          | Turns the LED indicators on the network card on or off.                            |
+| | ``LED:ETH <mode>``                | ``rp_SetLEDEthState``          | Turns the LED indicators on the Ethernet connector on or off.                      |
 | | Example:                          |                                |                                                                                    |
 | | ``LED:ETH OFF``                   |                                |                                                                                    |
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
