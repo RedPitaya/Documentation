@@ -103,21 +103,9 @@ The ADC clock can be provided by:
     :width:  400px
 
 
-.. _secondary_125_14:
+.. warning::
 
-.. *************************************
-.. SECONDARY STEMlab 125-14 modification
-.. *************************************
-
-.. A SECONDARY device is a slightly modified version of STEMlab 125-14.
-.. In order to turn a normal STEMlab 125-14 device into a SECONDARY device, R25 and R26 need to be moved to locations R27 and R28 (see :ref:`the external clock chapter <external_125_14>`).
-.. The :ref:`X-channel <top_125_14_MULTI>` clock is provided through the SATA extension connectors and goes directly into the FPGA.
-
-
-.. note::
-
-    This modification will void the warranty.
-
+    Any sort of hardware modification not done by the Red Pitaya will void the warranty.
 
 ************
 Certificates
