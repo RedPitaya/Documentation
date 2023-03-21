@@ -25,11 +25,20 @@ RedPitaya OS 2.0:
    - STEMlab 125-14
    - STEMlab 125-14-Z7020
    - STEMlab 125-14 4-Input
-   - SDRlab 122-16
+   - SDRlab 122-16 (Currently not supported)
    - SIGNALlab 250-12
 
    Unfify ecosystem now includes master/slave functionality for streaming.
 
+.. warning::
+
+   If you have a very old Red Pitaya (STEMlab 125-14) and the UNIFIED OS does not work for you, please send us the picture of the board (MAC address), so that we can add the address range to the system.
+
+.. warning::
+
+   To run the C applications please use one of the following combinations of OS and ecosystem:
+      - UNIFIED OS and 2023.1 release of the GitHub ecosystem
+      - Any other OS version and the 2022.2 release of the GitHub ecosystem
 
 STEMlab 125-14 & STEMlab 125-10:
 

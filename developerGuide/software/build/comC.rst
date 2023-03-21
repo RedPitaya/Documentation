@@ -38,6 +38,11 @@ In order to compile one example just use the source file name without the `.c` e
     cd Examples/C
     make digital_led_blink
 
+.. warning::
+
+    Currently, there are some issues with combining the new ecosystem (GitHub release 2023.1) with non-UNIFIED OS versions. If you are using an OS version that is not UNIFIED OS, please use the 2022.2 relase of the ecosystem.
+
+
 Applications based on the API require a specific FPGA image to be loaded:
 
 

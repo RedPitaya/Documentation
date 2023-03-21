@@ -31,15 +31,15 @@ Setup
 
 **What do I need before I start?**
 
-The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple STEMlab 125-14 LN devices that are modified for clock and trigger synchronization, and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
+The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple Low-Noise STEMlab 125-14 devices that are modified for clock and trigger synchronization, and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
 
 .. figure:: img/Master_and_slaves.jpg
     :width: 80%
 
 Notice that the Red Pitaya STEMlab 125-14 X-Channel System includes two types of devices:
 
-    * one STEMlab 125-14 PRIMARY device (standard STEMlab 125-14 device)
-    * one or more STEMlab 125-14 SECONDARY devices denoted by an "S" sticker
+    * one STEMlab 125-14 PRIMARY device (Low-Noise STEMlab 125-14 device)
+    * one or more Low-Noise STEMlab 125-14 SECONDARY devices denoted by an "S" sticker
 
 In order to achieve synchronization, the PRIMARY device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SECONDARY 1 board. SECONDARY1 then passes the clock forward to SECONDARY 2, SECONDARY2 to SECONDARY 3, and so on (SECONDARY N to SECONDARY N+1). This way, we can achieve synchronisation of all boards in the system.
 
