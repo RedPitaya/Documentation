@@ -1,3 +1,6 @@
+
+.. _osc_app:
+
 Oscilloscope & Signal Generator
 ###############################
 
@@ -105,11 +108,6 @@ The available settings by device model:
         - **Input attenuation:** 1:1 (± 1V) / 1:20 (± 20V) is selected automatically when adjusting V/div setting, user can also select range manually through WEB interface settings.
         - **AC/DC coupling**
 
-
-.. |analog inputs| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">position</a>
-
     
 Outputs
 =======
@@ -205,11 +203,6 @@ The Source parameter defines the source used for this purpose. With the IN1 or t
    .. tab:: SIGNALlab 250-12
 
       BNC connector available on the front panel
-
-.. |E1| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1" target="_blank">E1</a>
-
 
 
 
