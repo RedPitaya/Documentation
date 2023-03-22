@@ -28,11 +28,7 @@ Streamed data can be stored into:
 Max. streaming speeds are limited to:
 
     * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for the optimal streaming performance)
-    * 20 MB/s for streaming over 1 Gbit network (A |direct connection| is recommended to achieve the best streaming performance)
-
-.. |direct connection| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/connect/connect.html#direct-ethernet-cable-connection" target="_blank">direct ethernet connection</a>
+    * 20 MB/s for streaming over 1 Gbit network (A :ref:`direct connection <dir_cab_connect>` is recommended to achieve the best streaming performance)
 
 
 ********************************************
@@ -101,7 +97,7 @@ Start using the Red Pitaya streaming feature
 
             Data streaming can be stopped by pressing *Ctrl + C*.
 
-            The created wav file can be read or viewed in `Audacity <https://www.audacityteam.org/>`__:
+            The created wav file can be read or viewed in |Audacity| `Audacity <https://www.audacityteam.org/>`__:
 
             .. figure:: img/audacity.png
                 :width: 80%
@@ -119,7 +115,7 @@ Start using the Red Pitaya streaming feature
 
             Data streaming can be stopped by pressing *Ctrl + C*.
 
-            The created tdms file can be read or viewed in `DIAdem <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__.
+            The created tdms file can be read or viewed in |DIAdem| `DIAdem <https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html>`__.
 
             .. figure:: img/diadem_tdms_file_viewer.png
                 :width: 80%
