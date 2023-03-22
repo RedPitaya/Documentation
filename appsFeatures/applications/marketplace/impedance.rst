@@ -1,3 +1,5 @@
+.. _imp_anal_app:
+
 ******************
 Impedance Analyzer
 ******************

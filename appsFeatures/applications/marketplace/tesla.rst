@@ -1,3 +1,5 @@
+.. _tesla_app:
+
 **********
 Teslameter
 **********

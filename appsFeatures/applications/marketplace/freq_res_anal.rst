@@ -1,3 +1,5 @@
+.. _freqRes_app:
+
 ***************************
 Frequency Response Analyzer
 ***************************

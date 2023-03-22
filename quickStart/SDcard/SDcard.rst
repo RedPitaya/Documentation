@@ -32,7 +32,7 @@ RedPitaya OS 2.0:
 
 .. warning::
 
-   If you have a very old Red Pitaya (STEMlab 125-14) and the UNIFIED OS does not work for you, please send us the picture of the board (MAC address), so that we can add the address range to the system.
+   If you have a very old Red Pitaya (STEMlab 125-14, SDRlab 122-16) and the UNIFIED OS does not work for you, please send us the picture of the board (QR code), so that we can add the board model to the system.
 
 .. warning::
 
