@@ -1,3 +1,5 @@
+.. _power_anal_app:
+
 **************
 Power Analyzer
 **************
