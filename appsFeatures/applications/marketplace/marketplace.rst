@@ -1,3 +1,5 @@
+.. _marketplace:
+
 ################################
 Marketplace and contributed apps
 ################################
