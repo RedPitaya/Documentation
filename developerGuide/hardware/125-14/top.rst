@@ -105,7 +105,7 @@ The ADC clock can be provided by:
 
 .. warning::
 
-    Any sort of hardware modification not done by the Red Pitaya will void the warranty.
+    We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 ************
 Certificates
