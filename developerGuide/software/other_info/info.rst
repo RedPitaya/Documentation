@@ -7,5 +7,6 @@ Other useful information
 
     os/network.rst
     gpio/gpio.rst
+    spi/spi.rst
     manualApps/manualApps.rst
     tft/TFT.rst
