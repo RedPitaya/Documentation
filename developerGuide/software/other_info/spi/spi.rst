@@ -16,7 +16,7 @@ First you need to open the file using a command in the console with a descriptio
 
 
 In the file you need to find the SPI device: spidev@0
-And add the line *spi-cs-high* to this device;
+and add the line *spi-cs-high* to this device;
 
 .. figure:: img/spi_dts.png
    :align: center
