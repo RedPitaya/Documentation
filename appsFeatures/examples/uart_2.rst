@@ -8,6 +8,10 @@ Description
 
 This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loop back by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.
 
+.. note::
+
+    When establishing UART communication with Red Pitaya and another device do not forget to connect the External Common Mode (GND) pin. Otherwise the results might be unreliable.
+
 
 Required hardware
 *****************
@@ -243,7 +247,7 @@ Using functions (will be implemented soon):
     print("\n")
     
     # function to send a string through UART
-    rp_s.uart_write_string("Hello World", ascii=True)   # set the ascii parameter to True if bits == CS7 or to False if bits == CS8
+    rp_s.uart_write_string("Hello World")   # set the ascii parameter to True if bits == CS7 or to False if bits == CS8
     
     # function to read a string through UART
     message = rp_s.uart_read_string(length = 11)
