@@ -514,6 +514,11 @@ Parameter options:
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
+   
+
+.. note::
+
+    When establishing UART communication with Red Pitaya and another device, do not forget to connect the External Common Mode (GND) pin (in addition to the RX and TX pins). Otherwise, the communication might be unreliable.
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
