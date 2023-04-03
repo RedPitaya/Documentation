@@ -120,9 +120,9 @@ Parameter options:
 .. note::
 
    The daisy chain commands only work for the X-channel system and the upcoming Mikro-E extension shields.
-   
+
 .. note::
-   
+
    The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software. The generation and acquisition trigger fronts apply after the signals have been combined.
 
 .. _scpi_gen:
@@ -239,7 +239,7 @@ Parameter options:
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 
 .. note::
-   
+
    The SOUR:TRIG:EXT:DEBouncerUs commands are only available in the UNIFIED OS update.
 
 .. note::
@@ -593,6 +593,7 @@ SPI
 Parameter options:
 
 * ``<mode> = {LISL, LIST, HISL, HIST}``  Default: ``LISL``
+* ``<cs_mode> = {NORMAL, HIGH}``  Default: ``NORMAL``
 * ``<order> = {MSB, LSB}``  Default: ``MSB``
 * ``<bits> = {7,..}``  Default: ``8``
 * ``<speed> = {1,100000000}`` Default: ``50000000``
@@ -602,115 +603,125 @@ Parameter options:
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
-   
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| SCPI                                  | API                            | DESCRIPTION                                                                        |
-+=======================================+================================+====================================================================================+
-| | ``SPI:INIT``                        | ``rp_SPI_Init``                | Initializes the API for working with SPI.                                          |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:INIT``                        |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:INIT:DEV <path>``             | ``rp_SPI_InitDev``             | | Initializes the API for working with SPI. ``<path>`` - Path to the SPI device.   |
-| | Example:                            |                                | | On some boards, it may be different from the standard: /dev/spidev1.0            |
-| | ``SPI:INIT:DEV "/dev/spidev1.0"``   |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:RELEASE``                     | ``rp_SPI_Release``             | Releases all used resources.                                                       |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:RELEASE``                     |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:DEF``                | ``rp_SPI_SetDefault``          | Sets the settings for SPI to default values.                                       |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:SET:DEF``                     |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:SET``                | ``rp_SPI_SetSettings``         | | Sets the specified settings for SPI.                                             |
-| | Example:                            |                                | | Executed after specifying the parameters of communication.                       |
-| | ``SPI:SET:SET``                     |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:GET``                | ``rp_SPI_GetSettings``         | Gets the specified SPI settings.                                                   |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:SET:GET``                     |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:MODE <mode>``        | ``rp_SPI_SetMode``             | | Sets the mode for SPI.                                                           |
-| | Example:                            |                                | | - LISL = Low idle level, Sample on leading edge                                  |
-| | ``SPI:SET:MODE LIST``               |                                | | - LIST = Low idle level, Sample on trailing edge                                 |
-| |                                     |                                | | - HISL = High idle level, Sample on leading edge                                 |
-| |                                     |                                | | - HIST = High idle level, Sample on trailing edge                                |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:MODE?`` > ``<mode>`` | ``rp_SPI_GetMode``             | Gets the specified mode for SPI.                                                   |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:SET:MODE?`` > ``LIST``        |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:SPEED <speed>``      | ``rp_SPI_SetSpeed``            | Sets the speed of the SPI connection.                                              |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:SET:SPEED 1000000``           |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETings:SPEED?`` > ``<speed>``| ``rp_SPI_GetSpeed``            | Gets the speed of the SPI connection.                                              |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:SET:SPEED?`` > ``1000000``    |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:WORD <bits>``        | ``rp_SPI_SetWord``             | Specifies the length of the word in bits. Must be greater than or equal to 7.      |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:SET:WORD 8``                  |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:SETtings:WORD?`` > ``<bits>`` | ``rp_SPI_GetWord``             | Returns the length of a word.                                                      |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:SET:WORD?`` > ``8``           |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG:CREATE <n>``              | ``rp_SPI_CreateMessage``       | | Creates a message queue for SPI (reserves the space for data buffers)            |
-| | Example:                            |                                | | Once created, they need to be initialized.                                       |
-| | ``SPI:MSG:CREATE 1``                |                                | | ``<n>`` - The number of messages in the queue.                                   |
-|                                       |                                | | The message queue can operate within a single CS state switch.                   |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG:DEL``                     | ``rp_SPI_DestoryMessage``      | Deletes all messages and data buffers allocated for them.                          |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:MSG:DEL``                     |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG:SIZE?`` > ``<n>``         | ``rp_SPI_GetMessageLen``       | Returns the length of the message queue.                                           |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:MSG:SIZE?`` > ``1``           |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m> <data>``         | | ``rp_SPI_SetTX``             | | Sets data for the write buffer for the specified message.                        |
-| | ``SPI:MSG<n>:TX<m>:CS <data>``      | | ``rp_SPI_SetTXCS``           | | CS - Toggles CS state after sending/receiving this message.                      |
-| | Example:                            |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
-| | ``SPI:MSG0:TX4 1,2,3,4``            |                                | | ``<m>`` - TX buffer length.                                                      |
-| | ``SPI:MSG1:TX3:CS 2,3,4``           |                                | | Sends ``<m>`` 'bytes' from message ``<n>``. No data is received.                 |
-| |                                     |                                | |                                                                                  |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX<m>:RX <data>``      | | ``rp_SPI_SetTXRX``           | | Sets data for the read and write buffers for the specified message.              |
-| | ``SPI:MSG<n>:TX<m>:RX:CS <data>``   | | ``rp_SPI_SetTXRXCS``         | | CS - Toggles CS state after sending/receiving this message.                      |
-| | Example:                            |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
-| | ``SPI:MSG0:TX4:RX 1,2,3,4``         |                                | | ``<m>`` - TX buffer length.                                                      |
-| | ``SPI:MSG1:TX3:RX:CS 2,3,4``        |                                | | The read buffer is also created with the same length and initialized with zeros. |
-| |                                     |                                | |                                                                                  |
-| |                                     |                                | | Sends ``<m>`` 'bytes' from message ``<n>`` and receives the same amount of data  |
-| |                                     |                                | |  from the dataline                                                               |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX<m>``                | | ``rp_SPI_SetRX``             | | Initializes a buffer for reading the specified message.                          |
-| | ``SPI:MSG<n>:RX<m>:CS``             | | ``rp_SPI_SetRXCS``           | | CS - Toggles CS state after receiving message.                                   |
-| | Example:                            |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
-| | ``SPI:MSG0:RX4``                    |                                | | ``<m>`` - RX buffer length.                                                      |
-| | ``SPI:MSG1:RX5:CS``                 |                                | |                                                                                  |
-| |                                     |                                | | Receives ``<m>`` 'bytes' into message ``<n>``. No data is transmitted.           |
-| |                                     |                                | |                                                                                  |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:RX?`` > ``<data>``     | ``rp_SPI_GetRXBuffer``         | Returns a read buffer for the specified message.                                   |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:MSG1:RX?`` > ``{2,4,5}``      |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:TX?`` > ``<data>``     | ``rp_SPI_GetTXBuffer``         | Returns the write buffer for the specified message.                                |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:MSG1:TX?`` > ``{2,4,5}``      |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:MSG<n>:CS?`` > ``ON|OFF``     | ``rp_SPI_GetCSChangeState``    | Returns the setting for CS mode for the specified message.                         |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:MSG1:CS?`` > ``ON``           |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
-| | ``SPI:PASS``                        | ``rp_SPI_Pass``                | Sends the prepared messages to the SPI device.                                     |
-| | Example:                            |                                |                                                                                    |
-| | ``SPI:PASS``                        |                                |                                                                                    |
-+---------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| SCPI                                       | API                            | DESCRIPTION                                                                        |
++============================================+================================+====================================================================================+
+| | ``SPI:INIT``                             | ``rp_SPI_Init``                | Initializes the API for working with SPI.                                          |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:INIT``                             |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:INIT:DEV <path>``                  | ``rp_SPI_InitDev``             | | Initializes the API for working with SPI. ``<path>`` - Path to the SPI device.   |
+| | Example:                                 |                                | | On some boards, it may be different from the standard: /dev/spidev1.0            |
+| | ``SPI:INIT:DEV "/dev/spidev1.0"``        |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:RELEASE``                          | ``rp_SPI_Release``             | Releases all used resources.                                                       |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:RELEASE``                          |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:DEF``                     | ``rp_SPI_SetDefault``          | Sets the settings for SPI to default values.                                       |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:DEF``                          |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:SET``                     | ``rp_SPI_SetSettings``         | | Sets the specified settings for SPI.                                             |
+| | Example:                                 |                                | | Executed after specifying the parameters of communication.                       |
+| | ``SPI:SET:SET``                          |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:GET``                     | ``rp_SPI_GetSettings``         | Gets the specified SPI settings.                                                   |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:GET``                          |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:MODE <mode>``             | ``rp_SPI_SetMode``             | | Sets the mode for SPI.                                                           |
+| | Example:                                 |                                | | - LISL = Low idle level, Sample on leading edge                                  |
+| | ``SPI:SET:MODE LIST``                    |                                | | - LIST = Low idle level, Sample on trailing edge                                 |
+| |                                          |                                | | - HISL = High idle level, Sample on leading edge                                 |
+| |                                          |                                | | - HIST = High idle level, Sample on trailing edge                                |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:MODE?`` > ``<mode>``      | ``rp_SPI_GetMode``             | Gets the specified mode for SPI.                                                   |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:MODE?`` > ``LIST``             |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:CSMODE <cs_mode>``        | ``rp_SPI_SetCSMode``           | | Sets the mode for CS.                                                            |
+| | Example:                                 |                                | | - NORMAL = After the message is transmitted,                                     |
+| | ``SPI:SET:CSMODE NORMAL``                |                                | | the CS line is set to the HIGH state.                                            |
+| |                                          |                                | | - HIGH = After the message has been transmitted,                                 |
+| |                                          |                                | | - the CS line is set to the LOW state.                                           |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:CSMODE?`` > ``<cs_mode>`` | ``rp_SPI_GetCSMode``           | Gets the specified CS mode for SPI.                                                |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:CSMODE?`` > ``NORMAL``         |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:SPEED <speed>``           | ``rp_SPI_SetSpeed``            | Sets the speed of the SPI connection.                                              |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:SPEED 1000000``                |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETings:SPEED?`` > ``<speed>``     | ``rp_SPI_GetSpeed``            | Gets the speed of the SPI connection.                                              |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:SPEED?`` > ``1000000``         |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:WORD <bits>``             | ``rp_SPI_SetWord``             | Specifies the length of the word in bits. Must be greater than or equal to 7.      |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:WORD 8``                       |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:SETtings:WORD?`` > ``<bits>``      | ``rp_SPI_GetWord``             | Returns the length of a word.                                                      |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:SET:WORD?`` > ``8``                |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG:CREATE <n>``                   | ``rp_SPI_CreateMessage``       | | Creates a message queue for SPI (reserves the space for data buffers)            |
+| | Example:                                 |                                | | Once created, they need to be initialized.                                       |
+| | ``SPI:MSG:CREATE 1``                     |                                | | ``<n>`` - The number of messages in the queue.                                   |
+|                                            |                                | | The message queue can operate within a single CS state switch.                   |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG:DEL``                          | ``rp_SPI_DestoryMessage``      | Deletes all messages and data buffers allocated for them.                          |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:MSG:DEL``                          |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG:SIZE?`` > ``<n>``              | ``rp_SPI_GetMessageLen``       | Returns the length of the message queue.                                           |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:MSG:SIZE?`` > ``1``                |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:TX<m> <data>``              | | ``rp_SPI_SetTX``             | | Sets data for the write buffer for the specified message.                        |
+| | ``SPI:MSG<n>:TX<m>:CS <data>``           | | ``rp_SPI_SetTXCS``           | | CS - Toggles CS state after sending/receiving this message.                      |
+| | Example:                                 |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
+| | ``SPI:MSG0:TX4 1,2,3,4``                 |                                | | ``<m>`` - TX buffer length.                                                      |
+| | ``SPI:MSG1:TX3:CS 2,3,4``                |                                | | Sends ``<m>`` 'bytes' from message ``<n>``. No data is received.                 |
+| |                                          |                                | |                                                                                  |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:TX<m>:RX <data>``           | | ``rp_SPI_SetTXRX``           | | Sets data for the read and write buffers for the specified message.              |
+| | ``SPI:MSG<n>:TX<m>:RX:CS <data>``        | | ``rp_SPI_SetTXRXCS``         | | CS - Toggles CS state after sending/receiving this message.                      |
+| | Example:                                 |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
+| | ``SPI:MSG0:TX4:RX 1,2,3,4``              |                                | | ``<m>`` - TX buffer length.                                                      |
+| | ``SPI:MSG1:TX3:RX:CS 2,3,4``             |                                | | The read buffer is also created with the same length and initialized with zeros. |
+| |                                          |                                | |                                                                                  |
+| |                                          |                                | | Sends ``<m>`` 'bytes' from message ``<n>`` and receives the same amount of data  |
+| |                                          |                                | |  from the dataline                                                               |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:RX<m>``                     | | ``rp_SPI_SetRX``             | | Initializes a buffer for reading the specified message.                          |
+| | ``SPI:MSG<n>:RX<m>:CS``                  | | ``rp_SPI_SetRXCS``           | | CS - Toggles CS state after receiving message.                                   |
+| | Example:                                 |                                | | ``<n>`` - index of message 0 <= n < msg queue size.                              |
+| | ``SPI:MSG0:RX4``                         |                                | | ``<m>`` - RX buffer length.                                                      |
+| | ``SPI:MSG1:RX5:CS``                      |                                | |                                                                                  |
+| |                                          |                                | | Receives ``<m>`` 'bytes' into message ``<n>``. No data is transmitted.           |
+| |                                          |                                | |                                                                                  |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:RX?`` > ``<data>``          | ``rp_SPI_GetRXBuffer``         | Returns a read buffer for the specified message.                                   |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:MSG1:RX?`` > ``{2,4,5}``           |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:TX?`` > ``<data>``          | ``rp_SPI_GetTXBuffer``         | Returns the write buffer for the specified message.                                |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:MSG1:TX?`` > ``{2,4,5}``           |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:MSG<n>:CS?`` > ``ON|OFF``          | ``rp_SPI_GetCSChangeState``    | Returns the setting for CS mode for the specified message.                         |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:MSG1:CS?`` > ``ON``                |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
+| | ``SPI:PASS``                             | ``rp_SPI_Pass``                | Sends the prepared messages to the SPI device.                                     |
+| | Example:                                 |                                |                                                                                    |
+| | ``SPI:PASS``                             |                                |                                                                                    |
++--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+
 
 .. _scpi_i2c:
 
@@ -728,7 +739,7 @@ Parameter options:
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
-   
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +--------------------------------------------------+--------------------------------+-----------------------------------------------------------------------+
