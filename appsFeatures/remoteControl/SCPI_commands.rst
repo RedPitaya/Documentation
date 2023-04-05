@@ -594,7 +594,6 @@ Parameter options:
 
 * ``<mode> = {LISL, LIST, HISL, HIST}``  Default: ``LISL``
 * ``<cs_mode> = {NORMAL, HIGH}``  Default: ``NORMAL``
-* ``<order> = {MSB, LSB}``  Default: ``MSB``
 * ``<bits> = {7,..}``  Default: ``8``
 * ``<speed> = {1,100000000}`` Default: ``50000000``
 * ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
