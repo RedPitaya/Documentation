@@ -6,11 +6,7 @@ Triggering on external trigger
 Description
 ***********
 
-This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the external trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
-
-.. |sample rate and decimation| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/acqRF-samp-and-dec.html#sampling-rate-and-decimations" target="_blank">table</a>
+This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the external trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the :ref:`sample rate and decimation <s_rate_and_dec>`. Voltage and frequency ranges depend on the Red Pitaya model. 
 
 
 Required hardware
@@ -96,7 +92,7 @@ Code - MATLAB®
         end
     end
     
-    % % FUTURE BETA
+    % % UNIFIED OS
     % % wait for fill adc buffer
     % while 1
     %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
@@ -155,7 +151,7 @@ Using just SCPI commands:
         if rp_s.rx_txt() == 'TD':
             break
     
-    ## FUTURE BETA
+    ## UNIFIED OS
     # while 1:
     #     rp_s.tx_txt('ACQ:TRIG:FILL?')
     #     if rp_s.rx_txt() == '1':
@@ -171,7 +167,7 @@ Using just SCPI commands:
     plot.show()
 
 
-Using functions (will be implemented soon):
+Using functions:
 
 .. code-block:: python
     
@@ -198,7 +194,7 @@ Using functions (will be implemented soon):
         if rp_s.rx_txt() == 'TD':
             break
     
-    ## FUTURE BETA
+    ## UNIFIED OS
     # while 1:
     #     rp_s.tx_txt('ACQ:TRIG:FILL?')
     #     if rp_s.rx_txt() == '1':
