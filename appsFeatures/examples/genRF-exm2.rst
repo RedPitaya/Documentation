@@ -65,8 +65,11 @@ Code - C
 .. note::
 
     Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw:: html
 
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -114,7 +117,7 @@ Using just SCPI commands:
 
 .. code-block:: python
 
-    #!/usr/bin/env python3
+    #!/usr/bin/python3
     
     import sys
     import redpitaya_scpi as scpi
@@ -138,11 +141,11 @@ Using just SCPI commands:
     rp_s.tx_txt('OUTPUT1:STATE ON')
     rp_s.tx_txt('SOUR1:TRIG:INT')
 
-Using functions:
+Using functions (will be implemented soon):
 
 .. code-block:: python
 
-    #!/usr/bin/env python3
+    #!/usr/bin/python3
     
     import sys
     import redpitaya_scpi as scpi

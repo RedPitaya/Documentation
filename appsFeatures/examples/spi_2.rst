@@ -22,8 +22,11 @@ Code - C
 .. note::
 
     Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
+    Instructions on how to compile the code are |compiling and running C|.
+    
+.. |compiling and running C| raw:: html
 
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -165,11 +168,7 @@ Code - MATLAB®
 Code - Python
 *************
 
-Using just SCPI commands:
-
 .. code-block:: python
-
-    #!/usr/bin/env python3
 
     import sys
     import time
@@ -240,68 +239,3 @@ Using just SCPI commands:
 
     rp_s.tx_txt('SPI:RELEASE')
     print("Release SPI")
-
-
-Using functions:
-
-.. code-block:: python
-
-    #!/usr/bin/env python3
-    
-    IP = 'rp-f07f1e.local'          # IP working Red Pitaya
-
-    spi_mode = 'list'
-    cs_mode = 'normal'
-    speed = 5e6
-    word_len = 8
-
-    rp_s = scpi.scpi(IP)
-
-    rp_s.tx_txt('SPI:INIT:DEV "/dev/spidev1.0"')
-    print("Init SPI")
-
-    rp_s.tx_txt('SPI:SET:DEF')
-    print("Set default settings")
-
-    rp_s.spi_set(spi_mode, cs_mode, speed, word_len)
-    print("\n")
-
-
-    rp_s.tx_txt('SPI:MSG:CREATE 2')
-    print("Create message")
-
-    rp_test.spi_get_settings()
-    print("\n")
-
-
-    rp_s.tx_txt('SPI:MSG0:TX4:RX 13,#H14,#B00001111,16')
-    print("Set message")
-
-    rp_s.tx_txt('SPI:MSG1:RX7:CS')
-    print("Set message 2")
-
-    rp_s.tx_txt('SPI:PASS')
-    print("Pass message")
-
-    rp_s.tx_txt('SPI:MSG0:TX?')
-    print("Tx buffer:",rp_test.rx_txt())
-
-    rp_s.tx_txt('SPI:MSG0:RX?')
-    print("Received data:",rp_test.rx_txt())
-
-    rp_s.tx_txt('SPI:MSG1:RX?')
-    print("Received data 2:",rp_test.rx_txt())
-
-    rp_s.tx_txt('SPI:MSG1:CS?')
-    print("CS state for message 2:",rp_test.rx_txt())
-    
-
-    rp_s.tx_txt('SPI:MSG:DEL')
-    print("Delete message")
-
-    rp_s.tx_txt('SPI:RELEASE')
-    print("Release SPI")
-    
-    rp_s.close()
-
-    
