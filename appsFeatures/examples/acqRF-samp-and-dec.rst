@@ -1,7 +1,7 @@
+.. _s_rate_and_dec:
+
 Sampling rate and decimations
 #############################
-
-.. _s_rate_and_dec:
 
 Decimations and time scales of a buffer are given in the tables below.
 
