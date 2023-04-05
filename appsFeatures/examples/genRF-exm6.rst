@@ -80,11 +80,8 @@ Code - C
 .. note::
 
     Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are |compiling and running C|.
+    Instructions on how to compile the code are :ref:`here <comC>`.
 
-.. |compiling and running C| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -142,7 +139,7 @@ Using just SCPI commands:
 
 .. code-block:: python
 
-    #!/usr/bin/python3
+    #!/usr/bin/env python3
 
     import sys
     import time
@@ -185,11 +182,11 @@ Using just SCPI commands:
     
     rp_s.close()
 
-Using functions (will be implemented soon):
+Using functions:
 
 .. code-block:: python
 
-    #!/usr/bin/python3
+    #!/usr/bin/env python3
 
     import sys
     import time

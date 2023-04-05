@@ -8,6 +8,10 @@ Description
 
 This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loop back by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.
 
+.. note::
+
+    When establishing UART communication with Red Pitaya and another device do not forget to connect the External Common Mode (GND) pin. Otherwise the results might be unreliable.
+
 
 Required hardware
 *****************
@@ -22,11 +26,8 @@ Code - C
 .. note::
 
     Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are |compiling and running C|.
-    
-.. |compiling and running C| raw:: html
+    Instructions on how to compile the code are :ref:`here <comC>`.
 
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
 
 .. code-block:: c
 
@@ -150,7 +151,7 @@ Using just SCPI commands:
 
 .. code-block:: python
 
-    #!/usr/bin/python3
+    #!/usr/bin/env python3
 
     import sys
     import redpitaya_scpi as scpi
@@ -208,11 +209,11 @@ Using just SCPI commands:
     print("Release UART")
     
     
-Using functions (will be implemented soon):
+Using functions:
 
 .. code-block:: python
 
-    #!/usr/bin/python3
+    #!/usr/bin/env python3
 
     import sys
     import redpitaya_scpi as scpi
@@ -243,7 +244,7 @@ Using functions (will be implemented soon):
     print("\n")
     
     # function to send a string through UART
-    rp_s.uart_write_string("Hello World", ascii=True)   # set the ascii parameter to True if bits == CS7 or to False if bits == CS8
+    rp_s.uart_write_string("Hello World")   # set the ascii parameter to True if bits == CS7 or to False if bits == CS8
     
     # function to read a string through UART
     message = rp_s.uart_read_string(length = 11)
@@ -251,3 +252,5 @@ Using functions (will be implemented soon):
 
     rp_s.tx_txt('UART:RELEASE')
     print("Release UART")
+    
+    rp_s.close()
