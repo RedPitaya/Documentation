@@ -132,7 +132,7 @@ Using just SCPI commands:
 
 .. code-block:: python
     
-    #!/usr/bin/python3
+    #!/usr/bin/env python3
     
     import sys
     import redpitaya_scpi as scpi
@@ -171,7 +171,7 @@ Using functions:
 
 .. code-block:: python
     
-    #!/usr/bin/python3
+    #!/usr/bin/env python3
     
     import sys
     import redpitaya_scpi as scpi
