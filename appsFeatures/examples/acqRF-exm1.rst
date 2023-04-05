@@ -1,3 +1,5 @@
+.. _trig_threshold_example:
+
 Triggering with treshold on channel
 ###################################
 
@@ -7,11 +9,8 @@ Triggering with treshold on channel
 Description
 ***********
 
-This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the internal trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the |sample rate and decimation|. Voltage and frequency ranges depend on the Red Pitaya model. 
+This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the internal trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the :ref:`sample rate and decimation <s_rate_and_dec>`. Voltage and frequency ranges depend on the Red Pitaya model. 
 
-.. |sample rate and decimation| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/acqRF-samp-and-dec.html#sampling-rate-and-decimations" target="_blank">table</a>
 
 Required hardware
 *****************
@@ -104,7 +103,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
                 
-            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % UNIFIED OS
             % % wait for fill adc buffer
             % while 1
             %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
@@ -200,7 +199,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             end
             
             
-            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % UNIFIED OS
             % % wait for fill adc buffer
             % while 1
             %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
@@ -299,7 +298,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
             
-            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % UNIFIED OS
             % % wait for fill adc buffer
             % while 1
             %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
@@ -394,7 +393,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
                 end
             end
 
-            % % WILL BE IMPLEMENTED IN FUTURE BETA
+            % % UNIFIED OS
             % % wait for fill adc buffer
             % while 1
             %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
@@ -439,11 +438,7 @@ Code - C
 .. note::
 
     Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are |compiling and running C|.
-    
-.. |compiling and running C| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/comC.html#compiling-and-running-c-applications" target="_blank">here</a>
+    Instructions on how to compile the code are :ref:`here <comC>`.
 
 .. tabs::
 
@@ -505,7 +500,7 @@ Code - C
                             }
                     }
                     
-                    /* FUTURE BETA
+                    /* UNIFIED OS
                     bool fillState = false;
                     while(!fillState){
                         rp_AcqGetBufferFillState(&fillState);
@@ -571,7 +566,7 @@ Code - C
                             }
                     }
                     
-                    /* FUTURE BETA
+                    /* UNIFIED OS
                     bool fillState = false;
                     while(!fillState){
                         rp_AcqGetBufferFillState(&fillState);
@@ -631,7 +626,7 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
             
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
@@ -674,7 +669,7 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
@@ -717,7 +712,7 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
@@ -761,7 +756,7 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
@@ -796,7 +791,7 @@ Using just SCPI commands:
             plot.show()
 
 
-Using functions (will be implemented soon):
+Using functions:
 
 .. tabs::
 
@@ -828,7 +823,7 @@ Using functions (will be implemented soon):
                 if rp_s.rx_txt() == 'TD':
                     break
             
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
@@ -871,7 +866,7 @@ Using functions (will be implemented soon):
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
@@ -913,7 +908,7 @@ Using functions (will be implemented soon):
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
@@ -956,7 +951,7 @@ Using functions (will be implemented soon):
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## FUTURE BETA
+            ## UNIFIED OS
             # while 1:
             #     rp_s.tx_txt('ACQ:TRIG:FILL?')
             #     if rp_s.rx_txt() == '1':
