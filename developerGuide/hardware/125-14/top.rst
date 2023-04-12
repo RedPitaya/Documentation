@@ -82,6 +82,11 @@ The ADC clock can be provided by:
     :align: center
 
     Schematic
+    
+
+.. warning::
+
+    We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
 .. figure:: External_clock_top.png
@@ -102,10 +107,6 @@ The ADC clock can be provided by:
     :align: center
     :width:  400px
 
-
-.. warning::
-
-    We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 ************
 Certificates
