@@ -49,7 +49,11 @@ External ADC clock
 ADC clock can be provided by:
 
   * On board 122.88MHz XO (default)
-  * From external source / through extension connector (instructions provided bellow)
+  * From external source / through extension connector (instructions provided below)
+
+.. warning::
+
+    We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
 * Remove: R37, R46
