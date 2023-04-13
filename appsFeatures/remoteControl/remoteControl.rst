@@ -116,7 +116,7 @@ To install them, do:
 
    .. figure:: scpi-example-cli.png
 
-More examples of how to control Red Pitaya from MATLAB can be found |examples|.
+More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <examples>`.
 
    .. note::
    
@@ -141,7 +141,7 @@ The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram 
 #. select the Search tab
 #. In the Enter keyword(s) field, type **RedPitaya**. 
 
-More examples of how to control Red Pitaya from LabVIEW can be found |examples|.
+More examples of how to control Red Pitaya from LabVIEW can be found :ref:`here <examples>`.
 
 ======
 SCILAB
@@ -160,11 +160,11 @@ To use the SCPI commands, you will need to set up Scilab sockets. The procedure 
 
 These last two steps must be executed each time you start Scilab. To install, you must have an internet connection. Running the examples is the same as on MATALB.
 
-#. In the MATLAB workspace, paste the code from the |blink| tutorial example.
+#. In the MATLAB workspace, paste the code from the :ref:`blink <blink>` tutorial example.
 #. Replace the IP in the example with the IP of your Red Pitaya board.
 #. Press RUN to run the code.
 
-Different code examples can be found |examples|.
+Different code examples can be found :ref:`here <examples>`.
 
 .. |Scilab download page| raw:: html
 
