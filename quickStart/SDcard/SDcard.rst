@@ -28,11 +28,7 @@ RedPitaya OS 2.0:
    - SDRlab 122-16 (Currently not supported)
    - SIGNALlab 250-12
 
-   Unfify ecosystem now includes master/slave functionality for streaming.
-
-.. warning::
-
-   If you have a very old Red Pitaya (STEMlab 125-14, SDRlab 122-16) and the UNIFIED OS does not work for you, please send us the picture of the board (QR code), so that we can add the board model to the system.
+   Unfify ecosystem now includes primary (master)/secondray (slave) functionality for streaming.
 
 .. warning::
 
@@ -46,7 +42,7 @@ STEMlab 125-14 & STEMlab 125-10:
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG|
 
 
-STEMlab 125-14 (SLAVE board):
+STEMlab 125-14 (SECONDARY/SLAVE board):
 
    - `Latest Beta <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG|
 
@@ -173,10 +169,6 @@ Linux
 .. note::
 
    You can also use |balenaEtcher| on Linux and macOS. Instructions are under :ref:`Windows section <windows_gui>`.
-
-.. |Windows| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#windows" target="_blank">Windows section</a>
 
 -------------------------
 Ubuntu using Image Writer
