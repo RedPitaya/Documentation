@@ -187,8 +187,6 @@ Also, you can disconnect the LAN connection and your board will still be availab
 
 
 
-
-
 ===========================================
 Access Point Mode (Currently not supported)
 ===========================================
