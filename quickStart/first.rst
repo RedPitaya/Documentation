@@ -28,11 +28,11 @@ Simply follow this 3 simple steps:
       #. Open your web browser and type ``rp-xxxxxx.local/`` into the address bar
 
          .. figure:: connect/125_stiker.png
-            :width: 70%
+            :width: 50%
             :align: center
 
          .. figure:: connect/125_stiker_2.png
-            :width: 70%
+            :width: 50%
             :align: center
    
    .. tab:: 250-12
@@ -71,12 +71,8 @@ After the **third step** you will get a Red Pitaya main page as shown below.
 
 .. note::
 
-    For any issues during setup, check |trouble| or check the |forum| for a solution.
+    For any issues during setup, check :ref:`troubleshooting <faq>` or check the |forum| for a solution.
     If you cannot find a solution, please post your problem, providing as much detail as possible.
-    
-.. |trouble| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/troubleshooting/troubleshooting.html#troubleshooting" target="_blank">troubleshooting</a>
 
 .. |forum| raw:: html
 
@@ -86,11 +82,7 @@ After the **third step** you will get a Red Pitaya main page as shown below.
 .. note:: 
 
     For arranging other types of connections (wireless, direct ethernet connection), use the  
-    |NetworkManager|.
-
-.. |NetworkManager| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/systemtool/newtworkManager.html#network-manager" target="_blank">Network manager application</a>
+    :ref:`Network Manager <networkManager>`.
 
 
 .. note::
