@@ -23,8 +23,4 @@ At boot, Red Pitaya checks for software updates and alerts the user if a new rel
       An OS upgrade might cause your Red Pitaya desktop to freeze for a few minutes.
 
 
-#. If the update manager reports that the Linux version needs to be updated too, please follow the |prepare SD| instructions and manually reinstall the SD card.
-
-.. |prepare SD| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#prepare-sd-card" target="_blank">Download and install SD card image</a>
+#. If the update manager reports that the Linux version needs to be updated too, please follow the :ref:`Download and install SD card image <prepareSD>` instructions and manually reinstall the SD card.
