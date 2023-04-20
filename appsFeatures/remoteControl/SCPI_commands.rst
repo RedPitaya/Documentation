@@ -215,6 +215,14 @@ Parameter options:
 | | Examples:                                   |                                        | | External trigger must be a 3V3 CMOS signal.                                 |
 | | ``SOUR1:TRIG:SOUR EXT_PE``                  |                                        |                                                                               |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
+| | ``SOUR<n>:BURS:LastValue <amplitude>``      | ``rp_GenBurstLastValue``               | Sets the value to be set at the end of the generated signal in burst mode.    |
+| | Examples:                                   |                                        |                                                                               |
+| | ``SOUR1:BURS:LastValue 0.5``                |                                        |                                                                               |
++-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
+| | ``SOUR<n>:InitValue <amplitude>``           | ``rp_GenSetInitGenValue``              | | The level of which is set by the generator after                            |
+| | Examples:                                   |                                        | | the outputs are turned on before the signal is generated.                   |
+| | ``SOUR1:InitValue 0.5``                     |                                        |                                                                               |
++-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+
 | | ``SOUR:TRIG:INT``                           | ``rp_GenTrigger``                      | | Triggers both sources/channels immediately.                                 |
 | |                                             |                                        |                                                                               |
 | | Examples:                                   |                                        |                                                                               |
@@ -514,7 +522,7 @@ Parameter options:
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
-   
+
 
 .. note::
 
