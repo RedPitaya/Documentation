@@ -30,6 +30,10 @@ RedPitaya OS 2.0:
 
    Unfify ecosystem now includes primary (master)/secondray (slave) functionality for streaming.
 
+.. note::
+
+   If you have problems running the new version of the ecosystem on the boards listed above, please contact the |SUPPORT_LINK| team.
+
 .. warning::
 
    To run the C applications please use one of the following combinations of OS and ecosystem:
@@ -81,6 +85,11 @@ SIGNALlab 250-12:
 .. |CHANGELOG_Z20_4CH| raw:: html
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
+
+.. |SUPPORT_LINK| raw:: html
+
+   <a href="https://redpitaya.com/contact-us/" target="_blank">support</a>
+
 
 .. figure:: microSDcard-RP.png
     :width: 10%
