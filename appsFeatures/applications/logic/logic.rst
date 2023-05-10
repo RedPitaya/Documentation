@@ -1,3 +1,5 @@
+.. _la_app:
+
 ##############
 Logic Analyzer
 ##############
@@ -115,15 +117,12 @@ The Logic analyzer extension module is recommended for maximum performance of th
 
 .. figure:: Slika_09_LA.png
 
-To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyzer probes to the |E1| on the Red Pitaya board. The pins used for the logic analyzer board are shown in the picture below.
+To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyzer probes to the :ref:`E1 <E1>` on the Red Pitaya board. The pins used for the logic analyzer board are shown in the picture below.
 
 
-.. |E1| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1/" target="_blank">extension connector E1</a>
 
 .. note::
 
-    Direct use of the GPIO |E1| pins of the Red Pitaya board works only with STEMlab 125-10! The connection for the STEMlab 125-10 board is shown in the image below (left).
+    Direct use of the GPIO :ref:`E1 <E1>` pins of the Red Pitaya board works only with STEMlab 125-10! The connection for the STEMlab 125-10 board is shown in the image below (left).
     
 .. figure:: Slika_10_LA.png

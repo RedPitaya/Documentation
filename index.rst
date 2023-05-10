@@ -1,5 +1,5 @@
-Welcome to the Red Pitaya documentation.
-########################################
+Welcome to the Red Pitaya documentation
+#######################################
 
 .. toctree::
     :maxdepth: 2

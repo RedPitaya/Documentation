@@ -40,7 +40,9 @@ Red Pitaya Modules
 
 Here are described submodules used in Red Pitaya FPGA logic.
 
+------------
 Housekeeping
+------------
 
 .. tabs::
 
@@ -147,7 +149,7 @@ Housekeeping
         |          |  1: enable, 0: disable                         |      |     |
         +----------+------------------------------------------------+------+-----+
 
-    .. group-tab:: 125-14-4ADC
+    .. group-tab:: 125-14-4-Input
 
         .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
@@ -522,8 +524,14 @@ Housekeeping
         |          |  1: enable, 0: disable                         |      |     |
         +----------+------------------------------------------------+------+-----+
 
+------------
 Oscilloscope
-* Register writes synchronised between channels A/B and C/D on 4 input board 125-14-4ADC
+------------
+
+.. note::
+
+    For STEMlab 125-14 4-Input register writes are duplicated for channels A/B and C/D.
+    The output registers are replaced with a mirrored version of the input registers for channels C/D (IN3/IN4).
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
@@ -811,12 +819,17 @@ Oscilloscope
 +----------+----------------------------------------------------+------+-----+    
 
 
-
+--------------------------------
 Arbitrary Signal Generator (ASG)
-or
-Oscilloscope CHC and CHD (125-14-4ADC)
+--------------------------------
 
-* Register writes synchronised between channels A/B and C/D on 4 input board 125-14-4ADC
+.. note::
+
+    **Oscilloscope CHC and CHD (125-14 4-Input)**
+    
+    Register writes synchronised between channels A/B and C/D on 4 input board 125-14 4-Input
+    The output registers are replaced with a mirrored version of the input registers for channels C/D (IN3/IN4).
+
 
 .. tabs::
 
@@ -1048,7 +1061,7 @@ Oscilloscope CHC and CHD (125-14-4ADC)
         |          |  ch B data                                         | 13:0 | R/W |
         +----------+----------------------------------------------------+------+-----+  
 
-    .. group-tab:: 125-14-4ADC
+    .. group-tab:: 125-14-4-Input
 
         .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
@@ -1544,9 +1557,9 @@ Oscilloscope CHC and CHD (125-14-4ADC)
         +----------+----------------------------------------------------+------+-----+
 
 
-
+--------------
 PID Controller
-
+--------------
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
@@ -1734,9 +1747,9 @@ Analog Mixed Signals (AMS)
 |          | Bit select for PWM repetition which have value PWM+1| 15:0 | R/W |
 +----------+-----------------------------------------------------+------+-----+    
 
-
+-----------
 Daisy Chain
-
+-----------
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
@@ -1796,9 +1809,9 @@ Daisy Chain
 |          | 0 is received                                      |      |     |
 +----------+----------------------------------------------------+------+-----+    
 
-
+----------
 Power Test
-
+----------
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 

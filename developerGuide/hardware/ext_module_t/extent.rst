@@ -2,21 +2,21 @@
 Extension module template
 =========================
 
-Red Pitaya software and hardware modules enabling the access to and control of auxiliary digital and analog signals
+Red Pitaya software and hardware modules enable the access to and control of auxiliary digital and analog signals.
 
 **Preliminary design specifications:**
 
     - 16 bidirectional digital I/O lines with individual direction control and 3-state outputs for flexible digital signal acquisition and generation
     - Up to 420 Mbps (voltage level dependent)
-    - 16 k samples buffer
+    - 16k samples buffer
     - Advanced triggering schemes for sequence acquisition
-    - Integrated level translator functionality for 1.2 V, 1.5V, 1.8V, 2.5V, 3.3V, 5V
+    - Integrated level translator functionality for 1.2 V, 1.5 V, 1.8 V, 2.5 V, 3.3 V, and 5 V
     - FPGA ESD protection
     - Additional analog signal filtering
-    - General purpose 7 segment numerical display and switches (main purpose: reference voltage setting)
-    - Protocol analyser functionality: (to be defined)
-    - Integration into Graphical User Interface
-    - 4 input and 4 output analogue lines – extension of the analogue pins from Red Pitaya to the extension module
+    - General purpose 7-segment numerical display and switches (main function: setting reference voltage)
+    - Protocol analyzer functionality: (to be defined)
+    - Integration into the Graphical User Interface
+    - 4 input and 4 output analogue lines; - an extension of the analogue pins from the Red Pitaya to the extension module
 
 .. figure:: Render.jpg   
 

@@ -1,3 +1,5 @@
+.. _spec_anal_app:
+
 Spectrum Analyzer
 #################
 
@@ -77,11 +79,8 @@ Horizontal +/- buttons are used to select the span of the X (frequency) axis (zo
 OUTPUTS:
 ========
 
-The Spectrum Analyzer applications also includes a signal generator, so users can simultaneously generate a signal and observe the signal spectrum. For the signal generator settings and specifications, refer to |outputs|.
+The Spectrum Analyzer applications also includes a signal generator, so users can simultaneously generate a signal and observe the signal spectrum. For the signal generator settings and specifications, refer to :ref:`outputs <output-ref>`.
 
-.. |outputs| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/applications/oscSigGen/osc.html#output-ref" target="_blank">outputs</a>
 
 External reference clock (SIGNALlab 250-12 only):
 ============================================

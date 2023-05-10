@@ -3,13 +3,171 @@
 STEMlab 125-14 X-Channel System
 ###################################
 
-The X-Channel STEMlab 125-14 system consists of multiple STEMlab 125-14 devices that are modified for clock and trigger synchronization and also comes with SATA synchronisation cables and software that supports multi-channel RF signal acquisition and generation.
+The X-Channel STEMlab 125-14 system consists of multiple Low-Noise STEMlab 125-14 devices that are modified for clock and trigger synchronization and also comes with SATA synchronisation cables and software that supports multi-channel RF signal acquisition and generation.
 
 X-Channel STEMlab 125-14 system consists of:
 
-* one MASTER STEMlab 125-14 device, which is a standard STEMlab 125-14 device that provides a main clock and trigger to other SLAVE STEMlab 125-14 devices.
-* one or multiple SLAVE STEMlab 125-14 devices, that are modified in a way that they can receive clock and trigger from a MASTER device and distribute it to the next SLAVE device. These are marked with an “S” sticker.
+* one PRIMARY Low-Noise STEMlab 125-14 device, which is a standard Low-Noise STEMlab 125-14 device that provides a main clock and trigger to other SECONDARY Low-Noise STEMlab 125-14 devices.
+* one or multiple SECONDARY Low-Noise STEMlab 125-14 devices, that are modified in a way that they can receive clock and trigger from a PRIMARY device and distribute it to the next SECONDARY device. These are marked with an “S” sticker.
 
-For detailed hardware specifications for STEMlab 125-14 devices used in the STEMlab 125-14 X-Channel System please refer to the :ref:`STEMlab 125-14 standard specs <top_125_14>`.
+For detailed hardware specifications for Low-Noise STEMlab 125-14 devices used in the STEMlab 125-14 X-Channel System please refer to the :ref:`STEMlab 125-14 standard specs <top_125_14>`.
 
-For more information about software please refer to: :ref:`X-Channel streaming <mch_streaming_top>`
+For more information about software please refer to: :ref:`X-Channel streaming <mch_streaming_top>`.
+
+
+Technical specifications (one board)
+------------------------------------
+
+.. table::
+    :widths: 10 18
+
+    +------------------------------------+------------------------------------+
+    | **Basic**                                                               |
+    +====================================+====================================+
+    | Processor                          | DUAL CORE ARM CORTEX A9            |
+    +------------------------------------+------------------------------------+
+    | FPGA                               | FPGA Xilinx Zynq 7010 SOC          |
+    +------------------------------------+------------------------------------+
+    | RAM                                | 512 MB (4 Gb)                      |
+    +------------------------------------+------------------------------------+
+    | System memory                      | Micro SD up to 32 GB               |
+    +------------------------------------+------------------------------------+
+    | Console connection                 | Micro USB                          |
+    +------------------------------------+------------------------------------+
+    | Power connector                    | Micro USB                          |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Power consumption                  | 5 V, 2 A max                       |
+    +------------------------------------+------------------------------------+
+
+.. table::
+    :widths: 10 18
+
+
+    +------------------------------------+------------------------------------+
+    | **Connectivity**                                                        |
+    +====================================+====================================+
+    | Ethernet                           | 1 Gbit                             |
+    +------------------------------------+------------------------------------+
+    | USB                                | USB 2.0                            |
+    +------------------------------------+------------------------------------+
+    | WIFI                               | requires WIFI dongle               |
+    +------------------------------------+------------------------------------+
+
+
+.. table::
+    :widths: 10 18
+
+    +------------------------------------+------------------------------------+
+    | **RF inputs**                                                           |
+    +====================================+====================================+
+    | RF input channels                  | 2                                  |
+    +------------------------------------+------------------------------------+
+    | Sample rate                        | 125 MS/s                           |
+    +------------------------------------+------------------------------------+
+    | ADC resolution                     | 14 bit                             |
+    +------------------------------------+------------------------------------+
+    | Input impedance                    | 1 MOhm / 10 pF                     |
+    +------------------------------------+------------------------------------+
+    | Full scale voltage range           | ±1 V (LV) and ±20 V (HV)           |
+    +------------------------------------+------------------------------------+
+    | Input coupling                     | DC                                 |
+    +------------------------------------+------------------------------------+
+    | Absolute max. Input voltage range  | 30 V                               |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Input ESD protection               | Yes                                |
+    +------------------------------------+------------------------------------+
+    | Overload protection                | Protection diodes                  |
+    +------------------------------------+------------------------------------+
+    | Bandwidth                          | DC - 60 MHz                        |
+    +------------------------------------+------------------------------------+
+
+
+.. table::
+    :widths: 10 18
+
+    +------------------------------------+------------------------------------+
+    | **RF outputs**                                                          |
+    +====================================+====================================+
+    | RF output channels                 | 2                                  |
+    +------------------------------------+------------------------------------+
+    | Sample rate                        | 125 MS/s                           |
+    +------------------------------------+------------------------------------+
+    | DAC resolution                     | 14 bit                             |
+    +------------------------------------+------------------------------------+
+    | Load impedance                     | 50 Ohm                             |
+    +------------------------------------+------------------------------------+
+    | Voltage range                      | ±1 V                               |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Short circut protection            | Yes                                |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
+    +------------------------------------+------------------------------------+
+    | Output slew rate                   | 2 V / 10 ns                        |
+    +------------------------------------+------------------------------------+
+    | Bandwidth                          | DC - 50 MHz                        |
+    +------------------------------------+------------------------------------+
+
+
+
+.. table::
+    :widths: 10 18
+
+    +------------------------------------+------------------------------------+
+    | **Extension connector**                                                 | 
+    +====================================+====================================+
+    | Digital IOs                        | 16                                 |
+    +------------------------------------+------------------------------------+
+    | Analog inputs                      | 4                                  |
+    +------------------------------------+------------------------------------+
+    | Analog inputs voltage range        | 0-3.5 V                            |
+    +------------------------------------+------------------------------------+
+    | Sample rate                        | 100 kS/s                           |
+    +------------------------------------+------------------------------------+
+    | Resolution                         | 12 bit                             |
+    +------------------------------------+------------------------------------+
+    | Analog outputs                     | 4                                  |
+    +------------------------------------+------------------------------------+
+    | Analog outputs voltage range       | 0-1.8 V                            |
+    +------------------------------------+------------------------------------+
+    | Communication interfaces           | I2C, SPI, UART                     |
+    +------------------------------------+------------------------------------+
+    | Available voltages                 | +5 V, +3.3 V, -4 V                 |
+    +------------------------------------+------------------------------------+
+    | external ADC clock                 |  yes                               |
+    +------------------------------------+------------------------------------+
+
+.. table::
+    :widths: 10 18
+
+    +------------------------------------+------------------------------------+
+    | **Synchronisation**                                                     |
+    +====================================+====================================+
+    | Trigger input                      | Through extension connector        |
+    +------------------------------------+------------------------------------+
+    | Daisy chain connection             | Over SATA connection               |
+    |                                    | (up to 500 Mbps)                   |
+    +------------------------------------+------------------------------------+
+    | Ref. clock input                   | N/A                                |
+    +------------------------------------+------------------------------------+
+
+.. table::
+    :widths: 10 18
+
+    +------------------------------------+------------------------------------+
+    | **More**                                                                |
+    +====================================+====================================+
+    | Options                            | | 4-Ch IN + 4-Ch OUT               |
+    |                                    | | 6-Ch IN + 6-Ch OUT               |
+    |                                    | | ...                              |
+    |                                    | | 16-Ch IN + 16-Ch OUT             |
+    +------------------------------------+------------------------------------+
+
+  .. note::
+    
+    For more information, please refer to the :ref:`Product comparison table <rp-board-comp>` and :ref:`STEMlab 125-14 Low-Noise <top_125_14_LN>`.
+    
+

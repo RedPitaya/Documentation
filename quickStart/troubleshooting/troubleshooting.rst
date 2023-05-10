@@ -1,71 +1,57 @@
+.. _faq:
+
 ###
 FAQ
 ###
 
-***************************
-How to get started with RP?
-***************************
+***********************************
+How to get started with Red Pitaya?
+***********************************
 
-|Quickstart|
+* :ref:`Quick start <quick_start>`
 
-.. |Quickstart| raw:: html
 
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/quickStart.html#quick-start" target="_blank">Quick start</a>
+**************************************************
+How to connect to Red Pitaya in a few simple steps
+**************************************************
+
+* :ref:`Connected to router <LAN>`
+* :ref:`Direct connection to computer <dir_cab_connect>`
+
 
 **************************************************
 How can I start using RP measurement applications?
 **************************************************
 
-|ConnectSTEMlab|
+* :ref:`Connect to Red Pitaya <ConnectSTEMlab>`
 
-.. |ConnectSTEMlab| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/first.html#connectstemlab" target="_blank">Connect to Red Pitaya</a>
 
 *********************************************************
 How to control RP remotely using LabVIEW, MATLAB, Python?
 *********************************************************
 
-|remoteControl|
+* :ref:`Remote control <remoteControl>`
 
-.. |remoteControl| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/remoteControl/remoteControl.html#remotecontrol" target="_blank">Remote control (MATLAB, LabVIEW, Scilab or Python)</a>
 
 ***********************************
 How to start with FPGA development?
 ***********************************
 
-|software|
-
-.. |software| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/software.html#software" target="_blank">Software</a>
+:ref:`Software <software>`
 
 ******************
 How to upgrade OS?
 ******************
 
-|prepareSD|
+:ref:`Prepare SD card <prepareSD>`
 
-.. |prepareSD| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/SDcard/SDcard.html#preparesd" target="_blank">Prepare SD card</a>
 
 ****************************************
 How to connect the external clock to RP?
 ****************************************
 
-* |external_125_14|
-* |external_122_16|
-
-.. |external_125_14| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/top.html#external-125-14" target="_blank">STEMlab 125-14 & STEMlab 125-14-Z7020</a>
-   
-.. |external_122_16| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/122-16/top.html#external-122-16" target="_blank">SDRlab 122-16</a>
+* :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 <top_125_14_EXT>`
+* :ref:`SDRlab 122-16 <top_122_16_EXT>`
 
 .. _internetAccess:
 
@@ -75,7 +61,7 @@ How can I make sure that my Red Pitaya has access to the internet?
 
 How can I make sure that my Red Pitaya has access to the internet?
 
-1. Connect to your Red Pitaya over |SSH|.
+1. Connect to your Red Pitaya over :ref:`SSH <ssh>`.
 2. Make sure that you can ``ping google.com`` website:
 
    .. code-block:: shell-session
@@ -90,10 +76,6 @@ How can I make sure that my Red Pitaya has access to the internet?
       --- google.com ping statistics ---
       4 packets transmitted, 4 received, 0% packet loss, time 3004ms
       rtt min/avg/max/mdev = 27.140/27.212/27.329/0.136 ms
-
-.. |SSH| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/console/ssh/ssh.html#ssh" target="_blank">SSH</a>   
  
  
 .. _faqConnected:
@@ -158,7 +140,7 @@ If the RP MAC address is ``00:26:33:F1:13:D5``, the last 6 digits are ``F113D5``
 Is Red Pitaya connected to my local network?
 ********************************************
 
-1. Connect your Red Pitaya to a PC over a serial console. |Serial Console|?
+1. Connect your Red Pitaya to a PC over a :ref:`Serial Console <console>`.
 
 2. Type “ip a” and hit enter to check the status of your ethernet connection on Red Pitaya.
 
@@ -170,10 +152,6 @@ Is Red Pitaya connected to my local network?
 
    .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
       :align: center
-
-.. |Serial Console| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/console/console/console.html#setting-up-serial-console" target="_blank">How</a>
 
 
 .. _troubleshooting:
@@ -196,14 +174,14 @@ Problems connecting to RP?
    #. If the **green LED** is turned **ON** but the **blue LED** is turned **OFF**. In this case, there is an error while loading the Red Pitaya system from the SD card. Make sure that:
 
        * you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed
-         (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instructions on how to |prepareSD| to properly re-install Red Pitaya OS to SD card)
+         (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instructions on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
        
        * try to use another SD card
 
    #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs are **not blinking**.
       The red LED indicates CPU heartbeat, while the orange LED indicates access to the SD card. Notice that these two LEDs always start blinking 10 seconds after the green and blue LEDs are turned on.
 
-#. Make sure your Red Pitaya and computer are both connected to the same |faqConnected|.
+#. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
 
 #. If you are a Windows user, please look at the note below.
 
@@ -216,21 +194,12 @@ Problems connecting to RP?
    so there is no need to install additional software.
 
 
-.. |faqConnected| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/troubleshooting/troubleshooting.html#faqconnected" target="_blank">local network</a>
-
-
 ***************************************************
 Problems with upgrading OS, accessing market place?
 ***************************************************
 
-1. Make sure your Red Pitaya has access to the internet. |internet access|?
+1. Make sure your Red Pitaya has access to the :ref:`internet <internetAccess>`.
 #. Force a refresh of the Red Pitaya application page. |Wiki refresh|?
-
-.. |internet access| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/troubleshooting/troubleshooting.html#internetaccess" target="_blank">How</a>
    
 .. |Wiki refresh| raw:: html
 
@@ -245,7 +214,7 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 * Check the WiFi signal strength on your PC/tablet/smartphone.
 * Check the WiFi signal strength of your Red Pitaya.
 
-   1. Connect to your Red Pitaya via an |SSH| connection.
+   1. Connect to your Red Pitaya via an :ref:`SSH <ssh>` connection.
 
    #. Enter the ``cat /proc/net/wireless`` command in order to get information about link quality and signal strength.
 
@@ -271,51 +240,27 @@ Here are the instructions on how to |Wifi channel|.
 .. |Wireless Diagnostic Tool| raw:: html
 
    <a href="http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/" target="_blank">Wireless Diagnostic Tool</a>
-   
+
 *************************
 WIFI dongle not detected?
 *************************
 
-Please note that not all are compatible. A list is in the documentation: |Supported Wifi Dongles| 
-
-.. |Supported Wifi Dongles| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/other_info/os/network.html#support-wifi-adapter" target="_blank">Supported USB Wi-Fi adapters</a>
+Please note that not all are compatible. A list is in the documentation: :ref:`Supported USB Wi-Fi adapters <support_wifi_adapter>`
 
 ***************************************
 Where can I find Red Pitaya schematics?
 ***************************************
 
-* |STEMlab 125-10 sch|
-* |STEMlab 125-14 sch|
-* |SDRlab 122-16 sch|
-* |SIGNALlab 250-12 sch|
-
-.. |STEMlab 125-10 sch| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/shem.html#schematics" target="_blank">STEMlab 125-10</a>
-
-.. |STEMlab 125-14 sch| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/shem.html#schematics" target="_blank">STEMlab 125-14</a>
-   
-.. |SDRlab 122-16 sch| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/shem.html#schematics" target="_blank">SDRlab 122-16</a>
-
-.. |SIGNALlab 250-12 sch| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/shem.html#schematics" target="_blank">SIGNALlab 250-12</a>
+* :ref:`STEMlab 125-10 <top_125_10>`
+* :ref:`STEMlab 125-14 <top_125_14>`
+* :ref:`SDRlab 122-16 <top_122_16>`
+* :ref:`SIGNALlab 250-12 <top_250_12>`
 
 ***********************************************************
 My device shows wrong measurements. How can I calibrate it?
 ***********************************************************
 
-The Red Pitaya can be calibrated using the |Calibration Tool|.
-
-.. |Calibration Tool| raw:: html
-
-   <a href="https://redpitaya.readthedocs.io/en/latest/appsFeatures/systemtool/calibration.html" target="_blank">Calibration Tool</a>
+The Red Pitaya can be calibrated using the :ref:`Calibration Tool <calibration_app>`
 
 *****************************************************************************
 Web interface not functioning properly or experimenting with freezing?
@@ -327,7 +272,7 @@ Please ensure that your browser's ad blocker is turned off and that your proxy s
 Red Pitaya not booting anymore?
 *******************************
 
-A possible cause could be a corrupted card, and the recommendation is a manual OS re-write: |prepareSD|
+A possible cause could be a corrupted card, and the recommendation is a manual OS re-write: :ref:`Prepare SD card <prepareSD>`
 
 ***********************************************************************************
 Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?
@@ -346,13 +291,13 @@ We recommend testing on a different computer, checking the state of the Ethernet
 Red Pitaya not booting even after OS update?
 ********************************************
 
-Please use the Balena Etcher application to re-write the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. |prepareSD|
+Please use the Balena Etcher application to re-write the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
 
 *****************************
 Is Red Pitaya failing to update?
 *****************************
 
-Please use the Balena Etcher application to re-write the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. |prepareSD|
+Please use the Balena Etcher application to re-write the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
 
 
 ********************

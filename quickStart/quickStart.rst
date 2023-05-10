@@ -9,6 +9,7 @@ Quick start
    
    needs
    first
+   connect/connect.rst
    SDcard/SDcard
    alucase/alucase
    pvccase/pvccase

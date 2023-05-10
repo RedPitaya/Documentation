@@ -258,7 +258,7 @@ Replace user names with a comma separated list of users whom should be able to c
       root-users=root
       root-groups=root
       personality=linux
-      preserve-enviroment=true
+      preserve-environment=true
 
 
 **6.** To build everything a few ``make`` steps are required.

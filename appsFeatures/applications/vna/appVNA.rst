@@ -1,3 +1,5 @@
+.. _vna_extension:
+
 #######################
 Vector Network Analyzer
 #######################
@@ -12,7 +14,7 @@ What do I need before I start?
 
 2. The following accessories and materials are available in the Red Pitaya store:
 
-    * any kit that includes a STEMlab 125-14 or 125-10 board
+    * any kit that includes a STEMlab 125-14 or 125-10 (discontinued) board
     * Vector Network Analyzer bridge module
 
 
@@ -71,11 +73,8 @@ Connect by entering the Red Pitaya's IP:
 .. figure::  img/1_ip.PNG
     :align: center
 
-To find the IP address of the Red Pitaya board, first connect to RedPitaya by following these |quick start|.
+To find the IP address of the Red Pitaya board, first connect to RedPitaya by following these :ref:`instructions <quick_start>`.
 
-.. |quick start| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/quickStart/first.html#connect-to-red-pitaya" target="_blank">instructions</a>
 
 Then go to System->Network Manager. The IP is written next to the label.
 Address: xxx.xxx.xxx.xxx .
@@ -109,6 +108,11 @@ Click "Connect" inside the Vector Network Analyzer control app
 ***************************************
 Perform calibration and start measuring
 ***************************************
+
+.. note::
+
+   The VNA module works for frequencies above 500 kHz. Please start the calibration process at 500 kHz (ignore calibration values in the pictrures).
+
 
     .. figure::  img/3_calibrate.PNG
         :align: center

@@ -1,3 +1,6 @@
+
+.. _osc_app:
+
 Oscilloscope & Signal Generator
 ###############################
 
@@ -105,11 +108,6 @@ The available settings by device model:
         - **Input attenuation:** 1:1 (± 1V) / 1:20 (± 20V) is selected automatically when adjusting V/div setting, user can also select range manually through WEB interface settings.
         - **AC/DC coupling**
 
-
-.. |analog inputs| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">position</a>
-
     
 Outputs
 =======
@@ -206,11 +204,6 @@ The Source parameter defines the source used for this purpose. With the IN1 or t
 
       BNC connector available on the front panel
 
-.. |E1| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/extent.html#extension-connector-e1" target="_blank">E1</a>
-
-
 
 
 External ref. clock (only SIGNALlab 250-12)
@@ -278,7 +271,7 @@ Oscilloscope
 .. tabularcolumns:: |p{70mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|
 
 +-----------------------------+---------------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+
-|                             | STEMlab 125-10                  | STEMlab 125-14                  | STEMlab 125-14 4-Input          | SDRlab 122-16                | SIGNALlab 250-12             |
+|                             | STEMlab 125-10 (discontinued)   | STEMlab 125-14                  | STEMlab 125-14 4-Input          | SDRlab 122-16                | SIGNALlab 250-12             |
 +-----------------------------+---------------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+
 | Input channels              | 2                               | 2                               | 4                               | 2                            | 2                            |
 +-----------------------------+---------------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+
@@ -316,13 +309,14 @@ Signal generator
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
 | Signal buffer    | 16k samples          | 16k samples          | N/A                           | 16k samples          | 16k samples                             |
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
-| Output range     | ± 1V                 | ± 1V                 | N/A                           | ± 0.5V/ +4dBm        | ± 1V / ± 5V (into 50 ohm load) [#f2]_   |
-|                  |                      |                      |                               |                      | ± 2V / ± 10V (Hi-Z load) [#f2]_         | 
+| Output range     | ± 1V                 | ± 1V                 | N/A                           | ± 0.25V/ -2 dBm      | ± 1V / ± 5V (into 50 ohm load) [#f2]_   |
+|                  |                      |                      |                               | (50 ohm load)        | ± 2V / ± 10V (Hi-Z load) [#f2]_         |
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
 | Coupling         | DC                   | DC                   | N/A                           | AC                   | DC                                      |
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
 | Output load      | 50 Ω                 | 50 Ω                 | N/A                           | 50 Ω                 | 50 Ω                                    |
 +------------------+----------------------+----------------------+-------------------------------+----------------------+-----------------------------------------+
+
 
 .. [#f1]
     jumper selectable

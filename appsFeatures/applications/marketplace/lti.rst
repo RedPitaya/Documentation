@@ -1,3 +1,5 @@
+.. _lti_dsp_app:
+
 *****************
 LTI DSP Workbench
 *****************

@@ -1,3 +1,5 @@
+.. _sdr_trans_app:
+
 SDR
 ###
 

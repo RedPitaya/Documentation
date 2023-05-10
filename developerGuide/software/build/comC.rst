@@ -36,23 +36,38 @@ In order to compile one example just use the source file name without the `.c` e
 .. code-block:: shell-session
 
     cd Examples/C
-    make digital_led_blink # for 250-12 run 'make MODEL=Z20_250_12 digital_led_blink'
+    make digital_led_blink
+
+.. warning::
+
+    Currently, there are some issues with combining the new ecosystem (GitHub release 2023.1) with non-UNIFIED OS versions. If you are using an OS version that is not UNIFIED OS, please use the 2022.2 relase of the ecosystem.
+
 
 Applications based on the API require a specific FPGA image to be loaded:
 
-.. code-block:: shell-session
 
-    cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+.. tabs::
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+    .. group-tab:: OS version 2.00
+
+        .. code-block:: shell-session
+
+            redpitaya> overlay.sh v0.94
 
 Execute the application.
 
 Note that the path to Red Pitaya shared libraries must be provided explicitly.
-    
+
 .. code-block:: shell-session
-    
+
     LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
 
 Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
 
 More examples about how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
-    

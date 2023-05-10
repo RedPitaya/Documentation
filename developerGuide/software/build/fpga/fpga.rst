@@ -5,6 +5,27 @@ Build FPGA image
 The following build instructions were tested on Ubuntu 20.04.
 It is important to install the correct Vivado and SDK versions as the projects and scripts are made for those versions and may return errors during build.
 
+.. note::
+
+   Please note that the FPGA code is located in a seperate repository from the ecosystem on our GitHub page:
+   * Ecosystem: |ecosystem| 
+   * FPGA: |FPGA|
+   
+   Running the ":ref:`Makefile.x86 <dev_tree_xil>`" will download the necessary files from the RedPitaya/RedPitaya-FPGA repository.
+   
+   For building the FPGA image for different boards please see the :ref:`Buildprocess <buildprocess>`.
+
+
+.. |ecosystem| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">RedPitaya/RedPitaya</a>
+
+
+.. |FPGA| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">RedPitaya/RedPitaya-FPGA</a>
+
+
 *************
 Prerequisites
 *************
@@ -51,6 +72,8 @@ Xilinx SDK development environments 2019.1
 Xilinx SDK is available from Xilinx downloads page:
 
 https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html
+
+.. _dev_tree_xil::
 
 Device Tree Xilinx
 ==================

@@ -71,11 +71,7 @@ Specifications
 
 .. note::
 
-    Please take care that the jumpers behind the |analog inputs| are set to the correct input range!
-    
-.. |analog inputs| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/fastIO.html#analog-inputs" target="_blank">analog inputs</a>
+    Please take care that the jumpers behind the :ref:`analog inputs <anain>` are set to the correct input range!
 
 
 HW connections

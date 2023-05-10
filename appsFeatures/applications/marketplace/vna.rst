@@ -1,3 +1,5 @@
+.. _vna_market_app:
+
 ****************************************
 Vector Network Analyzer (by Pavel Demin)
 ****************************************

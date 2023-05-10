@@ -22,35 +22,36 @@ Connection instructions are available for:
 Windows 10
 ==========
 
-For this example, `PuTTy tool <http://www.putty.org/>`_
-was used on Windows XP and Windows 7 Starter OS.
-Run PuTTy and enter the Red Pitaya's IP address into
-**Host Name (or IP address)** field.
+For this example, the|PuTTy tool| was used on Windows XP and Windows 7 Starter OS.
+Run PuTTy and enter the Red Pitaya's IP address into the **Host Name (or IP address)** field.
+
+.. |PuTTy tool| raw:: html
+
+   <a href="http://www.putty.org" target="_blank">PuTTy tool</a>
+
 
 .. figure:: 445px-PuTTy_connection_settings.png
    :align: center
 
    PuTTy SSH connection settings.
     
-If you attempt to connect to Red Pitaya for the first time,
-a security alert will pop-up asking you to confirm the connection.
-At this time, the ssh-key will be added to the registry in your computer.
-Command prompt pops-up after login is successful.
+If you attempt to connect to Red Pitaya for the first time, a security alert will pop up asking you to confirm the connection.
+At this time, the ssh-key will be added to the registry on your computer. A command prompt pops up after login is successful.
 
-When connected to RP via SSH (PuTTy) you get the following command prompt screen:
+When connected to RP via SSH (PuTTy), you get the following command prompt screen:
 
 .. figure:: 445px-Win_putty_logged.png
    :align: center
 
    SSH connection via PuTTy
 
-The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (the default home directory on Red Pitaya is /root)
+The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (the default home directory on Red Pitaya is /root).
 
 =====
 Linux
 =====
 
-Start Terminal and type (replace IP address with the right one):
+Start Terminal and type (replace the IP address with the right one):
 
 .. code-block:: shell-session
 
@@ -66,7 +67,7 @@ Start Terminal and type (replace IP address with the right one):
 macOS
 =====
 
-Run terminal **Launchpad → Other → Terminal** and type (replace IP address with the right one):
+Run terminal **Launchpad → Other → Terminal** and type (replace the IP address with the right one):
 
 .. code-block:: shell-session
   

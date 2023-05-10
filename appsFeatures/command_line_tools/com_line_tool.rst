@@ -5,21 +5,31 @@ Command-line tools
 ##################
 
 .. Note::
-   
-    Command-line utilities must not be used in parallel with a WEB application.
-   
-    For correct operation of the acquire tool, it is mandatory that the correct FPGA image is loaded. Please note that some applications can change the FPGA image loaded.
-    To load the FPGA image, open a terminal on the Red Pitaya and execute the following command:
-    
-    .. code-block:: shell-session
 
-       cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+    Command-line utilities must not be used in parallel with a WEB application.
+
+    For correct operation of the acquire, generate, monitor tools, it is mandatory that the correct FPGA image is loaded. Please note that some applications can change the FPGA image loaded.
+    To load the FPGA image, open a terminal on the Red Pitaya and execute the following command:
+
+    .. tabs::
+
+        .. group-tab:: OS version 1.04 or older
+
+            .. code-block:: shell-session
+
+                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+        .. group-tab:: OS version 2.00
+
+            .. code-block:: shell-session
+
+                redpitaya> overlay.sh v0.94
 
 .. contents::
     :local:
     :backlinks: none
-    :depth: 1   
-    
+    :depth: 1
+
 
 .. _sig_gen_util:
 
@@ -40,7 +50,7 @@ The Red Pitaya signal generator can be controlled through the |generate| command
    .. group-tab:: OS version 0.99 or older
 
       .. code-block:: shell-session
-    
+
         redpitaya> generate
         generate version 0.90-299-1278
 
@@ -51,10 +61,10 @@ The Red Pitaya signal generator can be controlled through the |generate| command
             frequency   Signal frequency in Hz [0.0 - 6.2e+07].
             type        Signal type [sine, sqr, tri].
 
-   .. group-tab:: OS version 1.00
+   .. group-tab:: OS version 1.00-1.04
 
       .. code-block:: shell-session
-    
+
         redpitaya> generate
         generate version 1.00-35-25a03ad-25a03ad
 
@@ -67,6 +77,22 @@ The Red Pitaya signal generator can be controlled through the |generate| command
             type            Signal type [sine, sqr, tri, sweep].
             end frequency   Sweep-to frequency in Hz [0.00 - 1.2e+08].
             calib           Disable calibration [-c]. By default calibration enabled
+
+   .. group-tab:: OS version 2.00
+
+      .. code-block:: shell-session
+
+        redpitaya> generate
+        generate version 2.00-15-5e06f6363
+
+        Usage: generate   channel amplitude frequency <type> <end frequency> <calib>
+
+	        channel         Channel to generate signal on [1, 2].
+	        amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
+	        frequency       Signal frequency in Hz [0 - 62500000].
+	        type            Signal type [sine, sqr, tri, sweep].
+	        end frequency   Sweep-to frequency in Hz [0 - 62500000].
+	        calib           Disable calibration [-c]. By default calibration enabled.
 
 
 Performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the :ref:`Red Pitaya boards comparison <rp-board-comp>`.
@@ -89,19 +115,19 @@ The signal from Red Pitaya can be acquired through the |acquire| command line ut
 
         .. code-block:: shell-session
 
-            redpitaya> acquire 
+            redpitaya> acquire
             acquire version 0.90-299-1278
 
             Usage: acquire  size <dec>
 
                 size     Number of samples to acquire [0 - 16384].
                 dec      Decimation [1,8,64,1024,8192,65536] (default=1).
-        
+
 
         Example (acquire 1024 samples with decimation 8):
-    
+
         .. code-block:: shell-session
-            
+
             redpitaya> acquire 1024 8
                 -148     -81
                 -143     -84
@@ -109,11 +135,11 @@ The signal from Red Pitaya can be acquired through the |acquire| command line ut
                 -134     -82
                 ...
 
-    .. group-tab:: OS version 1.00
+    .. group-tab:: OS version 1.00-1.04
 
         .. code-block:: shell-session
 
-            redpitaya> acquire 
+            redpitaya> acquire
 
             Usage: acquire [OPTION]... SIZE <DEC>
 
@@ -135,8 +161,50 @@ The signal from Red Pitaya can be acquired through the |acquire| command line ut
                     SIZE                Number of samples to acquire [0 - 16384].
                     DEC                 Decimation [1,2,4,8,16,...] (default: 1). Valid values are from 1 to 65536
 
+        Example (acquire 1024 samples with decimation 8, ch1 with at 1:20, results displayed in voltage):
 
-        
+        .. code-block:: shell-session
+
+            redpitaya> acquire 1024 8 -1 20 -o
+                -0.175803   0.000977
+                0.021975    0.001099
+                -0.075693   0.000977
+                -0.190453   0.001099
+                0.004883    0.001221
+                -0.046392   0.001099
+                -0.200220   0.000977
+                -0.014650   0.001099
+                -0.019534   0.001099
+                -0.195336   0.000977
+                -0.041509   0.001099
+
+
+    .. group-tab:: OS version 2.00
+
+        .. code-block:: shell-session
+
+            redpitaya> acquire
+            acquire Version: 2.00-15-5e06f6363
+
+            Usage: acquire [OPTION]... SIZE <DEC>
+
+            --equalization  -e    Use equalization filter in FPGA (default: disabled).
+            --shaping       -s    Use shaping filter in FPGA (default: disabled).
+            --gain1=g       -1 g  Use Channel 1 gain setting g [lv, hv] (default: lv).
+            --gain2=g       -2 g  Use Channel 2 gain setting g [lv, hv] (default: lv).
+            --tr_ch=c       -t c  Enable trigger by channel. Setting c use for channels [1P, 1N, 2P, 2N, EP (external channel), EN (external channel)].
+                                    P - positive edge, N -negative edge. By default trigger no set
+            --tr_level=c    -l c  Set trigger level (default: 0).
+            --version       -v    Print version info.
+            --help          -h    Print this message.
+            --hex           -x    Print value in hex.
+            --volt          -o    Print value in volt.
+            --calib         -c    Disable calibration parameters
+            --hk            -k    Reset houskeeping (Reset state for GPIO). Default: disabled
+                SIZE                Number of samples to acquire [0 - 16384].
+                DEC                 Decimation [1,2,4,8,16,...] (default: 1). Valid values are from 1 to 65536
+
+
         Example (acquire 1024 samples with decimation 8, ch1 with at 1:20, results displayed in voltage):
 
         .. code-block:: shell-session
@@ -154,7 +222,7 @@ The signal from Red Pitaya can be acquired through the |acquire| command line ut
                 -0.195336   0.000977
                 -0.041509   0.001099
                 ...
-        
+
 The performance of the acquisition tool differs from one Red Pitaya model to another.
 Please see the :ref:`Red Pitaya boards comparison <rp-board-comp>` for more information.
 
@@ -168,27 +236,48 @@ Accessing system registers
 ==========================
 
 The system registers can be accessed through the |monitor| utility. Usage instructions:
- 
+
 .. |monitor| raw:: html
 
     <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Test/monitor" target="_blank">monitor</a>
 
- 
-.. code-block:: shell-session
-    
-    redpitaya>  monitor
-    monitor version 1.03-0-ab43ad0-ab43ad0
+.. tabs::
 
-    Usage:
-        read addr: address
-        write addr: address value
-        read analog mixed signals: -ams
-        set slow DAC: -sdac AO0 AO1 AO2 AO3 [V]
-        
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            redpitaya>  monitor
+            monitor version 1.03-0-ab43ad0-ab43ad0
+
+            Usage:
+                read addr: address
+                write addr: address value
+                read analog mixed signals: -ams
+                set slow DAC: -sdac AO0 AO1 AO2 AO3 [V]
+
+    .. group-tab:: OS version 2.00
+
+        .. code-block:: shell-session
+
+            monitor version 2.00-15-5e06f6363
+
+            Usage:
+                read addr: address
+                write addr: address value
+                read analog mixed signals: -ams
+                set slow DAC: -sdac AO0 AO1 AO2 AO3 [V]
+                Show current profile: -p
+                Show all profiles: -pa
+                Print fpga version: -f
+                Print model name: -n
+                Print model id: -i
+
+
 Example (system register reading):
- 
+
 .. code-block:: shell-session
-    
+
     redpitaya> monitor -ams
     #ID	        Desc            Raw	            Val
     0           Temp(0C-85C)    0x00000b12	    75.670
@@ -210,30 +299,30 @@ Example (system register reading):
 
 You can find a more detailed description of the above mentioned pins :ref:`here <E1>`.
 The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –sadc switch:
- 
+
 .. code-block:: shell-session
-    
+
    redpitaya> monitor -sdac 0.9 0.8 0.7 0.6
 
 Accessing FPGA registers
 ========================
 
-Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, in order to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the 
+Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, in order to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the
 :ref:`Red Pitaya HDL memory map <fpga_094>` document. The registers can be accessed using the described monitor utility.
 For example, the following sequence of monitor commands checks, modifies, and verifies the acquisition decimation parameter (at address 0x40100014):
- 
+
 .. code-block:: shell-session
-    
-    redpitaya> monitor 0x40100014 
+
+    redpitaya> monitor 0x40100014
     0x00000001
-    redpitaya> 
+    redpitaya>
     redpitaya> monitor 0x40100014 0x8
-    redpitaya> monitor 0x40100014 
+    redpitaya> monitor 0x40100014
     0x00000008
     redpitaya>
-    
+
 .. note::
-    
+
     The CPU algorithms communicate with the FPGA through these registers. Therefore, the user should be aware of a possible interference with Red Pitaya applications which are reading or acting upon these same FPGA registers. For simple tasks, however, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.
 
 
@@ -246,7 +335,7 @@ Bode Analyzer
 The Bode Analyzer can be used from the console.
 
 .. note::
-   
+
    The preparation of the environment can be found in this :ref:`chapter<bode_app>`.
 
 .. code-block:: console
@@ -278,9 +367,20 @@ To run the bode, you need to do 2 steps:
 
     #. Load the FPGA image of streaming
 
-        .. code-block:: console
+        .. tabs::
 
-            root@rp-f01c35:/# cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+            .. group-tab:: OS version 1.04 or older
+
+                .. code-block:: shell-session
+
+                    redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+            .. group-tab:: OS version 2.00
+
+                .. code-block:: shell-session
+
+                    redpitaya> overlay.sh v0.94
+
 
     #. Launch a console application.
 
@@ -307,7 +407,7 @@ LCR meter
 The LCR meter can be used from the console.
 
 .. note::
-   
+
    The preparation of the environment can be found in this :ref:`chapter<lrc_app>`.
 
 .. code-block:: console
@@ -317,7 +417,7 @@ The LCR meter can be used from the console.
 
    LCR meter version 0.00-0000, compiled at Fri Aug 14 03:29:10 2020
 
-   Usage:	lcr [freq] [r_shunt] 
+   Usage:	lcr [freq] [r_shunt]
 
       freq               Signal frequency used for measurement [ 100 , 1000, 10000 , 100000 ] Hz.
       r_shunt            Shunt resistor value in Ohms [ 10, 100, 1000, 10000, 100000, 1000000 ]. If set to 0, Automatic ranging is used.
@@ -330,9 +430,20 @@ To run the LCR meter, you need to do 2 steps:
 
     #. Load the FPGA image of streaming
 
-        .. code-block:: console
+        .. tabs::
 
-            root@rp-f01c35:/# cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+            .. group-tab:: OS version 1.04 or older
+
+                .. code-block:: shell-session
+
+                    redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+            .. group-tab:: OS version 2.00
+
+                .. code-block:: shell-session
+
+                    redpitaya> overlay.sh v0.94
+
 
     #. Launch a console application.
 
@@ -366,7 +477,7 @@ The server for streaming can be started not only using the web interface but als
 
 .. code-block:: console
 
-    root@rp-f07167:/# streaming-server 
+    root@rp-f07167:/# streaming-server
     Missing parameters: Configuration file
     Usage: streaming-server
 	    -b run service in background
@@ -376,19 +487,33 @@ To start the server, you need to do 3 steps:
 
     #. Load the FPGA image of streaming
 
-        .. code-block:: console
+        .. tabs::
 
-            root@rp-f07167:/# cat /opt/redpitaya/fpga/fpga_streaming.bit > /dev/xdevcfg
-            root@rp-f07167:/# /opt/redpitaya/sbin/mkoverlay.sh stream_app
+            .. group-tab:: OS version 1.04 or older
+
+                .. code-block:: shell-session
+
+                    redpitaya> cat /opt/redpitaya/fpga/fpga_streaming.bit > /dev/xdevcfg
+                    redpitaya> /opt/redpitaya/sbin/mkoverlay.sh stream_app
+
+            .. group-tab:: OS version 2.00
+
+                .. code-block:: shell-session
+
+                    redpitaya> overlay.sh stream_app
 
 
     #. Prepare a configuration file.
+
+        .. note::
+
+            In version 2.00, the configuration file has been moved to a new location: **/root/.config/redpitaya/apps/streaming/streaming_config.json**
 
     #. Launch a console application.
 
         .. code-block:: console
 
-            root@rp-f07167:/# streaming-server -c /root/.streaming_config 
+            root@rp-f07167:/# streaming-server -c /root/.streaming_config
             streaming-server started
             Lost rate: 0 / 763 (0 %)
             Lost rate: 0 / 766 (0 %)
@@ -409,14 +534,18 @@ The configuration for streaming is automatically created and saved in the file: 
 .. note::
 
     Streaming always creates two files:
-    
+
         * The first stores streamed data
         * The second stores the data transfer report
-	
+
 .. note::
 
     Streaming app sources are available here: |streaming app|.
-    
+
+.. note::
+
+    For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them in the WEB streaming application on redpitai itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
+
 .. |streaming app| raw:: html
 
     <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming app</a>
@@ -463,5 +592,5 @@ Other useful information related to command-line tools
 
 .. toctree::
    :maxdepth: 6
-   
+
    clt_other

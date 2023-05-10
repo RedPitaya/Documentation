@@ -1,3 +1,5 @@
+.. _daq_server_app:
+
 *********************
 Red Pitaya DAQ Server
 *********************
