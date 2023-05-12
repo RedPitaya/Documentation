@@ -39,6 +39,7 @@ Install libraries:
 
    # apt-get install unixodbc unixodbc-dev libncurses-dev libzmq3-dev libxext6 libasound2 libxml2 libx11-6 libxtst6 libedit-dev libxft-dev libxi6 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft-dev:i386 libxrender-dev:i386 libxt6:i386 libxtst6:i386
 
+
 Xilinx Vivado 2020.1
 ====================
 
@@ -65,6 +66,7 @@ After the installation finishes replace the modified file with the one you backe
 For more information on Vivado installation, see:
 
 https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html
+
 
 Xilinx SDK development environments 2019.1
 ==========================================
@@ -507,7 +509,6 @@ Generic device tree files can be found in ``fpga/dts`` while project specific co
 Signal mapping
 **************
 
-===========
 XADC inputs
 ===========
 
@@ -527,7 +528,7 @@ XADC input data can be accessed through the Linux IIO (Industrial IO) driver int
 |        | AIF[PN]4  | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 12.2V |
 +--------+-----------+----------+---------+-----------------------+--------------------+-------+
 
------------
+
 Input range
 -----------
 
@@ -543,7 +544,7 @@ but it requires removing R273 and providing a **0.5V ~ 1V** common voltage on th
    where the XADC input range in unipolar mode was thought to be **0V ~ 0.5V**.
    Consequently the voltage dividers were miss designed for a range of double the supply voltage.
 
-~~~~~~~~~~~~~~~
+
 5V power supply
 ~~~~~~~~~~~~~~~
 
@@ -560,7 +561,7 @@ but it requires removing R273 and providing a **0.5V ~ 1V** common voltage on th
 
    range = \frac{1 V}{ratio} = 12.2 V
 
-~~~~~~~~~~~~~~~~~~~~~~
+
 General purpose inputs
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -577,7 +578,7 @@ General purpose inputs
 
    range = \frac{1 V}{ratio} = 7.01 V
 
-=============
+
 GPIO and LEDs
 =============
 
@@ -634,7 +635,7 @@ The default pin assignment for GPIO is described in the next table.
 | ``B9`` | ``E2[10]`` | I2C0_SDA           |  ``MIO[51]``     | ``906+   [51]   = 957``      | requires ``pinctrl`` changes to be active |
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
 
-===================
+
 Linux access to LED
 ===================
 
@@ -654,7 +655,7 @@ To switch LED 8 ON use:
 
    $ echo 1 > /sys/class/leds/led0/brightness
 
-==============================
+
 PS ``pinctrl`` for MIO signals
 ==============================
 
