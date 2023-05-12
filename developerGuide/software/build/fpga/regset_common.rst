@@ -1,5 +1,6 @@
 .. _fpga_094:
 
+
 ********************
 Register map (v0.94)
 ********************
@@ -34,15 +35,16 @@ For additional information and better understanding check other documents (schem
 | CS[7]  | 0x40700000  | 0x407FFFFF | Power test                       |
 +--------+-------------+------------+----------------------------------+
 
-==================
+
 Red Pitaya Modules
 ==================
 
 Here are described submodules used in Red Pitaya FPGA logic.
 
-------------
+
 Housekeeping
 ------------
+
 
 .. tabs::
 
@@ -524,7 +526,7 @@ Housekeeping
         |          |  1: enable, 0: disable                         |      |     |
         +----------+------------------------------------------------+------+-----+
 
-------------
+
 Oscilloscope
 ------------
 
@@ -819,7 +821,6 @@ Oscilloscope
 +----------+----------------------------------------------------+------+-----+    
 
 
---------------------------------
 Arbitrary Signal Generator (ASG)
 --------------------------------
 
@@ -1557,7 +1558,7 @@ Arbitrary Signal Generator (ASG)
         +----------+----------------------------------------------------+------+-----+
 
 
---------------
+
 PID Controller
 --------------
 
@@ -1747,7 +1748,7 @@ Analog Mixed Signals (AMS)
 |          | Bit select for PWM repetition which have value PWM+1| 15:0 | R/W |
 +----------+-----------------------------------------------------+------+-----+    
 
------------
+
 Daisy Chain
 -----------
 
@@ -1809,7 +1810,7 @@ Daisy Chain
 |          | 0 is received                                      |      |     |
 +----------+----------------------------------------------------+------+-----+    
 
-----------
+
 Power Test
 ----------
 
