@@ -10,9 +10,14 @@ acquisition, digital I/O control, communication: I2C, SPI, UART and other).
 How to compile a C algorithm is shown in the instructions below, while a list of Examples is available
 :ref:`here <list-of-supported-scpi-commands>`.
 
-Note: When you copy the source code from our repository (following instructions bellow) you will also
-copy all C examples to your Red Pitaya board. After that only the compiling step is needed.
+.. note::
 
+    When you copy the source code from our repository (following instructions below) you will also copy all C examples to your Red Pitaya board. After that only the compiling step is needed.
+
+.. note::
+
+    Here is a :ref:`link to the rp.c <https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/src/rp.c>` which contains all the C functions used in the examples.
+    
 
 **Compiling and running on Red Pitaya board**
 
@@ -23,6 +28,12 @@ First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default p
 .. code-block:: shell-session
 
     ssh root@192.168.0.100
+
+You can also use the .local address (not all computers support .local addresses) (replace 'xxxxxx' with the last 6 characters of the Red Pitaya's MAC address):
+
+.. code-block:: shell-session
+
+    ssh root@rp-xxxxxx.local
 
 Now make a clone of the Red Pitaya Git repository and enter the project directory.
 
