@@ -3,7 +3,7 @@ Build & compile instructions
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
    
     comC
     comStreaming

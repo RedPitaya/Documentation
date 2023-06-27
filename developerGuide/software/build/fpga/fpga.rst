@@ -680,10 +680,14 @@ which can be used to modify MIO functionality at runtime.
 +--------------------+------------------------------------------------------+
 
 
-.. include:: regset_common.rst
 
-.. include:: regset_common_streaming.rst
+===================
 
+.. toctree::
+   :maxdepth: 2
+
+   regset/2.00-15/list.rst
+   regset/in_dev/list.rst
 
 .. |br| raw:: html
 
