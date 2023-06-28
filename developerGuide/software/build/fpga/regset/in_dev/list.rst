@@ -8,3 +8,4 @@ FPGA Register map in dev
    v0.94_250_12.rst
    stream_app.rst
    stream_app_4ch.rst
+   stream_app_250.rst
