@@ -80,7 +80,7 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | SCPI                                  | API                     | DESCRIPTION                                                                       |  ECOSYSTEM         |
 +=======================================+=========================+===================================================================================+====================+
 | | ``DIG:RST``                         | ``rp_DpinReset``        | | Sets digital pins to default values. Pins DIO1_P - DIO7_P,                      | 1.04-18 and up     |
-| | Examples:                           |                         | | RP_DIO0_N - RP_DIO7_N are set al OUTPUT and to LOW. LEDs are set to LOW/OFF.    |                    |
+| | Examples:                           |                         | | RP_DIO0_N - RP_DIO7_N are set all INPUT and to LOW. LEDs are set to LOW/OFF.    |                    |
 | | ``DIG:RST``                         |                         |                                                                                   |                    |
 +---------------------------------------+-------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN:DIR <dir>,<gpio>``        | ``rp_DpinSetDirection`` | Set the direction of digital pins to output or input.                             | 1.04-18 and up     |
