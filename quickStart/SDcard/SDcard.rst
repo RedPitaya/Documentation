@@ -25,10 +25,15 @@ RedPitaya OS 2.0:
    - STEMlab 125-14
    - STEMlab 125-14-Z7020
    - STEMlab 125-14 4-Input
-   - SDRlab 122-16 (Currently not supported)
+   - SDRlab 122-16
    - SIGNALlab 250-12
 
    Unfify ecosystem now includes primary (master)/secondray (slave) functionality for streaming.
+
+.. note::
+
+   `Nightly Builds`` of ecosystem you can get there: `link <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_
+   Ecosystem builds run every Saturday night.
 
 .. note::
 
