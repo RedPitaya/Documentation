@@ -32,7 +32,7 @@ RedPitaya OS 2.0:
 
 .. note::
 
-   `Nightly Builds`` of ecosystem you can get there: `link <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_
+   `Nightly Builds` of ecosystem you can get there: `link <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_.
    Ecosystem builds run every Saturday night.
 
 .. note::
