@@ -543,7 +543,7 @@ Partial rebuild process
 
          make -f Makefile.x86 boot
    
-   .. group-tab:: Ecosystem 2.00
+   .. group-tab:: Ecosystem 2.00 and up
 
       The next components can be built separately.
 
