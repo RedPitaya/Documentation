@@ -176,7 +176,7 @@ Build process
 
       .. note:: 
 
-         You can run a script that builds the ecosystem from the build_scripts folder
+         You can run a script that builds the ecosystem from the build_scripts folder. |br|
          To build an ecosystem for board 125-14:
 
          .. code-block:: shell-session
@@ -336,7 +336,7 @@ Build process
 
       .. note:: 
 
-         You can run a script that builds the ecosystem from the build_scripts folder
+         You can run a script that builds the ecosystem from the build_scripts folder. |br|
          To build an ecosystem for all boards:
 
          .. code-block:: shell-session
@@ -584,7 +584,7 @@ Partial rebuild process
       FPGA and overlays
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      Each FPGA version uses its own overlay with the devices necessary to work with FPGA. Previously, the device tree was fixed for a specific FPGA version and board.|br|
+      Each FPGA version uses its own overlay with the devices necessary to work with FPGA. Previously, the device tree was fixed for a specific FPGA version and board. |br|
       For each board, you need to call the assembly with the board version parameters. But to speed up the build, you can skip the unnecessary version.
 
       .. code-block:: shell-session
@@ -709,7 +709,7 @@ You can install it on Red Pitaya by copying it there:
 SCPI server
 ~~~~~~~~~~~
 
-Scpi server README can be found :download:`here <../../../scpi-server/README.md>`.
+Scpi server README can be found :download:`here <https://github.com/RedPitaya/RedPitaya/blob/master/scpi-server/README.md>`.
 
 To compile the server run:
 
@@ -728,7 +728,7 @@ You can install it on Red Pitaya by copying it there:
 Free applications
 ~~~~~~~~~~~~~~~~~
 
-To build free applications, follow the instructions given :download:`here <../../../apps-free/README.md>`.
+To build free applications, follow the instructions given :download:`here <https://github.com/RedPitaya/RedPitaya/blob/master/apps-free/README.md>`.
 
 
 .. |br| raw:: html
