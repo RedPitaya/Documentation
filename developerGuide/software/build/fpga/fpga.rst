@@ -225,7 +225,7 @@ Table of required build flags for FPGA projects per board
 +------------------------------+---------------------+
 | Model                        | Build flag          |
 +==============================+=====================+
-| STEMlab 125-10 |br|          | MODEL=Z10 OR        |
+| STEMlab 125-10 |br|          | MODEL=Z10           |
 | STEMlab 125-14 |br|          |                     |
 +------------------------------+---------------------+
 | STEMlab 125-14-Z7020         | MODEL=Z20_14        |
