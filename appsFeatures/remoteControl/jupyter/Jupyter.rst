@@ -360,7 +360,7 @@ Examples
 
 8. Grove sensors
 
-    #. |Temperature sensor|
+    #. |Temperature sensor example|
     #. |Home heating automation|
    
 .. |Drive LEDs| raw:: html
@@ -419,7 +419,7 @@ Examples
 
     <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/oscilloscope_widget.ipynb" target="_blank">Oscilloscope</a>
 
-.. |Temperature sensor| raw:: html
+.. |Temperature sensor example| raw:: html
 
     <a href="https://github.com/RedPitaya/jupyter/blob/9f3cfd3e20c2b4ddae8bdc1762ed6154f917f3ff/examples/exam_temp.ipynb" target="_blank">Temperature sensor</a>
 
