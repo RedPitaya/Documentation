@@ -14,7 +14,7 @@ The graphical interface is divided into 4 main areas:
     1. **Run/Stop** and **Export button:** The "Run/Stop" button is used to start and stop measurements. With the "Export" button, you can select in which format you want to download the measured data (plotted spectrum). Two formats are available: .png and .csv.
     #. **Inputs / Cursors / Range / Axis control panel:** This menu provides controls for inputs, cursors, and frequency range settings. Horizontal +/- buttons are used to select the span of the X (frequency) axis (zooming in/out). The vertical +/- buttons change the Y (amplitude)-axis range.
     #. **Graph area:** Here, the currently calculated signal spectrum is plotted in the selected frequency range.
-    #. **Waterfall plots:** Waterfall plots are a different way of representing the signal spectrum where the colour of the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful to enable the representation of a signal spectrum in a time-dependent fashion.
+    #. **Waterfall plots:** Waterfall plots are a different way of representing the signal spectrum where the color of the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful to enable the representation of a signal spectrum in a time-dependent fashion.
 
 
 .. figure:: Slika_02_SA.png
@@ -59,14 +59,14 @@ smaller than the full frequency range of the Spectrum analyzer application.
 PEAK DETECTION:
 ===============
 
-During the measurement, peak values of the signal spectrum are measured and shown in the "Peak Values" field. Peak values are the max values of the signal spectrum regardless of the selected frequency range. This peak finding prevents not seeing peak values which are outside the selected frequency span.
+During the measurement, peak values of the signal spectrum are measured and shown in the "Peak Values" field. Peak values are the max values of the signal spectrum regardless of the selected frequency range. This peak finding prevents not seeing peak values that are outside the selected frequency span.
 
 .. figure:: Slika_06_SA.png
 
 WATERFALL PLOTS:
 ================
 
-Waterfall plots are a different way of representing the signal spectrum where the colour on the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful when enabling the representation of the signal spectrum in a time dependency.
+Waterfall plots are a different way of representing the signal spectrum where the color on the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful when enabling the representation of the signal spectrum in a time dependency.
 
 
 AXIS CONTROLS:
@@ -79,13 +79,13 @@ Horizontal +/- buttons are used to select the span of the X (frequency) axis (zo
 OUTPUTS:
 ========
 
-The Spectrum Analyzer applications also includes a signal generator, so users can simultaneously generate a signal and observe the signal spectrum. For the signal generator settings and specifications, refer to :ref:`outputs <output-ref>`.
+The Spectrum Analyzer applications also include a signal generator, so users can simultaneously generate a signal and observe the signal spectrum. For the signal generator settings and specifications, refer to :ref:`outputs <output-ref>`.
 
 
 External reference clock (SIGNALlab 250-12 only):
-============================================
+=================================================
 
-External reference clock input can be enabled through the settings menu. Once enabled, its status is displayed in the main interface. The "green" status indicates that the sampling clock is locked to the external reference clock.
+The external reference clock input can be enabled through the settings menu. Once enabled, its status is displayed in the main interface. The "green" status indicates that the sampling clock is locked to the external reference clock.
 
 .. figure:: Slika_08_SA.png
     :width: 30%
