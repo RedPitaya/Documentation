@@ -28,12 +28,14 @@ RedPitaya OS 2.0:
    - SDRlab 122-16
    - SIGNALlab 250-12
 
-   Unfify ecosystem now includes primary (master)/secondray (slave) functionality for streaming.
+   Unify ecosystem now includes primary (master)/secondary (slave) functionality for streaming.
 
 .. note::
 
-   `Nightly Builds` of ecosystem you can get there: `link <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_.
+   `Nightly Builds` of the ecosystem is available here: `link <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_.
    Ecosystem builds run every Saturday night.
+   
+   Please note that this is a Test OS, so there might be bugs in the ecosystem.
 
 .. note::
 
@@ -41,9 +43,12 @@ RedPitaya OS 2.0:
 
 .. warning::
 
+   New C libraries were added with the Unified (2.00) OS, which causes the C program compilation to fail on older OS.
    To run the C applications please use one of the following combinations of OS and ecosystem:
-      - UNIFIED OS and 2023.1 release of the GitHub ecosystem
-      - Any other OS version and the 2022.2 release of the GitHub ecosystem
+      - UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
+      - Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
+
+
 
 STEMlab 125-14 & STEMlab 125-10:
 
