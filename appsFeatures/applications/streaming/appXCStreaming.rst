@@ -18,9 +18,13 @@ Overview
 
 X-Channel streaming is suitable for applications that require multiple acquisition or generation channels.
 
-Red Pitaya X-Channel streaming software provides the ability to stream analog and digital signals to client PCs from several Red Pitaya devices simultaneously, with synchronised clock and trigger among all Red Pitayas in the system.
+Red Pitaya X-Channel streaming software provides the ability to stream analog and digital signals to client PCs from several Red Pitaya devices simultaneously, with a synchronised clock and trigger among all Red Pitayas in the system.
 
 Streaming can be done in both directions. Users can stream acquired analog and digital signals from Red Pitaya devices to a client computer or stream analog and digital signals from the client to Red Pitaya device outputs. The X-Channel streaming software also provides the ability to control streaming completely remotely from client PCs.
+
+.. note::
+
+    The upstream to X-channel (synchronised generation) is currently under development.
 
 .. figure:: img/RPs_to_PC_conn.png
     :width: 80%
@@ -31,7 +35,7 @@ Setup
 
 **What do I need before I start?**
 
-The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple Low-Noise STEMlab 125-14 devices that are modified for clock and trigger synchronization, and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
+The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple Low-Noise STEMlab 125-14 devices that are modified for clock and trigger synchronization and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
 
 .. figure:: img/Master_and_slaves.jpg
     :width: 80%
@@ -41,7 +45,7 @@ Notice that the Red Pitaya STEMlab 125-14 X-Channel System includes two types of
     * one STEMlab 125-14 PRIMARY device (Low-Noise STEMlab 125-14 device)
     * one or more Low-Noise STEMlab 125-14 SECONDARY devices denoted by an "S" sticker
 
-In order to achieve synchronization, the PRIMARY device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SECONDARY 1 board. SECONDARY1 then passes the clock forward to SECONDARY 2, SECONDARY2 to SECONDARY 3, and so on (SECONDARY N to SECONDARY N+1). This way, we can achieve synchronisation of all boards in the system.
+In order to achieve synchronization, the PRIMARY device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SECONDARY 1 board. SECONDARY 1 then passes the clock forward to SECONDARY 2, SECONDARY 2 to SECONDARY 3, and so on (SECONDARY N to SECONDARY N+1). This way, we can achieve synchronisation of all boards in the system.
 
 .. note::
 
@@ -52,9 +56,9 @@ In order to achieve synchronization, the PRIMARY device provides a clock and tri
     Due to frequent OS updates, it is recommended to always use the :ref:`latest OS <prepareSD>`.
 
 
-*******************
-Connecting together
-*******************
+***********
+Setting-up
+***********
 
     #.  Connect all Red Pitayas to the same network via ethernet cables (switch or router that is connected to the client PC).
 
@@ -88,7 +92,7 @@ Download and install an X-channel streaming client on your computer
 .. figure:: img/run_app.png
     :width: 80%
 
-2. Click the "Clients" button to get the client app for Linux or Windows and download it to your client computer.
+2. Click the "Clients" button to get the client app for Linux or Windows and download it to your client's computer.
 
 .. figure:: img/download_client.png
     :width: 80%
@@ -97,7 +101,7 @@ Download and install an X-channel streaming client on your computer
 Use case examples
 *****************
 
-**Symultanious acquisiton of 6 input signals.**
+**Simultaneous acquisition of 6 input signals.**
 
 In this example, we will acquire data from all 3 RP units, which gives us 6 RF input channels.
 
