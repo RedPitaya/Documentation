@@ -177,7 +177,7 @@ Build process
       .. note:: 
 
          You can run a script that builds the ecosystem from the build_scripts folder. |br|
-         To build an ecosystem for board 125-14:
+         To build an ecosystem for boards 125-14:
 
          .. code-block:: shell-session
 
@@ -198,7 +198,7 @@ Build process
             cd ./RedPitaya/build_scripts
             sudo ./build_Z20_4CH.sh
 
-         To build an ecosystem for board 122-16:
+         To build an ecosystem for boards 122-16:
 
          .. code-block:: shell-session
          
@@ -223,7 +223,7 @@ Build process
          settings.sh
 
       **3.** Prepare a download cache for various source tarballs.
-      This is an optional step which will speedup the build process by avoiding downloads for all but the first build.
+      This is an optional step that will speed up the build process by avoiding downloads for all but the first build.
       There is a default cache path defined in the ``settings.sh`` script, you can edit it and avoid a rebuild the next time.
 
       .. code-block:: shell-session
@@ -232,7 +232,7 @@ Build process
          export DL=$PWD/dl
 
       **4.** Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
-      You can also create your own root environment following instructions in :ref:`OS image build instructions <os>`.
+      You can also create your root environment following the instructions in :ref:`OS image build instructions <os>`.
       Correct file permissions are required for ``schroot`` to work properly.
 
       .. code-block:: shell-session
@@ -243,7 +243,7 @@ Build process
 
       **5.** Create schroot configuration file ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``.
       Replace the tarball path stub with the absolute path of the previously downloaded image.
-      Replace user names with a comma separated list of users whom should be able to compile Red Pitaya.
+      Replace user names with a comma-separated list of users who should be able to compile Red Pitaya.
 
       .. code-block:: none
 
@@ -285,7 +285,7 @@ Build process
          EOL_CHROOT
          make -f Makefile.x86 zip
 
-      **7.** If you want build for 122-16 based on Z7020 xilinx, you must pass parameter FPGA MODEL=Z20 in makefile
+      **7.** If you want to build for 122-16 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20 in the makefile
       This parameter defines how to create projects and should be transferred to all makefiles.
 
       .. code-block:: shell-session
@@ -296,7 +296,7 @@ Build process
          EOL_CHROOT
          make -f Makefile.x86 zip MODEL=Z20
 
-      **8.** If you want build for 125-14 4-Input based on Z7020 xilinx, you must pass parameter FPGA MODEL=Z20_125_4CH in makefile
+      **8.** If you want to build for 125-14 4-Input based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_125_4CH in makefile
       This parameter defines how to create projects and should be transferred to all makefiles.
 
       .. code-block:: shell-session
@@ -307,7 +307,7 @@ Build process
          EOL_CHROOT
          make -f Makefile.x86 zip MODEL=Z20_125_4CH
 
-      **9.** If you want build for 250-12 based on Z7020 xilinx, you must pass parameter FPGA MODEL=Z20_250_12 in makefile
+      **9.** If you want to build for 250-12 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_250_12 in the makefile
       This parameter defines how to create projects and should be transferred to all makefiles.
 
       .. code-block:: shell-session
@@ -355,7 +355,7 @@ Build process
          settings.sh
 
       **3.** Prepare a download cache for various source tarballs.
-      This is an optional step which will speedup the build process by avoiding downloads for all but the first build.
+      This is an optional step that will speedup the build process by avoiding downloads for all but the first build.
       There is a default cache path defined in the ``settings.sh`` script, you can edit it and avoid a rebuild the next time.
 
       .. code-block:: shell-session
@@ -364,7 +364,7 @@ Build process
          export DL=$PWD/dl
 
       **4.** Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
-      You can also create your own root environment following instructions in :ref:`OS image build instructions <os>`.
+      You can also create your root environment following the instructions in :ref:`OS image build instructions <os>`.
       Correct file permissions are required for ``schroot`` to work properly.
 
       .. code-block:: shell-session
@@ -375,7 +375,7 @@ Build process
 
       **5.** Create schroot configuration file ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``.
       Replace the tarball path stub with the absolute path of the previously downloaded image.
-      Replace user names with a comma separated list of users whom should be able to compile Red Pitaya.
+      Replace user names with a comma-separated list of users who should be able to compile Red Pitaya.
 
       .. code-block:: none
 
@@ -425,7 +425,7 @@ Build process
 
       .. note::
 
-         Ecosystem build 2.0 does not have the ability to build for a specific board model as it was in version 1.04. Differences only in the assembly of FPGA for specific models.
+         Ecosystem Build 2.0 cannot build for a specific board model as it was in version 1.04. Differences only in the assembly of FPGA for specific models.
 
 
 =======================
@@ -447,13 +447,11 @@ Partial rebuild process
       * SCPI server
       * free applications
 
-      -----------
-      Base system
-      -----------
+      **Base system**
 
-      Here *base system* represents everything before Linux user space.
+      Here the *base system* represents everything before Linux user space.
 
-      To be able to compile FPGA and cross compile *base system* software, it is necessary to setup the Vivado FPGA tools and ARM SDK.
+      To be able to compile FPGA and cross-compile *base system* software, it is necessary to set up the Vivado FPGA tools and ARM SDK.
 
 
       .. code-block:: shell-session
@@ -475,9 +473,9 @@ Partial rebuild process
 
          $ make -f Makefile.x86 zip
 
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      FPGA and device tree sources
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   FPGA and device tree sources
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
       .. code-block:: shell-session
@@ -493,7 +491,7 @@ Partial rebuild process
 
       Download the Device Tree compiler with overlay patches from Pantelis Antoniou.
       Compile and install it.
-      Otherwise a binary is available in ``tools/dtc``.
+      Otherwise, a binary is available in ``tools/dtc``.
 
       .. code-block:: shell-session
 
