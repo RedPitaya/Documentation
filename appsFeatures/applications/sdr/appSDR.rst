@@ -48,11 +48,13 @@ Connecting the cables
 2. Connect the Rx of the SDR transciver module to the Red Pitaya IN1 (notice this cable has a transformer).
 3. Connect the control cable from the SDR transceiver to the Red Pitaya
 
-.. image:: 18_RedPitaya_Close.jpg
-   :alt: icon
-   :align: center
-   
+.. figure:: 18_RedPitaya_Close.jpg
+   	:alt: icon
+   	:align: center
+
 	Identify the pin with an arrow and connect the cable as shown in the image above.
+
+	..
 
 4. Check that the jumper is configured as shown in the image above.
 5. Verify that your SD card is still inserted.
@@ -675,7 +677,7 @@ Transmitter Specifications
 +-------------------------------+--------------------------------------------------------------------------------------+
 | Architecture:                 | Direct Digital Up-conversion                                                         |
 +-------------------------------+--------------------------------------------------------------------------------------+
-| TX DAC Sampling Rate:         | 125 Msps                                                                            |
+| TX DAC Sampling Rate:         | 125 Msps                                                                             |
 +-------------------------------+--------------------------------------------------------------------------------------+
 | TX DAC Resolution:            | 14 bits                                                                              |
 +-------------------------------+--------------------------------------------------------------------------------------+
