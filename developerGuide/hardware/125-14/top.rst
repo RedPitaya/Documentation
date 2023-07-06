@@ -267,9 +267,9 @@ external |testing and certification institute|.
 Cooling options
 ***************
 
-For additional cooling, we recommend a 30 mm or 25 mm fan. You can utilise the power connector on the board to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
+For additional cooling, we recommend a 30 mm or 25 mm fan. You can utilize the power connector on the board to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
 
-.. figure:: cooling-powerPin.jpg
+.. image:: cooling-powerPin.jpg
     :width: 50%
     :align: center
 
