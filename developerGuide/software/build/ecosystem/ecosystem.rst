@@ -728,7 +728,7 @@ You can install it on Red Pitaya by copying it there:
 
 .. note::
 
-   To build the scpi server for RP, a special `version <https://github.com/RedPitaya/scpi-parser/tree/redpitaya>`  of scpi-parser is used. It added and optimized some functions.
+   To build the scpi server for RP, a special `version <https://github.com/RedPitaya/scpi-parser/tree/redpitaya>`_  of scpi-parser is used. It added and optimized some functions.
 
 ~~~~~~~~~~~~~~~~~
 Free applications
