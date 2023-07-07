@@ -25,6 +25,7 @@ Parameter options:
 * ``<minutes> = {0,59}``
 * ``<seconds> = {0,59}``
 * ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
+* ``<board_id> = {0,15}``
 
 Table of correlated SCPI and API commands for the Red Pitaya.
 
@@ -56,6 +57,14 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | | Examples:                                          |                         |                                                           |                    |
 | | ``SYSTem:DATE?`` > ``2023,4,4``                    |                         |                                                           |                    |
 | | ``SYST:DATE?`` > ``2002,12,29``                    |                         |                                                           |                    |
++------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:BRD:ID?`` > ``<board_id>``                | ``rp_HPGetModel``       | Returns the board model from the values rp_HPeModels_t.   | in dev             |
+| | Examples:                                          |                         |                                                           |                    |
+| | ``SYSTem:BRD:ID?`` > ``1``                         |                         |                                                           |                    |
++------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:BRD:Name?`` > ``board name``              | ``rp_HPGetModelName``   | Returns the name of the board.                            | in dev             |
+| | Examples:                                          |                         |                                                           |                    |
+| | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
 
 .. _scpi_digital:
