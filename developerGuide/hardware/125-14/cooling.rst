@@ -15,14 +15,11 @@ Assembly
 
    Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
 
-   ..
 
 .. figure:: cooling-topdown.jpg 
    :align: center
 
    Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
-
-   ..
 
     
 Red Pitaya with an attached fan.
@@ -36,6 +33,5 @@ Measurements
 
    Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
 
-   ..
 
 Temperature measured with the fan turned off and on combined with low and high CPU load.
