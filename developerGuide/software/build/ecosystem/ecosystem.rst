@@ -4,7 +4,7 @@
 Build Red Pitaya ecosystem
 ##########################
 
-Go to red pitaya (git) directory.
+Go to the Red Pitaya (git) directory.
 
 .. note::
    
@@ -22,12 +22,12 @@ Go to red pitaya (git) directory.
        export LC_ALL=C
    
    This line can also be added to the end of .bashrc and will automatically set the ``$LC_ALL`` variable each time the 
-   terminal is started.
+   the terminal is started.
    
 .. note::
     
-    It is not possible to build an ecosystem on an encrypted home directory, since schroot can not access that 
-    directory. We recommend that you make a separate directory in home directory that is not encrypted e.g. 
+    It is not possible to build an ecosystem on an encrypted home directory since schroot can not access that 
+    directory. We recommend that you make a separate directory in the home directory that is not encrypted e.g. 
     ``/home/ecosystem_build``
        
 =====================================
@@ -447,7 +447,8 @@ Partial rebuild process
       * SCPI server
       * free applications
 
-      **Base system**
+      Base system
+      -----------
 
       Here the *base system* represents everything before Linux user space.
 
@@ -473,9 +474,8 @@ Partial rebuild process
 
          $ make -f Makefile.x86 zip
 
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   FPGA and device tree sources
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      FPGA and device tree sources
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
       .. code-block:: shell-session
@@ -485,7 +485,6 @@ Partial rebuild process
       Detailed instructions are provided for :ref:`building the FPGA <buildprocess>`
       including some :ref:`device tree details <devicetree>`.
 
-      --------------------------------------
       Device Tree compiler + overlay patches
       --------------------------------------
 
@@ -502,7 +501,6 @@ Partial rebuild process
          $ make
          $ sudo make install PREFIX=/usr
 
-      ~~~~~~
       U-boot
       ~~~~~~
 
@@ -512,10 +510,9 @@ Partial rebuild process
 
          make -f Makefile.x86 u-boot
 
-      The build process downloads the Xilinx version of U-Boot sources from Github, applies patches and starts the build process.
+      The build process downloads the Xilinx version of U-Boot sources from Github, applies patches, and starts the build process.
       Patches are available in the ``patches/`` directory.
 
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       Linux kernel and device tree binaries
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -528,14 +525,13 @@ Partial rebuild process
          make -f Makefile.x86 devicetree
          make -f Makefile.x86 devicetree-install
 
-      The build process downloads the Xilinx version of Linux sources from Github, applies patches and starts the build process.
+      The build process downloads the Xilinx version of Linux sources from Github, applies patches, and starts the build process.
       Patches are available in the ``patches/`` directory.
 
-      ~~~~~~~~~
       Boot file
       ~~~~~~~~~
 
-      The created boot file contains FSBL, FPGA bitstream and U-Boot binary.
+      The created boot file contains FSBL, FPGA bitstream, and U-Boot binary.
 
       .. code-block:: shell-session
 
@@ -552,13 +548,12 @@ Partial rebuild process
       * SCPI server
       * Console tools and web app
 
-      -----------
       Base system
       -----------
 
-      Here *base system* represents everything before Linux user space.
+      Here the *base system* represents everything before Linux user space.
 
-      To be able to compile FPGA and cross compile *base system* software, it is necessary to setup the Vivado FPGA tools and ARM SDK.
+      To be able to compile FPGA and cross-compile *base system* software, it is necessary to set up the Vivado FPGA tools and ARM SDK.
 
 
       .. code-block:: shell-session
@@ -578,9 +573,8 @@ Partial rebuild process
 
          $ make -f Makefile.x86 zip
 
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       FPGA and overlays
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      ~~~~~~~~~~~~~~~~~
 
       Each FPGA version uses its own overlay with the devices necessary to work with FPGA. Previously, the device tree was fixed for a specific FPGA version and board. |br|
       For each board, you need to call the assembly with the board version parameters. But to speed up the build, you can skip the unnecessary version.
@@ -595,9 +589,8 @@ Partial rebuild process
 
       Detailed instructions are provided for :ref:`building the FPGA <buildprocess>`
 
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       U-boot 
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      ~~~~~~
 
       To build the U-Boot binary and boot scripts:
 
@@ -605,19 +598,17 @@ Partial rebuild process
 
          make -f Makefile.x86 boot
 
-      The build process downloads the Xilinx version of U-Boot sources from Github, applies patches and starts the build process.
+      The build process downloads the Xilinx version of U-Boot sources from Github, applies patches, and starts the build process.
       Patches are available in the ``patches/`` directory.
 
       .. note::
 
-         The script builds two versions of boot.bin files. One version for boards with 512 MB RAM, the second version for boards with 1 GB of RAM. There are also two versions of the Linux kernel boot scripts.
+         The script builds two versions of boot.bin files. One version is for boards with 512 MB RAM, the second version is for boards with 1 GB of RAM. There are also two versions of the Linux kernel boot scripts.
 
       .. note::
          
-         The device tree for uboot is built using prepared files located in the `dts_uboot` folder. The device tree defines the minimum requirements for peripherals in order for the board to start.
+         The device tree for ``uboot`` is built using prepared files located in the `dts_uboot` folder. The device tree defines the minimum requirements for peripherals in order for the board to start.
 
-
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       Linux kernel and device tree binaries
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -628,7 +619,7 @@ Partial rebuild process
          make -f Makefile.x86 linux
          make -f Makefile.x86 devicetree
 
-      The build process downloads the Xilinx version of Linux sources from Github, applies patches and starts the build process.
+      The build process downloads the Xilinx version of Linux sources from Github, applies patches, and starts the build process.
       Patches are available in the ``patches/`` directory.
 
       .. note:: 
@@ -636,7 +627,6 @@ Partial rebuild process
          To build device trees, you must first build the necessary FPGA projects for the required boards. Since dtb and dts files are built on the basis of FPGA `barebone` projects.
 
 
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       API + SCPI server + Web Applications
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -670,20 +660,18 @@ Partial rebuild process
 
       .. note::
 
-         Possible options for individual assemblies are listed. Some of them depend on each other. You can build everything at once if you start the build with `make all`
+         Possible options for individual assemblies are listed. Some of them depend on each other. You can build everything at once if you start the build with `make all`.
 
 
 ----------------
 Linux user space
 ----------------
 
-~~~~~~~~~~~~~~~~
 Debian/Ubuntu OS
 ~~~~~~~~~~~~~~~~
 
 `Debian/Ubuntu OS instructions <https://github.com/RedPitaya/RedPitaya/tree/master/OS/debian>`_ are detailed elsewhere.
 
-~~~
 API
 ~~~
 
@@ -703,7 +691,6 @@ You can install it on Red Pitaya by copying it there:
 
    scp build/api/lib/*.so root@192.168.0.100:/opt/redpitaya/lib/
 
-~~~~~~~~~~~
 SCPI server
 ~~~~~~~~~~~
 
@@ -728,7 +715,6 @@ You can install it on Red Pitaya by copying it there:
 
    To build the scpi server for RP, a special `version <https://github.com/RedPitaya/scpi-parser/tree/redpitaya>`_  of scpi-parser is used. It added and optimized some functions.
 
-~~~~~~~~~~~~~~~~~
 Free applications
 ~~~~~~~~~~~~~~~~~
 
