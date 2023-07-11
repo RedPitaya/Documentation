@@ -1,4 +1,4 @@
-.. _top_125_14_EXT:
+.. _top_125_14_EXT:https://github.com/Lightsaver7/Documentation/tree/Lightsaver7-patch-1/developerGuide/hardware
 
 STEMlab 125-14 external clock
 #############################
@@ -165,7 +165,7 @@ Schematics
 
 .. note::
 
-    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
+    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
 *************************
 Mechanical specifications
