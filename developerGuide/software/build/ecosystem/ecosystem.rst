@@ -715,7 +715,9 @@ To compile the server run:
 
 .. code-block:: shell-session
 
-   make scpi MODEL=Z10
+   schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+   make scpi
+   EOL_CHROOT
 
 The compiled executable is ``scpi-server/scpi-server``.
 You can install it on Red Pitaya by copying it there:
@@ -723,6 +725,10 @@ You can install it on Red Pitaya by copying it there:
 .. code-block:: shell-session
 
    scp scpi-server/scpi-server root@192.168.0.100:/opt/redpitaya/bin/
+
+.. note::
+
+   To build the scpi server for RP, a special `version <https://github.com/RedPitaya/scpi-parser/tree/redpitaya>`_  of scpi-parser is used. It added and optimized some functions.
 
 ~~~~~~~~~~~~~~~~~
 Free applications
