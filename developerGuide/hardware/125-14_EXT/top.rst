@@ -1,4 +1,4 @@
-.. _top_125_14_EXT:https://github.com/Lightsaver7/Documentation/tree/Lightsaver7-patch-1/developerGuide/hardware
+.. _top_125_14_EXT:
 
 STEMlab 125-14 external clock
 #############################
@@ -153,8 +153,9 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
+
 .. note::
-    
+
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
 **********
