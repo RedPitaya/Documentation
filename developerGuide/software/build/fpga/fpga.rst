@@ -43,7 +43,7 @@ Install libraries:
 Xilinx Vivado 2020.1
 ====================
 
-Xilinx Vivado is available from the `Xilinx downloads page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html>`_.
+Xilinx Vivado is available from the |Vivado download page|.
 
 On officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 instead of 18.04.
 
@@ -63,11 +63,21 @@ After the installation finishes replace the modified file with the one you backe
 
 For more information on Vivado installation `click here <https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html>`_.
 
+.. |Vivado download page|::
+
+   <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>
+
 
 Xilinx SDK development environments 2019.1
 ==========================================
 
-Xilinx SDK is available from `Xilinx downloads page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html>`_:
+Xilinx SDK is available from the |SDK download page|
+
+
+.. |SDK download page|::
+
+   <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
+
 
 .. _dev_tree_xil:
 
