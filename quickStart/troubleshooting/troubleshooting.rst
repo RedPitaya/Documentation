@@ -194,9 +194,9 @@ Problems connecting to RP?
    so there is no need to install additional software.
 
 
-***************************************************
+**********************************************************
 Problems with upgrading OS, and accessing the marketplace?
-***************************************************
+**********************************************************
 
 1. Make sure your Red Pitaya has access to the :ref:`internet <internetAccess>`.
 #. Force a refresh of the Red Pitaya application page. |Wiki refresh|?
@@ -255,9 +255,9 @@ Where can I find Red Pitaya schematics?
 * :ref:`SDRlab 122-16 <top_122_16>`
 * :ref:`SIGNALlab 250-12 <top_250_12>`
 
-***********************************************************
+***************************************************************
 My device shows the wrong measurements. How can I calibrate it?
-***********************************************************
+***************************************************************
 
 The Red Pitaya can be calibrated using the :ref:`Calibration Tool <calibration_app>`
 
