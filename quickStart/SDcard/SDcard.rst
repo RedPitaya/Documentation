@@ -9,7 +9,7 @@ Prepare SD card
 OS Versions
 ***********
 
-
+==============
 Nightly Builds
 ==============
 
@@ -37,7 +37,7 @@ Ecosystem builds run every Saturday night.
 
    <a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>
 
-
+==========
 Unified OS
 ==========
 
@@ -63,7 +63,7 @@ To run the C applications please use one of the following combinations of OS and
 
 **RedPitaya OS 2.0**:
 
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-15_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 18cb8bdc3c623f0e8de31b30316cbf10)
+   - `Latest Beta 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-15_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 18cb8bdc3c623f0e8de31b30316cbf10)
 
 .. note::
 
@@ -74,7 +74,7 @@ To run the C applications please use one of the following combinations of OS and
 
    <a href="https://redpitaya.com/contact-us/" target="_blank">support</a>
 
-
+================================
 Latest and Beta versions 1.04 OS
 ================================
 
@@ -89,32 +89,32 @@ Latest and Beta versions 1.04 OS
 
 **STEMlab 125-14 & STEMlab 125-10**:
 
-   - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
+   - `Latest Stable 125-14/10<https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
+   - `Latest Beta 125-14/10<https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
 
 
 **STEMlab 125-14 (SECONDARY/SLAVE board)**:
 
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
+   - `Latest Beta Secondary<https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
 
 **STEMlab 125-14-Z7020**:
 
-   - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
+   - `Latest Stable Z7020<https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
+   - `Latest Beta Z7020<https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
 
 **STEMlab 125-14 4-Input**:
 
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
+   - `Latest Beta 4-Input<https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
 
 **SDRlab 122-16**:
 
-   - `Latest Stable <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
+   - `Latest Stable 122-16<https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
+   - `Latest Beta 122-16<https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
 
 **SIGNALlab 250-12**:
 
-   - `Latest Stable <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
+   - `Latest Stable 250-12<https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
+   - `Latest Beta 250-12<https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
 
 
 .. |CHANGELOG| raw:: html
@@ -133,7 +133,7 @@ Latest and Beta versions 1.04 OS
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
 
-
+=================
 Older OS versions
 =================
 
@@ -163,12 +163,12 @@ The next procedure will create a clean SD card image.
 
 #. Write the image onto an SD card. Instructions are available for various operating systems:
 
-   .. contents::
-       :local:
-       :backlinks: none
-       :depth: 1
+.. contents::
+   :local:
+   :backlinks: none
+   :depth: 1
 
-#. Insert the SD card into the Red Pitaya.
+4. Insert the SD card into the Red Pitaya.
 
    .. figure:: pitaya-quick-start-insert-sd-card.png
       :align: center
@@ -182,8 +182,6 @@ The next procedure will create a clean SD card image.
     <div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
         <iframe src="https://www.youtube.com/embed/Qq_YRv2nk3c" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
-
-
 
 =======
 Windows
@@ -244,7 +242,7 @@ Linux
 
    You can also use |balenaEtcher| on Linux and macOS. Instructions are under :ref:`Windows section <windows_gui>`.
 
-
+-------------------------
 Ubuntu using Image Writer
 -------------------------
 
@@ -278,7 +276,7 @@ Ubuntu using Image Writer
 
 .. _linux_cli:
 
-
+------------
 Command line
 ------------
 
@@ -334,7 +332,7 @@ macOS
 
    You can also use |balenaEtcher| on Linux and macOS. Instructions are under :ref:`Windows section <windows_gui>`.
 
-
+-------------------
 Using ApplePi-Baker
 -------------------
 
@@ -390,7 +388,7 @@ Using ApplePi-Baker
 
 .. _macos_cli:
 
-
+------------
 Command line
 ------------
 
