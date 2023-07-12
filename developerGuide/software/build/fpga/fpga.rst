@@ -63,7 +63,7 @@ After the installation finishes replace the modified file with the one you backe
 
 For more information on Vivado installation `click here <https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html>`_.
 
-.. |Vivado download page|::
+.. |Vivado download page| raw:: html
 
    <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>
 
@@ -74,7 +74,7 @@ Xilinx SDK development environments 2019.1
 Xilinx SDK is available from the |SDK download page|
 
 
-.. |SDK download page|::
+.. |SDK download page| raw:: html
 
    <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
 
