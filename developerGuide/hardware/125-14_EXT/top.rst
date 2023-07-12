@@ -153,8 +153,9 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
+
 .. note::
-    
+
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
 **********
@@ -165,7 +166,7 @@ Schematics
 
 .. note::
 
-    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
+    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
 *************************
 Mechanical specifications

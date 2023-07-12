@@ -68,7 +68,7 @@ author = u'Red Pitaya'
 # built documents.
 #
 # The short X.Y version.
-version = u'0.97'
+version = u'2.00'
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -318,6 +318,7 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
+#!!!!!! THIS PRODUCES A WARNING (404 project not found)- NEEDS FIXING !!!!!!!!!!!
 intersphinx_mapping = {
     'sref': ('https://activelearning.readthedocs.io/en/latest/', None)
 }

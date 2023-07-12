@@ -16,13 +16,12 @@ You can connect to the Red Pitaya boards via:
 
 #. **Local Area Network (LAN)** - Requires a DHCP server on your LAN router
 #. **Direct Ethernet cable connection** - Requires additional settings on users' PC and the Red Pitaya board
-#. **Wireless Network Client** - Requires an additional WiFi dongle available at Red Pitaya store
-#. **Access Point Mode** - The Red Pitaya board creates its own WiFi network
+#. **Wireless Network Client** - Requires an additional WiFi dongle available at the Red Pitaya store
+#. **Access Point Mode** - The Red Pitaya board creates its WiFi network
 
 .. figure:: ../../quickStart/connect/connect-1.png
 
 .. toctree::
    :maxdepth: 1
-   
 
    ../../quickStart/connect/connect.rst

@@ -4,7 +4,7 @@
 Analog inputs
 #############
 
-The Red Pitaya board analog frontend features 2 fast analog inputs. 
+The Red Pitaya board analog front-end features 2 fast analog inputs. 
 
 
 **********************
@@ -36,12 +36,12 @@ General Specifications
     
     .. note::
     
-       The overload protection is valid for low-frequency signals. For input signals that contain frequency components beyond 1 kHz, the full scale value defines the maximum admissible input voltage.
+       The overload protection is valid for low-frequency signals. For input signals that contain frequency components beyond 1 kHz, the full-scale value defines the maximum admissible input voltage.
     
 
     .. note::
     
-        The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. It’s important that the central pin is of suitable length, otherwise the SMA connector installed in Red Pitaya will mechanically damage the SMA connector.
+        The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of suitable length, otherwise, the SMA connector installed in Red Pitaya will mechanically damage the SMA connector.
         The central pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
 
 
@@ -52,7 +52,7 @@ General Specifications
 Jumpers
 =======
 
-Voltage ranges are set by input jumpers, as is shown here:
+Voltage ranges are set by input jumpers, as shown here:
 
 .. figure:: Jumper_settings.png 
 
@@ -75,7 +75,7 @@ Gain can be adjusted independently for both input channels. The adjustment is do
 Jumper orientation
 ==================
 
-Jumper position can have an effect on the measurements taken with Red Pitaya. The jumpers are internally connected with a small metal plate, which acts as a capacitor and has an effect on the overall capacitance, which in turn affects the input impedance. If the jumpers are moved from an incorrect to a correct position, a calibration is highly recommended.
+Jumper position can affect the measurements taken with Red Pitaya. The jumpers are internally connected with a small metal plate, which acts as a capacitor and has an effect on the overall capacitance, which in turn affects the input impedance. If the jumpers are moved from an incorrect to a correct position, a calibration is highly recommended.
 
 
 1) The position of the jumper bumps must be as indicated in this image.
@@ -90,7 +90,7 @@ Jumper position can have an effect on the measurements taken with Red Pitaya. Th
     .. figure:: Jumper_position_4IN_1.png
 
 
-Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square type signals, as shown in the picture below.
+Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square-type signals, as shown in the picture below.
 
 .. figure:: Jumper_position_wrong_signal.jpg
 
@@ -119,7 +119,7 @@ Fast analog inputs are **DC coupled**. Input impedance is given in the picture b
 
 .. figure:: Input_impedance_of_fast_analog_inputs.png
        
-    Input impedance of fast analog inputs
+    The input impedance of fast analog inputs
 
 =========
 Bandwidth
@@ -133,7 +133,7 @@ In the picture below, the Frequency Response - Bandwidth of fast analog inputs i
         
 .. figure:: Bandwidth_of_Fast_Analog_Inputs.png
         
-    Bandwidth of fast analog inputs
+    The bandwidth of fast analog inputs
         
 Because of the maximum sampling rate of 125 MS/s when measuring signals above 10 MHz, we have used sin(x)/x interpolation to get more accurate results of Vpp voltage and, with that, more accurate measurements of analog bandwidth. When measuring signals above 10 MHz, similar results should be obtained without interpolation or directly with an Oscilloscope application and P2P measurements.
         
@@ -184,7 +184,7 @@ Harmonics
 - at -3 dBFS: typical performance < -45 dBc 
 - at -20 dBFS: typical performance < -60 dBc 
        
-Measurements refer to the LV jumper setting, inputs matched and outputs terminated, outputs signal disabled, PCB grounded through SMA ground.
+Measurements refer to the LV jumper setting, inputs matched and outputs terminated, outputs signal disabled, and PCB grounded through SMA ground.
     
 =============================
 Spurious frequency components
@@ -192,9 +192,9 @@ Spurious frequency components
 
 - Typically < -90 dBFS 
     
-Measurements refer to the LV jumper setting, inputs and outputs terminated, outputs' signal disabled, and the PCB grounded through SMA ground. In the pictures below, typical performances of Red Pitaya fast analog inputs are shown. For the reference signal generation, we have used the |Agilent 33250A| Signal generator. For the reference spectrum measurements of the generated signal, we have used the |Agilent E4404B| Spectrum analyzer.  The same signal is acquired with the **Red Pitaya board and FFT analysis** is performed. Results are shown in the figures below, where Red Pitaya measurements are on the right. 
+Measurements refer to the LV jumper setting, inputs, and outputs terminated, outputs signal disabled, and the PCB grounded through SMA ground. In the pictures below, typical performances of Red Pitaya fast analog inputs are shown. For the reference signal generation, we have used the |Agilent 33250A| Signal generator. For the reference spectrum measurements of the generated signal, we have used the |Agilent E4404B| Spectrum analyzer.  The same signal is acquired with the **Red Pitaya board and FFT analysis** is performed. Results are shown in the figures below, where Red Pitaya measurements are on the right. 
 
-Measurements refer to the LV jumper setting, inputs and outputs terminated, outputs' signal disabled, and the PCB grounded through SMA ground.
+Measurements refer to the LV jumper setting, inputs, and outputs terminated, outputs signal disabled, and the PCB grounded through SMA ground.
 
 .. figure:: Measurement_setup.png
             
@@ -258,7 +258,7 @@ Reference signals
        
           Reference Signal: -3 dBFS 30 MHz
             
-Due to the natural distribution of the electrical characteristics of the analog inputs and outputs, their offsets and gains will differ slightly across various Red Pitaya boards and may change over time. The calibration coefficients are stored in EEPROM on the Red Pitaya and can be accessed and modified with the calib utility:
+Due to the natural distribution of the electrical characteristics of the analog inputs and outputs, their offsets and gains will differ slightly across various Red Pitaya boards and may change over time. The calibration coefficients are stored in EEPROM on the Red Pitaya and can be accessed and modified with the calibration utility:
     
 ===============
 DC offset error
@@ -292,7 +292,7 @@ Analog inputs calibration
 *************************
 
 Calibration processes can be performed using the :ref:`Calibration app <calibration_app>`.
-or using the **calib** :ref:`command line utility <com_line_tools>`. When performing calibration with the 
+or using the **calib** :ref:`command line utility <com_line_tools>`. When performing calibration with the
 :ref:`Calibration app <calibration_app>`, just select *Settings -> Calibration* and follow the instructions.
 
 - Calibration using **calib** utility
@@ -306,10 +306,10 @@ Start your Red Pitaya and connect to it via a terminal.
     Usage: calib [OPTION]...
     
     OPTIONS:
-     -r    Read calibration values from eeprom (to stdout).
-     -w    Write calibration values to eeprom (from stdin).
+     -r    Read calibration values from EEPROM (to stdout).
+     -w    Write calibration values to EEPROM (from stdin).
      -f    Use factory address space.
-     -d    Reset calibration values in eeprom with factory defaults.
+     -d    Reset calibration values in EEPROM with factory defaults.
      -v    Produce verbose output.
      -h    Print this info.
 
@@ -356,7 +356,7 @@ Should you bring the calibration vector to an undesired state, you can always re
    
    redpitaya> calib -d
 
-The DC offset calibration parameter can be obtained as the average of the acquired signal at grounded input. A reference voltage source and an old version of an oscilloscope application can be used to calculate the gain parameter. Start the Oscilloscope app, connect reference voltage to the desired input and take measurements. Change the gain calibration parameter using the instructions above, reload the Oscilloscope application, and make measurements again with new calibration parameters. Gain parameters can be optimised by repeating the calibration and measurement steps.
+The DC offset calibration parameter can be obtained as the average of the acquired signal at grounded input. A reference voltage source and an old version of an oscilloscope application can be used to calculate the gain parameter. Start the Oscilloscope app, connect the reference voltage to the desired input, and take measurements. Change the gain calibration parameter using the instructions above, reload the Oscilloscope application, and make measurements again with new calibration parameters. Gain parameters can be optimized by repeating the calibration and measurement steps.
 
 In the table below, typical results after calibration are shown.
 
@@ -378,7 +378,7 @@ AC gain accuracy can be extracted from Frequency response - Bandwidth.
 Analog outputs
 ##############
 
-The Red Pitaya board analog frontend features two fast analog outputs.
+The Red Pitaya board analog front-end features two fast analog outputs.
 
 **********************
 General Specifications
@@ -407,7 +407,7 @@ General Specifications
 
 .. note::
 
-    The output channels are designed to drive 50 Ω loads. Terminate outputs when channels are not used. Connect a 50 Ω parallel load (SMA Tee junction) in high impedance load applications.
+    The output channels are designed to drive 50 Ω loads. Terminate outputs when channels are not used. Connect a 50 Ω parallel load (SMA Tee junction) in high-impedance load applications.
 
 .. note::
 
@@ -415,13 +415,13 @@ General Specifications
     
 .. note::
 
-    The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. It’s important that the central pin is of a suitable length, otherwise the SMA connector, installed on the Red Pitaya, will mechanically damage the SMA connector. The central pin of the SMA connector on the Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
+    The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of a suitable length, otherwise, the SMA connector, installed on the Red Pitaya, will mechanically damage the SMA connector. The central pin of the SMA connector on the Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
     
 .. figure:: Outputs.png
        
     Output channel Output voltage range: ± 1 V
         
-Output stage is shown in picture bellow.
+The output stage is shown in the picture below.
     
 .. figure:: Outputs_stage.png
        
@@ -445,7 +445,7 @@ Bandwidth
 | Bandwidth                       | 50 MHz (3 dB)                                 |
 +---------------------------------+-----------------------------------------------+
 
-Bandwidth measurements are shown in the picture below. Measurements are taken with the |Agilent MSO7104B| oscilloscope for each frequency step (10 Hz – 60 MHz) of the measured signal. The Red Pitaya board OUT1 is used with 0 dBm output power. The second output channel and both input channels are terminated with 50 Ohm termination. Oscilloscope ground is used to ground the Red Pitaya board. The oscilloscope input must be set to 50 Ohm input impedance.
+Bandwidth measurements are shown in the picture below. Measurements are taken with the |Agilent MSO7104B| oscilloscope for each frequency step (10 Hz – 60 MHz) of the measured signal. The Red Pitaya board OUT1 is used with 0 dBm output power. The second output channel and both input channels are terminated with 50 Ohm termination. The Oscilloscope ground is used to ground the Red Pitaya board. The oscilloscope input must be set to 50 Ohm input impedance.
 
 .. figure:: Fast_Analog_Outputs_Bandwidt.png
 
@@ -495,6 +495,7 @@ DC GAIN ACCURACY  0.4%
 DC OFFSET         ± 4 mV
 RIPPLE(@ 0.5V DC) 0.4 mVpp
 ================= ==========
+
     Typical specifications after calibration
 
 

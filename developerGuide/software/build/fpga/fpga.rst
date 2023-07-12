@@ -3,11 +3,11 @@ Build FPGA image
 ################
 
 The following build instructions were tested on Ubuntu 20.04.
-It is important to install the correct Vivado and SDK versions as the projects and scripts are made for those versions and may return errors during build.
+It is important to install the correct Vivado and SDK versions as the projects and scripts are made for those versions and may return errors during the build.
 
 .. note::
 
-   Please note that the FPGA code is located in a seperate repository from the ecosystem on our GitHub page:
+   Please note that the FPGA code is located in a separate repository from the ecosystem on our GitHub page:
    * Ecosystem: |ecosystem| 
    * FPGA: |FPGA|
    
@@ -43,44 +43,48 @@ Install libraries:
 Xilinx Vivado 2020.1
 ====================
 
-Xilinx Vivado is available from Xilinx downloads page:
-
-https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html
+Xilinx Vivado is available from the |Vivado download page|.
 
 On officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 instead of 18.04.
 
 If the installer glitches out anyway, your /etc/os-release file needs to be changed to "fake" the OS version.
-First, backup the file and then open it as superuser with a text editor such as nano:
+First, backup the file and then open it as a superuser with a text editor such as nano:
 
 .. code-block:: shell-session
 
    $ sudo nano /etc/os-release
 
-and change the VERSION line to “VERSION=”18.04.4 LTS (Bionic Beaver)”” and save the file. The edited file should look something like this:
+and change the VERSION line to ``VERSION=”18.04.4 LTS (Bionic Beaver)"`` and save the file. The edited file should look something like this:
 
 .. figure:: os_release.png
 
-After that you can either run the **Xilinx_Unified_2020.1_0602_1208_Lin64.bin** (Linux web-installer) or the xsetup file from the extracted folder (unified installer).
+Afterward, you can either run the **Xilinx_Unified_2020.1_0602_1208_Lin64.bin** (Linux web installer) or the xsetup file from the extracted folder (unified installer).
 After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.
 
-For more information on Vivado installation, see:
+For more information on Vivado installation `click here <https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html>`_.
 
-https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html
+.. |Vivado download page| raw:: html
+
+   <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>
 
 
 Xilinx SDK development environments 2019.1
 ==========================================
 
-Xilinx SDK is available from Xilinx downloads page:
+Xilinx SDK is available from the |SDK download page|
 
-https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html
 
-.. _dev_tree_xil::
+.. |SDK download page| raw:: html
+
+   <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
+
+
+.. _dev_tree_xil:
 
 Device Tree Xilinx
 ==================
 
-To build fpga requires a repository with a device tree from xilinx.
+FPGA build requires a repository with a device tree from Xilinx.
 You can prepare it by running the command:
 
 .. code-block:: shell-session
@@ -102,8 +106,8 @@ Directory structure
 *******************
 
 There are multiple FPGA projects, some with generic functionality, some with specific functionality for an application.
-Common code for all projects is placed directly into the ``fpga`` directory. Common code are mostly reusable modules.
-Project specific code is placed inside the ``fpga/prj/name/`` directories and is similarly organized as common code.
+Common code for all projects is placed directly into the ``FPGA `` directory. Common codes are mostly reusable modules.
+Project-specific code is placed inside the ``fpga/prj/name/`` directories and is similarly organized as common code.
 
 .. |ug895| replace:: Vivado System-Level Design Entry
 .. _ug895: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug895-vivado-system-level-design-entry.pdf
@@ -113,7 +117,7 @@ Project specific code is placed inside the ``fpga/prj/name/`` directories and is
 +-------------------+------------------------------------------------------------------+
 |  path             | contents                                                         |
 +===================+==================================================================+
-| ``fpga/Makefile`` | main Makefile, used to run FPGA related tools                    |
+| ``fpga/Makefile`` | main Makefile, used to run FPGA-related tools                    |
 +-------------------+------------------------------------------------------------------+
 | ``fpga/*.tcl``    | TCL scripts to be run inside FPGA tools                          |
 +-------------------+------------------------------------------------------------------+
@@ -123,7 +127,7 @@ Project specific code is placed inside the ``fpga/prj/name/`` directories and is
 +-------------------+------------------------------------------------------------------+
 | ``fpga/brd/``     | board files |ug895|_                                             |
 +-------------------+------------------------------------------------------------------+
-| ``fpga/ip/``      | third party IP, for now Zynq block diagrams                      |
+| ``fpga/ip/``      | third party IP, for now, Zynq block diagrams                     |
 +-------------------+------------------------------------------------------------------+
 | ``fpga/rtl/``     | Verilog (SystemVerilog) *Register-Transfer Level*                |
 +-------------------+------------------------------------------------------------------+
@@ -148,7 +152,7 @@ FPGA sub-projects
 
 There are multiple FPGA sub-projects they mostly contain incremental changes
 on the first Red Pitaya release.
-It is reccommended to use 0.94 release as default project.
+It is recommended to use the 0.94 release as the default project.
 
 +-------------------+------------------------------------------------------------------------+------------------------+
 | prj/name          | Description                                                            | Application            |
@@ -179,7 +183,7 @@ It is reccommended to use 0.94 release as default project.
 |                   | transfer data to main DDR3 RAM. ADC and DAS code is unfinished.        |                        |
 +-------------------+------------------------------------------------------------------------+------------------------+
 | axi4lite          | Image intended for testing various AXI4 bus implementations. |br|      |                        |
-|                   | It contains a Vivado ILA (integrated logic ananlyzer) to |br|          |                        |
+|                   | It contains a Vivado ILA (integrated logic analyzer) to |br|           |                        |
 |                   | observe and review the performance of the bus implementation.          |                        |
 +-------------------+------------------------------------------------------------------------+------------------------+
 
@@ -246,8 +250,8 @@ Alternatively, you can add the following lines to your .bashrc file using a text
    source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
 
 The Xilinx installation directory should be located in /opt directory (or /tools, if you used the default Vivado installation directory).
-These two commands will setup the $PATH environment variable.
-It might also be necessary to add SDK bin folder to the $PATH environment variable:
+These two commands will set up the $PATH environment variable.
+It might also be necessary to add the SDK bin folder to the $PATH environment variable:
 
 .. code-block:: shell-session
 
@@ -274,7 +278,7 @@ The devicetree sources must also be downloaded and extracted by running
    make -f Makefile.x86 devicetree
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
-Non project mode is used, to avoid the generation of project files,
+Nonproject mode is used, to avoid the generation of project files,
 which are too many and difficult to handle.
 This allows us to only place source files and scripts under version control.
 
@@ -295,7 +299,7 @@ The following scripts perform various tasks:
 +-----------------------------------+------------------------------------------------+
 
 First, change your directory to /<path to Red Pitaya repository>/RedPitaya/fpga.
-To generate a bit file, reports, device tree and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
+To generate a bit file, reports, device tree, and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
 .. code-block:: shell-session
 
@@ -316,7 +320,7 @@ If the script returns the following error:
 
 .. code-block:: shell-session
 
-   BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ....
+   BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ...
 
 First, find the line containing
 
@@ -328,13 +332,13 @@ and change 2020.1 to your version.
 This is a quick and dirty way to get the build working in other versions of Vivado.
 However, this way could be problematic if some of the IPs used are different in your version.
 
-To update the script properly, open the project GUI(see below), go to menu Reports-> Report IP Status. A new tab opens below the code window.
+To update the script properly, open the project GUI(see below), and go to the menu Reports-> Report IP Status. A new tab opens below the code window.
 If all IPs are not up-to-date, they need to be updated.
 Before doing this, the TCL script must still be manually modified to your Vivado version, or the block design will not be created when Vivado starts.
 
 .. figure:: IPupdate.png
 
-When IPs are up-to-date, go to the tab Tcl console and run command:
+When IPs are up-to-date, go to the tab Tcl console and run the command:
 
 .. code-block:: shell-session
 
@@ -350,7 +354,7 @@ To generate and open a Vivado project using GUI, run:
 
    $ make project PRJ=name MODEL=model
 
-For example, v0.94 project for STEMlab 125-14:
+For example, the v0.94 project for STEMlab 125-14:
 
 .. code-block:: shell-session
 
@@ -359,8 +363,8 @@ For example, v0.94 project for STEMlab 125-14:
 
 .. figure:: project_make.png
 
-A new, blank project will automatically built and all the necessary files associated with Red Pitaya will be added.
-You can add/write your Verilog module at the end of red_pitaya_top.sv file (or add a new source by right clicking the Design Sources folder and Add Source):
+A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
+You can add/write your Verilog module at the end of red_pitaya_top.sv file (or add a new source by right-clicking the Design Sources folder and Add Source):
 
 .. figure:: vivado_project.png
 
@@ -368,9 +372,9 @@ You can connect newly added sources in the Diagram (Block Design) section (If it
 Add them to the design by right click => Add Module in the design window (for more information check the Learn FPGA programming => FPGA lessons section)
 https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
 
-Before you try to Run Synthesis, Run Implementation or Write Bitstream, you should check Language and Region settings on your Ubuntu computer –
-make sure you have a Format that uses a dot (“.”) as a decimal separator (United Kingdom or United States will work).
-Otherwise the Synthesis might fail as some parts of Vivado demand a dot as the decimal separator, which will cause Vivado not to recognize certain parts of the model.
+Before you try to Run Synthesis, Run Implementation, or Write Bitstream, you should check Language and Region settings on your Ubuntu computer –
+make sure you have a Format that uses a dot (“.”) as a decimal separator (the United Kingdom or the United States will work).
+Otherwise, the Synthesis might fail as some parts of Vivado demand a dot as the decimal separator, which will cause Vivado not to recognize certain parts of the model.
 
 The resulting .bit file is located in fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit
 This file must be copied to /opt/redpitaya/fpga.
@@ -388,10 +392,10 @@ Programming via JTAG
 ********************
 
 These instructions show how to use a JTAG cable to program a Red Pitaya directly from Xilinx Vivado.
-To do so we use Red Pitaya STEMlab 125-14, Ubuntu 20.04, Vivado 2020.1, Digilent JTAG-HS3 cable with a 14 to 6 pin adapter and Digilent Adept 2 software.
+To do so we use Red Pitaya STEMlab 125-14, Ubuntu 20.04, Vivado 2020.1, Digilent JTAG-HS3 cable with a 14 to 6-pin adapter, and Digilent Adept 2 software.
 
-To start, get an appropriate JTAG cable. In these instructions, we use a Digilent JTAG-HS3 cable with a 14 to 6 pin adapter.
-Digilent JTAG-HS2 may be used as well and might be more appropriate, as it uses a 6 pin connector that can connect directly to Red Pitaya's JTAG.
+To start, get an appropriate JTAG cable. In these instructions, we use a Digilent JTAG-HS3 cable with a 14 to 6-pin adapter.
+Digilent JTAG-HS2 may be used as well and might be more appropriate, as it uses a 6-pin connector that can connect directly to Red Pitaya's JTAG.
 For a complete list of JTAG cables, supported by Vivado, see Xilinx UG908 - Programming and Debugging, appendix D.
 https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf
 
@@ -401,7 +405,7 @@ See if the JTAG cable is detected. In Ubuntu, that is done with:
 
     $ lsusb
 
-JTAG-HS3 is displayed as a FTDI device.
+JTAG-HS3 is displayed as an FTDI device.
 
 .. figure:: lsusb.jpg
 
@@ -424,15 +428,15 @@ Now, open Vivado 2020.1, click Program and Debug -> Open Target -> Auto Connect.
 
 .. figure:: program_menu.jpg
 
-This will display a Xilinx compatible JTAG cable in the Hardware window, under localhost.
+This will display a Xilinx-compatible JTAG cable in the Hardware window, under localhost.
 
 .. figure:: cable.jpg
 
-Now plug your cable onto Red Pitaya's JTAG connector. The pins are marked on the bottom side of Red Pitaya's PCB.
+Now plug your cable into Red Pitaya's JTAG connector. The pins are marked on the bottom side of Red Pitaya's PCB.
 
 .. figure:: JTAG_pins.jpg
 
-A Xilinx device should now appear in Vivado (on the detected cable). In this case, it's a xc7z010_1.
+A Xilinx device should now appear in Vivado (on the detected cable). In this case, it's an xc7z010_1.
 
 .. figure:: program.jpg
 
@@ -452,7 +456,7 @@ Simulation
 
 ModelSim as provided for free from Altera is used to run simulations.
 Scripts expect the default install location.
-On Ubuntu the install process fails to create an appropriate path to executable files,
+On Ubuntu, the install process fails to create an appropriate path to executable files,
 so this path must be created:
 
 .. code-block:: shell-session
@@ -460,9 +464,9 @@ so this path must be created:
    $ ln -s $HOME/intelFPGA/16.1/modelsim_ase/linux $HOME/intelFPGA/16.1/modelsim_ase/linux_rh60
    $ sudo apt install libxft2:i386
 
-To run simulation, Vivado tools have to be installed.
+To run the simulation, Vivado tools have to be installed.
 There is no need to source ``settings.sh``.
-For now the path to the ModelSim simulator is hard coded into the simulation ``Makefile``.
+For now, the path to the ModelSim simulator is hard coded into the simulation ``Makefile``.
 
 .. code-block:: shell-session
 
@@ -488,22 +492,22 @@ which will prepare an organized waveform window.
 Device tree
 ***********
 
-Device tree is used by Linux to describe features and address space of memory mapped hardware attached to the CPU.
+The device tree is used by Linux to describe features and address the space of memory-mapped hardware attached to the CPU.
 
 Running ``make`` of a project will create a device tree source and some include files in the directory ``dts``:
 
 +------------------+------------------------------------------------------------------------+
 | device tree file | contents                                                               |
 +==================+========================================================================+
-| `zynq-7000.dtsi` | description of peripherals inside PS (processing system)               |
+| `zynq-7000.dtsi` | Description of peripherals inside PS (processing system)               |
 +------------------+------------------------------------------------------------------------+
 | `pl.dtsi`        | description of AXI attached peripherals inside PL (programmable logic) |
 +------------------+------------------------------------------------------------------------+
 | `system.dts`     | description of all peripherals, includes the above ``*.dtsi`` files    |
 +------------------+------------------------------------------------------------------------+
 
-To enable some Linux drivers (Ethernet, XADC, I2C EEPROM, SPI, GPIO and LED) additional configuration files.
-Generic device tree files can be found in ``fpga/dts`` while project specific code is in ``fpga/prj/name/dts/``.
+To enable some Linux drivers (Ethernet, XADC, I2C EEPROM, SPI, GPIO, and LED) additional configuration files.
+Generic device tree files can be found in ``fpga/dts`` while project-specific code is in ``fpga/prj/name/dts/``.
 
 **************
 Signal mapping
@@ -540,9 +544,7 @@ but it requires removing R273 and providing a **0.5V ~ 1V** common voltage on th
 
 .. note::
 
-   Unfortunately there is a design error,
-   where the XADC input range in unipolar mode was thought to be **0V ~ 0.5V**.
-   Consequently the voltage dividers were miss designed for a range of double the supply voltage.
+   Unfortunately there is a design error, where the XADC input range in unipolar mode was thought to be **0V ~ 0.5V**. Consequently the voltage dividers were miss designed for a range of double the supply voltage.
 
 
 5V power supply
@@ -582,22 +584,16 @@ General purpose inputs
 GPIO and LEDs
 =============
 
-Handling of GPIO and LED signals depends on wether they are connected to
+Handling of GPIO and LED signals depends on whether they are connected to
 Zynq-7000 PS (MIO) or PL (EMIO or FPGA) block.
 
 MIO pins signals are controlled by the PS block.
 Each pin has a few multiplexed functions.
-The multiplexer, slew rate, and pullup resistor enable
-can be be controlled using software usually with
-device tree `pinctrl` code.
-Xilinx also provides Linux drivers for all PS based peripherals,
-so all MIO signals can be managed using Linux drivers.
+The multiplexer, slew rate, and pull-up resistor enable can be controlled using software usually with device tree `pinctrl` code.
+Xilinx also provides Linux drivers for all PS based peripherals, so all MIO signals can be managed using Linux drivers.
 
 Pins connected to the PL block require FPGA code to function.
-If the pin signals are wired directly (in the FPGA sources)
-from PS based EMIO signals to the FPGA pads,
-then they can be managed using Linux drivers
-intended for the PS block.
+If the pin signals are wired directly (in the FPGA sources) from PS-based EMIO signals to the FPGA pads, then they can be managed using Linux drivers intended for the PS block.
 
 The default pin assignment for GPIO is described in the next table.
 
@@ -639,7 +635,7 @@ The default pin assignment for GPIO is described in the next table.
 Linux access to LED
 ===================
 
-This document is used as reference: http://www.wiki.xilinx.com/Linux+GPIO+Driver
+This document is used as a reference: `http://www.wiki.xilinx.com/Linux+GPIO+Driver <http://www.wiki.xilinx.com/Linux+GPIO+Driver>`_
 
 By providing GPIO/LED details in the device tree, it is possible to access LEDs using a dedicated kernel interface.
 
@@ -659,12 +655,10 @@ To switch LED 8 ON use:
 PS ``pinctrl`` for MIO signals
 ==============================
 
-It is possible to modify MIO pin functionality
-using device tree files during Linux bootup.
+It is possible to modify MIO pin functionality using device tree files during Linux bootup.
 The listed files should be included in the main device tree.
 
-This files can be modified into device tree overlays,
-which can be used to modify MIO functionality at runtime.
+These files can be modified into device tree overlays, which can be used to modify MIO functionality at runtime.
 
 +--------------------+------------------------------------------------------+
 | device tree file   | description                                          |
@@ -679,9 +673,9 @@ which can be used to modify MIO functionality at runtime.
 |                    | SPI can then only be used for writing (maybe 3-wire) |
 +--------------------+------------------------------------------------------+
 
-
-
-===================
+**********
+Registers
+**********
 
 .. toctree::
    :maxdepth: 2

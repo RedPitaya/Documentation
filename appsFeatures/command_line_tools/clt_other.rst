@@ -9,7 +9,7 @@ utility). Use a standard mount command to mount your NFS share (example):
     
    redpitaya> mount -o nolock <ip_address>:/<path>  /mnt
 
-The */opt* file-system on Red Pitaya, representing the SD card, is mounted read-only. To save the data locally on Red Pitaya, redirect the acquisition to a file in the */tmp* directory. The */tmp* directory resides in RAM and is therefore volatile (clears on reboot).
+The */opt* file system on Red Pitaya, representing the SD card, is mounted read-only. To save the data locally on Red Pitaya, redirect the acquisition to a file in the */tmp* directory. The */tmp* directory resides in RAM and is therefore volatile (clears on reboot).
  
 .. code-block:: shell-session
     
@@ -31,7 +31,7 @@ If NFS share is not available, you can use secure copy:
     
    redpitaya> scp my_local_file <user>@<destination_ip>:/<path_to_directory>/
 
-Alternatively, Linux users can use graphical SCP/SFTP clients, such as Nautilus, for example (explorer window). To access the address line, type **[CTRL + L]* and type in the following URL: *sftp://root@<ip_address>*
+Alternatively, Linux users can use graphical SCP/SFTP clients, such as Nautilus, for example (explorer window). To access the address line, type *[CTRL + L]* and type in the following URL: *sftp://root@<ip_address>*
 
 .. figure:: Nautilus_address_bar.png
    :align: center

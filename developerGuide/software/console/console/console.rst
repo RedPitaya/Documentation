@@ -68,7 +68,7 @@ Linux
 -----
 
 There is broad support for USB to serial converters in the Linux kernel,
-so in most cases the converter will be detected soon after connecting it.
+so in most cases, the converter will be detected soon after connecting it.
 
 You can see the driver output in the kernel log using ``dmesg``:
 
@@ -119,7 +119,7 @@ A configuration menu will open.
    | Exit from Minicom        |
    +--------------------------+
 
-Go to ``Serial Port Setup, press **Enter** and set up the next options:
+Go to ``Serial Port Setup``, press **Enter**, and set up the next options:
 
 * Serial Device: ``/dev/ttyUSB0`` (device index ``0`` or a higher number)
 * Bps/Par/Bits: ``115200 8N1`` (baud rate, byte length, parity and stop bits)

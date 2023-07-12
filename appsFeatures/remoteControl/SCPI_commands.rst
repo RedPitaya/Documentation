@@ -4,17 +4,18 @@
 
 .. TODO Add parameters for API commands!!!!
 
+.. _scpi_common:
 
 *******************************
 List of supported SCPI commands
 *******************************
 
-.. _scpi_common:
 
+.. _scpi_board:
 
-===================
+======================
 Board control commands
-===================
+======================
 
 Parameter options:
 
@@ -102,8 +103,8 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | | ``DIG:PIN:DIR? DIO0_N``             |                         |                                                                                   |                    |
 | | ``DIG:PIN:DIR? DIO1_P``             |                         |                                                                                   |                    |
 +---------------------------------------+-------------------------+-----------------------------------------------------------------------------------+--------------------+
-| | ``DIG:PIN <pin>,<state>``           | ``rp_DpinSetState``     | Set the state of digital outputs to 1 (HIGH) or 0 (LOW).                          | 1.04-18 and up     |
-| | Examples:                           |                         |                                                                                   |                    |
+| | ``DIG:PIN <pin>,<state>``           | ``rp_DpinSetState``     | | Set the state of digital outputs to 1 (HIGH) or 0 (LOW).                        | 1.04-18 and up     |
+| | Examples:                           |                         | | Returns a 1 (HIGH) if the pin is floating.                                      |                    |
 | | ``DIG:PIN DIO0_N,1``                |                         |                                                                                   |                    |
 | | ``DIG:PIN LED2,1``                  |                         |                                                                                   |                    |
 +---------------------------------------+-------------------------+-----------------------------------------------------------------------------------+--------------------+
@@ -112,6 +113,7 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | | ``DIG:PIN? DIO0_N``                 |                         |                                                                                   |                    |
 | | ``DIG:PIN? LED2``                   |                         |                                                                                   |                    |
 +---------------------------------------+-------------------------+-----------------------------------------------------------------------------------+--------------------+
+
 
 .. _scpi_analog:
 
@@ -147,9 +149,9 @@ Parameter options:
 
 .. _scpi_daisy:
 
-=================================================
-Daisy chain clocks and triggers (UNIFIED OS ONLY)
-=================================================
+===============================
+Daisy chain clocks and triggers
+===============================
 
 Parameter options:
 
@@ -178,7 +180,7 @@ Parameter options:
 | | Examples:                               |                                    |                                                                                                                                           |                    |
 | | ``DAISY:SYNC:TRIG?`` > ``ON``           |                                    |                                                                                                                                           |                    |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| | ``DAISY:SYNC:CLK <state>``              | ``rp_SetEnableDiasyChainClockSync``| | Enables clock sync over SATA daisy chain connectors. Primary board will start generating clock for secondary unit and so on.            | in dev             |
+| | ``DAISY:SYNC:CLK <state>``              | ``rp_SetEnableDiasyChainClockSync``| | Enables clock sync over SATA daisy chain connectors. The primary board will start generating a clock for the secondary unit and so on.  | in dev             |
 | | Examples:                               |                                    | |                                                                                                                                         |                    |
 | | ``DAISY:SYNC:CLK ON``                   |                                    |                                                                                                                                           |                    |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
@@ -209,7 +211,8 @@ Parameter options:
 
 .. note::
 
-   The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software. The generation and acquisition trigger fronts apply after the signals have been combined.
+   The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software.
+   The generation and acquisition trigger fronts apply after the signals have been combined and trigger either DAC or ADC depending on the ``DAISY:TRIG_O:SOUR <mode>`` command.
 
 .. _scpi_gen:
 
@@ -240,158 +243,161 @@ Parameter options:
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| SCPI                                            | API                                    | DESCRIPTION                                                                   |  ECOSYSTEM         |
-+=================================================+========================================+===============================================================================+====================+
-| | ``OUTPUT:STATE <state>``                      | | ``rp_GenOutEnableSync``              | Runs or Stops both channels synchronously.                                    | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``OUTPUT:STATE ON``                           |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``OUTPUT<n>:STATE <state>``                   | | ``rp_GenOutEnable``                  | | Disable or enable fast analog outputs.                                      | 1.04-18 and up     |
-| | Examples:                                     | | ``rp_GenOutDisable``                 | | The generator is waiting for the trigger.                                   |                    |
-| | ``OUTPUT1:STATE ON``                          |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``OUTPUT<n>:STATE?`` > ``<state>``            | ``rp_GenOutIsEnabled``                 | Gets value ON if channel is enabled otherwise return OFF.                     | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``OUTPUT1:STATE?`` > ``ON`                    |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FREQ:FIX <frequency>``              | ``rp_GenFreq``                         | | Set the frequency of fast analog outputs.                                   | 1.04-18 and up     |
-| | Examples:                                     |                                        | | For ARBITRARY waveform this is the frequency of 1 buffer (16384 samples)    |                    |
-| | ``SOUR2:FREQ:FIX 100000``                     |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FREQ:FIX?``                         | ``rp_GenGetFreq``                      | Gets channel signal frequency.                                                | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR2:FREQ:FIX?`` > ``100000``              |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FUNC <func>``                       | ``rp_GenWaveform``                     | Set the waveform of fast analog outputs.                                      | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR2:FUNC TRIANGLE``                       |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FUNC?`` > ``<func>``                | ``rp_GenGetWaveform``                  | Gets channel signal waveform.                                                 | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR2:FUNC?`` > ``TRIANGLE``                |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT <amplitude>``                  | ``rp_GenAmp``                          | | Set the amplitude voltage of fast analog outputs in Volts.                  | 1.04-18 and up     |
-| | Examples:                                     |                                        | | Amplitude + offset value must be less than the maximum                      |                    |
-| | ``SOUR2:VOLT 0.5``                            |                                        | | output range ± 1V (depends on board model).                                 |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT?`` > ``<amplitude>``           | ``rp_GenGetAmp``                       | Gets channel signal peak to peak amplitude.                                   | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR2:VOLT?`` > ``0.5``                     |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT:OFFS <offset>``                | ``rp_GenOffset``                       | | Set the offset voltage of fast analog outputs in Volts                      | 1.04-18 and up     |
-| | Examples:                                     |                                        | | Amplitude + offset value must be less than the maximum                      |                    |
-| | ``SOUR1:VOLT:OFFS 0.2``                       |                                        | | output range ± 1V (depends on board model).                                 |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT:OFFS?`` > ``<offset>``         | ``rp_GenGetOffset``                    | Gets DC offset of the signal.                                                 | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:VOLT:OFFS?`` > ``0.2``                |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:PHAS <phase>``                      | ``rp_GenPhase``                        | Set the phase of fast analog outputs.                                         | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR2:PHAS 30``                             |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:PHAS?`` > ``<phase>``               | ``rp_GenGetPhase``                     | Gets channel signal phase.                                                    | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR2:PHAS?`` > ``30``                      |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC <par>``                        | ``rp_GenDutyCycle``                    | Set the duty cycle of the PWM waveform.                                       | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:DCYC 0.2``                            |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC?`` > ``<par>``                 | ``rp_GenGetDutyCycle``                 | Gets duty cycle of PWM signal.                                                | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:DCYC`` > ``0.2``                      |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRAC:DATA:DATA <array>``            | ``rp_GenArbWaveform``                  | | Import data for arbitrary waveform generation (should be 16384 samples).    | 1.04-18 and up     |
-| | Examples:                                     |                                        | | If less samples are provided the output frequency will be faster.           |                    |
-| | ``SOUR1:TRAC:DATA:DATA``                      |                                        |                                                                               |                    |
-| | ``1,0.5,0.2``                                 |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``     | ``rp_GenGetArbWaveform``               | Gets user defined waveform.                                                   | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:TRAC:DATA:DATA?`` >                   |                                        |                                                                               |                    |
-| | ``1,0.5,0.2``                                 |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:STAT <burst>``                 | ``rp_GenMode``                         | | Enable or disable burst (pulse) mode.                                       | 1.04-18 and up     |
-| | Examples:                                     |                                        | | Red Pitaya will generate **R** bursts with **N** signal periods.            |                    |
-| | ``SOUR1:BURS:STAT BURST``                     |                                        | | **P** is the time between start of one and start of next burst.             |                    |
-| | ``SOUR1:BURS:STAT CONTINUOUS``                |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:STAT?`` > ``<burst>``          | ``rp_GenGetMode``                      | Gets generation mode.                                                         | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:STAT?`` > ``BURST``              |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NCYC <count>``                 | ``rp_GenBurstCount``                   | Set the number of cycles/periods in one burst (**N**).                        | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:NCYC 3``                         |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NCYC?`` > ``<count>``          | ``rp_GenGetBurstCount``                | Gets number of generated waveforms in a burst.                                | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:NCYC`` > ``3``                   |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NOR <count>``                  | ``rp_GenBurstRepetitions``             | Set the number of repeated bursts (**R**) (65536 == INF repetitions)          | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:NOR 5``                          |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NOR?`` > ``<count>``           | ``rp_GenGetBurstRepetitions``          | Gets number of burst repetitions.                                             | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:NOR`` > ``5``                    |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+---------------------------+---------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:INT:PER <time>``               | ``rp_GenBurstPeriod``                  | | Set the duration of a single burst in microseconds (**P**).                 | 1.04-18 and up     |
-| | Examples:                                     |                                        | | Time between start of one and start of next burst. If it is set to less     |                    |
-| | ``SOUR1:BURS:INT:PER 1000000``                |                                        | | than one period then the bursts will be concatenated.                       |                    |
-+-------------------------------------------------+----------------------------------------+---------------------------+---------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:INT:PER?`` > ``<time>``        | ``rp_GenGetBurstPeriod``               | Gets the period of one burst in micro seconds.                                | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:INT:PER?`` > ``1000000``         |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRIG:SOUR <trigger>``               | ``rp_GenTriggerSource``                | | Set the trigger source for the selected signal.                             | 1.04-18 and up     |
-| | Examples:                                     |                                        | | External trigger must be a 3V3 CMOS signal.                                 |                    |
-| | ``SOUR1:TRIG:SOUR EXT_PE``                    |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRIG:SOUR?`` > ``<trigger>``        | ``rp_GenGetTriggerSource``             | Gets trigger source.                                                          | 1.04-18 and up     |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:TRIG:SOUR?`` > ``EXT_PE``             |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LastValue <amplitude>``        | ``rp_GenBurstLastValue``               | Sets the value to be set at the end of the generated signal in burst mode.    | in dev             |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:LastValue 0.5``                  |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LastValue?`` > ``<amplitude>`` | ``rp_GenGetBurstLastValue``            | Gets the value to be set at the end of the generated signal in burst mode.    | in dev             |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:BURS:LastValue`` > ``0.5``            |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:InitValue <amplitude>``             | ``rp_GenSetInitGenValue``              | | The level of which is set by the generator after                            | in dev             |
-| | Examples:                                     |                                        | | the outputs are turned on before the signal is generated.                   |                    |
-| | ``SOUR1:InitValue 0.5``                       |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:InitValue?`` > ``<amplitude>``      | ``rp_GenGetInitGenValue``              | Gets the value of the initial signal level.                                   | in dev             |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:InitValue?`` > ``0.5``                |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRIG:INT``                             | ``rp_GenTrigger``                      | | Triggers both sources/channels immediately.                                 | 1.04-18 and up     |
-| |                                               |                                        |                                                                               |                    |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR:TRIG:INT``                             |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRIG:INT``                          | ``rp_GenTrigger``                      | | Triggers the selected source immediately for the selected channel.          | 1.04-18 and up     |
-| |                                               |                                        |                                                                               |                    |
-| | Examples:                                     |                                        |                                                                               |                    |
-| | ``SOUR1:TRIG:INT``                            |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``GEN:RST``                                   | ``rp_GenReset``                        | Reset the generator to default settings.                                      | 1.04-18 and up     |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``PHAS:ALIGN``                                | ``rp_GenSynchronise``                  | Align the output phases of both channels.                                     | 1.04-18 and up     |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRIG:EXT:DEBouncerUs <utime>``         | ``rp_GenSetExtTriggerDebouncerUs``     | | Sets ext. trigger debouncer for generation in Us (Value must be positive).  | 2.00-15 and up     | 
-| | Example:                                      |                                        | | (UNIFIED OS ONLY)                                                           |                    |
-| | ``SOUR:TRIG:EXT:DEBouncerUs 1``               |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``<utime>``  | ``rp_GenGetExtTriggerDebouncerUs``     | | Gets ext. trigger debouncer for generation in Us.                           | 2.00-15 and up     |
-| | Example:                                      |                                        | | (UNIFIED OS ONLY)                                                           |                    |
-| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``1``        |                                        |                                                                               |                    |
-+-------------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                            | API                                    | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=================================================+========================================+==============================================================================================+====================+
+| | ``OUTPUT:STATE <state>``                      | | ``rp_GenOutEnableSync``              | Runs or Stops both channels synchronously.                                                   | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``OUTPUT:STATE ON``                           |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``OUTPUT<n>:STATE <state>``                   | | ``rp_GenOutEnable``                  | | Disable or enable fast analog outputs.                                                     | 1.04-18 and up     |
+| | Examples:                                     | | ``rp_GenOutDisable``                 | | The generator is waiting for the trigger.                                                  |                    |
+| | ``OUTPUT1:STATE ON``                          |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``OUTPUT<n>:STATE?`` > ``<state>``            | ``rp_GenOutIsEnabled``                 | Gets value ON if the channel is enabled otherwise returns OFF.                               | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``OUTPUT1:STATE?`` > ``ON``                   |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FREQ:FIX <frequency>``              | ``rp_GenFreq``                         | | Set the frequency of fast analog outputs.                                                  | 1.04-18 and up     |
+| | Examples:                                     |                                        | | For ARBITRARY waveform this is the frequency of the whole buffer (16384 samples).          |                    |
+| | ``SOUR2:FREQ:FIX 100000``                     |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FREQ:FIX?``                         | ``rp_GenGetFreq``                      | Gets channel signal frequency.                                                               | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR2:FREQ:FIX?`` > ``100000``              |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FUNC <func>``                       | ``rp_GenWaveform``                     | Set the waveform of fast analog outputs.                                                     | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR2:FUNC TRIANGLE``                       |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FUNC?`` > ``<func>``                | ``rp_GenGetWaveform``                  | Gets channel signal waveform.                                                                | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR2:FUNC?`` > ``TRIANGLE``                |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT <amplitude>``                  | ``rp_GenAmp``                          | | Set the amplitude voltage of fast analog outputs in Volts.                                 | 1.04-18 and up     |
+| | Examples:                                     |                                        | | Amplitude + offset value must be less than the maximum                                     |                    |
+| | ``SOUR2:VOLT 0.5``                            |                                        | | output range ± 1V (depends on board model).                                                |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT?`` > ``<amplitude>``           | ``rp_GenGetAmp``                       | Gets channel signal peak to peak amplitude.                                                  | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR2:VOLT?`` > ``0.5``                     |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT:OFFS <offset>``                | ``rp_GenOffset``                       | | Set the offset voltage of fast analog outputs in Volts                                     | 1.04-18 and up     |
+| | Examples:                                     |                                        | | Amplitude + offset value must be less than the maximum                                     |                    |
+| | ``SOUR1:VOLT:OFFS 0.2``                       |                                        | | output range ± 1V (depends on board model).                                                |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT:OFFS?`` > ``<offset>``         | ``rp_GenGetOffset``                    | Gets DC offset of the signal.                                                                | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:VOLT:OFFS?`` > ``0.2``                |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:PHAS <phase>``                      | ``rp_GenPhase``                        | Set the phase of fast analog outputs.                                                        | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR2:PHAS 30``                             |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:PHAS?`` > ``<phase>``               | ``rp_GenGetPhase``                     | Gets channel signal phase.                                                                   | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR2:PHAS?`` > ``30``                      |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:DCYC <par>``                        | ``rp_GenDutyCycle``                    | Set the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:DCYC 0.2``                            |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:DCYC?`` > ``<par>``                 | ``rp_GenGetDutyCycle``                 | Gets duty cycle of PWM signal.                                                               | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:DCYC`` > ``0.2``                      |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRAC:DATA:DATA <array>``            | ``rp_GenArbWaveform``                  | | Import data for arbitrary waveform generation (should be 16384 samples).                   | 1.04-18 and up     |
+| | Examples:                                     |                                        | | If fewer samples are provided the output frequency will be higher.                         |                    |
+| | ``SOUR1:TRAC:DATA:DATA``                      |                                        |                                                                                              |                    |
+| | ``1,0.5,0.2``                                 |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``     | ``rp_GenGetArbWaveform``               | Gets user defined waveform.                                                                  | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:TRAC:DATA:DATA?`` >                   |                                        |                                                                                              |                    |
+| | ``1,0.5,0.2``                                 |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:STAT <burst>``                 | ``rp_GenMode``                         | | Enable or disable burst (pulse) mode.                                                      | 1.04-18 and up     |
+| | Examples:                                     |                                        | | Red Pitaya will generate **R** bursts with **N** signal periods.                           |                    |
+| | ``SOUR1:BURS:STAT BURST``                     |                                        | | **P** is the time between the start of one and the start of the next burst.                |                    |
+| | ``SOUR1:BURS:STAT CONTINUOUS``                |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:STAT?`` > ``<burst>``          | ``rp_GenGetMode``                      | Gets generation mode.                                                                        | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:BURS:STAT?`` > ``BURST``              |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NCYC <count>``                 | ``rp_GenBurstCount``                   | Set the number of cycles/periods in one burst (**N**).                                       | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:BURS:NCYC 3``                         |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NCYC?`` > ``<count>``          | ``rp_GenGetBurstCount``                | Gets number of generated waveforms in a burst.                                               | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:BURS:NCYC`` > ``3``                   |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NOR <count>``                  | ``rp_GenBurstRepetitions``             | Set the number of repeated bursts (**R**) (65536 == INF repetitions)                         | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:BURS:NOR 5``                          |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NOR?`` > ``<count>``           | ``rp_GenGetBurstRepetitions``          | Gets number of burst repetitions.                                                            | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:BURS:NOR`` > ``5``                    |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+---------------------------+------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER <time>``               | ``rp_GenBurstPeriod``                  | | Set the duration of a single burst in microseconds (**P**).                                | 1.04-18 and up     |
+| | Examples:                                     |                                        | | Time between the start of one and the start of the next burst.                             |                    |
+| | ``SOUR1:BURS:INT:PER 1000000``                |                                        | | The bursts will always have at least 1 us between them: If the period is                   |                    |
+|                                                 |                                        | | shorter than the burst, the software will default to 1 us between bursts.                  |                    |
++-------------------------------------------------+----------------------------------------+---------------------------+------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER?`` > ``<time>``        | ``rp_GenGetBurstPeriod``               | Gets the period of one burst in micro seconds.                                               | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:BURS:INT:PER?`` > ``1000000``         |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRIG:SOUR <trigger>``               | ``rp_GenTriggerSource``                | | Set the trigger source for the selected signal.                                            | 1.04-18 and up     |
+| | Examples:                                     |                                        | | External trigger must be a 3V3 CMOS signal.                                                |                    |
+| | ``SOUR1:TRIG:SOUR EXT_PE``                    |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRIG:SOUR?`` > ``<trigger>``        | ``rp_GenGetTriggerSource``             | Gets trigger source.                                                                         | 1.04-18 and up     |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:TRIG:SOUR?`` > ``EXT_PE``             |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:LastValue <amplitude>``        | ``rp_GenBurstLastValue``               | | Sets the value to be set at the end of the generated signal in burst mode.                 | in dev             |
+| | Examples:                                     |                                        | | The output will stay on this value until a new signal is generated.                        |                    |
+| | ``SOUR1:BURS:LastValue 0.5``                  |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:LastValue?`` > ``<amplitude>`` | ``rp_GenGetBurstLastValue``            | Gets the value to be set at the end of the generated signal in burst mode.                   | in dev             |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:BURS:LastValue`` > ``0.5``            |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:InitValue <amplitude>``             | ``rp_GenSetInitGenValue``              | | The level of which is set by the generator after                                           | in dev             |
+| | Examples:                                     |                                        | | the outputs are turned on, but before the signal is generated.                             |                    |
+| | ``SOUR1:InitValue 0.5``                       |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:InitValue?`` > ``<amplitude>``      | ``rp_GenGetInitGenValue``              | Gets the value of the initial signal level.                                                  | in dev             |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:InitValue?`` > ``0.5``                |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR:TRIG:INT``                             | ``rp_GenTrigger``                      | | Triggers both sources/channels immediately.                                                | 1.04-18 and up     |
+| |                                               |                                        |                                                                                              |                    |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR:TRIG:INT``                             |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRIG:INT``                          | ``rp_GenTrigger``                      | | Triggers the selected source immediately for the selected channel.                         | 1.04-18 and up     |
+| |                                               |                                        |                                                                                              |                    |
+| | Examples:                                     |                                        |                                                                                              |                    |
+| | ``SOUR1:TRIG:INT``                            |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``GEN:RST``                                   | ``rp_GenReset``                        | Reset the generator to default settings.                                                     | 1.04-18 and up     |
+|                                                 |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``PHAS:ALIGN``                                | ``rp_GenSynchronise``                  | Align the output phases of both channels.                                                    | 1.04-18 and up     |
+|                                                 |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR:TRIG:EXT:DEBouncerUs <utime>``         | ``rp_GenSetExtTriggerDebouncerUs``     | | Sets ext. trigger debouncer for generation in Us (Value must be positive).                 | 2.00-15 and up     |
+| | Example:                                      |                                        | | (UNIFIED OS ONLY)                                                                          |                    |
+| | ``SOUR:TRIG:EXT:DEBouncerUs 1``               |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``<utime>``  | ``rp_GenGetExtTriggerDebouncerUs``     | | Gets ext. trigger debouncer for generation in Us.                                          | 2.00-15 and up     |
+| | Example:                                      |                                        | | (UNIFIED OS ONLY)                                                                          |                    |
+| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``1``        |                                        |                                                                                              |                    |
++-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
 .. note::
 
@@ -571,6 +577,9 @@ Parameter options:
 Data pointers
 =============
 
+The data is written into a circular buffer which is constantly being overwritten until the triggering moment. Consequently, the trigger position can be anywhere inside the circular buffer,
+even though it is displayed to happen at approx. 8192nd sample in the acquired data (is affected by the ``ACQ:TRIG:DLY`` command).
+
 Parameter options:
 
 * ``<pos> = {position inside circular buffer}``
@@ -660,6 +669,7 @@ Data read
 
 .. _scpi_acq_axi:
 
+================
 DMA mode for ACQ
 ================
 
@@ -711,7 +721,7 @@ DMA mode for ACQ
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:TRIG:FILL?`` > ``1``             |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Dly <count>``             | ``rp_AcqAxiSetTriggerDelay``      | Sets the number of decimated data after trigger written into memory.                   | in dev             |
+| | ``ACQ:AXI:SOUR<n>:Trig:Dly <count>``             | ``rp_AcqAxiSetTriggerDelay``      | Sets the number of decimated data after the trigger written into memory.               | in dev             |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:Trig:Dly 2314``                  |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
@@ -723,7 +733,7 @@ DMA mode for ACQ
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:Write:Pos?`` > ``1024``          |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``pos``          | ``rp_AcqAxiGetWritePointerAtTrig``| Returns position of AXI ADC write pointer at time when trigger arrived.                | in dev             |
+| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``pos``          | ``rp_AcqAxiGetWritePointerAtTrig``| Returns the position of AXI ADC write pointer at a time when trigger arrived.          | in dev             |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:Trig:Pos?`` > ``512``            |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
@@ -815,7 +825,7 @@ Parameter options:
 | | ``UART:PARITY?`` > ``ODD``        |                              |                                                                                        |                    |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | | ``UART:TIMEOUT <timeout>``        | ``rp_UartSetTimeout``        | | Sets the timeout for reading from UART. 0 - Disable timeout. 1 = 1/10 sec.           | 1.04-18 and up     |
-| | Example:                          |                              | | Example: 10 - 1 sec. Max timout: 25.5 sec                                            |                    |
+| | Example:                          |                              | | Example: 10 - 1 sec. Max timeout: 25.5 sec                                           |                    |
 | | ``UART:TIMEOUT 10``               |                              |                                                                                        |                    |
 +-------------------------------------+------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | | ``UART:TIMEOUT?`` > ``<timeout>`` | ``rp_UartGetTimeout``        | Gets the timeout.                                                                      | 1.04-18 and up     |
@@ -843,7 +853,7 @@ Parameter options:
 * ``<cs_mode> = {NORMAL, HIGH}``  Default: ``NORMAL``
 * ``<bits> = {7,..}``  Default: ``8``
 * ``<speed> = {1,100000000}`` Default: ``50000000``
-* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
+* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated commas
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -893,7 +903,7 @@ Parameter options:
 | | Example:                                 |                                | | - NORMAL = After the message is transmitted,                                     |                    |
 | | ``SPI:SET:CSMODE NORMAL``                |                                | | the CS line is set to the HIGH state.                                            |                    |
 | |                                          |                                | | - HIGH = After the message has been transmitted,                                 |                    |
-| |                                          |                                | | - the CS line is set to the LOW state.                                           |                    |
+| |                                          |                                | | the CS line is set to the LOW state.                                             |                    |
 +--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:CSMODE?`` > ``<cs_mode>`` | ``rp_SPI_GetCSMode``           | Gets the specified CS mode for SPI.                                                | in dev             |
 | | Example:                                 |                                |                                                                                    |                    |
@@ -1047,7 +1057,7 @@ Parameter options:
 
 .. note::
 
-   SMBUS is a standardised protocol for communicating with I2C devices. Information about this protocol can be found in this link: |SMBUS specs|. IOCTL writes and reads data directly from I2C.
+   SMBUS is a standardized protocol for communicating with I2C devices. Information about this protocol can be found in this link: |SMBUS specs|. IOCTL writes and reads data directly from I2C.
 
 .. |SMBUS specs| raw:: html
 
@@ -1065,6 +1075,7 @@ Parameter options:
 * ``<mode> = {OFF, ON}``  Default: ``ON``
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
 +-------------------------------------+--------------------------------+------------------------------------------------------------------------------------+--------------------+
 | SCPI                                | API                            | DESCRIPTION                                                                        |  ECOSYSTEM         |
 +=====================================+================================+====================================================================================+====================+

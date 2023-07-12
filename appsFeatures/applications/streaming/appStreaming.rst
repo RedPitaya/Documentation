@@ -9,10 +9,10 @@ The Streaming application enables users to stream data from Red Pitaya to:
     * A file saved on the Red Pitaya SD card
     * A file saved on a remote computer via the ethernet protocol (UDP or TCP).
 
-The user is able to set:
+The user can set:
 
     * The sampling frequency (rate)
-    * Input channel count (Channel 1, Channel 2 or Both (4 Channels for STEMlab 125-14 4-Input))
+    * Input channel count (Channel 1, Channel 2, or Both (4 Channels for STEMlab 125-14 4-Input))
     * Input channel resolution (8 or 16 bits)
     * Input attenuation (HV/LV mode) (for 125-xx, a switch of the jumper is required)
     * Whether to use the calibration or not (for 125-xx, the filter is also calibrated)
@@ -27,8 +27,12 @@ Streamed data can be stored into:
 
 Max. streaming speeds are limited to:
 
-    * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for the optimal streaming performance)
+    * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance)
     * 20 MB/s for streaming over 1 Gbit network (A :ref:`direct connection <dir_cab_connect>` is recommended to achieve the best streaming performance)
+
+.. note::
+
+   We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves, but it is complicated.
 
 
 ********************************************
@@ -49,7 +53,7 @@ Start using the Red Pitaya streaming feature
             :width: 20%
             :align: center
 
-            Example: streaming on ch1, 8 bit resolution, 5.208 MSps into TDMS file format
+            Example: streaming on ch1, 8-bit resolution, 5.208 MS/s into TDMS file format
 
     #. Press STOP to stop streaming
 
@@ -79,7 +83,7 @@ Start using the Red Pitaya streaming feature
             :width: 20%
             :align: center
 
-            Example: streaming on ch1, 16 bit resolution 5 MSps, TCP
+            Example: streaming on ch1, 16-bit resolution 5 MS/s, TCP
 
     #. Run the streaming app on a remote computer (copy the IP address from the web interface and choose the required file format).
 
@@ -192,7 +196,7 @@ You can also use the desktop version of the client for streaming
                 Files with clients are in the streaming web application. You can download it from RP itself.
 
 
-    #. Unzip and run client
+    #. Unzip and run the client
 
         .. note::
 
