@@ -4,22 +4,46 @@
 Prepare SD card
 ###############
 
-**************************************
-Download and install the SD card image
-**************************************
 
-The next procedure will create a clean SD card image.
+***********
+OS Versions
+***********
 
-1. Download the Red Pitaya SD card image:
 
-RedPitaya OS 2.0:
+Nightly Builds
+==============
 
-   - `Latest Beta <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-15_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 18cb8bdc3c623f0e8de31b30316cbf10)
+You can now download Nightly Builds for your Red Pitaya!
+
+The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on ways to improve them before they are released as a Beta OS or Stable version.
+
+We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time that it takes to fix some of the reported issues or implement some new features that were reported as suggestions for improvement.
+
+As these builds are snapshots of the latest code, it is more likely you will encounter an issue compared to the stable releases. If you have encountered an issue, please report it to support@redpitaya.com so that our developers can review the issue and make any needed fixes.
+
+**Nightly Builds ecosystem**: 
+
+   - |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_
+
+Ecosystem builds run every Saturday night.
 
 .. note::
 
-   This version of the ecosystem includes a build for all boards.
-   Boards currently supported:
+   These versions may be unstable and could result in misconfigurations or measurement data loss.
+   We recommend you use them only for testing or in cases where you have reported a bug or requested a feature and our technical staff is instructing you to do so.
+
+
+.. |nightly builds| raw:: html
+
+   <a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>
+
+
+Unified OS
+==========
+
+This version of the ecosystem includes a build for all boards.
+
+Boards currently supported:
 
    - STEMlab 125-10
    - STEMlab 125-14
@@ -28,53 +52,66 @@ RedPitaya OS 2.0:
    - SDRlab 122-16
    - SIGNALlab 250-12
 
-   Unify ecosystem now includes primary (master)/secondary (slave) functionality for streaming.
+Unify ecosystem now includes primary (master)/secondary (slave) functionality for streaming.
 
-.. note::
+New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
+To run the C applications please use one of the following combinations of OS and ecosystem:
 
-   `Nightly Builds` of the ecosystem is available here: `link <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_.
-   Ecosystem builds run every Saturday night.
-   
-   Please note that this is a Test OS, so there might be bugs in the ecosystem.
+   - UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
+   - Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
+
+
+**RedPitaya OS 2.0**:
+
+   - `Latest Beta <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-15_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 18cb8bdc3c623f0e8de31b30316cbf10)
 
 .. note::
 
    If you have problems running the new version of the ecosystem on the boards listed above, please contact the |SUPPORT_LINK| team.
 
+
+.. |SUPPORT_LINK| raw:: html
+
+   <a href="https://redpitaya.com/contact-us/" target="_blank">support</a>
+
+
+Latest and Beta versions 1.04 OS
+================================
+
 .. warning::
 
-   New C libraries were added with the Unified (2.00) OS, which causes the C program compilation to fail on older OS.
+   New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
    To run the C applications please use one of the following combinations of OS and ecosystem:
+
       - UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
       - Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
 
 
-
-STEMlab 125-14 & STEMlab 125-10:
+**STEMlab 125-14 & STEMlab 125-10**:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
 
 
-STEMlab 125-14 (SECONDARY/SLAVE board):
+**STEMlab 125-14 (SECONDARY/SLAVE board)**:
 
    - `Latest Beta <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
 
-STEMlab 125-14-Z7020:
+**STEMlab 125-14-Z7020**:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
 
-STEMlab 125-14 4-Input:
+**STEMlab 125-14 4-Input**:
 
    - `Latest Beta <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
 
-SDRlab 122-16:
+**SDRlab 122-16**:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
    - `Latest Beta <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
 
-SIGNALlab 250-12:
+**SIGNALlab 250-12**:
 
    - `Latest Stable <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
    - `Latest Beta <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
@@ -96,24 +133,42 @@ SIGNALlab 250-12:
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
 
-.. |SUPPORT_LINK| raw:: html
 
-   <a href="https://redpitaya.com/contact-us/" target="_blank">support</a>
+Older OS versions
+=================
+
+All older OS versions that are in our database are available in our archive:
+
+   - |Red Pitaya archive|
+
+For manual ecosystem upgrades please refer to `Manual upgrade`_.
+
+.. |Red Pitaya archive| raw:: html
+
+   <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a>
 
 
-.. figure:: microSDcard-RP.png
-    :width: 10%
+**************************************
+Download and install the SD card image
+**************************************
 
-2. Unzip the SD card image.
+The next procedure will create a clean SD card image.
+
+1. Select an appropriate OS version from above and download it. Download the Red Pitaya SD card image:
+
+   .. figure:: microSDcard-RP.png
+       :width: 10%
+
+#. Unzip the SD card image.
 
 #. Write the image onto an SD card. Instructions are available for various operating systems:
 
-.. contents::
-    :local:
-    :backlinks: none
-    :depth: 1
+   .. contents::
+       :local:
+       :backlinks: none
+       :depth: 1
 
-4. Insert the SD card into the Red Pitaya.
+#. Insert the SD card into the Red Pitaya.
 
    .. figure:: pitaya-quick-start-insert-sd-card.png
       :align: center
@@ -189,7 +244,7 @@ Linux
 
    You can also use |balenaEtcher| on Linux and macOS. Instructions are under :ref:`Windows section <windows_gui>`.
 
--------------------------
+
 Ubuntu using Image Writer
 -------------------------
 
@@ -223,7 +278,7 @@ Ubuntu using Image Writer
 
 .. _linux_cli:
 
-------------
+
 Command line
 ------------
 
@@ -279,7 +334,7 @@ macOS
 
    You can also use |balenaEtcher| on Linux and macOS. Instructions are under :ref:`Windows section <windows_gui>`.
 
--------------------
+
 Using ApplePi-Baker
 -------------------
 
@@ -335,7 +390,7 @@ Using ApplePi-Baker
 
 .. _macos_cli:
 
-------------
+
 Command line
 ------------
 
@@ -407,7 +462,7 @@ The OS is changed less frequently.
 
 .. note::
 
-   You can find older and development Red Pitaya OS images and Ecosystem zipfiles
+   You can find older and developed Red Pitaya OS images and Ecosystem zip files
    on our |download server|.
 
 .. |download server| raw:: html
@@ -417,7 +472,7 @@ The OS is changed less frequently.
 
 .. note::
 
-   A list of new features, bugfixes, and known bugs for each Red Pitaya release
+   A list of new features, bug fixes, and known bugs for each Red Pitaya release
    can be found in our |CHANGELOG|.
 
 
