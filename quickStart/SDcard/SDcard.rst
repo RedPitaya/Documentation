@@ -154,7 +154,7 @@ Download and install the SD card image
 
 The next procedure will create a clean SD card image.
 
-1. Select an appropriate OS version from above and download it. Download the Red Pitaya SD card image:
+1. Select an appropriate OS version from above and download it.
 
    .. figure:: microSDcard-RP.png
        :width: 10%
