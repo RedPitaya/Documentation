@@ -608,6 +608,7 @@ GPIO streaming
   The written number of samples equals to *(desired number - 1)*, max 0xFF (8 bits available)
   Not less than 1 - limited to one change per 2 clock cycles.
   A 32 bit chunk of data is structured like this:
+
     * [ 7: 0] RLE decode number for all bits
     * [15: 0] Reserved
     * [23:16] GPIO_x_N bits
