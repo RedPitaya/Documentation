@@ -30,4 +30,4 @@ Measurements
 
    Temperature measured with the fan turned off and on combined with low and high CPU load.
 
-Images via via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
+Images via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
