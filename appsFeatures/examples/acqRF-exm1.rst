@@ -978,7 +978,7 @@ Using functions:
 
 .. |redpitaya_scpi| raw:: html
 
-    <ahref="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
 
 
 Code - Scilab
