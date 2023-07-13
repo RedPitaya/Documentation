@@ -970,12 +970,22 @@ Using functions:
             plot.ylabel('Voltage')
             plot.show()
 
+.. note::
+
+    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order. The code should function at approximately the same speed without them.
+
+
+.. |redpitaya_scpi| raw:: html
+
+    <ahref="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+
 
 Code - Scilab
 *************
 
 Scilab socket input buffer can read approximately 800 samples from Red Pitaya. This is the problem in contributed code
-for Scilab sockets. How to set socket is described on Blink example.
+for Scilab sockets. How to set the socket is described in the Blink example.
 
 .. code-block:: scilab
 
@@ -995,7 +1005,7 @@ for Scilab sockets. How to set socket is described on Blink example.
     
     SOCKET_open(tcpipObj,IP,port);
     
-    // Set decimation value (sampling rate) in respect to you 
+    // Set decimation value (sampling rate) concerning you 
     // acquired signal frequency
     
     
@@ -1007,17 +1017,17 @@ for Scilab sockets. How to set socket is described on Blink example.
     
     SOCKET_write(tcpipObj,'ACQ:TRIG:LEV 0.5');
     
-    // there is an option to select coupling when using SIGNALlab 250-12 
-    // SOCKET_write(tcpipObj,'ACQ:SOUR1:COUP AC'); // enables AC coupling on channel 1
+    //There is an option to select coupling when using SIGNALlab 250-12 
+    // SOCKET_write(tcpipObj,'ACQ:SOUR1:COUP AC'); // enables AC coupling on Channel 1
 
-    // by default LOW level gain is selected
+    //By default LOW-level gain is selected
     SOCKET_write(tcpipObj,'ACQ:SOUR1:GAIN LV'); // user can switch gain using this command
 
     // Set trigger delay to 0 samples
     // 0 samples delay set trigger to center of the buffer
-    // Signal on your graph will have trigger in the center (symmetrical)
-    // Samples from left to the center are samples before trigger 
-    // Samples from center to the right are samples after trigger
+    // Signal on your graph will have a trigger in the center (symmetrical)
+    // Samples from left to center are samples before the trigger 
+    // Samples from the center to the right are samples after the trigger
     
     SOCKET_write(tcpipObj,'ACQ:TRIG:DLY 0');
     
@@ -1028,19 +1038,19 @@ for Scilab sockets. How to set socket is described on Blink example.
     SOCKET_write(tcpipObj,'ACQ:START');
     SOCKET_write(tcpipObj,'ACQ:TRIG CH1_PE');  
     
-    // Wait for trigger
-    // Until trigger is true wait with acquiring
-    // Be aware of while loop if trigger is not achieved
+    // Wait for the trigger
+    // Until the trigger is true wait to acquire
+    // Be aware of the while loop if the trigger is not achieved
     // Ctrl+C will stop code executing 
     
     xpause(1E+6)
     
-    // Read data from buffer 
+    // Read data from the buffer 
     
     signal_str=SOCKET_query(tcpipObj,'ACQ:SOUR1:DATA:OLD:N? 800');
     
-    // Convert values to numbers.// First character in string is “{“  
-    // and 2 latest are empty spaces and last is “}”.  
+    // Convert values to numbers.// First character in the string is “{“  
+    // and 2 latest are empty spaces and the last is “}”.  
     signal_str=part(signal_str, 2:length(signal_str)-3)
     signal_num=strtod(strsplit(signal_str,",",length(signal_str)))';
     
