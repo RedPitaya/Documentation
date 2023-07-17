@@ -4,60 +4,60 @@
 FAQ
 ###
 
-***********************************
+===================================
 How to get started with Red Pitaya?
-***********************************
+===================================
 
 * :ref:`Quick start <quick_start>`
 
 
-**************************************************
+==================================================
 How to connect to Red Pitaya in a few simple steps
-**************************************************
+==================================================
 
 * :ref:`Connected to router <LAN>`
 * :ref:`Direct connection to computer <dir_cab_connect>`
 
 
-**************************************************
+==================================================
 How can I start using RP measurement applications?
-**************************************************
+==================================================
 
 * :ref:`Connect to Red Pitaya <ConnectSTEMlab>`
 
 
-*********************************************************
-How to control RP remotely using LabVIEW, MATLAB, Python?
-*********************************************************
+=============================================================
+How to control RP remotely using LabVIEW, MATLAB, and Python?
+=============================================================
 
 * :ref:`Remote control <remoteControl>`
 
 
-***********************************
+===================================
 How to start with FPGA development?
-***********************************
+===================================
 
 :ref:`Software <software>`
 
-******************
+==================
 How to upgrade OS?
-******************
+==================
 
 :ref:`Prepare SD card <prepareSD>`
 
 
-****************************************
+========================================
 How to connect the external clock to RP?
-****************************************
+========================================
 
 * :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 <top_125_14_EXT>`
 * :ref:`SDRlab 122-16 <top_122_16_EXT>`
 
 .. _internetAccess:
 
-******************************************************************
+==================================================================
 How can I make sure that my Red Pitaya has access to the internet?
-******************************************************************
+==================================================================
 
 How can I make sure that my Red Pitaya has access to the internet?
 
@@ -80,9 +80,9 @@ How can I make sure that my Red Pitaya has access to the internet?
  
 .. _faqConnected:
       
-******************************************************************************************************
+======================================================================================================
 How can I make sure that Red Pitaya is connected to the same network as my computer/tablet/smartphone?
-******************************************************************************************************
+======================================================================================================
 
 The most common answer would be: just make sure that your Red Pitaya and your PC/tablet/smartphone are both connected to the same router or your smartphone hotspot.
 
@@ -94,7 +94,7 @@ In order to test it, you can use a PC that is connected to the same local networ
    * **Linux**: Click on the application button, type in ``Terminal`` and press enter.
    * **macOS**: Hit **cmd + space**, type in ``Terminal`` and press enter.
 
-2. Enter ``arp -a`` command to get a list of all devices in your local area network
+2. Enter the ``arp -a`` command to get a list of all devices in your local area network
    and try to find your Red Pitaya MAC address on the list.
 
    .. code-block:: shell-session
@@ -123,9 +123,9 @@ In order to test it, you can use a PC that is connected to the same local networ
 
 If your Red Pitaya is not listed on the list of your local network devices on the local network, then it is necessary to check that your Red Pitaya is connected to your local network.
 
-*******************************************************************
+===================================================================
 How to find the Red Pitaya URL if it is not written on the sticker?
-*******************************************************************
+===================================================================
 
 The Red Pitaya URL is ``rp-xxxxxx.local`` where ``xxxxxx`` must be replaced with the last 6 digits of the MAC address that is written on the sticker.
 
@@ -136,17 +136,17 @@ If the RP MAC address is ``00:26:33:F1:13:D5``, the last 6 digits are ``F113D5``
 
 .. _isConnected:
 
-********************************************
+============================================
 Is Red Pitaya connected to my local network?
-********************************************
+============================================
 
 1. Connect your Red Pitaya to a PC over a :ref:`Serial Console <console>`.
 
 2. Type “ip a” and hit enter to check the status of your ethernet connection on Red Pitaya.
 
-   a) If you have connected to your Red Pitaya over a wireless connection, you should check the status of ``wlan0`` interface.
+   a) If you have connected to your Red Pitaya over a wireless connection, you should check the status of the ``wlan0`` interface.
 
-   b) If you have connected to your Red Pitaya over a cable connection, you should check ``eth0`` interface.
+   b) If you have connected to your Red Pitaya over a cable connection, you should check the ``eth0`` interface.
 
 3. Type Red Pitaya IP into your web browser to see if you can connect to it.
 
@@ -156,14 +156,14 @@ Is Red Pitaya connected to my local network?
 
 .. _troubleshooting:
 
-**************************
+==========================
 Problems connecting to RP?
-**************************
+==========================
 
 .. figure:: blinking-pitaya-eth.gif
    :align: center
 
-#. First check the LEDs:
+#. First, check the LEDs:
 
    a. If the **green LED** is not **ON** or is **blinking**. It seems like something is wrong with the power supply, or maybe it's the USB cable. Make sure that:
 
@@ -174,7 +174,7 @@ Problems connecting to RP?
    #. If the **green LED** is turned **ON** but the **blue LED** is turned **OFF**. In this case, there is an error while loading the Red Pitaya system from the SD card. Make sure that:
 
        * you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed
-         (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instructions on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
+         (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
        
        * try to use another SD card
 
@@ -194,9 +194,9 @@ Problems connecting to RP?
    so there is no need to install additional software.
 
 
-***************************************************
-Problems with upgrading OS, accessing market place?
-***************************************************
+==========================================================
+Problems with upgrading OS, and accessing the marketplace?
+==========================================================
 
 1. Make sure your Red Pitaya has access to the :ref:`internet <internetAccess>`.
 #. Force a refresh of the Red Pitaya application page. |Wiki refresh|?
@@ -205,9 +205,9 @@ Problems with upgrading OS, accessing market place?
 
    <a href="http://www.wikihow.com/Force-Refresh-in-Your-Internet-Browser" target="_blank">How</a>
 
-*********************
+=====================
 Slow WIFI connection?
-*********************
+=====================
 
 If your wireless connection with Red Pitaya works very slowly and all the applications seem very unresponsive and not running smoothly, please check the following:
 
@@ -216,7 +216,7 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
    1. Connect to your Red Pitaya via an :ref:`SSH <ssh>` connection.
 
-   #. Enter the ``cat /proc/net/wireless`` command in order to get information about link quality and signal strength.
+   #. Enter the ``cat /proc/net/wireless`` command to get information about link quality and signal strength.
 
       .. figure:: Screen-Shot-2015-09-26-at-20.28.27.png
          :align: center
@@ -225,9 +225,8 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
       Level, or signal strength, is a simple measure of the amplitude of the signal that is received. The closer you are to the access point, the higher this will be.
 
-* If you are in an area with many routers around you, it might happen that more of them operate on the same wifi channel, which drastically decreases data throughput and slows down connection.
-Here are the instructions on how to |Wifi channel|.
-  For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
+* If you are in an area with many routers around you, more of them might operate on the same wifi channel, which drastically decreases data throughput and slows down connection. 
+  Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
 
 .. note::
     
@@ -235,74 +234,75 @@ Here are the instructions on how to |Wifi channel|.
 
 .. |Wifi channel| raw:: html
 
-   <a href="http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/" target="_blank">change your wifi router channel in order to optimise your wireless signal</a>
+   <a href="http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/" target="_blank">change your wifi router channel in order to optimize your wireless signal</a>
 
 .. |Wireless Diagnostic Tool| raw:: html
 
    <a href="http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/" target="_blank">Wireless Diagnostic Tool</a>
 
-*************************
+=========================
 WIFI dongle not detected?
-*************************
+=========================
 
 Please note that not all are compatible. A list is in the documentation: :ref:`Supported USB Wi-Fi adapters <support_wifi_adapter>`
 
-***************************************
+=======================================
 Where can I find Red Pitaya schematics?
-***************************************
+=======================================
 
 * :ref:`STEMlab 125-10 <top_125_10>`
 * :ref:`STEMlab 125-14 <top_125_14>`
 * :ref:`SDRlab 122-16 <top_122_16>`
 * :ref:`SIGNALlab 250-12 <top_250_12>`
 
-***********************************************************
-My device shows wrong measurements. How can I calibrate it?
-***********************************************************
+
+===============================================================
+My device shows the wrong measurements. How can I calibrate it?
+===============================================================
 
 The Red Pitaya can be calibrated using the :ref:`Calibration Tool <calibration_app>`
 
-*****************************************************************************
+======================================================================
 Web interface not functioning properly or experimenting with freezing?
-*****************************************************************************
+======================================================================
 
 Please ensure that your browser's ad blocker is turned off and that your proxy settings are correct. For local connections to the Red Pitaya unit, proxy settings should not be required.
 
-*******************************
+===============================
 Red Pitaya not booting anymore?
-*******************************
+===============================
 
 A possible cause could be a corrupted card, and the recommendation is a manual OS re-write: :ref:`Prepare SD card <prepareSD>`
 
-***********************************************************************************
+===================================================================================
 Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?
-***********************************************************************************
+===================================================================================
 
 No, the hardware is identical. The only difference is that the latter would have been sent to a certification lab and the appropriate measurements would have been made.
 
-*************************
+=========================
 Undesired disconnections?
-*************************
+=========================
 
 We recommend testing on a different computer, checking the state of the Ethernet cables and power supply, proxy settings, and re-writing the OS.
 
 
-********************************************
+============================================
 Red Pitaya not booting even after OS update?
-********************************************
+============================================
 
-Please use the Balena Etcher application to re-write the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
+Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
 
-*****************************
+================================
 Is Red Pitaya failing to update?
-*****************************
+================================
 
-Please use the Balena Etcher application to re-write the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
+Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
 
 
-********************
+====================
 How to report a bug?
-********************
+====================
 
 Please send us an e-mail at support@redpitaya.com with the following information:
 

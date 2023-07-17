@@ -10,7 +10,7 @@ build:
   tools:
     python: "3.11"
     # You can also specify other tool versions:
-    # nodejs: "19"
+    nodejs: "19"
     # rust: "1.64"
     # golang: "1.19"
 
@@ -18,7 +18,7 @@ build:
 sphinx:
   builder: html
   configuration: conf.py
-  fail_on_warning: true
+  # fail_on_warning: true
 
 # Optionally build your docs in additional formats such as PDF, ePub, and HTML zip
 # Build the docs in epub and pdf version

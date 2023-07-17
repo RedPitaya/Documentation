@@ -5,19 +5,24 @@ Compiling and running C applications
 ####################################
 
 You can write simple C algorithms, make executables and run them on the Red Pitaya board. A list of
-built in functions (APIs) is available providing full control over Red Pitaya board (signal generation and
+built-in functions (APIs) are available providing full control over the Red Pitaya board (signal generation and
 acquisition, digital I/O control, communication: I2C, SPI, UART and other).
 How to compile a C algorithm is shown in the instructions below, while a list of Examples is available
-:ref:`here <list-of-supported-scpi-commands>`.
+:ref:`here <examples>`.
 
 .. note::
 
-    When you copy the source code from our repository (following instructions below) you will also copy all C examples to your Red Pitaya board. After that only the compiling step is needed.
+    When you copy the source code from our repository (following the instructions below) you will also copy all C examples to your Red Pitaya board. After that, only the compiling step is needed.
 
 .. note::
 
-    Here is a :ref:`link to the rp.c <https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/src/rp.c>` which contains all the C functions used in the examples.
+    Here is a |rp.c| which contains all the C functions used in the examples.
     
+.. |rp.c| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/src/rp.c" target="_blank">link to rp.c</a>
+    
+
 
 **Compiling and running on Red Pitaya board**
 
@@ -51,7 +56,7 @@ In order to compile one example just use the source file name without the `.c` e
 
 .. warning::
 
-    Currently, there are some issues with combining the new ecosystem (GitHub release 2023.1) with non-UNIFIED OS versions. If you are using an OS version that is not UNIFIED OS, please use the 2022.2 relase of the ecosystem.
+    Currently, there are some issues with combining the new ecosystem (GitHub release 2023.1) with non-UNIFIED OS versions. If you are using an OS version that is not UNIFIED OS, please use the 2022.2 release of the ecosystem.
 
 
 Applications based on the API require a specific FPGA image to be loaded:

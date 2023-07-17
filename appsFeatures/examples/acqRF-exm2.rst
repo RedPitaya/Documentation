@@ -207,3 +207,18 @@ Using functions:
     plot.plot(buff)
     plot.ylabel('Voltage')
     plot.show()
+
+
+
+
+.. note::
+
+    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order. The code should function at approximately the same speed without them.
+
+    For further information on functions please consult the redpitaya_scpi.py code.
+
+
+.. |redpitaya_scpi| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>

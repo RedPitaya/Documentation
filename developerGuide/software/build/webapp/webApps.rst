@@ -8,3 +8,4 @@ Create your own WEB applications
    sysOver
    firstApp
    webExamples
+   manualApps
