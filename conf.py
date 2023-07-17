@@ -36,7 +36,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx_tabs.tabs',
     'github',
-    'sphinx.ext.intersphinx'
+    'sphinx.ext.intersphinx',
 ]
 
 sphinx_tabs_valid_builders = ['linkcheck']
@@ -320,7 +320,7 @@ texinfo_documents = [
 
 
 intersphinx_mapping = {
-    'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None)
+    'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None),
 }
 
 # We recommend adding the following config value.
