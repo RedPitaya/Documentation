@@ -219,6 +219,7 @@ You can edit and change them according to your needs and develop customized prog
    ../examples/analog
    ../examples/genRF
    ../examples/acqRF
+   ../examples/acq_genRF
    ../examples/digcomIF
 
 Additional examples: :ref:`ABCLED`
