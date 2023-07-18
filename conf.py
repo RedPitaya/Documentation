@@ -319,13 +319,8 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 
-#intersphinx_mapping = {
-#    'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None),
-#}
-
-#!!!!!! THIS PRODUCES A WARNING (404 project not found)- NEEDS FIXING !!!!!!!!!!!
 intersphinx_mapping = {
-    'sref': ('https://activelearning.readthedocs.io/en/latest/', None)
+    'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None),
 }
 
 # We recommend adding the following config value.
