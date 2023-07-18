@@ -323,6 +323,11 @@ texinfo_documents = [
 #    'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None),
 #}
 
+#!!!!!! THIS PRODUCES A WARNING (404 project not found)- NEEDS FIXING !!!!!!!!!!!
+intersphinx_mapping = {
+    'sref': ('https://activelearning.readthedocs.io/en/latest/', None)
+}
+
 # We recommend adding the following config value.
 # Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
 # This behavior has unintended side-effects, namely that documentation local references can
