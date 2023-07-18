@@ -319,9 +319,9 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 
-intersphinx_mapping = {
-    'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None),
-}
+#intersphinx_mapping = {
+#    'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None),
+#}
 
 # We recommend adding the following config value.
 # Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
