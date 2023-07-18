@@ -17,12 +17,12 @@ Required hardware
     - Primary Red Pitaya device (STEMlab 125-14 LN)
     - One or more Secondary devices (STEMlab 125-14 LN Secondary)
     - A click shield for each unit
-    - Cables
+    - UFL Cables
 
 **Wiring example:**
 
   - Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
-  - Connect the click shields with "" cables
+  - Connect the click shields with UFL cables
 
 **Click shield switch and jumper positions:**
 
@@ -50,7 +50,8 @@ Code - Python
 Using just SCPI commands:
 
 .. code-block:: python
-    
+    :linenos:
+
     #!/usr/bin/env python3
     """ Click shield daisy chain example for Red Pitaya """
 
@@ -205,7 +206,8 @@ Using just SCPI commands:
 Using functions:
 
 .. code-block:: python
-    
+    :linenos:
+
     #!/usr/bin/env python3
     """ Click shield daisy chain example for Red Pitaya """
 
