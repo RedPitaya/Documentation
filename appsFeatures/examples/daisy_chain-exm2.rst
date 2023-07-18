@@ -16,7 +16,7 @@ Required hardware
 
     - Primary Red Pitaya device (STEMlab 125-14 LN)
     - One or more Secondary devices (STEMlab 125-14 LN Secondary)
-    - A click shield for each unit
+    - A Red Pitaya Click Shield for each unit
     - UFL Cables
 
 **Wiring example:**
