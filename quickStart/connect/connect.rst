@@ -46,22 +46,22 @@ Plug the ethernet cable from your PC to the Red Pitaya board.
 **Here is the procedure for a direct Ethernet connection:**
 
 
-**Windows 7,8,10** (the Bonjour service must be installed for Win 7/8)
+**Windows** (the Bonjour service must be installed for Win 7/8)
 
-1. Connect the Ethernet cable and wait 30 sec
+1. Connect the Ethernet cable and wait approx. 30 sec
 2. Open the web browser and type **rp-xxxxxx.local/** in the URL field
    
 
 **Linux / Ubuntu**
 
 1. Open Network settings, Edit Connection, and for the LAN network, select Method **Share to other computers** under IPv4 Settings.
-2. Connect the Ethernet cable and wait 30 sec
+2. Connect the Ethernet cable and wait approx. 30 sec
 3. Open the web browser and type **rp-xxxxxx.local/** in the URL field
    
     
 **MAC**
 
-1. Connect the Ethernet cable and wait 30 sec
+1. Connect the Ethernet cable and wait approx. 30 sec
 2. Open the web browser and type **rp-xxxxxx.local/** in the URL field
    
 
@@ -71,11 +71,14 @@ Plug the ethernet cable from your PC to the Red Pitaya board.
 
 .. warning::
 
-      If you experience some problems when using the Direct Ethernet Connection described above, try to **disable the WiFi** connection on **your PC** (if it has been enabled) and **reset the Red Pitaya** board (power off/on). If the problem persists, you can try the STATIC IP configuration described below.
+      If you experience some problems when using the Direct Ethernet Connection described above, try to **disable the WiFi** connection on **your PC** (if it has been enabled) and **reset the Red Pitaya** board (power off/on). If the problem persists, you can try the :ref:`STATIC IP configuration <static_ip>` described below.
 
------------------------
+
+.. _static_ip:
+
+=======================
 Static IP configuration
------------------------
+=======================
 
 This type of connection requires additional settings on your PC and Red Pitaya board. 
 
@@ -83,35 +86,38 @@ This type of connection requires additional settings on your PC and Red Pitaya b
 
    This connection is also arranged via the Network Manager application, so users should first have access to the LAN (DHCP) network in order to arrange a static IP on the Red Pitaya board. 
     
-How to set up a direct Ethernet connection is described below.
 
-The first step is connecting the Red Pitaya board directly to the LAN network and setting a static IP on it. 
+The first step is connecting the Red Pitaya board directly to the LAN network and setting a static IP on it.
 
-1. Use the recommended connection described in **Local Area Network (LAN)** section.
-   Once you are successfully connected to your Red Pitaya board, open Network Manager and choose the ``Static`` option.
-   Input the static IP and click **Apply**.
+1. Establish a :ref:`direct Ethernet cable connection <dir_cab_connect>`.
+
+#. Connect to your Red Pitaya main web page.
+
+#. Go to **System** and start the **Network Manager application**.
+
+#. Choose the ``Static`` option. Then, input the static IP and click **Apply**.
 
    .. figure:: connect-11.png
 
-2. The second step is to set a network setting on the PC.
+5. The next step is to set a network setting on the PC.
    Here is an example on Ubuntu 14.04, but it is very similar on other operating systems as well.
    To set up a direct connection with your PC, follow these next steps:
     
    1. Launch Network Manager on your computer. 
    2. Add a new Ethernet connection.
-      **(There is no need to create a new network since you can set static IP settings on the existing network and skip all steps up to step 5.)**
+      **(There is no need to create a new network since you can set static IP settings on the existing network and skip all steps up to step 8.)**
 
    .. figure:: connect-12.png
 
-3. Select **Ethernet** connection and press **Create** button.
+6. Select **Ethernet** connection and press **Create** button.
 
    .. figure:: connect-13.png
 
-4. Select the name of the new Ethernet connection.
+7. Select the name of the new Ethernet connection.
 
    .. figure:: connect-14.png
 
-5. Select **Method – Manual**, press the **Add** button, and insert:
+8. Select **Method – Manual**, press the **Add** button, and insert:
 
    - The static IP address of your PC (must be different from the IP address of the Red Pitaya board), 
    - Netmask (input: 255.255.255.0)
@@ -125,6 +131,7 @@ The first step is connecting the Red Pitaya board directly to the LAN network an
     Once you have these settings arranged, connect the Ethernet cable between your Red Pitaya board and PC, open a web browser, in the web browser URL field, input the chosen Red Pitaya board static IP (in our example, ``192.168.0.15``) and press enter.
 
 .. figure:: connect-16.png 
+
 
 .. _wireless:
 
