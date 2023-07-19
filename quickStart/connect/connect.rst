@@ -19,7 +19,7 @@ Simply follow these 3 simple steps:
        
 .. note::
 
-   ``xxxxxx``is the last 6 characters from the MAC address of your Red Pitaya board.
+   ``xxxxxx`` are the last 6 characters from the MAC address of your Red Pitaya board.
    The MAC address is written on the Ethernet connector.
     
 .. figure:: connect-2.png
@@ -67,7 +67,7 @@ Plug the ethernet cable from your PC to the Red Pitaya board.
 
 .. note::
 
-      ``xxxxxx``is the last 6 characters from the MAC address (on the Ethernet connector)
+      ``xxxxxx`` are the last 6 characters from the MAC address (on the Ethernet connector)
 
 .. warning::
 
