@@ -193,7 +193,7 @@ Connect to your Red Pitaya board via the terminal on a Linux machine and start t
 .. figure:: scpi-ssh.png
 
 
-.. include:: SCPI_commands.rst
+.. include:: SCPI_commands.inc
 
 
 .. _examples:
