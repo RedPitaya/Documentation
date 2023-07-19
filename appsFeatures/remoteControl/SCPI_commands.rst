@@ -4,18 +4,17 @@
 
 .. TODO Add parameters for API commands!!!!
 
-.. _scpi_common:
-
 *******************************
 List of supported SCPI commands
 *******************************
 
-
-.. _scpi_board:
+.. _scpi_common:
 
 ======================
 Board control commands
 ======================
+
+.. _scpi_board:
 
 Parameter options:
 
