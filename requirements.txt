@@ -1,6 +1,7 @@
-https://github.com/executablebooks/sphinx-tabs/archive/refs/tags/v3.0.0.tar.gz
+#https://github.com/executablebooks/sphinx-tabs/archive/refs/tags/v3.0.0.tar.gz
 # sphinx-tabs
 
 
 # Packages that need to be installed (update the versions from time to time)
 sphinx_rtd_theme==1.2.2
+sphinx-tabs==3.4.1
