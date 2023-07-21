@@ -120,9 +120,9 @@ Code - Python
     rp_s = scpi.scpi(sys.argv[1])
 
     if (len(sys.argv) > 2):
-    led = int(sys.argv[2])
+        led = int(sys.argv[2])
     else:
-    led = 0
+        led = 0
 
     print ("Blinking LED["+str(led)+"]")
 
