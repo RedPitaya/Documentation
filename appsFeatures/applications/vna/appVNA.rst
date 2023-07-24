@@ -70,7 +70,7 @@ Type in the IP or URL address of the Red Pitaya board
 Connect by entering the Red Pitaya's IP:
 ----------------------------------------
 
-.. figure::  img/1_ip.PNG
+.. figure::  img/1_ip.png
     :align: center
 
 To find the IP address of the Red Pitaya board, first connect to RedPitaya by following these :ref:`instructions <quick_start>`.
@@ -87,7 +87,7 @@ Address: xxx.xxx.xxx.xxx .
 Connect by entering RedPitaya URL:
 ----------------------------------
 
-.. figure::  img/1_url.PNG
+.. figure::  img/1_url.png
     :align: center
 
 ============================================================
@@ -102,7 +102,7 @@ Run the Vector Network Analyzer application on the RedPitaya
 Click "Connect" inside the Vector Network Analyzer control app
 ==============================================================
 
-.. figure::  img/2_connect.PNG
+.. figure::  img/2_connect.png
     :align: center
 
 ***************************************
@@ -114,7 +114,7 @@ Perform calibration and start measuring
    The VNA module works for frequencies above 500 kHz. Please start the calibration process at 500 kHz (ignore calibration values in the pictrures).
 
 
-    .. figure::  img/3_calibrate.PNG
+    .. figure::  img/3_calibrate.png
         :align: center
 
 #. Connect the SMA OPEN calibration connector marked with the letter O to the DUT SMA connector of the network vector analyzer bridge module. Click the button "Open" and wait for the calibration procedure to complete.
@@ -134,7 +134,7 @@ Perform calibration and start measuring
 
 #. Select the Smith chart tab at the bottom and then click the Single button to perform a single measurement of the DUT. A dot in the middle of the Smith chart circle (@ 50 Ohm) will indicate that VNA is properly measuring the reference 50 Ohm LOAD.
 
-    .. figure::  img/4-load_DUT_smith_chart.PNG
+    .. figure::  img/4-load_DUT_smith_chart.png
         :align: center
 
 #. Disconnect the LOAD SMA connector and connect whatever DUT you’d like to measure.
