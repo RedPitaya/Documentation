@@ -80,7 +80,7 @@ After the **third step**, you will get a Red Pitaya main page, as shown below.
 Connection types
 ================
 
-For detailed instructions on connection types, please check-out the sections below:
+For detailed instructions on connection types, please check out the sections below:
 
 .. toctree::
    :maxdepth: 2
@@ -106,5 +106,5 @@ For detailed instructions on connection types, please check-out the sections bel
 
    Access to the internet is only required when:
 
-   * upgrading Red Pitaya OS,
-   * installing applications from the marketplace.
+   - upgrading Red Pitaya OS,
+   - installing applications from the marketplace.
