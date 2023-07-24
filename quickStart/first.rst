@@ -106,5 +106,5 @@ For detailed instructions on connection types, please check out the sections bel
 
    Access to the internet is only required when:
 
-   - upgrading Red Pitaya OS,
-   - installing applications from the marketplace.
+   * upgrading Red Pitaya OS,
+   * installing applications from the marketplace.
