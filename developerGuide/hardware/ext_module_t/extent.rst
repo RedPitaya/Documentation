@@ -2,7 +2,7 @@
 Extension module template
 =========================
 
-Red Pitaya software and hardware modules enable the access to and control of auxiliary digital and analog signals.
+Red Pitaya software and hardware modules enable access to and control of auxiliary digital and analog signals.
 
 **Preliminary design specifications:**
 
@@ -22,7 +22,7 @@ Red Pitaya software and hardware modules enable the access to and control of aux
 
 Figure: Proposal for hardware extension module template.
 
-.. figure:: Probes.JPG
+.. figure:: Probes.jpg
 
 Figure: Connectivity option – 20 pins.
 
