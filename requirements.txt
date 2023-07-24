@@ -3,6 +3,7 @@
 
 
 # Packages that need to be installed (update the versions from time to time)
-Sphinx==7.0.1
+Sphinx==6.2.1
+# Needs sphinx < 7
 sphinx_rtd_theme==1.2.2
 sphinx-tabs==3.4.1
