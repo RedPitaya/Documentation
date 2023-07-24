@@ -44,7 +44,6 @@ Unified OS
 This version of the ecosystem includes a build for all boards.
 
 Boards currently supported:
-
    - STEMlab 125-10
    - STEMlab 125-14
    - STEMlab 125-14-Z7020
@@ -441,18 +440,18 @@ A Red Pitaya SD card contains two partitions:
 
 1. 128 MB FAT contains the **ecosystem**:
 
-   * boot files: FSBL, FPGA images, U-Boot, Linux kernel
-   * Red Pitaya API libraries and header files
-   * Red Pitaya web applications, scripts, tools
-   * customized Nginx web server
+   - boot files: FSBL, FPGA images, U-Boot, Linux kernel
+   - Red Pitaya API libraries and header files
+   - Red Pitaya web applications, scripts, tools
+   - customized Nginx web server
 
 
 2. ~4 GB Ext4 contains the **OS**:
 
-   * Ubuntu/Debian OS
-   * various libraries
-   * network setup customization
-   * systemd services customization
+   - Ubuntu/Debian OS
+   - various libraries
+   - network setup customization
+   - systemd services customization
 
 Most of Red Pitaya's source code translates into the ecosystem.
 Therefore, it is updated more often.
@@ -497,8 +496,8 @@ older, newer, or custom ecosystem zip files.
 
 If you wish to keep wireless settings, skip deleting the next files:
 
-* ``wpa_supplicant.conf``
-* ``hostapd.conf``
+- ``wpa_supplicant.conf``
+- ``hostapd.conf``
 
 
 ******************
