@@ -82,7 +82,7 @@ Click here_ to download the Power SDR installation package.
 
 1. Start the installation by double clicking on the *Setup_PowerSDR_STEMlab_HAMlab_Edition.exe* file.
 
-	.. image :: PowerSDRinstallation1.PNG
+	.. image :: PowerSDRinstallation1.png
 		:align: center
 
 2. If you are asked for extended user access rights during the installation, click **Yes!** Running the installer with administration rights will work as well.
@@ -93,82 +93,82 @@ Click here_ to download the Power SDR installation package.
 
 On Windows 10, you might get a warning of an unknown publisher. You can proceed with installation by clicking on **more info** and then **Run anyway**.
 
-	.. figure:: PowerSDRinstallation3.PNG
+	.. figure:: PowerSDRinstallation3.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: PowerSDRinstallation4.PNG
+	.. figure:: PowerSDRinstallation4.png
 		:scale: 75 %
    		:align: center
 
 
 3. Follow the instructions of the setup routine and accept the license agreements if asked for.
 
-	.. figure:: Capture1.PNG
+	.. figure:: Capture1.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture2.PNG
+	.. figure:: Capture2.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture3.PNG
+	.. figure:: Capture3.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture4.PNG
+	.. figure:: Capture4.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture5.PNG
+	.. figure:: Capture5.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture6.PNG
+	.. figure:: Capture6.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture7.PNG
+	.. figure:: Capture7.png
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture8.PNG
+	.. figure:: Capture8.png
 		:scale: 75 %
 		:align: center
 
 4. At the end of the installation, you are asked if you want to run PowerSDR software immediately. Feel free to do so.
 
-	.. figure:: Capture9.PNG
+	.. figure:: Capture9.png
 		:scale: 75 %
    		:align: center
 
 5. The PowerSDR software will start with the calculation of the FFT wisdom file, **which will take a while** depending on the CPU power of your computer. This is only done once, even after updating the software to a new version in the future:
 
-	.. figure:: Capture10.PNG
+	.. figure:: Capture10.png
 		:scale: 75 %
    		:align: center
 
 6. After starting the PowerSDR software, you will be led through the PowerSDR software specific setup wizard, which lets you configure the software to use it with your Red Pitaya. Pick the HAMlab/RedPitaya radio model.
 
-	.. figure:: Capture11.PNG
+	.. figure:: Capture11.png
 		:scale: 75 %
    		:align: center
 
 7. Select the region where you are using your Red Pitaya. This is important due to the different frequency ranges you are allowed to transmit in the different countries all over the world:
 
-	.. figure:: Capture12.PNG
+	.. figure:: Capture12.png
 		:scale: 75 %
    		:align: center
 
 8. Your initial setup is completed. Click **Finish**.
 
-	.. figure:: Capture13.PNG
+	.. figure:: Capture13.png
 		:scale: 75 %
    		:align: center
 
 9. Click Power to connect Power SDR with Red Pitaya. On the screen, the input signal should appear.
 
-	.. figure:: Capture20.PNG
+	.. figure:: Capture20.png
 		:scale: 75 %
    		:align: center
 
@@ -639,7 +639,7 @@ General Specifications
 .. +-------------------------------+-------------------------------------------------------------------------------------------------------------+
 ..
 
-.. figure:: SDRBlockDiagram.PNG
+.. figure:: SDRBlockDiagram.png
         :scale: 75 %
         :align: center
 
