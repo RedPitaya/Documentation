@@ -23,7 +23,7 @@ As these builds are snapshots of the latest code, it is more likely you will enc
 
 **Nightly Builds ecosystem**: 
 
-   - |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_
+   * |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_
 
 Ecosystem builds run every Saturday night.
 
@@ -44,20 +44,21 @@ Unified OS
 This version of the ecosystem includes a build for all boards.
 
 Boards currently supported:
-   - STEMlab 125-10
-   - STEMlab 125-14
-   - STEMlab 125-14-Z7020
-   - STEMlab 125-14 4-Input
-   - SDRlab 122-16
-   - SIGNALlab 250-12
+
+   * STEMlab 125-10
+   * STEMlab 125-14
+   * STEMlab 125-14-Z7020
+   * STEMlab 125-14 4-Input
+   * SDRlab 122-16
+   * SIGNALlab 250-12
 
 Unify ecosystem now includes primary (master)/secondary (slave) functionality for streaming.
 
 New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
 To run the C applications please use one of the following combinations of OS and ecosystem:
 
-   - UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
-   - Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
+   * UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
+   * Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
 
 
 **RedPitaya OS 2.0**:
@@ -82,38 +83,38 @@ Latest and Beta versions 1.04 OS
    New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
    To run the C applications please use one of the following combinations of OS and ecosystem:
 
-      - UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
-      - Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
+      * UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
+      * Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
 
 
 **STEMlab 125-14 & STEMlab 125-10**:
 
-   - `Latest Stable 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
-   - `Latest Beta 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
+   * `Latest Stable 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
+   * `Latest Beta 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
 
 
 **STEMlab 125-14 (SECONDARY/SLAVE board)**:
 
-   - `Latest Beta Secondary <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
+   * `Latest Beta Secondary <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
 
 **STEMlab 125-14-Z7020**:
 
-   - `Latest Stable Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
-   - `Latest Beta Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
+   * `Latest Stable Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
+   * `Latest Beta Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
 
 **STEMlab 125-14 4-Input**:
 
-   - `Latest Beta 4-Input <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
+   * `Latest Beta 4-Input <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
 
 **SDRlab 122-16**:
 
-   - `Latest Stable 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
-   - `Latest Beta 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
+   * `Latest Stable 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
+   * `Latest Beta 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
 
 **SIGNALlab 250-12**:
 
-   - `Latest Stable 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
-   - `Latest Beta 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
+   * `Latest Stable 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
+   * `Latest Beta 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
 
 
 .. |CHANGELOG| raw:: html
@@ -138,7 +139,7 @@ Older OS versions
 
 All older OS versions that are in our database are available in our archive:
 
-   - |Red Pitaya archive|
+   * |Red Pitaya archive|
 
 For manual ecosystem upgrades please refer to `Manual upgrade`_.
 
@@ -342,8 +343,8 @@ Using ApplePi-Baker
 
 #. Download |ApplePi|. Direct link:
 
-   - `ApplePi-Baker-v2.2.3.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-v2.2.3.dmg>`_
-   - `ApplePi-Baker-1.9.9.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-1.9.9.dmg>`_
+   * `ApplePi-Baker-v2.2.3.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-v2.2.3.dmg>`_
+   * `ApplePi-Baker-1.9.9.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-1.9.9.dmg>`_
 
    .. |ApplePi| raw:: html
 
@@ -440,18 +441,18 @@ A Red Pitaya SD card contains two partitions:
 
 1. 128 MB FAT contains the **ecosystem**:
 
-   - boot files: FSBL, FPGA images, U-Boot, Linux kernel
-   - Red Pitaya API libraries and header files
-   - Red Pitaya web applications, scripts, tools
-   - customized Nginx web server
+   * boot files: FSBL, FPGA images, U-Boot, Linux kernel
+   * Red Pitaya API libraries and header files
+   * Red Pitaya web applications, scripts, tools
+   * customized Nginx web server
 
 
 2. ~4 GB Ext4 contains the **OS**:
 
-   - Ubuntu/Debian OS
-   - various libraries
-   - network setup customization
-   - systemd services customization
+   * Ubuntu/Debian OS
+   * various libraries
+   * network setup customization
+   * systemd services customization
 
 Most of Red Pitaya's source code translates into the ecosystem.
 Therefore, it is updated more often.
@@ -496,8 +497,8 @@ older, newer, or custom ecosystem zip files.
 
 If you wish to keep wireless settings, skip deleting the next files:
 
-- ``wpa_supplicant.conf``
-- ``hostapd.conf``
+* ``wpa_supplicant.conf``
+* ``hostapd.conf``
 
 
 ******************
