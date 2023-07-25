@@ -1,3 +1,5 @@
+.. dev_guide_hardware:
+
 Hardware
 ########
 
