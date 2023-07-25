@@ -246,7 +246,7 @@ Apart from calibration, this option will also allow you to identify any parasiti
 Here is a MATLAB code to simulate the filter inside the FPGA:
 
 .. code-block:: matlab
-    :lineos:
+    :linenos:
     
     clc
     close all
