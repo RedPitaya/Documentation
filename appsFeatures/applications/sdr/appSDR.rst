@@ -8,10 +8,10 @@ What is in the box?
 
 The following accessories and materials are included with your Red Pitaya SDR transceiver module.
 
-	* SDR transceiver 160-10 10 W module
-	* DC power cord with an Anderson Power Pole™ connector
-	* 4 x SMA cable for connecting the C25 module with the STEMlab 125-14 and antenna
-	* impedance transformer board
+	*   SDR transceiver 160-10 10 W module
+	*   DC power cord with an Anderson Power Pole™ connector
+	*   4 x SMA cable for connecting the C25 module with the STEMlab 125-14 and antenna
+	*   impedance transformer board
 
 .. _Hercules: https://www.hercules.com/en/product/djcontrolinstinctsseries/
 
@@ -21,13 +21,13 @@ Other additional requirements
 
 In addition to the supplied accessories, software, and cables supplied with the Red Pitaya SDR transceiver kit, you will need to provide the following:
 
-	* An **HF-Antenna** or dummy load with BNC
-	* good RF **ground**
-	* A stabilized DC 13.8 VDC, 3A **Power Supply**
+	*   An **HF-Antenna** or dummy load with BNC
+	*   good RF **ground**
+	*   A stabilized DC 13.8 VDC, 3A **Power Supply**
 
 SDR application requirements:
 
-	* A personal computer (PC) running Windows 7 or later. Either 32- or 64-bit operating systems are supported.
+	*   A personal computer (PC) running Windows 7 or later. Either 32- or 64-bit operating systems are supported.
 
 Start using Red Pitaya as a Radio Station - SDR transceiver
 ***********************************************************
