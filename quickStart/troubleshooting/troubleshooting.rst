@@ -159,17 +159,17 @@ Problems connecting to RP?
 
 #. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
 
+#. Consult the :ref:`connection guide <connection>` for advice.
+
 #. Try disabling the VPN, because it may be preventing the connection.
 
 #. If you are a Windows user, please look at the note below.
 
 .. note::
 
-   **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_,
-   otherwise access to ``*.local`` addresses will not work.
+   **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_, otherwise access to ``*.local`` addresses will not work.
 
-   **Windows 10** already supports mDNS and DNS-SD,
-   so there is no need to install additional software.
+   **Windows 10/11** already supports mDNS and DNS-SD, so there is no need to install additional software.
 
 
 How to find the Red Pitaya URL if it is not written on the sticker?
