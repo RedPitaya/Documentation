@@ -1,4 +1,4 @@
-.. dev_guide_hardware:
+.. _dev_guide_hardware:
 
 Hardware
 ########
