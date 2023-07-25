@@ -18,7 +18,7 @@ Required hardware
 
 Wiring example:
 
-- Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
+-   Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
 
 **Pictures coming soon...**
 
