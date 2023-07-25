@@ -3,8 +3,10 @@
 
 
 # Packages that need to be installed (update the versions from time to time)
-# Sphinx==5.3.0
-# Needs sphinx < 7
+sphinx
+
+# Needs sphinx version lower than 7
+
 sphinx_rtd_theme>=0.5.2
-sphinx-tabs>=3.4.0
+sphinx-tabs>=3.2.0
 docutils<0.17    # bullet point problem
