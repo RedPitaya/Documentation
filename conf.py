@@ -329,4 +329,4 @@ intersphinx_mapping = {
 # suddenly resolve to an external location.
 # See also:
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
-# intersphinx_disabled_reftypes = ["*"]
+intersphinx_disabled_reftypes = ["*"]
