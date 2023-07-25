@@ -12,11 +12,11 @@ To open the Calibration application click on **System Tools** and then select **
 
 .. image:: img/Main_menu_system.jpg
     :align: center
-    :scale: 40 %
+    :scale: 50 %
 
 .. image:: img/Calibration_app_menu.jpg
     :align: center
-    :scale: 40 %
+    :scale: 50 %
 
 
 When the Calibration application opens, you will see four options:
@@ -32,11 +32,12 @@ DC Calibration
 With the DC calibration, you can fine-tune Red Pitaya's ADCs and DACs.
 
 Required materials:
-* two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
-* two SMA T adapters
-* Short termination
-* Accurate Volage reference source (the more accurate the voltage source, the better the calibration)
-* Accurate Multimeter (optional)
+
+*   two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
+*   two SMA T adapters
+*   Short termination
+*   Accurate Volage reference source (the more accurate the voltage source, the better the calibration)
+*   Accurate Multimeter (optional)
 
 
 Auto DC calibration
@@ -69,11 +70,11 @@ Apart from calibration, this option will also allow you to identify any parasiti
     :align: center
     :scale: 80 %
 
-* **RESET**:
-    * **DEFAULT** - remove the calibration parameters
-    * **FACTORY** - reset the board to the factory calibration parameters
-* **APPLY** the calibration - save the DC offset in the system settings
-* **CLOSE** the calibration
+*   **RESET**:
+    *   **DEFAULT** - remove the calibration parameters
+    *   **FACTORY** - reset the board to the factory calibration parameters
+*   **APPLY** the calibration - save the DC offset in the system settings
+*   **CLOSE** the calibration
 
 When closing the application without saving the values, the following prompt will appear:
 
@@ -117,9 +118,10 @@ Frequency calibration
 **********************
 
 Required materials:
-* two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
-* one SMA T adapter
-* External reference function generator capable of generating at least +-10 V (Optional)
+
+*   two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
+*   one SMA T adapter
+*   External reference function generator capable of generating at least +-10 V (Optional)
 
 
 Auto Frequency calibration
@@ -137,11 +139,11 @@ Once the auto frequency calibration is started, you will be presented with the f
 
 The header columns represent the following:
 
-* **MODE** - correlates to how the jumpers should be set.
-* **Channel** - indicates which channel the subsequential column settings apply to.
-* **Before and After** - values before and after the calibration.
-* **AA, BB, PP, and KK** - coefficients for the filter inside the FPGA that affects the inputs. For more details, please refer to the "Manual Frequency calibration" section.
-* **STATE** - displays the progression of the calibration process.
+*   **MODE** - correlates to how the jumpers should be set.
+*   **Channel** - indicates which channel the subsequential column settings apply to.
+*   **Before and After** - values before and after the calibration.
+*   **AA, BB, PP, and KK** - coefficients for the filter inside the FPGA that affects the inputs. For more details, please refer to the "Manual Frequency calibration" section.
+*   **STATE** - displays the progression of the calibration process.
 
 Please pay attention to the **STATE** column, as clickable buttons which progress the process will appear. 
 
@@ -234,19 +236,18 @@ Apart from calibration, this option will also allow you to identify any parasiti
         :align: center
         :scale: 70 %
 
-* **SETTINGS MENU** - *APPLY* the calibration parameters, restore the *DEFAULT* parameters, or *CLOSE* the manual frequency calibration.
-* **CHANNEL & JUMPER SETTINGS** - Choose a channel and voltage range (LV or HV depending on the jumper settings) to calibrate.
-* **CALIBRATION PARAMETERS** - Choose between *DEC* and *HEX* values, click on *AUTO* to perform an automatic frequency calibration, and input the FPGA filter coefficients.
-* **GENERATOR SETTINGS** - Turn the internal generator (OUT1) *ON* and *OFF*. The frequency, one-way amplitude, and offset cannot be changed.
-* **DECIMATION & HYSTERESIS** - Change the decimation and hysteresis.
-* **EDGE ZOOM** - Zoom in on the square waveform edge for better calibration.
-* **CURSORS** - Can be moved to observe the positive or negative edge, and the white area in-between represents the zoom-in area.
+*   **SETTINGS MENU** - *APPLY* the calibration parameters, restore the *DEFAULT* parameters, or *CLOSE* the manual frequency calibration.
+*   **CHANNEL & JUMPER SETTINGS** - Choose a channel and voltage range (LV or HV depending on the jumper settings) to calibrate.
+*   **CALIBRATION PARAMETERS** - Choose between *DEC* and *HEX* values, click on *AUTO* to perform an automatic frequency calibration, and input the FPGA filter coefficients.
+*   **GENERATOR SETTINGS** - Turn the internal generator (OUT1) *ON* and *OFF*. The frequency, one-way amplitude, and offset cannot be changed.
+*   **DECIMATION & HYSTERESIS** - Change the decimation and hysteresis.
+*   **EDGE ZOOM** - Zoom in on the square waveform edge for better calibration.
+*   **CURSORS** - Can be moved to observe the positive or negative edge, and the white area in-between represents the zoom-in area.
 
 
 Here is a MATLAB code to simulate the filter inside the FPGA:
 
 .. code-block:: matlab
-    :linenos:
     
     clc
     close all
