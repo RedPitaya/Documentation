@@ -1,35 +1,45 @@
 .. _faq:
 
-###
+######
 FAQ
-###
+######
+
+.. note::
+
+   Not found what you are looking for? Please |contact_page| or :ref:`report a bug <report_bug>`. Please include all the relevant information regarding the problem.
+
+.. |contact_page| raw:: html
+
+   <a href="
+https://redpitaya.com/contact-us/" target="_blank">contact us</a>
 
 
 Connectivity
-============
+==============
 
 How to get started with Red Pitaya?
------------------------------------
+------------------------------------
 
 *   :ref:`Quick start <quick_start>`
 
 
-How to connect to Red Pitaya in a few simple steps
---------------------------------------------------
+How to connect to Red Pitaya in a few simple steps?
+----------------------------------------------------
 
 *   :ref:`Connected to router <LAN>`
 *   :ref:`Direct connection to computer <dir_cab_connect>`
 
 
 Red Pitaya not booting anymore?
--------------------------------
+---------------------------------
 
-A possible cause could be a corrupted card, and the recommendation is a manual OS re-write: :ref:`Prepare SD card <prepareSD>`
-Please check :ref:`Problems connecting to RP <troubleshooting>` for status LED description.
+*   A possible cause could be a corrupted card, and the recommendation is a manual OS re-write: :ref:`Prepare SD card <prepareSD>`
+*   Please check :ref:`Problems connecting to RP <troubleshooting>` for status LED description.
+*   :ref:`Was the OS updated recently? <trouble_OS>`
 
 
 How to connect the external clock to RP?
-----------------------------------------
+------------------------------------------
 
 *   :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 <top_125_14_EXT>`
 *   :ref:`SDRlab 122-16 <top_122_16_EXT>`
@@ -38,9 +48,7 @@ How to connect the external clock to RP?
 .. _internetAccess:
 
 How can I make sure that my Red Pitaya has access to the internet?
-------------------------------------------------------------------
-
-How can I make sure that my Red Pitaya has access to the internet?
+--------------------------------------------------------------------
 
 1. Connect to your Red Pitaya over :ref:`SSH <ssh>`.
 2. Make sure that you can ``ping google.com`` website:
@@ -62,7 +70,7 @@ How can I make sure that my Red Pitaya has access to the internet?
 .. _faqConnected:
 
 How can I make sure that Red Pitaya is connected to the same network as my computer/tablet/smartphone?
--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 
 The most common answer would be: just make sure that your Red Pitaya and your PC/tablet/smartphone are both connected to the same router or your smartphone hotspot.
 
@@ -107,7 +115,7 @@ If your Red Pitaya is not listed on the list of your local network devices on th
 .. _isConnected:
 
 Is Red Pitaya connected to my local network?
---------------------------------------------
+----------------------------------------------
 
 1. Connect your Red Pitaya to a PC over a :ref:`Serial Console <console>`.
 
@@ -126,7 +134,7 @@ Is Red Pitaya connected to my local network?
 .. _troubleshooting:
 
 Problems connecting to RP?
---------------------------
+----------------------------
 
 .. figure:: blinking-pitaya-eth.gif
    :align: center
@@ -165,7 +173,7 @@ Problems connecting to RP?
 
 
 How to find the Red Pitaya URL if it is not written on the sticker?
--------------------------------------------------------------------
+---------------------------------------------------------------------
 
 The Red Pitaya URL is ``rp-xxxxxx.local`` where ``xxxxxx`` must be replaced with the last 6 digits of the MAC address that is written on the sticker.
 
@@ -176,7 +184,7 @@ If the RP MAC address is ``00:26:33:F1:13:D5``, the last 6 digits are ``F113D5``
 
 
 Slow WIFI connection?
----------------------
+-----------------------
 
 If your wireless connection with Red Pitaya works very slowly and all the applications seem very unresponsive and not running smoothly, please check the following:
 
@@ -211,25 +219,28 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
 
 WIFI dongle not detected?
--------------------------
+---------------------------
 
 Please note that not all are compatible. A list is in the documentation: :ref:`Supported USB Wi-Fi adapters <support_wifi_adapter>`
 
 
+
+.. _trouble_OS:
+
 OS
-==
+=====
 
 How to upgrade OS?
-------------------
+--------------------
 
 *   :ref:`Prepare SD card <prepareSD>`
 
 
 Is Red Pitaya not booting even after OS update?
------------------------------------------------
+-------------------------------------------------
 
 *    Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
-*    Upgraded from an older Red Pitaya OS to the 2.00 Unified OS? Please try |GitHub_250| and |GitHub_254|
+*    **Upgraded from an older Red Pitaya OS to the 2.00 Unified OS?** Please try |GitHub_250| and |GitHub_254|
 
 .. |GitHub_250| raw:: html
 
@@ -241,29 +252,29 @@ Is Red Pitaya not booting even after OS update?
 
 
 Is Red Pitaya failing to update?
---------------------------------
+----------------------------------
 
 Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
 
 
 
 Applications & Web Interface
-============================
+===============================
 
 How can I start using RP measurement applications?
---------------------------------------------------
+----------------------------------------------------
 
 *   :ref:`Connect to Red Pitaya <ConnectSTEMlab>`
 
 
 My device shows the wrong measurements. How can I calibrate it?
----------------------------------------------------------------
+-----------------------------------------------------------------
 
 The Red Pitaya can be calibrated using the :ref:`Calibration Tool <calibration_app>`
 
 
 Problems with OS update application, and accessing the marketplace?
--------------------------------------------------------------------
+---------------------------------------------------------------------
 
 1. Make sure your Red Pitaya has access to the :ref:`internet <internetAccess>`.
 #. Force a refresh of the Red Pitaya application page. |Wiki refresh|?
@@ -274,44 +285,44 @@ Problems with OS update application, and accessing the marketplace?
 
 
 Web interface not functioning properly, or experimenting with freezing?
------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
 Please ensure that your browser's ad blockers are turned off for the "rp-xxxxxx.local" webpage and that your proxy settings are correct. For local connections to the Red Pitaya unit, proxy settings should not be required. A VPN may also be preventing the connection.
 
 
 Undesired disconnections?
--------------------------
+---------------------------
 
 If possible, we recommend testing the setup on a different computer and a different network, as well as, checking the state of the Ethernet cables and power supply, proxy settings, and re-writing the OS.
 
 
 An application is not working?
--------------------------------
+---------------------------------
 
 We suggest upgrading to the latest OS and trying again. Otherwise, please :ref:`report the bug <report_bug>`.
 
 .. note::
 
-   It is important to note that applications developed by the Red Pitaya community are not distributed or tested by the Red Pitaya team, and that our team accepts no responsibility. If you’d like to share feedback, report bugs, or need help on contributed projects, apps, or software, we highly recommend contacting the project authors.
+   It is important to note that applications developed by the Red Pitaya community are not distributed or tested by the Red Pitaya team and that our team accepts no responsibility. If you’d like to share feedback, report bugs, or need help on contributed projects, apps, or software, we highly recommend contacting the project authors.
 
 .. note::
 
-   The 2.00 Unified OS update has seen registry changes in the FPGA, so it is likely that older applications will not work after the OS update (Xilinx also changed how the FPGA is loaded into the FPGA).
+   The 2.00 Unified OS update has seen registry changes in the FPGA, so, likely, older applications will not work after the OS update (Xilinx also changed how the FPGA is loaded into the FPGA).
 
 
 
 Software
-=========
+===========
 
-For establishing an SSH connection, creating a custom FPGA image, ecosystem, and/or custom web applications, please refer to :ref:`Developers guide Software <software>`.
+For establishing an SSH connection, creating a custom FPGA image, custom ecosystem, and/or custom web applications, please refer to :ref:`Developers guide Software <software>`.
 
 How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?
----------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 *  :ref:`Remote control <remoteControl>`
 
 Where can I find the ecosystem, software, and FPGA images?
-----------------------------------------------------------
+------------------------------------------------------------
 
 *   |RP_GitHub| - please check the specific branches for older ecosystem versions
 *   |RP_GitHub_FPGA|
@@ -321,7 +332,7 @@ Where can I find the ecosystem, software, and FPGA images?
 
    Impossible. Perhaps the archives are incomplete.
 
-   If you need a specific old version if the ecosystem or the OS that is missing from the archives, we suggest you ask the community on the |RP_forum|. There is a chance someone has it lying around on the disk.
+   If you need a specific old version of the ecosystem or the OS that is missing from the archives, we suggest you ask the community on the |RP_forum|. There is a chance someone has it lying around on the disk.
 
 
 .. |RP_GitHub| raw:: html
@@ -342,7 +353,7 @@ Where can I find the ecosystem, software, and FPGA images?
 
 
 How to start with FPGA development?
------------------------------------
+-------------------------------------
 
 *   :ref:`Software <software>`
 *   :ref:`FPGA tutorials <knowledgebase:learn_FPGA>`
@@ -350,13 +361,15 @@ How to start with FPGA development?
 
 
 Hardware
-=========
+===========
 
 For hardware schematics, step models, and specifications, please refer to :ref:`Developers guide Hardware <dev_guide_hardware>`.
 
 
-Where can I find Red Pitaya schematics?
-----------------------------------------
+Where can I find Red Pitaya schematics, 3D models (.step), and important componetns?
+--------------------------------------------------------------------------------------
+
+Please take a look at **Developers guide Hardware => board model => Schematics, Mechanical specifications**. See the general link above, or board-specific links below.
 
 *   :ref:`STEMlab 125-10 <top_125_10>`
 *   :ref:`STEMlab 125-14 <top_125_14>`
@@ -365,15 +378,22 @@ Where can I find Red Pitaya schematics?
 
 
 Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?
-------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
 No, the hardware is identical. The only difference is that the latter would have been sent to a certification lab and the appropriate measurements would have been made.
+
+
+What are the main differences between different Red Pitaya boards?
+---------------------------------------------------------------------
+
+Take a look at the :ref:`board comparison table <rp-board-comp>`.
+
 
 
 .. _report_bug:
 
 How to report a bug?
-====================
+======================
 
 Please send us an e-mail at support@redpitaya.com with the following information:
 
