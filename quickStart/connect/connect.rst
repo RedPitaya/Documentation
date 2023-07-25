@@ -1,3 +1,6 @@
+
+.. _connection:
+
 *****
 Wired
 *****
@@ -192,6 +195,7 @@ Also, you can disconnect the LAN connection, and your board will still be availa
 .. note::
 
     When using the Raspberry Pi WiFi dongle, an issue of the dongle not being detected can arise. To mitigate this, detach the power cable from the Red Pitaya and wait for about a minute before powering up the Red Pitaya again.
+
 
 .. _access_point_mode:
 
