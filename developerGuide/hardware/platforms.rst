@@ -1,3 +1,5 @@
+.. dev_guide_hardware:
+
 Red Pitaya platforms
 ####################
 
