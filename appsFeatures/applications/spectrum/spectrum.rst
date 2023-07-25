@@ -7,14 +7,14 @@ Spectrum Analyzer
 
 This application will turn your RedPitaya board into a 2-channel DFT Spectrum Analyzer. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. The DFT Spectrum Analyzer application enables a quick and powerful spectrum analysis using a DFT algorithm.
 
-The frequency span is from DC up to 62.5 MHz, where the frequency range can be arbitrarily selected. You can easily measure the quality of your signals, signal harmonics, spurious, and power. All Red Pitaya applications are web-based and do not require the installation of any native software. Users can access them via a web browser using their smartphone, tablet, or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS). The elements of the DFT Spectrum analyzer application are arranged logically and offer a familiar user interface.
+The frequency span is from DC up to 62.5 MHz, where the frequency range can be arbitrarily selected. You can easily measure the quality of your signals, signal harmonics, spuriousness, and power. All Red Pitaya applications are web-based and do not require the installation of any native software. Users can access them via a web browser using their smartphone, tablet, or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS). The elements of the DFT Spectrum analyzer application are arranged logically and offer a familiar user interface.
 
-The graphical interface is divided into 4 main areas:
+The graphical interface is divided into four main areas:
 
     1. **Run/Stop** and **Export button:** The "Run/Stop" button is used to start and stop measurements. With the "Export" button, you can select in which format you want to download the measured data (plotted spectrum). Two formats are available: .png and .csv.
     #. **Inputs / Cursors / Range / Axis control panel:** This menu provides controls for inputs, cursors, and frequency range settings. Horizontal +/- buttons are used to select the span of the X (frequency) axis (zooming in/out). The vertical +/- buttons change the Y (amplitude)-axis range.
     #. **Graph area:** Here, the currently calculated signal spectrum is plotted in the selected frequency range.
-    #. **Waterfall plots:** Waterfall plots are a different way of representing the signal spectrum where the color of the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful to enable the representation of a signal spectrum in a time-dependent fashion.
+    #. **Waterfall plots:** Waterfall plots are a different way of representing the signal spectrum where the colour of the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful to enable the representation of a signal spectrum in a time-dependent fashion.
 
 
 .. figure:: Slika_02_SA.png
@@ -22,7 +22,7 @@ The graphical interface is divided into 4 main areas:
 Features
 ********
 
-The main features of the DFT Spectrum analyzer are described below:
+The main features of the DFT Spectrum analyser are described below:
 
 INPUTS:
 =======
@@ -33,8 +33,8 @@ Input controls are shown in the picture below. With the "SHOW" select button, di
 
 For SIGNALlab 250-12, there are additional settings available where the user can select:
 
-    - **Input attenuation**
-    - **Coupling**
+    -   **Input attenuation**
+    -   **Coupling**
 
 .. figure:: Slika_09_SA.png
 
@@ -66,7 +66,7 @@ During the measurement, peak values of the signal spectrum are measured and show
 WATERFALL PLOTS:
 ================
 
-Waterfall plots are a different way of representing the signal spectrum where the color on the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful when enabling the representation of the signal spectrum in a time dependency.
+Waterfall plots are a different way of representing the signal spectrum where the colour on the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful when enabling the representation of the signal spectrum in a time dependency.
 
 
 AXIS CONTROLS:
