@@ -6,3 +6,4 @@ Extension modules
 
    ext_module_t/extent.rst
    sensor_ext.rst
+   click_shield.rst
