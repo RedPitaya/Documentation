@@ -24,7 +24,7 @@ sphinx:
 # Build the docs in epub and pdf version
 formats:
   - epub
-  - pdf
+  # - pdf    # Too many latex warnings, internal links do not work with this
   # - htmlzip
 
 
