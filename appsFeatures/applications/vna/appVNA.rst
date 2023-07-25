@@ -10,25 +10,25 @@ What do I need before I start?
 
 1. VNA application requirements:
 
-    * Windows or Linux-based personal computer (PC).
+    *   Windows or Linux-based personal computer (PC).
 
 2. The following accessories and materials are available in the Red Pitaya store:
 
-    * any kit that includes a STEMlab 125-14 or 125-10 (discontinued) board
-    * Vector Network Analyzer bridge module
+    *   any kit that includes a STEMlab 125-14 or 125-10 (discontinued) board
+    *   Vector Network Analyzer bridge module
 
 
 ***************************************************
-Start using Red Pitaya as a Vector Network Analyzer
+Start using Red Pitaya as a Vector Network Analyser
 ***************************************************
 
 ========================================================
 Connect Vector Network Analyzer bridge to the Red Pitaya
 ========================================================
 
-    * Connect the VNA module's OUT to the Red Pitaya IN1
-    * Connect the VNA module's IN to the Red Pitaya OUT1.
-    * Set the IN1 jumpers on the Red Pitaya to the LV position.
+    *   Connect the VNA module's OUT to the Red Pitaya IN1
+    *   Connect the VNA module's IN to the Red Pitaya OUT1.
+    *   Set the IN1 jumpers on the Red Pitaya to the LV position.
 
 .. figure::  img/vna_bridge_module_connections.png
     :align: center
@@ -41,22 +41,22 @@ Install & run network Vector Network Analyzer control app
 Windows users only
 ------------------
 
-    * Download and unpack the `control program <https://downloads.redpitaya.com/downloads/Clients/vna/vna-windows-tool.zip>`__.
-    * Run the ``vna.exe`` program.
+    *   Download and unpack the `control program <https://downloads.redpitaya.com/downloads/Clients/vna/vna-windows-tool.zip>`__.
+    *   Run the ``vna.exe`` program.
 
 ----------------
 Linux users only
 ----------------
 
-    * Install Python 3 and all the required libraries:
+    *   Install Python 3 and all the required libraries:
 
         .. code-block:: shell-session
 
             sudo apt-get install python3-dev python3-pip python3-numpy python3-pyqt5 libfreetype6-dev
             sudo pip3 install matplotlib mpldatacursor
 
-    * Download and unpack the `control program <https://downloads.redpitaya.com/downloads/Clients/vna/vna-windows-tool.zip>`__.
-    * Run the control program:
+    *   Download and unpack the `control program <https://downloads.redpitaya.com/downloads/Clients/vna/vna-windows-tool.zip>`__.
+    *   Run the control program:
 
         .. code-block:: shell-session
 
@@ -166,7 +166,7 @@ Examples:
     | The original developer of the Vector Network Analyzer RedPitaya application is Pavel Demin.
     | Repositories used by our builds:
 
-        * |red-pitaya-notes|
+        *   |red-pitaya-notes|
      
 .. |red-pitaya-notes| raw:: html
 
