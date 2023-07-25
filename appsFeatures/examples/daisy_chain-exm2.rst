@@ -1,28 +1,26 @@
-Daisy chain click-shield generation and acquisition
-###################################################
-
-
-.. http://blog.redpitaya.com/examples-new/daisy-chain-generation-and-acquisition/
-
+Synchronised Click Shield generation and acquisition
+#####################################################
 
 Description
 ***********
 
-This example shows how to synchronise the Red Pitaya X-channel system (daisy chain) to simultaneously acquire 16k samples of a generated signal on multiple units (fast RF inputs and outputs).
-Red Pitaya click shields are required for all units.
+This example shows how to synchronise multiple Red Pitaya boards (daisy chain) to simultaneously acquire 16k samples of a generated signal on multiple units (fast RF inputs and outputs) using the Red Pitaya Click Shields.
+Red Pitaya can transmit the trigger signal through the DIO0_N and receive it on DIO0_P.
+
+This example can be easily modified for simultaneous generation (setup the generation, choose a primary trigger, all secondary triggers set to EXT_NE, and finally, change the daisy trigger source to DAC).
 
 Required hardware
 *****************
 
-    - Primary Red Pitaya device (STEMlab 125-14 LN)
-    - One or more Secondary devices (STEMlab 125-14 LN Secondary)
-    - A Red Pitaya Click Shield for each unit
-    - UFL Cables
+    -   Primary Red Pitaya device (STEMlab 125-14 LN)
+    -   One or more Secondary devices (STEMlab 125-14 LN Secondary)
+    -   A Red Pitaya Click Shield for each unit
+    -   UFL Cables
 
 **Wiring example:**
 
-  - Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
-  - Connect the click shields with UFL cables
+  -   Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
+  -   Connect the click shields with UFL cables
 
 **Click shield switch and jumper positions:**
 
@@ -30,13 +28,13 @@ Required hardware
   
     - REF CLOCK    ==> ON
     - CLOCK SELECT ==> EXT
-    - J4, J5, J6, J7 present
+    - J4, J5, J6, J7 connected
 
   Secondary units:
 
     - REF CLOCK    ==> OFF
     - CLOCK SELECT ==> EXT
-    - J6, J7 present
+    - J6, J7 connected
 
 **Pictures coming soon...**
 
@@ -53,7 +51,7 @@ Using just SCPI commands:
     :linenos:
 
     #!/usr/bin/env python3
-    """ Click shield daisy chain example for Red Pitaya """
+    """ Click shield daisy chain example for Red Pitaya. """
 
     import time
     import matplotlib.pyplot as plt
