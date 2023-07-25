@@ -37,6 +37,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'github',
     'sphinx.ext.intersphinx',
+    'sphinx_rtd_theme',
 ]
 
 sphinx_tabs_valid_builders = ['linkcheck']
