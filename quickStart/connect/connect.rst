@@ -119,10 +119,10 @@ The first step is connecting the Red Pitaya board directly to the LAN network an
 
 8. Select **Method – Manual**, press the **Add** button, and insert:
 
-   - The static IP address of your PC (must be different from the IP address of the Red Pitaya board), 
-   - Netmask (input: 255.255.255.0)
-   - Gateway (can be left empty)
-   - DNS servers (can be left empty) and click the **Save** button.
+   -   The static IP address of your PC (must be different from the IP address of the Red Pitaya board), 
+   -   Netmask (input: 255.255.255.0)
+   -   Gateway (can be left empty)
+   -   DNS servers (can be left empty) and click the **Save** button.
 
    .. figure:: connect-15.png 
 
