@@ -146,12 +146,11 @@ Wireless
 Wireless Network Connection
 ===========================
 
-This type of connection will enable wireless connection to the Red Pitaya board via your local WiFi network.
-To connect your Red Pitaya board to the same WiFi network to which you have connected your PC/Laptop, you first need to use a LAN connection.
-Access your Red Pitaya board via a web browser and start the Network Manager application.
-Through this application, all network settings of the Red Pitaya board are manageable.
-Simply select the desired WiFi network, input the password, and select Connect.
-Once you have arranged a WiFi network, you don't need the LAN connection anymore, and after the restart of the Red Pitaya board, it will connect to the preset WiFi network automatically.
+To establish a WiFi interface with your Red Pitaya, first, establish a :ref:`direct ethernet connection  <dir_cab_connect>`_
+Open the Red Pitaya main webpage and start the Network Manager application.
+The Network Manager provides access to all network settings of the Red Pitaya board.
+Select the desired WiFi network, input the password, click "Connect", and wait for Red Pitaya to configure the settings.
+Disconnect the ethernet cable from the board and restart it. Red Pitaya should automatically connect to the WiFi.
 
 .. note::
 
@@ -168,9 +167,9 @@ How to connect your Red Pitaya board over a WiFi network:
  
 #. Start your Red Pitaya web user interface (Use the connection described in :ref:`LAN connection <lan>`)
 #. Open Network Manager application
-#. Insert the WiFi dongle into the USB plug on the Red Pitaya board.
-   The recommended WIFI USB dongle is the Edimax EW7811Un V2.
-   In general, all WIFI USB dongles that use the RTL8188CUS chipset should work.
+#. Insert the WiFi dongle into the USB port on the Red Pitaya board.
+   The recommended WiFi USB dongle is the Edimax EW7811Un V2.
+   In general, all WiFi USB dongles that use the RTL8188CUS chipset should work.
     
     .. figure:: connect-5.png
 
@@ -179,7 +178,7 @@ How to connect your Red Pitaya board over a WiFi network:
 
    .. figure:: connect-6.png
 
-#. When your Red Pitaya board is connected, the IP address will be shown on the user interface. This IP address is only for the WiFi connection.
+#. When your Red Pitaya board is connected, the IP address will be shown in the user interface. This IP address is only for the WiFi connection.
    You can check the connection by inputting a WiFi IP address in the web browser URL field (press enter after inputting). 
    
    .. figure:: connect-7.png   
@@ -212,7 +211,7 @@ Follow the steps below to enable the access point and connect to it.
 
 1. Start your Red Pitaya web user interface (Use the connection described in :ref:`LAN connection <lan>`)
 2. Open the Network Manager application
-3. Input the name and password of the access point network to be created. The password name should be at least 8 characters long. Do not use special signs.
+3. Input the name and password of the access point network to be created. The password name should be at least eight characters long. Do not use special signs.
 4. Connect your PC, laptop, tablet, or phone to the network created by the Red Pitaya board.
 5. Input the Access Point network IP address into the web browser URL field and press enter.
     
