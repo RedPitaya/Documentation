@@ -1,3 +1,2 @@
 # Update the versions from time-to-time
-Sphinx==6.2.1
-# Version 7 not yet supported by rtd_theme
+# Sphinx (pin version)
