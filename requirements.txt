@@ -9,4 +9,4 @@ sphinx
 
 sphinx_rtd_theme>=0.5.2
 sphinx-tabs>=3.0.0
-docutils<0.18    # bullet point problem
+docutils==0.17.1b1.dev0     # bullet point problem
