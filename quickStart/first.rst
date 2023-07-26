@@ -49,7 +49,7 @@ Follow these three simple steps to start using your Red Pitaya:
        
 .. note::
 
-   ``xxxxxx`` are the last 6 characters of the MAC address of your Red Pitaya board.
+   ``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board.
    The MAC address is written on the Ethernet connector.
     
 After the **third step**, you will get a Red Pitaya main page, as shown below.
@@ -85,26 +85,18 @@ For detailed instructions on connection types, please check out the sections bel
 .. toctree::
    :maxdepth: 2
    
-   connect/connect.rst
-
-
-.. note:: 
-
-    For arranging other types of connections (wireless, direct ethernet connection), use the  
-    :ref:`Network Manager <networkManager>`.
-
+   connect/connect
 
 .. note::
 
    **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_,
    otherwise access to ``*.local`` addresses will not work.
 
-   **Windows 10** already supports mDNS and DNS-SD,
-   so there is no need to install additional software.
+   **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install additional software.
 
 .. note::
 
    Access to the internet is only required when:
 
-   *   upgrading Red Pitaya OS,
+   *   using the OS update application,
    *   installing applications from the marketplace.
