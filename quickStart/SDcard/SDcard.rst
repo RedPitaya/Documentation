@@ -17,9 +17,9 @@ You can now download Nightly Builds for your Red Pitaya!
 
 The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.
 
-We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time that it takes to fix some of the reported issues or implement some new features that were reported as suggestions for improvement.
+We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time to fix some of the reported issues or implement some new features reported as suggestions for improvement.
 
-As these builds are snapshots of the latest code, it is more likely you will encounter an issue compared to the stable releases. If you have encountered an issue, please report it to support@redpitaya.com so that our developers can review the issue and make any needed fixes.
+As these builds are snapshots of the latest code, odds are you will encounter more issues compared to stable releases. Please report any issues to support@redpitaya.com so that our developers can review them and make any needed fixes.
 
 **Nightly Builds ecosystem**: 
 
@@ -31,6 +31,10 @@ Ecosystem builds run every Saturday night.
 
    These OS versions may be unstable and may cause misconfigurations or measurement data loss.
    We recommend that you use them solely for testing purposes, or you have reported a bug or requested a feature and our technical staff has instructed you to proceed.
+
+.. note::
+
+   For the Unified OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
 
 
 
