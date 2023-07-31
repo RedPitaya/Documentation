@@ -50,14 +50,14 @@ Step-by-step video guide:
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
-        <iframe src="https://www.youtube.com/watch?v=vLCa9oU7DMI" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        <iframe src="https://www.youtube.com/embed/vLCa9oU7DMI" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-The video is also available here |YT-video|.
+The YouTube video is also available |YT-video|.
 
 .. |YT-video| raw:: html
 
-   <a href="https://www.youtube.com/watch?v=vLCa9oU7DMI" target="_blank">link</a>
+   <a href="https://www.youtube.com/watch?v=vLCa9oU7DMI" target="_blank">on this link</a>
 
 
 Manual DC calibration
