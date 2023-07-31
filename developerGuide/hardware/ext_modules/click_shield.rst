@@ -47,6 +47,8 @@ These Click Boards are an innovative and efficient way to develop hardware proje
 Technical specifications
 ==========================
 
+.. TODO add notes on extenal power
+
 Connectors
 -------------
 
