@@ -1,5 +1,5 @@
-FPGA Register map in dev
-#########################
+FPGA Register map (Release 2.00-18)
+###################################
 
 .. toctree::
    :maxdepth: 2
