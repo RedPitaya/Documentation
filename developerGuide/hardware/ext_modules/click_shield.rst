@@ -118,7 +118,7 @@ Power supply
 The Click Shields provide two alternative ways to power the Red Pitaya: 
 
 * USB-C 
-* 12-24 V
+* 2-pin screw Terminal Block (12-24 V)
 
 The standard DC power supply that comes with Red Pitaya is not necessary if one of the above is connected.
 
