@@ -12,9 +12,10 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 * high-performance synchronisation of several Red Pitaya
 
 
-.. insert image here
+.. insert Click Shield image here
 
 .. is this needed?
+
 What is in the box?
 =====================
 
@@ -39,18 +40,17 @@ These Click Boards are an innovative and efficient way to develop hardware proje
   <a href="https://www.mikroe.com/click" target="_blank">Click Boards</a>
 
 
-
-
+.. Add click board image here
 
 
 
 Technical specifications
 ==========================
 
-.. TODO add notes on extenal power
-
 Connectors
 -------------
+
+.. add connectors picture (topdown of click shield, connectors marked)
 
 +-------------------------+--------------------+----------------------------------------+
 | **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                              |
@@ -75,6 +75,8 @@ Connectors
 Switches
 ---------
 
+.. add connectors picture (topdown of click shield, switches marked)
+
 +-------------------------+--------------------+------------------------------------------------------------+
 | **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                                                  |
 +-------------------------+--------------------+------------------------------------------------------------+
@@ -89,6 +91,8 @@ Switches
 
 Jumpers
 ---------
+
+.. add connectors picture (topdown of click shield, jumpers marked)
 
 +-------------------------+-----------------------------------------------------------------+
 | **Click Shield Label**  | **Notes**                                                       |
@@ -106,10 +110,26 @@ Jumpers
 
 
 
+Power supply
+--------------
+
+.. TODO add documentation on this
+
+The Click Shields provide two alternative ways to power the Red Pitaya: 
+
+* USB-C 
+* 12-24 V
+
+The standard DC power supply that comes with Red Pitaya is not necessary if one of the above is connected.
+
+
+
 Pinout
 --------
 
 Here you will find the interconnections between Click Boards (MikroBus pinout) and Red Pitaya pins.
+
+.. add connectors picture (topdown of click shield, click board pinout marked)
 
 Click Board 1
 ~~~~~~~~~~~~~~~
@@ -119,7 +139,7 @@ Closer to **+CLK OUT- pins**.
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
 | **Notes**          | **Mikrobus Pin**   | **Red Pitaya Pin** | **Red Pitaya Pin** | **Mikrobus Pin**   | **Notes**          |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
-| Analog input       | 1    | AN          |  AIN0              | DIO1_P             | PWM          | 16  |                    |
+| Analog input       | 1    | AN          |  AIN0              | DIO1_P             | PWM          | 16  | PWM                |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
 | Reset              | 2    | RST         |  DIO2_N            | DIO2_P             | INT          | 15  | Interrupt          |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
@@ -145,7 +165,7 @@ Closer to **+CLK IN- pins**.
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
 | **Notes**          | **Mikrobus Pin**   | **Red Pitaya Pin** | **Red Pitaya Pin** | **Mikrobus Pin**   | **Notes**          |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
-| Analog input       | 1    | AN          |  AIN1              | DIO3_P             | PWM          | 16  |                    |
+| Analog input       | 1    | AN          |  AIN1              | DIO3_P             | PWM          | 16  | PWM                |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
 | Reset              | 2    | RST         |  DIO4_N            | DIO4_P             | INT          | 15  | Interrupt          |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
@@ -165,6 +185,8 @@ Closer to **+CLK IN- pins**.
 
 Logic Analyzer Connector
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. add connectors picture (topdown of click shield, LA connector marked)
 
 Pin 1 is marked with a small white dot. On the bottom-left side of the connector when the shield is oriented according to the *LOGIC ANALYZER* text.
 
@@ -204,11 +226,15 @@ Other
 Schematics
 ================
 
+.. add final Click shield schematics when available
+
 ***Coming Soon...***
 
 
 
 Examples of use
 ================
+
+.. add click shield examples when available
 
 ***Coming soon...***
