@@ -39,31 +39,31 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | | Examples:                                          |                         |                                                           |                    |
 | | ``RP:LOGmode SYSLOG``                              |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:TIME <hours>,<minutes>,<seconds>``        | -                       | Sets the time on the board.                               | in dev             |
+| | ``SYSTem:TIME <hours>,<minutes>,<seconds>``        | -                       | Sets the time on the board.                               | 2.00-18 and up     |
 | | Examples:                                          |                         |                                                           |                    |
 | | ``SYSTem:TIME 16,12,45``                           |                         |                                                           |                    |
 | | ``SYST:TIME 11,23,01``                             |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:TIME?`` > ``time``                        | -                       | Returns the current time on the board.                    | in dev             |
+| | ``SYSTem:TIME?`` > ``time``                        | -                       | Returns the current time on the board.                    | 2.00-18 and up     |
 | | Examples:                                          |                         |                                                           |                    |
 | | ``SYSTem:TIME?`` > ``16,12,45``                    |                         |                                                           |                    |
 | | ``SYST:TIME?`` > ``11,23,01``                      |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:DATE <year>,<month>,<day>``               | -                       | Sets the date on the board.                               | in dev             |
+| | ``SYSTem:DATE <year>,<month>,<day>``               | -                       | Sets the date on the board.                               | 2.00-18 and up     |
 | | Examples:                                          |                         |                                                           |                    |
 | | ``SYSTem:DATE 2023,4,4``                           |                         |                                                           |                    |
 | | ``SYST:DATE 2002,12,29``                           |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:DATE?`` > ``date``                        | -                       | Returns the current date on the board.                    | in dev             |
+| | ``SYSTem:DATE?`` > ``date``                        | -                       | Returns the current date on the board.                    | 2.00-18 and up     |
 | | Examples:                                          |                         |                                                           |                    |
 | | ``SYSTem:DATE?`` > ``2023,4,4``                    |                         |                                                           |                    |
 | | ``SYST:DATE?`` > ``2002,12,29``                    |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:BRD:ID?`` > ``<board_id>``                | ``rp_HPGetModel``       | Returns the board model from the values rp_HPeModels_t.   | in dev             |
+| | ``SYSTem:BRD:ID?`` > ``<board_id>``                | ``rp_HPGetModel``       | Returns the board model from the values rp_HPeModels_t.   | 2.00-18 and up     |
 | | Examples:                                          |                         |                                                           |                    |
 | | ``SYSTem:BRD:ID?`` > ``1``                         |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:BRD:Name?`` > ``board name``              | ``rp_HPGetModelName``   | Returns the name of the board.                            | in dev             |
+| | ``SYSTem:BRD:Name?`` > ``board name``              | ``rp_HPGetModelName``   | Returns the name of the board.                            | 2.00-18 and up     |
 | | Examples:                                          |                         |                                                           |                    |
 | | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     |                         |                                                           |                    |
 +------------------------------------------------------+-------------------------+-----------------------------------------------------------+--------------------+
@@ -172,19 +172,19 @@ Parameter options:
 | | Examples:                               |                                    |                                                                                                                                           |                    |
 | | ``DAISY:ENable?`` > ``ON``              |                                    |                                                                                                                                           |                    |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| | ``DAISY:SYNC:TRIG <state>``             | ``rp_SetEnableDaisyChainTrigSync`` | | Enables trigger sync over SATA daisy chain connectors. Once the primary board will be triggered,                                        | in dev             | 
+| | ``DAISY:SYNC:TRIG <state>``             | ``rp_SetEnableDaisyChainTrigSync`` | | Enables trigger sync over SATA daisy chain connectors. Once the primary board will be triggered,                                        | 2.00-18 and up     | 
 | | Examples:                               |                                    | | the trigger will be forwarded to the secondary board over the SATA connector where the trigger can be detected using EXT_NE selector.   |                    |
 | | ``DAISY:SYNC:TRIG ON``                  |                                    |                                                                                                                                           |                    |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| | ``DAISY:SYNC:TRIG?`` > ``<state>``      | ``rp_GetEnableDaisyChainTrigSync`` | | Returns the current state of the trigger synchronization using Daisy Chain.                                                             | in dev             |
+| | ``DAISY:SYNC:TRIG?`` > ``<state>``      | ``rp_GetEnableDaisyChainTrigSync`` | | Returns the current state of the trigger synchronization using Daisy Chain.                                                             | 2.00-18 and up     |
 | | Examples:                               |                                    |                                                                                                                                           |                    |
 | | ``DAISY:SYNC:TRIG?`` > ``ON``           |                                    |                                                                                                                                           |                    |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| | ``DAISY:SYNC:CLK <state>``              | ``rp_SetEnableDiasyChainClockSync``| | Enables clock sync over SATA daisy chain connectors. The primary board will start generating a clock for the secondary unit and so on.  | in dev             |
+| | ``DAISY:SYNC:CLK <state>``              | ``rp_SetEnableDiasyChainClockSync``| | Enables clock sync over SATA daisy chain connectors. The primary board will start generating a clock for the secondary unit and so on.  | 2.00-18 and up     |
 | | Examples:                               |                                    | |                                                                                                                                         |                    |
 | | ``DAISY:SYNC:CLK ON``                   |                                    |                                                                                                                                           |                    |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| | ``DAISY:SYNC:CLK?`` > ``<state>``       | ``rp_GetEnableDiasyChainClockSync``| | Returns the current state of the SATA daisy chain mode.                                                                                 | in dev             |
+| | ``DAISY:SYNC:CLK?`` > ``<state>``       | ``rp_GetEnableDiasyChainClockSync``| | Returns the current state of the SATA daisy chain mode.                                                                                 | 2.00-18 and up     |
 | | Examples:                               |                                    |                                                                                                                                           |                    |
 | | ``DAISY:SYNC:CLK?`` > ``ON``            |                                    |                                                                                                                                           |                    |
 +-------------------------------------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
@@ -358,19 +358,19 @@ Parameter options:
 | | Examples:                                     |                                        |                                                                                              |                    |
 | | ``SOUR1:TRIG:SOUR?`` > ``EXT_PE``             |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LastValue <amplitude>``        | ``rp_GenBurstLastValue``               | | Sets the value to be set at the end of the generated signal in burst mode.                 | in dev             |
+| | ``SOUR<n>:BURS:LastValue <amplitude>``        | ``rp_GenBurstLastValue``               | | Sets the value to be set at the end of the generated signal in burst mode.                 | 2.00-18 and up     |
 | | Examples:                                     |                                        | | The output will stay on this value until a new signal is generated.                        |                    |
 | | ``SOUR1:BURS:LastValue 0.5``                  |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LastValue?`` > ``<amplitude>`` | ``rp_GenGetBurstLastValue``            | Gets the value to be set at the end of the generated signal in burst mode.                   | in dev             |
+| | ``SOUR<n>:BURS:LastValue?`` > ``<amplitude>`` | ``rp_GenGetBurstLastValue``            | Gets the value to be set at the end of the generated signal in burst mode.                   | 2.00-18 and up     |
 | | Examples:                                     |                                        |                                                                                              |                    |
 | | ``SOUR1:BURS:LastValue`` > ``0.5``            |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:InitValue <amplitude>``             | ``rp_GenSetInitGenValue``              | | The level of which is set by the generator after                                           | in dev             |
+| | ``SOUR<n>:InitValue <amplitude>``             | ``rp_GenSetInitGenValue``              | | The level of which is set by the generator after                                           | 2.00-18 and up     |
 | | Examples:                                     |                                        | | the outputs are turned on, but before the signal is generated.                             |                    |
 | | ``SOUR1:InitValue 0.5``                       |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:InitValue?`` > ``<amplitude>``      | ``rp_GenGetInitGenValue``              | Gets the value of the initial signal level.                                                  | in dev             |
+| | ``SOUR<n>:InitValue?`` > ``<amplitude>``      | ``rp_GenGetInitGenValue``              | Gets the value of the initial signal level.                                                  | 2.00-18 and up     |
 | | Examples:                                     |                                        |                                                                                              |                    |
 | | ``SOUR1:InitValue?`` > ``0.5``                |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
@@ -689,59 +689,59 @@ DMA mode for ACQ
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | SCPI                                               | API                               | DESCRIPTION                                                                            |  ECOSYSTEM         |
 +====================================================+===================================+========================================================================================+====================+
-| | ``ACQ:AXI:DATA:UNITS <units>``                   | -                                 | Select units in which the acquired data will be returned.                              | in dev             |
+| | ``ACQ:AXI:DATA:UNITS <units>``                   | -                                 | Select units in which the acquired data will be returned.                              | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:DATA:UNITS RAW``                       |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DATA:UNITS?`` > ``<units>``            | -                                 | Get units in which the acquired data will be returned.                                 | in dev             |
+| | ``ACQ:AXI:DATA:UNITS?`` > ``<units>``            | -                                 | Get units in which the acquired data will be returned.                                 | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:DATA:UNITS?`` > ``RAW``                |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DEC <decimation>``                     | ``rp_AcqAxiSetDecimationFactor``  | Sets the decimation used at acquiring signal for AXI.                                  | in dev             |
+| | ``ACQ:AXI:DEC <decimation>``                     | ``rp_AcqAxiSetDecimationFactor``  | Sets the decimation used at acquiring signal for AXI.                                  | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:DEC 4``                                |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DEC?`` > ``<decimation>``              | ``rp_AcqAxiGetDecimationFactor``  | Get the decimation factor.                                                             | in dev             |
+| | ``ACQ:AXI:DEC?`` > ``<decimation>``              | ``rp_AcqAxiGetDecimationFactor``  | Get the decimation factor.                                                             | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:DEC?`` > ``1``                         |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:START?`` > ``<byte>``                  | ``rp_AcqAxiGetMemoryRegion``      | Get start address of reserved memory for DMA mode.                                     | in dev             |
+| | ``ACQ:AXI:START?`` > ``<byte>``                  | ``rp_AcqAxiGetMemoryRegion``      | Get start address of reserved memory for DMA mode.                                     | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:START?`` > ``16777216``                |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SIZE?`` > ``<byte>``                   | ``rp_AcqAxiGetMemoryRegion``      | Get size of reserved memory for DMA mode.                                              | in dev             |
+| | ``ACQ:AXI:SIZE?`` > ``<byte>``                   | ``rp_AcqAxiGetMemoryRegion``      | Get size of reserved memory for DMA mode.                                              | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SIZE?`` > ``2097152``                  |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:ENable <state>``               | ``rp_AcqAxiEnable``               | Sets the AXI enable state.                                                             | in dev             |
+| | ``ACQ:AXI:SOUR<n>:ENable <state>``               | ``rp_AcqAxiEnable``               | Sets the AXI enable state.                                                             | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:ENable ON``                      |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:TRIG:FILL?``                   | ``rp_AcqAxiGetBufferFillState``   | Indicates whether the ADC AXI buffer was full of data.                                 | in dev             |
+| | ``ACQ:AXI:SOUR<n>:TRIG:FILL?``                   | ``rp_AcqAxiGetBufferFillState``   | Indicates whether the ADC AXI buffer was full of data.                                 | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:TRIG:FILL?`` > ``1``             |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Dly <count>``             | ``rp_AcqAxiSetTriggerDelay``      | Sets the number of decimated data after the trigger written into memory.               | in dev             |
+| | ``ACQ:AXI:SOUR<n>:Trig:Dly <count>``             | ``rp_AcqAxiSetTriggerDelay``      | Sets the number of decimated data after the trigger written into memory.               | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:Trig:Dly 2314``                  |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Dly?`` > ``<count>``      | ``rp_AcqAxiGetTriggerDelay``      | Gets the number of decimated data after trigger written into memory.                   | in dev             |
+| | ``ACQ:AXI:SOUR<n>:Trig:Dly?`` > ``<count>``      | ``rp_AcqAxiGetTriggerDelay``      | Gets the number of decimated data after trigger written into memory.                   | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:Trig:Dly?`` > ``2314``           |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Write:Pos?`` > ``pos``         | ``rp_AcqAxiGetWritePointer``      | Returns current position of AXI ADC write pointer.                                     | in dev             |
+| | ``ACQ:AXI:SOUR<n>:Write:Pos?`` > ``pos``         | ``rp_AcqAxiGetWritePointer``      | Returns current position of AXI ADC write pointer.                                     | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:Write:Pos?`` > ``1024``          |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``pos``          | ``rp_AcqAxiGetWritePointerAtTrig``| Returns the position of AXI ADC write pointer at a time when trigger arrived.          | in dev             |
+| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``pos``          | ``rp_AcqAxiGetWritePointerAtTrig``| Returns the position of AXI ADC write pointer at a time when trigger arrived.          | 2.00-18 and up     |
 | | Example:                                         |                                   |                                                                                        |                    |
 | | ``ACQ:AXI:SOUR1:Trig:Pos?`` > ``512``            |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:SET:Buffer <start>,<size>``    | ``rp_AcqAxiSetBufferBytes``       | | Sets the AXI ADC buffer address and size in bytes.                                   | in dev             |
+| | ``ACQ:AXI:SOUR<n>:SET:Buffer <start>,<size>``    | ``rp_AcqAxiSetBufferBytes``       | | Sets the AXI ADC buffer address and size in bytes.                                   | 2.00-18 and up     |
 | | Example:                                         |                                   | | Buffer size must be a multiple of 2.                                                 |                    |
 | | ``ACQ:AXI:SOUR<n>:SET:Buffer 16777216,512``      |                                   |                                                                                        |                    |
 +----------------------------------------------------+-----------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:DATA:Start:N? <pos>,<count>``  | ``rp_AcqAxiGetDataV``             | | Read ``count`` samples from the ``pos`` position onwards.                            | in dev             |
+| | ``ACQ:AXI:SOUR<n>:DATA:Start:N? <pos>,<count>``  | ``rp_AcqAxiGetDataV``             | | Read ``count`` samples from the ``pos`` position onwards.                            | 2.00-18 and up     |
 | | Example:                                         |                                   | | Returns the value as a text array of values or a byte array.                         |                    |
 | | ``ACQ:AXI:SOUR1:DATA:Start:N? 20,3`` >           |                                   | | Depending on the setting.                                                            |                    |
 | | ``{1.2,3.2,-1.2}``                               |                                   |                                                                                        |                    |
@@ -899,13 +899,13 @@ Parameter options:
 | | Example:                                 |                                |                                                                                    |                    |
 | | ``SPI:SET:MODE?`` > ``LIST``             |                                |                                                                                    |                    |
 +--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+--------------------+
-| | ``SPI:SETtings:CSMODE <cs_mode>``        | ``rp_SPI_SetCSMode``           | | Sets the mode for CS.                                                            | in dev             |
+| | ``SPI:SETtings:CSMODE <cs_mode>``        | ``rp_SPI_SetCSMode``           | | Sets the mode for CS.                                                            | 2.00-18 and up     |
 | | Example:                                 |                                | | - NORMAL = After the message is transmitted,                                     |                    |
 | | ``SPI:SET:CSMODE NORMAL``                |                                | | the CS line is set to the HIGH state.                                            |                    |
 | |                                          |                                | | - HIGH = After the message has been transmitted,                                 |                    |
 | |                                          |                                | | the CS line is set to the LOW state.                                             |                    |
 +--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+--------------------+
-| | ``SPI:SETtings:CSMODE?`` > ``<cs_mode>`` | ``rp_SPI_GetCSMode``           | Gets the specified CS mode for SPI.                                                | in dev             |
+| | ``SPI:SETtings:CSMODE?`` > ``<cs_mode>`` | ``rp_SPI_GetCSMode``           | Gets the specified CS mode for SPI.                                                | 2.00-18 and up     |
 | | Example:                                 |                                |                                                                                    |                    |
 | | ``SPI:SET:CSMODE?`` > ``NORMAL``         |                                |                                                                                    |                    |
 +--------------------------------------------+--------------------------------+------------------------------------------------------------------------------------+--------------------+
