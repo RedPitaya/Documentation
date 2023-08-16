@@ -1,11 +1,11 @@
 .. _status_leds:
 
 ######################
-Status LED description
+Status LED Description
 ######################
 
     ======  ==========================================================================================================
-    color
+    Colour
     ======  ==========================================================================================================
     blue    FPGA bitstream status (in normal operation, this LED is turned on, indicating the FPGA bitstream
             was successfully loaded).

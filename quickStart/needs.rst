@@ -15,20 +15,20 @@ in each of the RedPitaya kits available on our |WEBstore|:
 
    .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
 
-      * 5 V / 2 A micro USB power supply,
-      * 4 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
-      * Ethernet cable.
+      *   5 V / 2 A micro USB power supply,
+      *   4 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
+      *   Ethernet cable.
       
    .. tab:: 250-12
 
-      * 12 V / 1 A power adapter with jack connector,
-      * 4 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
-      * Ethernet cable.
+      *   12 V / 1 A power adapter with jack connector,
+      *   4 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
+      *   Ethernet cable.
 
 Additional required items which are not provided with the Red Pitaya kits:
 
-* computer with an internet browser (Google Chrome is recommended),
-* router with DHCP server enabled and access to the internet.
+*   A computer with an internet browser (Google Chrome is recommended),
+*   router with DHCP server enabled and access to the internet.
 
 .. note::
 
