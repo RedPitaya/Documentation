@@ -156,7 +156,7 @@ Technical specifications
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
 .. note::
-  Jumper orientation can have an effect on the measurements taken with Red Pitaya. Check the :ref:`Jumper Orientation <jumper_pos>` for more details.
+  Jumper orientation can affect the measurements taken with Red Pitaya. Check the :ref:`Jumper Orientation <jumper_pos>` for more details.
 
 
 **********
@@ -165,8 +165,8 @@ Schematics
 
 * `STEMlab_125-14-4_IN_V1r3.PDF <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-14-4_IN_V1r3.PDF>`_
 
-*************************
-Mechanical specifications
-*************************
+****************************************
+Mechanical Specifications and 3D Models
+****************************************
 
 * `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEM125-14-4_IN_V1r3_3Dstep.zip>`_
