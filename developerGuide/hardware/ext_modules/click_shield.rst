@@ -113,7 +113,7 @@ Jumpers
 Power supply
 --------------
 
-.. TODO add documentation on this
+.. TODO add documentation on this (how much current and power do they need)
 
 The Click Shields provide two alternative ways to power the Red Pitaya: 
 
@@ -130,6 +130,7 @@ Pinout
 Here you will find the interconnections between Click Boards (MikroBus pinout) and Red Pitaya pins.
 
 .. add connectors picture (topdown of click shield, click board pinout marked)
+
 
 Click Board 1
 ~~~~~~~~~~~~~~~
@@ -228,7 +229,7 @@ Schematics
 
 .. add final Click shield schematics when available
 
-***Coming Soon...***
+**Coming Soon...**
 
 
 
@@ -237,4 +238,4 @@ Examples of use
 
 .. add click shield examples when available
 
-***Coming soon...***
+**Coming soon...**
