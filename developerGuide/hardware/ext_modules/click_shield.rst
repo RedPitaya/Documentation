@@ -52,6 +52,8 @@ Connectors
 
 .. add connectors picture (topdown of click shield, connectors marked)
 
+.. add short descriptions on use of connectors and examples - what would a user use this for (same for jumpers and switches)
+
 +-------------------------+--------------------+----------------------------------------+
 | **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                              |
 +-------------------------+--------------------+----------------------------------------+
