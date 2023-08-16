@@ -1,7 +1,7 @@
 .. _trig_threshold_example:
 
-Triggering with a threshold on channel
-######################################
+Triggering with treshold on channel
+###################################
 
 .. http://blog.redpitaya.com/examples-new/single-buffer-acquire/
 
@@ -15,8 +15,8 @@ This example shows how to acquire 16k samples of a signal on fast analog inputs.
 Required hardware
 *****************
 
-    -   Red Pitaya device
-    -   Signal (function) generator
+    - Red Pitaya device
+    - Signal (function) generator
     
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
@@ -53,25 +53,25 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             flush(RP);
             
-            % Set decimation value (sampling rate) concerning your 
+            % Set decimation value (sampling rate) in respect to your 
             % acquired signal frequency
             
             writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
             writeline(RP,'ACQ:TRIG:LEV 0.5');       % trigger level 
             
-            % There is an option to select coupling when using SIGNALlab 250-12 
-            % writeline(RP,'ACQ:SOUR1:COUP AC');    % enables AC coupling on Channel 1
+            % there is an option to select coupling when using SIGNALlab 250-12 
+            % writeline(RP,'ACQ:SOUR1:COUP AC');    % enables AC coupling on channel 1
 
             % by default LOW level gain is selected
-            writeline(RP,'ACQ:SOUR1:GAIN LV');  % acquire gain to LV/HV (should the same as jumpers)
+            writeline(RP,'ACQ:SOUR1:GAIN LV');    % sets gain to LV/HV (should the same as jumpers)
 
 
             % Set trigger delay to 0 samples
-            % 0 samples delay sets the trigger to the centre of the buffer
-            % Signal on your graph will have the trigger in the centre (symmetrical)
-            % Samples from left to centre are samples before the trigger 
-            % Samples from the centre to the right are samples after the trigger
+            % 0 samples delay sets trigger to the center of the buffer
+            % Signal on your graph will have the trigger in the center (symmetrical)
+            % Samples from left to the center are samples before trigger 
+            % Samples from center to the right are samples after trigger
             
             writeline(RP,'ACQ:TRIG:DLY 0');
             
@@ -81,16 +81,16 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:START');
             
-            % After acquisition is started some time delay is needed to acquire fresh samples in the buffer
+            % After acquisition is started some time delay is needed in order to acquire fresh samples in the buffer
             pause(1);
-            % Here we have used a time delay of one second, but you can calculate the exact value by taking into account the buffer
+            % Here we have used time delay of one second, but you can calculate the exact value by taking into account buffer
             % length and sampling rate
             
             writeline(RP,'ACQ:TRIG CH1_PE');
             
-            % Wait for the trigger
-            % Until the trigger is true wait to acquire
-            % Be aware of the while loop if the trigger is not achieved
+            % Wait for trigger
+            % Until trigger is true wait with acquiring
+            % Be aware of the while loop if trigger is not achieved
             % Ctrl+C will stop code execution in MATLAB
             
             while 1
@@ -108,14 +108,14 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % while 1
             %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
             %     
-            %     if strcmp('1', fill_state(1:1)the )
+            %     if strcmp('1', fill_state(1:1))
             % 
             %         break;
             % 
             %     end
             % end 
                 
-            % Read data from the buffer 
+            % Read data from buffer 
             signal_str = writeread(RP,'ACQ:SOUR1:DATA?');
             
             % Convert values to numbers.
@@ -150,7 +150,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             flush(RP);
             
-            % Set decimation value (sampling rate) concerning your 
+            % Set decimation value (sampling rate) in respect to your 
             % acquired signal frequency
             
             
@@ -162,10 +162,10 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             writeline(RP,'ACQ:DATA:UNITS VOLTS');
             
             % Set trigger delay to 0 samples
-            % 0 samples delay sets the trigger to the centre of the buffer
-            % Signal on your graph will have the trigger in the centre (symmetrical)
-            % Samples from left to centre are samples before the trigger 
-            % Samples from the centre to the right are samples after the trigger
+            % 0 samples delay sets trigger to the center of the buffer
+            % Signal on your graph will have the trigger in the center (symmetrical)
+            % Samples from left to the center are samples before trigger 
+            % Samples from center to the right are samples after trigger
             
             writeline(RP,'ACQ:TRIG:DLY 0');
             
@@ -176,16 +176,16 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             writeline(RP,'ACQ:START');
             
-            % After acquisition is started some time delay is needed to acquire fresh samples in the buffer
+            % After acquisition is started some time delay is needed in order to acquire fresh samples in the buffer
             pause(1);
-            % Here we have used a time delay of one second, but you can calculate the exact value by taking into account the buffer
+            % Here we have used time delay of one second, but you can calculate the exact value by taking into account buffer
             % length and sampling rate
             
             writeline(RP,'ACQ:TRIG CH1_PE');
             
-            % Wait for the trigger
-            % Until the trigger is true wait to acquire
-            % Be aware of the while loop if the trigger is not achieved
+            % Wait for trigger
+            % Until trigger is true wait with acquiring
+            % Be aware of the while loop if trigger is not achieved
             % Ctrl+C will stop code execution in MATLAB
             
             while 1
@@ -211,13 +211,13 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             %     end
             % end 
             
-            % Read data from the buffer
+            % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
             
             % Read header for binary format
             header = read(RP, 1);
             
-            % Reading size of the block, what informed about data size
+            % Reading size of block, what informed about data size
             header_size = str2double(strcat(read(RP, 1, 'int8')));
             
             % Reading size of data
@@ -253,7 +253,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             flush(RP);
             
-            % Set decimation vale (sampling rate) concerning you
+            % Set decimation vale (sampling rate) in respect to you
             % acquired signal frequency
             
             
@@ -265,10 +265,10 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             writeline(RP,'ACQ:DATA:UNITS RAW');
             
             % Set trigger delay to 0 samples
-            % 0 samples delay the et trigger to the centre of the buffer
-            % Signal on your graph will have a trigger in the centre (symmetrical)
-            % Samples from left to centre are samples before the trigger
-            % Samples from the centre to the right are samples after the trigger
+            % 0 samples delay set trigger to center of the buffer
+            % Signal on your graph will have trigger in the center (symmetrical)
+            % Samples from left to the center are samples before trigger
+            % Samples from center to the right are samples after trigger
 
             writeline(RP,'ACQ:TRIG:DLY 0');
             
@@ -277,15 +277,15 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Set trigger to source 1 positive edge
             
             writeline(RP,'ACQ:START');
-            % After the acquisition is started some time delay is needed to acquire fresh samples in to buffer
-            % Here we have used a time delay of one second but you can calculate the exact value taking into account the buffer
-            % length and sampling rate
+            % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
+            % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
+            % length and smaling rate
             pause(1);
             
             writeline(RP,'ACQ:TRIG CH1_PE');
-            % Wait for the trigger
-            % Until the trigger is true wait to acquire
-            % Be aware of the while loop if the trigger is not achieved
+            % Wait for trigger
+            % Until trigger is true wait with acquiring
+            % Be aware of while loop if trigger is not achieved
             % Ctrl+C will stop code executing in MATLAB
             
             while 1
@@ -310,13 +310,13 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             %     end
             % end 
             
-            % Read data from the buffer
+            % Read data from buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
             
             % Read header for binary format
             header = read(RP, 1);
             
-            % Reading size of the block, what informed about data size
+            % Reading size of block, what informed about data size
             header_size = str2double(strcat(read(RP, 1, 'int8')));
             
             % Reading size of data
@@ -352,7 +352,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             flush(RP);
 
-            % Set decimation vale (sampling rate) concerning you 
+            % Set decimation vale (sampling rate) in respect to you 
             % acquired signal frequency
 
             writeline(RP,'ACQ:RST');
@@ -360,10 +360,10 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             writeline(RP,'ACQ:TRIG:LEV 0.5');
 
             % Set trigger delay to 0 samples
-            % 0 samples delay set the trigger to the centre of the buffer
-            % Signal on your graph will have a trigger in the centre (symmetrical)
-            % Samples from left to centre are samples before the trigger 
-            % Samples from the centre to the right are samples after the trigger
+            % 0 samples delay set trigger to center of the buffer
+            % Signal on your graph will have trigger in the center (symmetrical)
+            % Samples from left to the center are samples before trigger 
+            % Samples from center to the right are samples after trigger
 
             writeline(RP,'ACQ:TRIG:DLY 0');
 
@@ -372,15 +372,15 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Set trigger to source 1 positive edge
 
             writeline(RP,'ACQ:START');
-            % After the acquisition is started some time delay is needed to acquire fresh samples in to buffer
-            % Here we have used a time delay of one second but you can calculate the exact value taking into account the buffer
-            % length and sampling rate
+            % After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer
+            % Here we have used time delay of one second but you can calculate exact value taking in to account buffer
+            % length and smaling rate
             pause(1);
 
             writeline(RP,'ACQ:TRIG CH1_PE');  
-            % Wait for the trigger
-            % Until the trigger is true wait to acquire
-            % Be aware of the while loop if the trigger is not achieved
+            % Wait for trigger
+            % Until trigger is true wait with acquiring
+            % Be aware of while loop if trigger is not achieved
             % Ctrl+C will stop code executing in Matlab
 
             while 1
@@ -405,14 +405,14 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             %     end
             % end 
 
-            % Read data from the buffer 
+            % Read data from buffer 
             signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
             signal_str_2 = writeread(RP,'ACQ:SOUR2:DATA?');
             signal_str_3 = writeread(RP,'ACQ:SOUR3:DATA?');
             signal_str_4 = writeread(RP,'ACQ:SOUR4:DATA?');
 
-            % Convert values to numbers.% First character in the string is “{“   
-            % and 2 latest are empty spaces and the last is “}”.  
+            % Convert values to numbers.% First character in string is “{“   
+            % and 2 latest are empty spaces and last is “}”.  
 
             signal_num   = str2num(signal_str(1,2:length(signal_str)-3));
             signal_num_2 = str2num(signal_str_2(1,2:length(signal_str_2)-3));
@@ -477,17 +477,17 @@ Code - C
                     rp_AcqSetTriggerLevel(RP_CH_1, 0.5); //Trig level is set in Volts while in SCPI 
                     rp_AcqSetTriggerDelay(0);
 
-                    //There is an option to select coupling when using SIGNALlab 250-12 
-                    // rp_AcqSetAC_DC(RP_CH_1, RP_AC); // enables AC coupling on Channel 1
+                    // there is an option to select coupling when using SIGNALlab 250-12 
+                    // rp_AcqSetAC_DC(RP_CH_1, RP_AC); // enables AC coupling on channel 1
 
-                    //By default LV level gain is selected
+                    // by default LV level gain is selected
                     rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
             
                     rp_AcqStart();
             
-                    /* After the acquisition is started some time delay is needed to acquire fresh samples into buffer*/
-                    /* Here we have used a time delay of one second but you can calculate the exact value taking into account buffer*/
-                    /*length and sampling rate*/
+                    /* After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer*/
+                    /* Here we have used time delay of one second but you can calculate exact value taking in to account buffer*/
+                    /*length and smaling rate*/
             
                     sleep(1);
                     rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
@@ -550,9 +550,9 @@ Code - C
 
                     rp_AcqStart();
 
-                    /* After the acquisition is started some time delay is needed to acquire fresh samples into buffer*/
-                    /* Here we have used a time delay of one second but you can calculate the exact value taking into account buffer*/
-                    /*length and sampling rate*/
+                    /* After acquisition is started some time delay is needed in order to acquire fresh samples in to buffer*/
+                    /* Here we have used time delay of one second but you can calculate exact value taking in to account buffer*/
+                    /*length and smaling rate*/
 
                     sleep(1);
                     rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
@@ -1027,10 +1027,10 @@ for Scilab sockets. How to set the socket is described in the Blink example.
     SOCKET_write(tcpipObj,'ACQ:SOUR1:GAIN LV'); // user can switch gain using this command
 
     // Set trigger delay to 0 samples
-    // 0 samples delay set trigger to centre of the buffer
-    // Signal on your graph will have a trigger in the centre (symmetrical)
-    // Samples from left to centre are samples before the trigger 
-    // Samples from the centre to the right are samples after the trigger
+    // 0 samples delay set trigger to center of the buffer
+    // Signal on your graph will have a trigger in the center (symmetrical)
+    // Samples from left to center are samples before the trigger 
+    // Samples from the center to the right are samples after the trigger
     
     SOCKET_write(tcpipObj,'ACQ:TRIG:DLY 0');
     

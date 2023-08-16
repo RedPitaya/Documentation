@@ -8,7 +8,7 @@ Command-line tools
 
     Command-line utilities must not be used in parallel with a WEB application.
 
-    For correct operation of the acquire, generate, and monitor tools, the correct FPGA image must be loaded. Please note that some applications can change the FPGA image loaded.
+    For correct operation of the acquire, generate, monitor tools, it is mandatory that the correct FPGA image is loaded. Please note that some applications can change the FPGA image loaded.
     To load the FPGA image, open a terminal on the Red Pitaya and execute the following command:
 
     .. tabs::
@@ -56,7 +56,7 @@ The Red Pitaya signal generator can be controlled through the |generate| command
 
         Usage: generate   channel amplitude frequency <type>
 
-            channel     Channel to generate a signal on [1, 2].
+            channel     Channel to generate signal on [1, 2].
             amplitude   Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
             frequency   Signal frequency in Hz [0.0 - 6.2e+07].
             type        Signal type [sine, sqr, tri].
@@ -70,7 +70,7 @@ The Red Pitaya signal generator can be controlled through the |generate| command
 
         Usage: generate channel amplitude frequency <gain> <type> <end frequency> <calib>
 
-            channel         Channel to generate a signal on [1, 2].
+            channel         Channel to generate signal on [1, 2].
             amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
             frequency       Signal frequency in Hz [0.00 - 1.2e+08].
             gain            Gain output value [x1, x5] (default value x1).
@@ -87,15 +87,15 @@ The Red Pitaya signal generator can be controlled through the |generate| command
 
         Usage: generate   channel amplitude frequency <type> <end frequency> <calib>
 
-	        channel         Channel to generate a signal on [1, 2].
+	        channel         Channel to generate signal on [1, 2].
 	        amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
 	        frequency       Signal frequency in Hz [0 - 62500000].
 	        type            Signal type [sine, sqr, tri, sweep].
 	        end frequency   Sweep-to frequency in Hz [0 - 62500000].
-	        calib           Disable calibration [-c]. By default, calibration is enabled.
+	        calib           Disable calibration [-c]. By default calibration enabled.
 
 
-The performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the :ref:`Red Pitaya boards comparison <rp-board-comp>`.
+Performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the :ref:`Red Pitaya boards comparison <rp-board-comp>`.
 
 .. _sig_acq_util:
 
@@ -297,8 +297,8 @@ Example (system register reading):
     14          AO2(0-1.8V)     0x00000075	    1.350
     15          AO3(0-1.8V)     0x0000009c	    1.800
 
-You can find a more detailed description of the above-mentioned pins :ref:`here <E1>`.
-The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –SADC switch:
+You can find a more detailed description of the above mentioned pins :ref:`here <E1>`.
+The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –sadc switch:
 
 .. code-block:: shell-session
 
@@ -307,9 +307,9 @@ The –ams switch provides access to analog mixed signals including Zynq SoC tem
 Accessing FPGA registers
 ========================
 
-Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the
+Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, in order to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the
 :ref:`Red Pitaya HDL memory map <fpga_094>` document. The registers can be accessed using the described monitor utility.
-For example, the following sequence of monitor commands checks modifies, and verifies the acquisition decimation parameter (at address 0x40100014):
+For example, the following sequence of monitor commands checks, modifies, and verifies the acquisition decimation parameter (at address 0x40100014):
 
 .. code-block:: shell-session
 
@@ -323,7 +323,7 @@ For example, the following sequence of monitor commands checks modifies, and ver
 
 .. note::
 
-    The CPU algorithms communicate with the FPGA through these registers. Therefore, the user should be aware of possible interference with Red Pitaya applications which are reading or acting upon these same FPGA registers. For simple tasks, however, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.
+    The CPU algorithms communicate with the FPGA through these registers. Therefore, the user should be aware of a possible interference with Red Pitaya applications which are reading or acting upon these same FPGA registers. For simple tasks, however, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.
 
 
 .. _bode_util:
@@ -349,11 +349,11 @@ The Bode Analyzer can be used from the console.
    or
       bode -calib
 
-      channel            Channel to generate a signal on [1 / 2].
+      channel            Channel to generate signal on [1 / 2].
       amplitude          Signal amplitude in V [0 - 1, which means max 2Vpp].
       dc bias            DC bias/offset/component in V [0 - 1].
                         Max sum of amplitude and DC bias is (0-1]V.
-      averaging          Number of samples per measurement [>1].
+      averaging          Number of samples per one measurement [>1].
       count/steps        Number of measurements [>2].
       start freq         Lower frequency limit in Hz [3 - 62.5e6].
       stop freq          Upper frequency limit in Hz [3 - 62.5e6].
@@ -415,13 +415,13 @@ The LCR meter can be used from the console.
    root@rp-f01c35:~# lcr
    Too few arguments!
 
-   LCR meter version 0.00-0000, compiled on Fri Aug 14 03:29:10 2020
+   LCR meter version 0.00-0000, compiled at Fri Aug 14 03:29:10 2020
 
    Usage:	lcr [freq] [r_shunt]
 
       freq               Signal frequency used for measurement [ 100 , 1000, 10000 , 100000 ] Hz.
       r_shunt            Shunt resistor value in Ohms [ 10, 100, 1000, 10000, 100000, 1000000 ]. If set to 0, Automatic ranging is used.
-                        Automatic ranging demands an Extenson module.
+                        Automatic ranging demands Extenson module.
 
    Output:	Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
 
@@ -480,8 +480,8 @@ The server for streaming can be started not only using the web interface but als
     root@rp-f07167:/# streaming-server
     Missing parameters: Configuration file
     Usage: streaming-server
-	    -b run service in the background
-	    -c path to the config file
+	    -b run service in background
+	    -c path to config file
 
 To start the server, you need to do 3 steps:
 
@@ -520,7 +520,7 @@ To start the server, you need to do 3 steps:
             Lost rate: 0 / 766 (0 %)
             Lost rate: 0 / 766 (0 %)
 
-The configuration for streaming is automatically created and saved in the file: **/root/.streaming_config** during the editing of the parameters in the web application.
+The configuration for streaming is automatically created and saved in the file: **/root/.streaming_config** during editing of the parameters in the web application.
 
 
 .. note::
@@ -529,14 +529,14 @@ The configuration for streaming is automatically created and saved in the file: 
 
 .. note::
 
-    The server can be started in the background. To do this, use the -b parameter. In this mode, the application can be used as a service at system startup. Service information from the application is saved in the syslog file (by default, the Syslog is not installed on RP).
+    The server can be started in the background. To do this, use the -b parameter. In this mode, the application can be used as a service at system startup. Service information from the application is saved in the syslog file (by default, the syslog is not installed on RP).
 
 .. note::
 
     Streaming always creates two files:
 
-        *   The first stores of streamed data
-        *   The second stores the data transfer report
+        * The first stores streamed data
+        * The second stores the data transfer report
 
 .. note::
 
@@ -544,7 +544,7 @@ The configuration for streaming is automatically created and saved in the file: 
 
 .. note::
 
-    For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
+    For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them in the WEB streaming application on redpitai itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
 
 .. |streaming app| raw:: html
 
@@ -568,7 +568,7 @@ Usage instructions:
 
         -y    9 Yellow LED. Responsible for the status of reading the memory card.
         -r    Red LED, which is responsible for the heartbeat.
-        -e    LEDs on the ethernet connector.
+        -e    LEDs on ethernet connector.
 
     Optional parameter:
         State = [Off | On]  Turns LEDs on or off

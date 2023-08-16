@@ -1,5 +1,3 @@
-# Until it is added into the documentation it should stay as .inc (does not cause build warnings)
-
 .. _udev:
 
 ##########

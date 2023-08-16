@@ -2,11 +2,6 @@
 Jupyter Notebook
 #################
 
-.. note::
-
-  Jupyter Notebook application is currently being updated (OS 2.00) and will be available in one of the next OS updates.
-
-
 The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations, explanatory text, and direct control or monitor hardware.
 Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning, and much more.
 

@@ -13,8 +13,8 @@ Voltage and frequency ranges depend on the Red Pitaya model. 
 Required hardware
 *****************
 
-    -   Red Pitaya device
-    -   Signal (function) generator
+    - Red Pitaya device
+    - Signal (function) generator
     
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
