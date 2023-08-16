@@ -4,7 +4,7 @@
 Red Pitaya Acrylic Case Assembly
 ################################
 
-Regardless of whether you bought your Red Pitaya Acrylic case in a kit or as a separate add-on, manual assembly is required.
+Regardless of whether you bought your Red Pitaya Acrylic case in a kit or as a separate add-on, you will need to manually asembile it.
 
 **********
 Components
@@ -16,9 +16,9 @@ Components
     Components of the Red Pitaya Acrylic Case.
     
 Contents:
-    -   8 screws that close the housing
-    -   4 long brass standoffs and 4 short ones that hold the board
-    -   4 rubber feet for secure positioning on the desk
+    - 8 screws that close the housing
+    - 4 long brass standoffs and 4 short ones that hold the board
+    - 4 rubber feet for secure positioning on the desk
    
 *********************
 Assembly Instructions
@@ -29,14 +29,14 @@ Assembly Instructions
     .. figure:: rp_pvccase_02.jpg
         :align: center
 
-        The bottom of the Red Pitaya board shows the plastic feet.
+        The bottom of the Red Pitaya board showing the plastic feet.
 
 #. Mount the brass standoffs as seen in the picture below:
    
     .. figure:: rp_pvccase_03.jpg
        :align: center
 
-#. If you have the model where the 6-pin connector is present, please use the included white plastic washers.
+#. If you have the model where the 6 pin connector is present, please use the included white plastic washers.
 
     .. figure:: rp_pvccase_04.jpg
        :align: center
@@ -46,11 +46,11 @@ Assembly Instructions
     .. figure:: rp_pvccase_05.jpg
        :align: center
     
-       If the CN11 connector is present, use the included plastic washers when mounting the bottom part.
+       If a CN11 connector is present, use the included plastic washers when mounting the bottom part.
 
     .. figure:: rp_pvccase_06.jpg
        :align: center
 
-       Red Pitaya shows the usage of white plastic washers for 6-pin connector CN11 clearance.
+       Red Pitaya showing the use of white plastic washers for 6-pin connector CN11 clearance.
 
 #. Stick in the rubber feet.

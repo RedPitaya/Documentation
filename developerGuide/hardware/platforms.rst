@@ -1,4 +1,3 @@
-
 Red Pitaya platforms
 ####################
 

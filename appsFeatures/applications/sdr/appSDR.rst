@@ -8,10 +8,10 @@ What is in the box?
 
 The following accessories and materials are included with your Red Pitaya SDR transceiver module.
 
-	*   SDR transceiver 160-10 10 W module
-	*   DC power cord with an Anderson Power Pole™ connector
-	*   4 x SMA cable for connecting the C25 module with the STEMlab 125-14 and antenna
-	*   impedance transformer board
+	* SDR transceiver 160-10 10 W module
+	* DC power cord with an Anderson Power Pole™ connector
+	* 4 x SMA cable for connecting the C25 module with the STEMlab 125-14 and antenna
+	* impedance transformer board
 
 .. _Hercules: https://www.hercules.com/en/product/djcontrolinstinctsseries/
 
@@ -21,13 +21,13 @@ Other additional requirements
 
 In addition to the supplied accessories, software, and cables supplied with the Red Pitaya SDR transceiver kit, you will need to provide the following:
 
-	*   An **HF-Antenna** or dummy load with BNC
-	*   good RF **ground**
-	*   A stabilized DC 13.8 VDC, 3A **Power Supply**
+	* An **HF-Antenna** or dummy load with BNC
+	* good RF **ground**
+	* A stabilized DC 13.8 VDC, 3A **Power Supply**
 
 SDR application requirements:
 
-	*   A personal computer (PC) running Windows 7 or later. Either 32- or 64-bit operating systems are supported.
+	* A personal computer (PC) running Windows 7 or later. Either 32- or 64-bit operating systems are supported.
 
 Start using Red Pitaya as a Radio Station - SDR transceiver
 ***********************************************************
@@ -82,7 +82,7 @@ Click here_ to download the Power SDR installation package.
 
 1. Start the installation by double clicking on the *Setup_PowerSDR_STEMlab_HAMlab_Edition.exe* file.
 
-	.. image :: PowerSDRinstallation1.png
+	.. image :: PowerSDRinstallation1.PNG
 		:align: center
 
 2. If you are asked for extended user access rights during the installation, click **Yes!** Running the installer with administration rights will work as well.
@@ -93,82 +93,82 @@ Click here_ to download the Power SDR installation package.
 
 On Windows 10, you might get a warning of an unknown publisher. You can proceed with installation by clicking on **more info** and then **Run anyway**.
 
-	.. figure:: PowerSDRinstallation3.png
+	.. figure:: PowerSDRinstallation3.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: PowerSDRinstallation4.png
+	.. figure:: PowerSDRinstallation4.PNG
 		:scale: 75 %
    		:align: center
 
 
 3. Follow the instructions of the setup routine and accept the license agreements if asked for.
 
-	.. figure:: Capture1.png
+	.. figure:: Capture1.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture2.png
+	.. figure:: Capture2.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture3.png
+	.. figure:: Capture3.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture4.png
+	.. figure:: Capture4.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture5.png
+	.. figure:: Capture5.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture6.png
+	.. figure:: Capture6.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture7.png
+	.. figure:: Capture7.PNG
 		:scale: 75 %
    		:align: center
 
-	.. figure:: Capture8.png
+	.. figure:: Capture8.PNG
 		:scale: 75 %
 		:align: center
 
 4. At the end of the installation, you are asked if you want to run PowerSDR software immediately. Feel free to do so.
 
-	.. figure:: Capture9.png
+	.. figure:: Capture9.PNG
 		:scale: 75 %
    		:align: center
 
 5. The PowerSDR software will start with the calculation of the FFT wisdom file, **which will take a while** depending on the CPU power of your computer. This is only done once, even after updating the software to a new version in the future:
 
-	.. figure:: Capture10.png
+	.. figure:: Capture10.PNG
 		:scale: 75 %
    		:align: center
 
 6. After starting the PowerSDR software, you will be led through the PowerSDR software specific setup wizard, which lets you configure the software to use it with your Red Pitaya. Pick the HAMlab/RedPitaya radio model.
 
-	.. figure:: Capture11.png
+	.. figure:: Capture11.PNG
 		:scale: 75 %
    		:align: center
 
 7. Select the region where you are using your Red Pitaya. This is important due to the different frequency ranges you are allowed to transmit in the different countries all over the world:
 
-	.. figure:: Capture12.png
+	.. figure:: Capture12.PNG
 		:scale: 75 %
    		:align: center
 
 8. Your initial setup is completed. Click **Finish**.
 
-	.. figure:: Capture13.png
+	.. figure:: Capture13.PNG
 		:scale: 75 %
    		:align: center
 
 9. Click Power to connect Power SDR with Red Pitaya. On the screen, the input signal should appear.
 
-	.. figure:: Capture20.png
+	.. figure:: Capture20.PNG
 		:scale: 75 %
    		:align: center
 
@@ -639,7 +639,7 @@ General Specifications
 .. +-------------------------------+-------------------------------------------------------------------------------------------------------------+
 ..
 
-.. figure:: SDRBlockDiagram.png
+.. figure:: SDRBlockDiagram.PNG
         :scale: 75 %
         :align: center
 

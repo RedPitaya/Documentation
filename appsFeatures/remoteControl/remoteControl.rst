@@ -158,7 +158,7 @@ To use the SCPI commands, you will need to set up Scilab sockets. The procedure 
 #. Go to the socket_toolbox folder.
 #. Open loader.sce with your Scilab and press RUN (grey run button on SCILAB editor GUI).
 
-These last two steps must be executed each time you start Scilab. To install, you must have an internet connection. Running the examples is the same as on MATLAB.
+These last two steps must be executed each time you start Scilab. To install, you must have an internet connection. Running the examples is the same as on MATALB.
 
 #. In the MATLAB workspace, paste the code from the :ref:`blink <blink>` tutorial example.
 #. Replace the IP in the example with the IP of your Red Pitaya board.
@@ -176,7 +176,7 @@ Different code examples can be found :ref:`here <examples>`.
 
 .. note::
 
-   Communicating with an SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
+   Communicating with a SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
 
 *****************************
 Starting SCPI server manually
@@ -184,7 +184,7 @@ Starting SCPI server manually
 
 Assuming you have successfully connected to your Red Pitaya board using :ref:`these instructions <faqConnected>` these instructions, remotely connect using Putty on Windows machines or with :ref:`SSH <ssh>` using Terminal on UNIX (macOSX/Linux) machines.
 
-Connect to your Red Pitaya board via the terminal on a Linux machine and start the SCPI server with the following command:
+Connect to your Red Pitaya board via terminal on a Linux machine and start the SCPI server with the following command:
 
 .. code-block:: shell-session
 
@@ -192,9 +192,9 @@ Connect to your Red Pitaya board via the terminal on a Linux machine and start t
 
 .. figure:: scpi-ssh.png
 
+.. _scpiCommand:
 
-.. include:: SCPI_commands.inc
-
+.. include:: SCPI_commands.rst
 
 .. _examples:
 
@@ -219,8 +219,6 @@ You can edit and change them according to your needs and develop customized prog
    ../examples/analog
    ../examples/genRF
    ../examples/acqRF
-   ../examples/acq_genRF
-   ../examples/multiboard
    ../examples/digcomIF
 
 Additional examples: :ref:`ABCLED`

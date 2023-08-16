@@ -6,7 +6,7 @@ LCR meter
 
 .. figure:: 01_iPad_Combo_LCR.jpg
 
-This application will turn your Red Pitaya into an affordable LCR meter. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. Resistors, capacitors, and inductors are basic components of all electrical circuits, and while working on your projects, you will need to measure some components lying around on your working bench. The Red Pitaya's LCR meter will enable you to speed up the procedure and accurately measure the components just by switching from one application to another.
+This application will turn your Red Pitaya into an affordable LCR meter. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. Resistors, capacitors, and inductors are basic components of all electrical circuits, and while working on your projects, you will definitely need to measure some components laying around on your working bench. The Red Pitaya's LCR meter will enable you to speed up the procedure and accurately measure the components just by switching from one application to another.
 
 .. note:: 
 
@@ -26,15 +26,15 @@ The graphical interface is divided into 6 main areas:
     
     #. **Data options panel:** It is used for selecting the desired parameter for which the measurement will be displayed on the main window panel shown in area 4.
     
-    #. **Measurement option panel:** Select a measuring frequency, range mode, and range value. The user can select between the Parallel and Series measuring modes as well as between the Tolerance, Relative or Normal modes (modes described in the features section).
+    #. **Measurement option panel:** It is used to select a measuring frequency, range mode, and range value. The user can select between the Parallel and Series measuring modes as well as between the Tolerance, Relative or Normal modes (modes described in the features section).
     
-    #. **Main display:** On this panel, the measurements of the parameters selected in the "Data option" field are shown. The primary parameter is shown with a larger font and the secondary parameter with a smaller one. This is a very common practice since, by reading values from the display, the user can automatically see the most important results.
+    #. **Main display:** On this panel, the measurements of the parameters selected in the "Data option" field are shown. The primary parameter is shown with a larger font and the secondary parameter with a smaller one. This is a very common practise since, by reading values from the display, the user can automatically see the most important results.
     
     #. **Secondary display:** On the secondary display, the main settings are shown: current selected parameters, measuring frequency, and range mode. Also, the Min, Max, and average values or primary parameters are shown.
     
-    #. **Logging table:** Used to log and export measured data. Logging is started by selecting the "Log Data" button. The maximum number of rows/measurements in the table is 1000.
+    #. **Logging table:** Used to log and export measured data. Logging is started by selecting the "Log data" button. The maximum number of rows/measurements in the table is 1000.
     
-    #. **Optional button field:** Used to manipulate the table. The "Clear Min/Max" button will reset the Min and Max values on the secondary display. The "Export table" button will export the measured data in .csv format. The "Clear all" button will delete all measurements from the table, and the "Clear" button will delete the currently selected measurement.
+    #. **Optional button field:** Used to manipulate the table. The "Clear Min/Max" button will reset the Min and Max values on the secondary display. The "Export table" button will export the measured data in .csv format. The "Clear all" button will delete all measurements from the table and the "Clear" button will delete the currently selected measurement.
 
 
 Connecting the LCR module
@@ -83,12 +83,12 @@ The main features of the LCR meter applications are described below:
 MEASURED PRIMARY PARAMETERS: Z, L, C, R
 =======================================
 
-The LCR meter application will enable you to measure the basic parameters of the passive electrical components:
+The LCR meter application will enable you to measure basic parameters of the passive electrical components:
 
-    -   **R** – resistance
-    -   **C** – capacitance
-    -   **L** – inductance
-    -   **Z** – impedance
+    - **R** – resistance
+    - **C** – capacitance
+    - **L** – inductance
+    - **Z** – impedance
 
 
 MEASURED SECONDARY PARAMETERS: P, D, Q, E
@@ -96,16 +96,16 @@ MEASURED SECONDARY PARAMETERS: P, D, Q, E
 
 Alongside the main parameters, the secondary parameters are also measured and calculated. These parameters are common in describing the properties and the quality of the passive components:
 
-    -   **P** - impedance phase (phase between measured current and voltage)
-    -   **D** - dissipation factor (often used to quantify capacitor quality)
-    -   **Q** - quality factor (often used to quantify inductor quality)
-    -   **ESR** - equivalent series resistance
+    - **P** - impedance phase (phase between measured current and voltage)
+    - **D** - dissipation factor (often used to quantify capacitor quality)
+    - **Q** - quality factor (often used to quantify inductor quality)
+    - **ESR** - equivalent series resistance
 
 
 SELECTABLE FREQUENCIES: 100 Hz, 1 kHz, 10 kHz, 100 kHz
 ======================================================
 
-The LCR meter enables measurements at four different frequencies (100 Hz, 1 kHz, 10 kHz, 100 kHz). The user can select a desired frequency, and the LCR application will use sine signals with the selected frequency to measure the impedance.
+The LCR meter enables measurements at 4 different frequencies (100 Hz, 1 kHz, 10 kHz, 100 kHz). The user can select a desired frequency, and the LCR application will use sine signals with the selected frequency to measure the impedance.
 
 
 RANGE MODE: AUTO, MANUAL
@@ -117,11 +117,11 @@ Since the measured values are unknown, the LCR meter will adjust the measuring r
 MEASUREMENT MODE: TOLERANCE, RELATIVE, NORMAL
 ==============================================
 
-The "Tolerance" and "Relative" buttons are used for measuring the tolerance and relative modes. When neither is selected, the LCR meter measures in the "Normal" mode.
+The "Tolerance" and "Relative" buttons are used for measuring in the tolerance and relative modes. When neither is selected, the LCR meter measures in the "Normal" mode.
 
-    -   **Tolerance mode:** The last value measured before clicking the "Tolerance" button is saved and used to calculate the percentage difference between the new value and the saved one.
+    - **Tolerance mode:** The last value measured before clicking the "Tolerance" button is saved and used to calculate the percentage difference between the new value and the saved one.
 
-    -   **Relative mode:** The last value measured before clicking the "Relative" button is saved and used to calculate the relative difference between the new value and the saved one.
+    - **Relative mode:** The last value measured before clicking the "Relative" button is saved and used to calculate the relative difference between the new value and the saved one.
 
 
 EQUIVALENT CIRCUIT CALCULATION MODE: PARALLEL, SERIES

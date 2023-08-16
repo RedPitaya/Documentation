@@ -33,12 +33,12 @@ Features
 
 The main features of the Bode analyzer application are described below:
 
-   -   Measured parameters: Gain, Phase
-   -   The Bode analyzer application will enable you to measure the gain and phase frequency response for the desired DUT (device under test).
-   -   The frequency sweep range of the Bode analyzer application is from 1 Hz to 60 MHz with a 1 Hz resolution.
-   -   Linear and logarithmic frequency sweep modes are available. The logarithmic sweep mode (scale) enables measurements in a large frequency range, while the linear sweep mode is used for measurements in a small frequency range.
-   -   Excitation signal parameters (amplitude and DC bias) can be adjusted to make measurements in different sensitivities and conditions (amplifiers, etc.).
-   -   The calibration function enables calibrating long leads and removing leads' and cables' effects on final measurements. The calibration will also calibrate your Red Pitaya if any parasitic effects are present. Bode calibration data is stored in **/tmp/ba_calib.data**.
+   - Measured parameters: Gain, Phase
+   - The Bode analyzer application will enable you to measure the gain and phase frequency response for the desired DUT (device under test).
+   - The frequency sweep range of the Bode analyzer application is from 1 Hz to 60 MHz with a 1 Hz resolution.
+   - Linear and logarithmic frequency sweep modes are available. The logarithmic sweep mode (scale) enables measurements in a large frequency range, while the linear sweep mode is used for measurements in a small frequency range.
+   - Excitation signal parameters (amplitude and DC bias) can be adjusted to make measurements in different sensitivities and conditions (amplifiers, etc.).
+   - The calibration function enables calibrating long leads and removing leads' and cables' effects on final measurements. The calibration will also calibrate your Red Pitaya if any parasitic effects are present. Bode calibration data is stored in **/tmp/ba_calib.data**.
    
 .. figure:: BA_Slika_05.png
    

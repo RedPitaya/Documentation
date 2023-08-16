@@ -4,17 +4,18 @@
 
 .. TODO Add parameters for API commands!!!!
 
+.. _scpi_common:
+
 *******************************
 List of supported SCPI commands
 *******************************
 
-.. _scpi_common:
+
+.. _scpi_board:
 
 ======================
 Board control commands
 ======================
-
-.. _scpi_board:
 
 Parameter options:
 
@@ -389,14 +390,18 @@ Parameter options:
 | | ``PHAS:ALIGN``                                | ``rp_GenSynchronise``                  | Align the output phases of both channels.                                                    | 1.04-18 and up     |
 |                                                 |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRIG:EXT:DEBouncerUs <utime>``         | ``rp_GenSetExtTriggerDebouncerUs``     | Sets ext. trigger debouncer for generation in Us (Value must be positive).                   | 2.00-15 and up     |
-| | Example:                                      |                                        |                                                                                              |                    |
+| | ``SOUR:TRIG:EXT:DEBouncerUs <utime>``         | ``rp_GenSetExtTriggerDebouncerUs``     | | Sets ext. trigger debouncer for generation in Us (Value must be positive).                 | 2.00-15 and up     |
+| | Example:                                      |                                        | | (UNIFIED OS ONLY)                                                                          |                    |
 | | ``SOUR:TRIG:EXT:DEBouncerUs 1``               |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``<utime>``  | ``rp_GenGetExtTriggerDebouncerUs``     | Gets ext. trigger debouncer for generation in Us.                                            | 2.00-15 and up     |
-| | Example:                                      |                                        |                                                                                              |                    |
+| | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``<utime>``  | ``rp_GenGetExtTriggerDebouncerUs``     | | Gets ext. trigger debouncer for generation in Us.                                          | 2.00-15 and up     |
+| | Example:                                      |                                        | | (UNIFIED OS ONLY)                                                                          |                    |
 | | ``SOUR:TRIG:EXT:DEBouncerUs?`` > ``1``        |                                        |                                                                                              |                    |
 +-------------------------------------------------+----------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+.. note::
+
+   The SOUR:TRIG:EXT:DEBouncerUs commands are only available in the UNIFIED OS update.
 
 .. note::
 
@@ -495,8 +500,8 @@ Parameter options:
 | | Example:                                    |                                        |                                                                               |                    |
 | | ``ACQ:TRIG:STAT?`` > ``WAIT``               |                                        |                                                                               |                    |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRIG:FILL?``                          | ``rp_AcqGetBufferFillState``           | Returns 1 if the buffer is full of data. Otherwise returns 0.                 | 2.00-15 and up     |
-| | Example:                                    |                                        |                                                                               |                    |
+| | ``ACQ:TRIG:FILL?``                          | ``rp_AcqGetBufferFillState``           | | Returns 1 if the buffer is full of data. Otherwise returns 0.               | 2.00-15 and up     |
+| | Example:                                    |                                        | | (UNIFIED OS)                                                                |                    |
 | | ``ACQ:TRIG:FILL?`` > ``1``                  |                                        |                                                                               |                    |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
 | | ``ACQ:TRIG:DLY <count>``                    | ``rp_AcqSetTriggerDelay``              | | Set the trigger delay in samples.                                           | 1.04-18 and up     |
@@ -557,12 +562,12 @@ Parameter options:
 | | Example:                                    |                                        | (Only SIGNALlab 250-12)                                                       |                    |
 | | ``ACQ:TRIG:EXT:LEV?`` > ``1``               |                                        |                                                                               |                    |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRIG:EXT:DEBouncerUs <utime>``        | ``rp_AcqSetExtTriggerDebouncerUs``     | Sets ext. trigger debouncer for acquisition in Us (Value must be positive).   | 2.00-15 and up     |
-| | Example:                                    |                                        |                                                                               |                    |
+| | ``ACQ:TRIG:EXT:DEBouncerUs <utime>``        | ``rp_AcqSetExtTriggerDebouncerUs``     | | Sets ext. trigger debouncer for acquisition in Us (Value must be positive). | 2.00-15 and up     |
+| | Example:                                    |                                        | | (UNIFIED OS)                                                                |                    |
 | | ``ACQ:TRIG:EXT:DEBouncerUs 1``              |                                        |                                                                               |                    |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRIG:EXT:DEBouncerUs?`` > ``<utime>`` | ``rp_AcqGetExtTriggerDebouncerUs``     | Gets ext. trigger debouncer for acquisition in Us.                            | 2.00-15 and up     |
-| | Example:                                    |                                        |                                                                               |                    |
+| | ``ACQ:TRIG:EXT:DEBouncerUs?`` > ``<utime>`` | ``rp_AcqGetExtTriggerDebouncerUs``     | | Gets ext. trigger debouncer for acquisition in Us.                          | 2.00-15 and up     |
+| | Example:                                    |                                        | | (UNIFIED OS)                                                                |                    |
 | | ``ACQ:TRIG:EXT:DEBouncerUs?`` > ``1``       |                                        |                                                                               |                    |
 +-----------------------------------------------+----------------------------------------+-------------------------------------------------------------------------------+--------------------+
 

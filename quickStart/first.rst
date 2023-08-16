@@ -1,15 +1,18 @@
 .. _ConnectSTEMlab:
 
-#####################
 Connect to Red Pitaya
 #####################
 
-This is the most common and recommended way of connecting and using your Red Pitaya boards.
-Your LAN network must have DHCP settings enabled which is true with most local networks.
+This is the most common and recommended way of
+connecting and using your Red Pitaya boards.
+Your LAN network needs to have DHCP settings enabled,
+which is the case with the majority of local networks.
 With this, a simple *plug and play* approach is enabled.
-Having a Red Pitaya board connected to the local network will enable quick access to all Red Pitaya applications using only your web browser.
+Having a Red Pitaya board connected to the local network
+will enable quick access to all Red Pitaya applications
+using only your web browser.
 
-Follow these three simple steps to start using your Red Pitaya:
+Simply follow this 3 simple steps:
 
 .. tabs::
 
@@ -49,10 +52,10 @@ Follow these three simple steps to start using your Red Pitaya:
        
 .. note::
 
-   ``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board.
+   ``xxxxxx`` are the last 6 characters of the MAC address of your Red Pitaya board.
    The MAC address is written on the Ethernet connector.
     
-After the **third step**, you will get a Red Pitaya main page, as shown below.
+After the **third step** you will get a Red Pitaya main page as shown below.
 
 .. figure:: connect/connect-3.png
    :align: center
@@ -68,7 +71,7 @@ After the **third step**, you will get a Red Pitaya main page, as shown below.
 
 .. note::
 
-    For any issues during setup, check :ref:`troubleshooting <faq>` or look on the |forum| for a solution.
+    For any issues during setup, check :ref:`troubleshooting <faq>` or check the |forum| for a solution.
     If you cannot find a solution, please post your problem, providing as much detail as possible.
 
 .. |forum| raw:: html
@@ -76,27 +79,23 @@ After the **third step**, you will get a Red Pitaya main page, as shown below.
    <a href="https://forum.redpitaya.com/" target="_blank">forum</a>
 
 
-================
-Connection types
-================
+.. note:: 
 
-For detailed instructions on connection types, please check out the sections below:
+    For arranging other types of connections (wireless, direct ethernet connection), use the  
+    :ref:`Network Manager <networkManager>`.
 
-.. toctree::
-   :maxdepth: 2
-   
-   connect/connect
 
 .. note::
 
    **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_,
    otherwise access to ``*.local`` addresses will not work.
 
-   **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install additional software.
+   **Windows 10** already supports mDNS and DNS-SD,
+   so there is no need to install additional software.
 
 .. note::
 
    Access to the internet is only required when:
 
-   *   using the OS update application,
-   *   installing applications from the marketplace.
+   * upgrading Red Pitaya OS,
+   * installing applications from the marketplace.
