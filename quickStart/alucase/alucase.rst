@@ -16,10 +16,10 @@ Components
     Components of the Red Pitaya Aluminium Case.
     
 Contents:
-    - 4 screws that close the housing and hold the board
-    - 4 rubber feet for secure positioning on the desk
-    - a thermal pad (just barely seen in the photo)
-    - a transparent plastic rod that guides the light of a red LED (Ready/CPU activity) to the top of the casing
+    *   4 screws that close the housing and hold the board
+    *   4 rubber feet for secure positioning on the desk
+    *   a thermal pad (just barely seen in the photo)
+    *   a transparent plastic rod that guides the light of a red LED (Ready/CPU activity) to the top of the casing
 
 .. figure:: rp_alucase_03.jpg
    :align: center
