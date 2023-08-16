@@ -12,8 +12,8 @@ This example shows how to acquire 16k samples of a signal on fast analog inputs.
 Required hardware
 *****************
 
-    - Red Pitaya device
-    - Signal (function) generator
+    -   Red Pitaya device
+    -   Signal (function) generator
     
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 

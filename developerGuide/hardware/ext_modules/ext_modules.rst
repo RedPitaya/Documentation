@@ -4,5 +4,6 @@ Extension modules
 .. toctree::
    :maxdepth: 2
 
-   ext_module_t/extent.rst
+   extent_temp.rst
    sensor_ext.rst
+   click_shield.rst
