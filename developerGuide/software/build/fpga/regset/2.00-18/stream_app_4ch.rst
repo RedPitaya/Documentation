@@ -1,3 +1,5 @@
+.. _fpga_stream_app_4ch_2.00-18:
+
 Project - stream_app_4ch
 ************************
 
