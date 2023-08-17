@@ -1,0 +1,76 @@
+.. _click_shield_button:
+
+#####################
+Button G Click Board
+#####################
+
+Description
+============
+
+This is an example of using Red Pitaya with the Red Pitaya Click Shield and Button G Click Board.
+If the G button is pressed on the click board, an LED is turned ON on the Red Pitaya.
+
+
+Required hardware
+==================
+
+    -   Red Pitaya device
+    -   Red Pitaya Click Shield
+    -   Button G click board
+
+
+Code C
+=======
+
+The code should be copied to the Red Pitaya using the *"scp"* or similar command and compiled on the board.
+
+.. note::
+
+    Instructions on how to compile the code are :ref:`here <comC>`.
+
+
+.. code-block:: C
+
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    #include "rp.h"
+
+    // Choose a microbus depending on where the click board is
+    #define mikrobus1IntPin RP_DIO2_P    // Microbus 1
+    #define mikrobus2IntPin RP_DIO4_P    // Microbus 2
+
+    int main (int argc, char **argv) {
+      rp_pinState_t state;
+  
+      // Initialization of API
+      if (rp_Init() != RP_OK) {
+  
+          fprintf(stderr, "Red Pitaya API init failed!\n");
+          return EXIT_FAILURE;
+      }
+  
+      // configure DIO0_N as input
+      rp_DpinSetDirection (mikrobus1IntPin, RP_IN);
+      
+      while(1){
+        // Get the button value
+        rp_DpinGetState(mikrobus1IntPin, &state);
+        if (state == RP_HIGH){
+          // Turn the light ON/OFF based on the button value
+          rp_DpinSetState(RP_LED0, state);
+        }
+        else{
+          // Turn the light ON/OFF based on the button value
+          rp_DpinSetState(RP_LED0, state);
+        }
+      }
+  
+      // Releasing resources
+      rp_Release();
+  
+      return EXIT_SUCCESS;
+    }
+
+Code made by Žiga Fon.
+
