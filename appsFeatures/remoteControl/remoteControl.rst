@@ -214,7 +214,6 @@ You can edit and change them according to your needs and develop customized prog
 .. toctree::
    :maxdepth: 2
 
-
    ../examples/digital
    ../examples/analog
    ../examples/genRF
@@ -222,5 +221,6 @@ You can edit and change them according to your needs and develop customized prog
    ../examples/acq_genRF
    ../examples/multiboard
    ../examples/digcomIF
+
 
 Additional examples: :ref:`ABCLED`
