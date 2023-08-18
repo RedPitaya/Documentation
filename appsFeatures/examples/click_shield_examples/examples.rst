@@ -8,4 +8,5 @@ Click Shield Examples
   :maxdepth: 2
 
   sync_examples
-  click_examples
+  click_board_examples/click_examples
+
