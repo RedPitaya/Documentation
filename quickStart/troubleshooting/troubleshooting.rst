@@ -365,7 +365,7 @@ For hardware schematics, step models, and specifications, please refer to :ref:`
 Where can I find Red Pitaya schematics, 3D models (.step), and important componetns?
 --------------------------------------------------------------------------------------
 
-Please take a look at **Developers guide Hardware => board model => Schematics, Mechanical specifications**. See the general link above, or board-specific links below.
+Please take a look at **Developers guide Hardware => board model => Schematics, Mechanical Specifications and 3D Models**. See the general link above, or board-specific links below.
 
 *   :ref:`STEMlab 125-10 <top_125_10>`
 *   :ref:`STEMlab 125-14 <top_125_14>`
