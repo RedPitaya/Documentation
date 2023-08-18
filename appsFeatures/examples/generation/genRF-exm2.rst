@@ -7,15 +7,14 @@ Generate signal pulses
 Description
 ***********
 
-This example shows how to generate signal pulses of predefined signal waveforms like sine, triangle, square, ramp up, ramp down, or pwm. A generated signal can be observed by an oscilloscope.
+This example shows how to generate signal pulses of predefined signal waveforms like sine, triangle, square, ramp up, ramp down, or PWM. A generated signal can be observed by an oscilloscope.
 
 Required hardware
 *****************
 
     - Red Pitaya device
 
-.. figure:: output_y49qDi.gif
-
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - MATLAB®
 **************
@@ -35,7 +34,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     RP.ByteOrder = "big-endian";
     configureTerminator(RP, "CR/LF");
 
-    %% The example generate sine bursts every 0.5 seconds indefinety
+    %% The example generates sine bursts every 0.5 seconds indefinitely
     % writeline(RP,'GEN:RST');
 
     writeline(RP,'SOUR1:FUNC SINE');
@@ -178,6 +177,6 @@ Using functions:
 Code - LabVIEW
 **************
 
-.. figure:: Generate-signal-pulses_LV.png
+.. figure:: img/Generate-signal-pulses_LV.png
 
 `Downloads <https://downloads.redpitaya.com/downloads/Clients/labview/Generate%20signal%20pulses.vi>`_
