@@ -23,6 +23,7 @@ Red Pitaya software and hardware modules enable access and control of auxiliary 
 Figure: Proposal for hardware extension module template.
 
 .. figure:: img/Probes.jpg
+    :scale: 50%
 
 Figure: Connectivity option – 20 pins.
 
