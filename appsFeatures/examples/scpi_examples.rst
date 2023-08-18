@@ -5,6 +5,6 @@
    analog/analog
    generation/genRF
    acquisition/acqRF
-   /acquisition_generation/acq_genRF
+   acquisition_generation/acq_genRF.rst
    multiboard_sync/multiboard
    communication_interfaces/digcomIF
