@@ -37,13 +37,16 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
 
     #include "rp.h"
 
-
     // Choose a microbus depending on where the click board is
-    #define mikrobus1RL1Pin RP_DIO1_P    // Microbus 1
-    #define mikrobus2RL1Pin RP_DIO3_P
-      
-    #define mikrobus1RL2Pin RP_DIO1_N    // Microbus 2
-    #define mikrobus2RL2Pin RP_DIO3_N
+    #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
+    
+    #if MIRKOBUS == 1
+        #define RL1_PIN RP_DIO1_P    // Microbus 1
+        #define RL2_PIN RP_DIO3_P
+    #else
+        #define RL1_PIN RP_DIO1_N    // Microbus 2
+        #define RL2_PIN RP_DIO3_N
+    #endif
     
     int main (int argc, char **argv) {
        
@@ -55,20 +58,20 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
         }
     
         // configure DIO[0:1]_N to outputs
-        rp_DpinSetDirection (mikrobus1RL1Pin, RP_OUT);    
-        rp_DpinSetDirection (mikrobus1RL2Pin, RP_OUT);
+        rp_DpinSetDirection (RL1_PIN, RP_OUT);    
+        rp_DpinSetDirection (RL2_PIN, RP_OUT);
     
            
     
         // transfer each input state to the corresponding LED state
         while (1) {
             rp_DpinSetState (RP_LED0, 1); 
-            rp_DpinSetState (mikrobus1RL1Pin, 1);
-            rp_DpinSetState (mikrobus1RL2Pin, 1);
+            rp_DpinSetState (RL1_PIN, 1);
+            rp_DpinSetState (RL2_PIN, 1);
             usleep(1000000);     // 10e6 uS = 1s
             rp_DpinSetState (RP_LED0, 0); 
-            rp_DpinSetState (mikrobus1RL1Pin, 0);
-            rp_DpinSetState (mikrobus1RL2Pin, 0);
+            rp_DpinSetState (RL1_PIN, 0);
+            rp_DpinSetState (RL2_PIN, 0);
             usleep(1000000);
         }
     
