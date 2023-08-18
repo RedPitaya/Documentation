@@ -16,12 +16,12 @@ Required hardware
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
-.. figure:: Read_analog_voltage_on_Red_Pitaya_analog_input.png
+.. figure:: img/Read_analog_voltage_on_Red_Pitaya_analog_input.png
 
 Circuit
 *******
 
-.. figure:: Read_analog_voltage_on_Red_Pitaya_analog_input_circuit.png
+.. figure:: img/Read_analog_voltage_on_Red_Pitaya_analog_input_circuit.png
 
 Code - MATLAB®
 **************
@@ -191,6 +191,6 @@ How to set sockets is described in the Blink example.
 Code - LabVIEW
 **************
 
-.. figure:: Read-analog-voltage-on-slow-analog-input_LV.png
+.. figure:: img/Read-analog-voltage-on-slow-analog-input_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Read%20analog%20voltage%20on%20slow%20analog%20input.vi>`_
