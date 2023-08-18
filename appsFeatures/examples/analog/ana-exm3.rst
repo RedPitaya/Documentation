@@ -16,12 +16,12 @@ Required hardware
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
-.. figure:: Set_analog_voltage_on_slow_analog_input1.png
+.. figure:: img/Set_analog_voltage_on_slow_analog_input1.png
 
 Circuit
 *******
 
-.. figure:: Set_analog_voltage_on_slow_analog_input_circuit1.png
+.. figure:: img/Set_analog_voltage_on_slow_analog_input_circuit1.png
 
 Code - MATLAB®
 **************
@@ -93,7 +93,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 Code - LabVIEW
 **************
 
-.. figure:: Interactive-voltage-setting-on-slow-analog-output_LV.png
+.. figure:: img/Interactive-voltage-setting-on-slow-analog-output_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Interactive%20voltage%20setting%20on%20slow%20analog%20output.vi>`_
 
