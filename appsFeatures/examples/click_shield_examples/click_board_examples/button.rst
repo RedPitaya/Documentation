@@ -36,14 +36,19 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     #include <unistd.h>
     
     #include "rp.h"
-
-
-    // Choose a microbus depending on where the click board is    
-    #define mikrobus1IntPin RP_DIO2_P    // Microbus 1
-    #define mikrobus1PwmPin RP_DIO1_P
     
-    #define mikrobus2IntPin RP_DIO4_P    // Microbus 2
-    #define mikrobus2PwmPin RP_DIO3_P
+    
+    // Choose a microbus depending on where the click board is
+    #define MIKROBUS 1
+    
+    #if MIKROBUS == 1
+        #define INT_PIN RP_DIO2_P    // Microbus 1
+        #define PWM_PIN RP_DIO1_P
+    #else
+        #define INT_PIN RP_DIO4_P    // Microbus 2
+        #define PWM_PIN RP_DIO3_P
+    #endif
+    
     
     void pwm(int pin, int duty_cycle, float num_seconds){   
         int period_us = 875;
@@ -54,28 +59,22 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
         rp_DpinSetDirection(pin, RP_OUT);
     
         while (1) {
+    
+            // check for end condition (here, 100 periods)  100
             if (num_periods == num_seconds * 1000) {
                 break;
             }
         
-            // set pin state to high
-            rp_DpinSetState(pin, RP_HIGH);
-            
-            // delay for pulse duration
-            usleep(pulse_us);
+            rp_DpinSetState(pin, RP_HIGH);  // Set pin state high
+            usleep(pulse_us);               // Delay for pulse duration
     
-            // set pin state to low
-            rp_DpinSetState(pin, RP_LOW);
+            rp_DpinSetState(pin, RP_LOW);    // set pin state low
+            usleep(period_us - pulse_us);    // delay for the remaining period
     
-            // delay for remaining period
-            usleep(period_us - pulse_us);
-    
-            // increment number of periods
-            num_periods++;
-            
-            // check for end condition (here, 100 periods)  100
+            num_periods++;                   // increment the number of periods
         }
     }
+    
     
     int main (int argc, char **argv) {
         rp_pinState_t state;
@@ -87,23 +86,22 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
         }
     
         // configure pin as input
-        rp_DpinSetDirection (mikrobus1IntPin, RP_IN);
+        rp_DpinSetDirection (INT_PIN, RP_IN);
         
         //getting the value of the INT pin
         while(1){
             // Get button value
-            rp_DpinGetState(mikrobus1IntPin, &state);
-
+            rp_DpinGetState(INT_PIN, &state);
             if (state == RP_HIGH){
                 // Turn the light ON/OFF based on the button value
                 rp_DpinSetState(RP_LED0, state);
                 //pin name, strength in power %, length of turn on
-                pwm(mikrobus1PwmPin, 100, 0.1);
+                pwm(PWM_PIN, 100, 0.1);
             }
             else{
                 // Turn the light ON/OFF based on the button value
                 rp_DpinSetState(RP_LED0, state); 
-                pwm(mikrobus1PwmPin, 0, 0.1);
+                pwm(PWM_PIN, 0, 0.1);
             }
         }
     
