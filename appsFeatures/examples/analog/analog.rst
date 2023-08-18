@@ -2,7 +2,7 @@ Analog
 ######
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 3
    
    
    ana-exm1
