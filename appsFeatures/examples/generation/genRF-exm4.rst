@@ -10,14 +10,14 @@ This example shows how to program Red Pitaya to generate a custom waveform signa
 
 .. note::
 
-    You can send less samples than a full buffer (16384 samples) to the Red Pitaya, but the frequency will be adjusted accordingly. This means that if you send 8192 samples instead and specify the frequency as 10 kHz, Red Pitaya will generate a 20 kHz signal.
+    You can send fewer samples than a full buffer (16384 samples) to the Red Pitaya, but the frequency will be adjusted accordingly. This means that if you send 8192 samples instead and specify the frequency as 10 kHz, Red Pitaya will generate a 20 kHz signal.
 
 Required hardware
 *****************
 
     - Red Pitaya device
 
-.. figure:: output_y49qDi.gif
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - MATLAB®
 **************
@@ -26,7 +26,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP client object
+    %% Define Red Pitaya as a TCP client object
     clc
     clear all
     close all
@@ -38,7 +38,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     % flush(RP, 'input')
     % flush(RP, 'output')
     
-    %% Open connection with your Red Pitaya and close previous one
+    %% Open connection with your Red Pitaya and the close previous one
     x = instrfind;
     clear RP;
 
@@ -47,8 +47,8 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     RP.ByteOrder = "big-endian";
     configureTerminator(RP,"CR/LF");
     
-    %% Calcualte arbitrary waveform with 16384 samples
-    % Values of arbitrary waveform must be in range from -1 to 1.
+    %% Calculate arbitrary waveform with 16384 samples
+    % Values of arbitrary waveform must be in the range from -1 to 1.
     N = 16383;
     t = 0:(2*pi)/N:2*pi;
     x = sin(t) + 1/3*sin(3*t);
@@ -275,6 +275,6 @@ Using functions:
 Code - LabVIEW
 **************
 
-.. figure:: Custom-wavefrom-signal-generator_LV.png
+.. figure:: img/Custom-waveform-signal-generator_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Custom%20waveform%20signal%20generation.vi>`_
