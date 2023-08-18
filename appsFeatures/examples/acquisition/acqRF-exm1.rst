@@ -20,12 +20,12 @@ Required hardware
     
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
-.. figure:: on_given_trigger_acquire_signal_on_fast_analog_input.png
+.. figure:: img/on_given_trigger_acquire_signal_on_fast_analog_input.png
 
 Circuit
 *******
 
-.. figure:: on_given_trigger_acquire_signal_on_fast_analog_input_circuit.png
+.. figure:: img/on_given_trigger_acquire_signal_on_fast_analog_input_circuit.png
 
 Code - MATLAB®
 **************
@@ -1065,6 +1065,6 @@ for Scilab sockets. How to set the socket is described in the Blink example.
 Code - LabVIEW
 **************
 
-.. figure:: On-trigger-signal-acquisition_LV.png
+.. figure:: img/On-trigger-signal-acquisition_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/On%20trigger%20signal%20acquisition.vi>`_
