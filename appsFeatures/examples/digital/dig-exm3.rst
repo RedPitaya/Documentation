@@ -1,5 +1,5 @@
 Push button and turn on LED diode
-#################################
+##########################################
 
 .. `Push button and turn on LED diode <http://blog.redpitaya.com/examples-new/push-button-and-turn-on-led-diode/>`_
 
@@ -20,11 +20,11 @@ Required hardware
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
-.. figure:: RedPitaya_Push_button.png
+.. figure:: img/RedPitaya_Push_button.png
 
 Circuit
 
-.. figure:: RedPitaya_Push_button_circuit.png
+.. figure:: img/RedPitaya_Push_button_circuit.png
 
 Code - MATLAB®
 **************
@@ -49,7 +49,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
     i = 1;
 
-    while i<1000                    			% You can set while 1 for continuous loop
+    while i<1000                    			% You can set while 1 for a continuous loop
 
     state = str2num(writeread(RP,'DIG:PIN? DIO5_N'));
 
@@ -145,6 +145,6 @@ Code - Python
 Code - LabVIEW
 **************
 
-.. figure:: Push-button-and-turn-on-LED_LV.png
+.. figure:: img/Push-button-and-turn-on-LED_LV.png
 
 `Dowload <https://downloads.redpitaya.com/downloads/Clients/labview/Push%20button%20and%20turn%20on%20LED.vi>`_
