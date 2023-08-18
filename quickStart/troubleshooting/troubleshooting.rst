@@ -148,12 +148,10 @@ Problems connecting to RP?
 
    #. If the **green LED** is turned **ON** but the **blue LED** is turned **OFF**. In this case, there is an error while loading the Red Pitaya system from the SD card. Make sure that:
 
-       *   you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed
-         (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
+       *   you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
        *   try to use another SD card
 
-   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs are **not blinking**.
-      The red LED indicates CPU heartbeat, while the orange LED indicates access to the SD card. Notice that these two LEDs always start blinking 10 seconds after the green and blue LEDs are turned on.
+   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs are **not blinking**. The red LED indicates CPU heartbeat, while the orange LED indicates access to the SD card. Notice that these two LEDs always start blinking 10 seconds after the green and blue LEDs are turned on.
 
 #. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
 
@@ -188,6 +186,7 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
 *   Check the WiFi signal strength on your PC/tablet/smartphone.
 *   Check the WiFi signal strength of your Red Pitaya.
+
    1. Connect to your Red Pitaya via an :ref:`SSH <ssh>` connection.
 
    #. Enter the ``cat /proc/net/wireless`` command to get information about link quality and signal strength.
@@ -198,8 +197,8 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
       Link quality measures the number of packet errors that occur. The lower the number of packet errors, the higher this will be. Link quality goes from 0-100%.
 
       Level, or signal strength, is a simple measure of the amplitude of the signal that is received. The closer you are to the access point, the higher this will be.
-*   If you are in an area with many routers around you, more of them might operate on the same wifi channel, which drastically decreases data throughput and slows down connection. 
-  Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
+
+*   If you are in an area with many routers around you, more of them might operate on the same wifi channel, which drastically decreases data throughput and slows down connection. Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
 
 
 .. note::
