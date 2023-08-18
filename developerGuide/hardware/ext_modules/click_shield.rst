@@ -320,7 +320,7 @@ Click Boards
 Here are some examples of how to use click boards together with Click Shield and Red Pitaya.
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 3
 
    ../../../../../appsFeatures/examples/click_shield_examples/click_board_examples/click_examples
 
