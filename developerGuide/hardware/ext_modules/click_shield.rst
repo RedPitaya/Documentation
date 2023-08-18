@@ -181,21 +181,21 @@ Here you will find the interconnections between Click Boards (MikroBus pinout) a
 .. add connectors picture (topdown of click shield, click board pinout marked)
 
 
-Short pin descriptions:
+**Short pin descriptions:**
 
-* Digital pins: PWM, RST, INT
-* Analog pins: AN
-* UART pins: RX, TX
-* SPI pins: CS, SCK, MISO, MOSI
-* I2C pins: SCL, SDA
+* Digital pins: *PWM, RST, INT*
+* Analog pins: *AN*
+* UART pins: *RX, TX*
+* SPI pins: *CS, SCK, MISO, MOSI*
+* I2C pins: *SCL, SDA*
 
 .. note::
 
    Red Pitaya only has one set of UART and SPI pins, to achieve the functionality of two click boards, some of the digital pins are used for switching SPI and UART between the two click boards:
 
-   * DIO1_N == Chip Select 1 (Click board 1)
-   * DIO3_N == Chip Select 2 (Click board 2)
-   * DIO5_N == Switching between UART0 (Click board 1)/UART1 (Click board 2)
+   * DIO1_N  ==  Chip Select 1 (Click board 1)
+   * DIO3_N  ==  Chip Select 2 (Click board 2)
+   * DIO5_N  ==  Switching between UART0 (Click board 1)/UART1 (Click board 2)
 
 
 Click Board 1
@@ -320,7 +320,7 @@ Click Boards
 Here are some examples of how to use click boards together with Click Shield and Red Pitaya.
 
 .. toctree::
-  :maxdepth: 3
+  :maxdepth: 2
 
    ../../../../../appsFeatures/examples/click_shield_examples/click_board_examples/click_examples
 
