@@ -10,8 +10,7 @@ FAQ
 
 .. |contact_page| raw:: html
 
-   <a href="
-https://redpitaya.com/contact-us/" target="_blank">contact us</a>
+   <a href="https://redpitaya.com/contact-us/" target="_blank">contact us</a>
 
 
 Connectivity
@@ -149,13 +148,10 @@ Problems connecting to RP?
 
    #. If the **green LED** is turned **ON** but the **blue LED** is turned **OFF**. In this case, there is an error while loading the Red Pitaya system from the SD card. Make sure that:
 
-       *   you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed
-         (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
-       
+       *   you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
        *   try to use another SD card
 
-   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs are **not blinking**.
-      The red LED indicates CPU heartbeat, while the orange LED indicates access to the SD card. Notice that these two LEDs always start blinking 10 seconds after the green and blue LEDs are turned on.
+   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs are **not blinking**. The red LED indicates CPU heartbeat, while the orange LED indicates access to the SD card. Notice that these two LEDs always start blinking 10 seconds after the green and blue LEDs are turned on.
 
 #. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
 
@@ -202,8 +198,8 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
       Level, or signal strength, is a simple measure of the amplitude of the signal that is received. The closer you are to the access point, the higher this will be.
 
-*   If you are in an area with many routers around you, more of them might operate on the same wifi channel, which drastically decreases data throughput and slows down connection. 
-  Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
+*   If you are in an area with many routers around you, more of them might operate on the same wifi channel, which drastically decreases data throughput and slows down connection. Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
+
 
 .. note::
     
@@ -347,9 +343,9 @@ Where can I find the ecosystem, software, and FPGA images?
 
    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive</a>
 
-.. |RP_forum| raw :: html
+.. |RP_forum| raw:: html
 
-   <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya forum</a>
+   <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya Forum</a>
 
 
 How to start with FPGA development?
@@ -369,7 +365,7 @@ For hardware schematics, step models, and specifications, please refer to :ref:`
 Where can I find Red Pitaya schematics, 3D models (.step), and important componetns?
 --------------------------------------------------------------------------------------
 
-Please take a look at **Developers guide Hardware => board model => Schematics, Mechanical specifications**. See the general link above, or board-specific links below.
+Please take a look at **Developers guide Hardware => board model => Schematics, Mechanical Specifications and 3D Models**. See the general link above, or board-specific links below.
 
 *   :ref:`STEMlab 125-10 <top_125_10>`
 *   :ref:`STEMlab 125-14 <top_125_14>`

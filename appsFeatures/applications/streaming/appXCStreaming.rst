@@ -27,7 +27,7 @@ Streaming can be done in both directions. Users can stream acquired analog and d
     The upstream to X-channel (synchronised generation) is currently under development.
 
 .. figure:: img/RPs_to_PC_conn.png
-    :width: 80%
+    :scale: 70%
 
 *****
 Setup
@@ -38,7 +38,7 @@ Setup
 The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple Low-Noise STEMlab 125-14 devices that are modified for clock and trigger synchronization and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.
 
 .. figure:: img/Master_and_slaves.jpg
-    :width: 80%
+    :width: 70%
 
 Notice that the Red Pitaya STEMlab 125-14 X-Channel System includes two types of devices:
 
@@ -81,7 +81,7 @@ Setting-up
     #.  Connect the power supply to the Red Pitaya board.
 
 .. figure:: img/Master_and_slaves_2.jpg
-    :width: 80%
+    :width: 70%
 
 *******************************************************************
 Download and install an X-channel streaming client on your computer
@@ -90,12 +90,12 @@ Download and install an X-channel streaming client on your computer
 1. Connect to the PRIMARY board by entering the URL from the sticker into a web browser and launching the streaming app.
 
 .. figure:: img/run_app.png
-    :width: 80%
+    :width: 70%
 
 2. Click the "Clients" button to get the client app for Linux or Windows and download it to your client's computer.
 
 .. figure:: img/download_client.png
-    :width: 80%
+    :width: 70%
 
 *****************
 Use case examples

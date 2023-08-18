@@ -1,0 +1,195 @@
+I2C (HW api)
+############
+
+.. http://blog.redpitaya.com/examples-new/i2c/
+
+Description
+***********
+
+This example demonstrates communication with the EEPROM memory on the Red Pitaya using the I2C protocol. The code below reads the calibration values from the EEPROM and displays them. The data is displayed correctly only on 125-xx boards.
+
+Required hardware
+*****************
+
+    - Red Pitaya
+
+.. figure:: ../general_img/RedPitaya_general.png
+
+
+Code - C
+********
+
+.. note::
+
+    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are :ref:`here <comC>`.
+
+
+.. code-block:: c
+
+    /* @brief This is a simple application for testing I2C communication on a RedPitaya
+    *
+    * (c) Red Pitaya  http://www.redpitaya.com
+    *
+    * This part of code is written in C programming language.
+    * Please visit http://en.wikipedia.org/wiki/C_(programming_language)
+    * for more details on the language used herein.
+    */
+
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <unistd.h>
+    #include "rp_hw.h"
+
+
+    int main(int argc, char *argv[]){
+
+    
+        int res = rp_I2C_InitDevice("/dev/i2c-0",0x50); // Init i2c api.
+        printf("Init result: %d\n",res);
+        
+        res = rp_I2C_setForceMode(true); // Set force mode.
+        printf("Set force mode: %d\n",res);
+        
+        uint8_t wb[2] = {0,0};
+        res = rp_I2C_IOCTL_WriteBuffer(wb,2); // Write position for reading.
+        printf("Write 2 bytes: %d\n",res);
+
+        usleep(100000);
+
+        int32_t rb[12];
+        res = rp_I2C_IOCTL_ReadBuffer((uint8_t*)rb,32); // Read 32 bytes from I2C
+        printf("Read 32 bytes: %d\n",res);
+        
+        res = rp_I2C_IOCTL_ReadBuffer((uint8_t*)(rb + 8),16);  // Read 16 bytes from I2C
+        printf("Read 16 bytes: %d\n",res); 
+
+        printf("ADC Ch1 High %d\n",rb[2]);
+        printf("ADC Ch2 High %d\n",rb[3]);
+        printf("ADC Ch1 Low %d\n",rb[4]);
+        printf("ADC Ch2 Low %d\n",rb[5]);
+        printf("ADC Ch1 Low offset %d\n",rb[6]);
+        printf("ADC Ch2 Low offset %d\n",rb[7]);
+        printf("DAC Ch1 %d\n",rb[8]);
+        printf("DAC Ch2 %d\n",rb[9]);
+        printf("DAC Ch1 offset %d\n",rb[10]);
+        printf("DAC Ch2 offset %d\n",rb[11]);
+
+        return 0;
+    }
+
+
+Code - MATLAB®
+**************
+
+.. code-block:: matlab
+
+    %% Define Red Pitaya as TCP client object
+
+    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
+    port = 5000;
+    RP = tcpclient(IP, port);
+
+    %% Open connection with your Red Pitaya
+
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP,'CR/LF');
+
+    writeline(RP,'I2C:DEV80 "/dev/i2c-0"');
+
+    writeline(RP,'I2C:FMODE ON');       % set force mode
+
+    % EEPROM 24c64 supports reading only 32 bytes of data at a time and only works through IOCTL
+
+    writeline(RP,'I2C:IO:W:B2 0,0');    % set read address = 0
+
+
+    b1 = writeread(RP,'I2C:IO:R:B32');  % read 32 bytes from iic 
+
+    b2 = writeread(RP,'I2C:IO:R:B16');  % read 16 bytes from iic
+
+    b_num = str2num(b1(1,2:length(b1)-3));
+
+    b_num(33:48) = str2num(b2(1, 2:length(b2)-3));
+ 
+    calib = typecast(uint8(b_num),'int32');
+
+    fprintf('ADC Ch1 High %d\n', calib(3));
+    fprintf('ADC Ch2 High %d\n', calib(4));
+    fprintf('ADC Ch1 Low %d\n', calib(5));
+    fprintf('ADC Ch2 Low %d\n', calib(6));
+    fprintf('ADC Ch1 Low offset %d\n', calib(7));
+    fprintf('ADC Ch2 Low offset %d\n', calib(8));
+    fprintf('DAC Ch1 %d\n', calib(9));
+    fprintf('DAC Ch2 %d\n', calib(10));
+    fprintf('DAC Ch1 offset %d\n', calib(11));
+    fprintf('DAC Ch2 offset %d\n', calib(12));
+
+    %% Close connection with Red Pitaya
+
+    clear RP;
+
+
+Code - Python
+*************
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import sys
+    import time
+    from struct import *
+    import redpitaya_scpi as scpi
+
+    rp_s = scpi.scpi(sys.argv[1])
+
+    rp_s.tx_txt('I2C:DEV80 "/dev/i2c-0"')
+    print("Init I2C")
+
+    rp_s.tx_txt('I2C:FMODE ON')
+    print("Set force mode")
+
+    # Eeprom 24c64 supports reading only 32 bytes of data at a time and only works through IOCTL
+
+    # set read address = 0
+    rp_s.tx_txt('I2C:IO:W:B2 0,0')
+    print("Write address for read")
+
+    rp_s.tx_txt('I2C:IO:R:B32')
+    b1 = rp_s.rx_txt().strip('{').strip('}')
+
+    rp_s.tx_txt('I2C:IO:R:B16')
+    b2 = rp_s.rx_txt().strip('{').strip('}')
+
+    buff = (b1 + "," + b2).split(",")
+    byte_array = bytearray(b'')
+    for s in buff:
+        byte_array.append(int(s))
+
+    calib = [unpack('i', byte_array[i:i+4])[0] for i in range(0, len(byte_array), 4)]
+    print("ADC Ch1 High", calib[2])
+    print("ADC Ch2 High", calib[3])
+    print("ADC Ch1 Low", calib[4])
+    print("ADC Ch2 Low", calib[5])
+    print("ADC Ch1 Low offset", calib[6])
+    print("ADC Ch2 Low offset", calib[7])
+    print("DAC Ch1", calib[8])
+    print("DAC Ch2", calib[9])
+    print("DAC Ch1 offset", calib[10])
+    print("DAC Ch2 offset", calib[11])
+
+
+.. note::
+
+    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order. The code should function at approximately the same speed without them.
+
+    For further information on functions please consult the redpitaya_scpi.py code.
+
+
+.. |redpitaya_scpi| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>

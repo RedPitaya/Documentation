@@ -4,7 +4,7 @@ STEMlab 125-14 Z7020-LN
 The STEMlab 125-14-Z7020-LN is a standard STEMlab 125-14 board that:
 
 
-* comes with Zynq 7020 (rather than of 7010), which features 3 times more FPGA logic and  more digital IOs on the E2 connector (for more information, see the board schematics).
+* comes with Zynq 7020 (rather than of 7010), which features 3 times more FPGA logic and more digital IOs on the E2 connector (for more information, see the board schematics).
 
 * has populated additional linear analog power for analog power supplies to reduce RF inputs and outputs noise and consequently increase ENOB. To find out more about the performance of STEMlab 125-14 with DC analog power supplies, refer to Leonhard Neuhaus’s blog, |Red Pitaya DAC performance|.
 
@@ -165,11 +165,11 @@ Schematics
 
 .. note::
 
-    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
+    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
-*************************
-Mechanical specifications
-*************************
+****************************************
+Mechanical Specifications and 3D Models
+****************************************
 
 * `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
 

@@ -168,9 +168,9 @@ Schematics
 
     FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
-*************************
-Mechanical specifications
-*************************
+****************************************
+Mechanical Specifications and 3D Models
+****************************************
 
 * `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
 
@@ -188,4 +188,4 @@ RP clock wiring
 * :ref:`External ADC clock <external_125_14>`
 
 
-For all other specifications please refer to the standard :ref:`STEMlab 125-14 specs <top_125_14>`.
+For all other specifications, please refer to the standard :ref:`STEMlab 125-14 specs <top_125_14>`.

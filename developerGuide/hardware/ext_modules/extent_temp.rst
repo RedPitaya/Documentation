@@ -18,19 +18,20 @@ Red Pitaya software and hardware modules enable access and control of auxiliary 
     - Integration into the Graphical User Interface
     - 4 input and 4 output analog lines; - an extension of the analogue pins from the Red Pitaya to the extension module
 
-.. figure:: Render.jpg   
+.. figure:: img/Render.jpg   
 
 Figure: Proposal for hardware extension module template.
 
-.. figure:: Probes.jpg
+.. figure:: img/Probes.jpg
+    :scale: 50%
 
 Figure: Connectivity option – 20 pins.
 
-.. figure:: Schematics.png
+.. figure:: img/Schematics.png
 
 Figure: Possible implementation of some functionality (`preliminary version <https://downloads.redpitaya.com/doc/Extension/Schematic_GPIO16_A_InformativeOnly.pdf>`_). 
 
-.. figure:: RPEM_Template2_Pcb3D.jpg
+.. figure:: img/RPEM_Template2_Pcb3D.jpg
 
 Figure: Option - forced airflow.
 

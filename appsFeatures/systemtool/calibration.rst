@@ -12,18 +12,18 @@ To open the Calibration application click on **System Tools** and then select **
 
 .. image:: img/Main_menu_system.jpg
     :align: center
-    :scale: 50 %
+    :width: 50 %
 
 .. image:: img/Calibration_app_menu.jpg
     :align: center
-    :scale: 50 %
+    :width: 50 %
 
 
 When the Calibration application opens, you will see four options:
 
 .. image:: img/Calibration_api.png
     :align: center
-    :scale: 100 %
+    :width: 100 %
 
 ***************
 DC Calibration
@@ -68,7 +68,7 @@ Apart from calibration, this option will also allow you to identify any parasiti
 
 .. image:: img/DC_manual.jpg
     :align: center
-    :scale: 80 %
+    :width: 80 %
 
 *   **RESET**:
     *   **DEFAULT** - remove the calibration parameters
@@ -80,7 +80,7 @@ When closing the application without saving the values, the following prompt wil
 
 .. image:: img/Calib_save.png
     :align: center
-    :scale: 100 %
+    :width: 100 %
 
 
 
@@ -89,7 +89,7 @@ ADC calibration parameters
 
 .. image:: img/DC_manual_ADC.jpg
     :align: center
-    :scale: 100 %
+    :width: 100 %
 
 1. **Voltage measurements** (Mean, minimum, maximum, and peak-to-peak). Displayed in the graph with the corresponding colour.
 #. **Sine wave detection**. Detects wheter a sine wave is present on the channel. The "x" indicates how many sine periods were detected.
@@ -105,7 +105,7 @@ DAC calibration parameters
 
 .. image:: img/DC_manual_DAC.jpg
     :align: center
-    :scale: 100 %
+    :width: 100 %
 
 1. **ON/OFF**. Turn the specified output ON or OFF.
 #. **DAC settings**. Change the output waveform (type), frequency, amplitude, and offset. Currently, only the waveform (type) can be changed.
@@ -135,7 +135,7 @@ Once the auto frequency calibration is started, you will be presented with the f
 
 .. image:: img/Calib_freq_auto_start.png
     :align: center
-    :scale: 70 %
+    :width: 70 %
 
 The header columns represent the following:
 
@@ -148,82 +148,78 @@ The header columns represent the following:
 Please pay attention to the **STATE** column, as clickable buttons which progress the process will appear. 
 
 
-1. LV calibration:
+1. **LV calibration**:
 
     .. image:: img/Calib_freq_auto_LV.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-    Clicking on the "START" button will provide further instructions and a choice between an internal and external reference generator:
+    * Clicking on the "START" button will provide further instructions and a choice between an internal and external reference generator:
 
     .. image:: img/Calib_freq_auto_LV_int.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-    Please select "INTERNAL" if you do not have an external reference generator. Red Pitaya will use OUT1 to generate a 0.9 Volt 1 kHz Square signal.
-
-    Set the jumpers to the LV position and connect OUT1 to IN1 and IN2 using the SMA cables and the T adapter.
-
-    Click on Calibrate button to start the calibration process.
+    * Please select "INTERNAL" if you do not have an external reference generator. Red Pitaya will use OUT1 to generate a 0.9 Volt 1 kHz Square signal.
+    * Set the jumpers to the LV position and connect OUT1 to IN1 and IN2 using the SMA cables and the T adapter.
+    * Click on Calibrate button to start the calibration process.
 
 
     .. image:: img/Calib_freq_auto_LV_ext.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-    Please configure the external reference generator to produce a 1 kHz square signal and input the "reference voltage" (one-way amplitude) of the signal.
+    * Please configure the external reference generator to produce a 1 kHz square signal and input the "reference voltage" (one-way amplitude) of the signal.
+    * Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.
+    * Click on Calibrate button to start the calibration process.
 
-    Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.
-
-    Click on Calibrate button to start the calibration process.
-
-2. LV calibration in progress:
+2. **LV calibration in progress**:
 
     .. image:: img/Calib_freq_auto_LV_load.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
     Please wait until the LV calibration is finished.
 
-3. HV calibration:
+3. **HV calibration**:
 
     .. image:: img/Calib_freq_auto_HV.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-    Change the jumpers to the HV position and choose the generator source.
+    * Change the jumpers to the HV position and choose the generator source.
 
     .. image:: img/Calib_freq_auto_HV_int.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
     .. image:: img/Calib_freq_auto_HV_ext.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-    The external reference generator amplitude should be changed by at least a factor of 10 to a maximum of 20 Volts.
+    * The external reference generator amplitude should be changed by at least a factor of 10 to a maximum of 20 Volts.
 
-4. HV calibration in progress:
+4. **HV calibration in progress**:
 
     .. image:: img/Calib_freq_auto_HV_load.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-    Please wait until the HV calibration is finished.
+    * Please wait until the HV calibration is finished.
 
-5. Save calibration values:
+5. **Save calibration values**:
 
     .. image:: img/Calib_freq_auto_save.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-6. Finish the calibration:
+6. **Finish the calibration**:
 
     .. image:: img/Calib_freq_auto_complete.png
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
-    Clicking on the "DONE" button will return you to the starting screen of the Calibration application.
+    * Clicking on the "DONE" button will return you to the starting screen of the Calibration application.
 
 
 Manual Frequency calibration
@@ -234,7 +230,7 @@ Apart from calibration, this option will also allow you to identify any parasiti
 
 .. image:: img/Calib_freq_manual.jpg
         :align: center
-        :scale: 70 %
+        :width: 70 %
 
 *   **SETTINGS MENU** - *APPLY* the calibration parameters, restore the *DEFAULT* parameters, or *CLOSE* the manual frequency calibration.
 *   **CHANNEL & JUMPER SETTINGS** - Choose a channel and voltage range (LV or HV depending on the jumper settings) to calibrate.

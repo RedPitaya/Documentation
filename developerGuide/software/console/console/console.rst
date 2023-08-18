@@ -1,8 +1,8 @@
 .. _console:
 
-*************************
-Setting up serial console
-*************************
+******************************
+Setting up the serial console
+******************************
 
 The debug console can be used to follow the boot process:
 
@@ -30,13 +30,14 @@ The debug console can be used to follow the boot process:
       User name: ``root``
       Password: ``root``
 
-==============
+
 Hardware setup
 ==============
 
 .. note::
 
-   For STEMlab 125-14, you need an additional USB to micro USB cable; for STEMlab 125-10, you need an additional serial to USB adapter (the pins need to be soldered).
+   For STEMlab 125-14, you will need an additional USB to micro USB cable.
+   For STEMlab 125-10, you will need a serial to USB adapter (the pins must first be soldered).
 
 .. figure:: console-connector.png
 
@@ -44,11 +45,11 @@ Connect your Red Pitaya and PC with a micro USB B to USB A cable and follow the 
 
 .. figure:: pitaya-USB-connection-300x164.png
 
--------
-Windows
--------
 
-Download and install the |FTDI driver| on your PC. After installation, a new COM port will appear in the Device Manager, which you can use in Hyperterminal or another terminal utility to connect to Red Pitaya. Connect your red pitaya to the micro USB port on the board. In your terminal utility, fill in the serial port name and set the speed to 115200.
+Windows
+--------
+
+Download and install the |FTDI driver| on your PC. After installation, a new COM port will appear in the Device Manager, which you can use in Hyperterminal or another terminal utility to connect to Red Pitaya. Connect your Red Pitaya to the micro USB port on the board. In your terminal utility, fill in the serial port name and set the **speed to 115200**.
 
 .. |FTDI driver| raw:: html
 
@@ -59,11 +60,29 @@ To adjust the connection settings for serial communication, right-click on the C
 
 .. figure:: device_manager.png
 
-.. figure:: com_port.png
+.. figure:: Comm_port.png
 
 Boot reference must be done through Minicom or a similar serial console application.
 
------
+
+One of the options is to install the WSL (Windows Subsystem for Linux) and then install the relevant tools for the console interface.
+Here are the relevant links:
+
+* |WSL|
+* |Connect USB Devices|
+
+
+Afterwards, follow the instructions in the Linux section.
+
+.. |WSL| raw:: html
+
+   <a href="https://learn.microsoft.com/en-us/windows/wsl/install" target="_blank">Windows Subsystem for Linux</a>
+
+.. |Connect USB Devices| raw:: html
+
+   <a href="https://learn.microsoft.com/en-us/windows/wsl/connect-usb" target="_blank">Connect USB devices</a>
+
+
 Linux
 -----
 
@@ -91,7 +110,7 @@ The first board connected to your PC will create a device named ``/dev/ttyUSB0``
 
 Boot reference must be done through Minicom or a similar serial console application.
 
-~~~~~~~~~~~
+
 ``minicom``
 ~~~~~~~~~~~
 
@@ -122,7 +141,7 @@ A configuration menu will open.
 Go to ``Serial Port Setup``, press **Enter**, and set up the next options:
 
 * Serial Device: ``/dev/ttyUSB0`` (device index ``0`` or a higher number)
-* Bps/Par/Bits: ``115200 8N1`` (baud rate, byte length, parity and stop bits)
+* Bps/Par/Bits: ``115200 8N1`` (baud rate, byte length, parity, and stop bits)
 * Hardware/Software Flow Control: No (flow control should be disabled)
 
 .. code-block:: none
@@ -149,13 +168,13 @@ Please see the |minicom manual| for details.
 
 After you have configured the details, exit the settings. Minicom should connect you to Red Pitaya, and you should be asked to log in after pressing Enter (see "3.2.1.2" at the top of the page" for the username and password). Should that not happen, leave the Minicom open and unplug Red Pitaya from power; after plugging it back in, you should see the boot sequence for Red Pitaya.
 
-~~~~~~~~~~
+
 ``screen``
 ~~~~~~~~~~
 
-GNU ``screen`` is in general a terminal multiplexer. It also supports connecting to a serial console and provides syntax to configure the serial connection's baud rate, byte length, parity, and flow control.
+GNU ``screen`` is, in general, a terminal multiplexer. It also supports connecting to a serial console and provides syntax to configure the serial connection's baud rate, byte length, parity, and flow control.
 
-Compared to ``Minicom``, it provides better fonts and better support for terminal window resizing.
+Compared to ``Minicom``, it provides better fonts and support for terminal window resizing.
 
 .. code-block:: shell-session
 
@@ -168,13 +187,13 @@ Please see the |screen manual| for details.
 
    <a href="https://www.gnu.org/software/screen/manual/screen.html" target="_blank">screen manual</a>
 
-=======================
+
 Reference boot sequence
 =======================
 
 You can compare these reference boot sequences against yours.
 
-------
+
 U-Boot
 ------
 

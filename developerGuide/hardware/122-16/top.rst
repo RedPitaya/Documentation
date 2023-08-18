@@ -160,11 +160,11 @@ Schematics
 
 .. note::
 
-    Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open source code but not an open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
+    Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
 
-*************************
-Mechanical specifications
-*************************
+****************************************
+Mechanical Specifications and 3D Models
+****************************************
 
 * `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
 * `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
@@ -173,6 +173,7 @@ Mechanical specifications
 **********
 Components
 **********
+
 * `ADC <https://www.analog.com/en/products/LTC2185.html>`_
 * `DAC <https://www.analog.com/en/products/AD9767.html>`_
 * `FPGA (Zynq 7020) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
