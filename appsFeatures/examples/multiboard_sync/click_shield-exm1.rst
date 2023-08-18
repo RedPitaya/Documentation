@@ -65,7 +65,6 @@ Code - Python
 Using just SCPI commands:
 
 .. code-block:: python
-    :linenos:
 
     #!/usr/bin/env python3
     """ Click shield daisy chain example for Red Pitaya. """
@@ -221,7 +220,6 @@ Using just SCPI commands:
 Using functions:
 
 .. code-block:: python
-    :linenos:
 
     #!/usr/bin/env python3
     """ Click shield daisy chain example for Red Pitaya """
