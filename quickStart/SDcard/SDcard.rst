@@ -34,7 +34,7 @@ Ecosystem builds run every Saturday night.
 
 .. note::
 
-   For the Unified OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
+   For the Nightly Builds OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
 
 
 
@@ -64,6 +64,11 @@ To run the C applications, please use one of the following combinations of OS an
 
    * UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
    * Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
+
+.. note::
+
+   For the Unified OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
+
 
 
 **RedPitaya OS 2.0**:
