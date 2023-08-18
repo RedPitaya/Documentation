@@ -7,4 +7,4 @@ Hardware
    :maxdepth: 2
    
    platforms
-   ext_modules
+   ext_modules/ext_modules
