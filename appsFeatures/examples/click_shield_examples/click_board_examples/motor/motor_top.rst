@@ -1,8 +1,8 @@
 .. _click_shield_motor_top:
 
-******
-Motor
-******
+########
+Motors
+########
 
 .. toctree::
   :maxdepth: 2
