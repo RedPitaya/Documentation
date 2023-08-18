@@ -2,7 +2,7 @@ Generating signals at RF outputs
 ################################
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 3
    
    
    genRF-exm1
