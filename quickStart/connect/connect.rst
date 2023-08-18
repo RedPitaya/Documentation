@@ -146,7 +146,7 @@ Wireless
 Wireless Network Connection
 ===========================
 
-To establish a WiFi interface with your Red Pitaya, first, establish a :ref:`direct ethernet connection  <dir_cab_connect>`_
+To establish a WiFi interface with your Red Pitaya, first, establish a :ref:`direct ethernet connection <dir_cab_connect>`.
 Open the Red Pitaya main webpage and start the Network Manager application.
 The Network Manager provides access to all network settings of the Red Pitaya board.
 Select the desired WiFi network, input the password, click "Connect", and wait for Red Pitaya to configure the settings.
