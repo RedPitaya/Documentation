@@ -36,9 +36,14 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
 
     #include "rp.h"
 
-    // Choose a microbus depending on where the click board is    
-    #define mikrobus1IntPin RP_DIO2_P    // Microbus 1
-    #define mikrobus2IntPin RP_DIO4_P    // Microbus 2
+    // Choose a microbus depending on where the click board is
+    #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
+    
+    #if MIRKOBUS == 1
+        #define INT_PIN RP_DIO2_P
+    #else
+        #define INT_PIN RP_DIO4_P
+    #endif
 
   
     int main (int argc, char **argv) {
@@ -51,11 +56,11 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
       }
   
       // Configure DIO0_N as input
-      rp_DpinSetDirection (mikrobus1IntPin, RP_IN);
+      rp_DpinSetDirection (INT_PIN, RP_IN);
       
       while(1){
         // Get the button value
-        rp_DpinGetState(mikrobus1IntPin, &state);
+        rp_DpinGetState(INT_PIN, &state);
         if (state == RP_HIGH){
           // Turn the light ON/OFF based on the button value
           rp_DpinSetState(RP_LED0, state);
