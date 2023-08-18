@@ -6,7 +6,7 @@ Description
 
 This example shows how to program Red Pitaya to generate two asynced analog signals. Voltage and frequency ranges depend on the Red Pitaya model.
 
-.. figure:: exmp6.png
+.. figure:: img/generate_two_burst_asynced_signals.png
     :align: center
 
 Required hardware
@@ -14,7 +14,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. figure:: output_y49qDi.gif
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - MATLAB®
 **************
