@@ -212,7 +212,7 @@ In the list below you will find examples of remote control and C algorithms. The
 You can edit and change them according to your needs and develop customized programs and routines.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    ../examples/scpi_examples
 
