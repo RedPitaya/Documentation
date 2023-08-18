@@ -15,10 +15,13 @@ Required hardware
 
     - Primary Red Pitaya device (STEMlab 125-14 LN)
     - One or more Secondary devices (STEMlab 125-14 LN Secondary)
+    - SATA cables
+    - SMA cables and SMA T-connectors
 
 Wiring example:
 
 -   Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
+-   Connect the Primary and Secondary devices with SATA cables
 
 **Pictures coming soon...**
 
