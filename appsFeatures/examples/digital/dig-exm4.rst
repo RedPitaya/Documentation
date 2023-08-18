@@ -14,7 +14,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. figure:: RP-circuit-e1421258707736-300x212.png
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - MATLAB®
 **************
@@ -123,6 +123,6 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 Code - LabVIEW
 **************
 
-.. figure:: Interactive-LED-bar-graph_LV.png
+.. figure:: img/Interactive-LED-bar-graph_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Interactive%20LED%20bar%20graph.vi>`_
