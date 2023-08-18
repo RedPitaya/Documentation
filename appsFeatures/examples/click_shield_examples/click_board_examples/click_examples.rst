@@ -4,6 +4,6 @@
 .. toctree::
   :maxdepth: 2
 
-  basic/basic.top
+  basic/basic_top
   sensor/sensor_top
   motor/motor_top
