@@ -41,6 +41,7 @@ Connecting the LCR module
 *************************
 
 .. figure:: E_module_connection.png
+    :scale: 70%
 
 
 Features
