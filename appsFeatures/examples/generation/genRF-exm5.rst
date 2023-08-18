@@ -14,7 +14,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. figure:: output_y49qDi.gif
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - MATLAB®
 **************
@@ -23,7 +23,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP client object
+    %% Define Red Pitaya as a TCP client object
     clc
     clear all
     close all
