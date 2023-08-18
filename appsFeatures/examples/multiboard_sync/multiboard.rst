@@ -5,4 +5,4 @@ Multi-board signal acquisition and generation
     :maxdepth: 2
    
     daisy_chain-exm1
-    daisy_chain-exm2
+    click_shield-exm1
