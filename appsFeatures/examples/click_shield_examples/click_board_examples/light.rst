@@ -37,8 +37,13 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     #include "rp.h"
 
     // Choose a microbus depending on where the click board is
-    #define mikrobus1AinPin 0    // Microbus 1
-    #define mikrobus2AinPin 1    // Microbus 2
+    #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
+    
+    #if MIRKOBUS == 1
+        #define AIN_PIN 0    // Microbus 1
+    #else
+        #define AIN_PIN 1    // Microbus 2
+    #endif
 
 
     int main (int argc, char **argv) {
@@ -54,7 +59,7 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
             float value;
       
             // Get light value
-            rp_AIpinGetValue(mikrobus1AinPin, &value);
+            rp_AIpinGetValue(AIN_PIN, &value);
             printf("Measured voltage on AI[%i] = %1.2fV\n", 0, value);
             
             if (value >= 2.0){
