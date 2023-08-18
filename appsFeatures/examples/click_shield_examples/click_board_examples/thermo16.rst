@@ -36,30 +36,27 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     #include <unistd.h>
 
     #include "rp.h"
+
+    // Choose a microbus depending on where the click board is
+    #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
+
+    #if MIRKOBUS == 1
+        #define AIN_PIN 0    // Microbus 1
+    #else
+        #define AIN_PIN 1    // Microbus 2
+    #endif
     
     
-    float get_average_temperature(int mikrobus) {
+    float get_average_temperature() {
     
-        int pin;
-  
         float values[30];
         float sum = 0.0;
         float average;
         int i;
-
-
-        if (mikrobus == 1)
-            pin = 0;
-        else if (mikrobus == 2)
-            pin = 1;
-        else {
-            // Invalid mikrobus value
-            return -1.0;
-        }
         
         for (i = 0; i < 30; i++) {
             // read analog input value from Red Pitaya
-            rp_AIpinGetValue(pin, &values[i]);
+            rp_AIpinGetValue(AIN_PIN, &values[i]);
             sum += values[i];
             usleep(50000);    /  /0.05 seconds
         }
@@ -75,7 +72,6 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     
     int main (int argc, char **argv) {
         float  temperature, correction;
-        int mikrobus_nr = 1;      // 1 == Mikrobus 1, 2 == Mikrobus 2
     
         // Initialization of API
         if (rp_Init() != RP_OK) {
@@ -83,7 +79,7 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
             return EXIT_FAILURE;
         }
     
-        temperature =  get_average_temperature(mikrobus_nr);
+        temperature =  get_average_temperature();
         correction= -9.0;      // add a correction if necessary;
         temperature = temperature + correction;
     
