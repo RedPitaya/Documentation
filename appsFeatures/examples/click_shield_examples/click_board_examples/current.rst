@@ -37,10 +37,15 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     #include <time.h>
   
     #include "rp.h"
+
+    // Choose a microbus depending on where the click board is
+    #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
     
-    // Choose a microbus depending on where the click board is 
-    #define mikrobus1AinPin 0    // Microbus 1
-    #define mikrobus2AinPin 1    // Microbus 2
+    #if MIRKOBUS == 1
+        #define AIN_PIN 0    // Microbus 1
+    #else
+        #define AIN_PIN 1    // Microbus 2
+    #endif
 
 
     void convertToEngineeringUnit(double number) {
@@ -102,7 +107,7 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
           printf("Enter the value of your resistor in ohms: ");    // circuit 5 Ohms
       
           scanf("%f", &resistor_value);    // 5
-          float current = get_current(mikrobus1AinPin, resistor_value); 
+          float current = get_current(AIN_PIN, resistor_value); 
           
           convertToEngineeringUnit(current);
           recommendResistor(current);
