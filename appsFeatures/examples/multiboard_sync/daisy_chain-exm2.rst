@@ -1,26 +1,34 @@
-Synchronised Click Shield generation and acquisition
+Synchronised Click Shield Generation and Acquisition
 #####################################################
 
 Description
-***********
+*************
 
-This example shows how to synchronise multiple Red Pitaya boards (daisy chain) to simultaneously acquire 16k samples of a generated signal on multiple units (fast RF inputs and outputs) using the Red Pitaya Click Shields.
+This example shows how to synchronise multiple Red Pitaya boards to simultaneously acquire 16k samples of a generated signal on multiple Red Pitaya units (fast RF inputs and outputs) using the Red Pitaya Click Shields.
 Red Pitaya can transmit the trigger signal through the DIO0_N and receive it on DIO0_P.
 
-This example can be easily modified for simultaneous generation (setup the generation, choose a primary trigger, all secondary triggers set to EXT_NE, and finally, change the daisy trigger source to DAC).
+This example can be easily modified for simultaneous generation (setup the signal generation, choose a primary trigger, all secondary triggers set to EXT_NE, and finally, change the daisy trigger source to DAC).
 
 Required hardware
-*****************
+*******************
 
-    -   Primary Red Pitaya device (STEMlab 125-14 LN)
-    -   One or more Secondary devices (STEMlab 125-14 LN Secondary)
+    -   Two or more Red Pitaya External clock devices (STEMlab 125-14 External clock, STEMlab 125-14 4-Input)
     -   A Red Pitaya Click Shield for each unit
     -   UFL Cables
 
+.. note::
+
+    STEMlab 125-14 4-Input has a Clock Select pin to determine whether the clock should be internal or external. For more information, see :ref:`STEMlab 125-14 4-Input documentation <top_125_14_4-IN>`.
+
+
 **Wiring example:**
 
-  -   Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
-  -   Connect the click shields with UFL cables
+The Red Pitaya providing the clock signal to other Red Pitayas through the click shield is referred to as the *Primary device*. Red Pitayas receiving the clock are referred to as *Secondary devices*.
+
+  -   Connect OUT1 of the Primary device with IN1 of the Primary device and IN1 of the Secondary device.
+  -   Connect the clock signal through the Click Shields with UFL cables (Primary CLK_OUT+- to Secondary 1 CLK_IN+-, Secondary 1 CLK_OUT+- to Secondary 2 CLK_IN+-, etc.)
+  -   Connect the trigger signal through the Click Shields with UFL cables (Primary TRIG_OUT to Secondary 1 TRIG_IN, Secondary 1 TRIGK_OUT to Secondary 2 TRIG_IN, etc.)
+
 
 **Click shield switch and jumper positions:**
 
@@ -34,7 +42,12 @@ Required hardware
 
     - REF CLOCK    ==> OFF
     - CLOCK SELECT ==> EXT
-    - J6, J7 connected
+    - J7 connected
+
+.. note::
+
+    For more information on connectors, switches, and jumper positions, check out the :ref:`Red Pitaya Click Shield documentation <click_shield>`.
+
 
 **Pictures coming soon...**
 
