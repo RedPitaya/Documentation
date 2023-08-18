@@ -1,4 +1,4 @@
-.. _click_shield_click_examples:
+.. _click_shield_board_examples:
 
 ######################
 Click Board Examples
