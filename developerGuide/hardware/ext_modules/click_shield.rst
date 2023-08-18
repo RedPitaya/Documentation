@@ -311,8 +311,7 @@ Synchronisation
 
 Here are examples for synchronising two Red Pitayas with Click Shields through SCPI commands.
 
-
-
+* :ref:`Synchronised Click Shield Generation and Acquisition <click_shield_sync_exam1>`
 
 
 Click Boards
@@ -320,6 +319,12 @@ Click Boards
 
 Here are some examples of how to use click boards together with Click Shield and Red Pitaya.
 
+.. toctree::
+  :maxdepth: 3
+
+   ../../../appsFeatures/examples/click_shield_examples/click_board_examples/click_examples
+
+  
 
 
 
