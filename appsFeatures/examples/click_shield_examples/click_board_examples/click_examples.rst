@@ -4,8 +4,6 @@
 .. toctree::
   :maxdepth: 2
 
-  button
-  captouch
-  relay
+  basic/basic.top
   sensor/sensor_top
   motor/motor_top
