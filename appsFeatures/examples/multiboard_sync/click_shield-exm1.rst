@@ -17,6 +17,8 @@ Required hardware
     -   Two or more Red Pitaya External clock devices (STEMlab 125-14 External clock, STEMlab 125-14 4-Input)
     -   A Red Pitaya Click Shield for each unit
     -   UFL Cables
+    -   SMA cables
+    -   SMA T-connectors
 
 .. note::
 
