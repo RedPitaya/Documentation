@@ -14,11 +14,11 @@ The Impedance analyzer application enables measurements of impedance, phase, and
 
 .. figure:: LCR_range.png
 
-When using the Impedance Analyzer application, optimal results are achieved when the Red Pitaya GND is connected to your mains EARTH lead as is shown below. We also recommend shielding of Red Pitaya and the LCR extension module.
+When using the Impedance Analyzer application, optimal results are achieved when the Red Pitaya GND is connected to your mains EARTH lead as is shown below. We also recommend the shielding of Red Pitaya and the LCR extension module.
 
 .. figure:: 600px-E_module_connection.png
 
-In the pictures below are shown comparison measurements of the selected DUT. Measurements are taken with a Red Pitaya and a Keysight precision LCR meter. From these plots you can extract basic Red Pitaya accuracy.
+In the pictures below are shown comparison measurements of the selected DUT. Measurements are taken with a Red Pitaya and a Keysight precision LCR meter. From these plots, you can extract basic Red Pitaya accuracy.
 
 .. note::
 
@@ -28,7 +28,7 @@ In the pictures below are shown comparison measurements of the selected DUT. Mea
 .. figure:: 300px-LCR_100K.png
 .. figure:: 300px-LCR_1M.png
 
-The Impedance Analyzer application can be used without the LCR Extension module using manual setting of the shunt resistor. This option is described below.
+The Impedance Analyzer application can be used without the LCR Extension module using the manual setting of the shunt resistor. This option is described below.
 
 .. note::
 
