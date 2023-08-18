@@ -14,7 +14,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. figure:: output_y49qDi.gif
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - MATLAB®
 **************
@@ -169,6 +169,6 @@ Using functions:
 Code - LabVIEW
 **************
 
-.. figure:: Generate-continuous-signal_LV.png
+.. figure:: img/Generate-continuous-signal_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Generate%20continuous%20signal.vi>`_
