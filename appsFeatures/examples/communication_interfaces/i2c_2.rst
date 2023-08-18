@@ -13,7 +13,7 @@ Required hardware
 
     - Red Pitaya
 
-.. figure:: output_y49qDi.gif
+.. figure:: ../general_img/RedPitaya_general.png
 
 
 Code - C
