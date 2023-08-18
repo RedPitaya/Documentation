@@ -1,3 +1,5 @@
+.. _click_shield_sync_exam1:
+
 Synchronised Click Shield Generation and Acquisition
 #####################################################
 
