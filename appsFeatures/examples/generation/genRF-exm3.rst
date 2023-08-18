@@ -6,7 +6,7 @@ Generate a signal on external trigger
 Description
 ***********
 
-This example shows how to program Red Pitaya to generate an analog signal on an external trigger. Red Pitaya will first wait for a trigger from an external source and start generating the desired signal right after the trigger condition is met. The same concept also works for continuous signal generation on external trigger Voltage and frequency ranges depend on the Red Pitaya model.
+This example shows how to program Red Pitaya to generate an analog signal on an external trigger. Red Pitaya will first wait for a trigger from an external source and start generating the desired signal right after the trigger condition is met. The same concept also works for continuous signal generation on external trigger Voltage and frequency ranges depending on the Red Pitaya model.
 
 
 Required hardware
@@ -14,7 +14,7 @@ Required hardware
 
     - Red Pitaya device
 
-.. figure:: output_y49qDi.gif
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - MATLAB®
 **************
@@ -23,7 +23,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP client object
+    %% Define Red Pitaya as a TCP client object
     clc
     clear all
     close all
@@ -185,6 +185,6 @@ Using functions:
 Code - LabVIEW
 **************
 
-.. figure:: Generate-signal-on-external-trigger_LV.png
+.. figure:: img/Generate-signal-on-external-trigger_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Generate%20signal%20on%20external%20trigger.vi>`_
