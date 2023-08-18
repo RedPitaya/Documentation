@@ -18,12 +18,12 @@ Required hardware
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:   
  
-.. figure:: generate_continous_signal_on_fast_analog_output.png
+.. figure:: img/generate_continous_signal_on_fast_analog_output.png
 
 Circuit
 *******
 
-.. figure:: generate_continous_signal_on_fast_analog_output_circuit1.png
+.. figure:: img/generate_continous_signal_on_fast_analog_output_circuit1.png
 
 Code - MATLAB®
 **************
@@ -247,6 +247,6 @@ Using functions:
 Code - LabVIEW
 **************
 
-.. figure:: Synchronised-one-pulse-signal-generation-and-acquisition_LV.png
+.. figure:: img/Synchronised-one-pulse-signal-generation-and-acquisition_LV.png
 
 `Download <https://downloads.redpitaya.com/downloads/Clients/labview/Synchronised%20one%20pulse%20signal%20generation%20and%20acquisition.vi>`_
