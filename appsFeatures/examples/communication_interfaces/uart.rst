@@ -1,23 +1,23 @@
 UART
-####
+#####
 
 .. http://blog.redpitaya.com/examples-new/uart/
 
 Description
 ***********
 
-This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loop back by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.
+This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loopback by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.
 
 .. note::
 
-    When establishing UART communication with Red Pitaya and another device do not forget to connect the External Common Mode (GND) pin. Otherwise the results might be unreliable.
+    When establishing UART communication with Red Pitaya and another device do not forget to connect the External Common Mode (GND) pin. Otherwise, the results might be unreliable.
 
 Required hardware
 *****************
 
     - Red Pitaya
 
-.. figure:: output_y49qDi.gif
+.. figure:: ../general_img/RedPitaya_general.png
 
 Code - C
 ********
