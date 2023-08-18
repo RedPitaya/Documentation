@@ -12,6 +12,7 @@ Components
 
 .. figure:: rp_alucase_02.jpg
     :align: center
+    :scale: 50 %
 
     Components of the Red Pitaya Aluminium Case.
     
@@ -23,6 +24,7 @@ Contents:
 
 .. figure:: rp_alucase_03.jpg
    :align: center
+   :scale: 50 %
 
    Interior of the Red Pitaya Aluminium Case.
     
@@ -34,11 +36,11 @@ On the lower part, there are fits for a few air vents (left).
 Apertures in the case expose connections to the expansion ports **E1** and **E2**.
 
 .. figure:: rp_alucase_04.jpg
-    :width: 49%
+    :scale: 40 %
     :align: center
 
 .. figure:: rp_alucase_05.jpg
-    :width: 49%
+    :scale: 40 %
     :align: center
 
 *********************
@@ -50,6 +52,7 @@ Assembly Instructions
    
     .. figure:: rp_alucase_07.jpg
         :align: center
+        :scale: 50 %
       
         The bottom of the Red Pitaya board showing the plastic feet.
 
@@ -59,9 +62,11 @@ Assembly Instructions
    
     .. figure:: STEMlab_10_heatsink.png
         :align: center
+        :scale: 50 %
 
     .. figure:: rp_alucase_08.jpg
         :align: center
+        :scale: 50 %
    
         The top of the Red Pitaya board showing the removed heat sink.
 
@@ -81,4 +86,5 @@ Assembly Instructions
 
 
 .. figure:: rp_alucase.jpg
-   :align: center
+    :align: center
+    :scale: 50 %
