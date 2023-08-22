@@ -62,7 +62,6 @@ Assembly Instructions
    
     .. figure:: STEMlab_10_heatsink.png
         :align: center
-        :width: 600
 
     .. figure:: rp_alucase_08.jpg
         :align: center
