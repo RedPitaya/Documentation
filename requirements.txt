@@ -19,3 +19,5 @@ pillow
 # Needed?
 numpy
 matplotlib
+math
+time
