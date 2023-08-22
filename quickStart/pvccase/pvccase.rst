@@ -41,9 +41,9 @@ Assembly Instructions
 
 #. If you have the model where the 6-pin connector is present, please use the included white plastic washers.
 
-   .. figure:: rp_pvccase_04.jpg 
-      :align: center
-      :width: 800
+    .. figure:: rp_pvccase_04.jpg 
+       :align: center
+       :width: 800
 
       The bottom part of the Red Pitaya PCB with the 6-pin connector CN11.
 
