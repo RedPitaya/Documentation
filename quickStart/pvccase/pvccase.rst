@@ -11,8 +11,8 @@ Components
 **********
 
 .. figure:: rp_pvccase.jpg
-    :align: center
-    :width: 400
+   :align: center
+   :width: 400
 
     Components of the Red Pitaya Acrylic Case.
     
@@ -28,35 +28,42 @@ Assembly Instructions
 #. Remove the small, white plastic feet by pressing the clips at the top with a small pair of pliers and pushing the feet down.
    
     .. figure:: rp_pvccase_02.jpg
-        :align: center
-        :width: 800
+       :align: center
+       :width: 800
 
         The bottom of the Red Pitaya board shows the plastic feet.
 
 #. Mount the brass standoffs as seen in the picture below:
    
     .. figure:: rp_pvccase_03.jpg
-        :align: center
-        :width: 800
+       :align: center
+       :width: 800
 
 #. If you have the model where the 6-pin connector is present, please use the included white plastic washers.
 
     .. figure:: rp_pvccase_04.jpg
-        :align: center
+       :align: center
+       :width: 800
     
        The bottom part of the Red Pitaya PCB with the 6-pin connector CN11.
-
+    
     .. figure:: rp_pvccase_05.jpg
-        :align: center
+       :align: center
+       :width: 800
     
        If the CN11 connector is present, use the included plastic washers when mounting the bottom part.
 
     .. figure:: rp_pvccase_06.jpg
-        :align: center
+       :align: center
+       :width: 800
 
        Red Pitaya shows the usage of white plastic washers for 6-pin connector CN11 clearance.
 
 #. Stick in the rubber feet.
+
+
+
+
 
 
 
