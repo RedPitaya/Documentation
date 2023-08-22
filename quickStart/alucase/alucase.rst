@@ -12,7 +12,7 @@ Components
 
 .. figure:: rp_alucase_02.jpg
     :align: center
-    :width: 400
+    :width: 600
 
     Components of the Red Pitaya Aluminium Case.
     
