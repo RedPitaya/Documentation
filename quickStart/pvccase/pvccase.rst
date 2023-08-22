@@ -35,27 +35,25 @@ Assembly Instructions
 
 #. Mount the brass standoffs as seen in the picture below:
    
-   .. figure:: rp_pvccase_03.jpg
+   .. figure:: rp_pvccase_03.jpg 
       :align: center
       :width: 800
 
 #. If you have the model where the 6-pin connector is present, please use the included white plastic washers.
 
-   .. figure:: rp_pvccase_04.jpg
+   .. figure:: rp_pvccase_04.jpg 
       :align: center
       :width: 800
-    
+
       The bottom part of the Red Pitaya PCB with the 6-pin connector CN11.
 
-
-    .. figure:: rp_pvccase_05.jpg
+    .. figure:: rp_pvccase_05.jpg 
        :align: center
        :width: 800
-    
+
        If the CN11 connector is present, use the included plastic washers when mounting the bottom part.
 
-
-   .. figure:: rp_pvccase_06.jpg
+   .. figure:: rp_pvccase_06.jpg 
       :align: center
       :width: 800
 
