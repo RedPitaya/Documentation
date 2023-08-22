@@ -86,4 +86,4 @@ Assembly Instructions
 
 .. figure:: rp_alucase.jpg
     :align: center
-    :scale: 50 %
+    :width: 600
