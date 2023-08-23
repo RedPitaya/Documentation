@@ -6,7 +6,7 @@ version: 2
 
 # Set the OS, Python version, and other tools you might need
 build:
-  os: ubuntu-22.04
+  os: "ubuntu-22.04"
   tools:
     python: "3.11"
     # You can also specify other tool versions:
@@ -24,7 +24,7 @@ sphinx:
 # Build the docs in epub and pdf version
 formats:
   - epub
-  # - pdf    # Too many latex warnings, internal links do not work with this
+  - pdf    # Too many latex warnings, internal links do not work with this
   # - htmlzip
 
 

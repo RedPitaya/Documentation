@@ -10,7 +10,7 @@ Access information for SSH connection:
 * Password: ``root``
 
 If you are unable to connect, check that Red Pitaya is connected to your :ref:`local network <isConnected>`.
-    
+
 Connection instructions are available for:
 
 .. contents::
@@ -46,6 +46,37 @@ When connected to RP via SSH (PuTTy), you get the following command prompt scree
    SSH connection via PuTTy
 
 The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (the default home directory on Red Pitaya is /root).
+
+.. note::
+
+    After updating the OS or after some time has passed since the last SSH connection, you might get the following message when trying to establish an SSH connection.
+
+    .. code-block:: console
+
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+        Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+        It is also possible that the RSA host key has just been changed.
+        The fingerprint for the RSA key sent by the remote host is
+        06:ea:f1:f8:db:75:5c:0c:af:15:d7:99:2d:ef:08:2a.
+        Please contact your system administrator.
+        Add correct host key in /home/user/.ssh/known_hosts to get rid of this message.
+        Offending key in /home/user/.ssh/known_hosts:4
+        RSA host key for domain.com has changed and you have requested strict checking.
+        Host key verification failed.
+    
+    Do not worry, nothing is wrong with your Red Pitaya. The problem is that the Red Pitaya identification key has changed. To fix this use the following code:
+
+    .. code-block:: console
+
+        ssh-keygen -R rp-xxxxxx.local
+
+    And try to establish the SSH connection again.
+
+    Alternatively, open Explorer and go to **C:/Users/<your-username>/.ssh** and open the **known_hosts** file. Delete all lines containing *rp-xxxxxx.local*.
+
 
 =====
 Linux
