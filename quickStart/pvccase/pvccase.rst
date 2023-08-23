@@ -14,7 +14,7 @@ Components
    :align: center
    :width: 400
 
-    Components of the Red Pitaya Acrylic Case.
+   Components of the Red Pitaya Acrylic Case.
     
 Contents:
     -   8 screws that close the housing
