@@ -17,4 +17,3 @@ pillow
 # Needed?
 numpy
 matplotlib
-time
