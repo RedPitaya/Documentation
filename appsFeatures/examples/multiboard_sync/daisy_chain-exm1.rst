@@ -25,6 +25,196 @@ Wiring example:
 
 **Pictures coming soon...**
 
+Code - MATLAB
+*************
+
+The code should work for MATLAB R2019a or higher. There might be problems due to how MATLAB handles strings starting with MATLAB R2022b.
+
+.. code-block:: matlab
+
+    %% ### DAISY CHAIN EXAMPLE ###
+    % This example is for setting up two units (one primary and one secondary)
+    % For multiple secondary units duplicate the code for the secondary unit
+    % and change the IP address and RP_SEC to for example, RP_SECx (where x is
+    % a consecutive secondary unit)
+    % This example is written for the X-channel System connected with SATA cables
+    
+    
+    %% Parameters
+    
+    clear all;
+    close all;
+    clc
+    
+    % Generation
+    wave_form = 'SINE';
+    freq = 100e3;
+    ampl = 1;
+    
+    % Acquisition
+    dec = 2;
+    trig_lvl = 0.5;
+    trig_dly = 7000;
+    
+    
+    
+    %% Set up the IP and SCPI server
+    
+    IP_PRI = 'rp-f066c8.local';           % Primary unit
+    IP_SEC = 'rp-f0ac90.local';           % Secondary unit
+    
+    port = 5000;
+    RP_PRI = tcpclient(IP_PRI, port);           % create a TCP client object
+    RP_SEC = tcpclient(IP_SEC, port);
+    
+    RP_PRI.ByteOrder = 'big-endian';            % Define byte order and terminator for both units
+    configureTerminator(RP_PRI, 'CR/LF'); 
+    RP_SEC.ByteOrder = 'big-endian';
+    configureTerminator(RP_SEC, 'CR/LF');       % defines the line terminator (end sequence of input characters)
+    
+    flush(RP_PRI);
+    fprintf('Program start');
+    
+    
+    
+    %% Reseting Generation and Acquisition
+    writeline(RP_PRI,'GEN:RST');
+    writeline(RP_PRI,'ACQ:RST');
+    
+    writeline(RP_SEC,'GEN:RST');
+    writeline(RP_SEC,'ACQ:RST');
+    
+    
+    %%% ENABLING THE DAISY CHAIN PRIMARY UNIT %%%
+    writeline(RP_PRI,'DAISY:SYNC:TRIG ON');
+    writeline(RP_PRI,'DAISY:SYNC:CLK ON');
+    writeline(RP_PRI,'DAISY:TRIG_O:SOUR ADC');      % Select which trigger will be passed on over SATA
+    
+    writeline(RP_PRI,'DIG:PIN LED5,1');     % indicator
+    
+    fprintf('Trig: %s\n', writeread(RP_PRI,'DAISY:SYNC:TRIG?'));
+    fprintf('CLK: %s\n', writeread(RP_PRI,'DAISY:SYNC:CLK?'));
+    fprintf('Source: %s\n', writeread(RP_PRI,'DAISY:TRIG_O:SOUR?'));
+    
+    %%% ENABLING THE DAISY CHAIN SECONDARY UNIT %%%
+    % this section must be copied if using multiple secondary devices (once for each device)
+    writeline(RP_SEC,'DAISY:SYNC:TRIG ON');
+    writeline(RP_SEC,'DAISY:SYNC:CLK ON');
+    
+    writeline(RP_SEC,'DIG:PIN LED5,1');     % indicator
+    
+    
+    %% Generation - Primary unit
+    writeline(RP_PRI, append('SOUR1:FUNC ', wave_form));
+    writeline(RP_PRI, append('SOUR1:FREQ:FIX ', num2str(freq)));
+    writeline(RP_PRI, append('SOUR1:VOLT ', num2str(ampl)));
+    
+    writeline(RP_PRI, 'OUTPUT1:STATE ON');
+    fprintf('Generation start\n');
+    
+    
+    %% Acquisition Setup
+    % Primary unit
+    writeline(RP_PRI, append('ACQ:DEC ', int2str(dec)));
+    writeline(RP_PRI, append('ACQ:TRIG:LEV ', num2str(trig_lvl)));
+    writeline(RP_PRI, append('ACQ:TRIG:DLY ', num2str(trig_dly)));
+    
+    % Secondary unit
+    writeline(RP_SEC, append('ACQ:DEC ', num2str(dec)));
+    writeline(RP_SEC, append('ACQ:TRIG:LEV ', num2str(trig_lvl)));
+    writeline(RP_SEC, append('ACQ:TRIG:DLY ', num2str(trig_dly)));
+    
+    
+    %% Acquisition Start
+    fprintf('ACQ Start\n');
+    % First on secondary unit
+    writeline(RP_SEC, 'ACQ:START');
+    pause(0.05);
+    writeline(RP_SEC, 'ACQ:TRIG EXT_NE');
+    
+    % Then on primary unit
+    writeline(RP_PRI, 'ACQ:START');
+    pause(0.05);
+    writeline(RP_PRI, 'ACQ:TRIG CH1_PE');
+    
+    pause(0.1);
+    writeline(RP_PRI, 'SOUR1:TRIG:INT');    % Simulate a trigger
+    
+    % Acquisition check if data is ready
+    
+    % ## Primary unit ##
+    while 1
+        % Get Trigger Status
+        trigger = writeread(RP_PRI, 'ACQ:TRIG:STAT?');
+        if strcmp(trigger,'TD')      % Triggerd?
+            break
+        end
+    end
+    fprintf('Trigger primary condition met.\n');
+    
+    while 1
+        if strcmp(writeread(RP_PRI,'ACQ:TRIG:FILL?'),'1')
+            break
+        end
+    end
+    fprintf('Buffer primary filled.\n');
+    
+    % ## Secondary unit ##
+    while 1
+        % Get Trigger Status
+        if strcmp(writeread(RP_SEC,'ACQ:TRIG:STAT?'),'TD')      % Triggerd?
+            break
+        end
+    end
+    fprintf('Trigger secondary condition met.\n');
+    
+    while 1
+        if strcmp(writeread(RP_SEC,'ACQ:TRIG:FILL?'),'1')
+            break
+        end
+    end
+    fprintf('Buffer secondary filled.\n');
+    
+    
+    %% Read and plot data
+    data_string_pri = writeread(RP_PRI,'ACQ:SOUR1:DATA?');
+    data_string_sec = writeread(RP_SEC,'ACQ:SOUR1:DATA?');
+    
+    % Convert values to numbers.
+    % The first character in string is “{“
+    % and the last 3 are 2 spaces and “}”.
+    
+    data_pri = str2num(data_string_pri(1, 2:length(data_string_pri) - 3));
+    data_sec = str2num(data_string_sec(1, 2:length(data_string_sec) - 3));
+    
+    % Plotting
+    x = 0:16383;
+    
+    % MATLAB 2019b or higher
+    t = tiledlayout(2,1);     % for MATLAB r2023a use 'vertical'
+    
+    nexttile
+    plot(x, data_pri)
+    title('Primary unit data')
+    ylabel('V')
+    xlabel('Samples')
+    
+    nexttile
+    plot(x,data_sec)
+    title('Secondary unit data')
+    ylabel('V')
+    xlabel('Samples')
+    
+    title(t, 'Acquired data')
+    
+    writeline(RP_PRI,'DIG:PIN LED5,0');
+    writeline(RP_SEC,'DIG:PIN LED5,0');
+    writeline(RP_PRI, 'OUTPUT1:STATE OFF');
+    
+    clear RP_PRI RP_SEC;
+
+
+
 Code - Python
 *************
 
