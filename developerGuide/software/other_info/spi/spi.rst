@@ -27,7 +27,7 @@ After that, you need to rebuild the tree and restart the board
 
 .. code-block:: console
 
-   root@rp-f01c3d:~# /opt/redpitaya/dts/$(monitor -f)/
+   root@rp-f01c3d:~# cd /opt/redpitaya/dts/$(monitor -f)/
    root@rp-f01c3d:~# dtc -I dts -O dtb ./dtraw.dts -o devicetree.dtb
    root@rp-f01c3d:~# reboot
 
