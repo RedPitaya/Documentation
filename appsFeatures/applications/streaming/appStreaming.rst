@@ -23,7 +23,7 @@ Streamed data can be stored into:
 
     * Standard audio WAV file format
     * Technical Data Management Streaming (TDMS) file format
-    * Fast and compact binary format (BIN), which can later be converted to CSV format.
+    * Fast and compact binary format (BIN). It can be converted to CSV format.
 
 Max. streaming speeds are limited to:
 
@@ -32,12 +32,24 @@ Max. streaming speeds are limited to:
 
 .. note::
 
-   We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves, but it is complicated.
+   The maximum continuous streaming speeds are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
+   Here are a few examples of maximum data rates:
+
+      - One channel, 8-bits per sample: Max sampling frequency 20 MHz.
+      - One channel, 16-bits per sample: Max sampling frequency 10 MHz.
+      - Two channels, 8-bits per sample: Max sampling frequency per channel 10 MHz (assuming same frequencies for both channels)
+      - Two channels, 16-bits per sample: Max sampling frequency per channel 5 MHz (assuming same frequencies for both channels)
+
+   If acquiring a limited amount of samples in a short duration, it is possible to reach higher sampling frequencies (up to the sampling speed of fast analog inputs).
+
+.. note::
+
+   We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
 
 
-********************************************
-Start using the Red Pitaya streaming feature
-********************************************
+******************************************************
+Getting started with the Red Pitaya streaming feature
+******************************************************
 
 #. Run the Streaming app from the Red Pitaya Web interface
 
@@ -63,7 +75,7 @@ Start using the Red Pitaya streaming feature
            :width: 50%
            :align: center
 
-    #. Open the file in a program that supports TDMS file reading, visualization, and processing, such as |DIAdem|.
+    #. Open the file in a program that supports TDMS file reading, visualisation, and processing, such as |DIAdem|.
 
         .. figure:: img/diadem_tdms_file_viewer.png
            :width: 80%
@@ -71,7 +83,7 @@ Start using the Red Pitaya streaming feature
 
 #. Streaming to a remote computer
 
-    #. Get the streaming client for your computer. Clients are located on the board itself, and you can download them from there.
+    #. Get the streaming client for your computer. Clients are located on the board itself and can be downloaded from there.
 
         .. figure:: img/download_client.png
             :width: 50%
@@ -137,14 +149,14 @@ Start using the Red Pitaya streaming feature
                 :align: center
 
 
-            The application saves data from the board in BIN format. This is a binary format. If the application has finished writing data correctly or there is enough free space on the disk, the conversion to CSV format will be automatic.
+            The application saves data from the board in BIN format. This is a binary format. If the application has finished writing data correctly and there is enough free space on the disk, the conversion to CSV format will be automatic.
 
             .. figure:: img/csv_list.png
                 :width: 50%
                 :align: center
 
 
-            The created csv file can be opened with any text editor or spreadsheet editor:
+            The created CSV file can be opened with any text editor or spreadsheet editor:
 
             .. figure:: img/csv_view.png
                 :width: 80%
@@ -181,7 +193,7 @@ Start using the Red Pitaya streaming feature
 Streaming application for the Desktop (Linux, Windows)
 ******************************************************
 
-You can also use the desktop version of the client for streaming
+You can also use the desktop version of the client for streaming.
 
     #. Download the client
 
@@ -200,7 +212,7 @@ You can also use the desktop version of the client for streaming
 
         .. note::
 
-            For Linux clients, after unpacking, you need to make the files (rpsa_client_qt.sh, bin/rpsa_client_qt) executable.
+            For Linux clients, after unpacking, the files (rpsa_client_qt.sh, bin/rpsa_client_qt) must be made executable.
 
             .. figure:: img/qt1.png
                     :width: 50%
