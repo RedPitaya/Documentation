@@ -340,6 +340,12 @@ LCD                                                                             
 Examples
 ********
 
+.. note::
+
+  Please note that we have updated the backend of the Jupyter Notebook application with the 2.00 OS, so some of these examples will not work with OS versions 2.00 or higher.
+  We are preparing a new set of examples which will function almost the same as the SCPI examples. 
+
+
 1. |Drive LEDs|
 2. |Control GPIOs|
 3. |Write slow analog I/Os|
