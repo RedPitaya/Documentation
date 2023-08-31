@@ -12,18 +12,18 @@ To open the Calibration application click on **System Tools** and then select **
 
 .. image:: img/Main_menu_system.jpg
     :align: center
-    :width: 50 %
+    :width: 70 %
 
 .. image:: img/Calibration_app_menu.jpg
     :align: center
-    :width: 50 %
+    :width: 70 %
 
 
 When the Calibration application opens, you will see four options:
 
 .. image:: img/Calibration_api.png
     :align: center
-    :width: 100 %
+    :width: 50 %
 
 ***************
 DC Calibration
@@ -80,7 +80,7 @@ When closing the application without saving the values, the following prompt wil
 
 .. image:: img/Calib_save.png
     :align: center
-    :width: 100 %
+    :width: 70 %
 
 
 
@@ -89,7 +89,7 @@ ADC calibration parameters
 
 .. image:: img/DC_manual_ADC.jpg
     :align: center
-    :width: 100 %
+    :width: 70 %
 
 1. **Voltage measurements** (Mean, minimum, maximum, and peak-to-peak). Displayed in the graph with the corresponding colour.
 #. **Sine wave detection**. Detects wheter a sine wave is present on the channel. The "x" indicates how many sine periods were detected.
@@ -105,7 +105,7 @@ DAC calibration parameters
 
 .. image:: img/DC_manual_DAC.jpg
     :align: center
-    :width: 100 %
+    :width: 70 %
 
 1. **ON/OFF**. Turn the specified output ON or OFF.
 #. **DAC settings**. Change the output waveform (type), frequency, amplitude, and offset. Currently, only the waveform (type) can be changed.
@@ -158,7 +158,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_LV_int.png
         :align: center
-        :width: 70 %
+        :width: 50 %
 
     * Please select "INTERNAL" if you do not have an external reference generator. Red Pitaya will use OUT1 to generate a 0.9 Volt 1 kHz Square signal.
     * Set the jumpers to the LV position and connect OUT1 to IN1 and IN2 using the SMA cables and the T adapter.
@@ -167,7 +167,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_LV_ext.png
         :align: center
-        :width: 70 %
+        :width: 50 %
 
     * Please configure the external reference generator to produce a 1 kHz square signal and input the "reference voltage" (one-way amplitude) of the signal.
     * Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.
@@ -191,11 +191,11 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_HV_int.png
         :align: center
-        :width: 70 %
+        :width: 50 %
 
     .. image:: img/Calib_freq_auto_HV_ext.png
         :align: center
-        :width: 70 %
+        :width: 50 %
 
     * The external reference generator amplitude should be changed by at least a factor of 10 to a maximum of 20 Volts.
 
