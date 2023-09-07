@@ -10,6 +10,7 @@ In the four corners of the Red Pitaya web interface there are the following widg
     :align: center
     :width: 70 %
 
+
   1. **General System information button:** Includes optional features that can be turned ON/OFF. See below.
   2. **Power button:** Manual Power Off or Reboot of the board.
   3. **Download system report:** a .zip file with information for developers when issues are encountered.
