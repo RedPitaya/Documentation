@@ -6,7 +6,7 @@ System Info
 
 In the four corners of the Red Pitaya web interface there are the following widgets:
 
-.. image:: img/system_info_main.jpg
+.. image:: img/System_info.jpg
     :align: center
     :width: 70 %
 
@@ -21,7 +21,7 @@ General OS and Ecosystem info
 
 Once the Info button is clicked, the following settings will be displayed:
 
-.. image:: img/info_button.jpg
+.. image:: img/Info_button.jpg
     :align: center
     :width: 50 %
 
@@ -33,7 +33,7 @@ The **System Settings** section contains the following options:
   3. **BOOT mode:** On SIGNALlab 250-12, a button **Up to 1 GB RAM** is located here (see the picture below). If checked, the board boots with 1 GB RAM instead of 512 MB.
   4. **Restore default app settings:** Restores all saved application settings to default values.
 
-.. image:: img/info_button_250-12.jpg
+.. image:: img/Info_button_250-12.png
     :align: center
     :width: 50 %
 
