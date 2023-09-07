@@ -53,6 +53,9 @@ Code - MATLAB®
     writeline(RP,'ACQ:RST');
     writeline(RP,'ACQ:DEC 4');
 
+    % For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
+    writeline(RP,'ACQ:TRIG:EXT:DEBouncerUs 500');
+
 
     % Set trigger delay to 0 samples
     % 0 samples delay sets trigger to center of the buffer
@@ -143,6 +146,10 @@ Using just SCPI commands:
     rp_s.tx_txt('ACQ:RST')
 
     rp_s.tx_txt('ACQ:DEC 4')
+
+    # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
+    rp_s.tx_txt('ACQ:TRIG:EXT:DEBouncerUs 500')
+
     rp_s.tx_txt('ACQ:START')
     rp_s.tx_txt('ACQ:TRIG EXT_PE')
 
@@ -185,6 +192,9 @@ Using functions:
     
     # Function for configuring Acquisitio
     rp_s.acq_set(dec)
+
+    # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
+    rp_s.tx_txt('ACQ:TRIG:EXT:DEBouncerUs 500')
     
     rp_s.tx_txt('ACQ:START')
     rp_s.tx_txt('ACQ:TRIG EXT_PE')
