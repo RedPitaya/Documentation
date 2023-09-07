@@ -50,6 +50,9 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
     writeline(RP,'SOUR1:BURS:STAT BURST');      % Set burst mode to CONTINUOUS for sine wave generation on External trigger
     writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 pulses of sine wave
+
+    % For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
+    writeline(RP,'SOUR:TRIG:EXT:DEBouncerUs 500');
     writeline(RP,'SOUR1:TRIG:SOUR EXT_PE');     % Set generator trigger to external
 
     writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
@@ -98,6 +101,7 @@ Code - C
 
         rp_GenBurstCount(RP_CH_1, 1);
         rp_GenMode(RP_CH_1, RP_GEN_MODE_BURST);
+        rp_GenSetExtTriggerDebouncerUs(500);
         rp_GenTriggerSource(RP_CH_1, RP_GEN_TRIG_SRC_EXT_PE);
 
         rp_GenOutEnable(RP_CH_1);
@@ -137,6 +141,9 @@ Using just SCPI commands:
     
     rp_s.tx_txt('SOUR1:BURS:STAT BURST')        # Set burst mode to CONTINUOUS/skip this section for sine wave generation on External trigger
     rp_s.tx_txt('SOUR1:BURS:NCYC 1')
+
+    # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
+    rp_s.tx_txt('SOUR:TRIG:EXT:DEBouncerUs 500')
     rp_s.tx_txt('SOUR1:TRIG:SOUR EXT_PE')
 
     rp_s.tx_txt('OUTPUT1:STATE ON')
@@ -163,6 +170,9 @@ Using functions:
 
     # Function for configuring a Source
     rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=1, trig="EXT_PE")
+
+    # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
+    rp_s.tx_txt('SOUR:TRIG:EXT:DEBouncerUs 500')
     
     rp_s.tx_txt('OUTPUT1:STATE ON')
     
