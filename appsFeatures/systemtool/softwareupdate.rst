@@ -1,3 +1,5 @@
+.. _software_update:
+
 ###############
 Software update
 ###############
