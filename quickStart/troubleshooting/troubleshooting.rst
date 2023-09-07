@@ -7,6 +7,7 @@ FAQ
 .. note::
 
    Not found what you are looking for? Please |contact_page| or :ref:`report a bug <report_bug>`. Please include all the relevant information regarding the problem.
+   For easier debugging on OS versions 2.00 and above, please also include the :ref:`Downloaded system report <system_info>` in the bottom left corner of your Red Pitaya main webpage.
 
 .. |contact_page| raw:: html
 
