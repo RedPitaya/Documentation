@@ -48,7 +48,7 @@ Xilinx Vivado is available from the |Vivado download page|.
 
 .. note::
 
-   Please note that it might be necessary to download the **Full installer** as the **Web installer* might through an *Installer outdated* warning and refuse to proceed with the installation process.
+   Please note that it might be necessary to download the **Full installer** as the **Web installer** might through an *Installer outdated* warning and refuse to proceed with the installation process.
 
    Additionally, on officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 or 22.04 instead of 18.04.
 
@@ -78,7 +78,7 @@ Xilinx SDK development environments 2019.1
 
 .. note::
 
-   Please note that it might be necessary to download the **Full installer** as the **Web installer* might through an *Installer outdated* warning and refuse to proceed with the installation process.
+   Please note that it might be necessary to download the **Full installer** as the **Web installer** might through an *Installer outdated* warning and refuse to proceed with the installation process.
 
 Xilinx SDK is available from the |SDK download page|.
 
@@ -297,7 +297,7 @@ Table of required build flags for FPGA projects per board
 
    .. note::
 
-      For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to *steps 6 and later* in this section, please note that all paths in the following section start with **<Red Pitaya repository>/RedPitaya-FPGA/prj** instead of **<Red Pitaya repository>/fpga/prj**.
+      For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to **step 6 and later** in this section, please note that all paths in the following section start with *<Red Pitaya repository>/RedPitaya-FPGA/prj* instead of *<Red Pitaya repository>/fpga/prj*.
 
    .. |FPGA_tutorial| raw:: html
 
@@ -310,7 +310,7 @@ Table of required build flags for FPGA projects per board
       make -f Makefile.x86 devicetree
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
-Nonproject mode is used, to avoid the generation of project files,
+Non-project mode is used, to avoid the generation of project files,
 which are too many and difficult to handle.
 This allows us to only place source files and scripts under version control.
 
@@ -331,7 +331,7 @@ The following scripts perform various tasks:
 +-----------------------------------+------------------------------------------------+
 
 
-6. First, change your directory to /<path to Red Pitaya repository>/RedPitaya/fpga.
+6. **Non-project mode:** First, change your directory to /<path to Red Pitaya repository>/RedPitaya/fpga.
    To generate a bit file, reports, device tree, and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
    .. code-block:: shell-session
@@ -387,7 +387,7 @@ The following scripts perform various tasks:
 
    This generates a new tcl script that replaces the old script in fpga/prj/<project name>/ip
 
-8. To generate and open a Vivado project using **GUI**, run:
+8. **Project mode:** To generate and open a Vivado project using **GUI**, run:
 
    .. code-block:: shell-session
 
@@ -412,9 +412,9 @@ The following scripts perform various tasks:
 
 .. note::
 
-   Before you try to Run Synthesis, Run Implementation, or Write Bitstream, you should check Language and Region settings on your Ubuntu computer –
-   make sure you have a Format that uses a dot (“.”) as a decimal separator (the United Kingdom or the United States will work).
-   Otherwise, the Synthesis might fail as some parts of Vivado demand a dot as the decimal separator, which will, in turn, cause Vivado not to recognize certain parts of the model.
+   Before you try to Run Synthesis, Run Implementation, or Write Bitstream, you should check *Language and Region settings* on your Ubuntu/Linux computer –
+   make sure you have a **Format** that uses **a dot (“.”) as a decimal separator** (the United Kingdom or the United States will work).
+   Otherwise, the Synthesis might fail as some parts of **Vivado demand a dot as the decimal separator**, which will, in turn, cause Vivado not to recognize certain parts of the model.
 
 9. The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit**
    This file must be copied to the Red Pitaya Linux OS into the **/opt/redpitaya/fpga** directory.
@@ -464,12 +464,14 @@ How the FPGA is reprogrammed depends on the OS version as well as whether the pr
     .. tab:: OS version 2.00
 
         The 2.00 OS uses a new mechanism of loading the FPGA.
+        
         **Non-project mode:** Skip to *step 3*.
 
-        1. Open **Vivado HSL Command Prompt** and go to the *.bit* file location.
+        1. Open **Vivado HSL Command Prompt** and go to the *.bit* file location. (TODO Check if path affects this!!!)
 
             .. code-block:: bash
-            cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+
+                cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
 
         2. Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*).
 
