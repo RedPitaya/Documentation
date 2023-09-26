@@ -8,11 +8,12 @@ It is important to install the correct Vivado and SDK versions as the projects a
 .. note::
 
    Please note that the FPGA code is located in a separate repository from the ecosystem on our GitHub page:
-   * Ecosystem: |ecosystem| 
-   * FPGA: |FPGA|
-   
+
+   - Ecosystem: |ecosystem| 
+   - FPGA: |FPGA|
+
    Running the ":ref:`Makefile.x86 <dev_tree_xil>`" will download the necessary files from the RedPitaya/RedPitaya-FPGA repository.
-   
+
    For building the FPGA image for different boards please see the :ref:`Buildprocess <buildprocess>`.
 
 
@@ -45,7 +46,11 @@ Xilinx Vivado 2020.1
 
 Xilinx Vivado is available from the |Vivado download page|.
 
-On officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 instead of 18.04.
+.. note::
+
+   Please note that it might be necessary to download the **Full installer** as the **Web installer* might through an *Installer outdated* warning and refuse to proceed with the installation process.
+
+   Additionally, on officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 or 22.04 instead of 18.04.
 
 If the installer glitches out anyway, your /etc/os-release file needs to be changed to "fake" the OS version.
 First, backup the file and then open it as a superuser with a text editor such as nano:
@@ -65,18 +70,22 @@ For more information on Vivado installation `click here <https://redpitaya-knowl
 
 .. |Vivado download page| raw:: html
 
-   <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>
+   <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>
 
 
 Xilinx SDK development environments 2019.1
-==========================================
+=============================================
 
-Xilinx SDK is available from the |SDK download page|
+.. note::
+
+   Please note that it might be necessary to download the **Full installer** as the **Web installer* might through an *Installer outdated* warning and refuse to proceed with the installation process.
+
+Xilinx SDK is available from the |SDK download page|.
 
 
 .. |SDK download page| raw:: html
 
-   <ahref="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
+   <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
 
 
 .. _dev_tree_xil:
@@ -152,7 +161,13 @@ FPGA sub-projects
 
 There are multiple FPGA sub-projects they mostly contain incremental changes
 on the first Red Pitaya release.
-It is recommended to use the 0.94 release as the default project.
+
+.. note::
+
+   If unsure which FPGA project to use for you project, please look at the "Application" column, where examples of use are presented.
+
+   It is recommended to use the **0.94** release as the *default project*.
+
 
 +-------------------+------------------------------------------------------------------------+------------------------+
 | prj/name          | Description                                                            | Application            |
@@ -196,38 +211,38 @@ Building process
 
 The following table shows which projects are available on which boards.
 
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| Build name        | STEMlab 125-10 |br|       | SIGNALlab 250-12  | SDRlab 122-16             | STEMlab 125-14 4Ch Z7020  |
-|                   | STEMlab 125-14 |br|       |                   |                           |                           |
-|                   | STEMlab 125-14-Z7020 |br| |                   |                           |                           |
-|                   |                           |                   |                           |                           |
-+===================+===========================+===================+===========================+===========================+
-| 0.94              | X                         |                   | X                         | X                         |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| 0.94_250          |                           | X                 |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| stream_app        | X                         |                   | X                         |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| stream_app_250    |                           | X                 |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| logic             | X                         |                   |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| logic_250         |                           | X                 |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| tft               | X                         |                   |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| axi4lite          | X                         |                   |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| classic           | X                         |                   |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| mercury           | X                         |                   |                           |                           |
-+-------------------+---------------------------+-------------------+---------------------------+---------------------------+
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| Build name        | Build Project Flag  | STEMlab 125-10 |br|       | SIGNALlab 250-12  | SDRlab 122-16             | STEMlab 125-14 4Ch Z7020  |
+|                   |                     | STEMlab 125-14 |br|       |                   |                           |                           |
+|                   |                     | STEMlab 125-14-Z7020 |br| |                   |                           |                           |
+|                   |                     |                           |                   |                           |                           |
++===================+=====================+===========================+===================+===========================+===========================+
+| 0.94              | v0.94               | X                         |                   | X                         | X                         |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| 0.94_250          | v0.94_250           |                           | X                 |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| stream_app        | stream_app          | X                         |                   | X                         |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| stream_app_250    | stream_app_250      |                           | X                 |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| logic             | logic               | X                         |                   |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| logic_250         | logic_250           |                           | X                 |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| tft               | tft                 | X                         |                   |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| axi4lite          | axi4lite            | X                         |                   |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| classic           | classic             | X                         |                   |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
+| mercury           | mercury             | X                         |                   |                           |                           |
++-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
 
 
 Table of required build flags for FPGA projects per board
 
 +------------------------------+---------------------+
-| Model                        | Build flag          |
+| Model                        | Build Model flag    |
 +==============================+=====================+
 | STEMlab 125-10 |br|          | MODEL=Z10           |
 | STEMlab 125-14 |br|          |                     |
@@ -241,41 +256,58 @@ Table of required build flags for FPGA projects per board
 | STEMlab 125-14 4Ch Z7020     | MODEL=Z20_125_4CH   |
 +------------------------------+---------------------+
 
-On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window).
-Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup:
-
-.. code-block:: shell-session
-
-   source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
-   source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
-
-The Xilinx installation directory should be located in /opt directory (or /tools, if you used the default Vivado installation directory).
-These two commands will set up the $PATH environment variable.
-It might also be necessary to add the SDK bin folder to the $PATH environment variable:
-
-.. code-block:: shell-session
-
-   export PATH=<path to Xilinx installation directory>/Xilinx/SDK/2019.1/bin:$PATH
 
 
-Check if you have Git command line tools installed on your computer:
+1. On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window).
+   Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup:
 
-.. code-block:: shell-session
+   .. code-block:: shell-session
 
-   sudo apt update
-   sudo apt install git
+      source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
+      source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
 
-Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:
+2. The Xilinx installation directory should be located in /opt directory (or /tools, if you used the default Vivado installation directory).
+   These two commands will set up the $PATH environment variable.
+   It might also be necessary to add the SDK bin folder to the $PATH environment variable:
 
-.. code-block:: shell-session
+   .. code-block:: shell-session
 
-   git clone https://github.com/RedPitaya/RedPitaya.git
+      export PATH=<path to Xilinx installation directory>/Xilinx/SDK/2019.1/bin:$PATH
 
-The devicetree sources must also be downloaded and extracted by running
+   On Windows, please check |windows_path| or search the web. Add the path to the */bin* directory for Vivado and SDK.
 
-.. code-block:: shell-session
 
-   make -f Makefile.x86 devicetree
+.. |windows_path| raw:: html
+
+   <a href="https://www.computerhope.com/issues/ch000549.htm" target="_blank">this link</a>
+
+
+3. Check if you have Git command line tools installed on your computer:
+
+   .. code-block:: shell-session
+
+      sudo apt update
+      sudo apt install git   
+
+4. Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:
+
+   .. code-block:: shell-session
+
+      git clone https://github.com/RedPitaya/RedPitaya.git
+
+   .. note::
+
+      For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to *steps 6 and later* in this section, please note that all paths in the following section start with **<Red Pitaya repository>/RedPitaya-FPGA/prj** instead of **<Red Pitaya repository>/fpga/prj**.
+
+   .. |FPGA_tutorial| raw:: html
+
+      <a href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga2.html#programming-the-fpga" target="_blank">Red Pitaya FPGA tutorial</a>
+
+5. The devicetree sources must also be downloaded and extracted by running
+
+   .. code-block:: shell-session
+
+      make -f Makefile.x86 devicetree
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
 Nonproject mode is used, to avoid the generation of project files,
@@ -298,94 +330,180 @@ The following scripts perform various tasks:
 | ``red_pitaya_hsi_dts.tcl``        | creates device tree sources                    |
 +-----------------------------------+------------------------------------------------+
 
-First, change your directory to /<path to Red Pitaya repository>/RedPitaya/fpga.
-To generate a bit file, reports, device tree, and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
-.. code-block:: shell-session
+6. First, change your directory to /<path to Red Pitaya repository>/RedPitaya/fpga.
+   To generate a bit file, reports, device tree, and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
-   $ make PRJ=name MODEL=model
+   .. code-block:: shell-session
 
-For example, build v0.94 for STEMlab 125-14:
+      $ make PRJ=name MODEL=model
+
+   For example, build v0.94 for STEMlab 125-14:
+
+   .. code-block:: shell-session
+
+      $ make PRJ=v0.94 MODEL=Z10
+
+   .. note::
+
+      Running the commands above will automatically generate the whole project without openning Vivado in the process (non-project mode).
+
+      To open the project inside Vivado and edit the FPGA code there please check **step 8**.
+
+7. The resulting .bit file is located in */prj/<project name>/out/redpitaya.bit*
+   This file must be copied to */opt/redpitaya/fpga* on the Red Pitaya itself.
+
+.. note:: 
+
+   If the script returns the following error:
+   
+   .. code-block:: shell-session
+   
+      BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ...
+   
+   First, find the line containing
+   
+   .. code-block:: none
+   
+      set scripts_vivado_version 2020.1
+   
+   and change 2020.1 to your version.
+   This is a quick and dirty way to get the build working in other versions of Vivado.
+   However, solving the problem this way could be problematic if some of the IPs used are different in your version.
+
+   To update the script properly, open the project GUI (see below), and go to the menu **Reports-> Report IP Status**. A new tab opens below the code window.
+   If all IPs are not up-to-date, they need to be updated.
+   Before doing this, the TCL script must still be manually modified to your Vivado version, or the block design will not be created when Vivado starts.
+
+   .. figure:: IPupdate.png
+
+   When IPs are up-to-date, go to the tab Tcl console and run the command:
+
+   .. code-block:: shell-session
+
+      write_bd_tcl systemZ10.tcl
+
+   Of course, the script may also be named systemZ20.tcl systemZ20_14.tcl, depending on your board.
+
+   This generates a new tcl script that replaces the old script in fpga/prj/<project name>/ip
+
+8. To generate and open a Vivado project using **GUI**, run:
+
+   .. code-block:: shell-session
+
+      $ make project PRJ=name MODEL=model
+
+   For example, the v0.94 project for STEMlab 125-14:
+
+   .. code-block:: shell-session
+
+      $ make project PRJ=v0.94 MODEL=Z10
+
+   .. figure:: project_make.png
+   
+   A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
+   You can add/write your Verilog module at the end of red_pitaya_top.sv file (or add a new source by right-clicking the Design Sources folder and Add Source):
+   
+   .. figure:: vivado_project.png
+   
+   You can connect newly added sources in the Diagram (Block Design) section (If it is not open: Window => Design => double click system).
+   Add them to the design by right click => Add Module in the design window (for more information check the Learn FPGA programming => FPGA lessons section)
+   https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
+
+.. note::
+
+   Before you try to Run Synthesis, Run Implementation, or Write Bitstream, you should check Language and Region settings on your Ubuntu computer –
+   make sure you have a Format that uses a dot (“.”) as a decimal separator (the United Kingdom or the United States will work).
+   Otherwise, the Synthesis might fail as some parts of Vivado demand a dot as the decimal separator, which will, in turn, cause Vivado not to recognize certain parts of the model.
+
+9. The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit**
+   This file must be copied to the Red Pitaya Linux OS into the **/opt/redpitaya/fpga** directory.
+
+   .. figure:: vivadoGUI.png
+
+   1. Run Synthesis
+   2. Run Implementation
+   3. Generate Bitstream
+
+   The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/** as **red_pitaya_top.bit** (the name of the .bit file is the same as the top module of the design).
 
 
-.. code-block:: shell-session
+Reprogramming the FPGA with a custom image
+============================================
 
-   $ make project PRJ=v0.94 MODEL=Z10
+How the FPGA is reprogrammed depends on the OS version as well as whether the project has been executed in project mode (GUI) or non-project mode.
+
+.. tabs::
+
+    .. tab:: OS version 1.04 or older
+
+        1. Open Terminal and go to the .bit file location.
+
+        .. code-block:: bash
+    
+            cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+
+        2. Send the file .bit (**red_pitaya_top.bit** is the default name) to the Red Pitaya with the ``scp`` command.
+
+        .. code-block:: bash
+
+            scp red_pitaya_top.bit root@rp-xxxxxx.local:/root
+
+        3. Now establish an :ref:`SSH communication <docs:ssh>` with your Red Pitaya and check if you have the copy **red_pitaya_top.bit** in the root directory.
+
+        .. code-block:: bash
+
+            redpitaya> ls
+
+        4. Load the **red_pitaya_top.bit** to **xdevcfg** with
+
+        .. code-block:: bash
+
+            redpitaya> cat red_pitaya_top.bit > /dev/xdevcfg
+
+    .. tab:: OS version 2.00
+
+        The 2.00 OS uses a new mechanism of loading the FPGA.
+        **Non-project mode:** Skip to *step 3*.
+
+        1. Open **Vivado HSL Command Prompt** and go to the *.bit* file location.
+
+            .. code-block:: bash
+            cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+
+        2. Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*).
+
+            .. code-block:: bash
+
+                echo all:{path/to/bitfile/fpga.bit} > path/to/biffile/fpga.bif
+                bootgen -image path/to/biffile/fpga.bif -arch zynq -process_bitstream bin -o path/to/binfile/red_pitaya.bit.bin -w
+
+            Example code:
+
+            .. code-block:: bash
+
+                echo all:{red_pitaya_top.bit} > red_pitaya_top.bif
+                bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+
+        3. Send the file *.bit.bin* to the Red Pitaya with the ``scp`` command.
+
+            .. code-block:: bash
+   
+                scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
+
+        4. Now establish an :ref:`SSH communication <docs:ssh>` with your Red Pitaya and check if you have the copy **red_pitaya_top.bit.bin** in the root directory.
+
+            .. code-block:: bash
+
+                redpitaya> ls
+
+        5. Load the **red_pitaya_top.bit.bin** image into the FPGA:
+
+            .. code-block:: bash
+
+                redpitaya> /opt/redpitaya/bin/fpgautil -b red_pitaya_top.bit.bin
 
 
-The resulting .bit file is located in /prj/<project name>/out/redpitaya.bit
-This file must be copied to /opt/redpitaya/fpga on the Red Pitaya itself.
-
-If the script returns the following error:
-
-.. code-block:: shell-session
-
-   BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ...
-
-First, find the line containing
-
-.. code-block:: none
-
-   set scripts_vivado_version 2020.1
-
-and change 2020.1 to your version.
-This is a quick and dirty way to get the build working in other versions of Vivado.
-However, this way could be problematic if some of the IPs used are different in your version.
-
-To update the script properly, open the project GUI(see below), and go to the menu Reports-> Report IP Status. A new tab opens below the code window.
-If all IPs are not up-to-date, they need to be updated.
-Before doing this, the TCL script must still be manually modified to your Vivado version, or the block design will not be created when Vivado starts.
-
-.. figure:: IPupdate.png
-
-When IPs are up-to-date, go to the tab Tcl console and run the command:
-
-.. code-block:: shell-session
-
-   write_bd_tcl systemZ10.tcl
-
-Of course, the script may also be named systemZ20.tcl systemZ20_14.tcl, depending on your board.
-
-This generates a new tcl script that replaces the old script in fpga/prj/<project name>/ip
-
-To generate and open a Vivado project using GUI, run:
-
-.. code-block:: shell-session
-
-   $ make project PRJ=name MODEL=model
-
-For example, the v0.94 project for STEMlab 125-14:
-
-.. code-block:: shell-session
-
-   $ make project PRJ=v0.94 MODEL=Z10
-
-
-.. figure:: project_make.png
-
-A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
-You can add/write your Verilog module at the end of red_pitaya_top.sv file (or add a new source by right-clicking the Design Sources folder and Add Source):
-
-.. figure:: vivado_project.png
-
-You can connect newly added sources in the Diagram (Block Design) section (If it is not open: Window => Design => double click system).
-Add them to the design by right click => Add Module in the design window (for more information check the Learn FPGA programming => FPGA lessons section)
-https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
-
-Before you try to Run Synthesis, Run Implementation, or Write Bitstream, you should check Language and Region settings on your Ubuntu computer –
-make sure you have a Format that uses a dot (“.”) as a decimal separator (the United Kingdom or the United States will work).
-Otherwise, the Synthesis might fail as some parts of Vivado demand a dot as the decimal separator, which will cause Vivado not to recognize certain parts of the model.
-
-The resulting .bit file is located in fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit
-This file must be copied to /opt/redpitaya/fpga.
-
-.. figure:: vivadoGUI.png
-
-1. Run Synthesis
-2. Run Implementation
-3. Generate Bitstream
-
-The resulting .bit file is located in <Red Pitaya repository>/RedPitaya/fpga/prj/<project name>/project/redpitaya.runs/impl_1/ as red_pitaya_top.bit (the name of the .bit file is the same as the top module of the design)
 
 ********************
 Programming via JTAG
@@ -447,6 +565,7 @@ Now, you can click Program Device.
 A bitfile selector prompt appears and when a valid file is selected, Red Pitaya can be programmed.
 
 .. figure:: file_select.jpg
+
 
 
 **********
