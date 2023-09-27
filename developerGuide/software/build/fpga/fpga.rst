@@ -458,7 +458,7 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
 
         Please note that you need to change the forward slashes to backward slashes on Windows.
 
-        1. Open Terminal and go to the .bit file location.
+        1. Open Terminal or CMD and go to the .bit file location.
 
         .. code-block:: bash
     
