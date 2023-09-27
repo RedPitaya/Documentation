@@ -48,7 +48,7 @@ Xilinx Vivado is available from the |Vivado download page|.
 
 .. note::
 
-   Please note that it might be necessary to download the **Full installer** as the **Web installer** might through an *Installer outdated* warning and refuse to proceed with the installation process.
+   Please note that it might be necessary to download the **Full installer** as the **Web installer** might give an *Installer outdated* warning and refuse to proceed with the installation process.
 
    Additionally, on officially unsupported versions of **Linux**, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 or 22.04 instead of 18.04.
 
@@ -78,7 +78,7 @@ Xilinx SDK development environments 2019.1
 
 .. note::
 
-   Please note that it might be necessary to download the **Full installer** as the **Web installer** might through an *Installer outdated* warning and refuse to proceed with the installation process.
+   Please note that it might be necessary to download the **Full installer** as the **Web installer** might give an *Installer outdated* warning and refuse to proceed with the installation process.
 
 Xilinx SDK is available from the |SDK download page|.
 
@@ -102,20 +102,20 @@ You can prepare it by running the command:
 
 .. note::
 
-   You can upload the file manually:
+   The file can be manually uploaded.
 
    .. code-block:: shell-session
 
       curl -L https://github.com/Xilinx/device-tree-xlnx/archive/xilinx-v2017.2.tar.gz/ -o device-tree-xlnx-xilinx-v2017.2.tar.gz
 
-   and extract the .tar.gz to /[redpitaya path]/tmp/device-tree-xlnx-xilinx-v2017.2
+   Extract the .tar.gz to */<redpitaya path>/tmp/device-tree-xlnx-xilinx-v2017.2*.
 
 *******************
 Directory structure
 *******************
 
 There are multiple FPGA projects, some with generic functionality, some with specific functionality for an application.
-Common code for all projects is placed directly into the ``FPGA `` directory. Common codes are mostly reusable modules.
+Common code for all projects is placed directly into the ``FPGA`` directory. Common codes are mostly reusable modules.
 Project-specific code is placed inside the ``fpga/prj/name/`` directories and is similarly organized as common code.
 
 .. |ug895| replace:: Vivado System-Level Design Entry
@@ -212,7 +212,7 @@ Building process
 The following table shows which projects are available on which boards.
 
 +-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| Build name        | Build Project Flag  | STEMlab 125-10 |br|       | SIGNALlab 250-12  | SDRlab 122-16             | STEMlab 125-14 4Ch Z7020  |
+| Build name        | Build Project Flag  | STEMlab 125-10 |br|       | SIGNALlab 250-12  | SDRlab 122-16             | STEMlab 125-14 4-Input    |
 |                   |                     | STEMlab 125-14 |br|       |                   |                           |                           |
 |                   |                     | STEMlab 125-14-Z7020 |br| |                   |                           |                           |
 |                   |                     |                           |                   |                           |                           |
@@ -253,7 +253,7 @@ Table of required build flags for FPGA projects per board
 +------------------------------+---------------------+
 | SIGNALlab 250-12             | MODEL=Z20_250       |
 +------------------------------+---------------------+
-| STEMlab 125-14 4Ch Z7020     | MODEL=Z20_125_4CH   |
+| STEMlab 125-14 4-Input       | MODEL=Z20_125_4CH   |
 +------------------------------+---------------------+
 
 
@@ -331,7 +331,7 @@ The following scripts perform various tasks:
 +-----------------------------------+------------------------------------------------+
 
 
-6. **Non-project mode:** First, change your directory to /<path to Red Pitaya repository>/RedPitaya/fpga.
+6. **Non-project mode:** First, change your directory to *<path to Red Pitaya repository>/RedPitaya/fpga*.
    To generate a bit file, reports, device tree, and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
    .. code-block:: shell-session
@@ -383,9 +383,9 @@ The following scripts perform various tasks:
 
       write_bd_tcl systemZ10.tcl
 
-   Of course, the script may also be named systemZ20.tcl systemZ20_14.tcl, depending on your board.
+   Of course, the script may also be named *systemZ20.tcl* or *systemZ20_14.tcl*, depending on your board.
 
-   This generates a new tcl script that replaces the old script in fpga/prj/<project name>/ip
+   This generates a new tcl script that replaces the old script in *fpga/prj/<project name>/ip*.
 
 8. **Project mode:** To generate and open a Vivado project using **GUI**, run:
 
@@ -402,12 +402,12 @@ The following scripts perform various tasks:
    .. figure:: project_make.png
    
    A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
-   You can add/write your Verilog module at the end of red_pitaya_top.sv file (or add a new source by right-clicking the Design Sources folder and Add Source):
+   You can add/write your Verilog module at the end of *red_pitaya_top.sv* file (or add a new source by right-clicking the *Design Sources* folder and *Add Source*):
    
    .. figure:: vivado_project.png
    
-   You can connect newly added sources in the Diagram (Block Design) section (If it is not open: Window => Design => double click system).
-   Add them to the design by right click => Add Module in the design window (for more information check the Learn FPGA programming => FPGA lessons section)
+   You can connect newly added sources in the Diagram (Block Design) section (If it is not open: *Window => Design => double click system*).
+   Add them to the design by right click => Add Module in the design window (for more information check the *Learn FPGA programming => FPGA lessons section*)
    https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
 
 .. note::
@@ -443,19 +443,19 @@ How the FPGA is reprogrammed depends on the OS version as well as whether the pr
     
             cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
 
-        2. Send the file .bit (**red_pitaya_top.bit** is the default name) to the Red Pitaya with the ``scp`` command.
+        2. Send the file .bit (*red_pitaya_top.bit* is the default name) to the Red Pitaya with the ``scp`` command.
 
         .. code-block:: bash
 
             scp red_pitaya_top.bit root@rp-xxxxxx.local:/root
 
-        3. Now establish an :ref:`SSH communication <docs:ssh>` with your Red Pitaya and check if you have the copy **red_pitaya_top.bit** in the root directory.
+        3. Now establish an :ref:`SSH communication <docs:ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit* in the root directory.
 
         .. code-block:: bash
 
             redpitaya> ls
 
-        4. Load the **red_pitaya_top.bit** to **xdevcfg** with
+        4. Load the *red_pitaya_top.bit* to **xdevcfg** with
 
         .. code-block:: bash
 
@@ -493,13 +493,13 @@ How the FPGA is reprogrammed depends on the OS version as well as whether the pr
    
                 scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
 
-        4. Now establish an :ref:`SSH communication <docs:ssh>` with your Red Pitaya and check if you have the copy **red_pitaya_top.bit.bin** in the root directory.
+        4. Now establish an :ref:`SSH communication <docs:ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit.bin* in the root directory.
 
             .. code-block:: bash
 
                 redpitaya> ls
 
-        5. Load the **red_pitaya_top.bit.bin** image into the FPGA:
+        5. Load the *red_pitaya_top.bit.bin* image into the FPGA:
 
             .. code-block:: bash
 
@@ -512,7 +512,7 @@ Programming via JTAG
 ********************
 
 These instructions show how to use a JTAG cable to program a Red Pitaya directly from Xilinx Vivado.
-To do so we use Red Pitaya STEMlab 125-14, Ubuntu 20.04, Vivado 2020.1, Digilent JTAG-HS3 cable with a 14 to 6-pin adapter, and Digilent Adept 2 software.
+To do so we use *Red Pitaya STEMlab 125-14*, *Ubuntu 20.04*, *Vivado 2020.1*, *Digilent JTAG-HS3 cable with a 14 to 6-pin adapter*, and *Digilent Adept 2 software*.
 
 To start, get an appropriate JTAG cable. In these instructions, we use a Digilent JTAG-HS3 cable with a 14 to 6-pin adapter.
 Digilent JTAG-HS2 may be used as well and might be more appropriate, as it uses a 6-pin connector that can connect directly to Red Pitaya's JTAG.
@@ -544,7 +544,7 @@ Once these packages are installed, you can check if the driver detects your adap
 
 .. figure:: driver_check.jpg
 
-Now, open Vivado 2020.1, click Program and Debug -> Open Target -> Auto Connect.
+Now, open Vivado 2020.1, click *Program and Debug -> Open Target -> Auto Connect*.
 
 .. figure:: program_menu.jpg
 
