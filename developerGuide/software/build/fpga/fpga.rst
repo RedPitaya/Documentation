@@ -488,54 +488,54 @@ On Windows, the process can also be done through a normal Command Prompt, but an
 
            On Linux, open the **Terminal** and go to the *.bit* file location.
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+               cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
 
         2. Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*)
 
            **Windows (Vivado HSL Command Prompt):**
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                echo all:{ path/to/bitfile/fpga.bit } >  path/to/biffile/fpga.bif
-                bootgen -image path/to/biffile/fpga.bif -arch zynq -process_bitstream bin -o path/to/binfile/red_pitaya.bit.bin -w
+               echo all:{ path/to/bitfile/fpga.bit } >  path/to/biffile/fpga.bif
+               bootgen -image path/to/biffile/fpga.bif -arch zynq -process_bitstream bin -o path/to/binfile/red_pitaya.bit.bin -w
 
-            Example code:
+           Example code:
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                echo all:{ red_pitaya_top.bit } >  red_pitaya_top.bif
-                bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+               echo all:{ red_pitaya_top.bit } >  red_pitaya_top.bif
+               bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
 
-            **Linux and Windows (WSL + Normal CMD):**
+           **Linux and Windows (WSL + Normal CMD):**
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                echo -n "all:{ red_pitaya_top.bit }" >  red_pitaya_top.bif
-                bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+               echo -n "all:{ red_pitaya_top.bit }" >  red_pitaya_top.bif
+               bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
 
         3. Send the file *.bit.bin* to the Red Pitaya with the ``scp`` command.
 
-            .. code-block:: bash
+           .. code-block:: bash
    
-                scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
+               scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
 
         4. Now establish an :ref:`SSH communication <ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit.bin* in the root directory.
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                redpitaya> ls
+               redpitaya> ls
 
         5. Load the *red_pitaya_top.bit.bin* image into the FPGA:
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                redpitaya> /opt/redpitaya/bin/fpgautil -b red_pitaya_top.bit.bin
+               redpitaya> /opt/redpitaya/bin/fpgautil -b red_pitaya_top.bit.bin
 
 
 Reverting to original FPGA image
----------------------------------
+==================================
 
 If you want to roll back to the official Red Pitaya FPGA program, run the following command:
 
