@@ -439,7 +439,7 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
 
 .. note::
 
-   On Windows, the process can also be done through a normal Command Prompt, but any ``echo`` commands must be executed inside Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows ``echo``). For more information refer to the following forum topics:
+   On Windows, the process can also be done through a standard Command Prompt, but any ``echo`` commands must be executed inside the Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows ``echo``). For more information, refer to the following forum topics:
    
        - |batch_file_topic_1|
        - |batch_file_topic_2|
