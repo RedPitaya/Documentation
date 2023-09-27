@@ -266,7 +266,9 @@ Table of required build flags for FPGA projects per board
       source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
       source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
 
-2. The Xilinx installation directory should be located in /opt directory (or /tools, if you used the default Vivado installation directory).
+.. _xilinx_path:
+
+2. The Xilinx installation directory should be located in */opt* directory (or */tools*, if you used the default Vivado installation directory).
    These two commands will set up the $PATH environment variable.
    It might also be necessary to add the SDK bin folder to the $PATH environment variable:
 
@@ -433,6 +435,21 @@ Reprogramming the FPGA with a custom image
 
 How the FPGA is reprogrammed depends on the OS version as well as whether the project has been executed in project mode (GUI) or non-project mode.
 
+Please make sure that the PATH environment variable is set correctly. See :ref:`Step 2 <xilinx_path>` in the chapter above.
+
+On Windows, the process can also be done through a normal Command Prompt, but any ``echo`` commands must be executed inside Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows ``echo``). For more information refer to the following forum topics:
+
+    - |batch_file_topic_1|
+    - |batch_file_topic_2|
+
+   .. |batch_file_topic_1| raw:: html
+
+      <a href="https://superuser.com/questions/601282/%cc%81-is-not-recognized-as-an-internal-or-external-command" target="_blank">́╗┐' is not recognized as an internal or external command</a>
+
+   .. |batch_file_topic_2| raw:: html
+
+      <a href="https://devblogs.microsoft.com/oldnewthing/20210726-00/?p=105483" target="_blank">Diagnosing why your batch file prints a garbage character, one character, and nothing more</a>
+
 .. tabs::
 
     .. tab:: OS version 1.04 or older
@@ -463,28 +480,39 @@ How the FPGA is reprogrammed depends on the OS version as well as whether the pr
 
     .. tab:: OS version 2.00
 
-        The 2.00 OS uses a new mechanism of loading the FPGA.
+        The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the ``echo`` command functinality differs bewteen the two.
         
         **Non-project mode:** Skip to *step 3*.
 
-        1. Open **Vivado HSL Command Prompt** and go to the *.bit* file location. (TODO Check if path affects this!!!)
+        1. On Windows, open **Vivado HSL Command Prompt** and go to the *.bit* file location.
+
+           On Linux, open the **Terminal** and go to the *.bit* file location.
 
             .. code-block:: bash
 
                 cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
 
-        2. Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*).
+        2. Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*)
+
+           **Windows (Vivado HSL Command Prompt):**
 
             .. code-block:: bash
 
-                echo all:{path/to/bitfile/fpga.bit} > path/to/biffile/fpga.bif
+                echo all:{ path/to/bitfile/fpga.bit } >  path/to/biffile/fpga.bif
                 bootgen -image path/to/biffile/fpga.bif -arch zynq -process_bitstream bin -o path/to/binfile/red_pitaya.bit.bin -w
 
             Example code:
 
             .. code-block:: bash
 
-                echo all:{red_pitaya_top.bit} > red_pitaya_top.bif
+                echo all:{ red_pitaya_top.bit } >  red_pitaya_top.bif
+                bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+
+            **Linux and Windows (WSL + Normal CMD):**
+
+            .. code-block:: bash
+
+                echo -n "all:{ red_pitaya_top.bit }" >  red_pitaya_top.bif
                 bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
 
         3. Send the file *.bit.bin* to the Red Pitaya with the ``scp`` command.
@@ -505,6 +533,27 @@ How the FPGA is reprogrammed depends on the OS version as well as whether the pr
 
                 redpitaya> /opt/redpitaya/bin/fpgautil -b red_pitaya_top.bit.bin
 
+
+Reverting to original FPGA image
+---------------------------------
+
+If you want to roll back to the official Red Pitaya FPGA program, run the following command:
+
+.. tabs::
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+    .. group-tab:: OS version 2.00
+
+        .. code-block:: shell-session
+
+            redpitaya> overlay.sh v0.94
+
+or simply restart your Red Pitaya.
 
 
 ********************
