@@ -437,22 +437,26 @@ How the FPGA is reprogrammed depends on the OS version as well as whether the pr
 
 Please make sure that the PATH environment variable is set correctly. See :ref:`Step 2 <xilinx_path>` in the chapter above.
 
-On Windows, the process can also be done through a normal Command Prompt, but any ``echo`` commands must be executed inside Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows ``echo``). For more information refer to the following forum topics:
+.. note::
 
-    - |batch_file_topic_1|
-    - |batch_file_topic_2|
+   On Windows, the process can also be done through a normal Command Prompt, but any ``echo`` commands must be executed inside Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows ``echo``). For more information refer to the following forum topics:
+   
+       - |batch_file_topic_1|
+       - |batch_file_topic_2|
 
-   .. |batch_file_topic_1| raw:: html
+.. |batch_file_topic_1| raw:: html
 
       <a href="https://superuser.com/questions/601282/%cc%81-is-not-recognized-as-an-internal-or-external-command" target="_blank">́╗┐' is not recognized as an internal or external command</a>
 
-   .. |batch_file_topic_2| raw:: html
+.. |batch_file_topic_2| raw:: html
 
       <a href="https://devblogs.microsoft.com/oldnewthing/20210726-00/?p=105483" target="_blank">Diagnosing why your batch file prints a garbage character, one character, and nothing more</a>
 
 .. tabs::
 
     .. tab:: OS version 1.04 or older
+
+        Please note that you need to change the forward slashes to backward slashes on Windows.
 
         1. Open Terminal and go to the .bit file location.
 
@@ -481,6 +485,8 @@ On Windows, the process can also be done through a normal Command Prompt, but an
     .. tab:: OS version 2.00
 
         The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the ``echo`` command functinality differs bewteen the two.
+
+        Please note that you need to change the forward slashes to backward slashes on Windows.
         
         **Non-project mode:** Skip to *step 3*.
 
