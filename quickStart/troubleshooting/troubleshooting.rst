@@ -288,6 +288,7 @@ Please ensure that your browser's ad blockers are turned off for the "rp-xxxxxx.
 
 .. figure:: img/AdBlock_disable.png
    :align: center
+   :width: 600
 
 Undesired disconnections?
 ---------------------------
