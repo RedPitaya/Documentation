@@ -106,7 +106,7 @@ In order to test it, you can use a PC that is connected to the same local networ
 
 3. Type your Red Pitaya IP into your WEB browser and connect to it.
 
-   .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
+   .. figure:: img/Browser_IP.png
       :align: center
 
 If your Red Pitaya is not listed on the list of your local network devices on the local network, then it is necessary to check that your Red Pitaya is connected to your local network.
@@ -127,7 +127,7 @@ Is Red Pitaya connected to my local network?
 
 3. Type Red Pitaya IP into your web browser to see if you can connect to it.
 
-   .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
+   .. figure:: img/Browser_IP.png
       :align: center
 
 
@@ -136,7 +136,7 @@ Is Red Pitaya connected to my local network?
 Problems connecting to RP?
 ----------------------------
 
-.. figure:: blinking-pitaya-eth.gif
+.. figure:: img/blinking-pitaya-eth.gif
    :align: center
 
 #. First, check the LEDs:
@@ -176,7 +176,7 @@ The Red Pitaya URL is ``rp-xxxxxx.local`` where ``xxxxxx`` must be replaced with
 
 If the RP MAC address is ``00:26:33:F1:13:D5``, the last 6 digits are ``F113D5`` and the URL is ``rp-f113d5.local``.
 
-.. figure:: Screen-Shot-2016-08-17-at-09.50.31-503x600.png
+.. figure:: img/ethernet_MAC.png
    :align: center
 
 
@@ -192,7 +192,7 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
    #. Enter the ``cat /proc/net/wireless`` command to get information about link quality and signal strength.
 
-      .. figure:: Screen-Shot-2015-09-26-at-20.28.27.png
+      .. figure:: img/cat_wireless.png
          :align: center
 
       Link quality measures the number of packet errors that occur. The lower the number of packet errors, the higher this will be. Link quality goes from 0-100%.
@@ -286,6 +286,8 @@ Web interface not functioning properly, or experimenting with freezing?
 
 Please ensure that your browser's ad blockers are turned off for the "rp-xxxxxx.local" webpage and that your proxy settings are correct. For local connections to the Red Pitaya unit, proxy settings should not be required. A VPN may also be preventing the connection.
 
+.. figure:: img/AdBlock_disable.png
+   :align: center
 
 Undesired disconnections?
 ---------------------------
