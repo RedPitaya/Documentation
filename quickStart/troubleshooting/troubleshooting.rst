@@ -97,7 +97,7 @@ In order to test it, you can use a PC that is connected to the same local networ
       If you have a cable connection, then your MAC address
       is written on your Red Pitaya LAN connector.
 
-   .. figure:: MAC.png
+   .. figure:: img/MAC.png
       :align: center
 
 .. note:: 
