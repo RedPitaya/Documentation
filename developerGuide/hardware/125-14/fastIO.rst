@@ -54,12 +54,12 @@ Jumpers
 
 Voltage ranges are set by input jumpers, as shown here:
 
-.. figure:: Jumper_settings.png 
+.. figure:: img/jumpers/Jumper_settings.png 
 
 
 Gain can be adjusted independently for both input channels. The adjustment is done by bridging the jumpers located behind the corresponding input SMA connector.
      
-.. figure:: Jumper_settings_photo.png
+.. figure:: img/jumpers/Jumper_settings_photo.png
             
     Jumper setting
     
@@ -80,26 +80,30 @@ Jumper position can affect the measurements taken with Red Pitaya. The jumpers a
 
 1) The position of the jumper bumps must be as indicated in this image.
 
-    .. figure:: Jumper_position_Note.png
+    .. figure:: img/jumpers/Jumper_position_Note.png
 
 
 2) The metallic part of the jumper should look toward the PCB so that it is not visible once the jumpers are installed. Here is an example on the STEMlab 125-14 4-Input:
 
-    .. figure:: Jumper_position_4IN_0.png
+    .. figure:: img/jumpers/Jumper_position_4IN_0.png
+        :align: center
+        :width: 700 px
 
-    .. figure:: Jumper_position_4IN_1.png
+    .. figure:: img/jumpers/Jumper_position_4IN_1.png
+        :align: center
+        :width: 700 px
 
 
 Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square-type signals, as shown in the picture below.
 
-.. figure:: Jumper_position_wrong_signal.jpg
+.. figure:: img/jumpers/Jumper_position_wrong_signal.jpg
 
     As it can be observed, **if the jumpers are not placed correctly, the step response becomes under-compensated.**
 
 
 With the correct placement of the jumper pins, that same waveform looks much better.
 
-.. figure:: Jumper_position_right_signal.jpg
+.. figure:: img/jumpers/Jumper_position_right_signal.jpg
 
 
 
@@ -107,7 +111,7 @@ With the correct placement of the jumper pins, that same waveform looks much bet
 Input stage schematics
 ======================
 
-.. figure:: Fast_analog_inputs_sch.png
+.. figure:: img/Fast_analog_inputs_sch.png
         
     Fast analog inputs schematics
 
@@ -117,7 +121,7 @@ Coupling
 
 Fast analog inputs are **DC coupled**. Input impedance is given in the picture below. 
 
-.. figure:: Input_impedance_of_fast_analog_inputs.png
+.. figure:: img/measurements/Input_impedance_of_fast_analog_inputs.png
        
     The input impedance of fast analog inputs
 
@@ -131,7 +135,7 @@ Bandwidth
     
 In the picture below, the Frequency Response - Bandwidth of fast analog inputs is shown. Measurements are taken using an |Agilent 33250A| signal generator as a reference. The measured signal is acquired using :ref:`remote control (SCPI commands) <scpi_command_list>`. An amplitude voltage is extracted from the acquired signal and compared to the reference signal amplitude.
         
-.. figure:: Bandwidth_of_Fast_Analog_Inputs.png
+.. figure:: img/measurements/Bandwidth_of_Fast_Analog_Inputs.png
         
     The bandwidth of fast analog inputs
         
@@ -143,7 +147,7 @@ Notice: When making measurements without interpolation, you need to extract the 
         
     In the picture, only 10 samples of 16k buffer are shown to represent a few periods of 40 MHz signal.
         
-.. figure:: Sin(x)x_Interpolation.png   
+.. figure:: img/measurements/Sin(x)x_Interpolation.png   
         
     Sin(x)/x Interpolation
    
@@ -153,11 +157,11 @@ Input noise
 
 Measurements refer to a high gain (LV +/-1 V) jumper setting, with limited environmental noise, inputs and outputs terminated, output signals disabled, and the PCB grounded through SMA ground. Measurements are performed on 16k continuous samples at full rate (125 MS/s). (Typical full bandwidth std(Vn) < 0.5 mV). The noise spectrum shown in the picture below (right) is calculated using FFT analysis on N = 16384 samples sampled at Fs = 125E6 MS/s.
     
-.. figure:: Noise_distribution.png
+.. figure:: img/measurements/Noise_distribution.png
         
     Noise distribution 
         
-.. figure:: Noise_level.png
+.. figure:: img/measurements/Noise_level.png
         
     Noise level
         
@@ -196,7 +200,7 @@ Measurements refer to the LV jumper setting, inputs, and outputs terminated, out
 
 Measurements refer to the LV jumper setting, inputs, and outputs terminated, outputs signal disabled, and the PCB grounded through SMA ground.
 
-.. figure:: Measurement_setup.png
+.. figure:: img/measurements/Measurement_setup.png
             
     Measurement setup
     
@@ -206,55 +210,55 @@ Reference signals
 
     #. Reference signal: -20 dBm, 2 MHz
 
-       .. figure:: -20dBm_2MHz_RP_AG.png
+       .. figure:: img/measurements/-20dBm_2MHz_RP_AG.png
        
             Reference Signal: -20 dBm 2 MHz
     
     #. Reference signal: -20 dBm, 10 MHz
        
-       .. figure::   -20dBm_10MHz_RP_AG.png
+       .. figure::   img/measurements/-20dBm_10MHz_RP_AG.png
 
             Reference Signal: -20 dBm 10 MHz
             
     #. Reference signal: -20 dBm, 30 MHz
       
-       .. figure:: -20dBm_30MHz_RP_AG.png
+       .. figure:: img/measurements/-20dBm_30MHz_RP_AG.png
 
             Reference Signal: -20 dBm 30 MHz
             
     #. Reference signal: 0  dBm, 2 MHz
   
-       .. figure:: 0dBm_2MHz_RP_AG.png
+       .. figure:: img/measurements/0dBm_2MHz_RP_AG.png
 
             Reference Signal: 0 dBm 2 MHz
             
     #. Reference signal: 0 dBm, 10 MHz
   
-       .. figure:: 0dBm_10MHz_RP_AG.png
+       .. figure:: img/measurements/0dBm_10MHz_RP_AG.png
 
             Reference Signal: 0 dBm 10 MHz
             
     #. Reference signal: 0 dBm, 30 MHz
   
-       .. figure:: 0dBm_30MHz_RP_AG.png
+       .. figure:: img/measurements/0dBm_30MHz_RP_AG.png
 
             Reference Signal: 0 dBm 30 MHz
             
     #. Reference signal: -3 dBFS, 2 MHz
   
-       .. figure:: -3dBFS_2MHZ_RP_AG.png
+       .. figure:: img/measurements/-3dBFS_2MHZ_RP_AG.png
 
             Reference Signal: -3 dBFS 2 MHz
             
     #. Reference signal: -3 dBFS, 10 MHz
   
-       .. figure:: -3dBFS_10MHZ_RP_AG.png
+       .. figure:: img/measurements/-3dBFS_10MHZ_RP_AG.png
 
             Reference Signal: -3 dBFS 10 MHz
             
     #. Reference signal: -3 dBFS, 30 MHz
   
-       .. figure:: -3dBFS_30MHZ_RP_AG.png
+       .. figure:: img/measurements/-3dBFS_30MHZ_RP_AG.png
        
           Reference Signal: -3 dBFS 30 MHz
             
@@ -371,7 +375,7 @@ DC OFFSET @ 122 kS/s        HV              ± 5 mV
 
 AC gain accuracy can be extracted from Frequency response - Bandwidth.
 
-.. figure:: 800px-Bandwidth_of_Fast_Analog_Inputs.png
+.. figure:: img/measurements/800px-Bandwidth_of_Fast_Analog_Inputs.png
 
 
 ##############
@@ -417,13 +421,13 @@ General Specifications
 
     The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of a suitable length, otherwise, the SMA connector, installed on the Red Pitaya, will mechanically damage the SMA connector. The central pin of the SMA connector on the Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
     
-.. figure:: Outputs.png
+.. figure:: img/Outputs.png
        
     Output channel Output voltage range: ± 1 V
         
 The output stage is shown in the picture below.
     
-.. figure:: Outputs_stage.png
+.. figure:: img/Outputs_stage.png
        
     Output channel schematics
            
@@ -433,7 +437,7 @@ Output impedance
 
 The impedance of the output channels (output amplifier and filter) is shown in the figure below.
     
-.. figure:: Output_impedance.png
+.. figure:: img/measurements/Output_impedance.png
     
     Output impedance
 
@@ -447,7 +451,7 @@ Bandwidth
 
 Bandwidth measurements are shown in the picture below. Measurements are taken with the |Agilent MSO7104B| oscilloscope for each frequency step (10 Hz – 60 MHz) of the measured signal. The Red Pitaya board OUT1 is used with 0 dBm output power. The second output channel and both input channels are terminated with 50 Ohm termination. The Oscilloscope ground is used to ground the Red Pitaya board. The oscilloscope input must be set to 50 Ohm input impedance.
 
-.. figure:: Fast_Analog_Outputs_Bandwidt.png
+.. figure:: img/measurements/Fast_Analog_Outputs_Bandwidt.png
 
 
 =========

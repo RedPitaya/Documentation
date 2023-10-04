@@ -102,7 +102,7 @@ Pin  Description            FPGA pin number FPGA pin description Voltage levels
 
 Schematics of extension connectors are shown in the picture below.
 
-.. figure:: Extension_connector.png
+.. figure:: img/Extension_connector.png
 
 **Notes:**
 
@@ -177,7 +177,7 @@ Powering Red Pitaya through extension connector
 
 The Red Pitaya can also be powered through pin 1 of the extension connector :ref:`E2 <E2>`, but in such a case, external protection must be provided by the user in order to protect the board!
 
-.. figure:: Protection.png
+.. figure:: img/Protection.png
 
 Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension connector :ref:`E2 <E2>`.
 

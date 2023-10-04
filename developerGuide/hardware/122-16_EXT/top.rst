@@ -12,7 +12,7 @@ External clock signal levels should be LVDS in the range from 1 MHz to 122.8 MHz
    The OS will not boot without providing an external clock.
 
 
-.. figure:: ../125-14/Extension_connector.png
+.. figure:: ../125-14/img/Extension_connector.png
    :align: center
 
 ************************

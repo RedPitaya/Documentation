@@ -10,11 +10,11 @@ Assembly
     
 #.  Attaching the fan to the heat sink using two screws as shown in the picture below. 
  
-.. image:: cooling-screwon.jpg
+.. image:: img/cooling/cooling-screwon.jpg
    :align: center
    :scale: 70 %
 
-.. figure:: cooling-topdown.jpg 
+.. figure:: img/cooling/cooling-topdown.jpg 
    :align: center
    :scale: 70 %
 
@@ -25,7 +25,7 @@ Assembly
 Measurements
 ************
 
-.. figure:: cooling-result.png
+.. figure:: img/cooling/cooling-result.png
    :align: center
 
    Temperature measured with the fan turned off and on combined with low and high CPU load.

@@ -9,7 +9,7 @@ This STEMlab version is standard STEMlab 125-14 modified in such a way that the 
 
    The OS will not boot without providing an external clock.
 
-.. figure:: ../125-14/Extension_connector.png
+.. figure:: ../125-14/img/Extension_connector.png
    :align: center
 
 

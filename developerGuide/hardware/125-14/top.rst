@@ -149,6 +149,8 @@ Technical specifications
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
+.. _schematics_125_14:
+
 **********
 Schematics
 **********
@@ -211,12 +213,12 @@ External ADC clock
 
 The ADC clock can be provided by:
 
-    * On board 125 MHz XO (default)
-    * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
-    * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
+    - On board 125 MHz XO (default)
+    - From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
+    - Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
-.. figure:: External_clk.png
-    :alt: Logo
+.. figure:: img/External_clk.png
+    :alt: Schematic
     :align: center
 
     Schematic
@@ -227,24 +229,31 @@ The ADC clock can be provided by:
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-.. figure:: External_clock_top.png
-    :alt: Logo
+.. figure:: img/External_clock_top.png
+    :alt: Top side schematic
     :align: center
 
-    Top side
+    Top side schematic
 
 
-.. figure:: External_clock_bottom.png
-    :alt: Logo
+.. figure:: img/External_clock_bottom.png
+    :alt: Bottom side schematic
     :align: center
 
-    Bottom side
+    Bottom side schematic
 
-.. figure:: External_clock_bottom_photo.png
-    :alt: Logo
+.. figure:: img/External_clock_bottom_photo.png
+    :alt: Bottom side photo
     :align: center
     :width:  400px
 
+    Bottom side photo
+
+.. figure:: img/External_clock_resistors.jpeg
+    :alt: Bottom side all
+    :align: center
+
+    Bottom side
 
 ************
 Certificates
@@ -269,7 +278,7 @@ Cooling options
 
 For additional cooling, we recommend a 30 mm or 25 mm fan. You can use the board's power connector to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
 
-.. figure:: cooling-powerPin.jpg
+.. figure:: img/cooling/cooling-powerPin.jpg
     :width: 50%
     :align: center
 
