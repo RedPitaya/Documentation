@@ -848,7 +848,7 @@ Registers
 **********
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    regset/2.00-15/list.rst
    regset/2.00-18/list.rst
