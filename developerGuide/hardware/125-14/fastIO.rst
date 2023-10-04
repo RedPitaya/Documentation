@@ -143,7 +143,7 @@ Notice: When making measurements without interpolation, you need to extract the 
         
     In the picture, only 10 samples of 16k buffer are shown to represent a few periods of 40 MHz signal.
         
-.. figure:: Sin(x)x_Interpolation.png   
+.. figure:: img/measurements/Sin(x)x_Interpolation.png   
         
     Sin(x)/x Interpolation
    
