@@ -843,6 +843,8 @@ These files can be modified into device tree overlays, which can be used to modi
 |                    | SPI can then only be used for writing (maybe 3-wire) |
 +--------------------+------------------------------------------------------+
 
+.. _fpga_registers:
+
 **********
 Registers
 **********
