@@ -308,7 +308,7 @@ Accessing FPGA registers
 ========================
 
 Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the
-:ref:`Red Pitaya HDL memory map <fpga_094>` document. The registers can be accessed using the described monitor utility.
+:ref:`Red Pitaya HDL memory map <fpga_registers>` document (please make sure to reference the correct OS version). The registers can be accessed using the described monitor utility.
 For example, the following sequence of monitor commands checks modifies, and verifies the acquisition decimation parameter (at address 0x40100014):
 
 .. code-block:: shell-session
