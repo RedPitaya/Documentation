@@ -215,7 +215,7 @@ The ADC clock can be provided by:
     * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
     * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
-.. figure:: External_clk.png
+.. figure:: img/External_clk.png
     :alt: Logo
     :align: center
 
@@ -227,23 +227,27 @@ The ADC clock can be provided by:
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-.. figure:: External_clock_top.png
+.. figure:: img/External_clock_top.png
     :alt: Logo
     :align: center
 
     Top side
 
 
-.. figure:: External_clock_bottom.png
+.. figure:: img/External_clock_bottom.png
     :alt: Logo
     :align: center
 
     Bottom side
 
-.. figure:: External_clock_bottom_photo.png
+.. figure:: img/External_clock_bottom_photo.png
     :alt: Logo
     :align: center
     :width:  400px
+
+.. figure:: img/External_clock_resistors.jpeg
+    :alt: Logo
+    :align: center
 
 
 ************
@@ -269,7 +273,7 @@ Cooling options
 
 For additional cooling, we recommend a 30 mm or 25 mm fan. You can use the board's power connector to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
 
-.. figure:: cooling-powerPin.jpg
+.. figure:: img/cooling/cooling-powerPin.jpg
     :width: 50%
     :align: center
 
