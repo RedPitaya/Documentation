@@ -86,8 +86,12 @@ Jumper position can affect the measurements taken with Red Pitaya. The jumpers a
 2) The metallic part of the jumper should look toward the PCB so that it is not visible once the jumpers are installed. Here is an example on the STEMlab 125-14 4-Input:
 
     .. figure:: img/jumpers/Jumper_position_4IN_0.png
+        :align: center
+        :width: 700 px
 
     .. figure:: img/jumpers/Jumper_position_4IN_1.png
+        :align: center
+        :width: 700 px
 
 
 Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square-type signals, as shown in the picture below.
