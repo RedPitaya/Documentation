@@ -697,15 +697,15 @@ XADC input data can be accessed through the Linux IIO (Industrial IO) driver int
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
 | E2 con | schematic | ZYNQ p/n | XADC in | IIO filename          | Measurement target | Full scale range |
 +========+===========+==========+=========+=======================+====================+==================+
-| AI0    | AIF[PN]0  | B19/A20  | AD8     | in_voltage11_raw      | general purpose    | 3.50 V            |
+| AI0    | AIF[PN]0  | B19/A20  | AD8     | in_voltage11_raw      | general purpose    | 3.50 V           |
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
-| AI1    | AIF[PN]1  | C20/B20  | AD0     | in_voltage9_raw       | general purpose    | 3.50 V            |
+| AI1    | AIF[PN]1  | C20/B20  | AD0     | in_voltage9_raw       | general purpose    | 3.50 V           |
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
-| AI2    | AIF[PN]2  | E17/D18  | AD1     | in_voltage10_raw      | general purpose    | 3.50 V            |
+| AI2    | AIF[PN]2  | E17/D18  | AD1     | in_voltage10_raw      | general purpose    | 3.50 V           |
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
-| AI3    | AIF[PN]3  | E18/E19  | AD9     | in_voltage12_raw      | general purpose    | 3.50 V            |
+| AI3    | AIF[PN]3  | E18/E19  | AD9     | in_voltage12_raw      | general purpose    | 3.50 V           |
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
-|        | AIF[PN]4  | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 6.10 V            |
+|        | AIF[PN]4  | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 6.10 V           |
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
 
 
