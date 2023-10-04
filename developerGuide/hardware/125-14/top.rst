@@ -149,6 +149,8 @@ Technical specifications
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
+.. _schematics_125_14:
+
 **********
 Schematics
 **********
