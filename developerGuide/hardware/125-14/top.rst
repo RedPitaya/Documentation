@@ -211,12 +211,12 @@ External ADC clock
 
 The ADC clock can be provided by:
 
-    * On board 125 MHz XO (default)
-    * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
-    * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
+    - On board 125 MHz XO (default)
+    - From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
+    - Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
 .. figure:: img/External_clk.png
-    :alt: Logo
+    :alt: Schematic
     :align: center
 
     Schematic
@@ -228,27 +228,30 @@ The ADC clock can be provided by:
 
 
 .. figure:: img/External_clock_top.png
-    :alt: Logo
+    :alt: Top side schematic
     :align: center
 
-    Top side
+    Top side schematic
 
 
 .. figure:: img/External_clock_bottom.png
-    :alt: Logo
+    :alt: Bottom side schematic
     :align: center
 
-    Bottom side
+    Bottom side schematic
 
 .. figure:: img/External_clock_bottom_photo.png
-    :alt: Logo
+    :alt: Bottom side photo
     :align: center
     :width:  400px
 
+    Bottom side photo
+
 .. figure:: img/External_clock_resistors.jpeg
-    :alt: Logo
+    :alt: Bottom side all
     :align: center
 
+    Bottom side
 
 ************
 Certificates
