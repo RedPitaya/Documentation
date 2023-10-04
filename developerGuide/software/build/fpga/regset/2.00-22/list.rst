@@ -1,4 +1,4 @@
-FPGA Register map in dev
+FPGA Register map (Release 2.00-22)
 #########################
 
 .. toctree::
