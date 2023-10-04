@@ -694,33 +694,28 @@ XADC inputs
 
 XADC input data can be accessed through the Linux IIO (Industrial IO) driver interface.
 
-+--------+-----------+----------+---------+-----------------------+--------------------+-------+
-| E2 con | schematic | ZYNQ p/n | XADC in | IIO filename          | measurement target | range |
-+========+===========+==========+=========+=======================+====================+=======+
-| AI0    | AIF[PN]0  | B19/A20  | AD8     | in_voltage11_raw      | general purpose    | 7.01V |
-+--------+-----------+----------+---------+-----------------------+--------------------+-------+
-| AI1    | AIF[PN]1  | C20/B20  | AD0     | in_voltage9_raw       | general purpose    | 7.01V |
-+--------+-----------+----------+---------+-----------------------+--------------------+-------+
-| AI2    | AIF[PN]2  | E17/D18  | AD1     | in_voltage10_raw      | general purpose    | 7.01V |
-+--------+-----------+----------+---------+-----------------------+--------------------+-------+
-| AI3    | AIF[PN]3  | E18/E19  | AD9     | in_voltage12_raw      | general purpose    | 7.01V |
-+--------+-----------+----------+---------+-----------------------+--------------------+-------+
-|        | AIF[PN]4  | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 12.2V |
-+--------+-----------+----------+---------+-----------------------+--------------------+-------+
++--------+-----------+----------+---------+-----------------------+--------------------+------------------+
+| E2 con | schematic | ZYNQ p/n | XADC in | IIO filename          | Measurement target | Full scale range |
++========+===========+==========+=========+=======================+====================+==================+
+| AI0    | AIF[PN]0  | B19/A20  | AD8     | in_voltage11_raw      | general purpose    | 3.50 V            |
++--------+-----------+----------+---------+-----------------------+--------------------+------------------+
+| AI1    | AIF[PN]1  | C20/B20  | AD0     | in_voltage9_raw       | general purpose    | 3.50 V            |
++--------+-----------+----------+---------+-----------------------+--------------------+------------------+
+| AI2    | AIF[PN]2  | E17/D18  | AD1     | in_voltage10_raw      | general purpose    | 3.50 V            |
++--------+-----------+----------+---------+-----------------------+--------------------+------------------+
+| AI3    | AIF[PN]3  | E18/E19  | AD9     | in_voltage12_raw      | general purpose    | 3.50 V            |
++--------+-----------+----------+---------+-----------------------+--------------------+------------------+
+|        | AIF[PN]4  | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 6.10 V            |
++--------+-----------+----------+---------+-----------------------+--------------------+------------------+
 
 
 Input range
 -----------
 
-The default mounting intends for unipolar XADC inputs,
-which allow for observing only positive signals with a saturation range of **0V ~ 1V**.
-There are additional voltage dividers use to extend this range up to the power supply voltage.
-It is possible to configure XADC inputs into a bipolar mode with a range of **-0.5V ~ +0.5V**,
-but it requires removing R273 and providing a **0.5V ~ 1V** common voltage on the E2 connector.
+The default mounting intends for unipolar XADC inputs, which allow for observing only positive signals with a saturation range of **0 V ~ 0.5 V**.
+There are additional voltage dividers use to extend this range to **0 V ~ 3.5 V**.
 
-.. note::
-
-   Unfortunately there is a design error, where the XADC input range in unipolar mode was thought to be **0V ~ 0.5V**. Consequently the voltage dividers were miss designed for a range of double the supply voltage.
+It is possible to configure XADC inputs into a bipolar mode with a range of **-0.5 V ~ +0.5 V**, but it requires removing R273 and providing a **0.5 V ~ 1 V** common voltage on the :ref:`E2 <E2>` connector. Please consult the :ref:`schematics <schematics_125_14>` for more details.
 
 
 5V power supply
@@ -728,16 +723,16 @@ but it requires removing R273 and providing a **0.5V ~ 1V** common voltage on th
 
 .. code-block:: none
 
-                          ----------------0  Vout
-             ----------  |  ----------
-   Vin  0----| 56.0kΩ |-----| 4.99kΩ |----0  GND
-             ----------     ----------
+                          ------------------0  Vout
+             -----------  |  -----------
+   Vin  0----| 56.0 kΩ |-----| 4.99 kΩ |----0  GND
+             -----------     -----------
 
 .. math::
 
    ratio = \frac{4.99 k\Omega}{56.0 k\Omega +4.99 k\Omega} = 0.0818
 
-   range = \frac{1 V}{ratio} = 12.2 V
+   range = \frac{0.5 V}{ratio} = 6.11 V
 
 
 General purpose inputs
@@ -745,23 +740,22 @@ General purpose inputs
 
 .. code-block:: none
 
-                          ----------------0  Vout
-             ----------  |  ----------
-   Vin  0----| 30.0kΩ |-----| 4.99kΩ |----0  GND
-             ----------     ----------
+                          ------------------0  Vout
+             -----------  |  -----------
+   Vin  0----| 30.0 kΩ |-----| 4.99 kΩ |----0  GND
+             -----------     -----------
 
 .. math::
 
    ratio = \frac{4.99 k\Omega}{30.0 k\Omega + 4.99  k\Omega} = 0.143
 
-   range = \frac{1 V}{ratio} = 7.01 V
+   range = \frac{0.5 V}{ratio} = 3.50 V
 
 
 GPIO and LEDs
 =============
 
-Handling of GPIO and LED signals depends on whether they are connected to
-Zynq-7000 PS (MIO) or PL (EMIO or FPGA) block.
+Handling of GPIO and LED signals depends on whether they are connected to Zynq-7000 PS (MIO) or PL (EMIO or FPGA) block.
 
 MIO pins signals are controlled by the PS block.
 Each pin has a few multiplexed functions.
@@ -774,7 +768,7 @@ If the pin signals are wired directly (in the FPGA sources) from PS-based EMIO s
 The default pin assignment for GPIO is described in the next table.
 
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
-| FPGA   | connector  | GPIO               | MIO/EMIO index   | ``sysfs`` index              | comments, LED color, dedicated meaning    |
+| FPGA   | Connector  | GPIO               | MIO/EMIO index   | ``sysfs`` index              | Comments, LED color, dedicated meaning    |
 +========+============+====================+==================+==============================+===========================================+
 |        |            |                    |                  |                              | green, *Power Good* status                |
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
@@ -786,9 +780,9 @@ The default pin assignment for GPIO is described in the next table.
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
 |        |            | LED ``[7:0]``      | ``EMIO[ 7: 0]``  | ``906+54+[ 7: 0]=[967:960]`` | yellow                                    |
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
-|        |            | LED ``  [8]``      |  ``MIO[ 0]``     | ``906+   [ 0]   = 906``      | yellow = CPU heartbeat (user defined)     |
+|        |            | LED ``  [8]``      |  ``MIO[ 0]``     | ``906+   [ 0]   = 906``      | yellow = SD card access  (user defined)   |
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
-|        |            | LED ``  [9]``      |  ``MIO[ 7]``     | ``906+   [ 7]   = 913``      | red    = SD card access (user defined)    |
+|        |            | LED ``  [9]``      |  ``MIO[ 7]``     | ``906+   [ 7]   = 913``      | red    = CPU heartbeat (user defined)     |
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
 | ``D5`` | ``E2[ 7]`` | UART1_TX           |  ``MIO[ 8]``     | ``906+   [ 8]   = 914``      | output only                               |
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
