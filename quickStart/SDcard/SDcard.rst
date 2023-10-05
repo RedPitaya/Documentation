@@ -74,7 +74,7 @@ To run the C applications, please use one of the following combinations of OS an
 **RedPitaya OS 2.0**:
 
    - `Latest 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): e335ea7c7ea6832e3c8ddf1f48e450f9)
-   - `Latest Beta 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-22_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3c735a7d8dc20487e169f07cc4bf84fd)
+   - `Latest Beta 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-23_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 45281311c10c2131af9a09005b9b2b32)
 
 .. note::
 
