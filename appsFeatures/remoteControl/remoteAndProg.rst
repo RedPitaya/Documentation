@@ -7,4 +7,4 @@ Programming and remote-control tools
 
    remoteControl.rst
    jupyter/Jupyter.rst
-   axiMode.rst
+   deepMemoryMode.rst
