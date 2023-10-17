@@ -33,7 +33,20 @@ Required hardware
 Functionality
 ========================
 
-By default, 2 MB of the DDR RAM are reserved for the Deep Memory mode. The DDR memory allocated to the Deep Mode can be configured through the **** parameter to a maximum of 256 MB. The :ref:`device tree ecosystem <ecosystem>` must be rebuilt after changing this parameter.
+By default, 2 MB of the DDR RAM are reserved for the Deep Memory mode. The DDR memory allocated to the Deep Mode can be configured through the **reg* parameter to a maximum of 256 MB. The :ref:`device tree ecosystem <ecosystem>` must be rebuilt after changing this parameter.
+
+**Changing Reserved Memory**
+
+In the **dtraw.dts** configure the following lines:
+
+.. code-block:: c
+
+   buffer@1000000 {
+      phandle = <0x39>;
+      reg = <0x1000000 0x200000>;
+   };
+
+The first parameter in **reg** is *start address (0x1000000)* and the second one is the *region size (0x200000)*.
 
 .. note::
 
@@ -72,18 +85,17 @@ Once finished, please do not forget to free any resources and reserved memory lo
 
 API functions
 =================
-
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | API                                                                               | DESCRIPTION                                                                    |
 +===================================================================================+================================================================================+
 | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t* _start,``                               | | Returns the start and end address of the memory region. This can also be     |
-| |                             ``uint32_t* _size)``                                | | achieved by displaying values of ``ADC_AXI_START`` and ``ADC_AXI_END``       |
+| | ~                           ``uint32_t* _size)``                                | | achieved by displaying values of ``ADC_AXI_START`` and ``ADC_AXI_END``       |
 | |                                                                                 | | marcors.                                                                     |
 | | Python: ``rp_AcqAxiGetMemoryRegion()``                                          | |                                                                              |
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiGetBufferFillState(rp_channel_t channel,``                        | | Indicates whether the Deep Memory buffer was full of data.                   |
-| |                             ``bool* state)``                                    | |                                                                              |
+| | ~                              ``bool* state)``                                 | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiGetBufferFillState(channel)``                                | |                                                                              |
 | |                                                                                 | |                                                                              |
@@ -101,40 +113,40 @@ API functions
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiSetTriggerDelay(rp_channel_t channel,``                           | | Sets the number of decimated data after trigger written into memory.         |
-| |                          ``int32_t decimated_data_num)``                        | |                                                                              |
+| | ~                           ``int32_t decimated_data_num)``                     | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiSetTriggerDelay(channel, decimated_data_num)``               | |                                                                              |
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiGetTriggerDelay(rp_channel_t channel,``                           | | Returns the number of decimated data after trigger written into memory.      |
-| |                          ``int32_t* decimated_data_num)``                       | |                                                                              |
+| | ~                           ``int32_t* decimated_data_num)``                    | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiGetTriggerDelay(channel)``                                   | |                                                                              |
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel,``                           | | Returns current position of Deep Memory write pointer.                       |
-| |                          ``uint32_t* pos)``                                     | |                                                                              |
+| | ~                           ``uint32_t* pos)``                                  | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiGetWritePointer(channel)``                                   | |                                                                              |
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel,``                     | | Returns position of Deep Memory write pointer at time when trigger arrived.  |
-| |                               ``uint32_t* pos)``                                | |                                                                              |
+| | ~                                 ``uint32_t* pos)``                            | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiGetWritePointerAtTrig(channel)``                             | |                                                                              |
 | |                                                                                 | |                                                                              |
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiEnable(rp_channel_t channel,``                                    | | Sets the Deep Memory enable state.                                           |
-| |                  ``bool enable)``                                               | |                                                                              |
+| | ~                  ``bool enable)``                                             | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiEnable(channel, enable)``                                    | |                                                                              |
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiGetDataRaw(rp_channel_t channel,``                                | | Returns the Deep Memory buffer                                               |
-| |                     ``uint32_t pos,``                                           | | in RAW units from specified position and desired size.                       |
-| |                     ``uint32_t* size,``                                         | |                                                                              |
-| |                     ``int16_t* buffer)``                                        | |                                                                              |
+| | ~                      ``uint32_t pos,``                                        | | in RAW units from specified position and desired size.                       |
+| | ~                      ``uint32_t* size,``                                      | |                                                                              |
+| | ~                      ``int16_t* buffer)``                                     | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiGetDataRaw(channel, pos, size, buffer)``                     | |                                                                              |
 | |                                                                                 | |                                                                              |
@@ -142,9 +154,9 @@ API functions
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiGetDataV(rp_channel_t channel,``                                  | | Returns the Deep Memory buffer                                               |
-| |                   ``uint32_t pos,``                                             | | in Volt units from specified position and desired size.                      |
-| |                   ``uint32_t* size,``                                           | |                                                                              |
-| |                   ``float* buffer)``                                            | |                                                                              |
+| | ~                    ``uint32_t pos,``                                          | | in Volt units from specified position and desired size.                      |
+| | ~                    ``uint32_t* size,``                                        | |                                                                              |
+| | ~                    ``float* buffer)``                                         | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiGetDataV(channel, pos, size, buffer)``                       | |                                                                              |
 | |                                                                                 | |                                                                              |
@@ -152,16 +164,16 @@ API functions
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel,``                          | | Sets the Deep Memory buffer address and size in samples.                     |
-| |                           ``uint32_t address,``                                 | |                                                                              |
-| |                           ``uint32_t samples)``                                 | |                                                                              |
+| | ~                            ``uint32_t address,``                              | |                                                                              |
+| | ~                            ``uint32_t samples)``                              | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiSetBufferSamples(channel, address, samples)``                | |                                                                              |
 | |                                                                                 | |                                                                              |
 | |                                                                                 | |                                                                              |
 +-----------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | | C: ``rp_AcqAxiSetBufferBytes(rp_channel_t channel,``                            | | Sets the Deep Memory buffer address and size in Bytes.                       |
-| |                         ``uint32_t address,``                                   | |                                                                              |
-| |                         ``uint32_t size)``                                      | |                                                                              |
+| | ~                          ``uint32_t address,``                                | |                                                                              |
+| | ~                          ``uint32_t size)``                                   | |                                                                              |
 | |                                                                                 | |                                                                              |
 | | Python: ``rp_AcqAxiSetBufferBytes(channel, address, size)``                     | |                                                                              |
 | |                                                                                 | |                                                                              |
