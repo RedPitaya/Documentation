@@ -327,7 +327,22 @@ There are multiple approaches to acquiring data with Red Pitaya. Here is a quick
    - **Streaming application** – Continuous data acquisition. The data is streamed from one or both inputs directly to a file on a computer. The data can be acquired indefinitely, but there are speed limitations. 
 The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details on the limitations are available :ref:`here <streaming_top>`.
    - **Deep Memory (AXI mode)** *(only OS 2.00-23 – latest Beta)* – Long sequence triggered data acquisition. The data can be acquired at different speeds (up to 125 MHz), and it is saved directly into the DDR RAM. The buffer length can be specified by the user but must not exceed 1.5 MB for both channels. After the acquisition is complete, Red Pitaya needs some time to transfer the whole file to the computer (the RAM must be emptied) before the acquisition can be reset. Functions exactly the same as **On-Board SCPI**. More details are available :ref:`here <deepMemoryMode>`.
--	**Custom Acquisition (FPGA)** – Red Pitaya is open-source so any mode above can be customized by the user to tune it to their specific application.
+   -	**Custom Acquisition (FPGA)** – Red Pitaya is open-source so any mode above can be customized by the user to tune it to their specific application.
+
+
+.. |socket communication| raw:: html
+
+   <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank">socket communication</a>
+
+How can I generate data with Red Pitaya?
+------------------------------------------------
+
+Here are all possible generation options on the Red Pitaya (please be aware of AC coupling limitations on SDRlab 122-16):
+- **Oscilloscope application** - basic waveform generation
+- **SCPI commands (Python, MATLAB, LabVIEW)**, remote control from computer - can generate basic waveforms as well as custom/arbitrary waveforms (defined in a 16384 sample-long buffer which represents one period of the signal - the frequency is calculated for the whole buffer).
+- **API commands (C, Python)**, on-board program - same functionality as standard SCPI commands, but generally faster and includes the benefit of possible direct communication with the FPGA.
+- **Custom/user-defined (FPGA reprogramming)** - Red Pitaya is open-source, so anyone has the option of reprogramming the FPGA image to customise the functionality.
+
 
 
 How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?
