@@ -54,7 +54,7 @@ The first parameter in **reg** is *start address (0x1000000)* and the second one
 
 Here is a representation of how the Deep Memory mode data saving functions:
 
-.. figure:: img/Deep Memory.png
+.. figure:: img/Deep_Memory.png
    :align: center
    :width: 400
 
