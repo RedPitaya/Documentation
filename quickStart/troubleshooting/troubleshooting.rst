@@ -338,11 +338,10 @@ How can I generate data with Red Pitaya?
 ------------------------------------------------
 
 Here are all possible generation options on the Red Pitaya (please be aware of AC coupling limitations on SDRlab 122-16):
-- **Oscilloscope application** - basic waveform generation
-- **SCPI commands (Python, MATLAB, LabVIEW)**, remote control from computer - can generate basic waveforms as well as custom/arbitrary waveforms (defined in a 16384 sample-long buffer which represents one period of the signal - the frequency is calculated for the whole buffer).
-- **API commands (C, Python)**, on-board program - same functionality as standard SCPI commands, but generally faster and includes the benefit of possible direct communication with the FPGA.
-- **Custom/user-defined (FPGA reprogramming)** - Red Pitaya is open-source, so anyone has the option of reprogramming the FPGA image to customise the functionality.
-
+   - **Oscilloscope application** - basic waveform generation
+   - **SCPI commands (Python, MATLAB, LabVIEW)**, remote control from computer - can generate basic waveforms as well as custom/arbitrary waveforms (defined in a 16384 sample-long buffer which represents one period of the signal - the frequency is calculated for the whole buffer).
+   - **API commands (C, Python)**, on-board program - same functionality as standard SCPI commands, but generally faster and includes the benefit of possible direct communication with the FPGA.
+   - **Custom/user-defined (FPGA reprogramming)** - Red Pitaya is open-source, so anyone has the option of reprogramming the FPGA image to customise the functionality.
 
 
 How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?
