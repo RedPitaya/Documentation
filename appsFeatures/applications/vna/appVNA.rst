@@ -168,7 +168,7 @@ Examples:
 
 .. figure::  img/bandpass_filter.png
     :align: center
-   :width: 600
+    :width: 600
 
 .. figure::  img/bandpass_filter_smith_chart.png
     :align: center
