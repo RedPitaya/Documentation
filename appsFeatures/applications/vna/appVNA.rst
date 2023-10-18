@@ -32,7 +32,7 @@ Connect Vector Network Analyzer bridge to the Red Pitaya
 
 .. figure::  img/vna_bridge_module_connections.png
    :align: center
-   :scale: 50%
+   :width: 600
 
 =========================================================
 Install & run network Vector Network Analyzer control app
@@ -73,7 +73,7 @@ Connect by entering the Red Pitaya's IP:
 
 .. figure::  img/1_ip.png
     :align: center
-    :scale: 80%
+    :width: 600
 
 To find the IP address of the Red Pitaya board, first connect to RedPitaya by following these :ref:`instructions <quick_start>`.
 
@@ -82,7 +82,7 @@ Then go to System->Network Manager. The IP is written next to the label.
 Address: xxx.xxx.xxx.xxx .
 
 .. figure::  img/network_manager_icon.png
-    :width:  150px
+    :width: 150 px
     :align: center
 
 ----------------------------------
@@ -91,7 +91,7 @@ Connect by entering RedPitaya URL:
 
 .. figure::  img/1_url.png
     :align: center
-    :scale: 80%
+    :width: 600
 
 ============================================================
 Run the Vector Network Analyzer application on the RedPitaya
@@ -107,7 +107,7 @@ Click "Connect" inside the Vector Network Analyzer control app
 
 .. figure::  img/2_connect.png
     :align: center
-    :scale: 80%
+    :width: 600
 
 ***************************************
 Perform calibration and start measuring
@@ -120,37 +120,37 @@ Perform calibration and start measuring
 
     .. figure::  img/3_calibrate.png
         :align: center
-        :scale: 80%
+        :width: 600
 
 #. Connect the SMA OPEN calibration connector marked with the letter O to the DUT SMA connector of the network vector analyzer bridge module. Click the button "Open" and wait for the calibration procedure to complete.
 
     .. figure:: img/04_Calibration_O.jpg
         :align: center
-        :scale: 50%
+        :width: 600
 
 #. Connect the SMA SHORT calibration connector marked with the letter S to the DUT SMA connector of the network vector analyzer bridge module. Click the button "Short" and wait for the calibration procedure to complete.
 
     .. figure:: img/03_Calibration_S.jpg
         :align: center
-        :scale: 50%
+        :width: 600
 
 #. Connect the SMA LOAD calibration connector marked with the letter L to the DUT SMA connector of the network vector analyzer bridge module. Click the button "Load" and wait for the calibration procedure to complete.
 
     .. figure:: img/05_Calibration_L.jpg
         :align: center
-        :scale: 50%
+        :width: 600
 
 #. Select the Smith chart tab at the bottom and then click the Single button to perform a single measurement of the DUT. A dot in the middle of the Smith chart circle (@ 50 Ohm) will indicate that VNA is properly measuring the reference 50 Ohm LOAD.
 
     .. figure::  img/4-load_DUT_smith_chart.png
         :align: center
-        :scale: 80%
+        :width: 600
 
 #. Disconnect the LOAD SMA connector and connect whatever DUT you’d like to measure.
 
     .. figure::  img/07_Product_Combo.jpg
         :align: center
-        :scale: 60%
+        :width: 600
 
 =========
 Examples:
@@ -161,15 +161,18 @@ Examples:
 
     .. figure::  img/antenna.png
         :align: center
+        :width: 600
 
 #. 20-meter bandpass filter for HAM RADIO
     SWR is better than 1.5 between the start and stop band frequencies, and the filter load is around 50 Ohm.
 
 .. figure::  img/bandpass_filter.png
     :align: center
+   :width: 600
 
 .. figure::  img/bandpass_filter_smith_chart.png
     :align: center
+    :width: 600
 
 .. admonition:: Credits
 
