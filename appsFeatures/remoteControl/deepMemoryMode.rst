@@ -56,7 +56,7 @@ Here is a representation of how the Deep Memory mode data saving functions:
 
 .. figure:: img/Deep_Memory.png
    :align: center
-   :width: 400
+   :width: 600
 
 TThe reserved memory region is located between **ADC_AXI_START** and **ADC_AXI_END** addresses, which are macros for the first and last/end addresses and are automatically configured by the ecosystem. The data is saved in 32-bit chunks (4 Bytes per sample). The **ADC_AXI_START** points to the start of the first Byte (of the first sample), and **ADC_AXI_END** points to the first Byte (of the last sample) of DDR reserved for the Deep Memory Mode.
 
