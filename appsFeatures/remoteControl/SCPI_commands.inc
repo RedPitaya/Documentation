@@ -16,7 +16,7 @@ Board control commands
 
 Parameter options:
 
-* ``<year> = {1900,...}``
+* ``<year> = {1900,...}`` Default: ``OS release date and time``
 * ``<month> = {1,12}``
 * ``<day> = {1,31}``
 * ``<hours> = {0,23}``
@@ -70,6 +70,7 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 
 
 .. _scpi_digital:
+
 ==============
 LEDs and GPIOs
 ==============
@@ -241,18 +242,20 @@ Parameter options:
 
 * ``<n> = {1,2}`` (set channel OUT1 or OUT2)
 * ``<state> = {ON,OFF}`` Default: ``OFF``
-* ``<frequency> = {0Hz...62.5e6Hz}`` Default: ``1000``
+* ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
 * ``<func> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
-* ``<amplitude> = {-1V...1V}`` Default: ``1`` for SIGNALlab 250-12 this value {-5V...5V}
-* ``<offset> = {-1V...1V}`` Default: ``0``
-* ``<phase> = {-360deg ... 360deg}`` Default: ``0``
-* ``<dcyc> = {0...1}`` Default: ``0.5`` Where 1 corresponds to 100%
+* ``<amplitude> = {-1 ... 1}``(in Volts). Default: ``1`` for SIGNALlab 250-12 {-5 ... 5}
+* ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 {-5 ... 5}
+* ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
+* ``<phase> = {-360 ... 360}`` (in Degrees). Default: ``0``
+* ``<dcyc> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
 * ``<array> = {value1, ...}`` max. 16384 values, floats in the range -1 to 1
 * ``<burst> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
-* ``<count> = {1...50000}`` , Default: ``1``
+* ``<count> = {1...50000}`` Default: ``1``
 * ``<time> = {1µs-500s}`` Value in *µs*.
-* ``<utime> = {value in us}``
-* ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}``
+* ``<utime> = {value in us}`` Default: ``500``
+* ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}`` Default: ``INT``
+
 
    - ``EXT`` = External
    - ``INT`` = Internal
@@ -284,7 +287,7 @@ Parameter options:
 | | ``SOUR2:FREQ:FIX 100000``                         | | Python: ``rp_GenFreq(channel, frequency)``                                            |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FREQ:FIX?``                             | | C: ``rp_GenGetFreq(rp_channel_t channel, float *frequency)``                          | Gets channel signal frequency.                                                               | 1.04-18 and up     |
+| | ``SOUR<n>:FREQ:FIX?`` > ``<frequency>``           | | C: ``rp_GenGetFreq(rp_channel_t channel, float *frequency)``                          | Gets channel signal frequency.                                                               | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR2:FREQ:FIX?`` > ``100000``                  | | Python: ``def rp_GenGetFreq(channel)``                                                |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
@@ -329,12 +332,12 @@ Parameter options:
 | | ``SOUR2:PHAS?`` > ``30``                          | | Python: ``rp_GenGetPhase(channel)``                                                   |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC <par>``                            | | C: ``rp_GenDutyCycle(rp_channel_t channel, float ratio)``                             | Set the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
+| | ``SOUR<n>:DCYC <dcyc>``                           | | C: ``rp_GenDutyCycle(rp_channel_t channel, float ratio)``                             | Set the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR1:DCYC 0.2``                                | | Python: ``rp_GenDutyCycle(channel, ratio)``                                           |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC?`` > ``<par>``                     | | C: ``rp_GenGetDutyCycle(rp_channel_t channel, float *ratio)``                         | Gets duty cycle of PWM signal.                                                               | 1.04-18 and up     |
+| | ``SOUR<n>:DCYC?`` > ``<dcyc>``                    | | C: ``rp_GenGetDutyCycle(rp_channel_t channel, float *ratio)``                         | Gets duty cycle of PWM signal.                                                               | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR1:DCYC`` > ``0.2``                          | | Python: ``def rp_GenGetDutyCycle(channel)``                                           |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
@@ -399,22 +402,22 @@ Parameter options:
 | | ``SOUR1:TRig:SOUR?`` > ``EXT_PE``                 | | Python: ``rp_GenGetTriggerSource(channel)``                                           |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LASTValue <amplitude>``            | | C: ``rp_GenBurstLastValue(rp_channel_t channel, float amlitude)``                     | | Sets the value to be set at the end of the generated signal in burst mode.                 | 2.00-18 and up     |
+| | ``SOUR<n>:BURS:LASTValue <level>``                | | C: ``rp_GenBurstLastValue(rp_channel_t channel, float amlitude)``                     | | Sets the value to be set at the end of the generated signal in burst mode.                 | 2.00-18 and up     |
 | | Examples:                                         | |                                                                                       | | The output will stay on this value until a new signal is generated.                        |                    |
 | | ``SOUR1:BURS:LASTValue 0.5``                      | | Python: ``rp_GenBurstLastValue(channel, amplitude)``                                  |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LASTValue?`` > ``<amplitude>``     | | C: ``rp_GenGetBurstLastValue(rp_channel_t channel, float *amlitude)``                 | Gets the value to be set at the end of the generated signal in burst mode.                   | 2.00-18 and up     |
+| | ``SOUR<n>:BURS:LASTValue?`` > ``<level>``         | | C: ``rp_GenGetBurstLastValue(rp_channel_t channel, float *amlitude)``                 | Gets the value to be set at the end of the generated signal in burst mode.                   | 2.00-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR1:BURS:LASTValue`` > ``0.5``                | | Python: ``rp_GenGetBurstLastValue(channel)``                                          |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:INITValue <amplitude>``                 | | C: ``rp_GenSetInitGenValue(rp_channel_t channel, float amlitude)``                    | | The level of which is set by the generator after                                           | 2.00-18 and up     |
+| | ``SOUR<n>:INITValue <level>``                     | | C: ``rp_GenSetInitGenValue(rp_channel_t channel, float amlitude)``                    | | The level of which is set by the generator after                                           | 2.00-18 and up     |
 | | Examples:                                         | |                                                                                       | | the outputs are turned on, but before the signal is generated.                             |                    |
 | | ``SOUR1:INITValue 0.5``                           | | Python: ``rp_GenSetInitGenValue(channel, amplitude)``                                 |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:INITValue?`` > ``<amplitude>``          | | C: ``rp_GenGetInitGenValue(rp_channel_t channel, float *amlitude)``                   | Gets the value of the initial signal level.                                                  | 2.00-18 and up     |
+| | ``SOUR<n>:INITValue?`` > ``<level>``              | | C: ``rp_GenGetInitGenValue(rp_channel_t channel, float *amlitude)``                   | Gets the value of the initial signal level.                                                  | 2.00-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR1:INITValue?`` > ``0.5``                    | | Python: ``rp_GenGetInitGenValue(channel)``                                            |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
@@ -454,6 +457,7 @@ Parameter options:
 .. note::
 
    For STEMlab 125-14 4-Input, these commands are not applicable.
+
 
 
 
@@ -498,6 +502,8 @@ Parameter options:
 * ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
 * ``<average> = {OFF,ON}`` Default: ``ON``
 
+.. <decimation> = {1,2,4,8,16,17,18,19,...,65534,65535,65536}!!
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------+-------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
@@ -524,6 +530,7 @@ Parameter options:
 | |                                   | |                                                                 |                                                                      |                    |
 +-------------------------------------+-------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
 
+
 .. _scpi_trigger:
 
 =======
@@ -535,12 +542,12 @@ Parameter options:
 * ``<n> = {1,2}`` (set channel IN1 or IN2)
 * ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
 * ``<status> = {WAIT, TD}``
-* ``<time> = {value in ns}``
-* ``<utime> = {value in us}``
-* ``<count> = {value in samples}``
-* ``<gain> = {LV, HV}``
-* ``<level> = {value in V}``
-* ``<mode> = {AC,DC}``
+* ``<time> = {value in ns}`` Default: ``0``
+* ``<utime> = {value in us}`` Default: ``500``
+* ``<count> = {value in samples}`` (minimum value -8192) Default: ``0``
+* ``<gain> = {LV, HV}`` Default: ``LV``
+* ``<level> = {value in V}`` Default: ``0``
+* ``<mode> = {AC,DC}`` Default ``DC``
 
 .. note::
 
@@ -662,7 +669,7 @@ even though it is displayed to happen at approx. 8192nd sample in the acquired d
 
 Parameter options:
 
-* ``<pos> = {position inside circular buffer}``
+* ``<pos> = {position inside circular buffer}`` (0 ... 16383)
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
@@ -687,10 +694,10 @@ Data read
 =========
 
 * ``<n> = {1,2}`` (set channel IN1 or IN2)
-* ``<units> = {RAW, VOLTS}``
+* ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
 * ``<format> = {BIN, ASCII}`` Default ``ASCII``
-* ``<start_pos> = {0,1,...,16384}``
-* ``<stop_pos>  = {0,1,...,16384}``
+* ``<start_pos> = {0,1,...,16383}``
+* ``<stop_pos>  = {0,1,...,16383}``
 * ``<m>  = {0,1,...,16384}``
 
 .. note::
@@ -754,99 +761,99 @@ Data read
 
 
 
-.. _scpi_acq_axi:
+.. _scpi_deep_memory:
 
-================
-DMA mode for ACQ
-================
+==============================
+Deep Memory Mode
+==============================
 
 * ``<n> = {1,2}`` (set channel IN1 or IN2)
-* ``<units> = {RAW, VOLTS}``
+* ``<units> = {RAW, VOLTS}`` Default: ``VOLTS``
 * ``<decimation> = {1,2,4,8,16,17,18,19,...,65534,65535,65536}`` Default: ``1``
-* ``<byte> = {0...}`` in byte
-* ``<count> = {value in samples}``
+* ``<byte> = {0...}`` in bytes
+* ``<count> = {value in samples}`` Default: ``0``
 * ``<pos> = {position inside circular buffer in samples}``
 * ``<state> = {ON,OFF}`` Default: ``OFF``
 * ``<start> = {byte}`` Address of reserved memory
-* ``<size> = {byte}`` Size of buffer in bytes
+* ``<size> = {byte}`` Size of buffer in bytes. Default: 2 MB
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| SCPI                                               | API                                                                                                                                      | DESCRIPTION                                                                     |  ECOSYSTEM         |
-+====================================================+==========================================================================================================================================+=================================================================================+====================+
-| | ``ACQ:AXI:DATA:UNITS <units>``                   | | -                                                                                                                                      | Select units in which the acquired data will be returned.                       | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:DATA:UNITS RAW``                       | |                                                                                                                                        |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DATA:UNITS?`` > ``<units>``            | | -                                                                                                                                      | Get units in which the acquired data will be returned.                          | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:DATA:UNITS?`` > ``RAW``                | |                                                                                                                                        |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DEC <decimation>``                     | | C: ``rp_AcqAxiSetDecimationFactor(uint32_t decimation)``                                                                               | Sets the decimation used at acquiring signal for AXI.                           | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:DEC 4``                                | | Python: ``rp_AcqAxiSetDecimationFactor(decimation)``                                                                                   |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DEC?`` > ``<decimation>``              | | C: ``rp_AcqAxiGetDecimationFactor(uint32_t *decimation)``                                                                              | Get the decimation factor.                                                      | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:DEC?`` > ``1``                         | | Python: ``rp_AcqAxiGetDecimationFactor()``                                                                                             |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:START?`` > ``<byte>``                  | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                                      | Get start address of reserved memory for DMA mode.                              | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:START?`` > ``16777216``                | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                                 |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SIZE?`` > ``<byte>``                   | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                                      | Get size of reserved memory for DMA mode.                                       | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:SIZE?`` > ``2097152``                  | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                                 |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:ENable <state>``               | | C: ``rp_AcqAxiEnable(rp_channel_t channel, bool enable)``                                                                              | Sets the AXI enable state.                                                      | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:ENable ON``                      | | Python: ``rp_AcqAxiEnable(channel, enable)``                                                                                           |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:TRIG:FILL?``                   | | C: ``rp_AcqAxiGetBufferFillState(rp_channel_t channel, bool* state)``                                                                  | Indicates whether the ADC AXI buffer was full of data.                          | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:TRIG:FILL?`` > ``1``             | | Python: ``rp_AcqAxiGetBufferFillState(channel)``                                                                                       |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Dly <count>``             | | C: ``rp_AcqAxiSetTriggerDelay(rp_channel_t channel, int32_t decimated_data_num)``                                                      | Sets the number of decimated data after the trigger written into memory.        | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:Trig:Dly 2314``                  | | Python: ``rp_AcqAxiSetTriggerDelay(channel, decimated_data_num)``                                                                      |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Dly?`` > ``<count>``      | | C: ``rp_AcqAxiGetTriggerDelay(rp_channel_t channel, int32_t *decimated_data_num)``                                                     | Gets the number of decimated data after trigger written into memory.            | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:Trig:Dly?`` > ``2314``           | | Python: ``rp_AcqAxiGetTriggerDelay(channel)``                                                                                          |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Write:Pos?`` > ``pos``         | | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t* pos)``                                                                   | Returns current position of AXI ADC write pointer.                              | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:Write:Pos?`` > ``1024``          | | Python: ``rp_AcqAxiGetWritePointer(channel)``                                                                                          |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``pos``          | | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel, uint32_t* pos)``                                                             | Returns the position of AXI ADC write pointer at a time when trigger arrived.   | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                                        |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:Trig:Pos?`` > ``512``            | | Python: ``rp_AcqAxiGetWritePointerAtTrig(channel)``                                                                                    |                                                                                 |                    |
-| |                                                  | |                                                                                                                                        |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:SET:Buffer <start>,<size>``    | | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel, uint32_t address, uint32_t samples)``                                             | | Sets the AXI ADC buffer address and size in bytes.                            | 2.00-18 and up     |
-| | Example:                                         | |    ``rp_AcqAxiSetBufferBytes(rp_channel_t channel, uint32_t address, uint32_t size)``                                                  | | Buffer size must be a multiple of 2.                                          |                    |
-| | ``ACQ:AXI:SOUR<n>:SET:Buffer 16777216,512``      | | Python: ``rp_AcqAxiSetBufferSamples(channel, address, samples)``                                                                       |                                                                                 |                    |
-| |                                                  | |         ``rp_AcqAxiSetBufferBytes(channel, address, size)``                                                                            |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:DATA:Start:N? <pos>,<count>``  | | C: ``rp_AcqAxiGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                                            | | Read ``count`` samples from the ``pos`` position onwards.                     | 2.00-18 and up     |
-| | Example:                                         | |    ``rp_AcqAxiGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                       | | Returns the value as a text array of values or a byte array.                  |                    |
-| | ``ACQ:AXI:SOUR1:DATA:Start:N? 20,3`` >           | | Python: ``rp_AcqAxiGetDataV(channel, pos, size, buffer)``                                                                              | | Depending on the setting.                                                     |                    |
-| | ``{1.2,3.2,-1.2}``                               | |         ``rp_AcqAxiGetDataRaw(channel, pos, size, buffer)``                                                                            |                                                                                 |                    |
-+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| SCPI                                               | API                                                                                                                        | DESCRIPTION                                                                     |  ECOSYSTEM         |
++====================================================+============================================================================================================================+=================================================================================+====================+
+| | ``ACQ:AXI:DATA:UNITS <units>``                   | | -                                                                                                                        | Select units in which the acquired data will be returned.                       | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:DATA:UNITS RAW``                       | |                                                                                                                          |                                                                                 |                    |
+| |                                                  | |                                                                                                                          |                                                                                 |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:DATA:UNITS?`` > ``<units>``            | | -                                                                                                                        | Get units in which the acquired data will be returned.                          | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:DATA:UNITS?`` > ``RAW``                | |                                                                                                                          |                                                                                 |                    |
+| |                                                  | |                                                                                                                          |                                                                                 |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:DEC <decimation>``                     | | C: ``rp_AcqAxiSetDecimationFactor(uint32_t decimation)``                                                                 | Sets the decimation used at acquiring signal for the Deep Memory Mode.          | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:DEC 4``                                | | Python: ``rp_AcqAxiSetDecimationFactor(decimation)``                                                                     |                                                                                 |                    |
+| |                                                  | |                                                                                                                          |                                                                                 |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:DEC?`` > ``<decimation>``              | | C: ``rp_AcqAxiGetDecimationFactor(uint32_t *decimation)``                                                                | Returns the decimation used for acquiring signal for the Deep Memory Mode.      | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:DEC?`` > ``1``                         | | Python: ``rp_AcqAxiGetDecimationFactor()``                                                                               |                                                                                 |                    |
+| |                                                  | |                                                                                                                          |                                                                                 |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:START?`` > ``<byte>``                  | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                        | | Returns the start address of the Deep Memory region.                          | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          | | API: Also returns the size of the memory region.                              |                    |
+| | ``ACQ:AXI:START?`` > ``16777216``                | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                   | | This can also be achieved by displaying values of ``ADC_AXI_START``           |                    |
+| |                                                  | |                                                                                                                          | | and ``ADC_AXI_END`` macros.                                                   |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SIZE?`` > ``<byte>``                   | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                        | | Get size of reserved memory for Deep Memory mode.                             | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          | | **API:** Also returns the start address of the memory region.                 |                    |
+| | ``ACQ:AXI:SIZE?`` > ``2097152``                  | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                   | | This can also be achieved by displaying values of ``ADC_AXI_START``           |                    |
+| |                                                  | |                                                                                                                          | | and ``ADC_AXI_END`` macros.                                                   |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:ENable <state>``               | | C: ``rp_AcqAxiEnable(rp_channel_t channel, bool enable)``                                                                | Sets the Deep Memory enable state.                                              | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:SOUR1:ENable ON``                      | | Python: ``rp_AcqAxiEnable(channel, enable)``                                                                             |                                                                                 |                    |
+| |                                                  | |                                                                                                                          |                                                                                 |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:TRIG:FILL?``                   | | C: ``rp_AcqAxiGetBufferFillState(rp_channel_t channel, bool* state)``                                                    | Indicates whether the Deep Memory buffer was full of data.                      | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:SOUR1:TRIG:FILL?`` > ``1``             | | Python: ``rp_AcqAxiGetBufferFillState(channel)``                                                                         |                                                                                 |                    |
+| |                                                  | |                                                                                                                          |                                                                                 |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:Trig:Dly <count>``             | | C: ``rp_AcqAxiSetTriggerDelay(rp_channel_t channel, int32_t decimated_data_num)``                                        | | Sets the number of decimated data after the trigger is                        | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          | | written into memory.                                                          |                    |
+| | ``ACQ:AXI:SOUR1:Trig:Dly 2314``                  | | Python: ``rp_AcqAxiSetTriggerDelay(channel, decimated_data_num)``                                                        | |                                                                               |                    |
+| |                                                  | |                                                                                                                          | |                                                                               |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:Trig:Dly?`` > ``<count>``      | | C: ``rp_AcqAxiGetTriggerDelay(rp_channel_t channel, int32_t *decimated_data_num)``                                       | | Returns the number of decimated data after the trigger is                     | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          | | written into memory.                                                          |                    |
+| | ``ACQ:AXI:SOUR1:Trig:Dly?`` > ``2314``           | | Python: ``rp_AcqAxiGetTriggerDelay(channel)``                                                                            | |                                                                               |                    |
+| |                                                  | |                                                                                                                          | |                                                                               |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:Write:Pos?`` > ``pos``         | | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t* pos)``                                                     | | Returns current position of the Deep Memory write pointer.                    | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          | |                                                                               |                    |
+| | ``ACQ:AXI:SOUR1:Write:Pos?`` > ``1024``          | | Python: ``rp_AcqAxiGetWritePointer(channel)``                                                                            | |                                                                               |                    |
+| |                                                  | |                                                                                                                          | |                                                                               |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``pos``          | | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel, uint32_t* pos)``                                               | | Returns position of Deep Memory write pointer at time when                    | 2.00-18 and up     |
+| | Example:                                         | |                                                                                                                          | | the trigger arrived.                                                          |                    |
+| | ``ACQ:AXI:SOUR1:Trig:Pos?`` > ``512``            | | Python: ``rp_AcqAxiGetWritePointerAtTrig(channel)``                                                                      | |                                                                               |                    |
+| |                                                  | |                                                                                                                          | |                                                                               |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:SET:Buffer <start>,<size>``    | | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel, uint32_t address, uint32_t samples)``                               | | Sets the Deep Memory buffer address and size in samples.                      | 2.00-18 and up     |
+| | Example:                                         | |    ``rp_AcqAxiSetBufferBytes(rp_channel_t channel, uint32_t address, uint32_t size)``                                    | | Buffer size must be a multiple of 2.                                          |                    |
+| | ``ACQ:AXI:SOUR<n>:SET:Buffer 16777216,512``      | | Python: ``rp_AcqAxiSetBufferSamples(channel, address, samples)``                                                         | |                                                                               |                    |
+| |                                                  | |         ``rp_AcqAxiSetBufferBytes(channel, address, size)``                                                              | |                                                                               |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:DATA:Start:N? <pos>,<count>``  | | C: ``rp_AcqAxiGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                              | | Read ``count`` samples from the ``pos`` position onwards.                     | 2.00-18 and up     |
+| | Example:                                         | |    ``rp_AcqAxiGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                         | | Returns the value as a text array of values or a byte array.                  |                    |
+| | ``ACQ:AXI:SOUR1:DATA:Start:N? 20,3`` >           | | Python: ``rp_AcqAxiGetDataV(channel, pos, size, buffer)``                                                                | | Depending on the ``ACQ:AXI:DATA:UNITS`` setting.                              |                    |
+| | ``{1.2,3.2,-1.2}``                               | |         ``rp_AcqAxiGetDataRaw(channel, pos, size, buffer)``                                                              | | **API:** Returns the Deep Memory buffer in specified units from specified     |                    |
+| |                                                  | |                                                                                                                          | | position and desired size.                                                    |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
 
 
 .. _scpi_uart:
@@ -862,7 +869,7 @@ Parameter options:
 * ``<parity> = {NONE, EVEN, ODD, MARK, SPACE}``  Default: ``NONE``
 * ``<timeout> = {0...255} in (1/10 seconds)`` Default: ``0``
 * ``<speed> = {1200,2400,4800,9600,19200,38400,57600,115200,230400,576000,921000,1000000,1152000,1500000,2000000,2500000,3000000,3500000,4000000}`` Default: ``9600``
-* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
+* ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -969,9 +976,9 @@ Parameter options:
 
 * ``<mode> = {LISL, LIST, HISL, HIST}``  Default: ``LISL``
 * ``<cs_mode> = {NORMAL, HIGH}``  Default: ``NORMAL``
-* ``<bits> = {7,..}``  Default: ``8``
-* ``<speed> = {1,100000000}`` Default: ``50000000``
-* ``<data> = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated commas
+* ``<bits> = {7, 8}``  Default: ``8``
+* ``<speed> = {1...100000000}`` Default: ``50000000``
+* ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -1127,7 +1134,7 @@ Parameter options:
 
 * ``<mode>  = {OFF, ON}``  Default: ``OFF``
 * ``<value> = {XXX | #HXX | #QXXX | #BXXXXXXXX}``
-* ``<data>  = {XXX,... | #HXX,... | #QXXX,... | #BXXXXXXXX,... }`` Array of data separated comma
+* ``<data>  = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -1227,7 +1234,7 @@ Parameter options:
 * ``<state> = {ERROR_ACTIVE, ERROR_WARNING, ERROR_PASSIVE, BUS_OFF, STOPPED, SLEEPING}``
 * ``<mode> = {LOOPBACK, BERR_REPORTING}``
 * ``<speed> = {1,10000000}``
-* ``<sp> = {0,0.999}``
+* ``<sp> = {0, 0.999}``
 * ``<tq> = {unsigned integer}``
 * ``<prop_seg> = {unsigned integer}``
 * ``<phase_seg1> = {unsigned integer}``
@@ -1242,19 +1249,19 @@ Parameter options:
 * ``<brp_min> = {unsigned integer}``
 * ``<brp_max> = {unsigned integer}``
 * ``<brp_inc> = {unsigned integer}``
-* ``<limits> = {<tseg1_min>,<tseg2_min>,<tseg2_min>,<tseg2_max>,<sjw_max>,<brp_min>,<brp_max>,<brp_inc>}``
-* ``<clock> = {1,...,10000000}`` in Hz
+* ``<limits> = {<tseg1_min>, <tseg2_min>, <tseg2_min>, <tseg2_max>, <sjw_max>, <brp_min>, <brp_max>, <brp_inc>}``
+* ``<clock> = {1...10000000}`` in Hz
 * ``<tx_err> = {unsigned integer}``
 * ``<rx_err> = {unsigned integer}``
 * ``<rs_ms> = {unsigned integer}`` in milliseconds
 * ``<can_id> = {unsigned integer}`` Destination address on CAN bus
 * ``<buffer> = {XXX | XXX,XXX | XXX,XXX,XXX | XXX,...,XXX}`` Bytes for send from 0 to 8
-* ``<timeout> = {unsigned integer}`` in Ms. 0 - timeout disabled
+* ``<timeout> = {unsigned integer}`` in milliseconds. 0 - timeout disabled
 * ``<frame_header> = {unsigned integer}``
 * ``<is_extended> = {0,1}``
 * ``<is_error> = {0,1}``
 * ``<is_rtr> = {0,1}``
-* ``<frame> = {<can_id>,<frame_header>,<is_extended>,<is_error>,<is_rtr>,{<buffer>}}``
+* ``<frame> = {<can_id>, <frame_header>, <is_extended>, <is_error>, <is_rtr>, {<buffer>}}``
 * ``<filter> = {unsigned integer}``
 * ``<mask> = {unsigned integer}``
 
