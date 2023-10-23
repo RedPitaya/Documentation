@@ -192,9 +192,6 @@ Connect to your Red Pitaya board via the terminal on a Linux machine and start t
 
 .. figure:: scpi-ssh.png
 
-
-.. include:: SCPI_commands.inc
-
 .. note::
 
    In ecosystem versions 2-23 and higher. You can run directly without the service. This will allow you to see the server logs when executing commands.
@@ -206,6 +203,10 @@ Connect to your Red Pitaya board via the terminal on a Linux machine and start t
    .. code-block::
 
       RP:LOGmode CONSOLE
+
+
+.. include:: SCPI_commands.inc
+
 
 
 ********
