@@ -196,11 +196,11 @@ Connect to your Red Pitaya board via the terminal on a Linux machine and start t
 .. include:: SCPI_commands.inc
 
 
-.. _examples:
-
 ********
 Examples
 ********
+
+.. _examples:
 
 In the list below you will find examples of remote control and C algorithms. These examples cover all basic Red Pitaya functionalities, such as:
 
