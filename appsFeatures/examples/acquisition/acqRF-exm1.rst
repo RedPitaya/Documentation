@@ -454,11 +454,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
             
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_string = rp_s.rx_txt()
@@ -497,11 +496,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
@@ -540,11 +538,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
@@ -584,11 +581,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
@@ -651,11 +647,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
             
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             # function for Data Acquisition
@@ -694,11 +689,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
             # function for Data Acquisition
             buff = rp_s.acq_data(1, bin= True, convert= True)
@@ -736,11 +730,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             # function for Data Acquisition
@@ -779,11 +772,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
             # function for Data Acquisition
             buff  = rp_s.acq_data(1, bin= False, convert= True, input4 =True)
@@ -801,15 +793,15 @@ Using functions:
 
 .. note::
 
-    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
-    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order. The code should function at approximately the same speed without them.
+    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
 
-    For further information on functions please consult the redpitaya_scpi.py code.
+    For further information on functions please consult the |redpitaya_scpi| code.
 
 
 .. |redpitaya_scpi| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
 
 
 Code - Scilab
@@ -904,7 +896,7 @@ API Code Examples
 
 .. note::
 
-    The API code examples don't require the use of the SCPI server. Instead the code should be compiled and executed on the Red Pitaya itself (inside Linux OS)
+    The API code examples don't require the use of the SCPI server. Instead the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
     Instructions on how to compile the code and other useful information is :ref:`here <comC>`.
 
 
