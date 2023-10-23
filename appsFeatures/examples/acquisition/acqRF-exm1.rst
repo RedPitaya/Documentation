@@ -887,7 +887,7 @@ Code - LabVIEW
 
 .. figure:: img/On-trigger-signal-acquisition_LV.png
 
-`Download <https://downloads.redpitaya.com/downloads/Clients/labview/On%20trigger%20signal%20acquisition.vi>`_
+- `Download Example <https://downloads.redpitaya.com/downloads/Clients/labview/On%20trigger%20signal%20acquisition.vi>`_
 
 
 
