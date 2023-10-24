@@ -127,7 +127,7 @@ Code - MATLAB®
 
 
 Code - Python
-*************
+--------------
 
 Using just SCPI commands:
 
