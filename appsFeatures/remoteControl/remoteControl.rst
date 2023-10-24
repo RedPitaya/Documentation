@@ -117,7 +117,7 @@ To install them, do:
 
 #.  Open the :ref:`blink <blink>` tutorial and copy the code to your favourite text editor.
 
-   |
+    |
 
 #.  Save the file to your working folder as ``blink.py``, for example, ``examples_py``.
     Copy and save the |redpitaya_scpi.py| script in the same folder as the ``blink.py`` example (in our case, ``examples_py``). 
@@ -240,10 +240,10 @@ Examples
 
 In the list below you will find examples of remote control and C algorithms. These examples cover all basic Red Pitaya functionalities, such as:
 
-    - signal generation
-    - signal acquisition
-    - digital I/O control
-    - communication protocols
+- signal generation
+- signal acquisition
+- digital I/O control
+- communication protocols
 
 You can edit and change them according to your needs and develop customized programs and routines.
 
