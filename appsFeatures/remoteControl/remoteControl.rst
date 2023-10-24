@@ -5,7 +5,7 @@ SCPI server (MATLAB, LabVIEW, Scilab or Python)
 
 .. https://owncloud.redpitaya.com/index.php/apps/files/?dir=%2FWEB%20page%2Fapps%2FSCPI
 
-.. figure:: SCPI_web_lr.png
+.. figure:: img/SCPI_web_lr.png
 
 The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands. The SCPI interface/environment is commonly used to control T&M instruments for development, research, or test automation purposes. SCPI uses a set of SCPI commands that are recognised by the instruments to enable specific actions to be taken (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). The SCPI commands are extremely useful when complex signal analysis is required. An SW environment such as MATLAB provides powerful data analysis tools and SCPI commands simple access to raw data acquired on the Red Pitaya board.
 
@@ -27,15 +27,15 @@ To run an example, follow the instructions below:
 
 #. Go to your Red Pitaya main page and select the SCPI server in the Development section.
 
-   .. figure:: scpi-homepage.png
+   .. figure:: img/scpi-homepage.png
 
-   .. figure:: scpi-development.png
+   .. figure:: img/scpi-development.png
 
 #. Start the SCPI server by selecting the RUN button. Please note the IP of your Red Pitaya (192.168.178.100) board as it will be needed to connect to your board.
 
-   .. figure:: scpi-app-run.png
+   .. figure:: img/scpi-app-run.png
 
-   .. figure:: scpi-app-stop.png
+   .. figure:: img/scpi-app-stop.png
 
 #. Follow the instructions below suitable for your environment.
 
@@ -105,7 +105,7 @@ To install them, do:
 
       The ``redpitaya_scpi.py`` script is a standard script needed to establish the connection between your PC and the Red Pitaya board. The execution of your script will fail without this script being in the same folder as your Python script.
 
-   .. figure:: scpi-examples.png
+   .. figure:: img/scpi-examples.png
 
 #. Open the Terminal and navigate to the folder containing your Python script (``examples_py``), then type: ``Python blink.py IP``, passing a Red Pitaya IP as an argument when calling an execution of the ``blink.py`` example. An example is given below, where ``192.168.178.108`` is the IP of the Red Pitaya board.
 
@@ -114,7 +114,7 @@ To install them, do:
       cd /home/zumy/Desktop/exmples_py
       python blink.py 192.168.178.108
 
-   .. figure:: scpi-example-cli.png
+   .. figure:: img/scpi-example-cli.png
 
 More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <examples>`.
 
@@ -190,7 +190,7 @@ Connect to your Red Pitaya board via the terminal on a Linux machine and start t
 
    systemctl start redpitaya_scpi &
 
-.. figure:: scpi-ssh.png
+.. figure:: img/scpi-ssh.png
 
 
 .. include:: SCPI_commands.inc
