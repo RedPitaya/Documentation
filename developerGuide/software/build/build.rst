@@ -5,9 +5,9 @@ Build & compile instructions
 .. toctree::
     :maxdepth: 3
    
-    comC
+    C&Python_api
     comStreaming
-    fpga/fpga.rst
-    ecosystem/ecosystem.rst
-    debian.rst
-    webapp/webApps.rst
+    fpga/fpga
+    ecosystem/ecosystem
+    debian
+    webapp/webApps
