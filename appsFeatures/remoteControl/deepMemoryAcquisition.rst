@@ -88,93 +88,13 @@ Once finished, please do not forget to free any resources and reserved memory lo
 API functions
 =================
 
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| API                                                                                                        | DESCRIPTION                                                                    |
-+============================================================================================================+================================================================================+
-| | C: ``rp_AcqAxiGetMemoryRegion(uint32_t* _start, uint32_t* _size)``                                       | | Returns the start and end address of the memory region. This can also be     |
-| |                                                                                                          | | achieved by displaying values of ``ADC_AXI_START`` and ``ADC_AXI_END``       |
-| | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                   | | marcors.                                                                     |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetBufferFillState(rp_channel_t channel, bool* state)``                                    | | Indicates whether the DMA buffer was full of data.                           |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiGetBufferFillState(channel)``                                                         | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiSetDecimationFactor(uint32_t decimation)``                                                 | | Sets the decimation used at acquiring signal for DMA.                        |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiSetDecimationFactor(decimation)``                                                     | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetDecimationFactor(uint32_t* decimation)``                                                | | Returns the decimation used for acquiring signal for DMA.                    |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiGetDecimationFactor()``                                                               | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiSetTriggerDelay(rp_channel_t channel, int32_t decimated_data_num)``                        | | Sets the number of decimated data after trigger written into memory.         |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiSetTriggerDelay(channel, decimated_data_num)``                                        | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetTriggerDelay(rp_channel_t channel, int32_t* decimated_data_num)``                       | | Returns the number of decimated data after trigger written into memory.      |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiGetTriggerDelay(channel)``                                                            | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t* pos)``                                     | | Returns current position of DMA write pointer.                               |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiGetWritePointer(channel)``                                                            | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel, uint32_t* pos)``                               | | Returns position of DMA write pointer at time when trigger arrived.          |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiGetWritePointerAtTrig(channel)``                                                      | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiEnable(rp_channel_t channel, bool enable)``                                                | | Sets the DMA enable state.                                                   |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiEnable(channel, enable)``                                                             | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetDataRaw(rp_channel_t channel, uint32_t pos, uint32_t* size, int16_t* buffer)``          | | Returns the DMA buffer                                                       |
-| |                                                                                                          | | in RAW units from specified position and desired size.                       |
-| | Python: ``rp_AcqAxiGetDataRaw(channel, pos, size, buffer)``                                              | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``              | | Returns the DMA buffer                                                       |
-| |                                                                                                          | | in Volt units from specified position and desired size.                      |
-| | Python: ``rp_AcqAxiGetDataV(channel, pos, size, buffer)``                                                | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel, uint32_t address, uint32_t samples)``               | | Sets the DMA buffer address and size in samples.                             |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiSetBufferSamples(channel, address, samples)``                                         | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiSetBufferBytes(rp_channel_t channel, uint32_t address, uint32_t size)``                    | | Sets the DMA buffer address and size in Bytes.                               |
-| |                                                                                                          | |                                                                              |
-| | Python: ``rp_AcqAxiSetBufferBytes(channel, address, size)``                                              | |                                                                              |
-| |                                                                                                          | |                                                                              |
-+------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-.. note::
-
-   All functions have an "int" return value. If the returned value is 0 (equal to *RP_OK*), then the function executed successfully.
-
-   The Python functions are just wrappers that call the corresponding C function. Consequently, they always return an array where the first element represents whether a function was successful (or not), and the other elements represent the expected return values.
+Check the :ref:`DMA section under the SCPI commands <scpi_dma>`.
 
 
-Additional information about function parameters is in this file:
-   
-   |RP_H|
+API Code Examples
+===================
 
-
-.. |RP_H| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/redpitaya/rp.h" target="_blank">Functions info</a>
-
-
-Code Examples
-================
+Check the :ref:`DMA section under the examples <examples>`.
 
 
 Code - C API
