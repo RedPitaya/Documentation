@@ -761,10 +761,10 @@ Data read
 
 
 
-.. _scpi_deep_memory:
+.. _scpi_dma:
 
 ==============================
-Deep Memory Mode
+Deep Memory Acquisition (DMA)
 ==============================
 
 * ``<n> = {1,2}`` (set channel IN1 or IN2)
