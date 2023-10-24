@@ -437,7 +437,9 @@ Using just SCPI commands:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -479,7 +481,9 @@ Using just SCPI commands:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -521,7 +525,9 @@ Using just SCPI commands:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
 
@@ -562,7 +568,9 @@ Using just SCPI commands:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
 
             rp_s.tx_txt('ACQ:RST')
             
@@ -629,7 +637,9 @@ Using functions:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -671,7 +681,9 @@ Using functions:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -712,7 +724,9 @@ Using functions:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -753,7 +767,9 @@ Using functions:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
 
             rp_s.tx_txt('ACQ:RST')
             
