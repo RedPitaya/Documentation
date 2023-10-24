@@ -1,8 +1,8 @@
 .. _comC:
 
-####################################
+#######################################
 Compiling and running C applications
-####################################
+#######################################
 
 You can write simple C algorithms, make executables and run them on the Red Pitaya board. A list of
 built-in functions (APIs) are available providing full control over the Red Pitaya board (signal generation and
@@ -16,7 +16,7 @@ How to compile a C algorithm is shown in the instructions below, while a list of
 
 .. note::
 
-    Here is a |rp.c| which contains all the C functions used in the examples.
+    Here is a |rp.c| which contains most of the C functions used in the examples. For all available API function please check the next chapter.
     
 .. |rp.c| raw:: html
 
@@ -56,13 +56,11 @@ In order to compile one example just use the source file name without the `.c` e
 
 .. warning::
 
-    Currently, there are some issues with combining the new ecosystem (GitHub release 2023.1) with non-UNIFIED OS versions. If you are using an OS version that is not UNIFIED OS, please use the 2022.2 release of the ecosystem.
-
-
-
+    Using a 1.04 or older OS version together with 2023.1 or newer GitHub ecosystem will result in compatibility isses. To address this please:
+    - Use the latest GitHub ecosystem (master branch) together with Red Pitaya OS 2.00 or higher.
+    - Use branch 2022.2 or older GitHub ecosystem together with 1.04 or older Red Pitaya OS.
 
 Applications based on the API require a specific FPGA image to be loaded:
-
 
 .. tabs::
 
@@ -88,4 +86,27 @@ Note that the path to Red Pitaya shared libraries must be provided explicitly.
 
 Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
 
-More examples about how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
+
+C and Python API functions
+============================
+
+.. note::
+
+    Python API functions are only available on OS 2.00-23 or newer.
+
+All API functions have an "int" return value. If the returned value is 0 (equal to *RP_OK*), then the function executed successfully.
+
+The Python API functions are just wrappers that call the corresponding C API function. Consequently, they have exactly the same names, and always return an array where the first element is the C API function return value (successful or not), and the other elements represent the expected return values.
+
+.. note::
+
+    Please note that not all available API functions are in the "Available SCPI commands' list". If you want to check out all available API functions they are available here:
+    - C - Check the |rp-api| section of the GitHub repository.
+    - Python - Establish an :ref:`SSH <ssh>` connection to your Red Pitaya and look into the "/opt/redpitaya/lib/python" directoy.
+
+.. |rp-api| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api" target="_blank">"rp-api" section of the GitHub repository</a>
+
+
+More examples on how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
