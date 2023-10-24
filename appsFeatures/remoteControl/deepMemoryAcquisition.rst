@@ -1,15 +1,15 @@
 .. _axiMode:
-.. _deepMemoryMode:
+.. _deepMemoryAcq:
 
-###################
-Deep Memory Mode
-###################
+##############################
+Deep Memory Acquisition (DMA)
+##############################
 
 Description
 ===============
 
-The Deep Memory mode allows you to set a buffer of any size (The buffer must be a multiple of 64 bytes) for capturing data from the ADC. Data is written directly to RAM.
-The Deep Memory mode relies on the |AXI protocol|. Consequently, the functions to work with the Deep Memory mode are named after it.
+The Deep Memory Acquisition allows you to set a buffer of any size (The buffer must be a multiple of 64 bytes) for capturing data from the ADC. Data is written directly to RAM.
+The DMA relies on the |AXI protocol|. Consequently, the functions to work with the DMA are named after it.
 
 .. |AXI protocol| raw:: html
 
@@ -17,10 +17,10 @@ The Deep Memory mode relies on the |AXI protocol|. Consequently, the functions t
 
 **Features**
 
-- Deep Memory mode can work in parallel with regular data capture mode in v0.94, only work with triggers is common.
+- Deep Memory Acquisition can work in parallel with regular data capture mode in v0.94, only work with triggers is common.
 - By default, the maximum size of two buffers (1 and 2 channels) is set to 2 MB.
-- Deep Memory mode can run at maximum ADC speed.
-- Deep Memory can assign only one buffer, thereby allocating all memory to only one channel.
+- Deep Memory Acquisition can run at maximum ADC speed.
+- Deep Memory can be assigned to only one buffer, thereby allocating all memory to only one channel.
 
 
 Required hardware
@@ -33,7 +33,7 @@ Required hardware
 Functionality
 ========================
 
-By default, 2 MB of the DDR RAM are reserved for the Deep Memory mode. The DDR memory allocated to the Deep Mode can be configured through the **reg** parameter to a maximum of 256 MB. The :ref:`device tree ecosystem <ecosystem>` must be rebuilt after changing this parameter.
+By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. The DDR memory allocated to the DMA can be configured through the **reg** parameter to a maximum of 256 MB. The :ref:`device tree ecosystem <ecosystem>` must be rebuilt after changing this parameter.
 
 **Changing Reserved Memory**
 
@@ -50,15 +50,15 @@ The first parameter in **reg** is *start address (0x1000000)* and the second one
 
 .. note::
 
-   Please note that the more memory you allocate to the Deep Memory Mode, the slower Red Pitaya Linux OS will function as the RAM resources between the two are shared. The memory allocated to the Deep Memory mode is reserved, so Linux cannot use it.
+   Please note that the more memory you allocate to the DMA, the slower Red Pitaya Linux OS will function as the RAM resources between the two are shared. The memory allocated to the DMA is reserved, so Linux cannot use it.
 
-Here is a representation of how the Deep Memory mode data saving functions:
+Here is a representation of how the DMA data saving functions:
 
 .. figure:: img/Deep_Memory.png
    :align: center
    :width: 700
 
-TThe reserved memory region is located between **ADC_AXI_START** and **ADC_AXI_END** addresses, which are macros for the first and last/end addresses and are automatically configured by the ecosystem. The data is saved in 32-bit chunks (4 Bytes per sample). The **ADC_AXI_START** points to the start of the first Byte (of the first sample), and **ADC_AXI_END** points to the first Byte (of the last sample) of DDR reserved for the Deep Memory Mode.
+TThe reserved memory region is located between **ADC_AXI_START** and **ADC_AXI_END** addresses, which are macros for the first and last/end addresses and are automatically configured by the ecosystem. The data is saved in 32-bit chunks (4 Bytes per sample). The **ADC_AXI_START** points to the start of the first Byte (of the first sample), and **ADC_AXI_END** points to the first Byte (of the last sample) of DDR reserved for the DMA.
 
 The memory region can capture data from a single channel (the whole memory is allocated to a single channel), or it can be split between both input channels (CH1 (IN1) and CH2 (IN2)) by passing the following parameters to the *rp_AcqAxiSetBuffer()* function:
 
@@ -68,7 +68,7 @@ The memory region can capture data from a single channel (the whole memory is al
 
 In the example below, the memory region is split between both channels, where 1024 samples are captured on each channel.
 
-The **Mid Address** in the picture above represents the starting point of the Channel 2 buffer inside the reserved Deep Memory region and is usually set to *(ADC_AXI_START + ADC_AXI_END)/2* (both channels can capture the same amount of data).
+The **Mid Address** in the picture above represents the starting point of the Channel 2 buffer inside the reserved DMA region and is usually set to *(ADC_AXI_START + ADC_AXI_END)/2* (both channels can capture the same amount of data).
 
 Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGetDataRaw* function by passing the following parameters:
 
@@ -79,7 +79,7 @@ Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGet
 
 .. note::
 
-   Depending on the size of the acquired data and how much DDR memory is reserved for the Deep Memory Mode the data transfer from DDR might take a while.
+   Depending on the size of the acquired data and how much DDR memory is reserved for the Deep Memory Acquisition the data transfer from DDR might take a while.
 
 Once finished, please do not forget to free any resources and reserved memory locations. Otherwise, the performance of Red Pitaya can decrease over time.
 
@@ -96,17 +96,17 @@ API functions
 | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                   | | marcors.                                                                     |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetBufferFillState(rp_channel_t channel, bool* state)``                                    | | Indicates whether the Deep Memory buffer was full of data.                   |
+| | C: ``rp_AcqAxiGetBufferFillState(rp_channel_t channel, bool* state)``                                    | | Indicates whether the DMA buffer was full of data.                           |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiGetBufferFillState(channel)``                                                         | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiSetDecimationFactor(uint32_t decimation)``                                                 | | Sets the decimation used at acquiring signal for Deep Memory Mode.           |
+| | C: ``rp_AcqAxiSetDecimationFactor(uint32_t decimation)``                                                 | | Sets the decimation used at acquiring signal for DMA.                        |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiSetDecimationFactor(decimation)``                                                     | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetDecimationFactor(uint32_t* decimation)``                                                | | Returns the decimation used for acquiring signal for Deep Memory Mode.       |
+| | C: ``rp_AcqAxiGetDecimationFactor(uint32_t* decimation)``                                                | | Returns the decimation used for acquiring signal for DMA.                    |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiGetDecimationFactor()``                                                               | |                                                                              |
 | |                                                                                                          | |                                                                              |
@@ -121,37 +121,37 @@ API functions
 | | Python: ``rp_AcqAxiGetTriggerDelay(channel)``                                                            | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t* pos)``                                     | | Returns current position of Deep Memory write pointer.                       |
+| | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t* pos)``                                     | | Returns current position of DMA write pointer.                               |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiGetWritePointer(channel)``                                                            | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel, uint32_t* pos)``                               | | Returns position of Deep Memory write pointer at time when trigger arrived.  |
+| | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel, uint32_t* pos)``                               | | Returns position of DMA write pointer at time when trigger arrived.          |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiGetWritePointerAtTrig(channel)``                                                      | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiEnable(rp_channel_t channel, bool enable)``                                                | | Sets the Deep Memory enable state.                                           |
+| | C: ``rp_AcqAxiEnable(rp_channel_t channel, bool enable)``                                                | | Sets the DMA enable state.                                                   |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiEnable(channel, enable)``                                                             | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetDataRaw(rp_channel_t channel, uint32_t pos, uint32_t* size, int16_t* buffer)``          | | Returns the Deep Memory buffer                                               |
+| | C: ``rp_AcqAxiGetDataRaw(rp_channel_t channel, uint32_t pos, uint32_t* size, int16_t* buffer)``          | | Returns the DMA buffer                                                       |
 | |                                                                                                          | | in RAW units from specified position and desired size.                       |
 | | Python: ``rp_AcqAxiGetDataRaw(channel, pos, size, buffer)``                                              | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``              | | Returns the Deep Memory buffer                                               |
+| | C: ``rp_AcqAxiGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``              | | Returns the DMA buffer                                                       |
 | |                                                                                                          | | in Volt units from specified position and desired size.                      |
 | | Python: ``rp_AcqAxiGetDataV(channel, pos, size, buffer)``                                                | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel, uint32_t address, uint32_t samples)``               | | Sets the Deep Memory buffer address and size in samples.                     |
+| | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel, uint32_t address, uint32_t samples)``               | | Sets the DMA buffer address and size in samples.                             |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiSetBufferSamples(channel, address, samples)``                                         | |                                                                              |
 | |                                                                                                          | |                                                                              |
 +------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| | C: ``rp_AcqAxiSetBufferBytes(rp_channel_t channel, uint32_t address, uint32_t size)``                    | | Sets the Deep Memory buffer address and size in Bytes.                       |
+| | C: ``rp_AcqAxiSetBufferBytes(rp_channel_t channel, uint32_t address, uint32_t size)``                    | | Sets the DMA buffer address and size in Bytes.                               |
 | |                                                                                                          | |                                                                              |
 | | Python: ``rp_AcqAxiSetBufferBytes(channel, address, size)``                                              | |                                                                              |
 | |                                                                                                          | |                                                                              |
@@ -177,8 +177,8 @@ Code Examples
 ================
 
 
-Code - C
----------
+Code - C API
+-------------
 
 The example shows how to use capturing data into two 1024-byte buffers. Please note that checking whether a function was successful is not necessary.
 
@@ -224,8 +224,8 @@ The example shows how to use capturing data into two 1024-byte buffers. Please n
 
       /* 
       Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
-      ADC_AXI_START is a macro for the first address in the DEEP/AXI memory region.
-      ADC_AXI_END is a macro for the last/end address in the DEEP/AXI memory region.
+      ADC_AXI_START is a macro for the first address in the Deep Memory Acquisition region.
+      ADC_AXI_END is a macro for the last/end address in the DMA region.
       */
       if (rp_AcqAxiSetBuffer(RP_CH_1, ADC_AXI_START, DATA_SIZE) != RP_OK) {
          fprintf(stderr, "rp_AcqAxiSetBuffer RP_CH_1 failed!\n");
@@ -236,7 +236,7 @@ The example shows how to use capturing data into two 1024-byte buffers. Please n
          return -1;
       }
 
-      /* Enable DEEP mode on both channels */
+      /* Enable DMA on both channels */
       if (rp_AcqAxiEnable(RP_CH_1, true)) {
          fprintf(stderr, "rp_AcqAxiEnable RP_CH_1 failed!\n");
          return -1;
@@ -315,7 +315,7 @@ The example shows how to use capturing data into two 1024-byte buffers. Please n
    Instructions on how to compile the code are :ref:`here <comC>`.
 
 
-Python (On-board)
+Code - Python API
 -------------------
 
 **Under construction...**
