@@ -31,12 +31,17 @@ The Python API functions are just wrappers that call the corresponding C API fun
 .. note::
 
     Please note that not all available API functions are in the :ref:`Available SCPI commands' list <scpi_command_list>`. If you want to check out all available API functions they are available here:
-    - C - Check the |rp-api| section of the GitHub repository.
+    - C - Check the |rp-api| section of the GitHub repository (|RP_H|).
     - Python - Establish an :ref:`SSH <ssh>` connection to your Red Pitaya and look into the "/opt/redpitaya/lib/python" directoy.
 
 .. |rp-api| raw:: html
 
     <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api" target="_blank">"rp-api" section of the GitHub repository</a>
+
+   
+.. |RP_H| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/redpitaya/rp.h" target="_blank">Functions info</a>
 
 
 Examples on how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
