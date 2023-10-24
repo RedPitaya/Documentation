@@ -260,7 +260,7 @@ API Code Examples
 Code - C API
 --------------
 
-.. code-block: c
+.. code-block:: c
 
     /* Red Pitaya C API example of Synced Generation and acquisition 
     on a specific channel */
