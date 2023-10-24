@@ -5,7 +5,7 @@ Build & compile instructions
 .. toctree::
     :maxdepth: 3
    
-    C&Python_api
+    C&Python_API
     comStreaming
     fpga/fpga
     ecosystem/ecosystem
