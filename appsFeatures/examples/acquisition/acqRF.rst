@@ -2,7 +2,7 @@ Acquiring signals at RF inputs
 ##############################
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 1
    
    acqRF-exm1
    acqRF-exm2
