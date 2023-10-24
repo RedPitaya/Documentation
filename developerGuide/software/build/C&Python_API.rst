@@ -1,4 +1,4 @@
-.. _C_Py_Api:
+.. _C&Py_Api:
 
 ####################################
 Running C and Python Applications
