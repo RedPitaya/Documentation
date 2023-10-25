@@ -4,7 +4,7 @@ Synchronised Click Shield Generation and Acquisition
 #####################################################
 
 Description
-*************
+============
 
 This example shows how to synchronise multiple Red Pitaya boards to simultaneously acquire 16k samples of a generated signal on multiple Red Pitaya units (fast RF inputs and outputs) using the Red Pitaya Click Shields.
 Red Pitaya can transmit the trigger signal through the DIO0_N and receive it on DIO0_P.
@@ -12,7 +12,7 @@ Red Pitaya can transmit the trigger signal through the DIO0_N and receive it on 
 This example can be easily modified for simultaneous generation (setup the signal generation, choose a primary trigger, all secondary triggers set to EXT_NE, and finally, change the daisy trigger source to DAC).
 
 Required hardware
-*******************
+===================
 
     -   Two or more Red Pitaya External clock devices (STEMlab 125-14 External clock, STEMlab 125-14 4-Input)
     -   A Red Pitaya Click Shield for each unit
@@ -59,10 +59,15 @@ The Red Pitaya providing the clock signal to other Red Pitayas through the click
 
   The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software. The generation and acquisition trigger fronts apply after the "OR gate" and trigger either DAC or ADC, depending on the ``DAISY:TRIG_O:SOUR <mode>`` command.
 
-Code - Python
-*************
 
-Using just SCPI commands:
+
+SCPI Code Examples
+====================
+
+Code - Python
+---------------
+
+**Using just SCPI commands:**
 
 .. code-block:: python
 
@@ -217,7 +222,7 @@ Using just SCPI commands:
     rp_sec.close()
 
 
-Using functions:
+**Using functions:**
 
 .. code-block:: python
 
@@ -364,12 +369,196 @@ Using functions:
 
 .. note::
 
-    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
-    The functions represent a quality-of-life improvement. They combine the SCPI commands in optimal order. The code should function at approximately the same speed without them.
+    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
 
-    For further information on functions, please consult the redpitaya_scpi.py code.
+    For further information on functions please consult the |redpitaya_scpi| code.
 
 
 .. |redpitaya_scpi| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
+
+
+API Code Examples
+====================
+
+.. note::
+
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+
+.. Code - C API
+.. ---------------
+
+
+Code - Python API
+------------------
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+    
+    import time
+    import numpy as np
+    import rp
+    
+    ########! Primary unit code !#########
+    channel = rp.RP_CH_1        # rp.RP_CH_2
+    waveform = rp.RP_WAVEFORM_SINE
+    freq = 100000
+    ampl = 1.0
+    
+    trig_lvl = 0.5
+    trig_dly = 0
+    
+    dec = rp.RP_DEC_1
+    
+    gen_trig_sour = rp.RP_GEN_TRIG_SRC_INTERNAL
+    
+    acq_trig_sour = rp.RP_TRIG_SRC_CHA_PE
+    
+    N = 16384
+    
+    # Initialize the interface
+    rp.rp_Init()
+    
+    # Reset Generation and Acquisition
+    rp.rp_GenReset()
+    rp.rp_AcqReset()
+    
+    ###### Enable Daisy Chain #####
+    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
+    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
+    rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
+    
+    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
+    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+    
+    # LED indicator
+    rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
+    
+    ###### Generation #####
+    print("Gen_start")
+    rp.rp_GenWaveform(channel, waveform)
+    rp.rp_GenFreqDirect(channel, freq)
+    rp.rp_GenAmp(channel, ampl)
+    
+    rp.rp_GenTriggerSource(channel, gen_trig_sour)
+    rp.rp_GenOutEnable(channel)
+    
+    ##### Acquisition #####
+    rp.rp_AcqSetDecimation(dec)
+    
+    # Set trigger level and delay
+    rp.rp_AcqSetTriggerLevel(rp.RP_T_CH_1, trig_lvl)
+    rp.rp_AcqSetTriggerDelay(trig_dly)
+    
+    # Start Acquisition
+    print("Acq_start")
+    rp.rp_AcqStart()
+    
+    # Specify trigger - input 1 positive edge
+    rp.rp_AcqSetTriggerSrc(acq_trig_sour)
+    
+    rp.rp_GenTriggerOnly(channel)       # Trigger generator
+    
+    # Trigger state
+    while 1:
+        trig_state = rp.rp_AcqGetTriggerState()[1]
+        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+            break
+    
+    # Fill state
+    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
+    
+    while 1:
+        if rp.rp_AcqGetBufferFillState()[1]:
+            break
+    
+    ### Get data ###
+    # Volts
+    fbuff = rp.fBuffer(N)
+    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    
+    data_V = np.zeros(N, dtype = float)
+    
+    for i in range(0, N, 1):
+        data_V[i] = fbuff[i]
+    
+    print(f"Data in Volts: {data_V}")
+    
+    # Release resources
+    rp.rp_Release()
+    
+    
+    
+    ########! Secondary unit code !#########
+    channel = rp.RP_CH_1        # rp.RP_CH_2
+    waveform = rp.RP_WAVEFORM_SINE
+    freq = 100000
+    ampl = 1.0
+    
+    trig_lvl = 0.5
+    trig_dly = 0
+    
+    dec = rp.RP_DEC_1
+    
+    # Initialize the interface
+    rp.rp_Init()
+    
+    # Reset Generation and Acquisition
+    rp.rp_GenReset()
+    rp.rp_AcqReset()
+    
+    ###### Enable Daisy Chain #####
+    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
+    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
+    rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
+    
+    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
+    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+    
+    # LED indicator
+    rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
+    
+    ##### Acquisition #####
+    rp.rp_AcqSetDecimation(dec)
+    rp.rp_AcqSetTriggerDelay(trig_dly)
+    
+    # Start Acquisition
+    print("Acq_start")
+    rp.rp_AcqStart()
+    
+    # Specify trigger - must be EXT_NE
+    rp.rp_AcqSetTriggerSrc(rp.RP_TRIG_SRC_EXT_NE)
+    
+    # Trigger state
+    while 1:
+        trig_state = rp.rp_AcqGetTriggerState()[1]
+        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+            break
+    
+    # Fill state
+    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
+    
+    while 1:
+        if rp.rp_AcqGetBufferFillState()[1]:
+            break
+    
+    ### Get data ###
+    
+    # Volts
+    fbuff = rp.fBuffer(N)
+    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    
+    data_V = np.zeros(N, dtype = float)
+    
+    for i in range(0, N, 1):
+        data_V[i] = fbuff[i]
+    
+    print(f"Data in Volts: {data_V}")
+    
+    # Release resources
+    rp.rp_Release()
+

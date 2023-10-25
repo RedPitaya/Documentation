@@ -2,7 +2,7 @@ Examples
 --------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    digital/digital
    analog/analog
@@ -10,4 +10,5 @@ Examples
    acquisition/acqRF
    acquisition_generation/acq_genRF.rst
    multiboard_sync/multiboard
+   DMA/deepMemoryAcq
    communication_interfaces/digcomIF

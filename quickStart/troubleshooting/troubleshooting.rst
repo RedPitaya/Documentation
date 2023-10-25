@@ -316,10 +316,39 @@ Software
 
 For establishing an SSH connection, creating a custom FPGA image, custom ecosystem, and/or custom web applications, please refer to :ref:`Developers guide Software <software>`.
 
+
+How can I acquire data with Red Pitaya?
+------------------------------------------------
+
+There are multiple approaches to acquiring data with Red Pitaya. Here is a quick description of each possiblity:
+   - **Oscilloscope application** – The data is acquired at full speed, but all the limitations of a standard oscilloscope apply (currently, the data can only be extracted upon user request via the application. Remote data collection is currently impossible). More info :ref:`here <osc_app>`.
+   - **SCPI data acquisition (Python, MATLAB, LabVIEW)** – Triggered data acquisition. The data is acquired in 16384 sample-long buffers. The code is executed on a computer, and string commands are sent to the Red Pitaya via |socket communication|. Data is acquired on the Red Pitaya and then sent back as a string that can be converted to a floating-point format. Trigger can be set to either IN1, IN2, or External (also IN3 and IN4 for STEMlab 125-14 4-Input). Trigger level can be specified. The acquisition must be restarted before a new “data buffer” can be acquired. There is a dead time between capturing two consecutive buffers where data is not saved. More details :ref:`here <remoteControl>`.
+   - **API commands (C, Python)** – Functions exactly the same as SCPI data acquisition, but it is faster since everything is running on the Red Pitaya board itself (the code is executed on the board). More info :ref:` here <C&Py_API>`.
+   - **Streaming application** – Continuous data acquisition. The data is streamed from one or both inputs directly to a file on a computer. The data can be acquired indefinitely, but there are speed limitations. 
+The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details on the limitations are available :ref:`here <streaming_top>`.
+   - **Deep Memory (AXI mode)** *(only OS 2.00-23 – latest Beta)* – Long sequence triggered data acquisition. The data can be acquired at different speeds (up to 125 MHz), and it is saved directly into the DDR RAM. The buffer length can be specified by the user but must not exceed 256 MB for both channels. After the acquisition is complete, Red Pitaya needs some time to transfer the whole file to the computer (the RAM must be emptied) before the acquisition can be reset. Functions exactly the same as **API commands**. More details are available :ref:`here <deepMemoryAcq>`.
+   -	**Custom Acquisition (FPGA)** – Red Pitaya is open-source so any mode above can be customized by the user to tune it to their specific application.
+
+
+.. |socket communication| raw:: html
+
+   <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank">socket communication</a>
+
+How can I generate data with Red Pitaya?
+------------------------------------------------
+
+Here are all possible generation options on the Red Pitaya (please be aware of AC coupling limitations on SDRlab 122-16):
+   - **Oscilloscope application** - basic waveform generation. More info :ref:`here <osc_app>`.
+   - **SCPI commands (Python, MATLAB, LabVIEW)**, remote control from computer - can generate basic waveforms as well as custom/arbitrary waveforms (defined in a 16384 sample-long buffer which represents one period of the signal - the frequency is calculated for the whole buffer). More details :ref:`here <remoteControl>`.
+   - **API commands (C, Python)**, on-board program - same functionality as standard SCPI commands, but generally faster and includes the benefit of possible direct communication with the FPGA. More info :ref:` here <C&Py_API>`.
+   - **Custom/user-defined (FPGA reprogramming)** - Red Pitaya is open-source, so anyone has the option of reprogramming the FPGA image to customise the functionality.
+
+
 How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?
 -----------------------------------------------------------------------
 
 *  :ref:`Remote control <remoteControl>`
+
 
 Where can I find the ecosystem, software, and FPGA images?
 ------------------------------------------------------------

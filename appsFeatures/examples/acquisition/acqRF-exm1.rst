@@ -7,13 +7,13 @@ Triggering with a threshold on channel
 
 
 Description
-***********
+============
 
 This example shows how to acquire 16k samples of a signal on fast analog inputs. The signal will be acquired when the internal trigger condition is met. The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor. The decimations and time scales of a buffer are given in the :ref:`sample rate and decimation <s_rate_and_dec>`. Voltage and frequency ranges depend on the Red Pitaya model. 
 
 
 Required hardware
-*****************
+==================
 
     -   Red Pitaya device
     -   Signal (function) generator
@@ -23,12 +23,16 @@ Wiring example for STEMlab 125-14 & STEMlab 125-10:
 .. figure:: img/on_given_trigger_acquire_signal_on_fast_analog_input.png
 
 Circuit
-*******
+=======
 
 .. figure:: img/on_given_trigger_acquire_signal_on_fast_analog_input_circuit.png
 
+
+SCPI Code Examples
+====================
+
 Code - MATLAB®
-**************
+---------------
 
 The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
@@ -52,16 +56,21 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             configureTerminator(RP, 'CR/LF');
             
             flush(RP);
-            
+
+            % Reset Acquisition
+            writeline(RP,'ACQ:RST');
+
+            %% ACQUISITION
             % Set decimation value (sampling rate) concerning your 
             % acquired signal frequency
             
-            writeline(RP,'ACQ:RST');
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0.5');       % trigger level 
-            
+            writeline(RP,'ACQ:TRIG:LEV 0.5');       % trigger level
+
+            % SIGNALLAB ONLY            
             % There is an option to select coupling when using SIGNALlab 250-12 
             % writeline(RP,'ACQ:SOUR1:COUP AC');    % enables AC coupling on Channel 1
+            %
 
             % by default LOW level gain is selected
             writeline(RP,'ACQ:SOUR1:GAIN LV');  % acquire gain to LV/HV (should the same as jumpers)
@@ -95,27 +104,20 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             while 1
                 trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
-                
                 if strcmp('TD', trig_rsp(1:2))      % Read only TD
-                
                     break;
-                
                 end
             end
                 
-            % % UNIFIED OS
-            % % wait for fill adc buffer
-            % while 1
-            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-            %     
-            %     if strcmp('1', fill_state(1:1)the )
-            % 
-            %         break;
-            % 
-            %     end
-            % end 
+            % wait for fill adc buffer
+            while 1
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+                if strcmp('1', fill_state(1:1)the )
+                    break;
+                end
+            end 
                 
-            % Read data from the buffer 
+            %% Read data from the buffer 
             signal_str = writeread(RP,'ACQ:SOUR1:DATA?');
             
             % Convert values to numbers.
@@ -150,14 +152,15 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             flush(RP);
             
-            % Set decimation value (sampling rate) concerning your 
-            % acquired signal frequency
-            
-            
+            % Reset Acquisition
             writeline(RP,'ACQ:RST');
+
+            %% ACQUISITION
             writeline(RP,'ACQ:DEC 1');
             writeline(RP,'ACQ:TRIG:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
+
+            % Set Units and Format
             writeline(RP,'ACQ:DATA:FORMAT BIN');
             writeline(RP,'ACQ:DATA:UNITS VOLTS');
             
@@ -190,26 +193,19 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             while 1
                 trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
-            
                 if strcmp('TD', trig_rsp(1:2))      % Read only TD
-            
                     break
-            
                 end
             end
             
             
-            % % UNIFIED OS
-            % % wait for fill adc buffer
-            % while 1
-            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-            %     
-            %     if strcmp('1', fill_state(1:1))
-            % 
-            %         break;
-            % 
-            %     end
-            % end 
+            % wait for fill adc buffer
+            while 1
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+                if strcmp('1', fill_state(1:1))
+                    break;
+                end
+            end 
             
             % Read data from the buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -257,10 +253,15 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % acquired signal frequency
             
             
+            % Reset Acquisition
             writeline(RP,'ACQ:RST');
+
+            %% ACQUISITION
             writeline(RP,'ACQ:DEC 1');
             writeline(RP,'ACQ:TRIG:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
+
+            % Select Format and Units
             writeline(RP,'ACQ:DATA:FORMAT BIN');
             writeline(RP,'ACQ:DATA:UNITS RAW');
             
@@ -290,25 +291,18 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             
             while 1
                 trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
-            
                 if strcmp('TD',trig_rsp(1:2))  % Read only TD
-            
                     break;
-            
                 end
             end
             
-            % % UNIFIED OS
-            % % wait for fill adc buffer
-            % while 1
-            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-            %     
-            %     if strcmp('1', fill_state(1:1))
-            % 
-            %         break;
-            % 
-            %     end
-            % end 
+            % wait for fill adc buffer
+            while 1
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+                if strcmp('1', fill_state(1:1))
+                    break;
+                end
+            end 
             
             % Read data from the buffer
             writeline(RP,'ACQ:SOUR1:DATA?');
@@ -352,10 +346,10 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             flush(RP);
 
-            % Set decimation vale (sampling rate) concerning you 
-            % acquired signal frequency
-
+            % Reset Acquisition
             writeline(RP,'ACQ:RST');
+
+            %% ACQUISITION
             writeline(RP,'ACQ:DEC 1');
             writeline(RP,'ACQ:TRIG:LEV 0.5');
 
@@ -385,25 +379,18 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             while 1
                 trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
-
                 if strcmp('TD', trig_rsp(1:2))  % Read only TD
-
                     break;
-
                 end
             end
 
-            % % UNIFIED OS
-            % % wait for fill adc buffer
-            % while 1
-            %     fill_state = writeread(RP,'ACQ:TRIG:FILL?')
-            %     
-            %     if strcmp('1', fill_state(1:1))
-            % 
-            %         break;
-            % 
-            %     end
-            % end 
+            % wait for fill adc buffer
+            while 1
+                fill_state = writeread(RP,'ACQ:TRIG:FILL?')  
+                if strcmp('1', fill_state(1:1))
+                    break;
+                end
+            end 
 
             % Read data from the buffer 
             signal_str   = writeread(RP,'ACQ:SOUR1:DATA?');
@@ -432,168 +419,9 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             clear RP;
 
-Code - C
-********
-
-.. note::
-
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
-
-.. tabs::
-
-    .. tab:: 125-10, 125-14, 122-16, 250-12
-
-        .. code-block:: c
-
-            /* Red Pitaya C API example Acquiring a signal from a buffer  
-            * This application acquires a signal on a specific channel */
-            
-            #include <stdio.h>
-            #include <stdlib.h>
-            #include <unistd.h>
-            #include "rp.h"
-            
-            int main(int argc, char **argv){
-            
-                    /* Print error, if rp_Init() function failed */
-                    if(rp_Init() != RP_OK){
-                            fprintf(stderr, "Rp api init failed!\n");
-                    }
-            
-                    /*LOOB BACK FROM OUTPUT 2 - ONLY FOR TESTING*/
-                    rp_GenReset();
-                    rp_GenFreq(RP_CH_1, 20000.0);
-                    rp_GenAmp(RP_CH_1, 1.0);
-                    rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
-                    rp_GenOutEnable(RP_CH_1);
-            
-            
-                    uint32_t buff_size = 16384;
-                    float *buff = (float *)malloc(buff_size * sizeof(float));
-            
-                    rp_AcqReset();
-                    rp_AcqSetDecimation(RP_DEC_8);
-                    rp_AcqSetTriggerLevel(RP_CH_1, 0.5); //Trig level is set in Volts while in SCPI 
-                    rp_AcqSetTriggerDelay(0);
-
-                    //There is an option to select coupling when using SIGNALlab 250-12 
-                    // rp_AcqSetAC_DC(RP_CH_1, RP_AC); // enables AC coupling on Channel 1
-
-                    //By default LV level gain is selected
-                    rp_AcqSetGain(RP_CH_1, RP_LOW); // user can switch gain using this command
-            
-                    rp_AcqStart();
-            
-                    /* After the acquisition is started some time delay is needed to acquire fresh samples into buffer*/
-                    /* Here we have used a time delay of one second but you can calculate the exact value taking into account buffer*/
-                    /*length and sampling rate*/
-            
-                    sleep(1);
-                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
-                    rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
-            
-                    while(1){
-                            rp_AcqGetTriggerState(&state);
-                            if(state == RP_TRIG_STATE_TRIGGERED){
-                            break;
-                            }
-                    }
-                    
-                    /* UNIFIED OS
-                    bool fillState = false;
-                    while(!fillState){
-                        rp_AcqGetBufferFillState(&fillState);
-                    }
-                    */
-
-                    rp_AcqGetOldestDataV(RP_CH_1, &buff_size, buff);
-                    int i;
-                    for(i = 0; i < buff_size; i++){
-                            printf("%f\n", buff[i]);
-                    }
-                    /* Releasing resources */
-                    free(buff);
-                    rp_Release();
-                    return 0;
-            }
-
-    .. tab:: 125-14 4-Input
-
-        .. code-block:: c
-
-            /* Red Pitaya C API example Acquiring a signal from a buffer
-            * This application acquires a signal on a specific channel */
-
-            #include <stdio.h>
-            #include <stdlib.h>
-            #include <unistd.h>
-            #include "rp.h"
-
-            int main(int argc, char **argv){
-
-                    /* Print error, if rp_Init() function failed */
-                    if(rp_Init() != RP_OK){
-                            fprintf(stderr, "Rp api init failed!\n");
-                    }
-
-                    uint32_t buff_size = 16384;
-                    float *buff_ch1 = (float *)malloc(buff_size * sizeof(float));
-                    float *buff_ch2 = (float *)malloc(buff_size * sizeof(float));
-                    float *buff_ch3 = (float *)malloc(buff_size * sizeof(float));
-                    float *buff_ch4 = (float *)malloc(buff_size * sizeof(float));
-
-                    rp_AcqReset();
-                    rp_AcqSetDecimation(RP_DEC_8);
-                    rp_AcqSetTriggerLevel(RP_CH_1, 0.5);
-                    rp_AcqSetTriggerDelay(0);
-
-                    rp_AcqStart();
-
-                    /* After the acquisition is started some time delay is needed to acquire fresh samples into buffer*/
-                    /* Here we have used a time delay of one second but you can calculate the exact value taking into account buffer*/
-                    /*length and sampling rate*/
-
-                    sleep(1);
-                    rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
-                    rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
-
-                    while(1){
-                            rp_AcqGetTriggerState(&state);
-                            if(state == RP_TRIG_STATE_TRIGGERED){
-                            sleep(1);
-                            break;
-                            }
-                    }
-                    
-                    /* UNIFIED OS
-                    bool fillState = false;
-                    while(!fillState){
-                        rp_AcqGetBufferFillState(&fillState);
-                    }
-                    */
-
-
-                    uint32_t pos = 0;        
-                    rp_AcqGetWritePointerAtTrig(&pos);
-                    rp_AcqGetDataV2(pos, &buff_size, buff_ch1,buff_ch2, buff_ch3, buff_ch4);
-
-                    int i;
-                    for(i = 0; i < buff_size; i++){
-                            printf("%f %f %f %f\n", buff_ch1[i],buff_ch2[i],buff_ch3[i],buff_ch4[i]);
-                    }
-                    /* Releasing resources */
-                    free(buff_ch1);
-                    free(buff_ch2);
-                    free(buff_ch3);
-                    free(buff_ch4);
-                    rp_Release();
-
-                    return 0;
-            }  
 
 Code - Python
-*************
+--------------
 
 Using just SCPI commands:
 
@@ -609,7 +437,9 @@ Using just SCPI commands:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -626,11 +456,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
             
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
             buff_string = rp_s.rx_txt()
@@ -652,7 +481,9 @@ Using just SCPI commands:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -669,11 +500,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
@@ -695,7 +525,9 @@ Using just SCPI commands:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
 
@@ -712,11 +544,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
@@ -737,7 +568,9 @@ Using just SCPI commands:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
 
             rp_s.tx_txt('ACQ:RST')
             
@@ -756,11 +589,10 @@ Using just SCPI commands:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             rp_s.tx_txt('ACQ:SOUR1:DATA?')
@@ -805,7 +637,9 @@ Using functions:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -823,11 +657,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
             
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             # function for Data Acquisition
@@ -848,7 +681,9 @@ Using functions:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -866,11 +701,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
             # function for Data Acquisition
             buff = rp_s.acq_data(1, bin= True, convert= True)
@@ -890,7 +724,9 @@ Using functions:
             import matplotlib.pyplot as plot
             import struct
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
             
             rp_s.tx_txt('ACQ:RST')
             
@@ -908,11 +744,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
 
             # function for Data Acquisition
@@ -932,7 +767,9 @@ Using functions:
             import redpitaya_scpi as scpi
             import matplotlib.pyplot as plot
 
-            rp_s = scpi.scpi(sys.argv[1])
+            IP = 'rp-f066c8.local'
+
+            rp_s = scpi.scpi(IP)
 
             rp_s.tx_txt('ACQ:RST')
             
@@ -951,11 +788,10 @@ Using functions:
                 if rp_s.rx_txt() == 'TD':
                     break
 
-            ## UNIFIED OS
-            # while 1:
-            #     rp_s.tx_txt('ACQ:TRIG:FILL?')
-            #     if rp_s.rx_txt() == '1':
-            #         break
+            while 1:
+                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                if rp_s.rx_txt() == '1':
+                    break
 
             # function for Data Acquisition
             buff  = rp_s.acq_data(1, bin= False, convert= True, input4 =True)
@@ -973,19 +809,19 @@ Using functions:
 
 .. note::
 
-    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
-    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order. The code should function at approximately the same speed without them.
+    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
 
-    For further information on functions please consult the redpitaya_scpi.py code.
+    For further information on functions please consult the |redpitaya_scpi| code.
 
 
 .. |redpitaya_scpi| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
 
 
 Code - Scilab
-*************
+-------------
 
 Scilab socket input buffer can read approximately 800 samples from Red Pitaya. This is the problem in contributed code
 for Scilab sockets. How to set the socket is described in the Blink example.
@@ -1067,4 +903,396 @@ Code - LabVIEW
 
 .. figure:: img/On-trigger-signal-acquisition_LV.png
 
-`Download <https://downloads.redpitaya.com/downloads/Clients/labview/On%20trigger%20signal%20acquisition.vi>`_
+- `Download Example <https://downloads.redpitaya.com/downloads/Clients/labview/On%20trigger%20signal%20acquisition.vi>`_
+
+
+
+API Code Examples
+====================
+
+.. note::
+
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+
+
+Code - C API
+---------------
+
+.. tabs::
+
+    .. tab:: 125-10, 125-14, 122-16, 250-12
+
+        .. code-block:: c
+
+            /* Red Pitaya C API example of Acquiring a signal on external trigger on a specific channel */
+            
+            #include <stdio.h>
+            #include <stdlib.h>
+            #include <unistd.h>
+            #include "rp.h"
+            
+            int main(int argc, char **argv){
+            
+                /* Print error, if rp_Init() function failed */
+                if(rp_Init() != RP_OK){
+                    fprintf(stderr, "Rp api init failed!\n");
+                }
+
+                /* Reset Generation and Acquisition */
+                rp_GenReset();
+                rp_AcqReset();
+
+                /* Generation */
+                /*LOOB BACK FROM OUTPUT 2 - ONLY FOR TESTING*/
+                rp_GenFreq(RP_CH_1, 20000.0);
+                rp_GenAmp(RP_CH_1, 1.0);
+                rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
+                rp_GenOutEnable(RP_CH_1);
+            
+                /* Acquisition */
+                uint32_t buff_size = 16384;
+                float *buff = (float *)malloc(buff_size * sizeof(float));
+            
+                rp_AcqSetDecimation(RP_DEC_8);
+                rp_AcqSetTriggerLevel(RP_CH_1, 0.5);    // Trig level is set in Volts while in SCPI 
+                rp_AcqSetTriggerDelay(0);
+
+                // There is an option to select coupling when using SIGNALlab 250-12 
+                // rp_AcqSetAC_DC(RP_CH_1, RP_AC);      // enables AC coupling on Channel 1
+
+                // By default LV level gain is selected
+                rp_AcqSetGain(RP_CH_1, RP_LOW);         // user can switch gain using this command
+
+
+                rp_AcqStart();
+            
+                /* After the acquisition is started some time delay is needed to acquire fresh samples into buffer
+                Here we have used a time delay of one second but you can calculate the exact value taking into account buffer
+                length and sampling rate */
+            
+                sleep(1);
+                rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
+                rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
+            
+                while(1){
+                    rp_AcqGetTriggerState(&state);
+                    if(state == RP_TRIG_STATE_TRIGGERED){
+                        break;
+                    }
+                }
+                    
+                bool fillState = false;
+                while(!fillState){
+                    rp_AcqGetBufferFillState(&fillState);
+                }
+
+                rp_AcqGetOldestDataV(RP_CH_1, &buff_size, buff);
+                int i;
+                for(i = 0; i < buff_size; i++){
+                    printf("%f\n", buff[i]);
+                }
+
+                /* Releasing resources */
+                free(buff);
+                rp_Release();
+                return 0;
+            }
+
+    .. tab:: 125-14 4-Input
+
+        .. code-block:: c
+
+            /* Red Pitaya C API example of Acquiring a signal on external trigger on a specific channel */
+
+            #include <stdio.h>
+            #include <stdlib.h>
+            #include <unistd.h>
+            #include "rp.h"
+
+            int main(int argc, char **argv){
+
+                /* Print error, if rp_Init() function failed */
+                if(rp_Init() != RP_OK){
+                    fprintf(stderr, "Rp api init failed!\n");
+                }
+
+                uint32_t buff_size = 16384;
+                float *buff_ch1 = (float *)malloc(buff_size * sizeof(float));
+                float *buff_ch2 = (float *)malloc(buff_size * sizeof(float));
+                float *buff_ch3 = (float *)malloc(buff_size * sizeof(float));
+                float *buff_ch4 = (float *)malloc(buff_size * sizeof(float));
+
+                /* Reset Acquisition */
+                rp_AcqReset();
+
+                /* Acquisition */
+                rp_AcqSetDecimation(RP_DEC_8);
+                rp_AcqSetTriggerLevel(RP_CH_1, 0.5);
+                rp_AcqSetTriggerDelay(0);
+
+                rp_AcqStart();
+
+                /* After the acquisition is started some time delay is needed to acquire fresh samples into buffer
+                Here we have used a time delay of one second but you can calculate the exact value taking into account buffer
+                length and sampling rate*/
+
+                sleep(1);
+                rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
+                rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
+
+                while(1){
+                    rp_AcqGetTriggerState(&state);
+                    if(state == RP_TRIG_STATE_TRIGGERED){
+                        sleep(1);
+                        break;
+                    }
+                }
+                    
+                bool fillState = false;
+                while(!fillState){
+                    rp_AcqGetBufferFillState(&fillState);
+                }
+
+                uint32_t pos = 0;        
+                rp_AcqGetWritePointerAtTrig(&pos);
+                rp_AcqGetDataV2(pos, &buff_size, buff_ch1,buff_ch2, buff_ch3, buff_ch4);
+
+                int i;
+                for(i = 0; i < buff_size; i++){
+                    printf("%f %f %f %f\n", buff_ch1[i],buff_ch2[i],buff_ch3[i],buff_ch4[i]);
+                }
+
+                /* Releasing resources */
+                free(buff_ch1);
+                free(buff_ch2);
+                free(buff_ch3);
+                free(buff_ch4);
+                rp_Release();
+
+                return 0;
+            }  
+
+
+Code - Python API
+-------------------
+
+.. tabs::
+
+    .. tab:: 125-10, 125-14, 122-16, 250-12
+
+        .. code-block:: python
+
+            #!/usr/bin/python3
+
+            import time
+            import numpy as np
+            import rp
+
+
+            #? Possible waveforms:
+            #?   RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP,
+            #?   RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY,
+            #?   RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP
+
+            channel = rp.RP_CH_1        # rp.RP_CH_2
+            channel2 = rp.RP_CH_2
+            waveform = rp.RP_WAVEFORM_SINE
+            freq = 100000
+            ampl = 1.0
+
+            #? Possible decimations:
+            #?  RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16 , RP_DEC_32 , RP_DEC_64 ,
+            #?  RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048, RP_DEC_4096, RP_DEC_8192, 
+            #?  RP_DEC_16384, RP_DEC_32768, RP_DEC_65536
+
+            dec = rp.RP_DEC_1
+
+            trig_lvl = 0.5
+            trig_dly = 0
+
+            #? Possible acquisition trigger sources:
+            #?  RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE,
+            #?  RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE, 
+            #?  RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE
+
+            acq_trig_sour = rp.RP_TRIG_SRC_EXT_PE
+            N = 16384
+
+            # Initialize the interface
+            rp.rp_Init()
+
+            # Reset Generation and Acquisition
+            rp.rp_GenReset()
+            rp.rp_AcqReset()
+
+            ###### Generation #####
+            # OUT1
+            print("Gen_start")
+            rp.rp_GenWaveform(channel, waveform)
+            rp.rp_GenFreqDirect(channel, freq)
+            rp.rp_GenAmp(channel, ampl)
+
+            # OUT2
+            rp.rp_GenWaveform(channel2, waveform)
+            rp.rp_GenFreqDirect(channel2, freq)
+            rp.rp_GenAmp(channel2, ampl)
+
+            #? Possible trigger sources:
+            #?  RP_GEN_TRIG_SRC_INTERNAL, RP_GEN_TRIG_SRC_EXT_PE, RP_GEN_TRIG_SRC_EXT_NE
+
+            # Specify generator trigger source
+            rp.rp_GenTriggerSource(channel, rp.RP_GEN_TRIG_SRC_INTERNAL)
+
+            # Enable output synchronisation
+            rp.rp_GenOutEnableSync(True)
+            rp.rp_GenOutEnable(channel)
+
+
+
+            ##### Acquisition #####
+            # Set Decimation
+            rp.rp_AcqSetDecimation(rp.RP_DEC_1)
+
+            #? Possible triggers:
+            #?  RP_T_CH_1, RP_T_CH_2, RP_T_CH_3, RP_T_CH_4, RP_T_CH_EXT
+
+            # Set trigger level and delay
+            rp.rp_AcqSetTriggerLevel(rp.RP_T_CH_1, trig_lvl)
+            rp.rp_AcqSetTriggerDelay(trig_dly)
+
+
+            # Start Acquisition
+            print("Acq_start")
+            rp.rp_AcqStart()
+
+            # Specify trigger - input 1 positive edge
+            rp.rp_AcqSetTriggerSrc(acq_trig_sour)
+
+            rp.rp_GenTriggerOnly(channel)       # Trigger generator
+
+            # Trigger state
+            while 1:
+                trig_state = rp.rp_AcqGetTriggerState()[1]
+                if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+                    break
+                
+            # Fill state
+            while 1:
+                if rp.rp_AcqGetBufferFillState()[1]:
+                    break
+                
+                
+            # Get data
+            # RAW
+            ibuff = rp.i16Buffer(N)
+            res = rp.rp_AcqGetOldestDataRaw(rp.RP_CH_1, N, ibuff.cast())
+
+            # Volts
+            fbuff = rp.fBuffer(N)
+            res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+
+            data_V = np.zeros(N, dtype = float)
+            data_raw = np.zeros(N, dtype = int)
+
+            for i in range(0, N, 1):
+                data_V[i] = fbuff[i]
+                data_raw[i] = ibuff[i]
+
+            print(f"Data in Volts: {data_V}")
+            print(f"Raw data: {data_raw}")
+
+
+            # Release resources
+            rp.rp_Release()
+    
+    .. tab:: 125-14 4-Input
+
+        .. code-block:: python
+        
+            #!/usr/bin/python3
+
+            import time
+            import numpy as np
+            import rp
+            
+            #? Possible channels
+            #?  RP_CH_1, RP_CH_2, RP_CH_3, RP_CH_4
+            
+            acq_channel = rp.RP_CH_1
+
+            #? Possible decimations:
+            #?  RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16 , RP_DEC_32 , RP_DEC_64 ,
+            #?  RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048, RP_DEC_4096, RP_DEC_8192, 
+            #?  RP_DEC_16384, RP_DEC_32768, RP_DEC_65536
+
+            dec = rp.RP_DEC_1
+
+            trig_lvl = 0.5
+            trig_dly = 0
+
+            #? Possible acquisition trigger sources:
+            #?  RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE,
+            #?  RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE, 
+            #?  RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE
+
+            acq_trig_sour = rp.RP_TRIG_SRC_EXT_PE
+            N = 16384
+
+            # Initialize the interface
+            rp.rp_Init()
+
+            # Reset Acquisition
+            rp.rp_AcqReset()
+
+            ##### Acquisition #####
+            # Set Decimation
+            rp.rp_AcqSetDecimation(rp.RP_DEC_1)
+
+            #? Possible triggers:
+            #?  RP_T_CH_1, RP_T_CH_2, RP_T_CH_3, RP_T_CH_4, RP_T_CH_EXT
+
+            # Set trigger level and delay
+            rp.rp_AcqSetTriggerLevel(rp.RP_T_CH_1, trig_lvl)
+            rp.rp_AcqSetTriggerDelay(trig_dly)
+
+
+            # Start Acquisition
+            print("Acq_start")
+            rp.rp_AcqStart()
+
+            # Specify trigger - input 1 positive edge
+            rp.rp_AcqSetTriggerSrc(acq_trig_sour)
+
+            # Trigger state
+            while 1:
+                trig_state = rp.rp_AcqGetTriggerState()[1]
+                if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+                    break
+                
+            # Fill state
+            while 1:
+                if rp.rp_AcqGetBufferFillState()[1]:
+                    break
+                
+                
+            # Get data
+            # RAW
+            ibuff = rp.i16Buffer(N)
+            res = rp.rp_AcqGetOldestDataRaw(acq_channel, N, ibuff.cast())
+
+            # Volts
+            fbuff = rp.fBuffer(N)
+            res = rp.rp_AcqGetDataV(acq_channel, 0, N, fbuff)
+
+            data_V = np.zeros(N, dtype = float)
+            data_raw = np.zeros(N, dtype = int)
+
+            for i in range(0, N, 1):
+                data_V[i] = fbuff[i]
+                data_raw[i] = ibuff[i]
+
+            print(f"Data in Volts: {data_V}")
+            print(f"Raw data: {data_raw}")
+
+

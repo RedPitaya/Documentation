@@ -5,17 +5,17 @@ Push button and turn on LED diode
 
 
 Description
-***********
+=============
 
 This example shows how to control Red Pitaya onboard LEDs and read the states of extension connector GPIOs.
 When the button is pressed, the LED will turn on.
 
 Required hardware
-*****************
+===================
 
     - Red Pitaya device
     - Push button
-    - Resistor 1K
+    - Resistor 1k
     - RedPitaya_Push_button
 
 Wiring example for STEMlab 125-14 & STEMlab 125-10:
@@ -26,8 +26,12 @@ Circuit
 
 .. figure:: img/RedPitaya_Push_button_circuit.png
 
+
+SCPI Code Examples
+====================
+
 Code - MATLAB®
-**************
+---------------
 
 The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
@@ -44,43 +48,73 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     RP.ByteOrder = 'big-endian';
     configureTerminator(RP,'CR/LF');
 
-
     writeline(RP,'DIG:PIN:DIR IN,DIO5_N');      % Set DIO5_N  to be input
 
     i = 1;
 
-    while i<1000                    			% You can set while 1 for a continuous loop
-
-    state = str2num(writeread(RP,'DIG:PIN? DIO5_N'));
+    while i < 1000                    		    % You can set while 1 for a continuous loop
+        state = str2num(writeread(RP,'DIG:PIN? DIO5_N'));
 
         if state==1
-        
             writeline(RP,'DIG:PIN LED5,0');
-            
         end
 
         if state==0
-
             writeline(RP,'DIG:PIN LED5,1');
-
         end
-
-    pause(0.1)                     				% Set time delay for Red Pitaya response
-
-    i = i+1
-
+        pause(0.1)                     				% Set time delay for Red Pitaya response
+        i = i+1;
     end
 
     %% Close connection with Red Pitaya
     clear RP;
 
-Code - C
-********
+
+Code - Python
+--------------
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import sys
+    import redpitaya_scpi as scpi
+
+    IP = 'rp-f066c8.local'
+    rp_s = scpi.scpi(IP)
+
+    # set all DIO*_N pins to inputs
+    for i in range(8):
+        rp_s.tx_txt('DIG:PIN:DIR IN,DIO'+str(i)+'_N')
+
+    # copy DIOi_N pin state to LEDi state fir each i [0:7]
+    while 1:
+        for i in range(8):
+            rp_s.tx_txt('DIG:PIN? DIO'+str(i)+'_N')
+            state = rp_s.rx_txt()
+            rp_s.tx_txt('DIG:PIN LED'+str(i)+','+str(state))
+
+    rp_s.close()
+
+
+Code - LabVIEW
+---------------
+
+.. figure:: img/Push-button-and-turn-on-LED_LV.png
+
+- `Download Example <https://downloads.redpitaya.com/downloads/Clients/labview/Push%20button%20and%20turn%20on%20LED.vi>`_
+
+
+API Code Examples
+====================
 
 .. note::
 
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+
+Code - C API
+------------
 
 .. code-block:: c
 
@@ -118,33 +152,80 @@ Code - C
     }
 
 
-Code - Python
-*************
+Code - Python API
+------------------
 
 .. code-block:: python
 
-    #!/usr/bin/env python3
+    #!/usr/bin/python3
 
-    import sys
-    import redpitaya_scpi as scpi
+    import time
+    import rp
 
-    rp_s = scpi.scpi(sys.argv[1])
+    percent = 50        # Percentage of LED bar turned ON
+    is_integer = True
 
-    # set all DIO*_N pins to inputs
-    for i in range(8):
-        rp_s.tx_txt('DIG:PIN:DIR IN,DIO'+str(i)+'_N')
+    # Initialize the interface
+    rp.rp_Init()
 
-    # copy DIOi_N pin state to LEDi state fir each i [0:7]
+    #####! Choose one of two methods, comment the other !#####
+    #! METHOD 1: Interacting with Registers direclty
+    led = 0
+    led_array = [0b00000001, 0b00000010, 0b00000100, 0b00001000, 0b00010000, 0b00100000, 0b01000000, 0b10000000]
+
     while 1:
-        for i in range(8):
-            rp_s.tx_txt('DIG:PIN? DIO'+str(i)+'_N')
-            state = rp_s.rx_txt()
-            rp_s.tx_txt('DIG:PIN LED'+str(i)+','+str(state))
+        led = 0
+        percent = input("Enter LED bar percentage: ")
+        try:
+            # Try to convert input to integer
+            int(percent)
+        except ValueError:
+            is_integer = False      # set flag to false if the conversion fails
+        else:
+            is_integer = True
+            percent = int(percent)  # convert input string to integer
+
+        if is_integer:              # If input is integer
+            if not 0 <= percent <= 100:       # In case of not defined percentage display default value
+                percent = 50
+            print (f"Bar showing {percent}%")
+
+            for i in range(8):                  # Calculate LED percentage
+                if percent > (i+1)*(100.0/9):
+                    led += led_array[i]         # Sum the bits together to get the final register value
+            rp.rp_LEDSetState(led)
+        else:
+            print("Invalid input")
+        time.sleep(0.2)
 
 
-Code - LabVIEW
-**************
+    #! METHOD 2: Using Macros
+    led_array = [rp.RP_LED0, rp.RP_LED1, rp.RP_LED2, rp.RP_LED3, rp.RP_LED4, rp.RP_LED5, rp.RP_LED6, rp.RP_LED7]
 
-.. figure:: img/Push-button-and-turn-on-LED_LV.png
+    while 1:
+        percent = input("Enter LED bar percentage: ")
+        try:
+            # Try to convert input to integer
+            int(percent)
+        except ValueError:
+            is_integer = False      # set flag to false if the conversion fails
+        else:
+            is_integer = True
+            percent = int(percent)  # convert input string to integer
 
-`Dowload <https://downloads.redpitaya.com/downloads/Clients/labview/Push%20button%20and%20turn%20on%20LED.vi>`_
+        if is_integer:              # If input is integer
+            if not 0 <= percent <= 100:       # In case of not defined percentage display default value
+                percent = 50
+            print (f"Bar showing {percent}%")
+
+            for i in range(8):                  # Calculate LED percentage
+                if percent > (i+1)*(100.0/9):
+                    rp.rp_DpinSetState(led_array[i],rp.RP_HIGH)
+                else:
+                    rp.rp_DpinSetState(led_array[i],rp.RP_LOW)
+        else:
+            print("Invalid input")
+        time.sleep(0.2)
+
+    # Release resources
+    rp.rp_Release()
