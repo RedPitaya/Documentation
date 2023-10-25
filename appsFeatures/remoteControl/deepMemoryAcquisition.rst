@@ -38,7 +38,7 @@ By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. Th
 
 In the **dtraw.dts** configure the following lines:
 
-.. code-block:: json
+.. code-block:: default
 
    buffer@1000000 {
       phandle = <0x39>;
