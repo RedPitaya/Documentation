@@ -2,7 +2,7 @@
 Build FPGA image
 ################
 
-.. contents:: Index
+.. contents:: **Index**
    :local:
    :backlinks: none
 
