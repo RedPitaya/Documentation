@@ -225,18 +225,28 @@ Connect to your Red Pitaya board via the terminal on a Linux machine and start t
 
 .. figure:: img/scpi-ssh.png
 
+.. note::
+
+   In ecosystem versions 2-23 and higher. You can run directly without the service. This will allow you to see the server logs when executing commands.
+
+   .. figure:: scpi-run2.png
+
+   The logs are enabled with the command:
+
+   .. code-block::
+
+      RP:LOGmode CONSOLE
+
 
 .. include:: SCPI_commands.inc
 
-
-|
-|
 
 .. _examples:
 
 ********
 Examples
 ********
+
 
 In the list below you will find examples of remote control and C algorithms. These examples cover all basic Red Pitaya functionalities, such as:
 
