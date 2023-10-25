@@ -2,6 +2,13 @@
 Build FPGA image
 ################
 
+.. contents:: **Index**
+   :local:
+   :backlinks: none
+
+|
+|
+
 The following build instructions were tested on Ubuntu 20.04.
 It is important to install the correct Vivado and SDK versions as the projects and scripts are made for those versions and may return errors during the build.
 
@@ -26,6 +33,8 @@ It is important to install the correct Vivado and SDK versions as the projects a
 
    <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">RedPitaya/RedPitaya-FPGA</a>
 
+|
+|
 
 *************
 Prerequisites
@@ -38,8 +47,9 @@ Install libraries:
 
 .. code-block:: shell-session
 
-   # apt-get install unixodbc unixodbc-dev libncurses-dev libzmq3-dev libxext6 libasound2 libxml2 libx11-6 libxtst6 libedit-dev libxft-dev libxi6 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft-dev:i386 libxrender-dev:i386 libxt6:i386 libxtst6:i386
+    # apt-get install unixodbc unixodbc-dev libncurses-dev libzmq3-dev libxext6 libasound2 libxml2 libx11-6 libxtst6 libedit-dev libxft-dev libxi6 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft-dev:i386 libxrender-dev:i386 libxt6:i386 libxtst6:i386
 
+|
 
 Xilinx Vivado 2020.1
 ====================
@@ -57,11 +67,13 @@ First, backup the file and then open it as a superuser with a text editor such a
 
 .. code-block:: shell-session
 
-   $ sudo nano /etc/os-release
+    $ sudo nano /etc/os-release
 
 and change the VERSION line to ``VERSION=”18.04.4 LTS (Bionic Beaver)"`` and save the file. The edited file should look something like this:
 
 .. figure:: os_release.png
+
+|
 
 Afterward, you can either run the **Xilinx_Unified_2020.1_0602_1208_Lin64.bin** (Linux web installer) or the xsetup file from the extracted folder (unified installer).
 After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.
@@ -72,6 +84,7 @@ For more information on Vivado installation `click here <https://redpitaya-knowl
 
    <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>
 
+|
 
 Xilinx SDK development environments 2019.1
 =============================================
@@ -87,6 +100,7 @@ Xilinx SDK is available from the |SDK download page|.
 
    <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
 
+|
 
 .. _dev_tree_xil:
 
@@ -98,7 +112,7 @@ You can prepare it by running the command:
 
 .. code-block:: shell-session
 
-   $ make -f Makefile.x86 devicetree
+    $ make -f Makefile.x86 devicetree
 
 .. note::
 
@@ -106,9 +120,12 @@ You can prepare it by running the command:
 
    .. code-block:: shell-session
 
-      curl -L https://github.com/Xilinx/device-tree-xlnx/archive/xilinx-v2017.2.tar.gz/ -o device-tree-xlnx-xilinx-v2017.2.tar.gz
+       curl -L https://github.com/Xilinx/device-tree-xlnx/archive/xilinx-v2017.2.tar.gz/ -o device-tree-xlnx-xilinx-v2017.2.tar.gz
 
    Extract the .tar.gz to */<redpitaya path>/tmp/device-tree-xlnx-xilinx-v2017.2*.
+
+|
+|
 
 *******************
 Directory structure
@@ -154,6 +171,9 @@ Project-specific code is placed inside the ``fpga/prj/name/`` directories and is
 |                   | FSBL (First Stage Boot Loader) and                               |
 |                   | DTS (Design Tree) builds                                         |
 +-------------------+------------------------------------------------------------------+
+
+|
+|
 
 *****************
 FPGA sub-projects
@@ -202,6 +222,8 @@ on the first Red Pitaya release.
 |                   | observe and review the performance of the bus implementation.          |                        |
 +-------------------+------------------------------------------------------------------------+------------------------+
 
+|
+|
 
 .. _buildprocess:
 
@@ -238,6 +260,7 @@ The following table shows which projects are available on which boards.
 | mercury           | mercury             | X                         |                   |                           |                           |
 +-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
 
+|
 
 Table of required build flags for FPGA projects per board
 
@@ -256,60 +279,69 @@ Table of required build flags for FPGA projects per board
 | STEMlab 125-14 4-Input       | MODEL=Z20_125_4CH   |
 +------------------------------+---------------------+
 
+|
 
+1.  On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window).
+    Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup:
 
-1. On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window).
-   Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup:
+    .. code-block:: shell-session
 
-   .. code-block:: shell-session
-
-      source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
-      source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
+        source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
+        source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
+   
+    |
 
 .. _xilinx_path:
 
-2. The Xilinx installation directory should be located in */opt* directory (or */tools*, if you used the default Vivado installation directory).
-   These two commands will set up the $PATH environment variable.
-   It might also be necessary to add the SDK bin folder to the $PATH environment variable:
+2.  The Xilinx installation directory should be located in */opt* directory (or */tools*, if you used the default Vivado installation directory).
+    These two commands will set up the $PATH environment variable.
+    It might also be necessary to add the SDK bin folder to the $PATH environment variable:
 
-   .. code-block:: shell-session
+    .. code-block:: shell-session
 
-      export PATH=<path to Xilinx installation directory>/Xilinx/SDK/2019.1/bin:$PATH
+        export PATH=<path to Xilinx installation directory>/Xilinx/SDK/2019.1/bin:$PATH
 
-   On Windows, please check |windows_path| or search the web. Add the path to the */bin* directory for Vivado and SDK.
+    On Windows, please check |windows_path| or search the web. Add the path to the */bin* directory for Vivado and SDK.
 
+    |
 
 .. |windows_path| raw:: html
 
    <a href="https://www.computerhope.com/issues/ch000549.htm" target="_blank">this link</a>
 
 
-3. Check if you have Git command line tools installed on your computer:
+3.  Check if you have Git command line tools installed on your computer:
 
-   .. code-block:: shell-session
+    .. code-block:: shell-session
 
-      sudo apt update
-      sudo apt install git   
+        sudo apt update
+        sudo apt install git   
 
-4. Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:
+    |
 
-   .. code-block:: shell-session
+4.  Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:
 
-      git clone https://github.com/RedPitaya/RedPitaya.git
+    .. code-block:: shell-session
 
-   .. note::
+        git clone https://github.com/RedPitaya/RedPitaya.git
 
-      For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to **step 6 and later** in this section, please note that all paths in the following section start with *<Red Pitaya repository>/RedPitaya-FPGA/prj* instead of *<Red Pitaya repository>/fpga/prj*.
+    .. note::
 
-   .. |FPGA_tutorial| raw:: html
+       For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to **step 6 and later** in this section, please note that all paths in the following section start with *<Red Pitaya repository>/RedPitaya-FPGA/prj* instead of *<Red Pitaya repository>/fpga/prj*.
+
+    |
+
+.. |FPGA_tutorial| raw:: html
 
       <a href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga2.html#programming-the-fpga" target="_blank">Red Pitaya FPGA tutorial</a>
 
-5. The devicetree sources must also be downloaded and extracted by running
+5.  The devicetree sources must also be downloaded and extracted by running
 
-   .. code-block:: shell-session
+    .. code-block:: shell-session
 
-      make -f Makefile.x86 devicetree
+        make -f Makefile.x86 devicetree
+
+    |
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
 Non-project mode is used, to avoid the generation of project files,
@@ -332,28 +364,33 @@ The following scripts perform various tasks:
 | ``red_pitaya_hsi_dts.tcl``        | creates device tree sources                    |
 +-----------------------------------+------------------------------------------------+
 
+|
 
-6. **Non-project mode:** First, change your directory to *<path to Red Pitaya repository>/RedPitaya/fpga*.
-   To generate a bit file, reports, device tree, and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
+6.  **Non-project mode:** First, change your directory to *<path to Red Pitaya repository>/RedPitaya/fpga*.
+    To generate a bit file, reports, device tree, and FSBL, run (replace ``name`` with project name and ``model`` with model flag):
 
-   .. code-block:: shell-session
+    .. code-block:: shell-session
 
-      $ make PRJ=name MODEL=model
+        $ make PRJ=name MODEL=model
 
-   For example, build v0.94 for STEMlab 125-14:
+    For example, build v0.94 for STEMlab 125-14:
 
-   .. code-block:: shell-session
+    .. code-block:: shell-session
 
-      $ make PRJ=v0.94 MODEL=Z10
+        $ make PRJ=v0.94 MODEL=Z10
 
-   .. note::
+    .. note::
 
-      Running the commands above will automatically generate the whole project without openning Vivado in the process (non-project mode).
+       Running the commands above will automatically generate the whole project without openning Vivado in the process (non-project mode).
 
-      To open the project inside Vivado and edit the FPGA code there please check **step 8**.
+       To open the project inside Vivado and edit the FPGA code there please check **step 8**.
 
-7. The resulting .bit file is located in */prj/<project name>/out/redpitaya.bit*
-   This file must be copied to */opt/redpitaya/fpga* on the Red Pitaya itself.
+    |
+
+7.  The resulting .bit file is located in */prj/<project name>/out/redpitaya.bit*
+    This file must be copied to */opt/redpitaya/fpga* on the Red Pitaya itself.
+
+|
 
 .. note:: 
 
@@ -361,13 +398,13 @@ The following scripts perform various tasks:
    
    .. code-block:: shell-session
    
-      BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ...
+       BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ...
    
    First, find the line containing
    
-   .. code-block:: none
+   .. code-block:: shell-session
    
-      set scripts_vivado_version 2020.1
+       set scripts_vivado_version 2020.1
    
    and change 2020.1 to your version.
    This is a quick and dirty way to get the build working in other versions of Vivado.
@@ -379,38 +416,46 @@ The following scripts perform various tasks:
 
    .. figure:: IPupdate.png
 
+   |
+
    When IPs are up-to-date, go to the tab Tcl console and run the command:
 
    .. code-block:: shell-session
 
-      write_bd_tcl systemZ10.tcl
+       write_bd_tcl systemZ10.tcl
 
    Of course, the script may also be named *systemZ20.tcl* or *systemZ20_14.tcl*, depending on your board.
 
    This generates a new tcl script that replaces the old script in *fpga/prj/<project name>/ip*.
 
-8. **Project mode:** To generate and open a Vivado project using **GUI**, run:
+|
 
-   .. code-block:: shell-session
+8.  **Project mode:** To generate and open a Vivado project using **GUI**, run:
 
-      $ make project PRJ=name MODEL=model
+    .. code-block:: shell-session
 
-   For example, the v0.94 project for STEMlab 125-14:
+        $ make project PRJ=name MODEL=model
 
-   .. code-block:: shell-session
+    For example, the v0.94 project for STEMlab 125-14:
 
-      $ make project PRJ=v0.94 MODEL=Z10
+    .. code-block:: shell-session
 
-   .. figure:: project_make.png
+        $ make project PRJ=v0.94 MODEL=Z10
+
+    .. figure:: project_make.png
    
-   A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
-   You can add/write your Verilog module at the end of *red_pitaya_top.sv* file (or add a new source by right-clicking the *Design Sources* folder and *Add Source*):
+    A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
+    You can add/write your Verilog module at the end of *red_pitaya_top.sv* file (or add a new source by right-clicking the *Design Sources* folder and *Add Source*):
    
-   .. figure:: vivado_project.png
-   
-   You can connect newly added sources in the Diagram (Block Design) section (If it is not open: *Window => Design => double click system*).
-   Add them to the design by right click => Add Module in the design window (for more information check the *Learn FPGA programming => FPGA lessons section*)
-   https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
+    .. figure:: vivado_project.png
+
+    |
+
+    You can connect newly added sources in the Diagram (Block Design) section (If it is not open: *Window => Design => double click system*).
+    Add them to the design by right click => Add Module in the design window (for more information check the *Learn FPGA programming => FPGA lessons section*)
+    https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
+
+|
 
 .. note::
 
@@ -418,17 +463,22 @@ The following scripts perform various tasks:
    make sure you have a **Format** that uses **a dot (“.”) as a decimal separator** (the United Kingdom or the United States will work).
    Otherwise, the Synthesis might fail as some parts of **Vivado demand a dot as the decimal separator**, which will, in turn, cause Vivado not to recognize certain parts of the model.
 
-9. The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit**
-   This file must be copied to the Red Pitaya Linux OS into the **/opt/redpitaya/fpga** directory.
+|
 
-   .. figure:: vivadoGUI.png
+9.  The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit**
+    This file must be copied to the Red Pitaya Linux OS into the **/opt/redpitaya/fpga** directory.
 
-   1. Run Synthesis
-   2. Run Implementation
-   3. Generate Bitstream
+    .. figure:: vivadoGUI.png
 
-   The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/** as **red_pitaya_top.bit** (the name of the .bit file is the same as the top module of the design).
+    |
 
+    1. Run Synthesis
+    2. Run Implementation
+    3. Generate Bitstream
+
+    The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/** as **red_pitaya_top.bit** (the name of the .bit file is the same as the top module of the design).
+
+|
 
 Reprogramming the FPGA with a custom image
 ============================================
@@ -441,8 +491,8 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
 
    On Windows, the process can also be done through a standard Command Prompt, but any ``echo`` commands must be executed inside the Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows ``echo``). For more information, refer to the following forum topics:
    
-       - |batch_file_topic_1|
-       - |batch_file_topic_2|
+      - |batch_file_topic_1|
+      - |batch_file_topic_2|
 
 .. |batch_file_topic_1| raw:: html
 
@@ -454,91 +504,92 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
 
 .. tabs::
 
-    .. tab:: OS version 1.04 or older
+   .. tab:: OS version 1.04 or older
 
-        Please note that you need to change the forward slashes to backward slashes on Windows.
+      Please note that you need to change the forward slashes to backward slashes on Windows.
 
-        1. Open Terminal or CMD and go to the .bit file location.
+      1.  Open Terminal or CMD and go to the .bit file location.
 
-        .. code-block:: bash
+          .. code-block:: bash
     
-            cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+              cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
 
-        2. Send the file .bit (*red_pitaya_top.bit* is the default name) to the Red Pitaya with the ``scp`` command.
+      2.  Send the file .bit (*red_pitaya_top.bit* is the default name) to the Red Pitaya with the ``scp`` command.
 
-        .. code-block:: bash
+          .. code-block:: bash
 
-            scp red_pitaya_top.bit root@rp-xxxxxx.local:/root
+              scp red_pitaya_top.bit root@rp-xxxxxx.local:/root
 
-        3. Now establish an :ref:`SSH communication <ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit* in the root directory.
+      3.  Now establish an :ref:`SSH communication <ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit* in the root directory.
 
-        .. code-block:: bash
+          .. code-block:: bash
 
-            redpitaya> ls
+              redpitaya> ls
 
-        4. Load the *red_pitaya_top.bit* to **xdevcfg** with
+      4.  Load the *red_pitaya_top.bit* to **xdevcfg** with
 
-        .. code-block:: bash
+          .. code-block:: bash
 
-            redpitaya> cat red_pitaya_top.bit > /dev/xdevcfg
+              redpitaya> cat red_pitaya_top.bit > /dev/xdevcfg
 
-    .. tab:: OS version 2.00
+   .. tab:: OS version 2.00
 
-        The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the ``echo`` command functinality differs bewteen the two.
+      The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the ``echo`` command functinality differs bewteen the two.
 
-        Please note that you need to change the forward slashes to backward slashes on Windows.
+      Please note that you need to change the forward slashes to backward slashes on Windows.
         
-        **Non-project mode:** Skip to *step 3*.
+      **Non-project mode:** Skip to *step 3*.
 
-        1. On Windows, open **Vivado HSL Command Prompt** and go to the *.bit* file location.
+      1.  On Windows, open **Vivado HSL Command Prompt** and go to the *.bit* file location.
 
-           On Linux, open the **Terminal** and go to the *.bit* file location.
+          On Linux, open the **Terminal** and go to the *.bit* file location.
 
-           .. code-block:: bash
+          .. code-block:: bash
 
-               cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+              cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
 
-        2. Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*)
+      2.  Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*)
 
-           **Windows (Vivado HSL Command Prompt):**
+          **Windows (Vivado HSL Command Prompt):**
 
-           .. code-block:: bash
+          .. code-block:: bash
 
-               echo all:{ path/to/bitfile/fpga.bit } >  path/to/biffile/fpga.bif
-               bootgen -image path/to/biffile/fpga.bif -arch zynq -process_bitstream bin -o path/to/binfile/red_pitaya.bit.bin -w
+              echo all:{ path/to/bitfile/fpga.bit } >  path/to/biffile/fpga.bif
+              bootgen -image path/to/biffile/fpga.bif -arch zynq -process_bitstream bin -o path/to/binfile/red_pitaya.bit.bin -w
 
-           Example code:
+          Example code:
 
-           .. code-block:: bash
+          .. code-block:: bash
 
-               echo all:{ red_pitaya_top.bit } >  red_pitaya_top.bif
-               bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+              echo all:{ red_pitaya_top.bit } >  red_pitaya_top.bif
+              bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
 
-           **Linux and Windows (WSL + Normal CMD):**
+          **Linux and Windows (WSL + Normal CMD):**
 
-           .. code-block:: bash
+          .. code-block:: bash
 
-               echo -n "all:{ red_pitaya_top.bit }" >  red_pitaya_top.bif
-               bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+              echo -n "all:{ red_pitaya_top.bit }" >  red_pitaya_top.bif
+              bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
 
-        3. Send the file *.bit.bin* to the Red Pitaya with the ``scp`` command.
+      3.  Send the file *.bit.bin* to the Red Pitaya with the ``scp`` command.
 
-           .. code-block:: bash
+          .. code-block:: bash
    
-               scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
+              scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
 
-        4. Now establish an :ref:`SSH communication <ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit.bin* in the root directory.
+      4.  Now establish an :ref:`SSH communication <ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit.bin* in the root directory.
 
-           .. code-block:: bash
+          .. code-block:: bash
 
-               redpitaya> ls
+              redpitaya> ls
 
-        5. Load the *red_pitaya_top.bit.bin* image into the FPGA:
+      5.  Load the *red_pitaya_top.bit.bin* image into the FPGA:
 
-           .. code-block:: bash
+          .. code-block:: bash
 
-               redpitaya> /opt/redpitaya/bin/fpgautil -b red_pitaya_top.bit.bin
+              redpitaya> /opt/redpitaya/bin/fpgautil -b red_pitaya_top.bit.bin
 
+|
 
 Reverting to original FPGA image
 ==================================
@@ -547,20 +598,22 @@ If you want to roll back to the official Red Pitaya FPGA program, run the follow
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
+   .. group-tab:: OS version 1.04 or older
 
-        .. code-block:: shell-session
+      .. code-block:: shell-session
 
-            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+          redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-    .. group-tab:: OS version 2.00
+   .. group-tab:: OS version 2.00
 
-        .. code-block:: shell-session
+      .. code-block:: shell-session
 
-            redpitaya> overlay.sh v0.94
+          redpitaya> overlay.sh v0.94
 
 or simply restart your Red Pitaya.
 
+|
+|
 
 ********************
 Programming via JTAG
@@ -584,6 +637,8 @@ JTAG-HS3 is displayed as an FTDI device.
 
 .. figure:: lsusb.jpg
 
+|
+
 Now, install Digilent Adept 2 software from https://digilent.com/reference/software/adept/start.
 You will need both Utilities and Runtime. These are both available as .deb packages. If installing from GUI does not work, they can be installed using:
 
@@ -599,36 +654,48 @@ Once these packages are installed, you can check if the driver detects your adap
 
 .. figure:: driver_check.jpg
 
+|
+
 Now, open Vivado 2020.1, click *Program and Debug -> Open Target -> Auto Connect*.
 
 .. figure:: program_menu.jpg
+
+|
 
 This will display a Xilinx-compatible JTAG cable in the Hardware window, under localhost.
 
 .. figure:: cable.jpg
 
+|
+
 Now plug your cable into Red Pitaya's JTAG connector. The pins are marked on the bottom side of Red Pitaya's PCB.
 
 .. figure:: JTAG_pins.jpg
+
+|
 
 A Xilinx device should now appear in Vivado (on the detected cable). In this case, it's an xc7z010_1.
 
 .. figure:: program.jpg
 
+|
+
 Now, you can click Program Device.
 
 .. figure:: connected.jpg
+
+|
 
 A bitfile selector prompt appears and when a valid file is selected, Red Pitaya can be programmed.
 
 .. figure:: file_select.jpg
 
-
+|
+|
 
 **********
 Simulation
 **********
-
 
 ModelSim as provided for free from Altera is used to run simulations.
 Scripts expect the default install location.
@@ -637,8 +704,8 @@ so this path must be created:
 
 .. code-block:: shell-session
 
-   $ ln -s $HOME/intelFPGA/16.1/modelsim_ase/linux $HOME/intelFPGA/16.1/modelsim_ase/linux_rh60
-   $ sudo apt install libxft2:i386
+    $ ln -s $HOME/intelFPGA/16.1/modelsim_ase/linux $HOME/intelFPGA/16.1/modelsim_ase/linux_rh60
+    $ sudo apt install libxft2:i386
 
 To run the simulation, Vivado tools have to be installed.
 There is no need to source ``settings.sh``.
@@ -646,21 +713,23 @@ For now, the path to the ModelSim simulator is hard coded into the simulation ``
 
 .. code-block:: shell-session
 
-   $ cd fpga/sim
+    $ cd fpga/sim
 
 Simulations can be run by running ``make`` with the bench file name as target:
 
 .. code-block:: shell-session
 
-   $ make top_tb
+    $ make top_tb
 
 Some simulations have a waveform window configuration script like ``top_tb.tcl``
 which will prepare an organized waveform window.
 
 .. code-block:: shell-session
 
-   $ make top_tb WAV=1
+    $ make top_tb WAV=1
 
+|
+|
 
 .. _devicetree:
 
@@ -685,9 +754,13 @@ Running ``make`` of a project will create a device tree source and some include 
 To enable some Linux drivers (Ethernet, XADC, I2C EEPROM, SPI, GPIO, and LED) additional configuration files.
 Generic device tree files can be found in ``fpga/dts`` while project-specific code is in ``fpga/prj/name/dts/``.
 
+|
+|
+
 **************
 Signal mapping
 **************
+
 
 XADC inputs
 ===========
@@ -708,6 +781,7 @@ XADC input data can be accessed through the Linux IIO (Industrial IO) driver int
 |        | AIF[PN]4  | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 6.10 V           |
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
 
+|
 
 Input range
 -----------
@@ -751,6 +825,7 @@ General purpose inputs
 
    range = \frac{0.5 V}{ratio} = 3.50 V
 
+|
 
 GPIO and LEDs
 =============
@@ -801,6 +876,7 @@ The default pin assignment for GPIO is described in the next table.
 | ``B9`` | ``E2[10]`` | I2C0_SDA           |  ``MIO[51]``     | ``906+   [51]   = 957``      | requires ``pinctrl`` changes to be active |
 +--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
 
+|
 
 Linux access to LED
 ===================
@@ -813,17 +889,18 @@ To show CPU load on LED 9 use:
 
 .. code-block:: shell-session
 
-   $ echo heartbeat > /sys/class/leds/led0/trigger
+    $ echo heartbeat > /sys/class/leds/led0/trigger
 
 To switch LED 8 ON use:
 
 .. code-block:: shell-session
 
-   $ echo 1 > /sys/class/leds/led0/brightness
+    $ echo 1 > /sys/class/leds/led0/brightness
 
+|
 
-PS ``pinctrl`` for MIO signals
-==============================
+PS pinctrl for MIO signals
+============================
 
 It is possible to modify MIO pin functionality using device tree files during Linux bootup.
 The listed files should be included in the main device tree.
@@ -842,6 +919,10 @@ These files can be modified into device tree overlays, which can be used to modi
 | ``miso2gpio.dtsi`` | E2 connector, SPI1 MISO signal is repurposed as GPIO |
 |                    | SPI can then only be used for writing (maybe 3-wire) |
 +--------------------+------------------------------------------------------+
+
+
+|
+|
 
 .. _fpga_registers:
 

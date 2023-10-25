@@ -6,23 +6,26 @@ Blink
 
 .. http://blog.redpitaya.com/examples-new/blink/
 
-***********
+
 Description
-***********
+===========
 
 This example shows how to control one of the Red Pitaya on-board LEDs and make it blink.
 
-*****************
+
 Required hardware
-*****************
+==================
 
     - Red Pitaya device
 
 .. figure:: img/redpitaya_led0_blink.gif
 
-***************
+
+SCPI Code Examples
+====================
+
 Code - MATLAB ®
-***************
+----------------
 
 The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
@@ -40,28 +43,91 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     configureTerminator(RP, 'CR/LF');   % defines the line terminator (end sequence of input characters)
 
     %% Send SCPI command to Red Pitaya to turn ON LED1
-
     writeline(RP,'DIG:PIN LED1,1');
 
-    pause(5)                         % Set time of LED ON
+    pause(5);                         % Set time of LED ON
 
     %% Send SCPI command to Red Pitaya to turn OFF LED1
-    
     writeline(RP,'DIG:PIN LED1,0');
 
     %% Close connection with Red Pitaya
-
     clear RP;
 
-    
-********
-Code - C
-********
+
+Code - Python
+--------------
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import sys
+    import time
+    import redpitaya_scpi as scpi
+
+    IP = 'rp-f066c8.local'
+    rp_s = scpi.scpi(IP)
+
+    if (len(sys.argv) > 2):
+        led = int(sys.argv[2])
+    else:
+        led = 0
+
+    print ("Blinking LED["+str(led)+"]")
+
+    period = 1 # seconds
+
+    while 1:
+        time.sleep(period/2.0)
+        rp_s.tx_txt('DIG:PIN LED' + str(led) + ',' + str(1))
+        time.sleep(period/2.0)
+        rp_s.tx_txt('DIG:PIN LED' + str(led) + ',' + str(0))
+
+    rp_s.close()
+
+
+Code - Scilab
+--------------
+
+.. code-block:: scilab
+
+    clc
+
+    // Load SOCKET Toolbox. Steps 7&8
+    exec(SCI+'contribsocket_toolbox_2.0.1loader.sce'); 
+    SOCKET_init();
+
+    IP = '192.168.128.1';
+    port = 5000;
+    tcpipObj ='RedPitaya';
+
+    SOCKET_open(tcpipObj, IP, port);
+
+    SOCKET_write(tcpipObj, 'DIG:PIN LED1,1');
+    xpause(5*1E+6)
+    SOCKET_write(tcpipObj, 'DIG:PIN LED1,0');
+
+    SOCKET_close(tcpipObj);
+
+
+Code - LabVIEW
+----------------
+
+.. figure:: img/Blink_LV.png
+
+- `Download Example <https://downloads.redpitaya.com/downloads/Clients/labview/Blink.vi>`_
+
+
+API Code Examples
+====================
 
 .. note::
 
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+
+Code - C API
+-------------
 
 .. code-block:: c
 
@@ -105,67 +171,39 @@ Code - C
         return EXIT_SUCCESS;
     }
 
-*************
-Code - Python
-*************
+
+Code - Python API
+------------------
 
 .. code-block:: python
 
-    #!/usr/bin/env python3
+    #!/usr/bin/python3
 
-    import sys
     import time
-    import redpitaya_scpi as scpi
+    import rp
 
-    rp_s = scpi.scpi(sys.argv[1])
+    period = 1      # period in secodns
 
-    if (len(sys.argv) > 2):
-        led = int(sys.argv[2])
-    else:
-        led = 0
+    # Initialize the interface
+    rp.rp_Init()
 
-    print ("Blinking LED["+str(led)+"]")
-
-    period = 1 # seconds
-
+    #####! Choose one of two methods, comment the other !#####
+    #! METHOD 1: Interacting with Registers direclty
     while 1:
         time.sleep(period/2.0)
-        rp_s.tx_txt('DIG:PIN LED' + str(led) + ',' + str(1))
+        rp.rp_LEDSetState(0b00000001)     # or 0b00000001
         time.sleep(period/2.0)
-        rp_s.tx_txt('DIG:PIN LED' + str(led) + ',' + str(0))
+        rp.rp_LEDSetState(0b00000000)     # or 0
 
 
-*************
-Code - Scilab
-*************
+    #! METHOD 2: Using Macros
+    while 1:
+        time.sleep(period/2.0)
+        rp.rp_DpinSetState(rp.RP_LED0, rp.RP_HIGH)
+        time.sleep(period/2.0)
+        rp.rp_DpinSetState(rp.RP_LED0, rp.RP_LOW)
 
-.. code-block:: scilab
+    # Release resources
+    rp.rp_Release()
 
-    clc
-
-    // Load SOCKET Toolbox. Steps 7&8
-    exec(SCI+'contribsocket_toolbox_2.0.1loader.sce'); 
-    SOCKET_init();
-
-    IP= '192.168.128.1';
-    port = 5000;
-    tcpipObj='RedPitaya';
-
-    SOCKET_open(tcpipObj,IP,port);
-
-    SOCKET_write(tcpipObj,'DIG:PIN LED1,1');
-    xpause(5*1E+6)
-    SOCKET_write(tcpipObj,'DIG:PIN LED1,0');
-
-    SOCKET_close(tcpipObj);
-
-
-**************
-Code - LabVIEW
-**************
-
-.. figure:: img/Blink_LV.png
-
-
-`Download <https://downloads.redpitaya.com/downloads/Clients/labview/Blink.vi>`_
 
