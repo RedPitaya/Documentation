@@ -7,4 +7,5 @@
    acquisition/acqRF
    acquisition_generation/acq_genRF.rst
    multiboard_sync/multiboard
+   DMA/deepMemoryAcq
    communication_interfaces/digcomIF
