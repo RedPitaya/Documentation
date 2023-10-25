@@ -2,30 +2,9 @@
 Build FPGA image
 ################
 
-**Index**
-
-- `Prerequisites`_
-   - `Libraries used by ModelSim-Altera`_
-   - `Xilinx Vivado 2020.1`_
-   - `Xilinx SDK development environments 2019.1`_
-   - `Device Tree Xilinx`_
-- `Directory structure`_
-- `FPGA sub-projects`_
-- `Building process`_
-   - `Reprogramming the FPGA with a custom image`_
-   - `Reverting to original FPGA image`_
-- `Programming via JTAG`_
-- `Simulation`_
-- `Device tree`_
-- `Signal mapping`_
-   - `XADC inputs`_
-      - `Input range`_
-         - `5V power supply`_
-         - `General purpose inputs`_
-   - `GPIO and LEDs`_
-   - `Linux access to LED`_
-   - `PS pinctrl for MIO signals`_
-- `Registers`_
+.. contents:: Index
+   :local:
+   :backlinks: none
 
 |
 |
@@ -122,6 +101,7 @@ Xilinx SDK is available from the |SDK download page|.
    <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
 
 |
+
 .. _dev_tree_xil:
 
 Device Tree Xilinx
@@ -350,6 +330,7 @@ Table of required build flags for FPGA projects per board
        For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to **step 6 and later** in this section, please note that all paths in the following section start with *<Red Pitaya repository>/RedPitaya-FPGA/prj* instead of *<Red Pitaya repository>/fpga/prj*.
 
     |
+
 .. |FPGA_tutorial| raw:: html
 
       <a href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga2.html#programming-the-fpga" target="_blank">Red Pitaya FPGA tutorial</a>
