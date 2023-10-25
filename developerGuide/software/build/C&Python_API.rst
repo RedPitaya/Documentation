@@ -119,6 +119,11 @@ Running Python applications
 
 The Python applications can be executed from anywhere inside the Red Pitaya directory system, but we do recommend using the **"Home" ("/root")** directory for code storeage.
 
+.. note::
+
+    Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes a **Bad Interpreter error**).
+    The recommended encoding is **UTF-8**.
+
 1. The best way to create Python APIs is to write the code on your computer (use the available examples as a reference) and then copy the code to Red Pitaya using the **scp** (secure copy) command:
 
     .. code-block:: shell-session
