@@ -120,7 +120,6 @@ Code - C API
 
     #include <stdio.h>
     #include <stdlib.h>
-
     #include "rp.h"
 
     int main (int argc, char **argv) {
@@ -161,71 +160,49 @@ Code - Python API
 
     import time
     import rp
-
-    percent = 50        # Percentage of LED bar turned ON
-    is_integer = True
-
+    
     # Initialize the interface
     rp.rp_Init()
-
+    
     #####! Choose one of two methods, comment the other !#####
+    
     #! METHOD 1: Interacting with Registers direclty
+    
+    diox_n = [0b00000001, 0b00000010, 0b00000100, 0b00001000, 0b00010000, 0b00100000, 0b01000000, 0b10000000]
     led = 0
-    led_array = [0b00000001, 0b00000010, 0b00000100, 0b00001000, 0b00010000, 0b00100000, 0b01000000, 0b10000000]
-
+    
+    # Set all DIO*_N pins to inputs
+    rp.rp_GPIOnSetDirection(0b00000000)     # 0 == input, 1 == output
+    
+    # Transfer each digital input state to the corresponding LED
+    # Please note that Red Pitaya GPIOs default to HIGH state when left floating.
     while 1:
         led = 0
-        percent = input("Enter LED bar percentage: ")
-        try:
-            # Try to convert input to integer
-            int(percent)
-        except ValueError:
-            is_integer = False      # set flag to false if the conversion fails
-        else:
-            is_integer = True
-            percent = int(percent)  # convert input string to integer
-
-        if is_integer:              # If input is integer
-            if not 0 <= percent <= 100:       # In case of not defined percentage display default value
-                percent = 50
-            print (f"Bar showing {percent}%")
-
-            for i in range(8):                  # Calculate LED percentage
-                if percent > (i+1)*(100.0/9):
-                    led += led_array[i]         # Sum the bits together to get the final register value
-            rp.rp_LEDSetState(led)
-        else:
-            print("Invalid input")
+    
+        state = rp.rp_GPIOnGetState()[1]        # Get DIO_N input register
+    
+        for i in range(8):
+            led += (state & diox_n[i])          # isolate each DIOx_N input and add the value to LEDs (bitwise AND)
+        rp.rp_LEDSetState(led)
         time.sleep(0.2)
-
-
+    
+    
     #! METHOD 2: Using Macros
+    
+    diox_n = [rp.RP_DIO0_N, rp.RP_DIO1_N, rp.RP_DIO2_N, rp.RP_DIO3_N, rp.RP_DIO4_N, rp.RP_DIO5_N, rp.RP_DIO6_N, rp.RP_DIO7_N]
     led_array = [rp.RP_LED0, rp.RP_LED1, rp.RP_LED2, rp.RP_LED3, rp.RP_LED4, rp.RP_LED5, rp.RP_LED6, rp.RP_LED7]
-
+    
+    for i in range(8):
+        rp.rp_DpinSetDirection(diox_n[i], rp.RP_IN)
+    
     while 1:
-        percent = input("Enter LED bar percentage: ")
-        try:
-            # Try to convert input to integer
-            int(percent)
-        except ValueError:
-            is_integer = False      # set flag to false if the conversion fails
-        else:
-            is_integer = True
-            percent = int(percent)  # convert input string to integer
-
-        if is_integer:              # If input is integer
-            if not 0 <= percent <= 100:       # In case of not defined percentage display default value
-                percent = 50
-            print (f"Bar showing {percent}%")
-
-            for i in range(8):                  # Calculate LED percentage
-                if percent > (i+1)*(100.0/9):
-                    rp.rp_DpinSetState(led_array[i],rp.RP_HIGH)
-                else:
-                    rp.rp_DpinSetState(led_array[i],rp.RP_LOW)
-        else:
-            print("Invalid input")
+        for i in range(8):
+            state = rp.rp_DpinGetState(diox_n[i])[1]        # Get state of DIOx_N
+            rp.rp_DpinSetState(led_array[i], state)         # Transfer state to the corresponding LED
         time.sleep(0.2)
-
+    
+    
     # Release resources
     rp.rp_Release()
+
+
