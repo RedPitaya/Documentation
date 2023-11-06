@@ -56,6 +56,9 @@ Compiling and running C applications
 
     When you copy the source code from our repository (following the instructions below) you will also copy all C examples to your Red Pitaya board. After that, only the compilation step is needed.
 
+.. note::
+
+    Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
 
 When compiling on the target no special preparations are needed. A native toolchain is available directly on the Debian system.
 
@@ -147,6 +150,22 @@ The Python applications can be executed from anywhere inside the Red Pitaya dire
     .. code-block:: shell-session
 
        ./pythonAPI_example.py
+
+.. note::
+
+    If a **ModuleNotFoundError: No module named 'rp'** error pops-up, Python Path is not properly configured.
+    Add the following two lines to the end of the **.bashrc** file (inside home directory).
+
+    .. code-block:: shell-session
+
+        PYTHONPATH=/opt/redpitaya/lib/python/:$PYTHONPATH
+        export PYTHONPATH
+
+    Then execute the **.bashrc** or restart Red Pitaya:
+
+    .. code-block:: shell-session
+
+        source ./.bashrc
 
 
 C and Python API examples
