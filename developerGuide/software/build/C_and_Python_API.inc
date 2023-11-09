@@ -31,148 +31,265 @@ Examples on how to control Red Pitaya using APIs can be found :ref:`here <exampl
 Compiling and running C applications
 =====================================
 
-.. note::
-
-    When you copy the source code from our repository (following the instructions below) you will also copy all C examples to your Red Pitaya board. After that, only the compilation step is needed.
-
-    Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
-
-
 When compiling on the target no special preparations are needed. A native toolchain is available directly on the Debian system.
 
-First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
 
-.. code-block:: shell-session
+Compiling and running Example code
+-----------------------------------
 
-    ssh root@192.168.0.100
+1.  First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
 
-You can also use the .local address (not all computers support .local addresses) (replace 'xxxxxx' with the last 6 characters of the Red Pitaya's MAC address):
+    .. code-block:: shell-session
 
-.. code-block:: shell-session
+        ssh root@192.168.0.100
 
-    ssh root@rp-xxxxxx.local
+    You can also use the .local address (not all computers support .local addresses) (replace 'xxxxxx' with the last 6 characters of the Red Pitaya's MAC address):
 
-Now make a clone of the Red Pitaya Git repository and enter the project directory.
+    .. code-block:: shell-session
 
-.. code-block:: shell-session
+        ssh root@rp-xxxxxx.local
 
-    git clone https://github.com/RedPitaya/RedPitaya.git
-    cd RedPitaya
+2.  Now make a clone of the Red Pitaya Git repository and enter the project directory.
 
-In order to compile one example just use the source file name without the `.c` extension.
+    .. code-block:: shell-session
 
-.. code-block:: shell-session
+        git clone https://github.com/RedPitaya/RedPitaya.git
+        cd RedPitaya
 
-    cd Examples/C
-    make digital_led_blink
+    When you copy the source code from our repository you will also copy all available C API examples to your Red Pitaya board.
+
+3.  In order to compile one example just use the source file name without the `.c` extension.
+
+    .. code-block:: shell-session
+
+        cd Examples/C
+        make digital_led_blink
+
+
+    To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
+    create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process.
+    Here is an example:
+
+    .. code-block:: shell-session
+
+        MODEL ?= Z10
+
+        CFLAGS  = -std=gnu11 -Wall ## -Werror
+        CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+        LDFLAGS = -L/opt/redpitaya/lib
+        LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+
+        INCLUDE += -I/opt/redpitaya/include/api250-12
+        LDLIBS += -lrp-gpio -lrp-i2c
+        LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
+
+        # List of compiled object files (not yet linked to executable)
+
+        PRGS = digital_led_blink \
+               api_example_2 \
+               api_example_3 \
+               api_example_x
+
+        OBJS := $(patsubst %,%.o,$(PRGS))
+        SRC := $(patsubst %,%.c,$(PRGS))
+
+        all: $(PRGS)
+
+        $(PRGS): %: %.c
+            $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+        clean:
+            $(RM) *.o
+            $(RM) $(OBJS)
+
+
+4.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
+
+    .. tabs::
+
+        .. group-tab:: OS version 1.04 or older
+
+            .. code-block:: shell-session
+
+                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+        .. group-tab:: OS version 2.00
+
+            .. code-block:: shell-session
+
+                redpitaya> overlay.sh v0.94
+
+
+5. Execute the application.
+
+    .. tabs::
+
+        .. group-tab:: With Makefile
+
+            Since the libraries were linked during the compilation process, the application can be executed normally.
+        
+            .. code-block:: shell-session
+
+                ./digital_led_blink
+
+        .. group-tab:: No Makefile
+    
+            The path to Red Pitaya shared libraries must be provided explicitly.
+
+            .. code-block:: shell-session
+
+                LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
+
+
+    Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
+
+
+Compiling and running custom code
+-----------------------------------
 
 .. note::
 
-   To avoid the step of having to specify the library path explicitly everytime before executing a C API script, create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process. Here is an example:
+   When creating custom C API programs on your computer, please make sure that **End of Line Sequence** in your code editor is set to **LF**
+   (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
 
-   .. code-block:: shell-session
+1.  First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
 
-       MODEL ?= Z10
+    .. code-block:: shell-session
 
-       CFLAGS  = -std=gnu11 -Wall ## -Werror
-       CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
-       LDFLAGS = -L/opt/redpitaya/lib
-       LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+        ssh root@192.168.0.100
+
+    You can also use the .local address (not all computers support .local addresses) (replace 'xxxxxx' with the last 6 characters of the Red Pitaya's MAC address):
+
+    .. code-block:: shell-session
+
+        ssh root@rp-xxxxxx.local
+
+2.  Send the custom C code example from your computer to the Red Pitaya board. Here is an example of how to copy the code to */root* directory on the Red Pitaya.
+
+    .. code-block:: shell-session
+
+        scp /path/to/custom/c/api/ root@rp-xxxxxx.local:/root
+
+3.  To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
+    create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process.
+    Here is an example:
+
+    .. code-block:: shell-session
+
+        MODEL ?= Z10
+
+        CFLAGS  = -std=gnu11 -Wall ## -Werror
+        CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+        LDFLAGS = -L/opt/redpitaya/lib
+        LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+
+        INCLUDE += -I/opt/redpitaya/include/api250-12
+        LDLIBS += -lrp-gpio -lrp-i2c
+        LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
+
+        # List of compiled object files (not yet linked to executable)
+        # Add your custom apis to the PRGS variable without the ".c" extension, separete different scripts
+        # with backslashes "\".
+
+        PRGS = digital_led_blink \
+               api_example_2 \
+               api_example_3 \
+               api_example_x
+
+        OBJS := $(patsubst %,%.o,$(PRGS))
+        SRC := $(patsubst %,%.c,$(PRGS))
+
+        all: $(PRGS)
+
+        $(PRGS): %: %.c
+            $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+        clean:
+            $(RM) *.o
+            $(RM) $(OBJS)
+
+
+4.  In order to compile one example, just use the source file name without the `.c` extension.
+
+    .. code-block:: shell-session
+
+        cd Examples/C
+        make digital_led_blink
+
+
+4.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
+
+    .. tabs::
+
+        .. group-tab:: OS version 1.04 or older
+
+            .. code-block:: shell-session
+
+                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+        .. group-tab:: OS version 2.00
+
+            .. code-block:: shell-session
+
+                redpitaya> overlay.sh v0.94
+
+
+5. Execute the application.
+
+    .. tabs::
+
+        .. group-tab:: With Makefile
+
+            Since the libraries were linked during the compilation process, the application can be executed normally.
         
-       INCLUDE += -I/opt/redpitaya/include/api250-12
-       LDLIBS += -lrp-gpio -lrp-i2c
-       LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
-        
-        
-       # List of compiled object files (not yet linked to executable)
-        
-       PRGS = digital_led_blink \
-              api_example_2 \
-              api_example_3 \
-              api_example_x
-        
-       OBJS := $(patsubst %,%.o,$(PRGS))
-       SRC := $(patsubst %,%.c,$(PRGS))
-        
-       all: $(PRGS)
-        
-       $(PRGS): %: %.c
-           $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-        
-       clean:
-           $(RM) *.o
-           $(RM) $(OBJS)
+            .. code-block:: shell-session
 
+                ./digital_led_blink
 
-Applications based on the API require a specific FPGA image (v0.94) to be loaded:
-
-.. tabs::
-
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: shell-session
-
-            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
-    .. group-tab:: OS version 2.00
-
-        .. code-block:: shell-session
-
-            redpitaya> overlay.sh v0.94
-
-**Execute the application.**
-
-.. tabs::
-
-    .. group-tab:: With Makefile
-
-        Since the libraries were linked during the compilation process, the application can be executed normally.
-        
-        .. code-block:: shell-session
-
-            ./digital_led_blink
-
-    .. group-tab:: No Makefile
+        .. group-tab:: No Makefile
     
-        The path to Red Pitaya shared libraries must be provided explicitly.
+            The path to Red Pitaya shared libraries must be provided explicitly.
 
-        .. code-block:: shell-session
+            .. code-block:: shell-session
 
-            LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
+                LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
 
-
-Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
+    If an application is running in a continuous loop - press `CTRL+C` to stop them.
 
 
 Running Python applications
 ==============================
 
-The Python applications can be executed from anywhere inside the Red Pitaya directory system, but we do recommend using the **"Home" ("/root")** directory for code storeage.
+The Python applications can be executed from anywhere inside the Red Pitaya directory system, 
+but we do recommend using the **"Home" ("/root")** directory for code storeage.
 
 .. note::
 
     Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes a **Bad Interpreter error**).
     The recommended encoding is **UTF-8**.
 
-1. The best way to create Python APIs is to write the code on your computer (use the available examples as a reference) and then copy the code to Red Pitaya using the **scp** (secure copy) command:
+1.  The best way to create Python APIs is to write the code on your computer (use the available examples as a reference).
+    Do not forget to include the **rp** library.
+
+2.  Copy the code to Red Pitaya using the **scp** (secure copy) command:
 
     .. code-block:: shell-session
 
         scp "path/to/pythonAPI/file" root@rp-xxxxxx.local
 
-2. If copying a full directory do not forget to add the **-r** flag:
+3.  If copying a full directory do not forget to add the **-r** flag:
 
     .. code-block:: shell-session
 
         scp -r "path/to/pythonAPI/folder" root@rp-xxxxxx.local
 
-3. Connect to your Red Pitaya via :ref:`SSH <ssh>` and make the files executable:
+4.  Connect to your Red Pitaya via :ref:`SSH <ssh>` and make the files executable:
 
     .. code-block:: shell-session
 
         chmod +x pythonAPI_example1.py pythonAPI_example2.py pythonAPI_example3.py
 
-4. Finally, run the code.
+5.  Finally, run the code.
 
     .. code-block:: shell-session
 
