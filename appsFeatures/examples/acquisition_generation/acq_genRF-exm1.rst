@@ -145,7 +145,7 @@ Code - Python
 
     rp_s.tx_txt('ACQ:START')
     time.sleep(1)
-    rp_s.tx_txt('ACQ:TRIG CH1_PE')
+    rp_s.tx_txt('ACQ:TRIG AWG_PE')
     rp_s.tx_txt('OUTPUT1:STATE ON')
     time.sleep(1)
 
@@ -317,7 +317,7 @@ Code - C API
         length and sampling rate*/
 
         sleep(1);
-        rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
+        rp_AcqSetTriggerSrc(RP_TRIG_SRC_AWG_PE);
         rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
 
         sleep(0.5);
@@ -394,7 +394,7 @@ Code - Python API
     #?  RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE, 
     #?  RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE
 
-    acq_trig_sour = rp.RP_TRIG_SRC_CHA_PE
+    acq_trig_sour = rp.RP_TRIG_SRC_AWG_PE
 
     N = 16384
 
