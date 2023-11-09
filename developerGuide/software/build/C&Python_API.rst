@@ -28,21 +28,6 @@ All API functions have an "int" return value. If the returned value is 0 (equal 
 
 The Python API functions are just wrappers that call the corresponding C API function. Consequently, they have exactly the same names, and always return an array where the first element is the C API function return value (successful or not), and the other elements represent the expected return values.
 
-.. note::
-
-    Please note that not all available API functions are in the :ref:`Available SCPI commands' list <scpi_command_list>`. If you want to check out all available API functions they are available here:
-    - C - Check the |rp-api| section of the GitHub repository (|RP_H|).
-    - Python - Establish an :ref:`SSH <ssh>` connection to your Red Pitaya and look into the "/opt/redpitaya/lib/python" directoy.
-
-.. |rp-api| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api" target="_blank">"rp-api" section of the GitHub repository</a>
-
-   
-.. |RP_H| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/redpitaya/rp.h" target="_blank">Functions info</a>
-
 
 Examples on how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
 
@@ -56,9 +41,8 @@ Compiling and running C applications
 
     When you copy the source code from our repository (following the instructions below) you will also copy all C examples to your Red Pitaya board. After that, only the compilation step is needed.
 
-.. note::
-
     Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
+
 
 When compiling on the target no special preparations are needed. A native toolchain is available directly on the Debian system.
 
@@ -88,6 +72,44 @@ In order to compile one example just use the source file name without the `.c` e
     cd Examples/C
     make digital_led_blink
 
+.. note::
+
+   To avoid the step of having to specify the library path explicitly everytime before executing a C API script, create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process. Here is an example:
+
+   .. code-block:: shell-session
+
+       MODEL ?= Z10
+
+       CFLAGS  = -std=gnu11 -Wall ## -Werror
+       CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+       LDFLAGS = -L/opt/redpitaya/lib
+       LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+        
+       INCLUDE += -I/opt/redpitaya/include/api250-12
+       LDLIBS += -lrp-gpio -lrp-i2c
+       LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
+        
+        
+       # List of compiled object files (not yet linked to executable)
+        
+       PRGS = digital_led_blink \
+              api_example_2 \
+              api_example_3 \
+              api_example_x
+        
+       OBJS := $(patsubst %,%.o,$(PRGS))
+       SRC := $(patsubst %,%.c,$(PRGS))
+        
+       all: $(PRGS)
+        
+       $(PRGS): %: %.c
+           $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+        
+       clean:
+           $(RM) *.o
+           $(RM) $(OBJS)
+
+
 Applications based on the API require a specific FPGA image (v0.94) to be loaded:
 
 .. tabs::
@@ -104,7 +126,7 @@ Applications based on the API require a specific FPGA image (v0.94) to be loaded
 
             redpitaya> overlay.sh v0.94
 
-Execute the application.
+**Execute the application.**
 
 Note that the path to Red Pitaya shared libraries must be provided explicitly.
 
@@ -112,7 +134,9 @@ Note that the path to Red Pitaya shared libraries must be provided explicitly.
 
     LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
 
+
 Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
+
 
 
 .. _comPython:
@@ -166,6 +190,22 @@ The Python applications can be executed from anywhere inside the Red Pitaya dire
     .. code-block:: shell-session
 
         source ./.bashrc
+
+
+C and Python API all available commands
+========================================
+
+The API functions/commands are written together with the :ref:`Available SCPI commands' list <scpi_command_list>`. As of now the list does not include all possible options. If you want to check out all available API commands they are available here:
+    - C - Check the |rp-api| section of the GitHub repository (|RP_H|).
+    - Python - Establish an :ref:`SSH <ssh>` connection to your Red Pitaya and look into the "/opt/redpitaya/lib/python" directoy.
+
+.. |rp-api| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api" target="_blank">"rp-api" section of the GitHub repository</a>
+
+.. |RP_H| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/redpitaya/rp.h" target="_blank">Functions info</a>
 
 
 C and Python API examples
