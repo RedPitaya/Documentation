@@ -123,15 +123,26 @@ Applications based on the API require a specific FPGA image (v0.94) to be loaded
 
 **Execute the application.**
 
-Note that the path to Red Pitaya shared libraries must be provided explicitly.
+.. tabs::
 
-.. code-block:: shell-session
+    .. group-tab:: With Makefile
 
-    LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
+        Since the libraries were linked during the compilation process, the application can be executed normally.
+        
+        .. code-block:: shell-session
+
+            ./digital_led_blink
+
+    .. group-tab:: No Makefile
+    
+        The path to Red Pitaya shared libraries must be provided explicitly.
+
+        .. code-block:: shell-session
+
+            LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
 
 
 Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
-
 
 
 .. _comPython:
