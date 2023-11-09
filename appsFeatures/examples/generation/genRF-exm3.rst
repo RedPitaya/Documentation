@@ -235,7 +235,7 @@ Code - Python API
     debounce_len = 50000  # microseconds
     
     #? Possible modes:
-    #?   RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST, RP_GEN_MODE_STREAM
+    #?   RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST
     mode = rp.RP_GEN_MODE_BURST
     
     #? Possible trigger sources:
