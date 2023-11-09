@@ -27,7 +27,6 @@ The Python API functions are just wrappers that call the corresponding C API fun
 Examples on how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
 
 
-.. _comC:
 
 Compiling and running C applications
 =====================================
@@ -144,8 +143,6 @@ Applications based on the API require a specific FPGA image (v0.94) to be loaded
 
 Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
 
-
-.. _comPython:
 
 Running Python applications
 ==============================
