@@ -219,7 +219,7 @@ Code - Python API
                     # in mircoseconds
                     
     #? Possible modes:
-    #?   RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST, RP_GEN_MODE_STREAM
+    #?   RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST
     mode = rp.RP_GEN_MODE_BURST
 
     # Initialize the interface
