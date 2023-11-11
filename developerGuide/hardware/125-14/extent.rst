@@ -76,14 +76,14 @@ Pin  Description             FPGA pin number  FPGA pin description      Voltage 
 ===  ======================  ===============  ========================  ==============
 1    +5V                                                                              
 2    -3.4V (50mA)\ :sup:`1`                                                           
-3    SPI(MOSI)               E9               PS_MIO10_500               3.3 V        
-4    SPI(MISO)               C6               PS_MIO11_500               3.3 V        
-5    SPI(SCK)                D9               PS_MIO12_500               3.3 V        
-6    SPI(CS#)                E8               PS_MIO13_500               3.3 V        
-7    UART(TX)                C8               PS_MIO08                   3.3 V        
-8    UART(RX)                C5               PS_MIO09                   3.3 V        
-9    I2C(SCL)                B9               PS_MIO50_501               3.3 V        
-10   I2C(SDA)                B13              PS_MIO51_501               3.3 V        
+3    SPI (MOSI)              E9               PS_MIO10_500               3.3 V        
+4    SPI (MISO)              C6               PS_MIO11_500               3.3 V        
+5    SPI (SCK)               D9               PS_MIO12_500               3.3 V        
+6    SPI (CS#)               E8               PS_MIO13_500               3.3 V        
+7    UART (TX)               C8               PS_MIO08                   3.3 V        
+8    UART (RX)               C5               PS_MIO09                   3.3 V        
+9    I2C (SCL)               B9               PS_MIO50_501               3.3 V        
+10   I2C (SDA)               B13              PS_MIO51_501               3.3 V        
 11   Ext com.mode                                                        GND (default)
 12   GND                                                                              
 13   Analog Input 0                                                      0-3.5 V      
