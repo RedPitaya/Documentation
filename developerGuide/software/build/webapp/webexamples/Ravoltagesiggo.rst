@@ -6,9 +6,11 @@ In this example we will modify our oscilloscope made in Reading analog voltage f
 :ref:`example <ReadAVSI>`. We will add gain and offset settings to present how some parameters set in UI can be then 
 applied on the signal in the backend.
 
-******
+|
+|
+
 Web UI
-******
+========
 
 In **index.html** we need to add gain and offset blocks.
 Without gain some measurements may be very low and offset can set minimal voltage.
@@ -20,13 +22,17 @@ Without gain some measurements may be very low and offset can set minimal voltag
         < div>Gain: </div>
         <input id='gain_set' type="range" size="2" value="1" min = "1" max = "100">
     </div>
-    
+
+|
+
 Offset: 
 
 .. code-block:: html
 
     
     <input id='offset_set' type="range" size="2" value="0" min = "0" max = "5" step="0.1">
+
+|
 
 In **app.js** we should set gain and offset by **APP.setGain** and **APP.setOffset** and send them to server.
 
@@ -52,11 +58,16 @@ They will be used by controller.
 
     $('#offset_value').text(APP.offset);
 
-**********
+|
+|
+
+
 Controller
-**********
+=============
 
 In **main.cpp** we need new parameters.
+
+|
 
 **Gain:**
 
@@ -65,6 +76,8 @@ In **main.cpp** we need new parameters.
     CIntParameter GAIN("GAIN", CBaseParameter::RW, 1, 0, 1, 100);
 
 Its’ min value is 1 and max is 100. By default it is 1.
+
+|
 
 **Offset:**
 
@@ -75,12 +88,16 @@ Its’ min value is 1 and max is 100. By default it is 1.
 
 Its’ min value is **0.0** and max is **5.0**. By default it is **0.0**.
 
+|
+
 They will be updated in **OnNewParams()** function:
 
 .. code-block:: c
 
     GAIN.Update();
     OFFSET.Update();
+
+|
 
 We should modify writing to signal in **UpdateSignals().**
 
