@@ -5,9 +5,8 @@ Build Red Pitaya OS
 ###################
 
 
-********
 Overview
-********
+===========
 
 Executable scripts from ``debian`` directory:
 
@@ -22,6 +21,8 @@ Executable scripts from ``debian`` directory:
 +---------------------+------------------------------------------------------------------------------+
 | ``image-clean.sh``  | deprecated                                                                   |
 +---------------------+------------------------------------------------------------------------------+
+
+|
 
 Scripts to be used in a ``chroot`` environment only:
 
@@ -53,11 +54,15 @@ Scripts to be used in a ``chroot`` environment only:
 | ``tft.sh``          | X-server and XFCE                                                                                   |
 +---------------------+-----------------------------------------------------------------------------------------------------+
 
+|
+
 The ``overlay`` directory contains configuration files which are individually installed onto the OS by scripts.
 
-*************
+|
+|
+
 Bootstrapping
-*************
+================
 
 A short list of SD card image contents:
 
@@ -67,6 +72,9 @@ A short list of SD card image contents:
    - systemd services
    - most network configuration files
    - Jupyter work space
+
+|
+
 2. Ecosystem (Fat32 partition):
 
    1. Bare metal:
@@ -77,6 +85,8 @@ A short list of SD card image contents:
       - Bazaar server (Nginx) and WEB applications
       - Red Pitaya API library
       - SCPI server
+
+|
 
 To build a functional *OS image* the *ecosystem* is required,
 since without the ``boot.bin`` and the Linux kernel, the system will not start.
@@ -89,12 +99,20 @@ Therefore the procedure for the first build is as follows:
 1. Build the OS image without the ecosystem.
    This will create a ``redpitaya_OS_*.img`` SD card image, but without the ecosystem and therefore non functional.
    It will also create a ``redpitaya_OS_*.tar.gz`` file, to be used in the ``chroot`` environment.
+
+|
+
 2. Build the ``ecosystem_*.zip`` inside the ``chroot`` environment.
+
+|
+
 3. Combine ``redpitaya_OS_*.img`` with ``ecosystem_*.zip`` using:
 
    .. code-block:: shell-session
 
       OS/debian/image-update.sh redpitaya_OS_*.img ecosystem_*.zip
+
+|
 
 After finishing the bootstrapping procedure, either the ecosystem or the OS image can be built as needed.
 The more common procedure would be to build a new ecosystem using an existing ``chroot`` environment,
@@ -103,9 +121,11 @@ The build procedure for a new SD card OS image can now be done in one step.
 If an existing ``ecosystem_*.zip`` file is present in the project root while building the OS image,
 it will be integrated and the result will be a fully functional SD card image.
 
-************
+|
+|
+
 Dependencies
-************
+=============
 
 Ubuntu 2022.04 was used to build Debian/Ubuntu SD card images for Red Pitaya.
 
@@ -115,9 +135,11 @@ The next two packages need to be installed on the host PC:
 
    $ sudo apt-get install debootstrap qemu-user-static
 
-================
+|
+|
+
 Ubuntu bootstrap
-================
+------------------
 
 The next steps should be executed in the root directory of the Red Pitaya Git repository.
 
@@ -125,6 +147,8 @@ The next steps should be executed in the root directory of the Red Pitaya Git re
 
    $ git clone https://github.com/RedPitaya/ubuntu.git
    $ cd RedPitaya
+
+|
 
 Run the next command to build the OS image. Root or ``sudo`` privileges are needed.
 The code should be executed as the ``root`` user,
@@ -142,6 +166,8 @@ otherwise some configuration files will be placed into the wrong users home dire
    # OS/debian/image.sh
    # exit
 
+|
+
 :download:`image.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/image.sh>`  will create an SD card image with a name containing the current 
 date and time. Two partitions are created a 512MB FAT32 partition for the ecosystem and a slightly less then 8GB Ext4 partition.
 
@@ -156,13 +182,17 @@ locales, hostname, timezone, file system table, U-boot and users (access to UART
 needed by Red Pitaya applications. :download:`redpitaya.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/redpitaya.sh>` also extracts 
 ``ecosystem*.zip`` (if one exists in the current directory) into the FAT partition.
 
+|
+
 Optionally (code can be commented out) :download:`ubuntu.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/ubuntu.sh>` also executes
 :download:`jupyter.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/jupyter.sh>` and :download:`tft.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/tft.sh>` which provide 
 additional functionality.
 
-===========================
+|
+|
+
 Red Pitaya ecosystem update
-===========================
+---------------------------
 
 In case an ``ecosystem*.zip`` file was not available for the previous step,
 it can be extracted later to the FAT partition (128MB) of the SD card.
@@ -184,9 +214,11 @@ Now you can burn a micro SD card (sized 8GB) e.g.,
 
    # dd bs=4M if=redpitaya_OS_*.img of=/dev/mmcblk0
 
-=================
+|
+|
+
 File system check
-=================
+------------------
 
 If the image creation involved multiple steps performed by the user,
 for example some installation/setup procedure performed on a live Red Pitaya,
@@ -200,9 +232,11 @@ Use this script on an image before releasing it.
 
    # ./OS/debian/image-fsck.sh redpitaya_OS_*.img
 
-===================
+|
+|
+
 Reducing image size
-===================
+--------------------
 
 .. note::
 
@@ -216,6 +250,8 @@ A cleanup can be performed to reduce the image size. Various things can be done 
 * remove temporary files
 * zero out empty space on the partition
 
+|
+
 The next code only removes APT temporary files and zeros out the file system empty space.
 
 .. code-block:: shell-session
@@ -226,13 +262,14 @@ The next code only removes APT temporary files and zeros out the file system emp
    $ rm -f zero.file
    $ history -c
 
-************
-Debian Usage
-************
+|
+|
 
-=======
+Debian Usage
+==================
+
 Systemd
-=======
+-----------
 
 Systemd is used as the init system and services are used to start/stop Red Pitaya applications/servers.
 Service files are located in ``OS/debian/overlay/etc/systemd/system/*.service``.
@@ -246,6 +283,8 @@ Service files are located in ``OS/debian/overlay/etc/systemd/system/*.service``.
 +-------------------------+----------------------------------------------------------------------------------------------------+
 | ``redpitaya_nginx``     | Nginx based server, serving WEB based applications                                                 |
 +-------------------------+----------------------------------------------------------------------------------------------------+
+
+|
 
 To start/stop a service, do one of the following:
 
@@ -267,9 +306,10 @@ To see the status of a specific service run:
 
    $ systemctl
 
----------
+|
+
 Debugging
----------
+~~~~~~~~~~~
 
 .. code-block:: shell-session
 
