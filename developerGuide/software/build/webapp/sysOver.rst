@@ -5,6 +5,8 @@ System overview
 Almost all applications on Red Pitaya are made of two parts. We call them frontend and backend. You can see them on 
 the picture below.
 
+|
+
 .. figure:: Common.png
 
 |
@@ -26,6 +28,8 @@ of some rules. You can read about this rules in How to
 Frontend
 ===========
 
+|
+
 .. figure:: Frontend-1.png
 
 |
@@ -33,6 +37,8 @@ Frontend
 Frontend is that thing that you can see on your screen. We prefer to use high technologies for creating modern looking 
 applications with lots of possibilities. It's HTML5 for layout, CSS3 for element styles and JavaScript for
 creating fast and reliable web applications. Using all these tools you can create lots of innovative applications.
+
+|
 
 .. figure:: Frontend-2.png
 
@@ -64,6 +70,8 @@ application. Controller is shared linux library with .so extension. It operates 
 called Parameters and Signals. First of them are needed for handling state of important variables of your app. 
 Another one are needed for collecting number of data inside one container. You can use lots of them at the same time. 
 None of them are necessary, so if you don't need singlas in your application you may not use them.
+
+|
 
   .. figure:: Backend.png
 
