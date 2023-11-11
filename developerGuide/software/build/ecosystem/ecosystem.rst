@@ -23,12 +23,17 @@ Go to the Red Pitaya (git) directory.
    
    This line can also be added to the end of .bashrc and will automatically set the ``$LC_ALL`` variable each time the 
    the terminal is started.
+
+|
    
 .. note::
     
     It is not possible to build an ecosystem on an encrypted home directory since schroot can not access that 
     directory. We recommend that you make a separate directory in the home directory that is not encrypted e.g. 
     ``/home/ecosystem_build``
+
+|
+|
        
 =====================================
 Red Pitaya ecosystem and applications
@@ -40,6 +45,8 @@ directories, however, due to the nature of the Xilinx SoC "All
 Programmable" paradigm and the way several components are interrelated,
 some components might be spread across many directories or found at
 different places one would expect.
+
+|
 
 +--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 | directories  | contents                                                                                                                                        |
@@ -67,6 +74,9 @@ different places one would expect.
 | build_scripts| Scripts for building an ecosystem and preparing an image for writing to a memory card                                                           |
 +--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
+|
+|
+
 -------------------
 Supported platforms
 -------------------
@@ -78,6 +88,8 @@ so Linux is also the only platform we support.
 
    Ecosystem version 2.0 requires ubuntu version 22.04
 
+|
+|
 
 .. _sys-req-label:
 
@@ -102,6 +114,8 @@ You will need the following to build the Red Pitaya components:
       #32-bit libraries
       sudo apt-get install lib32z1 lib32ncurses5 libbz2-1.0:i386 lib32stdc++6
 
+|
+
 2. Meson Build system (depends on Python 3) is used for some new code.
    It is not required but can be used during development on an x86 PC.
 
@@ -111,6 +125,8 @@ You will need the following to build the Red Pitaya components:
       sudo pip3 install --upgrade pip
       sudo pip3 install meson
       sudo apt-get install ninja-build
+
+|
 
 3. Xilinx `Vivado 2020.1 <http://www.xilinx.com/support/download.html>`_ FPGA development tools.
    The SDK (bare metal toolchain) must also be installed, be careful during the installation process to select it.
@@ -142,7 +158,7 @@ You will need the following to build the Red Pitaya components:
 
       Ecosystem version 2.0 requires Vivado version 2020.1 and SDK 2019.1
 
-
+|
 
 4. Missing ``gmake`` path
 
@@ -151,6 +167,9 @@ You will need the following to build the Red Pitaya components:
    .. code-block:: shell-session
 
       $ sudo ln -s /usr/bin/make /usr/bin/gmake
+
+|
+|
 
 .. _build-proc-label:
 
@@ -161,6 +180,8 @@ Build process
 .. note::
 
    To implement the build process, at least 8 GB of available space on the PC's local machine is required.
+
+|
 
 .. tabs::
 
@@ -173,6 +194,8 @@ Build process
 
          git clone https://github.com/RedPitaya/RedPitaya.git
          cd RedPitaya
+
+      |
 
       .. note:: 
 
@@ -214,6 +237,7 @@ Build process
 
          or follow the steps of the instructions and build yourself
          
+      |
 
       **2.**  An example script ``settings.sh`` is provided for setting all necessary environment variables.
       The script assumes some default tool install paths, so it might need editing if install paths other than the ones described above were used.
@@ -221,6 +245,8 @@ Build process
       .. code-block:: shell-session
 
          settings.sh
+
+      |
 
       **3.** Prepare a download cache for various source tarballs.
       This is an optional step that will speed up the build process by avoiding downloads for all but the first build.
@@ -231,6 +257,8 @@ Build process
          mkdir -p dl
          export DL=$PWD/dl
 
+      |
+
       **4.** Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
       You can also create your root environment following the instructions in :ref:`OS image build instructions <os>`.
       Correct file permissions are required for ``schroot`` to work properly.
@@ -240,6 +268,8 @@ Build process
          wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_04-oct-2021.tar.gz
          sudo chown root:root redpitaya_ubuntu_04-oct-2021.tar.gz
          sudo chmod 664 redpitaya_ubuntu_04-oct-2021.tar.gz
+
+      |
 
       **5.** Create schroot configuration file ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``.
       Replace the tarball path stub with the absolute path of the previously downloaded image.
@@ -274,6 +304,7 @@ Build process
             personality=linux
             preserve-environment=true
 
+      |
 
       **6.** To build everything a few ``make`` steps are required.
 
@@ -284,6 +315,8 @@ Build process
          make
          EOL_CHROOT
          make -f Makefile.x86 zip
+
+      |
 
       **7.** If you want to build for 122-16 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20 in the makefile
       This parameter defines how to create projects and should be transferred to all makefiles.
@@ -296,6 +329,8 @@ Build process
          EOL_CHROOT
          make -f Makefile.x86 zip MODEL=Z20
 
+      |
+
       **8.** If you want to build for 125-14 4-Input based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_125_4CH in makefile
       This parameter defines how to create projects and should be transferred to all makefiles.
 
@@ -307,6 +342,8 @@ Build process
          EOL_CHROOT
          make -f Makefile.x86 zip MODEL=Z20_125_4CH
 
+      |
+
       **9.** If you want to build for 250-12 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_250_12 in the makefile
       This parameter defines how to create projects and should be transferred to all makefiles.
 
@@ -317,6 +354,8 @@ Build process
          make MODEL=Z20_250_12
          EOL_CHROOT
          make -f Makefile.x86 zip MODEL=Z20_250_12
+
+      |
 
       To get an interactive ARM shell do.
 
@@ -346,6 +385,7 @@ Build process
 
          or follow the steps of the instructions and build yourself
          
+      |
 
       **2.**  An example script ``settings.sh`` is provided for setting all necessary environment variables.
       The script assumes some default tool install paths, so it might need editing if install paths other than the ones described above were used.
@@ -353,6 +393,8 @@ Build process
       .. code-block:: shell-session
 
          settings.sh
+
+      |
 
       **3.** Prepare a download cache for various source tarballs.
       This is an optional step that will speed up the build process by avoiding downloads for all but the first build.
@@ -363,6 +405,8 @@ Build process
          mkdir -p dl
          export DL=$PWD/dl
 
+      |
+
       **4.** Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
       You can also create your root environment following the instructions in :ref:`OS image build instructions <os>`.
       Correct file permissions are required for ``schroot`` to work properly.
@@ -372,6 +416,8 @@ Build process
          wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_OS_16-03-48_03-Nov-2022.tar.gz
          sudo chown root:root redpitaya_OS_16-03-48_03-Nov-2022.tar.gz
          sudo chmod 664 redpitaya_OS_16-03-48_03-Nov-2022.tar.gz
+
+      |
 
       **5.** Create schroot configuration file ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``.
       Replace the tarball path stub with the absolute path of the previously downloaded image.
@@ -406,6 +452,7 @@ Build process
             personality=linux
             preserve-environment=true
        
+      |
 
       **6.** To build everything a few ``make`` steps are required.
 
@@ -417,6 +464,8 @@ Build process
          EOL_CHROOT
          make -f Makefile.x86 zip
 
+      |
+
       To get an interactive ARM shell do.
 
       .. code-block:: shell-session
@@ -427,6 +476,8 @@ Build process
 
          Ecosystem Build 2.0 cannot build for a specific board model as it was in version 1.04. Differences only in the assembly of FPGA for specific models.
 
+|
+|
 
 =======================
 Partial rebuild process
@@ -447,6 +498,8 @@ Partial rebuild process
       * SCPI server
       * free applications
 
+      |
+
       **Base system**
 
       Here the *base system* represents everything before Linux user space.
@@ -461,7 +514,6 @@ Partial rebuild process
       On some systems (including Ubuntu 18.04) the library setup provided by Vivado conflicts with default system libraries.
       To avoid this, disable library overrides specified by Vivado.
 
-
       .. code-block:: shell-session
 
          $ export LD_LIBRARY_PATH=""
@@ -472,6 +524,8 @@ Partial rebuild process
       .. code-block:: shell-session
 
          $ make -f Makefile.x86 zip
+
+      |
 
       ***FPGA and device tree sources***
 
@@ -498,6 +552,8 @@ Partial rebuild process
          $ make
          $ sudo make install PREFIX=/usr
 
+      |
+
       ***U-boot***
 
       To build the U-Boot binary and boot scripts (used to select between booting into Buildroot or Debian/Ubuntu):
@@ -508,6 +564,8 @@ Partial rebuild process
 
       The build process downloads the Xilinx version of U-Boot sources from Github, applies patches, and starts the build process.
       Patches are available in the ``patches/`` directory.
+
+      |
 
       ***Linux kernel and device tree binaries***
 
@@ -522,6 +580,8 @@ Partial rebuild process
 
       The build process downloads the Xilinx version of Linux sources from Github, applies patches, and starts the build process.
       Patches are available in the ``patches/`` directory.
+
+      |
 
       ***Boot file***
 
@@ -541,6 +601,8 @@ Partial rebuild process
       * API
       * SCPI server
       * Console tools and web app
+
+      |
 
       **Base system**
 
@@ -566,6 +628,8 @@ Partial rebuild process
 
          $ make -f Makefile.x86 zip
 
+      |
+
       ***FPGA and overlays***
 
       Each FPGA version uses its overlay with the devices necessary to work with FPGA. Previously, the device tree was fixed for a specific FPGA version and board. |br|
@@ -580,6 +644,8 @@ Partial rebuild process
          make -f Makefile.x86 fpga MODEL=Z20_250_12
 
       Detailed instructions are provided for :ref:`building the FPGA <buildprocess>`
+
+      |
 
       ***U-boot*** 
 
@@ -600,6 +666,8 @@ Partial rebuild process
          
          The device tree for ``uboot`` is built using prepared files located in the `dts_uboot` folder. The device tree defines the minimum requirements for peripherals in order for the board to start.
 
+      |
+
       ***Linux kernel and device tree binaries***
 
       To build a Linux image:
@@ -616,6 +684,7 @@ Partial rebuild process
 
          To build device trees, you must first build the necessary FPGA projects for the required boards. Since dtb and dts files are built based on FPGA `barebone` projects.
 
+      |
 
       ***API + SCPI server + Web Applications***
 
@@ -651,6 +720,8 @@ Partial rebuild process
 
          Possible options for individual assemblies are listed. Some of them depend on each other. You can build everything at once if you start the build with `make all`.
 
+|
+|
 
 ----------------
 Linux user space
@@ -660,6 +731,8 @@ Debian/Ubuntu OS
 ~~~~~~~~~~~~~~~~
 
 `Debian/Ubuntu OS instructions <https://github.com/RedPitaya/RedPitaya/tree/master/OS/debian>`_ are detailed elsewhere.
+
+|
 
 API
 ~~~
@@ -679,6 +752,8 @@ You can install it on Red Pitaya by copying it there:
 .. code-block:: shell-session
 
    scp build/api/lib/*.so root@192.168.0.100:/opt/redpitaya/lib/
+
+|
 
 SCPI server
 ~~~~~~~~~~~
@@ -704,6 +779,7 @@ You can install it on Red Pitaya by copying it there:
 
    To build the scpi server for RP, a special `version <https://github.com/RedPitaya/scpi-parser/tree/redpitaya>`_  of scpi-parser is used. It added and optimized some functions.
 
+|
 
 Free applications
 ~~~~~~~~~~~~~~~~~
