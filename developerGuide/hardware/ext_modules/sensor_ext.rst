@@ -12,6 +12,8 @@ The Sensor extension board redirects the digital and analog pins of the Red Pita
 .. figure:: img/Sensor-Extension-Module.jpg
   :width: 500
 
+|
+
 Each Groove connector connects to the power (3V3), ground, and two digital or analog pins. As Red Pitaya only has four analog inputs, some pins overlap. You can control the connector pins and the sensors attached by reading data from either digital or analog pins.
 
 Code examples of controlling the digital and analog inputs and outputs are available :ref:`here <examples>`.
@@ -20,6 +22,8 @@ Getting started with electronics is way more fun and engaging when you have load
 
 .. figure:: img/extension_module_and_sensors.png
   :width: 500
+
+|
 
 Want to use an Arduino Uno shield? They can be plugged directly into the Sensor extension board. The extension module can also be powered from the external power supply using a micro USB cable.
 
@@ -37,12 +41,15 @@ A set of nine Jumpers can reconnect certain extension module connectors to diffe
 
     <a href="https://redpitaya.com/shop/" target="_blank">store</a>
 
+|
+|
 
 Connectors and Jumpers
 =========================
 
 The black connectors on the sides are compatible with Arduino, the white connectors on the front provide analog inputs, and the two rows of beige connectors at the centre provide digital I/O, UART, I2C, or analog outputs. On the bottom, there are connectors to the Red Pitaya board.
 
+|
 
 Grove module connectors
 --------------------------
@@ -75,7 +82,8 @@ There are six connector types available:
 | ``4``               | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       |
 +---------------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
 
-
+|
+|
 
 Arduino shield compatible connectors
 --------------------------------------
@@ -102,6 +110,8 @@ This set of connectors is partially compatible with the Arduino shield connector
 | IO7          | 8         | D[7]              |
 +--------------+-----------+-------------------+
 
+|
+
 +--------------+-----------+-------------------+
 | **Function** |  **Pin**  | **Comment**       |
 +==============+===========+===================+
@@ -126,6 +136,8 @@ This set of connectors is partially compatible with the Arduino shield connector
 | SCL          | 0         | I2C_SCL           |
 +--------------+-----------+-------------------+
 
+|
+
 +--------------+-----------+-------------------+
 | **Function** |  **Pin**  | **Comment**       |
 +==============+===========+===================+
@@ -146,7 +158,8 @@ This set of connectors is partially compatible with the Arduino shield connector
 | +VIN         | 8         | NC                |
 +--------------+-----------+-------------------+
 
-
+|
+|
 
 Jumpers
 ---------
@@ -173,14 +186,17 @@ Jumpers
 | J9              | IO0             | UART_RX             | DIO0_P             |
 +----------------+------------------+---------------------+--------------------+
 
-
+|
+|
 
 Schematics
 ============
 
 * `Red_Pitaya_Sensor_Shield_Schematics.pdf <https://downloads.redpitaya.com/doc/STEMlab_ArduinoSensorShieldSch.PDF>`_.
 
-
+|
+|
+|
 
 Examples of Groove Sensor
 ==========================
@@ -281,6 +297,8 @@ Accelerometer ``not supported at the moment``                                   
 
     <a href="" target="_blank">Accelerometer</a>
 
+|
+
 ========================================================================================    ============
 Actuators                                                                                   Connector
 ========================================================================================    ============
@@ -290,6 +308,8 @@ Actuators                                                                       
 .. |Relay| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Relay" target="_blank">Relay</a>
+
+|
 
 ========================================================================================    ============
 Indicators                                                                                  Connector
@@ -322,7 +342,8 @@ LCD                                                                             
 
     <a href="https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight" target="_blank">Groove LCD</a>
 
-
+|
+|
 
 Code Examples
 ===============
@@ -330,4 +351,6 @@ Code Examples
 Example code of how to control the sensors is available here:
 
 - :ref:`Sensor code examples <examples>`
+
+
 
