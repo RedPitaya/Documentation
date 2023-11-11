@@ -1,7 +1,7 @@
 .. _fpga_stream_app_4ch_2.00-18:
 
 Project - stream_app_4ch
-************************
+============================
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|
 
@@ -13,7 +13,9 @@ Project - stream_app_4ch
 | CS[2]  | 0x40200000  | 0x402FFFFF | GPIO streaming (IN/OUT)          |
 +--------+-------------+------------+----------------------------------+
 
------------------
+|
+|
+
 ADC streaming
 -----------------
 
@@ -449,8 +451,9 @@ ADC streaming
 |          |  PP coefficient                                | 23:0  |   W  |
 +----------+------------------------------------------------+-------+------+
 
+|
+|
 
---------------
 GPIO streaming
 --------------
 
@@ -465,8 +468,9 @@ GPIO streaming
     * [23:16] GPIO_x_N bits
     * [31:24] GPIO_x_P bits
 
-.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+|
 
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
 +----------+------------------------------------------------+-------+------+
 | offset   | description                                    | bits  | R/W  |
