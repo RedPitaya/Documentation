@@ -4,7 +4,16 @@ SDRlab 122-16
 #############
 
 .. figure:: SDRlab-122-16.jpg
-    :width: 50%
+    :width: 500
+
+
+******
+Pinout
+******
+
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
+
 
 ************************
 Technical specifications
