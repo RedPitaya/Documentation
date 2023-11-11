@@ -935,7 +935,7 @@ Registers
 
    regset/2.00-15/list.rst
    regset/2.00-18/list.rst
-   regset/2.00-22/list.rst
+   regset/2.00-23/list.rst
    regset/in_dev/list.rst
 
 .. |br| raw:: html
