@@ -8,13 +8,16 @@ Reading analog voltage from slow inputs
   connector :ref:`E2 <E2>`. 
 | Notice that any of four AI pins (0-3) can be used.
 
-******
+|
+
 Web UI
-******
+=========
 
 First of all you need new .js file:
 
 **pako.js** - for decompress data
+
+|
 
 In **index.html** add:
 
@@ -23,18 +26,24 @@ In **index.html** add:
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/pako.js"></script>
     <script src="js/app.js"></script>
-    
+
+|
+
 Our mesurement result will be in this block:
 
 .. code-block:: html
 
     < div id='value'></div>
 
+|
+
 Add button to read voltage using this string in **index.html**:
 
 .. code-block:: html
 
     <button id='read_button'>Read</button>
+
+|
 
 In **app.js** we should change **APP.ws.onmessage()** callback. We decompress message and process signals from it.
 
@@ -48,7 +57,9 @@ In **app.js** we should change **APP.ws.onmessage()** callback. We decompress me
     if (receive.signals) {
         APP.processSignals(receive.signals);
     }
-    
+
+|
+
 Processing of signals is located in **APP.processSignals()** function. In this function we get voltage value from 
 signal and print it in Web UI:
 
@@ -65,6 +76,8 @@ signal and print it in Web UI:
         $('#value').text(parseFloat(voltage).toFixed(2) + "V");
     }
 
+|
+
 By **APP.readValue()** we send request of reading voltage to controller.
 
 .. code-block:: html
@@ -72,10 +85,12 @@ By **APP.readValue()** we send request of reading voltage to controller.
     var local = {};
     local['READ_VALUE'] = { value: true };
     APP.ws.send(JSON.stringify({ parameters: local }));
-    
-**********
+
+|
+|
+
 Controller
-**********
+============
 
 We read values from pins using controller, so in main.cpp we should make changes. Firstly add signal in global
 variables:
@@ -91,18 +106,23 @@ because each time we need to send to Web UI only one value.
 
 **0.0f** is default value of each measurement.
 
+|
+
 Also we need reading voltage parameter. It will
 
 .. code-block:: c
 
     CBooleanParameter READ_VALUE("READ_VALUE", CBaseParameter::RW, false, 0);
 
+|
 
 Its’ default value is false. We will update this parameter in **OnNewParams()** function:
 
 .. code-block:: c
 
     READ_VALUE.Update();
+
+|
 
 If **READ_VALUE.Value()** is **true** we will read value from **AIpin0** and write it to signal:
 
@@ -121,6 +141,8 @@ If **READ_VALUE.Value()** is **true** we will read value from **AIpin0** and wri
         //Reset READ value
         READ_VALUE.Set(false);
     }
+
+|
 
 **val** - is buffer variable, which will get value from **AIpin0**. After writing data value will be sent to server. 
 We should set **READ_VALUE** parameter to **false**.
