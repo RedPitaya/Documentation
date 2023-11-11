@@ -15,6 +15,13 @@ For detailed hardware specifications for Low-Noise STEMlab 125-14 devices used i
 For more information about the software, please refer to: :ref:`X-Channel streaming <mch_streaming_top>`.
 
 
+******
+Pinout
+******
+
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
+
 Technical specifications (one board)
 ------------------------------------
 
