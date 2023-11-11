@@ -71,38 +71,43 @@ Extension connector E2
  
 .. Table 6: Extension connector E2 pin description
 
-===  ======================  ===============  ========================  ==============
-Pin  Description             FPGA pin number  FPGA pin description      Voltage levels
-===  ======================  ===============  ========================  ==============
-1    +5V                                                                              
-2    -3.4V (50mA)\ :sup:`1`                                                           
-3    SPI (MOSI)              E9               PS_MIO10_500               3.3 V        
-4    SPI (MISO)              C6               PS_MIO11_500               3.3 V        
-5    SPI (SCK)               D9               PS_MIO12_500               3.3 V        
-6    SPI (CS#)               E8               PS_MIO13_500               3.3 V        
-7    UART (TX)               C8               PS_MIO08                   3.3 V        
-8    UART (RX)               C5               PS_MIO09                   3.3 V        
-9    I2C (SCL)               B9               PS_MIO50_501               3.3 V        
-10   I2C (SDA)               B13              PS_MIO51_501               3.3 V        
-11   Ext com.mode                                                        GND (default)
-12   GND                                                                              
-13   Analog Input 0                                                      0-3.5 V      
-14   Analog Input 1                                                      0-3.5 V      
-15   Analog Input 2                                                      0-3.5 V      
-16   Analog Input 3                                                      0-3.5 V      
-17   Analog Output 0                                                     0-1.8 V      
-18   Analog Output 1                                                     0-1.8 V      
-19   Analog Output 2                                                     0-1.8 V      
-20   Analog Output 3                                                     0-1.8 V      
-21   GND                                                                              
-22   GND                                                                              
-23   Ext Adc CLK+                                                        LVDS         
-24   Ext Adc CLK-                                                        LVDS         
-25   GND                                                                              
-26   GND                                                                              
-===  ======================  ===============  ========================  ==============
+===  ======================  ===============  ==============================================  ==============
+Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
+===  ======================  ===============  ==============================================  ==============
+1    +5V                                                                                                    
+2    NC                                                                                                     
+3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
+4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
+5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
+6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V         
+7    UART (TX)               C8               PS_MIO13_500                                    3.3 V         
+8    UART (RX)               C5               PS_MIO14_500                                    3.3 V         
+9    I2C (SCL)               B9               PS_MIO50_501                                    3.3 V         
+10   I2C (SDA)               B13              PS_MIO51_501                                    3.3 V         
+11   Ext com.mode                                                                             GND (default) 
+12   GND                                                                                                    
+13   Analog Input 0          B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V       
+14   Analog Input 1          C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V       
+15   Analog Input 2          E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V       
+16   Analog Input 3          E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V       
+17   Analog Output 0         T10              IO_L1N_T0_34                                    0-1.8 V       
+18   Analog Output 1         T11              IO_L1P_T0_34                                    0-1.8 V       
+19   Analog Output 2         P15              IO_L24P_T3_34                                   0-1.8 V       
+20   Analog Output 3         U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V       
+21   GND                                                                                                    
+22   GND                                                                                                    
+23   Ext Adc CLK+                                                                             LVDS          
+24   Ext Adc CLK-                                                                             LVDS          
+25   GND                                                                                                    
+26   GND                                                                                                    
+===  ======================  ===============  ==============================================  ==============
 
 \ :sup:`1` Red Pitaya Version 1.0 has -3.3 V on pin 2. Red Pitaya Version 1.1 has -3.4 V on pin 2.
+
+.. UART 1
+.. 7    UART (TX)               D5               PS_MIO8_500                                     3.3 V        
+.. 8    UART (RX)               B5               PS_MIO9_500                                     3.3 V        
+
 
 Schematics of extension connectors are shown in the picture below.
 
