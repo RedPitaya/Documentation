@@ -4,15 +4,12 @@
 STEMlab 125-14
 ##############
 
-
-
 *******
 Pinout
 *******
 
 .. figure:: img/Red_Pitaya_pinout.jpg
     :alt: Red Pitaya pinout
-    :align: center
     :width: 700
 
 ************************
