@@ -299,13 +299,13 @@ Extension connector E2
 Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
 ===  ======================  ===============  ==============================================  ==============
 1    +5V                                                                                                    
-2    NC                                                                                                     
+2    -4V2                                                                                                   
 3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
 4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
 5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
 6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V         
-7    UART (TX)               C8               PS_MIO13_500                                    3.3 V         
-8    UART (RX)               C5               PS_MIO14_500                                    3.3 V         
+7    UART (TX)               D5               PS_MIO8_500                                     3.3 V         
+8    UART (RX)               B5               PS_MIO9_500                                     3.3 V         
 9    I2C (SCL)               B9               PS_MIO50_501                                    3.3 V         
 10   I2C (SDA)               B13              PS_MIO51_501                                    3.3 V         
 11   Ext com.mode                                                                             GND (default) 
@@ -326,9 +326,15 @@ Pin  Description             FPGA pin number  FPGA pin description              
 26   GND                                                                                                    
 ===  ======================  ===============  ==============================================  ==============
 
-.. UART 1
-.. 7    UART (TX)               D5               PS_MIO8_500                                     3.3 V        
-.. 8    UART (RX)               B5               PS_MIO9_500                                     3.3 V        
+.. UART 0
+.. 7    UART (TX)               C8               PS_MIO14_500                                    3.3 V         
+.. 8    UART (RX)               C5               PS_MIO15_500                                    3.3 V   
+
+|
+
+.. note::
+
+    UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
 
 |
 |
