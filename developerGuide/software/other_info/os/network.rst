@@ -4,9 +4,8 @@
 Network
 #######
 
-***********
 Quick setup
-***********
+==============
 
 .. note:: A reboot is required to switch between access point and client modes.
 
@@ -15,7 +14,9 @@ Quick setup
     In order to set wireless or direct Ethernet connection you need to access Red Pitaya 
     :ref:`Console interface <console>`.
 
-===========
+|
+|
+
 WiFi client
 ===========
 
@@ -27,6 +28,8 @@ List wireless access pints:
 
    # iw wlan0 scan | grep SSID
 
+|
+
 Write a ``wpa_supplicant.conf`` configuration file to the FAT partition.
 *ssid* and *passphrase* can/should be inside parentheses.
 
@@ -35,13 +38,17 @@ Write a ``wpa_supplicant.conf`` configuration file to the FAT partition.
    # rw
    $ wpa_passphrase <ssid> [passphrase] > /opt/redpitaya/wpa_supplicant.conf
 
+|
+
 Restart WPA supplicant:
 
 .. code-block:: shell-session
 
     # systemctl restart wpa_supplicant@wlan0.service
 
-=================
+|
+|
+
 WiFi access point
 =================
 
@@ -54,15 +61,18 @@ and remove the ``wpa_supplicant.conf`` client configuration file if exists:
    $ nano /opt/redpitaya/hostapd.conf
    $ rm /opt/redpitaya/wpa_supplicant.conf
 
+|
+
 Restart access point service:
 
 .. code-block:: shell-session
 
    # systemctl restart hostapd@wlan0.service
+|
+|
 
-*********************
 Network configuration
-*********************
+----------------------
 
 The current network configuration is using 
 `systemd-networkd <https://www.freedesktop.org/software/systemd/man/systemd.network.html>`_ as the base. Almost all
@@ -78,7 +88,9 @@ should minimize the efforts needed to maintain it.
 Most of the WiFi configuration complexity comes from
 support for switching between WiFi access point and client mode
 
-====
+|
+|
+
 UDEV
 ====
 
@@ -101,6 +113,8 @@ renames it into ``enx{MAC}`` using the following rule:
    
    LABEL="usb_net_by_mac_end"
 
+|
+
 For a simple generic WiFi configuration it is preferred to have the same
 interface name regardless of the used adapter. This is achieved by overriding
 ``UDEV`` rules with a modified rule file. The overriding is done by placing the
@@ -112,7 +126,9 @@ possible to deactivate the rule by creating a override file which links to ``/de
 
    # ln -s /dev/null /etc/udev/rules.d/73-usb-net-by-mac.rules
 
-===========
+|
+|
+
 Wired setup
 ===========
 
@@ -138,7 +154,9 @@ A fixed IP address can be configured by adding the next lines to
    Address=192.168.0.15/24
    Gateway=192.168.0.1
 
-==============
+|
+|
+
 Wireless setup
 ==============
 
@@ -172,7 +190,9 @@ If no configuration file is present, WiFi will not be configured.
 | `hostapd.conf`        | access point configuration   |
 +-----------------------+------------------------------+
 
----------------------
+|
+|
+
 Wireless client setup
 ---------------------
 
@@ -200,6 +220,8 @@ Red Pitaya. The next change fixes both.
    -Alias=multi-user.target.wants/wpa_supplicant@%i.service
    +WantedBy=sys-subsystem-net-devices-%i.device
 
+|
+
 The encryption/authentication configuration file is linked to the FAT partition
 for easier user access. So it is enough to provide a proper ``wpa_supplicant.conf``
 file on the FAT partition to enable wireless client mode.
@@ -208,13 +230,17 @@ file on the FAT partition to enable wireless client mode.
 
    # ln -s /opt/redpitaya/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
+|
+
 This configuration file can be created using the `wpa_passphrase` tool can be used:
 
 .. code-block:: shell-session
 
    $ wpa_passphrase <ssid> [passphrase] > /opt/redpitaya/wpa_supplicant.conf
 
----------------------------
+|
+|
+
 Wireless access point setup
 ---------------------------
 
@@ -246,10 +272,13 @@ must be removed. Inside a shell on Red Pitaya this file is visible as ``/opt/red
    wpa_pairwise=TKIP
    rsn_pairwise=CCMP
 
+|
+
 This file must be edited to set the chosen ``<ssid>`` and ``<passphrase>``.
 Other settings are for the currently most secure personal encryption.
 
-~~~~~~~~~~~~~~~
+|
+
 Wireless router
 ~~~~~~~~~~~~~~~
 
@@ -264,15 +293,18 @@ there are two lines to enable IP forwarding and masquerading.
    IPForward=yes
    IPMasquerade=yes
 
+|
+
 An iptables configuration `/etc/iptables/iptables.rules </OS/debian/overlay/etc/iptables/iptables.rules>`_
 is enbled by the iptables service `/etc/systemd/system/iptables.service </OS/debian/overlay/etc/systemd/system/iptables.service>`_.
 
 .. note:: This functionality combined with default passwords can be a serious security issue.
    And since it is not needed to provide advertized functionality, we might remove it in the future.
 
+|
+
 .. _support_wifi_adapter:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Supported USB WiFi adapters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -284,14 +316,17 @@ The Edimax EW-7811Un **V2** adapter is also commonly used on Raspberry PI.
    $ lsusb
      ID 7392:7811 Edimax Technology Co., Ltd EW-7811Un 802.11n Wireless Adapter [Realtek RTL8188CUS]
 
+|
+
 The kernel upstream driver for this chip is now working well, so a working
 driver was copied from the Raspberry PI repository and applied as a patch.
 
 Other WiFi USB devices might also be supported by upstream kernel drivers,
 but there is no comprehensive list for now.
 
+|
+|
 
-============
 DNS Resolver
 ============
 
@@ -301,6 +336,8 @@ To enable the ``systemd`` integrated resolver, a symlink for ``/etc/resolv.conf`
 
    # ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
+|
+
 It is also possible to add default DNS servers by adding them to ``*.network`` files.
 
 .. code-block:: none
@@ -308,7 +345,9 @@ It is also possible to add default DNS servers by adding them to ``*.network`` f
    nameserver=8.8.8.8
    nameserver=8.8.4.4
 
-===========================
+|
+|
+
 NTP (Network Time Protocol)
 ===========================
 
@@ -323,13 +362,17 @@ To observe the status of time synchronization do.
 
    $ timedatectl status
 
+|
+
 To enable the service do.
 
 .. code-block:: shell-session
 
    # timedatectl set-ntp true
 
-==========
+|
+|
+
 SSH server
 ==========
 
@@ -340,11 +383,12 @@ They are again created on the first boot by `/etc/systemd/system/ssh-reconfigure
 Due to this the first boot takes a bit longer.
 This way the SSH encryption certificates are unique on each board.
 
-=============================
+|
+|
+
 Zero-configuration networking
 =============================
 
-------------------
 Link-local address
 ------------------
 
@@ -353,7 +397,9 @@ if this is enabled inside ``systemd.network`` files with the line ``LinkLocalAdd
 All interfaces have this setting enabled, this way each active interface will
 acquire an address in the reserved ``169.254.0.0/16`` address block.
 
---------
+|
+|
+
 Zeroconf
 --------
 
@@ -372,6 +418,8 @@ In order to set your own hostname, you need to replace the line in the file host
 
 	hostnamectl set-hostname / * MY HOST NAME * /
 
+|
+
 Each device can now be accessed using the URL ``http://rp-<shortMAC>.local``.
 
 Similarly to get SSH access use.
@@ -379,6 +427,8 @@ Similarly to get SSH access use.
 .. code-block:: shell-session
 
    $ ssh root@rp-<shortMAC>.local
+
+|
 
 This service is a good alternative for our *Discovery* service provided on redpitaya.com servers.
 
@@ -389,9 +439,13 @@ Three configuration files are provided.
 * SSH  `/etc/avahi/services/ssh.service    </OS/debian/overlay/etc/avahi/services/ssh.service>`_
 * SCPI `/etc/avahi/services/scpi.service   </OS/debian/overlay/etc/avahi/services/scpi.service>`_
 
+|
+
 .. note:: This services were enabled just recently, so full extent of their usefulness is still unknown.
 
-====================
+|
+|
+
 ``systemd`` services
 ====================
 
@@ -416,9 +470,11 @@ Services handling the described configuration are enabled with.
    # enable service for creating SSH keys on first boot
    systemctl enable ssh-reconfigure
 
-****************************
+|
+|
+
 Supported USB Wi-Fi adapters
-****************************
+------------------------------
 
 Support for a specific Wi-Fi adapter usually depends only on the availability
 of the driver for the chipset used in the adapter.
@@ -431,6 +487,9 @@ At the same time support for the deprecated user space tools ``wireless extensio
 was removed, instead the ``nl80211`` framework should be used.
 In practice this means ``iw`` should be used instead of ``iwconfig``.
 
+|
+
+
 After plugging an USB Wi-Fi adapter use ``dmesg`` and ``lsusb`` to check
 if the adapter was properly recognized by the Linux kernel.
 
@@ -438,13 +497,16 @@ To check what modes (managed, AP, ...) are supported by an adapter use ``iw``.
 
 .. note:: If it is not possible to simply add support for v2, please state that it is not compatible with v2 `here <https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un_v2/>`_
 
-================
+|
+|
+
 BCM43143 chipset
 ================
 
 Client (``managed``) and access point (``AP``) modes are supported.
 
----------------------------------------------
+|
+
 Recommended USB Wi-Fi device for Raspberry PI
 ---------------------------------------------
 
@@ -456,6 +518,8 @@ https://web.archive.org/web/20161014035710/https://www.raspberrypi.org/products/
 
    # lsusb
    Bus 001 Device 004: ID 0a5c:bd1e Broadcom Corp. 
+
+|
 
 .. code-block:: shell-session
 
@@ -472,6 +536,8 @@ https://web.archive.org/web/20161014035710/https://www.raspberrypi.org/products/
    brcmfmac: brcmf_fil_cmd_data: bus is down. we have nothing to do.
    brcmfmac: brcmf_fil_cmd_data: bus is down. we have nothing to do.
    brcmfmac: brcmf_cfg80211_get_channel: chanspec failed (-5)
+
+|
 
 .. code-block:: shell-session
 
@@ -569,15 +635,17 @@ https://web.archive.org/web/20161014035710/https://www.raspberrypi.org/products/
    		 * #{ managed } <= 1, #{ AP } <= 1, #{ P2P-client } <= 1, #{ P2P-device } <= 1,
    		   total <= 4, #channels <= 1
    	Device supports scan flush.
+|
+|
 
-=================
 rtl8192cu chipset
 =================
 
 The rtl8192cu chipset is supported by the ``rtl8xxxu`` driver.
 For now this driver only supports client (``managed``) mode.
 
-----------------
+|
+
 Edimax EW-7811Un
 ----------------
 
@@ -587,6 +655,8 @@ http://us.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/us/wirele
 
    # lsusb
    Bus 001 Device 002: ID 7392:7811 Edimax Technology Co., Ltd EW-7811Un 802.11n Wireless Adapter [Realtek RTL8188CUS]
+
+|
 
 .. code-block:: shell-session
 
@@ -625,6 +695,8 @@ http://us.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/us/wirele
    usb 1-1: rtl8xxxu_active_to_lps: RX poll timed out (0x05f8)
    usb 1-1: rtl8xxxu_active_to_emu: Disabling MAC timed out
    usb 1-1: disconnecting
+
+|
 
 .. code-block:: shell-session
 
@@ -752,7 +824,9 @@ http://us.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/us/wirele
    	Driver supports full state transitions for AP/GO clients
    	Driver supports a userspace MPM
 
-------------------------------------------------------
+|
+|
+
 Generic Realtek Semiconductor Corp. RTL8188CUS 802.11n
 ------------------------------------------------------
 
@@ -789,6 +863,8 @@ Generic Realtek Semiconductor Corp. RTL8188CUS 802.11n
    usb 1-1: rtl8xxxu_active_to_lps: RX poll timed out (0x05f8)
    usb 1-1: rtl8xxxu_active_to_emu: Disabling MAC timed out
    usb 1-1: disconnecting
+
+|
 
 .. code-block:: shell-session
 
