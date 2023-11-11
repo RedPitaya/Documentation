@@ -4,36 +4,47 @@ Extension module template
 
 Red Pitaya software and hardware modules enable access and control of auxiliary digital and analog signals.
 
+|
+
 **Preliminary design specifications:**
 
-    - 16 bidirectional digital I/O lines with individual direction control and 3-state outputs for flexible digital signal acquisition and generation
-    - Up to 420 Mbps (voltage level dependent)
-    - 16k sample buffer
-    - Advanced triggering schemes for sequence acquisition
-    - Integrated level translator functionality for 1.2 V, 1.5 V, 1.8 V, 2.5 V, 3.3 V, and 5 V
-    - FPGA ESD protection
-    - Additional analog signal filtering
-    - General purpose 7-segment numerical display and switches (setting reference voltage)
-    - Protocol analyser functionality: (to be defined)
-    - Integration into the Graphical User Interface
-    - 4 input and 4 output analog lines; - an extension of the analogue pins from the Red Pitaya to the extension module
+- 16 bidirectional digital I/O lines with individual direction control and 3-state outputs for flexible digital signal acquisition and generation
+- Up to 420 Mbps (voltage level dependent)
+- 16k sample buffer
+- Advanced triggering schemes for sequence acquisition
+- Integrated level translator functionality for 1.2 V, 1.5 V, 1.8 V, 2.5 V, 3.3 V, and 5 V
+- FPGA ESD protection
+- Additional analog signal filtering
+- General purpose 7-segment numerical display and switches (setting reference voltage)
+- Protocol analyser functionality: (to be defined)
+- Integration into the Graphical User Interface
+- 4 input and 4 output analog lines; - an extension of the analogue pins from the Red Pitaya to the extension module
 
 .. figure:: img/Render.jpg   
 
 Figure: Proposal for hardware extension module template.
+
+|
 
 .. figure:: img/Probes.jpg
     :scale: 50%
 
 Figure: Connectivity option – 20 pins.
 
+|
+
 .. figure:: img/Schematics.png
 
 Figure: Possible implementation of some functionality (`preliminary version <https://downloads.redpitaya.com/doc/Extension/Schematic_GPIO16_A_InformativeOnly.pdf>`_). 
 
+|
+
 .. figure:: img/RPEM_Template2_Pcb3D.jpg
 
 Figure: Option - forced airflow.
+
+|
+|
 
 External links:
 
@@ -46,3 +57,4 @@ External links:
   - `PCB option - forced air flow 3d image <https://downloads.redpitaya.com/doc/Extension/RPEM_Template2_Pcb3D.jpg>`_
   - `3D STEP option - forced air flow - model <https://downloads.redpitaya.com/doc/Extension/RPEM_Template2_A_3D.step>`_
   - `Altium project <https://downloads.redpitaya.com/doc/Extension/RPEM_Template.zip>`_
+
