@@ -180,3 +180,154 @@ Schematics
 
 * `Red_Pitaya_Sensor_Shield_Schematics.pdf <https://downloads.redpitaya.com/doc/STEMlab_ArduinoSensorShieldSch.PDF>`_.
 
+
+
+Examples of Groove Sensor
+==========================
+
+
+Sensors
+---------
+
+========================================================================================    ============
+Sensor information                                                                          Connector
+========================================================================================    ============
+**Analog**
+|Temperature sensor|                                                                        AI
+|Motion sensor|                                                                             DIO
+|Touch sensor|                                                                              DIO
+|Button|                                                                                    DIO
+|Switch|                                                                                    DIO
+**Digital**
+|Tilt|                                                                                      DIO
+|Potentiometer|                                                                             AI
+|Light sensor|                                                                              AI
+|Air quality sensor|                                                                        AI
+|Vibration sensor|                                                                          AI
+|Moisture sensor|                                                                           AI
+|Water sensor|                                                                              AI
+|Alcohol sensor|                                                                            AI
+Barometer ``not supported at the moment``                                                   I2C
+|Sound sensor|                                                                              AI
+|UV sensor|                                                                                 AI
+Accelerometer ``not supported at the moment``                                               I2C
+========================================================================================    ============
+
+.. |Temperature sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Sensor_temperature" target="_blank">Temperature sensor</a>
+
+.. |Motion sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-PIR_Motion_Sensor" target="_blank">Motion sensor</a>
+
+.. |Touch sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Touch_Sensor" target="_blank">Touch sensor</a>
+
+.. |Button| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Button" target="_blank">Button</a>
+    
+.. |Switch| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Switch-P" target="_blank">Switch</a>
+    
+.. |Tilt| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Tilt_Switch" target="_blank">Tilt</a>
+    
+.. |Potentiometer| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Slide_Potentiometer" target="_blank">Potentiometer</a>
+    
+.. |Light sensor| raw:: html
+
+    <a href="http://wiki.seeed.cc/Grove-Light_Sensor" target="_blank">Light sensor</a>
+
+.. |Air quality sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Air_Quality_Sensor_v1.3" target="_blank">Air quality sensor</a>
+    
+.. |Vibration sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Piezo_Vibration_Sensor" target="_blank">Vibration sensor</a>
+    
+.. |Moisture sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Moisture_Sensor" target="_blank">Moisture sensor</a>
+    
+.. |Water sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Water_Sensor" target="_blank">Water sensor</a>
+    
+.. |Barometer| raw:: html
+
+    <a href="" target="_blank">Barometer</a>
+    
+.. |Alcohol sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Alcohol_Sensor" target="_blank">Alcohol sensor</a>
+    
+.. |Sound sensor| raw:: html
+
+    <a href="http://wiki.seeed.cc/Grove-Sound_Sensor" target="_blank">Sound sensor</a>
+
+.. |UV sensor| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-UV_Sensor" target="_blank">UV sensor</a>
+
+.. |Accelerometer| raw:: html
+
+    <a href="" target="_blank">Accelerometer</a>
+
+========================================================================================    ============
+Actuators                                                                                   Connector
+========================================================================================    ============
+|Relay|                                                                                     DIO
+========================================================================================    ============
+
+.. |Relay| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Relay" target="_blank">Relay</a>
+
+========================================================================================    ============
+Indicators                                                                                  Connector
+========================================================================================    ============
+|Buzzer|                                                                                    DIO
+|LED|                                                                                       DIO
+|7 segment display|                                                                         Digital pins
+|LED bar|                                                                                   Digital pins
+|Groove LCD|                                                                                Digital pins
+LCD                                                                                         Digital pins
+========================================================================================    ============
+
+.. |Buzzer| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-Buzzer" target="_blank">Buzzer</a>
+
+.. |LED| raw:: html
+
+    <a href="https://www.seeedstudio.com/grove-led-p-767.html?cPath=156_157" target="_blank">LED</a>
+    
+.. |7 segment display| raw:: html
+
+    <a href="https://www.seeedstudio.com/Grove-0-54-Red-Dual-Alphanumeric-Display-p-4031.html?queryID=817e144e20d72ab54938d8288d8f4155&objectID=4031&indexName=bazaar_retailer_products" target="_blank">7 segment display</a>
+    
+.. |LED bar| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-LED_Bar" target="_blank">LED bar</a>
+    
+.. |Groove LCD| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight" target="_blank">Groove LCD</a>
+
+
+
+Code Examples
+===============
+
+Example code of how to control the sensors is available here:
+
+- :ref:`Sensor code examples <examples>`
+
