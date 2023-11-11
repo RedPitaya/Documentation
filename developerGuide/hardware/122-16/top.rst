@@ -161,6 +161,9 @@ Technical specifications
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
 
+.. TODO Add Extension connectors to FPGA pin description
+
+
 **********
 Schematics
 **********
