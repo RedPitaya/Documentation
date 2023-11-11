@@ -8,9 +8,11 @@ When you are developing your own applications, you can also manually install you
 
 .. figure:: www_folder.png
    :align: center
+|
+
 
 2. Copy the application to the ``apps`` folder
 
-
 .. figure:: apps_folder.png
    :align: center
+|
