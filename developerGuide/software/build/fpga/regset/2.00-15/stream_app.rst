@@ -22,7 +22,6 @@ Project - stream_app
 
 .. _fpga_stream_app_2.00-15_adc:
 
------------------
 ADC streaming
 -----------------
 
@@ -351,7 +350,6 @@ ADC streaming
 
 .. _fpga_stream_app_2.00-15_dac:
 
--------------
 DAC streaming
 -------------
 
@@ -608,7 +606,6 @@ DAC streaming
 
 .. _fpga_stream_app_2.00-15_gpio:
 
---------------
 GPIO streaming
 --------------
 
