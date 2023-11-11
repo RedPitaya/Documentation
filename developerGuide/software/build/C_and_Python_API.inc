@@ -11,6 +11,8 @@ acquisition, digital I/O control, communication (I2C, SPI, UART, CAN) and more).
     - Use the latest GitHub ecosystem (master branch) together with Red Pitaya OS 2.00 or higher.
     - Use branch 2022.2 or older GitHub ecosystem together with 1.04 or older Red Pitaya OS.
 
+|
+|
 
 C and Python API functions
 ============================
@@ -26,6 +28,8 @@ The Python API functions are just wrappers that call the corresponding C API fun
 
 Examples on how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
 
+|
+|
 
 
 Compiling and running C applications
@@ -33,6 +37,7 @@ Compiling and running C applications
 
 When compiling on the target no special preparations are needed. A native toolchain is available directly on the Debian system.
 
+|
 
 Compiling and running Example code
 -----------------------------------
@@ -49,6 +54,8 @@ Compiling and running Example code
 
         ssh root@rp-xxxxxx.local
 
+|
+
 2.  Now make a clone of the Red Pitaya Git repository and enter the project directory.
 
     .. code-block:: shell-session
@@ -57,6 +64,8 @@ Compiling and running Example code
         cd RedPitaya
 
     When you copy the source code from our repository you will also copy all available C API examples to your Red Pitaya board.
+
+|
 
 3.  In order to compile one example just use the source file name without the `.c` extension.
 
@@ -102,6 +111,7 @@ Compiling and running Example code
             $(RM) *.o
             $(RM) $(OBJS)
 
+|
 
 4.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
 
@@ -119,6 +129,7 @@ Compiling and running Example code
 
                 redpitaya> overlay.sh v0.94
 
+|
 
 5. Execute the application.
 
@@ -143,6 +154,8 @@ Compiling and running Example code
 
     Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
 
+|
+|
 
 Compiling and running custom code
 -----------------------------------
@@ -151,6 +164,8 @@ Compiling and running custom code
 
    When creating custom C API programs on your computer, please make sure that **End of Line Sequence** in your code editor is set to **LF**
    (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
+
+|
 
 1.  First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
 
@@ -164,11 +179,15 @@ Compiling and running custom code
 
         ssh root@rp-xxxxxx.local
 
+|
+
 2.  Send the custom C code example from your computer to the Red Pitaya board. Here is an example of how to copy the code to */root* directory on the Red Pitaya.
 
     .. code-block:: shell-session
 
         scp /path/to/custom/c/api/ root@rp-xxxxxx.local:/root
+
+|
 
 3.  To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
     create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process.
@@ -209,6 +228,8 @@ Compiling and running custom code
             $(RM) $(OBJS)
 
 
+|
+
 4.  In order to compile one example, just use the source file name without the `.c` extension.
 
     .. code-block:: shell-session
@@ -216,8 +237,9 @@ Compiling and running custom code
         cd Examples/C
         make digital_led_blink
 
+|
 
-4.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
+5.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
 
     .. tabs::
 
@@ -233,8 +255,9 @@ Compiling and running custom code
 
                 redpitaya> overlay.sh v0.94
 
+|
 
-5. Execute the application.
+6. Execute the application.
 
     .. tabs::
 
@@ -256,6 +279,8 @@ Compiling and running custom code
 
     If an application is running in a continuous loop - press `CTRL+C` to stop them.
 
+|
+|
 
 Running Python applications
 ==============================
@@ -268,8 +293,12 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
     Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes a **Bad Interpreter error**).
     The recommended encoding is **UTF-8**.
 
+|
+
 1.  The best way to create Python APIs is to write the code on your computer (use the available examples as a reference).
     Do not forget to include the **rp** library.
+
+|
 
 2.  Copy the code to Red Pitaya using the **scp** (secure copy) command:
 
@@ -277,11 +306,15 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
 
         scp "path/to/pythonAPI/file" root@rp-xxxxxx.local
 
+|
+
 3.  If copying a full directory do not forget to add the **-r** flag:
 
     .. code-block:: shell-session
 
         scp -r "path/to/pythonAPI/folder" root@rp-xxxxxx.local
+
+|
 
 4.  Connect to your Red Pitaya via :ref:`SSH <ssh>` and make the files executable:
 
@@ -289,11 +322,15 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
 
         chmod +x pythonAPI_example1.py pythonAPI_example2.py pythonAPI_example3.py
 
+|
+
 5.  Finally, run the code.
 
     .. code-block:: shell-session
 
        ./pythonAPI_example.py
+
+|
 
 .. note::
 
@@ -311,6 +348,8 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
 
         source ./.bashrc
 
+|
+|
 
 C and Python API all available commands
 ========================================
@@ -327,6 +366,8 @@ The API functions/commands are written together with the :ref:`Available SCPI co
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/redpitaya/rp.h" target="_blank">Functions info</a>
 
+|
+|
 
 C and Python API examples
 ===========================
