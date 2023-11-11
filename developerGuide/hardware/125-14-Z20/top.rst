@@ -212,8 +212,9 @@ Extension connector STEMlab 125-14 Z7020-LN
 
 - Connector: 2 x 26 pins IDC (M) 
 - Power supply: 
-    - Available voltages: +5 V, +3.3 V
-    - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices)
+    - Available voltages: +5 V, +3.3 V, -4.2 V
+    - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA for -4.2 V supply. 
+
 
 |
 
