@@ -1,6 +1,5 @@
 Project - stream_app
-********************
-
+=====================
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|
 
@@ -14,7 +13,9 @@ Project - stream_app
 | CS[2]  | 0x40200000  | 0x402FFFFF | GPIO streaming (IN/OUT)          |
 +--------+-------------+------------+----------------------------------+
 
------------------
+|
+|
+
 ADC streaming
 -----------------
 
@@ -338,7 +339,9 @@ ADC streaming
 |          |  ADC clock is present, PLL locked              |  0    | R    |
 +----------+------------------------------------------------+-------+------+
 
--------------
+|
+|
+
 DAC streaming
 -------------
 
@@ -590,7 +593,9 @@ DAC streaming
 |          | Shift in number of bits                            |  4:0  | R/W  |
 +----------+----------------------------------------------------+-------+------+
 
---------------
+|
+|
+
 GPIO streaming
 --------------
 
@@ -604,6 +609,8 @@ GPIO streaming
     * [15: 0] Reserved
     * [23:16] GPIO_x_N bits
     * [31:24] GPIO_x_P bits
+
+|
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
