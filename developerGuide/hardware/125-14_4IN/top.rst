@@ -284,7 +284,7 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 Extension connector E2
 -------------------------
 
-- +5 V power source
+- +5 V, -4V2 power source
 - SPI, UART, I2C
 - 4 x slow ADCs
 - 4 x slow DACs
