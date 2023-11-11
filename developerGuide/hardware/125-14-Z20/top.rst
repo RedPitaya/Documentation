@@ -12,6 +12,15 @@ The STEMlab 125-14-Z7020-LN is a standard STEMlab 125-14 board that:
 
     <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 
+
+******
+Pinout
+******
+
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
+
+
 ************************
 Technical specifications
 ************************
