@@ -220,7 +220,6 @@ Extension connector STEMlab 125-14 4-Input
     - Available voltages: +5 V, +3.3 V, -3.3 V
     - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA for -3.3 V supply. 
 
-
 |
 
 .. _E1_sdr:
