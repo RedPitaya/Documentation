@@ -1,3 +1,5 @@
+.. _CE:
+
 CE - Declaration of conformity
 ##############################
 
