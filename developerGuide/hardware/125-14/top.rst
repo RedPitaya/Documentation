@@ -5,6 +5,16 @@ STEMlab 125-14
 ##############
 
 
+
+*******
+Pinout
+*******
+
+.. figure:: img/Red_Pitaya_pinout.jpg
+    :alt: Red Pitaya pinout
+    :align: center
+    :width: 700
+
 ************************
 Technical specifications
 ************************
@@ -229,27 +239,27 @@ The ADC clock can be provided by:
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-.. figure:: img/External_clock_top.png
+.. figure:: img/schematics/External_clock_top.png
     :alt: Top side schematic
     :align: center
 
     Top side schematic
 
 
-.. figure:: img/External_clock_bottom.png
+.. figure:: img/schematics/External_clock_bottom.png
     :alt: Bottom side schematic
     :align: center
 
     Bottom side schematic
 
-.. figure:: img/External_clock_bottom_photo.png
+.. figure:: img/schematics/External_clock_bottom_photo.png
     :alt: Bottom side photo
     :align: center
     :width:  400px
 
     Bottom side photo
 
-.. figure:: img/External_clock_resistors.jpeg
+.. figure:: img/schematics/External_clock_resistors.jpeg
     :alt: Bottom side all
     :align: center
 
