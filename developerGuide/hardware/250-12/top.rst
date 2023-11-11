@@ -1,21 +1,20 @@
 .. _top_250_12:
 
-
+#################
 SIGNALlab 250-12
-################
+#################
 
 
-******
 Pinout
-******
+=========
 
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
+|
 
-************************
 Technical specifications
-************************
+============================
 
 .. table::
     :widths: 10 18
@@ -39,9 +38,10 @@ Technical specifications
     | Power consumption                  | 24 V, 0.5 A max                    |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
-
 
     +------------------------------------+------------------------------------+
     | **Connectivity**                                                        |
@@ -53,6 +53,7 @@ Technical specifications
     | WIFI                               | requires WIFI dongle               |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -82,6 +83,7 @@ Technical specifications
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -110,7 +112,7 @@ Technical specifications
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+
 
-
+|
 
 .. table::
     :widths: 10 18
@@ -139,6 +141,8 @@ Technical specifications
     | external ADC clock                 |  yes                               |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
 
@@ -153,13 +157,17 @@ Technical specifications
     | Ref. clock input                   | Through SMA connector              |
     +------------------------------------+------------------------------------+
 
+|
+
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
-**********
+|
+|
+
 Schematics
-**********
+============
 
 * `STEM250-12_V1r1.pdf <https://downloads.redpitaya.com/doc/Customer-DOC_STEM250-12_V1r1.pdf>`_
 
@@ -167,18 +175,20 @@ Schematics
 
     Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic has information on HW configuration, FPGA pin connection, and similar.
 
+|
+|
 
-****************************************
 Mechanical Specifications and 3D Models
-****************************************
+===========================================
 
 * `SIGNALlab 250-12 V1r2 3D pdf <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dpdf.zip>`_
 * `SIGNALlab 250-12 V1r2 3D step <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dstep.zip>`_
 
+|
+|
 
-**********
 Components
-**********
+==============
 
 * `ADC <https://www.analog.com/en/products/AD9613.html>`_
 * `DAC <https://www.analog.com/en/products/ad9746.html>`_
@@ -190,5 +200,140 @@ Components
 .. * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
 .. * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
 
+|
+|
 
+Extension connector SIGNALlab
+================================
+
+- Connector: 2 x 26 pins IDC (M) 
+- Power supply: 
+    - Available voltages: +5 V, +3.3 V, -5.4 V
+    - Current limitations: 200 mA for +5 V, 50 mA  for +3.3 V (to be shared between extension module and USB devices), 10 mA 
+  for -5.4 V supply. 
+
+|
+
+.. _E1_sdr:
+
+Extension connector E1
+--------------------------
+
+- 3V3 power source
+- 19 single ended or 9 differential digital I/Os with 3.3 V logic levels
+
+|
+
+===  =====================  ===============  ========================  ==============
+Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
+===  =====================  ===============  ========================  ==============
+1    3V3                                                                             
+2    3V3                                                                             
+3    DIO0_P                 W10              IO_L16P_T2_13             3.3V          
+4    DIO0_N                 W9               IO_L16N_T2_13             3.3V          
+5    DIO1_P                 T9               IO_L12P_T1_MRCC_13        3.3V          
+6    DIO1_N                 U10              IO_L12N_T1_MRCC_13        3.3V          
+7    DIO2_P                 Y9               IO_L14P_T2_SRCC_13        3.3V          
+8    DIO2_N                 Y8               IO_L14N_T2_SRCC_13        3.3V          
+9    DIO3_P                 U9               IO_L17P_T2_13             3.3V          
+10   DIO3_N                 U8               IO_L17N_T2_13             3.3V          
+11   DIO4_P                 V8               IO_L15P_T2_DQS_13         3.3V          
+12   DIO4_N                 W8               IO_L15N_T2_DQS_13         3.3V          
+13   DIO5_P                 V11              IO_L21P_T3_DQS_13         3.3V          
+14   DIO5_N                 V10              IO_L21N_T3_DQS_13         3.3V          
+15   DIO6_P / CAN1_RX       W11              IO_L18P_T2_13             3.3V          
+16   DIO6_N / CAN1_TX       Y11              IO_L18N_T2_13             3.3V          
+17   DIO7_P / CAN0_RX       Y12              IO_L20P_T3_13             3.3V          
+18   DIO7_N / CAN0_TX       Y13              IO_L20N_T3_13             3.3V          
+19   DIO8_P                 Y7               IO_L13P_T2_MRCC_13        3.3V          
+20   DIO8_N                 Y6               IO_L13N_T2_MRCC_13        3.3V          
+21   DIO9_P                 U5               IO_L19N_T3_VREF_13        3.3V          
+22   +5VUSB3                                                                         
+23   USB2_P                                                                          
+24   USB2_N                                                                          
+25   GND                                                                             
+26   GND                                                                             
+===  =====================  ===============  ========================  ==============
+
+|
+
+.. note::
+
+   To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
+
+|
+
+All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
+    - min. -0.40 V
+    - max. 3.3 V + 0.55 V
+    - <8 mA drive strength
+
+|
+
+.. _E2_sdr:
+
+Extension connector E2
+-------------------------
+
+- +5 V, -5.4 V power source
+- SPI, UART, I2C
+- 4 x slow ADCs
+- 4 x slow DACs
+- Ext. clock for fast ADC
+
+|
+
+.. Table 6: Extension connector E2 pin description
+
+===  ======================  ===============  ==============================================  ==============
+Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
+===  ======================  ===============  ==============================================  ==============
+1    +5V                                                                                                    
+2    -4V2                                                                                                   
+3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
+4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
+5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
+6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V         
+7    UART (TX)               D5               PS_MIO8_500                                     3.3 V         
+8    UART (RX)               B5               PS_MIO9_500                                     3.3 V         
+9    I2C (SCL)               B9               PS_MIO50_501                                    3.3 V         
+10   I2C (SDA)               B13              PS_MIO51_501                                    3.3 V         
+11   Ext com.mode                                                                             GND (default) 
+12   GND                                                                                                    
+13   Analog Input 0          B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V       
+14   Analog Input 1          C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V       
+15   Analog Input 2          E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V       
+16   Analog Input 3          E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V       
+17   Analog Output 0         T10              IO_L1N_T0_34                                    0-1.8 V       
+18   Analog Output 1         T11              IO_L1P_T0_34                                    0-1.8 V       
+19   Analog Output 2         P15              IO_L24P_T3_34                                   0-1.8 V       
+20   Analog Output 3         U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V       
+21   GND                                                                                                    
+22   GND                                                                                                    
+23   Ext Adc CLK+                                                                             LVDS          
+24   Ext Adc CLK-                                                                             LVDS          
+25   GND                                                                                                    
+26   GND                                                                                                    
+===  ======================  ===============  ==============================================  ==============
+
+.. UART 0
+.. 7    UART (TX)               C8               PS_MIO14_500                                    3.3 V         
+.. 8    UART (RX)               C5               PS_MIO15_500                                    3.3 V   
+
+|
+
+.. note::
+
+    UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
+
+|
+|
+
+
+Other specifications
+=====================
+
+For all other specifications please refer to the schematics and standard :ref:`STEMlab 125-14 specs <top_125_14>`.
+
+Please note that the measurements on inputs and outputs differ from the standard STEMlab 125-14.
 
