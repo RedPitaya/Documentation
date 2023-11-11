@@ -5,6 +5,14 @@ SIGNALlab 250-12
 ################
 
 
+******
+Pinout
+******
+
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
+
+
 ************************
 Technical specifications
 ************************
@@ -181,4 +189,6 @@ Components
 
 .. * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
 .. * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
+
+
 
