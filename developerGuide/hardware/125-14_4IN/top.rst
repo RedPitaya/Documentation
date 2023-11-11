@@ -11,6 +11,14 @@ STEMlab 125-14 4-Input is a single-board RF signal acquisition platform that off
 * Switching between internal and external clocks can be done using a jumper or control signal on the extension connector.
 * The internal ADC clock can be locked to an external reference clock via an extension connector (this feature is only available upon customer request).
 
+
+******
+Pinout
+******
+
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
+
 ************************
 Technical specifications
 ************************
@@ -159,6 +167,19 @@ Technical specifications
   Jumper orientation can affect the measurements taken with Red Pitaya. Check the :ref:`Jumper Orientation <jumper_pos>` for more details.
 
 
+************************************************
+Switching between internal and external clock
+************************************************
+
+Driving the *CLK_SEL* pin to GND (logic 0) switches the board to external clock mode. When the pin is driven to 3V3 (logic 1) or left floating, the board operates in the internal clock mode (on-board oscillator).
+
+When STEMlab 125-14 4-Input is in External clock mode the ADC clock must be provided from an external source clock. An external clock should be connected to the *Ext ADC CLK- and +* pins. According to the ADC spec, external clock signal levels should be LVDS in the range from 1 MHz to 125 MHz.
+
+.. note::
+
+    In the External clock mode, the OS will not boot without providing an external clock.
+
+
 **********
 Schematics
 **********
@@ -170,3 +191,5 @@ Mechanical Specifications and 3D Models
 ****************************************
 
 * `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEM125-14-4_IN_V1r3_3Dstep.zip>`_
+
+
