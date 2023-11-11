@@ -5,6 +5,9 @@ Before you start creating your first application you need to set your developmen
 that are in article :ref:`Setting development environment <ssh>`. Also it's recommended to read brief System overview in order to 
 understand what are the main components of system and how they communicate with each other.
 
+|
+|
+
 Preparations
 ************
 
@@ -16,12 +19,16 @@ After successful connection execute rw command in order to make file-system writ
 
    $ rw
 
+|
+
 Also you need to install Git for cloning Red Pitaya project from GitHub. It will help you to manage changes.
 
 .. code-block:: shell-session
 
    # apt-get install git
-   
+
+|
+
 After installing you should configure it:
 
 .. code-block:: shell-session
@@ -31,15 +38,22 @@ After installing you should configure it:
    
 where ``username`` is your or any other name, and ``username@mail.com`` is your email.
 
+|
+
 When these steps are done go to root directory and clone Red Pitaya Project:
 
 .. code-block:: shell-session
 
    $ cd /root/ 
    $ git clone https://github.com/RedPitaya/RedPitaya.git
-   
+
+|
+
 Examples will be situated in "/root/RedPitaya/Examples/web-tutorial/" folder.
 All preparations were done. Let's go!
+
+|
+|
 
 Ecosystem structure
 *******************
@@ -56,7 +70,10 @@ This is done for ease of use all applications. All available FPGA images can be 
 All libraries you may need to link your app with can be found here::
 
     /opt/redpitaya/lib
-    
+
+|
+|
+
 Project structure
 *****************
 
@@ -71,7 +88,9 @@ At first you need to copy "1.template" folder to "/opt/redpitaya/www/apps" direc
    $ cd /opt/redpitaya/www/apps
    $ cp -r /root/RedPitaya/Examples/web-tutorial/1.template ./myFirstApp
    $ cd myFirstApp
-   
+
+|
+
 This will be your application folder. Notice: the name of the application folder defines unique Application ID!
 
 You can edit application name & description in /info/info.json file. ::
@@ -82,6 +101,8 @@ You can edit application name & description in /info/info.json file. ::
         "revision": "REVISION",
         "description": "This is my first app."
     }
+
+|
 
 Application icon image is "/info/icon.png". You may also change it.
 
@@ -106,11 +127,15 @@ Modify application title in index.html file:
         < /div>
     </body>
     </html>
-    
+
+|
+
  Obviously you may want to have your own unique look of application. For that case you need to edit file:: 
  
  css/style.css
- 
+
+|
+
 By default it contains this code: 
 
 .. code-block:: html
@@ -135,10 +160,14 @@ By default it contains this code:
         text-align: center;
     }
 
+|
+
 JavaScript application establishes connection with your Red Pitaya::
 
     js/app.js
-    
+
+|
+
 You should change application id to name of your application folder. From::
 
     APP.config.app_id = '1.template';
@@ -146,7 +175,9 @@ You should change application id to name of your application folder. From::
 to::
 
     APP.config.app_id = 'myFirstApp';
-    
+
+|
+
 Entry point of JS is **APP.startApp().** It sends request for loading application status. If status is not "OK" request 
 will be sent again. If application was loaded JS application tries to connect to Red Pitaya via WebSocket calling 
 **APP.connectWebSocket().**
@@ -183,7 +214,9 @@ will be sent again. If application was loaded JS application tries to connect to
             console.log('Message received');
        };
    }
-   
+
+|
+
 First of all application checks if there is WebSocket support in browser. Then new WebSocket connection creates.
 There are four WebSocket callbacks:
 
@@ -191,7 +224,9 @@ There are four WebSocket callbacks:
    - **APP.ws.onclose()** - called when socket connection was successfully closed
    - **APP.ws.onerror()** - called when there is an error in establishing socket connection
    - **APP.ws.onmessage()** - called when message was received
-   
+
+|
+
 Backend is a C/C++ application which controls Red Pitaya peripherals. Source code of this application is stored in src folder. It can be compiled intro controller.
 
 | Main file must contain 11 mandatory functions:
@@ -211,6 +246,9 @@ This functions are called by NGINX. We will add some code into this part later.
 
 Also there is a file called **fpga.conf**. It defines which FPGA image is loaded when application is started (FPGA images are located in /opt/redpitaya/fpga).
 
+|
+|
+
 Compiling application
 *********************
 
@@ -220,6 +258,8 @@ To compile application run in /opt/redpitaya/www/apps/**<your_app_name>** folder
 
    $ cd /opt/redpitaya/www/apps/myFirstApp/
    $ make INSTALL_DIR=/opt/redpitaya
+
+|
    
 Compiling process will start. After comping will be created file “controller.so”. Try to connect to Red Pitaya in 
 browser. Application should appear in the list. Notice: compiling is needed if you haven't compile it yet or change 
