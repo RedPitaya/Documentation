@@ -7,7 +7,6 @@ SDRlab 122-16
 .. figure:: SDRlab-122-16.jpg
     :width: 500
 
-|
 
 Pinout
 ========
@@ -15,7 +14,6 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
-|
 
 Technical specifications
 ==========================
@@ -171,11 +169,6 @@ Technical specifications
 
 .. TODO Add Extension connectors to FPGA pin description
 
-|
-|
-
-
-
 Schematics
 ============
 
@@ -185,18 +178,12 @@ Schematics
 
     Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
 
-|
-|
-
 
 Mechanical Specifications and 3D Models
 ===========================================
 
 * `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
 * `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
-
-|
-|
 
 
 Components
@@ -211,9 +198,6 @@ Components
 * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
 
 
-|
-|
-
 Extension connector SDRlab
 =============================
 
@@ -222,7 +206,6 @@ Extension connector SDRlab
     - Available voltages: +5 V, +3.3 V
     - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices)
 
-|
 
 .. _E1_sdr:
 
@@ -232,7 +215,6 @@ Extension connector E1
 - 3V3 power source
 - 22 single ended or 8 differential digital I/Os with 3.3 V logic levels
 
-|
 
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -271,14 +253,11 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 
    To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
 
-|
 
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
     - <8 mA drive strength
-
-|
 
 .. _E2_sdr:
 
@@ -291,7 +270,6 @@ Extension connector E2
 - 4 x slow DACs
 - Ext. clock for fast ADC
 
-|
 
 .. Table 6: Extension connector E2 pin description
 
@@ -336,9 +314,6 @@ Pin  Description             FPGA pin number  FPGA pin description              
 
     UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
 
-|
-|
-
 
 .. _external_122_16:
 
@@ -380,8 +355,6 @@ ADC clock can be provided by:
     :width: 50%
     :align: center
 
-|
-|
 
 Other specifications
 =====================
