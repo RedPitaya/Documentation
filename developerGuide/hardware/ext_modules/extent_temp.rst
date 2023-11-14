@@ -4,7 +4,6 @@ Extension module template
 
 Red Pitaya software and hardware modules enable access and control of auxiliary digital and analog signals.
 
-|
 
 **Preliminary design specifications:**
 
@@ -43,7 +42,6 @@ Figure: Possible implementation of some functionality (`preliminary version <htt
 
 Figure: Option - forced airflow.
 
-|
 |
 
 External links:
