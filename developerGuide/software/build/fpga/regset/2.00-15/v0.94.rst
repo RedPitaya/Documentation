@@ -10,7 +10,6 @@ The table describes address space partitioning implemented on FPGA via the AXI G
 The memory block is divided into 8 parts. Each part is occupied by an individual IP core. The address space of individual applications is described in the subsection below. The size of each IP core address space is 4MByte. 
 For additional information and better understanding check other documents (schematics, specifications...).
 
-|
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|
 
@@ -36,7 +35,6 @@ For additional information and better understanding check other documents (schem
 | CS[7]  | 0x40700000  | 0x407FFFFF | Power test                       |
 +--------+-------------+------------+----------------------------------+
 
-|
 |
 
 Housekeeping
@@ -323,7 +321,6 @@ Housekeeping
         +----------+------------------------------------------------+------+-----+
 
 |
-|
 
 
 Oscilloscope
@@ -333,8 +330,6 @@ Oscilloscope
 
     For STEMlab 125-14 4-Input register writes are duplicated for channels A/B and C/D.
     The output registers are replaced with a mirrored version of the input registers for channels C/D (IN3/IN4).
-
-|
 
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
@@ -623,7 +618,6 @@ Oscilloscope
 +----------+----------------------------------------------------+------+-----+    
 
 |
-|
 
 Arbitrary Signal Generator (ASG)
 --------------------------------
@@ -635,7 +629,6 @@ Arbitrary Signal Generator (ASG)
     Register writes synchronised between channels A/B and C/D on 4 input board 125-14 4-Input
     The output registers are replaced with a mirrored version of the input registers for channels C/D (IN3/IN4).
 
-|
 
 .. tabs::
 
@@ -1099,7 +1092,6 @@ Arbitrary Signal Generator (ASG)
         +----------+----------------------------------------------------+------+-----+  
 
 |
-|
 
 
 PID Controller
@@ -1221,7 +1213,6 @@ PID Controller
 +----------+----------------------------------------------------+------+-----+    
 
 |
-|
 
 Analog Mixed Signals (AMS)
 --------------------------
@@ -1295,7 +1286,6 @@ Analog Mixed Signals (AMS)
 +----------+-----------------------------------------------------+------+-----+    
 
 |
-|
 
 Daisy Chain
 -----------
@@ -1358,7 +1348,6 @@ Daisy Chain
 |          | 0 is received                                      |      |     |
 +----------+----------------------------------------------------+------+-----+    
 
-|
 |
 
 Power Test
