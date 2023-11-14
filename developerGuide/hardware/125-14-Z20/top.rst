@@ -218,7 +218,7 @@ Extension connector STEMlab 125-14 Z7020-LN
 
 |
 
-.. _E1_sdr:
+.. _E1_14_Z20:
 
 Extension connector E1
 --------------------------
@@ -274,7 +274,7 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 
 |
 
-.. _E2_sdr:
+.. _E2_14_Z20:
 
 Extension connector E2
 -------------------------
