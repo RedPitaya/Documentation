@@ -14,7 +14,6 @@ First, you need to open the file using a command in the console with a descripti
    root@rp-f01c3d:~# rw
    root@rp-f01c3d:~# nano /opt/redpitaya/dts/$(monitor -f)/dtraw.dts
 
-|
 
 In the file, you need to find the SPI device: spidev@0
 and add the line *spi-cs-high* to this device;
@@ -24,7 +23,6 @@ and add the line *spi-cs-high* to this device;
 
    Example of SPI config
 
-|
 
 After that, you need to rebuild the tree and restart the board
 
@@ -34,7 +32,6 @@ After that, you need to rebuild the tree and restart the board
    root@rp-f01c3d:~# dtc -I dts -O dtb ./dtraw.dts -o devicetree.dtb
    root@rp-f01c3d:~# reboot
 
-|
 
 .. note::
 
