@@ -157,14 +157,11 @@ Technical specifications
     | Ref. clock input                   | Through SMA connector              |
     +------------------------------------+------------------------------------+
 
-|
 
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
-|
-|
 
 Schematics
 ============
@@ -175,8 +172,7 @@ Schematics
 
     Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic has information on HW configuration, FPGA pin connection, and similar.
 
-|
-|
+
 
 Mechanical Specifications and 3D Models
 ===========================================
@@ -184,8 +180,6 @@ Mechanical Specifications and 3D Models
 * `SIGNALlab 250-12 V1r2 3D pdf <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dpdf.zip>`_
 * `SIGNALlab 250-12 V1r2 3D step <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dstep.zip>`_
 
-|
-|
 
 Components
 ==============
@@ -200,8 +194,7 @@ Components
 .. * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
 .. * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
 
-|
-|
+
 
 Extension connector SIGNALlab
 ================================
@@ -211,7 +204,6 @@ Extension connector SIGNALlab
     - Available voltages: +5 V, +3.3 V, -5.4 V
     - Current limitations: 200 mA for +5 V, 50 mA  for +3.3 V (to be shared between extension module and USB devices), 10 mA for -5.4 V supply. 
 
-|
 
 .. _E1_signal:
 
@@ -221,7 +213,6 @@ Extension connector E1
 - 3V3 power source
 - 19 single ended or 9 differential digital I/Os with 3.3 V logic levels
 
-|
 
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -254,20 +245,17 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 26   GND                                                                             
 ===  =====================  ===============  ========================  ==============
 
-|
 
 .. note::
 
    To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
 
-|
 
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
     - <8 mA drive strength
 
-|
 
 .. _E2_signal:
 
@@ -280,7 +268,6 @@ Extension connector E2
 - 4 x slow DACs
 - Ext. clock for fast ADC
 
-|
 
 .. Table 6: Extension connector E2 pin description
 
@@ -315,18 +302,11 @@ Pin  Description             FPGA pin number  FPGA pin description              
 26   GND                                                                                                    
 ===  ======================  ===============  ==============================================  ==============
 
-.. UART 0
-.. 7    UART (TX)               C8               PS_MIO14_500                                    3.3 V         
-.. 8    UART (RX)               C5               PS_MIO15_500                                    3.3 V   
-
-|
 
 .. note::
 
     UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
 
-|
-|
 
 
 Other specifications
