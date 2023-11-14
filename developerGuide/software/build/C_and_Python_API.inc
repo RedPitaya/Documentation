@@ -354,7 +354,9 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
 C and Python API all available commands
 ========================================
 
-The API functions/commands are written together with the :ref:`Available SCPI commands' list <scpi_command_list>`. As of now the list does not include all possible options. If you want to check out all available API commands they are available here:
+The API functions/commands are written together with the :ref:`Available SCPI commands' list <scpi_command_list>`.
+As of now the list does not include all possible options. If you want to check out all available API commands they are available here:
+    
     - C - Check the |rp-api| section of the GitHub repository (|RP_H|).
     - Python - Establish an :ref:`SSH <ssh>` connection to your Red Pitaya and look into the "/opt/redpitaya/lib/python" directoy.
 
