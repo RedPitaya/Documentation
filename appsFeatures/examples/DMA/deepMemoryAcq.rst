@@ -232,7 +232,7 @@ Code - Python API
     # - ADC_AXI_END is a macro for the last/end address in the DMA region.
     
     rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_1, g_adc_axi_start, DATA_SIZE)
-    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, g_adc_axi_start + (g_adc_axi_size/2), DATA_SIZE)
+    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, g_adc_axi_start + int(g_adc_axi_size/2), DATA_SIZE)
     
     # Enable DMA on both channels
     rp.rp_AcqAxiEnable(rp.RP_CH_1, True)
