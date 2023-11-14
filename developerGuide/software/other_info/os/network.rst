@@ -68,6 +68,7 @@ Restart access point service:
 .. code-block:: shell-session
 
    # systemctl restart hostapd@wlan0.service
+
 |
 |
 
@@ -635,6 +636,7 @@ https://web.archive.org/web/20161014035710/https://www.raspberrypi.org/products/
    		 * #{ managed } <= 1, #{ AP } <= 1, #{ P2P-client } <= 1, #{ P2P-device } <= 1,
    		   total <= 4, #channels <= 1
    	Device supports scan flush.
+
 |
 |
 
