@@ -21,8 +21,6 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
-|
-
 
 Technical specifications
 =========================
