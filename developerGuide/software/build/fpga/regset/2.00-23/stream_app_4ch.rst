@@ -12,7 +12,6 @@ Project - stream_app_4ch
 +--------+-------------+------------+----------------------------------+
 
 |
-|
 
 ADC streaming
 -----------------
@@ -449,8 +448,6 @@ ADC streaming
 |          |  PP coefficient                                | 23:0  |   W  |
 +----------+------------------------------------------------+-------+------+
 
-
-|
 |
 
 GPIO streaming
@@ -467,7 +464,6 @@ GPIO streaming
     * [23:16] GPIO_x_N bits
     * [31:24] GPIO_x_P bits
 
-|
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
