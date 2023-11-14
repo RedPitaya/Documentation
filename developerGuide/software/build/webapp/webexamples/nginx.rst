@@ -4,8 +4,6 @@ Nginx requests
 You can execute system commands via Nginx requests. For this tutorial take Creating first app as basis. We will write 
 filemanager using Nginx location.
 
-|
-|
 
 Web UI
 ******
@@ -22,8 +20,6 @@ It will show content of current folder.
 
 In **app.js** there are two new functions - **APP.openDir()** and **APP.printFiles()**.
 
-|
-
 In **APP.openDir()**:
 
 .. code-block:: html
@@ -37,7 +33,6 @@ In **APP.openDir()**:
 In **done** method we split received data to get list of files and folders. Then we print them calling 
 **APP.printFiles()** function.
 
-|
 
 In **APP.printFiles()** :
 
@@ -61,12 +56,8 @@ In **APP.printFiles()** :
         }
     }
 
-|
-
 First of all we should clean screen from old data. **$('.child').remove()**; deletes all elements with class **child**. 
 Then we print new files with class **child** and set them **onclick** listeners. In **onclick** we open a new directory.
-
-|
 
 In **APP.ws.onopen()** callback we should open a root directory:
 
@@ -74,8 +65,6 @@ In **APP.ws.onopen()** callback we should open a root directory:
 
     APP.openDir("/");
 
-|
-|
 
 Nginx location
 **************
@@ -103,7 +92,6 @@ There is a new project file - nginx.conf. Content of this file:
        ';
    }
      
-|
 
 In **content_by_lua** section there is main logic of request.
 
@@ -111,7 +99,6 @@ Server gets **args.dir** param, which was sent from **app.js**. If it is not emp
 get parent directory and list of files of current directory. Then it reads result from temporary file and sends it to 
 client.
 
-|
 
 After all steps you will get an application with file manager.
 
@@ -123,6 +110,5 @@ After all steps you will get an application with file manager.
     
 and then start application.
 
-|
 
 Now you can open Red Pitaya's folders and see their contents by Web UI.
