@@ -12,9 +12,6 @@ STEMlab 125-14 4-Input is a single-board RF signal acquisition platform that off
 * Switching between internal and external clocks can be done using a jumper or control signal on the extension connector.
 * The internal ADC clock can be locked to an external reference clock via an extension connector (this feature is only available upon customer request).
 
-|
-|
-
 
 Pinout
 ========
@@ -22,7 +19,6 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
-|
 |
 
 Technical specifications
@@ -169,7 +165,6 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
-|
 
 .. note::
     
@@ -177,9 +172,6 @@ Technical specifications
 
 .. note::
   Jumper orientation can affect the measurements taken with Red Pitaya. Check the :ref:`Jumper Orientation <jumper_pos>` for more details.
-
-|
-|
 
 
 Switching between internal and external clock
@@ -193,24 +185,18 @@ When STEMlab 125-14 4-Input is in External clock mode the ADC clock must be prov
 
     In the External clock mode, the OS will not boot without providing an external clock.
 
-|
-|
 
 Schematics
 ==============
 
 * `STEMlab_125-14-4_IN_V1r3.PDF <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-14-4_IN_V1r3.PDF>`_
 
-|
-|
 
 Mechanical Specifications and 3D Models
 ============================================
 
 * `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEM125-14-4_IN_V1r3_3Dstep.zip>`_
 
-|
-|
 
 Extension connector STEMlab 125-14 4-Input
 =============================================
@@ -220,7 +206,6 @@ Extension connector STEMlab 125-14 4-Input
     - Available voltages: +5 V, +3.3 V, -3.3 V
     - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA for -3.3 V supply. 
 
-|
 
 .. _E1_4-IN:
 
@@ -230,7 +215,6 @@ Extension connector E1
 - 3V3 power source
 - 22 single ended or 8 differential digital I/Os with 3.3 V logic levels
 
-|
 
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -263,20 +247,17 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 26   GND                                                                             
 ===  =====================  ===============  ========================  ==============
 
-|
 
 .. note::
 
    To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
 
-|
 
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
     - <8 mA drive strength
 
-|
 
 .. _E2_4-in:
 
@@ -289,7 +270,6 @@ Extension connector E2
 - 4 x slow DACs
 - Ext. clock for fast ADC
 
-|
 
 .. Table 6: Extension connector E2 pin description
 
@@ -324,18 +304,11 @@ Pin  Description             FPGA pin number  FPGA pin description              
 26   GND                                                                                                    
 ===  ======================  ===============  ==============================================  ==============
 
-.. UART 0
-.. 7    UART (TX)               C8               PS_MIO14_500                                    3.3 V         
-.. 8    UART (RX)               C5               PS_MIO15_500                                    3.3 V   
-
-|
 
 .. note::
 
     UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
 
-|
-|
 
 Other specifications
 =====================
