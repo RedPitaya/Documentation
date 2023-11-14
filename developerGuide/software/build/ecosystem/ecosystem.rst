@@ -24,7 +24,6 @@ Go to the Red Pitaya (git) directory.
    This line can also be added to the end of .bashrc and will automatically set the ``$LC_ALL`` variable each time the 
    the terminal is started.
 
-|
    
 .. note::
     
@@ -32,8 +31,6 @@ Go to the Red Pitaya (git) directory.
     directory. We recommend that you make a separate directory in the home directory that is not encrypted e.g. 
     ``/home/ecosystem_build``
 
-|
-|
        
 =====================================
 Red Pitaya ecosystem and applications
@@ -46,7 +43,6 @@ Programmable" paradigm and the way several components are interrelated,
 some components might be spread across many directories or found at
 different places one would expect.
 
-|
 
 +--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 | directories  | contents                                                                                                                                        |
@@ -75,7 +71,6 @@ different places one would expect.
 +--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 |
-|
 
 -------------------
 Supported platforms
@@ -88,8 +83,6 @@ so Linux is also the only platform we support.
 
    Ecosystem version 2.0 requires ubuntu version 22.04
 
-|
-|
 
 .. _sys-req-label:
 
@@ -168,8 +161,6 @@ You will need the following to build the Red Pitaya components:
 
       $ sudo ln -s /usr/bin/make /usr/bin/gmake
 
-|
-|
 
 .. _build-proc-label:
 
@@ -181,7 +172,6 @@ Build process
 
    To implement the build process, at least 8 GB of available space on the PC's local machine is required.
 
-|
 
 .. tabs::
 
@@ -195,7 +185,6 @@ Build process
          git clone https://github.com/RedPitaya/RedPitaya.git
          cd RedPitaya
 
-      |
 
       .. note:: 
 
@@ -476,8 +465,6 @@ Build process
 
          Ecosystem Build 2.0 cannot build for a specific board model as it was in version 1.04. Differences only in the assembly of FPGA for specific models.
 
-|
-|
 
 =======================
 Partial rebuild process
@@ -720,8 +707,6 @@ Partial rebuild process
 
          Possible options for individual assemblies are listed. Some of them depend on each other. You can build everything at once if you start the build with `make all`.
 
-|
-|
 
 ----------------
 Linux user space
@@ -732,7 +717,6 @@ Debian/Ubuntu OS
 
 `Debian/Ubuntu OS instructions <https://github.com/RedPitaya/RedPitaya/tree/master/OS/debian>`_ are detailed elsewhere.
 
-|
 
 API
 ~~~
@@ -753,7 +737,6 @@ You can install it on Red Pitaya by copying it there:
 
    scp build/api/lib/*.so root@192.168.0.100:/opt/redpitaya/lib/
 
-|
 
 SCPI server
 ~~~~~~~~~~~
@@ -779,7 +762,6 @@ You can install it on Red Pitaya by copying it there:
 
    To build the scpi server for RP, a special `version <https://github.com/RedPitaya/scpi-parser/tree/redpitaya>`_  of scpi-parser is used. It added and optimized some functions.
 
-|
 
 Free applications
 ~~~~~~~~~~~~~~~~~
