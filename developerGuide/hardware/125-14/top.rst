@@ -224,7 +224,7 @@ The ADC clock can be provided by:
     - From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
     - Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
-.. figure:: img/External_clk.png
+.. figure:: img/schematics/External_clk.png
     :alt: Schematic
     :align: center
 
