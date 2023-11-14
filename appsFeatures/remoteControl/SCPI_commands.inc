@@ -524,12 +524,12 @@ Parameter options:
 | | ``ACQ:DEC?`` > ``1``                   | | Python: ``rp_AcqGetDecimation()``                                 |                                                                      |                    |
 | |                                        | |                                                                   |                                                                      |                    |
 +------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| | ``ACQ:DEC:F <decimation_ext>``         | | C: ``rp_AcqSetDecimationFactor(rp_acq_decimation_t decimation)``  | | Set the extended decimation factor.                                | in dev             |
+| | ``ACQ:DEC:F <decimation_ext>``         | | C: ``rp_AcqSetDecimationFactor(uint32_t decimation)``             | | Set the extended decimation factor.                                | in dev             |
 | | Example:                               | |                                                                   |                                                                      |                    |
 | | ``ACQ:DEC:F 17``                       | | Python: ``rp_AcqSetDecimationFactor(decimation)``                 |                                                                      |                    |
 | |                                        | |                                                                   |                                                                      |                    |
 +------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| | ``ACQ:DEC:F?`` > ``<decimation_ext>``  | | C: ``rp_AcqGetDecimationFactor(rp_acq_decimation_t* decimation)`` | Get the extended decimation factor.                                  | in dev             |
+| | ``ACQ:DEC:F?`` > ``<decimation_ext>``  | | C: ``rp_AcqGetDecimationFactor(uint32_t* decimation)``            | Get the extended decimation factor.                                  | in dev             |
 | | Example:                               | |                                                                   |                                                                      |                    |
 | | ``ACQ:DEC:F?`` > ``1``                 | | Python: ``rp_AcqGetDecimationFactor()``                           |                                                                      |                    |
 | |                                        | |                                                                   |                                                                      |                    |
