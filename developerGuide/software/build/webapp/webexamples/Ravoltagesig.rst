@@ -4,8 +4,6 @@ Reading analog voltage from slow inputs + graph
 In this example we will plot on graph voltage measured on one of Red Pitaya slow analog inputs. We take 
 Reading analog voltage from slow inputs :ref:`example <ReadAVSI>` as a basis.
 
-|
-|
 
 Web UI
 =========
@@ -21,7 +19,6 @@ You also need new .js file:
     <script src="js/pako.js"></script>
     <script src="js/app.js"></script>
 
-|
 
 Add graph placeholder using this string in **index.html**:
 
@@ -46,7 +43,6 @@ and then process.
         APP.signalStack.push(receive.signals);
     }
 
-|
 
 Processing of signals is also located in **APP.processSignals()** function, which is called every 15ms by 
 **APP.signalHandler()**. In this function we draw points according to values and update graph:
@@ -77,8 +73,6 @@ Processing of signals is also located in **APP.processSignals()** function, whic
     APP.plot.setupGrid();
     APP.plot.draw();
 
-|
-|
 
 Controller
 **********
@@ -105,8 +99,6 @@ In **rp_app_init()** we should set signal update interval:
 **SIGNAL_UPDATE_INTERVAL** is also our constant. It is 10ms. It means how often program will call function void 
 **UpdateSignals(void)**. In this function we will read value from **AIpin0** and write it to signal:
 
-|
-
 .. code-block:: c
 
     rp_AIpinGetValue(0, &val);
@@ -114,14 +106,11 @@ In **rp_app_init()** we should set signal update interval:
 **val** - is buffer variable, which will get value from **AIpin0**. We should write this value to data vector in last 
 position. First measurement should be deleted from this vector.
 
-|
 
 .. code-block:: c
 
     g_data.erase(g_data.begin());
     g_data.push_back(val * GAIN.Value());
-
-|
 
 After all steps write data to signal and it will be sent to server.
 
