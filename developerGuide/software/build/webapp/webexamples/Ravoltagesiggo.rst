@@ -6,8 +6,6 @@ In this example we will modify our oscilloscope made in Reading analog voltage f
 :ref:`example <ReadAVSI>`. We will add gain and offset settings to present how some parameters set in UI can be then 
 applied on the signal in the backend.
 
-|
-|
 
 Web UI
 ========
@@ -23,7 +21,6 @@ Without gain some measurements may be very low and offset can set minimal voltag
         <input id='gain_set' type="range" size="2" value="1" min = "1" max = "100">
     </div>
 
-|
 
 Offset: 
 
@@ -58,16 +55,11 @@ They will be used by controller.
 
     $('#offset_value').text(APP.offset);
 
-|
-|
-
 
 Controller
 =============
 
 In **main.cpp** we need new parameters.
-
-|
 
 **Gain:**
 
@@ -77,7 +69,6 @@ In **main.cpp** we need new parameters.
 
 Its’ min value is 1 and max is 100. By default it is 1.
 
-|
 
 **Offset:**
 
@@ -88,7 +79,6 @@ Its’ min value is 1 and max is 100. By default it is 1.
 
 Its’ min value is **0.0** and max is **5.0**. By default it is **0.0**.
 
-|
 
 They will be updated in **OnNewParams()** function:
 
@@ -97,7 +87,6 @@ They will be updated in **OnNewParams()** function:
     GAIN.Update();
     OFFSET.Update();
 
-|
 
 We should modify writing to signal in **UpdateSignals().**
 
