@@ -54,12 +54,9 @@ Scripts to be used in a ``chroot`` environment only:
 | ``tft.sh``          | X-server and XFCE                                                                                   |
 +---------------------+-----------------------------------------------------------------------------------------------------+
 
-|
 
 The ``overlay`` directory contains configuration files which are individually installed onto the OS by scripts.
 
-|
-|
 
 Bootstrapping
 ================
@@ -73,7 +70,6 @@ A short list of SD card image contents:
    - most network configuration files
    - Jupyter work space
 
-|
 
 2. Ecosystem (Fat32 partition):
 
@@ -86,7 +82,6 @@ A short list of SD card image contents:
       - Red Pitaya API library
       - SCPI server
 
-|
 
 To build a functional *OS image* the *ecosystem* is required,
 since without the ``boot.bin`` and the Linux kernel, the system will not start.
@@ -100,11 +95,9 @@ Therefore the procedure for the first build is as follows:
    This will create a ``redpitaya_OS_*.img`` SD card image, but without the ecosystem and therefore non functional.
    It will also create a ``redpitaya_OS_*.tar.gz`` file, to be used in the ``chroot`` environment.
 
-|
 
 2. Build the ``ecosystem_*.zip`` inside the ``chroot`` environment.
 
-|
 
 3. Combine ``redpitaya_OS_*.img`` with ``ecosystem_*.zip`` using:
 
@@ -112,7 +105,6 @@ Therefore the procedure for the first build is as follows:
 
       OS/debian/image-update.sh redpitaya_OS_*.img ecosystem_*.zip
 
-|
 
 After finishing the bootstrapping procedure, either the ecosystem or the OS image can be built as needed.
 The more common procedure would be to build a new ecosystem using an existing ``chroot`` environment,
@@ -121,8 +113,6 @@ The build procedure for a new SD card OS image can now be done in one step.
 If an existing ``ecosystem_*.zip`` file is present in the project root while building the OS image,
 it will be integrated and the result will be a fully functional SD card image.
 
-|
-|
 
 Dependencies
 =============
@@ -135,8 +125,6 @@ The next two packages need to be installed on the host PC:
 
    $ sudo apt-get install debootstrap qemu-user-static
 
-|
-|
 
 Ubuntu bootstrap
 ------------------
@@ -148,7 +136,6 @@ The next steps should be executed in the root directory of the Red Pitaya Git re
    $ git clone https://github.com/RedPitaya/ubuntu.git
    $ cd RedPitaya
 
-|
 
 Run the next command to build the OS image. Root or ``sudo`` privileges are needed.
 The code should be executed as the ``root`` user,
@@ -166,7 +153,6 @@ otherwise some configuration files will be placed into the wrong users home dire
    # OS/debian/image.sh
    # exit
 
-|
 
 :download:`image.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/image.sh>`  will create an SD card image with a name containing the current 
 date and time. Two partitions are created a 512MB FAT32 partition for the ecosystem and a slightly less then 8GB Ext4 partition.
@@ -182,14 +168,11 @@ locales, hostname, timezone, file system table, U-boot and users (access to UART
 needed by Red Pitaya applications. :download:`redpitaya.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/redpitaya.sh>` also extracts 
 ``ecosystem*.zip`` (if one exists in the current directory) into the FAT partition.
 
-|
 
 Optionally (code can be commented out) :download:`ubuntu.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/ubuntu.sh>` also executes
 :download:`jupyter.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/jupyter.sh>` and :download:`tft.sh <https://github.com/RedPitaya/ubuntu/blob/main/debian/tft.sh>` which provide 
 additional functionality.
 
-|
-|
 
 Red Pitaya ecosystem update
 ---------------------------
@@ -214,8 +197,6 @@ Now you can burn a micro SD card (sized 8GB) e.g.,
 
    # dd bs=4M if=redpitaya_OS_*.img of=/dev/mmcblk0
 
-|
-|
 
 File system check
 ------------------
@@ -232,8 +213,6 @@ Use this script on an image before releasing it.
 
    # ./OS/debian/image-fsck.sh redpitaya_OS_*.img
 
-|
-|
 
 Reducing image size
 --------------------
@@ -250,7 +229,6 @@ A cleanup can be performed to reduce the image size. Various things can be done 
 * remove temporary files
 * zero out empty space on the partition
 
-|
 
 The next code only removes APT temporary files and zeros out the file system empty space.
 
@@ -262,8 +240,6 @@ The next code only removes APT temporary files and zeros out the file system emp
    $ rm -f zero.file
    $ history -c
 
-|
-|
 
 Debian Usage
 ==================
@@ -306,7 +282,6 @@ To see the status of a specific service run:
 
    $ systemctl
 
-|
 
 Debugging
 ~~~~~~~~~~~
