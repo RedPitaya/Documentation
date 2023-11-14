@@ -160,7 +160,6 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
-|
 
 .. note::
     
@@ -247,7 +246,6 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 26   GND                                                                             
 ===  =====================  ===============  ========================  ==============
 
-|
 
 .. note::
 
@@ -304,11 +302,6 @@ Pin  Description             FPGA pin number  FPGA pin description              
 26   GND                                                                                                    
 ===  ======================  ===============  ==============================================  ==============
 
-.. UART 0
-.. 7    UART (TX)               C8               PS_MIO14_500                                    3.3 V         
-.. 8    UART (RX)               C5               PS_MIO15_500                                    3.3 V   
-
-|
 
 .. note::
 
