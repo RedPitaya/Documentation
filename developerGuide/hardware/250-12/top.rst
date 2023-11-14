@@ -209,12 +209,11 @@ Extension connector SIGNALlab
 - Connector: 2 x 26 pins IDC (M) 
 - Power supply: 
     - Available voltages: +5 V, +3.3 V, -5.4 V
-    - Current limitations: 200 mA for +5 V, 50 mA  for +3.3 V (to be shared between extension module and USB devices), 10 mA 
-  for -5.4 V supply. 
+    - Current limitations: 200 mA for +5 V, 50 mA  for +3.3 V (to be shared between extension module and USB devices), 10 mA for -5.4 V supply. 
 
 |
 
-.. _E1_sdr:
+.. _E1_signal:
 
 Extension connector E1
 --------------------------
@@ -270,7 +269,7 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 
 |
 
-.. _E2_sdr:
+.. _E2_signal:
 
 Extension connector E2
 -------------------------
