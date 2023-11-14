@@ -26,8 +26,6 @@ Pitaya using parameters.
 
                 redpitaya> overlay.sh v0.94
 
-|
-|
 
 Web UI
 ******
@@ -36,20 +34,16 @@ Let’s start with UI, in index.html file we have to add a button that will be u
 
     <button id='led_state'>Turn on</button>
 
-|
-
 and LED state label that will tell us if LED is On or Off. ::
 
     < div id='led_off'>LED Off</div>
     < div id='led_on'>LED On</div>
 
-|
 
 .. note::
 
     **led_on** div is not visible by default because when app starts all leds are off.
 
-|
 
 Also make some changes in **style.css** to set properties of these elements
 
@@ -69,7 +63,6 @@ Also make some changes in **style.css** to set properties of these elements
         padding: 10px;
     }
 
-|
 
 Then we have to add some logic in app.js, that will be executed when user clicks on the button with the mouse. This
 logic should change local led_state each time button is clicked and send current led_state value to backend so that
@@ -104,8 +97,6 @@ Red Pitaya can update real LED state.
     Parameter that transfers local LED state to Red Pitaya backend is called LED_STATE. You can change name of this
     parameter, but don’t forget to use the same name also in controller.
 
-|
-|
 
 Controller
 **********
@@ -114,7 +105,6 @@ After we send parameters we should read them in our controller. Controller sourc
 
     src/main.cpp
 
-|
 
 This global variable is our parameter, that we should read from server.
 
@@ -122,7 +112,6 @@ This global variable is our parameter, that we should read from server.
 
    CBooleanParameter ledState("LED_STATE", CBaseParameter::RW, false, 0);
 
-|
 
 Parameter is a variable that connected with NGINX. Initialization has 4 arguments - parameter's name, access mode,
 initial value, and FPGA update flag. Pay attention - name of parameter LED_STATE should be the same as in app.js and
@@ -142,7 +131,6 @@ they will arrive each time you press the button in UI.
         rp_DpinSetState(RP_LED0, RP_HIGH);
     }
 
-|
 
 **ledState.Update()** - updates value of parameter. It takes value from NGINX by parameter's name. That's why names
 of parameters in **controller** and **app.js** should be the same.
@@ -151,8 +139,6 @@ and **rp_pinState_t *state**. In our program we control **RP_LED0**. There are 8
 **RP_LED0 - RP_LED7**.
 
 There are two states of a LED - **RP_HIGH** (turned on) and **RP_LOW** (turned off).
-
-|
 
 Don’t forget to init **rpApp** and release it in **rp_app_init()** and **rp_app_exit()**.
 
