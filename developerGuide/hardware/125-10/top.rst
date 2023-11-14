@@ -8,11 +8,8 @@ STEMlab 125-10
 Pinout
 ========
 
-
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
-
-|
 
 .. note::
 
