@@ -69,7 +69,6 @@ and change the VERSION line to ``VERSION=”18.04.4 LTS (Bionic Beaver)"`` and s
 
 .. figure:: os_release.png
 
-|
 
 Afterward, you can either run the **Xilinx_Unified_2020.1_0602_1208_Lin64.bin** (Linux web installer) or the xsetup file from the extracted folder (unified installer).
 After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.
@@ -269,7 +268,6 @@ Table of required build flags for FPGA projects per board
 | STEMlab 125-14 4-Input       | MODEL=Z20_125_4CH   |
 +------------------------------+---------------------+
 
-|
 
 1.  On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window).
     Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup:
@@ -279,7 +277,6 @@ Table of required build flags for FPGA projects per board
         source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
         source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
    
-    |
 
 .. _xilinx_path:
 
@@ -293,7 +290,7 @@ Table of required build flags for FPGA projects per board
 
     On Windows, please check |windows_path| or search the web. Add the path to the */bin* directory for Vivado and SDK.
 
-    |
+
 
 .. |windows_path| raw:: html
 
@@ -307,7 +304,7 @@ Table of required build flags for FPGA projects per board
         sudo apt update
         sudo apt install git   
 
-    |
+
 
 4.  Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:
 
@@ -319,7 +316,7 @@ Table of required build flags for FPGA projects per board
 
        For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to **step 6 and later** in this section, please note that all paths in the following section start with *<Red Pitaya repository>/RedPitaya-FPGA/prj* instead of *<Red Pitaya repository>/fpga/prj*.
 
-    |
+
 
 .. |FPGA_tutorial| raw:: html
 
@@ -331,7 +328,7 @@ Table of required build flags for FPGA projects per board
 
         make -f Makefile.x86 devicetree
 
-    |
+
 
 The default mode for building the FPGA is to run a TCL script inside Vivado.
 Non-project mode is used, to avoid the generation of project files,
@@ -375,7 +372,7 @@ The following scripts perform various tasks:
 
        To open the project inside Vivado and edit the FPGA code there please check **step 8**.
 
-    |
+
 
 7.  The resulting .bit file is located in */prj/<project name>/out/redpitaya.bit*
     This file must be copied to */opt/redpitaya/fpga* on the Red Pitaya itself.
@@ -405,7 +402,6 @@ The following scripts perform various tasks:
 
    .. figure:: IPupdate.png
 
-   |
 
    When IPs are up-to-date, go to the tab Tcl console and run the command:
 
@@ -417,7 +413,6 @@ The following scripts perform various tasks:
 
    This generates a new tcl script that replaces the old script in *fpga/prj/<project name>/ip*.
 
-|
 
 8.  **Project mode:** To generate and open a Vivado project using **GUI**, run:
 
@@ -438,7 +433,6 @@ The following scripts perform various tasks:
    
     .. figure:: vivado_project.png
 
-    |
 
     You can connect newly added sources in the Diagram (Block Design) section (If it is not open: *Window => Design => double click system*).
     Add them to the design by right click => Add Module in the design window (for more information check the *Learn FPGA programming => FPGA lessons section*)
@@ -451,14 +445,12 @@ The following scripts perform various tasks:
    make sure you have a **Format** that uses **a dot (“.”) as a decimal separator** (the United Kingdom or the United States will work).
    Otherwise, the Synthesis might fail as some parts of **Vivado demand a dot as the decimal separator**, which will, in turn, cause Vivado not to recognize certain parts of the model.
 
-|
 
 9.  The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit**
     This file must be copied to the Red Pitaya Linux OS into the **/opt/redpitaya/fpga** directory.
 
     .. figure:: vivadoGUI.png
 
-    |
 
     1. Run Synthesis
     2. Run Implementation
@@ -621,7 +613,6 @@ JTAG-HS3 is displayed as an FTDI device.
 
 .. figure:: lsusb.jpg
 
-|
 
 Now, install Digilent Adept 2 software from https://digilent.com/reference/software/adept/start.
 You will need both Utilities and Runtime. These are both available as .deb packages. If installing from GUI does not work, they can be installed using:
@@ -638,43 +629,36 @@ Once these packages are installed, you can check if the driver detects your adap
 
 .. figure:: driver_check.jpg
 
-|
 
 Now, open Vivado 2020.1, click *Program and Debug -> Open Target -> Auto Connect*.
 
 .. figure:: program_menu.jpg
 
-|
 
 This will display a Xilinx-compatible JTAG cable in the Hardware window, under localhost.
 
 .. figure:: cable.jpg
 
-|
 
 Now plug your cable into Red Pitaya's JTAG connector. The pins are marked on the bottom side of Red Pitaya's PCB.
 
 .. figure:: JTAG_pins.jpg
 
-|
 
 A Xilinx device should now appear in Vivado (on the detected cable). In this case, it's an xc7z010_1.
 
 .. figure:: program.jpg
 
-|
 
 Now, you can click Program Device.
 
 .. figure:: connected.jpg
 
-|
 
 A bitfile selector prompt appears and when a valid file is selected, Red Pitaya can be programmed.
 
 .. figure:: file_select.jpg
 
-|
 
 **********
 Simulation
@@ -760,7 +744,6 @@ XADC input data can be accessed through the Linux IIO (Industrial IO) driver int
 |        | AIF[PN]4  | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 6.10 V           |
 +--------+-----------+----------+---------+-----------------------+--------------------+------------------+
 
-|
 
 Input range
 -----------
