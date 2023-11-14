@@ -132,7 +132,7 @@ Modify application title in index.html file:
 
 Obviously you may want to have your own unique look of application. For that case you need to edit file:: 
  
-css/style.css
+   css/style.css
 
 |
 
