@@ -222,7 +222,7 @@ Extension connector STEMlab 125-14 4-Input
 
 |
 
-.. _E1_sdr:
+.. _E1_4-IN:
 
 Extension connector E1
 --------------------------
@@ -278,7 +278,7 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 
 |
 
-.. _E2_sdr:
+.. _E2_4-in:
 
 Extension connector E2
 -------------------------
