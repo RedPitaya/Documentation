@@ -11,7 +11,6 @@ The debug console can be used to follow the boot process:
    The serial console can also be used to see the output 
    of other bare metal applications, for example, the memory test.
 
-|
 
 2. U-Boot
 
@@ -23,7 +22,6 @@ The debug console can be used to follow the boot process:
    U-boot will stop the boot process
    and give the user access to its shell.
 
-|
 
 3. Linux console
 
@@ -34,8 +32,6 @@ The debug console can be used to follow the boot process:
       User name: ``root``
       Password: ``root``
 
-|
-|
 
 Hardware setup
 ==============
@@ -52,7 +48,6 @@ Connect your Red Pitaya and PC with a micro USB B to USB A cable and follow the 
 .. figure:: pitaya-USB-connection-300x164.png
 
 
-|
 
 Windows
 --------
@@ -63,7 +58,6 @@ Download and install the |FTDI driver| on your PC. After installation, a new COM
 
    <a href="http://www.ftdichip.com/Drivers/VCP.htm" target="_blank">FTDI driver</a>
 
-|
 
 To adjust the connection settings for serial communication, right-click on the COM port and select Properties.
 
@@ -73,7 +67,6 @@ To adjust the connection settings for serial communication, right-click on the C
 
 Boot reference must be done through Minicom or a similar serial console application.
 
-|
 
 One of the options is to install the WSL (Windows Subsystem for Linux) and then install the relevant tools for the console interface.
 Here are the relevant links:
@@ -81,7 +74,6 @@ Here are the relevant links:
 * |WSL|
 * |Connect USB Devices|
 
-|
 
 Afterwards, follow the instructions in the Linux section.
 
@@ -93,8 +85,6 @@ Afterwards, follow the instructions in the Linux section.
 
    <a href="https://learn.microsoft.com/en-us/windows/wsl/connect-usb" target="_blank">Connect USB devices</a>
 
-|
-|
 
 Linux
 -----
@@ -119,21 +109,18 @@ You can see the driver output in the kernel log using ``dmesg``:
    [95074.890228] usb 1-2.4.3: Detected FT-X
    [95074.891157] usb 1-2.4.3: FTDI USB Serial Device converter now attached to ttyUSB0
 
-|
 
 The first board connected to your PC will create a device named ``/dev/ttyUSB0``. If **N** USB or serial devices are connected, they will appear as ''/dev/ttyUSBn``, where **n** is **{0, 1, ..., N-1}**. To access these devices, programs should be run with ``sudo``.
 
 Boot reference must be done through Minicom or a similar serial console application.
 
-|
-|
+
 
 ``minicom``
 ~~~~~~~~~~~
 
 Minicom is a text-based modem control and terminal emulation program. It is commonly used for setting up a remote serial console.
 
-|
 
 To configure ``minicom`` use the ``-s`` option.
 
@@ -141,7 +128,6 @@ To configure ``minicom`` use the ``-s`` option.
 
    sudo minicom -s
 
-|
 
 A configuration menu will open.
 
@@ -159,7 +145,6 @@ A configuration menu will open.
    | Exit from Minicom        |
    +--------------------------+
 
-|
 
 Go to ``Serial Port Setup``, press **Enter**, and set up the next options:
 
@@ -181,7 +166,6 @@ Go to ``Serial Port Setup``, press **Enter**, and set up the next options:
    |    Change which setting?                                              |
    +-----------------------------------------------------------------------+
 
-|
 
 ``Minicom`` requires some special ``Control+A`` key sequences to operate.
 Please see the |minicom manual| for details.
@@ -193,8 +177,7 @@ Please see the |minicom manual| for details.
 
 After you have configured the details, exit the settings. Minicom should connect you to Red Pitaya, and you should be asked to log in after pressing Enter (see "3.2.1.2" at the top of the page" for the username and password). Should that not happen, leave the Minicom open and unplug Red Pitaya from power; after plugging it back in, you should see the boot sequence for Red Pitaya.
 
-|
-|
+
 
 ``screen``
 ~~~~~~~~~~
@@ -214,8 +197,6 @@ Please see the |screen manual| for details.
 
    <a href="https://www.gnu.org/software/screen/manual/screen.html" target="_blank">screen manual</a>
 
-|
-|
 
 Reference boot sequence
 =======================
