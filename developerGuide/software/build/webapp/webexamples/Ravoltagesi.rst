@@ -8,7 +8,6 @@ Reading analog voltage from slow inputs
   connector :ref:`E2 <E2>`. 
 | Notice that any of four AI pins (0-3) can be used.
 
-|
 
 Web UI
 =========
@@ -17,7 +16,6 @@ First of all you need new .js file:
 
 **pako.js** - for decompress data
 
-|
 
 In **index.html** add:
 
@@ -27,7 +25,6 @@ In **index.html** add:
     <script src="js/pako.js"></script>
     <script src="js/app.js"></script>
 
-|
 
 Our mesurement result will be in this block:
 
@@ -35,7 +32,6 @@ Our mesurement result will be in this block:
 
     < div id='value'></div>
 
-|
 
 Add button to read voltage using this string in **index.html**:
 
@@ -58,7 +54,6 @@ In **app.js** we should change **APP.ws.onmessage()** callback. We decompress me
         APP.processSignals(receive.signals);
     }
 
-|
 
 Processing of signals is located in **APP.processSignals()** function. In this function we get voltage value from 
 signal and print it in Web UI:
@@ -76,7 +71,6 @@ signal and print it in Web UI:
         $('#value').text(parseFloat(voltage).toFixed(2) + "V");
     }
 
-|
 
 By **APP.readValue()** we send request of reading voltage to controller.
 
@@ -86,8 +80,6 @@ By **APP.readValue()** we send request of reading voltage to controller.
     local['READ_VALUE'] = { value: true };
     APP.ws.send(JSON.stringify({ parameters: local }));
 
-|
-|
 
 Controller
 ============
@@ -106,7 +98,6 @@ because each time we need to send to Web UI only one value.
 
 **0.0f** is default value of each measurement.
 
-|
 
 Also we need reading voltage parameter. It will
 
@@ -114,7 +105,6 @@ Also we need reading voltage parameter. It will
 
     CBooleanParameter READ_VALUE("READ_VALUE", CBaseParameter::RW, false, 0);
 
-|
 
 Its’ default value is false. We will update this parameter in **OnNewParams()** function:
 
@@ -122,7 +112,6 @@ Its’ default value is false. We will update this parameter in **OnNewParams()*
 
     READ_VALUE.Update();
 
-|
 
 If **READ_VALUE.Value()** is **true** we will read value from **AIpin0** and write it to signal:
 
@@ -142,7 +131,6 @@ If **READ_VALUE.Value()** is **true** we will read value from **AIpin0** and wri
         READ_VALUE.Set(false);
     }
 
-|
 
 **val** - is buffer variable, which will get value from **AIpin0**. After writing data value will be sent to server. 
 We should set **READ_VALUE** parameter to **false**.
