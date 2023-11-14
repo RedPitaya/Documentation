@@ -12,7 +12,6 @@ acquisition, digital I/O control, communication (I2C, SPI, UART, CAN) and more).
     - Use branch 2022.2 or older GitHub ecosystem together with 1.04 or older Red Pitaya OS.
 
 |
-|
 
 C and Python API functions
 ============================
@@ -29,15 +28,12 @@ The Python API functions are just wrappers that call the corresponding C API fun
 Examples on how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
 
 |
-|
-
 
 Compiling and running C applications
 =====================================
 
 When compiling on the target no special preparations are needed. A native toolchain is available directly on the Debian system.
 
-|
 
 Compiling and running Example code
 -----------------------------------
@@ -155,7 +151,6 @@ Compiling and running Example code
     Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
 
 |
-|
 
 Compiling and running custom code
 -----------------------------------
@@ -165,7 +160,6 @@ Compiling and running custom code
    When creating custom C API programs on your computer, please make sure that **End of Line Sequence** in your code editor is set to **LF**
    (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
 
-|
 
 1.  First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
 
@@ -280,7 +274,6 @@ Compiling and running custom code
     If an application is running in a continuous loop - press `CTRL+C` to stop them.
 
 |
-|
 
 Running Python applications
 ==============================
@@ -293,7 +286,6 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
     Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes a **Bad Interpreter error**).
     The recommended encoding is **UTF-8**.
 
-|
 
 1.  The best way to create Python APIs is to write the code on your computer (use the available examples as a reference).
     Do not forget to include the **rp** library.
@@ -349,7 +341,6 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
         source ./.bashrc
 
 |
-|
 
 C and Python API all available commands
 ========================================
@@ -368,7 +359,6 @@ As of now the list does not include all possible options. If you want to check o
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/redpitaya/rp.h" target="_blank">Functions info</a>
 
-|
 |
 
 C and Python API examples
