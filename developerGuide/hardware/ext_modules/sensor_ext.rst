@@ -41,15 +41,12 @@ A set of nine Jumpers can reconnect certain extension module connectors to diffe
 
     <a href="https://redpitaya.com/shop/" target="_blank">store</a>
 
-|
-|
 
 Connectors and Jumpers
 =========================
 
 The black connectors on the sides are compatible with Arduino, the white connectors on the front provide analog inputs, and the two rows of beige connectors at the centre provide digital I/O, UART, I2C, or analog outputs. On the bottom, there are connectors to the Red Pitaya board.
 
-|
 
 Grove module connectors
 --------------------------
@@ -82,7 +79,6 @@ There are six connector types available:
 | ``4``               | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       | GND       |
 +---------------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
 
-|
 |
 
 Arduino shield compatible connectors
@@ -159,7 +155,6 @@ This set of connectors is partially compatible with the Arduino shield connector
 +--------------+-----------+-------------------+
 
 |
-|
 
 Jumpers
 ---------
@@ -187,16 +182,12 @@ Jumpers
 +----------------+------------------+---------------------+--------------------+
 
 |
-|
 
 Schematics
 ============
 
 * `Red_Pitaya_Sensor_Shield_Schematics.pdf <https://downloads.redpitaya.com/doc/STEMlab_ArduinoSensorShieldSch.PDF>`_.
 
-|
-|
-|
 
 Examples of Groove Sensor
 ==========================
@@ -342,8 +333,6 @@ LCD                                                                             
 
     <a href="https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight" target="_blank">Groove LCD</a>
 
-|
-|
 
 Code Examples
 ===============
