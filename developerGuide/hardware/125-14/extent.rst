@@ -8,7 +8,6 @@ Extension connector
 - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA 
   for -3.4 V supply. 
 
-|
 
 .. _E1:
 
@@ -49,7 +48,6 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 26   GND                                                                             
 ===  =====================  ===============  ========================  ==============
 
-|
 
 .. note::
 
@@ -60,8 +58,6 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - max. 3.3 V + 0.55 V
     - <8 mA drive strength
 
-|
-|
 
 .. _E2:
 
@@ -85,8 +81,8 @@ Pin  Description             FPGA pin number  FPGA pin description              
 4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
 5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
 6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V         
-7    UART (TX)               C8               PS_MIO13_500                                    3.3 V         
-8    UART (RX)               C5               PS_MIO14_500                                    3.3 V         
+7    UART (TX)               D5               PS_MIO8_500                                     3.3 V        
+8    UART (RX)               B5               PS_MIO9_500                                     3.3 V       
 9    I2C (SCL)               B9               PS_MIO50_501                                    3.3 V         
 10   I2C (SDA)               B13              PS_MIO51_501                                    3.3 V         
 11   Ext com.mode                                                                             GND (default) 
@@ -109,12 +105,6 @@ Pin  Description             FPGA pin number  FPGA pin description              
 
 \ :sup:`1` Red Pitaya Version 1.0 has -3.3 V on pin 2. Red Pitaya Version 1.1 has -3.4 V on pin 2.
 
-.. UART 1
-.. 7    UART (TX)               D5               PS_MIO8_500                                     3.3 V        
-.. 8    UART (RX)               B5               PS_MIO9_500                                     3.3 V        
-
-|
-
 
 Schematics of extension connectors are shown in the picture below.
 
@@ -123,7 +113,7 @@ Schematics of extension connectors are shown in the picture below.
     :align: center
 
 |
-|
+
 
 **Notes:**
 
@@ -163,8 +153,6 @@ Schematics of extension connectors are shown in the picture below.
 Information furnished by Red Pitaya d.o.o. is believed to be accurate and reliable. However, no responsibility is 
 assumed for its use. Contents may be subject to change without any notice. 
 
-|
-|
 
 Auxiliary analog input channels
 ===============================
@@ -176,8 +164,6 @@ Auxiliary analog input channels
 - Input voltage range: 0 to +3.5 V 
 - Input coupling: DC 
 
-|
-|
 
 Auxiliary analog output channels 
 ================================
@@ -188,8 +174,6 @@ Auxiliary analog output channels
 - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17,18,19,20) v - Output voltage range: 0 to +1.8 V 
 - Output coupling: DC 
 
-|
-|
 
 General purpose digital input/output channels: (N) 
 ==================================================
@@ -199,8 +183,6 @@ General purpose digital input/output channels: (N)
 - Direction: configurable 
 - Location: IDC connector :ref:`E1 <E1>` (pins 324) 
 
-|
-|
 
 Powering Red Pitaya through extension connector
 ===============================================
