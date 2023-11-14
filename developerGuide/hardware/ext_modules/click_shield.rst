@@ -59,6 +59,7 @@ Connectors
 -------------
 
 .. add connectors picture (topdown of click shield, connectors marked)
+
 |
 
 +-------------------------+--------------------+----------------------------------------+
