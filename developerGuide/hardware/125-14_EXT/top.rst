@@ -6,14 +6,11 @@ STEMlab 125-14 external clock
 
 This STEMlab version is standard STEMlab 125-14 modified in such a way that the ADC and DAC clock can be provided from an external source clock. An external clock should be connected to the Ext ADC CLK- and + pins. According to the ADC spec, external clock signal levels should be LVDS in the range from 1 MHz to 125 MHz.
 
-|
 
 .. note::
 
    The OS will not boot without providing an external clock.
 
-|
-|
 
 ******
 Pinout
@@ -22,7 +19,6 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
-|
 |
 
 ************************
@@ -170,14 +166,11 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
-|
 
 .. note::
 
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
-|
-|
 
 Schematics
 ============
@@ -188,24 +181,18 @@ Schematics
 
     FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
-|
-|
 
 Mechanical Specifications and 3D Models
 ========================================
 
 * `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
 
-|
-|
 
 ADC specifications
 =====================
 
 * `Data sheet <https://www.analog.com/media/en/technical-documentation/data-sheets/21454314fa.pdf>`_
 
-|
-|
 
 
 Red Pitaya clock wiring
@@ -213,8 +200,6 @@ Red Pitaya clock wiring
 
 * :ref:`External ADC clock <external_125_14>`
 
-|
-|
 
 Other specifications
 =====================
