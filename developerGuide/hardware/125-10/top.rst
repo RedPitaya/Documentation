@@ -18,7 +18,6 @@ Pinout
 
     Use the STEMlab 125-14 pinout.
 
-|
 
 Technical specifications
 ===========================
@@ -164,14 +163,11 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
-|
 
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
-|
-|
 
 Schematics
 ============
@@ -182,16 +178,12 @@ Schematics
 
     FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
-|
-|
 
 Mechanical Specifications and 3D Models
 ==========================================
 
 * `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
 
-|
-|
 
 
 Other specifications
