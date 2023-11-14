@@ -13,10 +13,9 @@ To find out more about the performance of the STEMlab 125-14 with DC analog powe
 .. |Red Pitaya DAC performance| raw:: html
 
     <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
+
 |
 |
-
-
 
 Pinout
 =========
