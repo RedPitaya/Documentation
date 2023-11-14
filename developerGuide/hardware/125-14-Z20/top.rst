@@ -21,7 +21,6 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
-|
 
 Technical specifications
 ============================
@@ -183,8 +182,6 @@ Schematics
 
     FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
-|
-
 
 Mechanical Specifications and 3D Models
 =========================================
@@ -194,7 +191,6 @@ Mechanical Specifications and 3D Models
 
 For all other specifications please refer to the standard :ref:`STEMlab 125-14 specs <top_125_14>`.
 
-|
 
 Extension connector STEMlab 125-14 Z7020-LN
 =============================================
