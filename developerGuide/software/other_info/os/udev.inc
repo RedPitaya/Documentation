@@ -19,8 +19,6 @@ https://www.freedesktop.org/software/systemd/man/udev.html
 Red Pitaya provides an UDEV rule |10-redpitaya.rule|_ file
 used to provide **non root users** access rights to hardware components.
 
-|
-|
 
 Non root access to device drivers
 ===================================
@@ -40,8 +38,6 @@ so it is possible to attempt write access to a file,
 before permissions are granged.
 This issue affects current GPIO, LED, EEPROM and IIO (XADC) drivers.
 
-|
-|
 
 XDEVCFG
 -----------
@@ -50,8 +46,6 @@ Device node ``/dev/xdevcfg`` enables users to write a FPGA bitstream.
 
 Users should be added into the ``xdevcfg`` group.
 
-|
-|
 
 UIO devices
 -------------
@@ -80,8 +74,6 @@ By matching against UIO device names,
 it is also possible to write UDEV rules,
 which give different users different access rights for each UIO device.
 
-|
-|
 
 LED
 -----
@@ -91,8 +83,6 @@ Modyfying LED status requires write access to some ``/sys/*`` files.
 The UDEV rules for LED are present in |10-redpitaya.rule|_ for review,
 but are currently commented out.
 
-|
-|
 
 GPIO
 --------
@@ -108,16 +98,13 @@ but are currently commented out.
 Kernel 4.8 provides a new character device driver for GPIO,
 but we are not using it yet.
 
-|
-|
+
 
 EEPROM
 -----------
 
 Commented out due to ``/sys/*`` access issues.
 
-|
-|
 
 IIO (XADC)
 -------------
@@ -127,8 +114,6 @@ by only reading ``/sys/*`` files is provided.
 
 Users should be added into the ``xadc`` group.
 
-|
-|
 
 Debugging
 ============
