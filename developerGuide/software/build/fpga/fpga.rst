@@ -7,7 +7,6 @@ Build FPGA image
    :backlinks: none
 
 |
-|
 
 The following build instructions were tested on Ubuntu 20.04.
 It is important to install the correct Vivado and SDK versions as the projects and scripts are made for those versions and may return errors during the build.
@@ -33,8 +32,6 @@ It is important to install the correct Vivado and SDK versions as the projects a
 
    <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">RedPitaya/RedPitaya-FPGA</a>
 
-|
-|
 
 *************
 Prerequisites
@@ -49,7 +46,6 @@ Install libraries:
 
     # apt-get install unixodbc unixodbc-dev libncurses-dev libzmq3-dev libxext6 libasound2 libxml2 libx11-6 libxtst6 libedit-dev libxft-dev libxi6 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft-dev:i386 libxrender-dev:i386 libxt6:i386 libxtst6:i386
 
-|
 
 Xilinx Vivado 2020.1
 ====================
@@ -84,7 +80,6 @@ For more information on Vivado installation `click here <https://redpitaya-knowl
 
    <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>
 
-|
 
 Xilinx SDK development environments 2019.1
 =============================================
@@ -100,7 +95,6 @@ Xilinx SDK is available from the |SDK download page|.
 
    <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>
 
-|
 
 .. _dev_tree_xil:
 
@@ -124,8 +118,6 @@ You can prepare it by running the command:
 
    Extract the .tar.gz to */<redpitaya path>/tmp/device-tree-xlnx-xilinx-v2017.2*.
 
-|
-|
 
 *******************
 Directory structure
@@ -172,7 +164,6 @@ Project-specific code is placed inside the ``fpga/prj/name/`` directories and is
 |                   | DTS (Design Tree) builds                                         |
 +-------------------+------------------------------------------------------------------+
 
-|
 |
 
 *****************
@@ -222,7 +213,6 @@ on the first Red Pitaya release.
 |                   | observe and review the performance of the bus implementation.          |                        |
 +-------------------+------------------------------------------------------------------------+------------------------+
 
-|
 |
 
 .. _buildprocess:
@@ -390,7 +380,6 @@ The following scripts perform various tasks:
 7.  The resulting .bit file is located in */prj/<project name>/out/redpitaya.bit*
     This file must be copied to */opt/redpitaya/fpga* on the Red Pitaya itself.
 
-|
 
 .. note:: 
 
@@ -455,7 +444,6 @@ The following scripts perform various tasks:
     Add them to the design by right click => Add Module in the design window (for more information check the *Learn FPGA programming => FPGA lessons section*)
     https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
 
-|
 
 .. note::
 
@@ -478,7 +466,6 @@ The following scripts perform various tasks:
 
     The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/** as **red_pitaya_top.bit** (the name of the .bit file is the same as the top module of the design).
 
-|
 
 Reprogramming the FPGA with a custom image
 ============================================
@@ -589,7 +576,6 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
 
               redpitaya> /opt/redpitaya/bin/fpgautil -b red_pitaya_top.bit.bin
 
-|
 
 Reverting to original FPGA image
 ==================================
@@ -612,8 +598,6 @@ If you want to roll back to the official Red Pitaya FPGA program, run the follow
 
 or simply restart your Red Pitaya.
 
-|
-|
 
 ********************
 Programming via JTAG
@@ -691,7 +675,6 @@ A bitfile selector prompt appears and when a valid file is selected, Red Pitaya 
 .. figure:: file_select.jpg
 
 |
-|
 
 **********
 Simulation
@@ -728,8 +711,6 @@ which will prepare an organized waveform window.
 
     $ make top_tb WAV=1
 
-|
-|
 
 .. _devicetree:
 
@@ -754,8 +735,6 @@ Running ``make`` of a project will create a device tree source and some include 
 To enable some Linux drivers (Ethernet, XADC, I2C EEPROM, SPI, GPIO, and LED) additional configuration files.
 Generic device tree files can be found in ``fpga/dts`` while project-specific code is in ``fpga/prj/name/dts/``.
 
-|
-|
 
 **************
 Signal mapping
@@ -825,7 +804,6 @@ General purpose inputs
 
    range = \frac{0.5 V}{ratio} = 3.50 V
 
-|
 
 GPIO and LEDs
 =============
@@ -897,7 +875,6 @@ To switch LED 8 ON use:
 
     $ echo 1 > /sys/class/leds/led0/brightness
 
-|
 
 PS pinctrl for MIO signals
 ============================
@@ -920,8 +897,6 @@ These files can be modified into device tree overlays, which can be used to modi
 |                    | SPI can then only be used for writing (maybe 3-wire) |
 +--------------------+------------------------------------------------------+
 
-
-|
 |
 
 .. _fpga_registers:
