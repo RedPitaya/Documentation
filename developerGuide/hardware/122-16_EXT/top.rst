@@ -12,9 +12,6 @@ External clock signal levels should be LVDS in the range from 1 MHz to 122.8 MHz
    
    The OS will not boot without providing an external clock.
 
-|
-|
-
 
 Pinout
 ========
@@ -22,8 +19,6 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
-|
-|
 
 
 Technical specifications
@@ -171,14 +166,9 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
-|
-
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
-
-|
-|
 
 
 Schematics
@@ -190,9 +180,6 @@ Schematics
 
     Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
 
-|
-|
-
 
 Mechanical Specifications and 3D Models
 ===========================================
@@ -200,17 +187,12 @@ Mechanical Specifications and 3D Models
 * `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
 * `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
 
-|
-|
-
 
 ADC specifications
 ====================
 
 * `Data sheets <https://www.analog.com/en/products/LTC2185.html>`_
 
-|
-|
 
 
 RP clock wiring
@@ -218,8 +200,6 @@ RP clock wiring
 
 * :ref:`External ADC clock <external_122_16>`
 
-|
-|
 
 Other specifications
 =====================
