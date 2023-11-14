@@ -14,9 +14,6 @@ The STEMlab 125-14-Z7020-LN is a standard STEMlab 125-14 board that:
 
     <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 
-|
-|
-
 
 Pinout
 ========
@@ -24,7 +21,6 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
-|
 |
 
 Technical specifications
@@ -172,14 +168,9 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
-|
-
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
-
-|
-|
 
 
 
@@ -193,7 +184,6 @@ Schematics
     FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
 |
-|
 
 
 Mechanical Specifications and 3D Models
@@ -205,7 +195,6 @@ Mechanical Specifications and 3D Models
 For all other specifications please refer to the standard :ref:`STEMlab 125-14 specs <top_125_14>`.
 
 |
-|
 
 Extension connector STEMlab 125-14 Z7020-LN
 =============================================
@@ -216,7 +205,6 @@ Extension connector STEMlab 125-14 Z7020-LN
     - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA for -4.2 V supply. 
 
 
-|
 
 .. _E1_14_Z20:
 
@@ -226,7 +214,6 @@ Extension connector E1
 - 3V3 power source
 - 22 single ended or 8 differential digital I/Os with 3.3 V logic levels
 
-|
 
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -259,20 +246,17 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 26   GND                                                                             
 ===  =====================  ===============  ========================  ==============
 
-|
 
 .. note::
 
    To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
 
-|
 
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
     - <8 mA drive strength
 
-|
 
 .. _E2_14_Z20:
 
@@ -285,7 +269,6 @@ Extension connector E2
 - 4 x slow DACs
 - Ext. clock for fast ADC
 
-|
 
 .. Table 6: Extension connector E2 pin description
 
@@ -320,18 +303,11 @@ Pin  Description             FPGA pin number  FPGA pin description              
 26   GND                                                                                                    
 ===  ======================  ===============  ==============================================  ==============
 
-.. UART 0
-.. 7    UART (TX)               C8               PS_MIO14_500                                    3.3 V         
-.. 8    UART (RX)               C5               PS_MIO15_500                                    3.3 V   
-
-|
 
 .. note::
 
     UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
 
-|
-|
 
 Other specifications
 =====================
