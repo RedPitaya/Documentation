@@ -10,7 +10,6 @@ The table describes address space partitioning implemented on FPGA via the AXI G
 The memory block is divided into 8 parts. Each part is occupied by an individual IP core. The address space of individual applications is described in the subsection below. The size of each IP core address space is 4 MBytes. 
 For additional information and better understanding check other documents (schematics, specifications...).
 
-|
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|
 
@@ -34,7 +33,6 @@ For additional information and better understanding check other documents (schem
 | CS[7]  | 0x40700000  | 0x407FFFFF | Power test                       |
 +--------+-------------+------------+----------------------------------+
 
-|
 |
 
 Housekeeping
@@ -229,7 +227,6 @@ Housekeeping
 |          |  1: enable, 0: disable                         |      |     |
 +----------+------------------------------------------------+------+-----+
 
-|
 |
 
 Oscilloscope
@@ -521,7 +518,6 @@ Oscilloscope
 +----------+----------------------------------------------------+------+-----+    
 
 |
-|
 
 Arbitrary Signal Generator (ASG)
 --------------------------------
@@ -765,7 +761,6 @@ Arbitrary Signal Generator (ASG)
 +----------+----------------------------------------------------+------+-----+
 
 |
-|
 
 PID Controller
 --------------
@@ -885,7 +880,6 @@ PID Controller
 +----------+----------------------------------------------------+------+-----+    
 
 |
-|
 
 Analog Mixed Signals (AMS)
 --------------------------
@@ -959,7 +953,6 @@ Analog Mixed Signals (AMS)
 +----------+-----------------------------------------------------+------+-----+    
 
 |
-|
 
 Daisy Chain
 -----------
@@ -1022,7 +1015,6 @@ Daisy Chain
 |          | 0 is received                                      |      |     |
 +----------+----------------------------------------------------+------+-----+    
 
-|
 |
 
 Power Test
