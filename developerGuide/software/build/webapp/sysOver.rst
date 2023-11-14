@@ -22,8 +22,6 @@ about communication and data transfer. Our network APIs take care about data tra
 of some rules. You can read about this rules in How to 
 :ref:`add a button to control LED <ABCLED>`.
 
-|
-|
 
 Frontend
 ===========
@@ -59,8 +57,6 @@ calculations inside UI. Let your Red Pitaya do this. So here is typical workflow
     - Controller sends parameters and signals to WebUI in JSON format
     - Web UI recieves these parameters signals and then applies them on the screen
 
-|
-|
 
 Backend
 ==========
