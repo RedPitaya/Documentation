@@ -6,7 +6,6 @@ Click Shield
 
 The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two Click Boards and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt external power supply. Using ULF patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units. An external reference clock can also be connected to the shield through a ULF connector.
 
-|
 
 **Highlights:**
 
@@ -154,7 +153,6 @@ Primary board:
 * J6 connected
 * J7 connected
 
-|
 
 Secondary board:
 
@@ -164,7 +162,6 @@ Secondary board:
 * J6 disconnected (changing the DIO0_N does not affect the external trigger)
 * J7 connected
 
-|
 
 Power supply
 --------------
@@ -195,7 +192,6 @@ Here you will find the interconnections between Click Boards (MikroBus pinout) a
 * SPI pins: *CS, SCK, MISO, MOSI*
 * I2C pins: *SCL, SDA*
 
-|
 
 .. note::
 
