@@ -9,11 +9,125 @@ Prepare SD card
 OS Versions
 ***********
 
+The OS versions are listed from newest to oldest. For development OS (Nightly Builds), please check the `Nightly Builds`_ chapter located at the end of the OS section.
+
+==========
+2.00 OS
+==========
+
+With the 2.00 OS versions we moved to a unified OS image for all boards (One OS to rule them all).
+
+**RedPitaya OS 2.0**:
+
+  - `Latest Beta 2.0 (2.00-23) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-23_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 45281311c10c2131af9a09005b9b2b32)
+  - `Latest Stable (2.00-18) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): e335ea7c7ea6832e3c8ddf1f48e450f9)
+
+|
+
+New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
+To run the C applications, please use one of the following combinations of OS and ecosystem:
+
+   * UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
+   * Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
+
+.. note::
+
+   When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
+
+
+.. note::
+
+   If you have problems running the 2.00 version of the OS and you updated from the 1.04 or older OS image, please check |this GitHub solution|. For all other problems please contact the |SUPPORT TEAM|.
+
+.. |this GitHub solution| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">this GitHub solution</a>
+
+.. |SUPPORT TEAM| raw:: html
+
+   <a href="https://redpitaya.com/contact-us/" target="_blank">support team</a>
+
+
+=========
+1.04 OS
+=========
+
+The 1.04 OS versions are board specific. Please download only versions compatible with your board type.
+
+**STEMlab 125-14 & STEMlab 125-10**:
+
+   *   `1.04-28 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
+   *   `1.04-18 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
+
+
+**STEMlab 125-14 (SECONDARY/SLAVE board)**:
+
+   *   `1.04-06 <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
+
+
+**STEMlab 125-14-Z7020**:
+
+   *   `1.04-14 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
+   *   `1.04-10 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
+
+
+**STEMlab 125-14 4-Input**:
+
+   *   `1.04-03 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
+
+
+**SDRlab 122-16**:
+
+   *   `1.04-15 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
+   *   `1.04-11 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
+
+
+**SIGNALlab 250-12**:
+
+   *   `1.04-30 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
+   *   `1.04-27 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
+
+
+.. note::
+
+   To run the C applications with 1.04 or older OS, please use the 2022.2 or older release/branch of the GitHub ecosystem
+
+
+.. |CHANGELOG| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a>
+
+.. |CHANGELOG_Z20| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20.md" target="_blank">CHANGELOG</a>
+
+.. |CHANGELOG_Z20_250_12| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a>
+
+.. |CHANGELOG_Z20_4CH| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
+
+
+=================
+Older OS versions
+=================
+
+All older OS versions that are in our database are available in our archive:
+
+   *   |Red Pitaya archive|
+
+For manual ecosystem upgrades please refer to `Manual upgrade`_.
+
+.. |Red Pitaya archive| raw:: html
+
+   <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a>
+
+
 ==============
 Nightly Builds
 ==============
-
-You can now download Nightly Builds for your Red Pitaya!
 
 The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.
 
@@ -34,130 +148,12 @@ Ecosystem builds run every Saturday night.
 
 .. note::
 
-   For the Nightly Builds OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
-
+   When updating from an OS version older than 2.00 to a Nightly Build version, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
 
 
 .. |nightly builds| raw:: html
 
    <a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>
-
-==========
-Unified OS
-==========
-
-This version of the ecosystem includes a build for all boards.
-
-Boards currently supported:
-
-    *   STEMlab 125-10
-    *   STEMlab 125-14
-    *   STEMlab 125-14-Z7020
-    *   STEMlab 125-14 4-Input
-    *   SDRlab 122-16
-    *   SIGNALlab 250-12
-
-Unify ecosystem now includes primary (master)/secondary (slave) functionality for streaming.
-
-New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
-To run the C applications, please use one of the following combinations of OS and ecosystem:
-
-   * UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
-   * Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
-
-.. note::
-
-   For the Unified OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
-
-
-
-**RedPitaya OS 2.0**:
-
-   - `Latest 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): e335ea7c7ea6832e3c8ddf1f48e450f9)
-   - `Latest Beta 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-23_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 45281311c10c2131af9a09005b9b2b32)
-
-.. note::
-
-   If you have problems running the new version of the ecosystem on the boards listed above, please contact the |SUPPORT TEAM|.
-
-
-.. |SUPPORT TEAM| raw:: html
-
-   <a href="https://redpitaya.com/contact-us/" target="_blank">support team</a>
-
-================================
-Latest and Beta versions 1.04 OS
-================================
-
-.. warning::
-
-   New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
-   To run the C applications, please use one of the following combinations of OS and ecosystem:
-
-      *   UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
-      *   Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
-
-
-**STEMlab 125-14 & STEMlab 125-10**:
-
-   *   `Latest Stable 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
-   *   `1.04-18 Stable 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
-
-
-**STEMlab 125-14 (SECONDARY/SLAVE board)**:
-
-   *   `Latest Beta Secondary <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
-
-**STEMlab 125-14-Z7020**:
-
-   *   `Latest Stable Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
-   *   `Latest Beta Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
-
-
-**STEMlab 125-14 4-Input**:
-
-   *   `Latest Beta 4-Input <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
-
-**SDRlab 122-16**:
-
-   *   `Latest Stable 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
-   *   `Latest Beta 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
-
-**SIGNALlab 250-12**:
-
-   *   `Latest Stable 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
-   *   `Latest Beta 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
-
-
-.. |CHANGELOG| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a>
-
-.. |CHANGELOG_Z20| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20.md" target="_blank">CHANGELOG</a>
-
-.. |CHANGELOG_Z20_250_12| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a>
-
-.. |CHANGELOG_Z20_4CH| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
-
-=================
-Older OS versions
-=================
-
-All older OS versions that are in our database are available in our archive:
-
-   *   |Red Pitaya archive|
-
-For manual ecosystem upgrades please refer to `Manual upgrade`_.
-
-.. |Red Pitaya archive| raw:: html
-
-   <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a>
 
 
 **************************************

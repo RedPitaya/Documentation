@@ -23,6 +23,7 @@ and add the line *spi-cs-high* to this device;
 
    Example of SPI config
 
+
 After that, you need to rebuild the tree and restart the board
 
 .. code-block:: console
@@ -30,6 +31,7 @@ After that, you need to rebuild the tree and restart the board
    root@rp-f01c3d:~# cd /opt/redpitaya/dts/$(monitor -f)/
    root@rp-f01c3d:~# dtc -I dts -O dtb ./dtraw.dts -o devicetree.dtb
    root@rp-f01c3d:~# reboot
+
 
 .. note::
 

@@ -4,6 +4,13 @@
 STEMlab 125-14
 ##############
 
+*******
+Pinout
+*******
+
+.. figure:: img/Red_Pitaya_pinout.jpg
+    :alt: Red Pitaya pinout
+    :width: 700
 
 ************************
 Technical specifications
@@ -31,6 +38,8 @@ Technical specifications
     | Power consumption                  | 5 V, 2 A max                       |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
 
@@ -45,6 +54,7 @@ Technical specifications
     | WIFI                               | requires WIFI dongle               |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -74,6 +84,7 @@ Technical specifications
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -102,7 +113,7 @@ Technical specifications
     | Bandwidth                          | DC - 50 MHz                        |
     +------------------------------------+------------------------------------+
 
-
+|
 
 .. table::
     :widths: 10 18
@@ -130,6 +141,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | external ADC clock                 |  yes                               |
     +------------------------------------+------------------------------------+
+
+|
 
 .. table::
     :widths: 10 18
@@ -217,7 +230,7 @@ The ADC clock can be provided by:
     - From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
     - Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
-.. figure:: img/External_clk.png
+.. figure:: img/schematics/External_clk.png
     :alt: Schematic
     :align: center
 
@@ -229,27 +242,27 @@ The ADC clock can be provided by:
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-.. figure:: img/External_clock_top.png
+.. figure:: img/schematics/External_clock_top.png
     :alt: Top side schematic
     :align: center
 
     Top side schematic
 
 
-.. figure:: img/External_clock_bottom.png
+.. figure:: img/schematics/External_clock_bottom.png
     :alt: Bottom side schematic
     :align: center
 
     Bottom side schematic
 
-.. figure:: img/External_clock_bottom_photo.png
+.. figure:: img/schematics/External_clock_bottom_photo.png
     :alt: Bottom side photo
     :align: center
     :width:  400px
 
     Bottom side photo
 
-.. figure:: img/External_clock_resistors.jpeg
+.. figure:: img/schematics/External_clock_resistors.jpeg
     :alt: Bottom side all
     :align: center
 

@@ -44,129 +44,149 @@ Please note that checking whether a function was successful is not necessary.
 
 .. code-block:: c
 
-    /* Red Pitaya C API example Acquiring a signal from a buffer
-    * This application acquires a signal on a specific channel */
-
+    /*  Red Pitaya C API example of acquiring 1024 samples of data 
+        on both channels using DMA */
+    
     #include <stdio.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include "rp.h"
-
-    #define DATA_SIZE 1024
-
+    
+    
+    // size in samples 16Bit
+    #define DATA_SIZE 1024          // ((1024 * 1024 * 128) / 2)        /* for 128 MB */
+    #define READ_DATA_SIZE 1024     // (1024 * 256)                     /* for 128 MB */
+    
     int main(int argc, char **argv)
     {
-       /* Initialise Red Pitaya */
-       if (rp_InitReset(false) != RP_OK) {
-          fprintf(stderr, "Rp api init failed!\n");
-          return -1;
-       }
- 
-       /* Set decimation for both channels */
-       if (rp_AcqAxiSetDecimationFactor(RP_CH_1, RP_DEC_1) != RP_OK) {
-          fprintf(stderr, "rp_AcqAxiSetDecimationFactor RP_CH_1 failed!\n");
-          return -1;
-       }
-       if (rp_AcqAxiSetDecimationFactor(RP_CH_2, RP_DEC_1) != RP_OK) {
-          fprintf(stderr, "rp_AcqAxiSetDecimationFactor RP_CH_2 failed!\n");
-          return -1;
-       }
-
-       /* Set trigger delay for both channels */
-       if (rp_AcqAxiSetTriggerDelay(RP_CH_1, DATA_SIZE  )  != RP_OK) {
-          fprintf(stderr, "rp_AcqAxiSetTriggerDelay RP_CH_1 failed!\n");
-          return -1;
-       }
-       if (rp_AcqAxiSetTriggerDelay(RP_CH_2, DATA_SIZE  ) != RP_OK) {
-          fprintf(stderr, "rp_AcqAxiSetTriggerDelay RP_CH_2 failed!\n");
-          return -1;
-       }
-
-       /* 
-       Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
-       ADC_AXI_START is a macro for the first address in the Deep Memory Acquisition region.
-       ADC_AXI_END is a macro for the last/end address in the DMA region.
-       */
-       if (rp_AcqAxiSetBuffer(RP_CH_1, ADC_AXI_START, DATA_SIZE) != RP_OK) {
-          fprintf(stderr, "rp_AcqAxiSetBuffer RP_CH_1 failed!\n");
-          return -1;
-       }
-       if (rp_AcqAxiSetBuffer(RP_CH_2, (ADC_AXI_END + ADC_AXI_START) / 2, DATA_SIZE) != RP_OK) {
-          fprintf(stderr, "rp_AcqAxiSetBuffer RP_CH_2 failed!\n");
-          return -1;
-       }
-
-       /* Enable DMA on both channels */
-       if (rp_AcqAxiEnable(RP_CH_1, true)) {
-          fprintf(stderr, "rp_AcqAxiEnable RP_CH_1 failed!\n");
-          return -1;
-       }
-       if (rp_AcqAxiEnable(RP_CH_2, true)) {
-          fprintf(stderr, "rp_AcqAxiEnable RP_CH_2 failed!\n");
-          return -1;
-       }
-
-       /* Specify the acquisition trigger */
-       rp_AcqSetTriggerLevel(RP_T_CH_1,0);
-
-       /* Start the acquisition */
-       if (rp_AcqStart() != RP_OK) {
-          fprintf(stderr, "rp_AcqStart failed!\n");
-          return -1;
-       }
-
-       /* Specify trigger source */
-       rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
-       rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
-
-       /* Wait for the triggering moment */
-       while(1){
-          rp_AcqGetTriggerState(&state);
-          if(state == RP_TRIG_STATE_TRIGGERED){
+        /* Initialise Red Pitaya */
+        if (rp_InitReset(false) != RP_OK) {
+            fprintf(stderr, "Rp api init failed!\n");
+            return -1;
+        }
+    
+        uint32_t g_adc_axi_start,g_adc_axi_size;
+        rp_AcqAxiGetMemoryRegion(&g_adc_axi_start, &g_adc_axi_size);
+        printf("Reserved memory Start 0x%X Size 0x%X\n", g_adc_axi_start, g_adc_axi_size);
+    
+    
+        /* Set decimation for both channels */
+        if (rp_AcqAxiSetDecimationFactor(RP_DEC_1) != RP_OK) {
+            fprintf(stderr, "rp_AcqAxiSetDecimationFactor failed!\n");
+            return -1;
+        }
+    
+        /* Set trigger delay for both channels */
+        if (rp_AcqAxiSetTriggerDelay(RP_CH_1, DATA_SIZE)  != RP_OK) {
+           fprintf(stderr, "rp_AcqAxiSetTriggerDelay RP_CH_1 failed!\n");
+           return -1;
+        }
+        if (rp_AcqAxiSetTriggerDelay(RP_CH_2, DATA_SIZE) != RP_OK) {
+           fprintf(stderr, "rp_AcqAxiSetTriggerDelay RP_CH_2 failed!\n");
+           return -1;
+        }
+    
+        /*
+        Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
+        ADC_AXI_START is a macro for the first address in the Deep Memory Acquisition region.
+        ADC_AXI_END is a macro for the last/end address in the DMA region.
+        */
+        if (rp_AcqAxiSetBufferSamples(RP_CH_1, g_adc_axi_start, DATA_SIZE) != RP_OK) {
+            fprintf(stderr, "rp_AcqAxiSetBuffer RP_CH_1 failed!\n");
+            return -1;
+        }
+        if (rp_AcqAxiSetBufferSamples(RP_CH_2, g_adc_axi_start + (g_adc_axi_size / 2), DATA_SIZE) != RP_OK) {
+            fprintf(stderr, "rp_AcqAxiSetBuffer RP_CH_2 failed!\n");
+            return -1;
+        }
+    
+        /* Enable DMA on both channels */
+        if (rp_AcqAxiEnable(RP_CH_1, true)) {
+            fprintf(stderr, "rp_AcqAxiEnable RP_CH_1 failed!\n");
+            return -1;
+        }
+        printf("Enable CHA\n");
+    
+        if (rp_AcqAxiEnable(RP_CH_2, true)) {
+            fprintf(stderr, "rp_AcqAxiEnable RP_CH_2 failed!\n");
+            return -1;
+        }
+        printf("Enable CHB\n");
+    
+        /* Specify the acquisition trigger */
+        rp_AcqSetTriggerLevel(RP_T_CH_1, 0);
+    
+        /* Start the acquisition */
+        if (rp_AcqStart() != RP_OK) {
+            fprintf(stderr, "rp_AcqStart failed!\n");
+            return -1;
+        }
+        printf("ACQ Started\n");
+    
+    
+        /* Specify trigger source */
+        rp_AcqSetTriggerSrc(RP_TRIG_SRC_CHA_PE);
+        rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
+    
+        /* Wait for the triggering moment */
+        while(1){
+            rp_AcqGetTriggerState(&state);
+            if(state == RP_TRIG_STATE_TRIGGERED){
                 sleep(1);
                 break;
-          }
-       }
-
-       /* Wait until both buggers are full/data is acquired */
-       bool fillState = false;
-       while (!fillState) {
-          if (rp_AcqAxiGetBufferFillState(RP_CH_1, &fillState) != RP_OK) {
+            }
+        }
+    
+        /* Wait until both buggers are full/data is acquired */
+        bool fillState = false;
+        while (!fillState) {
+            if (rp_AcqAxiGetBufferFillState(RP_CH_1, &fillState) != RP_OK) {
                 fprintf(stderr, "rp_AcqAxiGetBufferFillState RP_CH_1 failed!\n");
                 return -1;
-          }
-       }
-
-       /* Stop the acquisition */
-       rp_AcqStop();
-
-       /* Get write pointer on the triggering location */
-       uint32_t posChA,posChB;
-       rp_AcqAxiGetWritePointerAtTrig(RP_CH_1,&posChA);
-       rp_AcqAxiGetWritePointerAtTrig(RP_CH_2,&posChB);
-
-       /* Allocate memory for the data */
-       int16_t *buff1 = (uint16_t *)malloc(DATA_SIZE * sizeof(int16_t));
-       int16_t *buff2 = (uint16_t *)malloc(DATA_SIZE * sizeof(int16_t));
-
-       /* Pass the write pointer value at trigger to get data. */
-       uint32_t size1 = DATA_SIZE;
-       uint32_t size2 = DATA_SIZE;
-       rp_AcqAxiGetDataRaw(RP_CH_1, posChA, &size1, buff1);
-       rp_AcqAxiGetDataRaw(RP_CH_2, posChB, &size2, buff2);
-
-       /* Print data */
-       for (int i = 0; i < DATA_SIZE; i++) {
-          printf("%d\t%d\n", buff1[i], buff2[i]);
-       }
-
-       /* Releasing resources */
-       rp_AcqAxiEnable(RP_CH_1, false);
-       rp_AcqAxiEnable(RP_CH_2, false);
-       rp_Release();
-       free(buff1);
-       free(buff2);
-       return 0;
+            }
+        }
+    
+        /* Stop the acquisition */
+        rp_AcqStop();
+        printf("Stop acq\n");
+    
+        /* Get write pointer on the triggering location */
+        uint32_t posChA,posChB;
+        rp_AcqAxiGetWritePointerAtTrig(RP_CH_1, &posChA);
+        rp_AcqAxiGetWritePointerAtTrig(RP_CH_2, &posChB);
+    
+        /* Allocate memory for the data */
+        int16_t *buff1 = (int16_t *)malloc(READ_DATA_SIZE * sizeof(int16_t));
+        int16_t *buff2 = (int16_t *)malloc(READ_DATA_SIZE * sizeof(int16_t));
+    
+        int read_size = 0;
+    
+        /* Writing data into a text file */
+        FILE *fp = fopen ("out.txt", "w");
+    
+        int line = 1;
+        while (read_size < DATA_SIZE){
+            uint32_t size1 = READ_DATA_SIZE;
+            uint32_t size2 = READ_DATA_SIZE;
+            rp_AcqAxiGetDataRaw(RP_CH_1, posChA, &size1, buff1);
+            rp_AcqAxiGetDataRaw(RP_CH_2, posChB, &size2, buff2);
+            for (int i = 0; i < READ_DATA_SIZE; i++) {
+                fprintf(fp,"%d:  %d\t%d\n",line++, buff1[i], buff2[i]);
+            }
+            posChA += size1;
+            posChB += size2;
+            read_size += READ_DATA_SIZE;
+            printf("Saved data size %d\n", read_size);
+        }
+    
+        /* Releasing resources */
+        rp_AcqAxiEnable(RP_CH_1, false);
+        rp_AcqAxiEnable(RP_CH_2, false);
+        rp_Release();
+        free(buff1);
+        free(buff2);
+        fclose(fp);
+        return 0;
     }
 
 
@@ -181,7 +201,10 @@ Code - Python API
     import time
     import rp
     
-    DATA_SIZE = 1024
+    
+    ## size in samples 16Bit
+    DATA_SIZE = 1024          # ((1024 * 1024 * 128) / 2)        ## for 128 MB ##
+    READ_DATA_SIZE = 1024     # (1024 * 256)                     ## for 128 MB ##
     
     dec = rp.RP_DEC_1
     trig_lvl = 0.2
@@ -193,10 +216,9 @@ Code - Python API
     ### Setting up DMA ###
     # Get Memory region
     memoryRegion = rp.rp_AcqAxiGetMemoryRegion()
-    print(f"Memory Region: {memoryRegion}")
-    start = memoryRegion[1]
-    size = memoryRegion[2]
-    
+    g_adc_axi_start = memoryRegion[1]
+    g_adc_axi_size = memoryRegion[2]
+    print(f"Reserved memory Start: {g_adc_axi_start:x} Size: {g_adc_axi_size:x}\n")
     
     # Set decimation
     rp.rp_AcqAxiSetDecimationFactor(dec)
@@ -209,12 +231,14 @@ Code - Python API
     # - ADC_AXI_START is a macro for the first address in the Deep Memory Acquisition region.
     # - ADC_AXI_END is a macro for the last/end address in the DMA region.
     
-    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_1, start, DATA_SIZE)
-    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, int(start + size/2), DATA_SIZE)
+    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_1, g_adc_axi_start, DATA_SIZE)
+    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, g_adc_axi_start + int(g_adc_axi_size/2), DATA_SIZE)
     
     # Enable DMA on both channels
     rp.rp_AcqAxiEnable(rp.RP_CH_1, True)
+    print("Enable CHA\n")
     rp.rp_AcqAxiEnable(rp.RP_CH_2, True)
+    print("Enable CHB\n")
     
     # Specify the acquisition trigger
     rp.rp_AcqSetTriggerLevel(rp.RP_T_CH_1, trig_lvl)
@@ -223,7 +247,7 @@ Code - Python API
     ### Acquisition ###
     # Start the DMA acquisition
     rp.rp_AcqStart()
-    print("DMA started")
+    print("ACQ Started\n")
     
     # Specify trigger source
     rp.rp_AcqSetTriggerSrc(rp.RP_TRIG_SRC_CHA_PE)
@@ -239,7 +263,6 @@ Code - Python API
     
     # Wait until both buggers are full/data is acquired
     fillState = False
-    print(type(rp.rp_AcqAxiGetBufferFillState(rp.RP_CH_1)[1]))
     
     while not fillState:
         fillState = rp.rp_AcqAxiGetBufferFillState(rp.RP_CH_1)[1]
@@ -247,25 +270,34 @@ Code - Python API
     
     # Stop the acquisition
     rp.rp_AcqStop()
-    print("DMA stopped")
+    print("Stop DMA acq\n")
     
     # Get write pointer on the triggering location
     posChA = rp.rp_AcqAxiGetWritePointerAtTrig(rp.RP_CH_1)[1]
     posChB = rp.rp_AcqAxiGetWritePointerAtTrig(rp.RP_CH_2)[1]
     
+    
     # Allocate memory for the data
-    buff1 = rp.i16Buffer(DATA_SIZE)
-    buff2 = rp.i16Buffer(DATA_SIZE)
+    buff1 = rp.i16Buffer(READ_DATA_SIZE)
+    buff2 = rp.i16Buffer(READ_DATA_SIZE)
     
-    # Pass the write pointer value at trigger to get data. */
-    rp.rp_AcqAxiGetDataRaw(rp.RP_CH_1, posChA, DATA_SIZE, buff1.cast())
-    rp.rp_AcqAxiGetDataRaw(rp.RP_CH_2, posChB, DATA_SIZE, buff2.cast())
     
-    # Print data
-    print()
-    print(" CH 1    CH 2")
-    for i in range(0, DATA_SIZE):
-        print(f"{buff1[i]:5d}  {buff2[i]:5d}")
+    # Writing data into a text file
+    with open("out.txt", "w", encoding="ascii") as fp:
+        read_size = 0
+    
+        while read_size < DATA_SIZE:
+            size1 = READ_DATA_SIZE
+            size2 = READ_DATA_SIZE
+            rp.rp_AcqAxiGetDataRaw(rp.RP_CH_1, posChA, size1, buff1.cast())
+            rp.rp_AcqAxiGetDataRaw(rp.RP_CH_2, posChB, size2, buff2.cast())
+            for i in range(0, READ_DATA_SIZE):
+                fp.write(f"{i+1:6d}:  {buff1[i]:6d}\t{buff2[i]:6d}\n")
+    
+            posChA += size1
+            posChB += size2
+            read_size += READ_DATA_SIZE
+            print(f"Saved data size {read_size}\n")
     
     
     ### Releasing resources ###
@@ -274,3 +306,4 @@ Code - Python API
     rp.rp_AcqAxiEnable(rp.RP_CH_2, False)
     
     rp.rp_Release()
+

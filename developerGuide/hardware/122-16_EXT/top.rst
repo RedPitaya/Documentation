@@ -1,5 +1,6 @@
 .. _top_122_16_EXT:
 
+#############################
 SDRlab 122-16 external clock
 #############################
 
@@ -12,12 +13,16 @@ External clock signal levels should be LVDS in the range from 1 MHz to 122.8 MHz
    The OS will not boot without providing an external clock.
 
 
-.. figure:: ../125-14/img/Extension_connector.png
-   :align: center
+Pinout
+========
 
-************************
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
+
+
+
 Technical specifications
-************************
+==========================
 
 .. table::
     :widths: 10 18
@@ -41,6 +46,8 @@ Technical specifications
     | Power consumption                  | 5 V, 2 A max                       |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
 
@@ -55,6 +62,7 @@ Technical specifications
     | WIFI                               | requires WIFI dongle               |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -84,6 +92,7 @@ Technical specifications
     | Bandwidth                          | 300 kHz - 550 MHz (undersampling)  |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -112,7 +121,7 @@ Technical specifications
     | Bandwidth                          | 300 kHz - 60 MHz                   |
     +------------------------------------+------------------------------------+
 
-
+|
 
 .. table::
     :widths: 10 18
@@ -141,6 +150,8 @@ Technical specifications
     | external ADC clock                 |  yes                               |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
 
@@ -154,14 +165,14 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
-    
+
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
-**********
+
 Schematics
-**********
+=============
 
 * `STEM122-16SDR_V1r1_Series1.PDF <https://downloads.redpitaya.com/doc/Customer_Schematics_STEM122-16SDR_V1r1%28Series1%29.PDF>`_
 
@@ -169,24 +180,30 @@ Schematics
 
     Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
 
-****************************************
+
 Mechanical Specifications and 3D Models
-****************************************
+===========================================
 
 * `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
 * `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
 
-******************
+
 ADC specifications
-******************
+====================
 
 * `Data sheets <https://www.analog.com/en/products/LTC2185.html>`_
 
 
-***************
+
 RP clock wiring
-***************
+==================
 
 * :ref:`External ADC clock <external_122_16>`
 
+
+Other specifications
+=====================
+
 For all other specifications please refer to standard :ref:`SDRlab 122-16 specs <top_122_16>`.
+
+

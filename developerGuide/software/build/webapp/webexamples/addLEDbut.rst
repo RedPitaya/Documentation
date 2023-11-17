@@ -26,7 +26,7 @@ Pitaya using parameters.
 
                 redpitaya> overlay.sh v0.94
 
-******
+
 Web UI
 ******
 
@@ -39,9 +39,11 @@ and LED state label that will tell us if LED is On or Off. ::
     < div id='led_off'>LED Off</div>
     < div id='led_on'>LED On</div>
 
+
 .. note::
 
     **led_on** div is not visible by default because when app starts all leds are off.
+
 
 Also make some changes in **style.css** to set properties of these elements
 
@@ -60,6 +62,7 @@ Also make some changes in **style.css** to set properties of these elements
         margin-top: 20px;
         padding: 10px;
     }
+
 
 Then we have to add some logic in app.js, that will be executed when user clicks on the button with the mouse. This
 logic should change local led_state each time button is clicked and send current led_state value to backend so that
@@ -94,7 +97,7 @@ Red Pitaya can update real LED state.
     Parameter that transfers local LED state to Red Pitaya backend is called LED_STATE. You can change name of this
     parameter, but don’t forget to use the same name also in controller.
 
-**********
+
 Controller
 **********
 
@@ -102,11 +105,13 @@ After we send parameters we should read them in our controller. Controller sourc
 
     src/main.cpp
 
+
 This global variable is our parameter, that we should read from server.
 
 .. code-block:: c
 
    CBooleanParameter ledState("LED_STATE", CBaseParameter::RW, false, 0);
+
 
 Parameter is a variable that connected with NGINX. Initialization has 4 arguments - parameter's name, access mode,
 initial value, and FPGA update flag. Pay attention - name of parameter LED_STATE should be the same as in app.js and

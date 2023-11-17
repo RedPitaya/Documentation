@@ -17,8 +17,9 @@ Connection instructions are available for:
     :local:
     :backlinks: none
     :depth: 1
-    
-==========
+
+
+
 Windows 10
 ==========
 
@@ -34,7 +35,8 @@ Run PuTTy and enter the Red Pitaya's IP address into the **Host Name (or IP addr
    :align: center
 
    PuTTy SSH connection settings.
-    
+
+
 If you attempt to connect to Red Pitaya for the first time, a security alert will pop up asking you to confirm the connection.
 At this time, the ssh-key will be added to the registry on your computer. A command prompt pops up after login is successful.
 
@@ -44,6 +46,7 @@ When connected to RP via SSH (PuTTy), you get the following command prompt scree
    :align: center
 
    SSH connection via PuTTy
+
 
 The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (the default home directory on Red Pitaya is /root).
 
@@ -66,6 +69,7 @@ The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (th
         Offending key in /home/user/.ssh/known_hosts:4
         RSA host key for domain.com has changed and you have requested strict checking.
         Host key verification failed.
+
     
     Do not worry, nothing is wrong with your Red Pitaya. The problem is that the Red Pitaya identification key has changed. To fix this use the following code:
 
@@ -78,7 +82,6 @@ The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (th
     Alternatively, open Explorer and go to **C:/Users/<your-username>/.ssh** and open the **known_hosts** file. Delete all lines containing *rp-xxxxxx.local*.
 
 
-=====
 Linux
 =====
 
@@ -94,7 +97,7 @@ Start Terminal and type (replace the IP address with the right one):
 .. figure:: linux_terminal.png
    :align: center
 
-=====
+
 macOS
 =====
 

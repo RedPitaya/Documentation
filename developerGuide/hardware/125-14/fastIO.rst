@@ -111,7 +111,7 @@ With the correct placement of the jumper pins, that same waveform looks much bet
 Input stage schematics
 ======================
 
-.. figure:: img/Fast_analog_inputs_sch.png
+.. figure:: img/schematics/Fast_analog_inputs_sch.png
         
     Fast analog inputs schematics
 
@@ -421,13 +421,13 @@ General Specifications
 
     The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of a suitable length, otherwise, the SMA connector, installed on the Red Pitaya, will mechanically damage the SMA connector. The central pin of the SMA connector on the Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
     
-.. figure:: img/Outputs.png
+.. figure:: img/schematics/Outputs.png
        
     Output channel Output voltage range: ± 1 V
         
 The output stage is shown in the picture below.
     
-.. figure:: img/Outputs_stage.png
+.. figure:: img/schematics/Outputs_stage.png
        
     Output channel schematics
            

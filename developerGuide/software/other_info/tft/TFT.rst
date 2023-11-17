@@ -7,11 +7,13 @@ SPI interface-based TFT display with touch support
 to the :ref:`E2 <E2>` connector, without the need for specific FPGA code.
 The given setup has advantages and drawbacks.
 
+
 **PROS:**
 
 * It uses only ``MIO`` signals so it can be used with any FPGA image.
 * Only extension connector :ref:`E2 <E2>` is used.
 * SPI is not wired through the FPGA so maximum clock speeds can be used.
+
 
 **CONS:**
 
@@ -22,13 +24,14 @@ The given setup has advantages and drawbacks.
   calibration data in the EEPROM.
 * Backlight control is not supported.
 
-**************
-Hardware setup
-**************
 
-=======
+
+*****************
+Hardware setup
+*****************
+
 pinctrl
-=======
+===========
 
 It is possible to reconfigure **Zynq** MIO signals using the ``pinctrl`` kernel driver.
 This TFT display setup takes advantage of this by repurposing SPI, I2C, and UART signals
@@ -38,6 +41,7 @@ on the :ref:`E2 <E2>` connector as SPI and GPIO signals which are required by th
 .. .. _tft-E2: /fpga/dts/tft/tft-E2.dtsi
 
 .. The reconfiguration is performed by including the |tft-E2|_ device tree.
+
 
 The reconfiguration is performed by including the tft-E2 device tree.
 
@@ -75,6 +79,8 @@ The reconfiguration is performed by including the tft-E2 device tree.
 |                 |     | -4V      |  ``2`` |  ``1`` | +5V      |     | +5V               |
 +-----------------+-----+----------+--------+--------+----------+-----+-------------------+
 
+|
+
 Since some of the signals share the I2C bus which already contains an EEPROM,
 there is a possibility there will be functional conflicts.
 Although the probability of the I2C EEPROM going into an active state is low.
@@ -91,9 +97,9 @@ using the I2C EEPROM, for example calibration access from *Oscilloscope* app.
 There is no MIO pin left for backlight control,
 the easiest solution is to hard wire the display backlight pin to VCC.
 
-===============
+
 SPI clock speed
-===============
+==================
 
 Only a limited set of SPI clock speeds can be set depending on
 the clock driving the SPI controller.
@@ -114,9 +120,10 @@ The maximum clock speed for this SPI controller is 50MHz.
 |             200.0MHz | 50.0 | 25.0 | 12.5 | 6.25 | 3.125 | 1.56  | 0.781 |
 +----------------------+------+------+------+------+-------+-------+-------+
 
-**************
+
+****************
 Software setup
-**************
+****************
 
 .. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line below once the file is added !!!!!
 
@@ -136,12 +143,12 @@ A set of Ubuntu/Debian packages should be installed:
      xserver-xorg xinit xserver-xorg-video-fbdev
 
 
-
 .. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line below once the file is added !!!!!
 
 .. :download:`99-fbdev.conf <../../../OS/debian/overlay/usr/share/X11/xorg.conf.d/99-fbdev.conf>`.
 
 An X11 configuration file should be added to the system 99-fbdev.conf.
+
 
 Over SSH start the X server:
 
@@ -149,9 +156,10 @@ Over SSH start the X server:
 
    startx
 
-************************
+
+**************************
 Tested/Supported devices
-************************
+**************************
 
 The next table lists supported devices and corresponding device tree files each supporting a set of displays depending on the used TFT and touch drivers.
 
@@ -165,7 +173,8 @@ The next table lists supported devices and corresponding device tree files each 
 | |PiTFT-35|_   | 3.5" | 480x320    | resistive | |HX8357D|_     | |STMPE610|_      | |tft-hx8357d-stmpe601|_ |
 +---------------+------+------------+-----------+----------------+------------------+-------------------------+
 
-========================
+|
+
 MI0283QT Adapter Rev 1.5
 ========================
 
@@ -208,6 +217,8 @@ Connector pinout based on the |MI0283QT-2|_
 | GND               | GND       |  ``2`` |  ``1`` | GND       |                   |
 +-------------------+-----------+--------+--------+-----------+-------------------+
 
+|
+
 Backlight control is not available on the :ref:`E2 <E2>` connector.
 A simple solution is to connect the **LCD_LED** signal
 to +5V VCC, this can be done with a simple jumper
@@ -221,7 +232,7 @@ Otherwise, it would be possible to repurpose a LED on Red Pitaya.
 
 The 95-ads7846.rules UDEV rule will create a symbolik link ``/dev/input/touchscreen``.
 
-===================
+
 Adafruit PiTFT 3.5"
 ===================
 
@@ -293,6 +304,9 @@ Male connector pinout based on the |PiTFT-35|_
 | +5V               |  ``2`` |  ``1`` | +3.3V             |
 +-------------------+--------+--------+-------------------+
 
+|
+
+
 .. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line below once the file is added !!!!!
 
 .. :download:`95-stmpe.rules <../../../OS/debian/overlay/etc/udev/rules.d/95-stmpe.rules>`
@@ -302,9 +316,10 @@ The 95-stmpe.rules UDEV rule will create a symbolic link ``/dev/input/touchscree
 
 A calibration file should be added to the system 99-calibration.conf.
 
--------------
+
+
 Block diagram
--------------
+--------------
 
 .. figure:: img/TFT_connection.svg
    :align: center
@@ -318,11 +333,11 @@ Block diagram
 
 .. _assembled_hw_mods:
 
-----------------------------------------
+
+
 Assembled version hardware modifications
 ----------------------------------------
 
-~~~~~~~~~~~
 Explanation
 ~~~~~~~~~~~
 
@@ -351,9 +366,11 @@ on the power-up reset state of a pair of configuration pins.
 | 0                            | 1    | 1                               | 3    |
 +------------------------------+------+---------------------------------+------+
 
+
 On the original setup (before ``pinctrl`` device tree is applied)
 for the E2 connector, the touch chip SPI CS signal is used as I2C_SCK.
 The SPI MISO pin is not affected by ``pinctrl`` changes.
+
 
 There appears to be a race condition between:
 
@@ -362,6 +379,7 @@ There appears to be a race condition between:
 2. and waking up of the 3.3V power supply on Red Pitaya,
    which powers the pull-up resistors on the I2C pins
    and FPGA pull-ups for the SPI MISO pin on the E2 connector
+
 
 In most cases, the LDO on the TFT board would wake
 before the switcher on Red Pitaya, so the ``CPOL_N``
@@ -374,9 +392,11 @@ in the `device tree </fpga/dts/tft/tft-hx8357d-stmpe601.dtsi#L31>`_.
    It is not yet confirmed the power supply race condition is responsible
    for touch not working in certain setups, more testing might be necessary.
 
+
 The provided oscilloscope image shows a 3.3V power-up sequence
 and its relation to SPI configuration signals.
 It is evident configuration signals are stable.
+
 
 Channels:
 
@@ -384,10 +404,11 @@ Channels:
 2. `CPOL_N` (the signal is linked to 3.3V with a pull-up and rising simultaneously),
 3. 3.3V (it takes about 1.5ms to ramp up from 0V to 3.3V).
 
+
 .. figure:: img/POR_SPI_config.png
    :align: center
 
-~~~~~~~~~~~~~
+
 Modifications
 ~~~~~~~~~~~~~
 
@@ -407,11 +428,11 @@ and pin 1 on the JP1 connector connected to an unmounted resistor pad.
 .. figure:: img/assembled_hw_mod.jpg
    :align: center
 
-*************************
-Debugging/Troubleshooting
-*************************
 
-================================
+***************************
+Debugging/Troubleshooting
+***************************
+
 ``pinctrl``, GPIO and interrupts
 ================================
 
@@ -421,11 +442,13 @@ To see current ``pinctrl`` settings try:
 
    $ cat /sys/kernel/debug/pinctrl/pinctrl-maps
 
+
 To see the status of GPIO signals try:
 
 .. code-block:: shell-session
 
    $ cat /sys/kernel/debug/gpio
+
 
 To see the status of interrupts try:
 
@@ -433,7 +456,7 @@ To see the status of interrupts try:
 
    $ cat /proc/interrupts
 
-=====
+
 Touch
 =====
 

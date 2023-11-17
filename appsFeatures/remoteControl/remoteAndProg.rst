@@ -6,5 +6,6 @@ Programming and remote-control tools
    :maxdepth: 2
 
    remoteControl
+   API_scripts
    jupyter/Jupyter
    deepMemoryAcquisition

@@ -94,24 +94,36 @@ To install them, do:
     <a href="https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/" target="_blank">PyVISA-py</a>
 
 
-.. code-block:: shell-session
+.. tabs::
+
+    .. tab:: Linux
+
+        .. code-block:: shell-session
    
-    $ sudo pip3 install pyvisa pyvisa-py
+            $ sudo pip3 install pyvisa pyvisa-py
+
+    .. tab:: Windows
+
+        .. code-block:: shell-session
+   
+            $ pip install pyvisa pyvisa-py
 
 .. note::
    
-   To run the examples, you need Python version 3. Before running, double-check the Python versions. If the system has Python version 2.7, this version will be used by default.
+   To run the examples, you need Python version 3.10 or higher. Before running, please, double-check the Python versions.
 
    .. code-block:: shell-session
 
        $ python --version
-       Python 2.7.17
-         
-   Then, in order to run the examples, specify explicitly the Python version.
-         
+       Python 3.10.6
+
+   On Windows, you can use **py** instead of **python** in the command line.
+
+   In case mulitple Python versions are installed on the computer, please specify explicitly the Python version.
+
    .. code-block:: shell-session
          
-       $ python3.5 blink.py 192.168.178.108
+       $ python3.10 blink.py
 
 |
 
@@ -143,9 +155,9 @@ To install them, do:
 
 More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <examples>`.
 
-   .. note::
+.. note::
    
-      Python examples can also be run directly from the RP device itself. To do so, first start the SCPI server and then use the local device IP: ``127.0.0.1``
+   Python examples can also be run directly from the RP device itself. To do so, first start the SCPI server and then use the local device IP: ``127.0.0.1``
 
 
 .. |redpitaya_scpi.py| raw:: html
@@ -258,7 +270,7 @@ In the list below you will find examples of remote control and C algorithms. The
 You can edit and change them according to your needs and develop customized programs and routines.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    ../examples/scpi_examples
 

@@ -1,11 +1,23 @@
 .. _top_125_10:
 
+###############
 STEMlab 125-10
-##############
+###############
 
-************************
+
+Pinout
+========
+
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
+
+.. note::
+
+    Use the STEMlab 125-14 pinout.
+
+
 Technical specifications
-************************
+===========================
 
 .. table::
     :widths: 10 18
@@ -29,9 +41,10 @@ Technical specifications
     | Power consumption                  | 5 V, 1.5 A max                     |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
-
 
     +------------------------------------+------------------------------------+
     | **Connectivity**                                                        |
@@ -43,6 +56,7 @@ Technical specifications
     | WIFI                               | requires WIFI dongle               |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -72,6 +86,7 @@ Technical specifications
     | Bandwidth                          | DC - 50 MHz                        |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -100,7 +115,7 @@ Technical specifications
     | Bandwidth                          | DC - 50 MHz                        |
     +------------------------------------+------------------------------------+
 
-
+|
 
 .. table::
     :widths: 10 18
@@ -129,6 +144,8 @@ Technical specifications
     | external ADC clock                 |  N/A                               |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
 
@@ -143,13 +160,14 @@ Technical specifications
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
 
+
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
-**********
+
 Schematics
-**********
+============
 
 * `Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
 
@@ -157,10 +175,17 @@ Schematics
 
     FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
-****************************************
+
 Mechanical Specifications and 3D Models
-****************************************
+==========================================
 
 * `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
+
+
+
+Other specifications
+=====================
+
+For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.
 
 

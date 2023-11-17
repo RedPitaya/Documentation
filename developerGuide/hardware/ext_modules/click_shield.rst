@@ -5,7 +5,8 @@ Click Shield
 ##############
 
 The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two Click Boards and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt external power supply. Using ULF patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units. An external reference clock can also be connected to the shield through a ULF connector.
- 
+
+
 **Highlights:**
 
 * possibility to extend hardware functionality with more than 1300 |Click Boards|
@@ -15,7 +16,6 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 
 .. insert Click Shield image here
 
-.. is this needed?
 
 What is in the box?
 =====================
@@ -53,6 +53,7 @@ Connectors
 
 .. add connectors picture (topdown of click shield, connectors marked)
 
+
 +-------------------------+--------------------+----------------------------------------+
 | **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                              |
 +-------------------------+--------------------+----------------------------------------+
@@ -71,6 +72,7 @@ Connectors
 | TRIG OUT                | DIO0_N             | External trigger Output                |
 +-------------------------+--------------------+----------------------------------------+
 
+|
 
 Connection example
 ~~~~~~~~~~~~~~~~~~~~
@@ -83,7 +85,6 @@ To synchronize two Red Pitaya units with clock and trigger the following connect
 * CLK OUT- (primary) ==> CLK IN- (secondary)
 * TRIG OUT (primary) ==> TRIG IN (secondary)
  
-
 
 Switches
 ---------
@@ -100,6 +101,7 @@ Switches
 | VCC Select              | NC                 | Select the digital logic levels for Click Boards 3V3/5V    |
 +-------------------------+--------------------+------------------------------------------------------------+
 
+|
 
 Switch position example
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -112,7 +114,6 @@ Switch position example
 
 **Click board logic:**
 If a specific click board requires 5V logic levels, please switch the *VCC Select* switch to the **5V** position.
-
 
 
 Jumpers
@@ -134,11 +135,13 @@ Jumpers
 | J7                      | Trigger sync.: Connect DIO0_P (EXT TRIG IN) pin to TRIG OUT     |
 +-------------------------+-----------------------------------------------------------------+
 
+|
 
 Jumper position example
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 For jumpers J6 and J7 the pin closer to the MicroBus connectors is connected to the Red Pitaya digital pin and the other is connected to the TRIG IN/OUT connector.
+
 
 **Clock and Trigger synchronisation:**
 
@@ -149,6 +152,7 @@ Primary board:
 * J5 connected
 * J6 connected
 * J7 connected
+
 
 Secondary board:
 
@@ -172,7 +176,6 @@ The Click Shields provide two alternative ways to power the Red Pitaya:
 The micro USB power conector on the Red Pitaya does not have to be powered if one of the above is present.
 
 
-
 Pinout
 --------
 
@@ -188,6 +191,7 @@ Here you will find the interconnections between Click Boards (MikroBus pinout) a
 * UART pins: *RX, TX*
 * SPI pins: *CS, SCK, MISO, MOSI*
 * I2C pins: *SCL, SDA*
+
 
 .. note::
 
@@ -223,6 +227,8 @@ Closer to **+CLK OUT- pins**.
 | Ground             | 8    | GND         |  GND               | GND                | GND          | 9   | Ground             |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
 
+|
+
 
 Click Board 2
 ~~~~~~~~~~~~~~~
@@ -248,6 +254,8 @@ Closer to **+CLK IN- pins**.
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
 | Ground             | 8    | GND         |  GND               | GND                | GND          | 9   | Ground             |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
+
+|
 
 
 Logic Analyzer Connector
@@ -277,6 +285,8 @@ Pin 1 is marked with a small white dot. On the bottom-left side of the connector
 | Ground             | 15                      | GND                | GND                | 16                      | Ground             |
 +--------------------+-------------------------+--------------------+--------------------+-------------------------+--------------------+
 
+|
+
 
 Other
 ~~~~~~~
@@ -291,6 +301,7 @@ Red Pitaya only has one set of UART pins, to achieve the functionality of two cl
 | DIO6_N             | Switching UART2/UART3 (Possible future expansion)          |
 +--------------------+------------------------------------------------------------+
 
+|
 
 Schematics
 ================
@@ -300,11 +311,8 @@ Schematics
 **Coming Soon...**
 
 
-
 Examples of use
 ================
-
-.. add click shield examples when available
 
 Synchronisation
 ----------------
@@ -323,16 +331,6 @@ Here are some examples of how to use click boards together with Click Shield and
   :maxdepth: 2
 
    ../../../../../appsFeatures/examples/click_shield_examples/click_board_examples/click_examples
-
-  
-
-
-
-
-
-
-
-
 
 
 
