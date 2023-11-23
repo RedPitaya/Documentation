@@ -1,13 +1,12 @@
+.. _known_hw_issues:
 
-.. _known_issues_hw:
+########################
+Known hardware issues
+########################
 
-##############
-Known Issues
-##############
+In this section is a list of known hardware issues with the Red Pitaya platforms. These issues will be fixed with the next hardware iteration of the boards.
 
-In this section is a list of known hardware issues with the Red Pitaya platforms. These will be fixed with the next hardware iteration of the boards.
-
-Potentital I2C system failures
+Potential I2C system failures
 ================================
 
 Red Pitaya uses a |TCA9406DCUR| level translator between PS I2C pins and the I2C pins on the extension connector.
