@@ -10,5 +10,3 @@ Other useful information
     spi/spi
     tft/TFT
     remote_software/remote_sw_deploy
-
-.. manualApps/manualApps
