@@ -5,7 +5,7 @@
 Known Issues
 ##############
 
-In this section is a list of known hardware issues with the Red Pitaya platforms.
+In this section is a list of known hardware issues with the Red Pitaya platforms. These will be fixed with the next hardware iteration of the boards.
 
 Potentital I2C system failures
 ================================
