@@ -66,42 +66,8 @@ Compiling and running Example code
         cd Examples/C
         make digital_led_blink
 
-
     To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
-    create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process.
-    Here is an example:
-
-    .. code-block:: shell-session
-
-        MODEL ?= Z10
-
-        CFLAGS  = -std=gnu11 -Wall ## -Werror
-        CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
-        LDFLAGS = -L/opt/redpitaya/lib
-        LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
-
-        INCLUDE += -I/opt/redpitaya/include/api250-12
-        LDLIBS += -lrp-gpio -lrp-i2c
-        LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
-
-        # List of compiled object files (not yet linked to executable)
-
-        PRGS = digital_led_blink \
-               api_example_2 \
-               api_example_3 \
-               api_example_x
-
-        OBJS := $(patsubst %,%.o,$(PRGS))
-        SRC := $(patsubst %,%.c,$(PRGS))
-
-        all: $(PRGS)
-
-        $(PRGS): %: %.c
-            $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-
-        clean:
-            $(RM) *.o
-            $(RM) $(OBJS)
+    there is a **Makefile** script in the same folder as the Example APIs, which links the libraries during the compilation process.
 
 
 4.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
@@ -176,41 +142,82 @@ Compiling and running custom code
 
 3.  To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
     create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process.
+    Do not forget to include your C program under the *List of compiled object files* - **PRGS** variable.
     Here is an example:
 
-    .. code-block:: shell-session
+    .. tabs::
 
-        MODEL ?= Z10
+        .. group-tab:: OS version 1.04 or older
 
-        CFLAGS  = -std=gnu11 -Wall ## -Werror
-        CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
-        LDFLAGS = -L/opt/redpitaya/lib
-        LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+            .. code-block:: shell-session
 
-        INCLUDE += -I/opt/redpitaya/include/api250-12
-        LDLIBS += -lrp-gpio -lrp-i2c
-        LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
+                MODEL ?= Z10
 
-        # List of compiled object files (not yet linked to executable)
-        # Add your custom apis to the PRGS variable without the ".c" extension, separete different scripts
-        # with backslashes "\".
+                CFLAGS  = -std=gnu11 -Wall ## -Werror
+                CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+                LDFLAGS = -L/opt/redpitaya/lib
+                LDLIBS = -static -lrp
+                
+                ifeq ($(MODEL),Z20_250_12)
+                INCLUDE += -I/opt/redpitaya/include/api250-12
+                LDLIBS += -lrp-gpio -lrp-i2c
+                endif
+                
+                LDLIBS += -lrp-hw -lm -lstdc++ -lpthread
+                
+                # List of compiled object files (not yet linked to executable)
 
-        PRGS = digital_led_blink \
-               api_example_2 \
-               api_example_3 \
-               api_example_x
+                PRGS = digital_led_blink \
+                       api_example_2 \
+                       api_example_3 \
+                       api_example_x
 
-        OBJS := $(patsubst %,%.o,$(PRGS))
-        SRC := $(patsubst %,%.c,$(PRGS))
+                OBJS := $(patsubst %,%.o,$(PRGS))
+                SRC := $(patsubst %,%.c,$(PRGS))
 
-        all: $(PRGS)
+                all: $(PRGS)
 
-        $(PRGS): %: %.c
-            $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+                $(PRGS): %: %.c
+                	$(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
 
-        clean:
-            $(RM) *.o
-            $(RM) $(OBJS)
+                clean:
+                	$(RM) *.o
+                	$(RM) $(OBJS)
+
+        .. group-tab:: OS version 2.00
+
+            .. code-block:: shell-session
+        
+                MODEL ?= Z10
+        
+                CFLAGS  = -std=gnu11 -Wall ## -Werror
+                CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+                LDFLAGS = -L/opt/redpitaya/lib
+                LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+        
+                INCLUDE += -I/opt/redpitaya/include/api250-12
+                LDLIBS += -lrp-gpio -lrp-i2c
+                LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
+        
+                # List of compiled object files (not yet linked to executable)
+        
+                PRGS = digital_led_blink \
+                       api_example_2 \
+                       api_example_3 \
+                       api_example_x
+        
+                OBJS := $(patsubst %,%.o,$(PRGS))
+                SRC := $(patsubst %,%.c,$(PRGS))
+        
+                all: $(PRGS)
+        
+                $(PRGS): %: %.c
+                    $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+        
+                clean:
+                    $(RM) *.o
+                    $(RM) $(OBJS)
+
 
 
 
