@@ -232,7 +232,6 @@ Code - C API
         rp_GenTrigger(RP_CH_2);
         sleep(1);
         rp_GenSynchronise();
-        rp_GenTrigger(RP_CH_1);
 
         rp_Release();
     }
@@ -302,7 +301,6 @@ Code - Python API
 
     # Enable output synchronisation
     rp.rp_GenOutEnableSync(True)
-    rp.rp_GenOutEnable(channel)
     time.sleep(0.1)
 
     # Syncronise output channels
@@ -311,7 +309,6 @@ Code - Python API
     rp.rp_GenTriggerOnly(channel2)
     time.sleep(0.5)
     rp.rp_GenSynchronise()
-    rp.rp_GenTriggerOnly(channel)
 
     # Release resources
     rp.rp_Release()
