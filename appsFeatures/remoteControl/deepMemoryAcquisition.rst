@@ -32,7 +32,7 @@ Required hardware
 Functionality
 ========================
 
-By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. The DDR memory allocated to the DMA can be configured through the **reg** parameter to a maximum of 256 MB. The :ref:`device tree ecosystem <ecosystem>` must be rebuilt after changing this parameter.
+By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. The DDR memory allocated to the DMA can be configured through the **reg** parameter to a maximum of 256 MB. Afterwards, Red Pitaya must be **restarted** for this change to take effect.
 
 **Changing Reserved Memory**
 
