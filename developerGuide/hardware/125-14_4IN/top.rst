@@ -109,7 +109,7 @@ Technical specifications
     | Voltage range                      | N/A                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Short circut protection            | N/A                                |
+    | Short circuit protection           | N/A                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
     | Connector type                     | N/A                                |
