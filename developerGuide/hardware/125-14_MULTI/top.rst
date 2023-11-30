@@ -112,7 +112,7 @@ Technical specifications (one board)
     | Voltage range                      | ±1 V                               |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Short circut protection            | Yes                                |
+    | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |
