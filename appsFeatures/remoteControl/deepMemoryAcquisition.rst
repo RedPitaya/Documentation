@@ -38,7 +38,9 @@ Here is a representation of how the DMA data saving functions:
    :align: center
    :width: 700
 
-TThe reserved memory region is located between **ADC_AXI_START** and **ADC_AXI_END** addresses, which are macros for the first and last/end addresses and are automatically configured by the ecosystem. The data is saved in 32-bit chunks (4 Bytes per sample). The **ADC_AXI_START** points to the start of the first Byte (of the first sample), and **ADC_AXI_END** points to the first Byte (of the last sample) of DDR reserved for the DMA.
+For easier explanation, the start and end addresses of the DMA buffer are labeled as **ADC_AXI_START** and **ADC_AXI_END**. The data is saved in 32-bit chunks (4 Bytes per sample). The **ADC_AXI_START** points to the start of the first Byte (of the first sample), and **ADC_AXI_END** points to the first Byte (of the last sample) of DDR reserved for the DMA. The size of the whole buffer is **ADC_AXI_SIZE**. All the labels are just for representation and do not reference any macros.
+
+The starting address of the DMA buffer (**ADC_AXI_START**) and the size of the DMA buffer (**ADC_AXI_SIZE**) are acquired through the **rp_AcqAxiGetMemoryRegion** function.
 
 The memory region can capture data from a single channel (the whole memory is allocated to a single channel), or it can be split between both input channels (CH1 (IN1) and CH2 (IN2)) by passing the following parameters to the *rp_AcqAxiSetBuffer()* function:
 
@@ -48,7 +50,7 @@ The memory region can capture data from a single channel (the whole memory is al
 
 In the example below, the memory region is split between both channels, where 1024 samples are captured on each channel.
 
-The **Mid Address** in the picture above represents the starting point of the Channel 2 buffer inside the reserved DMA region and is usually set to *(ADC_AXI_START + ADC_AXI_END)/2* (both channels can capture the same amount of data).
+The **Mid Address** in the picture above represents the starting point of the *Channel 2 buffer* inside the reserved DMA region and is set to *ADC_AXI_START + (ADC_AXI_SIZE/2)* (both channels can capture the same amount of data).
 
 Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGetDataRaw* function by passing the following parameters:
 
@@ -59,7 +61,7 @@ Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGet
 
 .. note::
 
-   Depending on the size of the acquired data and how much DDR memory is reserved for the Deep Memory Acquisition the data transfer from DDR might take a while.
+   Depending on the size of the acquired data and how much DDR memory is reserved for the Deep Memory Acquisition, the data transfer from DDR might take a while.
 
 Once finished, please do not forget to free any resources and reserved memory locations. Otherwise, the performance of Red Pitaya can decrease over time.
 
@@ -69,7 +71,7 @@ Changing reserved memory
 
 By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. The DDR memory allocated to the DMA can be configured through the **reg** parameter to a maximum of 256 MB. Afterwards, you must **rebuild the device tree** and **restart** the Red Pitaya for this change to take effect.
 
-1.   Establish an SSH connection.
+1.   Establish an :ref:`SSH <ssh>` connection.
 2.   Enable writing permissions and open the **dtraw.dts** file.
 
      .. code-block:: console
@@ -86,9 +88,9 @@ By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. Th
              reg = <0x1000000 0x200000>;
          };
 
-     The first parameter in **reg** is *start address (0x1000000)* and the second one is the *region size (0x200000)*.
+     The first parameter in **reg** is *start address (0x1000000)*, and the second is the *region size (0x200000)*.
 
-4.  After that, you need to rebuild the tree and restart the board
+4.   Finally, rebuild the tree and restart the board.
 
     .. code-block:: console
 
@@ -99,7 +101,6 @@ By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. Th
 .. note::
 
    Please note that the more memory you allocate to the DMA, the slower Red Pitaya Linux OS will function as the RAM resources between the two are shared. The memory allocated to the DMA is reserved, so Linux cannot use it.
-
 
 
 API functions
