@@ -9,3 +9,5 @@ Programming and remote-control tools
    API_scripts
    jupyter/Jupyter
    deepMemoryAcquisition
+   command_list
+   examples_top
