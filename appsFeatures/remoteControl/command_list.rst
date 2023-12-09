@@ -1,73 +1,162 @@
-.. _scpi_command_list:
+.. _command_list:
 
-*******************************
-List of supported SCPI commands
-*******************************
+********************************************
+List of supported SCPI & API commands
+********************************************
 
-.. _scpi_common:
+Here is a list of all available SCPI, API, and JupyterLab commands. The commands are organized into tables by functionality. Each table row represents the same command in SCPI, Python API, C API, and JupyterLAB.
+The Jupyter commands are identical to Python API commands, so please refer to them. In the final two columns is a command description and ecosystem version in which the command first appeared.
+
+At the beginning of each table are all command parameter options and available macros.
 
 
+.. _commands_init:
 
-======================
-Board control commands
-======================
-
-.. _scpi_board:
-
-Parameter options:
-
-* ``<year> = {1900,...}`` Default: ``OS release date and time``
-* ``<month> = {1,12}``
-* ``<day> = {1,31}``
-* ``<hours> = {0,23}``
-* ``<minutes> = {0,59}``
-* ``<seconds> = {0,59}``
-* ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
-* ``<board_id> = {0,15}``
+=========================
+Initialization commands
+=========================
 
 Table of correlated SCPI and API commands for the Red Pitaya.
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-
 +------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| SCPI                                                 | API                                         | DESCRIPTION                                               |  ECOSYSTEM         |
+| SCPI                                                 | API, Jupyter                                | DESCRIPTION                                               |  ECOSYSTEM         |
 +======================================================+=============================================+===========================================================+====================+
-| | ``RP:LOGmode <log_mode>``                          | | -                                         | Enables scpi-server log output mode.                      | 1.04-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``RP:LOGmode SYSLOG``                              | |                                           |                                                           |                    |
+| | -                                                  | | C: ``rp_Init()``                          | Initializes and enables the command interface.            | 1.04-18 and up     |
+| |                                                    | |                                           |                                                           |                    |
+| |                                                    | | Python: ``rp_Init()``                     |                                                           |                    |
 | |                                                    | |                                           |                                                           |                    |
 +------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:TIME <hours>,<minutes>,<seconds>``        | | -                                         | Sets the time on the board.                               | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:TIME 16:12:45``                           | |                                           |                                                           |                    |
-| | ``SYST:TIME 11:23:01``                             | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:TIME?`` > ``time``                        | | -                                         | Returns the current time on the board.                    | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:TIME?`` > ``16:12:45``                    | |                                           |                                                           |                    |
-| | ``SYST:TIME?`` > ``11:23:01``                      | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:DATE <year>,<month>,<day>``               | | -                                         | Sets the date on the board.                               | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:DATE 2023-04-04``                         | |                                           |                                                           |                    |
-| | ``SYST:DATE 2002-12-29``                           | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:DATE?`` > ``date``                        | | -                                         | Returns the current date on the board.                    | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:DATE?`` > ``2023-04-04``                  | |                                           |                                                           |                    |
-| | ``SYST:DATE?`` > ``2002-12-29``                    | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:BRD:ID?`` > ``<board_id>``                | | C: ``rp_HPGetModel``                      | Returns the board model from the values rp_HPeModels_t.   | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:BRD:ID?`` > ``1``                         | | Python: ``rp_IdGetID()``                  |                                                           |                    |
+| | -                                                  | | C: ``rp_IsApiInit()``                     | Check whether the API interface is initialized.           | 1.04-18 and up     |
+| |                                                    | |                                           |                                                           |                    |
+| |                                                    | | Python: ``rp_IsApiInit()``                |                                                           |                    |
 | |                                                    | |                                           |                                                           |                    |
 +------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:BRD:Name?`` > ``board name``              | | C: ``rp_HPGetModelName``                  | Returns the name of the board.                            | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     | | Python: ``rp_GetVersion()``               |                                                           |                    |
+| | -                                                  | | C: ``rp_Release()``                       | Release command interface resources.                      | 1.04-18 and up     |
+| |                                                    | |                                           |                                                           |                    |
+| |                                                    | | Python: ``rp_Release()``                  |                                                           |                    |
 | |                                                    | |                                           |                                                           |                    |
 +------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_Reset()``                         | | Resets digital and analog pin settings as well as       | 1.04-18 and up     |
+| |                                                    | |                                           | | generation and acquisition settings to default values.  |                    |
+| |                                                    | | Python: ``rp_Reset()``                    | |                                                         |                    |
+| |                                                    | |                                           | |                                                         |                    |
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_Reset()``                         | | Resets digital and analog pin settings as well as       | 1.04-18 and up     |
+| |                                                    | |                                           | | generation and acquisition settings to default values.  |                    |
+| |                                                    | | Python: ``rp_Reset()``                    | |                                                         |                    |
+| |                                                    | |                                           | |                                                         |                    |
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+
+
+.. _commands_board:
+
+======================
+Board control commands
+======================
+
+**Parameter options:**
+
+- ``<year> = {1900,...}`` Default: ``OS release date and time``
+- ``<month> = {1,12}``
+- ``<day> = {1,31}``
+- ``<hours> = {0,23}``
+- ``<minutes> = {0,59}``
+- ``<seconds> = {0,59}``
+- ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
+- ``<board_id> = {0,15}``
+- ``<enable> = {true, false}``
+- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA, RP_RCA, RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
+
+**Available Jupyter and API macros:**
+
+- **Red Pitaya states and errors:**
+    - ``RP_OK`` - OK
+    - ``RP_EOED`` - Failed to Open EEPROM Device.
+    - ``RP_EOMD`` - Failed to open memory device.
+    - ``RP_ECMD`` - Failed to close memory device.
+    - ``RP_EMMD`` - Failed to map memory device.
+    - ``RP_EUMD`` - Failed to unmap memory device.
+    - ``RP_EOOR`` - Value out of range.
+    - ``RP_ELID`` - LED input direction is not valid.
+    - ``RP_EMRO`` - Modifying read only filed is not allowed.
+    - ``RP_EWIP`` - Writing to input pin is not valid.
+    - ``RP_EPN`` - Invalid Pin number.
+    - ``RP_UIA`` - Uninitialized Input Argument.
+    - ``RP_FCA`` - Failed to Find Calibration Parameters.
+    - ``RP_RCA`` - Failed to Read Calibration Parameters.
+    - ``RP_BTS`` - Buffer too small
+    - ``RP_EIPV`` - Invalid parameter value
+    - ``RP_EUF`` - Unsupported Feature
+    - ``RP_ENN`` - Data not normalized
+    - ``RP_EFOB`` - Failed to open bus
+    - ``RP_EFCB`` - Failed to close bus
+    - ``RP_EABA`` - Failed to acquire bus access
+    - ``RP_EFRB`` - Failed to read from the bus
+    - ``RP_EFWB`` - Failed to write to the bus
+..    - ``RP_EMNC`` - 
+..    - ``RP_NOTS`` - 
+
+
+Table of correlated SCPI and API commands for the Red Pitaya.
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| SCPI                                                 | API, Jupyter                                     | DESCRIPTION                                               |  ECOSYSTEM         |
++======================================================+==================================================+===========================================================+====================+
+| | ``RP:LOGmode <log_mode>``                          | | -                                              | Enables scpi-server log output mode.                      | 1.04-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``RP:LOGmode SYSLOG``                              | |                                                |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:TIME <hours>,<minutes>,<seconds>``        | | -                                              | Sets the time on the board.                               | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:TIME 16:12:45``                           | |                                                |                                                           |                    |
+| | ``SYST:TIME 11:23:01``                             | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:TIME?`` > ``time``                        | | -                                              | Returns the current time on the board.                    | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:TIME?`` > ``16:12:45``                    | |                                                |                                                           |                    |
+| | ``SYST:TIME?`` > ``11:23:01``                      | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:DATE <year>,<month>,<day>``               | | -                                              | Sets the date on the board.                               | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:DATE 2023-04-04``                         | |                                                |                                                           |                    |
+| | ``SYST:DATE 2002-12-29``                           | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:DATE?`` > ``date``                        | | -                                              | Returns the current date on the board.                    | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:DATE?`` > ``2023-04-04``                  | |                                                |                                                           |                    |
+| | ``SYST:DATE?`` > ``2002-12-29``                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:BRD:ID?`` > ``<board_id>``                | | C: ``rp_IdGetID(uint32_t *id)``                | Returns the Red Pitaya board ID.                          | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:BRD:ID?`` > ``1``                         | | Python: ``rp_IdGetID()``                       |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:BRD:Name?`` > ``board name``              | | C: ``const char* rp_GetVersion()``             | Returns the Red Pitaya board version.                     | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     | | Python: ``rp_GetVersion()``                    |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_IdGetDNA(uint64_t *dna)``              | Returns the DNA code of the Zynq chip.                    | 2.00-18 and up     |
+| |                                                    | |                                                |                                                           |                    |
+| |                                                    | | Python: ``rp_IdGetDNA()``                      |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``const char* rp_GetError(int errorCode)``  | Returns the description of the input error code.          | 2.00-18 and up     |
+| |                                                    | |                                                |                                                           |                    |
+| |                                                    | | Python: ``rp_GetError(<errorCode>)``           |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_EnableDigitalLoop(bool enable)``       | Enables/disables the Digital Loop.                        | 2.00-18 and up     |
+| |                                                    | |                                                |                                                           |                    |
+| |                                                    | | Python: ``rp_EnableDigitalLoop(<enable>)``     |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+
 
 .. _scpi_digital:
 
