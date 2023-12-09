@@ -158,67 +158,116 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
 
 
-.. _scpi_digital:
+.. _commands_digital:
 
 ==============
 LEDs and GPIOs
 ==============
 
-Parameter options:
+**Parameter options:**
 
-* ``<dir> = {OUT,IN}``
-* ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
-* ``<led> = {LED0...LED8}``
-* ``<pin> = {gpio, led}``
-* ``<state> = {0,1}``
+- ``<dir> = {OUT,IN}``
+- ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
+- ``<led> = {LED0...LED8}``
+- ``<pin> = {gpio, led}``
+- ``<state> = {0,1}``
+- ``<reg_state> = {0b00000000}`` - One LED/DIO per bit. &emsp;&emsp; *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
+- ``<reg_direction> = {0b00000000}`` - One DIO per bit. &emsp;&emsp; *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
+
+
+**Available Jupyter and API macros:**
+
+- **States** - ``RP_LOW, RP_HIGH``
+- **Directions** - ``RP_IN, RP_OUT``
+- **LEDs** - ``RP_LED0, RP_LED1, ..., RP_LED7``
+- **DIOx_P** - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` &emsp;&emsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+- **DIOx_N** - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` &emsp;&thinsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+
 
 Table of correlated SCPI and API commands for the Red Pitaya.
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-| SCPI                                  | API                                                                                | DESCRIPTION                                                                       |  ECOSYSTEM         |
+| SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
 +=======================================+====================================================================================+===================================================================================+====================+
 | | ``DIG:RST``                         | | C: ``rp_DpinReset()``                                                            | | Sets digital pins to default values. Pins DIO1_P - DIO7_P,                      | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  | | RP_DIO0_N - RP_DIO7_N are set all INPUT and to LOW. LEDs are set to LOW/OFF.    |                    |
-| | ``DIG:RST``                         | | Python: ``rp_DpinReset()``                                                       |                                                                                   |                    |
-| |                                     | |                                                                                  |                                                                                   |                    |
+| | ``DIG:RST``                         | | Python: ``rp_DpinReset()``                                                       | |                                                                                 |                    |
+| |                                     | |                                                                                  | |                                                                                 |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN:DIR <dir>,<gpio>``        | | C: ``rp_DpinSetDirection(rp_dpin_t pin, rp_pinDirection_t direction)``           | Set the direction of digital pins to output or input.                             | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN:DIR OUT,DIO0_N``          | | Python: ``rp_DpinSetDirection(pin, direction)``                                  |                                                                                   |                    |
+| | ``DIG:PIN:DIR OUT,DIO0_N``          | | Python: ``rp_DpinSetDirection(<pin>, <direction>)``                              |                                                                                   |                    |
 | | ``DIG:PIN:DIR IN,DIO1_P``           | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN:DIR? <gpio>``             | | C: ``rp_DpinGetDirection(rp_dpin_t pin, rp_pinDirection_t* direction)``          | Gets digital input output pin direction..                                         | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN:DIR? DIO0_N``             | | Python: ``rp_DpinGetDirection(pin)``                                             |                                                                                   |                    |
+| | ``DIG:PIN:DIR? DIO0_N``             | | Python: ``rp_DpinGetDirection(<pin>)``                                           |                                                                                   |                    |
 | | ``DIG:PIN:DIR? DIO1_P``             | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN <pin>,<state>``           | | C: ``rp_DpinSetState(rp_dpin_t pin, rp_pinState_t state)``                       | | Set the state of digital outputs to 1 (HIGH) or 0 (LOW).                        | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  | | Returns a 1 (HIGH) if the pin is floating.                                      |                    |
-| | ``DIG:PIN DIO0_N,1``                | | Python: ``rp_DpinSetState(pin, state)``                                          |                                                                                   |                    |
-| | ``DIG:PIN LED2,1``                  | |                                                                                  |                                                                                   |                    |
+| | ``DIG:PIN DIO0_N,1``                | | Python: ``rp_DpinSetState(<pin>, <state>)``                                      | |                                                                                 |                    |
+| | ``DIG:PIN LED2,1``                  | |                                                                                  | |                                                                                 |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN? <pin>`` > ``<state>``    | | C: ``rp_DpinGetState(rp_dpin_t pin, rp_pinState_t* state)``                      | Get state of digital inputs and outputs.                                          | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN? DIO0_N``                 | | Python: ``rp_DpinGetState(pin)``                                                 |                                                                                   |                    |
+| | ``DIG:PIN? DIO0_N``                 | | Python: ``rp_DpinGetState(<pin>)``                                               |                                                                                   |                    |
 | | ``DIG:PIN? LED2``                   | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_LEDSetState(uint32_t reg_state)``                                        | | Set the state of the 8-bit LED register. Each bit corresponds to the state      | 1.04-18 and up     |
+| |                                     | |                                                                                  | | of one LED.                                                                     |                    |
+| |                                     | | Python: ``rp_LEDSetState(<reg_state>)``                                          | |                                                                                 |                    |
+| |                                     | |                                                                                  | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_LEDGetState(uint32_t *reg_state)``                                       | | Get the state of the 8-bit LED register. Each bit corresponds to the state      | 1.04-18 and up     |
+| |                                     | |                                                                                  | | of one LED.                                                                     |                    |
+| |                                     | | Python: ``rp_LEDGetState()``                                                     | |                                                                                 |                    |
+| |                                     | |                                                                                  | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnSetDirection(uint32_t reg_direction)``                              | | Set the state of the DIO_N or DIO_P direction register. Each bit corresponds    | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOnSetDirection(uint32_t reg_direction)``                              | | to the direction of one DIO_N or DIO_P pin.                                     |                    |
+| |                                     | | Python: ``rp_GPIOnSetDirection(<reg_direction>)``                                | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpSetDirection(<reg_direction>)``                                | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnGetDirection(uint32_t *reg_direction)``                             | | Get the state of the DIO_N or DIO_P direction register. Each bit corresponds    | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOpGetDirection(uint32_t *reg_direction)``                             | | to the direction of one DIO_N or DIO_P pin.                                     |                    |
+| |                                     | | Python: ``rp_GPIOnGetDirection()``                                               | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpGetDirection()``                                               | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnSetState(uint32_t reg_state)``                                      | | Set the state of the DIO_N or DIO_P state register. Each bit corresponds        | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOpSetState(uint32_t reg_state)``                                      | | to the state of one DIO_N or DIO_P pin.                                         |                    |
+| |                                     | | Python: ``rp_GPIOnSetState(<reg_state>)``                                        | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpSetState(<reg_state>)``                                        | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnGetState(uint32_t *state)``                                         | | Get the state of the DIO_N or DIO_P state register. Each bit corresponds        | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOpGetState(uint32_t *state)``                                         | | to the state of one DIO_N or DIO_P pin.                                         |                    |
+| |                                     | | Python: ``rp_GPIOnGetState()``                                                   | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpGetState()``                                                   | |                                                                                 |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 
 
 
-.. _scpi_analog:
+.. _commands_analog:
 
 =========================
 Analog Inputs and Outputs
 =========================
 
-Parameter options:
+**Parameter options:**
 
-* ``<ain> = {AIN0, AIN1, AIN2, AIN3}``
-* ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
-* ``<pin> = {ain, aout}``
-* ``<value> = {value in Volts}``
+- ``<ain> = {AIN0, AIN1, AIN2, AIN3}``
+- ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
+- ``<pin> = {ain, aout}``
+- ``<value> = {value in Volts}``
+
+**Available Jupyter and API macros:**
+
+- **Analog outputs** - ``RP_AOUT0, RP_AOUT1, ..., RP_AOUT3``
+- **Analog inputs** - ``RP_AIN0, RP_AIN1, ..., RP_AIN3``
+
+Table of correlated SCPI and API commands for the Red Pitaya.
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
@@ -231,31 +280,61 @@ Parameter options:
 | |                                     | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``ANALOG:PIN <pin>,<value>``        | | C: ``rp_ApinSetValue(rp_apin_t pin, float value)``                               | | Set the analog voltage on the slow analog outputs.                              | 1.04-18 and up     |
-| | Examples:                           | |                                                                                  | | The voltage range of slow analog outputs is: 0 - 1.8 V                          |                    |
-| | ``ANALOG:PIN AOUT2,1.34``           | | Python: ``rp_ApinSetValue(pin, value)``                                          |                                                                                   |                    |
-| |                                     | |                                                                                  |                                                                                   |                    |
+| | Examples:                           | |    ``rp_ApinSetValueRaw(rp_apin_t pin, uint32_t value)``                         | | The voltage range of slow analog outputs is: 0 - 1.8 V                          |                    |
+| | ``ANALOG:PIN AOUT2,1.34``           | | Python: ``rp_ApinSetValue(<pin>, <value>)``                                      |                                                                                   |                    |
+| |                                     | |         ``rp_ApinSetValueRaw(<pin>, <value>)``                                   |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``ANALOG:PIN? <pin>`` > ``<value>`` | | C: ``rp_ApinGetValue(rp_apin_t pin, float* value, uint32_t* raw)``               | | Read the analog voltage from the slow analog inputs.                            | 1.04-18 and up     |
-| | Examples:                           | |                                                                                  | | The voltage range of slow analog inputs is: 0 - 3.3 V                           |                    |
-| | ``ANALOG:PIN? AOUT2`` > ``1.34``    | | Python: ``rp_ApinGetValue(pin)``                                                 |                                                                                   |                    |
-| | ``ANALOG:PIN? AIN1`` > ``1.12``     | |                                                                                  |                                                                                   |                    |
+| | Examples:                           | |    ``rp_ApinGetValueRaw(rp_apin_t pin, uint32_t* value)``                        | | The voltage range of slow analog inputs is: 0 - 3.3 V                           |                    |
+| | ``ANALOG:PIN? AOUT2`` > ``1.34``    | | Python: ``rp_ApinGetValue(<pin>)``                                               |                                                                                   |                    |
+| | ``ANALOG:PIN? AIN1`` > ``1.12``     | |         ``rp_ApinGetValueRaw(<pin>)``                                            |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_ApinGetRange(rp_apin_t pin, float* min_val, float* max_val)``            | Get voltage range of the specified analog pin.                                    | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_ApinGetRange(<pin>)``                                               |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AIpinGetValue(int unsigned pin, float* value, uint32_t* raw)``           | Get the analog voltage on the slow analog inputs (Volts or RAW).                  | 1.04-18 and up     |
+| |                                     | |    ``rp_AIpinGetValueRaw(int unsigned pin, uint32_t* value)``                    |                                                                                   |                    |
+| |                                     | | Python: ``rp_AIpinGetValue(<pin>)``                                              |                                                                                   |                    |
+| |                                     | |         ``rp_AIpinGetValueRaw(<pin>)``                                           |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AOpinSetValue(int unsigned pin, float value)``                           | Set the output voltage on slow analog outputs.                                    | 1.04-18 and up     |
+| |                                     | |    ``rp_AOpinSetValueRaw(int unsigned pin, uint32_t value)``                     |                                                                                   |                    |
+| |                                     | | Python: ``rp_AOpinSetValue(<pin>, <value>)``                                     |                                                                                   |                    |
+| |                                     | |         ``rp_AOpinSetValueRaw(<pin>, <value>)``                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AOpinGetValue(int unsigned pin, float* value, uint32_t* raw)``           | Get the output voltage on slow analog outputs.                                    | 1.04-18 and up     |
+| |                                     | |    ``rp_AOpinGetValueRaw(int unsigned pin, uint32_t* value)``                    |                                                                                   |                    |
+| |                                     | | Python: ``rp_AOpinGetValue(<pin>)``                                              |                                                                                   |                    |
+| |                                     | |         ``rp_AOpinGetValueRaw(<pin>)``                                           |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AOpinGetRange(int unsigned pin, float* min_val,  float* max_val)``       | Get voltage range of the specified analog output pin.                             | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_AOpinGetRange(<pin>)``                                              |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 
 
 
-.. _scpi_daisy:
+.. _commands_daisy:
 
 ===============================
 Daisy chain clocks and triggers
 ===============================
 
-Parameter options:
+**Parameter options:**
 
-* ``<state> = {OFF, ON}``
-* ``<mode> = {ADC, DAC}``
+- ``<state> = {OFF, ON}``
+- ``<mode> = {ADC, DAC}``
+- ``<enable> = {true, false}``
+
+**Available Jupyter and API macros:**
+
+- **Shared trigger source** - ``OUT_TR_ADC, OUT_TR_DAC``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
-
 
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | SCPI                                      | API                                                                                | DESCRIPTION                                                                                                |  ECOSYSTEM         |
@@ -272,7 +351,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:TRIG <state>``             | | C: ``rp_SetEnableDaisyChainTrigSync(bool enable)``                               | | Enables trigger sync over SATA daisy chain connectors. Once the primary board will be triggered,         | 2.00-18 and up     |
 | | Examples:                               | |                                                                                  | | the trigger will be forwarded to the secondary board over the SATA connector                             |                    |
-| | ``DAISY:SYNC:TRIG ON``                  | | Python:  ``rp_SetEnableDaisyChainTrigSync(enable)``                              | | where the trigger can be detected using EXT_NE selector.                                                 |                    |
+| | ``DAISY:SYNC:TRIG ON``                  | | Python:  ``rp_SetEnableDaisyChainTrigSync(<enable>)``                            | | where the trigger can be detected using EXT_NE selector.                                                 |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:TRIG?`` > ``<state>``      | | C: ``rp_GetEnableDaisyChainTrigSync(bool *status)``                              | | Returns the current state of the trigger synchronization using Daisy Chain.                              | 2.00-18 and up     |
@@ -282,7 +361,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:CLK <state>``              | | C: ``rp_SetEnableDiasyChainClockSync(bool enable)``                              | | Enables clock sync over SATA daisy chain connectors.                                                     | 2.00-18 and up     |
 | | Examples:                               | |                                                                                  | | The primary board will start generating a clock for the secondary unit and so on.                        |                    |
-| | ``DAISY:SYNC:CLK ON``                   | | Python: ``rp_SetEnableDiasyChainClockSync(enable)``                              |                                                                                                            |                    |
+| | ``DAISY:SYNC:CLK ON``                   | | Python: ``rp_SetEnableDiasyChainClockSync(<enable>)``                            |                                                                                                            |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:CLK?`` > ``<state>``       | | C: ``rp_GetEnableDiasyChainClockSync(bool *state)``                              | | Returns the current state of the SATA daisy chain mode.                                                  | 2.00-18 and up     |
@@ -292,7 +371,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:ENable <state>``         | | C: ``rp_SetDpinEnableTrigOutput(bool enable)``                                   | | Turns GPION_0 into trigger output for selected source - acquisition or generation.                       | 2.00-15 and up     |
 | | Examples:                               | |                                                                                  |                                                                                                            |                    |
-| | ``DAISY:TRIG_O:ENable ON``              | | Python: ``rp_SetDpinEnableTrigOutput(enable)``                                   |                                                                                                            |                    |
+| | ``DAISY:TRIG_O:ENable ON``              | | Python: ``rp_SetDpinEnableTrigOutput(<enable>)``                                 |                                                                                                            |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:ENable?`` > ``<state>``  | | C: ``rp_GetDpinEnableTrigOutput(bool *state)``                                   | | Returns the current mode state for GPION_0. If true, then the pin mode works as a source.                | 2.00-15 and up     |
@@ -302,7 +381,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:SOUR <mode>``            | | C: ``rp_SetSourceTrigOutput(rp_outTiggerMode_t mode)``                           | | Sets the trigger source mode ADC/DAC.                                                                    | 2.00-15 and up     |
 | | Examples:                               | |                                                                                  |                                                                                                            |                    |
-| | ``DAISY:TRIG_O:SOUR DAC``               | | Python: ``rp_SetSourceTrigOutput(mode)``                                         |                                                                                                            |                    |
+| | ``DAISY:TRIG_O:SOUR DAC``               | | Python: ``rp_SetSourceTrigOutput(<mode>)``                                       |                                                                                                            |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:SOUR?`` > ``<mode>``     | | C: ``rp_GetSourceTrigOutput(rp_outTiggerMode_t *mode)``                          | | Returns the trigger source mode.                                                                         | 2.00-15 and up     |
@@ -310,7 +389,6 @@ Parameter options:
 | | ``DAISY:TRIG_O:SOUR?`` > ``DAC``        | | Python: ``rp_GetSourceTrigOutput()``                                             |                                                                                                            |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
-
 
 .. note::
 
@@ -320,6 +398,8 @@ Parameter options:
 
    The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software.
    The generation and acquisition trigger fronts apply after the signals have been combined and trigger either DAC or ADC depending on the ``DAISY:TRIG_O:SOUR <mode>`` command.
+
+
 
 
 
