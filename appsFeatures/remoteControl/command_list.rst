@@ -272,7 +272,7 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-| SCPI                                  | API                                                                                | DESCRIPTION                                                                       |  ECOSYSTEM         |
+| SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
 +=======================================+====================================================================================+===================================================================================+====================+
 | | ``ANALOG:RST``                      | | C: ``rp_ApinReset()``                                                            | Sets analog outputs to default values (0V).                                       | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
@@ -337,7 +337,7 @@ Daisy chain clocks and triggers
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
-| SCPI                                      | API                                                                                | DESCRIPTION                                                                                                |  ECOSYSTEM         |
+| SCPI                                      | API, Jupyter                                                                       | DESCRIPTION                                                                                                |  ECOSYSTEM         |
 +===========================================+====================================================================================+============================================================================================================+====================+
 | | ``DAISY:ENable <state>``                | | C: ``rp_SetEnableDaisyChainSync``                                                | | Enables clock and trigger sync over SATA daisy chain connectors.                                         | only 2.00-15       |
 | | Examples:                               | |                                                                                  | | Once the primary board will be triggered, the trigger will be forwarded to the secondary board over      |                    |
@@ -401,234 +401,456 @@ Daisy chain clocks and triggers
 
 
 
+.. _commands_pll:
+
+==================
+Phase locked loop
+==================
+
+.. note::
+
+   For STEMlab 125-14 4-Input, the commands in this chapter are not applicable.
 
 
-.. _scpi_gen:
+**Parameter options:**
+
+- ``<enable> = {true, false}``
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
++=======================================+====================================================================================+===================================================================================+====================+
+| | -                                   | | C: ``rp_SetPllControlEnable(bool enable)``                                       | Enables/disables PLL control.                                                     | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_SetPllControlEnable(<enable>)``                                     |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: `` rp_GetPllControlEnable(bool *enable)``                                     | Gets the PLL enable setting.                                                      | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_GetPllControlEnable()``                                             |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GetPllControlLocked(bool *status)``                                      | Get status of the PLL.                                                            | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_GetPllControlLocked()``                                             |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+
+
+
+.. _commands_gen:
 
 ================
 Signal Generator
 ================
 
-Parameter options:
+.. note::
 
-* ``<n> = {1,2}`` (set channel OUT1 or OUT2)
-* ``<state> = {ON,OFF}`` Default: ``OFF``
-* ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
-* ``<func> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
-* ``<amplitude> = {-1 ... 1}``(in Volts). Default: ``1`` for SIGNALlab 250-12 {-5 ... 5}
-* ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 {-5 ... 5}
-* ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
-* ``<phase> = {-360 ... 360}`` (in Degrees). Default: ``0``
-* ``<dcyc> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
-* ``<array> = {value1, ...}`` max. 16384 values, floats in the range -1 to 1
-* ``<burst> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
-* ``<count> = {1...50000}`` Default: ``1``
-* ``<time> = {1µs-500s}`` Value in *µs*.
-* ``<utime> = {value in us}`` Default: ``500``
-* ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}`` Default: ``INT``
+   For STEMlab 125-14 4-Input, the commands in this chapter are not applicable.
 
 
-   - ``EXT`` = External
-   - ``INT`` = Internal
-   - ``GATED`` = gated busts
+-------
+Control
+-------
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<state> = {ON,OFF}`` Default: ``OFF``
+- ``<enable> = {true, false}`` Default: ``false``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| SCPI                                                | API                                                                                     | DESCRIPTION                                                                                  |  ECOSYSTEM         |
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
 +=====================================================+=========================================================================================+==============================================================================================+====================+
-| | ``OUTPUT:STATE <state>``                          | | C: ``rp_GenOutEnableSync(bool enable)``                                               | | Runs or Stops both channels synchronously.                                                 | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | With API commands one of the outputs must be turned ON/OFF afterwards                      |                    |
-| | ``OUTPUT:STATE ON``                               | | Python: ``rp_GenOutEnableSync(enable)``                                               | | (See ``OUTPUT<n>:STATE <state>``).                                                         |                    |
-|                                                     | |                                                                                       | |                                                                                            |                    |
+| | ``GEN:RST``                                       | | C: ``rp_GenReset()``                                                                  | | Stops the generation and sets all generator parameters to default values.                  | 1.04-18 and up     |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
+| |                                                   | | Python: ``rp_GenReset()``                                                             | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``OUTPUT<n>:STATE <state>``                       | | C: ``rp_GenOutEnable(rp_channel_t channel)``                                          | | Disable or enable fast analog outputs.                                                     | 1.04-18 and up     |
-| | Examples:                                         | |    ``rp_GenOutDisable(rp_channel_t channel)``                                         | | The generator is waiting for the trigger.                                                  |                    |
-| | ``OUTPUT1:STATE ON``                              | | Python: ``rp_GenOutEnable(channel)``                                                  |                                                                                              |                    |
-|                                                     | |         ``rp_GenOutDisable(channel)``                                                 |                                                                                              |                    |
+| | ``OUTPUT<n>:STATE <state>``                       | | C: ``rp_GenOutEnable(rp_channel_t channel)``                                          | | Enable/disable supplying voltage to the specified fast analog output. When enabled,        | 1.04-18 and up     |
+| | Examples:                                         | |    ``rp_GenOutDisable(rp_channel_t channel)``                                         | | the signal does not start generating, but the initial voltage value                        |                    |
+| | ``OUTPUT1:STATE ON``                              | | Python: ``rp_GenOutEnable(<channel>)``                                                | | (``SOUR<n>:INITValue``, ``rp_GenSetInitGenValue``) appears on the fast analog output.      |                    |
+| |                                                   | |         ``rp_GenOutDisable(<channel>)``                                               | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``OUTPUT<n>:STATE?`` > ``<state>``                | | C: ``rp_GenOutIsEnabled(rp_channel_t channel, bool *value)``                          | Gets value ON if the channel is enabled otherwise returns OFF.                               | 1.04-18 and up     |
+| | ``OUTPUT<n>:STATE?`` > ``<state>``                | | C: ``rp_GenOutIsEnabled(rp_channel_t channel, bool *value)``                          | | Get the enable/disable supply voltage status of the specified fast analog output.          | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | |                                                                                            |                    |
+| | ``OUTPUT1:STATE?`` > ``ON`                        | | Python: ``rp_GenOutIsEnabled(<channel>)``                                             | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``OUTPUT:STATE <state>``                          | | C: ``rp_GenOutEnableSync(bool enable)``                                               | | Enable/disable supplying voltage to both fast analog outputs. When enabled, the signal     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | does not start generating, but the initial voltage value (``SOUR<n>:INITValue``,           |                    |
+| | ``OUTPUT:STATE ON``                               | | Python: ``rp_GenOutEnableSync(<enable>)``                                             | |  ``rp_GenSetInitGenValue``) apperas on both fast analog outputs.                           |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+
+
+-------------------
+Generator trigger
+-------------------
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<state> = {ON,OFF}`` Default: ``OFF``
+- ``<utime> = {value in us}`` Default: ``500``
+- ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}`` Default: ``INT``
+    - ``EXT`` = External
+    - ``INT`` = Internal
+    - ``GATED`` = gated busts
+- ``<enable> = {true, false}`` Default: ``false``
+
+**Available Jupyter and API macros:**
+
+- **Generator trigger source** - ``RP_GEN_TRIG_SRC_INTERNAL, RP_GEN_TRIG_SRC_EXT_PE, RP_GEN_TRIG_SRC_EXT_NE``
+
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | ``SOUR<n>:TRig:SOUR <trigger>``                   | | C: ``rp_GenTriggerSource(rp_channel_t channel, rp_trig_src_t src)``                   | | Set the trigger source for the selected signal (either internal or external).              | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | The external trigger must be a 3V3 CMOS signal.                                            |                    |
+| | ``SOUR1:TRig:SOUR EXT_PE``                        | | Python: ``rp_GenTriggerSource(<channel>, <src>)``                                     | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRig:SOUR?`` > ``<trigger>``            | | C: ``rp_GenGetTriggerSource(rp_channel_t channel, rp_trig_src_t *src)``               | Get the trigger source setting.                                                              | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``OUTPUT1:STATE?`` > ``ON``                       | | Python: ``rp_GenOutIsEnabled(channel)``                                               |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FREQ:FIX <frequency>``                  | | C: ``rp_GenFreq(rp_channel_t channel, float frequency)``                              | | Set the frequency of fast analog outputs.                                                  | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | For ARBITRARY waveform this is the frequency of the whole buffer (16384 samples).          |                    |
-| | ``SOUR2:FREQ:FIX 100000``                         | | Python: ``rp_GenFreq(channel, frequency)``                                            |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FREQ:FIX?`` > ``<frequency>``           | | C: ``rp_GenGetFreq(rp_channel_t channel, float *frequency)``                          | Gets channel signal frequency.                                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:FREQ:FIX?`` > ``100000``                  | | Python: ``def rp_GenGetFreq(channel)``                                                |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FUNC <func>``                           | | C: ``rp_GenWaveform(rp_channel_t channel, rp_waveform_t type)``                       | Set the waveform of fast analog outputs.                                                     | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:FUNC TRIANGLE``                           | | Python: ``rp_GenWaveform(channel, type)``                                             |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FUNC?`` > ``<func>``                    | | C: ``rp_GenGetWaveform(rp_channel_t channel, rp_waveform_t *type)``                   | Gets channel signal waveform.                                                                | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:FUNC?`` > ``TRIANGLE``                    | | Python: ``rp_GenGetWaveform(channel)``                                                |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT <amplitude>``                      | | C: ``rp_GenAmp(rp_channel_t channel, float amplitude)``                               | | Set the amplitude voltage of fast analog outputs in Volts.                                 | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum                                     |                    |
-| | ``SOUR2:VOLT 0.5``                                | | Python: ``rp_GenAmp(channel, amplitude)``                                             | | output range ± 1V (depends on board model).                                                |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT?`` > ``<amplitude>``               | | C: ``rp_GenGetAmp(rp_channel_t channel, float *amplitude)``                           | Gets channel signal peak to peak amplitude.                                                  | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:VOLT?`` > ``0.5``                         | | Python: ``rp_GenGetAmp(channel)``                                                     |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT:OFFS <offset>``                    | | C: ``rp_GenOffset(rp_channel_t channel, float offset)``                               | | Set the offset voltage of fast analog outputs in Volts                                     | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum                                     |                    |
-| | ``SOUR1:VOLT:OFFS 0.2``                           | | Python: ``rp_GenOffset(channel, offset)``                                             | | output range ± 1V (depends on board model).                                                |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT:OFFS?`` > ``<offset>``             | | C: ``rp_GenGetOffset(rp_channel_t channel, float *offset)``                           | Gets DC offset of the signal.                                                                | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:VOLT:OFFS?`` > ``0.2``                    | | Python: ``rp_GenGetOffset(channel)``                                                  |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:PHAS <phase>``                          | | C: ``rp_GenPhase(rp_channel_t channel, float phase)``                                 | Set the phase of fast analog outputs.                                                        | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:PHAS 30``                                 | | Python: ``rp_GenPhase(channel, phase)``                                               |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:PHAS?`` > ``<phase>``                   | | C: ``rp_GenGetPhase(rp_channel_t channel, float *phase)``                             | Gets channel signal phase.                                                                   | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:PHAS?`` > ``30``                          | | Python: ``rp_GenGetPhase(channel)``                                                   |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC <dcyc>``                           | | C: ``rp_GenDutyCycle(rp_channel_t channel, float ratio)``                             | Set the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:DCYC 0.2``                                | | Python: ``rp_GenDutyCycle(channel, ratio)``                                           |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC?`` > ``<dcyc>``                    | | C: ``rp_GenGetDutyCycle(rp_channel_t channel, float *ratio)``                         | Gets duty cycle of PWM signal.                                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:DCYC`` > ``0.2``                          | | Python: ``def rp_GenGetDutyCycle(channel)``                                           |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRAC:DATA:DATA <array>``                | | C: ``rp_GenArbWaveform(rp_channel_t channel, float *waveform, uint32_t length)``      | | Import data for arbitrary waveform generation (should be 16384 samples).                   | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | If fewer samples are provided the output frequency will be higher.                         |                    |
-| | ``SOUR1:TRAC:DATA:DATA``                          | | Python: ``rp_GenArbWaveform(channel, waveform, length)``                              |                                                                                              |                    |
-| | ``1,0.5,0.2``                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``         | | C: ``rp_GenGetArbWaveform(rp_channel_t channel, float *waveform, uint32_t *length)``  | Gets user defined waveform.                                                                  | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:TRAC:DATA:DATA?`` >                       | | Python: ``rp_GenGetArbWaveform(channel, waveform)``                                   |                                                                                              |                    |
-| | ``1,0.5,0.2``                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:STAT <burst>``                     | | C: ``rp_GenMode(rp_channel_t channel, rp_gen_mode_t mode)``                           | | Enable or disable burst (pulse) mode.                                                      | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Red Pitaya will generate **R** bursts with **N** signal periods.                           |                    |
-| | ``SOUR1:BURS:STAT BURST``                         | | Python: ``rp_GenMode(channel, mode)``                                                 | | **P** is the time between the start of one and the start of the next burst.                |                    |
-| | ``SOUR1:BURS:STAT CONTINUOUS``                    | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:STAT?`` > ``<burst>``              | | C: ``rp_GenGetMode(rp_channel_t channel, rp_gen_mode_t *mode)``                       | Gets generation mode.                                                                        | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:STAT?`` > ``BURST``                  | | Python: ``rp_GenGetMode(channel)``                                                    |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NCYC <count>``                     | | C: ``rp_GenBurstCount(rp_channel_t channel, int num)``                                | Set the number of cycles/periods in one burst (**N**).                                       | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NCYC 3``                             | | Python: ``rp_GenBurstCount(channel, num)``                                            |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NCYC?`` > ``<count>``              | | C: ``rp_GenGetBurstCount(rp_channel_t channel, int *num)``                            | Gets number of generated waveforms in a burst.                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NCYC`` > ``3``                       | | Python: ``rp_GenGetBurstCount(channel)``                                              |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NOR <count>``                      | | C: ``rp_GenBurstRepetitions(rp_channel_t channel, int repetitions)``                  | Set the number of repeated bursts (**R**) (65536 == INF repetitions)                         | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NOR 5``                              | | Python: ``rp_GenBurstRepetitions(channel, repetitions)``                              |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NOR?`` > ``<count>``               | | C: ``rp_GenGetBurstRepetitions(rp_channel_t channel, int *repetitions)``              | Gets number of burst repetitions.                                                            | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NOR`` > ``5``                        | | Python: ``rp_GenGetBurstRepetitions(channel)``                                        |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:INT:PER <time>``                   | | C: ``rp_GenBurstPeriod(rp_channel_t channel, uint32_t period)``                       | | Set the duration of a single burst in microseconds (**P**).                                | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Time between the start of one and the start of the next burst.                             |                    |
-| | ``SOUR1:BURS:INT:PER 1000000``                    | | Python: ``rp_GenBurstPeriod(channel, period)``                                        | | The bursts will always have at least 1 us between them: If the period is                   |                    |
-|                                                     | |                                                                                       | | shorter than the burst, the software will default to 1 us between bursts.                  |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:INT:PER?`` > ``<time>``            | | C: ``rp_GenGetBurstPeriod(rp_channel_t channel, uint32_t *period)``                   | Gets the period of one burst in micro seconds.                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:INT:PER?`` > ``1000000``             | | Python: ``rp_GenGetBurstPeriod(channel)``                                             |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRig:SOUR <trigger>``                   | | C: ``rp_GenTriggerSource(rp_channel_t channel, rp_trig_src_t src)``                   | | Set the trigger source for the selected signal.                                            | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | External trigger must be a 3V3 CMOS signal.                                                |                    |
-| | ``SOUR1:TRig:SOUR EXT_PE``                        | | Python: ``rp_GenTriggerSource(channel, src)``                                         |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRig:SOUR?`` > ``<trigger>``            | | C: ``rp_GenGetTriggerSource(rp_channel_t channel, rp_trig_src_t *src)``               | Gets trigger source.                                                                         | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:TRig:SOUR?`` > ``EXT_PE``                 | | Python: ``rp_GenGetTriggerSource(channel)``                                           |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LASTValue <level>``                | | C: ``rp_GenBurstLastValue(rp_channel_t channel, float amlitude)``                     | | Sets the value to be set at the end of the generated signal in burst mode.                 | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       | | The output will stay on this value until a new signal is generated.                        |                    |
-| | ``SOUR1:BURS:LASTValue 0.5``                      | | Python: ``rp_GenBurstLastValue(channel, amplitude)``                                  |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LASTValue?`` > ``<level>``         | | C: ``rp_GenGetBurstLastValue(rp_channel_t channel, float *amlitude)``                 | Gets the value to be set at the end of the generated signal in burst mode.                   | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:LASTValue`` > ``0.5``                | | Python: ``rp_GenGetBurstLastValue(channel)``                                          |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:INITValue <level>``                     | | C: ``rp_GenSetInitGenValue(rp_channel_t channel, float amlitude)``                    | | The level of which is set by the generator after                                           | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       | | the outputs are turned on, but before the signal is generated.                             |                    |
-| | ``SOUR1:INITValue 0.5``                           | | Python: ``rp_GenSetInitGenValue(channel, amplitude)``                                 |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:INITValue?`` > ``<level>``              | | C: ``rp_GenGetInitGenValue(rp_channel_t channel, float *amlitude)``                   | Gets the value of the initial signal level.                                                  | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:INITValue?`` > ``0.5``                    | | Python: ``rp_GenGetInitGenValue(channel)``                                            |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:INT``                                 | | C: ``rp_GenTriggerOnly(rp_channel_t channel)``                                        | | Triggers both sources/channels immediately.                                                | 1.04-18 and up     |
-| |                                                   | |                                                                                       | | With API commands both outputs must be synchronised (See ``PHAS:ALIGN``)                   |                    |
-| | Examples:                                         | | Python: ``rp_GenTriggerOnly(channel)``                                                |                                                                                              |                    |
-| | ``SOUR:TRig:INT``                                 | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRig:INT``                              | | C: ``rp_GenTriggerOnly(rp_channel_t channel)``                                        | | Triggers the selected source immediately for the selected channel.                         | 1.04-18 and up     |
+| | ``SOUR1:TRig:SOUR?`` > ``EXT_PE``                 | | Python: ``rp_GenGetTriggerSource(<channel>)``                                         |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
-| | Examples:                                         | | Python: ``rp_GenTriggerOnly(channel)``                                                |                                                                                              |                    |
-| | ``SOUR1:TRig:INT``                                | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``GEN:RST``                                       | | C: ``rp_GenReset()``                                                                  | Reset the generator to default settings.                                                     | 1.04-18 and up     |
-|                                                     | |                                                                                       |                                                                                              |                    |
-|                                                     | | Python: ``rp_GenReset()``                                                             |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
+| | -                                                 | | C: `` rp_GenResetTrigger(rp_channel_t channel)``                                      | Resets generator trigger for the specified fast analog output.                               | 1.04-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenResetTrigger(<channel>)``                                             |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``PHAS:ALIGN``                                    | | C: ``rp_GenSynchronise()``                                                            | | Align the output phases of both channels. Both channels are synchronised.                  | 1.04-18 and up     |
-|                                                     | |                                                                                       | |                                                                                            |                    |
-|                                                     | | Python: ``rp_GenSynchronise()``                                                       | |                                                                                            |                    |
-|                                                     | |                                                                                       | |                                                                                            |                    |
+| | ``SOUR:TRig:INT``                                 | | C: ``rp_GenSynchronise()``                                                            | | Synchronously triggers the generation of both fast analog outputs immediately.             | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | The signal phase is aligned.                                                               |                    |
+| | ``SOUR:TRig:INT``                                 | | Python: ``rp_GenSynchronise()``                                                       | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:EXT:DEBouncer[:US] <utime>``          | | C: ``rp_GenSetExtTriggerDebouncerUs(double value)``                                   | Sets ext. trigger debouncer for generation in Us (Value must be positive).                   | 2.00-15 and up     |
+| | ``SOUR<n>:TRig:INT``                              | | C: ``rp_GenTriggerOnly(rp_channel_t channel)``                                        | Triggers the generation of the specified fast analog output immediately.                     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:TRig:INT``                                | | Python: ``rp_GenTriggerOnly(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR:TRig:EXT:DEBouncer[:US] <utime>``          | | C: ``rp_GenSetExtTriggerDebouncerUs(double utime)``                                   | Sets the external trigger generation debouncer in microseconds (value must be positive).     | 2.00-15 and up     |
 | | Example:                                          | |                                                                                       |                                                                                              |                    |
-| | ``SOUR:TRig:EXT:DEBouncerUs 1``                   | | Python: ``rp_GenSetExtTriggerDebouncerUs(value)``                                     |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
+| | ``SOUR:TRig:EXT:DEBouncerUs 1``                   | | Python: ``rp_GenSetExtTriggerDebouncerUs(<utime>)``                                   |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:EXT:DEBouncer[:US]?`` > ``<utime>``   | | C: ``rp_GenGetExtTriggerDebouncerUs(double *value)``                                  | Gets ext. trigger debouncer for generation in Us.                                            | 2.00-15 and up     |
+| | ``SOUR:TRig:EXT:DEBouncer[:US]?`` > ``<utime>``   | | C: ``rp_GenGetExtTriggerDebouncerUs(double *utime)``                                  | Get the external trigger generation debouncer setting in microseconds.                       | 2.00-15 and up     |
 | | Example:                                          | |                                                                                       |                                                                                              |                    |
-| | ``SOUR:TRig:EXT:DEBouncerUs?`` > ``1``            | | Python: ``rp_GenSetExtTriggerDebouncerUs(value)``                                     |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
+| | ``SOUR:TRig:EXT:DEBouncerUs?`` > ``1``            | | Python: ``rp_GenSetExtTriggerDebouncerUs(<utime>)``                                   |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
 
+
+--------------------
+Generator settings
+--------------------
+
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
+- ``<type> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
+- ``<amplitude> = {-1 ... 1}``(in Volts). Default: ``1`` for SIGNALlab 250-12 {-5 ... 5}
+- ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 {-5 ... 5}
+- ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
+- ``<phase> = {-360 ... 360}`` (in Degrees). Default: ``0``
+- ``<ratio> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
+- ``<array> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1
+- ``<waveform> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1 (``arbBuffer`` for Python API and Jupyter)
+- ``<lenght>`` waveform array length
+
+**Available Jupyter and API macros:**
+
+- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+- **Waveforms** - ``RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP, RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY, RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP``
+- **Rise and fall times** - ``RISE_FALL_MIN_RATIO, RISE_FALL_MAX_RATIO``
+
+SIGNALlab 250-12 only:
+- **Generator gain** - ``RP_GAIN_1X, RP_GAIN_5X``
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | ``SOUR<n>:FUNC <type>``                           | | C: ``rp_GenWaveform(rp_channel_t channel, rp_waveform_t type)``                       | Set the waveform of a fast analog output.                                                    | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:FUNC TRIANGLE``                           | | Python: ``rp_GenWaveform(<channel>, <type>)``                                         |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FUNC?`` > ``<type>``                    | | C: ``rp_GenGetWaveform(rp_channel_t channel, rp_waveform_t *type)``                   | Get the waveform of a fast analog output.                                                    | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:FUNC?`` > ``TRIANGLE``                    | | Python: ``rp_GenGetWaveform(<channel>)``                                              |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FREQ:FIX <frequency>``                  | | C: ``rp_GenFreq(rp_channel_t channel, float frequency)``                              | | Set the signal frequency of a fast analog output.                                          | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | For the ARBITRARY waveform, this is the frequency of one signal period (a buffer of        |                    |
+| | ``SOUR2:FREQ:FIX 100000``                         | | Python: ``rp_GenFreq(<channel>, <frequency>)``                                        | | 16384 samples).                                                                            |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| -                                                   | | C: ``rp_GenFreqDirect(rp_channel_t channel, float frequency)``                        | Set the frequency of a fast analog output directly.                                          | 1.04-18 and up     |
+|                                                     | |                                                                                       |                                                                                              |                    |
+|                                                     | | Python: ``rp_GenFreqDirect(<channel>, <frequency>)``                                  |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FREQ:FIX?`` > ``<frequency>``           | | C: ``rp_GenGetFreq(rp_channel_t channel, float *frequency)``                          | Get signal frequency of the specified channel.                                               | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:FREQ:FIX?`` > ``100000``                  | | Python: ``rp_GenGetFreq(<channel>)``                                                  |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT <amplitude>``                      | | C: ``rp_GenAmp(rp_channel_t channel, float amplitude)``                               | | Set the one-way amplitude of a fast analog output in Volts.                                | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum output voltage range (±1 V)         |                    |
+| | ``SOUR2:VOLT 0.5``                                | | Python: ``rp_GenAmp(<channel>, <amplitude>)``                                         | | (±2 V/ ±10 V (Hi-Z load) for SIGNALlab).                                                   |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT?`` > ``<amplitude>``               | | C: ``rp_GenGetAmp(rp_channel_t channel, float *amplitude)``                           | Get the one-way amplitude of a fast analog output in Volts.                                  | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:VOLT?`` > ``0.5``                         | | Python: ``rp_GenGetAmp(<channel>)``                                                   |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT:OFFS <offset>``                    | | C: ``rp_GenOffset(rp_channel_t channel, float offset)``                               | | Set the DC offset voltage of a fast analog output in Volts.                                | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum output voltage range (±1 V)         |                    |
+| | ``SOUR1:VOLT:OFFS 0.2``                           | | Python: ``rp_GenOffset(<channel>, <offset>)``                                         | | (±2 V/ ±10 V (Hi-Z load) for SIGNALlab).                                                   |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT:OFFS?`` > ``<offset>``             | | C: ``rp_GenGetOffset(rp_channel_t channel, float *offset)``                           | Get the DC offset of a fast analog output in Volts.                                          | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:VOLT:OFFS?`` > ``0.2``                    | | Python: ``rp_GenGetOffset(<channel>)``                                                |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:PHAS <phase>``                          | | C: ``rp_GenPhase(rp_channel_t channel, float phase)``                                 | | Set the phase of a fast analog output in degrees. The signal starts generating with the    | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | specified phase. For example, if the phase is set to 90 degrees, the signal starts         |                    |
+| | ``SOUR2:PHAS 30``                                 | | Python: ``rp_GenPhase(<channel>, <phase>)``                                           | | generating as cosine instead of sine.                                                      |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:PHAS?`` > ``<phase>``                   | | C: ``rp_GenGetPhase(rp_channel_t channel, float *phase)``                             | Set the phase of a fast analog output in degrees.                                            | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:PHAS?`` > ``30``                          | | Python: ``rp_GenGetPhase(<channel>)``                                                 |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``PHAS:ALIGN``                                    | | C: ``rp_GenSynchronise()``                                                            | | Synchronously triggers the generation of both fast analog outputs immediately.             | 1.04-18 and up     |
+| |                                                   | |                                                                                       | | The signal phase is aligned.                                                               |                    |
+| |                                                   | | Python: ``rp_GenSynchronise()``                                                       | | (Same as SOUR:TRig:INT)                                                                    |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:DCYC <ratio>``                          | | C: ``rp_GenDutyCycle(rp_channel_t channel, float ratio)``                             | Set the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:DCYC 0.2``                                | | Python: ``rp_GenDutyCycle(<channel>, <ratio>)``                                       |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:DCYC?`` > ``<ratio>``                   | | C: ``rp_GenGetDutyCycle(rp_channel_t channel, float *ratio)``                         | Get the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:DCYC`` > ``0.2``                          | | Python: ``def rp_GenGetDutyCycle(<channel>)``                                         |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRAC:DATA:DATA <array>``                | | C: ``rp_GenArbWaveform(rp_channel_t channel, float *waveform, uint32_t length)``      | | Import data for one period of an arbitrary waveform (should be exactly 16384 samples).     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | If fewer samples are provided, the output frequency will be higher.                        |                    |
+| | ``SOUR1:TRAC:DATA:DATA``                          | | Python: ``rp_GenArbWaveform(<channel>, <waveform>, <length>)``                        | |                                                                                            |                    |
+| | ``1,0.5,0.2``                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``         | | C: ``rp_GenGetArbWaveform(rp_channel_t channel, float *waveform, uint32_t *length)``  | Get the user-defined arbitrary waveform period.                                              | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:TRAC:DATA:DATA?`` >                       | | Python: ``rp_GenGetArbWaveform(<channel>, <waveform>)``                               |                                                                                              |                    |
+| | ``1,0.5,0.2``                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSetGainOut(rp_channel_t channel, rp_gen_gain_t gain_mode)``                | Set SIGNALlab output gain. (SIGNALlab only)                                                  | 1.04-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSetGainOut(<channel>, <gain_mode>)``                                  |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: `` rp_GenGetGainOut(rp_channel_t channel, rp_gen_gain_t *gain_mode)``              | Get SIGNALlab output gain. (SIGNALlab only)                                                  | 1.04-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetGainOut(<channel>)``                                               |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenRiseTime(rp_channel_t channel, float time)``                               | Set signal rise time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenRiseTime(<channel>, <time>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetRiseTime(rp_channel_t channel, float *time)``                           | Get signal rise time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetRiseTime(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenFallTime(rp_channel_t channel, float time)``                               | Set signal fall time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenFallTime(<channel>, <time>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetFallTime(rp_channel_t channel, float *time)``                           | Get signal fall time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetFallTime(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+
+
+------------
+Burst mode
+------------
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<mode> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
+- ``<num>, <repetitions> = {1...50000}`` Default: ``1``
+- ``<period> = {1 µs - 500 s}`` Value in *µs*.
+
+**Available Jupyter and API macros:**
+
+- **Generator modes** - ``RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST``
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | ``SOUR<n>:BURS:STAT <mode>``                      | | C: ``rp_GenMode(rp_channel_t channel, rp_gen_mode_t mode)``                           | | Enable or disable burst (pulse) mode.                                                      | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | Red Pitaya will generate **R** bursts with **N** signal periods.                           |                    |
+| | ``SOUR1:BURS:STAT BURST``                         | | Python: ``rp_GenMode(<channel>, <mode>)``                                             | | **P** is the time between the start of one and the start of the next burst.                |                    |
+| | ``SOUR1:BURS:STAT CONTINUOUS``                    | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:STAT?`` > ``<mode>``               | | C: ``rp_GenGetMode(rp_channel_t channel, rp_gen_mode_t *mode)``                       | Get the generation mode.                                                                     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:STAT?`` > ``BURST``                  | | Python: ``rp_GenGetMode(<channel>)``                                                  |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NCYC <num>``                       | | C: ``rp_GenBurstCount(rp_channel_t channel, int num)``                                | Set the number of cycles/periods in one burst (**N**).                                       | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NCYC 3``                             | | Python: ``rp_GenBurstCount(<channel>, <num>)``                                        |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NCYC?`` > ``<num>``                | | C: ``rp_GenGetBurstCount(rp_channel_t channel, int *num)``                            | Get the number of generated waveforms in a burst.                                            | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NCYC`` > ``3``                       | | Python: ``rp_GenGetBurstCount(<channel>)``                                            |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NOR <repetitions>``                | | C: ``rp_GenBurstRepetitions(rp_channel_t channel, int repetitions)``                  | Set the number of repeated bursts (**R**) (65536 == INF repetitions)                         | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NOR 5``                              | | Python: ``rp_GenBurstRepetitions(<channel>, <repetitions>)``                          |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NOR?`` > ``<repetitions>``         | | C: ``rp_GenGetBurstRepetitions(rp_channel_t channel, int *repetitions)``              | Get the number of burst repetitions.                                                         | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NOR`` > ``5``                        | | Python: ``rp_GenGetBurstRepetitions(<channel>)``                                      |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER <period>``                 | | C: ``rp_GenBurstPeriod(rp_channel_t channel, uint32_t period)``                       | | Set the duration of a single burst in microseconds (**P**). This specifies the time        | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | between the start of one and the start of the next burst. The bursts will always have at   |                    |
+| | ``SOUR1:BURS:INT:PER 1000000``                    | | Python: ``rp_GenBurstPeriod(<channel>, <period>)``                                    | | least 1 us between them: If the period is shorter than the burst, the software will        |                    |
+|                                                     | |                                                                                       | | default to 1 us between bursts.                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER?`` > ``<period>``          | | C: ``rp_GenGetBurstPeriod(rp_channel_t channel, uint32_t *period)``                   | Get the period of a bursts in microseconds.                                                  | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:INT:PER?`` > ``1000000``             | | Python: ``rp_GenGetBurstPeriod(<channel>)``                                           |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:LASTValue <amplitude>``            | | C: ``rp_GenBurstLastValue(rp_channel_t channel, float amplitude)``                    | | Set the end value of the generated burst signal.                                           | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       | | The output will stay on this value until a new signal is generated.                        |                    |
+| | ``SOUR1:BURS:LASTValue 0.5``                      | | Python: ``rp_GenBurstLastValue(<channel>, <amplitude>)``                              | |                                                                                            |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:LASTValue?`` > ``<amplitude>``     | | C: ``rp_GenGetBurstLastValue(rp_channel_t channel, float *amplitude)``                | Get the end value of the generated burst signal.                                             | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:LASTValue`` > ``0.5``                | | Python: ``rp_GenGetBurstLastValue(<channel>)``                                        |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:INITValue <amplitude>``                 | | C: ``rp_GenSetInitGenValue(rp_channel_t channel, float amplitude)``                   | | Set the initial voltage value that appears on the fast analog output once it is enabled    | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       | | but before the signal is generated (See ``OUTPUT<n>:STATE``,                               |                    |
+| | ``SOUR1:INITValue 0.5``                           | | Python: ``rp_GenSetInitGenValue(<channel>, <amplitude>)``                             | | ``rp_GenOutEnable(rp_channel_t channel)``).                                                |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:INITValue?`` > ``<amplitude>``          | | C: ``rp_GenGetInitGenValue(rp_channel_t channel, float *amplitude)``                  | | Get the initial voltage value that appears on the fast analog output once it is enabled    | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       | | but before the signal is generated (See ``OUTPUT<n>:STATE``,                               |                    |
+| | ``SOUR1:INITValue?`` > ``0.5``                    | | Python: ``rp_GenGetInitGenValue(<channel>)``                                          | | ``rp_GenOutEnable(rp_channel_t channel)``).                                                |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+
+
+------------
+Sweep mode
+------------
 
 .. note::
 
-   For STEMlab 125-14 4-Input, these commands are not applicable.
+    To enable *Sweep* mode, set the wavefrom type to ``RP_WAVEFORM_SWEEP``.
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000`` (start), ``10000`` (end)
+
+**Available Jupyter and API macros:**
+
+- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+- **Sweep direction** - RP_GEN_SWEEP_DIR_NORMAL, RP_GEN_SWEEP_DIR_UP_DOWN
+- **Sweep mode** - RP_GEN_SWEEP_MODE_LINEAR, RP_GEN_SWEEP_MODE_LOG
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | -                                                 | | C: ``rp_GenSweepStartFreq(rp_channel_t channel, float frequency)``                    | Set sweep start frequency.                                                                   | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepStartFreq(<channel>, <frequency>)``                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepStartFreq(rp_channel_t channel, float *frequency)``                | Get sweep start frequency.                                                                   | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepStartFreq(<channel>)``                                        |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSweepEndFreq(rp_channel_t channel, float frequency)``                      | Set sweep end frequency.                                                                     | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepEndFreq(<channel>, <frequency>)``                                |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepEndFreq(rp_channel_t channel, float *frequency)``                  | Get sweep end frequency.                                                                     | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepEndFreq(<channel>)``                                          |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSweepMode(rp_channel_t channel, rp_gen_sweep_mode_t mode)``                | Set sweep mode to either linear or logarithmic.                                              | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepMode(<channel>, <mode>)``                                        |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepMode(rp_channel_t channel, rp_gen_sweep_mode_t *mode)``            | Get sweep mode (either linear or logarithmic).                                               | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepMode(<channel>)``                                             |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSweepDir(rp_channel_t channel, rp_gen_sweep_dir_t mode)``                  | Set sweep direction (normal (up) or up-down).                                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepDir(<channel>, <mode>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepDir(rp_channel_t channel, rp_gen_sweep_dir_t *mode)``              | Get sweep direction (normal (up) or up-down).                                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepDir(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+
 
 
 
