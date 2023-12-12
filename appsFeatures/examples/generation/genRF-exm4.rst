@@ -281,10 +281,9 @@ Code - C API
         rp_GenFreq(RP_CH_1, 4000.0);
         rp_GenFreq(RP_CH_2, 4000.0);
 
-        rp_GenOutEnable(RP_CH_1);
-        rp_GenOutEnable(RP_CH_2);
-        rp_GenTriggerOnly(RP_CH_1);
-        rp_GenTriggerOnly(RP_CH_2);
+        rp_GenOutEnableSync(True)
+    
+        rp_GenSynchronise()
 
         /* Releasing resources */
         free(y);
@@ -358,11 +357,9 @@ Code - Python API
     
     # Enable output synchronisation
     rp.rp_GenOutEnableSync(True)
-    rp.rp_GenOutEnable(channel)
     
     # Syncronise output channels
     rp.rp_GenSynchronise()
-    rp.rp_GenTriggerOnly(channel)
     
     
     # Release resources

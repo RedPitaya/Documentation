@@ -179,8 +179,7 @@ Code - C API
         rp_GenAmp(RP_CH_2, 1);
 
         rp_GenOutEnableSync(true);
-        rp_GenTriggerOnly(RP_CH_1);
-        rp_GenTriggerOnly(RP_CH_2);
+        rp.rp_GenSynchronise()
 
         /* Release rp resources */
         rp_Release();
@@ -236,11 +235,9 @@ Code - Python API
 
     # Enable output synchronisation
     rp.rp_GenOutEnableSync(True)
-    rp.rp_GenOutEnable(channel)
 
     # Syncronise output channels
     rp.rp_GenSynchronise()
-    rp.rp_GenTriggerOnly(channel)
 
     # Release resources
     rp.rp_Release()

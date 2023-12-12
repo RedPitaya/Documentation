@@ -105,7 +105,7 @@ Technical specifications
     | Voltage range                      | 0.5 Vpp/ -2 dBm                    |
     |                                    | (50 Ohm load)                      |
     +------------------------------------+------------------------------------+
-    | Short circut protection            | N/A, RF transformer                |
+    | Short circuit protection           | N/A, RF transformer                |
     |                                    | & AC-coupled                       |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |

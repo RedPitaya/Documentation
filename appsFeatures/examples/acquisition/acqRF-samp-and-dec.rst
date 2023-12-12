@@ -10,10 +10,16 @@ Examples of decimations and time scales of a buffer are given in the tables belo
 
     The table lists only a few decimation examples, users can in practice use the following decimations:
 
-    - **OS 2.00-23 and higher:** [1, 2, 4, 8, 16, 17, 18, ..., 65535, 65536] *(powers of 2 up to 16 and then any whole number up to 65536)*
-    - **OS 2.00-18 and lower:** [1, 2, 4, 8, 16, 64, 256, ..., 32768, 65536] *(powers of 2 up to 65536)*
+    **SCPI commands:**
 
+    - **OS IN_DEV and higher:** [1, 2, 4, 8, 16, 17, 18, ..., 65535, 65536] *(powers of 2 up to 16 and then any whole number up to 65536)* - **ACQ:DEC:F**
+    - **OS 2.00-23 and lower:** [1, 2, 4, 8, 16, 64, 256, ..., 32768, 65536] *(powers of 2 up to 65536)* - **ACQ:DEC**
 
+    **API commands:**
+
+    - **OS 2.00-23 and higher:** [1, 2, 4, 8, 16, 17, 18, ..., 65535, 65536] *(powers of 2 up to 16 and then any whole number up to 65536)* - **rp_AcqSetDecimationFactor**
+
+|
 
 **STEMlab 125-14, STEMlab 125-10, STEMlab 125-14 4-Input:**
 

@@ -101,7 +101,7 @@ Technical specifications
     | Voltage range                      | +-2 V / +-10 V (Hi-Z load)         |
     |                                    | (software selectable)              |
     +------------------------------------+------------------------------------+
-    | Short circut protection            | Yes                                |
+    | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
     | Connector type                     | BNC                                |

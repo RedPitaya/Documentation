@@ -1095,7 +1095,7 @@ Code - Python API
             #?   RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY,
             #?   RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP
 
-            channel = rp.RP_CH_1        # rp.RP_CH_2
+            channel = rp.RP_CH_1
             channel2 = rp.RP_CH_2
             waveform = rp.RP_WAVEFORM_SINE
             freq = 100000
@@ -1116,7 +1116,7 @@ Code - Python API
             #?  RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE, 
             #?  RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE
 
-            acq_trig_sour = rp.RP_TRIG_SRC_EXT_PE
+            acq_trig_sour = rp.RP_TRIG_SRC_CHA_PE
             N = 16384
 
             # Initialize the interface
@@ -1146,7 +1146,6 @@ Code - Python API
 
             # Enable output synchronisation
             rp.rp_GenOutEnableSync(True)
-            rp.rp_GenOutEnable(channel)
 
 
 
@@ -1155,7 +1154,7 @@ Code - Python API
             rp.rp_AcqSetDecimation(rp.RP_DEC_1)
 
             #? Possible triggers:
-            #?  RP_T_CH_1, RP_T_CH_2, RP_T_CH_3, RP_T_CH_4, RP_T_CH_EXT
+            #?  RP_T_CH_1, RP_T_CH_2, RP_T_CH_EXT
 
             # Set trigger level and delay
             rp.rp_AcqSetTriggerLevel(rp.RP_T_CH_1, trig_lvl)
@@ -1202,7 +1201,6 @@ Code - Python API
             print(f"Data in Volts: {data_V}")
             print(f"Raw data: {data_raw}")
 
-
             # Release resources
             rp.rp_Release()
     
@@ -1236,7 +1234,7 @@ Code - Python API
             #?  RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE, 
             #?  RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE
 
-            acq_trig_sour = rp.RP_TRIG_SRC_EXT_PE
+            acq_trig_sour = rp.RP_TRIG_SRC_CHA_PE
             N = 16384
 
             # Initialize the interface
@@ -1294,5 +1292,8 @@ Code - Python API
 
             print(f"Data in Volts: {data_V}")
             print(f"Raw data: {data_raw}")
+
+            # Release resources
+            rp.rp_Release()
 
 
