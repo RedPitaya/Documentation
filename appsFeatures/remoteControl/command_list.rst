@@ -906,28 +906,39 @@ Control
 +----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
 
 
+
 --------------------------
 Acquisition settings
 --------------------------
 
 **Parameter options:**
 
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
 - ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
 - ``<decimation_ext> = {1,2,4,8,16,17,18,19,......,65536}`` Default: ``1``
 - ``<average> = {OFF,ON}`` Default: ``ON``
 - ``<state> = {LV, HV}`` Default: ``LV``
+- ``<mode> = {AC,DC}`` Default ``DC``
+- ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
+- ``<format> = {BIN, ASCII}`` Default ``ASCII``
 - ``<enable> = {true, false}`` Default: ``true``
 
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
 
 **Available Jupyter and API macros:**
 
 - **Fast analog channels** - ``RP_CH_1, RP_CH_2``
 - **Decimation** - ``RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16, RP_DEC_32, RP_DEC_64, RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048, RP_DEC_4096, RP_DEC_8192, RP_DEC_16384, RP_DEC_32768, RP_DEC_65536``
 
-SIGNALlab 250-12 only:
+*SIGNALlab 250-12 only (additional):*
+
 - **Input coupling** - ``RP_DC, RP_AC``
 
-STEMlab 125-14 4-Input only:
+*STEMlab 125-14 4-Input only (additional):*
+
 - **Fast analog channels** - ``RP_CH_3, RP_CH_4``
 
 
@@ -1001,135 +1012,165 @@ STEMlab 125-14 4-Input only:
 | | ``ACQ:SOUR1:COUP?`` > ``AC``           | | Python: ``rp_AcqGetAC_DC(<channel>)``                                                        |                                                                               |                    |
 | |                                        | |                                                                                              |                                                                               |                    |
 +------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:Units <units>``             | | C: - (See specific acquisition command)                                                      | | Select units in which the acquired data will be returned. For API commands  | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | | this depends on which function is called (see specific functions for        |                    |
+| | ``ACQ:DATA:Units RAW``                 | | Python: - (See specific acquisition command)                                                 | |  details).                                                                  |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:Units?`` > ``<units>``      | | C: - (See specific acquisition command)                                                      | Get units in which the acquired data will be returned.                        | 1.04-18 and up     |
+| | Example:                               | |                                                                                              |                                                                               |                    |
+| | ``ACQ:DATA:Units?`` > ``RAW``          | | Python: - (See specific acquisition command)                                                 |                                                                               |                    |
+| |                                        | |                                                                                              |                                                                               |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:FORMAT <format>``           | | C: - (NA)                                                                                    | | Select the format in which the acquired data will be returned.              | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | | Only for remote SCPI control.                                               |                    |
+| | ``ACQ:DATA:FORMAT ASCII``              | | Python: - (NA)                                                                               | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:BUF:SIZE?`` > ``<size>``         | | C: ``rp_AcqGetBufSize(uint32_t *size)``                                                      | | Returns the buffer size.                                                    | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | | For Python API specifically, the input parameter is the buffer itself.      |                    |
+| | ``ACQ:BUF:SIZE?`` > ``16384``          | | Python: ``rp_AcqGetBufSize(<buffer>)``                                                       | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | -                                      | | C: - (look for *malloc* function online)                                                     | | Performs memory allocation and returns the requested buffer.                | 1.04-18 and up     |
+| |                                        | |                                                                                              | | - ``<maxChannels>`` - how many channels will be acquired                    |                    |
+| |                                        | | Python: ``rp_createBuffer(<maxChannels>, <length>, <initInt16>, <initDouble>, <initFloat>)`` | | - ``<enght>`` - length of the buffer in samples (max 16384)                 |                    |
+| |                                        | |                                                                                              | | - ``<initInt16>, <initDouble>, <initFloat>`` - buffer sample type, set one  |                    |
+| |                                        | |                                                                                              | |   to ``true``, others are ``false``.                                        |                    |
+| |                                        | |                                                                                              | | For Python API specifically.                                                |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 
 
 
-.. _scpi_trigger:
+--------------------
+Acquisition trigger
+--------------------
 
-=======
-Trigger
-=======
 
 Parameter options:
 
-* ``<n> = {1,2}`` (set channel IN1 or IN2)
-* ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
-* ``<status> = {WAIT, TD}``
-* ``<time> = {value in ns}`` Default: ``0``
-* ``<utime> = {value in us}`` Default: ``500``
-* ``<count> = {value in samples}`` (minimum value -8192) Default: ``0``
-* ``<gain> = {LV, HV}`` Default: ``LV``
-* ``<level> = {value in V}`` Default: ``0``
-* ``<mode> = {AC,DC}`` Default ``DC``
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
+- ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
+- ``<state> = {WAIT, TD}``
+- ``<fill_state> = {0, 1}``
+- ``<decimated_data_num> = {value in samples}`` (minimum value ``-8192``) Default: ``0``
+- ``<time_ns> = {value in ns}`` Default: ``0``
+- ``<value> = {value in us}`` Default: ``500``
+- ``<voltage> = {value in V}`` Default: ``0``
 
-.. note::
 
-   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
+*STEMlab 125-14 4-Input only (additional):*
 
-.. note::
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
+- ``<source> = {CH3_PE, CH3_NE, CH4_PE, CH4_NE}``
 
-   For STEMlab 125-14 4-Input ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, CH3_PE, CH3_NE, CH4_PE, CH4_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
+**Available Jupyter and API macros:**
+
+- **Fast analog channels** - ``RP_CH_1, RP_CH_2`
+- **Acquisition trigger** - ``RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE, RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE``
+- **Acquisition trigger state** - ``RP_TRIG_STATE_TRIGGERED, RP_TRIG_STATE_WAITING``
+- **Buffer size** - ``ADC_BUFFER_SIZE, DAC_BUFFER_SIZE``
+
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+- **Acquisition trigger** - ``RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| SCPI                                               | API                                                                                  | DESCRIPTION                                                                   |  ECOSYSTEM         |
+| SCPI                                               | API, Jupyter                                                                         | DESCRIPTION                                                                   |  ECOSYSTEM         |
 +====================================================+======================================================================================+===============================================================================+====================+
-| | ``ACQ:TRig <source>``                            | | C: ``rp_AcqSetTriggerSrc(rp_acq_trig_src_t source)``                               | Disable triggering, trigger immediately or set trigger source & edge.         | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig CH1_PE``                              | | Python: ``rp_AcqSetTriggerSrc(source)``                                            |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig <source>``                            | | C: ``rp_AcqSetTriggerSrc(rp_acq_trig_src_t source)``                               | | Set acquisition trigger source. The options are disabled, trigger           | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | immediately, or set trigger source & edge.                                  |                    |
+| | ``ACQ:TRig CH1_PE``                              | | Python: ``rp_AcqSetTriggerSrc(<source>)``                                          | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:STAT?``                               | | C: ``rp_AcqGetTriggerState(rp_acq_trig_state_t* state)``                           | Get trigger status. If DISABLED -> TD else WAIT.                              | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:STAT?`` > ``WAIT``                    | | Python: ``rp_AcqGetTriggerSrc()``                                                  |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | -                                                | | C: ``rp_AcqGetTriggerSrc(rp_acq_trig_src_t* source)``                              | | Get acquisition trigger source.                                             | 1.04-18 and up     |
+| |                                                  | |                                                                                    | |                                                                             |                    |
+| |                                                  | | Python: ``rp_AcqGetTriggerSrc()``                                                  | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:FILL?``                               | | C: ``rp_AcqGetBufferFillState``                                                    | Returns 1 if the buffer is full of data. Otherwise returns 0.                 | 2.00-15 and up     |
+| | ``ACQ:TRig:STAT?`` > ``<state>``                 | | C: ``rp_AcqGetTriggerState(rp_acq_trig_state_t* state)``                           | | Get acquisition trigger status. If the trigger is ``DISABLED`` or the       | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | acquisition is triggered, the state is ``TD``. Otherwise, it is ``WAIT``.   |                    |
+| | ``ACQ:TRig:STAT?`` > ``WAIT``                    | | Python: ``rp_AcqGetTriggerState()``                                                | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
++----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:TRig:FILL?`` > ``<fill_state>``            | | C: ``rp_AcqGetBufferFillState(bool* state)``                                       | Returns 1 if the buffer is full of data. Otherwise returns 0.                 | 2.00-15 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
 | | ``ACQ:TRig:FILL?`` > ``1``                       | | Python: ``rp_AcqGetBufferFillState()``                                             |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY <count>``                         | | C: ``rp_AcqSetTriggerDelay(int32_t decimated_data_num)``                           | | Set the trigger delay in samples.                                           | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    | | Triggering moment is by default around 8192th sample                        |                    |
-| | ``ACQ:TRig:DLY 2314``                            | | Python: ``rp_AcqSetTriggerDelay(decimated_data_num)``                              |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig:DLY <decimated_data_num>``            | | C: ``rp_AcqSetTriggerDelay(int32_t decimated_data_num)``                           | | Set the trigger delay in samples. The triggering moment is by default in    | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | the middle of acquired buffer (at 8192th sample) (trigger delay set to 0).  |                    |
+| | ``ACQ:TRig:DLY 2314``                            | | Python: ``rp_AcqSetTriggerDelay(<decimated_data_num>)``                            | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY?`` > ``<count>``                  | | C: ``rp_AcqGetTriggerDelay(int32_t* decimated_data_num)``                          | Get the trigger delay in samples.                                             | 1.04-18 and up     |
+| | ``ACQ:TRig:DLY?`` > ``<decimated_data_num>``     | | C: ``rp_AcqGetTriggerDelay(int32_t* decimated_data_num)``                          | Get the trigger delay in samples.                                             | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
 | | ``ACQ:TRig:DLY?`` > ``2314``                     | | Python: ``rp_AcqGetTriggerDelay()``                                                |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY:NS <time>``                       | | C: ``rp_AcqSetTriggerDelayNs(int64_t time_ns)``                                    | Set the trigger delay in ns.                                                  | 1.04-18 and up     |
+| | ``ACQ:TRig:DLY:NS <time_ns>``                    | | C: ``rp_AcqSetTriggerDelayNs(int64_t time_ns)``                                    | | Set the trigger delay in ns. Must be multiple of the board's clock          | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | resolution (125 MHz clock == 8 ns resolution, 250 MHz == 4 ns resolution).  |                    |
+| | ``ACQ:TRig:DLY:NS 128``                          | | Python: ``rp_AcqSetTriggerDelayNs(<time_ns>)``                                     | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
++----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:TRig:DLY:NS?`` > ``<time_ns>``             | | C: ``rp_AcqGetTriggerDelayNs(int64_t* time_ns)``                                   | Get the trigger delay in ns.                                                  | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:DLY:NS 128``                          | | Python: ``rp_AcqSetTriggerDelayNs(time_ns)``                                       |                                                                               |                    |
+| | ``ACQ:TRig:DLY:NS?`` > ``128``ns                 | | Python: ``rp_AcqGetTriggerDelayNs()``                                              |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY:NS?`` > ``<time>``                | | C: ``rp_AcqGetTriggerDelayNs(int64_t* time_ns)``                                   | Get the trigger delay in ns.                                                  | 1.04-18 and up     |
+| | -                                                | | C: ``rp_AcqGetPreTriggerCounter(uint32_t* value)``                                 | | Get the pretrigger sample count (how many samples are in the buffer before  | 1.04-18 and up     |
+| |                                                  | |                                                                                    | | the trigger position).                                                      |                    |
+| |                                                  | | Python: ``rp_AcqGetPreTriggerCounter()``                                           | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
++----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:TRig:HYST <voltage>``                      | | C: ``rp_AcqSetTriggerHyst(float voltage)``                                         | Set the trigger hysteresis threshold value in Volts.                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:DLY:NS?`` > ``128ns``                 | | Python: ``rp_AcqGetTriggerDelayNs()``                                              |                                                                               |                    |
+| | ``ACQ:TRig:HYST 0.005``                          | | Python: ``rp_AcqSetTriggerHyst(<voltage>)``                                        |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:HYST level``                          | | C: ``rp_AcqSetTriggerHyst(float voltage)``                                         | Sets the trigger threshold hysteresis value in volts.                         | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:HYST 0.005``                          | | Python: ``rp_AcqSetTriggerHyst(voltage)``                                          |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:HYST?`` > ``level``                   | | C: ``rp_AcqGetTriggerHyst(float* voltage)``                                        | Gets currently set trigger threshold hysteresis value in volts.               | 1.04-18 and up     |
+| | ``ACQ:TRig:HYST?`` > ``<voltage>``               | | C: ``rp_AcqGetTriggerHyst(float* voltage)``                                        | Get the trigger hysteresis threshold value in Volts.                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
 | | ``ACQ:TRig:HYST?`` > ``0.005`` V                 | | Python: ``rp_AcqGetTriggerHyst()``                                                 |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:GAIN <gain>``                      | | C: ``rp_AcqSetGain(rp_channel_t channel, rp_pinState_t state)``                    | | Set the gain settings to HIGH or LOW.                                       | 1.04-18 and up     |
-| |                                                  | |                                                                                    | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |                    |
-| | Example:                                         | | Python: ``rp_AcqSetGain(channel, state)``                                          | | This gain refers to jumper settings on Red Pitaya fast analog inputs.       |                    |
-| | ``ACQ:SOUR1:GAIN LV``                            | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:GAIN?`` > ``<gain>``               | | C: ``rp_AcqGetGain(rp_channel_t channel, rp_pinState_t* state)``                   | | Get the gain setting.                                                       | 1.04-18 and up     |
-| |                                                  | |                                                                                    | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |                    |
-| | Example:                                         | | Python: ``rp_AcqGetGain(channel)``                                                 |                                                                               |                    |
-| | ``ACQ:SOUR1:GAIN?`` > ``HV``                     | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:COUP <mode>``                      | | C: ``rp_AcqSetAC_DC(rp_channel_t channel,rp_acq_ac_dc_mode_t mode)``               | Sets the AC / DC modes of input.                                              | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:SOUR1:COUP AC``                            | | Python: ``rp_AcqSetAC_DC(channel, mode)``                                          |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:COUP?`` > ``<mode>``               | | C: ``rp_AcqGetAC_DC(rp_channel_t channel,rp_acq_ac_dc_mode_t *status)``            | Get the AC / DC modes of input.                                               | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:SOUR1:COUP?`` > ``AC``                     | | Python: ``rp_AcqGetAC_DC(channel)``                                                |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:LEV <level>``                         | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the trigger level in V.                                                   | 1.04-18 and up     |
+| | ``ACQ:TRig:LEV <voltage>``                       | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the trigger level in V.                                                   | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:LEV 0.125 V``                         | | Python: ``rp_AcqSetTriggerLevel(channel, voltage)``                                |                                                                               |                    |
+| | ``ACQ:TRig:LEV 0.125 V``                         | | Python: ``rp_AcqSetTriggerLevel(<channel>, <voltage>)``                            |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:LEV?`` > ``level``                    | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the trigger level in V.                                                   | 1.04-18 and up     |
+| | ``ACQ:TRig:LEV?`` > ``<voltage>``                | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the trigger level in V.                                                   | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:LEV?`` > ``0.123 V``                  | | Python: ``rp_AcqGetTriggerLevel(channel)``                                         |                                                                               |                    |
+| | ``ACQ:TRig:LEV?`` > ``0.123`` V                  | | Python: ``rp_AcqGetTriggerLevel(<channel>)``                                       |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:LEV <level>``                     | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the external trigger level in V.                                          | 1.04-18 and up     |
+| | ``ACQ:TRig:EXT:LEV <voltage>``                   | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the external trigger level in V.                                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:TRig:EXT:LEV 1``                           | | Python: ``rp_AcqSetTriggerLevel(channel, voltage)``                                |                                                                               |                    |
+| | ``ACQ:TRig:EXT:LEV 1``                           | | Python: ``rp_AcqSetTriggerLevel(<channel>, <voltage>)``                            |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:LEV?`` > ``level``                | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the external trigger level in V.                                          | 1.04-18 and up     |
+| | ``ACQ:TRig:EXT:LEV?`` > ``<voltage>``            | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the external trigger level in V.                                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:TRig:EXT:LEV?`` > ``1``                    | | Python: ``rp_AcqGetTriggerLevel(channel)``                                         |                                                                               |                    |
+| | ``ACQ:TRig:EXT:LEV?`` > ``1``                    | | Python: ``rp_AcqGetTriggerLevel(<channel>)``                                       |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US] <utime>``          | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | Sets ext. trigger debouncer for acquisition in Us (Value must be positive).   | 2.00-15 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US] 1``                | | Python: ``rp_AcqSetExtTriggerDebouncerUs(value)``                                  |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US] <value>``          | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | | Set the external trigger acquisition debouncer in microseconds (value must  | 2.00-15 and up     |
+| | Example:                                         | |                                                                                    | | be positive).                                                               |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US] 1``                | | Python: ``rp_AcqSetExtTriggerDebouncerUs(<value>)``                                | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``<utime>``   | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | Gets ext. trigger debouncer for acquisition in Us.                            | 2.00-15 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``1``         | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``<value>``   | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | | Set the external trigger acquisition debouncer in microseconds.             | 2.00-15 and up     |
+| | Example:                                         | |                                                                                    | |                                                                             |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``1``         | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+
+
+
 
 .. _scpi_data_pointers:
 
