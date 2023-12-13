@@ -1043,6 +1043,37 @@ Acquisition settings
 
 
 --------------------
+Acquisition filter
+--------------------
+
+**Available Jupyter and API macros:**
+
+- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++---------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+| SCPI                            | API, Jupyter                                                                                                                             | DESCRIPTION                                                                            |  ECOSYSTEM         |
++=================================+==========================================================================================================================================+========================================================================================+====================+
+| | -                             | | C: ``rp_AcqUpdateAcqFilter(rp_channel_t channel)``                                                                                     | (???????)                                                                              | 1.04-18 and up     |
+| |                               | |                                                                                                                                        |                                                                                        |                    |
+| |                               | | Python: ``rp_AcqUpdateAcqFilter(<channel>)``                                                                                           |                                                                                        |                    |
+| |                               | |                                                                                                                                        |                                                                                        |                    |
++---------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+| | -                             | | C: ``rp_AcqGetFilterCalibValue(rp_channel_t channel,uint32_t* coef_aa, uint32_t* coef_bb, uint32_t* coef_kk, uint32_t* coef_pp)``      | | Returns the coefficients for the data acquisition filter inside the FPGA             | 1.04-18 and up     |
+| |                               | |                                                                                                                                        | | (see |calibration_chapter| for more details) for the specified output channel.       |                    |
+| |                               | | Python: ``rp_AcqGetFilterCalibValue(<channel>)``                                                                                       | |                                                                                      |                    |
+| |                               | |                                                                                                                                        | |                                                                                      |                    |
++---------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+
+
+
+--------------------
 Acquisition trigger
 --------------------
 
@@ -1174,108 +1205,113 @@ Parameter options:
 
 .. _scpi_data_pointers:
 
-=============
+
+---------------
 Data pointers
-=============
+---------------
 
-The data is written into a circular buffer which is constantly being overwritten until the triggering moment. Consequently, the trigger position can be anywhere inside the circular buffer,
-even though it is displayed to happen at approx. 8192nd sample in the acquired data (is affected by the ``ACQ:TRIG:DLY`` command).
+The data is written into a circular buffer, which is constantly overwritten, until the triggering moment. Consequently, the trigger position can be anywhere inside the circular buffer,
+even though it is displayed to happen at approximately 8192nd sample in the acquired data (is affected by the ``ACQ:TRIG:DLY`` command).
 
-Parameter options:
+**Parameter options:**
 
-* ``<pos> = {position inside circular buffer}`` (0 ... 16383)
+- ``<pos> = {position inside circular buffer}`` (0 ... 16383)
+
+**Available Jupyter and API macros:**
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
-| SCPI                            | API                                                       | DESCRIPTION                                            |  ECOSYSTEM         |
+| SCPI                            | API, Jupyter                                              | DESCRIPTION                                            |  ECOSYSTEM         |
 +=================================+===========================================================+========================================================+====================+
-| | ``ACQ:WPOS?`` > ``pos``       | | C: ``rp_AcqGetWritePointer(uint32_t* pos)``             | Returns the current position of the write pointer.     | 1.04-18 and up     |
+| | ``ACQ:WPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointer(uint32_t* pos)``             | Returns the current position of the write pointer.     | 1.04-18 and up     |
 | | Example:                      | |                                                         |                                                        |                    |
 | | ``ACQ:WPOS?`` > ``1024``      | | Python: ``rp_AcqGetWritePointer()``                     |                                                        |                    |
 | |                               | |                                                         |                                                        |                    |
 +---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
-| | ``ACQ:TPOS?`` > ``pos``       | | C: ``rp_AcqGetWritePointerAtTrig(uint32_t* pos)``       | Returns the position where the trigger event appeared. | 1.04-18 and up     |
+| | ``ACQ:TPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointerAtTrig(uint32_t* pos)``       | Returns the position where the trigger event appeared. | 1.04-18 and up     |
 | | Example:                      | |                                                         |                                                        |                    |
 | | ``ACQ:TPOS?`` > ``512``       | | Python: ``rp_AcqGetWritePointerAtTrig()``               |                                                        |                    |
 | |                               | |                                                         |                                                        |                    |
 +---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
 
-.. _scpi_data:
 
-=========
+
+-----------
 Data read
-=========
+-----------
 
-* ``<n> = {1,2}`` (set channel IN1 or IN2)
-* ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
-* ``<format> = {BIN, ASCII}`` Default ``ASCII``
-* ``<start_pos> = {0,1,...,16383}``
-* ``<stop_pos>  = {0,1,...,16383}``
-* ``<m>  = {0,1,...,16384}``
+**Parameter options:**
 
-.. note::
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
+- ``<start_pos>, <end_pos>, <pos> = {0, 1, ..., 16383}``
+- ``<buffer>`` Array to store the data into. For Python API use ``rp_createBuffer`` and for C API use *malloc*.
+- ``<buffer_size>`` Size of the array for data storage.
 
-   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
+*STEMlab 125-14 4-Input only (additional):*
+
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
+
+**Available Jupyter and API macros:**
+
+- **Fast analog channels** - ``RP_CH_1, RP_CH_2`
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| SCPI                                        | API                                                                                                                                      | DESCRIPTION                                                                            |  ECOSYSTEM         |
+| SCPI                                        | API, Jupyter                                                                                                                             | DESCRIPTION                                                                            |  ECOSYSTEM         |
 +=============================================+==========================================================================================================================================+========================================================================================+====================+
-| | ``ACQ:DATA:Units <units>``                | | C: ``rp_AcqScpiDataUnits``                                                                                                             | Select units in which the acquired data will be returned.                              | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:DATA:Units RAW``                    | | Python:                                                                                                                                |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:DATA:Units?`` > ``<units>``         | | C: ``rp_AcqGetScpiDataUnits``                                                                                                          | Get units in which the acquired data will be returned.                                 | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:DATA:Units?`` > ``RAW``             | | Python:                                                                                                                                |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:DATA:FORMAT <format>``              | | C: ``rp_AcqScpiDataFormat``                                                                                                            | Select the format in which the acquired data will be returned.                         | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:DATA:FORMAT ASCII``                 | | Python:                                                                                                                                |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Start:End?``           | | C: ``rp_AcqGetDataPosRaw(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, int16_t* buffer, uint32_t* buffer_size)``         | | Read samples from start to stop position.                                            | 1.04-18 and up     |
-| | ``<start_pos>,<end_pos>``                 | |    ``rp_AcqGetDataPosV(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, float* buffer, uint32_t* buffer_size)``             | | ``<start_pos> = {0,1,...,16384}``                                                    |                    |
-| | Example:                                  | | Python: ``rp_AcqGetDataPosRaw(channel, start_pos, end_pos, buffer, buffer_size)``                                                      | | ``<stop_pos>  = {0,1,...,16384}``                                                    |                    |
-| | ``ACQ:SOUR1:DATA:Start:End? 10,13`` >     | |         ``rp_AcqGetDataPosV(channel, start_pos, end_pos, buffer, buffer_size)``                                                        | |                                                                                      |                    |
+| | ``ACQ:SOUR<n>:DATA:Start:End?``           | | C: ``rp_AcqGetDataPosRaw(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, int16_t* buffer, uint32_t* buffer_size)``         | | Read samples from start to end position. For API commands, the buffer for data       | 1.04-18 and up     |
+| | ``<start_pos>,<end_pos>``                 | |    ``rp_AcqGetDataPosV(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, float* buffer, uint32_t* buffer_size)``             | | storage and its size must also be provided. Use ``rp_createBuffer`` to allocate data |                    |
+| | Example:                                  | | Python: ``rp_AcqGetDataPosRaw(<channel>, <start_pos>, <end_pos>, <buffer>, <buffer_size>)``                                            | | for Python and *malloc* for C. API commands have two functions to return data in     |                    |
+| | ``ACQ:SOUR1:DATA:Start:End? 10,13`` >     | |         ``rp_AcqGetDataPosV(<channel>, <start_pos>, <end_pos>, <buffer>, <buffer_size>)``                                              | | Volts or RAW.                                                                        |                    |
 | | ``{123,231,-231}``                        | |                                                                                                                                        | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Start:N?``             | | C: ``rp_AcqGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                          | | Read ``m`` samples from the start position onwards.                                  | 1.04-18 and up     |
-| | ``<start_pos>,<m>``                       | |    ``rp_AcqGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                                               | |                                                                                      |                    |
-| | Example:                                  | | Python: ``rp_AcqGetDataRaw(channel, pos, size, buffer)``                                                                               | |                                                                                      |                    |
-| | ``ACQ:SOUR1:DATA:Start:N? 10,3`` >        | |         ``rp_AcqGetDataV(channel, pos, size, buffer)``                                                                                 | |                                                                                      |                    |
+| | -                                         | | C: ``rp_AcqGetDataRawWithCalib(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                 | | Read ``<size>`` samples from the ``<pos>`` onwards. The data is returned in RAW      | 1.04-18 and up     |
+| |                                           | |                                                                                                                                        | | format with calibration applied.                                                     |                    |
+| |                                           | | Python: ``rp_AcqGetDataRawWithCalib(<channel>, <pos>, <size>, <buffer>)``                                                              | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+| | -                                         | | C: ``rp_AcqGetNormalizedDataPos(uint32_t pos)``                                                                                        | | Get normalized data (??????)                                                         | 1.04-18 and up     |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
+| |                                           | | Python: ``rp_AcqGetNormalizedDataPos(<pos>)``                                                                                          | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:SOUR<n>:DATA:Start:N?``             | | C: ``rp_AcqGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                          | | Read ``size`` samples from the ``<start_pos>`` onwards.                              | 1.04-18 and up     |
+| | ``<start_pos>,<size>``                    | |    ``rp_AcqGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                                               | |                                                                                      |                    |
+| | Example:                                  | | Python: ``rp_AcqGetDataRaw(<channel>, <pos>, <size>, <buffer>)``                                                                       | |                                                                                      |                    |
+| | ``ACQ:SOUR1:DATA:Start:N? 10,3`` >        | |         ``rp_AcqGetDataV(<channel>, <pos>, <size>, <buffer>)``                                                                         | |                                                                                      |                    |
 | | ``{1.2,3.2,-1.2}``                        | |                                                                                                                                        | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | | ``ACQ:SOUR<n>:DATA?``                     | | C: ``rp_AcqGetOldestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read the full buffer.                                                                | 1.04-18 and up     |
 | | Example:                                  | |    ``rp_AcqGetOldestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | | Starting from the oldest sample in the buffer (first sample after trigger delay).    |                    |
-| | ``ACQ:SOUR2:DATA?`` >                     | | Python: ``rp_AcqGetOldestDataRaw(channel, size, buffer)``                                                                              | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
-| | ``{1.2,3.2,...,-1.2}``                    | |         ``rp_AcqGetOldestDataV(channel, size, buffer)``                                                                                | | If the trigger delay is set to zero, it will read the full buffer size starting      |                    |
-| |                                           | |                                                                                                                                        | | from the trigger.                                                                    |                    |
+| | ``ACQ:SOUR2:DATA?`` >                     | | Python: ``rp_AcqGetOldestDataRaw(<channel>, <size>, <buffer>)``                                                                        | | If the trigger delay is set to zero, it will read the full buffer size starting      |                    |
+| | ``{1.2,3.2,...,-1.2}``                    | |         ``rp_AcqGetOldestDataV(<channel>, <size>, <buffer>)``                                                                          | | from the trigger.                                                                    |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Old:N? <m>``           | | C: ``rp_AcqGetOldestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``m`` samples after the trigger delay, starting from the oldest sample          | 1.04-18 and up     |
+| | ``ACQ:SOUR<n>:DATA:Old:N? <size>``        | | C: ``rp_AcqGetOldestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``<size>`` samples after the trigger delay, starting from the oldest sample     | 1.04-18 and up     |
 | | Example:                                  | |    ``rp_AcqGetOldestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | | in the buffer (first sample after trigger delay).                                    |                    |
-| | ``ACQ:SOUR2:DATA:Old:N? 3`` >             | | Python: ``rp_AcqGetOldestDataRaw(channel, size, buffer)``                                                                              | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
-| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetOldestDataV(channel, size, buffer)``                                                                                | | If the trigger delay is set to zero, it will read m samples starting                 |                    |
+| | ``ACQ:SOUR2:DATA:Old:N? 3`` >             | | Python: ``rp_AcqGetOldestDataRaw(<channel>, <size>, <buffer>)``                                                                        | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
+| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetOldestDataV(<channel>, <size>, <buffer>)``                                                                          | | If the trigger delay is set to zero, it will read m samples starting                 |                    |
 | |                                           | |                                                                                                                                        | | from the trigger.                                                                    |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Last:N? <m>``          | | C: ``rp_AcqGetLatestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``m`` samples before the trigger delay.                                         | 1.04-18 and up     |
+| | ``ACQ:SOUR<n>:DATA:Last:N? <size>``       | | C: ``rp_AcqGetLatestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``<size>`` samples before the trigger delay.                                    | 1.04-18 and up     |
 | | Example:                                  | |    ``rp_AcqGetLatestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
-| | ``ACQ:SOUR1:DATA:Last:N? 3`` >            | | Python: ``rp_AcqGetLatestDataRaw(channel, size, buffer)``                                                                              | | If the trigger delay is set to zero, it will read m samples before the trigger.      |                    |
-| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetLatestDataV(channel, size, buffer)``                                                                                | |                                                                                      |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:BUF:SIZE?`` > ``<size>``            | | C: ``rp_AcqGetBufSize(uint32_t *size)``                                                                                                |  Returns the buffer size.                                                              | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:BUF:SIZE?`` > ``16384``             | | Python: ``rp_AcqGetBufSize(size)``                                                                                                     |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
+| | ``ACQ:SOUR1:DATA:Last:N? 3`` >            | | Python: ``rp_AcqGetLatestDataRaw(<channel>, <size>, <buffer>)``                                                                        | | If the trigger delay is set to zero, it will read m samples before the trigger.      |                    |
+| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetLatestDataV(<channel>, <size>, <buffer>)``                                                                          | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 
 
 
-.. _scpi_dma:
+
+.. _commands_dma:
 
 ==============================
 Deep Memory Acquisition (DMA)
