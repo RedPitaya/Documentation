@@ -3,7 +3,7 @@ Programming and remote-control tools
 ####################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    remoteControl
    API_scripts
