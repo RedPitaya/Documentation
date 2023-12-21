@@ -1071,10 +1071,11 @@ Acquisition filter
 | |                               | |                                                                                                                                        |                                                                                        |                    |
 +---------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | | -                             | | C: ``rp_AcqGetFilterCalibValue(rp_channel_t channel,uint32_t* coef_aa, uint32_t* coef_bb, uint32_t* coef_kk, uint32_t* coef_pp)``      | | Returns the coefficients for the data acquisition filter inside the FPGA             | 1.04-18 and up     |
-| |                               | |                                                                                                                                        | | (see |calibration_chapter| for more details) for the specified output channel.       |                    |
-| |                               | | Python: ``rp_AcqGetFilterCalibValue(<channel>)``                                                                                       | |                                                                                      |                    |
+| |                               | |                                                                                                                                        | | (see :ref:`Calibration app <calibration_app>` for more details) for the specified    |                    |
+| |                               | | Python: ``rp_AcqGetFilterCalibValue(<channel>)``                                                                                       | | output channel.                                                                      |                    |
 | |                               | |                                                                                                                                        | |                                                                                      |                    |
 +---------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+
 
 
 
