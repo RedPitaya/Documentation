@@ -328,7 +328,7 @@ Daisy chain clocks and triggers
 
 **Available Jupyter and API macros:**
 
-- **Shared trigger source** - ``OUT_TR_ADC, OUT_TR_DAC``
+- Shared trigger source - ``OUT_TR_ADC, OUT_TR_DAC``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -503,7 +503,7 @@ Generator trigger
 
 **Available Jupyter and API macros:**
 
-- **Generator trigger source** - ``RP_GEN_TRIG_SRC_INTERNAL, RP_GEN_TRIG_SRC_EXT_PE, RP_GEN_TRIG_SRC_EXT_NE``
+- Generator trigger source - ``RP_GEN_TRIG_SRC_INTERNAL, RP_GEN_TRIG_SRC_EXT_PE, RP_GEN_TRIG_SRC_EXT_NE``
 
 
 
@@ -571,12 +571,12 @@ Generator settings
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
-- **Waveforms** - ``RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP, RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY, RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP``
-- **Rise and fall times** - ``RISE_FALL_MIN_RATIO, RISE_FALL_MAX_RATIO``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Waveforms - ``RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP, RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY, RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP``
+- Rise and fall times - ``RISE_FALL_MIN_RATIO, RISE_FALL_MAX_RATIO``
 
 SIGNALlab 250-12 only:
-- **Generator gain** - ``RP_GAIN_1X, RP_GAIN_5X``
+- Generator gain - ``RP_GAIN_1X, RP_GAIN_5X``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -710,8 +710,8 @@ Burst mode
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
-- **Generator modes** - ``RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Generator modes - ``RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -795,9 +795,9 @@ Set the waveform type to sweep to enable
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
-- **Sweep direction** - ``RP_GEN_SWEEP_DIR_NORMAL, RP_GEN_SWEEP_DIR_UP_DOWN``
-- **Sweep mode** - ``RP_GEN_SWEEP_MODE_LINEAR, RP_GEN_SWEEP_MODE_LOG``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Sweep direction - ``RP_GEN_SWEEP_DIR_NORMAL, RP_GEN_SWEEP_DIR_UP_DOWN``
+- Sweep mode - ``RP_GEN_SWEEP_MODE_LINEAR, RP_GEN_SWEEP_MODE_LOG``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -926,16 +926,16 @@ Acquisition settings
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
-- **Decimation** - ``RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16, RP_DEC_32, RP_DEC_64, RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048, RP_DEC_4096, RP_DEC_8192, RP_DEC_16384, RP_DEC_32768, RP_DEC_65536``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Decimation - ``RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16, RP_DEC_32, RP_DEC_64, RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048, RP_DEC_4096, RP_DEC_8192, RP_DEC_16384, RP_DEC_32768, RP_DEC_65536``
 
 *SIGNALlab 250-12 only (additional):*
 
-- **Input coupling** - ``RP_DC, RP_AC``
+- Input coupling - ``RP_DC, RP_AC``
 
 *STEMlab 125-14 4-Input only (additional):*
 
-- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -1049,11 +1049,11 @@ Acquisition filter
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
 
 *STEMlab 125-14 4-Input only (additional):*
 
-- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -1099,16 +1099,16 @@ Acquisition trigger
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
-- **Acquisition trigger** - ``RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE, RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE``
-- **Acquisition trigger state** - ``RP_TRIG_STATE_TRIGGERED, RP_TRIG_STATE_WAITING``
-- **Buffer size** - ``ADC_BUFFER_SIZE, DAC_BUFFER_SIZE``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Acquisition trigger - ``RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE, RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE``
+- Acquisition trigger state - ``RP_TRIG_STATE_TRIGGERED, RP_TRIG_STATE_WAITING``
+- Buffer size - ``ADC_BUFFER_SIZE, DAC_BUFFER_SIZE``
 
 
 *STEMlab 125-14 4-Input only (additional):*
 
-- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
-- **Acquisition trigger** - ``RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE``
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
+- Acquisition trigger - ``RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -1251,11 +1251,11 @@ Data read
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
 
 *STEMlab 125-14 4-Input only (additional):*
 
-- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -1338,11 +1338,11 @@ DMA settings
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
 
 *STEMlab 125-14 4-Input only (additional):*
 
-- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
 +-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
@@ -1432,11 +1432,11 @@ DMA data read
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
 
 *STEMlab 125-14 4-Input only (additional):*
 
-- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
 
@@ -2222,11 +2222,11 @@ Temperature protection
 
 **Available Jupyter and API macros:**
 
-- **Fast analog channels** - ``RP_CH_1, RP_CH_2``
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
 
 *STEMlab 125-14 4-Input only (additional):*
 
-- **Fast analog channels** - ``RP_CH_3, RP_CH_4``
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
