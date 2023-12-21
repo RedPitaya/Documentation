@@ -352,4 +352,4 @@ As of now the list does not include all possible options. If you want to check o
 C and Python API examples
 ===========================
 
-The examples are available :ref:`here <examples>`. They are presented together with the SCPI example code.
+The examples are available :ref:`here <examples>`.
