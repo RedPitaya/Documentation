@@ -57,6 +57,7 @@ Board control commands
 ======================
 
 **Parameter options:**
+
 - ``<year> = {1900,...}`` Default: ``OS release date and time``
 - ``<month> = {1,12}``
 - ``<day> = {1,31}``
@@ -163,6 +164,7 @@ LEDs and GPIOs
 ==============
 
 **Parameter options:**
+
 - ``<dir> = {OUT,IN}``
 - ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
 - ``<led> = {LED0...LED8}``
@@ -173,6 +175,7 @@ LEDs and GPIOs
 
 
 **Available Jupyter and API macros:**
+
 - States - ``RP_LOW, RP_HIGH``
 - Directions - ``RP_IN, RP_OUT``
 - LEDs - ``RP_LED0, RP_LED1, ..., RP_LED7``
@@ -250,12 +253,14 @@ Analog Inputs and Outputs
 =========================
 
 **Parameter options:**
+
 - ``<ain> = {AIN0, AIN1, AIN2, AIN3}``
 - ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
 - ``<pin> = {ain, aout}``
 - ``<value> = {value in Volts}``
 
 **Available Jupyter and API macros:**
+
 - Analog outputs - ``RP_AOUT0, RP_AOUT1, ..., RP_AOUT3``
 - Analog inputs - ``RP_AIN0, RP_AIN1, ..., RP_AIN3``
 
@@ -315,11 +320,13 @@ Daisy chain clocks and triggers
 ===============================
 
 **Parameter options:**
+
 - ``<state> = {OFF, ON}``
 - ``<mode> = {ADC, DAC}``
 - ``<enable> = {true, false}``
 
 **Available Jupyter and API macros:**
+
 - Shared trigger source - ``OUT_TR_ADC, OUT_TR_DAC``
 
 
@@ -444,6 +451,7 @@ Generator control
 --------------------
 
 **Parameter options:**
+
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
 - ``<state> = {ON,OFF}`` Default: ``OFF``
 - ``<enable> = {true, false}`` Default: ``false``
@@ -482,6 +490,7 @@ Generator trigger
 -------------------
 
 **Parameter options:**
+
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
 - ``<state> = {ON,OFF}`` Default: ``OFF``
 - ``<utime> = {value in us}`` Default: ``500``
@@ -494,6 +503,7 @@ Generator trigger
 - ``<enable> = {true, false}`` Default: ``false``
 
 **Available Jupyter and API macros:**
+
 - Generator trigger source - ``RP_GEN_TRIG_SRC_INTERNAL, RP_GEN_TRIG_SRC_EXT_PE, RP_GEN_TRIG_SRC_EXT_NE``
 
 
@@ -544,8 +554,8 @@ Generator trigger
 Generator settings
 --------------------
 
-
 **Parameter options:**
+
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
 - ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
 - ``<type> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
@@ -559,6 +569,7 @@ Generator settings
 - ``<lenght>`` waveform array length
 
 **Available Jupyter and API macros:**
+
 - Fast analog channels - ``RP_CH_1, RP_CH_2``
 - Waveforms - ``RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP, RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY, RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP``
 - Rise and fall times - ``RISE_FALL_MIN_RATIO, RISE_FALL_MAX_RATIO``
