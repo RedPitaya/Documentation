@@ -1,3 +1,4 @@
+.. _sensor_extension_module:
 
 #########################
 Sensor extension module

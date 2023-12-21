@@ -1,175 +1,339 @@
-.. _scpi_command_list:
+.. _command_list:
 
-*******************************
-List of supported SCPI commands
-*******************************
+********************************************
+List of supported SCPI & API commands
+********************************************
 
-.. _scpi_common:
+Here is a list of all available SCPI, API, and JupyterLab commands. The commands are organized into tables by functionality. Each table row represents the same command in SCPI, Python API, C API, and JupyterLAB.
+The Jupyter commands are identical to Python API commands, so please refer to them. In the final two columns is a command description and ecosystem version in which the command first appeared.
+
+At the beginning of each table are all command parameter options and available macros.
 
 
+.. _commands_init:
+
+=========================
+Initialization commands
+=========================
+
+Table of correlated SCPI and API commands for the Red Pitaya.
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+| SCPI                                                 | API, Jupyter                                | DESCRIPTION                                               |  ECOSYSTEM         |
++======================================================+=============================================+===========================================================+====================+
+| | -                                                  | | C: ``rp_Init()``                          | Initializes and enables the command interface.            | 1.04-18 and up     |
+| |                                                    | |                                           |                                                           |                    |
+| |                                                    | | Python: ``rp_Init()``                     |                                                           |                    |
+| |                                                    | |                                           |                                                           |                    |
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_IsApiInit()``                     | Check whether the API interface is initialized.           | 1.04-18 and up     |
+| |                                                    | |                                           |                                                           |                    |
+| |                                                    | | Python: ``rp_IsApiInit()``                |                                                           |                    |
+| |                                                    | |                                           |                                                           |                    |
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_Release()``                       | Release command interface resources.                      | 1.04-18 and up     |
+| |                                                    | |                                           |                                                           |                    |
+| |                                                    | | Python: ``rp_Release()``                  |                                                           |                    |
+| |                                                    | |                                           |                                                           |                    |
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_Reset()``                         | | Resets digital and analog pin settings as well as       | 1.04-18 and up     |
+| |                                                    | |                                           | | generation and acquisition settings to default values.  |                    |
+| |                                                    | | Python: ``rp_Reset()``                    | |                                                         |                    |
+| |                                                    | |                                           | |                                                         |                    |
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_Reset()``                         | | Resets digital and analog pin settings as well as       | 1.04-18 and up     |
+| |                                                    | |                                           | | generation and acquisition settings to default values.  |                    |
+| |                                                    | | Python: ``rp_Reset()``                    | |                                                         |                    |
+| |                                                    | |                                           | |                                                         |                    |
++------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+
+
+.. _commands_board:
 
 ======================
 Board control commands
 ======================
 
-.. _scpi_board:
+**Parameter options:**
 
-Parameter options:
+- ``<year> = {1900,...}`` Default: ``OS release date and time``
+- ``<month> = {1,12}``
+- ``<day> = {1,31}``
+- ``<hours> = {0,23}``
+- ``<minutes> = {0,59}``
+- ``<seconds> = {0,59}``
+- ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
+- ``<board_id> = {0,15}``
+- ``<enable> = {true, false}``
+- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA, RP_RCA,``
+- ``<errorCode> =  RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
 
-* ``<year> = {1900,...}`` Default: ``OS release date and time``
-* ``<month> = {1,12}``
-* ``<day> = {1,31}``
-* ``<hours> = {0,23}``
-* ``<minutes> = {0,59}``
-* ``<seconds> = {0,59}``
-* ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
-* ``<board_id> = {0,15}``
+**Available Jupyter and API macros:**
 
-Table of correlated SCPI and API commands for the Red Pitaya.
+- Red Pitaya states and errors:
+    - ``RP_OK`` - OK
+    - ``RP_EOED`` - Failed to Open EEPROM Device.
+    - ``RP_EOMD`` - Failed to open memory device.
+    - ``RP_ECMD`` - Failed to close memory device.
+    - ``RP_EMMD`` - Failed to map memory device.
+    - ``RP_EUMD`` - Failed to unmap memory device.
+    - ``RP_EOOR`` - Value out of range.
+    - ``RP_ELID`` - LED input direction is not valid.
+    - ``RP_EMRO`` - Modifying read only filed is not allowed.
+    - ``RP_EWIP`` - Writing to input pin is not valid.
+    - ``RP_EPN`` - Invalid Pin number.
+    - ``RP_UIA`` - Uninitialized Input Argument.
+    - ``RP_FCA`` - Failed to Find Calibration Parameters.
+    - ``RP_RCA`` - Failed to Read Calibration Parameters.
+    - ``RP_BTS`` - Buffer too small
+    - ``RP_EIPV`` - Invalid parameter value
+    - ``RP_EUF`` - Unsupported Feature
+    - ``RP_ENN`` - Data not normalized
+    - ``RP_EFOB`` - Failed to open bus
+    - ``RP_EFCB`` - Failed to close bus
+    - ``RP_EABA`` - Failed to acquire bus access
+    - ``RP_EFRB`` - Failed to read from the bus
+    - ``RP_EFWB`` - Failed to write to the bus
+
+..    - ``RP_EMNC`` - 
+..    - ``RP_NOTS`` - 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| SCPI                                                 | API, Jupyter                                     | DESCRIPTION                                               |  ECOSYSTEM         |
++======================================================+==================================================+===========================================================+====================+
+| | ``RP:LOGmode <log_mode>``                          | | -                                              | Enables scpi-server log output mode.                      | 1.04-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``RP:LOGmode SYSLOG``                              | |                                                |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:TIME <hours>,<minutes>,<seconds>``        | | -                                              | Sets the time on the board.                               | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:TIME 16:12:45``                           | |                                                |                                                           |                    |
+| | ``SYST:TIME 11:23:01``                             | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:TIME?`` > ``time``                        | | -                                              | Returns the current time on the board.                    | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:TIME?`` > ``16:12:45``                    | |                                                |                                                           |                    |
+| | ``SYST:TIME?`` > ``11:23:01``                      | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:DATE <year>,<month>,<day>``               | | -                                              | Sets the date on the board.                               | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:DATE 2023-04-04``                         | |                                                |                                                           |                    |
+| | ``SYST:DATE 2002-12-29``                           | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:DATE?`` > ``date``                        | | -                                              | Returns the current date on the board.                    | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:DATE?`` > ``2023-04-04``                  | |                                                |                                                           |                    |
+| | ``SYST:DATE?`` > ``2002-12-29``                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:BRD:ID?`` > ``<board_id>``                | | C: ``rp_IdGetID(uint32_t *id)``                | Returns the Red Pitaya board ID.                          | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:BRD:ID?`` > ``1``                         | | Python: ``rp_IdGetID()``                       |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | ``SYSTem:BRD:Name?`` > ``board name``              | | C: ``const char* rp_GetVersion()``             | Returns the Red Pitaya board version.                     | 2.00-18 and up     |
+| | Examples:                                          | |                                                |                                                           |                    |
+| | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     | | Python: ``rp_GetVersion()``                    |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_IdGetDNA(uint64_t *dna)``              | Returns the unique DNA code of the FPGA chip.             | 2.00-18 and up     |
+| |                                                    | |                                                |                                                           |                    |
+| |                                                    | | Python: ``rp_IdGetDNA()``                      |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``const char* rp_GetError(int errorCode)``  | Returns the description of the input error code.          | 2.00-18 and up     |
+| |                                                    | |                                                |                                                           |                    |
+| |                                                    | | Python: ``rp_GetError(<errorCode>)``           |                                                           |                    |
+| |                                                    | |                                                |                                                           |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+| | -                                                  | | C: ``rp_EnableDigitalLoop(bool enable)``       | | Enables/disables the Digital Loop (internal FPGA        | 2.00-18 and up     |
+| |                                                    | |                                                | | connection between fast analog inputs and outputs).     |                    |
+| |                                                    | | Python: ``rp_EnableDigitalLoop(<enable>)``     | |                                                         |                    |
+| |                                                    | |                                                | |                                                         |                    |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
 
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| SCPI                                                 | API                                         | DESCRIPTION                                               |  ECOSYSTEM         |
-+======================================================+=============================================+===========================================================+====================+
-| | ``RP:LOGmode <log_mode>``                          | | -                                         | Enables scpi-server log output mode.                      | 1.04-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``RP:LOGmode SYSLOG``                              | |                                           |                                                           |                    |
-| |                                                    | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:TIME <hours>,<minutes>,<seconds>``        | | -                                         | Sets the time on the board.                               | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:TIME 16:12:45``                           | |                                           |                                                           |                    |
-| | ``SYST:TIME 11:23:01``                             | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:TIME?`` > ``time``                        | | -                                         | Returns the current time on the board.                    | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:TIME?`` > ``16:12:45``                    | |                                           |                                                           |                    |
-| | ``SYST:TIME?`` > ``11:23:01``                      | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:DATE <year>,<month>,<day>``               | | -                                         | Sets the date on the board.                               | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:DATE 2023-04-04``                         | |                                           |                                                           |                    |
-| | ``SYST:DATE 2002-12-29``                           | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:DATE?`` > ``date``                        | | -                                         | Returns the current date on the board.                    | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:DATE?`` > ``2023-04-04``                  | |                                           |                                                           |                    |
-| | ``SYST:DATE?`` > ``2002-12-29``                    | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:BRD:ID?`` > ``<board_id>``                | | C: ``rp_HPGetModel``                      | Returns the board model from the values rp_HPeModels_t.   | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:BRD:ID?`` > ``1``                         | | Python: ``rp_IdGetID()``                  |                                                           |                    |
-| |                                                    | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:BRD:Name?`` > ``board name``              | | C: ``rp_HPGetModelName``                  | Returns the name of the board.                            | 2.00-18 and up     |
-| | Examples:                                          | |                                           |                                                           |                    |
-| | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     | | Python: ``rp_GetVersion()``               |                                                           |                    |
-| |                                                    | |                                           |                                                           |                    |
-+------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
 
-.. _scpi_digital:
+.. _commands_digital:
 
 ==============
 LEDs and GPIOs
 ==============
 
-Parameter options:
+**Parameter options:**
 
-* ``<dir> = {OUT,IN}``
-* ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
-* ``<led> = {LED0...LED8}``
-* ``<pin> = {gpio, led}``
-* ``<state> = {0,1}``
+- ``<dir> = {OUT,IN}``
+- ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
+- ``<led> = {LED0...LED8}``
+- ``<pin> = {gpio, led}``
+- ``<state> = {0,1}``
+- ``<reg_state> = {0b00000000}`` - One LED/DIO per bit.  *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
+- ``<reg_direction> = {0b00000000}`` - One DIO per bit.  *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
 
-Table of correlated SCPI and API commands for the Red Pitaya.
+
+**Available Jupyter and API macros:**
+
+- States - ``RP_LOW, RP_HIGH``
+- Directions - ``RP_IN, RP_OUT``
+- LEDs - ``RP_LED0, RP_LED1, ..., RP_LED7``
+- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` &emsp;&emsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` &emsp;&thinsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-| SCPI                                  | API                                                                                | DESCRIPTION                                                                       |  ECOSYSTEM         |
+| SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
 +=======================================+====================================================================================+===================================================================================+====================+
 | | ``DIG:RST``                         | | C: ``rp_DpinReset()``                                                            | | Sets digital pins to default values. Pins DIO1_P - DIO7_P,                      | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  | | RP_DIO0_N - RP_DIO7_N are set all INPUT and to LOW. LEDs are set to LOW/OFF.    |                    |
-| | ``DIG:RST``                         | | Python: ``rp_DpinReset()``                                                       |                                                                                   |                    |
-| |                                     | |                                                                                  |                                                                                   |                    |
+| | ``DIG:RST``                         | | Python: ``rp_DpinReset()``                                                       | |                                                                                 |                    |
+| |                                     | |                                                                                  | |                                                                                 |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN:DIR <dir>,<gpio>``        | | C: ``rp_DpinSetDirection(rp_dpin_t pin, rp_pinDirection_t direction)``           | Set the direction of digital pins to output or input.                             | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN:DIR OUT,DIO0_N``          | | Python: ``rp_DpinSetDirection(pin, direction)``                                  |                                                                                   |                    |
+| | ``DIG:PIN:DIR OUT,DIO0_N``          | | Python: ``rp_DpinSetDirection(<pin>, <direction>)``                              |                                                                                   |                    |
 | | ``DIG:PIN:DIR IN,DIO1_P``           | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-| | ``DIG:PIN:DIR? <gpio>``             | | C: ``rp_DpinGetDirection(rp_dpin_t pin, rp_pinDirection_t* direction)``          | Gets digital input output pin direction..                                         | 1.04-18 and up     |
+| | ``DIG:PIN:DIR? <gpio>``             | | C: ``rp_DpinGetDirection(rp_dpin_t pin, rp_pinDirection_t* direction)``          | Get digital input output pin direction.                                           | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN:DIR? DIO0_N``             | | Python: ``rp_DpinGetDirection(pin)``                                             |                                                                                   |                    |
+| | ``DIG:PIN:DIR? DIO0_N``             | | Python: ``rp_DpinGetDirection(<pin>)``                                           |                                                                                   |                    |
 | | ``DIG:PIN:DIR? DIO1_P``             | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN <pin>,<state>``           | | C: ``rp_DpinSetState(rp_dpin_t pin, rp_pinState_t state)``                       | | Set the state of digital outputs to 1 (HIGH) or 0 (LOW).                        | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  | | Returns a 1 (HIGH) if the pin is floating.                                      |                    |
-| | ``DIG:PIN DIO0_N,1``                | | Python: ``rp_DpinSetState(pin, state)``                                          |                                                                                   |                    |
-| | ``DIG:PIN LED2,1``                  | |                                                                                  |                                                                                   |                    |
+| | ``DIG:PIN DIO0_N,1``                | | Python: ``rp_DpinSetState(<pin>, <state>)``                                      | |                                                                                 |                    |
+| | ``DIG:PIN LED2,1``                  | |                                                                                  | |                                                                                 |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN? <pin>`` > ``<state>``    | | C: ``rp_DpinGetState(rp_dpin_t pin, rp_pinState_t* state)``                      | Get state of digital inputs and outputs.                                          | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN? DIO0_N``                 | | Python: ``rp_DpinGetState(pin)``                                                 |                                                                                   |                    |
+| | ``DIG:PIN? DIO0_N``                 | | Python: ``rp_DpinGetState(<pin>)``                                               |                                                                                   |                    |
 | | ``DIG:PIN? LED2``                   | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_LEDSetState(uint32_t reg_state)``                                        | | Set the state of the 8-bit LED register. Each bit corresponds to the state      | 1.04-18 and up     |
+| |                                     | |                                                                                  | | of one LED.                                                                     |                    |
+| |                                     | | Python: ``rp_LEDSetState(<reg_state>)``                                          | |                                                                                 |                    |
+| |                                     | |                                                                                  | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_LEDGetState(uint32_t *reg_state)``                                       | | Get the state of the 8-bit LED register. Each bit corresponds to the state      | 1.04-18 and up     |
+| |                                     | |                                                                                  | | of one LED.                                                                     |                    |
+| |                                     | | Python: ``rp_LEDGetState()``                                                     | |                                                                                 |                    |
+| |                                     | |                                                                                  | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnSetDirection(uint32_t reg_direction)``                              | | Set the state of the DIO_N or DIO_P direction register. Each bit corresponds    | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOnSetDirection(uint32_t reg_direction)``                              | | to the direction of one DIO_N or DIO_P pin.                                     |                    |
+| |                                     | | Python: ``rp_GPIOnSetDirection(<reg_direction>)``                                | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpSetDirection(<reg_direction>)``                                | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnGetDirection(uint32_t *reg_direction)``                             | | Get the state of the DIO_N or DIO_P direction register. Each bit corresponds    | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOpGetDirection(uint32_t *reg_direction)``                             | | to the direction of one DIO_N or DIO_P pin.                                     |                    |
+| |                                     | | Python: ``rp_GPIOnGetDirection()``                                               | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpGetDirection()``                                               | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnSetState(uint32_t reg_state)``                                      | | Set the state of the DIO_N or DIO_P state register. Each bit corresponds        | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOpSetState(uint32_t reg_state)``                                      | | to the state of one DIO_N or DIO_P pin.                                         |                    |
+| |                                     | | Python: ``rp_GPIOnSetState(<reg_state>)``                                        | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpSetState(<reg_state>)``                                        | |                                                                                 |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GPIOnGetState(uint32_t *state)``                                         | | Get the state of the DIO_N or DIO_P state register. Each bit corresponds        | 1.04-18 and up     |
+| |                                     | |    ``rp_GPIOpGetState(uint32_t *state)``                                         | | to the state of one DIO_N or DIO_P pin.                                         |                    |
+| |                                     | | Python: ``rp_GPIOnGetState()``                                                   | |                                                                                 |                    |
+| |                                     | |         ``rp_GPIOpGetState()``                                                   | |                                                                                 |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 
 
 
-.. _scpi_analog:
+.. _commands_analog:
 
 =========================
 Analog Inputs and Outputs
 =========================
 
-Parameter options:
+**Parameter options:**
 
-* ``<ain> = {AIN0, AIN1, AIN2, AIN3}``
-* ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
-* ``<pin> = {ain, aout}``
-* ``<value> = {value in Volts}``
+- ``<ain> = {AIN0, AIN1, AIN2, AIN3}``
+- ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
+- ``<pin> = {ain, aout}``
+- ``<value> = {value in Volts}``
+
+**Available Jupyter and API macros:**
+
+- Analog outputs - ``RP_AOUT0, RP_AOUT1, ..., RP_AOUT3``
+- Analog inputs - ``RP_AIN0, RP_AIN1, ..., RP_AIN3``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-| SCPI                                  | API                                                                                | DESCRIPTION                                                                       |  ECOSYSTEM         |
+| SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
 +=======================================+====================================================================================+===================================================================================+====================+
-| | ``ANALOG:RST``                      | | C: ``rp_ApinReset()``                                                            | Sets analog outputs to default values (0V).                                       | 1.04-18 and up     |
+| | ``ANALOG:RST``                      | | C: ``rp_ApinReset()``                                                            | Sets analog outputs to default values (0 V).                                      | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
 | | ``ANALOG:RST``                      | | Python: ``rp_ApinReset()``                                                       |                                                                                   |                    |
 | |                                     | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``ANALOG:PIN <pin>,<value>``        | | C: ``rp_ApinSetValue(rp_apin_t pin, float value)``                               | | Set the analog voltage on the slow analog outputs.                              | 1.04-18 and up     |
-| | Examples:                           | |                                                                                  | | The voltage range of slow analog outputs is: 0 - 1.8 V                          |                    |
-| | ``ANALOG:PIN AOUT2,1.34``           | | Python: ``rp_ApinSetValue(pin, value)``                                          |                                                                                   |                    |
-| |                                     | |                                                                                  |                                                                                   |                    |
+| | Examples:                           | |    ``rp_ApinSetValueRaw(rp_apin_t pin, uint32_t value)``                         | | The voltage range of slow analog outputs is: 0 - 1.8 V                          |                    |
+| | ``ANALOG:PIN AOUT2,1.34``           | | Python: ``rp_ApinSetValue(<pin>, <value>)``                                      |                                                                                   |                    |
+| |                                     | |         ``rp_ApinSetValueRaw(<pin>, <value>)``                                   |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``ANALOG:PIN? <pin>`` > ``<value>`` | | C: ``rp_ApinGetValue(rp_apin_t pin, float* value, uint32_t* raw)``               | | Read the analog voltage from the slow analog inputs.                            | 1.04-18 and up     |
-| | Examples:                           | |                                                                                  | | The voltage range of slow analog inputs is: 0 - 3.3 V                           |                    |
-| | ``ANALOG:PIN? AOUT2`` > ``1.34``    | | Python: ``rp_ApinGetValue(pin)``                                                 |                                                                                   |                    |
-| | ``ANALOG:PIN? AIN1`` > ``1.12``     | |                                                                                  |                                                                                   |                    |
+| | Examples:                           | |    ``rp_ApinGetValueRaw(rp_apin_t pin, uint32_t* value)``                        | | The voltage range of slow analog inputs is: 0 - 3.3 V                           |                    |
+| | ``ANALOG:PIN? AOUT2`` > ``1.34``    | | Python: ``rp_ApinGetValue(<pin>)``                                               |                                                                                   |                    |
+| | ``ANALOG:PIN? AIN1`` > ``1.12``     | |         ``rp_ApinGetValueRaw(<pin>)``                                            |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_ApinGetRange(rp_apin_t pin, float* min_val, float* max_val)``            | Get voltage range of the specified analog pin.                                    | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_ApinGetRange(<pin>)``                                               |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AIpinGetValue(int unsigned pin, float* value, uint32_t* raw)``           | Get the analog voltage on the slow analog inputs (Volts or RAW).                  | 1.04-18 and up     |
+| |                                     | |    ``rp_AIpinGetValueRaw(int unsigned pin, uint32_t* value)``                    |                                                                                   |                    |
+| |                                     | | Python: ``rp_AIpinGetValue(<pin>)``                                              |                                                                                   |                    |
+| |                                     | |         ``rp_AIpinGetValueRaw(<pin>)``                                           |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AOpinSetValue(int unsigned pin, float value)``                           | Set the output voltage on slow analog outputs.                                    | 1.04-18 and up     |
+| |                                     | |    ``rp_AOpinSetValueRaw(int unsigned pin, uint32_t value)``                     |                                                                                   |                    |
+| |                                     | | Python: ``rp_AOpinSetValue(<pin>, <value>)``                                     |                                                                                   |                    |
+| |                                     | |         ``rp_AOpinSetValueRaw(<pin>, <value>)``                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AOpinGetValue(int unsigned pin, float* value, uint32_t* raw)``           | Get the output voltage on slow analog outputs.                                    | 1.04-18 and up     |
+| |                                     | |    ``rp_AOpinGetValueRaw(int unsigned pin, uint32_t* value)``                    |                                                                                   |                    |
+| |                                     | | Python: ``rp_AOpinGetValue(<pin>)``                                              |                                                                                   |                    |
+| |                                     | |         ``rp_AOpinGetValueRaw(<pin>)``                                           |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_AOpinGetRange(int unsigned pin, float* min_val,  float* max_val)``       | Get voltage range of the specified analog output pin.                             | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_AOpinGetRange(<pin>)``                                              |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 
 
 
-.. _scpi_daisy:
+.. _commands_daisy:
 
 ===============================
 Daisy chain clocks and triggers
 ===============================
 
-Parameter options:
+**Parameter options:**
 
-* ``<state> = {OFF, ON}``
-* ``<mode> = {ADC, DAC}``
+- ``<state> = {OFF, ON}``
+- ``<mode> = {ADC, DAC}``
+- ``<enable> = {true, false}``
+
+**Available Jupyter and API macros:**
+
+- Shared trigger source - ``OUT_TR_ADC, OUT_TR_DAC``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
-| SCPI                                      | API                                                                                | DESCRIPTION                                                                                                |  ECOSYSTEM         |
+| SCPI                                      | API, Jupyter                                                                       | DESCRIPTION                                                                                                |  ECOSYSTEM         |
 +===========================================+====================================================================================+============================================================================================================+====================+
 | | ``DAISY:ENable <state>``                | | C: ``rp_SetEnableDaisyChainSync``                                                | | Enables clock and trigger sync over SATA daisy chain connectors.                                         | only 2.00-15       |
 | | Examples:                               | |                                                                                  | | Once the primary board will be triggered, the trigger will be forwarded to the secondary board over      |                    |
@@ -183,7 +347,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:TRIG <state>``             | | C: ``rp_SetEnableDaisyChainTrigSync(bool enable)``                               | | Enables trigger sync over SATA daisy chain connectors. Once the primary board will be triggered,         | 2.00-18 and up     |
 | | Examples:                               | |                                                                                  | | the trigger will be forwarded to the secondary board over the SATA connector                             |                    |
-| | ``DAISY:SYNC:TRIG ON``                  | | Python:  ``rp_SetEnableDaisyChainTrigSync(enable)``                              | | where the trigger can be detected using EXT_NE selector.                                                 |                    |
+| | ``DAISY:SYNC:TRIG ON``                  | | Python:  ``rp_SetEnableDaisyChainTrigSync(<enable>)``                            | | where the trigger can be detected using EXT_NE selector.                                                 |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:TRIG?`` > ``<state>``      | | C: ``rp_GetEnableDaisyChainTrigSync(bool *status)``                              | | Returns the current state of the trigger synchronization using Daisy Chain.                              | 2.00-18 and up     |
@@ -193,7 +357,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:CLK <state>``              | | C: ``rp_SetEnableDiasyChainClockSync(bool enable)``                              | | Enables clock sync over SATA daisy chain connectors.                                                     | 2.00-18 and up     |
 | | Examples:                               | |                                                                                  | | The primary board will start generating a clock for the secondary unit and so on.                        |                    |
-| | ``DAISY:SYNC:CLK ON``                   | | Python: ``rp_SetEnableDiasyChainClockSync(enable)``                              |                                                                                                            |                    |
+| | ``DAISY:SYNC:CLK ON``                   | | Python: ``rp_SetEnableDiasyChainClockSync(<enable>)``                            |                                                                                                            |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:SYNC:CLK?`` > ``<state>``       | | C: ``rp_GetEnableDiasyChainClockSync(bool *state)``                              | | Returns the current state of the SATA daisy chain mode.                                                  | 2.00-18 and up     |
@@ -203,7 +367,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:ENable <state>``         | | C: ``rp_SetDpinEnableTrigOutput(bool enable)``                                   | | Turns GPION_0 into trigger output for selected source - acquisition or generation.                       | 2.00-15 and up     |
 | | Examples:                               | |                                                                                  |                                                                                                            |                    |
-| | ``DAISY:TRIG_O:ENable ON``              | | Python: ``rp_SetDpinEnableTrigOutput(enable)``                                   |                                                                                                            |                    |
+| | ``DAISY:TRIG_O:ENable ON``              | | Python: ``rp_SetDpinEnableTrigOutput(<enable>)``                                 |                                                                                                            |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:ENable?`` > ``<state>``  | | C: ``rp_GetDpinEnableTrigOutput(bool *state)``                                   | | Returns the current mode state for GPION_0. If true, then the pin mode works as a source.                | 2.00-15 and up     |
@@ -213,7 +377,7 @@ Parameter options:
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:SOUR <mode>``            | | C: ``rp_SetSourceTrigOutput(rp_outTiggerMode_t mode)``                           | | Sets the trigger source mode ADC/DAC.                                                                    | 2.00-15 and up     |
 | | Examples:                               | |                                                                                  |                                                                                                            |                    |
-| | ``DAISY:TRIG_O:SOUR DAC``               | | Python: ``rp_SetSourceTrigOutput(mode)``                                         |                                                                                                            |                    |
+| | ``DAISY:TRIG_O:SOUR DAC``               | | Python: ``rp_SetSourceTrigOutput(<mode>)``                                       |                                                                                                            |                    |
 |                                           | |                                                                                  |                                                                                                            |                    |
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+--------------------+
 | | ``DAISY:TRIG_O:SOUR?`` > ``<mode>``     | | C: ``rp_GetSourceTrigOutput(rp_outTiggerMode_t *mode)``                          | | Returns the trigger source mode.                                                                         | 2.00-15 and up     |
@@ -225,7 +389,7 @@ Parameter options:
 
 .. note::
 
-   The daisy chain commands only work for the X-channel system and the upcoming Mikro-E extension shields.
+   The daisy chain commands only work for the :ref:`X-channel system <x-ch_streaming>` and the :ref:`Red Pitaya Click Shields <click_shield>`.
 
 .. note::
 
@@ -234,662 +398,1063 @@ Parameter options:
 
 
 
-.. _scpi_gen:
+.. _commands_pll:
+
+==================
+Phase locked loop
+==================
+
+.. note::
+
+   These commands only work on SIGNALlab 250-12
+
+
+**Parameter options:**
+
+- ``<enable> = {true, false}``
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
++=======================================+====================================================================================+===================================================================================+====================+
+| | -                                   | | C: ``rp_SetPllControlEnable(bool enable)``                                       | Enables/disables PLL control (SIGNALlab 250-12 only).                             | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_SetPllControlEnable(<enable>)``                                     |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GetPllControlEnable(bool *enable)``                                      | Get the PLL enable setting (SIGNALlab 250-12 only).                               | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_GetPllControlEnable()``                                             |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+| | -                                   | | C: ``rp_GetPllControlLocked(bool *status)``                                      | Get the current state of the PLL (SIGNALlab 250-12 only).                         | 1.04-18 and up     |
+| |                                     | |                                                                                  |                                                                                   |                    |
+| |                                     | | Python: ``rp_GetPllControlLocked()``                                             |                                                                                   |                    |
+| |                                     | |                                                                                  |                                                                                   |                    |
++---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+
+
+
+.. _commands_gen:
 
 ================
 Signal Generator
 ================
 
-Parameter options:
+.. note::
 
-* ``<n> = {1,2}`` (set channel OUT1 or OUT2)
-* ``<state> = {ON,OFF}`` Default: ``OFF``
-* ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
-* ``<func> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
-* ``<amplitude> = {-1 ... 1}``(in Volts). Default: ``1`` for SIGNALlab 250-12 {-5 ... 5}
-* ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 {-5 ... 5}
-* ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
-* ``<phase> = {-360 ... 360}`` (in Degrees). Default: ``0``
-* ``<dcyc> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
-* ``<array> = {value1, ...}`` max. 16384 values, floats in the range -1 to 1
-* ``<burst> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
-* ``<count> = {1...50000}`` Default: ``1``
-* ``<time> = {1µs-500s}`` Value in *µs*.
-* ``<utime> = {value in us}`` Default: ``500``
-* ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}`` Default: ``INT``
+   For STEMlab 125-14 4-Input, the commands in this chapter are not applicable.
 
+--------------------
+Generator control
+--------------------
 
-   - ``EXT`` = External
-   - ``INT`` = Internal
-   - ``GATED`` = gated busts
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<state> = {ON,OFF}`` Default: ``OFF``
+- ``<enable> = {true, false}`` Default: ``false``
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| SCPI                                                | API                                                                                     | DESCRIPTION                                                                                  |  ECOSYSTEM         |
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
 +=====================================================+=========================================================================================+==============================================================================================+====================+
-| | ``OUTPUT:STATE <state>``                          | | C: ``rp_GenOutEnableSync(bool enable)``                                               | | Runs or Stops both channels synchronously.                                                 | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | With API commands one of the outputs must be turned ON/OFF afterwards                      |                    |
-| | ``OUTPUT:STATE ON``                               | | Python: ``rp_GenOutEnableSync(enable)``                                               | | (See ``OUTPUT<n>:STATE <state>``).                                                         |                    |
-|                                                     | |                                                                                       | |                                                                                            |                    |
+| | ``GEN:RST``                                       | | C: ``rp_GenReset()``                                                                  | | Stops the generation and sets all generator parameters to default values.                  | 1.04-18 and up     |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
+| |                                                   | | Python: ``rp_GenReset()``                                                             | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``OUTPUT<n>:STATE <state>``                       | | C: ``rp_GenOutEnable(rp_channel_t channel)``                                          | | Disable or enable fast analog outputs.                                                     | 1.04-18 and up     |
-| | Examples:                                         | |    ``rp_GenOutDisable(rp_channel_t channel)``                                         | | The generator is waiting for the trigger.                                                  |                    |
-| | ``OUTPUT1:STATE ON``                              | | Python: ``rp_GenOutEnable(channel)``                                                  |                                                                                              |                    |
-|                                                     | |         ``rp_GenOutDisable(channel)``                                                 |                                                                                              |                    |
+| | ``OUTPUT<n>:STATE <state>``                       | | C: ``rp_GenOutEnable(rp_channel_t channel)``                                          | | Enable/disable supplying voltage to the specified fast analog output. When enabled,        | 1.04-18 and up     |
+| | Examples:                                         | |    ``rp_GenOutDisable(rp_channel_t channel)``                                         | | the signal does not start generating, but the initial voltage value                        |                    |
+| | ``OUTPUT1:STATE ON``                              | | Python: ``rp_GenOutEnable(<channel>)``                                                | | (``SOUR<n>:INITValue``, ``rp_GenSetInitGenValue``) appears on the fast analog output.      |                    |
+| |                                                   | |         ``rp_GenOutDisable(<channel>)``                                               | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``OUTPUT<n>:STATE?`` > ``<state>``                | | C: ``rp_GenOutIsEnabled(rp_channel_t channel, bool *value)``                          | Gets value ON if the channel is enabled otherwise returns OFF.                               | 1.04-18 and up     |
+| | ``OUTPUT<n>:STATE?`` > ``<state>``                | | C: ``rp_GenOutIsEnabled(rp_channel_t channel, bool *value)``                          | | Get the enable/disable supply voltage status of the specified fast analog output.          | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | |                                                                                            |                    |
+| | ``OUTPUT1:STATE?`` > ``ON``                       | | Python: ``rp_GenOutIsEnabled(<channel>)``                                             | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``OUTPUT:STATE <state>``                          | | C: ``rp_GenOutEnableSync(bool enable)``                                               | | Enable/disable supplying voltage to both fast analog outputs. When enabled, the signal     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | does not start generating, but the initial voltage value (``SOUR<n>:INITValue``,           |                    |
+| | ``OUTPUT:STATE ON``                               | | Python: ``rp_GenOutEnableSync(<enable>)``                                             | |  ``rp_GenSetInitGenValue``) apperas on both fast analog outputs.                           |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+
+
+-------------------
+Generator trigger
+-------------------
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<state> = {ON,OFF}`` Default: ``OFF``
+- ``<utime> = {value in us}`` Default: ``500``
+- ``<trigger> = {EXT_PE, EXT_NE, INT, GATED}`` Default: ``INT``
+
+    - ``EXT`` = External
+    - ``INT`` = Internal
+    - ``GATED`` = gated busts
+
+- ``<enable> = {true, false}`` Default: ``false``
+
+**Available Jupyter and API macros:**
+
+- Generator trigger source - ``RP_GEN_TRIG_SRC_INTERNAL, RP_GEN_TRIG_SRC_EXT_PE, RP_GEN_TRIG_SRC_EXT_NE``
+
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | ``SOUR<n>:TRig:SOUR <trigger>``                   | | C: ``rp_GenTriggerSource(rp_channel_t channel, rp_trig_src_t src)``                   | | Set the trigger source for the selected signal (either internal or external).              | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | The external trigger must be a 3V3 CMOS signal.                                            |                    |
+| | ``SOUR1:TRig:SOUR EXT_PE``                        | | Python: ``rp_GenTriggerSource(<channel>, <src>)``                                     | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRig:SOUR?`` > ``<trigger>``            | | C: ``rp_GenGetTriggerSource(rp_channel_t channel, rp_trig_src_t *src)``               | Get the trigger source setting.                                                              | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``OUTPUT1:STATE?`` > ``ON``                       | | Python: ``rp_GenOutIsEnabled(channel)``                                               |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FREQ:FIX <frequency>``                  | | C: ``rp_GenFreq(rp_channel_t channel, float frequency)``                              | | Set the frequency of fast analog outputs.                                                  | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | For ARBITRARY waveform this is the frequency of the whole buffer (16384 samples).          |                    |
-| | ``SOUR2:FREQ:FIX 100000``                         | | Python: ``rp_GenFreq(channel, frequency)``                                            |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FREQ:FIX?`` > ``<frequency>``           | | C: ``rp_GenGetFreq(rp_channel_t channel, float *frequency)``                          | Gets channel signal frequency.                                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:FREQ:FIX?`` > ``100000``                  | | Python: ``def rp_GenGetFreq(channel)``                                                |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FUNC <func>``                           | | C: ``rp_GenWaveform(rp_channel_t channel, rp_waveform_t type)``                       | Set the waveform of fast analog outputs.                                                     | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:FUNC TRIANGLE``                           | | Python: ``rp_GenWaveform(channel, type)``                                             |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:FUNC?`` > ``<func>``                    | | C: ``rp_GenGetWaveform(rp_channel_t channel, rp_waveform_t *type)``                   | Gets channel signal waveform.                                                                | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:FUNC?`` > ``TRIANGLE``                    | | Python: ``rp_GenGetWaveform(channel)``                                                |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT <amplitude>``                      | | C: ``rp_GenAmp(rp_channel_t channel, float amplitude)``                               | | Set the amplitude voltage of fast analog outputs in Volts.                                 | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum                                     |                    |
-| | ``SOUR2:VOLT 0.5``                                | | Python: ``rp_GenAmp(channel, amplitude)``                                             | | output range ± 1V (depends on board model).                                                |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT?`` > ``<amplitude>``               | | C: ``rp_GenGetAmp(rp_channel_t channel, float *amplitude)``                           | Gets channel signal peak to peak amplitude.                                                  | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:VOLT?`` > ``0.5``                         | | Python: ``rp_GenGetAmp(channel)``                                                     |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT:OFFS <offset>``                    | | C: ``rp_GenOffset(rp_channel_t channel, float offset)``                               | | Set the offset voltage of fast analog outputs in Volts                                     | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum                                     |                    |
-| | ``SOUR1:VOLT:OFFS 0.2``                           | | Python: ``rp_GenOffset(channel, offset)``                                             | | output range ± 1V (depends on board model).                                                |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:VOLT:OFFS?`` > ``<offset>``             | | C: ``rp_GenGetOffset(rp_channel_t channel, float *offset)``                           | Gets DC offset of the signal.                                                                | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:VOLT:OFFS?`` > ``0.2``                    | | Python: ``rp_GenGetOffset(channel)``                                                  |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:PHAS <phase>``                          | | C: ``rp_GenPhase(rp_channel_t channel, float phase)``                                 | Set the phase of fast analog outputs.                                                        | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:PHAS 30``                                 | | Python: ``rp_GenPhase(channel, phase)``                                               |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:PHAS?`` > ``<phase>``                   | | C: ``rp_GenGetPhase(rp_channel_t channel, float *phase)``                             | Gets channel signal phase.                                                                   | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:PHAS?`` > ``30``                          | | Python: ``rp_GenGetPhase(channel)``                                                   |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC <dcyc>``                           | | C: ``rp_GenDutyCycle(rp_channel_t channel, float ratio)``                             | Set the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:DCYC 0.2``                                | | Python: ``rp_GenDutyCycle(channel, ratio)``                                           |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:DCYC?`` > ``<dcyc>``                    | | C: ``rp_GenGetDutyCycle(rp_channel_t channel, float *ratio)``                         | Gets duty cycle of PWM signal.                                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:DCYC`` > ``0.2``                          | | Python: ``def rp_GenGetDutyCycle(channel)``                                           |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRAC:DATA:DATA <array>``                | | C: ``rp_GenArbWaveform(rp_channel_t channel, float *waveform, uint32_t length)``      | | Import data for arbitrary waveform generation (should be 16384 samples).                   | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | If fewer samples are provided the output frequency will be higher.                         |                    |
-| | ``SOUR1:TRAC:DATA:DATA``                          | | Python: ``rp_GenArbWaveform(channel, waveform, length)``                              |                                                                                              |                    |
-| | ``1,0.5,0.2``                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``         | | C: ``rp_GenGetArbWaveform(rp_channel_t channel, float *waveform, uint32_t *length)``  | Gets user defined waveform.                                                                  | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:TRAC:DATA:DATA?`` >                       | | Python: ``rp_GenGetArbWaveform(channel, waveform)``                                   |                                                                                              |                    |
-| | ``1,0.5,0.2``                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:STAT <burst>``                     | | C: ``rp_GenMode(rp_channel_t channel, rp_gen_mode_t mode)``                           | | Enable or disable burst (pulse) mode.                                                      | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Red Pitaya will generate **R** bursts with **N** signal periods.                           |                    |
-| | ``SOUR1:BURS:STAT BURST``                         | | Python: ``rp_GenMode(channel, mode)``                                                 | | **P** is the time between the start of one and the start of the next burst.                |                    |
-| | ``SOUR1:BURS:STAT CONTINUOUS``                    | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:STAT?`` > ``<burst>``              | | C: ``rp_GenGetMode(rp_channel_t channel, rp_gen_mode_t *mode)``                       | Gets generation mode.                                                                        | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:STAT?`` > ``BURST``                  | | Python: ``rp_GenGetMode(channel)``                                                    |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NCYC <count>``                     | | C: ``rp_GenBurstCount(rp_channel_t channel, int num)``                                | Set the number of cycles/periods in one burst (**N**).                                       | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NCYC 3``                             | | Python: ``rp_GenBurstCount(channel, num)``                                            |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NCYC?`` > ``<count>``              | | C: ``rp_GenGetBurstCount(rp_channel_t channel, int *num)``                            | Gets number of generated waveforms in a burst.                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NCYC`` > ``3``                       | | Python: ``rp_GenGetBurstCount(channel)``                                              |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NOR <count>``                      | | C: ``rp_GenBurstRepetitions(rp_channel_t channel, int repetitions)``                  | Set the number of repeated bursts (**R**) (65536 == INF repetitions)                         | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NOR 5``                              | | Python: ``rp_GenBurstRepetitions(channel, repetitions)``                              |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:NOR?`` > ``<count>``               | | C: ``rp_GenGetBurstRepetitions(rp_channel_t channel, int *repetitions)``              | Gets number of burst repetitions.                                                            | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:NOR`` > ``5``                        | | Python: ``rp_GenGetBurstRepetitions(channel)``                                        |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:INT:PER <time>``                   | | C: ``rp_GenBurstPeriod(rp_channel_t channel, uint32_t period)``                       | | Set the duration of a single burst in microseconds (**P**).                                | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | Time between the start of one and the start of the next burst.                             |                    |
-| | ``SOUR1:BURS:INT:PER 1000000``                    | | Python: ``rp_GenBurstPeriod(channel, period)``                                        | | The bursts will always have at least 1 us between them: If the period is                   |                    |
-|                                                     | |                                                                                       | | shorter than the burst, the software will default to 1 us between bursts.                  |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:INT:PER?`` > ``<time>``            | | C: ``rp_GenGetBurstPeriod(rp_channel_t channel, uint32_t *period)``                   | Gets the period of one burst in micro seconds.                                               | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:INT:PER?`` > ``1000000``             | | Python: ``rp_GenGetBurstPeriod(channel)``                                             |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRig:SOUR <trigger>``                   | | C: ``rp_GenTriggerSource(rp_channel_t channel, rp_trig_src_t src)``                   | | Set the trigger source for the selected signal.                                            | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       | | External trigger must be a 3V3 CMOS signal.                                                |                    |
-| | ``SOUR1:TRig:SOUR EXT_PE``                        | | Python: ``rp_GenTriggerSource(channel, src)``                                         |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRig:SOUR?`` > ``<trigger>``            | | C: ``rp_GenGetTriggerSource(rp_channel_t channel, rp_trig_src_t *src)``               | Gets trigger source.                                                                         | 1.04-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:TRig:SOUR?`` > ``EXT_PE``                 | | Python: ``rp_GenGetTriggerSource(channel)``                                           |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LASTValue <level>``                | | C: ``rp_GenBurstLastValue(rp_channel_t channel, float amlitude)``                     | | Sets the value to be set at the end of the generated signal in burst mode.                 | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       | | The output will stay on this value until a new signal is generated.                        |                    |
-| | ``SOUR1:BURS:LASTValue 0.5``                      | | Python: ``rp_GenBurstLastValue(channel, amplitude)``                                  |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:BURS:LASTValue?`` > ``<level>``         | | C: ``rp_GenGetBurstLastValue(rp_channel_t channel, float *amlitude)``                 | Gets the value to be set at the end of the generated signal in burst mode.                   | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:BURS:LASTValue`` > ``0.5``                | | Python: ``rp_GenGetBurstLastValue(channel)``                                          |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:INITValue <level>``                     | | C: ``rp_GenSetInitGenValue(rp_channel_t channel, float amlitude)``                    | | The level of which is set by the generator after                                           | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       | | the outputs are turned on, but before the signal is generated.                             |                    |
-| | ``SOUR1:INITValue 0.5``                           | | Python: ``rp_GenSetInitGenValue(channel, amplitude)``                                 |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:INITValue?`` > ``<level>``              | | C: ``rp_GenGetInitGenValue(rp_channel_t channel, float *amlitude)``                   | Gets the value of the initial signal level.                                                  | 2.00-18 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:INITValue?`` > ``0.5``                    | | Python: ``rp_GenGetInitGenValue(channel)``                                            |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:INT``                                 | | C: ``rp_GenTriggerOnly(rp_channel_t channel)``                                        | | Triggers both sources/channels immediately.                                                | 1.04-18 and up     |
-| |                                                   | |                                                                                       | | With API commands both outputs must be synchronised (See ``PHAS:ALIGN``)                   |                    |
-| | Examples:                                         | | Python: ``rp_GenTriggerOnly(channel)``                                                |                                                                                              |                    |
-| | ``SOUR:TRig:INT``                                 | |                                                                                       |                                                                                              |                    |
-+-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:TRig:INT``                              | | C: ``rp_GenTriggerOnly(rp_channel_t channel)``                                        | | Triggers the selected source immediately for the selected channel.                         | 1.04-18 and up     |
+| | ``SOUR1:TRig:SOUR?`` > ``EXT_PE``                 | | Python: ``rp_GenGetTriggerSource(<channel>)``                                         |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
-| | Examples:                                         | | Python: ``rp_GenTriggerOnly(channel)``                                                |                                                                                              |                    |
-| | ``SOUR1:TRig:INT``                                | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``GEN:RST``                                       | | C: ``rp_GenReset()``                                                                  | Reset the generator to default settings.                                                     | 1.04-18 and up     |
-|                                                     | |                                                                                       |                                                                                              |                    |
-|                                                     | | Python: ``rp_GenReset()``                                                             |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
+| | -                                                 | | C: ``rp_GenResetTrigger(rp_channel_t channel)``                                       | Reset generator settings for the specified fast analog output.                               | 1.04-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenResetTrigger(<channel>)``                                             |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``PHAS:ALIGN``                                    | | C: ``rp_GenSynchronise()``                                                            | | Align the output phases of both channels. Both channels are synchronised.                  | 1.04-18 and up     |
-|                                                     | |                                                                                       | |                                                                                            |                    |
-|                                                     | | Python: ``rp_GenSynchronise()``                                                       | |                                                                                            |                    |
-|                                                     | |                                                                                       | |                                                                                            |                    |
+| | ``SOUR:TRig:INT``                                 | | C: ``rp_GenSynchronise()``                                                            | | Synchronously triggers the generation of both fast analog outputs immediately.             | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | The signal phase is aligned.                                                               |                    |
+| | ``SOUR:TRig:INT``                                 | | Python: ``rp_GenSynchronise()``                                                       | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:EXT:DEBouncer[:US] <utime>``          | | C: ``rp_GenSetExtTriggerDebouncerUs(double value)``                                   | Sets ext. trigger debouncer for generation in Us (Value must be positive).                   | 2.00-15 and up     |
+| | ``SOUR<n>:TRig:INT``                              | | C: ``rp_GenTriggerOnly(rp_channel_t channel)``                                        | Triggers the generation of the specified fast analog output immediately.                     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:TRig:INT``                                | | Python: ``rp_GenTriggerOnly(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR:TRig:EXT:DEBouncer[:US] <utime>``          | | C: ``rp_GenSetExtTriggerDebouncerUs(double utime)``                                   | Sets the external trigger generation debouncer in microseconds (value must be positive).     | 2.00-15 and up     |
 | | Example:                                          | |                                                                                       |                                                                                              |                    |
-| | ``SOUR:TRig:EXT:DEBouncerUs 1``                   | | Python: ``rp_GenSetExtTriggerDebouncerUs(value)``                                     |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
+| | ``SOUR:TRig:EXT:DEBouncerUs 1``                   | | Python: ``rp_GenSetExtTriggerDebouncerUs(<utime>)``                                   |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:EXT:DEBouncer[:US]?`` > ``<utime>``   | | C: ``rp_GenGetExtTriggerDebouncerUs(double *value)``                                  | Gets ext. trigger debouncer for generation in Us.                                            | 2.00-15 and up     |
+| | ``SOUR:TRig:EXT:DEBouncer[:US]?`` > ``<utime>``   | | C: ``rp_GenGetExtTriggerDebouncerUs(double *utime)``                                  | Get the external trigger generation debouncer setting in microseconds.                       | 2.00-15 and up     |
 | | Example:                                          | |                                                                                       |                                                                                              |                    |
-| | ``SOUR:TRig:EXT:DEBouncerUs?`` > ``1``            | | Python: ``rp_GenSetExtTriggerDebouncerUs(value)``                                     |                                                                                              |                    |
-|                                                     | |                                                                                       |                                                                                              |                    |
+| | ``SOUR:TRig:EXT:DEBouncerUs?`` > ``1``            | | Python: ``rp_GenSetExtTriggerDebouncerUs(<utime>)``                                   |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+
+--------------------
+Generator settings
+--------------------
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
+- ``<type> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
+- ``<amplitude> = {-1 ... 1}``(in Volts). Default: ``1`` for SIGNALlab 250-12 {-5 ... 5}
+- ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 {-5 ... 5}
+- ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
+- ``<phase> = {-360 ... 360}`` (in Degrees). Default: ``0``
+- ``<ratio> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
+- ``<array> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1
+- ``<waveform> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1 (``arbBuffer`` for Python API and Jupyter)
+- ``<lenght>`` waveform array length
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Waveforms - ``RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP, RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY, RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP``
+- Rise and fall times - ``RISE_FALL_MIN_RATIO, RISE_FALL_MAX_RATIO``
+
+*SIGNALlab 250-12 only:*
+
+- Generator gain - ``RP_GAIN_1X, RP_GAIN_5X``
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | ``SOUR<n>:FUNC <type>``                           | | C: ``rp_GenWaveform(rp_channel_t channel, rp_waveform_t type)``                       | Set the waveform of a fast analog output.                                                    | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:FUNC TRIANGLE``                           | | Python: ``rp_GenWaveform(<channel>, <type>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FUNC?`` > ``<type>``                    | | C: ``rp_GenGetWaveform(rp_channel_t channel, rp_waveform_t *type)``                   | Get the waveform of a fast analog output.                                                    | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:FUNC?`` > ``TRIANGLE``                    | | Python: ``rp_GenGetWaveform(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FREQ:FIX <frequency>``                  | | C: ``rp_GenFreq(rp_channel_t channel, float frequency)``                              | | Set the signal frequency of a fast analog output.                                          | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | For the ARBITRARY waveform, this is the frequency of one signal period (a buffer of        |                    |
+| | ``SOUR2:FREQ:FIX 100000``                         | | Python: ``rp_GenFreq(<channel>, <frequency>)``                                        | | 16384 samples).                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenFreqDirect(rp_channel_t channel, float frequency)``                        | | Set the channel signal frequency in FPGA without reseting the generator and rebuilding     | 1.04-18 and up     |
+| |                                                   | |                                                                                       | | the signal.                                                                                |                    |
+| |                                                   | | Python: ``rp_GenFreqDirect(<channel>, <frequency>)``                                  | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:FREQ:FIX?`` > ``<frequency>``           | | C: ``rp_GenGetFreq(rp_channel_t channel, float *frequency)``                          | Get signal frequency of the specified channel.                                               | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:FREQ:FIX?`` > ``100000``                  | | Python: ``rp_GenGetFreq(<channel>)``                                                  |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT <amplitude>``                      | | C: ``rp_GenAmp(rp_channel_t channel, float amplitude)``                               | | Set the one-way amplitude of a fast analog output in Volts.                                | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum output voltage range (±1 V)         |                    |
+| | ``SOUR2:VOLT 0.5``                                | | Python: ``rp_GenAmp(<channel>, <amplitude>)``                                         | | (±2 V/ ±10 V (Hi-Z load) for SIGNALlab).                                                   |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT?`` > ``<amplitude>``               | | C: ``rp_GenGetAmp(rp_channel_t channel, float *amplitude)``                           | Get the one-way amplitude of a fast analog output in Volts.                                  | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:VOLT?`` > ``0.5``                         | | Python: ``rp_GenGetAmp(<channel>)``                                                   |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT:OFFS <offset>``                    | | C: ``rp_GenOffset(rp_channel_t channel, float offset)``                               | | Set the DC offset voltage of a fast analog output in Volts.                                | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | Amplitude + offset value must be less than the maximum output voltage range (±1 V)         |                    |
+| | ``SOUR1:VOLT:OFFS 0.2``                           | | Python: ``rp_GenOffset(<channel>, <offset>)``                                         | | (±2 V/ ±10 V (Hi-Z load) for SIGNALlab).                                                   |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:VOLT:OFFS?`` > ``<offset>``             | | C: ``rp_GenGetOffset(rp_channel_t channel, float *offset)``                           | Get the DC offset of a fast analog output in Volts.                                          | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:VOLT:OFFS?`` > ``0.2``                    | | Python: ``rp_GenGetOffset(<channel>)``                                                |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:PHAS <phase>``                          | | C: ``rp_GenPhase(rp_channel_t channel, float phase)``                                 | | Set the phase of a fast analog output in degrees. The signal starts generating with the    | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | specified phase. For example, if the phase is set to 90 degrees, the signal starts         |                    |
+| | ``SOUR2:PHAS 30``                                 | | Python: ``rp_GenPhase(<channel>, <phase>)``                                           | | generating as cosine instead of sine.                                                      |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:PHAS?`` > ``<phase>``                   | | C: ``rp_GenGetPhase(rp_channel_t channel, float *phase)``                             | Set the phase of a fast analog output in degrees.                                            | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:PHAS?`` > ``30``                          | | Python: ``rp_GenGetPhase(<channel>)``                                                 |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``PHAS:ALIGN``                                    | | C: ``rp_GenSynchronise()``                                                            | | Synchronously triggers the generation of both fast analog outputs immediately.             | 1.04-18 and up     |
+| |                                                   | |                                                                                       | | The signal phase is aligned.                                                               |                    |
+| |                                                   | | Python: ``rp_GenSynchronise()``                                                       | | (Same as SOUR:TRig:INT)                                                                    |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:DCYC <ratio>``                          | | C: ``rp_GenDutyCycle(rp_channel_t channel, float ratio)``                             | Set the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:DCYC 0.2``                                | | Python: ``rp_GenDutyCycle(<channel>, <ratio>)``                                       |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:DCYC?`` > ``<ratio>``                   | | C: ``rp_GenGetDutyCycle(rp_channel_t channel, float *ratio)``                         | Get the duty cycle of the PWM waveform.                                                      | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:DCYC`` > ``0.2``                          | | Python: ``def rp_GenGetDutyCycle(<channel>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRAC:DATA:DATA <array>``                | | C: ``rp_GenArbWaveform(rp_channel_t channel, float *waveform, uint32_t length)``      | | Import data for one period of an arbitrary waveform (should be exactly 16384 samples).     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | If fewer samples are provided, the output frequency will be higher.                        |                    |
+| | ``SOUR1:TRAC:DATA:DATA``                          | | Python: ``rp_GenArbWaveform(<channel>, <waveform>, <length>)``                        | |                                                                                            |                    |
+| | ``1,0.5,0.2``                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``         | | C: ``rp_GenGetArbWaveform(rp_channel_t channel, float *waveform, uint32_t *length)``  | Get the user-defined arbitrary waveform period.                                              | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:TRAC:DATA:DATA?`` >                       | | Python: ``rp_GenGetArbWaveform(<channel>, <waveform>)``                               |                                                                                              |                    |
+| | ``1,0.5,0.2``                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSetGainOut(rp_channel_t channel, rp_gen_gain_t gain_mode)``                | Set SIGNALlab output gain. (SIGNALlab only)                                                  | 1.04-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSetGainOut(<channel>, <gain_mode>)``                                  |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetGainOut(rp_channel_t channel, rp_gen_gain_t *gain_mode)``               | Get SIGNALlab output gain. (SIGNALlab only)                                                  | 1.04-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetGainOut(<channel>)``                                               |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenRiseTime(rp_channel_t channel, float time)``                               | Set signal rise time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenRiseTime(<channel>, <time>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetRiseTime(rp_channel_t channel, float *time)``                           | Get signal rise time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetRiseTime(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenFallTime(rp_channel_t channel, float time)``                               | Set signal fall time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenFallTime(<channel>, <time>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetFallTime(rp_channel_t channel, float *time)``                           | Get signal fall time of a fast analog output in microseconds.                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetFallTime(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
 
 
-.. note::
+------------
+Burst mode
+------------
 
-   For STEMlab 125-14 4-Input, these commands are not applicable.
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<mode> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
+- ``<num>, <repetitions> = {1...50000}`` Default: ``1``
+- ``<period> = {1 µs - 500 s}`` Value in *µs*.
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Generator modes - ``RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST``
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | ``SOUR<n>:BURS:STAT <mode>``                      | | C: ``rp_GenMode(rp_channel_t channel, rp_gen_mode_t mode)``                           | | Enable or disable burst (pulse) mode.                                                      | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | Red Pitaya will generate **R** bursts with **N** signal periods.                           |                    |
+| | ``SOUR1:BURS:STAT BURST``                         | | Python: ``rp_GenMode(<channel>, <mode>)``                                             | | **P** is the time between the start of one and the start of the next burst.                |                    |
+| | ``SOUR1:BURS:STAT CONTINUOUS``                    | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:STAT?`` > ``<mode>``               | | C: ``rp_GenGetMode(rp_channel_t channel, rp_gen_mode_t *mode)``                       | Get the generation mode.                                                                     | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:STAT?`` > ``BURST``                  | | Python: ``rp_GenGetMode(<channel>)``                                                  |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NCYC <num>``                       | | C: ``rp_GenBurstCount(rp_channel_t channel, int num)``                                | Set the number of cycles/periods in one burst (**N**).                                       | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NCYC 3``                             | | Python: ``rp_GenBurstCount(<channel>, <num>)``                                        |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NCYC?`` > ``<num>``                | | C: ``rp_GenGetBurstCount(rp_channel_t channel, int *num)``                            | Get the number of generated waveforms in a burst.                                            | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NCYC`` > ``3``                       | | Python: ``rp_GenGetBurstCount(<channel>)``                                            |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NOR <repetitions>``                | | C: ``rp_GenBurstRepetitions(rp_channel_t channel, int repetitions)``                  | Set the number of repeated bursts (**R**) (65536 == INF repetitions)                         | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NOR 5``                              | | Python: ``rp_GenBurstRepetitions(<channel>, <repetitions>)``                          |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:NOR?`` > ``<repetitions>``         | | C: ``rp_GenGetBurstRepetitions(rp_channel_t channel, int *repetitions)``              | Get the number of burst repetitions.                                                         | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:NOR`` > ``5``                        | | Python: ``rp_GenGetBurstRepetitions(<channel>)``                                      |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER <period>``                 | | C: ``rp_GenBurstPeriod(rp_channel_t channel, uint32_t period)``                       | | Set the duration of a single burst in microseconds (**P**). This specifies the time        | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       | | between the start of one and the start of the next burst. The bursts will always have at   |                    |
+| | ``SOUR1:BURS:INT:PER 1000000``                    | | Python: ``rp_GenBurstPeriod(<channel>, <period>)``                                    | | least 1 us between them: If the period is shorter than the burst, the software will        |                    |
+|                                                     | |                                                                                       | | default to 1 us between bursts.                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER?`` > ``<period>``          | | C: ``rp_GenGetBurstPeriod(rp_channel_t channel, uint32_t *period)``                   | Get the period of a bursts in microseconds.                                                  | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:INT:PER?`` > ``1000000``             | | Python: ``rp_GenGetBurstPeriod(<channel>)``                                           |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:LASTValue <amplitude>``            | | C: ``rp_GenBurstLastValue(rp_channel_t channel, float amplitude)``                    | | Set the end value of the generated burst signal.                                           | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       | | The output will stay on this value until a new signal is generated.                        |                    |
+| | ``SOUR1:BURS:LASTValue 0.5``                      | | Python: ``rp_GenBurstLastValue(<channel>, <amplitude>)``                              | |                                                                                            |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:LASTValue?`` > ``<amplitude>``     | | C: ``rp_GenGetBurstLastValue(rp_channel_t channel, float *amplitude)``                | Get the end value of the generated burst signal.                                             | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:LASTValue`` > ``0.5``                | | Python: ``rp_GenGetBurstLastValue(<channel>)``                                        |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:INITValue <amplitude>``                 | | C: ``rp_GenSetInitGenValue(rp_channel_t channel, float amplitude)``                   | | Set the initial voltage value that appears on the fast analog output once it is enabled    | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       | | but before the signal is generated (See ``OUTPUT<n>:STATE``,                               |                    |
+| | ``SOUR1:INITValue 0.5``                           | | Python: ``rp_GenSetInitGenValue(<channel>, <amplitude>)``                             | | ``rp_GenOutEnable(rp_channel_t channel)``).                                                |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:INITValue?`` > ``<amplitude>``          | | C: ``rp_GenGetInitGenValue(rp_channel_t channel, float *amplitude)``                  | | Get the initial voltage value that appears on the fast analog output once it is enabled    | 2.00-18 and up     |
+| | Examples:                                         | |                                                                                       | | but before the signal is generated (See ``OUTPUT<n>:STATE``,                               |                    |
+| | ``SOUR1:INITValue?`` > ``0.5``                    | | Python: ``rp_GenGetInitGenValue(<channel>)``                                          | | ``rp_GenOutEnable(rp_channel_t channel)``).                                                |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
 
 
+------------
+Sweep mode
+------------
 
-.. _scpi_acq:
+Set the waveform type to sweep to enable
 
-===========
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel OUT1 or OUT2)
+- ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000`` (start), ``10000`` (end)
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Sweep direction - ``RP_GEN_SWEEP_DIR_NORMAL, RP_GEN_SWEEP_DIR_UP_DOWN``
+- Sweep mode - ``RP_GEN_SWEEP_MODE_LINEAR, RP_GEN_SWEEP_MODE_LOG``
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
++=====================================================+=========================================================================================+==============================================================================================+====================+
+| | -                                                 | | C: ``rp_GenSweepStartFreq(rp_channel_t channel, float frequency)``                    | Set sweep start frequency.                                                                   | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepStartFreq(<channel>, <frequency>)``                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepStartFreq(rp_channel_t channel, float *frequency)``                | Get sweep start frequency.                                                                   | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepStartFreq(<channel>)``                                        |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSweepEndFreq(rp_channel_t channel, float frequency)``                      | Set sweep end frequency.                                                                     | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepEndFreq(<channel>, <frequency>)``                                |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepEndFreq(rp_channel_t channel, float *frequency)``                  | Get sweep end frequency.                                                                     | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepEndFreq(<channel>)``                                          |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSweepMode(rp_channel_t channel, rp_gen_sweep_mode_t mode)``                | Set sweep mode to either linear or logarithmic.                                              | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepMode(<channel>, <mode>)``                                        |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepMode(rp_channel_t channel, rp_gen_sweep_mode_t *mode)``            | Get sweep mode (either linear or logarithmic).                                               | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepMode(<channel>)``                                             |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenSweepDir(rp_channel_t channel, rp_gen_sweep_dir_t mode)``                  | Set sweep direction (normal (up) or up-down).                                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenSweepDir(<channel>, <mode>)``                                         |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | -                                                 | | C: ``rp_GenGetSweepDir(rp_channel_t channel, rp_gen_sweep_dir_t *mode)``              | Get sweep direction (normal (up) or up-down).                                                | 2.00-18 and up     |
+| |                                                   | |                                                                                       |                                                                                              |                    |
+| |                                                   | | Python: ``rp_GenGetSweepDir(<channel>)``                                              |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+
+
+.. _commands_acq:
+
+==============
 Acquisition
-===========
+==============
 
--------
-Control
--------
+--------------------
+Acquisition Control
+--------------------
+
+**Parameter options:**
+
+- ``<enable> = {true, false}``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-+----------------------------------+---------------------------------------+------------------------------------------------------------------+--------------------+
-| SCPI                             | API                                   | DESCRIPTION                                                      |  ECOSYSTEM         |
-+==================================+=======================================+==================================================================+====================+
-| ``ACQ:START``                    | | C: ``rp_AcqStart()``                | Start the acquisition.                                           | 1.04-18 and up     |
-|                                  | |                                     |                                                                  |                    |
-|                                  | | Python: ``rp_AcqStart()``           |                                                                  |                    |
-|                                  | |                                     |                                                                  |                    |
-+----------------------------------+---------------------------------------+------------------------------------------------------------------+--------------------+
-| ``ACQ:STOP``                     | | C: ``rp_AcqStop()``                 | Stop the acquisition.                                            | 1.04-18 and up     |
-|                                  | |                                     |                                                                  |                    |
-|                                  | | Python: ``rp_AcqStop()``            |                                                                  |                    |
-|                                  | |                                     |                                                                  |                    |
-+----------------------------------+---------------------------------------+------------------------------------------------------------------+--------------------+
-| ``ACQ:RST``                      | | C: ``rp_AcqReset()``                | Stops the acquisition and sets all parameters to default values. | 1.04-18 and up     |
-|                                  | |                                     |                                                                  |                    |
-|                                  | | Python: ``rp_AcqReset()``           |                                                                  |                    |
-|                                  | |                                     |                                                                  |                    |
-+----------------------------------+---------------------------------------+------------------------------------------------------------------+--------------------+
++----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
+| SCPI                             | API, Jupyter                                    | DESCRIPTION                                                                |  ECOSYSTEM         |
++==================================+=================================================+============================================================================+====================+
+| | ``ACQ:START``                  | | C: ``rp_AcqStart()``                          | Start the acquisition.                                                     | 1.04-18 and up     |
+| |                                | |                                               |                                                                            |                    |
+| |                                | | Python: ``rp_AcqStart()``                     |                                                                            |                    |
+| |                                | |                                               |                                                                            |                    |
++----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
+| | ``ACQ:STOP``                   | | C: ``rp_AcqStop()``                           | Stop the acquisition.                                                      | 1.04-18 and up     |
+| |                                | |                                               |                                                                            |                    |
+| |                                | | Python: ``rp_AcqStop()``                      |                                                                            |                    |
+| |                                | |                                               |                                                                            |                    |
++----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
+| | ``ACQ:RST``                    | | C: ``rp_AcqReset()``                          | | Stop the acquisition and reset all acquisition parameters to             | 1.04-18 and up     |
+| |                                | |                                               | | default values.                                                          |                    |
+| |                                | | Python: ``rp_AcqReset()``                     | |                                                                          |                    |
+| |                                | |                                               | |                                                                          |                    |
++----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
+| | -                              | | C: ``rp_AcqResetFpga()``                      | Reset the acqusition writing state machine.                                | 1.04-18 and up     |
+| |                                | |                                               |                                                                            |                    |
+| |                                | | Python: ``rp_AcqResetFpga()``                 |                                                                            |                    |
+| |                                | |                                               |                                                                            |                    |
++----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
+| | -                              | | C: ``rp_AcqSetArmKeep(bool enable)``          | Enable continous acquisition even after trigger has happened.              | 1.04-18 and up     |
+| |                                | |                                               |                                                                            |                    |
+| |                                | | Python: ``rp_AcqSetArmKeep(<enable>)``        |                                                                            |                    |
+| |                                | |                                               |                                                                            |                    |
++----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
+| | -                              | | C: ``rp_AcqGetArmKeep(bool* state)``          | Get the status of continous acquisition after trigger setting.             | 1.04-18 and up     |
+| |                                | |                                               |                                                                            |                    |
+| |                                | | Python: ``rp_AcqGetArmKeep()``                |                                                                            |                    |
+| |                                | |                                               |                                                                            |                    |
++----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
 
-.. _scpi_acq_dec:
+
 
 --------------------------
-Sampling rate & decimation
+Acquisition settings
 --------------------------
 
-Parameter options:
+**Parameter options:**
 
-* ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
-* ``<decimation_ext> = {1,2,4,8,16,17,18,19,......,65536}`` Default: ``1``
-* ``<average> = {OFF,ON}`` Default: ``ON``
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
+- ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
+- ``<decimation_ext> = {1,2,4,8,16,17,18,19,......,65536}`` Default: ``1``
+- ``<average> = {OFF,ON}`` Default: ``ON``
+- ``<state> = {LV, HV}`` Default: ``LV``
+- ``<mode> = {AC,DC}`` Default ``DC``
+- ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
+- ``<format> = {BIN, ASCII}`` Default ``ASCII``
+- ``<enable> = {true, false}`` Default: ``true``
 
-.. <decimation> = {1,2,4,8,16,17,18,19,...,65534,65535,65536}!!
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Decimation - ``RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16, RP_DEC_32, RP_DEC_64, RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048, RP_DEC_4096, RP_DEC_8192, RP_DEC_16384, RP_DEC_32768, RP_DEC_65536``
+
+*SIGNALlab 250-12 only (additional):*
+
+- Input coupling - ``RP_DC, RP_AC``
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-+------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| SCPI                                     | API                                                                 | DESCRIPTION                                                          |  ECOSYSTEM         |
-+==========================================+=====================================================================+======================================================================+====================+
-| | ``ACQ:DEC <decimation>``               | | C: ``rp_AcqSetDecimation(rp_acq_decimation_t decimation)``        | | Set the decimation factor.                                         | 1.04-18 and up     |
-| | Example:                               | |                                                                   | | Should be a power of 2.                                            |                    |
-| | ``ACQ:DEC 4``                          | | Python: ``rp_AcqSetDecimation(decimation)``                       |                                                                      |                    |
-| |                                        | |                                                                   |                                                                      |                    |
-+------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| | ``ACQ:DEC?`` > ``<decimation>``        | | C: ``rp_AcqGetDecimation(rp_acq_decimation_t* decimation)``       | Get the decimation factor.                                           | 1.04-18 and up     |
-| | Example:                               | |                                                                   |                                                                      |                    |
-| | ``ACQ:DEC?`` > ``1``                   | | Python: ``rp_AcqGetDecimation()``                                 |                                                                      |                    |
-| |                                        | |                                                                   |                                                                      |                    |
-+------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| | ``ACQ:DEC:F <decimation_ext>``         | | C: ``rp_AcqSetDecimationFactor(uint32_t decimation)``             | | Set the extended decimation factor.                                | in dev             |
-| | Example:                               | |                                                                   |                                                                      |                    |
-| | ``ACQ:DEC:F 17``                       | | Python: ``rp_AcqSetDecimationFactor(decimation)``                 |                                                                      |                    |
-| |                                        | |                                                                   |                                                                      |                    |
-+------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| | ``ACQ:DEC:F?`` > ``<decimation_ext>``  | | C: ``rp_AcqGetDecimationFactor(uint32_t* decimation)``            | Get the extended decimation factor.                                  | in dev             |
-| | Example:                               | |                                                                   |                                                                      |                    |
-| | ``ACQ:DEC:F?`` > ``1``                 | | Python: ``rp_AcqGetDecimationFactor()``                           |                                                                      |                    |
-| |                                        | |                                                                   |                                                                      |                    |
-+------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| | ``ACQ:AVG <average>``                  | | C: ``rp_AcqSetAveraging(bool enabled)``                           | | Enable/disable averaging.                                          | 1.04-18 and up     |
-|                                          | |                                                                   | | Each sample is the average of skipped samples if decimation > 1.   |                    |
-| |                                        | | Python: ``rp_AcqSetAveraging(enable)``                            |                                                                      |                    |
-| |                                        | |                                                                   |                                                                      |                    |
-+------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
-| | ``ACQ:AVG?`` > ``<average>``           | | C: ``rp_AcqGetAveraging(bool *enabled)``                          | | Get the averaging status.                                          | 1.04-18 and up     |
-| | Example:                               | |                                                                   | | Averages the skipped samples when ``DEC`` > 1                      |                    |
-| | ``ACQ:AVG?`` > ``ON``                  | | Python: ``rp_AcqGetAveraging()``                                  |                                                                      |                    |
-| |                                        | |                                                                   |                                                                      |                    |
-+------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------+--------------------+
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| SCPI                                     | API, Jupyter                                                                                   | DESCRIPTION                                                                   |  ECOSYSTEM         |
++==========================================+================================================================================================+===============================================================================+====================+
+| | ``ACQ:DEC <decimation>``               | | C: ``rp_AcqSetDecimation(rp_acq_decimation_t decimation)``                                   | | Set the decimation factor (power of 2 from 1 to 65536).                     | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | |                                                                             |                    |
+| | ``ACQ:DEC 4``                          | | Python: ``rp_AcqSetDecimation(<decimation>)``                                                | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DEC?`` > ``<decimation>``        | | C: ``rp_AcqGetDecimation(rp_acq_decimation_t* decimation)``                                  | Get the decimation factor.                                                    | 1.04-18 and up     |
+| | Example:                               | |                                                                                              |                                                                               |                    |
+| | ``ACQ:DEC?`` > ``1``                   | | Python: ``rp_AcqGetDecimation()``                                                            |                                                                               |                    |
+| |                                        | |                                                                                              |                                                                               |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DEC:F <decimation_ext>``         | | C: ``rp_AcqSetDecimationFactor(uint32_t decimation)``                                        | | Set the extended decimation factor (power of 2 up to 16 then any            | in dev             |
+| | Example:                               | |                                                                                              | | whole number up to 65536).                                                  |                    |
+| | ``ACQ:DEC:F 17``                       | | Python: ``rp_AcqSetDecimationFactor(<decimation>)``                                          | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DEC:F?`` > ``<decimation_ext>``  | | C: ``rp_AcqGetDecimationFactor(uint32_t* decimation)``                                       | Get the extended decimation factor.                                           | in dev             |
+| | Example:                               | |                                                                                              |                                                                               |                    |
+| | ``ACQ:DEC:F?`` > ``1``                 | | Python: ``rp_AcqGetDecimationFactor()``                                                      |                                                                               |                    |
+| |                                        | |                                                                                              |                                                                               |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | -                                      | | C: ``rp_AcqConvertFactorToDecimation(uint32_t factor,rp_acq_decimation_t* decimation)``      | | Convert the decimation factor to the closest available decimation value     | 1.04-18 and up     |
+| |                                        | |                                                                                              | | (closest power of 2).                                                       |                    |
+| |                                        | | Python: ``rp_AcqConvertFactorToDecimation(<factor>)``                                        | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | -                                      | | C: ``rp_AcqGetSamplingRateHz(float* sampling_rate)``                                         | | Get the current sampling rate in Hertz.                                     | 1.04-18 and up     |
+| |                                        | |                                                                                              | |                                                                             |                    |
+| |                                        | | Python: ``rp_AcqGetSamplingRateHz()``                                                        | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AVG <average>``                  | | C: ``rp_AcqSetAveraging(bool enabled)``                                                      | | Enable/disable averaging.                                                   | 1.04-18 and up     |
+| |                                        | |                                                                                              | | Each sample is the average of skipped samples if ``DEC`` > 1.               |                    |
+| |                                        | | Python: ``rp_AcqSetAveraging(<enable>)``                                                     | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AVG?`` > ``<average>``           | | C: ``rp_AcqGetAveraging(bool *enabled)``                                                     | | Get the averaging status.                                                   | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | | Averages the skipped samples when ``DEC`` > 1                               |                    |
+| | ``ACQ:AVG?`` > ``ON``                  | | Python: ``rp_AcqGetAveraging()``                                                             | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:SOUR<n>:GAIN <state>``           | | C: ``rp_AcqSetGain(rp_channel_t channel, rp_pinState_t state)``                              | | Set the gain for the specified channel to HIGH or LOW.                      | 1.04-18 and up     |
+| |                                        | |                                                                                              | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |                    |
+| | Example:                               | | Python: ``rp_AcqSetGain(<channel>, <state>)``                                                | | The gain refers to jumper settings on the Red Pitaya fast analog input.     |                    |
+| | ``ACQ:SOUR1:GAIN LV``                  | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:SOUR<n>:GAIN?`` > ``<state>``    | | C: ``rp_AcqGetGain(rp_channel_t channel, rp_pinState_t* state)``                             | | Get the gain setting for the specified channel                              | 1.04-18 and up     |
+| |                                        | |                                                                                              | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |                    |
+| | Example:                               | | Python: ``rp_AcqGetGain(<channel>)``                                                         | |                                                                             |                    |
+| | ``ACQ:SOUR1:GAIN?`` > ``HV``           | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | -                                      | | C: ``rp_AcqGetGainV(rp_channel_t channel, float* voltage)``                                  | | Get specified channel gain in Volts.                                        | 1.04-18 and up     |
+| |                                        | |                                                                                              | |                                                                             |                    |
+| |                                        | | Python: ``rp_AcqGetGainV(<channel>)``                                                        | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:SOUR<n>:COUP <mode>``            | | C: ``rp_AcqSetAC_DC(rp_channel_t channel,rp_acq_ac_dc_mode_t mode)``                         | Set the AC / DC mode of the specified input (only SIGNALlab 250-12).          | 1.04-18 and up     |
+| | Example:                               | |                                                                                              |                                                                               |                    |
+| | ``ACQ:SOUR1:COUP AC``                  | | Python: ``rp_AcqSetAC_DC(<channel>, <mode>)``                                                |                                                                               |                    |
+| |                                        | |                                                                                              |                                                                               |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:SOUR<n>:COUP?`` > ``<mode>``     | | C: ``rp_AcqGetAC_DC(rp_channel_t channel,rp_acq_ac_dc_mode_t *status)``                      | Get the AC / DC mode of the specified input (only SIGNALlab 250-12).          | 1.04-18 and up     |
+| | Example:                               | |                                                                                              |                                                                               |                    |
+| | ``ACQ:SOUR1:COUP?`` > ``AC``           | | Python: ``rp_AcqGetAC_DC(<channel>)``                                                        |                                                                               |                    |
+| |                                        | |                                                                                              |                                                                               |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:Units <units>``             | | C: - (See specific acquisition command)                                                      | | Select units in which the acquired data will be returned. For API commands  | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | | this depends on which function is called (see specific functions for        |                    |
+| | ``ACQ:DATA:Units RAW``                 | | Python: - (See specific acquisition command)                                                 | |  details).                                                                  |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:Units?`` > ``<units>``      | | C: - (See specific acquisition command)                                                      | Get units in which the acquired data will be returned.                        | 1.04-18 and up     |
+| | Example:                               | |                                                                                              |                                                                               |                    |
+| | ``ACQ:DATA:Units?`` > ``RAW``          | | Python: - (See specific acquisition command)                                                 |                                                                               |                    |
+| |                                        | |                                                                                              |                                                                               |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:FORMAT <format>``           | | C: - (N/A)                                                                                   | | Select the format in which the acquired data will be returned.              | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | | Only for remote SCPI control.                                               |                    |
+| | ``ACQ:DATA:FORMAT ASCII``              | | Python: - (N/A)                                                                              | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:BUF:SIZE?`` > ``<size>``         | | C: ``rp_AcqGetBufSize(uint32_t *size)``                                                      | | Returns the buffer size.                                                    | 1.04-18 and up     |
+| | Example:                               | |                                                                                              | | For Python API specifically, the input parameter is the buffer itself.      |                    |
+| | ``ACQ:BUF:SIZE?`` > ``16384``          | | Python: ``rp_AcqGetBufSize(<buffer>)``                                                       | |                                                                             |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | - (N/A)                                | | C: - (look for *malloc* function online)                                                     | | Performs memory allocation and returns the requested buffer.                | 2.00-18 and up     |
+| |                                        | |                                                                                              | | - ``<maxChannels>`` - how many channels will be acquired                    |                    |
+| |                                        | | Python: ``rp_createBuffer(<maxChannels>, <length>, <initInt16>, <initDouble>, <initFloat>)`` | | - ``<enght>`` - length of the buffer in samples (max 16384)                 |                    |
+| |                                        | |                                                                                              | | - ``<initInt16>, <initDouble>, <initFloat>`` - buffer sample type, set one  |                    |
+| |                                        | |                                                                                              | |   to ``true``, others are ``false``.                                        |                    |
+| |                                        | |                                                                                              | | For Python API specifically.                                                |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | - (N/A)                                | | C: - (look for *free* function online)                                                       | | Free the allocated resources.                                               | 2.00-18 and up     |
+| |                                        | |                                                                                              | | - ``<buffer>`` - buffer to be released/freed                                |                    |
+| |                                        | | Python: ``rp_deleteBuffer(<buffer>)``                                                        | | For Python API specifically.                                                |                    |
+| |                                        | |                                                                                              | |                                                                             |                    |
++------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 
 
-.. _scpi_trigger:
+--------------------
+Acquisition trigger
+--------------------
 
-=======
-Trigger
-=======
 
-Parameter options:
+**Parameter options:**
 
-* ``<n> = {1,2}`` (set channel IN1 or IN2)
-* ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
-* ``<status> = {WAIT, TD}``
-* ``<time> = {value in ns}`` Default: ``0``
-* ``<utime> = {value in us}`` Default: ``500``
-* ``<count> = {value in samples}`` (minimum value -8192) Default: ``0``
-* ``<gain> = {LV, HV}`` Default: ``LV``
-* ``<level> = {value in V}`` Default: ``0``
-* ``<mode> = {AC,DC}`` Default ``DC``
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
+- ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
+- ``<state> = {WAIT, TD}``
+- ``<fill_state> = {0, 1}``
+- ``<decimated_data_num> = {value in samples}`` (minimum value ``-8192``) Default: ``0``
+- ``<time_ns> = {value in ns}`` Default: ``0``
+- ``<value> = {value in us}`` Default: ``500``
+- ``<voltage> = {value in V}`` Default: ``0``
 
-.. note::
 
-   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
+*STEMlab 125-14 4-Input only (additional):*
 
-.. note::
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
+- ``<source> = {CH3_PE, CH3_NE, CH4_PE, CH4_NE}``
 
-   For STEMlab 125-14 4-Input ``<source> = {DISABLED, NOW, CH1_PE, CH1_NE, CH2_PE, CH2_NE, CH3_PE, CH3_NE, CH4_PE, CH4_NE, EXT_PE, EXT_NE, AWG_PE, AWG_NE}``  Default: ``DISABLED``
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+- Acquisition trigger - ``RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE, RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE``
+- Acquisition trigger state - ``RP_TRIG_STATE_TRIGGERED, RP_TRIG_STATE_WAITING``
+- Buffer size - ``ADC_BUFFER_SIZE, DAC_BUFFER_SIZE``
+
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
+- Acquisition trigger - ``RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| SCPI                                               | API                                                                                  | DESCRIPTION                                                                   |  ECOSYSTEM         |
+| SCPI                                               | API, Jupyter                                                                         | DESCRIPTION                                                                   |  ECOSYSTEM         |
 +====================================================+======================================================================================+===============================================================================+====================+
-| | ``ACQ:TRig <source>``                            | | C: ``rp_AcqSetTriggerSrc(rp_acq_trig_src_t source)``                               | Disable triggering, trigger immediately or set trigger source & edge.         | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig CH1_PE``                              | | Python: ``rp_AcqSetTriggerSrc(source)``                                            |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig <source>``                            | | C: ``rp_AcqSetTriggerSrc(rp_acq_trig_src_t source)``                               | | Set acquisition trigger source. The options are disabled, trigger           | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | immediately, or set trigger source & edge.                                  |                    |
+| | ``ACQ:TRig CH1_PE``                              | | Python: ``rp_AcqSetTriggerSrc(<source>)``                                          | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:STAT?``                               | | C: ``rp_AcqGetTriggerState(rp_acq_trig_state_t* state)``                           | Get trigger status. If DISABLED -> TD else WAIT.                              | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:STAT?`` > ``WAIT``                    | | Python: ``rp_AcqGetTriggerSrc()``                                                  |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | -                                                | | C: ``rp_AcqGetTriggerSrc(rp_acq_trig_src_t* source)``                              | | Get acquisition trigger source.                                             | 1.04-18 and up     |
+| |                                                  | |                                                                                    | |                                                                             |                    |
+| |                                                  | | Python: ``rp_AcqGetTriggerSrc()``                                                  | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:FILL?``                               | | C: ``rp_AcqGetBufferFillState``                                                    | Returns 1 if the buffer is full of data. Otherwise returns 0.                 | 2.00-15 and up     |
+| | ``ACQ:TRig:STAT?`` > ``<state>``                 | | C: ``rp_AcqGetTriggerState(rp_acq_trig_state_t* state)``                           | | Get acquisition trigger status. If the trigger is ``DISABLED`` or the       | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | acquisition is triggered, the state is ``TD``. Otherwise, it is ``WAIT``.   |                    |
+| | ``ACQ:TRig:STAT?`` > ``WAIT``                    | | Python: ``rp_AcqGetTriggerState()``                                                | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
++----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:TRig:FILL?`` > ``<fill_state>``            | | C: ``rp_AcqGetBufferFillState(bool* state)``                                       | Returns 1 if the buffer is full of data. Otherwise returns 0.                 | 2.00-15 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
 | | ``ACQ:TRig:FILL?`` > ``1``                       | | Python: ``rp_AcqGetBufferFillState()``                                             |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY <count>``                         | | C: ``rp_AcqSetTriggerDelay(int32_t decimated_data_num)``                           | | Set the trigger delay in samples.                                           | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    | | Triggering moment is by default around 8192th sample                        |                    |
-| | ``ACQ:TRig:DLY 2314``                            | | Python: ``rp_AcqSetTriggerDelay(decimated_data_num)``                              |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig:DLY <decimated_data_num>``            | | C: ``rp_AcqSetTriggerDelay(int32_t decimated_data_num)``                           | | Set the trigger delay in samples. The triggering moment is by default in    | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | the middle of acquired buffer (at 8192th sample) (trigger delay set to 0).  |                    |
+| | ``ACQ:TRig:DLY 2314``                            | | Python: ``rp_AcqSetTriggerDelay(<decimated_data_num>)``                            | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY?`` > ``<count>``                  | | C: ``rp_AcqGetTriggerDelay(int32_t* decimated_data_num)``                          | Get the trigger delay in samples.                                             | 1.04-18 and up     |
+| | ``ACQ:TRig:DLY?`` > ``<decimated_data_num>``     | | C: ``rp_AcqGetTriggerDelay(int32_t* decimated_data_num)``                          | Get the trigger delay in samples.                                             | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
 | | ``ACQ:TRig:DLY?`` > ``2314``                     | | Python: ``rp_AcqGetTriggerDelay()``                                                |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY:NS <time>``                       | | C: ``rp_AcqSetTriggerDelayNs(int64_t time_ns)``                                    | Set the trigger delay in ns.                                                  | 1.04-18 and up     |
+| | ``ACQ:TRig:DLY:NS <time_ns>``                    | | C: ``rp_AcqSetTriggerDelayNs(int64_t time_ns)``                                    | | Set the trigger delay in ns. Must be multiple of the board's clock          | 1.04-18 and up     |
+| | Example:                                         | |                                                                                    | | resolution (125 MHz clock == 8 ns resolution, 250 MHz == 4 ns resolution).  |                    |
+| | ``ACQ:TRig:DLY:NS 128``                          | | Python: ``rp_AcqSetTriggerDelayNs(<time_ns>)``                                     | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
++----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:TRig:DLY:NS?`` > ``<time_ns>``             | | C: ``rp_AcqGetTriggerDelayNs(int64_t* time_ns)``                                   | Get the trigger delay in ns.                                                  | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:DLY:NS 128``                          | | Python: ``rp_AcqSetTriggerDelayNs(time_ns)``                                       |                                                                               |                    |
+| | ``ACQ:TRig:DLY:NS?`` > ``128`` ns                | | Python: ``rp_AcqGetTriggerDelayNs()``                                              |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:DLY:NS?`` > ``<time>``                | | C: ``rp_AcqGetTriggerDelayNs(int64_t* time_ns)``                                   | Get the trigger delay in ns.                                                  | 1.04-18 and up     |
+| | -                                                | | C: ``rp_AcqGetPreTriggerCounter(uint32_t* value)``                                 | | Get the pretrigger sample count (how many samples are in the buffer before  | 1.04-18 and up     |
+| |                                                  | |                                                                                    | | the trigger position).                                                      |                    |
+| |                                                  | | Python: ``rp_AcqGetPreTriggerCounter()``                                           | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
++----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:TRig:HYST <voltage>``                      | | C: ``rp_AcqSetTriggerHyst(float voltage)``                                         | Set the trigger hysteresis threshold value in Volts.                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:DLY:NS?`` > ``128ns``                 | | Python: ``rp_AcqGetTriggerDelayNs()``                                              |                                                                               |                    |
+| | ``ACQ:TRig:HYST 0.005``                          | | Python: ``rp_AcqSetTriggerHyst(<voltage>)``                                        |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:HYST level``                          | | C: ``rp_AcqSetTriggerHyst(float voltage)``                                         | Sets the trigger threshold hysteresis value in volts.                         | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:HYST 0.005``                          | | Python: ``rp_AcqSetTriggerHyst(voltage)``                                          |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:HYST?`` > ``level``                   | | C: ``rp_AcqGetTriggerHyst(float* voltage)``                                        | Gets currently set trigger threshold hysteresis value in volts.               | 1.04-18 and up     |
+| | ``ACQ:TRig:HYST?`` > ``<voltage>``               | | C: ``rp_AcqGetTriggerHyst(float* voltage)``                                        | Get the trigger hysteresis threshold value in Volts.                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
 | | ``ACQ:TRig:HYST?`` > ``0.005`` V                 | | Python: ``rp_AcqGetTriggerHyst()``                                                 |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:GAIN <gain>``                      | | C: ``rp_AcqSetGain(rp_channel_t channel, rp_pinState_t state)``                    | | Set the gain settings to HIGH or LOW.                                       | 1.04-18 and up     |
-| |                                                  | |                                                                                    | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |                    |
-| | Example:                                         | | Python: ``rp_AcqSetGain(channel, state)``                                          | | This gain refers to jumper settings on Red Pitaya fast analog inputs.       |                    |
-| | ``ACQ:SOUR1:GAIN LV``                            | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:GAIN?`` > ``<gain>``               | | C: ``rp_AcqGetGain(rp_channel_t channel, rp_pinState_t* state)``                   | | Get the gain setting.                                                       | 1.04-18 and up     |
-| |                                                  | |                                                                                    | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |                    |
-| | Example:                                         | | Python: ``rp_AcqGetGain(channel)``                                                 |                                                                               |                    |
-| | ``ACQ:SOUR1:GAIN?`` > ``HV``                     | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:COUP <mode>``                      | | C: ``rp_AcqSetAC_DC(rp_channel_t channel,rp_acq_ac_dc_mode_t mode)``               | Sets the AC / DC modes of input.                                              | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:SOUR1:COUP AC``                            | | Python: ``rp_AcqSetAC_DC(channel, mode)``                                          |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:COUP?`` > ``<mode>``               | | C: ``rp_AcqGetAC_DC(rp_channel_t channel,rp_acq_ac_dc_mode_t *status)``            | Get the AC / DC modes of input.                                               | 1.04-18 and up     |
-| | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:SOUR1:COUP?`` > ``AC``                     | | Python: ``rp_AcqGetAC_DC(channel)``                                                |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
-+----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:LEV <level>``                         | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the trigger level in V.                                                   | 1.04-18 and up     |
+| | ``ACQ:TRig:LEV <voltage>``                       | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the trigger level in V.                                                   | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:LEV 0.125 V``                         | | Python: ``rp_AcqSetTriggerLevel(channel, voltage)``                                |                                                                               |                    |
+| | ``ACQ:TRig:LEV 0.125 V``                         | | Python: ``rp_AcqSetTriggerLevel(<channel>, <voltage>)``                            |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:LEV?`` > ``level``                    | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the trigger level in V.                                                   | 1.04-18 and up     |
+| | ``ACQ:TRig:LEV?`` > ``<voltage>``                | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the trigger level in V.                                                   | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:LEV?`` > ``0.123 V``                  | | Python: ``rp_AcqGetTriggerLevel(channel)``                                         |                                                                               |                    |
+| | ``ACQ:TRig:LEV?`` > ``0.123`` V                  | | Python: ``rp_AcqGetTriggerLevel(<channel>)``                                       |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:LEV <level>``                     | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the external trigger level in V.                                          | 1.04-18 and up     |
+| | ``ACQ:TRig:EXT:LEV <voltage>``                   | | C: ``rp_AcqSetTriggerLevel(rp_channel_trigger_t channel, float voltage)``          | Set the external trigger level in V.                                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:TRig:EXT:LEV 1``                           | | Python: ``rp_AcqSetTriggerLevel(channel, voltage)``                                |                                                                               |                    |
+| | ``ACQ:TRig:EXT:LEV 1``                           | | Python: ``rp_AcqSetTriggerLevel(<channel>, <voltage>)``                            |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:LEV?`` > ``level``                | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the external trigger level in V.                                          | 1.04-18 and up     |
+| | ``ACQ:TRig:EXT:LEV?`` > ``<voltage>``            | | C: ``rp_AcqGetTriggerLevel(rp_channel_trigger_t channel, float* voltage)``         | Get the external trigger level in V.                                          | 1.04-18 and up     |
 | | Example:                                         | |                                                                                    | (Only SIGNALlab 250-12)                                                       |                    |
-| | ``ACQ:TRig:EXT:LEV?`` > ``1``                    | | Python: ``rp_AcqGetTriggerLevel(channel)``                                         |                                                                               |                    |
+| | ``ACQ:TRig:EXT:LEV?`` > ``1``                    | | Python: ``rp_AcqGetTriggerLevel(<channel>)``                                       |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US] <utime>``          | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | Sets ext. trigger debouncer for acquisition in Us (Value must be positive).   | 2.00-15 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US] 1``                | | Python: ``rp_AcqSetExtTriggerDebouncerUs(value)``                                  |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US] <value>``          | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | | Set the external trigger acquisition debouncer in microseconds (value must  | 2.00-15 and up     |
+| | Example:                                         | |                                                                                    | | be positive).                                                               |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US] 1``                | | Python: ``rp_AcqSetExtTriggerDebouncerUs(<value>)``                                | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``<utime>``   | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | Gets ext. trigger debouncer for acquisition in Us.                            | 2.00-15 and up     |
-| | Example:                                         | |                                                                                    |                                                                               |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``1``         | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       |                                                                               |                    |
-| |                                                  | |                                                                                    |                                                                               |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``<value>``   | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | | Set the external trigger acquisition debouncer in microseconds.             | 2.00-15 and up     |
+| | Example:                                         | |                                                                                    | |                                                                             |                    |
+| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``1``         | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       | |                                                                             |                    |
+| |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 
-.. _scpi_data_pointers:
 
-=============
+
+
+---------------
 Data pointers
-=============
+---------------
 
-The data is written into a circular buffer which is constantly being overwritten until the triggering moment. Consequently, the trigger position can be anywhere inside the circular buffer,
-even though it is displayed to happen at approx. 8192nd sample in the acquired data (is affected by the ``ACQ:TRIG:DLY`` command).
+The data is written into a circular buffer, which is constantly overwritten, until the triggering moment. Consequently, the trigger position can be anywhere inside the circular buffer,
+even though it is displayed to happen at approximately 8192nd sample in the acquired data (is affected by the ``ACQ:TRIG:DLY`` command).
 
-Parameter options:
+**Parameter options:**
 
-* ``<pos> = {position inside circular buffer}`` (0 ... 16383)
+- ``<pos> = {position inside circular buffer}`` (0 ... 16383)
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
-| SCPI                            | API                                                       | DESCRIPTION                                            |  ECOSYSTEM         |
+| SCPI                            | API, Jupyter                                              | DESCRIPTION                                            |  ECOSYSTEM         |
 +=================================+===========================================================+========================================================+====================+
-| | ``ACQ:WPOS?`` > ``pos``       | | C: ``rp_AcqGetWritePointer(uint32_t* pos)``             | Returns the current position of the write pointer.     | 1.04-18 and up     |
+| | ``ACQ:WPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointer(uint32_t* pos)``             | Returns the current position of the write pointer.     | 1.04-18 and up     |
 | | Example:                      | |                                                         |                                                        |                    |
 | | ``ACQ:WPOS?`` > ``1024``      | | Python: ``rp_AcqGetWritePointer()``                     |                                                        |                    |
 | |                               | |                                                         |                                                        |                    |
 +---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
-| | ``ACQ:TPOS?`` > ``pos``       | | C: ``rp_AcqGetWritePointerAtTrig(uint32_t* pos)``       | Returns the position where the trigger event appeared. | 1.04-18 and up     |
+| | ``ACQ:TPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointerAtTrig(uint32_t* pos)``       | Returns the position where the trigger event appeared. | 1.04-18 and up     |
 | | Example:                      | |                                                         |                                                        |                    |
 | | ``ACQ:TPOS?`` > ``512``       | | Python: ``rp_AcqGetWritePointerAtTrig()``               |                                                        |                    |
 | |                               | |                                                         |                                                        |                    |
 +---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
 
-.. _scpi_data:
 
-=========
+-----------
 Data read
-=========
+-----------
 
-* ``<n> = {1,2}`` (set channel IN1 or IN2)
-* ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
-* ``<format> = {BIN, ASCII}`` Default ``ASCII``
-* ``<start_pos> = {0,1,...,16383}``
-* ``<stop_pos>  = {0,1,...,16383}``
-* ``<m>  = {0,1,...,16384}``
+**Parameter options:**
 
-.. note::
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
+- ``<start_pos>, <end_pos>, <pos> = {0, 1, ..., 16383}``
+- ``<buffer>`` Array to store the data into. For Python API use ``rp_createBuffer`` and for C API use *malloc*.
+- ``<buffer_size>`` Size of the array for data storage.
 
-   For STEMlab 125-14 4-Input ``<n> = {1,2,3,4}`` (set channel IN1, IN2, IN3 or IN4)
+*STEMlab 125-14 4-Input only (additional):*
+
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| SCPI                                        | API                                                                                                                                      | DESCRIPTION                                                                            |  ECOSYSTEM         |
+| SCPI                                        | API, Jupyter                                                                                                                             | DESCRIPTION                                                                            |  ECOSYSTEM         |
 +=============================================+==========================================================================================================================================+========================================================================================+====================+
-| | ``ACQ:DATA:Units <units>``                | | C: ``rp_AcqScpiDataUnits``                                                                                                             | Select units in which the acquired data will be returned.                              | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:DATA:Units RAW``                    | | Python:                                                                                                                                |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:DATA:Units?`` > ``<units>``         | | C: ``rp_AcqGetScpiDataUnits``                                                                                                          | Get units in which the acquired data will be returned.                                 | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:DATA:Units?`` > ``RAW``             | | Python:                                                                                                                                |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:DATA:FORMAT <format>``              | | C: ``rp_AcqScpiDataFormat``                                                                                                            | Select the format in which the acquired data will be returned.                         | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:DATA:FORMAT ASCII``                 | | Python:                                                                                                                                |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Start:End?``           | | C: ``rp_AcqGetDataPosRaw(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, int16_t* buffer, uint32_t* buffer_size)``         | | Read samples from start to stop position.                                            | 1.04-18 and up     |
-| | ``<start_pos>,<end_pos>``                 | |    ``rp_AcqGetDataPosV(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, float* buffer, uint32_t* buffer_size)``             | | ``<start_pos> = {0,1,...,16384}``                                                    |                    |
-| | Example:                                  | | Python: ``rp_AcqGetDataPosRaw(channel, start_pos, end_pos, buffer, buffer_size)``                                                      | | ``<stop_pos>  = {0,1,...,16384}``                                                    |                    |
-| | ``ACQ:SOUR1:DATA:Start:End? 10,13`` >     | |         ``rp_AcqGetDataPosV(channel, start_pos, end_pos, buffer, buffer_size)``                                                        | |                                                                                      |                    |
+| | ``ACQ:SOUR<n>:DATA:Start:End?``           | | C: ``rp_AcqGetDataPosRaw(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, int16_t* buffer, uint32_t* buffer_size)``         | | Read samples from start to end position. For API commands, the buffer for data       | 1.04-18 and up     |
+| | ``<start_pos>,<end_pos>``                 | |    ``rp_AcqGetDataPosV(rp_channel_t channel, uint32_t start_pos, uint32_t end_pos, float* buffer, uint32_t* buffer_size)``             | | storage and its size must also be provided. Use ``rp_createBuffer`` to allocate data |                    |
+| | Example:                                  | | Python: ``rp_AcqGetDataPosRaw(<channel>, <start_pos>, <end_pos>, <buffer>, <buffer_size>)``                                            | | for Python and *malloc* for C. API commands have two functions to return data in     |                    |
+| | ``ACQ:SOUR1:DATA:Start:End? 10,13`` >     | |         ``rp_AcqGetDataPosV(<channel>, <start_pos>, <end_pos>, <buffer>, <buffer_size>)``                                              | | Volts or RAW.                                                                        |                    |
 | | ``{123,231,-231}``                        | |                                                                                                                                        | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Start:N?``             | | C: ``rp_AcqGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                          | | Read ``m`` samples from the start position onwards.                                  | 1.04-18 and up     |
-| | ``<start_pos>,<m>``                       | |    ``rp_AcqGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                                               | |                                                                                      |                    |
-| | Example:                                  | | Python: ``rp_AcqGetDataRaw(channel, pos, size, buffer)``                                                                               | |                                                                                      |                    |
-| | ``ACQ:SOUR1:DATA:Start:N? 10,3`` >        | |         ``rp_AcqGetDataV(channel, pos, size, buffer)``                                                                                 | |                                                                                      |                    |
+| | -                                         | | C: ``rp_AcqGetDataRawWithCalib(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                 | | Read ``<size>`` samples from the ``<pos>`` onwards. The data is returned in RAW      | 1.04-18 and up     |
+| |                                           | |                                                                                                                                        | | format with calibration applied.                                                     |                    |
+| |                                           | | Python: ``rp_AcqGetDataRawWithCalib(<channel>, <pos>, <size>, <buffer>)``                                                              | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+| | -                                         | | C: ``rp_AcqGetNormalizedDataPos(uint32_t pos)``                                                                                        | | Normalizes the ADC buffer position. Returns the modulo operation of ADC buffer size. | 1.04-18 and up     |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
+| |                                           | | Python: ``rp_AcqGetNormalizedDataPos(<pos>)``                                                                                          | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:SOUR<n>:DATA:Start:N?``             | | C: ``rp_AcqGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                          | | Read ``size`` samples from the ``<start_pos>`` onwards.                              | 1.04-18 and up     |
+| | ``<start_pos>,<size>``                    | |    ``rp_AcqGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                                               | |                                                                                      |                    |
+| | Example:                                  | | Python: ``rp_AcqGetDataRaw(<channel>, <pos>, <size>, <buffer>)``                                                                       | |                                                                                      |                    |
+| | ``ACQ:SOUR1:DATA:Start:N? 10,3`` >        | |         ``rp_AcqGetDataV(<channel>, <pos>, <size>, <buffer>)``                                                                         | |                                                                                      |                    |
 | | ``{1.2,3.2,-1.2}``                        | |                                                                                                                                        | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | | ``ACQ:SOUR<n>:DATA?``                     | | C: ``rp_AcqGetOldestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read the full buffer.                                                                | 1.04-18 and up     |
 | | Example:                                  | |    ``rp_AcqGetOldestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | | Starting from the oldest sample in the buffer (first sample after trigger delay).    |                    |
-| | ``ACQ:SOUR2:DATA?`` >                     | | Python: ``rp_AcqGetOldestDataRaw(channel, size, buffer)``                                                                              | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
-| | ``{1.2,3.2,...,-1.2}``                    | |         ``rp_AcqGetOldestDataV(channel, size, buffer)``                                                                                | | If the trigger delay is set to zero, it will read the full buffer size starting      |                    |
-| |                                           | |                                                                                                                                        | | from the trigger.                                                                    |                    |
+| | ``ACQ:SOUR2:DATA?`` >                     | | Python: ``rp_AcqGetOldestDataRaw(<channel>, <size>, <buffer>)``                                                                        | | If the trigger delay is set to zero, it will read the full buffer size starting      |                    |
+| | ``{1.2,3.2,...,-1.2}``                    | |         ``rp_AcqGetOldestDataV(<channel>, <size>, <buffer>)``                                                                          | | from the trigger.                                                                    |                    |
+| |                                           | |                                                                                                                                        | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Old:N? <m>``           | | C: ``rp_AcqGetOldestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``m`` samples after the trigger delay, starting from the oldest sample          | 1.04-18 and up     |
+| | ``ACQ:SOUR<n>:DATA:Old:N? <size>``        | | C: ``rp_AcqGetOldestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``<size>`` samples after the trigger delay, starting from the oldest sample     | 1.04-18 and up     |
 | | Example:                                  | |    ``rp_AcqGetOldestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | | in the buffer (first sample after trigger delay).                                    |                    |
-| | ``ACQ:SOUR2:DATA:Old:N? 3`` >             | | Python: ``rp_AcqGetOldestDataRaw(channel, size, buffer)``                                                                              | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
-| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetOldestDataV(channel, size, buffer)``                                                                                | | If the trigger delay is set to zero, it will read m samples starting                 |                    |
+| | ``ACQ:SOUR2:DATA:Old:N? 3`` >             | | Python: ``rp_AcqGetOldestDataRaw(<channel>, <size>, <buffer>)``                                                                        | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
+| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetOldestDataV(<channel>, <size>, <buffer>)``                                                                          | | If the trigger delay is set to zero, it will read m samples starting                 |                    |
 | |                                           | |                                                                                                                                        | | from the trigger.                                                                    |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SOUR<n>:DATA:Last:N? <m>``          | | C: ``rp_AcqGetLatestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``m`` samples before the trigger delay.                                         | 1.04-18 and up     |
+| | ``ACQ:SOUR<n>:DATA:Last:N? <size>``       | | C: ``rp_AcqGetLatestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read ``<size>`` samples before the trigger delay.                                    | 1.04-18 and up     |
 | | Example:                                  | |    ``rp_AcqGetLatestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
-| | ``ACQ:SOUR1:DATA:Last:N? 3`` >            | | Python: ``rp_AcqGetLatestDataRaw(channel, size, buffer)``                                                                              | | If the trigger delay is set to zero, it will read m samples before the trigger.      |                    |
-| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetLatestDataV(channel, size, buffer)``                                                                                | |                                                                                      |                    |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:BUF:SIZE?`` > ``<size>``            | | C: ``rp_AcqGetBufSize(uint32_t *size)``                                                                                                |  Returns the buffer size.                                                              | 1.04-18 and up     |
-| | Example:                                  | |                                                                                                                                        |                                                                                        |                    |
-| | ``ACQ:BUF:SIZE?`` > ``16384``             | | Python: ``rp_AcqGetBufSize(size)``                                                                                                     |                                                                                        |                    |
-| |                                           | |                                                                                                                                        |                                                                                        |                    |
+| | ``ACQ:SOUR1:DATA:Last:N? 3`` >            | | Python: ``rp_AcqGetLatestDataRaw(<channel>, <size>, <buffer>)``                                                                        | | If the trigger delay is set to zero, it will read m samples before the trigger.      |                    |
+| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetLatestDataV(<channel>, <size>, <buffer>)``                                                                          | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 
 
-
-.. _scpi_dma:
+.. _commands_dma:
 
 ==============================
 Deep Memory Acquisition (DMA)
 ==============================
 
-* ``<n> = {1,2}`` (set channel IN1 or IN2)
-* ``<units> = {RAW, VOLTS}`` Default: ``VOLTS``
-* ``<decimation> = {1,2,4,8,16,17,18,19,...,65534,65535,65536}`` Default: ``1``
-* ``<byte> = {0...}`` in bytes
-* ``<count> = {value in samples}`` Default: ``0``
-* ``<pos> = {position inside circular buffer in samples}``
-* ``<state> = {ON,OFF}`` Default: ``OFF``
-* ``<start> = {byte}`` Address of reserved memory
-* ``<size> = {byte}`` Size of buffer in bytes. Default: 2 MB
+-------------
+DMA settings
+-------------
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
+- ``<byte> = {0...}`` in bytes
+- ``<decimation> = {1,2,4,8,16,17,18,19,...,65534,65535,65536}`` Default: ``1``
+- ``<decimated_data_num> = {value in samples}`` Default: ``0``
+- ``<pos> = {position inside circular buffer in samples}``
+- ``<enable> = {ON,OFF}`` Default: ``OFF``
+- ``<address> = {byte}`` Address of reserved memory
+- ``<size> = {byte}`` Size of buffer in bytes. Default: 2 MB
+- ``<samples> = {sample}`` Size of the acquisition buffer in samples. Default: 2 MB
+- ``<units> = {RAW, VOLTS}`` Default: ``VOLTS``
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
+
+
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| SCPI                                                      | API, Jupyter                                                                                                               | DESCRIPTION                                                                     |  ECOSYSTEM         |
++===========================================================+============================================================================================================================+=================================================================================+====================+
+| | ``ACQ:AXI:START?`` > ``<byte>``                         | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                        | | Returns the start address of the Deep Memory region.                          | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          | | API: Also returns the size of the memory region.                              |                    |
+| | ``ACQ:AXI:START?`` > ``16777216``                       | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                   | | This can also be achieved by displaying values of ``ADC_AXI_START``           |                    |
+| |                                                         | |                                                                                                                          | | and ``ADC_AXI_END`` macros.                                                   |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SIZE?`` > ``<byte>``                          | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                        | | Get size of reserved memory for Deep Memory mode.                             | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          | | **API:** Also returns the start address of the memory region.                 |                    |
+| | ``ACQ:AXI:SIZE?`` > ``2097152``                         | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                   | | This can also be achieved by displaying values of ``ADC_AXI_START``           |                    |
+| |                                                         | |                                                                                                                          | | and ``ADC_AXI_END`` macros.                                                   |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:DEC <decimation>``                            | | C: ``rp_AcqAxiSetDecimationFactor(uint32_t decimation)``                                                                 | Sets the decimation used at acquiring signal for the Deep Memory Mode.          | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:DEC 4``                                       | | Python: ``rp_AcqAxiSetDecimationFactor(<decimation>)``                                                                   |                                                                                 |                    |
+| |                                                         | |                                                                                                                          |                                                                                 |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:DEC?`` > ``<decimation>``                     | | C: ``rp_AcqAxiGetDecimationFactor(uint32_t *decimation)``                                                                | Returns the decimation used for acquiring signal for the Deep Memory Mode.      | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:DEC?`` > ``1``                                | | Python: ``rp_AcqAxiGetDecimationFactor()``                                                                               |                                                                                 |                    |
+| |                                                         | |                                                                                                                          |                                                                                 |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:ENable <enable>``                     | | C: ``rp_AcqAxiEnable(rp_channel_t channel, bool enable)``                                                                | Sets the Deep Memory enable state.                                              | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          |                                                                                 |                    |
+| | ``ACQ:AXI:SOUR1:ENable ON``                             | | Python: ``rp_AcqAxiEnable(<channel>, <enable>)``                                                                         |                                                                                 |                    |
+| |                                                         | |                                                                                                                          |                                                                                 |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:Trig:Dly <decimated_data_num>``       | | C: ``rp_AcqAxiSetTriggerDelay(rp_channel_t channel, int32_t decimated_data_num)``                                        | | Sets the number of decimated data after the trigger is                        | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          | | written into memory.                                                          |                    |
+| | ``ACQ:AXI:SOUR1:Trig:Dly 2314``                         | | Python: ``rp_AcqAxiSetTriggerDelay(<channel>, <decimated_data_num>)``                                                    | |                                                                               |                    |
+| |                                                         | |                                                                                                                          | |                                                                               |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:Trig:Dly?`` > ``<decimated_data_num>``| | C: ``rp_AcqAxiGetTriggerDelay(rp_channel_t channel, int32_t *decimated_data_num)``                                       | | Returns the number of decimated data after the trigger is                     | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          | | written into memory.                                                          |                    |
+| | ``ACQ:AXI:SOUR1:Trig:Dly?`` > ``2314``                  | | Python: ``rp_AcqAxiGetTriggerDelay(<channel>)``                                                                          | |                                                                               |                    |
+| |                                                         | |                                                                                                                          | |                                                                               |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:SOUR<n>:SET:Buffer <address>,<size>``         | | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel, uint32_t address, uint32_t samples)``                               | | Sets the Deep Memory buffer address and size in samples.                      | 2.00-18 and up     |
+| | Example:                                                | |    ``rp_AcqAxiSetBufferBytes(rp_channel_t channel, uint32_t address, uint32_t size)``                                    | | Buffer size must be a multiple of 2.                                          |                    |
+| | ``ACQ:AXI:SOUR<n>:SET:Buffer 16777216,512``             | | Python: ``rp_AcqAxiSetBufferSamples(<channel>, <address>, <samples>)``                                                   | |                                                                               |                    |
+| |                                                         | |         ``rp_AcqAxiSetBufferBytes(<channel>, <address>, <size>)``                                                        | |                                                                               |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:DATA:UNITS <units>``                          | | C: - (see ``rp_AcqAxiGetDataV`` and ``rp_AcqAxiGetDataRaw``)                                                             | | Select units in which the acquired data will be returned.                     | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          | | For API commands the units are selected with the get data function.           |                    |
+| | ``ACQ:AXI:DATA:UNITS RAW``                              | | Python: - (see ``rp_AcqAxiGetDataV`` and ``rp_AcqAxiGetDataRaw``)                                                        | |                                                                               |                    |
+| |                                                         | |                                                                                                                          | |                                                                               |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AXI:DATA:UNITS?`` > ``<units>``                   | | C: - (see ``rp_AcqAxiGetDataV`` and ``rp_AcqAxiGetDataRaw``)                                                             | | Get units in which the acquired data will be returned.                        | 2.00-18 and up     |
+| | Example:                                                | |                                                                                                                          | | For API commands the units are selected with the get data function.           |                    |
+| | ``ACQ:AXI:DATA:UNITS?`` > ``RAW``                       | | Python: - (see ``rp_AcqAxiGetDataV`` and ``rp_AcqAxiGetDataRaw``)                                                        | |                                                                               |                    |
+| |                                                         | |                                                                                                                          | |                                                                               |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | - (NA)                                                  | | C: - (look for *malloc* function online)                                                                                 | | Performs memory allocation and returns the requested buffer.                  | 2.00-18 and up     |
+| |                                                         | |                                                                                                                          | | - ``<maxChannels>`` - how many channels will be acquired                      |                    |
+| |                                                         | | Python: ``rp_createBuffer(<maxChannels>, <length>, <initInt16>, <initDouble>, <initFloat>)``                             | | - ``<enght>`` - length of the buffer in samples (max 16384)                   |                    |
+| |                                                         | |                                                                                                                          | | - ``<initInt16>, <initDouble>, <initFloat>`` - buffer sample type, set one    |                    |
+| |                                                         | |                                                                                                                          | |   to ``true``, others are ``false``.                                          |                    |
+| |                                                         | |                                                                                                                          | | For Python API specifically.                                                  |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | - (NA)                                                  | | C: - (look for *free* function online)                                                                                   | | Free the allocated resources.                                                 | 2.00-18 and up     |
+| |                                                         | |                                                                                                                          | | - ``<buffer>`` - buffer to be released/freed                                  |                    |
+| |                                                         | | Python: ``rp_deleteBuffer(<buffer>)``                                                                                    | | For Python API specifically.                                                  |                    |
+| |                                                         | |                                                                                                                          | |                                                                               |                    |
++-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+
+
+
+
+----------------
+DMA data read
+----------------
+
+**Parameter options:**
+
+- ``<n> = {1,2}`` (set channel IN1 or IN2)
+- ``<count> = {value in samples}`` Default: ``0``
+- ``<pos> = {samples}`` Position inside circular buffer in samples
+- ``<size> = {samples}`` Size of acquired data in samples
+- ``<buffer>`` Array to store the data into. For Python API use ``rp_createBuffer`` and for C API use *malloc*.
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- ``<n> = {3,4}`` (set channel IN3, or IN4)
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
+
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| SCPI                                               | API                                                                                                                        | DESCRIPTION                                                                     |  ECOSYSTEM         |
+| SCPI                                               | API, Jupyter                                                                                                               | DESCRIPTION                                                                     |  ECOSYSTEM         |
 +====================================================+============================================================================================================================+=================================================================================+====================+
-| | ``ACQ:AXI:DATA:UNITS <units>``                   | | -                                                                                                                        | Select units in which the acquired data will be returned.                       | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
-| | ``ACQ:AXI:DATA:UNITS RAW``                       | |                                                                                                                          |                                                                                 |                    |
-| |                                                  | |                                                                                                                          |                                                                                 |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DATA:UNITS?`` > ``<units>``            | | -                                                                                                                        | Get units in which the acquired data will be returned.                          | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
-| | ``ACQ:AXI:DATA:UNITS?`` > ``RAW``                | |                                                                                                                          |                                                                                 |                    |
-| |                                                  | |                                                                                                                          |                                                                                 |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DEC <decimation>``                     | | C: ``rp_AcqAxiSetDecimationFactor(uint32_t decimation)``                                                                 | Sets the decimation used at acquiring signal for the Deep Memory Mode.          | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
-| | ``ACQ:AXI:DEC 4``                                | | Python: ``rp_AcqAxiSetDecimationFactor(decimation)``                                                                     |                                                                                 |                    |
-| |                                                  | |                                                                                                                          |                                                                                 |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:DEC?`` > ``<decimation>``              | | C: ``rp_AcqAxiGetDecimationFactor(uint32_t *decimation)``                                                                | Returns the decimation used for acquiring signal for the Deep Memory Mode.      | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
-| | ``ACQ:AXI:DEC?`` > ``1``                         | | Python: ``rp_AcqAxiGetDecimationFactor()``                                                                               |                                                                                 |                    |
-| |                                                  | |                                                                                                                          |                                                                                 |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:START?`` > ``<byte>``                  | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                        | | Returns the start address of the Deep Memory region.                          | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          | | API: Also returns the size of the memory region.                              |                    |
-| | ``ACQ:AXI:START?`` > ``16777216``                | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                   | | This can also be achieved by displaying values of ``ADC_AXI_START``           |                    |
-| |                                                  | |                                                                                                                          | | and ``ADC_AXI_END`` macros.                                                   |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SIZE?`` > ``<byte>``                   | | C: ``rp_AcqAxiGetMemoryRegion(uint32_t *_start,uint32_t *_size)``                                                        | | Get size of reserved memory for Deep Memory mode.                             | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          | | **API:** Also returns the start address of the memory region.                 |                    |
-| | ``ACQ:AXI:SIZE?`` > ``2097152``                  | | Python: ``rp_AcqAxiGetMemoryRegion()``                                                                                   | | This can also be achieved by displaying values of ``ADC_AXI_START``           |                    |
-| |                                                  | |                                                                                                                          | | and ``ADC_AXI_END`` macros.                                                   |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:ENable <state>``               | | C: ``rp_AcqAxiEnable(rp_channel_t channel, bool enable)``                                                                | Sets the Deep Memory enable state.                                              | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:ENable ON``                      | | Python: ``rp_AcqAxiEnable(channel, enable)``                                                                             |                                                                                 |                    |
-| |                                                  | |                                                                                                                          |                                                                                 |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
 | | ``ACQ:AXI:SOUR<n>:TRIG:FILL?``                   | | C: ``rp_AcqAxiGetBufferFillState(rp_channel_t channel, bool* state)``                                                    | Indicates whether the Deep Memory buffer was full of data.                      | 2.00-18 and up     |
 | | Example:                                         | |                                                                                                                          |                                                                                 |                    |
-| | ``ACQ:AXI:SOUR1:TRIG:FILL?`` > ``1``             | | Python: ``rp_AcqAxiGetBufferFillState(channel)``                                                                         |                                                                                 |                    |
+| | ``ACQ:AXI:SOUR1:TRIG:FILL?`` > ``1``             | | Python: ``rp_AcqAxiGetBufferFillState(<channel>)``                                                                       |                                                                                 |                    |
 | |                                                  | |                                                                                                                          |                                                                                 |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Dly <count>``             | | C: ``rp_AcqAxiSetTriggerDelay(rp_channel_t channel, int32_t decimated_data_num)``                                        | | Sets the number of decimated data after the trigger is                        | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          | | written into memory.                                                          |                    |
-| | ``ACQ:AXI:SOUR1:Trig:Dly 2314``                  | | Python: ``rp_AcqAxiSetTriggerDelay(channel, decimated_data_num)``                                                        | |                                                                               |                    |
-| |                                                  | |                                                                                                                          | |                                                                               |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Dly?`` > ``<count>``      | | C: ``rp_AcqAxiGetTriggerDelay(rp_channel_t channel, int32_t *decimated_data_num)``                                       | | Returns the number of decimated data after the trigger is                     | 2.00-18 and up     |
-| | Example:                                         | |                                                                                                                          | | written into memory.                                                          |                    |
-| | ``ACQ:AXI:SOUR1:Trig:Dly?`` > ``2314``           | | Python: ``rp_AcqAxiGetTriggerDelay(channel)``                                                                            | |                                                                               |                    |
-| |                                                  | |                                                                                                                          | |                                                                               |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Write:Pos?`` > ``pos``         | | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t* pos)``                                                     | | Returns current position of the Deep Memory write pointer.                    | 2.00-18 and up     |
+| | ``ACQ:AXI:SOUR<n>:Write:Pos?`` > ``<pos>``       | | C: ``rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t* pos)``                                                     | | Returns current position of the Deep Memory write pointer.                    | 2.00-18 and up     |
 | | Example:                                         | |                                                                                                                          | |                                                                               |                    |
-| | ``ACQ:AXI:SOUR1:Write:Pos?`` > ``1024``          | | Python: ``rp_AcqAxiGetWritePointer(channel)``                                                                            | |                                                                               |                    |
+| | ``ACQ:AXI:SOUR1:Write:Pos?`` > ``1024``          | | Python: ``rp_AcqAxiGetWritePointer(<channel>)``                                                                          | |                                                                               |                    |
 | |                                                  | |                                                                                                                          | |                                                                               |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``pos``          | | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel, uint32_t* pos)``                                               | | Returns position of Deep Memory write pointer at time when                    | 2.00-18 and up     |
+| | ``ACQ:AXI:SOUR<n>:Trig:Pos?`` > ``<pos>``        | | C: ``rp_AcqAxiGetWritePointerAtTrig(rp_channel_t channel, uint32_t* pos)``                                               | | Returns position of Deep Memory write pointer at time when                    | 2.00-18 and up     |
 | | Example:                                         | |                                                                                                                          | | the trigger arrived.                                                          |                    |
-| | ``ACQ:AXI:SOUR1:Trig:Pos?`` > ``512``            | | Python: ``rp_AcqAxiGetWritePointerAtTrig(channel)``                                                                      | |                                                                               |                    |
+| | ``ACQ:AXI:SOUR1:Trig:Pos?`` > ``512``            | | Python: ``rp_AcqAxiGetWritePointerAtTrig(<channel>)``                                                                    | |                                                                               |                    |
 | |                                                  | |                                                                                                                          | |                                                                               |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:SET:Buffer <start>,<size>``    | | C: ``rp_AcqAxiSetBufferSamples(rp_channel_t channel, uint32_t address, uint32_t samples)``                               | | Sets the Deep Memory buffer address and size in samples.                      | 2.00-18 and up     |
-| | Example:                                         | |    ``rp_AcqAxiSetBufferBytes(rp_channel_t channel, uint32_t address, uint32_t size)``                                    | | Buffer size must be a multiple of 2.                                          |                    |
-| | ``ACQ:AXI:SOUR<n>:SET:Buffer 16777216,512``      | | Python: ``rp_AcqAxiSetBufferSamples(channel, address, samples)``                                                         | |                                                                               |                    |
-| |                                                  | |         ``rp_AcqAxiSetBufferBytes(channel, address, size)``                                                              | |                                                                               |                    |
-+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:AXI:SOUR<n>:DATA:Start:N? <pos>,<count>``  | | C: ``rp_AcqAxiGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                              | | Read ``count`` samples from the ``pos`` position onwards.                     | 2.00-18 and up     |
-| | Example:                                         | |    ``rp_AcqAxiGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                         | | Returns the value as a text array of values or a byte array.                  |                    |
-| | ``ACQ:AXI:SOUR1:DATA:Start:N? 20,3`` >           | | Python: ``rp_AcqAxiGetDataV(channel, pos, size, buffer)``                                                                | | Depending on the ``ACQ:AXI:DATA:UNITS`` setting.                              |                    |
-| | ``{1.2,3.2,-1.2}``                               | |         ``rp_AcqAxiGetDataRaw(channel, pos, size, buffer)``                                                              | | **API:** Returns the Deep Memory buffer in specified units from specified     |                    |
+| | ``ACQ:AXI:SOUR<n>:DATA:Start:N? <pos>,<size>``   | | C: ``rp_AcqAxiGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                              | | Read ``count`` samples from the ``pos`` position onwards.                     | 2.00-18 and up     |
+| | Example:                                         | |    ``rp_AcqAxiGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                         | | **SCPI:** Returns the value as a text array of values or a byte array.        |                    |
+| | ``ACQ:AXI:SOUR1:DATA:Start:N? 20,3`` >           | | Python: ``rp_AcqAxiGetDataV(<channel>, <pos>, <size>, <buffer>)``                                                        | | Depending on the ``ACQ:AXI:DATA:UNITS`` setting.                              |                    |
+| | ``{1.2,3.2,-1.2}``                               | |         ``rp_AcqAxiGetDataRaw(<channel>, <pos>, <size>, <buffer>)``                                                      | | **API:** Returns the Deep Memory buffer in specified units from specified     |                    |
 | |                                                  | |                                                                                                                          | | position and desired size.                                                    |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
 
 
-.. _scpi_uart:
+
+
+.. _commads_uart:
 
 ====
 UART
 ====
 
-Parameter options:
+**Parameter options:**
 
-* ``<bits> = {CS6, CS7, CS8}``  Default: ``CS8``
-* ``<stop> = {STOP1, STOP2}``  Default: ``STOP1``
-* ``<parity> = {NONE, EVEN, ODD, MARK, SPACE}``  Default: ``NONE``
-* ``<timeout> = {0...255} in (1/10 seconds)`` Default: ``0``
-* ``<speed> = {1200,2400,4800,9600,19200,38400,57600,115200,230400,576000,921000,1000000,1152000,1500000,2000000,2500000,3000000,3500000,4000000}`` Default: ``9600``
-* ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
+- ``<bits> = {CS6, CS7, CS8}``  Default: ``CS8``
+- ``<stop> = {STOP1, STOP2}``  Default: ``STOP1``
+- ``<parity> = {NONE, EVEN, ODD, MARK, SPACE}``  Default: ``NONE``
+- ``<timeout> = {0...255} in (1/10 seconds)`` Default: ``0``
+- ``<speed> = {1200,2400,4800,9600,19200,38400,57600,115200,230400,576000,921000,1000000,1152000,1500000,2000000,2500000,3000000,3500000,4000000}`` Default: ``9600``
+- ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
+
+**Available Jupyter and API macros:**
+
+- *(Future OS release)*
 
 
 .. note::
@@ -899,7 +1464,7 @@ Parameter options:
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
-| SCPI                                | API                                                                 | DESCRIPTION                                                                            |  ECOSYSTEM         |
+| SCPI                                | API, Jupyter                                                        | DESCRIPTION                                                                            |  ECOSYSTEM         |
 +=====================================+=====================================================================+========================================================================================+====================+
 | | ``UART:INIT``                     | | C: ``rp_UartInit()``                                              | Initialises the API for working with UART.                                             | 1.04-18 and up     |
 | | Example:                          | |                                                                   |                                                                                        |                    |
@@ -980,29 +1545,34 @@ Parameter options:
 +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 
 
-.. _scpi_spi:
+
+.. _commands_spi:
 
 ====
 SPI
 ====
 
-Parameter options:
+**Parameter options:**
 
-* ``<mode> = {LISL, LIST, HISL, HIST}``  Default: ``LISL``
-* ``<cs_mode> = {NORMAL, HIGH}``  Default: ``NORMAL``
-* ``<bits> = {7, 8}``  Default: ``8``
-* ``<speed> = {1...100000000}`` Default: ``50000000``
-* ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
+- ``<mode> = {LISL, LIST, HISL, HIST}``  Default: ``LISL``
+- ``<cs_mode> = {NORMAL, HIGH}``  Default: ``NORMAL``
+- ``<bits> = {7, 8}``  Default: ``8``
+- ``<speed> = {1...100000000}`` Default: ``50000000``
+- ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
 
+**Available Jupyter and API macros:**
+
+- *(Future OS release)*
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
-| SCPI                                       | API                                                                                                                      | DESCRIPTION                                                                        |  ECOSYSTEM         |
+| SCPI                                       | API, Jupyter                                                                                                             | DESCRIPTION                                                                        |  ECOSYSTEM         |
 +============================================+==========================================================================================================================+====================================================================================+====================+
 | | ``SPI:INIT``                             | | C: ``rp_SPI_Init()``                                                                                                   | Initializes the API for working with SPI.                                          | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
@@ -1138,31 +1708,35 @@ Parameter options:
 
 
 
-.. _scpi_i2c:
+.. _commands_i2c:
 
 ===
 I2C
 ===
 
-Parameter options:
+**Parameter options:**
 
-* ``<mode>  = {OFF, ON}``  Default: ``OFF``
-* ``<value> = {XXX | #HXX | #QXXX | #BXXXXXXXX}``
-* ``<data>  = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
+- ``<mode>  = {OFF, ON}``  Default: ``OFF``
+- ``<value> = {XXX | #HXX | #QXXX | #BXXXXXXXX}``  Value in Decimal, Hexadecimal, Octal, or Binary format.
+- ``<data>  = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data values separated by commas.
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
 
+**Available Jupyter and API macros:**
+
+- *(Future OS release)*
+
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
-| SCPI                                             | API                                                                             | DESCRIPTION                                                           |  ECOSYSTEM         |
+| SCPI                                             | API, Jupyter                                                                    | DESCRIPTION                                                           |  ECOSYSTEM         |
 +==================================================+=================================================================================+=======================================================================+====================+
-| | ``I2C:DEV<addr> <path>``                       | | C: ``rp_I2C_InitDevice(const char *_device,uint8_t addr)``                    | | Initializes settings for I2C. ``<path>`` - Path to the I2C device   | 1.04-18 and up     |
-| | Example:                                       | |                                                                               | | ``<addr>`` - Device address on the I2C bus in dec format.           |                    |
-| | ``I2C:DEV80 "/dev/i2c-0"``                     | | Python:                                                                       | |                                                                     |                    |
+| | ``I2C:DEV<addr> <path>``                       | | C: ``rp_I2C_InitDevice(const char *_device,uint8_t addr)``                    | | Initializes settings for I2C.                                       | 1.04-18 and up     |
+| | Example:                                       | |                                                                               | | - ``<path>`` - Path to the I2C device.                              |                    |
+| | ``I2C:DEV80 "/dev/i2c-0"``                     | | Python:                                                                       | | - ``<addr>`` - Device address on the I2C bus in dec format.         |                    |
 | |                                                | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:DEV?`` > ``<addr>``                      | | C: ``rp_I2C_getDevAddress(int *address)``                                     | Returns the current address of the device.                            | 1.04-18 and up     |
@@ -1221,6 +1795,7 @@ Parameter options:
 | |                                                | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 
+
 .. note::
 
    SMBUS is a standardized protocol for communicating with I2C devices. Information about this protocol can be found in this link: |SMBUS specs|. IOCTL writes and reads data directly from I2C.
@@ -1231,7 +1806,7 @@ Parameter options:
 
 
 
-.. _scpi_can:
+.. _commands_can:
 
 ===
 CAN
@@ -1239,51 +1814,56 @@ CAN
 
 .. note::
 
-   FPGA v0.94 is required to work with CAN.
+   FPGA image *v0.94* is required to work with CAN.
 
-Parameter options:
+**Parameter options:**
 
-* ``<n> = {0, 1}`` CAN interface
-* ``<bool> = {OFF, ON}``
-* ``<state> = {ERROR_ACTIVE, ERROR_WARNING, ERROR_PASSIVE, BUS_OFF, STOPPED, SLEEPING}``
-* ``<mode> = {LOOPBACK, BERR_REPORTING}``
-* ``<speed> = {1,10000000}``
-* ``<sp> = {0, 0.999}``
-* ``<tq> = {unsigned integer}``
-* ``<prop_seg> = {unsigned integer}``
-* ``<phase_seg1> = {unsigned integer}``
-* ``<phase_seg2> = {unsigned integer}``
-* ``<sjw> = {unsigned integer}``
-* ``<brp> = {unsigned integer}``
-* ``<tseg1_min> = {unsigned integer}``
-* ``<tseg2_min> = {unsigned integer}``
-* ``<tseg2_min> = {unsigned integer}``
-* ``<tseg2_max> = {unsigned integer}``
-* ``<sjw_max> = {unsigned integer}``
-* ``<brp_min> = {unsigned integer}``
-* ``<brp_max> = {unsigned integer}``
-* ``<brp_inc> = {unsigned integer}``
-* ``<limits> = {<tseg1_min>, <tseg2_min>, <tseg2_min>, <tseg2_max>, <sjw_max>, <brp_min>, <brp_max>, <brp_inc>}``
-* ``<clock> = {1...10000000}`` in Hz
-* ``<tx_err> = {unsigned integer}``
-* ``<rx_err> = {unsigned integer}``
-* ``<rs_ms> = {unsigned integer}`` in milliseconds
-* ``<can_id> = {unsigned integer}`` Destination address on CAN bus
-* ``<buffer> = {XXX | XXX,XXX | XXX,XXX,XXX | XXX,...,XXX}`` Bytes for send from 0 to 8
-* ``<timeout> = {unsigned integer}`` in milliseconds. 0 - timeout disabled
-* ``<frame_header> = {unsigned integer}``
-* ``<is_extended> = {0,1}``
-* ``<is_error> = {0,1}``
-* ``<is_rtr> = {0,1}``
-* ``<frame> = {<can_id>, <frame_header>, <is_extended>, <is_error>, <is_rtr>, {<buffer>}}``
-* ``<filter> = {unsigned integer}``
-* ``<mask> = {unsigned integer}``
+- ``<n> = {0, 1}`` CAN interface
+- ``<bool> = {OFF, ON}``
+- ``<state> = {ERROR_ACTIVE, ERROR_WARNING, ERROR_PASSIVE, BUS_OFF, STOPPED, SLEEPING}``
+- ``<mode> = {LOOPBACK, BERR_REPORTING}``
+- ``<speed> = {1,10000000}``
+- ``<sp> = {0, 0.999}``
+- ``<tq> = {unsigned integer}``
+- ``<prop_seg> = {unsigned integer}``
+- ``<phase_seg1> = {unsigned integer}``
+- ``<phase_seg2> = {unsigned integer}``
+- ``<sjw> = {unsigned integer}``
+- ``<brp> = {unsigned integer}``
+- ``<tseg1_min> = {unsigned integer}``
+- ``<tseg2_min> = {unsigned integer}``
+- ``<tseg2_min> = {unsigned integer}``
+- ``<tseg2_max> = {unsigned integer}``
+- ``<sjw_max> = {unsigned integer}``
+- ``<brp_min> = {unsigned integer}``
+- ``<brp_max> = {unsigned integer}``
+- ``<brp_inc> = {unsigned integer}``
+- ``<limits> = {<tseg1_min>, <tseg2_min>, <tseg2_min>, <tseg2_max>, <sjw_max>, <brp_min>, <brp_max>, <brp_inc>}``
+- ``<clock> = {1...10000000}`` in Hz
+- ``<tx_err> = {unsigned integer}``
+- ``<rx_err> = {unsigned integer}``
+- ``<rs_ms> = {unsigned integer}`` in milliseconds
+- ``<can_id> = {unsigned integer}`` Destination address on CAN bus
+- ``<buffer> = {XXX | XXX,XXX | XXX,XXX,XXX | XXX,...,XXX}`` Bytes for send from 0 to 8
+- ``<timeout> = {unsigned integer}`` in milliseconds. 0 - timeout disabled
+- ``<frame_header> = {unsigned integer}``
+- ``<is_extended> = {0,1}``
+- ``<is_error> = {0,1}``
+- ``<is_rtr> = {0,1}``
+- ``<frame> = {<can_id>, <frame_header>, <is_extended>, <is_error>, <is_rtr>, {<buffer>}}``
+- ``<filter> = {unsigned integer}``
+- ``<mask> = {unsigned integer}``
+
+
+**Available Jupyter and API macros:**
+
+- *(Future OS release)*
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
-| SCPI                                                                                | API                                                                           | DESCRIPTION                                                                 |  ECOSYSTEM         |
+| SCPI                                                                                | API, Jupyter                                                                  | DESCRIPTION                                                                 |  ECOSYSTEM         |
 +=====================================================================================+===============================================================================+=============================================================================+====================+
 | | ``CAN:FPGA <bool>``                                                               | | C: ``rp_CanSetFPGAEnable``                                                  | Enables FPGA forwarding from CAN controller to GPIO.                        | in dev             |
 | | Example:                                                                          | |                                                                             |                                                                             |                    |
@@ -1534,50 +2114,114 @@ Parameter options:
 +-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 
 
-.. _scpi_leds:
+
+.. _commands_status_leds:
 
 =============
-Specific LEDs
+Status LEDs
 =============
 
-Parameter options:
+**Parameter options:**
 
-* ``<mode> = {OFF, ON}``  Default: ``ON``
+- ``<enable> = {OFF, ON}``  Default: ``ON``
+
+**Available Jupyter and API macros:**
+
+- *(Future OS release)*
+
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
-| SCPI                                | API                                               | DESCRIPTION                                                                        |  ECOSYSTEM         |
+| SCPI                                | API, Jupyter                                      | DESCRIPTION                                                                        |  ECOSYSTEM         |
 +=====================================+===================================================+====================================================================================+====================+
-| | ``LED:MMC <mode>``                | | C: ``rp_SetLEDMMCState(bool _enable)``          | Turns the Orange LED on or off (responsible for indicating the read memory card).  | 1.04-18 and up     |
+| | ``LED:MMC <enable>``              | | C: ``rp_SetLEDMMCState(bool _enable)``          | Turn the Orange LED on or off (responsible for indicating the read memory card).   | 1.04-18 and up     |
 | | Example:                          | |                                                 |                                                                                    |                    |
 | | ``LED:MMC OFF``                   | | Python:                                         |                                                                                    |                    |
 | |                                   | |                                                 |                                                                                    |                    |
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
-| | ``LED:MMC?`` > ``<mode>``         | | C: ``rp_GetLEDMMCState(bool *_enable)``         | Gets the state of the MMC indicator.                                               | 1.04-18 and up     |
+| | ``LED:MMC?`` > ``<enable>``       | | C: ``rp_GetLEDMMCState(bool *_enable)``         | Get the state of the MMC indicator.                                                | 1.04-18 and up     |
 | | Example:                          | |                                                 |                                                                                    |                    |
 | | ``LED:MMC?`` > ``ON``             | | Python:                                         |                                                                                    |                    |
 | |                                   | |                                                 |                                                                                    |                    |
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
-| | ``LED:HB <mode>``                 | | C: ``rp_SetLEDHeartBeatState(bool _enable)``    | Turns the Red LED on or off (responsible for indicating board activity).           | 1.04-18 and up     |
+| | ``LED:HB <enable>``               | | C: ``rp_SetLEDHeartBeatState(bool _enable)``    | Turn the Red LED on or off (responsible for indicating board activity).            | 1.04-18 and up     |
 | | Example:                          | |                                                 |                                                                                    |                    |
 | | ``LED:HB OFF``                    | | Python:                                         |                                                                                    |                    |
 | |                                   | |                                                 |                                                                                    |                    |
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
-| | ``LED:HB?`` > ``<mode>``          | | C: ``rp_GetLEDMMCState(bool *_enable)``         | Gets the state of the HeartBeat indicator (Red LED).                               | 1.04-18 and up     |
+| | ``LED:HB?`` > ``<enable>``        | | C: ``rp_GetLEDMMCState(bool *_enable)``         | Get the state of the HeartBeat indicator (Red LED).                                | 1.04-18 and up     |
 | | Example:                          | |                                                 |                                                                                    |                    |
 | | ``LED:HB?`` > ``ON``              | | Python:                                         |                                                                                    |                    |
 | |                                   | |                                                 |                                                                                    |                    |
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
-| | ``LED:ETH <mode>``                | | C: ``rp_SetLEDEthState(bool _state)``           | Turns the LED indicators on the Ethernet connector on or off.                      | 1.04-18 and up     |
+| | ``LED:ETH <enable>``              | | C: ``rp_SetLEDEthState(bool _enable)``          | Turn the LED indicators on the Ethernet connector on or off.                       | 1.04-18 and up     |
 | | Example:                          | |                                                 |                                                                                    |                    |
 | | ``LED:ETH OFF``                   | | Python:                                         |                                                                                    |                    |
 | |                                   | |                                                 |                                                                                    |                    |
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
-| | ``LED:ETH?`` > ``<mode>``         | | C: ``rp_GetLEDMMCState(bool *_enable)``         | Gets the state of the Ethernet indicators.                                         | 1.04-18 and up     |
+| | ``LED:ETH?`` > ``<enable>``       | | C: ``rp_GetLEDMMCState(bool *_enable)``         | Ges the state of the Ethernet indicators.                                          | 1.04-18 and up     |
 | | Example:                          | |                                                 |                                                                                    |                    |
 | | ``LED:ETH?`` > ``ON``             | | Python:                                         |                                                                                    |                    |
 | |                                   | |                                                 |                                                                                    |                    |
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 
 
+
+
+
+
+
+.. _commands_temp_prot:
+
+========================
+Temperature protection 
+========================
+
+.. note::
+
+    These commands are available only on SIGNALlab 250-12
+
+**Parameter options:**
+
+- ``<enable> = {true, false}``
+
+**Available Jupyter and API macros:**
+
+- Fast analog channels - ``RP_CH_1, RP_CH_2``
+
+*STEMlab 125-14 4-Input only (additional):*
+
+- Fast analog channels - ``RP_CH_3, RP_CH_4``
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
+| SCPI                                | API, Jupyter                                                                | DESCRIPTION                                                                        |  ECOSYSTEM         |
++=====================================+=============================================================================+====================================================================================+====================+
+| | -                                 | | C: ``rp_SetEnableTempProtection(rp_channel_t channel, bool enable)``      | | Enable/disable the DAC overheating protection mode for the specified fast analog | 1.04-18 and up     |
+| |                                   | |                                                                           | | output (SIGNALlab 250-12 only).                                                  |                    |
+| |                                   | | Python: ``rp_SetEnableTempProtection(<channel>, <enable>)``               | |                                                                                  |                    |
+| |                                   | |                                                                           | |                                                                                  |                    |
++-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
+| | -                                 | | C: ``rp_GetEnableTempProtection(rp_channel_t channel, bool *enable)``     | | Get the Enable/disable DAC overheating protection mode setting for the specified | 1.04-18 and up     |
+| |                                   | |                                                                           | | fast analog output (SIGNALlab 250-12 only).                                      |                    |
+| |                                   | | Python: ``rp_GetEnableTempProtection(<channel>)``                         | |                                                                                  |                    |
+| |                                   | |                                                                           | |                                                                                  |                    |
++-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
+| | -                                 | | C: ``rp_SetLatchTempAlarm(rp_channel_t channel, bool status)``            | | Reset the flag indicating that the DAC is overheated for the specified fast      | 1.04-18 and up     |
+| |                                   | |                                                                           | | analog output (SIGNALlab 250-12 only).                                           |                    |
+| |                                   | | Python: ``rp_SetLatchTempAlarm(<channel>, <status>)``                     | |                                                                                  |                    |
+| |                                   | |                                                                           | |                                                                                  |                    |
++-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
+| | -                                 | | C: ``rp_GetLatchTempAlarm(rp_channel_t channel, bool *status)``           | | Return the flag status indicating that the DAC is overheated for the specified   | 1.04-18 and up     |
+| |                                   | |                                                                           | | fast analog output (SIGNALlab 250-12 only).                                      |                    |
+| |                                   | | Python: ``rp_GetLatchTempAlarm(<channel>)``                               | |                                                                                  |                    |
+| |                                   | |                                                                           | |                                                                                  |                    |
++-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
+| | -                                 | | C: ``rp_GetRuntimeTempAlarm(rp_channel_t channel, bool *status)``         | | Returns the current DAC overheat status in real time (SIGNALlab 250-12 only).    | 1.04-18 and up     |
+| |                                   | |                                                                           | |                                                                                  |                    |
+| |                                   | | Python: ``rp_GetRuntimeTempAlarm(<channel>)``                             | |                                                                                  |                    |
+| |                                   | |                                                                           | |                                                                                  |                    |
++-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+

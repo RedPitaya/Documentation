@@ -133,7 +133,7 @@ Bandwidth
 | Bandwidth                       | 50 MHz (3 dB)                                 |
 +---------------------------------+-----------------------------------------------+
     
-In the picture below, the Frequency Response - Bandwidth of fast analog inputs is shown. Measurements are taken using an |Agilent 33250A| signal generator as a reference. The measured signal is acquired using :ref:`remote control (SCPI commands) <scpi_command_list>`. An amplitude voltage is extracted from the acquired signal and compared to the reference signal amplitude.
+In the picture below, the Frequency Response - Bandwidth of fast analog inputs is shown. Measurements are taken using an |Agilent 33250A| signal generator as a reference. The measured signal is acquired using :ref:`remote control commands <command_list>`. An amplitude voltage is extracted from the acquired signal and compared to the reference signal amplitude.
         
 .. figure:: img/measurements/Bandwidth_of_Fast_Analog_Inputs.png
         

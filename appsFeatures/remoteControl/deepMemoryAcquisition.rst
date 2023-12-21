@@ -106,7 +106,7 @@ By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. Th
 API functions
 =================
 
-Check the :ref:`DMA section under the SCPI commands <scpi_dma>`.
+Check the :ref:`DMA section under the commands' list <commands_dma>`.
 
 
 API Code Examples

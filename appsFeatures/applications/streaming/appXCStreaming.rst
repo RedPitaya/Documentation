@@ -1,4 +1,4 @@
-.. _mch_streaming_top:
+.. _x-ch_streaming:
 
 #######################
 X-Channel Streaming

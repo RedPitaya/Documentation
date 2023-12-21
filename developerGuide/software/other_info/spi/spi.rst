@@ -39,7 +39,7 @@ After that, you need to rebuild the tree and restart the board
 
 .. note::
 
-   You can also switch the driver mode through the settings. See commands from :ref:`hw api<scpi_command_list>`:
+   You can also switch the driver mode through the settings. See commands from :ref:`hw api <command_list>`:
 
    * rp_SPI_GetCSMode
    * rp_SPI_SetCSMode
