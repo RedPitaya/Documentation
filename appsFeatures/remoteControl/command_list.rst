@@ -57,7 +57,6 @@ Board control commands
 ======================
 
 Parameter options:
-
 - ``<year> = {1900,...}`` Default: ``OS release date and time``
 - ``<month> = {1,12}``
 - ``<day> = {1,31}``
@@ -71,7 +70,6 @@ Parameter options:
     ``RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
 
 Available Jupyter and API macros:
-
 - Red Pitaya states and errors:
     - ``RP_OK`` - OK
     - ``RP_EOED`` - Failed to Open EEPROM Device.
