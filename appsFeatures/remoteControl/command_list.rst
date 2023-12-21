@@ -56,7 +56,7 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 Board control commands
 ======================
 
-**Parameter options:**
+Parameter options:
 
 - ``<year> = {1900,...}`` Default: ``OS release date and time``
 - ``<month> = {1,12}``
@@ -67,11 +67,12 @@ Board control commands
 - ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
 - ``<board_id> = {0,15}``
 - ``<enable> = {true, false}``
-- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA, RP_RCA, RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
+- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA, RP_RCA,``
+    ``RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
 
-**Available Jupyter and API macros:**
+Available Jupyter and API macros:
 
-- **Red Pitaya states and errors:**
+- Red Pitaya states and errors:
     - ``RP_OK`` - OK
     - ``RP_EOED`` - Failed to Open EEPROM Device.
     - ``RP_EOMD`` - Failed to open memory device.
@@ -98,9 +99,6 @@ Board control commands
 
 ..    - ``RP_EMNC`` - 
 ..    - ``RP_NOTS`` - 
-
-
-Table of correlated SCPI and API commands for the Red Pitaya.
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
@@ -165,7 +163,7 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 LEDs and GPIOs
 ==============
 
-**Parameter options:**
+Parameter options:
 
 - ``<dir> = {OUT,IN}``
 - ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
@@ -176,13 +174,13 @@ LEDs and GPIOs
 - ``<reg_direction> = {0b00000000}`` - One DIO per bit. &emsp;&emsp; *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
 
 
-**Available Jupyter and API macros:**
+Available Jupyter and API macros:
 
-- **States** - ``RP_LOW, RP_HIGH``
-- **Directions** - ``RP_IN, RP_OUT``
-- **LEDs** - ``RP_LED0, RP_LED1, ..., RP_LED7``
-- **DIOx_P** - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` &emsp;&emsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
-- **DIOx_N** - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` &emsp;&thinsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+- States - ``RP_LOW, RP_HIGH``
+- Directions - ``RP_IN, RP_OUT``
+- LEDs - ``RP_LED0, RP_LED1, ..., RP_LED7``
+- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` &emsp;&emsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` &emsp;&thinsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
 
 
 Table of correlated SCPI and API commands for the Red Pitaya.
@@ -202,7 +200,7 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | | ``DIG:PIN:DIR OUT,DIO0_N``          | | Python: ``rp_DpinSetDirection(<pin>, <direction>)``                              |                                                                                   |                    |
 | | ``DIG:PIN:DIR IN,DIO1_P``           | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-| | ``DIG:PIN:DIR? <gpio>``             | | C: ``rp_DpinGetDirection(rp_dpin_t pin, rp_pinDirection_t* direction)``          | Gets digital input output pin direction..                                         | 1.04-18 and up     |
+| | ``DIG:PIN:DIR? <gpio>``             | | C: ``rp_DpinGetDirection(rp_dpin_t pin, rp_pinDirection_t* direction)``          | Get digital input output pin direction.                                           | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
 | | ``DIG:PIN:DIR? DIO0_N``             | | Python: ``rp_DpinGetDirection(<pin>)``                                           |                                                                                   |                    |
 | | ``DIG:PIN:DIR? DIO1_P``             | |                                                                                  |                                                                                   |                    |
@@ -256,17 +254,17 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 Analog Inputs and Outputs
 =========================
 
-**Parameter options:**
+Parameter options:
 
 - ``<ain> = {AIN0, AIN1, AIN2, AIN3}``
 - ``<aout> = {AOUT0, AOUT1, AOUT2, AOUT3}``
 - ``<pin> = {ain, aout}``
 - ``<value> = {value in Volts}``
 
-**Available Jupyter and API macros:**
+Available Jupyter and API macros:
 
-- **Analog outputs** - ``RP_AOUT0, RP_AOUT1, ..., RP_AOUT3``
-- **Analog inputs** - ``RP_AIN0, RP_AIN1, ..., RP_AIN3``
+- Analog outputs - ``RP_AOUT0, RP_AOUT1, ..., RP_AOUT3``
+- Analog inputs - ``RP_AIN0, RP_AIN1, ..., RP_AIN3``
 
 Table of correlated SCPI and API commands for the Red Pitaya.
 
