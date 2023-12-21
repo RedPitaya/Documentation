@@ -5,7 +5,7 @@ Programming and remote-control tools
 .. toctree::
    :maxdepth: 1
 
-   remoteControl
+   scpi
    API_scripts
    jupyter/Jupyter
    deepMemoryAcquisition
