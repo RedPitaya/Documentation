@@ -71,6 +71,11 @@ Although the usage of the JupyterLab does not require any additional hardware ex
 
 Here you can find more information regarding the :ref:`Sensor extension module <sensor_extension_module>`.
 
+.. |Seeed®| raw:: html
+
+    <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Seeed®</a>
+
+
 ********
 Examples
 ********
