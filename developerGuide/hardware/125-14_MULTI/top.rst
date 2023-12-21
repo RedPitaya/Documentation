@@ -13,7 +13,7 @@ X-Channel STEMlab 125-14 system consists of:
 
 For detailed hardware specifications for Low-Noise STEMlab 125-14 devices used in the STEMlab 125-14 X-Channel System, please refer to the :ref:`STEMlab 125-14 standard specs <top_125_14>`.
 
-For more information about the software, please refer to: :ref:`X-Channel streaming <mch_streaming_top>`.
+For more information about the software, please refer to: :ref:`X-Channel streaming <x-ch_streaming>`.
 
 
 Pinout
