@@ -2173,7 +2173,7 @@ Temperature protection
 
 **Parameter options:**
 
-- ``<enable> = {true, false}``  Default: ???
+- ``<enable> = {true, false}``
 
 **Available Jupyter and API macros:**
 
