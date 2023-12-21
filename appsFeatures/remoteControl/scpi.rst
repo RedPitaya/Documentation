@@ -1,4 +1,4 @@
-.. _scpi:
+.. _scpi_commands:
 
 SCPI server (MATLAB, LabVIEW, Scilab or Python)
 ##################################################
@@ -20,6 +20,7 @@ The Red Pitaya board can be controlled remotely over a LAN or wireless interface
 - Take quick measurements directly on your PC.
 
 |
+
 
 ***********
 Quick start
