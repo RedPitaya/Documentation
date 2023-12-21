@@ -1,4 +1,4 @@
-.. _remoteControl:
+.. _scpi:
 
 SCPI server (MATLAB, LabVIEW, Scilab or Python)
 ##################################################
@@ -9,7 +9,7 @@ SCPI server (MATLAB, LabVIEW, Scilab or Python)
 
 |
 
-The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands. The SCPI interface/environment is commonly used to control T&M instruments for development, research, or test automation purposes. SCPI uses a set of SCPI commands that are recognised by the instruments to enable specific actions to be taken (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). The SCPI commands are extremely useful when complex signal analysis is required. An SW environment such as MATLAB provides powerful data analysis tools and SCPI commands simple access to raw data acquired on the Red Pitaya board.
+The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands. The SCPI interface/environment is commonly used to control T&M instruments for development, research, or test automation. SCPI uses a set of commands recognised by the instruments to enable specific actions (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). The SCPI commands are extremely useful when complex signal analysis is required. A SW environment such as MATLAB that provides powerful data analysis tools is a perfect combination for the SCPI commands' simple access to raw data acquired on the Red Pitaya board.
 
 **Features**
 
@@ -20,17 +20,16 @@ The Red Pitaya board can be controlled remotely over a LAN or wireless interface
 - Take quick measurements directly on your PC.
 
 |
-|
 
 ***********
 Quick start
 ***********
 
-Start the SCPI server. This is done simply by clicking on the SCPI server icon and starting the SCPI server. When the SCPI server is started, the IP address of your board will be shown. This IP address must be entered into your scripts. Starting the SCPI server can also be done manually via Terminal (see below).
+To initiate the SCPI server, just click on the SCPI server icon. Once the SCPI server is operational, your board's IP address will be displayed. This IP address should be incorporated into your scripts. Alternatively, you can manually commence the SCPI server using the Terminal (refer to the instructions below).
 
 To run an example, follow the instructions below:
 
-#.  Go to your Red Pitaya main page and select the SCPI server in the Development section.
+#.  Go to your Red Pitaya web interface and select the SCPI server in the *Development* section.
 
     .. figure:: img/scpi-homepage.png
 
@@ -38,7 +37,6 @@ To run an example, follow the instructions below:
 
     .. figure:: img/scpi-development.png
 
-    |
 
 #.  Start the SCPI server by selecting the RUN button. Please note the IP of your Red Pitaya (192.168.178.100) board as it will be needed to connect to your board.
 
@@ -48,13 +46,12 @@ To run an example, follow the instructions below:
 
     .. figure:: img/scpi-app-stop.png
 
-    |
 
 #.  Follow the instructions below suitable for your environment.
 
     .. note::
 
-       It is not possible to run SCPI commands or programs in parallel with web applications.
+        Please refrain from running the SCPI server in parallel with other web applications like the Oscilloscope as it may result in undefined behaviour of both the application and the SCPI program.
       
 .. contents::
     :local:
@@ -151,7 +148,6 @@ To install them, do:
 
     .. figure:: img/scpi-example-cli.png
 
-    |
 
 More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <examples>`.
 
@@ -198,7 +194,6 @@ To use the SCPI commands, you will need to set up Scilab sockets. The procedure 
 #.  Go to the socket_toolbox folder.
 #.  Open loader.sce with your Scilab and press RUN (grey run button on SCILAB editor GUI).
 
-|
 
 These last two steps must be executed each time you start Scilab. To install, you must have an internet connection. Running the examples is the same as on MATLAB.
 
@@ -221,29 +216,28 @@ Different code examples can be found :ref:`here <examples>`.
    Communicating with an SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
 
 |
-|
 
 *****************************
 Starting SCPI server manually
 *****************************
 
-Assuming you have successfully connected to your Red Pitaya board using :ref:`these instructions <faqConnected>` these instructions, remotely connect using Putty on Windows machines or with :ref:`SSH <ssh>` using Terminal on UNIX (macOSX/Linux) machines.
+1. Connect to your Red Pitaya through :ref:`SSH <ssh>`.
 
-Connect to your Red Pitaya board via the terminal on a Linux machine and start the SCPI server with the following command:
+2. Start the SCPI server with the following command:
 
-.. code-block:: shell-session
+    .. code-block:: shell-session
 
-    systemctl start redpitaya_scpi &
+        systemctl start redpitaya_scpi &
 
-.. figure:: img/scpi-ssh.png
+    .. figure:: img/scpi-ssh.png
 
 .. note::
 
-   In ecosystem versions 2-23 and higher. You can run directly without the service. This will allow you to see the server logs when executing commands.
+    Please make sure that the "default" *v0.94* FPGA image is loaded. With OS versions 2.00-23 or higher, exectue the following command:
 
    .. figure:: scpi-run2.png
 
-   The logs are enabled with the command:
+   To see the server logs when executing commands:
 
    .. code-block::
 
