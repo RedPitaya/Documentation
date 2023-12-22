@@ -39,7 +39,7 @@ To run an example, follow the instructions below:
     .. figure:: img/scpi-development.png
 
 
-#.  Start the SCPI server by selecting the RUN button. Please note the IP of your Red Pitaya (192.168.178.100) board as it will be needed to connect to your board.
+#.  Start the SCPI server by selecting the RUN button. Please note the IP of your Red Pitaya (in our case, 192.168.178.100) board, as it will be needed to establish a socket communication with your board. Alternatively, you can use the *"rp-xxxxxx.local"* address instead of the IP address.
 
     .. figure:: img/scpi-app-run.png
 
@@ -48,7 +48,7 @@ To run an example, follow the instructions below:
     .. figure:: img/scpi-app-stop.png
 
 
-#.  Follow the instructions below suitable for your environment.
+#.  Follow the instructions below depending on the OS environment of your computer.
 
     .. note::
 
@@ -65,12 +65,19 @@ To run an example, follow the instructions below:
 MATLAB
 ======
 
+**Requirements and Setup**
+
+The basic MATLAB installation already has everything you need to control your Red Pitaya. However, we recommend installing the *Signal Processing* and
+*Instrumentat control* toolboxes, which might come in handy.
+
+**Running code**
+
 #.  Open MATLAB on your computer.
 #.  In the MATLAB workspace, paste the code from the :ref:`blink <blink>` tutorial example.
-#.  Replace the IP in the example with the IP of your Red Pitaya board.
-#.  Hit RUN or F5 on your keyboard to run the code.
+#.  Replace the IP in the example with the IP of your Red Pitaya board or the *"rp-xxxxxx.local"* address.
+#.  Hit *RUN* or the *F5* key on your keyboard to run the code.
 
-More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <examples>`.
+More examples of controlling Red Pitaya through MATLAB can be found :ref:`here <examples>`.
 
 |
 
@@ -78,88 +85,136 @@ More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <
 Python
 ======
 
-The |PyVISA| library, in combination with the |PyVISA-py| backend, is used.
+**Requirements and Setup**
 
-To install them, do:
+Here are the requirements for setting up a Python environment to remotely control your Red Pitaya. Here we present setting up the environment in |VSCode|, due to high adaptability and easily expandable functionality.
 
-.. |PyVISA| raw:: html
+1.  Python version 3.10 or higher. Link to |python_main|.
+    During the installation process, do not forget to check the **Add python.exe to PATH** box!
 
-    <a href="https://pyvisa.readthedocs.io/en/latest/" target="_blank">PyVISA</a>
+    .. insert picture
+
+2.  Install a coding environment. We recommend using |VSCode|, since it has a lot of functionality and can easily be extended.
+
+    .. insert picture
+
+3.  Install appropriate extensions for your coding environment (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
+
+    .. 
+4.  Setup or create a new |workspace|. Here are some |tutorials| for Visual Studio Code.
+
+5.  Choose a Python interpreter.
     
+    .. add picture
 
-.. |PyVISA-py| raw:: html
+6.  Optionally, create a |venv|.
 
-    <a href="https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/" target="_blank">PyVISA-py</a>
+7.  Ensure that the Python packages are up to date and install following Python libraries:
 
+    - pyvisa pyvisa-py (|PyVISA| library, in combination with the |PyVISA-py| backend)
+    - numpy
+    - matplotlib
 
-.. tabs::
+    .. tabs::
 
     .. tab:: Linux
 
         .. code-block:: shell-session
    
-            $ sudo pip3 install pyvisa pyvisa-py
+            $ sudo pip3 install pyvisa pyvisa-py numpy matplotlib
 
     .. tab:: Windows
 
         .. code-block:: shell-session
    
-            $ pip install pyvisa pyvisa-py
+            $ pip install pyvisa pyvisa-py numpy matplotlib
 
-.. note::
-   
-   To run the examples, you need Python version 3.10 or higher. Before running, please, double-check the Python versions.
 
-   .. code-block:: shell-session
+8.  Windows users must enable "Running Scripts" option. It should be located in **Settings > Update&Security > For developers** under the **Power Shell** section (or google "How to enable running scripts on Windows 10/11").
+
+9.  Double-check the Python verision and reselect the Python interpreter if necessary (See step 5).
+
+    .. code-block:: shell-session
 
        $ python --version
        Python 3.10.6
 
-   On Windows, you can use **py** instead of **python** in the command line.
+    On Windows, you can use **py** instead of **python** in the command line.
 
-   In case mulitple Python versions are installed on the computer, please specify explicitly the Python version.
+10. Downaload and save the |redpitaya_scpi.py| library into the VS Code workspace folder/directory. This library must be in the same folder as the python scripts.
 
-   .. code-block:: shell-session
-         
-       $ python3.10 blink.py
+11. Create a new python file with the following code.
 
-|
+    .. code-block:: python
 
-#.  Open the :ref:`blink <blink>` tutorial and copy the code to your favourite text editor.
+        import numpy as np
+
+        print("Hello world!\n")
+
+    Once saved, check how the NumPy library is displayed. If it is underlined in yellow the current Python environment does not have the libraries installed correctly.
+
+12. Run the test file. There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
+
+    .. add picture
+
+
+
+.. |python_main| raw:: html
+
+    <a href="https://www.python.org/downloads/" target="_blank">Python download webpage</a>
+
+.. |VSCode| raw:: html
+
+    <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>
+
+.. |workspace| raw:: html
+
+    <a href="https://code.visualstudio.com/docs/editor/workspaces" target="_blank">workspace</a>
+
+.. |tutorials| raw:: html
+
+    <a href="https://code.visualstudio.com/docs/getstarted/introvideos" target="_blank">tutorials</a>
+
+.. |venv| raw:: html
+
+    <a href="https://code.visualstudio.com/docs/python/environments" target="_blank">virtual environment</a>
+
+.. |redpitaya_scpi.py| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
+
+
+**Running code**
+
+1.  Open the :ref:`blink <blink>` tutorial and copy the code to your favourite text editor.
 
     |
 
-#.  Save the file to your working folder as ``blink.py``, for example, ``examples_py``.
-    Copy and save the |redpitaya_scpi.py| script in the same folder as the ``blink.py`` example (in our case, ``examples_py``). 
+2.  Save the file to your working folder as ``blink.py``. Make sure that **redpitaya_scpi.py** is located next to it.
 
     .. note::
 
-       The ``redpitaya_scpi.py`` script is a standard script needed to establish the connection between your PC and the Red Pitaya board. The execution of your script will fail without this script being in the same folder as your Python script.
+       The ``redpitaya_scpi.py`` library is a standard script needed to establish the connection between your PC and the Red Pitaya board. The execution of your code will fail without this library being in the same folder as your Python code.
 
     .. figure:: img/scpi-examples.png
 
     |
 
-#.  Open the Terminal and navigate to the folder containing your Python script (``examples_py``), then type: ``Python blink.py IP``, passing a Red Pitaya IP as an argument when calling an execution of the ``blink.py`` example. An example is given below, where ``192.168.178.108`` is the IP of the Red Pitaya board.
+3.  Edit ``blink.py`` so that the *IP* variable contains the IP or the "rp-xxxxxx.local" address of your Red Pitaya.
+
+4.  Run the ``blink.py``. Either select the left arrow in the VS Code or open the Terminal and navigate to the folder containing your Python script (``examples_py``), then type: ``python blink.py``
 
     .. code-block:: shell-session
 
-        cd /home/zumy/Desktop/exmples_py
-        python blink.py 192.168.178.108
-
-    .. figure:: img/scpi-example-cli.png
+        cd /home/Miha/Desktop/
+        python blink.py
 
 
-More examples of how to control Red Pitaya from MATLAB can be found :ref:`here <examples>`.
+More examples of how to control Red Pitaya with Python can be found :ref:`here <examples>`.
 
 .. note::
    
    Python examples can also be run directly from the RP device itself. To do so, first start the SCPI server and then use the local device IP: ``127.0.0.1``
-
-
-.. |redpitaya_scpi.py| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
 
 |
 
@@ -236,7 +291,7 @@ Starting SCPI server manually
 
     Please make sure that the "default" *v0.94* FPGA image is loaded. With OS versions 2.00-23 or higher, exectue the following command:
 
-   .. figure:: scpi-run2.png
+   .. figure:: img/scpi-run2.png
 
    To see the server logs when executing commands:
 
