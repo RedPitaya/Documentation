@@ -159,6 +159,14 @@ Here are the requirements for setting up a Python environment to remotely contro
 
 
 
+.. |PyVISA| raw:: html
+
+    <a href="https://pyvisa.readthedocs.io/en/latest/" target="_blank">PyVISA</a>
+    
+.. |PyVISA-py| raw:: html
+
+    <a href="https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/" target="_blank">PyVISA-py</a>
+
 .. |python_main| raw:: html
 
     <a href="https://www.python.org/downloads/" target="_blank">Python download webpage</a>
