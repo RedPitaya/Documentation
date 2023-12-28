@@ -97,10 +97,12 @@ Here are the requirements for setting up a Python environment to remotely contro
     During the installation process, do not forget to check the **Add python.exe to PATH** box!
 
     .. figure:: img/install_python.png
+      :width: 300
 
 2.  Install a coding environment. We recommend using |VSCode|.
 
     .. figure:: img/install_vsc.png
+      :width: 300
 
 3.  Install appropriate extensions for your coding environment (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
 
