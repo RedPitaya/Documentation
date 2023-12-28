@@ -19,6 +19,10 @@ The Red Pitaya board can be controlled remotely over a LAN or wireless interface
 - Incorporate your Red Pitaya and LabVIEW into testing and production lines.
 - Take quick measurements directly on your PC.
 
+.. note::
+
+   Communicating with an SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
+
 |
 
 
@@ -230,16 +234,33 @@ More examples of how to control Red Pitaya with Python can be found :ref:`here <
 LabVIEW
 =======
 
-To install the Red Pitaya LabVIEW driver, download the `Red_Pitaya_LabVIEW_Driver&Examples.zip <https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip>`_ file.
-Unpack it and copy the Red Pitaya folder to your LabVIEW installation ``instr.lib`` folder, e.g. ``C:/Program Files/National Instruments/LabVIEW 2010/instr.lib``. When using the 64-bit LabVIEW version (mostly paid), Or here : ``C:/Program Files (x86)/National Instruments/LabVIEW 2020/instr.lib`` when using the 32-bit LabVIEW version, like the free Community Edition.
+**Requirements and Setup**
 
-The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya**. Depending on your settings, instrument I/O may be hidden. Please consult LabVIEW Help on how to activate or deactivate those categories. You can access example VIs by going to:
+For proper operation, the |LabVIEW_driver| must be installed.
 
-#.  Help -> Find Examples...
-#.  select the Search tab
+1.  Download the |LabVIEW_driver|. 
+2.  Unpack the downloaded driver and copy the Red Pitaya folder to your LabVIEW installation ``instr.lib`` folder. Here are path examples for both 64- and 32-bit LabVIEW versions.
+    
+    -  64-bit LabVIEW version (mostly paid): ``C:/Program Files/National Instruments/LabVIEW 2010/instr.lib``.
+    -  32-bit LabVIEW version (e.g. free Community Edition): ``C:/Program Files (x86)/National Instruments/LabVIEW 2020/instr.lib``.
+
+The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya**. Depending on your settings, instrument I/O may be hidden. Please consult LabVIEW Help on how to activate or deactivate those categories. 
+
+
+**Running code**
+
+You can access example VIs by going to:
+
+#.  *Help -> Find Examples...*
+#.  select the *Search tab*
 #.  In the Enter keyword(s) field, type **RedPitaya**. 
 
-More examples of how to control Red Pitaya from LabVIEW can be found :ref:`here <examples>`.
+More examples on how to control Red Pitaya from LabVIEW can be found :ref:`here <examples>`.
+
+
+.. |LabVIEW_driver| raw:: html
+
+    <a href="https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip" target="_blank">Red Pitaya LabVIEW driver</a>
 
 |
 
@@ -247,25 +268,31 @@ More examples of how to control Red Pitaya from LabVIEW can be found :ref:`here 
 SCILAB
 ======
 
-To use the SCPI commands, you will need to set up Scilab sockets. The procedure is described below.
+**Requirements and Setup**
+
+To control Red Pitaya through Scilab, the *Scilab socket toolbox* extension is required. Internet connection is required for the installation process.
 
 #.  Go to the |Scilab download page| and download and install Scilab for your OS.
-#.  Go to the |Scilab toolbox| and download the basic socket function for Scilab.
+#.  Go to the |Scilab toolbox| and download the *basic socket function* for Scilab.
 #.  Go to the extracted Scilab folder, then to the folder named ``contrib``.
-#.  Copy the socket_toolbox zip file to the contrib folder.
-#.  Extract the socket_toolbox zip file inside the contrib folder.
-#.  We no longer require the socket_toolbox zip file, so remove it.
-#.  Go to the socket_toolbox folder.
-#.  Open loader.sce with your Scilab and press RUN (grey run button on SCILAB editor GUI).
+#.  Copy the *socket_toolbox* zip file to the ``contrib`` folder.
+#.  Extract the *socket_toolbox* zip file inside the ``contrib`` folder.
+#.  Delete the *socket_toolbox* zip file, as it is no longer required
+#.  Go to the *socket_toolbox* folder.
+#.  Open *loader.sce* with your Scilab and press RUN (grey run button on SCILAB editor GUI).
+
+The last two steps must be executed each time you start Scilab. 
 
 
-These last two steps must be executed each time you start Scilab. To install, you must have an internet connection. Running the examples is the same as on MATLAB.
+**Running code**
 
-#.  In the MATLAB workspace, paste the code from the :ref:`blink <blink>` tutorial example.
-#.  Replace the IP in the example with the IP of your Red Pitaya board.
-#.  Press RUN to run the code.
+Running the examples is the same as on MATLAB.
 
-Different code examples can be found :ref:`here <examples>`.
+#.  In the Scilab workspace, paste the code from the :ref:`blink <blink>` tutorial example.
+#.  Replace the IP in the example with the IP of your Red Pitaya board or the *"rp-xxxxxx.local"* address.
+#.  Hit *RUN* to run the code.
+
+The code examples can be found :ref:`here <examples>`. Please reffer to the MATLAB examples.
 
 .. |Scilab download page| raw:: html
 
@@ -275,9 +302,6 @@ Different code examples can be found :ref:`here <examples>`.
 
     <a href="https://atoms.scilab.org/toolboxes/socket_toolbox" target="_blank">Scilab socket toolbox page</a>
 
-.. note::
-
-   Communicating with an SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
 
 |
 
