@@ -9,6 +9,15 @@ The Jupyter commands are identical to Python API commands, so please refer to th
 
 At the beginning of each table are all command parameter options and available macros.
 
+For API commands you can find a detailed description in these C header files:
+
+- |API_header|
+
+
+.. |API_header| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include/redpitaya" target="_blank">Red Pitaya GitHub API header files</a>
+
 
 .. _commands_init:
 
