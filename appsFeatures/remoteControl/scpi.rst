@@ -158,9 +158,9 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     Once saved, check how the NumPy library is displayed. If it is underlined in yellow the current Python environment does not have the libraries installed correctly.
 
-   .. figure:: img/hello_world.png
-
 12. Run the test file. There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
+
+   .. figure:: img/hello_world.png
 
 
 
