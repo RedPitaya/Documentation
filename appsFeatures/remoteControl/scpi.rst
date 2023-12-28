@@ -122,17 +122,17 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     .. tabs::
 
-    .. tab:: Linux
+       .. tab:: Linux
 
-        .. code-block:: shell-session
+           .. code-block:: shell-session
    
-            $ sudo pip3 install pyvisa pyvisa-py numpy matplotlib
+               $ sudo pip3 install pyvisa pyvisa-py numpy matplotlib
 
-    .. tab:: Windows
+       .. tab:: Windows
 
-        .. code-block:: shell-session
+           .. code-block:: shell-session
    
-            $ pip install pyvisa pyvisa-py numpy matplotlib
+               $ pip install pyvisa pyvisa-py numpy matplotlib
 
 
 8.  Windows users must enable "Running Scripts" option. It should be located in **Settings > Update&Security > For developers** under the **Power Shell** section (or google "How to enable running scripts on Windows 10/11").
