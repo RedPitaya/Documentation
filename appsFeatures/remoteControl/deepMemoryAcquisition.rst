@@ -38,7 +38,7 @@ Here is a representation of how the DMA data saving functions:
    :align: center
    :width: 700
 
-For easier explanation, the start and end addresses of the DMA buffer are labeled as **ADC_AXI_START** and **ADC_AXI_END**. The data is saved in 32-bit chunks (4 Bytes per sample). The **ADC_AXI_START** points to the start of the first Byte (of the first sample), and **ADC_AXI_END** points to the first Byte (of the last sample) of DDR reserved for the DMA. The size of the whole buffer is **ADC_AXI_SIZE**. All the labels are just for representation and do not reference any macros.
+For easier explanation, the start and end addresses of the DMA buffer are labeled as **ADC_AXI_START** and **ADC_AXI_END**. The data is saved in 32-bit chunks (4 Bytes per sample). The **ADC_AXI_START** points to the start of the first Byte of the first sample, and **ADC_AXI_END** points to the first Byte of the last sample of DDR reserved for the DMA. The size of the whole buffer is **ADC_AXI_SIZE**. All the labels are just for representation and do not reference any macros.
 
 The starting address of the DMA buffer (**ADC_AXI_START**) and the size of the DMA buffer (**ADC_AXI_SIZE**) are acquired through the **rp_AcqAxiGetMemoryRegion** function.
 
@@ -52,24 +52,26 @@ In the example below, the memory region is split between both channels, where 10
 
 The **Mid Address** in the picture above represents the starting point of the *Channel 2 buffer* inside the reserved DMA region and is set to *ADC_AXI_START + (ADC_AXI_SIZE/2)* (both channels can capture the same amount of data).
 
-Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGetDataRaw* function by passing the following parameters:
+Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGetDataRaw* or *rp_AcqAxiGetDataV* functions by passing the following parameters:
 
    - Channel number
    - Address of triggering moment (by using the *rp_AcqAxiGetWritePointerAtTrig* function)
    - Data size
-   - Location where to store the data (start address of buffer)
+   - Location where to store the data (start address of buffer). An integer buffer is used to store RAW values and a float buffer for values in Volts.
 
 .. note::
 
    Depending on the size of the acquired data and how much DDR memory is reserved for the Deep Memory Acquisition, the data transfer from DDR might take a while.
 
-Once finished, please do not forget to free any resources and reserved memory locations. Otherwise, the performance of Red Pitaya can decrease over time.
+Once finished, please do not forget to free the resources and reserved memory locations. Otherwise, the performance of your Red Pitaya can decrease over time.
 
 
 Changing reserved memory
 =============================
 
-By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. The DDR memory allocated to the DMA can be configured through the **reg** parameter to a maximum of 256 MB. Afterwards, you must **rebuild the device tree** and **restart** the Red Pitaya for this change to take effect.
+By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. The DDR memory allocated to the DMA can be configured through the **reg** parameter. Afterwards, you must **rebuild the device tree** and **restart** the Red Pitaya for this change to take effect.
+
+The maximum memory allocation is restricted to the size of the board's DDR (512 MB for STEMlab 125-14). However, DMA and Linux share the DDR resources, so allocating too many to the DMA may result in decreased performance. To prevent problems, we recommend leaving 100 MB of the DDR for the Linux, resulting in a maximum DMA region of 412 MB (for STEMlab 125-14).
 
 1.   Establish an :ref:`SSH <ssh>` connection.
 2.   Enable writing permissions and open the **dtraw.dts** file.
@@ -100,7 +102,7 @@ By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. Th
 
 .. note::
 
-   Please note that the more memory you allocate to the DMA, the slower Red Pitaya Linux OS will function as the RAM resources between the two are shared. The memory allocated to the DMA is reserved, so Linux cannot use it.
+   To prevent performance decrease problems, we recommend leaving at least 100 MB of the DDR for the proper operation of the Linux OS. The maximal recommended DMA region size is 412 MB for STEMlab 125-14 and SDRlab 122-16 and 924 MB for SIGNALlab 250-12.
 
 
 API functions
