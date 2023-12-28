@@ -142,7 +142,7 @@ Here are the requirements for setting up a Python environment to remotely contro
     .. code-block:: shell-session
 
        $ python --version
-       Python 3.10.6
+       Python 3.11.6
 
     On Windows, you can use **py** instead of **python** in the command line.
 
