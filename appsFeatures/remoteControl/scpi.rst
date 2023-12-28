@@ -110,7 +110,7 @@ Here are the requirements for setting up a Python environment to remotely contro
 
 5.  Choose a Python interpreter.
     
-    .. add picture
+    .. figure:: img/select_interpreter.png
 
 6.  Optionally, create a |venv|.
 
@@ -157,6 +157,8 @@ Here are the requirements for setting up a Python environment to remotely contro
         print("Hello world!\n")
 
     Once saved, check how the NumPy library is displayed. If it is underlined in yellow the current Python environment does not have the libraries installed correctly.
+
+   .. figure:: img/hello_world.png
 
 12. Run the test file. There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
 
