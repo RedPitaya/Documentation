@@ -96,15 +96,14 @@ Here are the requirements for setting up a Python environment to remotely contro
 1.  Python version 3.10 or higher. Link to |python_main|.
     During the installation process, do not forget to check the **Add python.exe to PATH** box!
 
-    .. insert picture
+    .. figure:: img/install_python.png
 
-2.  Install a coding environment. We recommend using |VSCode|, since it has a lot of functionality and can easily be extended.
+2.  Install a coding environment. We recommend using |VSCode|.
 
-    .. insert picture
+    .. figure:: img/install_vsc.png
 
 3.  Install appropriate extensions for your coding environment (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
 
-    .. 
 4.  Setup or create a new |workspace|. Here are some |tutorials| for Visual Studio Code.
 
 5.  Choose a Python interpreter.
@@ -158,8 +157,6 @@ Here are the requirements for setting up a Python environment to remotely contro
     Once saved, check how the NumPy library is displayed. If it is underlined in yellow the current Python environment does not have the libraries installed correctly.
 
 12. Run the test file. There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
-
-    .. add picture
 
 
 
