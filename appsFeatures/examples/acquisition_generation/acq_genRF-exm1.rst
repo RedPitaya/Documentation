@@ -36,9 +36,9 @@ SCPI Code Examples
 Code - MATLAB®
 ---------------
 
-.. code-block:: matlab
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
-    The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. code-block:: matlab
 
     clc
     clear all
