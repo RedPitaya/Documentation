@@ -67,17 +67,17 @@ Board control commands
 
 **Parameter options:**
 
-- ``<year> = {1900,...}`` Default: ``OS release date and time``
-- ``<month> = {1,12}``
-- ``<day> = {1,31}``
-- ``<hours> = {0,23}``
-- ``<minutes> = {0,59}``
-- ``<seconds> = {0,59}``
-- ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
-- ``<board_id> = {0,15}``
+- ``<year> = {1900, ...}`` Default: ``OS release date and time``
+- ``<month> = {1, 12}``
+- ``<day> = {1, 31}``
+- ``<hours> = {0, 23}``
+- ``<minutes> = {0, 59}``
+- ``<seconds> = {0, 59}``
+- ``<log_mode> = {OFF, CONSOLE, SYSLOG}``
+- ``<board_id> = {0, 15}``
 - ``<enable> = {true, false}``
-- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA, RP_RCA,``
-- ``<errorCode> =  RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
+- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA,``
+- ``<errorCode> =  RP_RCA, RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
 
 **Available Jupyter and API macros:**
 
@@ -188,8 +188,8 @@ LEDs and GPIOs
 - States - ``RP_LOW, RP_HIGH``
 - Directions - ``RP_IN, RP_OUT``
 - LEDs - ``RP_LED0, RP_LED1, ..., RP_LED7``
-- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` &emsp;&emsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
-- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` &emsp;&thinsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` *Goes up to 9 on SDRlab and STEMlab 4-Input*
+- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` *Goes up to 9 on SDRlab and STEMlab 4-Input*
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -547,12 +547,12 @@ Generator trigger
 | | ``SOUR1:TRig:INT``                                | | Python: ``rp_GenTriggerOnly(<channel>)``                                              |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:EXT:DEBouncer[:US] <utime>``          | | C: ``rp_GenSetExtTriggerDebouncerUs(double utime)``                                   | Sets the external trigger generation debouncer in microseconds (value must be positive).     | 2.00-15 and up     |
+| | ``SOUR:TRig:EXT:DEBouncerUs <utime>``             | | C: ``rp_GenSetExtTriggerDebouncerUs(double utime)``                                   | Sets the external trigger generation debouncer in microseconds (value must be positive).     | 2.00-15 and up     |
 | | Example:                                          | |                                                                                       |                                                                                              |                    |
 | | ``SOUR:TRig:EXT:DEBouncerUs 1``                   | | Python: ``rp_GenSetExtTriggerDebouncerUs(<utime>)``                                   |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR:TRig:EXT:DEBouncer[:US]?`` > ``<utime>``   | | C: ``rp_GenGetExtTriggerDebouncerUs(double *utime)``                                  | Get the external trigger generation debouncer setting in microseconds.                       | 2.00-15 and up     |
+| | ``SOUR:TRig:EXT:DEBouncerUs?`` > ``<utime>``      | | C: ``rp_GenGetExtTriggerDebouncerUs(double *utime)``                                  | Get the external trigger generation debouncer setting in microseconds.                       | 2.00-15 and up     |
 | | Example:                                          | |                                                                                       |                                                                                              |                    |
 | | ``SOUR:TRig:EXT:DEBouncerUs?`` > ``1``            | | Python: ``rp_GenSetExtTriggerDebouncerUs(<utime>)``                                   |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
@@ -568,8 +568,8 @@ Generator settings
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
 - ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
 - ``<type> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
-- ``<amplitude> = {-1 ... 1}``(in Volts). Default: ``1`` for SIGNALlab 250-12 {-5 ... 5}
-- ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 {-5 ... 5}
+- ``<amplitude> = {-1 ... 1}`` (in Volts). Default: ``1`` for SIGNALlab 250-12 ``{-5 ... 5}``
+- ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 ``{-5 ... 5}``
 - ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
 - ``<phase> = {-360 ... 360}`` (in Degrees). Default: ``0``
 - ``<ratio> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
@@ -713,7 +713,7 @@ Burst mode
 **Parameter options:**
 
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
-- ``<mode> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
+- ``<mode> = {BURST, CONTINUOUS}`` Default: ``CONTINUOUS``
 - ``<num>, <repetitions> = {1...50000}`` Default: ``1``
 - ``<period> = {1 µs - 500 s}`` Value in *µs*.
 
@@ -917,11 +917,11 @@ Acquisition settings
 **Parameter options:**
 
 - ``<n> = {1,2}`` (set channel IN1 or IN2)
-- ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
-- ``<decimation_ext> = {1,2,4,8,16,17,18,19,......,65536}`` Default: ``1``
-- ``<average> = {OFF,ON}`` Default: ``ON``
+- ``<decimation> = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536}`` Default: ``1``
+- ``<decimation_ext> = {1, 2, 4, 8, 16, 17, 18, 19, ..., 65536}`` Default: ``1``
+- ``<average> = {OFF, ON}`` Default: ``ON``
 - ``<state> = {LV, HV}`` Default: ``LV``
-- ``<mode> = {AC,DC}`` Default ``DC``
+- ``<mode> = {AC, DC}`` Default ``DC``
 - ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
 - ``<format> = {BIN, ASCII}`` Default ``ASCII``
 - ``<enable> = {true, false}`` Default: ``true``
@@ -1165,14 +1165,14 @@ Acquisition trigger
 | | ``ACQ:TRig:EXT:LEV?`` > ``1``                    | | Python: ``rp_AcqGetTriggerLevel(<channel>)``                                       |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US] <value>``          | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | | Set the external trigger acquisition debouncer in microseconds (value must  | 2.00-15 and up     |
+| | ``ACQ:TRig:EXT:DEBouncerUs <value>``             | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | | Set the external trigger acquisition debouncer in microseconds (value must  | 2.00-15 and up     |
 | | Example:                                         | |                                                                                    | | be positive).                                                               |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US] 1``                | | Python: ``rp_AcqSetExtTriggerDebouncerUs(<value>)``                                | |                                                                             |                    |
+| | ``ACQ:TRig:EXT:DEBouncerUs 1``                   | | Python: ``rp_AcqSetExtTriggerDebouncerUs(<value>)``                                | |                                                                             |                    |
 | |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``<value>``   | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | | Set the external trigger acquisition debouncer in microseconds.             | 2.00-15 and up     |
+| | ``ACQ:TRig:EXT:DEBouncerUs?`` > ``<value>``      | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | | Set the external trigger acquisition debouncer in microseconds.             | 2.00-15 and up     |
 | | Example:                                         | |                                                                                    | |                                                                             |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``1``         | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       | |                                                                             |                    |
+| | ``ACQ:TRig:EXT:DEBouncerUs?`` > ``1``            | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       | |                                                                             |                    |
 | |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 
@@ -1294,10 +1294,10 @@ DMA settings
 
 - ``<n> = {1,2}`` (set channel IN1 or IN2)
 - ``<byte> = {0...}`` in bytes
-- ``<decimation> = {1,2,4,8,16,17,18,19,...,65534,65535,65536}`` Default: ``1``
+- ``<decimation> = {1, 2, 4, 8, 16, 17, 18, 19, ..., 65534, 65535, 65536}`` Default: ``1``
 - ``<decimated_data_num> = {value in samples}`` Default: ``0``
 - ``<pos> = {position inside circular buffer in samples}``
-- ``<enable> = {ON,OFF}`` Default: ``OFF``
+- ``<enable> = {ON, OFF}`` Default: ``OFF``
 - ``<address> = {byte}`` Address of reserved memory
 - ``<size> = {byte}`` Size of buffer in bytes. Default: 2 MB
 - ``<samples> = {sample}`` Size of the acquisition buffer in samples. Default: 2 MB
@@ -1725,9 +1725,9 @@ I2C
 
 **Parameter options:**
 
-- ``<mode>  = {OFF, ON}``  Default: ``OFF``
+- ``<mode> = {OFF, ON}``  Default: ``OFF``
 - ``<value> = {XXX | #HXX | #QXXX | #BXXXXXXXX}``  Value in Decimal, Hexadecimal, Octal, or Binary format.
-- ``<data>  = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data values separated by commas.
+- ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data values separated by commas.
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -1827,11 +1827,11 @@ CAN
 
 **Parameter options:**
 
-- ``<n> = {0, 1}`` CAN interface
+- ``<n> = {0,1}`` CAN interface
 - ``<bool> = {OFF, ON}``
 - ``<state> = {ERROR_ACTIVE, ERROR_WARNING, ERROR_PASSIVE, BUS_OFF, STOPPED, SLEEPING}``
 - ``<mode> = {LOOPBACK, BERR_REPORTING}``
-- ``<speed> = {1,10000000}``
+- ``<speed> = {1, 10000000}``
 - ``<sp> = {0, 0.999}``
 - ``<tq> = {unsigned integer}``
 - ``<prop_seg> = {unsigned integer}``
@@ -1854,7 +1854,7 @@ CAN
 - ``<rs_ms> = {unsigned integer}`` in milliseconds
 - ``<can_id> = {unsigned integer}`` Destination address on CAN bus
 - ``<buffer> = {XXX | XXX,XXX | XXX,XXX,XXX | XXX,...,XXX}`` Bytes for send from 0 to 8
-- ``<timeout> = {unsigned integer}`` in milliseconds. 0 - timeout disabled
+- ``<timeout> = {unsigned integer}`` in milliseconds. ``0`` - timeout disabled
 - ``<frame_header> = {unsigned integer}``
 - ``<is_extended> = {0,1}``
 - ``<is_error> = {0,1}``
