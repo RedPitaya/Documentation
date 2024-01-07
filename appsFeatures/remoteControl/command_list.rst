@@ -714,7 +714,7 @@ Burst mode
 
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
 - ``<mode> = {BURST, CONTINUOUS}`` Default: ``CONTINUOUS``
-- ``<num>, <repetitions> = {1...50000}`` Default: ``1``
+- ``<num>, <repetitions> = {1...65536}`` Default: ``1``
 - ``<period> = {1 µs - 500 s}`` Value in *µs*.
 
 **Available Jupyter and API macros:**
