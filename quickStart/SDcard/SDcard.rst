@@ -19,8 +19,8 @@ With the 2.00 OS versions we moved to a unified OS image for all boards (One OS 
 
 **RedPitaya OS 2.0**:
 
-  - `Latest Beta 2.0 (2.00-23) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-23_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 45281311c10c2131af9a09005b9b2b32)
-  - `Latest Stable (2.00-18) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): e335ea7c7ea6832e3c8ddf1f48e450f9)
+  - `Latest Beta (2.00-30) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-30_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ec890319d64ffe059cd0d747cf36eab7)
+  - `Latest Stable (2.00-23) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-23_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 45281311c10c2131af9a09005b9b2b32)
 
 |
 
@@ -135,7 +135,7 @@ We have decided to release the nightly builds to ensure that our codebase stays 
 
 As these builds are snapshots of the latest code, odds are you will encounter more issues compared to stable releases. Please report any issues to support@redpitaya.com so that our developers can review them and make any needed fixes.
 
-**Nightly Builds ecosystem**: 
+**Nightly Builds ecosystem**:
 
    *    |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_
 

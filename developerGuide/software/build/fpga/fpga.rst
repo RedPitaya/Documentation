@@ -15,7 +15,7 @@ It is important to install the correct Vivado and SDK versions as the projects a
 
    Please note that the FPGA code is located in a separate repository from the ecosystem on our GitHub page:
 
-   - Ecosystem: |ecosystem| 
+   - Ecosystem: |ecosystem|
    - FPGA: |FPGA|
 
    Running the ":ref:`Makefile.x86 <dev_tree_xil>`" will download the necessary files from the RedPitaya/RedPitaya-FPGA repository.
@@ -276,7 +276,7 @@ Table of required build flags for FPGA projects per board
 
         source <path to Xilinx installation directory>/Xilinx/Vivado/2020.1/settings64.sh
         source <path to Xilinx installation directory>/Xilinx/SDK/2019.1/settings64.sh
-   
+
 
 .. _xilinx_path:
 
@@ -302,7 +302,7 @@ Table of required build flags for FPGA projects per board
     .. code-block:: shell-session
 
         sudo apt update
-        sudo apt install git   
+        sudo apt install git
 
 
 
@@ -378,20 +378,20 @@ The following scripts perform various tasks:
     This file must be copied to */opt/redpitaya/fpga* on the Red Pitaya itself.
 
 
-.. note:: 
+.. note::
 
    If the script returns the following error:
-   
+
    .. code-block:: shell-session
-   
+
        BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ...
-   
+
    First, find the line containing
-   
+
    .. code-block:: shell-session
-   
+
        set scripts_vivado_version 2020.1
-   
+
    and change 2020.1 to your version.
    This is a quick and dirty way to get the build working in other versions of Vivado.
    However, solving the problem this way could be problematic if some of the IPs used are different in your version.
@@ -427,10 +427,10 @@ The following scripts perform various tasks:
         $ make project PRJ=v0.94 MODEL=Z10
 
     .. figure:: project_make.png
-   
+
     A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
     You can add/write your Verilog module at the end of *red_pitaya_top.sv* file (or add a new source by right-clicking the *Design Sources* folder and *Add Source*):
-   
+
     .. figure:: vivado_project.png
 
 
@@ -469,7 +469,7 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
 .. note::
 
    On Windows, the process can also be done through a standard Command Prompt, but any ``echo`` commands must be executed inside the Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows ``echo``). For more information, refer to the following forum topics:
-   
+
       - |batch_file_topic_1|
       - |batch_file_topic_2|
 
@@ -490,7 +490,7 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
       1.  Open Terminal or CMD and go to the .bit file location.
 
           .. code-block:: bash
-    
+
               cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
 
       2.  Send the file .bit (*red_pitaya_top.bit* is the default name) to the Red Pitaya with the ``scp`` command.
@@ -516,7 +516,7 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
       The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the ``echo`` command functinality differs bewteen the two.
 
       Please note that you need to change the forward slashes to backward slashes on Windows.
-        
+
       **Non-project mode:** Skip to *step 3*.
 
       1.  On Windows, open **Vivado HSL Command Prompt** and go to the *.bit* file location.
@@ -553,7 +553,7 @@ Please make sure that the PATH environment variable is set correctly. See :ref:`
       3.  Send the file *.bit.bin* to the Red Pitaya with the ``scp`` command.
 
           .. code-block:: bash
-   
+
               scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
 
       4.  Now establish an :ref:`SSH communication <ssh>` with your Red Pitaya and check if you have the copy *red_pitaya_top.bit.bin* in the root directory.
@@ -894,6 +894,7 @@ Registers
    regset/2.00-15/list.rst
    regset/2.00-18/list.rst
    regset/2.00-23/list.rst
+   regset/2.00-30/list.rst
    regset/in_dev/list.rst
 
 .. |br| raw:: html
