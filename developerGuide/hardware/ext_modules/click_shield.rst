@@ -4,55 +4,68 @@
 Click Shield
 ##############
 
-The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two Click Boards and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt external power supply. Using ULF patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units. An external reference clock can also be connected to the shield through a ULF connector.
+The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two |Click Boards| and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt external power supply. Using U.FL patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units and/or other devices. An external reference clock can also be connected to the shield through the U.FL connector.
 
 
 **Highlights:**
 
-* possibility to extend hardware functionality with more than 1300 |Click Boards|
-* high-performance synchronisation of several Red Pitayas
-* better clock and trigger transmission 
+- Two |mikroBUS| sockets, allowing interface with more than 1500 |Click Boards| devices. 
+- High-performance clock and trigger synchronisation between multiple Red Pitaya units or other devices.
+- Powering Red Pitaya through an external power supply (12-24 V or via USB-C connector). 
 
 
-.. insert Click Shield image here
+|microshield1| |microshield2|
 
+.. |microshield1| image:: img/redpitaya-click-shield-thickbox_default-1.jpg
+    :width: 400
+
+.. |microshield2| image:: img/redpitaya-click-shield-thickbox_default-2.jpg
+    :width: 400
+
+|
 
 What is in the box?
 =====================
 
-* Red Pitaya Click Shield
-* 3x ULF to ULF patch cable for trigger and clock synchronisation
+- 1x Red Pitaya Click Shield
+- 3x U.FL to U.FL patch cable for trigger and clock synchronisation
 
 
 What are Click Boards?
 =======================
 
-|Click Boards| by |MikroE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1300 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
+|Click Boards| by |MikroE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
 
-These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. Mikroelektronika Click Boards are very easy to use. They come with a standard  mikroBUS™ socket connector that can be easily plugged into the Red Pitaya Click Shield.
+.. figure:: img/click-boards-header-banner.jpg
+    :width: 400
+
+These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard |mikroBUS| socket connector that can be easily plugged into the Red Pitaya Click Shield.
 
 
 .. |MikroE| raw:: html
 
-  <a href="https://www.mikroe.com/" target="_blank">Mirkoelektronika</a>
+  <a href="https://www.mikroe.com/" target="_blank">MirkoElektronika</a>
 
 .. |Click Boards| raw:: html
 
-  <a href="https://www.mikroe.com/click" target="_blank">Click Boards</a>
+  <a href="https://www.mikroe.com/click" target="_blank">MikroE Click Board™</a>
 
+.. |mikroBUS| raw:: html
 
-.. Add click board image here
-
+  <a href="https://www.mikroe.com/mikrobus" target="_blank">mikroBUS™</a>
 
 
 Technical specifications
 ==========================
 
+.. figure:: img/redpitaya-click-shield-inner-img-white.jpg
+    :width: 900
+    :align: center
+
+|
+
 Connectors
 -------------
-
-.. add connectors picture (topdown of click shield, connectors marked)
-
 
 +-------------------------+--------------------+----------------------------------------+
 | **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                              |
@@ -79,17 +92,25 @@ Connection example
 
 **Clock and Trigger synchronisation:**
 
-To synchronize two Red Pitaya units with clock and trigger the following connections must be made with ULF cables between the primary board (transmitting clock and trigger signals) and secondary board (receiving the clock and trigger signals):
+To synchronize two Red Pitaya units with clock and trigger the following connections must be made with U.FL cables between the primary board (transmitting clock and trigger signals) and secondary board (receiving the clock and trigger signals):
    
-* CLK OUT+ (primary) ==> CLK IN+ (secondary)
-* CLK OUT- (primary) ==> CLK IN- (secondary)
-* TRIG OUT (primary) ==> TRIG IN (secondary)
+- CLK OUT+ (primary) ==> CLK IN+ (secondary)
+- CLK OUT- (primary) ==> CLK IN- (secondary)
+- TRIG OUT (primary) ==> TRIG IN (secondary)
+
+The connection provides minimal clock signal delay between multiple Red Pitaya units, providing synchronisation that’s even better than the Red Pitaya X-Channel system.
+
+.. figure:: img/redpitaya-click-shield-thickbox_default-4.jpg
+    :width: 700
+    :align: center
  
 
 Switches
 ---------
 
-.. add connectors picture (topdown of click shield, switches marked)
+.. figure:: img/redpitaya-click-shield-switches.png
+    :width: 400
+    :align: center
 
 +-------------------------+--------------------+------------------------------------------------------------+
 | **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                                                  |
@@ -98,7 +119,7 @@ Switches
 +-------------------------+--------------------+------------------------------------------------------------+
 | CLK OSC                 | NC                 | Turn the 125 MHz Oscillator on the Click Shield ON/OFF     |
 +-------------------------+--------------------+------------------------------------------------------------+
-| VCC Select              | NC                 | Select the digital logic levels for Click Boards 3V3/5V    |
+| VCC Select              | NC                 | Select the digital logic levels for mikroBUS™ 3V3/5V       |
 +-------------------------+--------------------+------------------------------------------------------------+
 
 |
@@ -108,18 +129,20 @@ Switch position example
 
 **Clock and Trigger synchronisation:**
 
-* CLK OSC (primary) ==> ON   
-* Clock Select (primary) ==> EXT
-* Clock Select (secondary) ==> EXT
+- CLK OSC (primary) ==> ON   
+- Clock Select (primary) ==> EXT
+- Clock Select (secondary) ==> EXT
 
 **Click board logic:**
-If a specific click board requires 5V logic levels, please switch the *VCC Select* switch to the **5V** position.
+If a specific Click Board requires 5V logic levels, please switch the *VCC Select* switch to the **5V** position.
 
 
 Jumpers
 ---------
 
-.. add connectors picture (topdown of click shield, jumpers marked)
+.. figure:: img/redpitaya-click-shield-jumpers.png
+    :width: 400
+    :align: center
 
 +-------------------------+-----------------------------------------------------------------+
 | **Click Shield Label**  | **Notes**                                                       |
@@ -147,20 +170,20 @@ For jumpers J6 and J7 the pin closer to the MicroBus connectors is connected to 
 
 Primary board:
 
-* J1 disconnected (unless using a single wire clock)
-* J4 connected
-* J5 connected
-* J6 connected
-* J7 connected
+- J1 disconnected (unless using a single wire clock)
+- J4 connected
+- J5 connected
+- J6 connected
+- J7 connected
 
 
 Secondary board:
 
-* J1 disconnected (unless using a single wire clock)
-* J4 disconnected
-* J5 disconnected
-* J6 disconnected (changing the DIO0_N does not affect the external trigger)
-* J7 connected
+- J1 disconnected (unless using a single wire clock)
+- J4 disconnected
+- J5 disconnected
+- J6 disconnected (changing the DIO0_N does not affect the external trigger)
+- J7 connected
 
 
 Power supply
@@ -170,27 +193,29 @@ Power supply
 
 The Click Shields provide two alternative ways to power the Red Pitaya: 
 
-* USB-C 
-* 2-pin screw Terminal Block (12-24 V)
+- USB-C external power supply 
+- 2-pin screw Terminal Block (12-24 V)
 
-The micro USB power conector on the Red Pitaya does not have to be powered if one of the above is present.
+If the power is supplied through the Red Pitaya Click Shield, the microUSB power connector on the Red Pitaya board can be disconnected.
+In short, you do not have to rely on the original Red Pitaya power supply but can use a better power supply if available.
 
 
 Pinout
 --------
 
-Here you will find the interconnections between Click Boards (MikroBus pinout) and Red Pitaya pins.
+Here you will find the interconnections between Click Boards (|mikroBUS| pinout) and Red Pitaya pins.
 
-.. add connectors picture (topdown of click shield, click board pinout marked)
-
+.. figure:: img/mikrobus.png
+    :width: 300
+    :align: center
 
 **Short pin descriptions:**
 
-* Digital pins: *PWM, RST, INT*
-* Analog pins: *AN*
-* UART pins: *RX, TX*
-* SPI pins: *CS, SCK, MISO, MOSI*
-* I2C pins: *SCL, SDA*
+- Digital pins: *PWM, RST, INT*
+- Analog pins: *AN*
+- UART pins: *RX, TX*
+- SPI pins: *CS, SCK, MISO, MOSI*
+- I2C pins: *SCL, SDA*
 
 
 .. note::
@@ -208,7 +233,7 @@ Click Board 1
 Closer to **+CLK OUT- pins**.
 
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| **Notes**          | **Mikrobus Pin**   | **Red Pitaya Pin** | **Red Pitaya Pin** | **Mikrobus Pin**   | **Notes**          |
+| **Notes**          | **mikroBUS Pin**   | **Red Pitaya Pin** | **Red Pitaya Pin** | **mikroBUS Pin**   | **Notes**          |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
 | Analog input       | 1    | AN          |  AIN0              | DIO1_P             | PWM          | 16  | PWM                |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
@@ -236,7 +261,7 @@ Click Board 2
 Closer to **+CLK IN- pins**.
 
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| **Notes**          | **Mikrobus Pin**   | **Red Pitaya Pin** | **Red Pitaya Pin** | **Mikrobus Pin**   | **Notes**          |
+| **Notes**          | **mikroBUS Pin**   | **Red Pitaya Pin** | **Red Pitaya Pin** | **mikroBUS Pin**   | **Notes**          |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
 | Analog input       | 1    | AN          |  AIN1              | DIO3_P             | PWM          | 16  | PWM                |
 +--------------------+------+-------------+--------------------+--------------------+--------------+-----+--------------------+
