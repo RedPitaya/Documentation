@@ -14,13 +14,13 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 - Powering Red Pitaya through an external power supply (12-24 V or via USB-C connector). 
 
 
-|microshield1| |microshield2|
+|click_shield_front| |click_shield_back|
 
-.. |microshield1| image:: img/redpitaya-click-shield-thickbox_default-1.jpg
-    :width: 400
+.. |click_shield_front| image:: img/red-pitaya-click-shield-front.png
+    :width: 500
 
-.. |microshield2| image:: img/redpitaya-click-shield-thickbox_default-2.jpg
-    :width: 400
+.. |click_shield_back| image:: img/red-pitaya-click-shield-back.png
+    :width: 500
 
 |
 
@@ -58,7 +58,7 @@ These Click Boards are an innovative and efficient way to develop hardware proje
 Technical specifications
 ==========================
 
-.. figure:: img/redpitaya-click-shield-inner-img-white.jpg
+.. figure:: img/red-pitaya-click-shield-banner.jpg
     :width: 900
     :align: center
 
@@ -66,6 +66,10 @@ Technical specifications
 
 Connectors
 -------------
+
+.. image:: img/red-pitaya-click-shield-connectors.jpg
+    :width: 500
+    :align: center
 
 +-------------------------+--------------------+----------------------------------------+
 | **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                              |
@@ -100,7 +104,7 @@ To synchronize two Red Pitaya units with clock and trigger the following connect
 
 The connection provides minimal clock signal delay between multiple Red Pitaya units, providing synchronisation that’s even better than the Red Pitaya X-Channel system.
 
-.. figure:: img/redpitaya-click-shield-thickbox_default-4.jpg
+.. figure:: img/red-pitaya-click-shield-connected.png
     :width: 700
     :align: center
  
@@ -108,8 +112,8 @@ The connection provides minimal clock signal delay between multiple Red Pitaya u
 Switches
 ---------
 
-.. figure:: img/redpitaya-click-shield-switches.png
-    :width: 400
+.. image:: img/red-pitaya-click-shield-swithces.png
+    :width: 500
     :align: center
 
 +-------------------------+--------------------+------------------------------------------------------------+
@@ -117,9 +121,9 @@ Switches
 +-------------------------+--------------------+------------------------------------------------------------+
 | Clock Select            | ADC CLK Select     | External (LOW) or internal clock (HIGH)                    |
 +-------------------------+--------------------+------------------------------------------------------------+
-| CLK OSC                 | NC                 | Turn the 125 MHz Oscillator on the Click Shield ON/OFF     |
+| CLK OSC                 | NA                 | Turn the 125 MHz Oscillator on the Click Shield ON/OFF     |
 +-------------------------+--------------------+------------------------------------------------------------+
-| VCC Select              | NC                 | Select the digital logic levels for mikroBUS™ 3V3/5V       |
+| VCC Select (2x)         | NA                 | Select the digital logic levels for mikroBUS™ 3V3/5V       |
 +-------------------------+--------------------+------------------------------------------------------------+
 
 |
@@ -140,8 +144,8 @@ If a specific Click Board requires 5V logic levels, please switch the *VCC Selec
 Jumpers
 ---------
 
-.. figure:: img/redpitaya-click-shield-jumpers.png
-    :width: 400
+.. image:: img/red-pitaya-click-shield-jumpers.png
+    :width: 500
     :align: center
 
 +-------------------------+-----------------------------------------------------------------+
@@ -156,6 +160,8 @@ Jumpers
 | J6                      | Connect DIO0_N (EXT TRIG OUT) pin to TRIG IN                    |
 +-------------------------+-----------------------------------------------------------------+
 | J7                      | Trigger sync.: Connect DIO0_P (EXT TRIG IN) pin to TRIG OUT     |
++-------------------------+-----------------------------------------------------------------+
+| VIN SEL                 | Select the external power between VEXT and VUSB                 |
 +-------------------------+-----------------------------------------------------------------+
 
 |
@@ -191,6 +197,14 @@ Power supply
 
 .. TODO add documentation on this (how much current and power do they need)
 
+|pow_img_usb| |pow_img_ext|
+
+.. |pow_img_usb| image:: img/red-pitaya-click-shield-power.png
+    :width: 500
+
+.. |pow_img_ext| image:: img/RedPitaya-Click-Shield-dark.jpg
+    :width: 500
+
 The Click Shields provide two alternative ways to power the Red Pitaya: 
 
 - USB-C external power supply 
@@ -222,9 +236,9 @@ Here you will find the interconnections between Click Boards (|mikroBUS| pinout)
 
    Red Pitaya only has one set of UART and SPI pins, to achieve the functionality of two click boards, some of the digital pins are used for switching SPI and UART between the two click boards:
 
-   * DIO1_N  ==  Chip Select 1 (Click board 1)
-   * DIO3_N  ==  Chip Select 2 (Click board 2)
-   * DIO5_N  ==  Switching between UART0 (Click board 1)/UART1 (Click board 2)
+   - DIO1_N  ==  Chip Select 1 (Click board 1)
+   - DIO3_N  ==  Chip Select 2 (Click board 2)
+   - DIO5_N  ==  Switching between UART0 (Click board 1)/UART1 (Click board 2)
 
 
 Click Board 1
