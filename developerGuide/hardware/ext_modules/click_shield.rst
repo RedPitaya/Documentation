@@ -71,7 +71,7 @@ Technical specifications
 Connectors
 -------------
 
-.. image:: img/red-pitaya-click-shield-connectors.jpg
+.. image:: img/red-pitaya-click-shield-connectors.png
     :width: 500
     :align: center
 
@@ -116,7 +116,7 @@ The connection provides minimal clock signal delay between multiple Red Pitaya u
 Switches
 ---------
 
-.. image:: img/red-pitaya-click-shield-swithces.png
+.. image:: img/red-pitaya-click-shield-switches.png
     :width: 500
     :align: center
 
