@@ -21,10 +21,10 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 |click_shield_front| |click_shield_back|
 
 .. |click_shield_front| image:: img/red-pitaya-click-shield-front.png
-    :width: 500
+    :width: 450
 
 .. |click_shield_back| image:: img/red-pitaya-click-shield-back.png
-    :width: 500
+    :width: 450
 
 |
 
@@ -41,7 +41,7 @@ What are Click Boards?
 |Click Boards| by |MIKROE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
 
 .. figure:: img/click-boards-header-banner.jpg
-    :width: 400
+    :width: 450
 
 These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard |mikroBUS| socket connector that can be easily plugged into the Red Pitaya Click Shield.
 
@@ -206,7 +206,7 @@ Power supply
 .. |pow_img_usb| image:: img/red-pitaya-click-shield-power.png
     :width: 500
 
-.. |pow_img_ext| image:: img/RedPitaya-Click-Shield-dark.jpg
+.. |pow_img_ext| image:: img/red-pitaya-click-shield-power-ext.jpg
     :width: 500
 
 The Click Shields provide two alternative ways to power the Red Pitaya: 
