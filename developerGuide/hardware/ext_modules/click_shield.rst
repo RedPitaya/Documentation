@@ -34,7 +34,7 @@ What is in the box?
 What are Click Boards?
 =======================
 
-|Click Boards| by |MikroE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
+|Click Boards| by |MIKROE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
 
 .. figure:: img/click-boards-header-banner.jpg
     :width: 400
@@ -42,13 +42,13 @@ What are Click Boards?
 These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard |mikroBUS| socket connector that can be easily plugged into the Red Pitaya Click Shield.
 
 
-.. |MikroE| raw:: html
+.. |MIKROE| raw:: html
 
   <a href="https://www.mikroe.com/" target="_blank">MirkoElektronika</a>
 
 .. |Click Boards| raw:: html
 
-  <a href="https://www.mikroe.com/click" target="_blank">MikroE Click Board™</a>
+  <a href="https://www.mikroe.com/click" target="_blank">MIKROE Click Board™</a>
 
 .. |mikroBUS| raw:: html
 
