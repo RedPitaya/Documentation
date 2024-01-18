@@ -8,7 +8,7 @@ sphinx >= 5.0
 
 sphinx_rtd_theme>=0.5.2
 sphinx-tabs>=3.0.0
-docutils>=0.20.1    # bullet point problem
+docutils>=0.19    # bullet point problem
 #docutils<0.17
 
 #### Python packages ####
