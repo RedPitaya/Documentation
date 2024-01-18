@@ -4,6 +4,10 @@
 Click Shield
 ##############
 
+.. figure:: img/red-pitaya-click-shield-banner.jpg
+    :width: 900
+    :align: center
+
 The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two |Click Boards| and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt external power supply. Using U.FL patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units and/or other devices. An external reference clock can also be connected to the shield through the U.FL connector.
 
 
@@ -58,7 +62,7 @@ These Click Boards are an innovative and efficient way to develop hardware proje
 Technical specifications
 ==========================
 
-.. figure:: img/red-pitaya-click-shield-banner.jpg
+.. figure:: img/red-pitaya-click-shield-logo.jpg
     :width: 900
     :align: center
 
