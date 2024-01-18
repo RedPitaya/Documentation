@@ -67,17 +67,17 @@ Board control commands
 
 **Parameter options:**
 
-- ``<year> = {1900,...}`` Default: ``OS release date and time``
-- ``<month> = {1,12}``
-- ``<day> = {1,31}``
-- ``<hours> = {0,23}``
-- ``<minutes> = {0,59}``
-- ``<seconds> = {0,59}``
-- ``<log_mode> = {OFF,CONSOLE,SYSLOG}``
-- ``<board_id> = {0,15}``
+- ``<year> = {1900, ...}`` Default: ``OS release date and time``
+- ``<month> = {1, 12}``
+- ``<day> = {1, 31}``
+- ``<hours> = {0, 23}``
+- ``<minutes> = {0, 59}``
+- ``<seconds> = {0, 59}``
+- ``<log_mode> = {OFF, CONSOLE, SYSLOG}``
+- ``<board_id> = {0, 15}``
 - ``<enable> = {true, false}``
-- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA, RP_RCA,``
-- ``<errorCode> =  RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
+- ``<errorCode> = {RP_OK, RP_EOED, RP_EOMD, RP_ECMD, RP_EMMD, RP_EUMD, RP_EOOR, RP_ELID, RP_EMRO, RP_EWIP, RP_EPN, RP_UIA, RP_FCA,``
+- ``<errorCode> =  RP_RCA, RP_BTS, RP_EIPV, RP_EUF, RP_ENN, RP_EFOB, RP_EFCB, RP_EABA, RP_EFRB, RP_EFWB, RP_EMNC, RP_NOTS}``
 
 **Available Jupyter and API macros:**
 
@@ -188,8 +188,8 @@ LEDs and GPIOs
 - States - ``RP_LOW, RP_HIGH``
 - Directions - ``RP_IN, RP_OUT``
 - LEDs - ``RP_LED0, RP_LED1, ..., RP_LED7``
-- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` &emsp;&emsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
-- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` &emsp;&thinsp; *# Goes up to 9 on SDRlab and STEMlab 4-Input*
+- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` *Goes up to 9 on SDRlab and STEMlab 4-Input*
+- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` *Goes up to 9 on SDRlab and STEMlab 4-Input*
 
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
@@ -568,8 +568,8 @@ Generator settings
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
 - ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
 - ``<type> = {SINE, SQUARE, TRIANGLE, SAWU, SAWD, PWM, ARBITRARY, DC, DC_NEG}`` Default: ``SINE``
-- ``<amplitude> = {-1 ... 1}``(in Volts). Default: ``1`` for SIGNALlab 250-12 {-5 ... 5}
-- ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 {-5 ... 5}
+- ``<amplitude> = {-1 ... 1}`` (in Volts). Default: ``1`` for SIGNALlab 250-12 ``{-5 ... 5}``
+- ``<level> = {-1 ... 1}``(in Volts). Default: ``0`` for SIGNALlab 250-12 ``{-5 ... 5}``
 - ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
 - ``<phase> = {-360 ... 360}`` (in Degrees). Default: ``0``
 - ``<ratio> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
@@ -665,13 +665,13 @@ Generator settings
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | ``SOUR<n>:TRAC:DATA:DATA <array>``                | | C: ``rp_GenArbWaveform(rp_channel_t channel, float *waveform, uint32_t length)``      | | Import data for one period of an arbitrary waveform (should be exactly 16384 samples).     | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       | | If fewer samples are provided, the output frequency will be higher.                        |                    |
-| | ``SOUR1:TRAC:DATA:DATA``                          | | Python: ``rp_GenArbWaveform(<channel>, <waveform>, <length>)``                        | |                                                                                            |                    |
-| | ``1,0.5,0.2``                                     | |                                                                                       | |                                                                                            |                    |
+| | ``SOUR1:TRAC:DATA:DATA 1,0.5,0.2``                | | Python: ``rp_GenArbWaveform(<channel>, <waveform>, <length>)``                        | |                                                                                            |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``         | | C: ``rp_GenGetArbWaveform(rp_channel_t channel, float *waveform, uint32_t *length)``  | Get the user-defined arbitrary waveform period.                                              | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR1:TRAC:DATA:DATA?`` >                       | | Python: ``rp_GenGetArbWaveform(<channel>, <waveform>)``                               |                                                                                              |                    |
-| | ``1,0.5,0.2``                                     | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:TRAC:DATA:DATA?`` >  ``1,0.5,0.2``        | | Python: ``rp_GenGetArbWaveform(<channel>, <waveform>)``                               |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | -                                                 | | C: ``rp_GenSetGainOut(rp_channel_t channel, rp_gen_gain_t gain_mode)``                | Set SIGNALlab output gain. (SIGNALlab only)                                                  | 1.04-18 and up     |
 | |                                                   | |                                                                                       |                                                                                              |                    |
@@ -713,8 +713,8 @@ Burst mode
 **Parameter options:**
 
 - ``<n> = {1,2}`` (set channel OUT1 or OUT2)
-- ``<mode> = {BURST , CONTINUOUS}`` Default: ``CONTINUOUS``
-- ``<num>, <repetitions> = {1...50000}`` Default: ``1``
+- ``<mode> = {BURST, CONTINUOUS}`` Default: ``CONTINUOUS``
+- ``<num>, <repetitions> = {1...65536}`` Default: ``1``
 - ``<period> = {1 µs - 500 s}`` Value in *µs*.
 
 **Available Jupyter and API macros:**
@@ -917,11 +917,11 @@ Acquisition settings
 **Parameter options:**
 
 - ``<n> = {1,2}`` (set channel IN1 or IN2)
-- ``<decimation> = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536}`` Default: ``1``
-- ``<decimation_ext> = {1,2,4,8,16,17,18,19,......,65536}`` Default: ``1``
-- ``<average> = {OFF,ON}`` Default: ``ON``
+- ``<decimation> = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536}`` Default: ``1``
+- ``<decimation_ext> = {1, 2, 4, 8, 16, 17, 18, 19, ..., 65536}`` Default: ``1``
+- ``<average> = {OFF, ON}`` Default: ``ON``
 - ``<state> = {LV, HV}`` Default: ``LV``
-- ``<mode> = {AC,DC}`` Default ``DC``
+- ``<mode> = {AC, DC}`` Default ``DC``
 - ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
 - ``<format> = {BIN, ASCII}`` Default ``ASCII``
 - ``<enable> = {true, false}`` Default: ``true``
@@ -1165,14 +1165,14 @@ Acquisition trigger
 | | ``ACQ:TRig:EXT:LEV?`` > ``1``                    | | Python: ``rp_AcqGetTriggerLevel(<channel>)``                                       |                                                                               |                    |
 | |                                                  | |                                                                                    |                                                                               |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US] <value>``          | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | | Set the external trigger acquisition debouncer in microseconds (value must  | 2.00-15 and up     |
+| | ``ACQ:TRig:EXT:DEBouncer:[US] <value>``          | | C: ``rp_AcqSetExtTriggerDebouncerUs(double value)``                                | | Set the external trigger acquisition debouncer in microseconds (value must  | 2.00-15 and up     |
 | | Example:                                         | |                                                                                    | | be positive).                                                               |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US] 1``                | | Python: ``rp_AcqSetExtTriggerDebouncerUs(<value>)``                                | |                                                                             |                    |
+| | ``ACQ:TRig:EXT:DEBouncer:US 1``                  | | Python: ``rp_AcqSetExtTriggerDebouncerUs(<value>)``                                | |                                                                             |                    |
 | |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``<value>``   | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | | Set the external trigger acquisition debouncer in microseconds.             | 2.00-15 and up     |
+| | ``ACQ:TRig:EXT:DEBouncer:[US]?`` > ``<value>``   | | C: ``rp_AcqGetExtTriggerDebouncerUs(double *value)``                               | | Set the external trigger acquisition debouncer in microseconds.             | 2.00-15 and up     |
 | | Example:                                         | |                                                                                    | |                                                                             |                    |
-| | ``ACQ:TRig:EXT:DEBouncer[:US]?`` > ``1``         | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       | |                                                                             |                    |
+| | ``ACQ:TRig:EXT:DEBouncer:US?`` > ``1``           | | Python: ``rp_AcqGetExtTriggerDebouncerUs()``                                       | |                                                                             |                    |
 | |                                                  | |                                                                                    | |                                                                             |                    |
 +----------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 
@@ -1294,10 +1294,10 @@ DMA settings
 
 - ``<n> = {1,2}`` (set channel IN1 or IN2)
 - ``<byte> = {0...}`` in bytes
-- ``<decimation> = {1,2,4,8,16,17,18,19,...,65534,65535,65536}`` Default: ``1``
+- ``<decimation> = {1, 2, 4, 8, 16, 17, 18, 19, ..., 65534, 65535, 65536}`` Default: ``1``
 - ``<decimated_data_num> = {value in samples}`` Default: ``0``
 - ``<pos> = {position inside circular buffer in samples}``
-- ``<enable> = {ON,OFF}`` Default: ``OFF``
+- ``<enable> = {ON, OFF}`` Default: ``OFF``
 - ``<address> = {byte}`` Address of reserved memory
 - ``<size> = {byte}`` Size of buffer in bytes. Default: 2 MB
 - ``<samples> = {sample}`` Size of the acquisition buffer in samples. Default: 2 MB
@@ -1600,59 +1600,59 @@ SPI
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:DEF``                     | | C: ``rp_SPI_SetDefaultSettings()``                                                                                     | Sets the settings for SPI to default values.                                       | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:DEF``                          | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:DEF``                     | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:SET``                     | | C: ``rp_SPI_SetSettings()``                                                                                            | | Sets the specified settings for SPI.                                             | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        | | Executed after specifying the parameters of communication.                       |                    |
-| | ``SPI:SET:SET``                          | | Python:                                                                                                                | |                                                                                  |                    |
+| | ``SPI:SETtings:SET``                     | | Python:                                                                                                                | |                                                                                  |                    |
 | |                                          | |                                                                                                                        | |                                                                                  |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:GET``                     | | C: ``rp_SPI_GetSettings()``                                                                                            | Gets the specified SPI settings.                                                   | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:GET``                          | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:GET``                     | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:MODE <mode>``             | | C: ``rp_SPI_SetMode(rp_spi_mode_t mode)``                                                                              | | Sets the mode for SPI.                                                           | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        | | - LISL = Low idle level, Sample on leading edge                                  |                    |
-| | ``SPI:SET:MODE LIST``                    | | Python:                                                                                                                | | - LIST = Low idle level, Sample on trailing edge                                 |                    |
+| | ``SPI:SETtings:MODE LIST``               | | Python:                                                                                                                | | - LIST = Low idle level, Sample on trailing edge                                 |                    |
 | |                                          | |                                                                                                                        | | - HISL = High idle level, Sample on leading edge                                 |                    |
 | |                                          | |                                                                                                                        | | - HIST = High idle level, Sample on trailing edge                                |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:MODE?`` > ``<mode>``      | | C: ``rp_SPI_GetMode(rp_spi_mode_t *mode)``                                                                             | Gets the specified mode for SPI.                                                   | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:MODE?`` > ``LIST``             | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:MODE?`` > ``LIST``        | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:CSMODE <cs_mode>``        | | C: ``rp_SPI_SetCSMode(rp_spi_cs_mode_t mode)``                                                                         | | Sets the mode for CS.                                                            | 2.00-18 and up     |
 | | Example:                                 | |                                                                                                                        | | - NORMAL = After the message is transmitted,                                     |                    |
-| | ``SPI:SET:CSMODE NORMAL``                | | Python:                                                                                                                | | the CS line is set to the HIGH state.                                            |                    |
+| | ``SPI:SETtings:CSMODE NORMAL``           | | Python:                                                                                                                | | the CS line is set to the HIGH state.                                            |                    |
 | |                                          | |                                                                                                                        | | - HIGH = After the message has been transmitted,                                 |                    |
 | |                                          | |                                                                                                                        | | the CS line is set to the LOW state.                                             |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:CSMODE?`` > ``<cs_mode>`` | | C: ``rp_SPI_GetState(rp_spi_state_t *state)``                                                                          | Gets the specified CS mode for SPI.                                                | 2.00-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:CSMODE?`` > ``NORMAL``         | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:CSMODE?`` > ``NORMAL``    | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:SPEED <speed>``           | | C: ``rp_SPI_SetSpeed(int speed)``                                                                                      | Sets the speed of the SPI connection.                                              | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:SPEED 1000000``                | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:SPEED 1000000``           | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETings:SPEED?`` > ``<speed>``     | | C: ``rp_SPI_GetSpeed(int *speed)``                                                                                     | Gets the speed of the SPI connection.                                              | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:SPEED?`` > ``1000000``         | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:SPEED?`` > ``1000000``    | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:WORD <bits>``             | | C: ``rp_SPI_SetWordLen(int len)``                                                                                      | Specifies the length of the word in bits. Must be greater than or equal to 7.      | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:WORD 8``                       | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:WORD 8``                  | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:SETtings:WORD?`` > ``<bits>``      | | C: ``rp_SPI_GetWordLen(int *len)``                                                                                     | Returns the length of a word.                                                      | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
-| | ``SPI:SET:WORD?`` > ``8``                | | Python:                                                                                                                |                                                                                    |                    |
+| | ``SPI:SETtings:WORD?`` > ``8``           | | Python:                                                                                                                |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:MSG:CREATE <n>``                   | | C: ``rp_SPI_CreateMessage(size_t len)``                                                                                | | Creates a message queue for SPI (reserves the space for data buffers)            | 1.04-18 and up     |
@@ -1725,9 +1725,9 @@ I2C
 
 **Parameter options:**
 
-- ``<mode>  = {OFF, ON}``  Default: ``OFF``
+- ``<mode> = {OFF, ON}``  Default: ``OFF``
 - ``<value> = {XXX | #HXX | #QXXX | #BXXXXXXXX}``  Value in Decimal, Hexadecimal, Octal, or Binary format.
-- ``<data>  = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data values separated by commas.
+- ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data values separated by commas.
 
    - ``XXX`` = Dec format
    - ``#HXX`` = Hex format
@@ -1765,42 +1765,42 @@ I2C
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:Smbus:Read<reg>?`` > ``<value>``         | | C: ``rp_I2C_SMBUS_Read(uint8_t reg,uint8_t *value)``                          | | Reads 8 bit data from the specified register using                  | 1.04-18 and up     |
 | | Example:                                       | |                                                                               | | the SMBUS protocol.                                                 |                    |
-| | ``I2C:S:R2?`` > ``0``                          | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
+| | ``I2C:Smbus:Read2?`` > ``0``                   | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
 | |                                                | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:Smbus:Read<reg>:Word?`` > ``<value>``    | | C: ``rp_I2C_SMBUS_ReadWord(uint8_t reg,uint16_t *value)``                     | | Reads 16 bit data from the specified register using                 | 1.04-18 and up     |
 | | Example:                                       | |                                                                               | | the SMBUS protocol.                                                 |                    |
-| | ``I2C:S:R2:W?`` > ``0``                        | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
+| | ``I2C:Smbus:Read2:Word?`` > ``0``              | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
 | |                                                | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:Smbus:Read<reg>:Buffer<size>?`` >        | | C: ``rp_I2C_SMBUS_ReadBuffer(uint8_t reg, uint8_t *buffer, int *len)``        | | Reads buffer data from the specified register using                 | 1.04-18 and up     |
 | |  ``<data>``                                    | |                                                                               | | the SMBUS protocol.                                                 |                    |
 | | Example:                                       | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
-| | ``I2C:S:R2:B2?`` > ``{0,1}``                   | |                                                                               | | ``<size>`` - Read data size.                                        |                    |
+| | ``I2C:Smbus:Read2:Buffer2?`` > ``{0,1}``       | |                                                                               | | ``<size>`` - Read data size.                                        |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:Smbus:Write<reg> <value>``               | | C: ``rp_I2C_SMBUS_Write(uint8_t reg,uint8_t value)``                          | | Writes 8-bit data to the specified register using                   | 1.04-18 and up     |
 | |                                                | |                                                                               | | the SMBUS protocol.                                                 |                    |
 | | Example:                                       | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
-| | ``I2C:S:W2 10``                                | |                                                                               | |                                                                     |                    |
+| | ``I2C:Smbus:Write2 10``                        | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:Smbus:Write<reg>:Word <value>``          | | C: ``rp_I2C_SMBUS_WriteWord(uint8_t reg,uint16_t value)``                     | | Writes 16-bit data to the specified register using                  | 1.04-18 and up     |
 | |                                                | |                                                                               | | the SMBUS protocol.                                                 |                    |
 | | Example:                                       | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
-| | ``I2C:S:W2:W 10``                              | |                                                                               | |                                                                     |                    |
+| | ``I2C:Smbus:Write2:Word 10``                   | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:Smbus:Write<reg>:Buffer<size> <data>``   | | C: ``rp_I2C_SMBUS_WriteBuffer(uint8_t reg, uint8_t *buffer, int len)``        | | Writes buffer data to the specified register using                  | 1.04-18 and up     |
 | |                                                | |                                                                               | | the SMBUS protocol.                                                 |                    |
 | | Example:                                       | | Python:                                                                       | | ``<reg>`` - Register address in dec format.                         |                    |
-| | ``I2C:S:W2:B2 0,1``                            | |                                                                               | | ``<size>`` - Read data size.                                        |                    |
+| | ``I2C:Smbus:Write2:Buffer2 0,1``               | |                                                                               | | ``<size>`` - Read data size.                                        |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:IOctl:Read:Buffer<size>?`` > ``<data>``  | | C: ``rp_I2C_IOCTL_ReadBuffer(uint8_t *buffer, int len)``                      | | Reads data from the I2C device through IOCTL.                       | 1.04-18 and up     |
 | | Example:                                       | |                                                                               | | ``<size>`` - Read data size.                                        |                    |
-| | ``I2C:IO:R:B2?`` > ``{0,1}``                   | | Python:                                                                       | |                                                                     |                    |
+| | ``I2C:IOctl:Read:Buffer2?`` > ``{0,1}``        | | Python:                                                                       | |                                                                     |                    |
 | |                                                | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | | ``I2C:IOctl:Write:Buffer<size> <data>``        | | C: ``rp_I2C_IOCTL_WriteBuffer(uint8_t *buffer, int len)``                     | | Writes data to the I2C device via IOCTL.                            | 1.04-18 and up     |
 | | Example:                                       | |                                                                               | | ``<size>`` - Read data size.                                        |                    |
-| | ``I2C:IO:W:B2  {0,1}``                         | | Python:                                                                       | |                                                                     |                    |
+| | ``I2C:IOctl:Write:Buffer2  {0,1}``             | | Python:                                                                       | |                                                                     |                    |
 | |                                                | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 
@@ -1827,11 +1827,11 @@ CAN
 
 **Parameter options:**
 
-- ``<n> = {0, 1}`` CAN interface
+- ``<n> = {0,1}`` CAN interface
 - ``<bool> = {OFF, ON}``
 - ``<state> = {ERROR_ACTIVE, ERROR_WARNING, ERROR_PASSIVE, BUS_OFF, STOPPED, SLEEPING}``
 - ``<mode> = {LOOPBACK, BERR_REPORTING}``
-- ``<speed> = {1,10000000}``
+- ``<speed> = {1, 10000000}``
 - ``<sp> = {0, 0.999}``
 - ``<tq> = {unsigned integer}``
 - ``<prop_seg> = {unsigned integer}``
@@ -1854,7 +1854,7 @@ CAN
 - ``<rs_ms> = {unsigned integer}`` in milliseconds
 - ``<can_id> = {unsigned integer}`` Destination address on CAN bus
 - ``<buffer> = {XXX | XXX,XXX | XXX,XXX,XXX | XXX,...,XXX}`` Bytes for send from 0 to 8
-- ``<timeout> = {unsigned integer}`` in milliseconds. 0 - timeout disabled
+- ``<timeout> = {unsigned integer}`` in milliseconds. ``0`` - timeout disabled
 - ``<frame_header> = {unsigned integer}``
 - ``<is_extended> = {0,1}``
 - ``<is_error> = {0,1}``

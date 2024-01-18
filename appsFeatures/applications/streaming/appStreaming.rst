@@ -193,6 +193,11 @@ Getting started with the Red Pitaya streaming feature
 Streaming application for the Desktop (Linux, Windows)
 ******************************************************
 
+.. note::
+
+   The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.
+
+
 You can also use the desktop version of the client for streaming.
 
     #. Download the client

@@ -29,12 +29,16 @@ Circuit
 SCPI Code Examples
 ====================
 
+.. note::
+
+    With the latest OS versions you can use ``ACQ:DEC:F <decimation_factor>`` command for more precise control over the acquisition. The decimation factor can be any of ``[1, 2, 4, 8, 16, 17, 18, 19, ..., 65535, 65536]``.
+
 Code - MATLAB®
 ---------------
 
-.. code-block:: matlab
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
-    The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. code-block:: matlab
 
     clc
     clear all

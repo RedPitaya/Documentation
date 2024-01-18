@@ -25,7 +25,274 @@ Wiring example for STEMlab 125-14:
 SCPI Code Examples
 ====================
 
-**Coming soon...**
+
+Code - MATLAB®
+---------------
+
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+
+
+.. code-block: matlab
+
+  clc
+    clear all
+    close all
+    
+    IP = 'rp-f0b506.local';           % IP/local address of your Red Pitaya
+    port = 5000;
+    RP = tcpclient(IP, port);
+    
+    % size in samples 16-Bit
+    DATA_SIZE = 1024;          % ((1024 * 1024 * 128) / 2)        %% for 128 MB %%
+    READ_DATA_SIZE = 1024;     % (1024 * 256)                     %% for 128 MB %%
+    
+    dec = 1;
+    trig_lvl = 0.2;
+    
+    %% Open connection with your Red Pitaya
+    RP.ByteOrder = "big-endian";
+    configureTerminator(RP,"CR/LF");
+    
+    flush(RP);
+    
+    % Reset Acquisition
+    writeline(RP,'ACQ:RST');
+    
+    % Get Memory region
+    start_address = str2num(writeread(RP,'ACQ:AXI:START?'))
+    size = str2num(writeread(RP,'ACQ:AXI:SIZE?'));
+    start_address2 = round(start_address + size/2)
+    
+    fprintf('Reserved memory Start: %d Size: %d\n', start_address, size);
+    
+    % Set decimation
+    writeline(RP,append('ACQ:AXI:DEC ', num2str(dec)));
+    
+    % Set units
+    writeline(RP,'ACQ:AXI:DATA:UNITS VOLTS');
+    
+    % Set trigger delay for both channels
+    writeline(RP,append('ACQ:AXI:SOUR1:Trig:Dly ', num2str(DATA_SIZE)));
+    writeline(RP,append('ACQ:AXI:SOUR2:Trig:Dly ', num2str(DATA_SIZE)));
+    
+    % Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
+    writeline(RP, append('ACQ:AXI:SOUR1:SET:Buffer ', num2str(start_address), ',', num2str(size)));
+    writeline(RP, append('ACQ:AXI:SOUR2:SET:Buffer ', num2str(start_address2), ',', num2str(size)));
+    
+    % Enable DMA
+    writeline(RP, 'ACQ:AXI:SOUR1:ENable ON');
+    writeline(RP, 'ACQ:AXI:SOUR2:ENable ON');
+    fprintf('Enable CHA and CHB\n');
+    
+    % Specify the acquisition trigger
+    writeline(RP, append('ACQ:TRig:LEV ', num2str(trig_lvl)));
+    
+    
+    %% ACQUISITION
+    
+    writeline(RP,'ACQ:START');
+    writeline(RP,'ACQ:TRIG CH1_PE');
+    
+    %% Wait for trigger
+    while 1
+        trig_rsp = writeread(RP,'ACQ:TRIG:STAT?');
+        if strcmp('TD',trig_rsp(1:2))
+            fprintf('Triggered\n');
+            pause(1);
+            break;
+        end
+    end
+    
+    % wait for fill adc buffer
+    while 1
+        fill_state = writeread(RP,'ACQ:AXI:SOUR1:TRIG:FILL?');
+        if strcmp('1', fill_state(1:1))
+            fprintf('DMA buffer full\n');
+            break;
+        end
+    end
+    
+    % Stop Acquisition
+    writeline(RP,'ACQ:STOP');
+    
+    %% Get write pointer at trigger location
+    posChA = writeread(RP, 'ACQ:AXI:SOUR1:Trig:Pos?')
+    posChB = writeread(RP, 'ACQ:AXI:SOUR2:Trig:Pos?')
+    
+    %% Read & plot
+    
+    signal_str  = writeread(RP, append('ACQ:AXI:SOUR1:DATA:Start:N? ', posChA, ',', num2str(READ_DATA_SIZE)));
+    signal_str2 = writeread(RP, append('ACQ:AXI:SOUR2:DATA:Start:N? ', posChB, ',', num2str(READ_DATA_SIZE)));
+    
+    signal_num  = str2num(signal_str(1, 2:length(signal_str)  - 3));
+    signal_num2 = str2num(signal_str(1, 2:length(signal_str2) - 3));
+    
+    x = linspace(1, READ_DATA_SIZE, READ_DATA_SIZE);
+    tiledlayout(2,1)
+    
+    length(x)
+    length(signal_num)
+    length(signal_num2)
+    
+    % CH1 plot
+    nexttile
+    plot(x, signal_num)
+    title('CH1 data')
+    grid on
+    
+    % CH2 plot
+    nexttile
+    plot(x, signal_num2)
+    title('CH2 data')
+    
+    
+    %% Close connection with Red Pitaya
+    writeline(RP, 'ACQ:AXI:SOUR1:ENable OFF');
+    writeline(RP, 'ACQ:AXI:SOUR2:ENable OFF');
+    fprintf('Releasing resources\n');
+    
+    clear RP;
+
+
+
+Code - Python
+---------------
+
+.. code-block:: python
+
+    import time
+    import matplotlib.pyplot as plt
+    import numpy as np
+    
+    import redpitaya_scpi as scpi
+    
+    IP = 'rp-f0b506.local'          # local IP of Red Pitaya
+    rp_s = scpi.scpi(IP)            # open socket connection with Red Pitaya
+    
+    
+    ## size in samples 16Bit
+    DATA_SIZE = 1024          # ((1024 * 1024 * 128) / 2)        ## for 128 MB ##
+    READ_DATA_SIZE = 1024     # (1024 * 256)                     ## for 128 MB ##
+    
+    dec = 1
+    trig_lvl = 0.2
+    
+    
+    ## Reset Acquisition
+    rp_s.tx_txt('ACQ:RST')  
+    
+    # Get Memory region
+    start_address = int(rp_s.txrx_txt('ACQ:AXI:START?'))
+    size = int(rp_s.txrx_txt('ACQ:AXI:SIZE?'))
+    start_address2 = round(start_address + size/2)
+    
+    print(f"Reserved memory Start: {start_address:x} Size: {size:x}\n")
+    
+    # Set decimation
+    rp_s.tx_txt(f"ACQ:AXI:DEC {dec}")
+    
+    # Set units
+    rp_s.tx_txt('ACQ:AXI:DATA:UNITS VOLTS')
+    
+    # Set trigger delay for both channels
+    rp_s.tx_txt(f"ACQ:AXI:SOUR1:Trig:Dly {DATA_SIZE}")
+    rp_s.tx_txt(f"ACQ:AXI:SOUR2:Trig:Dly {DATA_SIZE}")
+    
+    # Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
+    rp_s.tx_txt(f"ACQ:AXI:SOUR1:SET:Buffer {start_address},{size}")
+    rp_s.tx_txt(f"ACQ:AXI:SOUR2:SET:Buffer {start_address2},{size}")
+    
+    # Enable DMA
+    rp_s.tx_txt('ACQ:AXI:SOUR1:ENable ON')
+    rp_s.tx_txt('ACQ:AXI:SOUR2:ENable ON')
+    print('Enable CHA and CHB\n')
+    
+    # Specify the acquisition trigger
+    rp_s.tx_txt(f"ACQ:TRig:LEV {trig_lvl}")
+    
+    
+    ## ACQUISITION
+    
+    rp_s.tx_txt('ACQ:START')
+    rp_s.tx_txt('ACQ:TRIG CH1_PE')
+    
+    # Wait for trigger
+    while 1:
+        rp_s.tx_txt("ACQ:TRIG:STAT?")
+        if rp_s.rx_txt() == 'TD':
+            print("Triggered")
+            time.sleep(1)
+            break
+    
+    # wait for fill adc buffer
+    while 1:
+        rp_s.tx_txt('ACQ:TRIG:FILL?')
+        if rp_s.rx_txt() == '1':
+            print('DMA buffer full\n')
+            break
+    
+    # Stop Acquisition
+    rp_s.tx_txt('ACQ:STOP')
+    
+    ## Get write pointer at trigger location
+    posChA = int(rp_s.txrx_txt('ACQ:AXI:SOUR1:Trig:Pos?'))
+    posChB = int(rp_s.txrx_txt('ACQ:AXI:SOUR2:Trig:Pos?'))
+    
+    ## Read & plot
+    
+    rp_s.tx_txt(f"ACQ:AXI:SOUR1:DATA:Start:N? {posChA},{READ_DATA_SIZE}")
+    signal_str = rp_s.rx_txt()
+    #rp_s.tx_txt(f"ACQ:AXI:SOUR2:DATA:Start:N? {posChB},{READ_DATA_SIZE}")
+    #signal_str2 = rp_s.rx_txt()
+    
+    print("Data Acquired\n")
+    
+    signal_num  = signal_str.strip('{}\n\r').replace("  ", "").split(',')
+    #signal_num2 = signal_str2.strip('{}\n\r').replace("  ", "").split(',')
+    
+    
+    # Writing data into a text file
+    with open("Python_SCPI/out.txt", "w", encoding="ascii") as fp:
+        read_size = 0
+    
+        while read_size < DATA_SIZE:
+            size1 = READ_DATA_SIZE
+            size2 = READ_DATA_SIZE
+            rp_s.tx_txt(f"ACQ:AXI:SOUR1:DATA:Start:N? {posChA},{size1}")
+            signal_str = rp_s.rx_txt()
+            #rp_s.tx_txt(f"ACQ:AXI:SOUR2:DATA:Start:N? {posChB},{size2}")
+            #signal_str2 = rp_s.rx_txt()
+    
+            buff1 = list(map(float, signal_str.strip('{}\n\r').replace("  ", "").split(',')))
+            #buff2 = list(map(float, signal_str2.strip('{}\n\r').replace("  ", "").split(',')))
+    
+            for i in range(0, READ_DATA_SIZE):
+                fp.write(f"{i+1:6d}:  {buff1[i]:6f}\t\n") #{buff2[i]:6d}\n")
+    
+            posChA += size1
+            posChB += size2
+            read_size += READ_DATA_SIZE
+            print(f"Saved data size {read_size}\n")
+    
+    ## Close connection with Red Pitaya
+    rp_s.tx_txt('ACQ:AXI:SOUR1:ENable ON')
+    rp_s.tx_txt('ACQ:AXI:SOUR2:ENable ON')
+    print('Releasing resources\n')
+    rp_s.close()
+
+
+
+
+.. note::
+
+    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
+
+    For further information on functions please consult the |redpitaya_scpi| code.
+
+.. |redpitaya_scpi| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
 
 
 API Code Examples
@@ -88,8 +355,6 @@ Please note that checking whether a function was successful is not necessary.
     
         /*
         Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
-        ADC_AXI_START is a macro for the first address in the Deep Memory Acquisition region.
-        ADC_AXI_END is a macro for the last/end address in the DMA region.
         */
         if (rp_AcqAxiSetBufferSamples(RP_CH_1, g_adc_axi_start, DATA_SIZE) != RP_OK) {
             fprintf(stderr, "rp_AcqAxiSetBuffer RP_CH_1 failed!\n");
@@ -228,11 +493,9 @@ Code - Python API
     rp.rp_AcqAxiSetTriggerDelay(rp.RP_CH_2, DATA_SIZE)
     
     # Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
-    # - ADC_AXI_START is a macro for the first address in the Deep Memory Acquisition region.
-    # - ADC_AXI_END is a macro for the last/end address in the DMA region.
     
     rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_1, g_adc_axi_start, DATA_SIZE)
-    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, g_adc_axi_start + int(g_adc_axi_size/2), DATA_SIZE)
+    rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, int(g_adc_axi_start + int(g_adc_axi_size/2)), DATA_SIZE)
     
     # Enable DMA on both channels
     rp.rp_AcqAxiEnable(rp.RP_CH_1, True)
