@@ -25,7 +25,7 @@ The DMA relies on the |AXI protocol|. Consequently, the functions to work with t
 Required hardware
 ===================
 
-- Red Pitaya device (except STEMlab 125-14 4-Input)
+- Any Red Pitaya device
 - FPGA v0.94
 
 
