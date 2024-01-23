@@ -359,7 +359,7 @@ Where can I find the ecosystem, software, and FPGA images?
 
 .. note::
 
-   Impossible. Perhaps the archives are incomplete.
+   *Impossible. Perhaps the archives are incomplete.*
 
    If you need a specific old version of the ecosystem or the OS that is missing from the archives, we suggest you ask the community on the |RP_forum|. There is a chance someone has it lying around on the disk.
 
