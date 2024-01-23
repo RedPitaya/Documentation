@@ -34,52 +34,54 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     #include <stdio.h>
     #include <stdlib.h>
     #include <unistd.h>
-
-    #include "rp.h"
-
-    // Choose a microbus depending on where the click board is
-    #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
     
-    #if MIRKOBUS == 1
-        #define INT_PIN RP_DIO2_P    // Microbus 1
-    #else
-        #define INT_PIN RP_DIO4_P    // Microbus 2
-    #endif
-
+    #include "rp.h"
+    
     
     int main (int argc, char **argv) {
         rp_pinState_t state;
-    
+        rp_dpin_t int_pin;
+
+        // Choose a microbus depending on where the click board is
+        int mikrobus = 1;        // 1 == Microbus 1, 2 == Microbus 2
+
+        if (mikrobus == 1){
+            int_pin = RP_DIO2_P;
+        }
+        else{
+            int_pin = RP_DIO4_P;
+        }
+
         // Initialization of API
         if (rp_Init() != RP_OK) {
             fprintf(stderr, "Red Pitaya API init failed!\n");
             return EXIT_FAILURE;
         }
-        
-        rp_DpinSetDirection (INT_PIN, RP_IN);
-        
+
+        rp_DpinSetDirection (int_pin, RP_IN);
+
         while(1){
             // Get button value
-            rp_DpinGetState(INT_PIN, &state);
-          
+            rp_DpinGetState(int_pin, &state);
+
             if (state == RP_HIGH){
                 // Turn LED 0 ON if no motion is detected
-                rp_DpinSetState(RP_LED0, RP_HIGH);  
-                printf("There is no motion.\n");
+                rp_DpinSetState(RP_LED0, RP_HIGH);
+                printf("There is no motion.\r");
             }
             else{
                 // Turn LED 0 OFF if motion is detected
                 rp_DpinSetState(RP_LED0, RP_LOW);
-                printf("There is motion.\n");
+                printf("There is motion.   \r");
             }
-            usleep(1000000);
-    
+            fflush(stdout);
+            usleep(100000);
+
         }
-    
+
         // Releasing resources
         rp_Release();
-    
+
         return EXIT_SUCCESS;
     }
 
-Code written by Žiga Fon
