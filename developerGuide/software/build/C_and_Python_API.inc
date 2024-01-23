@@ -8,6 +8,7 @@ acquisition, digital I/O control, communication (I2C, SPI, UART, CAN) and more).
     Please make sure that your Red Pitaya OS and the downloaded GitHub ecosystem repository are compatible.
 
     Using a 1.04 or older OS version together with 2023.1 or newer GitHub ecosystem will result in compatibility isses. To address this please:
+    
     - Use the latest GitHub ecosystem (master branch) together with Red Pitaya OS 2.00 or higher.
     - Use branch 2022.2 or older GitHub ecosystem together with 1.04 or older Red Pitaya OS.
 
@@ -64,7 +65,15 @@ Compiling and running Example code
     .. code-block:: shell-session
 
         cd Examples/C
+        gcc digital_led_blink.c -o digital_led_blink
+
+    or
+
+    .. code-block:: shell-session
+
+        cd Examples/C
         make digital_led_blink
+
 
     To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
     there is a **Makefile** script in the same folder as the Example APIs, which links the libraries during the compilation process.
