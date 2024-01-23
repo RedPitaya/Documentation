@@ -35,6 +35,24 @@ What is in the box?
 - 3x U.FL to U.FL patch cable for trigger and clock synchronisation
 
 
+Compatibility
+===============
+
+.. note::
+
+   Depending on which Red Pitaya board model you are using, some features of the Red Pitaya Click Shield might not be applicable.
+
+The clock synchronisation is compatible only with the following board models:
+
+- STEMlab 125-14 External Clock
+- SDRlab 122-16 External Clock
+- STEMlab 125-14 4-Input
+
+Switching between the External and Internal clock is available only on the STEMlab 125-14 4-Input (CLK SEL pin) but will be compatible with all future Red Pitaya board redesigns.
+
+Trigger synchronisation and |Click Boards| are compatible with all board models.
+
+
 What are Click Boards?
 =======================
 
