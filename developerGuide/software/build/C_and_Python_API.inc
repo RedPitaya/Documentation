@@ -218,7 +218,40 @@ Compiling and running custom code
                     $(RM) *.o
                     $(RM) $(OBJS)
 
+        .. group-tab:: OS version 2.00-30
 
+            .. code-block:: shell-session
+
+                CFLAGS  = -std=gnu11 -Wall ## -Werror
+                CFLAGS += -I/opt/redpitaya/include
+                LDFLAGS = -L/opt/redpitaya/lib
+                LDLIBS = -static -lrp-hw-can -lrp -lrp-hw-calib -lrp-hw-profiles
+
+                INCLUDE += -I/opt/redpitaya/include/api250-12
+                LDLIBS += -lrp-gpio -lrp-i2c
+                LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c -lsocketcan
+
+                # List of compiled object files (not yet linked to executable)
+
+                PRGS = digital_led_blink \
+                                       api_example_2 \
+                                       api_example_3 \
+                                       api_example_x
+    
+                OBJS := $(patsubst %,%.o,$(PRGS))
+                SRC := $(patsubst %,%.c,$(PRGS))
+
+                all: $(PRGS)
+
+                $(PRGS): %: %.c
+                	$(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+                clean:
+                	$(RM) *.o
+                	$(RM) $(OBJS)
+
+                clean_all: clean
+                	$(RM) $(PRGS)
 
 
 4.  In order to compile one example, just use the source file name without the `.c` extension.
@@ -239,7 +272,7 @@ Compiling and running custom code
 
                 redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-        .. group-tab:: OS version 2.00
+        .. group-tab:: OS version 2.00 or higher
 
             .. code-block:: shell-session
 
