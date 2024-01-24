@@ -34,23 +34,21 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     #include <stdio.h>
     #include <stdlib.h>
     #include <unistd.h>
-    
+
     #include "rp.h"
-    
-    
+
+
+    // Choose a microbus depending on where the click board is
+    #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
+
+    #if MIKROBUS == 1
+        #define INT_PIN RP_DIO2_P    // Microbus 1
+    #else
+        #define INT_PIN RP_DIO4_P    // Microbus 2
+    #endif
+
     int main (int argc, char **argv) {
         rp_pinState_t state;
-        rp_dpin_t int_pin;
-
-        // Choose a microbus depending on where the click board is
-        int mikrobus = 1;        // 1 == Microbus 1, 2 == Microbus 2
-
-        if (mikrobus == 1){
-            int_pin = RP_DIO2_P;
-        }
-        else{
-            int_pin = RP_DIO4_P;
-        }
 
         // Initialization of API
         if (rp_Init() != RP_OK) {
@@ -58,11 +56,11 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
             return EXIT_FAILURE;
         }
 
-        rp_DpinSetDirection (int_pin, RP_IN);
+        rp_DpinSetDirection (INT_PIN, RP_IN);
 
         while(1){
             // Get button value
-            rp_DpinGetState(int_pin, &state);
+            rp_DpinGetState(INT_PIN, &state);
 
             if (state == RP_HIGH){
                 // Turn LED 0 ON if no motion is detected
