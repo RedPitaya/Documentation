@@ -8,6 +8,7 @@ acquisition, digital I/O control, communication (I2C, SPI, UART, CAN) and more).
     Please make sure that your Red Pitaya OS and the downloaded GitHub ecosystem repository are compatible.
 
     Using a 1.04 or older OS version together with 2023.1 or newer GitHub ecosystem will result in compatibility isses. To address this please:
+    
     - Use the latest GitHub ecosystem (master branch) together with Red Pitaya OS 2.00 or higher.
     - Use branch 2022.2 or older GitHub ecosystem together with 1.04 or older Red Pitaya OS.
 
@@ -64,7 +65,15 @@ Compiling and running Example code
     .. code-block:: shell-session
 
         cd Examples/C
+        gcc digital_led_blink.c -o digital_led_blink
+
+    or
+
+    .. code-block:: shell-session
+
+        cd Examples/C
         make digital_led_blink
+
 
     To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
     there is a **Makefile** script in the same folder as the Example APIs, which links the libraries during the compilation process.
@@ -218,7 +227,40 @@ Compiling and running custom code
                     $(RM) *.o
                     $(RM) $(OBJS)
 
+        .. group-tab:: OS version 2.00-30
 
+            .. code-block:: shell-session
+
+                CFLAGS  = -std=gnu11 -Wall ## -Werror
+                CFLAGS += -I/opt/redpitaya/include
+                LDFLAGS = -L/opt/redpitaya/lib
+                LDLIBS = -static -lrp-hw-can -lrp -lrp-hw-calib -lrp-hw-profiles
+
+                INCLUDE += -I/opt/redpitaya/include/api250-12
+                LDLIBS += -lrp-gpio -lrp-i2c
+                LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c -lsocketcan
+
+                # List of compiled object files (not yet linked to executable)
+
+                PRGS = digital_led_blink \
+                                       api_example_2 \
+                                       api_example_3 \
+                                       api_example_x
+    
+                OBJS := $(patsubst %,%.o,$(PRGS))
+                SRC := $(patsubst %,%.c,$(PRGS))
+
+                all: $(PRGS)
+
+                $(PRGS): %: %.c
+                	$(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+                clean:
+                	$(RM) *.o
+                	$(RM) $(OBJS)
+
+                clean_all: clean
+                	$(RM) $(PRGS)
 
 
 4.  In order to compile one example, just use the source file name without the `.c` extension.
@@ -239,7 +281,7 @@ Compiling and running custom code
 
                 redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-        .. group-tab:: OS version 2.00
+        .. group-tab:: OS version 2.00 or higher
 
             .. code-block:: shell-session
 

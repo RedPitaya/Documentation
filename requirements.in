@@ -1,2 +1,6 @@
-# Update the versions from time-to-time
-# Sphinx (pin version)
+# Packages that need to be installed (update the versions from time to time)
+sphinx == 5.3 # (final version where bullet points work)
+ 
+sphinx_rtd_theme>=1.2.0
+sphinx-tabs>=3.0.0
+docutils<0.17   # bullet point problem

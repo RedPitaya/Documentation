@@ -14,12 +14,15 @@
 
 import sys
 import os
+import datetime
+
+import sphinx_rtd_theme     # import theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('.') + '/_extensions')
+
+sys.path.append(os.path.abspath('.') + '/_extensions')
 
 # -- General configuration ------------------------------------------------
 
@@ -34,9 +37,9 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
+    'sphinx.ext.intersphinx',
     'sphinx_tabs.tabs',
     'github',
-    'sphinx.ext.intersphinx',
     'sphinx_rtd_theme',
 ]
 
@@ -50,26 +53,39 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = {
+    '.rst': 'restructuredtext'
+    }
 
 # The encoding of source files.
-#source_encoding = 'utf-8-sig'
+source_encoding = 'utf-8-sig'       # default value "utf-8-sig"
+
 
 # The master toctree document.
-master_doc = 'index'
+root_doc = 'index'
+
+
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+exclude_patterns = ['_build']
+
+# Warns about all references not being found
+nitpicky = True
+
+
 
 # General information about the project.
-project = u'Red Pitaya'
-title = u'Red Pitaya Documentation'
-copyright = u'2024, Red Pitaya d.o.o.'
-author = u'Red Pitaya'
+project = "Red Pitaya"
+title = "Red Pitaya Documentation"
+copyright = f"{datetime.date.today().year}, Red Pitaya d.o.o."
+author = "Red Pitaya"
 
 # The version info for the project you're documenting, acts as a replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = u'2.00'
+version = "2.00-30"
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -78,7 +94,7 @@ release = version
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'en'
+language = "en"
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -86,9 +102,7 @@ language = 'en'
 # Else, today_fmt is used as the format for a strftime call.
 #today_fmt = '%B %d, %Y'
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -119,8 +133,6 @@ todo_include_todos = True
 
 
 # -- Options for HTML output ----------------------------------------------
-
-import sphinx_rtd_theme
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of built-in themes.
@@ -171,6 +183,14 @@ html_context = {
             '_static/new_style.css'
         ],
     }
+
+#html_css_files = [
+#            'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
+#            'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
+#            '_static/page_width.css',
+#            '_static/tabs.css',
+#            '_static/new_style.css'
+#        ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -234,7 +254,7 @@ html_context = {
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RedPitayadoc'
+htmlhelp_basename = 'RedPitayaDocs'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -256,7 +276,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'RedPitaya-STEMlab.tex', title, author, 'manual'),
+    (root_doc, 'RedPitaya-Documentation.tex', title, author, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -290,7 +310,7 @@ latex_logo = "img/head_logo.png"
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'RedPitaya-STEMlab', title, author, 1)
+    (root_doc, 'RedPitaya-Documetantion', title, author, 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -303,8 +323,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'RedPitaya-STEMlab', title, author, 'RedPitaya',
-    'One line description of project.', 'Miscellaneous'),
+    (root_doc, 'RedPitaya-Documentation', title, author, 'RedPitaya',
+    'Red Pitaya Techincal Documentation', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.

@@ -39,7 +39,7 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     // Choose a microbus depending on where the click board is
     #define MIKROBUS 1    // 1 == Microbus 1, 2 == Microbus 2
     
-    #if MIRKOBUS == 1
+    #if MIKROBUS == 1
         #define INT_PIN RP_DIO2_P
     #else
         #define INT_PIN RP_DIO4_P
