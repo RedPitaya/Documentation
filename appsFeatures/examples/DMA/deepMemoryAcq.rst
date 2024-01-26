@@ -76,8 +76,8 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     writeline(RP,append('ACQ:AXI:SOUR2:Trig:Dly ', num2str(DATA_SIZE)));
     
     % Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
-    writeline(RP, append('ACQ:AXI:SOUR1:SET:Buffer ', num2str(start_address), ',', num2str(size)));
-    writeline(RP, append('ACQ:AXI:SOUR2:SET:Buffer ', num2str(start_address2), ',', num2str(size)));
+    writeline(RP, append('ACQ:AXI:SOUR1:SET:Buffer ', num2str(start_address), ',', num2str(size/2)));
+    writeline(RP, append('ACQ:AXI:SOUR2:SET:Buffer ', num2str(start_address2), ',', num2str(size/2)));
     
     % Enable DMA
     writeline(RP, 'ACQ:AXI:SOUR1:ENable ON');
@@ -199,8 +199,8 @@ Code - Python
     rp_s.tx_txt(f"ACQ:AXI:SOUR2:Trig:Dly {DATA_SIZE}")
     
     # Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
-    rp_s.tx_txt(f"ACQ:AXI:SOUR1:SET:Buffer {start_address},{size}")
-    rp_s.tx_txt(f"ACQ:AXI:SOUR2:SET:Buffer {start_address2},{size}")
+    rp_s.tx_txt(f"ACQ:AXI:SOUR1:SET:Buffer {start_address},{size/2}")
+    rp_s.tx_txt(f"ACQ:AXI:SOUR2:SET:Buffer {start_address2},{size/2}")
     
     # Enable DMA
     rp_s.tx_txt('ACQ:AXI:SOUR1:ENable ON')
@@ -267,7 +267,7 @@ Code - Python
             #buff2 = list(map(float, signal_str2.strip('{}\n\r').replace("  ", "").split(',')))
     
             for i in range(0, READ_DATA_SIZE):
-                fp.write(f"{i+1:6d}:  {buff1[i]:6f}\t\n") #{buff2[i]:6d}\n")
+                fp.write(f"{i+1:6d}:  {buff1[i]:6f}\t\n") #{buff2[i]:6f}\n")
     
             posChA += size1
             posChB += size2
