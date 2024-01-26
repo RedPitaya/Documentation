@@ -42,9 +42,35 @@ Max. streaming speeds are limited to:
 
    If acquiring a limited amount of samples in a short duration, it is possible to reach higher sampling frequencies (up to the sampling speed of fast analog inputs).
 
+**Minumum streamed data size**
+
+To increase the efficiency of the application, there is a minimum data size that can be sent through the network. This can have a big impact at high decimation values, as it takes a long time to fill a chunck. If the stream is stopped before a chunck is completed, the data is discarded and the saved file has a size of **0 b**.
+
+Here are the minimum chunck limitations sorted by file type and units:
+
+
+.. list-table:: Title
+   :widths: 20 20 20
+   :header-rows: 1
+
+   * - File type \ Units
+     - VOLTS
+     - RAW
+   * - WAV 
+     - 128.043 kb
+     - 64.043 kb
+   * - TDMS
+     - 128.133 kb
+     - 64.133 kb
+   * - BIN
+     - 64.090 kb
+     - 64.090 kb
+
+
 .. note::
 
    We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
+
 
 
 ******************************************************
@@ -210,7 +236,7 @@ You can also use the desktop version of the client for streaming.
 
             .. group-tab:: OS version 2.00
 
-                Files with clients are in the streaming web application. You can download it from RP itself.
+                Files with clients are in the streaming web application. You can download it from Red Pitaya itself.
 
 
     #. Unzip and run the client
@@ -224,6 +250,10 @@ You can also use the desktop version of the client for streaming.
                     :align: center
 
             For Windows clients, you need to grant access to the network.
+
+            .. note::
+
+               It is possible that an Antivirus program might block the desktop client. If you experience this issue, we recommend whitelisting the Streaming Client folder.
 
     #. The running application automatically detects boards on the network if streaming is running on them. The boards and the client must be on the same network.
 
