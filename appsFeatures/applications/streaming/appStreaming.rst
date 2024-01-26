@@ -49,7 +49,7 @@ To increase the efficiency of the application, there is a minimum data size that
 Here are the minimum chunck limitations sorted by file type and units:
 
 
-.. list-table:: Title
+.. list-table::
    :widths: 20 20 20
    :header-rows: 1
 
