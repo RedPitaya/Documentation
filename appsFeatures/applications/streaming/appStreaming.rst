@@ -53,7 +53,7 @@ Here are the minimum chunck limitations sorted by file type and units:
    :widths: 20 20 20
    :header-rows: 1
 
-   * - File type \ Units
+   * - File type \\ Units
      - VOLTS
      - RAW
    * - WAV 
