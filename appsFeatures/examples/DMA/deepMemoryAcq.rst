@@ -34,7 +34,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
 .. code-block: matlab
 
-  clc
+    clc
     clear all
     close all
     
