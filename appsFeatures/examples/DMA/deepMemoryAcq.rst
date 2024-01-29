@@ -275,8 +275,8 @@ Code - Python
             print(f"Saved data size {read_size}\n")
     
     ## Close connection with Red Pitaya
-    rp_s.tx_txt('ACQ:AXI:SOUR1:ENable ON')
-    rp_s.tx_txt('ACQ:AXI:SOUR2:ENable ON')
+    rp_s.tx_txt('ACQ:AXI:SOUR1:ENable OFF')
+    rp_s.tx_txt('ACQ:AXI:SOUR2:ENable OFF')
     print('Releasing resources\n')
     rp_s.close()
 
