@@ -155,7 +155,7 @@ In this example, we will show how to set configuration remotely using an already
 
     .. group-tab:: OS version 2.00-23 or newer
 
-        .. figure:: img/settingt_2.00.png
+        .. figure:: img/settings_2.00.png
             :width: 800
 
 .. code-block:: shell-session
