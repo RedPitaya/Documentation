@@ -25,14 +25,14 @@ Streamed data can be stored into:
     * Technical Data Management Streaming (TDMS) file format
     * Fast and compact binary format (BIN). It can be converted to CSV format.
 
-Max. streaming speeds are limited to:
+Max. streaming speeds (per board) are limited to:
 
     * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance)
     * 20 MB/s for streaming over 1 Gbit network (A :ref:`direct connection <dir_cab_connect>` is recommended to achieve the best streaming performance)
 
 .. note::
 
-   The maximum continuous streaming speeds are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
+   The maximum continuous streaming speeds (per board) are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
    Here are a few examples of maximum data rates:
 
       - One channel, 8-bits per sample: Max sampling frequency 20 MHz.
@@ -70,7 +70,6 @@ Here are the minimum chunck limitations sorted by file type and units:
 .. note::
 
    We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
-
 
 
 ******************************************************
