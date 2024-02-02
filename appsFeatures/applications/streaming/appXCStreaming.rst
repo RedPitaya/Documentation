@@ -146,9 +146,17 @@ In this example, we will show how to set configuration remotely using an already
 
     <a href="https://downloads.redpitaya.com/doc/streaming/test.conf" target="_blank">test.conf</a>
 
+.. tabs::
 
-.. figure:: img/settings.png
-    :width: 800
+    .. group-tab:: OS version 2.00-15 or older
+
+        .. figure:: img/settings.png
+            :width: 800
+
+    .. group-tab:: OS version 2.00-23 or newer
+
+        .. figure:: img/settingt_2.00.png
+            :width: 800
 
 .. code-block:: shell-session
 
