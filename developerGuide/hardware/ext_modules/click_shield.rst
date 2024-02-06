@@ -42,7 +42,7 @@ Compatibility
 
    Depending on which Red Pitaya board model you are using, some features of the Red Pitaya Click Shield might not be applicable.
 
-The clock synchronisation is compatible only with the following board models:
+The clock synchronisation is compatible only with the following board models (and their Low-Noise versions):
 
 - STEMlab 125-14 External Clock
 - SDRlab 122-16 External Clock
@@ -112,23 +112,6 @@ Connectors
 +-------------------------+--------------------+----------------------------------------+
 
 |
-
-Connection example
-~~~~~~~~~~~~~~~~~~~~
-
-**Clock and Trigger synchronisation:**
-
-To synchronize two Red Pitaya units with clock and trigger the following connections must be made with U.FL cables between the primary board (transmitting clock and trigger signals) and secondary board (receiving the clock and trigger signals):
-   
-- CLK OUT+ (primary) ==> CLK IN+ (secondary)
-- CLK OUT- (primary) ==> CLK IN- (secondary)
-- TRIG OUT (primary) ==> TRIG IN (secondary)
-
-The connection provides minimal clock signal delay between multiple Red Pitaya units, providing synchronisation that’s even better than the Red Pitaya X-Channel system.
-
-.. figure:: img/red-pitaya-click-shield-connected.png
-    :width: 700
-    :align: center
  
 
 Switches
@@ -149,15 +132,6 @@ Switches
 +-------------------------+--------------------+------------------------------------------------------------+
 
 |
-
-Switch position example
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Clock and Trigger synchronisation:**
-
-- CLK OSC (primary) ==> ON   
-- Clock Select (primary) ==> EXT
-- Clock Select (secondary) ==> EXT
 
 **Click board logic:**
 If a specific Click Board requires 5V logic levels, please switch the *VCC Select* switch to the **5V** position.
@@ -188,30 +162,6 @@ Jumpers
 
 |
 
-Jumper position example
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-For jumpers J6 and J7 the pin closer to the MicroBus connectors is connected to the Red Pitaya digital pin and the other is connected to the TRIG IN/OUT connector.
-
-
-**Clock and Trigger synchronisation:**
-
-Primary board:
-
-- J1 disconnected (unless using a single wire clock)
-- J4 connected
-- J5 connected
-- J6 connected
-- J7 connected
-
-
-Secondary board:
-
-- J1 disconnected (unless using a single wire clock)
-- J4 disconnected
-- J5 disconnected
-- J6 disconnected (changing the DIO0_N does not affect the external trigger)
-- J7 connected
 
 
 Power supply
@@ -364,8 +314,22 @@ Red Pitaya only has one set of UART pins, to achieve the functionality of two cl
 
 |
 
-Schematics
-================
+
+
+Components
+===============
+
+- |ZL40213| LVDS clock fanout buffer.
+
+
+
+.. |ZL40213| raw:: html
+
+  <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
+
+
+.. Schematics
+.. ================
 
 .. add final Click shield schematics when available
 
@@ -375,8 +339,100 @@ Schematics
 Examples of use
 ================
 
+
 Synchronisation
 ----------------
+
+The Red Pitaya Click Shield can synchronise multiple Red Pitaya units together. As U.FL cables are used for clock and trigger synchronisation, other external clock devices can also be included in the chain.
+The connection provides minimal clock signal delay between multiple Red Pitaya units, as there is only a single ZL40213 LVDS clock fanout buffer between two units.
+
+To synchronise two or more Red Pitaya units, establish the following connections with U.FL cables between the primary board (transmitting clock and trigger signals) and the secondary board (receiving the clock and trigger signals). Use one of the two schemes depending on whether you want to connect an external clock or use the oscillator on the Red Pitaya Click Shields.
+
+
+#TODO
+Oscillator
+~~~~~~~~~~~~
+
+.. figure:: img/Click_Shield_Oscillator_Sync.png
+    :width: 700
+    :align: center
+
+When using the oscillator, the first Red Pitaya Click Shield transmits the clock and trigger signals to all devices in the chain. Here are the most important things to check:
+
+**Primary board:**
+
+- Jumpers J4 and J5 connected. Connect the oscillator to the clocking transmission line.
+- Jumpers J6 and J7 connected. Connect the Red Pitaya trigger to the trigger transmission line.
+- 
+
+**Secondary board:**
+
+- Jumper J6 connected. Connect the trigger to the Ext. Trigger pin.
+
+External Clock
+~~~~~~~~~~~~~~~~
+
+.. figure:: img/Click_Shield_Ext_Clock_Sync.png
+    :width: 700
+    :align: center
+
+
+
+
+
+Jumper position example
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For jumpers J6 and J7 the pin closer to the MicroBus connectors is connected to the Red Pitaya digital pin and the other is connected to the TRIG IN/OUT connector.
+
+
+**Clock and Trigger synchronisation:**
+
+Primary board:
+
+- J1 disconnected (unless using a single wire clock)
+- J4 connected
+- J5 connected
+- J6 connected
+- J7 connected
+
+
+Secondary board:
+
+- J1 disconnected (unless using a single wire clock)
+- J4 disconnected
+- J5 disconnected
+- J6 disconnected (changing the DIO0_N does not affect the external trigger)
+- J7 connected
+
+
+Switch position example
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Clock and Trigger synchronisation:**
+
+- CLK OSC (primary) ==> ON   
+- Clock Select (primary) ==> EXT
+- Clock Select (secondary) ==> EXT
+
+Connection example
+~~~~~~~~~~~~~~~~~~~~
+
+**Clock and Trigger synchronisation:**
+
+To synchronize two Red Pitaya units with clock and trigger the following connections must be made with U.FL cables between the primary board (transmitting clock and trigger signals) and secondary board (receiving the clock and trigger signals):
+   
+- CLK OUT+ (primary) ==> CLK IN+ (secondary)
+- CLK OUT- (primary) ==> CLK IN- (secondary)
+- TRIG OUT (primary) ==> TRIG IN (secondary)
+
+.. figure:: img/red-pitaya-click-shield-connected.png
+    :width: 700
+    :align: center
+
+
+Synchronisation - External clock
+---------------------------------------
 
 Here are examples for synchronising two Red Pitayas with Click Shields through SCPI commands.
 
