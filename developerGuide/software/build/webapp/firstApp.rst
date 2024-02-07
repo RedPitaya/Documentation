@@ -2,13 +2,13 @@ Creating first app
 ##################
 
 Before you start creating your first application you need to set your development environment. Instructions how to do
-that are in article :ref:`Setting development environment <ssh>`. Also it's recommended to read brief System overview in order to 
+that are in article :ref:`Setting development environment <ssh>`. Also it's recommended to read brief System overview in order to
 understand what are the main components of system and how they communicate with each other.
 
 Preparations
 ************
 
-First of all you need to connect to your Red Pitaya via SSH. Follow this instructions SSH connection or simply open 
+First of all you need to connect to your Red Pitaya via SSH. Follow this instructions SSH connection or simply open
 SSH shells in Eclipse.
 After successful connection execute rw command in order to make file-system writable:
 
@@ -30,7 +30,7 @@ After installing you should configure it:
 
    $ git config --global user.name "username"
    $ git config --global user.email "username@mail.com"
-   
+
 where ``username`` is your or any other name, and ``username@mail.com`` is your email.
 
 
@@ -38,7 +38,7 @@ When these steps are done go to root directory and clone Red Pitaya Project:
 
 .. code-block:: shell-session
 
-   $ cd /root/ 
+   $ cd /root/
    $ git clone https://github.com/RedPitaya/RedPitaya.git
 
 
@@ -53,11 +53,11 @@ As you know from System overview application contains two parts. They are fronte
 required files for working with hardware of Red Pitaya. You can find your applications in::
 
    /opt/redpitaya/www/apps/
-   
+
 This is done for ease of use all applications. All available FPGA images can be found here::
 
     /opt/redpitaya/fpga
-    
+
 All libraries you may need to link your app with can be found here::
 
     /opt/redpitaya/lib
@@ -66,12 +66,12 @@ All libraries you may need to link your app with can be found here::
 Project structure
 *****************
 
-Each application folder contains both frontend and backend files in same location. Using specific directory structure 
-you will not have a mess between UI files and your controller. Frontend is web-based application so it requires HTML 
+Each application folder contains both frontend and backend files in same location. Using specific directory structure
+you will not have a mess between UI files and your controller. Frontend is web-based application so it requires HTML
 code for layout, CSS for elements styles, and JavaScript for application logic. Let have look on it first.
-At first you need to copy "1.template" folder to "/opt/redpitaya/www/apps" directory and rename it, for example 
+At first you need to copy "1.template" folder to "/opt/redpitaya/www/apps" directory and rename it, for example
 "myFirstApp".
-   
+
 .. code-block:: shell-session
 
    $ cd /opt/redpitaya/www/apps
@@ -93,7 +93,7 @@ You can edit application name & description in /info/info.json file. ::
 
 Application icon image is "/info/icon.png". You may also change it.
 
-Modify application title in index.html file:  
+Modify application title in index.html file:
 
 .. code-block:: html
 
@@ -116,12 +116,12 @@ Modify application title in index.html file:
     </html>
 
 
-Obviously you may want to have your own unique look of application. For that case you need to edit file:: 
- 
+Obviously you may want to have your own unique look of application. For that case you need to edit file::
+
    css/style.css
 
 
-By default it contains this code: 
+By default it contains this code:
 
 .. code-block:: html
 
@@ -154,14 +154,14 @@ JavaScript application establishes connection with your Red Pitaya::
 You should change application id to name of your application folder. From::
 
     APP.config.app_id = '1.template';
-    
+
 to::
 
     APP.config.app_id = 'myFirstApp';
 
 
-Entry point of JS is **APP.startApp().** It sends request for loading application status. If status is not "OK" request 
-will be sent again. If application was loaded JS application tries to connect to Red Pitaya via WebSocket calling 
+Entry point of JS is **APP.startApp().** It sends request for loading application status. If status is not "OK" request
+will be sent again. If application was loaded JS application tries to connect to Red Pitaya via WebSocket calling
 **APP.connectWebSocket().**
 
 .. code-block:: html
@@ -180,7 +180,7 @@ will be sent again. If application was loaded JS application tries to connect to
 
        APP.ws.onopen = function() {
            $('#hello_message').text("Hello, Red Pitaya!");
-           console.log('Socket opened');               
+           console.log('Socket opened');
        };
 
        APP.ws.onclose = function() {
@@ -189,7 +189,7 @@ will be sent again. If application was loaded JS application tries to connect to
 
        APP.ws.onerror = function(ev) {
             $('#hello_message').text("Connection error");
-            console.log('Websocket error: ', ev);         
+            console.log('Websocket error: ', ev);
        };
 
        APP.ws.onmessage = function(ev) {
@@ -213,19 +213,23 @@ Backend is a C/C++ application which controls Red Pitaya peripherals. Source cod
 | **const char *rp_app_desc(void)** - returns application description
 | **int rp_app_init(void)** - called when application was started
 | **int rp_app_exit(void)** - called when application was closed
-| **int rp_set_params(rp_app_params_t *p, int len) -** 
-| **int rp_get_params(rp_app_params_t **p) -** 
-| **int rp_get_signals(float ***s, int *sig_num, int *sig_len) -** 
+| **int rp_set_params(rp_app_params_t *p, int len) -**
+| **int rp_get_params(rp_app_params_t **p) -**
+| **int rp_get_signals(float ***s, int *sig_num, int *sig_len) -**
 | **void UpdateSignals(void)** - updates signals(you should set update interval)
 | **void UpdateParams(void)** - updates parametes(you should set update interval)
 | **void OnNewParams(void)** - called when parameters were changed
 | **void OnNewSignals(void)** - called when signals were changed
-| **void PostUpdateSignals(void)** - 
+| **void PostUpdateSignals(void)** -
 
 This functions are called by NGINX. We will add some code into this part later.
 
 Also there is a file called **fpga.conf**. It defines which FPGA image is loaded when application is started (FPGA images are located in /opt/redpitaya/fpga).
 
+.. note::
+
+    In OS 2.0, the fpga.conf file has become deprecated and is no longer used. The new file for loading fpga is called **fpga.sh**. Also, the method of loading FPGA has changed, as xdevcfg has also become deprecated and does not work on the latest versions of the linux kernel.
+    See the example for more details: :ref:`Add a button to control LED <ABCLED>`
 
 Compiling application
 *********************
@@ -238,7 +242,9 @@ To compile application run in /opt/redpitaya/www/apps/**<your_app_name>** folder
    $ make INSTALL_DIR=/opt/redpitaya
 
 
-Compiling process will start. After comping will be created file “controller.so”. Try to connect to Red Pitaya in 
-browser. Application should appear in the list. Notice: compiling is needed if you haven't compile it yet or change 
-source files. If you change only WEB files don't recompile.   
-   
+Compiling process will start. After comping will be created file “controller.so”. Try to connect to Red Pitaya in
+browser. Application should appear in the list.
+
+.. note::
+    Compiling is needed if you haven't compile it yet or change source files. If you change only WEB files don't recompile.
+
