@@ -22,10 +22,18 @@ Pitaya using parameters.
 
         .. group-tab:: OS version 2.00
 
+            In OS version 2.0, the algorithm for loading an FPGA has changed. The **fpgautil** utility (*/opt/redpitaya/bin/fpgautil*) is used to load the FPGA. Also, the FPGA file format has changed from |xlinx_doc|.
+            A script is used to load FPGA into memory: **overlay.sh**. It loads the overlay for the devices used in the FPGA as well as the FPGA bin file.
+
             .. code-block:: shell-session
 
                 redpitaya> overlay.sh v0.94
 
+
+
+.. |xlinx_doc| raw:: html
+
+    <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-BitstreamFormat" target="_blank">bit to bin</a>
 
 Web UI
 ******
@@ -93,7 +101,8 @@ Red Pitaya can update real LED state.
         APP.ws.send(JSON.stringify({ parameters: local }));
     });
 
- .. note::
+.. note::
+
     Parameter that transfers local LED state to Red Pitaya backend is called LED_STATE. You can change name of this
     parameter, but don’t forget to use the same name also in controller.
 
