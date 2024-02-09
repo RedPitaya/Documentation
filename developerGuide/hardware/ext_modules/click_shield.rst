@@ -167,23 +167,49 @@ Jumpers
 Power supply
 --------------
 
-.. TODO add documentation on this (how much current and power do they need)
-
-|pow_img_usb| |pow_img_ext|
-
-.. |pow_img_usb| image:: img/red-pitaya-click-shield-power.png
-    :width: 500
-
-.. |pow_img_ext| image:: img/red-pitaya-click-shield-power-ext.jpg
-    :width: 500
-
 The Click Shields provide two alternative ways to power the Red Pitaya: 
 
-- USB-C external power supply 
-- 2-pin screw Terminal Block (12-24 V)
+- USB-C external power supply
+- 12-24 V External Power Supply (2-pin screw Terminal Block)
+
+.. note::
+
+    Set the VIN SEL jumper into the correct position depending on whether the USB-C or External Power supply (Terminal Block) is used.
+
+The external power supply powers both the Red Pitaya and the Red Pitaya Click Shield. The maximum power consumption of Red Pitaya is 10 W (5 V, 2 A). The power consumption of the Click Shield greatly depends on the type of Click Boards attached to it (we recommend leaving 5 W just in case).
+Minimal requirements for the external power supplies:
+
+- USB-C - 5 V, 3 A (15 W)
+- External Power Supply - 12-24 V, 1.5 A (15 W)
+
+The voltages must be in the specified range.
 
 If the power is supplied through the Red Pitaya Click Shield, the microUSB power connector on the Red Pitaya board can be disconnected.
 In short, you do not have to rely on the original Red Pitaya power supply but can use a better power supply if available.
+
+
+**Power options**
+
+.. grid:: 2 3 3 4
+
+    .. grid-item-card:: USB-C/External Power Supply
+        :img-top: img/red-pitaya-power-01.png
+        :img-alt: Red Pitaya powered by USB-C or External power supply
+
+        When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will **glow Blue**, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.
+
+    .. grid-item-card:: Red Pitaya
+        :img-top: img/red-pitaya-power-02.png
+        :img-alt: Red Pitaya powered by the included power supply
+
+        When the USB is connected to the Red Pitaya board, the PWR diode will **glow Green**, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.
+
+    .. grid-item-card:: Both
+        :img-top: img/red-pitaya-power-03.png
+        :img-alt: Red Pitaya powered by both the included and External power supply
+
+        When the USB type C connector is connected to the Click Shield, and the other USB is connected to the Red Pitaya board, the PWR diode will **glow Cyan**, and in this setup, the mikroBUS™ sockets are powered from the Click Shield side.
+
 
 
 Pinout
@@ -320,25 +346,35 @@ Components
 ===============
 
 - |ZL40213| LVDS clock fanout buffer.
-
+- |TXS0108| level-shifting voltage translators.
 
 
 .. |ZL40213| raw:: html
 
   <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
 
+.. |TXS0108| raw:: html
 
-.. Schematics
-.. ================
+  <a href="https://www.digikey.com/en/products/detail/texas-instruments/TXS0108ERGYR/1910182" target="_blank">TXS0108</a>
 
-.. add final Click shield schematics when available
 
-**Coming Soon...**
+
+Schematics
+================
+
+- `Click_shield_for_Red_Pitaya_v103_Schematic.pdf <https://downloads.redpitaya.com/doc/Click_shield_for_Red_Pitaya_v103_Schematic.pdf>`_
+
+
+
+Mechanical Specifications and 3D Models
+=========================================
+
+- `red-pitaya-click-shield-2d-3d-files.zip <https://downloads.redpitaya.com/doc/red-pitaya-click-shield-2d-3d-files.zip>`_
+
 
 
 Examples of use
 ================
-
 
 Synchronisation
 ----------------
@@ -399,7 +435,7 @@ Synchronisation example
 
 Here are examples for synchronising two Red Pitayas with Click Shields through SCPI commands.
 
-* :ref:`Synchronised Click Shield Generation and Acquisition <click_shield_sync_exam1>`
+- :ref:`Synchronised Click Shield Generation and Acquisition <click_shield_sync_exam1>`
 
 
 Click Boards
