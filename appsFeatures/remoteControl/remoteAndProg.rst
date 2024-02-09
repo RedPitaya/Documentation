@@ -11,3 +11,4 @@ Programming and remote-control tools
    deepMemoryAcquisition
    command_list
    examples_top
+   knownIssues
