@@ -373,6 +373,32 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
         source ./.bashrc
 
 
+Red Pitaya Python library list
+-------------------------------
+
+Here is a full list of Red Pitaya libraries with functionalities you can include into your projects:
+
++-------------------+------------------------------------------------------------------------------+-------------+
+| Library           | Description                                                                  | Ecosystem   |
++===================+==============================================================================+=============+
+| **rp**            | API commands for API initialisation, controlling LEDs, Analog pins, GPIOs,   | 2.00-23     |
+|                   | Generation, Acquisition, Board Control commands, and DMA.                    |             |
+|                   | Default library, should be included in every project.                        |             |
++-------------------+------------------------------------------------------------------------------+-------------+
+| **rp_hw_calib**   | API commands for configuring calibration parameters and settings.            | 2.00-23     |
+|                   |                                                                              |             |
+|                   |                                                                              |             |
++-------------------+------------------------------------------------------------------------------+-------------+
+| **rp_hw_can**     | API commands for the CAN interface.                                          | 2.00-30     |
+|                   |                                                                              |             |
+|                   |                                                                              |             |
++-------------------+------------------------------------------------------------------------------+-------------+
+| **rp_hw**         | API commands for UART, SPI, and I2C interface, and Status LED control.       | 2.00-23     |
+|                   |                                                                              |             |
+|                   |                                                                              |             |
++-------------------+------------------------------------------------------------------------------+-------------+
+
+
 C and Python API all available commands
 ========================================
 
