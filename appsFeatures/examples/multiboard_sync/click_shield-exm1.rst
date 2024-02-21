@@ -64,6 +64,17 @@ The Red Pitaya providing the clock signal to other Red Pitayas through the click
 SCPI Code Examples
 ====================
 
+.. note::
+
+  This code is written for **2.00-30 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+
+.. Code - MATLAB®
+.. ---------------
+
+
+
+
 Code - Python
 ---------------
 
