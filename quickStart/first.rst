@@ -9,42 +9,56 @@ Your LAN network must have DHCP settings enabled which is true with most local n
 With this, a simple *plug and play* approach is enabled.
 Having a Red Pitaya board connected to the local network will enable quick access to all Red Pitaya applications using only your web browser.
 
-Follow these three simple steps to start using your Red Pitaya:
+Follow these five simple steps to start using your Red Pitaya:
 
 .. tabs::
 
    .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
 
+      #. Update the Red Pitaya OS on the included SD card to the :ref:`latest version <prepareSD>`
+      #. Insert the SD card into your Red Pitaya board
+
+         .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+            :width: 400
+            :align: center
+
       #. Connect your Red Pitaya board to the router
 
          .. figure:: connect/125_router.png
-            :width: 50%
+            :width: 400
             :align: center
 
       #. Connect the power supply to the Red Pitaya board
       #. Open your web browser and type ``rp-xxxxxx.local/`` into the address bar
 
          .. figure:: connect/125_stiker.png
-            :width: 50%
+            :width: 400
             :align: center
 
          .. figure:: connect/125_stiker_2.png
-            :width: 50%
+            :width: 400
             :align: center
    
    .. tab:: 250-12
 
+      #. Update the Red Pitaya OS on the included SD card to the :ref:`latest version <prepareSD>`
+      #. Insert the SD card into your Red Pitaya board
+
+         .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+            :width: 400
+            :align: center
+
       #. Connect your Red Pitaya board to the router
 
          .. figure:: connect/250_router.png
-            :width: 50%
+            :width: 400
             :align: center
 
       #. Connect the power supply to the Red Pitaya board
       #. Open your web browser and type ``rp-xxxxxx.local/`` into the address bar
 
          .. figure:: connect/250_stiker.png
-            :width: 90%
+            :width: 800
             :align: center
        
 .. note::
