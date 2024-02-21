@@ -4,7 +4,7 @@ Interfacing SPI TFT displays with touch
 
 .. note::
 
-   Instructions work for 1.04 OS, but will be updated for the 2.00 OS in the future.
+   **Instructions work for OS versions 0.97 to 1.04!**
 
    All the links in this section lead to the |2022.2 GitHub branch| (release 1.04-28) and the |RedPitaya-FPGA|, where the files are present.
 
