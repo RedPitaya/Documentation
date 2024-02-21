@@ -25,6 +25,10 @@ Wiring example for STEMlab 125-14:
 SCPI Code Examples
 ====================
 
+.. note::
+
+  This code is functional on **STEMlab 125-14 with 2.00-23 or higher OS** and with **2.00-30 OS on all other board models**.
+
 
 Code - MATLAB®
 ---------------
