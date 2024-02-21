@@ -226,7 +226,7 @@ The device is powered by **+5V**,
 and it generates 3.3V using an onboard LDO.
 Therefore all IO is 3.3V, so there are no conflicts.
 
-Connector pinout based on the |MI0283QT-2|_
+Connector pinout based on the |MI0283QT-2|
 `schematic <https://github.com/watterott/MI0283QT-Adapter/blob/master/hardware/MI0283QT_v15.pdf>`_.
 
 +-------------------+-----------+--------+--------+-----------+-------------------+
@@ -274,22 +274,32 @@ Adafruit PiTFT 3.5"
 ===================
 
 
-.. |PiTFT-35| replace:: Adafruit PiTFT 3.5" Touch Screen for Raspberry Pi
-.. _PiTFT-35: https://learn.adafruit.com/adafruit-pitft-3-dot-5-touch-screen-for-raspberry-pi
+.. |PiTFT-35| raw:: html
 
-.. |PiTFTa-35| replace:: PiTFT - Assembled 480x320 3.5" TFT+Touchscreen for Raspberry Pi
-.. _PiTFTa-35: https://www.adafruit.com/product/2097
+    <a href="https://learn.adafruit.com/adafruit-pitft-3-dot-5-touch-screen-for-raspberry-pi" target="_blank">Adafruit PiTFT 3.5" Touch Screen for Raspberry Pi</a>
+
+.. |PiTFTa-35| raw:: html
+
+    <a href="https://www.adafruit.com/product/2097" target="_blank">PiTFT - Assembled 480x320 3.5" TFT+Touchscreen for Raspberry Pi</a>
+
 .. _PiTFTa-35-img: https://cdn-learn.adafruit.com/assets/assets/000/019/744/original/adafruit_products_2097_quarter_ORIG.jpg
 
-.. |PiTFTp-35| replace:: PiTFT Plus 480x320 3.5" TFT+Touchscreen for Raspberry Pi
-.. _PiTFTp-35: https://www.adafruit.com/product/2441
+
+.. |PiTFTp-35| raw:: html
+
+    <a href="https://www.adafruit.com/product/2441" target="_blank">PiTFT Plus 480x320 3.5" TFT+Touchscreen for Raspberry Pi</a>
+
 .. _PiTFTp-35-img: https://cdn-shop.adafruit.com/970x728/2441-11.jpg
 
-.. |HX8357D| replace:: HX8357D
-.. _HX8357D: https://cdn-shop.adafruit.com/datasheets/HX8357-D_DS_April2012.pdf
 
-.. |STMPE610| replace:: STMPE610
-.. _STMPE610: https://cdn-shop.adafruit.com/datasheets/STMPE610.pdf
+.. |HX8357D| raw:: html
+
+    <a href="https://cdn-shop.adafruit.com/datasheets/HX8357-D_DS_April2012.pdf" target="_blank">HX8357D</a>
+
+
+.. |STMPE610| raw:: html
+
+    <a href="https://cdn-shop.adafruit.com/datasheets/STMPE610.pdf" target="_blank"STMPE610</a>
 
 
 
@@ -297,14 +307,14 @@ Adafruit PiTFT 3.5"
 
 .. |tft-hx8357d-stmpe601| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/dts/tft/tft-hx8357d-stmpe601.dtsi" target="_blank">``tft-hx8357d-stmpe601.dtsi``</a>
+    <a href="https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/dts/tft/tft-hx8357d-stmpe601.dtsi" target="_blank">tft-hx8357d-stmpe601.dtsi</a>
 
 
 There are two versions of this display the older **Assembled**
 (sometimes called **Original** and the newer **Plus**.
 
-* |PiTFTa-35|_ (`high resolution image <PiTFTa-35-img_>`_)
-* |PiTFTp-35|_ (`high resolution image <PiTFTp-35-img_>`_)
+* |PiTFTa-35| (`high resolution image <PiTFTa-35-img_>`_)
+* |PiTFTp-35| (`high resolution image <PiTFTp-35-img_>`_)
 
 While the newer **Plus** version can be used out of the box,
 The older **Assembled** requires hardware modifications,
@@ -315,7 +325,7 @@ and **+3.3V** for TFT and touch controllers
 (should be taken from the E1 connector on Red Pitaya).
 Therefore all IO is 3.3V, so there are no conflicts.
 
-Male connector pinout based on the |PiTFT-35|_
+Male connector pinout based on the |PiTFT-35|
 `schematic <https://cdn-learn.adafruit.com/assets/assets/000/019/763/original/adafruit_products_schem.png?1411058465>`__.
 
 +-------------------+--------+--------+-------------------+
@@ -402,7 +412,7 @@ there is a race condition affecting touch controller
 SPI interface configuration during power-up reset.
 The LDO on the TFT board is faster then the switcher on Red Pitaya.
 
-The |STMPE610|_ touch controller datasheet (section 5.2)
+The |STMPE610| touch controller datasheet (section 5.2)
 describes how CPOL/CPHA SPI configuration options depend
 on the power-up reset state of a pair of configuration pins.
 
@@ -437,7 +447,7 @@ In most cases, the LDO on the TFT board would wake
 before the switcher on Red Pitaya, so the ``CPOL_N``
 would be detected as ``0``, which inverts the SPI clock polarity.
 As an unreliable fix, the ``spi-cpol`` attribute can be provided
-in the `device tree </fpga/dts/tft/tft-hx8357d-stmpe601.dtsi#L31>`_.
+in the |tft-hx8357d-stmpe601| device tree.
 
 .. note::
 
