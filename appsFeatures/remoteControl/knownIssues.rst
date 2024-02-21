@@ -14,6 +14,11 @@ If you are facing an issue with one of the examples, a command is not working, o
 Issues
 ---------
 
+.. note::
+
+    **TEMPORARY CHANGE OF COMMANDS**
+    We realized this command renaming is not backwards compatible, so we will be reverting it to the old version with the next OS update
+
 - For all SCPI commands ``TRIG`` was renamed to ``TRig``.
 - Renamed ``ACQ:SOUR<n>:DATA:STA:END?`` to ``ACQ:SOUR<n>:DATA:Start:End?``
 - Renamed ``ACQ:SOUR<n>:DATA:STA:N?`` to ``ACQ:SOUR<n>:DATA:Start:N?``
