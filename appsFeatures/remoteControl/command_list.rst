@@ -149,7 +149,7 @@ Board control commands
 | | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     | | Python: ``rp_GetVersion()``                    |                                                           |                    |
 | |                                                    | |                                                |                                                           |                    |
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
-| | ``SYSTem:Help?`` > ``List of SCPI commands ``      | | -                                              | | Returns a list of all commands                          | in dev             |
+| | ``SYSTem:Help?`` > ``<List of SCPI commands>``     | | -                                              | | Returns a list of all commands                          | in dev             |
 | | Examples:                                          | |                                                | | that the SCPI server can process.                       |                    |
 | | ``SYSTem:Help?`` > ``*CLS\n*ESE\n...``             | |                                                |                                                           |                    |
 | |                                                    | |                                                |                                                           |                    |
@@ -169,6 +169,8 @@ Board control commands
 | |                                                    | | Python: ``rp_EnableDigitalLoop(<enable>)``     | |                                                         |                    |
 | |                                                    | |                                                | |                                                         |                    |
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
+
+
 
 
 .. _commands_digital:
