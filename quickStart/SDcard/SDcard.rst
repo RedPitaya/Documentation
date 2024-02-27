@@ -124,6 +124,7 @@ For manual ecosystem upgrades please refer to `Manual upgrade`_.
 
    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a>
 
+.. _nightly_builds:
 
 ==============
 Nightly Builds
