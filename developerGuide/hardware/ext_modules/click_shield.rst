@@ -52,6 +52,32 @@ Switching between the External and Internal clock is available only on the STEMl
 
 Trigger synchronisation and |Click Boards| are compatible with all board models.
 
+Here is a compatibility table:
+
+
+.. table::
+    :widths: 10 18 18 18 18 18
+    :align: center
+
+    +------------------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+    | Click Shield Feature Compatibility                                                                                                                                        |
+    +====================================+==========================+==========================+==========================+==========================+==========================+
+    |                                    | STEMlab 125-10 |br|      | STEMlab 125-14 |br|      | STEMlab 125-14 ext. clk  | STEMlab 125-14 4-Input   | SIGNALlab 250-12         |
+    |                                    | (discontinued)           | STEMlab 125-14 LN |br|   | SDRlab 122-16 ext. clk   |                          |                          |
+    |                                    |                          | SDRlab 122-16  |br|      |                          |                          |                          |
+    |                                    |                          | STEMlab 125-14-Z7020-LN  |                          |                          |                          |
+    +------------------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+    | Click Boards (microBus)            | Yes                      | Yes                      | Yes                      | Yes                      | Yes                      |
+    +------------------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+    | High speed Synchronisation         | No                       | No                       | Yes                      | Yes                      | No                       |
+    +------------------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+    | Powering options                   | Yes                      | Yes                      | Yes                      | Yes                      | No                       |
+    +------------------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+    | Clk Switch (Internal/External)     | No                       | No                       | No                       | Yes                      | No                       |
+    +------------------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+
+|
+
 
 What are Click Boards?
 =======================
@@ -190,25 +216,29 @@ In short, you do not have to rely on the original Red Pitaya power supply but ca
 
 **Power options**
 
-.. grid:: 2 3 3 4
+#. **USB-C or External power supply**
 
-    .. grid-item-card:: USB-C/External Power Supply
-        :img-top: img/red-pitaya-power-01.png
-        :img-alt: Red Pitaya powered by USB-C or External power supply
+   .. image:: img/red-pitaya-power-01.png
+       :width: 400
+       :align: left
 
-        When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will **glow Blue**, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.
+   When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will **glow Blue**, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.
 
-    .. grid-item-card:: Red Pitaya
-        :img-top: img/red-pitaya-power-02.png
-        :img-alt: Red Pitaya powered by the included power supply
+#. **Standard power supply**
 
-        When the USB is connected to the Red Pitaya board, the PWR diode will **glow Green**, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.
+   .. image:: img/red-pitaya-power-02.png
+       :width: 400
+       :align: left
 
-    .. grid-item-card:: Both
-        :img-top: img/red-pitaya-power-03.png
-        :img-alt: Red Pitaya powered by both the included and External power supply
+   When the USB is connected to the Red Pitaya board, the PWR diode will **glow Green**, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.
 
-        When the USB type C connector is connected to the Click Shield, and the other USB is connected to the Red Pitaya board, the PWR diode will **glow Cyan**, and in this setup, the mikroBUS™ sockets are powered from the Click Shield side.
+#. **Standard and external power supply**
+
+   .. image:: img/red-pitaya-power-03.png
+       :width: 400
+       :align: left
+
+   When the USB type C connector is connected to the Click Shield, and the other USB is connected to the Red Pitaya board, the PWR diode will **glow Cyan**, and in this setup, the mikroBUS™ sockets are powered from the Click Shield side.
 
 
 
