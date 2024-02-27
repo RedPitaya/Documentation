@@ -38,6 +38,14 @@ Red Pitaya not booting anymore?
 *   :ref:`Was the OS updated recently? <trouble_OS>`
 
 
+.. _rebooting:
+
+Red Pitaya is constantly rebooting?
+------------------------------------
+
+* A board reset during boot-up is indicated by the **green** and **blue LEDs** lighting up, followed by the **orange and red LEDs** pausing their blinking to **remain ON for about 2 seconds**, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations. 
+
+
 How to connect the external clock to RP?
 ------------------------------------------
 
@@ -139,34 +147,72 @@ Problems connecting to RP?
 .. figure:: img/blinking-pitaya-eth.gif
    :align: center
 
+Red Pitaya status LED description:
+- **Green LED** - power good
+- **Blue LED** - FPGA image loaded and OS booted
+- **Red LED** - CPU heartbeat
+- **Orange LED** - SD card access
+
 #. First, check the LEDs:
 
-   a. If the **green LED** is not **ON** or is **blinking**. It seems like something is wrong with the power supply, or maybe it's the USB cable. Make sure that:
+   a. If the **green LED** is **OFF** or is **blinking**. It seems like something is wrong with the power supply, or maybe it's the USB cable. Make sure that:
 
-       1. you have plugged the USB cable into the right USB connector on the Red Pitaya
-       2. your power supply is 5V/2A
+       1. you have plugged the USB cable into the correct USB connector on the Red Pitaya
+       2. your power supply is capable of 5 V/2 A (or 12 V/1 A for SIGNALlab 250-12)
        3. try to replace the USB cable and also the USB power supply
 
    #. If the **green LED** is turned **ON** but the **blue LED** is turned **OFF**. In this case, there is an error while loading the Red Pitaya system from the SD card. Make sure that:
 
-       *   you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
-       *   try to use another SD card
+       - you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - in such case follow these instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
+       - try to use another SD card
+       - try connecting via a :ref:`serial console <console>` and check the boot sequence
+       - if you have **Pavel Demin's Alpine Linux OS** image installed, this may indicate normal behaviour. The **status LEDs are normally turned OFF**, check the |red_pitaya_notes| for more information.
 
-   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs are **not blinking**. The red LED indicates CPU heartbeat, while the orange LED indicates access to the SD card. Notice that these two LEDs always start blinking 10 seconds after the green and blue LEDs are turned on.
+   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs **stop blinking** a few seconds after the boot, only to **remain ON for about 2 seconds**, and then the cycle repeats. This indicates that the **Red Pitaya is in a reboot cycle**. Notice that the red and orange LEDs always start blinking approx 10 seconds after the green and blue LEDs are turned ON.
 
-#. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
+       - Check your Red Pitaya board model. If you are using an **external clock** version, check whether the **external clock signal is properly connected** to the :ref:`E2 <E2>` connector.
 
-#. Consult the :ref:`connection guide <connection>` for advice.
+   #. If the status LEDs are working normally, the Red Pitaya is properly booted. If you are unable to connect to it, this is most likely a networking issue:
 
-#. Try disabling the VPN, because it may be preventing the connection.
+       - Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
+       - Consult the :ref:`connection guide <connection>` for advice.
+       - Try using the recommended Google Chrome browser.
+       - Disable any adblockers for the "rp-xxxxxx.local" website.
+       - Try disabling the VPN, because it may be preventing the connection.
+       - Type "arp -a" into the Comand Prompt or Terminal and look for Red Pitaya's IP. Then try using the IP instead of "rp-xxxxxx.local" in the browser's URL window.
+       - If you are a Windows user, please look at the note below.
 
-#. If you are a Windows user, please look at the note below.
+   .. note::
 
-.. note::
-
-   **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_, otherwise access to ``*.local`` addresses will not work.
+      **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_, otherwise access to ``*.local`` addresses will not work.
 
    **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install additional software.
+
+   #. **Advanced troubleshooting:**
+
+       - If you are a Linux or macOS user and the Red Pitaya is directly connected to the computer (with the ethernet cable), check the ethernet connector settings if they are set to **DHCP** and **Local Only**. Alternatively, try connecting to the Red Pitaya through the router.
+       - If you updated form 1.04 to 2.00 OS version, check GitHub issues |#250| and |#254|.
+       - Try connecting via the :ref:`serial console <console>`. Check the boot log and see whether you can access the on-board Linux Terminal.
+       - Check the :ref:`Nightly Builds Changelog <nightly_builds>` for any relevant updates.
+
+   #. Extremely rare cases:
+
+      - If the board is operating normally, but the **blue LED** is **OFF**, check if the LED is damaged. If the board is in warranty, we will replace it.
+      - Check whether any of the SD card holder pins are bent upwards and do not have contact with the SD card pins. Take out the SD card and push them into the normal position.
+
+
+.. |red_pitaya_notes| raw:: html
+
+   <a href="https://github.com/pavel-demin/red-pitaya-notes" target="_blank">Pavel Demin's Red Pitaya Notes</a>
+
+.. |#250| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">#250</a>
+
+.. |#254| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/254" target="_blank">#254</a>
+
 
 
 How to find the Red Pitaya URL if it is not written on the sticker?
@@ -180,13 +226,13 @@ If the RP MAC address is ``00:26:33:F1:13:D5``, the last 6 digits are ``F113D5``
    :align: center
 
 
-Slow WIFI connection?
+Slow Wi-Fi connection?
 -----------------------
 
 If your wireless connection with Red Pitaya works very slowly and all the applications seem very unresponsive and not running smoothly, please check the following:
 
-*   Check the WiFi signal strength on your PC/tablet/smartphone.
-*   Check the WiFi signal strength of your Red Pitaya.
+*   Check the Wi-Fi signal strength on your PC/tablet/smartphone.
+*   Check the Wi-Fi signal strength of your Red Pitaya.
 
    1. Connect to your Red Pitaya via an :ref:`SSH <ssh>` connection.
 
@@ -199,7 +245,7 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
       Level, or signal strength, is a simple measure of the amplitude of the signal that is received. The closer you are to the access point, the higher this will be.
 
-*   If you are in an area with many routers around you, more of them might operate on the same wifi channel, which drastically decreases data throughput and slows down connection. Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
+*   If you are in an area with many routers around you, more of them might operate on the same Wi-Fi channel, which drastically decreases data throughput and slows down connection. Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best Wi-Fi channel.
 
 
 .. note::
@@ -215,7 +261,7 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
    <a href="http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/" target="_blank">Wireless Diagnostic Tool</a>
 
 
-WIFI dongle not detected?
+Wi-Fi dongle not detected?
 ---------------------------
 
 Please note that not all are compatible. A list is in the documentation: :ref:`Supported USB Wi-Fi adapters <support_wifi_adapter>`
