@@ -3,6 +3,10 @@
 Synchronised Click Shield Generation and Acquisition
 #####################################################
 
+.. figure:: img/red-pitaya-click-shield-connected.png
+    :width: 500
+    :align: center
+
 Description
 ============
 
@@ -38,7 +42,7 @@ Oscillator
 -----------
 
 .. figure:: img/Click_Shield_Oscillator_Sync.png
-    :width: 700
+    :width: 500
     :align: center
 
 When using the oscillator, the first Red Pitaya Click Shield transmits the clock and trigger signals to all devices in the chain. Here are the most important things to check:
@@ -66,7 +70,7 @@ External Clock
 ---------------
 
 .. figure:: img/Click_Shield_Ext_Clock_Sync.png
-    :width: 700
+    :width: 500
     :align: center
 
 When using an external clock and external trigger, the clock and trigger signals are transmitted to all devices in the chain. All the Click Shields share the same configuration:
