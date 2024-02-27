@@ -35,7 +35,7 @@ To synchronise two or more Red Pitaya units, establish the following connections
 
 
 Oscillator
-~~~~~~~~~~~~
+-----------
 
 .. figure:: img/Click_Shield_Oscillator_Sync.png
     :width: 700
@@ -63,7 +63,7 @@ Otherwise, DIO0_N acts as external trigger output (on the primary board), and DI
 
 
 External Clock
-~~~~~~~~~~~~~~~~
+---------------
 
 .. figure:: img/Click_Shield_Ext_Clock_Sync.png
     :width: 700
@@ -77,8 +77,6 @@ When using an external clock and external trigger, the clock and trigger signals
 - Jumper J1 disconnected (unless using a single wire clock).
 - CLK OSC switch in OFF position.
 - CLK SELECT switch in EXT position.
-
-
 
 .. note::
 
