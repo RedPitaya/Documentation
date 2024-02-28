@@ -226,12 +226,16 @@ In short, you do not have to rely on the original Red Pitaya power supply but ca
 
    When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will **glow Blue**, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.
 
+   |
+
 #. **Standard power supply**
 
    .. image:: img/red-pitaya-power-02.png
        :width: 400
 
    When the USB is connected to the Red Pitaya board, the PWR diode will **glow Green**, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.
+
+   |
 
 #. **Standard and external power supply**
    
