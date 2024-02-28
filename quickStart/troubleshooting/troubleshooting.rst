@@ -43,7 +43,7 @@ Red Pitaya not booting anymore?
 Red Pitaya is constantly rebooting?
 ------------------------------------
 
-* A board reset during boot-up is indicated by the **green** and **blue LEDs** lighting up, followed by the **orange and red LEDs** pausing their blinking to **remain ON for about 2 seconds**, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations. 
+* A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations. 
 
 
 How to connect the external clock to RP?
@@ -148,6 +148,7 @@ Problems connecting to RP?
    :align: center
 
 Red Pitaya status LED description:
+
 - **Green LED** - power good
 - **Blue LED** - FPGA image loaded and OS booted
 - **Red LED** - CPU heartbeat
@@ -166,21 +167,21 @@ Red Pitaya status LED description:
        - you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - in such case follow these instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
        - try to use another SD card
        - try connecting via a :ref:`serial console <console>` and check the boot sequence
-       - if you have **Pavel Demin's Alpine Linux OS** image installed, this may indicate normal behaviour. The **status LEDs are normally turned OFF**, check the |red_pitaya_notes| for more information.
+       - if you have **Pavel Demin's Alpine Linux OS** image installed, this may indicate normal behaviour. The status LEDs are normally turned OFF, check the |red_pitaya_notes| for more information.
 
-   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs **stop blinking** a few seconds after the boot, only to **remain ON for about 2 seconds**, and then the cycle repeats. This indicates that the **Red Pitaya is in a reboot cycle**. Notice that the red and orange LEDs always start blinking approx 10 seconds after the green and blue LEDs are turned ON.
+   #. If both the **green** and **blue** LEDs are **ON**, but the red and orange LEDs stop blinking a few seconds after the boot, only to remain ON for about 2 seconds, and then the cycle repeats. This indicates that the **Red Pitaya is in a reboot cycle**. Notice that the red and orange LEDs always start blinking approx 10 seconds after the green and blue LEDs are turned ON.
 
-       - Check your Red Pitaya board model. If you are using an **external clock** version, check whether the **external clock signal is properly connected** to the :ref:`E2 <E2>` connector.
+       - Check your Red Pitaya board model. If you are using an external clock version, check whether the external clock signal is properly connected to the :ref:`E2 <E2>` connector.
 
-   #. If the status LEDs are working normally, the Red Pitaya is properly booted. If you are unable to connect to it, this is most likely a networking issue:
+#. If the status LEDs are working normally, the Red Pitaya is properly booted. If you are unable to connect to it, this is most likely a networking issue:
 
-       - Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
-       - Consult the :ref:`connection guide <connection>` for advice.
-       - Try using the recommended Google Chrome browser.
-       - Disable any adblockers for the "rp-xxxxxx.local" website.
-       - Try disabling the VPN, because it may be preventing the connection.
-       - Type "arp -a" into the Comand Prompt or Terminal and look for Red Pitaya's IP. Then try using the IP instead of "rp-xxxxxx.local" in the browser's URL window.
-       - If you are a Windows user, please look at the note below.
+    - Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
+    - Consult the :ref:`connection guide <connection>` for advice.
+    - Try using the recommended Google Chrome browser.
+    - Disable any adblockers for the "rp-xxxxxx.local" website.
+    - Try disabling the VPN, because it may be preventing the connection.
+    - Type "arp -a" into the Comand Prompt or Terminal and look for Red Pitaya's IP. Then try using the IP instead of "rp-xxxxxx.local" in the browser's URL window.
+    - If you are a Windows user, please look at the note below.
 
    .. note::
 
@@ -188,17 +189,17 @@ Red Pitaya status LED description:
 
    **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install additional software.
 
-   #. **Advanced troubleshooting:**
+#. **Advanced troubleshooting:**
 
-       - If you are a Linux or macOS user and the Red Pitaya is directly connected to the computer (with the ethernet cable), check the ethernet connector settings if they are set to **DHCP** and **Local Only**. Alternatively, try connecting to the Red Pitaya through the router.
-       - If you updated form 1.04 to 2.00 OS version, check GitHub issues |#250| and |#254|.
-       - Try connecting via the :ref:`serial console <console>`. Check the boot log and see whether you can access the on-board Linux Terminal.
-       - Check the :ref:`Nightly Builds Changelog <nightly_builds>` for any relevant updates.
+    - If you are a Linux or macOS user and the Red Pitaya is directly connected to the computer (with the ethernet cable), check the ethernet connector settings if they are set to **DHCP** and **Local Only**. Alternatively, try connecting to the Red Pitaya through the router.
+    - If you updated form 1.04 to 2.00 OS version, check GitHub issues |#250| and |#254|.
+    - Try connecting via the :ref:`serial console <console>`. Check the boot log and see whether you can access the on-board Linux Terminal.
+    - Check the :ref:`Nightly Builds Changelog <nightly_builds>` for any relevant updates.
 
-   #. Extremely rare cases:
+#. Extremely rare cases:
 
-      - If the board is operating normally, but the **blue LED** is **OFF**, check if the LED is damaged. If the board is in warranty, we will replace it.
-      - Check whether any of the SD card holder pins are bent upwards and do not have contact with the SD card pins. Take out the SD card and push them into the normal position.
+    - If the board is operating normally, but the **blue LED** is **OFF**, check if the LED is damaged. If the board is in warranty, we will replace it.
+    - Check whether any of the SD card holder pins are bent upwards and do not have contact with the SD card pins. Take out the SD card and push them into the normal position.
 
 
 .. |red_pitaya_notes| raw:: html
