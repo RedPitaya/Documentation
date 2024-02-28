@@ -66,7 +66,7 @@ Follow these five simple steps to start using your Red Pitaya:
    ``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board.
    The MAC address is written on the Ethernet connector.
     
-After the **third step**, you will get a Red Pitaya main page, as shown below.
+After the **fifth step**, you will get a Red Pitaya main page, as shown below.
 
 .. figure:: connect/connect-3.png
    :align: center
@@ -83,7 +83,14 @@ After the **third step**, you will get a Red Pitaya main page, as shown below.
 .. note::
 
     For any issues during setup, check :ref:`troubleshooting <faq>` or look on the |forum| for a solution.
-    If you cannot find a solution, please post your problem, providing as much detail as possible.
+    If you cannot find a solution, please write to support@redpitaya.com or post your problem on the forum, providing the following details:
+
+       - Red Pitaya board model (STEMlab 125-14, SDRlab 122-16, SIGNALlab 250-12, etc.),
+       - Is the board a variation of any board models (Low Noise, External Clock),
+       - Red Pitaya OS version (bottom-right corner of the web interface),
+       - Description of the problem in as much detail as possible,
+       - Any other information you think might be relevant to the situation.
+
 
 .. |forum| raw:: html
 
