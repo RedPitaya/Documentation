@@ -26,6 +26,6 @@ A combination of physical design (i.e. bus capacitance) and interaction between 
 UART TX preventing connection
 ==============================
 
-If the UART TX pin is driven high (3V3) before or during the boot sequence, this can prevent the user from logging into the unit.
+If the UART TX pin on the :ref:`E2 <E2>` connector is driven high (3V3) before or during the boot sequence, this can prevent the user from logging into the unit.
 
 
