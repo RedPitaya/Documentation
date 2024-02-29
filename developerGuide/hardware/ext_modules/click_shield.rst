@@ -253,7 +253,6 @@ Here you will find the interconnections between Click Boards (|mikroBUS| pinout)
 
 .. figure:: img/mikrobus.png
     :width: 300
-    :align: center
 
 **Short pin descriptions:**
 
