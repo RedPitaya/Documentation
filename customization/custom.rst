@@ -11,5 +11,5 @@ Read more about customizing your Red Pitaya |red_pitaya_customization|.
 
 .. |red_pitaya_customization| raw:: html
 
-    <a href="https://redpitaya.com/customization-solutions/" target="_blank">here</a>.
+    <a href="https://redpitaya.com/customization-solutions/" target="_blank">here</a>
 
