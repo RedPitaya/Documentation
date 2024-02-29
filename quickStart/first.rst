@@ -60,7 +60,11 @@ Follow these five simple steps to start using your Red Pitaya:
          .. figure:: connect/250_stiker.png
             :width: 800
             :align: center
-       
+
+.. note::
+
+   When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
+
 .. note::
 
    ``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board.
