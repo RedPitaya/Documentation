@@ -191,7 +191,7 @@ Components
 * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
 * `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
 * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi>` for more information)
+* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information)
 
 .. note::
 
@@ -267,6 +267,7 @@ The ADC clock can be provided by:
 
     Bottom side
 
+.. _qspi_chip:
 
 *********
 QSPI 
