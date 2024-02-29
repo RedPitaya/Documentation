@@ -107,7 +107,6 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
         end
     end
 
-    %%! OS 2.00 or higher only !%%
     % wait for fill adc buffer
     while 1
         fill_state = writeread(RP,'ACQ:AXI:SOUR1:TRIG:FILL?');
@@ -228,7 +227,7 @@ Code - Python
             print("Triggered")
             time.sleep(1)
             break
-    
+
     # wait for fill adc buffer
     while 1:
         rp_s.tx_txt('ACQ:TRIG:FILL?')
