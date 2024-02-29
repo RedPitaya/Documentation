@@ -29,10 +29,13 @@ Wiring example:
 SCPI Code Examples
 ====================
 
+.. note::
+
+  This code is written for **2.00-23 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+
 Code - MATLAB
 --------------
-
-The code should work for MATLAB R2019a or higher. There might be problems due to how MATLAB handles strings starting with MATLAB R2022b.
 
 .. code-block:: matlab
 
@@ -150,7 +153,8 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
         end
     end
     fprintf('Trigger primary condition met.\n');
-    
+
+    %%! OS 2.00 or higher only !%%
     while 1
         if strcmp(writeread(RP_PRI,'ACQ:TRIG:FILL?'),'1')
             break
@@ -166,7 +170,8 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
         end
     end
     fprintf('Trigger secondary condition met.\n');
-    
+
+    %%! OS 2.00 or higher only !%%
     while 1
         if strcmp(writeread(RP_SEC,'ACQ:TRIG:FILL?'),'1')
             break
@@ -320,6 +325,7 @@ Code - Python
             break
     print("Trigger primary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_prim.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -331,6 +337,7 @@ Code - Python
             break
     print("Trigger secondary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_sec.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -462,6 +469,7 @@ Code - Python
             break
     print("Trigger primary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_prim.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -473,6 +481,7 @@ Code - Python
             break
     print("Trigger secondary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_sec.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -614,6 +623,7 @@ Code - Python API
         if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
             break
 
+    ## ! OS 2.00 or higher only ! ##
     # Fill state
     while 1:
         if rp.rp_AcqGetBufferFillState()[1]:
@@ -682,6 +692,7 @@ Code - Python API
         if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
             break
 
+    ## ! OS 2.00 or higher only ! ##
     # Fill state
     while 1:
         if rp.rp_AcqGetBufferFillState()[1]:

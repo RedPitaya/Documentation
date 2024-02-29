@@ -124,6 +124,7 @@ For manual ecosystem upgrades please refer to `Manual upgrade`_.
 
    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a>
 
+.. _nightly_builds:
 
 ==============
 Nightly Builds
@@ -164,7 +165,7 @@ The next procedure will create a clean SD card image.
 
 1. Select an appropriate OS version from above and download it.
 
-   .. figure:: microSDcard-RP.png
+   .. figure:: img/microSDcard-RP.png
        :width: 10%
 
 #. Unzip the SD card image.
@@ -178,7 +179,7 @@ The next procedure will create a clean SD card image.
 
 4. Insert the SD card into the Red Pitaya.
 
-   .. figure:: pitaya-quick-start-insert-sd-card.png
+   .. figure:: img/pitaya-quick-start-insert-sd-card.png
       :align: center
 
 .. note::
@@ -199,7 +200,7 @@ Windows
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Download |balenaEtcher| and install it.
@@ -210,34 +211,34 @@ Windows
 
 #. Open the newly installed Balena Etcher application.
 
-   .. figure:: SDcard_Win_BalenaEtcher.png
+   .. figure:: img/SDcard_Win_BalenaEtcher.png
       :align: center
 
 #. Under **Flash from file** select an unzipped Red Pitaya image file.
 
-   .. figure:: SDcard_Win_BalEtc_FlashFromFile.png
+   .. figure:: img/SDcard_Win_BalEtc_FlashFromFile.png
       :align: center
 
 #. Under **Select target** choose the drive letter of the SD card. Balena Etcher will only show you external drives.
 
-   .. figure:: SDcard_Win_BalEtc_SelectTarget.png
+   .. figure:: img/SDcard_Win_BalEtc_SelectTarget.png
       :align: center
 
    .. note::
 
       Balena Etcher will only show you external drives, but please be careful to select the correct drive if you have multiple cards or USBs plugged into your computer. If you choose the wrong one, you risk erasing data from the selected drive. You can easily see the drive letter (for example, E:) by looking in the left column of Windows Explorer.
 
-   .. figure:: SDcard_Win_BalEtc_SelectTarget2.png
+   .. figure:: img/SDcard_Win_BalEtc_SelectTarget2.png
       :align: center
 
 #. When you click **Flash** the computer will prompt you to allow the operation. Click **yes** and wait for the flashing and validation to be completed.
 
-   .. figure:: SDcard_Win_BalEtc_Flash.png
+   .. figure:: img/SDcard_Win_BalEtc_Flash.png
       :align: center
 
 #. Close Balena Etcher.
 
-   .. figure:: SDcard_Win_BalEtc_FlashComplete.png
+   .. figure:: img/SDcard_Win_BalEtc_FlashComplete.png
       :align: center
 
 =====
@@ -256,13 +257,13 @@ Ubuntu using Image Writer
 
 #. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
-   .. figure:: DIW_1.png
+   .. figure:: img/DIW_1.png
       :align: center
       :width: 50%
 
       Context menu
 
-   .. figure:: DIW_2.png
+   .. figure:: img/DIW_2.png
       :align: center
       :width: 50%
 
@@ -271,7 +272,7 @@ Ubuntu using Image Writer
 2. In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
    Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
 
-   .. figure:: DIW_3.png
+   .. figure:: img/DIW_3.png
       :align: center
       :width: 50%
 
@@ -296,7 +297,7 @@ Command line
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Open the terminal and check the available disks with ``df -h``.
@@ -346,7 +347,7 @@ Using ApplePi-Baker
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Download |ApplePi|. Direct link:
@@ -360,37 +361,37 @@ Using ApplePi-Baker
 
 #. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
-   .. figure:: SDcard_macOS_open.png
+   .. figure:: img/SDcard_macOS_open.png
       :align: center
 
 #. Drag and drop *ApplePi-Baker* for installation.
 
-   .. figure:: SDcard_macOS_install.png
+   .. figure:: img/SDcard_macOS_install.png
       :align: center
 
 #. Enter your admin password and click OK.
 
-   .. figure:: SDcard_macOS_password.png
+   .. figure:: img/SDcard_macOS_password.png
       :align: center
 
 #. Select the SD card drive. This can be recognised by the size of the card, which is 16 GB.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_drive.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_drive.png
       :align: center
 
 #. Select the Red Pitaya OS image file.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_image.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_image.png
       :align: center
 
 #. It's coffee time. The application will show you the estimated time for accomplishment.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_wait.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_wait.png
       :align: center
 
 #. When the operation is finished, the status will change to idle.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_quit.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_quit.png
       :align: center
 
 
@@ -402,13 +403,13 @@ Command line
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Click **cmd + space**, type **Disk Utility** into the search box and press enter.
    From the menu, select your SD card and click on the **Erase** button (be careful not to delete your disk!).
 
-   .. figure:: SDcard_macOS_DiskUtility.png
+   .. figure:: img/SDcard_macOS_DiskUtility.png
       :align: center
 
 #. Click **cmd + space**, then enter ``cd`` into the **Terminal**.
@@ -418,20 +419,20 @@ Command line
    Type ``diskutil list`` into the Terminal and press enter.
    This will show you the list of all memory devices.
 
-   .. figure:: Screen-Shot-2015-08-07-at-16.59.50.png
+   .. figure:: img/Screen-Shot-2015-08-07-at-16.59.50.png
       :align: center
 
    Unmount with: ``diskutil UnmountDisk /dev/diskn``
    (insert the number ``n`` of your disk correctly!)
 
-   .. figure:: Screen-Shot-2015-08-07-at-17.14.34.png
+   .. figure:: img/Screen-Shot-2015-08-07-at-17.14.34.png
       :align: center
 
 #. Type: ``sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn``
    (Remember to replace ``n`` with the number that you noted before!)
    (notice that there is a letter ``r`` in front of the disk name, use that as well!)
 
-   .. figure:: Screen-Shot-2015-08-07-at-17.14.45.png
+   .. figure:: img/Screen-Shot-2015-08-07-at-17.14.45.png
       :align: center
 
 #. Type in your password and wait a few minutes for the image to be written.

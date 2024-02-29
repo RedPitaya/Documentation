@@ -16,13 +16,13 @@ in each of the RedPitaya kits available on our |WEBstore|:
    .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
 
       *   5 V / 2 A micro USB power supply,
-      *   4 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
+      *   16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
       *   Ethernet cable.
       
    .. tab:: 250-12
 
       *   12 V / 1 A power adapter with jack connector,
-      *   4 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
+      *   16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
       *   Ethernet cable.
 
 Additional required items which are not provided with the Red Pitaya kits:
@@ -32,5 +32,9 @@ Additional required items which are not provided with the Red Pitaya kits:
 
 .. note::
 
-   Red Pitaya boards should not be powered by a power supply that provides less power than specified or has very thin power wires, since this will result in abnormal behaviour of the device, causing reboots and network disconnections. 
-   The same problem might appear if the Red Pitaya board is powered directly from USB on a PC or HUB that cannot provide enough power or when using a bad power cable.
+   Red Pitaya boards should not be powered by a power supply that provides less power than specified above or has very thin power wires, since this will result in abnormal behaviour of the device, causing reboots and network disconnections. 
+   The same problem might appear if the Red Pitaya board is powered directly from USB on a PC or HUB that cannot provide enough power (current) or when using a bad power cable.
+
+.. note::
+
+   We recommend using at least a 16 GB SD card with Red Pitaya OS versions 2.00 and above. With 1.04 OS versions, a minimum of 8 GB card is recommended. With older OS versions (0.9), you might get away with a 4 GB SD card.

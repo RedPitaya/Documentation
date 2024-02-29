@@ -2,6 +2,22 @@
 Interfacing SPI TFT displays with touch
 #######################################
 
+.. note::
+
+   **Instructions work for OS versions 0.97 to 1.04!**
+
+   All the links in this section lead to the |2022.2 GitHub branch| (release 1.04-28) and the |RedPitaya-FPGA|, where the files are present.
+
+
+.. |2022.2 GitHub branch| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/release-2022.2/" target="_blank">2022.2 GitHub branch</a>
+
+.. |RedPitaya-FPGA| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya-FPGA/tree/master" target="_blank">Red Pitaya FPGA repository</a>
+
+
 This document describes how to connect a
 SPI interface-based TFT display with touch support
 to the :ref:`E2 <E2>` connector, without the need for specific FPGA code.
@@ -37,17 +53,17 @@ It is possible to reconfigure **Zynq** MIO signals using the ``pinctrl`` kernel 
 This TFT display setup takes advantage of this by repurposing SPI, I2C, and UART signals
 on the :ref:`E2 <E2>` connector as SPI and GPIO signals which are required by the TFT display interface.
 
-.. .. |tft-E2| replace:: ``tft-E2.dtsi``
-.. .. _tft-E2: /fpga/dts/tft/tft-E2.dtsi
 
-.. The reconfiguration is performed by including the |tft-E2|_ device tree.
+.. !!!! TODO Update to 2.00 !!!!!
 
+The reconfiguration is performed by including the |tft-E2|.
 
-The reconfiguration is performed by including the tft-E2 device tree.
+- :download: |tft-E2|
 
+.. |tft-E2| raw:: html
 
-.. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line above once the file is added !!!!!
-.. :download:`tft-E2 <../../../fpga/dts/tft/tft-E2.dtsi>`
+    <a href="https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/dts/tft/tft-E2.dtsi" target="_blank">tft-E2 device tree</a>
+
 
 +-----------------+-----+----------+--------+--------+----------+-----+-------------------+
 | SPI TFT+touch   | MIO | function |    pin |  pin   | function | MIO | SPI TFT+touch     |
@@ -108,16 +124,16 @@ See the `Zynq TRM <https://www.xilinx.com/support/documentation/user_guides/ug58
 (section *B.30 SPI Controller (SPI)* register ``BAUD_RATE_DIV``) for details.
 
 The next table provides available frequencies for two SPI controller clock settings.
-The maximum clock speed for this SPI controller is 50MHz.
+The maximum clock speed for this SPI controller is 50 MHz.
 
 +----------------------+------+------+------+------+-------+-------+-------+
 | SPI controller clock | f/4  | f/8  | f/16 | f/32 | f/64  | f/128 | f/256 |
 +======================+======+======+======+======+=======+=======+=======+
-|             166.6MHz | 41.6 | 20.8 | 10.4 | 5.21 | 2.60  | 1.30  | 0.63  |
+|            166.6 MHz | 41.6 | 20.8 | 10.4 | 5.21 | 2.60  | 1.30  | 0.63  |
 +----------------------+------+------+------+------+-------+-------+-------+
-|             166.6MHz | 41.6 | 20.8 | 10.4 | 5.21 | 2.60  | 1.30  | 0.63  |
+|            166.6 MHz | 41.6 | 20.8 | 10.4 | 5.21 | 2.60  | 1.30  | 0.63  |
 +----------------------+------+------+------+------+-------+-------+-------+
-|             200.0MHz | 50.0 | 25.0 | 12.5 | 6.25 | 3.125 | 1.56  | 0.781 |
+|            200.0 MHz | 50.0 | 25.0 | 12.5 | 6.25 | 3.125 | 1.56  | 0.781 |
 +----------------------+------+------+------+------+-------+-------+-------+
 
 
@@ -125,9 +141,13 @@ The maximum clock speed for this SPI controller is 50MHz.
 Software setup
 ****************
 
-.. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line below once the file is added !!!!!
+.. !!!! TODO Update to 2.00 !!!!!
 
-.. :download:`tft.sh <../../../OS/debian/tft.sh>`
+- :download: |tft.sh|
+
+.. |tft.sh| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/release-2022.2/OS/debian/tft.sh" target="_blank">tft.sh</a>
 
 Instructions for starting XFCE on the TFT display.
 A script that can be used to generate an image with full support is available on GitHub tft.sh.
@@ -143,9 +163,13 @@ A set of Ubuntu/Debian packages should be installed:
      xserver-xorg xinit xserver-xorg-video-fbdev
 
 
-.. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line below once the file is added !!!!!
+.. !!!! TODO Update to 2.00 !!!!!
 
-.. :download:`99-fbdev.conf <../../../OS/debian/overlay/usr/share/X11/xorg.conf.d/99-fbdev.conf>`.
+- :download: |99-fbdev.conf|
+
+.. |99-fbdev.conf| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/release-2022.2/OS/debian/overlay/usr/share/X11/xorg.conf.d/99-fbdev.conf" target="_blank">99-fbdev.conf</a>
 
 An X11 configuration file should be added to the system 99-fbdev.conf.
 
@@ -168,33 +192,41 @@ The next table lists supported devices and corresponding device tree files each 
 |               +------+------------+-----------+----------------+------------------+                         |
 | screen name   | size | resolution | touch     | TFT controller | touch controller |                         |
 +===============+======+============+===========+================+==================+=========================+
-| |MI0283QT-2|_ | 2.8" | 240x320    |           | |ILI9341|_     | |ADS7846|_       | |tft-ili9341-ads7846|_  |
+| |MI0283QT-2|  | 2.8" | 240x320    |           | |ILI9341|      | |ADS7846|        | |tft-ili9341-ads7846|   |
 +---------------+------+------------+-----------+----------------+------------------+-------------------------+
-| |PiTFT-35|_   | 3.5" | 480x320    | resistive | |HX8357D|_     | |STMPE610|_      | |tft-hx8357d-stmpe601|_ |
+| |PiTFT-35|    | 3.5" | 480x320    | resistive | |HX8357D|      | |STMPE610|       | |tft-hx8357d-stmpe601|  |
 +---------------+------+------------+-----------+----------------+------------------+-------------------------+
+
+.. !!!! TODO Update to 2.00 !!!!!
+
+
+.. |MI0283QT-2| raw:: html
+
+    <a href="https://github.com/watterott/MI0283QT-Adapter" target="_blank">MI0283QT Adapter Rev 1.5</a>
+
+.. |ILI9341| raw:: html
+
+    <a href="https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf" target="_blank">ILI9341</a>
+
+.. |ADS7846| raw:: html
+
+    <a href="http://www.ti.com/lit/ds/symlink/ads7846.pdf" target="_blank">ADS7846</a>
+
+.. |tft-ili9341-ads7846| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/dts/tft/tft-ili9341-ads7846.dtsi" target="_blank">tft-ili9341-ads7846.dtsi</a>
 
 |
 
+
 MI0283QT Adapter Rev 1.5
 ========================
-
-.. |MI0283QT-2| replace:: MI0283QT Adapter Rev 1.5
-.. _MI0283QT-2: https://github.com/watterott/MI0283QT-Adapter
-
-.. |ILI9341| replace:: ILI9341
-.. _ILI9341: https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf
-
-.. |ADS7846| replace:: ADS7846
-.. _ADS7846: http://www.ti.com/lit/ds/symlink/ads7846.pdf
-
-.. |tft-ili9341-ads7846| replace:: ``tft-ili9341-ads7846.dtsi``
-.. _tft-ili9341-ads7846: /fpga/dts/tft/tft-ili9341-ads7846.dtsi
 
 The device is powered by **+5V**,
 and it generates 3.3V using an onboard LDO.
 Therefore all IO is 3.3V, so there are no conflicts.
 
-Connector pinout based on the |MI0283QT-2|_
+Connector pinout based on the |MI0283QT-2|
 `schematic <https://github.com/watterott/MI0283QT-Adapter/blob/master/hardware/MI0283QT_v15.pdf>`_.
 
 +-------------------+-----------+--------+--------+-----------+-------------------+
@@ -226,8 +258,13 @@ between the two display connector pins.
 Otherwise, it would be possible to repurpose a LED on Red Pitaya.
 
 
-.. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line below once the file is added !!!!!
-.. :download:`95-ads7846.rules <../../../OS/debian/overlay/etc/udev/rules.d/95-ads7846.rules>`
+.. !!!! TODO Update to 2.00 !!!!!
+
+- :download:|95-ads7846.rules|
+
+.. |95-ads7846.rules| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/release-2022.2/OS/debian/overlay/etc/udev/rules.d/95-ads7846.rules" target="_blank">95-ads7846.rules</a>
 
 
 The 95-ads7846.rules UDEV rule will create a symbolik link ``/dev/input/touchscreen``.
@@ -236,31 +273,48 @@ The 95-ads7846.rules UDEV rule will create a symbolik link ``/dev/input/touchscr
 Adafruit PiTFT 3.5"
 ===================
 
-.. |PiTFT-35| replace:: Adafruit PiTFT 3.5" Touch Screen for Raspberry Pi
-.. _PiTFT-35: https://learn.adafruit.com/adafruit-pitft-3-dot-5-touch-screen-for-raspberry-pi
 
-.. |PiTFTa-35| replace:: PiTFT - Assembled 480x320 3.5" TFT+Touchscreen for Raspberry Pi
-.. _PiTFTa-35: https://www.adafruit.com/product/2097
+.. |PiTFT-35| raw:: html
+
+    <a href="https://learn.adafruit.com/adafruit-pitft-3-dot-5-touch-screen-for-raspberry-pi" target="_blank">Adafruit PiTFT 3.5" Touch Screen for Raspberry Pi</a>
+
+.. |PiTFTa-35| raw:: html
+
+    <a href="https://www.adafruit.com/product/2097" target="_blank">PiTFT - Assembled 480x320 3.5" TFT+Touchscreen for Raspberry Pi</a>
+
 .. _PiTFTa-35-img: https://cdn-learn.adafruit.com/assets/assets/000/019/744/original/adafruit_products_2097_quarter_ORIG.jpg
 
-.. |PiTFTp-35| replace:: PiTFT Plus 480x320 3.5" TFT+Touchscreen for Raspberry Pi
-.. _PiTFTp-35: https://www.adafruit.com/product/2441
+
+.. |PiTFTp-35| raw:: html
+
+    <a href="https://www.adafruit.com/product/2441" target="_blank">PiTFT Plus 480x320 3.5" TFT+Touchscreen for Raspberry Pi</a>
+
 .. _PiTFTp-35-img: https://cdn-shop.adafruit.com/970x728/2441-11.jpg
 
-.. |HX8357D| replace:: HX8357D
-.. _HX8357D: https://cdn-shop.adafruit.com/datasheets/HX8357-D_DS_April2012.pdf
 
-.. |STMPE610| replace:: STMPE610
-.. _STMPE610: https://cdn-shop.adafruit.com/datasheets/STMPE610.pdf
+.. |HX8357D| raw:: html
 
-.. |tft-hx8357d-stmpe601| replace:: ``tft-hx8357d-stmpe601.dtsi``
-.. _tft-hx8357d-stmpe601: /fpga/dts/tft/tft-hx8357d-stmpe601.dtsi
+    <a href="https://cdn-shop.adafruit.com/datasheets/HX8357-D_DS_April2012.pdf" target="_blank">HX8357D</a>
+
+
+.. |STMPE610| raw:: html
+
+    <a href="https://cdn-shop.adafruit.com/datasheets/STMPE610.pdf" target="_blank"STMPE610</a>
+
+
+
+.. !!!! TODO Update to 2.00 !!!!!
+
+.. |tft-hx8357d-stmpe601| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/dts/tft/tft-hx8357d-stmpe601.dtsi" target="_blank">tft-hx8357d-stmpe601.dtsi</a>
+
 
 There are two versions of this display the older **Assembled**
 (sometimes called **Original** and the newer **Plus**.
 
-* |PiTFTa-35|_ (`high resolution image <PiTFTa-35-img_>`_)
-* |PiTFTp-35|_ (`high resolution image <PiTFTp-35-img_>`_)
+* |PiTFTa-35| (`high resolution image <PiTFTa-35-img_>`_)
+* |PiTFTp-35| (`high resolution image <PiTFTp-35-img_>`_)
 
 While the newer **Plus** version can be used out of the box,
 The older **Assembled** requires hardware modifications,
@@ -271,7 +325,7 @@ and **+3.3V** for TFT and touch controllers
 (should be taken from the E1 connector on Red Pitaya).
 Therefore all IO is 3.3V, so there are no conflicts.
 
-Male connector pinout based on the |PiTFT-35|_
+Male connector pinout based on the |PiTFT-35|
 `schematic <https://cdn-learn.adafruit.com/assets/assets/000/019/763/original/adafruit_products_schem.png?1411058465>`__.
 
 +-------------------+--------+--------+-------------------+
@@ -307,15 +361,24 @@ Male connector pinout based on the |PiTFT-35|_
 |
 
 
-.. !!!! TODO next line download file not readable (wrong path/missing file) - add it to the line below once the file is added !!!!!
 
-.. :download:`95-stmpe.rules <../../../OS/debian/overlay/etc/udev/rules.d/95-stmpe.rules>`
-.. :download:`99-calibration.conf <../../../OS/debian/overlay/etc/X11/xorg.conf.d/99-calibration.conf>`
+.. !!!! TODO Update to 2.00 !!!!!
+
+- :download:|95-stmpe.rules|
+- :download:|99-calibration.conf|
 
 The 95-stmpe.rules UDEV rule will create a symbolic link ``/dev/input/touchscreen``.
 
 A calibration file should be added to the system 99-calibration.conf.
 
+
+.. |95-stmpe.rules| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/release-2022.2/OS/debian/overlay/etc/udev/rules.d/95-stmpe.rules" target="_blank">95-stmpe.rules</a>
+
+.. |99-calibration.conf| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/release-2022.2/OS/debian/overlay/etc/X11/xorg.conf.d/99-calibration.conf" target="_blank">99-calibration.conf</a>
 
 
 Block diagram
@@ -331,9 +394,8 @@ Block diagram
 
    Simplified graphical representation of Red Pitayas :ref:`E2 <E2>` connetor to the Adafruit PiTFT 3.5". For pin locations please look at the top picture.
 
+
 .. _assembled_hw_mods:
-
-
 
 Assembled version hardware modifications
 ----------------------------------------
@@ -350,7 +412,7 @@ there is a race condition affecting touch controller
 SPI interface configuration during power-up reset.
 The LDO on the TFT board is faster then the switcher on Red Pitaya.
 
-The |STMPE610|_ touch controller datasheet (section 5.2)
+The |STMPE610| touch controller datasheet (section 5.2)
 describes how CPOL/CPHA SPI configuration options depend
 on the power-up reset state of a pair of configuration pins.
 
@@ -385,7 +447,7 @@ In most cases, the LDO on the TFT board would wake
 before the switcher on Red Pitaya, so the ``CPOL_N``
 would be detected as ``0``, which inverts the SPI clock polarity.
 As an unreliable fix, the ``spi-cpol`` attribute can be provided
-in the `device tree </fpga/dts/tft/tft-hx8357d-stmpe601.dtsi#L31>`_.
+in the |tft-hx8357d-stmpe601| device tree.
 
 .. note::
 

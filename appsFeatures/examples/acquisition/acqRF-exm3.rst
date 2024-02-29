@@ -30,6 +30,10 @@ SCPI Code Examples
 
 .. note::
 
+  This code is written for **2.00-23 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+.. note::
+
     With the latest OS versions you can use ``ACQ:DEC:F <decimation_factor>`` command for more precise control over the acquisition. The decimation factor can be any of ``[1, 2, 4, 8, 16, 17, 18, 19, ..., 65535, 65536]``.
 
 Code - MATLAB®
@@ -101,7 +105,8 @@ Code - MATLAB®
             break;
         end
     end
-    
+
+    %%! OS 2.00 or higher only !%%
     % wait for fill adc buffer
     while 1
         fill_state = writeread(RP,'ACQ:TRIG:FILL?')
@@ -162,7 +167,8 @@ Using just SCPI commands:
         rp_s.tx_txt('ACQ:TRIG:STAT?')
         if rp_s.rx_txt() == 'TD':
             break
-    
+
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         rp_s.tx_txt('ACQ:TRIG:FILL?')
         if rp_s.rx_txt() == '1':
@@ -209,7 +215,8 @@ Using functions:
         rp_s.tx_txt('ACQ:TRIG:STAT?')
         if rp_s.rx_txt() == 'TD':
             break
-    
+
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         rp_s.tx_txt('ACQ:TRIG:FILL?')
         if rp_s.rx_txt() == '1':
@@ -317,7 +324,7 @@ Code - C API
             }
         }
 
-        
+        // !! OS 2.00 or higher only !! //
         bool fillState = false;
         while(!fillState){
             rp_AcqGetBufferFillState(&fillState);
@@ -399,6 +406,7 @@ Code - Python API
         if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
             break
 
+    ## ! OS 2.00 or higher only ! ##
     # Fill state
     while 1:
         if rp.rp_AcqGetBufferFillState()[1]:

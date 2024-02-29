@@ -25,14 +25,14 @@ Streamed data can be stored into:
     * Technical Data Management Streaming (TDMS) file format
     * Fast and compact binary format (BIN). It can be converted to CSV format.
 
-Max. streaming speeds are limited to:
+Max. streaming speeds (per board) are limited to:
 
     * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance)
     * 20 MB/s for streaming over 1 Gbit network (A :ref:`direct connection <dir_cab_connect>` is recommended to achieve the best streaming performance)
 
 .. note::
 
-   The maximum continuous streaming speeds are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
+   The maximum continuous streaming speeds (per board) are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
    Here are a few examples of maximum data rates:
 
       - One channel, 8-bits per sample: Max sampling frequency 20 MHz.
@@ -41,6 +41,31 @@ Max. streaming speeds are limited to:
       - Two channels, 16-bits per sample: Max sampling frequency per channel 5 MHz (assuming same frequencies for both channels)
 
    If acquiring a limited amount of samples in a short duration, it is possible to reach higher sampling frequencies (up to the sampling speed of fast analog inputs).
+
+**Minumum streamed data size**
+
+To increase the efficiency of the application, there is a minimum data size that can be sent through the network. This can have a big impact at high decimation values, as it takes a long time to fill a chunck. If the stream is stopped before a chunck is completed, the data is discarded and the saved file has a size of **0 b**.
+
+Here are the minimum chunck limitations sorted by file type and units:
+
+
+.. list-table::
+   :widths: 20 20 20
+   :header-rows: 1
+
+   * - File type \\ Units
+     - VOLTS
+     - RAW
+   * - WAV 
+     - 128.043 kb
+     - 64.043 kb
+   * - TDMS
+     - 128.133 kb
+     - 64.133 kb
+   * - BIN
+     - 64.090 kb
+     - 64.090 kb
+
 
 .. note::
 
@@ -210,7 +235,7 @@ You can also use the desktop version of the client for streaming.
 
             .. group-tab:: OS version 2.00
 
-                Files with clients are in the streaming web application. You can download it from RP itself.
+                Files with clients are in the streaming web application. You can download it from Red Pitaya itself.
 
 
     #. Unzip and run the client
@@ -224,6 +249,10 @@ You can also use the desktop version of the client for streaming.
                     :align: center
 
             For Windows clients, you need to grant access to the network.
+
+            .. note::
+
+               It is possible that an Antivirus program might block the desktop client. If you experience this issue, we recommend whitelisting the Streaming Client folder.
 
     #. The running application automatically detects boards on the network if streaming is running on them. The boards and the client must be on the same network.
 
