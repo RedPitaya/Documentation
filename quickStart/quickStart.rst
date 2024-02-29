@@ -12,4 +12,3 @@ Quick start
    alucase/alucase
    pvccase/pvccase
    troubleshooting/troubleshooting
-   customization/custom
