@@ -268,8 +268,6 @@ The ADC clock can be provided by:
     Bottom side
 
 
-.. _qspi:
-
 *********
 QSPI 
 *********
