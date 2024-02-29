@@ -191,8 +191,7 @@ Components
 * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
 * `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
 * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
-
+* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi>` for more information)
 
 .. note::
 
@@ -267,6 +266,20 @@ The ADC clock can be provided by:
     :align: center
 
     Bottom side
+
+
+.. _qspi:
+
+*********
+QSPI 
+*********
+
+The QSPI chip is by default not populated on Red Pitaya boards. Please write to support@redpitaya.com or info@redpitaya.com for information regarding board modifications.
+
+.. warning::
+
+    Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
+
 
 ************
 Certificates
