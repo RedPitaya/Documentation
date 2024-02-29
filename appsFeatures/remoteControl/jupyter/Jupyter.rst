@@ -82,7 +82,7 @@ Examples
 
 The code examples are available here:
 
-- :ref:`JupyterLab examples <examples>`
+- :ref:`JupyterLab examples <examples>` (Use Python API examples)
 - |jupyterlab_github|
 - |welcome_ipynb|
 
