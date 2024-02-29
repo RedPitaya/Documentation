@@ -37,7 +37,7 @@ When compiling on the target no special preparations are needed. A native toolch
 Compiling and running Example code
 -----------------------------------
 
-1.  First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
+1.  **First connect to your board over :ref:`SSH <ssh>`** (replace the IP, the default password is `root`).
 
     .. code-block:: shell-session
 
@@ -50,7 +50,7 @@ Compiling and running Example code
         ssh root@rp-xxxxxx.local
 
 
-2.  Now make a clone of the Red Pitaya Git repository and enter the project directory.
+2.  **Now make a clone of the Red Pitaya Git repository and enter the project directory.**
 
     .. code-block:: shell-session
 
@@ -60,7 +60,7 @@ Compiling and running Example code
     When you copy the source code from our repository you will also copy all available C API examples to your Red Pitaya board.
 
 
-3.  In order to compile one example just use the source file name without the `.c` extension.
+3.  **In order to compile one example just use the source file name without the `.c` extension.**
 
     .. code-block:: shell-session
 
@@ -79,7 +79,7 @@ Compiling and running Example code
     there is a **Makefile** script in the same folder as the Example APIs, which links the libraries during the compilation process.
 
 
-4.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
+4.  **Applications based on the API require a specific FPGA image (v0.94) to be loaded:**
 
     .. tabs::
 
@@ -96,7 +96,7 @@ Compiling and running Example code
                 redpitaya> overlay.sh v0.94
 
 
-5. Execute the application.
+5. **Execute the application.**
 
     .. tabs::
 
