@@ -194,7 +194,7 @@ Components
 * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
 * `Oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_
 * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi>` for more information).
+* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information).
 
 
 Extension connector SDRlab
