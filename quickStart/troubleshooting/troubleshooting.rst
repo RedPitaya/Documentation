@@ -189,6 +189,8 @@ Red Pitaya status LED description:
 
    **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install additional software.
 
+|
+
 #. **Advanced troubleshooting:**
 
     - If you are a Linux or macOS user and the Red Pitaya is directly connected to the computer (with the ethernet cable), check the ethernet connector settings if they are set to **DHCP** and **Local Only**. Alternatively, try connecting to the Red Pitaya through the router.
