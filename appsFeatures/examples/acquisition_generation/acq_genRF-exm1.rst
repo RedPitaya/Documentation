@@ -72,23 +72,23 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
     %% ACQUISITION
     writeline(RP,'ACQ:DEC 1');
-    writeline(RP,'ACQ:TRIG:LEV 0');
-    writeline(RP,'ACQ:TRIG:DLY 0');
+    writeline(RP,'ACQ:TRig:LEV 0');
+    writeline(RP,'ACQ:TRig:DLY 0');
 
 
     %% Start gen % acq
 
     writeline(RP,'ACQ:START');
     pause(1);
-    writeline(RP,'ACQ:TRIG AWG_PE');
+    writeline(RP,'ACQ:TRig AWG_PE');
     writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
     pause(1);
     
-    writeline(RP,'SOUR1:TRIG:INT');
+    writeline(RP,'SOUR1:TRig:INT');
     
     %% Wait for trigger
     while 1
-        trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+        trig_rsp = writeread(RP,'ACQ:TRig:STAT?')
         if strcmp('TD',trig_rsp(1:2))
             break;
         end
@@ -97,7 +97,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     %%! OS 2.00 or higher only !%%
     % wait for fill adc buffer
     while 1
-        fill_state = writeread(RP,'ACQ:TRIG:FILL?')    
+        fill_state = writeread(RP,'ACQ:TRig:FILL?')    
         if strcmp('1', fill_state(1:1))
             break;
         end
@@ -149,26 +149,26 @@ Code - Python
 
     ##### Acqusition #####
     rp_s.tx_txt('ACQ:DEC 1')
-    rp_s.tx_txt('ACQ:TRIG:LEV 0')
-    rp_s.tx_txt('ACQ:TRIG:DLY 0')
+    rp_s.tx_txt('ACQ:TRig:LEV 0')
+    rp_s.tx_txt('ACQ:TRig:DLY 0')
 
     rp_s.tx_txt('ACQ:START')
     time.sleep(1)
-    rp_s.tx_txt('ACQ:TRIG AWG_PE')
+    rp_s.tx_txt('ACQ:TRig AWG_PE')
     rp_s.tx_txt('OUTPUT1:STATE ON')
     time.sleep(1)
 
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    rp_s.tx_txt('SOUR1:TRig:INT')
 
     # Wait for trigger
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:STAT?')           # Get Trigger Status
+        rp_s.tx_txt('ACQ:TRig:STAT?')           # Get Trigger Status
         if rp_s.rx_txt() == 'TD':               # Triggerd?
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:FILL?')
+        rp_s.tx_txt('ACQ:TRig:FILL?')
         if rp_s.rx_txt() == '1':
             break
 
@@ -215,21 +215,21 @@ Code - Python
 
     rp_s.tx_txt('ACQ:START')
     time.sleep(1)
-    rp_s.tx_txt('ACQ:TRIG AWG_PE')
+    rp_s.tx_txt('ACQ:TRig AWG_PE')
     rp_s.tx_txt('OUTPUT1:STATE ON')
     time.sleep(1)
 
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    rp_s.tx_txt('SOUR1:TRig:INT')
 
     # Wait for trigger
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:STAT?')           # Get Trigger Status
+        rp_s.tx_txt('ACQ:TRig:STAT?')           # Get Trigger Status
         if rp_s.rx_txt() == 'TD':               # Triggerd?
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:FILL?')
+        rp_s.tx_txt('ACQ:TRig:FILL?')
         if rp_s.rx_txt() == '1':
             break
 
