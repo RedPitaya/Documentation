@@ -88,19 +88,19 @@ Code - MATLAB
 
 
     %%% ENABLING THE DAISY CHAIN PRIMARY UNIT %%%
-    writeline(RP_PRI,'DAISY:SYNC:TRIG ON');
+    writeline(RP_PRI,'DAISY:SYNC:TRig ON');
     writeline(RP_PRI,'DAISY:SYNC:CLK ON');
     writeline(RP_PRI,'DAISY:TRIG_O:SOUR ADC');      % Select which trigger will be passed on over SATA
     
     writeline(RP_PRI,'DIG:PIN LED5,1');     % indicator
     
-    fprintf('Trig: %s\n', writeread(RP_PRI,'DAISY:SYNC:TRIG?'));
+    fprintf('Trig: %s\n', writeread(RP_PRI,'DAISY:SYNC:TRig?'));
     fprintf('CLK: %s\n', writeread(RP_PRI,'DAISY:SYNC:CLK?'));
     fprintf('Source: %s\n', writeread(RP_PRI,'DAISY:TRIG_O:SOUR?'));
     
     %%% ENABLING THE DAISY CHAIN SECONDARY UNIT %%%
     % this section must be copied if using multiple secondary devices (once for each device)
-    writeline(RP_SEC,'DAISY:SYNC:TRIG ON');
+    writeline(RP_SEC,'DAISY:SYNC:TRig ON');
     writeline(RP_SEC,'DAISY:SYNC:CLK ON');
     
     writeline(RP_SEC,'DIG:PIN LED5,1');     % indicator
@@ -118,13 +118,13 @@ Code - MATLAB
     %% Acquisition Setup
     % Primary unit
     writeline(RP_PRI, append('ACQ:DEC ', int2str(dec)));
-    writeline(RP_PRI, append('ACQ:TRIG:LEV ', num2str(trig_lvl)));
-    writeline(RP_PRI, append('ACQ:TRIG:DLY ', num2str(trig_dly)));
+    writeline(RP_PRI, append('ACQ:TRig:LEV ', num2str(trig_lvl)));
+    writeline(RP_PRI, append('ACQ:TRig:DLY ', num2str(trig_dly)));
     
     % Secondary unit
     writeline(RP_SEC, append('ACQ:DEC ', num2str(dec)));
-    writeline(RP_SEC, append('ACQ:TRIG:LEV ', num2str(trig_lvl)));
-    writeline(RP_SEC, append('ACQ:TRIG:DLY ', num2str(trig_dly)));
+    writeline(RP_SEC, append('ACQ:TRig:LEV ', num2str(trig_lvl)));
+    writeline(RP_SEC, append('ACQ:TRig:DLY ', num2str(trig_dly)));
     
     
     %% Acquisition Start
@@ -132,22 +132,22 @@ Code - MATLAB
     % First on secondary unit
     writeline(RP_SEC, 'ACQ:START');
     pause(0.05);
-    writeline(RP_SEC, 'ACQ:TRIG EXT_NE');
+    writeline(RP_SEC, 'ACQ:TRig EXT_NE');
     
     % Then on primary unit
     writeline(RP_PRI, 'ACQ:START');
     pause(0.05);
-    writeline(RP_PRI, 'ACQ:TRIG CH1_PE');
+    writeline(RP_PRI, 'ACQ:TRig CH1_PE');
     
     pause(0.1);
-    writeline(RP_PRI, 'SOUR1:TRIG:INT');    % Simulate a trigger
+    writeline(RP_PRI, 'SOUR1:TRig:INT');    % Simulate a trigger
     
     % Acquisition check if data is ready
     
     % ## Primary unit ##
     while 1
         % Get Trigger Status
-        trigger = writeread(RP_PRI, 'ACQ:TRIG:STAT?');
+        trigger = writeread(RP_PRI, 'ACQ:TRig:STAT?');
         if strcmp(trigger,'TD')      % Triggerd?
             break
         end
@@ -156,7 +156,7 @@ Code - MATLAB
 
     %%! OS 2.00 or higher only !%%
     while 1
-        if strcmp(writeread(RP_PRI,'ACQ:TRIG:FILL?'),'1')
+        if strcmp(writeread(RP_PRI,'ACQ:TRig:FILL?'),'1')
             break
         end
     end
@@ -165,7 +165,7 @@ Code - MATLAB
     % ## Secondary unit ##
     while 1
         % Get Trigger Status
-        if strcmp(writeread(RP_SEC,'ACQ:TRIG:STAT?'),'TD')      % Triggerd?
+        if strcmp(writeread(RP_SEC,'ACQ:TRig:STAT?'),'TD')      % Triggerd?
             break
         end
     end
@@ -173,7 +173,7 @@ Code - MATLAB
 
     %%! OS 2.00 or higher only !%%
     while 1
-        if strcmp(writeread(RP_SEC,'ACQ:TRIG:FILL?'),'1')
+        if strcmp(writeread(RP_SEC,'ACQ:TRig:FILL?'),'1')
             break
         end
     end
@@ -262,7 +262,7 @@ Code - Python
 
     ###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######
 
-    rp_prim.tx_txt('DAISY:SYNC:TRIG ON')    #! OFF (without sync)
+    rp_prim.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
     rp_prim.tx_txt('DAISY:SYNC:CLK ON')
     rp_prim.tx_txt('DAISY:TRIG_O:SOUR ADC')
   
@@ -270,13 +270,13 @@ Code - Python
 
     time.sleep(0.2)
 
-    print(f"Trig: {rp_prim.txrx_txt('DAISY:SYNC:TRIG?')}")
+    print(f"Trig: {rp_prim.txrx_txt('DAISY:SYNC:TRig?')}")
     print(f"CLK: {rp_prim.txrx_txt('DAISY:SYNC:CLK?')}")
     print(f"Sour: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
 
     ###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######
   
-    rp_sec.tx_txt('DAISY:SYNC:TRIG ON')  #! OFF (without sync)  
+    rp_sec.tx_txt('DAISY:SYNC:TRig ON')  #! OFF (without sync)  
     rp_sec.tx_txt('DAISY:SYNC:CLK ON')
     rp_sec.tx_txt('DAISY:TRIG_O:SOUR ADC')     # Ext trigger will trigger the ADC
   
@@ -296,50 +296,50 @@ Code - Python
 
     # Primary unit
     rp_prim.tx_txt(f'ACQ:DEC {dec}')
-    rp_prim.tx_txt(f'ACQ:TRIG:LEV {trig_lvl}')
-    rp_prim.tx_txt(f'ACQ:TRIG:DLY {trig_dly}')
+    rp_prim.tx_txt(f'ACQ:TRig:LEV {trig_lvl}')
+    rp_prim.tx_txt(f'ACQ:TRig:DLY {trig_dly}')
 
     # Secondary unit
     rp_sec.tx_txt(f'ACQ:DEC {dec}')
-    rp_sec.tx_txt(f'ACQ:TRIG:LEV {trig_lvl}')
-    rp_sec.tx_txt(f'ACQ:TRIG:DLY {trig_dly}')
+    rp_sec.tx_txt(f'ACQ:TRig:LEV {trig_lvl}')
+    rp_sec.tx_txt(f'ACQ:TRig:DLY {trig_dly}')
 
   
     rp_sec.tx_txt('ACQ:START')
     time.sleep(0.2)                           # Not necessary
-    rp_sec.tx_txt('ACQ:TRIG EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
+    rp_sec.tx_txt('ACQ:TRig EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
                                               # If not synchronised make sure no signal arrives before both units are set up
 
     rp_prim.tx_txt('ACQ:START')
     time.sleep(0.2)
-    rp_prim.tx_txt('ACQ:TRIG CH1_PE')
+    rp_prim.tx_txt('ACQ:TRig CH1_PE')
 
     time.sleep(1)                             # Symulating a trigger after one second
-    rp_prim.tx_txt('SOUR1:TRIG:INT')
+    rp_prim.tx_txt('SOUR1:TRig:INT')
 
     print("ACQ start")
 
     while 1:
         # Get Trigger Status
-        if rp_prim.txrx_txt('ACQ:TRIG:STAT?') == 'TD':               # Triggerd?
+        if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
             break
     print("Trigger primary condition met.")
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        if rp_prim.txrx_txt('ACQ:TRIG:FILL?') == '1':
+        if rp_prim.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer primary filled.")
 
     while 1:
         # Get Trigger Status
-        if rp_sec.txrx_txt('ACQ:TRIG:STAT?') == 'TD':               # Triggerd?
+        if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
             break
     print("Trigger secondary condition met.")
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        if rp_sec.txrx_txt('ACQ:TRIG:FILL?') == '1':
+        if rp_sec.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer secondary filled.")
 
@@ -408,7 +408,7 @@ Code - Python
 
     ###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######
 
-    rp_prim.tx_txt('DAISY:SYNC:TRIG ON')    #! OFF (without sync)
+    rp_prim.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
     rp_prim.tx_txt('DAISY:SYNC:CLK ON')
     rp_prim.tx_txt('DAISY:TRIG_O:SOUR ADC')
   
@@ -416,13 +416,13 @@ Code - Python
 
     time.sleep(0.2)
 
-    print(f"Trig: {rp_prim.txrx_txt('DAISY:SYNC:TRIG?')}")
+    print(f"Trig: {rp_prim.txrx_txt('DAISY:SYNC:TRig?')}")
     print(f"CLK: {rp_prim.txrx_txt('DAISY:SYNC:CLK?')}")
     print(f"Sour: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
 
     ###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######
   
-    rp_sec.tx_txt('DAISY:SYNC:TRIG ON')  #! OFF (without sync)  
+    rp_sec.tx_txt('DAISY:SYNC:TRig ON')  #! OFF (without sync)  
     rp_sec.tx_txt('DAISY:SYNC:CLK ON')
     rp_sec.tx_txt('DAISY:TRIG_O:SOUR ADC')     # Ext trigger will trigger the ADC
   
@@ -451,39 +451,39 @@ Code - Python
 
     rp_sec.tx_txt('ACQ:START')
     time.sleep(0.2)                           # Not necessary
-    rp_sec.tx_txt('ACQ:TRIG EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
+    rp_sec.tx_txt('ACQ:TRig EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
                                               # If not synchronised make sure no signal arrives before both units are set up
 
     rp_prim.tx_txt('ACQ:START')
     time.sleep(0.2)
-    rp_prim.tx_txt('ACQ:TRIG CH1_PE')
+    rp_prim.tx_txt('ACQ:TRig CH1_PE')
 
     time.sleep(1)                             # Symulating a trigger after one second
-    rp_prim.tx_txt('SOUR1:TRIG:INT')
+    rp_prim.tx_txt('SOUR1:TRig:INT')
 
     print("ACQ start")
 
     while 1:
         # Get Trigger Status
-        if rp_prim.txrx_txt('ACQ:TRIG:STAT?') == 'TD':               # Triggerd?
+        if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
             break
     print("Trigger primary condition met.")
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        if rp_prim.txrx_txt('ACQ:TRIG:FILL?') == '1':
+        if rp_prim.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer primary filled.")
 
     while 1:
         # Get Trigger Status
-        if rp_sec.txrx_txt('ACQ:TRIG:STAT?') == 'TD':               # Triggerd?
+        if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
             break
     print("Trigger secondary condition met.")
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        if rp_sec.txrx_txt('ACQ:TRIG:FILL?') == '1':
+        if rp_sec.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer secondary filled.")
 
