@@ -57,7 +57,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     writeline(RP,'SOUR2:VOLT 1');               % Set amplitude of output signal
 
     writeline(RP,'OUTPUT:STATE ON');            % Start both channels simultaneously
-    writeline(RP,'SOUR:TRIG:INT');              % Generate triggers
+    writeline(RP,'SOUR:TRig:INT');              % Generate triggers
 
     %% Close connection with Red Pitaya
     clear RP;
@@ -91,7 +91,7 @@ Code - Python
     rp_s.tx_txt('SOUR2:VOLT ' + str(ampl))
 
     rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRIG:INT')
+    rp_s.tx_txt('SOUR:TRig:INT')
     
     rp_s.close()
 
@@ -117,7 +117,7 @@ Code - Python
     rp_s.sour_set(2, wave_form, ampl, freq)
 
     rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRIG:INT')
+    rp_s.tx_txt('SOUR:TRig:INT')
     
     rp_s.close()
 
