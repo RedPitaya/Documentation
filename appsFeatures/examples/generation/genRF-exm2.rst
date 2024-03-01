@@ -55,7 +55,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     writeline(RP,'SOUR1:BURS:INT:PER 5000');    % Set time (P) of burst period in microseconds = 5 * 1/Frequency * 1000000
     
     writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
-    writeline(RP,'SOUR1:TRIG:INT');             % Set generator trigger to immediately
+    writeline(RP,'SOUR1:TRig:INT');             % Set generator trigger to immediately
 
     %% Close connection with Red Pitaya
     clear RP;
@@ -91,7 +91,7 @@ Code - Python
     rp_s.tx_txt('SOUR1:BURS:INT:PER 5000');             # Burst period (time between two bursts (signal + delay in microseconds))
 
     rp_s.tx_txt('OUTPUT1:STATE ON')
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    rp_s.tx_txt('SOUR1:TRig:INT')
 
     rp_s.close()
 
@@ -118,7 +118,7 @@ Code - Python
     # nor=65536 for INF pulses
     
     rp_s.tx_txt('OUTPUT1:STATE ON')
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    rp_s.tx_txt('SOUR1:TRig:INT')
 
     rp_s.close()
 
