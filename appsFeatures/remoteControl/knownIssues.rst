@@ -18,7 +18,7 @@ If you are facing an issue with one of the examples, a command is not working, o
    - 2.00-30 - Branch 2024.1
    - 2.00-23 - Branch 2023.3
    - 2.00-18 - Branch 2023.2
-   - 2.00-15 - Branch 2023.1
+   - 2.00-15 - Branch 2023.1 - |all_os_scpi_commands_2.00-15|
    - 1.04-28 - Branch 2022.2
    - 1.04-18 - Branch 2022.1
 
@@ -29,6 +29,10 @@ If you are facing an issue with one of the examples, a command is not working, o
 .. |all_os_scpi_commands| raw:: html
 
     <a href="https://github.com/RedPitaya/RedPitaya/blob/master/scpi-server/src/scpi-commands.cpp" target="_blank">Red Pitaya GitHub - scpi-server/src/scpi-commands.cpp</a>
+
+.. |all_os_scpi_commands_2.00-15| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
 
 
 2.00-30
@@ -48,6 +52,8 @@ Issues
 - Renamed ``ACQ:SOUR<n>:DATA:OLD:N?`` to ``ACQ:SOUR<n>:DATA:Old:N?``
 - Renamed ``ACQ:SOUR<n>:DATA:LAT:N?`` to ``ACQ:SOUR<n>:DATA:Last:N?``
 - Renamed ``ACQ:DATA:UNITS`` to ``ACQ:DATA:Units``
+- Renamed ``SOUR:TRIG:EXT:DEBouncerUs`` to ``SOUR:TRig:EXT:DEBouncer[:US]``      
+- Renamed ``ACQ:TRIG:EXT:DEBouncerUs`` to ``ACQ:TRig:EXT:DEBouncer[:US]``
 
 
 New commands
@@ -154,10 +160,10 @@ New commands
 
 - Added **External Debounce Filter commands**:
 
-    - ``SOUR:TRig:EXT:DEBouncer[:US] <utime>``
-    - ``SOUR:TRig:EXT:DEBouncer[:US]?``
-    - ``ACQ:TRig:EXT:DEBouncer:[US] <value>``
-    - ``ACQ:TRig:EXT:DEBouncer[:US]?``
+    - ``SOUR:TRig:EXT:DEBouncerUs <utime>``
+    - ``SOUR:TRig:EXT:DEBouncerUs?``
+    - ``ACQ:TRig:EXT:DEBouncerUs <value>``
+    - ``ACQ:TRig:EXT:DEBouncerUs?``
 
 - Added ``ACQ:TRig:FILL?`` command, which checks whether the acquisition buffer is full.
 
@@ -182,6 +188,14 @@ New commands
 1.04-18 and older
 ==================
 
-This is as far as our testing archives reach, for older versions, we suggest consulting the GitHub Changelog for specific Board versions:
+This is as far as our testing archives reach, for older versions, we suggest consulting the |Changelog| for specific Board versions (The link leads to STEMlab 125-14 changelog).
+
+.. |Changelog| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">Red Pitaya GitHub CHANGELOG</a>
+
+
+
+
 
 
