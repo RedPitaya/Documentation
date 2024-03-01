@@ -57,8 +57,8 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 pulses of sine wave
 
     % For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    writeline(RP,'SOUR:TRIG:EXT:DEBouncerUs 500');
-    writeline(RP,'SOUR1:TRIG:SOUR EXT_PE');     % Set generator trigger to external
+    writeline(RP,'SOUR:TRig:EXT:DEBouncerUs 500');    % OS 2.00 and above
+    writeline(RP,'SOUR1:TRig:SOUR EXT_PE');     % Set generator trigger to external
 
     writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
 
@@ -99,8 +99,8 @@ Code - Python
     rp_s.tx_txt('SOUR1:BURS:NCYC 1')
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('SOUR:TRIG:EXT:DEBouncerUs 500')
-    rp_s.tx_txt('SOUR1:TRIG:SOUR EXT_PE')
+    rp_s.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
+    rp_s.tx_txt('SOUR1:TRig:SOUR EXT_PE')
 
     rp_s.tx_txt('OUTPUT1:STATE ON')
     
@@ -128,7 +128,7 @@ Code - Python
     rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=1, trig="EXT_PE")
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('SOUR:TRIG:EXT:DEBouncerUs 500')
+    rp_s.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
     
     rp_s.tx_txt('OUTPUT1:STATE ON')
     
