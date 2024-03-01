@@ -87,7 +87,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
 
     writeline(RP,'OUTPUT:STATE ON');            % Start both channels simultaneously
-    writeline(RP,'SOUR:TRIG:INT');              % Generate triggers
+    writeline(RP,'SOUR:TRig:INT');              % Generate triggers
 
     clear RP;
 
@@ -152,7 +152,7 @@ Code - Python
     rp_s.tx_txt('SOUR2:VOLT ' + str(ampl))
 
     rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRIG:INT')
+    rp_s.tx_txt('SOUR:TRig:INT')
     
     rp_s.close()
 
@@ -191,7 +191,7 @@ Code - Python
     rp_s.sour_set(2, wave_form, ampl, freq, data= y)
 
     rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRIG:INT')
+    rp_s.tx_txt('SOUR:TRig:INT')
     
     rp_s.close()
 
