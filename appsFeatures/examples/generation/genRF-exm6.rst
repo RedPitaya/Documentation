@@ -66,13 +66,13 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     writeline(RP,'OUTPUT:STATE ON');            % Set both outputs to ON
 
     pause(2)
-    writeline(RP,'SOUR1:TRIG:INT');
+    writeline(RP,'SOUR1:TRig:INT');
 
     pause(2)
-    writeline(RP,'SOUR2:TRIG:INT');
+    writeline(RP,'SOUR2:TRig:INT');
 
     pause(1)
-    writeline(RP,'SOUR:TRIG:INT');
+    writeline(RP,'SOUR:TRig:INT');
 
     %% Close connection with Red Pitaya
     clear RP;
@@ -120,11 +120,11 @@ Code - Python
 
     rp_s.tx_txt('OUTPUT:STATE ON')
     time.sleep(2)
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    rp_s.tx_txt('SOUR1:TRig:INT')
     time.sleep(2)
-    rp_s.tx_txt('SOUR2:TRIG:INT')
+    rp_s.tx_txt('SOUR2:TRig:INT')
     time.sleep(1)
-    rp_s.tx_txt('SOUR:TRIG:INT')
+    rp_s.tx_txt('SOUR:TRig:INT')
     
     rp_s.close()
 
@@ -153,11 +153,11 @@ Code - Python
 
     rp_s.tx_txt('OUTPUT:STATE ON')
     time.sleep(2)
-    rp_s.tx_txt('SOUR1:TRIG:INT')
+    rp_s.tx_txt('SOUR1:TRig:INT')
     time.sleep(2)
-    rp_s.tx_txt('SOUR2:TRIG:INT')
+    rp_s.tx_txt('SOUR2:TRig:INT')
     time.sleep(1)
-    rp_s.tx_txt('SOUR:TRIG:INT')
+    rp_s.tx_txt('SOUR:TRig:INT')
     
     rp_s.close()
 
