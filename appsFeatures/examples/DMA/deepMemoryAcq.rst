@@ -95,11 +95,11 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     %% ACQUISITION
     
     writeline(RP,'ACQ:START');
-    writeline(RP,'ACQ:TRIG CH1_PE');
+    writeline(RP,'ACQ:TRig CH1_PE');
     
     %% Wait for trigger
     while 1
-        trig_rsp = writeread(RP,'ACQ:TRIG:STAT?');
+        trig_rsp = writeread(RP,'ACQ:TRig:STAT?');
         if strcmp('TD',trig_rsp(1:2))
             fprintf('Triggered\n');
             pause(1);
@@ -218,11 +218,11 @@ Code - Python
     ## ACQUISITION
     
     rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRIG CH1_PE')
+    rp_s.tx_txt('ACQ:TRig CH1_PE')
     
     # Wait for trigger
     while 1:
-        rp_s.tx_txt("ACQ:TRIG:STAT?")
+        rp_s.tx_txt("ACQ:TRig:STAT?")
         if rp_s.rx_txt() == 'TD':
             print("Triggered")
             time.sleep(1)
@@ -230,7 +230,7 @@ Code - Python
 
     # wait for fill adc buffer
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:FILL?')
+        rp_s.tx_txt('ACQ:AXI:SOUR1:TRIG:FILL?')
         if rp_s.rx_txt() == '1':
             print('DMA buffer full\n')
             break
