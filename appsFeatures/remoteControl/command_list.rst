@@ -618,6 +618,7 @@ Generator settings
 - ``<array> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1
 - ``<waveform> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1 (``arbBuffer`` for Python API and Jupyter)
 - ``<lenght>`` waveform array length
+- ``<load_mode> = {INF, L50}`` Default: ``INF``
 
 **Available Jupyter and API macros:**
 
@@ -708,6 +709,16 @@ Generator settings
 | | ``SOUR<n>:TRAC:DATA:DATA?`` > ``<array>``         | | C: ``rp_GenGetArbWaveform(rp_channel_t channel, float *waveform, uint32_t *length)``  | Get the user-defined arbitrary waveform period.                                              | 1.04-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR1:TRAC:DATA:DATA?`` >  ``1,0.5,0.2``        | | Python: ``rp_GenGetArbWaveform(<channel>, <waveform>)``                               |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:LOAD <load_mode>``                      | | C: ``rp_GenSetLoadMode(rp_channel_t channel, float phase)``                           | Set the load mode for the output. (SIGNALlab only)                                           | in dev             |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:LOAD L50``                                | | Python: ``rp_GenSetLoadMode(<channel>, <phase>)``                                     |                                                                                              |                    |
+| |                                                   | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:LOAD?`` > ``<load_mode>``               | | C: ``rp_GenGetLoadMode(rp_channel_t channel, float *phase)``                          | Get the load mode for the output. (SIGNALlab only)                                           | in dev             |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR2:LOAD?`` > ``L50``                         | | Python: ``rp_GenGetLoadMode(<channel>)``                                              |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | -                                                 | | C: ``rp_GenSetGainOut(rp_channel_t channel, rp_gen_gain_t gain_mode)``                | Set SIGNALlab output gain. (SIGNALlab only)                                                  | 1.04-18 and up     |
