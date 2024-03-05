@@ -22,6 +22,14 @@ Features
 - The ability to easily include mathematical notation within markdown cells using LaTeX, and rendered natively by 
   |MathJax|
 
+.. note::
+
+   We do not recommend running more than 10 JupyterLab kernels at the same time as the board can run out of memory and force-shutdown the JupyterLab application.
+
+   Active kernels are found here:
+
+   .. figure:: img/Jupyter_kernel.jpg
+      :width: 500
 
 .. |matplotlib| raw:: html
 
@@ -68,6 +76,7 @@ Hardware – Sensor extension module
 Although the usage of the JupyterLab does not require any additional hardware except the Red Pitaya board, getting started with electronics is way more fun and interesting when you have loads of sensors that you can put to good use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is to select the desired module, find the correct connector, and get going with your project. We have also placed the Arduino shield headers on the extension module.
 
 .. figure:: img/extension_module_and_sensors.png
+   :width: 500
 
 Here you can find more information regarding the :ref:`Sensor extension module <sensor_extension_module>`.
 
