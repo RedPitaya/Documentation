@@ -8,3 +8,4 @@ Hardware
    
    platforms
    ext_modules/ext_modules
+   known_hw_issues/known_hw_issues
