@@ -24,7 +24,8 @@ Features
 
 .. note::
 
-   We do not recommend running more than 10 JupyterLab kernels at the same time as the board can run out of memory and force-shutdown the JupyterLab application.
+   We do not recommend running more than 10 JupyterLab kernels simultaneously, as the board can run out of memory and force the shutdown of the JupyterLab application.
+   Red Pitaya remembers which Notebooks were opened the last time JupyterLab was used, so exiting the application without closing most of the Notebooks can lead to very long JupyterLab loading times. Therefore, it is inadvisable to exit JupyterLab with more than 5 tabs (Notebooks) open.
 
    Active kernels are found here:
 
