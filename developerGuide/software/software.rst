@@ -6,9 +6,10 @@ Software
 .. toctree::
    :maxdepth: 2
 
-   console/console_con.rst
-   build/build.rst
-   other_info/info.rst
+   console/console_con
+   build/build
+   other_info/info
+   known_sw_issues/known_sw_issues
 
 
 
