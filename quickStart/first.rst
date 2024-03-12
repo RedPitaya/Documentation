@@ -55,7 +55,7 @@ Follow these five simple steps to start using your Red Pitaya:
             :align: center
 
       #. Connect the power supply to the Red Pitaya board
-      #. Open your web browser and type ``rp-xxxxxx.local/`` into the address bar
+      #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar
 
          .. figure:: connect/250_stiker.png
             :width: 800
@@ -67,8 +67,9 @@ Follow these five simple steps to start using your Red Pitaya:
 
 .. note::
 
-   ``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board.
-   The MAC address is written on the Ethernet connector.
+   ``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board. The MAC address is written on the Ethernet connector.
+
+   Alternatively, you can replace the ``rp-xxxxxx.local`` with Red Pitaya's IP address, which you can get by matching Red Pitaya's MAC address in the APR table (type ``arp -a`` into the terminal/CMD).
     
 After the **fifth step**, you will get a Red Pitaya main page, as shown below.
 
