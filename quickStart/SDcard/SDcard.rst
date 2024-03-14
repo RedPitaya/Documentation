@@ -19,8 +19,8 @@ With the 2.00 OS versions we moved to a unified OS image for all boards (One OS 
 
 **RedPitaya OS 2.0**:
 
-  - `Latest Beta (2.00-30) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-30_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ec890319d64ffe059cd0d747cf36eab7)
-  - `Latest Stable (2.00-23) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-23_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 45281311c10c2131af9a09005b9b2b32)
+  - `Latest Beta (2.00-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-35_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 7bfc24d61a0c1355a4d4affccfb16420)
+  - `Latest Stable (2.00-30) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-30_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ec890319d64ffe059cd0d747cf36eab7)
 
 |
 
