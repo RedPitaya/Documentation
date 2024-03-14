@@ -73,14 +73,21 @@ Issues
     We realized this command renaming is not backwards compatible, so we will be reverting it to the old version with the next OS update.
 
 - For all SCPI commands ``TRIG`` was renamed to ``TRig``(does not affect the backwards compatibility).
-- Renamed ``ACQ:SOUR<n>:DATA:STA:END?`` to ``ACQ:SOUR<n>:DATA:Start:End?``
-- Renamed ``ACQ:SOUR<n>:DATA:STA:N?`` to ``ACQ:SOUR<n>:DATA:Start:N?``
-- Renamed ``ACQ:SOUR<n>:DATA:OLD:N?`` to ``ACQ:SOUR<n>:DATA:Old:N?``
-- Renamed ``ACQ:SOUR<n>:DATA:LAT:N?`` to ``ACQ:SOUR<n>:DATA:Last:N?``
-- Renamed ``ACQ:DATA:UNITS`` to ``ACQ:DATA:Units``
-- Renamed ``SOUR:TRIG:EXT:DEBouncerUs`` to ``SOUR:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
-- Renamed ``ACQ:TRIG:EXT:DEBouncerUs`` to ``ACQ:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
 
+Reanmed commands:
+
+- ``ACQ:SOUR<n>:DATA:STA:END?`` to ``ACQ:SOUR<n>:DATA:Start:End?``
+- ``ACQ:SOUR<n>:DATA:STA:N?`` to ``ACQ:SOUR<n>:DATA:Start:N?``
+- ``ACQ:SOUR<n>:DATA:OLD:N?`` to ``ACQ:SOUR<n>:DATA:Old:N?``
+- ``ACQ:SOUR<n>:DATA:LAT:N?`` to ``ACQ:SOUR<n>:DATA:Last:N?``
+- ``ACQ:DATA:UNITS`` to ``ACQ:DATA:Units``
+- ``SOUR:TRIG:EXT:DEBouncerUs`` to ``SOUR:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
+- ``ACQ:TRIG:EXT:DEBouncerUs`` to ``ACQ:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
+- ``UART:READ#`` to ``UART:READ#?``
+- ``I2C:Smbus:Read#`` to ``I2C:Smbus:Read#?``
+- ``I2C:Smbus:Read#:Word`` to ``I2C:Smbus:Read#:Word?``
+- ``I2C:Smbus:Read#:Buffer#`` to ``I2C:Smbus:Read#:Buffer#?``
+- ``I2C:IOctl:Read:Buffer#`` to ``I2C:IOctl:Read:Buffer#?``
 
 New commands
 --------------
