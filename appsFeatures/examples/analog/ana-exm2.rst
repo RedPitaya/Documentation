@@ -5,12 +5,12 @@ Set analog voltage on a slow analog output
 
 
 Description
-***********
+=============
 
 This example shows how to set the analog voltage of slow analog outputs on the Red Pitaya extension connector. Slow analog outputs on the Red Pitaya are in the range of 0 to 1.8 Volts.
 
 Required hardware
-*****************
+===================
 
     - Red Pitaya device
     - Voltmeter
@@ -20,12 +20,15 @@ Wiring example for STEMlab 125-14 & STEMlab 125-10:
 .. figure:: img/Set_analog_voltage_on_slow_analog_input1.png
 
 Circuit
-*******
+========
 
 .. figure:: img/Set_analog_voltage_on_slow_analog_input_circuit1.png
 
+SCPI Code Examples
+====================
+
 Code - MATLAB®
-**************
+---------------
 
 The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
@@ -49,14 +52,51 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     clear RP;
 
 
-Code - C
-********
+Code - Python
+--------------
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import sys
+    import redpitaya_scpi as scpi
+
+    IP = 'rp-f066c8.local'
+
+    rp_s = scpi.scpi(IP)
+
+    value = [1,1,1,1]
+    for i in range(4):
+        if len(sys.argv) > (i+2):
+            value[i] = sys.argv[i+2]
+        print ("Voltage setting for AO["+str(i)+"] = "+str(value[i])+"V")
+
+    for i in range(4):
+        rp_s.tx_txt('ANALOG:PIN AOUT' + str(i) + ',' + str(value[i]))
+
+    rp_s.close()
+
+
+Code - LabVIEW
+---------------
+
+.. figure:: img/Set-analog-voltage-on-slow-analog-output_LV.png
+
+- `Download Example <https://downloads.redpitaya.com/downloads/Clients/labview/Set%20analog%20voltage%20on%20slow%20analog%20output.vi>`_
+
+
+
+API Code Examples
+====================
 
 .. note::
 
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
 
+Code - C API
+---------------
 
 .. code-block:: c
 
@@ -70,7 +110,7 @@ Code - C
     int main (int argc, char **argv) {
         float value [4];
 
-        // Voltages can be provided as an argument (default is 1V)
+        // Voltages can be provided as an argument (default is 1 V)
         for (int i=0; i<4; i++) {
             if (argc > (1+i)) {
                 value [i] = atof(argv[1+i]);
@@ -104,31 +144,36 @@ Code - C
     }
 
 
-Code - Python
-*************
+Code - Python API
+------------------
 
 .. code-block:: python
 
-    #!/usr/bin/env python3
+    #!/usr/bin/python3
+    import rp
 
-    import sys
-    import redpitaya_scpi as scpi
+    analog_out = [rp.RP_AOUT0, rp.RP_AOUT1, rp.RP_AOUT2, rp.RP_AOUT3]
+    out_voltage = [1.0, 1.0, 1.0, 1.0]
 
-    rp_s = scpi.scpi(sys.argv[1])
+    # Initialize the interface
+    rp.rp_Init()
 
-    value = [1,1,1,1]
+    # Reset analog pins
+    rp.rp_ApinReset()
+
+    #####! Choose one of two methods, comment the other !#####
+
+    #! METHOD 1: Configuring specific Analog pin
     for i in range(4):
-        if len(sys.argv) > (i+2):
-            value[i] = sys.argv[i+2]
-        print ("Voltage setting for AO["+str(i)+"] = "+str(value[i])+"V")
+        rp.rp_ApinSetValue(analog_out[i], out_voltage[i])
+        print (f"Set voltage on AO[{i}] to {out_voltage[i]} V")
 
+
+    #! METHOD 2: Configure just slow Analog outputs
     for i in range(4):
-        rp_s.tx_txt('ANALOG:PIN AOUT' + str(i) + ',' + str(value[i]))
+        rp.rp_AOpinSetValue(i, out_voltage[i])
+        print (f"Set voltage on AO[{i}] to {out_voltage[i]} V")
 
+    # Release resources
+    rp.rp_Release()
 
-Code - LabVIEW
-**************
-
-.. figure:: img/Set-analog-voltage-on-slow-analog-output_LV.png
-
-`Download <https://downloads.redpitaya.com/downloads/Clients/labview/Set%20analog%20voltage%20on%20slow%20analog%20output.vi>`_

@@ -38,6 +38,14 @@ Red Pitaya not booting anymore?
 *   :ref:`Was the OS updated recently? <trouble_OS>`
 
 
+.. _rebooting:
+
+Red Pitaya is constantly rebooting?
+------------------------------------
+
+* A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations. 
+
+
 How to connect the external clock to RP?
 ------------------------------------------
 
@@ -97,7 +105,7 @@ In order to test it, you can use a PC that is connected to the same local networ
       If you have a cable connection, then your MAC address
       is written on your Red Pitaya LAN connector.
 
-   .. figure:: MAC.png
+   .. figure:: img/MAC.png
       :align: center
 
 .. note:: 
@@ -106,7 +114,7 @@ In order to test it, you can use a PC that is connected to the same local networ
 
 3. Type your Red Pitaya IP into your WEB browser and connect to it.
 
-   .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
+   .. figure:: img/Browser_IP.png
       :align: center
 
 If your Red Pitaya is not listed on the list of your local network devices on the local network, then it is necessary to check that your Red Pitaya is connected to your local network.
@@ -127,7 +135,7 @@ Is Red Pitaya connected to my local network?
 
 3. Type Red Pitaya IP into your web browser to see if you can connect to it.
 
-   .. figure:: Screen-Shot-2015-09-26-at-09.34.00.png
+   .. figure:: img/Browser_IP.png
       :align: center
 
 
@@ -136,37 +144,78 @@ Is Red Pitaya connected to my local network?
 Problems connecting to RP?
 ----------------------------
 
-.. figure:: blinking-pitaya-eth.gif
+.. figure:: img/blinking-pitaya-eth.gif
    :align: center
+
+Red Pitaya status LED description:
+
+- **Green LED** - power good
+- **Blue LED** - FPGA image loaded and OS booted
+- **Red LED** - CPU heartbeat
+- **Orange LED** - SD card access
 
 #. First, check the LEDs:
 
-   a. If the **green LED** is not **ON** or is **blinking**. It seems like something is wrong with the power supply, or maybe it's the USB cable. Make sure that:
+   a. If the **green LED** is **OFF** or is **blinking**. It seems like something is wrong with the power supply, or maybe it's the USB cable. Make sure that:
 
-       1. you have plugged the USB cable into the right USB connector on the Red Pitaya
-       2. your power supply is 5V/2A
+       1. you have plugged the USB cable into the correct USB connector on the Red Pitaya
+       2. your power supply is capable of 5 V/2 A (or 12 V/1 A for SIGNALlab 250-12)
        3. try to replace the USB cable and also the USB power supply
 
    #. If the **green LED** is turned **ON** but the **blue LED** is turned **OFF**. In this case, there is an error while loading the Red Pitaya system from the SD card. Make sure that:
 
-       *   you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted- in such case follow this instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
-       *   try to use another SD card
+       - you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - in such case follow these instruction on how to :ref:`Prepare SD card <prepareSD>` to properly re-install Red Pitaya OS to SD card)
+       - try to use another SD card
+       - try connecting via a :ref:`serial console <console>` and check the boot sequence
+       - if you have **Pavel Demin's Alpine Linux OS** image installed, this may indicate normal behaviour. The status LEDs are normally turned OFF, check the |red_pitaya_notes| for more information.
 
-   #. If both the **green** and **blue** LEDs are **ON**, but the **red** and **orange** LEDs are **not blinking**. The red LED indicates CPU heartbeat, while the orange LED indicates access to the SD card. Notice that these two LEDs always start blinking 10 seconds after the green and blue LEDs are turned on.
+   #. If both the **green** and **blue** LEDs are **ON**, but the red and orange LEDs stop blinking a few seconds after the boot, only to remain ON for about 2 seconds, and then the cycle repeats. This indicates that the **Red Pitaya is in a reboot cycle**. Notice that the red and orange LEDs always start blinking approx 10 seconds after the green and blue LEDs are turned ON.
 
-#. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
+       - Check your Red Pitaya board model. If you are using an external clock version, check whether the external clock signal is properly connected to the :ref:`E2 <E2>` connector.
 
-#. Consult the :ref:`connection guide <connection>` for advice.
+#. If the status LEDs are working normally, the Red Pitaya is properly booted. If you are unable to connect to it, this is most likely a networking issue:
 
-#. Try disabling the VPN, because it may be preventing the connection.
+    - Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faqConnected>`.
+    - Consult the :ref:`connection guide <connection>` for advice.
+    - Try using the recommended Google Chrome browser.
+    - Disable any adblockers for the "rp-xxxxxx.local" website.
+    - Try disabling the VPN, because it may be preventing the connection.
+    - Type "arp -a" into the Comand Prompt or Terminal and look for Red Pitaya's IP. Then try using the IP instead of "rp-xxxxxx.local" in the browser's URL window.
+    - If you are a Windows user, please look at the note below.
 
-#. If you are a Windows user, please look at the note below.
+   .. note::
 
-.. note::
+      **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_, otherwise access to ``*.local`` addresses will not work.
 
-   **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_, otherwise access to ``*.local`` addresses will not work.
+   **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install additional software.
 
-   **Windows 10/11** already supports mDNS and DNS-SD, so there is no need to install additional software.
+|
+
+#. **Advanced troubleshooting:**
+
+    - If you are a Linux or macOS user and the Red Pitaya is directly connected to the computer (with the ethernet cable), check the ethernet connector settings if they are set to **DHCP** and **Local Only**. Alternatively, try connecting to the Red Pitaya through the router.
+    - If you updated form 1.04 to 2.00 OS version, check GitHub issues |#250| and |#254|.
+    - Try connecting via the :ref:`serial console <console>`. Check the boot log and see whether you can access the on-board Linux Terminal.
+    - Check the :ref:`Nightly Builds Changelog <nightly_builds>` for any relevant updates.
+
+#. Extremely rare cases:
+
+    - If the board is operating normally, but the **blue LED** is **OFF**, check if the LED is damaged. If the board is in warranty, we will replace it.
+    - Check whether any of the SD card holder pins are bent upwards and do not have contact with the SD card pins. Take out the SD card and push them into the normal position.
+
+
+.. |red_pitaya_notes| raw:: html
+
+   <a href="https://github.com/pavel-demin/red-pitaya-notes" target="_blank">Pavel Demin's Red Pitaya Notes</a>
+
+.. |#250| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">#250</a>
+
+.. |#254| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/254" target="_blank">#254</a>
+
 
 
 How to find the Red Pitaya URL if it is not written on the sticker?
@@ -176,30 +225,30 @@ The Red Pitaya URL is ``rp-xxxxxx.local`` where ``xxxxxx`` must be replaced with
 
 If the RP MAC address is ``00:26:33:F1:13:D5``, the last 6 digits are ``F113D5`` and the URL is ``rp-f113d5.local``.
 
-.. figure:: Screen-Shot-2016-08-17-at-09.50.31-503x600.png
+.. figure:: img/ethernet_MAC.png
    :align: center
 
 
-Slow WIFI connection?
+Slow Wi-Fi connection?
 -----------------------
 
 If your wireless connection with Red Pitaya works very slowly and all the applications seem very unresponsive and not running smoothly, please check the following:
 
-*   Check the WiFi signal strength on your PC/tablet/smartphone.
-*   Check the WiFi signal strength of your Red Pitaya.
+*   Check the Wi-Fi signal strength on your PC/tablet/smartphone.
+*   Check the Wi-Fi signal strength of your Red Pitaya.
 
    1. Connect to your Red Pitaya via an :ref:`SSH <ssh>` connection.
 
    #. Enter the ``cat /proc/net/wireless`` command to get information about link quality and signal strength.
 
-      .. figure:: Screen-Shot-2015-09-26-at-20.28.27.png
+      .. figure:: img/cat_wireless.png
          :align: center
 
       Link quality measures the number of packet errors that occur. The lower the number of packet errors, the higher this will be. Link quality goes from 0-100%.
 
       Level, or signal strength, is a simple measure of the amplitude of the signal that is received. The closer you are to the access point, the higher this will be.
 
-*   If you are in an area with many routers around you, more of them might operate on the same wifi channel, which drastically decreases data throughput and slows down connection. Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best wifi channel.
+*   If you are in an area with many routers around you, more of them might operate on the same Wi-Fi channel, which drastically decreases data throughput and slows down connection. Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best Wi-Fi channel.
 
 
 .. note::
@@ -215,7 +264,7 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
    <a href="http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/" target="_blank">Wireless Diagnostic Tool</a>
 
 
-WIFI dongle not detected?
+Wi-Fi dongle not detected?
 ---------------------------
 
 Please note that not all are compatible. A list is in the documentation: :ref:`Supported USB Wi-Fi adapters <support_wifi_adapter>`
@@ -286,6 +335,9 @@ Web interface not functioning properly, or experimenting with freezing?
 
 Please ensure that your browser's ad blockers are turned off for the "rp-xxxxxx.local" webpage and that your proxy settings are correct. For local connections to the Red Pitaya unit, proxy settings should not be required. A VPN may also be preventing the connection.
 
+.. figure:: img/AdBlock_disable.png
+   :align: center
+   :width: 700
 
 Undesired disconnections?
 ---------------------------
@@ -313,10 +365,39 @@ Software
 
 For establishing an SSH connection, creating a custom FPGA image, custom ecosystem, and/or custom web applications, please refer to :ref:`Developers guide Software <software>`.
 
+
+How can I acquire data with Red Pitaya?
+------------------------------------------------
+
+There are multiple approaches to acquiring data with Red Pitaya. Here is a quick description of each possiblity:
+   - **Oscilloscope application** – The data is acquired at full speed, but all the limitations of a standard oscilloscope apply (currently, the data can only be extracted upon user request via the application. Remote data collection is currently impossible). More info :ref:`here <osc_app>`.
+   - **SCPI data acquisition (Python, MATLAB, LabVIEW)** – Triggered data acquisition. The data is acquired in 16384 sample-long buffers. The code is executed on a computer, and string commands are sent to the Red Pitaya via |socket communication|. Data is acquired on the Red Pitaya and then sent back as a string that can be converted to a floating-point format. Trigger can be set to either IN1, IN2, or External (also IN3 and IN4 for STEMlab 125-14 4-Input). Trigger level can be specified. The acquisition must be restarted before a new “data buffer” can be acquired. There is a dead time between capturing two consecutive buffers where data is not saved. More details :ref:`here <scpi_commands>`.
+   - **API commands (C, Python)** – Functions exactly the same as SCPI data acquisition, but it is faster since everything is running on the Red Pitaya board itself (the code is executed on the board). More info :ref:`here <API_commands>`.
+   - **Streaming application** – Continuous data acquisition. The data is streamed from one or both inputs directly to a file on a computer. The data can be acquired indefinitely, but there are speed limitations. 
+The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details on the limitations are available :ref:`here <streaming_top>`.
+   - **Deep Memory (AXI mode)** *(only OS 2.00-23 – latest Beta)* – Long sequence triggered data acquisition. The data can be acquired at different speeds (up to 125 MHz), and it is saved directly into the DDR RAM. The buffer length can be specified by the user but must not exceed 256 MB for both channels. After the acquisition is complete, Red Pitaya needs some time to transfer the whole file to the computer (the RAM must be emptied) before the acquisition can be reset. Functions exactly the same as **API commands**. More details are available :ref:`here <deepMemoryAcq>`.
+   -	**Custom Acquisition (FPGA)** – Red Pitaya is open-source so any mode above can be customized by the user to tune it to their specific application.
+
+
+.. |socket communication| raw:: html
+
+   <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank">socket communication</a>
+
+How can I generate data with Red Pitaya?
+------------------------------------------------
+
+Here are all possible generation options on the Red Pitaya (please be aware of AC coupling limitations on SDRlab 122-16):
+   - **Oscilloscope application** - basic waveform generation. More info :ref:`here <osc_app>`.
+   - **SCPI commands (Python, MATLAB, LabVIEW)**, remote control from computer - can generate basic waveforms as well as custom/arbitrary waveforms (defined in a 16384 sample-long buffer which represents one period of the signal - the frequency is calculated for the whole buffer). More details :ref:`here <scpi_commands>`.
+   - **API commands (C, Python)**, on-board program - same functionality as standard SCPI commands, but generally faster and includes the benefit of possible direct communication with the FPGA. More info :ref:`here <API_commands>`.
+   - **Custom/user-defined (FPGA reprogramming)** - Red Pitaya is open-source, so anyone has the option of reprogramming the FPGA image to customise the functionality.
+
+
 How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?
 -----------------------------------------------------------------------
 
-*  :ref:`Remote control <remoteControl>`
+*  :ref:`Remote control <scpi_commands>`
+
 
 Where can I find the ecosystem, software, and FPGA images?
 ------------------------------------------------------------
@@ -327,7 +408,7 @@ Where can I find the ecosystem, software, and FPGA images?
 
 .. note::
 
-   Impossible. Perhaps the archives are incomplete.
+   *Impossible. Perhaps the archives are incomplete.*
 
    If you need a specific old version of the ecosystem or the OS that is missing from the archives, we suggest you ask the community on the |RP_forum|. There is a chance someone has it lying around on the disk.
 

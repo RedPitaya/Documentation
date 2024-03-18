@@ -19,9 +19,9 @@ https://www.freedesktop.org/software/systemd/man/udev.html
 Red Pitaya provides an UDEV rule |10-redpitaya.rule|_ file
 used to provide **non root users** access rights to hardware components.
 
-*********************************
+
 Non root access to device drivers
-*********************************
+===================================
 
 One or more **match keys** are used to find a specific device or a group of devices.
 Usually the ``SUBSYSTEM`` key is enough, but sometimes a more detailed search is necessary.
@@ -38,17 +38,17 @@ so it is possible to attempt write access to a file,
 before permissions are granged.
 This issue affects current GPIO, LED, EEPROM and IIO (XADC) drivers.
 
-=======
+
 XDEVCFG
-=======
+-----------
 
 Device node ``/dev/xdevcfg`` enables users to write a FPGA bitstream.
 
 Users should be added into the ``xdevcfg`` group.
 
-===========
+
 UIO devices
-===========
+-------------
 
 https://www.kernel.org/doc/html/latest/driver-api/uio-howto.html
 
@@ -74,18 +74,18 @@ By matching against UIO device names,
 it is also possible to write UDEV rules,
 which give different users different access rights for each UIO device.
 
-===
+
 LED
-===
+-----
 
 Modyfying LED status requires write access to some ``/sys/*`` files.
 
 The UDEV rules for LED are present in |10-redpitaya.rule|_ for review,
 but are currently commented out.
 
-====
+
 GPIO
-====
+--------
 
 Modyfying GPIO status requires write access to some ``/sys/*`` files.
 Additionaly each GPIO must be exported before it can be used.
@@ -98,23 +98,30 @@ but are currently commented out.
 Kernel 4.8 provides a new character device driver for GPIO,
 but we are not using it yet.
 
-======
+
+
 EEPROM
-======
+-----------
 
 Commented out due to ``/sys/*`` access issues.
 
-==========
+
 IIO (XADC)
-==========
+-------------
 
 Only basic support which can be achieved
 by only reading ``/sys/*`` files is provided.
 
 Users should be added into the ``xadc`` group.
 
-*********
-Debugging
-*********
 
-TODO
+Debugging
+============
+
+**Under Construction...**
+
+
+
+
+
+

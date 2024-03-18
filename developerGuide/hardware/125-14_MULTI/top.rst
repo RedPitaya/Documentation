@@ -1,5 +1,6 @@
 .. _top_125_14_MULTI:
 
+###################################
 STEMlab 125-14 X-Channel System
 ###################################
 
@@ -12,7 +13,14 @@ X-Channel STEMlab 125-14 system consists of:
 
 For detailed hardware specifications for Low-Noise STEMlab 125-14 devices used in the STEMlab 125-14 X-Channel System, please refer to the :ref:`STEMlab 125-14 standard specs <top_125_14>`.
 
-For more information about the software, please refer to: :ref:`X-Channel streaming <mch_streaming_top>`.
+For more information about the software, please refer to: :ref:`X-Channel streaming <x-ch_streaming>`.
+
+
+Pinout
+===========
+
+.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
+    :width: 700
 
 
 Technical specifications (one board)
@@ -40,9 +48,10 @@ Technical specifications (one board)
     | Power consumption                  | 5 V, 2 A max                       |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 20 20
-
 
     +------------------------------------+------------------------------------+
     | **Connectivity**                                                        |
@@ -54,6 +63,7 @@ Technical specifications (one board)
     | WIFI                               | requires WIFI dongle               |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 20 20
@@ -83,6 +93,7 @@ Technical specifications (one board)
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 20 20
@@ -101,7 +112,7 @@ Technical specifications (one board)
     | Voltage range                      | ±1 V                               |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Short circut protection            | Yes                                |
+    | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |
@@ -111,7 +122,7 @@ Technical specifications (one board)
     | Bandwidth                          | DC - 50 MHz                        |
     +------------------------------------+------------------------------------+
 
-
+|
 
 .. table::
     :widths: 20 20
@@ -140,6 +151,8 @@ Technical specifications (one board)
     | external ADC clock                 |  yes                               |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 20 20
 
@@ -153,6 +166,8 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
+
+|
 
 .. table::
     :widths: 20 40
@@ -169,8 +184,15 @@ Technical specifications (one board)
     |                                    | 16-Ch IN + 16-Ch OUT                      |
     +------------------------------------+-------------------------------------------+
 
+
 .. note::
 
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>` and :ref:`STEMlab 125-14 Low-Noise <top_125_14_LN>`.
-    
+
+
+
+Other specifications
+=====================
+
+For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.
 

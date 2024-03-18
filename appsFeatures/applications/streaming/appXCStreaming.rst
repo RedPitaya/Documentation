@@ -1,4 +1,4 @@
-.. _mch_streaming_top:
+.. _x-ch_streaming:
 
 #######################
 X-Channel Streaming
@@ -11,6 +11,8 @@ X-Channel Streaming
 .. note::
 
     We have decided to use PRIMARY and SECONDARY device terminology instead of the standard MASTER and SLAVE device.
+
+All the :ref:`limitations of the Streaming Application <streaming_top>` also apply to the X-Channel streaming, but the limitations are **per-board**.
 
 ********
 Overview
@@ -30,9 +32,9 @@ Streaming can be done in both directions. Users can stream acquired analog and d
     :width: 600
 
 
-*****
+******
 Setup
-*****
+******
 
 **What do I need before I start?**
 
@@ -50,16 +52,19 @@ In order to achieve synchronization, the PRIMARY device provides a clock and tri
 
 .. note::
 
-    **PRIMARY and SECONDARY boards do use different OS-es!**
+    SECONDARY boards will NOT boot without the clock signal present!!!
 
-    The PRIMARY runs the standard Red Pitaya device OS, while SECONDARY boards require a special OS that only supports X-channel streaming.
+.. note::
+    
+    We recommend using :ref:`OS 2.00-23 or higher <prepareSD>` for the X-channel system.
 
-    Due to frequent OS updates, it is recommended to always use the :ref:`latest OS <prepareSD>`.
+    - With 2.00 OS both the PRIMARY and the SECONDARY devices use the SAME OS!
+    - With 1.04 OS the PRIMARY and SECONDARY boards use DIFFERENT OS-es!
 
 
-***********
-Setting-up
-***********
+
+Hardware Setup
+================
 
     #.  Connect all Red Pitayas to the same network via ethernet cables (switch or router that is connected to the client PC).
 
@@ -84,9 +89,14 @@ Setting-up
 .. figure:: img/Master_and_slaves_2.jpg
     :width: 800
 
-*******************************************************************
+
 Download and install an X-channel streaming client on your computer
-*******************************************************************
+=======================================================================
+
+.. note::
+
+   The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.
+
 
 1. Connect to the PRIMARY board by entering the URL from the sticker into a web browser and launching the streaming app.
 
@@ -95,8 +105,17 @@ Download and install an X-channel streaming client on your computer
 
 2. Click the "Clients" button to get the client app for Linux or Windows and download it to your client's computer.
 
-.. figure:: img/download_client.png
-    :width: 800
+.. tabs::
+
+    .. group-tab:: OS version 2.00-15 or older
+
+        .. figure:: img/download_client.png
+            :width: 800
+
+    .. group-tab:: OS version 2.00-23 or newer
+
+        .. figure:: img/download_client_2.00.png
+            :width: 800
 
 *****************
 Use case examples
@@ -127,9 +146,17 @@ In this example, we will show how to set configuration remotely using an already
 
     <a href="https://downloads.redpitaya.com/doc/streaming/test.conf" target="_blank">test.conf</a>
 
+.. tabs::
 
-.. figure:: img/settings.png
-    :width: 800
+    .. group-tab:: OS version 2.00-15 or older
+
+        .. figure:: img/settings.png
+            :width: 800
+
+    .. group-tab:: OS version 2.00-23 or newer
+
+        .. figure:: img/settings_2.00.png
+            :width: 800
 
 .. code-block:: shell-session
 

@@ -23,6 +23,7 @@ and add the line *spi-cs-high* to this device;
 
    Example of SPI config
 
+
 After that, you need to rebuild the tree and restart the board
 
 .. code-block:: console
@@ -31,13 +32,14 @@ After that, you need to rebuild the tree and restart the board
    root@rp-f01c3d:~# dtc -I dts -O dtb ./dtraw.dts -o devicetree.dtb
    root@rp-f01c3d:~# reboot
 
+
 .. note::
 
    The settings are applied only after the device tree is loaded. When the board starts up, the CS value is in the HIGH state but will change to LOW after the boot is complete.
 
 .. note::
 
-   You can also switch the driver mode through the settings. See commands from :ref:`hw api<scpi_command_list>`:
+   You can also switch the driver mode through the settings. See commands from :ref:`hw api <command_list>`:
 
    * rp_SPI_GetCSMode
    * rp_SPI_SetCSMode

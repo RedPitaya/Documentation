@@ -9,55 +9,20 @@ Prepare SD card
 OS Versions
 ***********
 
-==============
-Nightly Builds
-==============
-
-You can now download Nightly Builds for your Red Pitaya!
-
-The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.
-
-We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time to fix some of the reported issues or implement some new features reported as suggestions for improvement.
-
-As these builds are snapshots of the latest code, odds are you will encounter more issues compared to stable releases. Please report any issues to support@redpitaya.com so that our developers can review them and make any needed fixes.
-
-**Nightly Builds ecosystem**: 
-
-   *    |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_
-
-Ecosystem builds run every Saturday night.
-
-.. note::
-
-   These OS versions may be unstable and may cause misconfigurations or measurement data loss.
-   We recommend that you use them solely for testing purposes, or you have reported a bug or requested a feature and our technical staff has instructed you to proceed.
-
-.. note::
-
-   For the Nightly Builds OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
-
-
-
-.. |nightly builds| raw:: html
-
-   <a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>
+The OS versions are listed from newest to oldest. For development OS (Nightly Builds), please check the `Nightly Builds`_ chapter located at the end of the OS section.
 
 ==========
-Unified OS
+2.00 OS
 ==========
 
-This version of the ecosystem includes a build for all boards.
+With the 2.00 OS versions we moved to a unified OS image for all boards (One OS to rule them all).
 
-Boards currently supported:
+**RedPitaya OS 2.0**:
 
-    *   STEMlab 125-10
-    *   STEMlab 125-14
-    *   STEMlab 125-14-Z7020
-    *   STEMlab 125-14 4-Input
-    *   SDRlab 122-16
-    *   SIGNALlab 250-12
+  - `Latest Beta (2.00-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-35_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): d3d59bca29421987550289fce29b87b5)
+  - `Latest Stable (2.00-30) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-30_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ec890319d64ffe059cd0d747cf36eab7)
 
-Unify ecosystem now includes primary (master)/secondary (slave) functionality for streaming.
+|
 
 New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
 To run the C applications, please use one of the following combinations of OS and ecosystem:
@@ -67,66 +32,65 @@ To run the C applications, please use one of the following combinations of OS an
 
 .. note::
 
-   For the Unified OS to work properly, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. After the reset, you can safely recalibrate the device. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
+   When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
 
-
-
-**RedPitaya OS 2.0**:
-
-   - `Latest 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-15_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ab001a91863d6f9a334a271c7a8a3c25)
-   - `Latest Beta 2.0 <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-18_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 39208ad82ac1bdf5620128fc3e79e18e)
 
 .. note::
 
-   If you have problems running the new version of the ecosystem on the boards listed above, please contact the |SUPPORT TEAM|.
+   If you have problems running the 2.00 version of the OS and you updated from the 1.04 or older OS image, please check |this GitHub solution|. For all other problems please contact the |SUPPORT TEAM|.
 
+.. |this GitHub solution| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">this GitHub solution</a>
 
 .. |SUPPORT TEAM| raw:: html
 
    <a href="https://redpitaya.com/contact-us/" target="_blank">support team</a>
 
-================================
-Latest and Beta versions 1.04 OS
-================================
 
-.. warning::
+=========
+1.04 OS
+=========
 
-   New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
-   To run the C applications, please use one of the following combinations of OS and ecosystem:
-
-      *   UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
-      *   Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
-
+The 1.04 OS versions are board specific. Please download only versions compatible with your board type.
 
 **STEMlab 125-14 & STEMlab 125-10**:
 
-   *   `Latest Stable 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
-   *   `1.04-18 Stable 125-14/10 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
+   *   `1.04-28 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)
+   *   `1.04-18 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)
 
 
 **STEMlab 125-14 (SECONDARY/SLAVE board)**:
 
-   *   `Latest Beta Secondary <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
+   *   `1.04-06 <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)
+
 
 **STEMlab 125-14-Z7020**:
 
-   *   `Latest Stable Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
-   *   `Latest Beta Z7020 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
+   *   `1.04-14 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)
+   *   `1.04-10 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)
 
 
 **STEMlab 125-14 4-Input**:
 
-   *   `Latest Beta 4-Input <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
+   *   `1.04-03 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)
+
 
 **SDRlab 122-16**:
 
-   *   `Latest Stable 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
-   *   `Latest Beta 122-16 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
+   *   `1.04-15 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)
+   *   `1.04-11 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)
+
 
 **SIGNALlab 250-12**:
 
-   *   `Latest Stable 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
-   *   `Latest Beta 250-12 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
+   *   `1.04-30 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)
+   *   `1.04-27 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
+
+
+.. note::
+
+   To run the C applications with 1.04 or older OS, please use the 2022.2 or older release/branch of the GitHub ecosystem
 
 
 .. |CHANGELOG| raw:: html
@@ -145,6 +109,7 @@ Latest and Beta versions 1.04 OS
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
 
+
 =================
 Older OS versions
 =================
@@ -159,6 +124,38 @@ For manual ecosystem upgrades please refer to `Manual upgrade`_.
 
    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a>
 
+.. _nightly_builds:
+
+==============
+Nightly Builds
+==============
+
+The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.
+
+We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time to fix some of the reported issues or implement some new features reported as suggestions for improvement.
+
+As these builds are snapshots of the latest code, odds are you will encounter more issues compared to stable releases. Please report any issues to support@redpitaya.com so that our developers can review them and make any needed fixes.
+
+**Nightly Builds ecosystem**:
+
+   *    |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_
+
+Ecosystem builds run every Saturday night.
+
+.. note::
+
+   These OS versions may be unstable and may cause misconfigurations or measurement data loss.
+   We recommend that you use them solely for testing purposes, or you have reported a bug or requested a feature and our technical staff has instructed you to proceed.
+
+.. note::
+
+   When updating from an OS version older than 2.00 to a Nightly Build version, a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
+
+
+.. |nightly builds| raw:: html
+
+   <a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>
+
 
 **************************************
 Download and install the SD card image
@@ -168,7 +165,7 @@ The next procedure will create a clean SD card image.
 
 1. Select an appropriate OS version from above and download it.
 
-   .. figure:: microSDcard-RP.png
+   .. figure:: img/microSDcard-RP.png
        :width: 10%
 
 #. Unzip the SD card image.
@@ -182,7 +179,7 @@ The next procedure will create a clean SD card image.
 
 4. Insert the SD card into the Red Pitaya.
 
-   .. figure:: pitaya-quick-start-insert-sd-card.png
+   .. figure:: img/pitaya-quick-start-insert-sd-card.png
       :align: center
 
 .. note::
@@ -203,7 +200,7 @@ Windows
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Download |balenaEtcher| and install it.
@@ -214,34 +211,34 @@ Windows
 
 #. Open the newly installed Balena Etcher application.
 
-   .. figure:: SDcard_Win_BalenaEtcher.png
+   .. figure:: img/SDcard_Win_BalenaEtcher.png
       :align: center
 
 #. Under **Flash from file** select an unzipped Red Pitaya image file.
 
-   .. figure:: SDcard_Win_BalEtc_FlashFromFile.png
+   .. figure:: img/SDcard_Win_BalEtc_FlashFromFile.png
       :align: center
 
 #. Under **Select target** choose the drive letter of the SD card. Balena Etcher will only show you external drives.
 
-   .. figure:: SDcard_Win_BalEtc_SelectTarget.png
+   .. figure:: img/SDcard_Win_BalEtc_SelectTarget.png
       :align: center
 
    .. note::
 
       Balena Etcher will only show you external drives, but please be careful to select the correct drive if you have multiple cards or USBs plugged into your computer. If you choose the wrong one, you risk erasing data from the selected drive. You can easily see the drive letter (for example, E:) by looking in the left column of Windows Explorer.
 
-   .. figure:: SDcard_Win_BalEtc_SelectTarget2.png
+   .. figure:: img/SDcard_Win_BalEtc_SelectTarget2.png
       :align: center
 
 #. When you click **Flash** the computer will prompt you to allow the operation. Click **yes** and wait for the flashing and validation to be completed.
 
-   .. figure:: SDcard_Win_BalEtc_Flash.png
+   .. figure:: img/SDcard_Win_BalEtc_Flash.png
       :align: center
 
 #. Close Balena Etcher.
 
-   .. figure:: SDcard_Win_BalEtc_FlashComplete.png
+   .. figure:: img/SDcard_Win_BalEtc_FlashComplete.png
       :align: center
 
 =====
@@ -260,13 +257,13 @@ Ubuntu using Image Writer
 
 #. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
-   .. figure:: DIW_1.png
+   .. figure:: img/DIW_1.png
       :align: center
       :width: 50%
 
       Context menu
 
-   .. figure:: DIW_2.png
+   .. figure:: img/DIW_2.png
       :align: center
       :width: 50%
 
@@ -275,7 +272,7 @@ Ubuntu using Image Writer
 2. In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
    Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
 
-   .. figure:: DIW_3.png
+   .. figure:: img/DIW_3.png
       :align: center
       :width: 50%
 
@@ -300,7 +297,7 @@ Command line
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Open the terminal and check the available disks with ``df -h``.
@@ -350,7 +347,7 @@ Using ApplePi-Baker
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Download |ApplePi|. Direct link:
@@ -364,37 +361,37 @@ Using ApplePi-Baker
 
 #. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
-   .. figure:: SDcard_macOS_open.png
+   .. figure:: img/SDcard_macOS_open.png
       :align: center
 
 #. Drag and drop *ApplePi-Baker* for installation.
 
-   .. figure:: SDcard_macOS_install.png
+   .. figure:: img/SDcard_macOS_install.png
       :align: center
 
 #. Enter your admin password and click OK.
 
-   .. figure:: SDcard_macOS_password.png
+   .. figure:: img/SDcard_macOS_password.png
       :align: center
 
 #. Select the SD card drive. This can be recognised by the size of the card, which is 16 GB.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_drive.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_drive.png
       :align: center
 
 #. Select the Red Pitaya OS image file.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_image.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_image.png
       :align: center
 
 #. It's coffee time. The application will show you the estimated time for accomplishment.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_wait.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_wait.png
       :align: center
 
 #. When the operation is finished, the status will change to idle.
 
-   .. figure:: SDcard_macOS_ApplePi-Baker_quit.png
+   .. figure:: img/SDcard_macOS_ApplePi-Baker_quit.png
       :align: center
 
 
@@ -406,13 +403,13 @@ Command line
 
 #. Insert the SD card into your PC or SD card reader.
 
-   .. figure:: SDcard_insert.jpg
+   .. figure:: img/SDcard_insert.jpg
       :align: center
 
 #. Click **cmd + space**, type **Disk Utility** into the search box and press enter.
    From the menu, select your SD card and click on the **Erase** button (be careful not to delete your disk!).
 
-   .. figure:: SDcard_macOS_DiskUtility.png
+   .. figure:: img/SDcard_macOS_DiskUtility.png
       :align: center
 
 #. Click **cmd + space**, then enter ``cd`` into the **Terminal**.
@@ -422,20 +419,20 @@ Command line
    Type ``diskutil list`` into the Terminal and press enter.
    This will show you the list of all memory devices.
 
-   .. figure:: Screen-Shot-2015-08-07-at-16.59.50.png
+   .. figure:: img/Screen-Shot-2015-08-07-at-16.59.50.png
       :align: center
 
    Unmount with: ``diskutil UnmountDisk /dev/diskn``
    (insert the number ``n`` of your disk correctly!)
 
-   .. figure:: Screen-Shot-2015-08-07-at-17.14.34.png
+   .. figure:: img/Screen-Shot-2015-08-07-at-17.14.34.png
       :align: center
 
 #. Type: ``sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn``
    (Remember to replace ``n`` with the number that you noted before!)
    (notice that there is a letter ``r`` in front of the disk name, use that as well!)
 
-   .. figure:: Screen-Shot-2015-08-07-at-17.14.45.png
+   .. figure:: img/Screen-Shot-2015-08-07-at-17.14.45.png
       :align: center
 
 #. Type in your password and wait a few minutes for the image to be written.

@@ -4,6 +4,13 @@
 STEMlab 125-14
 ##############
 
+*******
+Pinout
+*******
+
+.. figure:: img/Red_Pitaya_pinout.jpg
+    :alt: Red Pitaya pinout
+    :width: 700
 
 ************************
 Technical specifications
@@ -31,6 +38,8 @@ Technical specifications
     | Power consumption                  | 5 V, 2 A max                       |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
 
@@ -45,6 +54,7 @@ Technical specifications
     | WIFI                               | requires WIFI dongle               |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -74,6 +84,7 @@ Technical specifications
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+
 
+|
 
 .. table::
     :widths: 10 18
@@ -92,7 +103,7 @@ Technical specifications
     | Voltage range                      | ±1 V                               |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Short circut protection            | Yes                                |
+    | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |
@@ -102,7 +113,7 @@ Technical specifications
     | Bandwidth                          | DC - 50 MHz                        |
     +------------------------------------+------------------------------------+
 
-
+|
 
 .. table::
     :widths: 10 18
@@ -131,6 +142,8 @@ Technical specifications
     | external ADC clock                 |  yes                               |
     +------------------------------------+------------------------------------+
 
+|
+
 .. table::
     :widths: 10 18
 
@@ -148,6 +161,8 @@ Technical specifications
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
+
+.. _schematics_125_14:
 
 **********
 Schematics
@@ -176,8 +191,7 @@ Components
 * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
 * `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
 * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
-
+* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information)
 
 .. note::
 
@@ -211,12 +225,12 @@ External ADC clock
 
 The ADC clock can be provided by:
 
-    * On board 125 MHz XO (default)
-    * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
-    * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
+    - On board 125 MHz XO (default)
+    - From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
+    - Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
-.. figure:: External_clk.png
-    :alt: Logo
+.. figure:: img/schematics/External_clk.png
+    :alt: Schematic
     :align: center
 
     Schematic
@@ -227,23 +241,43 @@ The ADC clock can be provided by:
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-.. figure:: External_clock_top.png
-    :alt: Logo
+.. figure:: img/schematics/External_clock_top.png
+    :alt: Top side schematic
     :align: center
 
-    Top side
+    Top side schematic
 
 
-.. figure:: External_clock_bottom.png
-    :alt: Logo
+.. figure:: img/schematics/External_clock_bottom.png
+    :alt: Bottom side schematic
+    :align: center
+
+    Bottom side schematic
+
+.. figure:: img/schematics/External_clock_bottom_photo.png
+    :alt: Bottom side photo
+    :align: center
+    :width:  400px
+
+    Bottom side photo
+
+.. figure:: img/schematics/External_clock_resistors.jpeg
+    :alt: Bottom side all
     :align: center
 
     Bottom side
 
-.. figure:: External_clock_bottom_photo.png
-    :alt: Logo
-    :align: center
-    :width:  400px
+.. _qspi_chip:
+
+*********
+QSPI 
+*********
+
+The QSPI chip is by default not populated on Red Pitaya boards. Please write to support@redpitaya.com or info@redpitaya.com for information regarding board modifications.
+
+.. warning::
+
+    Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
 ************
@@ -269,7 +303,7 @@ Cooling options
 
 For additional cooling, we recommend a 30 mm or 25 mm fan. You can use the board's power connector to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
 
-.. figure:: cooling-powerPin.jpg
+.. figure:: img/cooling/cooling-powerPin.jpg
     :width: 50%
     :align: center
 

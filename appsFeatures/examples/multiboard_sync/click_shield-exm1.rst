@@ -3,8 +3,12 @@
 Synchronised Click Shield Generation and Acquisition
 #####################################################
 
+.. figure:: img/red-pitaya-click-shield-connected.png
+    :width: 500
+    :align: center
+
 Description
-*************
+============
 
 This example shows how to synchronise multiple Red Pitaya boards to simultaneously acquire 16k samples of a generated signal on multiple Red Pitaya units (fast RF inputs and outputs) using the Red Pitaya Click Shields.
 Red Pitaya can transmit the trigger signal through the DIO0_N and receive it on DIO0_P.
@@ -12,11 +16,11 @@ Red Pitaya can transmit the trigger signal through the DIO0_N and receive it on 
 This example can be easily modified for simultaneous generation (setup the signal generation, choose a primary trigger, all secondary triggers set to EXT_NE, and finally, change the daisy trigger source to DAC).
 
 Required hardware
-*******************
+===================
 
-    -   Two or more Red Pitaya External clock devices (STEMlab 125-14 External clock, STEMlab 125-14 4-Input)
+    -   Two or more Red Pitaya External clock devices (STEMlab 125-14 Ext. clk., SDRlab 122-16 Ext. Clk., STEMlab 125-14 4-Input)
     -   A Red Pitaya Click Shield for each unit
-    -   UFL Cables
+    -   U.FL Cables
     -   SMA cables
     -   SMA T-connectors
 
@@ -25,44 +29,87 @@ Required hardware
     STEMlab 125-14 4-Input has a Clock Select pin to determine whether the clock should be internal or external. For more information, see :ref:`STEMlab 125-14 4-Input documentation <top_125_14_4-IN>`.
 
 
-**Wiring example:**
+Wiring example
+====================
 
-The Red Pitaya providing the clock signal to other Red Pitayas through the click shield is referred to as the *Primary device*. Red Pitayas receiving the clock are referred to as *Secondary devices*.
+The Red Pitaya Click Shield can synchronise multiple Red Pitaya units together. As U.FL cables are used for clock and trigger synchronisation, other external clock devices can also be included in the chain.
+The connection provides minimal clock signal delay between multiple Red Pitaya units, as there is only a single ZL40213 LVDS clock fanout buffer between two units.
 
-  -   Connect OUT1 of the Primary device with IN1 of the Primary device and IN1 of the Secondary device.
-  -   Connect the clock signal through the Click Shields with UFL cables (Primary CLK_OUT+- to Secondary 1 CLK_IN+-, Secondary 1 CLK_OUT+- to Secondary 2 CLK_IN+-, etc.)
-  -   Connect the trigger signal through the Click Shields with UFL cables (Primary TRIG_OUT to Secondary 1 TRIG_IN, Secondary 1 TRIGK_OUT to Secondary 2 TRIG_IN, etc.)
+To synchronise two or more Red Pitaya units, establish the following connections with U.FL cables between the primary board (transmitting clock and trigger signals) and the secondary board (receiving the clock and trigger signals). Use one of the two schemes depending on whether you want to connect an external clock or use the oscillator on the Red Pitaya Click Shields.
 
 
-**Click shield switch and jumper positions:**
+Oscillator
+-----------
 
-  Primary unit:
-  
-    - REF CLOCK    ==> ON
-    - CLOCK SELECT ==> EXT
-    - J4, J5, J6, J7 connected
+.. figure:: img/Click_Shield_Oscillator_Sync.png
+    :width: 500
+    :align: center
 
-  Secondary units:
+When using the oscillator, the first Red Pitaya Click Shield transmits the clock and trigger signals to all devices in the chain. Here are the most important things to check:
 
-    - REF CLOCK    ==> OFF
-    - CLOCK SELECT ==> EXT
-    - J7 connected
+**Primary board:**
+
+- Jumpers J4 and J5 connected. Connect the oscillator to the clocking transmission line.
+- Jumpers J6 and J7 connected. Connect the Red Pitaya trigger to the trigger transmission line.
+- Jumper J1 disconnected (unless using a single wire clock).
+- CLK OSC switch in ON position.
+- CLK SELECT switch in EXT position.
+
+**Secondary board:**
+
+- Jumper J6 connected. Connect the trigger to the Ext. Trigger pin.
+- Jumper J1 disconnected (unless using a single wire clock).
+- CLK OSC switch in OFF position.
+- CLK SELECT switch in EXT position.
+
+If an external trigger signal is used, copy the secondary board's trigger connections to the primary board (disconnect J7 and connect the external trigger U.FL cable). 
+Otherwise, DIO0_N acts as external trigger output (on the primary board), and DIO0_P acts as external trigger input.
+
+
+External Clock
+---------------
+
+.. figure:: img/Click_Shield_Ext_Clock_Sync.png
+    :width: 500
+    :align: center
+
+When using an external clock and external trigger, the clock and trigger signals are transmitted to all devices in the chain. All the Click Shields share the same configuration:
+
+**Primary and Secondary boards:**
+
+- Jumper J6 connected. Connect the trigger to the Ext. Trigger pin.
+- Jumper J1 disconnected (unless using a single wire clock).
+- CLK OSC switch in OFF position.
+- CLK SELECT switch in EXT position.
 
 .. note::
 
     For more information on connectors, switches, and jumper positions, check out the :ref:`Red Pitaya Click Shield documentation <click_shield>`.
 
-
-**Pictures coming soon...**
-
 .. note::
 
   The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software. The generation and acquisition trigger fronts apply after the "OR gate" and trigger either DAC or ADC, depending on the ``DAISY:TRIG_O:SOUR <mode>`` command.
 
-Code - Python
-*************
 
-Using just SCPI commands:
+
+SCPI Code Examples
+====================
+
+.. note::
+
+  This code is written for **2.00-30 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+
+.. Code - MATLAB®
+.. ---------------
+
+
+
+
+Code - Python
+---------------
+
+**Using just SCPI commands:**
 
 .. code-block:: python
 
@@ -217,7 +264,7 @@ Using just SCPI commands:
     rp_sec.close()
 
 
-Using functions:
+**Using functions:**
 
 .. code-block:: python
 
@@ -364,12 +411,196 @@ Using functions:
 
 .. note::
 
-    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
-    The functions represent a quality-of-life improvement. They combine the SCPI commands in optimal order. The code should function at approximately the same speed without them.
+    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
 
-    For further information on functions, please consult the redpitaya_scpi.py code.
+    For further information on functions please consult the |redpitaya_scpi| code.
 
 
 .. |redpitaya_scpi| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
+
+
+API Code Examples
+====================
+
+.. note::
+
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+
+.. Code - C API
+.. ---------------
+
+
+Code - Python API
+------------------
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+    
+    import time
+    import numpy as np
+    import rp
+    
+    ########! Primary unit code !#########
+    channel = rp.RP_CH_1        # rp.RP_CH_2
+    waveform = rp.RP_WAVEFORM_SINE
+    freq = 100000
+    ampl = 1.0
+    
+    trig_lvl = 0.5
+    trig_dly = 0
+    
+    dec = rp.RP_DEC_1
+    
+    gen_trig_sour = rp.RP_GEN_TRIG_SRC_INTERNAL
+    
+    acq_trig_sour = rp.RP_TRIG_SRC_CHA_PE
+    
+    N = 16384
+    
+    # Initialize the interface
+    rp.rp_Init()
+    
+    # Reset Generation and Acquisition
+    rp.rp_GenReset()
+    rp.rp_AcqReset()
+    
+    ###### Enable Daisy Chain #####
+    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
+    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
+    rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
+    
+    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
+    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+    
+    # LED indicator
+    rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
+    
+    ###### Generation #####
+    print("Gen_start")
+    rp.rp_GenWaveform(channel, waveform)
+    rp.rp_GenFreqDirect(channel, freq)
+    rp.rp_GenAmp(channel, ampl)
+    
+    rp.rp_GenTriggerSource(channel, gen_trig_sour)
+    rp.rp_GenOutEnable(channel)
+    
+    ##### Acquisition #####
+    rp.rp_AcqSetDecimation(dec)
+    
+    # Set trigger level and delay
+    rp.rp_AcqSetTriggerLevel(rp.RP_T_CH_1, trig_lvl)
+    rp.rp_AcqSetTriggerDelay(trig_dly)
+    
+    # Start Acquisition
+    print("Acq_start")
+    rp.rp_AcqStart()
+    
+    # Specify trigger - input 1 positive edge
+    rp.rp_AcqSetTriggerSrc(acq_trig_sour)
+    
+    rp.rp_GenTriggerOnly(channel)       # Trigger generator
+    
+    # Trigger state
+    while 1:
+        trig_state = rp.rp_AcqGetTriggerState()[1]
+        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+            break
+    
+    # Fill state
+    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
+    
+    while 1:
+        if rp.rp_AcqGetBufferFillState()[1]:
+            break
+    
+    ### Get data ###
+    # Volts
+    fbuff = rp.fBuffer(N)
+    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    
+    data_V = np.zeros(N, dtype = float)
+    
+    for i in range(0, N, 1):
+        data_V[i] = fbuff[i]
+    
+    print(f"Data in Volts: {data_V}")
+    
+    # Release resources
+    rp.rp_Release()
+    
+    
+    
+    ########! Secondary unit code !#########
+    channel = rp.RP_CH_1        # rp.RP_CH_2
+    waveform = rp.RP_WAVEFORM_SINE
+    freq = 100000
+    ampl = 1.0
+    
+    trig_lvl = 0.5
+    trig_dly = 0
+    
+    dec = rp.RP_DEC_1
+    
+    # Initialize the interface
+    rp.rp_Init()
+    
+    # Reset Generation and Acquisition
+    rp.rp_GenReset()
+    rp.rp_AcqReset()
+    
+    ###### Enable Daisy Chain #####
+    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
+    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
+    rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
+    
+    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
+    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+    
+    # LED indicator
+    rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
+    
+    ##### Acquisition #####
+    rp.rp_AcqSetDecimation(dec)
+    rp.rp_AcqSetTriggerDelay(trig_dly)
+    
+    # Start Acquisition
+    print("Acq_start")
+    rp.rp_AcqStart()
+    
+    # Specify trigger - must be EXT_NE
+    rp.rp_AcqSetTriggerSrc(rp.RP_TRIG_SRC_EXT_NE)
+    
+    # Trigger state
+    while 1:
+        trig_state = rp.rp_AcqGetTriggerState()[1]
+        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+            break
+    
+    # Fill state
+    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
+    
+    while 1:
+        if rp.rp_AcqGetBufferFillState()[1]:
+            break
+    
+    ### Get data ###
+    
+    # Volts
+    fbuff = rp.fBuffer(N)
+    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    
+    data_V = np.zeros(N, dtype = float)
+    
+    for i in range(0, N, 1):
+        data_V[i] = fbuff[i]
+    
+    print(f"Data in Volts: {data_V}")
+    
+    # Release resources
+    rp.rp_Release()
+

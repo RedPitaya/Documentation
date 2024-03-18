@@ -12,3 +12,4 @@ Digital communication interfaces
    spi_2
    uart
    uart_2
+   can

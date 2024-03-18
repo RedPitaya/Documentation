@@ -103,3 +103,6 @@ pre span {
 }
 
 
+.toctree-expand {
+    visibility: hidden;
+}

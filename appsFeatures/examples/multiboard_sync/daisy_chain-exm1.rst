@@ -6,12 +6,12 @@ Daisy chain generation and acquisition
 
 
 Description
-***********
+============
 
 This example shows how to synchronise the Red Pitaya X-channel system (daisy chain) to simultaneously acquire 16k samples of a generated signal on multiple units (fast RF inputs and outputs).
 
 Required hardware
-*****************
+===================
 
     - Primary Red Pitaya device (STEMlab 125-14 LN)
     - One or more Secondary devices (STEMlab 125-14 LN Secondary)
@@ -25,10 +25,17 @@ Wiring example:
 
 **Pictures coming soon...**
 
-Code - MATLAB
-*************
 
-The code should work for MATLAB R2019a or higher. There might be problems due to how MATLAB handles strings starting with MATLAB R2022b.
+SCPI Code Examples
+====================
+
+.. note::
+
+  This code is written for **2.00-23 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+
+Code - MATLAB
+--------------
 
 .. code-block:: matlab
 
@@ -39,9 +46,7 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
     % a consecutive secondary unit)
     % This example is written for the X-channel System connected with SATA cables
     
-    
     %% Parameters
-    
     clear all;
     close all;
     clc
@@ -55,8 +60,6 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
     dec = 2;
     trig_lvl = 0.5;
     trig_dly = 7000;
-    
-    
     
     %% Set up the IP and SCPI server
     
@@ -74,17 +77,16 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
     
     flush(RP_PRI);
     fprintf('Program start');
-    
-    
-    
+
+
     %% Reseting Generation and Acquisition
     writeline(RP_PRI,'GEN:RST');
     writeline(RP_PRI,'ACQ:RST');
     
     writeline(RP_SEC,'GEN:RST');
     writeline(RP_SEC,'ACQ:RST');
-    
-    
+
+
     %%% ENABLING THE DAISY CHAIN PRIMARY UNIT %%%
     writeline(RP_PRI,'DAISY:SYNC:TRIG ON');
     writeline(RP_PRI,'DAISY:SYNC:CLK ON');
@@ -102,8 +104,8 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
     writeline(RP_SEC,'DAISY:SYNC:CLK ON');
     
     writeline(RP_SEC,'DIG:PIN LED5,1');     % indicator
-    
-    
+
+
     %% Generation - Primary unit
     writeline(RP_PRI, append('SOUR1:FUNC ', wave_form));
     writeline(RP_PRI, append('SOUR1:FREQ:FIX ', num2str(freq)));
@@ -151,7 +153,8 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
         end
     end
     fprintf('Trigger primary condition met.\n');
-    
+
+    %%! OS 2.00 or higher only !%%
     while 1
         if strcmp(writeread(RP_PRI,'ACQ:TRIG:FILL?'),'1')
             break
@@ -167,7 +170,8 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
         end
     end
     fprintf('Trigger secondary condition met.\n');
-    
+
+    %%! OS 2.00 or higher only !%%
     while 1
         if strcmp(writeread(RP_SEC,'ACQ:TRIG:FILL?'),'1')
             break
@@ -216,9 +220,9 @@ The code should work for MATLAB R2019a or higher. There might be problems due to
 
 
 Code - Python
-*************
+--------------
 
-Using just SCPI commands:
+**Using just SCPI commands:**
 
 .. code-block:: python
     
@@ -321,6 +325,7 @@ Using just SCPI commands:
             break
     print("Trigger primary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_prim.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -332,6 +337,7 @@ Using just SCPI commands:
             break
     print("Trigger secondary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_sec.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -370,7 +376,7 @@ Using just SCPI commands:
     rp_sec.close()
 
 
-Using functions:
+**Using functions:**
 
 .. code-block:: python
     
@@ -463,6 +469,7 @@ Using functions:
             break
     print("Trigger primary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_prim.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -474,6 +481,7 @@ Using functions:
             break
     print("Trigger secondary condition met.")
 
+    ## ! OS 2.00 or higher only ! ##
     while 1:
         if rp_sec.txrx_txt('ACQ:TRIG:FILL?') == '1':
             break
@@ -514,15 +522,193 @@ Using functions:
 
 .. note::
 
-    The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our |redpitaya_scpi|.
-    The functions represent a quality-of-life improvement. They combine the SCPI commands in optimal order. The code should function at approximately the same speed without them.
+    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
 
-    For further information on functions, please consult the redpitaya_scpi.py code.
+    For further information on functions please consult the |redpitaya_scpi| code.
 
 
 .. |redpitaya_scpi| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
 
 
-  
+
+API Code Examples
+====================
+
+.. note::
+
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+
+.. Code - C API
+.. ---------------
+
+
+Code - Python API
+------------------
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+    
+    import time
+    import numpy as np
+    import rp
+    
+    ########! Primary unit code !#########
+    channel = rp.RP_CH_1        # rp.RP_CH_2
+    waveform = rp.RP_WAVEFORM_SINE
+    freq = 100000
+    ampl = 1.0
+
+    trig_lvl = 0.5
+    trig_dly = 0
+
+    dec = rp.RP_DEC_1
+
+    gen_trig_sour = rp.RP_GEN_TRIG_SRC_INTERNAL
+
+    acq_trig_sour = rp.RP_TRIG_SRC_CHA_PE
+
+    N = 16384
+
+    # Initialize the interface
+    rp.rp_Init()
+
+    # Reset Generation and Acquisition
+    rp.rp_GenReset()
+    rp.rp_AcqReset()
+
+    ###### Enable Daisy Chain #####
+    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
+    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
+
+    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
+    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+
+    # LED indicator
+    rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
+
+    
+    ###### Generation #####
+    print("Gen_start")
+    rp.rp_GenWaveform(channel, waveform)
+    rp.rp_GenFreqDirect(channel, freq)
+    rp.rp_GenAmp(channel, ampl)
+
+    rp.rp_GenTriggerSource(channel, gen_trig_sour)
+    rp.rp_GenOutEnable(channel)
+
+    ##### Acquisition #####
+    rp.rp_AcqSetDecimation(dec)
+    
+    # Set trigger level and delay
+    rp.rp_AcqSetTriggerLevel(rp.RP_T_CH_1, trig_lvl)
+    rp.rp_AcqSetTriggerDelay(trig_dly)
+
+    # Start Acquisition
+    print("Acq_start")
+    rp.rp_AcqStart()
+
+    # Specify trigger - input 1 positive edge
+    rp.rp_AcqSetTriggerSrc(acq_trig_sour)
+
+    rp.rp_GenTriggerOnly(channel)       # Trigger generator
+
+    # Trigger state
+    while 1:
+        trig_state = rp.rp_AcqGetTriggerState()[1]
+        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+            break
+
+    ## ! OS 2.00 or higher only ! ##
+    # Fill state
+    while 1:
+        if rp.rp_AcqGetBufferFillState()[1]:
+            break
+
+    ### Get data ###
+    # Volts
+    fbuff = rp.fBuffer(N)
+    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    
+    data_V = np.zeros(N, dtype = float)
+    
+    for i in range(0, N, 1):
+        data_V[i] = fbuff[i]
+    
+    print(f"Data in Volts: {data_V}")
+    
+    # Release resources
+    rp.rp_Release()
+
+
+
+    ########! Secondary unit code !#########
+    channel = rp.RP_CH_1        # rp.RP_CH_2
+    waveform = rp.RP_WAVEFORM_SINE
+    freq = 100000
+    ampl = 1.0
+
+    trig_lvl = 0.5
+    trig_dly = 0
+
+    dec = rp.RP_DEC_1
+
+    # Initialize the interface
+    rp.rp_Init()
+
+    # Reset Generation and Acquisition
+    rp.rp_GenReset()
+    rp.rp_AcqReset()
+
+    ###### Enable Daisy Chain #####
+    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
+    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
+
+    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
+    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+
+    # LED indicator
+    rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
+
+
+    ##### Acquisition #####
+    rp.rp_AcqSetDecimation(dec)
+    rp.rp_AcqSetTriggerDelay(trig_dly)
+
+    # Start Acquisition
+    print("Acq_start")
+    rp.rp_AcqStart()
+
+    # Specify trigger - must be EXT_NE
+    rp.rp_AcqSetTriggerSrc(rp.RP_TRIG_SRC_EXT_NE)
+
+    # Trigger state
+    while 1:
+        trig_state = rp.rp_AcqGetTriggerState()[1]
+        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+            break
+
+    ## ! OS 2.00 or higher only ! ##
+    # Fill state
+    while 1:
+        if rp.rp_AcqGetBufferFillState()[1]:
+            break
+    
+    ### Get data ###
+    # Volts
+    fbuff = rp.fBuffer(N)
+    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    data_V = np.zeros(N, dtype = float)
+
+    for i in range(0, N, 1):
+        data_V[i] = fbuff[i]
+
+    print(f"Data in Volts: {data_V}")
+    
+    # Release resources
+    rp.rp_Release()
+

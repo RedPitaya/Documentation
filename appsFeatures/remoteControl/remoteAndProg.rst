@@ -3,8 +3,12 @@ Programming and remote-control tools
 ####################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   remoteControl.rst
-   jupyter/Jupyter.rst
-   axiMode.rst
+   scpi
+   API_scripts
+   jupyter/Jupyter
+   deepMemoryAcquisition
+   command_list
+   examples_top
+   knownIssues
