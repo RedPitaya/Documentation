@@ -16,7 +16,7 @@ For API commands you can find a detailed description in these C header files:
 
 .. |API_header| raw:: html
 
-   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include/redpitaya" target="_blank">Red Pitaya GitHub API header files</a>
+   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include" target="_blank">Red Pitaya GitHub API header files</a>
 
 
 .. _commands_init:
