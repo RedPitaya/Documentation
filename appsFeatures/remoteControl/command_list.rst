@@ -16,7 +16,7 @@ For API commands you can find a detailed description in these C header files:
 
 .. |API_header| raw:: html
 
-   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include/redpitaya" target="_blank">Red Pitaya GitHub API header files</a>
+   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include" target="_blank">Red Pitaya GitHub API header files</a>
 
 
 How to find all available SCPI commands per OS version?
@@ -1394,19 +1394,19 @@ even though it is displayed to happen at approximately 8192nd sample in the acqu
 
 .. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
 
-+---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
-| SCPI                            | API, Jupyter                                              | DESCRIPTION                                            |  ECOSYSTEM         |
-+=================================+===========================================================+========================================================+====================+
-| | ``ACQ:WPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointer(uint32_t* pos)``             | Returns the current position of the write pointer.     | 1.04-18 and up     |
-| | Example:                      | |                                                         |                                                        |                    |
-| | ``ACQ:WPOS?`` > ``1024``      | | Python: ``rp_AcqGetWritePointer()``                     |                                                        |                    |
-| |                               | |                                                         |                                                        |                    |
-+---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
-| | ``ACQ:TPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointerAtTrig(uint32_t* pos)``       | Returns the position where the trigger event appeared. | 1.04-18 and up     |
-| | Example:                      | |                                                         |                                                        |                    |
-| | ``ACQ:TPOS?`` > ``512``       | | Python: ``rp_AcqGetWritePointerAtTrig()``               |                                                        |                    |
-| |                               | |                                                         |                                                        |                    |
-+---------------------------------+-----------------------------------------------------------+--------------------------------------------------------+--------------------+
++---------------------------------+-----------------------------------------------------------+----------------------------------------------------------+--------------------+
+| SCPI                            | API, Jupyter                                              | DESCRIPTION                                              |  ECOSYSTEM         |
++=================================+===========================================================+==========================================================+====================+
+| | ``ACQ:WPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointer(uint32_t* pos)``             | | Returns the current position of the write pointer,     | 1.04-18 and up     |
+| | Example:                      | |                                                         | | i.e the index of the most recent sample in the buffer. |                    |
+| | ``ACQ:WPOS?`` > ``1024``      | | Python: ``rp_AcqGetWritePointer()``                     | |                                                        |                    |
+| |                               | |                                                         | |                                                        |                    |
++---------------------------------+-----------------------------------------------------------+----------------------------------------------------------+--------------------+
+| | ``ACQ:TPOS?`` > ``<pos>``     | | C: ``rp_AcqGetWritePointerAtTrig(uint32_t* pos)``       | Returns the position where the trigger event appeared.   | 1.04-18 and up     |
+| | Example:                      | |                                                         |                                                          |                    |
+| | ``ACQ:TPOS?`` > ``512``       | | Python: ``rp_AcqGetWritePointerAtTrig()``               |                                                          |                    |
+| |                               | |                                                         |                                                          |                    |
++---------------------------------+-----------------------------------------------------------+----------------------------------------------------------+--------------------+
 
 
 -----------
