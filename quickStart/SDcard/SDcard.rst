@@ -25,10 +25,19 @@ With the 2.00 OS versions we moved to a unified OS image for all boards (One OS 
 |
 
 New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
-To run the C applications, please use one of the following combinations of OS and ecosystem:
 
-   * UNIFIED OS and 2023.1 or newer release (branch) of the GitHub ecosystem
-   * Any other OS version and the 2022.2 or older release (branch) of the GitHub ecosystem
+Please make sure that your Red Pitaya OS and the downloaded |GitHub| ecosystem repository are compatible.
+We recommend using a |GitHub| ecosystem that is meant to run on your current Red Pitaya OS version:
+
+  - 2.00-35 - Branch 2024.2
+  - 2.00-30 - Branch 2024.1
+  - 2.00-23 - Branch 2023.3
+  - 2.00-18 - Branch 2023.2
+  - 2.00-15 - Branch 2023.1
+  - 1.04-28 - Branch 2022.2
+  - 1.04-18 - Branch 2022.1
+
+Using an old OS with a newer GitHub ecosystem can result in compatibility isses.
 
 .. note::
 
@@ -46,6 +55,12 @@ To run the C applications, please use one of the following combinations of OS an
 .. |SUPPORT TEAM| raw:: html
 
    <a href="https://redpitaya.com/contact-us/" target="_blank">support team</a>
+
+.. |GitHub| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya GitHub</a>
+
+
 
 
 =========
