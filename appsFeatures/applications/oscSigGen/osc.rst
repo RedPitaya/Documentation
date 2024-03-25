@@ -5,6 +5,7 @@ Oscilloscope & Signal Generator
 ###############################
 
 .. figure:: img/Slika_01_iPad_Combo_Oscilloscope.jpg
+    :width: 1000
 
 This application will turn your Red Pitaya board into a 2-channel oscilloscope and a 2-channel signal generator. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. The simple and intuitive user interface provides all the necessary tools for signal analysis and measurements. 
 
@@ -16,13 +17,13 @@ High-end specifications will satisfy more demanding users looking for powerful t
    .. tab:: STEMlab 125-10, 125-14, SDRlab 122-16, SIGNALlab 250-12
 
         .. figure:: img/Slika_02_OSC.png
-            :width: 800 px
+            :width: 1000 px
             :align: center
 
    .. tab:: STEMlab 125-14 4-Input
 
         .. figure:: img/Slika_02_OSC_4-in.png
-            :width: 800 px
+            :width: 1000 px
             :align: center
 
 Apart from the graph, there are six areas in which the surface is divided:
