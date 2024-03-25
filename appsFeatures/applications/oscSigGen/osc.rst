@@ -92,11 +92,11 @@ Autoscale
 Automatically sets up the Oscilloscope to best display the input signal. By pressing this button, the voltage axis and the time axis are set so that at least one full period of the signal fills the screen.
 
     .. figure:: img/Slika_03_OSC_left.png
-        :width: 300 px
+        :width: 800 px
         :align: center
 
     .. figure:: img/Slika_03_OSC_right.png
-        :width: 300 px
+        :width: 800 px
         :align: center
 
 
