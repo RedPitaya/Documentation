@@ -236,7 +236,7 @@ Trigger
 =======
 
    .. figure:: img/Slika_07_OSC_Trigger.png
-       :width: 400 px
+       :width: 300 px
        :align: right
 
 The trigger is used to enable the scope to display changing waveforms on the scope screen in a steady fashion. Here are the available settings:
