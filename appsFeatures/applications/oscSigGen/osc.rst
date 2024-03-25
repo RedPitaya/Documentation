@@ -222,7 +222,7 @@ Sweep Mode
 Configure the output to operate in sweep mode. All other settings, except frequency are kept from the Continuous mode (the higher menu). The sweep mode will stay active until turned OFF or the settings are RESET to defaults.
 Here are the available settings:
 
-.. figure:: img/Slika_06_OSC_OUT_sweeep.png
+.. figure:: img/Slika_06_OSC_OUT_sweep.png
     :height: 300px
 
 - **Start Freq (Hz):** Sweep start frequency in Hertz.
