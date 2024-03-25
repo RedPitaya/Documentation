@@ -4,7 +4,7 @@
 Oscilloscope & Signal Generator
 ###############################
 
-.. figure:: Slika_01_iPad_Combo_Oscilloscope.jpg
+.. figure:: img/Slika_01_iPad_Combo_Oscilloscope.jpg
 
 This application will turn your Red Pitaya board into a 2-channel oscilloscope and a 2-channel signal generator. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. The simple and intuitive user interface provides all the necessary tools for signal analysis and measurements. 
 
@@ -15,13 +15,13 @@ High-end specifications will satisfy more demanding users looking for powerful t
 
    .. tab:: STEMlab 125-10, 125-14, SDRlab 122-16, SIGNALlab 250-12
 
-        .. figure:: Slika_02_OSC.png
+        .. figure:: img/Slika_02_OSC.png
             :width: 300 px
             :align: center
 
    .. tab:: STEMlab 125-14 4-Input
 
-        .. figure:: Slika_02_OSC_4-in.png
+        .. figure:: img/Slika_02_OSC_4-in.png
             :width: 300 px
             :align: center
 
@@ -74,7 +74,7 @@ External reference clock (only SIGNALlab 250-12)
 
 The external reference clock input can be enabled through the settings menu. Once enabled, its status is displayed in the main interface. The "green" status indicates that the sampling clock is locked to the external reference clock.
 
-.. figure:: Silka_EXT_CLOCK.png
+.. figure:: img/Silka_EXT_CLOCK.png
     :width: 300 px
 
 Export
@@ -82,7 +82,7 @@ Export
 
 Exports the currently displayed data as either a "Graph" or a "File". If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, the data is exported in either WAV, CSV, or TDMS format, with the ability to normalize the data and export the view.
 
-.. figure:: Silka_EXT_CLOCK.png
+.. figure:: img/Silka_EXT_CLOCK.png
     :width: 300 px
 
 Autoscale
@@ -90,11 +90,11 @@ Autoscale
 
 Automatically sets up the Oscilloscope to best display the input signal. By pressing this button, the voltage axis and the time axis are set so that at least one full period of the signal fills the screen.
 
-    .. figure:: Slika_03_OSC_left.png
+    .. figure:: img/Slika_03_OSC_left.png
         :width: 300 px
         :align: center
 
-    .. figure:: Slika_03_OSC_right.png
+    .. figure:: img/Slika_03_OSC_right.png
         :width: 300 px
         :align: center
 
@@ -109,7 +109,7 @@ The available settings by device model:
 
     .. tab:: STEMlab 125-10, 125-14, 125-14 4-Input
 
-        .. figure:: Slika_05_OSC_IN_125.png
+        .. figure:: img/Slika_05_OSC_IN_125.png
             :height: 400px
 
         -   **SHOW:** Shows or hides the curve associated with the channel.
@@ -122,7 +122,7 @@ The available settings by device model:
 
     .. tab:: SDRlab 122-16
      
-        .. figure:: Slika_05_OSC_IN_122.png
+        .. figure:: img/Slika_05_OSC_IN_122.png
             :height: 400px
 
         -   **SHOW:** Shows or hides the curve associated with the channel.
@@ -133,7 +133,7 @@ The available settings by device model:
 
     .. tab:: SIGNALlab 250-12
 
-        .. figure:: Slika_05_OSC_IN_250.png
+        .. figure:: img/Slika_05_OSC_IN_250.png
             :height: 400px
 
         -   **SHOW:** Shows or hides the curve associated with the channel.
@@ -157,7 +157,7 @@ The available settings are the following:
 
   .. tab:: STEMlab 125-10, 125-14, SDRlab 122-16
 
-      .. figure:: Slika_06_OSC_OUT_125.png
+      .. figure:: img/Slika_06_OSC_OUT_125.png
           :height: 500px
 
       -   **ON:** Turns the generator output ON/OFF.
@@ -176,7 +176,7 @@ The available settings are the following:
 
   .. tab:: SIGNALlab 250-12
 
-      .. figure:: Slika_06_OSC_OUT_250.png
+      .. figure:: img/Slika_06_OSC_OUT_250.png
           :height: 500px
 
       -   **ON:** Turns the generator output ON/OFF.
@@ -206,7 +206,7 @@ Burst Mode
 Configure the output to operate in burst mode. Frequency, amplitude, and other settings are kept from the Continuous mode (the higher menu). The burst mode will stay active until turned OFF or the settings are RESET to defaults. The burst signal stops generating once all bursts are generated.
 Here are the available settings:
 
-.. figure:: Slika_06_OSC_OUT_burst.png
+.. figure:: img/Slika_06_OSC_OUT_burst.png
     :height: 300px
 
 - **Number of periods (NCYC):** Number of signal periods in one burst. Also known as Number of Cycles (NCYC).
@@ -221,7 +221,7 @@ Sweep Mode
 Configure the output to operate in sweep mode. All other settings, except frequency are kept from the Continuous mode (the higher menu). The sweep mode will stay active until turned OFF or the settings are RESET to defaults.
 Here are the available settings:
 
-.. figure:: Slika_06_OSC_OUT_sweeep.png
+.. figure:: img/Slika_06_OSC_OUT_sweeep.png
     :height: 300px
 
 - **Start Freq (Hz):** Sweep start frequency in Hertz.
@@ -234,7 +234,7 @@ Here are the available settings:
 Trigger
 =======
 
-   .. figure:: Slika_07_OSC_Trigger.png
+   .. figure:: img/Slika_07_OSC_Trigger.png
        :width: 400 px
        :align: right
 
@@ -270,7 +270,7 @@ The Source parameter defines the source used for this purpose. With the IN1, IN2
 Math
 =====
 
-.. figure:: Slika_08_OSC.png
+.. figure:: img/Slika_08_OSC.png
     :width: 800 px
 
 Among the more interesting features of a digital oscilloscope is the "math" channel. The available settings are the following:
@@ -284,12 +284,20 @@ Among the more interesting features of a digital oscilloscope is the "math" chan
     -   **INVERT** Invert the signal.
 
 
+Out/E2
+========
+
+Control the voltage on the slow analog outputs. Type in the value in Volts into the field labeled by the slow analog output number.
+
+.. figure:: img/Slika_11_OSC_E2.png
+    :width: 300 px
+
 Cursor
 ======
 
 This feature enables the user to easily get the data of relevant basic measurements, such as signal period, amplitude, time delay, amplitude difference between two points, time difference between two points, etc. The cursors can be moved by clicking and dragging them on the screen.
 
-.. figure:: Slika_09_OSC.png
+.. figure:: img/Slika_09_OSC.png
     :width: 800
 
 
@@ -299,7 +307,7 @@ Navigate
 When you have a lot of data to analyse, it is very important to get through it easily. Navigate left and right by 
 dragging the data where you want and effortlessly zooming in and out by using your mouse scroll wheel.
 
-.. figure:: Slika_04_OSC.png
+.. figure:: img/Slika_04_OSC.png
     :width: 800px
 
 
@@ -319,7 +327,7 @@ The menu can be found under the **MEAS** button. Here you can select up to 4 mea
 
 The measurements are removed by clicking on the specific measurement from the list.
 
-.. figure:: Slika_10_OSC.png
+.. figure:: img/Slika_10_OSC.png
     :width: 800 px
 
 
