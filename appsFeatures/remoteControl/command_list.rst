@@ -30,6 +30,7 @@ You can also find all SCPI commands that the board will accept depending on the 
 
 For all other Red Pitaya OS versions, go to the link above and change the branch version to:
 
+- 2.00-35 - Branch 2024.2 *(file ends in .cpp)*
 - 2.00-30 - Branch 2024.1 *(file ends in .cpp)*
 - 2.00-23 - Branch 2023.3 *(file ends in .cpp)*
 - 2.00-18 - Branch 2023.2 *(file ends in .c)*
@@ -744,10 +745,10 @@ Generator settings
 | | ``SOUR1:TRAC:DATA:DATA?`` >  ``1,0.5,0.2``        | | Python: ``rp_GenGetArbWaveform(<channel>, <waveform>)``                               |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:LOAD <load_mode>``                      | | C: ``rp_GenSetLoadMode(rp_channel_t channel, float phase)``                           | Set the load mode for the output. (SIGNALlab only)                                           | 2.00-35 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:LOAD L50``                                | | Python: ``rp_GenSetLoadMode(<channel>, <phase>)``                                     |                                                                                              |                    |
-| |                                                   | |                                                                                       |                                                                                              |                    |
+| | ``SOUR<n>:LOAD <load_mode>``                      | | C: ``rp_GenSetLoadMode(rp_channel_t channel, float phase)``                           | | Set the load mode for the output. When switching from INF to L50 also halves the set       | 2.00-35 and up     |
+| | Examples:                                         | |                                                                                       | | amplitude (``SOUR<n>:VOLT``). When switching from L50 to INF the amplitude is doubled.     |                    |
+| | ``SOUR2:LOAD L50``                                | | Python: ``rp_GenSetLoadMode(<channel>, <phase>)``                                     | | Frist set load, then set the amplitude. (SIGNALlab only)                                   |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | ``SOUR<n>:LOAD?`` > ``<load_mode>``               | | C: ``rp_GenGetLoadMode(rp_channel_t channel, float *phase)``                          | Get the load mode for the output. (SIGNALlab only)                                           | 2.00-35 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
