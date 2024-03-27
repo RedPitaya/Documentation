@@ -503,9 +503,62 @@ Please take into account that SDRlab 122-16 ext. clk. is meant to receive a 122.
 While multiple different board models can be daisy chained, some features might be unavailable. See the :ref:`Click Shield compatibitily section <click_shield_compatibility>`.
 
 
-What is the difference between Red Pitaya X-channel system and Red Pitaya Click Shields?
-------------------------------------------------------------------------------------------
+What is the difference between Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation?
+--------------------------------------------------------------------------------------------------------
 
-**Coming soon**
+In this section we will talk about the difference between the Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation. It might seem like these two are completely the same, but that is far from the truth.
 
+More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
+
+
++--------------------------------+--------------------------------------------+--------------------------------------------+
+|                                | **X-Channel System**                       | **Click Shield Synchronisation**           |
++================================+============================================+============================================+
+| Clock & Bandwidth                                                                                                        |
++================================+============================================+============================================+
+| Recommended frequency range    | DC - 100 kHz (~kHz range)                  | DC - 60 MHz (full range)                   |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| Shared clock signal            | Primary device CLK                         | Click Shield Oscillator OR EXT CLK         |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| Clock signal delays            | | Slightly higher delay per unit           | 1x Clock buffer per unit - |ZL40213|       |
+|                                | | (signal through each FPGA) [#f1]_        |                                            |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| Trigger signal delays          | | Slightly higher delay per unit           | | 1x Trigger buffer per unit -             |
+|                                | | (signal through each FPGA) [#f1]_        | | |74FCT38072DCGI|                         |
++================================+============================================+============================================+
+| Pinout                                                                                                                   |
++================================+============================================+============================================+
+| GPIO access                    | Full access [#f2]_                         | Max 10 digital pins                        |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| Slow analog access             | Full access (4/4)                          | Max 2 pins (2/4)                           |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| Digital communication pins     | 1x UART, 1x SPI, 1x I2C, 1x CAN            | 2x UART, 2x SPI, 2xI2C (no CAN)            |
++================================+============================================+============================================+
+| Units & Price                                                                                                            |
++================================+============================================+============================================+
+| Price per unit                 | Lower (LN units)                           | Higher (ext. clk. units + Click Shields)   |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| Red Pitaya units               | Different units (Primary != Secondary)     | All the same (Ext Clk version)             |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| 4-Input compatibility          | No                                         | Yes                                        |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| Aluminium case compatibility   | No                                         | Yes                                        |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+
+.. [#f1]
+    Exact measurements will be provided in the future
+
+.. [#f2]
+    Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Comparison table <rp-board-comp>` for more information.
+ 
+
+
+.. |ZL40213| raw:: html
+
+  <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
+
+
+.. |74FCT38072DCGI| raw:: html
+
+  <a href="  https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578" target="_blank">74FCT38072DCGI</a>
 
