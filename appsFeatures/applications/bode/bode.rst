@@ -3,7 +3,7 @@
 Bode Analyzer
 #############
 
-.. figure:: 01_iPad_Combo_Bode.jpg
+.. figure:: img/01_iPad_Combo_Bode.jpg
 
 This application will turn your Red Pitaya into an affordable Bode analyzer. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. 
 
@@ -11,17 +11,17 @@ The Bode analyzer is an ideal application for measuring the frequency responses 
 
 The graphical user interface of the Bode analyzer application, that is shown bellow, is divided into 5 areas:
 
-.. figure:: BA_Slika_01.png
+.. figure:: img/BA_Slika_01.png
 
 1. **Stop/Run button:** Start and stop the measurement. **Calibrate button:** Start the calibration for the current setup.
 
 2. **Measurement settings panel:** Set the measurement parameters such as the frequency range, scale, number of steps, excitation signal amplitude, excitation signal DC bias, and averaging number.
 
-.. figure:: BA_Slika_02.png
+.. figure:: img/BA_Slika_02.png
 
 3. **Plot settings panel:** Set the Gain and Phase graph ranges as well as manual or auto scale mode.
 
-.. figure:: BA_Slika_03.png
+.. figure:: img/BA_Slika_03.png
 
 4. **Gain graph:** The gain frequency response of the DUT (device under test) is plotted for the selected frequency range.
 
@@ -40,7 +40,7 @@ The main features of the Bode analyzer application are described below:
    -   Excitation signal parameters (amplitude and DC bias) can be adjusted to make measurements in different sensitivities and conditions (amplifiers, etc.).
    -   The calibration function enables calibrating long leads and removing leads' and cables' effects on final measurements. The calibration will also calibrate your Red Pitaya if any parasitic effects are present. Bode calibration data is stored in **/tmp/ba_calib.data**.
    
-.. figure:: BA_Slika_05.png
+.. figure:: img/BA_Slika_05.png
    
    
 Specifications
@@ -80,4 +80,4 @@ HW connections
 When using the Bode analyzer application, please follow the connection diagram described below. Also use the 50 Ohm 
 termination on the OUT1.
 
-.. figure:: BA_Slika_04.png
+.. figure:: img/BA_Slika_04.png
