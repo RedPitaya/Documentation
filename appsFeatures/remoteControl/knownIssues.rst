@@ -41,7 +41,11 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 IN DEV
 =======
 
+New Commands
+-------------
 
+- Added DMA commands to return data as Numpy array (``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)``, ``rp_AcqAxiGetDataVNP``). Check */opt/redpitaya/lib/python/rp.py* on NB 261 or later for more options.
+- Added acquisition commands to return data as Numpy array (``rp_AcqGetDataPosRaw``, ``rp_AcqGetDataPosVNP``, ``rp_AcqGetLatestDataRawNP``, etc.). Check */opt/redpitaya/lib/python/rp.py* on NB 261 or later for more options.
 
 2.00-35
 ===========
