@@ -18,6 +18,7 @@ You can also find all SCPI commands that the board will accept depending on the 
 
 For all other Red Pitaya OS versions, go to the link above and change the branch version to:
 
+- 2.00-35 - Branch 2024.2 *(file ends in .cpp)*
 - 2.00-30 - Branch 2024.1 *(file ends in .cpp)*
 - 2.00-23 - Branch 2023.3 *(file ends in .cpp)*
 - 2.00-18 - Branch 2023.2 *(file ends in .c)*
@@ -37,8 +38,12 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 
     <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
 
-
 IN DEV
+=======
+
+
+
+2.00-35
 ===========
 
 Issues
@@ -50,6 +55,12 @@ Issues
 - For all SCPI commands ``TRIG`` was renamed to ``TRig`` (does not affect the backwards compatibility).
 - Renamed ``SOUR:TRIG:EXT:DEBouncerUs`` to ``SOUR:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
 - Renamed ``ACQ:TRIG:EXT:DEBouncerUs`` to ``ACQ:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
+- ``ACQ:SOUR<n>:DATA:Start:End?`` to ``ACQ:SOUR<n>:DATA:STArt:End?`` (backwards compatible with 2.00-23 and older)
+- ``ACQ:SOUR<n>:DATA:Start:N?`` to ``ACQ:SOUR<n>:DATA:STArt:N?`` (backwards compatible with 2.00-23 and older)
+- ``ACQ:SOUR<n>:DATA:Last:N?`` to ``ACQ:SOUR<n>:DATA:LATest:N?`` (backwards compatible with 2.00-23 and older)
+
+- ``SOUR<n>:TRIG:SOUR?`` - stuck in an infinite loop, does not return
+- ``SOUR<n>:FUNC?``, ``SOUR<n>:VOLT?``, ``SOUR<n>:Sweep:STAT?``, ``SOUR<n>:Sweep:FREQ:START?`` - all return in format "None\r\n<actual value>\r\n" (the next command ending in ``?`` will return in multiple lines, creating unexpected returns)
 
 New Commands
 --------------
@@ -78,9 +89,9 @@ Reanmed commands:
 
 - ``ACQ:SOUR<n>:DATA:STA:END?`` to ``ACQ:SOUR<n>:DATA:Start:End?``
 - ``ACQ:SOUR<n>:DATA:STA:N?`` to ``ACQ:SOUR<n>:DATA:Start:N?``
-- ``ACQ:SOUR<n>:DATA:OLD:N?`` to ``ACQ:SOUR<n>:DATA:Old:N?``
+- ``ACQ:SOUR<n>:DATA:OLD:N?`` to ``ACQ:SOUR<n>:DATA:Old:N?`` (does not affect the backwards compatibility).
 - ``ACQ:SOUR<n>:DATA:LAT:N?`` to ``ACQ:SOUR<n>:DATA:Last:N?``
-- ``ACQ:DATA:UNITS`` to ``ACQ:DATA:Units``
+- ``ACQ:DATA:UNITS`` to ``ACQ:DATA:Units`` (does not affect the backwards compatibility)
 - ``SOUR:TRIG:EXT:DEBouncerUs`` to ``SOUR:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
 - ``ACQ:TRIG:EXT:DEBouncerUs`` to ``ACQ:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
 - ``UART:READ#`` to ``UART:READ#?``
