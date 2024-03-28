@@ -519,11 +519,11 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 | Shared clock signal            | Primary device CLK                         | Click Shield Oscillator OR EXT CLK         |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Clock signal delays            | | Slightly higher delay per unit           | 1x Clock buffer per unit - *|ZL40213|*     |
+| Clock signal delays            | | Slightly higher delay per unit           | 1x Clock buffer per unit - |ZL40213|       |
 |                                | | (signal through each FPGA) [#f1]_        |                                            |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 | Trigger signal delays          | | Slightly higher delay per unit           | 1x Trigger buffer per unit -               |
-|                                | | (signal through each FPGA) [#f1]_        | *|74FCT38072DCGI|*                         |
+|                                | | (signal through each FPGA) [#f1]_        |  |74FCT38072DCGI|                          |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 | **Pinout**                                                                                                               |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
