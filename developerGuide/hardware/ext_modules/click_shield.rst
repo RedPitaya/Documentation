@@ -561,5 +561,5 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 
 .. |74FCT38072DCGI| raw:: html
 
-  <a href="  https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578" target="_blank">74FCT38072DCGI</a>
+  <a href="  https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578" target="_blank"> 74FCT38072DCGI</a>
 
