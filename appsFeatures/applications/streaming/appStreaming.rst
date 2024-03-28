@@ -73,6 +73,7 @@ Here are the minimum chunck limitations sorted by file type and units:
 
 
 
+
 Getting started with the Red Pitaya streaming feature
 =======================================================
 
@@ -93,7 +94,7 @@ Stream locally to a file on Red Pitaya's SD card
         #. Configure the stream properties & click **RUN**
 
             .. figure:: img/settings.png
-                :width: 300
+                :width: 600
             
             Example: streaming on ch1, 8-bit resolution, 5.208 MS/s into TDMS file format
 
@@ -167,7 +168,7 @@ Streaming to a remote computer via Command Line or Terminal
                             rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
 
                         .. figure:: img/tcp_client.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         Data streaming can be stopped by pressing *Ctrl+C*.
@@ -185,7 +186,7 @@ Streaming to a remote computer via Command Line or Terminal
                             rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
 
                         .. figure:: img/tcp_client2.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         Data streaming can be stopped by pressing *Ctrl+C*.
@@ -204,20 +205,20 @@ Streaming to a remote computer via Command Line or Terminal
 
 
                         .. figure:: img/tcp_client3.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
 
                         The application saves data from the board in binary (BIN) format.
 
                         .. figure:: img/csv_list.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         The binary file can be converted using the *convert_tool* application.
 
                         .. figure:: img/csv_list.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:
@@ -231,7 +232,7 @@ Streaming to a remote computer via Command Line or Terminal
                             Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
 
                             .. figure:: img/csv_state.png
-                                :width: 500
+                                :width: 600
                                 :align: center
 
     .. group-tab:: OS version 2.00-23 or newer
@@ -261,7 +262,7 @@ Streaming to a remote computer via Command Line or Terminal
                             rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
 
                         .. figure:: img/tcp_client.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         Data streaming can be stopped by pressing *Ctrl+C*.
@@ -279,7 +280,7 @@ Streaming to a remote computer via Command Line or Terminal
                             rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
 
                         .. figure:: img/tcp_client2.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         Data streaming can be stopped by pressing *Ctrl+C*.
@@ -298,20 +299,20 @@ Streaming to a remote computer via Command Line or Terminal
 
 
                         .. figure:: img/tcp_client3.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
 
                         The application saves data from the board in binary (BIN) format.
 
                         .. figure:: img/csv_list.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         The binary file can be converted using the *convert_tool* application.
 
                         .. figure:: img/csv_list.png
-                            :width: 500
+                            :width: 600
                             :align: center
 
                         The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:
@@ -325,7 +326,7 @@ Streaming to a remote computer via Command Line or Terminal
                             Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
 
                             .. figure:: img/csv_state.png
-                                :width: 500
+                                :width: 600
                                 :align: center
 
 .. |DIAdem| raw:: html
@@ -355,7 +356,7 @@ The other option for streaming is utilyzing the Desktop Application.
 
         .. group-tab:: OS version 2.00-15 or older
 
-            |Streaming Client|
+            Files with clients are available |Streaming Client|.
 
         .. group-tab:: OS version 2.00.23 or newer
 
@@ -386,13 +387,14 @@ The other option for streaming is utilyzing the Desktop Application.
         :width: 600
         :align: center
 
+
 .. |Streaming Client| raw:: html
 
-    <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">Desktop clients</a>
+    <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
 
 
-Source code
-==============
+Application Source code
+=========================
 
 The |stream_source_code| is available on our GitHub.
 
