@@ -15,6 +15,10 @@ For detailed hardware specifications for Low-Noise STEMlab 125-14 devices used i
 
 For more information about the software, please refer to: :ref:`X-Channel streaming <x-ch_streaming>`.
 
+.. note::
+
+    The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <click_shield_Q&A>`.
+
 
 Pinout
 ===========
