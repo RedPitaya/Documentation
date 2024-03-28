@@ -1234,6 +1234,16 @@ Acquisition settings
 | | ``ACQ:AVG?`` > ``ON``                             | | Python: ``rp_AcqGetAveraging()``                                                             | |                                                                             |                    |
 | |                                                   | |                                                                                              | |                                                                             |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AVG:CH<n> <average>``                       | | C: ``rp_AcqSetAveragingCh(uint32_t factor, bool enabled)``                                   | | Enable/disable averaging.                                                   | in dev             |
+| |                                                   | |                                                                                              | | Each sample is the average of skipped samples if ``DEC`` > 1.               |                    |
+| |                                                   | | Python: ``rp_AcqSetAveragingCh(<channel>, <enable>)``                                        | | Used only in split trigger mode                                             |                    |
+| |                                                   | |                                                                                              | |                                                                             |                    |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:AVG:CH<n>?`` > ``<average>``                | | C: ``rp_AcqGetAveragingCh(uint32_t factor, bool *enabled)``                                  | | Get the averaging status.                                                   | in dev             |
+| | Example:                                          | |                                                                                              | | Averages the skipped samples when ``DEC`` > 1                               |                    |
+| | ``ACQ:AVG:CH1?`` > ``ON``                         | | Python: ``rp_AcqGetAveragingCh(<channel>)``                                                  | | Used only in split trigger mode                                             |                    |
+| |                                                   | |                                                                                              | |                                                                             |                    |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 | | ``ACQ:SOUR<n>:GAIN <state>``                      | | C: ``rp_AcqSetGain(rp_channel_t channel, rp_pinState_t state)``                              | | Set the gain for the specified channel to HIGH or LOW.                      | 1.04-18 and up     |
 | |                                                   | |                                                                                              | | (For SIGNALlab 250-12 this is 1:20 and 1:1 attenuator).                     |                    |
 | | Example:                                          | | Python: ``rp_AcqSetGain(<channel>, <state>)``                                                | | The gain refers to jumper settings on the Red Pitaya fast analog input.     |                    |
@@ -1531,6 +1541,7 @@ Data read
 - ``<start_pos>, <end_pos>, <pos> = {0, 1, ..., 16383}``
 - ``<buffer>`` Array to store the data into. For Python API use ``rp_createBuffer`` and for C API use *malloc*.
 - ``<buffer_size>`` Size of the array for data storage.
+- ``<t_pos> = {PRE_TRIG, POST_TRIG, PRE_POST_TRIG}`` Buffer reading direction mode relative to trigger
 
 *STEMlab 125-14 4-Input only (additional):*
 
@@ -1590,6 +1601,11 @@ Data read
 | | Example:                                  | |    ``rp_AcqGetLatestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | | The trigger delay is set to zero by default (in samples or in seconds).              |                    |
 | | ``ACQ:SOUR1:DATA:LAT:N? 3`` >             | | Python: ``rp_AcqGetLatestDataRaw(<channel>, <size>, <buffer>)``                                                                        | | If the trigger delay is set to zero, it will read m samples before the trigger.      |                    |
 | | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetLatestDataV(<channel>, <size>, <buffer>)``                                                                          | |                                                                                      |                    |
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:SOUR<n>:DATA:TRig? <t_pos>,<size>`` | | C: ``rp_AcqGetDataRaw(rp_channel_t channel,  uint32_t pos, uint32_t* size, int16_t* buffer)``                                          | | Read ``<size>`` relative to the trigger, depending on the setting.                   | in dev             |
+| | Example:                                  | |    ``rp_AcqGetDataV(rp_channel_t channel, uint32_t pos, uint32_t* size, float* buffer)``                                               | | PRE, POST trigger configuration returns data in the amount specified in size.        |                    |
+| | ``ACQ:SOUR1:DATA:TRig? POST_TRIG,3`` >    | | Python: ``rp_AcqGetDataRaw(<channel>, <pos>, <size>, <buffer>)``                                                                       | | PRE_POST_TRIG returns data in size * 2 + 1.                                          |                    |
+| | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetDataV(<channel>, <pos>, <size>, <buffer>)``                                                                         | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 
 
