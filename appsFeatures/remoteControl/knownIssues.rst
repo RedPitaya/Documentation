@@ -87,7 +87,7 @@ Issues
     **TEMPORARY CHANGE OF COMMANDS**
     We realized this command renaming is not backwards compatible, so we will be reverting it to the old version with the next OS update.
 
-- For all SCPI commands ``TRIG`` was renamed to ``TRig``(does not affect the backwards compatibility).
+- For all SCPI commands ``TRIG`` was renamed to ``TRig`` (does not affect the backwards compatibility).
 
 Reanmed commands:
 
