@@ -510,13 +510,12 @@ In this section we will talk about the difference between the Red Pitaya X-chann
 
 More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 
-
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 |                                | **X-Channel System**                       | **Click Shield Synchronisation**           |
 +================================+============================================+============================================+
-| **Clock & Bandwidth**                                                                                                    |
+| **Clock & Sampling rate**                                                                                                |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Recommended frequency range    | DC - 100 kHz (~kHz range)                  | DC - 60 MHz (full range)                   |
+| Recommended sampling rate      | up to 100 ksps                             | up to full sampling rate                   |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 | Shared clock signal            | Primary device CLK                         | Click Shield Oscillator OR EXT CLK         |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
@@ -528,35 +527,37 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 | **Pinout**                                                                                                               |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| GPIO access                    | Full access [#f2]_                         | Max 10 digital pins                        |
+| GPIO access                    | Full access [#f2]_                         | Max 10 digital pins [#f3]_                 |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Slow analog access             | Full access (4/4)                          | Max 2 pins (2/4)                           |
+| Slow analog access             | Full access (4/4)                          | Max 2 pins (2/4) [#f3]_                    |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Digital communication pins     | 1x UART, 1x SPI, 1x I2C, 1x CAN            | 2x UART, 2x SPI, 2xI2C (no CAN)            |
+| Digital communication pins     | 1x UART, 1x SPI, 1x I2C, 1x CAN            | 2x UART, 2x SPI, 2xI2C (no CAN) [#f3]_     |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| **Units & Price**                                                                                                        |
+| **Units**                                                                                                                |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Price per unit                 | Lower (LN units)                           | Higher (ext. clk. units + Click Shields)   |
+| | Compatible Red Pitaya board  | | Primary - STEMlab 125-14 LN              | | All units are the same:                  |
+| | models                       | |                                          | | STEMlab 125-14 Ext Clk                   |
+| |                              | | Secondary - STEMlab 125-14 LN Secondary  | | SDRlab 122-16 Ext Clk                    |
+| |                              | |                                          | | STEMlab 125-14 4-Input                   |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Red Pitaya units               | Different units (Primary != Secondary)     | All the same (Ext Clk version)             |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| 4-Input compatibility          | No                                         | Yes                                        |
+| | Choosing between External    | No                                         | Yes (4-Input and future HW board           |
+| | and Internal clock           |                                            | redesigns only)                            |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 | Aluminium case compatibility   | No                                         | Yes                                        |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 
 .. [#f1]
-    Exact measurements will be provided in the future
+    Exact measurements will be provided in the future.
 
 .. [#f2]
     Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Comparison table <rp-board-comp>` for more information.
  
-
+.. [#f3]
+    Through the microBUS connectors.
 
 .. |ZL40213| raw:: html
 
   <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
-
 
 .. |74FCT38072DCGI| raw:: html
 
