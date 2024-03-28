@@ -1,3 +1,5 @@
+.. _daisy_chain_sync_exam1:
+
 Daisy chain generation and acquisition
 ######################################
 
