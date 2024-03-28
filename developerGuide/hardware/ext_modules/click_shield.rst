@@ -555,10 +555,6 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 .. [#f3]
     Through the microBUS connectors.
 
-.. |ZL40213| raw:: html
-
-  <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
-
 .. |74FCT38072DCGI| raw:: html
 
   <a href="  https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578" target="_blank"> 74FCT38072DCGI</a>
