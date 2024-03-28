@@ -389,3 +389,13 @@ The other option for streaming is utilyzing the Desktop Application.
 .. |Streaming Client| raw:: html
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">Desktop clients</a>
+
+
+Source code
+==============
+
+The |stream_source_code| is available on our GitHub.
+
+.. |stream_source_code| raw:: html
+
+  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Streaming application source code</a>
