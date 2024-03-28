@@ -1081,7 +1081,7 @@ Acquisition Control
 | |                                   | | Python: ``rp_AcqStart()``                     |                                                                            |                    |
 | |                                   | |                                               |                                                                            |                    |
 +-------------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
-| | ``ACQ:START:CH<n>``               | | C: ``rp_AcqStartCh(rp_channel_t channel)``    | |Start the acquisition.                                                    | in dev             |
+| | ``ACQ:START:CH<n>``               | | C: ``rp_AcqStartCh(rp_channel_t channel)``    | | Start the acquisition.                                                   | in dev             |
 | |                                   | |                                               | | Used only in split trigger mode                                          |                    |
 | |                                   | | Python: ``rp_AcqStartCh(<channel>)``          |                                                                            |                    |
 | |                                   | |                                               |                                                                            |                    |
