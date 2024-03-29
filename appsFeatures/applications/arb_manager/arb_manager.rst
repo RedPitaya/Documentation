@@ -28,7 +28,7 @@ To upload a custom signal to Arbitrary waveform generator follow the setps below
 
 #. Open Arbitrary Waveform Manager
 
-   .. figure:: img/ARB_manager_main.png
+   .. figure:: img/ARB_manager.png
        :width: 1000
 
 #. Click on the **Upload** button and upload a **CSV** file containing one period of a custom signal with 16384 samples/points.
