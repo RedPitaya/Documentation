@@ -16,7 +16,7 @@ The basic user interface enables quick interaction and parameter settings. The B
 The application is web-based and doesn't require the installation of any native software. Users can access them via any web browser (Google Chrome is recommended) using their smartphone, tablet or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS).
 
 .. figure:: img/Bode_analyzer_controls.png
-    :width: 800
+    :width: 1000
 
 The graphical user interface of the Bode analyzer application is divided into 4 areas:
 
@@ -41,7 +41,7 @@ The main features of the Bode analyzer application are:
 To open the Bode analyzer, click on the coresponding icon in the main web interface:
 
 .. figure:: img/Bode_analyzer.png
-    :width: 800
+    :width: 1000
 
 
 Top settings menu
@@ -73,7 +73,7 @@ Settings
 ---------
 
 .. figure:: img/Bode_analyzer_settings.png
-    :width: 300
+    :width: 260
 
 - **Start frequency [Hz]:** The Bode analyzer starts measuring the DUT frequency response at this frequency.
 - **End frequency [Hz]:** The Bode analyzer ends measuring the DUT frequency response at this frequency.
@@ -100,7 +100,7 @@ Plot settings
 --------------
 
 .. figure:: img/Bode_analyzer_plot_settings.png
-    :width: 300
+    :width: 260
 
 Settings for the plot.
 
@@ -113,7 +113,7 @@ Cursor settings
 ---------------
 
 .. figure:: img/Bode_analyzer_cursor_settings.png
-    :width: 300
+    :width: 260
 
 Up to two cursors can be put on each of the axis. **F** stands for frequency, **G** for gain, and **P** for phase. The cursors each show the current value and the absolute difference between the two cursors on the same axis.
 Cursors can be moved with *Click+Drag*.
@@ -128,7 +128,7 @@ The calibration function enables calibrating long leads and removing leads' and 
 When uncalibrated, a **Red** light appears next to the **Calibration** status in the *Measurement control pannel*.
 
 .. figure:: img/Bode_analyzer_uncalibrated.png
-    :width: 800
+    :width: 1000
 
 #. To perform the calibration, click on the **Calibrate** button in the *Top settings menu*. The following windows will pop up:
 
@@ -151,6 +151,8 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
     - **OUT1** connected to the input of the DUT (generates signal pulses).
     - **SHORT the input and ouput of DUT** with a wire.
 
+    |
+
     .. note::
 
         For optimal results use 50 Ω termination on the OUT1.
@@ -160,7 +162,7 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
 #. Once the calibration is complete a **Green** light appears next to the **Calibration** status in the *Measurement control pannel*.
 
     .. figure:: img/Bode_analyzer_calibrated.png
-        :width: 800
+        :width: 1000
 
 #. **Disconnect the SHORT between input and ouput of DUT**.
 #. Configure the settings and start the measurements.
