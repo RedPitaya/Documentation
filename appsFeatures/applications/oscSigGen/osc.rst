@@ -58,6 +58,9 @@ Top Settings Menu
 
 Provides contol over the Oscilloscope Application. The blue question mark leads to this exact documentation page.
 
+.. figure:: img/Slika_OSC_top_menu.png
+    :width: 600
+
 Settings
 ----------
 
