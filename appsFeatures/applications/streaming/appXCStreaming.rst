@@ -118,7 +118,7 @@ Download and install an X-channel streaming client on your computer
     .. group-tab:: OS version 2.00-23 or newer
 
         .. figure:: img/download_client_2.00.png
-            :width: 800
+            :width: 1200
 
 
 Use case examples
@@ -159,7 +159,7 @@ In this example, we will show how to set configuration remotely using an already
     .. group-tab:: OS version 2.00-23 or newer
 
         .. figure:: img/settings_2.00.png
-            :width: 800
+            :width: 1200
 
 .. code-block:: shell-session
 
@@ -274,4 +274,14 @@ Code examples
 Here are examples for synchronising two unit X-channel System through SCPI and API commands.
 
 - :ref:`Daisy chain generation and acquisition <daisy_chain_sync_exam1>`
+
+
+Source code
+==============
+
+The |stream_source_code| is available on our GitHub.
+
+.. |stream_source_code| raw:: html
+
+  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Streaming application source code</a>
 
