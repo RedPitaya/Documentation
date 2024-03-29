@@ -85,7 +85,7 @@ Run the Streaming app from the Red Pitaya Web interface
 
 
 Stream locally to a file on Red Pitaya's SD card
--------------------------------------------------
+=================================================
 
 .. tabs::
 
@@ -94,7 +94,7 @@ Stream locally to a file on Red Pitaya's SD card
         #. Configure the stream properties & click **RUN**
 
             .. figure:: img/settings.png
-                :width: 600
+                :width: 800
             
             Example: streaming on ch1, 8-bit resolution, 5.208 MS/s into TDMS file format
 
@@ -103,13 +103,13 @@ Stream locally to a file on Red Pitaya's SD card
         #. Click *Browse* to open the data file directory. Each data stream is split into three sections; *DATA* (collected data stream), *.log* (data log of the specific stream), *.log.lost* (report on lost packets). Click on the selected file to download it from Red Pitaya to the computer.
 
             .. figure:: img/capture.png
-                :width: 600
+                :width: 800
                 :align: center
 
         #. Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
 
             .. figure:: img/diadem_tdms_file_viewer.png
-                :width: 600
+                :width: 800
                 :align: center
 
     .. group-tab:: OS version 2.00-23 or newer
@@ -117,7 +117,7 @@ Stream locally to a file on Red Pitaya's SD card
         #. Configure the stream properties & click **RUN**
 
             .. figure:: img/Streaming_app_local.png
-                :width: 800
+                :width: 1000
             
             Example: streaming on CH1 and CH2, 8-bit resolution, 100 ksps into WAV file format
 
@@ -126,18 +126,18 @@ Stream locally to a file on Red Pitaya's SD card
         #. Check the *Files on SD card* section for the data files. Each data file has three buttons; *LOG* (data log of the specific stream), *LOST* (report on lost packets), and *DOWNLOAD* (collected data stream). Click on the selected file to download it from Red Pitaya to the computer.
 
             .. figure:: img/Streaming_app_local.png
-                :width: 800
+                :width: 1000
                 :align: center
 
         #. Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
 
             .. figure:: img/diadem_tdms_file_viewer.png
-                :width: 600
+                :width: 800
                 :align: center
 
 
 Streaming to a remote computer via Command Line or Terminal
-------------------------------------------------------------
+=============================================================
 
 .. tabs::
 
@@ -146,7 +146,7 @@ Streaming to a remote computer via Command Line or Terminal
         #. Download the streaming client for your computer. Clients are located on the board itself and can be downloaded from there.
 
             .. figure:: img/download_client.png
-                :width: 600
+                :width: 800
                 :align: center
 
         #. Configure the stream properties & click **RUN**
@@ -240,13 +240,13 @@ Streaming to a remote computer via Command Line or Terminal
         #. Download the *command line streaming client* for your computer. Clients are located on the board itself and can be downloaded from there.
 
             .. figure:: img/Streaming_app_cmd_clients.png
-                :width: 600
+                :width: 1000
                 :align: center
 
         #. Configure the stream properties & click **RUN**
 
                 .. figure:: img/Streaming_app_network.png
-                    :width: 600
+                    :width: 1000
                     :align: center
 
                 Example: streaming on CH1 and CH2, 16-bit resolution, 100 ksps, TCP 
@@ -341,7 +341,7 @@ Streaming to a remote computer via Command Line or Terminal
 
 
 Streaming to a remote computer via Desktop Application (Linux, Windows)
---------------------------------------------------------------------------
+=========================================================================
 
 .. note::
 
@@ -363,7 +363,7 @@ The other option for streaming is utilyzing the Desktop Application.
             Files with clients are in the Streaming Application (Data Stream Control). You can download it from Red Pitaya itself.
 
             .. figure:: img/Streaming_app_desktop_client.png
-                :width: 600
+                :width: 1000
                 :align: center
 
 
@@ -372,7 +372,7 @@ The other option for streaming is utilyzing the Desktop Application.
     - For Linux clients, after unpacking, the files (rpsa_client_qt.sh, bin/rpsa_client_qt) must be made executable.
 
         .. figure:: img/qt1.png
-            :width: 600
+            :width: 800
             :align: center
 
     - For Windows clients, you need to grant access to the network.
@@ -384,7 +384,7 @@ The other option for streaming is utilyzing the Desktop Application.
 #. Once the Desktop application is running it automatically detects boards on the network, if the Streaming Application is running on them. The boards and the client must be on the same network.
 
     .. figure:: img/qt2.png
-        :width: 600
+        :width: 1000
         :align: center
 
 
@@ -393,8 +393,8 @@ The other option for streaming is utilyzing the Desktop Application.
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
 
 
-Application Source code
-=========================
+Source code
+==============
 
 The |stream_source_code| is available on our GitHub.
 
