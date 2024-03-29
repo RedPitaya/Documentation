@@ -97,12 +97,12 @@ Here are the requirements for setting up a Python environment to remotely contro
     During the installation process, do not forget to check the **Add python.exe to PATH** box!
 
     .. figure:: img/install_python.png
-        :width: 300
+        :width: 400
 
 2.  Install a coding environment. We recommend using |VSCode|.
 
     .. figure:: img/install_vsc.png
-        :width: 300
+        :width: 400
 
 3.  Install appropriate extensions for your coding environment (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
 
@@ -111,7 +111,7 @@ Here are the requirements for setting up a Python environment to remotely contro
 5.  Choose a Python interpreter.
     
     .. figure:: img/select_interpreter.png
-        :width: 500
+        :width: 800
 
 6.  Optionally, create a |venv|.
 
@@ -121,15 +121,21 @@ Here are the requirements for setting up a Python environment to remotely contro
     - numpy
     - matplotlib
 
+   |
+
     .. tabs::
 
        .. tab:: Linux
+
+           Open the Terminal or use the *Terminal* in VS Code and type:
 
            .. code-block:: shell-session
    
                $ sudo pip3 install pyvisa pyvisa-py numpy matplotlib
 
        .. tab:: Windows
+
+           Open the *Command Prompt* or use the *Terminal* in VS Code and type:
 
            .. code-block:: shell-session
    
@@ -162,7 +168,7 @@ Here are the requirements for setting up a Python environment to remotely contro
 12. Run the test file. There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
 
    .. figure:: img/hello_world.png
-       :width: 500
+       :width: 800
 
 
 
@@ -212,7 +218,7 @@ Here are the requirements for setting up a Python environment to remotely contro
        The ``redpitaya_scpi.py`` library is a standard script needed to establish the connection between your PC and the Red Pitaya board. The execution of your code will fail without this library being in the same folder as your Python code.
 
     .. figure:: img/scpi-examples.png
-        :width: 400
+        :width: 600
 
     |
 
