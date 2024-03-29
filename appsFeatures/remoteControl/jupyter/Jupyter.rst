@@ -30,7 +30,7 @@ Features
    Active kernels are found here:
 
    .. figure:: img/Jupyter_kernel.png
-      :width: 500
+      :width: 800
 
 .. |matplotlib| raw:: html
 
