@@ -6,9 +6,9 @@ Power Analyzer
 
 The application is based on the oscilloscope app with a controller and server module change.
 
-.. figure:: power_analyzer.png
+.. figure:: img/power_analyzer.png
     :align: center
-    :scale: 70 %
+    :width: 600px
 
     The user interface of the Power Analyzer application.
 
