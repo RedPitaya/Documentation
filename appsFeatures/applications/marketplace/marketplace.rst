@@ -38,9 +38,9 @@ The easiest way to ensure this is to connect your Red Pitaya to the router (eith
    dsp.rst
    pid.rst
    ocra.rst
-   power_anal.rst
-   freq_res_anal.rst
-   impedance.rst
+   power_anal/power_anal.rst
+   freq_res_anal/freq_res_anal.rst
+   impedance_anal/impedance.rst
    lti.rst
    multi_pulse_anal.rst
    wspr.rst
