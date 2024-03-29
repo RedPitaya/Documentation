@@ -41,7 +41,7 @@ The main features of the Bode analyzer application are:
 To open the Bode analyzer, click on the coresponding icon in the main web interface:
 
 .. figure:: img/Bode_analyzer.png
-	:width: 800
+    :width: 800
 
 
 Top settings menu
@@ -55,8 +55,8 @@ Top settings menu contains the following functionality:
 #. **Question mark button:** Leads to Bode analyzer documenatation webpage (here)
 #. **Menu dropdown:**
 
-	- *Export data:* Export the currently displayed data as either a “Graph” or a “CSV file”. If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is donwloaded from the board.
-	- *Reset:* Resets all Bode analyzer application settings back to default.
+    - *Export data:* Export the currently displayed data as either a “Graph” or a “CSV file”. If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is donwloaded from the board.
+    - *Reset:* Resets all Bode analyzer application settings back to default.
 
 #. **Calibrate button:** Start the calibration for the current setup.
 #. **Stop/Run button:** Start and stop the measurement.
@@ -73,7 +73,7 @@ Settings
 ---------
 
 .. figure:: img/Bode_analyzer_settings.png
-	:width: 300
+    :width: 300
 
 - **Start frequency [Hz]:** The Bode analyzer starts measuring the DUT frequency response at this frequency.
 - **End frequency [Hz]:** The Bode analyzer ends measuring the DUT frequency response at this frequency.
@@ -87,20 +87,20 @@ The **Averaging** deterimines wheter the final measurement is an average of all 
 - **Period number:** Number of signal periods in a single measurement.
 - **Amplitude [V]:** Excitation signal amplitude.
 - **DC bias [V]:** Excitation signal DC bias (offset).
-- **Averaging:** When ``1`` the result of each measurement is an average of all sent signal periods.
+- **Averaging:** When set to ``1``, the result of each measurement is an average of all sent signal periods.
 - **Invalid input data:** Button to show invalid measurements on the graph.
 - **Analysis input threshold ppV:** Measured responses smaller than this setting will be treated as the minimal threshold value (for caluclation purposes).
 
 .. note::
 
-	The sum of **Amplitdue** and **DC bias** is capped at 1 Volt. For example, if Amplitude is set to 0.4 V, the DC bias can be set to a maximum of 0.6 V.
+    The sum of **Amplitdue** and **DC bias** is capped at 1 Volt. For example, if Amplitude is set to 0.4 V, the DC bias can be set to a maximum of 0.6 V.
 
 
 Plot settings
 --------------
 
 .. figure:: img/Bode_analyzer_plot_settings.png
-	:width: 300
+    :width: 300
 
 Settings for the plot.
 
@@ -113,7 +113,7 @@ Cursor settings
 ---------------
 
 .. figure:: img/Bode_analyzer_cursor_settings.png
-	:width: 300
+    :width: 300
 
 Up to two cursors can be put on each of the axis. **F** stands for frequency, **G** for gain, and **P** for phase. The cursors each show the current value and the absolute difference between the two cursors on the same axis.
 Cursors can be moved with *Click+Drag*.
@@ -128,30 +128,39 @@ The calibration function enables calibrating long leads and removing leads' and 
 When uncalibrated, a **Red** light appears next to the **Calibration** status in the *Measurement control pannel*.
 
 .. figure:: img/Bode_analyzer_uncalibrated.png
-	:width: 800
+    :width: 800
 
 #. To perform the calibration, click on the **Calibrate** button in the *Top settings menu*. The following windows will pop up:
 
-	.. figure:: img/Bode_analyzer_calibration_menu.png
-		:width: 600
+    .. tabs::
+
+        .. tab:: STEMlab 125-10, 125-14
+    
+            .. figure:: img/Bode_analyzer_calibration_menu.png
+                :width: 600
+
+        .. tab::  SIGNALlab 250-12
+
+            .. figure:: img/Bode_analyzer_calibration_menu_siglab.png
+                :width: 600
 
 #. Check your setup and make sure all the connections correspond to the ones shown in the picture:
 
-	- **IN1** connected to the input of the DUT (measures generated pulses).
-	- **IN2** connected to the output of the DUT (measures filtered pulses).
-	- **OUT1** connected to the input of the DUT (generates signal pulses).
-	- **SHORT the input and ouput of DUT** with a wire.
+    - **IN1** connected to the input of the DUT (measures generated pulses).
+    - **IN2** connected to the output of the DUT (measures filtered pulses).
+    - **OUT1** connected to the input of the DUT (generates signal pulses).
+    - **SHORT the input and ouput of DUT** with a wire.
 
-	.. note::
+    .. note::
 
-		For optimal results use 50 Ω termination on the OUT1.
+        For optimal results use 50 Ω termination on the OUT1.
 
 #. Click on the **Calibrate** button in the bottom-right of the calibration screen. The **Reset Calibration** button deletes any stored Bode calibration data. 
 #. The calibration will go through the full frequency range of Red Pitaya (1 Hz to 62.5 MHz) in logarithmic mode and 500 points. Wait for the calibration to finish.
 #. Once the calibration is complete a **Green** light appears next to the **Calibration** status in the *Measurement control pannel*.
 
-	.. figure:: img/Bode_analyzer_calibrated.png
-		:width: 800
+    .. figure:: img/Bode_analyzer_calibrated.png
+        :width: 800
 
 #. **Disconnect the SHORT between input and ouput of DUT**.
 #. Configure the settings and start the measurements.
