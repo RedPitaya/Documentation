@@ -27,7 +27,7 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 - 1.04-18 - Branch 2022.1 *(file ends in .c)*
 
 .. image:: img/All_os_scpi_commands.png
-   :width: 500
+   :width: 800
 
 
 .. |all_os_scpi_commands| raw:: html
