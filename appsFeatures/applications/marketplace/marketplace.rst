@@ -22,7 +22,7 @@ More Red Pitaya applications can be obtained from the Red Pitaya marketplace tha
 To download the applications from the application marketplace, **Red Pitaya must have access to the internet**, otherwise the Marketplace Application will fail to open.
 
 .. figure:: img/Marketplace_fail_connect.png
-    :width: 400
+    :width: 600
 
 The easiest way to ensure this is to connect your Red Pitaya to the router (either through :ref:`Wi-Fi <wireless>` or :ref:`ethernet cable <LAN>`). Alternatively, if you are a network expert, some network settings must be tweaked to pass your computers internet connection to the Red Pitaya (when Red Pitaya is :ref:`directly connected to the computer <dir_cab_connect>`).
 
