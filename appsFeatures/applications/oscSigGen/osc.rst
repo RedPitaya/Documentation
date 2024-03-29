@@ -5,7 +5,7 @@ Oscilloscope & Signal Generator
 ###############################
 
 .. figure:: img/Slika_01_iPad_Combo_Oscilloscope.jpg
-    :width: 1000
+    :width: 1600
 
 This application will turn your Red Pitaya board into a 2-channel oscilloscope and a 2-channel signal generator. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. The simple and intuitive user interface provides all the necessary tools for signal analysis and measurements. 
 
