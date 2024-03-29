@@ -112,7 +112,7 @@ API Code Examples
 .. Code - C API
 .. ---------------
 
-.. code-block:: c
+.. .. code-block:: c
 
 
 Code - Python API

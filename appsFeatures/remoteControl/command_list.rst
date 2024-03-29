@@ -19,6 +19,39 @@ For API commands you can find a detailed description in these C header files:
    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include" target="_blank">Red Pitaya GitHub API header files</a>
 
 
+How to find all available SCPI commands per OS version?
+========================================================
+
+Use the ``SYSTem:Help?`` (IN DEV) SCPI command, which lists all available SCPI commands.
+
+You can also find all SCPI commands that the board will accept depending on the Red Pitaya OS version here:
+
+- Latest Beta OS: |all_os_scpi_commands|
+
+For all other Red Pitaya OS versions, go to the link above and change the branch version to:
+
+- 2.00-35 - Branch 2024.2 *(file ends in .cpp)*
+- 2.00-30 - Branch 2024.1 *(file ends in .cpp)*
+- 2.00-23 - Branch 2023.3 *(file ends in .cpp)*
+- 2.00-18 - Branch 2023.2 *(file ends in .c)*
+- 2.00-15 - Branch 2023.1 - |all_os_scpi_commands_2.00-15| *(file ends in .c)*
+- 1.04-28 - Branch 2022.2 *(file ends in .c)*
+- 1.04-18 - Branch 2022.1 *(file ends in .c)*
+
+.. image:: img/All_os_scpi_commands.png
+   :width: 800
+
+
+.. |all_os_scpi_commands| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/scpi-server/src/scpi-commands.cpp" target="_blank">Red Pitaya GitHub - scpi-server/src/scpi-commands.cpp</a>
+
+.. |all_os_scpi_commands_2.00-15| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
+
+
+
 .. _commands_init:
 
 =========================
@@ -712,10 +745,10 @@ Generator settings
 | | ``SOUR1:TRAC:DATA:DATA?`` >  ``1,0.5,0.2``        | | Python: ``rp_GenGetArbWaveform(<channel>, <waveform>)``                               |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-| | ``SOUR<n>:LOAD <load_mode>``                      | | C: ``rp_GenSetLoadMode(rp_channel_t channel, float phase)``                           | Set the load mode for the output. (SIGNALlab only)                                           | 2.00-35 and up     |
-| | Examples:                                         | |                                                                                       |                                                                                              |                    |
-| | ``SOUR2:LOAD L50``                                | | Python: ``rp_GenSetLoadMode(<channel>, <phase>)``                                     |                                                                                              |                    |
-| |                                                   | |                                                                                       |                                                                                              |                    |
+| | ``SOUR<n>:LOAD <load_mode>``                      | | C: ``rp_GenSetLoadMode(rp_channel_t channel, float phase)``                           | | Set the load mode for the output. When switching from INF to L50 also halves the set       | 2.00-35 and up     |
+| | Examples:                                         | |                                                                                       | | amplitude (``SOUR<n>:VOLT``). When switching from L50 to INF the amplitude is doubled.     |                    |
+| | ``SOUR2:LOAD L50``                                | | Python: ``rp_GenSetLoadMode(<channel>, <phase>)``                                     | | Frist set load, then set the amplitude. (SIGNALlab only)                                   |                    |
+| |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | ``SOUR<n>:LOAD?`` > ``<load_mode>``               | | C: ``rp_GenGetLoadMode(rp_channel_t channel, float *phase)``                          | Get the load mode for the output. (SIGNALlab only)                                           | 2.00-35 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
@@ -1053,7 +1086,7 @@ Acquisition Control
 | |                                   | | Python: ``rp_AcqStart()``                     |                                                                            |                    |
 | |                                   | |                                               |                                                                            |                    |
 +-------------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
-| | ``ACQ:START:CH<n>``               | | C: ``rp_AcqStartCh(rp_channel_t channel)``    | |Start the acquisition.                                                    | in dev             |
+| | ``ACQ:START:CH<n>``               | | C: ``rp_AcqStartCh(rp_channel_t channel)``    | | Start the acquisition.                                                   | in dev             |
 | |                                   | |                                               | | Used only in split trigger mode                                          |                    |
 | |                                   | | Python: ``rp_AcqStartCh(<channel>)``          |                                                                            |                    |
 | |                                   | |                                               |                                                                            |                    |

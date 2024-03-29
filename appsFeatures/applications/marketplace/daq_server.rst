@@ -3,6 +3,7 @@
 *********************
 Red Pitaya DAQ Server
 *********************
+
 This application allows for the continuous generation and measurement of signals with up to 15.625 MS/s, which is not possible with the standard image of the RedPitaya.
 In addition, the software allows the synchronisation of a cluster of multiple RedPitayas (compatible with |X-channel|). This project contains the following parts:
 

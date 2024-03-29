@@ -72,137 +72,262 @@ Here are the minimum chunck limitations sorted by file type and units:
    We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
 
 
-******************************************************
+
+
 Getting started with the Red Pitaya streaming feature
-******************************************************
+=======================================================
 
-#. Run the Streaming app from the Red Pitaya Web interface
+Run the Streaming app from the Red Pitaya Web interface
 
-    .. figure:: img/redpitaya_main_page.png
-        :width: 60%
-        :align: center
+.. figure:: img/redpitaya_main_page.png
+    :width: 600
+    :align: center
 
-#. Stream locally to a file
 
-    #. Set the app's properties & click RUN
+Stream locally to a file on Red Pitaya's SD card
+=================================================
 
-        .. figure:: img/to_file_settings.png
-            :width: 20%
-            :align: center
+.. tabs::
 
+    .. group-tab:: OS version 2.00-15 or older
+
+        #. Configure the stream properties & click **RUN**
+
+            .. figure:: img/settings.png
+                :width: 800
+            
             Example: streaming on ch1, 8-bit resolution, 5.208 MS/s into TDMS file format
 
-    #. Press STOP to stop streaming
+        #. Press **STOP** to stop streaming
 
-    #. Click Browse to open the file browser and download the streaming data file
+        #. Click *Browse* to open the data file directory. Each data stream is split into three sections; *DATA* (collected data stream), *.log* (data log of the specific stream), *.log.lost* (report on lost packets). Click on the selected file to download it from Red Pitaya to the computer.
 
-        .. figure:: img/capture.png
-           :width: 50%
-           :align: center
-
-    #. Open the file in a program that supports TDMS file reading, visualisation, and processing, such as |DIAdem|.
-
-        .. figure:: img/diadem_tdms_file_viewer.png
-           :width: 80%
-           :align: center
-
-#. Streaming to a remote computer
-
-    #. Get the streaming client for your computer. Clients are located on the board itself and can be downloaded from there.
-
-        .. figure:: img/download_client.png
-            :width: 50%
-            :align: center
-
-    #. Set the app's properties & click RUN
-
-        .. figure:: img/tcp_settings.png
-            :width: 20%
-            :align: center
-
-            Example: streaming on ch1, 16-bit resolution 5 MS/s, TCP
-
-    #. Run the streaming app on a remote computer (copy the IP address from the web interface and choose the required file format).
-
-    .. tabs::
-
-        .. group-tab:: WAV
-
-            .. code-block:: console
-
-                rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
-
-            .. figure:: img/tcp_client.png
-                :width: 50%
+            .. figure:: img/capture.png
+                :width: 800
                 :align: center
 
-            Data streaming can be stopped by pressing *Ctrl + C*.
-
-            The created wav file can be read or viewed in |Audacity|:
-
-            .. figure:: img/audacity.png
-                :width: 80%
-                :align: center
-
-        .. group-tab:: TDMS
-
-            .. code-block:: console
-
-                rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
-
-            .. figure:: img/tcp_client2.png
-                :width: 50%
-                :align: center
-
-            Data streaming can be stopped by pressing *Ctrl + C*.
-
-            The created tdms file can be read or viewed in |DIAdem|.
+        #. Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
 
             .. figure:: img/diadem_tdms_file_viewer.png
-                :width: 80%
+                :width: 800
                 :align: center
 
-        .. group-tab:: CSV
+    .. group-tab:: OS version 2.00-23 or newer
 
-            .. code-block:: console
+        #. Configure the stream properties & click **RUN**
 
-                rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
+            .. figure:: img/Streaming_app_local.png
+                :width: 1000
+            
+            Example: streaming on CH1 and CH2, 8-bit resolution, 100 ksps into WAV file format
 
+        #. Press **STOP** to stop streaming
 
-            .. figure:: img/tcp_client3.png
-                :width: 50%
+        #. Check the *Files on SD card* section for the data files. Each data file has three buttons; *LOG* (data log of the specific stream), *LOST* (report on lost packets), and *DOWNLOAD* (collected data stream). Click on the selected file to download it from Red Pitaya to the computer.
+
+            .. figure:: img/Streaming_app_local.png
+                :width: 1000
+                :align: center
+
+        #. Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
+
+            .. figure:: img/diadem_tdms_file_viewer.png
+                :width: 800
                 :align: center
 
 
-            The application saves data from the board in BIN format. This is a binary format. If the application has finished writing data correctly and there is enough free space on the disk, the conversion to CSV format will be automatic.
+Streaming to a remote computer via Command Line or Terminal
+=============================================================
 
-            .. figure:: img/csv_list.png
-                :width: 50%
+.. tabs::
+
+    .. group-tab:: OS version 2.00-15 or older
+
+        #. Download the streaming client for your computer. Clients are located on the board itself and can be downloaded from there.
+
+            .. figure:: img/download_client.png
+                :width: 800
                 :align: center
 
+        #. Configure the stream properties & click **RUN**
 
-            The created CSV file can be opened with any text editor or spreadsheet editor:
-
-            .. figure:: img/csv_view.png
-                :width: 80%
-                :align: center
-
-
-            .. note::
-
-                The binary file can be converted using the *convert_tool* application.
-
-                .. figure:: img/csv_list.png
-                    :width: 50%
+                .. figure:: img/tcp_settings.png
+                    :width: 300
                     :align: center
 
+                Example: streaming on CH1, 16-bit resolution 5 Msps, TCP
 
-                In this application, you can also see the structure of the received file and the state of the file.
+        #. Execute the *streaming client* via *Command Line or Terminal* on a remote computer (copy the IP address from the web interface and choose the required file format).
 
-                .. figure:: img/csv_state.png
-                    :width: 50%
+                .. tabs::
+
+                    .. group-tab:: WAV
+
+                        .. code-block:: console
+
+                            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
+
+                        .. figure:: img/tcp_client.png
+                            :width: 600
+                            :align: center
+
+                        Data streaming can be stopped by pressing *Ctrl+C*.
+
+                        The created wav file can be read or viewed in |Audacity| or another program that supports WAV file type:
+
+                        .. figure:: img/audacity.png
+                            :width: 600
+                            :align: center
+
+                    .. group-tab:: TDMS
+
+                        .. code-block:: console
+
+                            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
+
+                        .. figure:: img/tcp_client2.png
+                            :width: 600
+                            :align: center
+
+                        Data streaming can be stopped by pressing *Ctrl+C*.
+
+                        The created tdms file can be read or viewed in |DIAdem| or another program that supports TDMS file type.
+
+                        .. figure:: img/diadem_tdms_file_viewer.png
+                            :width: 600
+                            :align: center
+
+                    .. group-tab:: CSV
+
+                        .. code-block:: console
+
+                            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
+
+
+                        .. figure:: img/tcp_client3.png
+                            :width: 600
+                            :align: center
+
+
+                        The application saves data from the board in binary (BIN) format.
+
+                        .. figure:: img/csv_list.png
+                            :width: 600
+                            :align: center
+
+                        The binary file can be converted using the *convert_tool* application.
+
+                        .. figure:: img/csv_list.png
+                            :width: 600
+                            :align: center
+
+                        The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:
+
+                        .. figure:: img/csv_view.png
+                            :width: 600
+                            :align: center
+
+                        .. note::
+
+                            Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
+
+                            .. figure:: img/csv_state.png
+                                :width: 600
+                                :align: center
+
+    .. group-tab:: OS version 2.00-23 or newer
+
+        #. Download the *command line streaming client* for your computer. Clients are located on the board itself and can be downloaded from there.
+
+            .. figure:: img/Streaming_app_cmd_clients.png
+                :width: 1000
+                :align: center
+
+        #. Configure the stream properties & click **RUN**
+
+                .. figure:: img/Streaming_app_network.png
+                    :width: 1000
                     :align: center
 
+                Example: streaming on CH1 and CH2, 16-bit resolution, 100 ksps, TCP 
+
+        #. Execute the *streaming client* via *Command Line or Terminal* on a remote computer (copy the IP address from the web interface and choose the required file format).
+
+                .. tabs::
+
+                    .. group-tab:: WAV
+
+                        .. code-block:: console
+
+                            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
+
+                        .. figure:: img/tcp_client.png
+                            :width: 600
+                            :align: center
+
+                        Data streaming can be stopped by pressing *Ctrl+C*.
+
+                        The created wav file can be read or viewed in |Audacity| or another program that supports WAV file type:
+
+                        .. figure:: img/audacity.png
+                            :width: 600
+                            :align: center
+
+                    .. group-tab:: TDMS
+
+                        .. code-block:: console
+
+                            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
+
+                        .. figure:: img/tcp_client2.png
+                            :width: 600
+                            :align: center
+
+                        Data streaming can be stopped by pressing *Ctrl+C*.
+
+                        The created tdms file can be read or viewed in |DIAdem| or another program that supports TDMS file type.
+
+                        .. figure:: img/diadem_tdms_file_viewer.png
+                            :width: 600
+                            :align: center
+
+                    .. group-tab:: CSV
+
+                        .. code-block:: console
+
+                            rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
+
+
+                        .. figure:: img/tcp_client3.png
+                            :width: 600
+                            :align: center
+
+
+                        The application saves data from the board in binary (BIN) format.
+
+                        .. figure:: img/csv_list.png
+                            :width: 600
+                            :align: center
+
+                        The binary file can be converted using the *convert_tool* application.
+
+                        .. figure:: img/csv_list.png
+                            :width: 600
+                            :align: center
+
+                        The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:
+
+                        .. figure:: img/csv_view.png
+                            :width: 600
+                            :align: center
+
+                        .. note::
+
+                            Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
+
+                            .. figure:: img/csv_state.png
+                                :width: 600
+                                :align: center
 
 .. |DIAdem| raw:: html
 
@@ -214,52 +339,65 @@ Getting started with the Red Pitaya streaming feature
     <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
 
 
-******************************************************
-Streaming application for the Desktop (Linux, Windows)
-******************************************************
+
+Streaming to a remote computer via Desktop Application (Linux, Windows)
+=========================================================================
 
 .. note::
 
-   The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.
+    The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.
 
 
-You can also use the desktop version of the client for streaming.
+The other option for streaming is utilyzing the Desktop Application.
 
-    #. Download the client
+#. Download the client application
 
-        .. tabs::
+    .. tabs::
 
-            .. group-tab:: OS version 1.04 or older
+        .. group-tab:: OS version 2.00-15 or older
 
-                |Streaming Client|
+            Files with clients are available |Streaming Client|.
 
-            .. group-tab:: OS version 2.00
+        .. group-tab:: OS version 2.00.23 or newer
 
-                Files with clients are in the streaming web application. You can download it from Red Pitaya itself.
+            Files with clients are in the Streaming Application (Data Stream Control). You can download it from Red Pitaya itself.
+
+            .. figure:: img/Streaming_app_desktop_client.png
+                :width: 1000
+                :align: center
 
 
-    #. Unzip and run the client
+#. Unzip and run the client
+
+    - For Linux clients, after unpacking, the files (rpsa_client_qt.sh, bin/rpsa_client_qt) must be made executable.
+
+        .. figure:: img/qt1.png
+            :width: 800
+            :align: center
+
+    - For Windows clients, you need to grant access to the network.
 
         .. note::
 
-            For Linux clients, after unpacking, the files (rpsa_client_qt.sh, bin/rpsa_client_qt) must be made executable.
+           It is possible that an Antivirus program might block the desktop client. If you experience this issue, we recommend whitelisting the Streaming Client folder.
 
-            .. figure:: img/qt1.png
-                    :width: 50%
-                    :align: center
+#. Once the Desktop application is running it automatically detects boards on the network, if the Streaming Application is running on them. The boards and the client must be on the same network.
 
-            For Windows clients, you need to grant access to the network.
+    .. figure:: img/qt2.png
+        :width: 1000
+        :align: center
 
-            .. note::
-
-               It is possible that an Antivirus program might block the desktop client. If you experience this issue, we recommend whitelisting the Streaming Client folder.
-
-    #. The running application automatically detects boards on the network if streaming is running on them. The boards and the client must be on the same network.
-
-        .. figure:: img/qt2.png
-                :width: 50%
-                :align: center
 
 .. |Streaming Client| raw:: html
 
-    <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">Desktop clients</a>
+    <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
+
+
+Source code
+==============
+
+The |stream_source_code| is available on our GitHub.
+
+.. |stream_source_code| raw:: html
+
+  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Streaming application source code</a>

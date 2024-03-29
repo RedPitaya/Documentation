@@ -15,6 +15,10 @@ For detailed hardware specifications for Low-Noise STEMlab 125-14 devices used i
 
 For more information about the software, please refer to: :ref:`X-Channel streaming <x-ch_streaming>`.
 
+.. note::
+
+    The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <click_shield_Q&A>`.
+
 
 Pinout
 ===========
@@ -34,7 +38,7 @@ Technical specifications (one board)
     +====================================+====================================+
     | Processor                          | DUAL CORE ARM CORTEX A9            |
     +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7010 SOC          |
+    | FPGA                               | FPGA Xilinx Zynq 7020 SOC          |
     +------------------------------------+------------------------------------+
     | RAM                                | 512 MB (4 Gb)                      |
     +------------------------------------+------------------------------------+
@@ -60,7 +64,7 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | USB                                | USB 2.0                            |
     +------------------------------------+------------------------------------+
-    | WIFI                               | requires WIFI dongle               |
+    | Wi-Fi                              | requires Wi-Fi dongle              |
     +------------------------------------+------------------------------------+
 
 |
@@ -77,7 +81,7 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | ADC resolution                     | 14 bit                             |
     +------------------------------------+------------------------------------+
-    | Input impedance                    | 1 MOhm / 10 pF                     |
+    | Input impedance                    | 1 MΩ / 10 pF                       |
     +------------------------------------+------------------------------------+
     | Full scale voltage range           | ±1 V (LV) and ±20 V (HV)           |
     +------------------------------------+------------------------------------+
@@ -107,7 +111,7 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | DAC resolution                     | 14 bit                             |
     +------------------------------------+------------------------------------+
-    | Load impedance                     | 50 Ohm                             |
+    | Load impedance                     | 50 Ω                               |
     +------------------------------------+------------------------------------+
     | Voltage range                      | ±1 V                               |
     |                                    |                                    |
@@ -130,7 +134,7 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | **Extension connector**                                                 | 
     +====================================+====================================+
-    | Digital IOs                        | 16                                 |
+    | Digital IOs                        | 22                                 |
     +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
@@ -144,11 +148,11 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | Analog outputs voltage range       | 0-1.8 V                            |
     +------------------------------------+------------------------------------+
-    | Communication interfaces           | I2C, SPI, UART                     |
+    | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
     | Available voltages                 | +5 V, +3.3 V, -4 V                 |
     +------------------------------------+------------------------------------+
-    | external ADC clock                 |  yes                               |
+    | External ADC clock                 |  Yes                               |
     +------------------------------------+------------------------------------+
 
 |

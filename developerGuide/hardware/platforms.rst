@@ -18,4 +18,4 @@ Red Pitaya platforms
    compares/vs
    leds
    DeclarationOfConformity
-   known_issues/top
+   known_hw_issues/known_hw_issues

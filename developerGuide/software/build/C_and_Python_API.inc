@@ -6,12 +6,17 @@ acquisition, digital I/O control, communication (I2C, SPI, UART, CAN) and more).
 .. warning::
 
     Please make sure that your Red Pitaya OS and the downloaded GitHub ecosystem repository are compatible.
+    We recommend using a GitHub ecosystem that is meant to run on your current Red Pitaya OS version:
 
-    Using a 1.04 or older OS version together with 2023.1 or newer GitHub ecosystem will result in compatibility isses. To address this please:
-    
-    - Use the latest GitHub ecosystem (master branch) together with Red Pitaya OS 2.00 or higher.
-    - Use branch 2022.2 or older GitHub ecosystem together with 1.04 or older Red Pitaya OS.
+    - 2.00-35 - Branch 2024.2
+    - 2.00-30 - Branch 2024.1
+    - 2.00-23 - Branch 2023.3
+    - 2.00-18 - Branch 2023.2
+    - 2.00-15 - Branch 2023.1
+    - 1.04-28 - Branch 2022.2
+    - 1.04-18 - Branch 2022.1
 
+    Using an old OS with a newer GitHub ecosystem can result in compatibility isses.
 
 C and Python API functions
 ============================
@@ -89,7 +94,7 @@ Compiling and running Example code
 
                 redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-        .. group-tab:: OS version 2.00
+        .. group-tab:: OS version 2.00 or newer
 
             .. code-block:: shell-session
 
@@ -193,7 +198,7 @@ Compiling and running custom code
                 	$(RM) *.o
                 	$(RM) $(OBJS)
 
-        .. group-tab:: OS version 2.00
+        .. group-tab:: OS version between 2.00-15 and 2.00-23
 
             .. code-block:: shell-session
         
@@ -227,7 +232,7 @@ Compiling and running custom code
                     $(RM) *.o
                     $(RM) $(OBJS)
 
-        .. group-tab:: OS version 2.00-30
+        .. group-tab:: OS version 2.00-30 and newer
 
             .. code-block:: shell-session
 

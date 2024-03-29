@@ -1,6 +1,8 @@
-*****************************************************
-Manually downloading and installing free applications
-*****************************************************
+.. _manual_app_install:
+
+####################################################
+Manually downloading and installing applications
+####################################################
 
 When you are developing your own applications, you can also manually install your application.
 

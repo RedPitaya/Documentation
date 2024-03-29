@@ -14,9 +14,13 @@ X-Channel Streaming
 
 All the :ref:`limitations of the Streaming Application <streaming_top>` also apply to the X-Channel streaming, but the limitations are **per-board**.
 
-********
+.. note::
+
+    The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <click_shield_Q&A>`.
+
+
 Overview
-********
+=========
 
 X-Channel streaming is suitable for applications that require multiple acquisition or generation channels.
 
@@ -32,9 +36,8 @@ Streaming can be done in both directions. Users can stream acquired analog and d
     :width: 600
 
 
-******
 Setup
-******
+=========
 
 **What do I need before I start?**
 
@@ -59,12 +62,12 @@ In order to achieve synchronization, the PRIMARY device provides a clock and tri
     We recommend using :ref:`OS 2.00-23 or higher <prepareSD>` for the X-channel system.
 
     - With 2.00 OS both the PRIMARY and the SECONDARY devices use the SAME OS!
-    - With 1.04 OS the PRIMARY and SECONDARY boards use DIFFERENT OS-es!
+    - With 1.04 OS the PRIMARY and SECONDARY boards use DIFFERENT OS!
 
 
 
 Hardware Setup
-================
+----------------
 
     #.  Connect all Red Pitayas to the same network via ethernet cables (switch or router that is connected to the client PC).
 
@@ -91,7 +94,7 @@ Hardware Setup
 
 
 Download and install an X-channel streaming client on your computer
-=======================================================================
+---------------------------------------------------------------------
 
 .. note::
 
@@ -115,11 +118,11 @@ Download and install an X-channel streaming client on your computer
     .. group-tab:: OS version 2.00-23 or newer
 
         .. figure:: img/download_client_2.00.png
-            :width: 800
+            :width: 1200
 
-*****************
+
 Use case examples
-*****************
+===================
 
 **Simultaneous acquisition of 6 input signals.**
 
@@ -156,7 +159,7 @@ In this example, we will show how to set configuration remotely using an already
     .. group-tab:: OS version 2.00-23 or newer
 
         .. figure:: img/settings_2.00.png
-            :width: 800
+            :width: 1200
 
 .. code-block:: shell-session
 
@@ -263,3 +266,22 @@ In this example, we will show how to set configuration remotely using an already
     :width: 800
 
 In this example, a 1 kHz sinewave signal was connected to all 6 inputs.
+
+
+Code examples
+=================
+
+Here are examples for synchronising two unit X-channel System through SCPI and API commands.
+
+- :ref:`Daisy chain generation and acquisition <daisy_chain_sync_exam1>`
+
+
+Source code
+==============
+
+The |stream_source_code| is available on our GitHub.
+
+.. |stream_source_code| raw:: html
+
+  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Streaming application source code</a>
+

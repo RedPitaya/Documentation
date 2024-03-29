@@ -4,9 +4,9 @@
 Vector Network Analyzer
 #######################
 
-******************************
+********************************
 What do I need before I start?
-******************************
+********************************
 
 1. VNA application requirements:
 
@@ -14,15 +14,13 @@ What do I need before I start?
 
 2. The following accessories and materials are available in the Red Pitaya store:
 
-    *   any kit that includes a STEMlab 125-14 or 125-10 (discontinued) board
+    *   any kit that includes a STEMlab 125-14, SDRlab 122-16, or 125-10 (discontinued) board
     *   Vector Network Analyzer bridge module
 
-
-***************************************************
+*****************************************************
 Start using Red Pitaya as a Vector Network Analyser
-***************************************************
+*****************************************************
 
-========================================================
 Connect Vector Network Analyzer bridge to the Red Pitaya
 ========================================================
 
@@ -34,40 +32,62 @@ Connect Vector Network Analyzer bridge to the Red Pitaya
    :align: center
    :width: 600
 
-=========================================================
+
 Install & run network Vector Network Analyzer control app
 =========================================================
 
-------------------
 Windows users only
 ------------------
 
-    *   Download and unpack the `control program <https://downloads.redpitaya.com/downloads/Clients/vna/vna-windows-tool.zip>`__.
-    *   Run the ``vna.exe`` program.
+    #. Open the VNA application
+    #. Head to |red_pitaya_notes_vna|. There you can read more about the inner workings of the application as well as find links to other useful information.
+    #. Find the **Getting started with MS Windows** section and follow the bullet points. **SKIP the first three points** if you are using official Red Pitaya OS! 
+    #. Download and unpack the *release zip folder* from the link above to your computer.
+    #. Run the ``vna.exe`` program located in the *control* directory.
+    #. Type in the IP address of the Red Pitaya board and press the *Connect* button.
+    #. Perform calibration and measurements.
 
-----------------
+.. |red_pitaya_notes_vna| raw:: html
+
+   <a href="https://pavel-demin.github.io/red-pitaya-notes/vna/" target="_blank">Pavel Demin's Red Pitaya Notes VNA page</a>
+
+
 Linux users only
 ----------------
 
-    *   Install Python 3 and all the required libraries:
+    #. Open the VNA application
+    #. Head to |red_pitaya_notes_vna|. There you can read more about the inner workings of the application as well as find links to other useful information.
+    #. Find the **Getting started with GNU/Linux** section and follow the bullet points. **SKIP the first three points** if you are using official Red Pitaya OS! 
+    #. Install |Python 3| and all the required libraries:
 
         .. code-block:: shell-session
 
-            sudo apt-get install python3-dev python3-pip python3-numpy python3-pyqt5 libfreetype6-dev
-            sudo pip3 install matplotlib mpldatacursor
-
-    *   Download and unpack the `control program <https://downloads.redpitaya.com/downloads/Clients/vna/vna-windows-tool.zip>`__.
-    *   Run the control program:
+            apt-get install python3-numpy python3-matplotlib python3-pyqt5
+    #. Clone the source code repository to your computer:
 
         .. code-block:: shell-session
 
+            git clone https://github.com/pavel-demin/red-pitaya-notes
+
+    #. Run the control program:
+
+        .. code-block:: shell-session
+
+            cd red-pitaya-notes/projects/vna/client
             python3 vna.py
 
-=====================================================
+    #. Type in the IP address of the Red Pitaya board and press the *Connect* button.
+    #. Perform calibration and measurements.
+
+.. |Python 3| raw:: html
+
+   <a href="https://www.python.org/" target="_blank">Python 3</a>
+
+
 Type in the IP or URL address of the Red Pitaya board
 =====================================================
 
-----------------------------------------
+
 Connect by entering the Red Pitaya's IP:
 ----------------------------------------
 
@@ -75,17 +95,16 @@ Connect by entering the Red Pitaya's IP:
     :align: center
     :width: 600
 
-To find the IP address of the Red Pitaya board, first connect to RedPitaya by following these :ref:`instructions <quick_start>`.
+To find the IP address of your Red Pitaya board, first connect to Red Pitaya by following these :ref:`instructions <quick_start>`.
 
-
-Then go to System->Network Manager. The IP is written next to the label.
+Then go to **System->Network Manager**. The IP is written next to the label.
 Address: xxx.xxx.xxx.xxx .
 
 .. figure::  img/network_manager_icon.png
     :width: 150 px
     :align: center
 
-----------------------------------
+
 Connect by entering RedPitaya URL:
 ----------------------------------
 
@@ -93,15 +112,14 @@ Connect by entering RedPitaya URL:
     :align: center
     :width: 600
 
-============================================================
-Run the Vector Network Analyzer application on the RedPitaya
-============================================================
+
+Run the Vector Network Analyzer application on the Red Pitaya
+=============================================================
 
 .. figure::  img/vna_icon.png
     :width:  150px
     :align: center
 
-==============================================================
 Click "Connect" inside the Vector Network Analyzer control app
 ==============================================================
 
@@ -115,8 +133,7 @@ Perform calibration and start measuring
 
 .. note::
 
-   The VNA module works for frequencies above 500 kHz. Please start the calibration process at 500 kHz (ignore calibration values in the pictrures).
-
+   On SDRlab 122-16 the VNA module works for frequencies above 500 kHz. Please start the calibration process at 500 kHz (ignore calibration values in the pictrures).
 
     .. figure::  img/3_calibrate.png
         :align: center
@@ -152,7 +169,7 @@ Perform calibration and start measuring
         :align: center
         :width: 600
 
-=========
+
 Examples:
 =========
 

@@ -76,10 +76,10 @@ Code - MATLAB®
     % Samples from left to the center are samples before the trigger 
     % Samples from center to the right are samples after the trigger
 
-    writeline(RP,'ACQ:TRIG:DLY 0');
+    writeline(RP,'ACQ:TRig:DLY 0');
 
     % for SIGNALlab device there is a possiblity to set the trigger threshold 
-    % writeline(RP,'ACQ:TRIG:EXT:LEV 1')
+    % writeline(RP,'ACQ:TRig:EXT:LEV 1')
 
 
     %% Start & Trigg
@@ -92,14 +92,14 @@ Code - MATLAB®
     % Here we have used time delay of one second but you can calculate the exact value taking in to account buffer
     % length and sampling rate
 
-    writeline(RP,'ACQ:TRIG NOW');
+    writeline(RP,'ACQ:TRig NOW');
     % Wait for trigger
     % Until trigger is true wait with acquiring
     % Be aware of while loop if trigger is not achieved
     % Ctrl+C will stop code execution in MATLAB
 
     while 1
-        trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+        trig_rsp = writeread(RP,'ACQ:TRig:STAT?')
         if strcmp('TD',trig_rsp(1:2))  % Read only TD
             break;
         end
@@ -108,7 +108,7 @@ Code - MATLAB®
     %%! OS 2.00 or higher only !%%
     % wait for fill adc buffer
     while 1
-        fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+        fill_state = writeread(RP,'ACQ:TRig:FILL?')
         if strcmp('1', fill_state(1:1))
             break;
         end
@@ -156,16 +156,16 @@ Using just SCPI commands:
 
     rp_s.tx_txt('ACQ:DEC 4')
     rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRIG NOW')
+    rp_s.tx_txt('ACQ:TRig NOW')
 
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:STAT?')
+        rp_s.tx_txt('ACQ:TRig:STAT?')
         if rp_s.rx_txt() == 'TD':
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:FILL?')
+        rp_s.tx_txt('ACQ:TRig:FILL?')
         if rp_s.rx_txt() == '1':
             break
 
@@ -200,16 +200,16 @@ Using functions:
     rp_s.acq_set(dec)
 
     rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRIG NOW')
+    rp_s.tx_txt('ACQ:TRig NOW')
 
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:STAT?')
+        rp_s.tx_txt('ACQ:TRig:STAT?')
         if rp_s.rx_txt() == 'TD':
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRIG:FILL?')
+        rp_s.tx_txt('ACQ:TRig:FILL?')
         if rp_s.rx_txt() == '1':
             break
 

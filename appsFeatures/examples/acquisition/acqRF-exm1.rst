@@ -73,7 +73,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % acquired signal frequency
             
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0.5');       % trigger level
+            writeline(RP,'ACQ:TRig:LEV 0.5');       % trigger level
 
             % SIGNALLAB ONLY            
             % There is an option to select coupling when using SIGNALlab 250-12 
@@ -90,7 +90,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Samples from left to centre are samples before the trigger 
             % Samples from the centre to the right are samples after the trigger
             
-            writeline(RP,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRig:DLY 0');
             
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
@@ -103,7 +103,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Here we have used a time delay of one second, but you can calculate the exact value by taking into account the buffer
             % length and sampling rate
             
-            writeline(RP,'ACQ:TRIG CH1_PE');
+            writeline(RP,'ACQ:TRig CH1_PE');
             
             % Wait for the trigger
             % Until the trigger is true wait to acquire
@@ -111,7 +111,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Ctrl+C will stop code execution in MATLAB
             
             while 1
-                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRig:STAT?')
                 if strcmp('TD', trig_rsp(1:2))      % Read only TD
                     break;
                 end
@@ -120,7 +120,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             %%! OS 2.00 or higher only !%%
             % wait for fill adc buffer
             while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+                fill_state = writeread(RP,'ACQ:TRig:FILL?')
                 if strcmp('1', fill_state(1:1)the )
                     break;
                 end
@@ -166,12 +166,12 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             %% ACQUISITION
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0.5');
+            writeline(RP,'ACQ:TRig:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
 
             % Set Units and Format
             writeline(RP,'ACQ:DATA:FORMAT BIN');
-            writeline(RP,'ACQ:DATA:UNITS VOLTS');
+            writeline(RP,'ACQ:DATA:Units VOLTS');
             
             % Set trigger delay to 0 samples
             % 0 samples delay sets the trigger to the centre of the buffer
@@ -179,7 +179,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Samples from left to centre are samples before the trigger 
             % Samples from the centre to the right are samples after the trigger
             
-            writeline(RP,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRig:DLY 0');
             
             
             %% Start & Trigg
@@ -193,7 +193,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Here we have used a time delay of one second, but you can calculate the exact value by taking into account the buffer
             % length and sampling rate
             
-            writeline(RP,'ACQ:TRIG CH1_PE');
+            writeline(RP,'ACQ:TRig CH1_PE');
             
             % Wait for the trigger
             % Until the trigger is true wait to acquire
@@ -201,7 +201,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Ctrl+C will stop code execution in MATLAB
             
             while 1
-                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRig:STAT?')
                 if strcmp('TD', trig_rsp(1:2))      % Read only TD
                     break
                 end
@@ -210,7 +210,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             %%! OS 2.00 or higher only !%%
             % wait for fill adc buffer
             while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+                fill_state = writeread(RP,'ACQ:TRig:FILL?')
                 if strcmp('1', fill_state(1:1))
                     break;
                 end
@@ -267,12 +267,12 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             %% ACQUISITION
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0.5');
+            writeline(RP,'ACQ:TRig:LEV 0.5');
             writeline(RP,'ACQ:SOUR1:GAIN LV');
 
             % Select Format and Units
             writeline(RP,'ACQ:DATA:FORMAT BIN');
-            writeline(RP,'ACQ:DATA:UNITS RAW');
+            writeline(RP,'ACQ:DATA:Units RAW');
             
             % Set trigger delay to 0 samples
             % 0 samples delay the et trigger to the centre of the buffer
@@ -280,7 +280,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Samples from left to centre are samples before the trigger
             % Samples from the centre to the right are samples after the trigger
 
-            writeline(RP,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRig:DLY 0');
             
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
@@ -292,14 +292,14 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % length and sampling rate
             pause(1);
             
-            writeline(RP,'ACQ:TRIG CH1_PE');
+            writeline(RP,'ACQ:TRig CH1_PE');
             % Wait for the trigger
             % Until the trigger is true wait to acquire
             % Be aware of the while loop if the trigger is not achieved
             % Ctrl+C will stop code executing in MATLAB
             
             while 1
-                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRig:STAT?')
                 if strcmp('TD',trig_rsp(1:2))  % Read only TD
                     break;
                 end
@@ -308,7 +308,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             %%! OS 2.00 or higher only !%%
             % wait for fill adc buffer
             while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')
+                fill_state = writeread(RP,'ACQ:TRig:FILL?')
                 if strcmp('1', fill_state(1:1))
                     break;
                 end
@@ -361,7 +361,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
             %% ACQUISITION
             writeline(RP,'ACQ:DEC 1');
-            writeline(RP,'ACQ:TRIG:LEV 0.5');
+            writeline(RP,'ACQ:TRig:LEV 0.5');
 
             % Set trigger delay to 0 samples
             % 0 samples delay set the trigger to the centre of the buffer
@@ -369,7 +369,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % Samples from left to centre are samples before the trigger 
             % Samples from the centre to the right are samples after the trigger
 
-            writeline(RP,'ACQ:TRIG:DLY 0');
+            writeline(RP,'ACQ:TRig:DLY 0');
 
             %% Start & Trigg
             % Trigger source setting must be after ACQ:START
@@ -381,14 +381,14 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             % length and sampling rate
             pause(1);
 
-            writeline(RP,'ACQ:TRIG CH1_PE');  
+            writeline(RP,'ACQ:TRig CH1_PE');  
             % Wait for the trigger
             % Until the trigger is true wait to acquire
             % Be aware of the while loop if the trigger is not achieved
             % Ctrl+C will stop code executing in Matlab
 
             while 1
-                trig_rsp = writeread(RP,'ACQ:TRIG:STAT?')
+                trig_rsp = writeread(RP,'ACQ:TRig:STAT?')
                 if strcmp('TD', trig_rsp(1:2))  % Read only TD
                     break;
                 end
@@ -397,7 +397,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
             %%! OS 2.00 or higher only !%%
             % wait for fill adc buffer
             while 1
-                fill_state = writeread(RP,'ACQ:TRIG:FILL?')  
+                fill_state = writeread(RP,'ACQ:TRig:FILL?')  
                 if strcmp('1', fill_state(1:1))
                     break;
                 end
@@ -455,21 +455,21 @@ Using just SCPI commands:
             rp_s.tx_txt('ACQ:RST')
             
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
-            rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
+            rp_s.tx_txt('ACQ:DATA:Units VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
-            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
+            rp_s.tx_txt('ACQ:TRig:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -500,21 +500,21 @@ Using just SCPI commands:
             rp_s.tx_txt('ACQ:RST')
             
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
-            rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
+            rp_s.tx_txt('ACQ:DATA:Units VOLTS')
             rp_s.tx_txt('ACQ:DEC 1')
-            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
+            rp_s.tx_txt('ACQ:TRig:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -545,21 +545,21 @@ Using just SCPI commands:
             rp_s.tx_txt('ACQ:RST')
 
             rp_s.tx_txt('ACQ:DATA:FORMAT BIN')
-            rp_s.tx_txt('ACQ:DATA:UNITS RAW')
+            rp_s.tx_txt('ACQ:DATA:Units RAW')
             rp_s.tx_txt('ACQ:DEC 1')
-            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
+            rp_s.tx_txt('ACQ:TRig:LEV 0.5')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -589,23 +589,23 @@ Using just SCPI commands:
             rp_s.tx_txt('ACQ:RST')
             
             rp_s.tx_txt('ACQ:DATA:FORMAT ASCII')
-            rp_s.tx_txt('ACQ:DATA:UNITS VOLTS')
+            rp_s.tx_txt('ACQ:DATA:Units VOLTS')
 
             rp_s.tx_txt('ACQ:DEC 1')
-            rp_s.tx_txt('ACQ:TRIG:LEV 0.5')
-            rp_s.tx_txt('ACQ:TRIG:DLY 0')
+            rp_s.tx_txt('ACQ:TRig:LEV 0.5')
+            rp_s.tx_txt('ACQ:TRig:DLY 0')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -665,16 +665,16 @@ Using functions:
             rp_s.acq_set(dec, trig_lvl, units='volts', form='ascii')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -710,16 +710,16 @@ Using functions:
             rp_s.acq_set(dec, trig_lvl, units='volts', form='bin')
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -754,16 +754,16 @@ Using functions:
             rp_s.acq_set(dec, trig_lvl, units='raw', form='bin') 
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -799,16 +799,16 @@ Using functions:
             rp_s.acq_set(dec, trig_lvl, trig_delay, units='volts', form='ascii', input4=True) 
 
             rp_s.tx_txt('ACQ:START')
-            rp_s.tx_txt('ACQ:TRIG CH1_PE')
+            rp_s.tx_txt('ACQ:TRig CH1_PE')
 
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:STAT?')
+                rp_s.tx_txt('ACQ:TRig:STAT?')
                 if rp_s.rx_txt() == 'TD':
                     break
 
             ## ! OS 2.00 or higher only ! ##
             while 1:
-                rp_s.tx_txt('ACQ:TRIG:FILL?')
+                rp_s.tx_txt('ACQ:TRig:FILL?')
                 if rp_s.rx_txt() == '1':
                     break
 
@@ -873,7 +873,7 @@ for Scilab sockets. How to set the socket is described in the Blink example.
     
     // Set trigger level to 500 mV
     
-    SOCKET_write(tcpipObj,'ACQ:TRIG:LEV 0.5');
+    SOCKET_write(tcpipObj,'ACQ:TRig:LEV 0.5');
     
     //There is an option to select coupling when using SIGNALlab 250-12 
     // SOCKET_write(tcpipObj,'ACQ:SOUR1:COUP AC'); // enables AC coupling on Channel 1
@@ -887,14 +887,14 @@ for Scilab sockets. How to set the socket is described in the Blink example.
     // Samples from left to centre are samples before the trigger 
     // Samples from the centre to the right are samples after the trigger
     
-    SOCKET_write(tcpipObj,'ACQ:TRIG:DLY 0');
+    SOCKET_write(tcpipObj,'ACQ:TRig:DLY 0');
     
     //// Start & Trigg
     // Trigger source setting must be after ACQ:START
     // Set trigger to source 1 positive edge
     
     SOCKET_write(tcpipObj,'ACQ:START');
-    SOCKET_write(tcpipObj,'ACQ:TRIG CH1_PE');  
+    SOCKET_write(tcpipObj,'ACQ:TRig CH1_PE');  
     
     // Wait for the trigger
     // Until the trigger is true wait to acquire
