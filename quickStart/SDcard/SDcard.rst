@@ -187,15 +187,21 @@ The next procedure will create a clean SD card image.
 
 #. Write the image onto an SD card. Instructions are available for various operating systems:
 
-.. contents::
-   :local:
-   :backlinks: none
-   :depth: 1
+  .. contents::
+      :local:
+      :backlinks: none
+      :depth: 1
 
 4. Insert the SD card into the Red Pitaya.
 
    .. figure:: img/pitaya-quick-start-insert-sd-card.png
       :align: center
+
+#. Reset the calibration parameters to **Factory Default** (or :ref:`recalibrate your Red Pitaya <calibration_app>`).
+
+   .. note::
+
+       When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
 
 .. note::
 
@@ -471,7 +477,7 @@ A Red Pitaya SD card contains two partitions:
    *   customized Nginx web server
 
 
-2. ~4 GB Ext4 contains the **OS**:
+2. ~8 GB Ext4 contains the **OS**:
 
    *   Ubuntu/Debian OS
    *   various libraries
