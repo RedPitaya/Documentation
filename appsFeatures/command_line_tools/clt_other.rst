@@ -33,7 +33,7 @@ If NFS share is not available, you can use secure copy:
 
 Alternatively, Linux users can use graphical SCP/SFTP clients, such as Nautilus, for example (explorer window). To access the address line, type *[CTRL + L]* and type in the following URL: *sftp://root@<ip_address>*
 
-.. figure:: Nautilus_address_bar.png
+.. figure:: img/Nautilus_address_bar.png
    :align: center
    
    Nautilus URL/address bar.
@@ -42,12 +42,12 @@ Type the Red Pitaya password (next Figure). The default Red Pitaya password for 
 changing the root password, refer to buildroot configuration - a mechanism for building the Red Pitaya root 
 file-system, including the */etc/passwd* file hosing the root password.
 
-.. figure:: Nautilus_password_window.png
+.. figure:: img/Nautilus_password_window.png
    :align: center
 
 After logging in, the main screen will show the directory content of Red Pitaya’s root filesystem. To manipulate files on Red Pitaya, navigate and select your stored data, then use the simple copy-paste and drag-and-drop principles (see Figure 2).
 
-.. figure:: Nautilus_root_fs.png
+.. figure:: img/Nautilus_root_fs.png
    :align: center
 
 ----------------------------
@@ -61,21 +61,21 @@ Windows users should use an SCP client such as |WinSCP|. Download and install it
     <a href="http://winscp.net/download/winscp518setup.exe" target="_blank">WinSCP</a>
 
 
-.. figure:: WinSCP_login_screen.png
+.. figure:: img/WinSCP_login_screen.png
    :align: center
 
    WinSCP login screen.
 
 After logging in, the main screen will show the content of the Red Pitaya root filesystem. To manipulate files on Red Pitaya, navigate and select your stored data, then use the simple copy-paste and drag-and-drop principles (see next figure).
 
-.. figure:: WinSCP_directory_content.png
+.. figure:: img/WinSCP_directory_content.png
    :align: center
 
    Directory content on Red Pitaya.
 
 Select the destination (local) directory to save the data file to (see next Figure).
 
-.. figure::  WinSCP_filesave.png
+.. figure:: img/ WinSCP_filesave.png
    :align: center
 
    Select file copy destination.
