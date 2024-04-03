@@ -47,52 +47,55 @@ The Red Pitaya signal generator can be controlled through the |generate| command
 
 .. tabs::
 
-   .. group-tab:: OS version 0.99 or older
+    .. group-tab:: OS version 0.99 or older
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-        redpitaya> generate
-        generate version 0.90-299-1278
+            redpitaya> generate
+            generate version 0.90-299-1278
 
-        Usage: generate   channel amplitude frequency <type>
+            Usage: generate   channel amplitude frequency <type>
 
-            channel     Channel to generate a signal on [1, 2].
-            amplitude   Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
-            frequency   Signal frequency in Hz [0.0 - 6.2e+07].
-            type        Signal type [sine, sqr, tri].
+                channel     Channel to generate a signal on [1, 2].
+                amplitude   Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
+                frequency   Signal frequency in Hz [0.0 - 6.2e+07].
+                type        Signal type [sine, sqr, tri].
 
-   .. group-tab:: OS version 1.00-1.04
+    .. group-tab:: OS version 1.00-1.04
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-        redpitaya> generate
-        generate version 1.00-35-25a03ad-25a03ad
+            redpitaya> generate
+            generate version 1.00-35-25a03ad-25a03ad
 
-        Usage: generate channel amplitude frequency <gain> <type> <end frequency> <calib>
+            Usage: generate channel amplitude frequency <gain> <type> <end frequency> <calib>
 
-            channel         Channel to generate a signal on [1, 2].
-            amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
-            frequency       Signal frequency in Hz [0.00 - 1.2e+08].
-            gain            Gain output value [x1, x5] (default value x1).
-            type            Signal type [sine, sqr, tri, sweep].
-            end frequency   Sweep-to frequency in Hz [0.00 - 1.2e+08].
-            calib           Disable calibration [-c]. By default calibration enabled
+                channel         Channel to generate a signal on [1, 2].
+                amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
+                frequency       Signal frequency in Hz [0.00 - 1.2e+08].
+                gain            Gain output value [x1, x5] (default value x1).
+                type            Signal type [sine, sqr, tri, sweep].
+                end frequency   Sweep-to frequency in Hz [0.00 - 1.2e+08].
+                calib           Disable calibration [-c]. By default calibration enabled
 
-   .. group-tab:: OS version 2.00
+    .. group-tab:: OS version 2.00
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-        redpitaya> generate
-        generate version 2.00-15-5e06f6363
+            root@rp-f0a235:~# generate
+            generate version 2.00-0-6181e0263
 
-        Usage: generate   channel amplitude frequency <type> <end frequency> <calib>
+            Usage: generate   channel amplitude frequency <type> <end frequency> <calib> <debug>
 
-	        channel         Channel to generate a signal on [1, 2].
-	        amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
-	        frequency       Signal frequency in Hz [0 - 62500000].
-	        type            Signal type [sine, sqr, tri, sweep].
-	        end frequency   Sweep-to frequency in Hz [0 - 62500000].
-	        calib           Disable calibration [-c]. By default, calibration is enabled.
+                    channel         Channel to generate signal on [1, 2].
+                    amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].
+                    frequency       Signal frequency in Hz [0 - 62500000].
+                    type            Signal type [sine, sqr, tri, sweep, dc].
+                    end frequency   Sweep-to frequency in Hz [0 - 62500000].
+                    calib           Disable calibration [-c]. By default calibration enabled.
+                    debug           Debug FPGA registers [-d].
+
+            Setting the frequency to 0 will disable the generator completely.
 
 
 The performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the :ref:`Red Pitaya boards comparison <rp-board-comp>`.
@@ -342,7 +345,7 @@ The Bode Analyzer can be used from the console.
 
 .. code-block:: console
 
-   root@rp-f01c35:~# bode
+   redpitaya> bode
    Too few arguments!
 
    Bode analyzer version 1.04-133-feaf63b43, compiled at Fri Jan 22 04:25:24 2021
@@ -415,18 +418,19 @@ The LCR meter can be used from the console.
 
 .. code-block:: console
 
-   root@rp-f01c35:~# lcr
-   Too few arguments!
+    root@rp-f0a235:~# lcr
+    Too few arguments!
 
-   LCR meter version 0.00-0000, compiled on Fri Aug 14 03:29:10 2020
+    LCR meter version 2.00-0, compiled at Sat Mar 30 05:03:52 2024
 
-   Usage:	lcr [freq] [r_shunt]
+    Usage:  lcr freq r_shunt [-v]
 
-      freq               Signal frequency used for measurement [ 100 , 1000, 10000 , 100000 ] Hz.
-      r_shunt            Shunt resistor value in Ohms [ 10, 100, 1000, 10000, 100000, 1000000 ]. If set to 0, Automatic ranging is used.
-                        Automatic ranging demands an Extenson module.
-
-   Output:	Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
+            freq               Signal frequency used for measurement Hz.
+            r_shunt            Shunt resistor value in Ohms [ 10, 100, 1000, 10000, 100000, 1000000 ]. If set to 0, Automatic ranging is used.
+            -v                 Verbose mode
+                            Automatic ranging demands Extenson module.
+                            
+    Output: Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
 
 
 To run the LCR meter, perform the following three steps:
