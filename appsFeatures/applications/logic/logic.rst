@@ -131,9 +131,7 @@ The Logic Analyser extension module is recommended for maximum performance of th
 .. figure:: img/Slika_09_LA.png
 	:width: 1000
 
-To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyser probes to the :ref:`E1 <E1>` on the Red Pitaya board. The pins used for the logic analyser board are shown in the picture below.
-
-
+To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyser probes to the :ref:`E1 <E1>` on the Red Pitaya board (3V3 logic ONLY). The pins used for the logic analyser board are shown in the picture below.
 
 .. note::
 
@@ -144,7 +142,7 @@ To use the Logic Analyzer without the extension module, you need to be more care
 
 
 Source code
-============
+************
 
 The |la_source_code| is available on our GitHub.
 
