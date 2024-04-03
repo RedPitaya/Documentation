@@ -97,6 +97,7 @@ The Red Pitaya signal generator can be controlled through the |generate| command
 
 The performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the :ref:`Red Pitaya boards comparison <rp-board-comp>`.
 
+
 .. _sig_acq_util:
 
 ==========================
@@ -225,6 +226,7 @@ The signal from Red Pitaya can be acquired through the |acquire| command line ut
 
 The performance of the acquisition tool differs from one Red Pitaya model to another.
 Please see the :ref:`Red Pitaya boards comparison <rp-board-comp>` for more information.
+
 
 .. _monitor_util:
 
@@ -398,6 +400,7 @@ To run the bode, you need to do 2 steps:
             89000.00    0.00521    0.38478
             100000.00   -0.00933   0.36610
 
+
 .. _lcr_util:
 
 =========
@@ -466,6 +469,7 @@ To run the LCR meter, you need to do 2 steps:
             B_p     0.000000
             |Y|     0.000184
             -P_Y    -1.364216 deg
+
 
 .. _stream_util:
 
@@ -550,6 +554,7 @@ The configuration for streaming is automatically created and saved in the file: 
 
     <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming app</a>
 
+
 .. _led_util:
 
 ==========================
@@ -585,6 +590,60 @@ To enable the LEDs:
 .. code-block:: shell-session
 
     root@rp-f09508:~# led_control -y=On -e=On -r=On
+
+
+.. _calib_util:
+
+======================
+Calibration utility
+======================
+
+Red Pitaya calibration can be accessed and configured throgh the command-line utility.
+
+Usage instructions:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib
+    calib version 2.00-0-da52519c4
+
+    Usage: calib [OPTION]...
+
+    OPTIONS:
+     -r    Read calibration values from eeprom (to stdout).
+           The -n flag has no effect. The system automatically determines the type of stored data.
+
+     -w    Write calibration values to eeprom (from stdin).
+           Possible combination of flags: -wn, -wf, -wfn, -wmn, -wfmn
+	
+     -f    Use factory address space.
+     -d    Reset calibration values in eeprom from factory zone. WARNING: Saves automatic to a new format
+
+     -i    Reset calibration values in eeprom by default
+           Possible combination of flags: -in , -inf.
+
+     -o    Converts the calibration from the user zone to the old calibration format. For ecosystem version 0.98
+
+     -v    Produce verbose output.
+     -h    Print this info.
+     -x    Print in hex.
+     -u    Print stored calibration in unified format.
+
+     -m    Modify specific parameter in universal calibration
+     -n    Flag for working with the new calibration storage format.
+
+Printing current calibration values:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -u
+
+Reseting calibration values to factory default:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -d
+
 
 ======================================================
 Other useful information related to command-line tools
