@@ -9,7 +9,7 @@ When installing 3rd party applications for Red Pitaya, some additional steps mig
 For offline application installation, please see the :ref:`Developers Guide manual application installation <manual_app_install>`.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
    oscSigGen/osc.rst
    spectrum/spectrum.rst
