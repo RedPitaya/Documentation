@@ -71,8 +71,10 @@ Apart from calibration, this option will also allow you to identify any parasiti
     :width: 80 %
 
 *   **RESET**:
+
     *   **DEFAULT** - remove the calibration parameters
     *   **FACTORY** - reset the board to the factory calibration parameters
+
 *   **APPLY** the calibration - save the DC offset in the system settings
 *   **CLOSE** the calibration
 
