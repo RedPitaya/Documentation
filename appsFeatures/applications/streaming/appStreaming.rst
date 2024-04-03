@@ -4,12 +4,17 @@
 Streaming
 #########
 
+
+Features
+*********
+
 The Streaming application enables users to stream data from Red Pitaya to:
 
     * A file saved on the Red Pitaya SD card
     * A file saved on a remote computer via the ethernet protocol (UDP or TCP).
 
-The user can set:
+
+The user can specify:
 
     * The sampling frequency (rate)
     * Input channel count (Channel 1, Channel 2, or Both (4 Channels for STEMlab 125-14 4-Input))
@@ -72,17 +77,15 @@ Here are the minimum chunck limitations sorted by file type and units:
    We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
 
 
+Streaming modes
+******************
 
+The Streaming application has three different data streaming modes:
 
-Getting started with the Red Pitaya streaming feature
-=======================================================
-
-Run the Streaming app from the Red Pitaya Web interface
-
-.. figure:: img/redpitaya_main_page.png
-    :width: 600
-    :align: center
-
+.. contents::
+    :local:
+    :backlinks: none
+    :depth: 1
 
 Stream locally to a file on Red Pitaya's SD card
 =================================================
@@ -394,7 +397,7 @@ The other option for streaming is utilyzing the Desktop Application.
 
 
 Source code
-==============
+*************
 
 The |stream_source_code| is available on our GitHub.
 
