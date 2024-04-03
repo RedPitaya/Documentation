@@ -203,7 +203,7 @@ Specifications
 
 
 Source code
-============
+*************
 
 The |bode_anal_source_code| is available on our GitHub.
 
