@@ -429,29 +429,33 @@ The LCR meter can be used from the console.
    Output:	Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]
 
 
-To run the LCR meter, you need to do 2 steps:
+To run the LCR meter, perform the following three steps:
 
-    #. Load the FPGA image of streaming
-
+    #. When not using the :ref:`LCR meter extension shield <lrc_app>`. Connect the shunt resistor and the DUT (device under test) according to the schematic below:
+    
+        .. figure:: img/600px-Impedance_analyzer_manaul_R_Shunt.png
+            :width: 600px
+    
+    #. Load the default FPGA image
+    
         .. tabs::
-
+    
             .. group-tab:: OS version 1.04 or older
-
+    
                 .. code-block:: shell-session
-
+    
                     redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
+    
             .. group-tab:: OS version 2.00
-
+    
                 .. code-block:: shell-session
-
+    
                     redpitaya> overlay.sh v0.94
-
-
-    #. Launch a console application.
-
+    
+    #. Launch the console application.
+    
         .. code-block:: console
-
+    
             root@rp-f01c35:~# lcr 100 100000 -v
             Frequency       100 Hz
             Z       5.424000 kOmh
@@ -469,7 +473,6 @@ To run the LCR meter, you need to do 2 steps:
             B_p     0.000000
             |Y|     0.000184
             -P_Y    -1.364216 deg
-
 
 .. _stream_util:
 
@@ -489,7 +492,7 @@ The server for streaming can be started not only using the web interface but als
 
 To start the server, you need to do 3 steps:
 
-    #. Load the FPGA image of streaming
+    #. Load the FPGA image for streaming
 
         .. tabs::
 
@@ -513,7 +516,7 @@ To start the server, you need to do 3 steps:
 
             In version 2.00, the configuration file has been moved to a new location: **/root/.config/redpitaya/apps/streaming/streaming_config.json**
 
-    #. Launch a console application.
+    #. Launch the console application.
 
         .. code-block:: console
 
@@ -563,7 +566,7 @@ LED enable/disable utility
 
 The Red Pitaya LED indications can be enabled or disabled through the led_control command-line utility. Disabling LEDs is important for applications where the noise level needs to be reduced to its minimum.
 
-Usage instructions:
+Use instructions:
 
 .. code-block:: shell-session
 
