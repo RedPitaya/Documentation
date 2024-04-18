@@ -67,7 +67,7 @@ First, backup the file and then open it as a superuser with a text editor such a
 
 and change the VERSION line to ``VERSION=”18.04.4 LTS (Bionic Beaver)"`` and save the file. The edited file should look something like this:
 
-.. figure:: os_release.png
+.. figure:: img/os_release.png
 
 
 Afterward, you can either run the **Xilinx_Unified_2020.1_0602_1208_Lin64.bin** (Linux web installer) or the xsetup file from the extracted folder (unified installer).
@@ -400,7 +400,7 @@ The following scripts perform various tasks:
    If all IPs are not up-to-date, they need to be updated.
    Before doing this, the TCL script must still be manually modified to your Vivado version, or the block design will not be created when Vivado starts.
 
-   .. figure:: IPupdate.png
+   .. figure:: img/IPupdate.png
 
 
    When IPs are up-to-date, go to the tab Tcl console and run the command:
@@ -426,12 +426,12 @@ The following scripts perform various tasks:
 
         $ make project PRJ=v0.94 MODEL=Z10
 
-    .. figure:: project_make.png
+    .. figure:: img/project_make.png
 
     A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
     You can add/write your Verilog module at the end of *red_pitaya_top.sv* file (or add a new source by right-clicking the *Design Sources* folder and *Add Source*):
 
-    .. figure:: vivado_project.png
+    .. figure:: img/vivado_project.png
 
 
     You can connect newly added sources in the Diagram (Block Design) section (If it is not open: *Window => Design => double click system*).
@@ -449,7 +449,7 @@ The following scripts perform various tasks:
 9.  The resulting .bit file is located in **<Red Pitaya repository>/fpga/prj/<project name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit**
     This file must be copied to the Red Pitaya Linux OS into the **/opt/redpitaya/fpga** directory.
 
-    .. figure:: vivadoGUI.png
+    .. figure:: img/vivadoGUI.png
 
 
     1. Run Synthesis
@@ -611,7 +611,7 @@ See if the JTAG cable is detected. In Ubuntu, that is done with:
 
 JTAG-HS3 is displayed as an FTDI device.
 
-.. figure:: lsusb.jpg
+.. figure:: img/lsusb.jpg
 
 
 Now, install Digilent Adept 2 software from https://digilent.com/reference/software/adept/start.
@@ -627,37 +627,37 @@ Once these packages are installed, you can check if the driver detects your adap
 
     $ djtgcfg enum
 
-.. figure:: driver_check.jpg
+.. figure:: img/driver_check.jpg
 
 
 Now, open Vivado 2020.1, click *Program and Debug -> Open Target -> Auto Connect*.
 
-.. figure:: program_menu.jpg
+.. figure:: img/program_menu.jpg
 
 
 This will display a Xilinx-compatible JTAG cable in the Hardware window, under localhost.
 
-.. figure:: cable.jpg
+.. figure:: img/cable.jpg
 
 
 Now plug your cable into Red Pitaya's JTAG connector. The pins are marked on the bottom side of Red Pitaya's PCB.
 
-.. figure:: JTAG_pins.jpg
+.. figure:: img/JTAG_pins.jpg
 
 
 A Xilinx device should now appear in Vivado (on the detected cable). In this case, it's an xc7z010_1.
 
-.. figure:: program.jpg
+.. figure:: img/program.jpg
 
 
 Now, you can click Program Device.
 
-.. figure:: connected.jpg
+.. figure:: img/connected.jpg
 
 
 A bitfile selector prompt appears and when a valid file is selected, Red Pitaya can be programmed.
 
-.. figure:: file_select.jpg
+.. figure:: img/file_select.jpg
 
 
 **********
@@ -749,9 +749,9 @@ Input range
 -----------
 
 The default mounting intends for unipolar XADC inputs, which allow for observing only positive signals with a saturation range of **0 V ~ 0.5 V**.
-There are additional voltage dividers use to extend this range to **0 V ~ 3.5 V**.
+There are additional voltage dividers used to extend this range to **0 V ~ 3.5 V**.
 
-It is possible to configure XADC inputs into a bipolar mode with a range of **-0.5 V ~ +0.5 V**, but it requires removing R273 and providing a **0.5 V ~ 1 V** common voltage on the :ref:`E2 <E2>` connector. Please consult the :ref:`schematics <schematics_125_14>` for more details.
+It is possible to configure XADC inputs into a bipolar mode with a range of **-0.5 V ~ +0.5 V** (**-3.5 V ~ 3.5 V** with the dividers), but it requires removing R273 and providing a **0.5 V ~ 1 V** common voltage on the :ref:`E2 <E2>` connector. Please consult the :ref:`schematics <schematics_125_14>` for the position of R273. Afterwards, open the Red Pitaya v0.94 (or v0.94_250 for SIGNALlab 250-12) FPGA project. In the block diagram, the XADC wizard has a setting in the *Channel Sequencer* page to switch the XADCs to bipolar mode. After rebuilding the FPGA, the values are read as 12-bit 2's complement values.
 
 
 5V power supply
@@ -796,7 +796,7 @@ Handling of GPIO and LED signals depends on whether they are connected to Zynq-7
 MIO pins signals are controlled by the PS block.
 Each pin has a few multiplexed functions.
 The multiplexer, slew rate, and pull-up resistor enable can be controlled using software usually with device tree `pinctrl` code.
-Xilinx also provides Linux drivers for all PS based peripherals, so all MIO signals can be managed using Linux drivers.
+AMD (Xilinx) also provides Linux drivers for all PS based peripherals, so all MIO signals can be managed using Linux drivers.
 
 Pins connected to the PL block require FPGA code to function.
 If the pin signals are wired directly (in the FPGA sources) from PS-based EMIO signals to the FPGA pads, then they can be managed using Linux drivers intended for the PS block.
