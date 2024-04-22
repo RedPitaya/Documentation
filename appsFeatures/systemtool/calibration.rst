@@ -70,13 +70,13 @@ Apart from calibration, this option will also allow you to identify any parasiti
     :align: center
     :width: 80 %
 
-*   **RESET**:
+-   **RESET**:
 
-    *   **DEFAULT** - remove the calibration parameters
-    *   **FACTORY** - reset the board to the factory calibration parameters
+    -   **DEFAULT** - reset all offset values to 0 and gain values to 1
+    -   **FACTORY** - reset the board to the factory calibration parameters
 
-*   **APPLY** the calibration - save the DC offset in the system settings
-*   **CLOSE** the calibration
+-   **APPLY** the calibration - save the DC offset in the system settings
+-   **CLOSE** the calibration
 
 When closing the application without saving the values, the following prompt will appear:
 
@@ -110,7 +110,7 @@ DAC calibration parameters
     :width: 70 %
 
 1. **ON/OFF**. Turn the specified output ON or OFF.
-#. **DAC settings**. Change the output waveform (type), frequency, amplitude, and offset. Currently, only the waveform (type) can be changed.
+#. **DAC settings**. Change the output waveform (type), frequency, amplitude, and offset.
 #. **DAC Offset**. Change the offset by the number in the middle. The amount can be selected from the dropdown menu.
 #. **DAC Gain**. Change the gain by the number in the middle. The amount can be selected from the dropdown menu.
 
