@@ -28,7 +28,7 @@ Streamed data can be stored into:
 
     * Standard audio WAV file format
     * Technical Data Management Streaming (TDMS) file format
-    * Fast and compact binary format (BIN). It can be converted to CSV format.
+    * Fast and compact binary format (BIN). It can be converted to CSV format with the use of *convert_tool* command line tool.
 
 Max. streaming speeds (per board) are limited to:
 
@@ -314,7 +314,7 @@ Streaming to a remote computer via Command Line or Terminal
 
                         The binary file can be converted using the *convert_tool* application.
 
-                        .. figure:: img/csv_list.png
+                        .. figure:: img/csv_convert.png
                             :width: 600
                             :align: center
 
@@ -394,6 +394,44 @@ The other option for streaming is utilyzing the Desktop Application.
 .. |Streaming Client| raw:: html
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
+
+
+Converting BIN file to CSV
+===============================
+
+The binary file can be converted to the CSV format using the **convert_tool** application, which comes in the *.zip* folder together with the *Command line streaming tool*.
+
+.. figure:: img/Streaming_app_cmd_clients.png
+                :width: 1000
+                :align: center
+
+.. figure:: img/csv_list.png
+   :width: 600
+   :align: center
+
+.. figure:: img/csv_convert.png
+   :width: 600
+   :align: center
+
+The convert tool has the following functionality:
+
+.. figure:: img/csv_convert_tool_functionality.png
+   :width: 600
+   :align: center
+
+Convert tool source code
+-------------------------
+
+The |convert_tool_source_code| is available on our GitHub. You can find more information regarding the |BIN_file_structure|.
+
+.. |stream_source_code| raw:: html
+
+  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager/src/convert_tool" target="_blank">Convert tool source code</a>
+
+
+.. |BIN_file_structure| raw:: html
+
+  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager/src/convert_tool" target="_blank">BIN file structure here</a>
 
 
 Source code
