@@ -7,8 +7,23 @@ Known software issues
 In this section is a list of known software issues with the Red Pitaya platforms ordered by the Red Pitaya OS release version. These issues will be fixed with the next major software updates.
 
 ==========
+2.00-35
+==========
+
+Local network visibility
+---------------------------
+
+Red Pitaya does not appear in the ARP table upon boot (when using the "arp -a" command). It is still pingable and appears in the ARP table upon establishing connection through the rp-xxxxxx.local address.
+
+
+==========
 2.00-30
 ==========
+
+Local network visibility
+---------------------------
+
+Red Pitaya does not appear in the ARP table upon boot (when using the "arp -a" command). It is still pingable and appears in the ARP table upon establishing connection through the rp-xxxxxx.local address.
 
 Wi-Fi Low Signal Bug
 -----------------------
