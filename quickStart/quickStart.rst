@@ -7,7 +7,7 @@ Red Pitaya is a software-defined multi-instrument, digitiser and open-source FPG
 
 The main feature of Red Pitaya is two fast analog inputs and two fast analog outputs with 125 Msps and 14 bit resolution. The voltage ranges are +-1 V or +-20 V for the inputs (depending on jumper settings) and +-1 V for the outputs. The board also has additional low-speed analog inputs and outputs, 16 digital GPIO pins, I2C, SPI, UART and CAN digital interfaces and eight programmable LEDs. The heart of the Red Pitaya is the AMD Xilinx Zynq 7010 SoC with a dual-core ARM Cortex A9 processor. The board runs on the Ubuntu Linux operating system, which is stored on the micro SD card.
 
-... image from Red Pitaya
+.. image from Red Pitaya
 
 The board is compatible with any computer operating system (Windows, Linux, MacOS). Ethernet is used to transfer data between the board and the computer.
 
@@ -17,18 +17,17 @@ The Red Pitaya is used everywhere. From the International Space Station to count
 
 So how are you going to use it?
 
-- Connection
-- Applications
-- Programming
-- FPGA
-- Customization
-- I'll take your entire stock!
+- :ref:`Connection <ConnectSTEMlab>`
+- :ref:`Applications <all_apps>`
+- :ref:`Programming <programming>`
+- :ref:`FPGA <build-fpga>`
+- :ref:`Customization <customization>`
+- |shop|
 
 GitHub source code:
 
-- Ecosystem and applications
-- FPGA
-
+- Ecosystem and applications: |ecosystem|
+- FPGA: |FPGA|
 
 
 .. toctree::
@@ -40,3 +39,18 @@ GitHub source code:
    alucase/alucase
    pvccase/pvccase
    troubleshooting/troubleshooting
+
+
+.. |shop| raw:: html
+
+    <a href="https://redpitaya.com/shop/" target="_blank">I'll take your entire stock!</a>
+
+
+.. |ecosystem| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">RedPitaya/RedPitaya</a>
+
+
+.. |FPGA| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">RedPitaya/RedPitaya-FPGA</a>
