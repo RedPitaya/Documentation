@@ -1,3 +1,5 @@
+.. _all_apps:
+
 ############
 Applications 
 ############
