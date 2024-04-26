@@ -1,3 +1,5 @@
+.. _build-fpga:
+
 ################
 Build FPGA image
 ################
