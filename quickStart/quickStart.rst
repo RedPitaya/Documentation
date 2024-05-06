@@ -38,6 +38,7 @@ GitHub source code:
    SDcard/SDcard
    alucase/alucase
    pvccase/pvccase
+   heatsink/heatsink
    troubleshooting/troubleshooting
 
 
