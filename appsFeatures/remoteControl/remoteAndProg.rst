@@ -2,15 +2,15 @@
 Programming and remote-control tools
 ####################################
 
-Here are all the tools and examples for programming and controlling your Red Pitaya. This section has the following chapters:
+Here you will find all the tools and examples you need to program and control your Red Pitaya. This section contains the following chapters
 
-- **SCPI server** - How to set up an SCPI server on your Red Pitaya and remotely control it through Python, MATLAB, or LabVIEW?
-- **C and Python Applications** - How to run C and Python programs directly on the Linux OS of your Red Pitaya board?
-- **JupyterLab** - How to use the JupyterLab application to create interactive documents with Python code?
-- **Deep Memory Acquisition** - How to acquire data directly into the DDR RAM with variable buffer sizes at full speed?
-- **List of supported SCPI & API commands** - The list of all available SCPI and API commands available on the Red Pitaya with a short description of each command and version of the OS that the command was first introduced in
-- **Examples** - Code examples for SCPI and API covering everything from controlling the LEDs to data acquisition and generation to digital communication interfaces.
-- **Known SCPI & API issues and changes by OS version** - Is your code not working as intended? Check this section for known command issues or release dates of newer commands.
+- **SCPI Server** - How to set up an SCPI server on your Red Pitaya and control it remotely from Python, MATLAB or LabVIEW?
+- **C and Python Applications** - How to run C and Python programs directly on the Linux OS of your Red Pitaya board.
+- **JupyterLab** - How to use the JupyterLab application to create interactive documents with Python code.
+- **Deep Memory Acquisition** - How to acquire data directly into DDR RAM with variable buffer sizes at full speed?
+- **List of Supported SCPI & API Commands** - A list of all the SCPI and API commands available on the Red Pitaya, with a short description of each command and the OS version in which the command was first introduced.
+- **Examples** - Code examples for SCPI and API covering everything from LED control to data acquisition and generation to digital communication interfaces.
+- **Known SCPI & API Issues and Changes by OS Version** - Is your code not working as intended? Check this section for known command issues or release dates of newer commands.
 
 .. toctree::
    :maxdepth: 1
@@ -29,7 +29,7 @@ Here are all the tools and examples for programming and controlling your Red Pit
 Introduction to data acquisition and generation with Red Pitaya
 ******************************************************************
 
-In this section we will discuss all the available options for generating and acquiring data with Red Pitaya from the simplest to the most advanced. We will also discuss what are the limitations of each mode and possible problems with implementation
+In this section we will discuss all the options available for generating and acquiring data with Red Pitaya, from the simplest to the most advanced. We will also discuss the limitations of each mode and possible implementation issues.
 
 Acquisition options
 ====================
@@ -47,12 +47,12 @@ Ordered from simplest to most complex:
 Oscilloscope and other applications
 ------------------------------------------
 
-The simplest method to acquire data is to use the pre-built applications like oscilloscope, spectrum analyzer, bode analyzer, etc., that are accessible through the web interface. Use this option if you want to use Red Pitaya as a software-defined instrument and rarely requre to download the date to your computer and process it (usually screenshots and CSV data tables suffice).
+The easiest way to acquire data is to use the pre-built applications such as oscilloscope, spectrum analyser, bode analyser, etc. that are accessible through the web interface. Use this option if you want to use Red Pitaya as a software-defined instrument and rarely need to download the data to your computer and process it (usually screenshots and CSV data tables are sufficient).
 
-The data is acuired in 16384 sample-long buffers and then further processed depending on the instrument, before displayed in the web interface. The data can currently only be extracted upon user request via the application. Collecting data remotely through any application, besides the :ref:`Data stream control <streaming_top>` is currently unavailable.
+The data is captured in 16384 sample buffers and then processed depending on the instrument before being displayed in the web interface. The data can currently only be extracted from the application at the user's request. Remote data acquisition by any application other than :ref:`Data stream control <streaming_top>` is not currently available.
 
-For more information, please check :ref:`specific applications <all_apps>`.
-Application source code is available `on our GitHub here <GitHub-apps>`_.
+Please refer to :ref:`specific applications <all_apps>` for more information.
+Application source code is available on our GitHub here <GitHub-apps>.
     
 .. _GitHub-apps: https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools
 
@@ -134,13 +134,13 @@ More information about the SCPI server can be found here:
 API command acquisition (C, Python)
 -------------------------------------
 
-Another way to control the Red Pitaya is to use the C and Python API commands that run on the Red Pitaya's Linux OS. The advantage over the SCPI commands is that the API commands are faster, as there is no need to convert the data into strings, send it over the Ethernet and then reconstruct it. In addition, you have full access to the Linux operating system, which means you can configure programs to run directly at boot time, customise data interpretation, or write your own drivers to enhance the existing code. The final advantage is direct access to the FPGA's registry space, which makes programming your own software much easier.
+Another way to control the Red Pitaya is to use the C and Python API commands that run on the Red Pitaya's Linux OS. The advantage over the SCPI commands is that the API commands are faster because there is no need to convert the data into strings, send it over the Ethernet and then reconstruct it. In addition, you have full access to the Linux operating system, which means you can configure programs to run directly at boot time, customise data interpretation, or write your own drivers to enhance the existing code. Finally, you have direct access to the FPGA's registry space, making it much easier to write your own software.
 
-The Python API commands are the same as the C API commands, as they are just a Python front-end for the C commands. You can run Python code directly on Red Pitaya starting with Red Pitaya 2.00-30 OS (out of the box).
+The Python API commands are the same as the C API commands, as they are just a Python front-end to the C commands. You can run Python code directly on Red Pitaya starting with Red Pitaya 2.00-30 OS (out of the box).
 
 Otherwise, the overall functionality is almost exactly the same as via the SCPI commands, but there are a few commands that have not yet received their SCPI versions.
 
-One thing that should be mentioned here is that deep memory acquisition can be speeded up for long sequences of data by acquiring the data using a C or Python program and then establishing a TCP connection to the computer to achieve a much faster transfer than using the SCPI commands. This requires custom code to establish the connection, transmit the data to the computer, and receive the data from a program such as MATLAB, where it can be processed. 
+One thing to note here is that deep memory acquisition of long sequences of data can be speeded up by acquiring the data using a C or Python program and then establishing a TCP connection to the computer to achieve a much faster transfer than using the SCPI commands. This requires custom code to establish the connection, transmit the data to the computer, and receive the data from a program such as MATLAB, where it can be processed. 
 
 All information about running C and Python programs can be found here:
 
@@ -151,9 +151,22 @@ All information about running C and Python programs can be found here:
 Streaming application
 -----------------------
 
+For those looking for continuous data acquisition, check out :ref:`the streaming application <streaming_top>` (also known as "data stream control"). It allows continuous data acquisition from one or both of Red Pitaya's inputs directly to a file on a computer. The data can be captured indefinitely, but there are speed limitations and currently no triggering options. 
+The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details and limitations are available :ref:`here <streaming_top>`.
 
-   - **Streaming application** – Continuous data acquisition. The data is streamed from one or both inputs directly to a file on a computer. The data can be acquired indefinitely, but there are speed limitations. 
-The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details on the limitations are available :ref:`here <streaming_top>`.
+There are two ways to stream the data. Either via Ethernet to a *bin*, *tdms* or *wav* file on a computer or to the Red Pitaya's SD card. The streaming parameters can also be controlled from a desktop client application. If multiple boards are on the same network (like when using the :ref:`X-channel system <x-ch_streaming>`), they can all be controlled simultaneously from the client application.
+
+All information about running C and Python programs can be found here:
+
+- :ref:`Streaming application <streaming_top>`
+- GitHub source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager>`_
+
+
+Deep Memory Acquisition
+------------------------
+
+
+
    - **Deep Memory (AXI mode)** *(only OS 2.00-23 – latest Beta)* – Long sequence triggered data acquisition. The data can be acquired at different speeds (up to 125 MHz), and it is saved directly into the DDR RAM. The buffer length can be specified by the user but must not exceed 256 MB for both channels. After the acquisition is complete, Red Pitaya needs some time to transfer the whole file to the computer (the RAM must be emptied) before the acquisition can be reset. Functions exactly the same as **API commands**. More details are available :ref:`here <deepMemoryAcq>`.
    -	**Custom Acquisition (FPGA)** – Red Pitaya is open-source so any mode above can be customized by the user to tune it to their specific application.
 
