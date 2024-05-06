@@ -29,11 +29,9 @@ Contents:
    Interior of the Red Pitaya Aluminium Case.
     
 
-On the interior, there is a block located in the upper part of the housing (right) that passes the heat to the housing. Therefore, the entire case acts as a heat sink.
-
-On the lower part, there are fits for a few air vents (left).
-
-Apertures in the case expose connections to the expansion ports **E1** and **E2**.
+*   On the interior, there is a block located in the upper part of the housing (right side in the picture above) that passes the heat to the housing. Therefore, the entire case acts as a heat sink.
+*   On the lower part, there are fits for a few air vents (left side in the picture above).
+*   Apertures in the case expose connections to the expansion ports **E1** and **E2**.
 
 .. figure:: rp_alucase_04.jpg
     :align: center
