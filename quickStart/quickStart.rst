@@ -44,7 +44,7 @@ GitHub source code:
 
 .. |shop| raw:: html
 
-    <a href="https://redpitaya.com/shop/" target="_blank">I'll take your entire stock!</a>
+    <a href="https://redpitaya.com/shop/" target="_blank">I'll take your entire stock :D</a>
 
 
 .. |ecosystem| raw:: html
