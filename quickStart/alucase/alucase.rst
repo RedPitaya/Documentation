@@ -4,7 +4,7 @@
 Red Pitaya Aluminium Case Assembly
 ##################################
 
-Regardless of whether you bought your Red Pitaya aluminium case in a kit or as a separate add-on, you will need to manually assemble it.
+Whether you bought your Red Pitaya aluminium case in a kit or as a separate add-on, you will need to assemble it by hand.
 
 **********
 Components
@@ -14,24 +14,24 @@ Components
     :align: center
     :width: 600
 
-    Components of the Red Pitaya Aluminium Case.
+    Components of the Red Pitaya aluminium case.
     
 Contents:
-    *   4 screws that close the housing and hold the board
-    *   4 rubber feet for secure positioning on the desk
-    *   a thermal pad (just barely seen in the photo)
-    *   a transparent plastic rod that guides the light of a red LED (Ready/CPU activity) to the top of the casing
+    * 4 screws to close the case and hold the board in place
+    * 4 rubber feet for secure positioning on the desk
+    * A thermal pad (barely visible in the photo)
+    * A transparent plastic rod that directs the light of a red LED (Ready/CPU activity) to the top of the case.
 
 .. figure:: rp_alucase_03.jpg
    :align: center
    :width: 600
 
-   Interior of the Red Pitaya Aluminium Case.
+   The inside of the Red Pitaya aluminium case.
     
 
-*   On the interior, there is a block located in the upper part of the housing (right side in the picture above) that passes the heat to the housing. Therefore, the entire case acts as a heat sink.
-*   On the lower part, there are fits for a few air vents (left side in the picture above).
-*   Apertures in the case expose connections to the expansion ports **E1** and **E2**.
+* On the inside, there is a block in the upper part of the case (on the right in the picture above) that dissipates heat to the case. So the whole case acts as a heat sink.
+* On the bottom of the case, there are openings for some air vents (left in the picture above).
+* The openings in the case expose the connections to the expansion ports **E1** and **E2**.
 
 .. figure:: rp_alucase_04.jpg
     :align: center
@@ -45,19 +45,18 @@ Contents:
 Assembly Instructions
 *********************
 
-#. Remove the small plastic feet by pressing the clips at the top with
-   a small pair of pliers and pushing the feet down.
+#. Remove the small plastic feet by pressing on the clips at the top with a small pair of pliers and pushing the feet down.
    
     .. figure:: rp_alucase_07.jpg
         :align: center
         :width: 600
       
-        The bottom of the Red Pitaya board showing the plastic feet.
+        The underside of the Red Pitaya board showing the plastic feet.
 
-#. Repeat the procedure for STEMlab 125-14 with the heat sink by pressing the clips together on the bottom and pushing the holder gently up.
+#. Repeat the procedure for the STEMlab 125-14 with the heat sink, pressing the clips together at the bottom and gently pushing the holder upwards.
    
-#. The heat sink of the STEMlab 125-10 is bonded with the FPGA. Slightly turn the heat sink, as shown in the picture below, until it comes loose.
-   
+#. The heat sink of the STEMlab 125-10 is glued to the FPGA. Turn the heatsink slightly, as shown in the picture below, until it comes loose.
+
     .. figure:: STEMlab_10_heatsink.png
         :align: center
 
@@ -65,21 +64,21 @@ Assembly Instructions
         :align: center
         :width: 600
    
-        The top of the Red Pitaya board showing the removed heat sink.
+        The top of the Red Pitaya board with the heat sink removed.
 
-#. Remove the remainder of the thermal paste.
+#. Remove the rest of the thermal compound.
 
 #. Apply the thermal pad to the CPU.
 
-#. Place the Red Pitaya board into the bottom part of the casing.
+#. Place the Red Pitaya board in the lower part of the case.
 
-#. Turn the top part of the casing upside down and place the light-guiding plastic.
+#. Turn the top of the case upside down and place the light guide plastic in place.
 
-#. Close it up with the bottom part of the casing, including the Red Pitaya board. Make sure that the holes from the board and the casing are aligned.
+#. Close it with the bottom part of the case, including the Red Pitaya board. Make sure the holes in the board and the housing are aligned.
 
-#. Install the four screws.
+#. Replace the four screws.
 
-#. Stick in the rubber feet.
+#. Replace the rubber feet.
 
 
 .. figure:: rp_alucase.jpg
