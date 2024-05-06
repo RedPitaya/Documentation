@@ -267,7 +267,7 @@ Table of required build flags for FPGA projects per board
 +------------------------------+---------------------+
 | SIGNALlab 250-12             | MODEL=Z20_250       |
 +------------------------------+---------------------+
-| STEMlab 125-14 4-Input       | MODEL=Z20_125_4CH   |
+| STEMlab 125-14 4-Input       | MODEL=Z20_4         |
 +------------------------------+---------------------+
 
 
