@@ -12,8 +12,7 @@ According to the ADC specification, the external clock signal level should be LV
 
 .. note::
 
-   **Can Red Pitaya external clock boards boot without the external clock present?**
-
+   **Booting without the external clock present?**
    The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
    However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
 
