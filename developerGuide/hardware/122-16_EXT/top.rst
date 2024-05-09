@@ -4,13 +4,18 @@
 SDRlab 122-16 external clock
 #############################
 
-This SDRlab version is standard SDRlab 122-16 modified in such a way that the ADC and DAC clock can be provided from an external source clock.
-External clock should be connected to Ext ADC CLK- and + pins.
-External clock signal levels should be LVDS in the range from 1 MHz to 122.8 MHz according to ADC spec.
+This version of the SDRlab is a standard SDRlab 122-16 which has been modified in such a way that the ADC, the DAC and the FPGA clock can be provided by an external clock source. An external clock should be connected to the Ext ADC CLK- and + pin
+
+**External clock specifications:**
+
+According to the ADC specification, the external clock signal level should be LVDS in the range of 1 MHz to 122.88 MHz. The operating voltage of the Red Pitaya is 3V3.
 
 .. note::
-   
-   The OS will not boot without providing an external clock.
+
+   **Can Red Pitaya external clock boards boot without the external clock present?**
+
+   The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
+   However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
 
 
 Pinout
