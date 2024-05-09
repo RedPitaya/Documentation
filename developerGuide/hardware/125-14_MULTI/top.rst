@@ -17,6 +17,12 @@ For more information about the software, please refer to: :ref:`X-Channel stream
 
 .. note::
 
+    **Booting secondary boards without the external clock present?**
+    The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
+       However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
+
+.. note::
+
     The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <click_shield_Q&A>`.
 
 
