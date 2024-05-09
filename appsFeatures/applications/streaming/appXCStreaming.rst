@@ -55,7 +55,9 @@ In order to achieve synchronization, the PRIMARY device provides a clock and tri
 
 .. note::
 
-    SECONDARY boards will NOT boot without the clock signal present!!!
+    **Booting secondary units without the external clock present?**
+    The official Red Pitaya OS will not boot on the secondary units without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
+   However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
 
 .. note::
     
