@@ -11,6 +11,11 @@ STEMlab 125-14 4-Input is a single-board RF signal acquisition platform that off
 * Zynq 7020 (bigger FPGA that offers more processing capabilities and more digital IO pins available on the extension connector).
 * Switching between internal and external clocks can be done using a jumper or control signal on the extension connector. Connect the CLK_SEL pin to GND for the board to switch to EXT clock and to 3V3 (Vcc) to use the internal clock.
 
+.. note::
+
+   **Booting without the external clock present?**
+    When the CLK_SEL pin is driven to GND, the official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
+   However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
 
 Pinout
 ========
