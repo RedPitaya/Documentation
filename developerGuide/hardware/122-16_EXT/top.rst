@@ -8,7 +8,13 @@ This version of the SDRlab is a standard SDRlab 122-16 which has been modified i
 
 **External clock specifications:**
 
-According to the ADC specification, the external clock signal level should be LVDS in the range of 1 MHz to 122.88 MHz. The operating voltage of the Red Pitaya is 3V3.
+The Ext ADC CLK+ and - pins are connected to the ENC+ and ENC- pins of the ADC.
+
+Acording to the ADC specifications, the ENC+ and ENC- inputs can be driven differentially or single-ended with a sine wave, PECL, LVDS, TTL or CMOS input.
+An optional clock duty cycle stabiliser allows high performance at full speed over a wide range of clock duty cycles. 
+The input voltage range for differentially driven ENC+ and ENC- is 0.2 to 3.6 V (towards GND) and 0 to 3.6 V (ENC+) for single-ended with a frequency between 1 MHz and 125 MHz according to the ADC specification.
+
+The operating voltage of the Red Pitaya is 3V3.
 
 .. note::
 
