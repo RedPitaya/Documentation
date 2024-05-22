@@ -154,6 +154,10 @@ The available settings by device model:
 Outputs
 =======
 
+.. note::
+
+    Please note that the output waveform displayed in the user interface is **for reference only** and does not accurately represent the phase of the output signal. The output waveform is aligned to the beginning of the screen, while the input waveforms are aligned to the time offset cursor.
+
 On the right side of the Oscilloscope & Sig. Generator application interface, the OUT1 and OUT2 channels are listed. With a simple click on the name of a channel (not the gear), the channel gets highlighted, and you can simply control all the settings of the respective channel. 
 The available settings are the following: 
 
