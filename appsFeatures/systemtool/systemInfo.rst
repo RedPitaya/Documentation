@@ -8,7 +8,7 @@ In the four corners of the Red Pitaya web interface there are the following widg
 
 .. image:: img/System_info.jpg
     :align: center
-    :width: 70 %
+    :width: 1000
 
 
 1. **General System information button:** Includes optional features that can be turned ON/OFF. For more information see the section below.
@@ -22,11 +22,15 @@ General OS and Ecosystem info
 
 Once the Info button is clicked, the following settings will be displayed:
 
-.. image:: img/Info_button.jpg
+.. image:: img/Info_button.png
     :align: center
-    :width: 50 %
+    :width: 800
 
 In the **System Info** section, general information regarding *Board model*, *MAC address*, *DNA number*, etc. is displayed.
+
+.. note::
+
+    The ecosystem version for nightly builds is labelled 2.00-0, as shown in the image above.
 
 The **System Settings** section contains the following options:
 
@@ -37,7 +41,7 @@ The **System Settings** section contains the following options:
 
 .. image:: img/Info_button_250-12.png
     :align: center
-    :width: 50 %
+    :width: 800
 
 System information on SIGNALlab 250-12.
 
