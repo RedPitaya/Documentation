@@ -11,7 +11,7 @@ The Logic Analyzer application enables the representation of the binary states o
 
 .. note::
 
-    An additional extension module is needed to use the *Logic Analyzer PRO* application. The module can be purchased from the |RP_store|.
+    An additional extension module extends the voltage range of the *Logic Analyzer* application to 5 V. The module provides protection for the GPIO pins and can be purchased from the |RP_store|.
 
 .. |RP_store| raw:: html
 
@@ -34,7 +34,7 @@ Apart from the actual graph, there are five key areas/elements into which the su
 Features
 ********
 
-ANALYZING BINARY SIGNALS
+Analyzing binary signals
 ========================
 
 .. figure:: img/Slika_03_LA.png
@@ -48,7 +48,7 @@ By selecting the gear button behind the "DIGITAL" selection field, you enter the
 When the pre-sample data buffer value is set, the trigger event of the recording is located. This makes particular sense if you want to find out what happened before the defined trigger event. To illustrate with an example, the sample rate is set to 4 MS/s. The stored time segment thus amounts to approximately 0.25 s = 250 ms. If the pre-sample data buffer is set to 10 ms, then the recorded signal shows what has happened 10 ms before the event and 240 ms after the event.
 
 
-TRIGGER:
+Trigger
 ========
 
 .. figure:: img/Slika_05_LA.png
@@ -65,9 +65,8 @@ The possible criteria for a trigger event are the following:
 
 By clicking the RUN button, the recording is started. The status display informs you whether the process is still running (WAITING) or has already been completed (DONE). After finishing the acquisition, the results are displayed in a graph. Additional trigger options, LOW and HIGH, are used for the so-called pattern triggering. For example, if you set the trigger source to be DIN0 – Rising edge (to have one channel defined as a trigger source with a rising or falling edge is a mandatory condition for the acquisition to start), DIN1 to HIGH and DIN2 to LOW, this will cause such behaviour that the application logic will wait for the state where DIN0 goes from 0 to 1, DIN1 is 1, and DIN2 is 0 to start the acquisition.
 
-
-DECODE BUS DATA:
-================
+Bus data decoding
+=================
 
 In the DIGITAL → BUS menu, the decoding of the desired lines can be selected. Up to four buses can be defined. The available decoding protocols are I2C, UART, and SPI. By selecting the desired protocol, the settings menu for the selected protocol is opened.
 
@@ -80,7 +79,7 @@ For the display of the decoded data, two options are possible: Firstly, the data
 	:width: 1000
 
 
-CURSORS:
+Cursors
 ========
 
 As with the Oscilloscope, the Logic Analyzer App also provides CURSORS for quick measurements. Because there are no variable amplitude readings but only discrete signal levels, the cursors are available exclusively for the X-axis.
@@ -96,7 +95,7 @@ Specifications
 +-------------------------+----------------------+----------------------+
 |                         | Direct E1 connection | LA extension module  |
 +-------------------------+----------------------+----------------------+
-| Channels                | 8th                  | 8th                  |
+| Channels                | 8                    | 8                    |
 +-------------------------+----------------------+----------------------+
 | Sampling rate (max.)    | 125 Msps             | 125 Msps             |
 +-------------------------+----------------------+----------------------+
