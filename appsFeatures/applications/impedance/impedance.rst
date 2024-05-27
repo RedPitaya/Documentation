@@ -179,7 +179,7 @@ Selecting the optimum shunt is an iterative process, maximising the dynamic inpu
 
 
 .. figure::  img/Impedance_analyzer_RLC3.png
-    :width: 600
+    :width: 1000
 
     Example of measuring the impedance of a parallel RLC circuit.
 
