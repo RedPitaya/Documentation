@@ -60,6 +60,7 @@ Top settings menu contains the following functionality:
 
 #. **Stop/Run button:** Start and stop the measurement.
 
+
 Measurement control panel
 ==========================
 
@@ -69,29 +70,17 @@ Here we can set measurement parameters such as the frequency range, scale, numbe
 Settings
 ---------
 
-.. figure:: img/IA_plot_settings.png
+.. figure:: img/IA_settings.png
     :width: 260
 
-- **Start frequency [Hz]:** The impedance analyzer starts measuring the DUT frequency response at this frequency.
-- **End frequency [Hz]:** The impedance analyzer ends measuring the DUT frequency response at this frequency.
+- **Start frequency [Hz]:** The impedance analyzer starts measuring the DUT frequency response at this frequency. Minimum value of the frequency axis.
+- **End frequency [Hz]:** The impedance analyzer ends measuring the DUT frequency response at this frequency. Maximum value of the frequency axis.
 - **Steps:** Number of measurements performed. The frequency range between **Start frequency** and **End frequency** is divided according to the **measure scale** setting and measurements are performed at each point.
 - **Measure scale:** Either liner or logarithmic sweep mode (scale). The logarithmic sweep mode enables measurements in a large frequency range, while the linear sweep mode is used for measurements in a small frequency range.
-
-
-
-##TODO
-
-
-
-At each frequency point Red Pitaya sends out a burst signal with **Period number** periods, one=way amplitude of **Amplitdue [V]**, offset **DC bias[V]**, and the frequency recalculated from the settings above.
-The **Averaging** deterimines wheter the final measurement is an average of all sent pulses or not.
-
-- **Period number:** Number of signal periods in a single measurement.
+- **Averaging:** Each final result is an average of "*Averaging*" number of measurements.
 - **Amplitude [V]:** Excitation signal amplitude.
 - **DC bias [V]:** Excitation signal DC bias (offset).
-- **Averaging:** When set to ``1``, the result of each measurement is an average of all sent signal periods.
-- **Invalid input data:** Button to show invalid measurements on the graph.
-- **Analysis input threshold ppV:** Measured responses smaller than this setting will be treated as the minimal threshold value (for caluclation purposes).
+- **Shunt [Ω]** Resistance value of the shunt reisistor.
 
 .. note::
 
@@ -101,27 +90,98 @@ The **Averaging** deterimines wheter the final measurement is an average of all 
 Plot settings
 --------------
 
-.. figure:: img/Bode_analyzer_plot_settings.png
+.. figure:: img/IA_plot_settings.png
     :width: 260
 
-Settings for the plot.
+The frequency axis is scalled to show the full range between **start** and **end frequencies** (the axis range changes with the frequency setting). The Y-axis is automatically scalled depending on the measured data.
 
-- **Gain min, Gain max [dB]:** Minimum and maximum value on the amplitude axis (Y-axis, left side).
-- **Phase min, Phase max [deg]:** Minimum and manxumum value on the phase axis (Y-axis, right side).
-- **Autoscale:** When selected, the two settings above are ignored and calculated automatically from the measurements.
+- **Y-axis data:** Choose between the following data options. Once the measurements are taken, the graph automatically recalculates the data to the chosen setting:
+
+    - Impedance |Z| (Ohm)
+    - Phase P (degrees)
+    - Admittance Y (S)
+    - Inverse phase -P (degrees)
+    - Serial resistance Rs (Ohm)
+    - Parallel resistance Rp (Ohm)
+    - Serial reactance Xs (Ohm)
+    - Parallel conductance Gp (S)
+    - Parallel susceptance Bp (S)
+    - Serial capacitance Cs (F)
+    - Parallel capacitance Cp (F)
+    - Serial inductance Ls (H)
+    - Parallel inducatnce Lp (H)
+    - Quality factor Q
+    - Dissipation factor D
+
+- **Measurement scale:** Either liner or logarithmic. Affects the display of **Y-axis** data.
 
 
 Cursor settings
 ---------------
 
-.. figure:: img/Bode_analyzer_cursor_settings.png
-    :width: 260
-
-Up to two cursors can be put on each of the axis. **F** stands for frequency, **G** for gain, and **P** for phase. The cursors each show the current value and the absolute difference between the two cursors on the same axis.
+Up to two cursors can be put on each of the axis. The cursors each show the current value and the absolute difference between the two cursors on the same axis.
 Cursors can be moved with *Click+Drag*.
 
 
+LCR meter indicator
+----------------------
 
+The indicator displays a green light when the LCR meter extension board is connected. Otherwise, a red light is shown.
+
+
+
+How to use the impedance analyzer
+==================================
+
+The impedance analyzer requires either the *LCR meter extension module* or an *external shunt resitior* for proper operation.
+Each method has its own upsides and downsides. Here is a quick guide on how to setup the hardware.
+
+LCR extension module
+---------------------
+
+.. figure::  img/E_module_connection.png
+    :width: 1000
+
+The LCR meter extension module is easier to connect and automatically switches between the following shunt reisistor values:
+
+- 10 Ω
+- 100 Ω
+- 1 kΩ
+- 10 kΩ
+- 100 kΩ
+- 1 MΩ
+
+Read more about the LCR meter extension module in our :ref:`documentation <lcr_extension_module>`.
+
+
+External shunt resistor
+-------------------------
+
+.. figure::  img/IA_shunt_connection.png
+    :width: 600
+
+... note::
+
+    To minimise the effect of Red Pitaya's input impedance on measurements, reconfigure the jumpers as shown in the figure above (connect the middle two pins on both inputs) to bypass the input resistor divider.
+    This **reduces the input voltage range to +-0.5 V**, so ensure that the output voltage setting does not exceed +-0.5 V (absolute maximum 0.75 V).
+
+**Choosing a Shunt Resistor**
+
+When using an optimum shunt, the dynamic input ranges for both IN1 (voltage measurement) and IN2 (current measurement) are maximised. This means that the voltage goes from 0 to the maximum value (0.5 V) in the specified frequency range. 
+The optimum shunt resistor value is highly dependent on the DUT and the selected frequency range.
+
+Selecting the optimum shunt is an iterative process, maximising the dynamic input range.
+
+1. First select the starting value by guessing the resistor value (e.g. start with a resistor value of power 10). If an approximate impedance of the DUT is already known, the starting value will be more accurate.
+2. Start the first iteration by measuring the dynamic range at IN2 in the selected frequency range (for example, by generating a sweep signal through the circuit).
+3. Change the value of the shunt resistor with the aim of increasing the dynamic range at IN2 while keeping the other settings the same.
+4. Repeat steps 2 and 3 until the change in dynamic range is negligible.
+
+
+.. figure::  img/Impedance_analyzer_RLC3.png
+    :width: 600
+
+    Example of measuring the impedance of a parallel RLC circuit.
 
 
 Source code
