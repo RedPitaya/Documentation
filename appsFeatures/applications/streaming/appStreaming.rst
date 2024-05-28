@@ -4,17 +4,12 @@
 Streaming
 #########
 
-
-Features
-*********
-
 The Streaming application enables users to stream data from Red Pitaya to:
 
     * A file saved on the Red Pitaya SD card
     * A file saved on a remote computer via the ethernet protocol (UDP or TCP).
 
-
-The user can specify:
+The user can set:
 
     * The sampling frequency (rate)
     * Input channel count (Channel 1, Channel 2, or Both (4 Channels for STEMlab 125-14 4-Input))
@@ -28,7 +23,7 @@ Streamed data can be stored into:
 
     * Standard audio WAV file format
     * Technical Data Management Streaming (TDMS) file format
-    * Fast and compact binary format (BIN). It can be converted to CSV format with the use of *convert_tool* command line tool.
+    * Fast and compact binary format (BIN). It can be converted to CSV format.
 
 Max. streaming speeds (per board) are limited to:
 
@@ -77,15 +72,17 @@ Here are the minimum chunck limitations sorted by file type and units:
    We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
 
 
-Streaming modes
-******************
 
-The Streaming application has three different data streaming modes:
 
-.. contents::
-    :local:
-    :backlinks: none
-    :depth: 1
+Getting started with the Red Pitaya streaming feature
+=======================================================
+
+Run the Streaming app from the Red Pitaya Web interface
+
+.. figure:: img/redpitaya_main_page.png
+    :width: 600
+    :align: center
+
 
 Stream locally to a file on Red Pitaya's SD card
 =================================================
@@ -314,7 +311,7 @@ Streaming to a remote computer via Command Line or Terminal
 
                         The binary file can be converted using the *convert_tool* application.
 
-                        .. figure:: img/csv_convert.png
+                        .. figure:: img/csv_list.png
                             :width: 600
                             :align: center
 
@@ -340,6 +337,150 @@ Streaming to a remote computer via Command Line or Terminal
 .. |Audacity| raw:: html
 
     <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
+
+
+
+Instructions for the rpsa_client
+-----------------------------------
+
+
+1. **Detect Mode**
+
+	This mode allows you to determine the IP addresses that are in the network in streaming mode. By default, the search takes 5 seconds.
+
+	Options:
+
+   	.. code-block:: console
+
+		rpsa_client.exe -d [-p PORT] [-t SEC]
+		rpsa_client.exe --detect [--port=PORT] [--timeout=SEC]
+
+		--detect               -d           Enable broadcast search.
+		--port=PORT            -p PORT      Port for broadcast (Default: 8902).
+		--timeout=SEC          -t SEC       Timeout(Default: 5 sec).
+
+2. **Configuration Mode**
+
+	This mode allows you to get or set the configuration on the boards.
+
+	Options:
+
+	.. code-block:: console
+
+        rpsa_client.exe -c -h IPs [-p PORT] -g V|VV|F [-v]
+        rpsa_client.exe -c -h IPs [-p PORT] -s M|F [-f FILE] [-v]
+        rpsa_client.exe --config --hosts=IPs [--port=PORT] --get=V|VV|F [--verbose]
+        rpsa_client.exe --config --hosts=IPs [--port=PORT] --set=M|F [--config_file=FILE] [--verbose]
+
+        --config               -c           Enable config mode.
+        --hosts=IP,...         -h IP,...    You can specify one or more board IP addresses through a separator - ','
+                                            Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                                      -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+        --port=PORT            -p PORT      Port for configuration server (Default: 8901).
+        --get=V|V1|VV|F        -g V|V1|VV|F Requests configurations from all boards.
+                                            Keys: V  = Displays on the screen in json format.
+                                                  V1 = Displays on the screen in json format (only data).
+                                                  VV = Displays on the screen in a format with decoding values.
+                                                  F  = Saves to a config files.
+        --set=M|F              -s M|F       Sets configurations for all boards.
+                                            Keys: M  = Sets values only to memory without saving to file.
+                                                  F  = Sets configuration and saves to file on remote boards.
+        --config_file=FILE     -f FILE      Configuration file for setting values on boards (Default: config.json).
+        --verbose              -v           Displays service information.
+
+3. **Remote control Mode**
+      
+    This mode allows you to control streaming as a client.
+
+    Options:
+
+	.. code-block:: console
+            
+		rpsa_client.exe -r -h IPs [-p PORT] -m start|stop|start_stop|start_dac|stop_dac|start_stop_dac [-t MSEC] [-v]
+        rpsa_client.exe --remote --hosts=IPs [--port=PORT] --mode=start|stop|start_stop|start_dac|stop_dac|start_stop_dac [--timeout=MSEC] [--verbose]
+
+        --remote               -r           Enable remote control mode.
+        --hosts=IP,...         -h IP,...    You can specify one or more board IP addresses through a separator - ','
+                                            Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                                      -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+        --port=PORT            -p PORT      Port for configuration server (Default: 8901).
+        --mode=MODE            -m MODE      Commands for managing servers.
+                                             Keys: start = Starts the server.
+                                                   stop = Stop the server.
+                                                   start_stop = Sends a start command at the end of the timeout sends a stop command.
+                                                   start_dac = Starts the DAC server.
+                                                   stop_dac = Stop the DAC server.
+                                                   start_stop_dac = Sends a start command at the end of the timeout sends a stop command for DAC mode.
+        --timeout=MSEC         -t MSEC      Timeout (Default: 1000 ms). Used only in conjunction with the start_stop command.
+        --verbose              -v           Displays service information.
+
+4. **Streaming Mode**
+
+    This mode allows you to control streaming as a client, and also captures data in network streaming mode.
+
+    Options:
+
+   .. code-block:: console
+
+        rpsa_client.exe -s -h IPs [-p PORT] [-c PORT] -f tdms|wav|csv|bin [-d NAME] [-m raw|volt] [-l SAMPLES] [-t MSEC] [-v] [-b TD|F]
+        rpsa_client.exe --streaming --hosts=IPs [--port=PORT] [--config_port=PORT] --format=tdms|wav|csv|bin [--dir=NAME] [--limit=SAMPLES] [--mode=raw|volt] [--timeout=MSEC] [--verbose] [--benchmark=TD|F]
+
+        --streaming            -s           Enable streaming mode.
+        --hosts=IP,...         -h IP,...    You can specify one or more board IP addresses through a separator - ','
+                                            Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                                      -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+        --port=PORT            -p PORT      Port for streaming server (Default: 8900).
+        --config_port=PORT     -c PORT      Port for configuration server (Default: 8901).
+        --format=FORMAT        -f FORMAT    The format in which the data will be saved.
+                                            Keys: tdsm = NI TDMS File Format.
+                                                  wav = Waveform Audio File Format.
+                                                  csv = Text file that uses a comma to separate values.
+                                                  bin = Binary format.
+        --dir=NAME             -d NAME      Path to the directory where to save files.
+        --limit=SAMPLES        -l SAMPLES   Sample limit [1-2147483647] (no limit by default).
+        --mode=MODE            -m MODE      Convert values in volts (store as ADC raw data by default).
+                                            Keys: raw = 8/16 Bit binary raw format.
+                                                  volt = Converts binary integer format to floating point format.
+                                                         Measured in volts. In wav format, it is limited from -1 to 1.
+        --timeout=MSEC         -t MSEC      Stops recording after a specified amount of time.
+        --verbose              -v           Displays service information.
+        --benchmark=MODE       -b MODE      Starts the throughput test mode at the current settings.
+                                            Keys: TD = Adds validation of data. Works only in network test mode.
+                                                  F  = Full system performance testing.
+
+5. **DAC streaming Mode**
+
+    This mode allows you to generate output data using a signal from a file.
+
+    Options:
+
+   .. code-block:: console
+
+        rpsa_client.exe -o -h IPs [-p PORT] [-c PORT] -f tdms|wav -d FILE_NAME [-r inf|COUNT] [-m SIZE] [-v] [-b]
+        rpsa_client.exe --out_streaming --hosts=IPs [--port=PORT] [--config_port=PORT] --format=tdms|wav --data=FILE_NAME [--repeat=inf|COUNT] [--memory SIZE] [--verbose] [--benchmark]
+        rpsa_client.exe -oc CONFIG_FILE
+        rpsa_client.exe --out_streaming_conf CONFIG_FILE
+
+        --out_streaming        -o           Enable dac streaming mode.
+        --out_streaming_conf   -oc          Enable dac streaming mode.
+        --hosts=IP,...         -h IP,...    You can specify one or more board IP addresses through a separator - ','
+                                            Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                                      -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+        --port=PORT            -p PORT      Port for dac streaming server (Default: 8903).
+        --config_port=PORT     -c PORT      Port for configuration server (Default: 8901).
+        --format=FORMAT        -f FORMAT    The format in which the data will be used.
+                                            Keys: tdsm = NI TDMS File Format.
+                                                  wav = Waveform Audio File Format.
+        --data=FILE_NAME       -d FILE_NAME Path to the file for streaming.
+        --memory=SIZE          -m SIZE      Use RAM cache.
+                                                Example: --mmemory 1048576 or --memory 1M or --memory 1024k
+                                                         -m 1048576 or -m 1M or -m 1024k
+                                                Default: 1M bytes
+        --repeat=inf|COUNT     -r inf|COUNT The number of times the file has been resent.
+                                            Keys: inf is an infinite number of times.
+                                               COUNT - value from [1 ... 1000000]
+        --verbose              -v           Displays service information.
+        --benchmark            -b           Starts the throughput test mode at the current settings.
 
 
 
@@ -396,49 +537,8 @@ The other option for streaming is utilyzing the Desktop Application.
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
 
 
-Converting BIN file to CSV
-===============================
-
-The binary file can be converted to the CSV format using the **convert_tool** application, which comes in the *.zip* folder together with the *Command line streaming tool*.
-
-.. figure:: img/Streaming_app_cmd_clients.png
-                :width: 1000
-                :align: center
-
-.. figure:: img/csv_list.png
-   :width: 600
-   :align: center
-
-.. figure:: img/csv_convert.png
-   :width: 600
-   :align: center
-
-The convert tool has the following functionality:
-
-.. figure:: img/csv_convert_tool_functionality.png
-   :width: 600
-   :align: center
-
-Convert tool source code
--------------------------
-
-The |convert_tool_source_code| is available on our GitHub. You can find more information regarding the |BIN_file_structure|.
-
-.. |stream_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager/src/convert_tool" target="_blank">Convert tool source code</a>
-
-
-.. |BIN_file_structure| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager/src/convert_tool" target="_blank">BIN file structure here</a>
-
-
 Source code
-*************
+==============
 
-The |stream_source_code| is available on our GitHub.
+The `Streaming application source code<https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager>`_ is available on our GitHub.
 
-.. |stream_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Streaming application source code</a>
