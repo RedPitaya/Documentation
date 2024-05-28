@@ -38,6 +38,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
     'sphinx.ext.intersphinx',
+#    'sphinx.ext.autosectionlabel',
     'sphinx_tabs.tabs',
     'github',
     'sphinx_rtd_theme'
