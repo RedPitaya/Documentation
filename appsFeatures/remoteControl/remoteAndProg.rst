@@ -121,7 +121,8 @@ Data can be acquired in the following ways:
 
 Variable buffer lengths can be achieved by using the `Deep Memory Acquisition (DMA)`_ mode.
 
-**General tips for programming with acquisition SCPI commands**
+General tips for programming with acquisition SCPI commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Always check your Red Pitaya OS version, as not all commands are compatible with all OS versions. The command release version can be found in the :ref:`Ecosystem column of the command table<command_list>`.
 - The :ref:`SCPI code examples<examples>` are intended to run on the latest version of the Red Pitaya OS.
@@ -138,10 +139,74 @@ Variable buffer lengths can be achieved by using the `Deep Memory Acquisition (D
 SCPI generation
 ------------------
 
+Red Pitaya SCPI generation commands can be split into four sections:
+
+- Continuous signal generation
+- Burst signal generation
+- Sweep signal generation
+- Arbitrary waveform signal generation
+
+The overall functionality is similar across all sections, but every single one has a few special cases that need to be mentioned.
+
+Continuous signal generation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We will start with the continuous signal generation, which is the most straight forward to understand. First, we define the signal parameters:
+
+- Waveform type (sine, square, triangle, saw up, saw down, etc.)
+- Frequency (in Hz) between 1 Hz and 50 MHz
+- Amplitude (one-way amplitude referenced towards GND) between +-1 V.
+
+.. note::
+
+   The limitations are written for STEMlab 125-14 and may be differ for other board models.
+
+These are the minimal required parameters for generating any continuous signal. There are other parameters, but for the sake of simplicity, we will skip them.
+
+Next, we specify the generator trigger source, which defines how and from where our generator is triggered. This can be either set to internal (activated manually with a code command) or to external positive or negative edge (triggered with an external trigger signal on pin DIO0_P on the :ref:`E1 extension connector<e1>`).
+
+The external trigger signal passes through a debounce filter when it enters the FPGA, which is, by default, set to 500 microseconds. This value can be configured via the 
+``SOUR:TRig:EXT:DEBouncer[:US]`` command.
+
+All that is left now is to trigger the signal generation, but this is where the tricky part comes in. Usually, you would just trigger the generation and that would be it, but on Red Pitaya we need to first enable the output and then trigger the generation.
+
+- ``OUTPUT<n>:STATE ON`` - enables the specific output
+- ``SOUR<n>:TRig:INT`` - triggers the specified output generation
+
+To syncronuously enable both outputs use the following commands:
+
+- ``OUTPUT:STATE ON`` - enables both outputs
+- ``SOUR:TRig:INT`` - triggers the generation on both outputs
+
+Of course, the second command is not necessary if the trigger source is configured to the external trigger.
+
+.. note::
+
+   **Generation trigger != Acquisition trigger**
+   Generation and acquisition triggers are completely different and have separated logic behind them.
+
+
+Burst signal generation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sweep signal generation
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-**General tips for programming with generation SCPI commands**
+Arbitrary waveform signal generation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+General tips for programming with generation SCPI commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Always check your Red Pitaya OS version, as not all commands are compatible with all OS versions. The command release version can be found in the :ref:`Ecosystem column of the command table<command_list>`.
 - The :ref:`SCPI code examples<examples>` are intended to run on the latest version of the Red Pitaya OS.
@@ -182,7 +247,7 @@ All information about running C and Python programs can be found here:
 
 
 Streaming application
------------------------
+========================
 
 For those looking for continuous data acquisition, check out :ref:`the streaming application<streaming_top>` (also known as "data stream control"). It allows continuous data acquisition from one or both of Red Pitaya's inputs directly to a file on a computer. The data can be captured indefinitely, but there are speed limitations and currently no triggering options. 
 The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details and limitations are available :ref:`here<streaming_top>`.
@@ -196,7 +261,7 @@ All information on the streaming application is available on the links below:
 
 
 Deep Memory Acquisition (DMA)
-------------------------------
+================================
 
 Deep memory acquisition is a special type of data acquisition that allows the user to stream data directly into Red Pitaya's DDR3 RAM at the full sampling speed of 125 Msps (depends on the board model). The buffer length is variable and can be specifed by the user, but cannot exceed the allocated RAM region size. The dedicated RAM memory can be increased by the user, but it is recommended to leave at least 100 MB of the DDR for the proper operation of the Linux OS. The deep memory acquisition relies on the `AXI protocol (AXI DMA and AXI4-Stream)<https://support.xilinx.com/s/article/1053914?language=en_US>`_ (twice the acronym double the meaning).
 
@@ -211,7 +276,7 @@ The deep memory acquision is available on Red Pitaya OS versions 2.00-23 and new
 
 
 Custom acquisition and generatiron (FPGA)
--------------------------------------------
+=============================================
 
 The final option for data acquisition and generation is reprogramming and customizing the FPGA image to create new methods or expand the existing functionality. Red Pitaya is open-source platform, so the software can be fine tuned to specific applications. Customization can also be performed by the Red Pitaya team on request. 
 
