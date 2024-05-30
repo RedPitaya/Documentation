@@ -153,8 +153,7 @@ These are the minimum parameters required to generate a continuous signal. There
 
 Next we set the generator trigger source, which defines how and from where our generator will be triggered. This can be set to either internal (activated manually with a code command) or external positive or negative edge (triggered by an external trigger signal on pin DIO0_P on the :ref:`E1 extension connector<e1>`).
 
-The external trigger signal passes through a debounce filter when it enters the FPGA, which is set to 500 microseconds by default. This value can be changed using the 
-SOUR:TRig:EXT:DEBouncer[:US]`` command.
+The external trigger signal passes through a debounce filter when it enters the FPGA, which is set to 500 microseconds by default. This value can be changed using the ``SOUR:TRig:EXT:DEBouncer[:US]`` command.
 
 All that remains is to trigger the signal generation, but this is where the tricky part comes in. Normally you would just trigger the generation and that would be it, but with Red Pitaya we need to enable the output first and then trigger the generation.
 
