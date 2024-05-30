@@ -316,20 +316,20 @@ All information about the streaming application is available from the links belo
 Deep Memory Acquisition (DMA)
 ================================
 
+.. note:: 
+
+   Deep memory acquisition is available on Red Pitaya OS versions 2.00-23 and later.
+
 Deep memory acquisition is a special type of data acquisition that allows the user to stream data directly into Red Pitaya's DDR3 RAM at full sampling speed of 125 Msps (depending on board model). The buffer length is variable and can be specified by the user, but cannot exceed the size of the allocated RAM region. The amount of dedicated RAM can be increased by the user, but it is recommended to leave at least 100 MB of DDR for proper operation of the Linux OS. Deep memory acquisition is based on the `AXI protocol (AXI DMA and AXI4-Stream)<https://support.xilinx.com/s/article/1053914?language=en_US>`_ (double the acronym for double the meaning).
 
 Once the acquisition is complete, Red Pitaya needs some time to transfer the entire file to the computer (RAM needs to be cleared) before the acquisition can be reset.
 DMA can be configured using SCPI, Python API and C API commands. The triggering options are also the same.
 
-.. note::
-
-   To increase the speed of transferring the DMA data to the computer with SCPI, the data should be acquired in binary format (``ACQ:DATA:FORMAT BIN``).
+To increase the speed of transferring the DMA data to the computer with SCPI, the data should be acquired in binary format (``ACQ:DATA:FORMAT BIN``).
 
 All information on DMA is available from the links below:
 
 - :ref:`Deep Memory Acquisition<deepMemoryAcq>`
-
- Deep memory acquisition is available on Red Pitaya OS versions 2.00-23 and later.
 
 
 Custom acquisition and generatiron (FPGA)
