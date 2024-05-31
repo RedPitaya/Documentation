@@ -17,5 +17,4 @@ Red Pitaya platforms
    250-12/top
    compares/vs
    leds
-   DeclarationOfConformity
    known_hw_issues/known_hw_issues
