@@ -16,5 +16,6 @@ Red Pitaya platforms
    122-16_EXT/top
    250-12/top
    compares/vs
+   cets
    leds
    known_hw_issues/known_hw_issues
