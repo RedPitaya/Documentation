@@ -280,23 +280,6 @@ The QSPI chip is by default not populated on Red Pitaya boards. Please write to 
     Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-************
-Certificates
-************
-
-Besides the functional testing, Red Pitaya passed the safety and electromagnetic compatibility (EMC) tests at an
-external |testing and certification institute|.
-
-.. |testing and certification institute| raw:: html
-
-    <a href="http://www.siq.si/?L=3" target="_blank">testing and certification institute</a>
-
-.. toctree::
-   :maxdepth: 6
-
-   cets
-
-
 ***************
 Cooling options
 ***************
