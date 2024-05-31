@@ -8,3 +8,4 @@ Hardware
    
    platforms
    ext_modules/ext_modules
+   cets
