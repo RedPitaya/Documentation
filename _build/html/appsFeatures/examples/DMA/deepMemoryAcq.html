@@ -1,0 +1,703 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4.6.7. Deep Memory Acquisition &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.4.6.8. Digital communication interfaces" href="../communication_interfaces/digcomIF.html" />
+    <link rel="prev" title="2.4.6.6.2. Synchronised Click Shield Generation and Acquisition" href="../multiboard_sync/click_shield-exm1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">2.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">2.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">2.4.6. Examples</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../digital/digital.html">2.4.6.1. Digital</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">2.4.6.2. Analog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">2.4.6.3. Generating signals at RF outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition/acqRF.html">2.4.6.4. Acquiring signals at RF inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition_generation/acq_genRF.html">2.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../multiboard_sync/multiboard.html">2.4.6.6. Multi-board signal acquisition and generation</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">2.4.6.7. Deep Memory Acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../communication_interfaces/digcomIF.html">2.4.6.8. Digital communication interfaces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">2.4.6. </span>Examples</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4.6.7. </span>Deep Memory Acquisition</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="deep-memory-acquisition">
+<span id="deepmemoryacq-example"></span><h1><span class="section-number">2.4.6.7. </span>Deep Memory Acquisition<a class="headerlink" href="#deep-memory-acquisition" title="Permalink to this heading"></a></h1>
+<div class="section" id="description">
+<h2><span class="section-number">2.4.6.7.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>The example shows how to capture data into two 1024-byte buffers using the Deep Memory Acquisition. DMA can work in parallel with starndard SCPI acquisition.</p>
+</div>
+<div class="section" id="required-hardware">
+<h2><span class="section-number">2.4.6.7.2. </span>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Red Pitaya device</p></li>
+<li><p>Signal (function) generator</p></li>
+</ul>
+</div></blockquote>
+<p>Wiring example for STEMlab 125-14:</p>
+<div class="figure align-default">
+<img alt="../../../_images/DMA_temp.png" src="../../../_images/DMA_temp.png" />
+</div>
+</div>
+<div class="section" id="scpi-code-examples">
+<h2><span class="section-number">2.4.6.7.3. </span>SCPI Code Examples<a class="headerlink" href="#scpi-code-examples" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This code is functional on <strong>STEMlab 125-14 with 2.00-23 or higher OS</strong> and with <strong>2.00-30 OS on all other board models</strong>.</p>
+</div>
+<div class="section" id="code-matlab">
+<h3><span class="section-number">2.4.6.7.3.1. </span>Code - MATLAB®<a class="headerlink" href="#code-matlab" title="Permalink to this heading"></a></h3>
+<p>The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the “Run” button.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clc</span>
+<span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
+<span class="nb">close</span><span class="w"> </span><span class="nb">all</span>
+
+<span class="n">IP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;rp-f0b506.local&#39;</span><span class="p">;</span><span class="w">           </span><span class="c">% IP/local address of your Red Pitaya</span>
+<span class="n">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<span class="n">RP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tcpclient</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+
+<span class="c">% size in samples 16-Bit</span>
+<span class="n">DATA_SIZE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w">          </span><span class="c">% ((1024 * 1024 * 128) / 2)        %% for 128 MB %%</span>
+<span class="n">READ_DATA_SIZE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w">     </span><span class="c">% (1024 * 256)                     %% for 128 MB %%</span>
+
+<span class="n">dec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">trig_lvl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">;</span>
+
+<span class="c">%% Open connection with your Red Pitaya</span>
+<span class="n">RP</span><span class="p">.</span><span class="n">ByteOrder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;big-endian&quot;</span><span class="p">;</span>
+<span class="nb">configureTerminator</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&quot;CR/LF&quot;</span><span class="p">);</span>
+
+<span class="nb">flush</span><span class="p">(</span><span class="n">RP</span><span class="p">);</span>
+
+<span class="c">% Reset Acquisition</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:RST&#39;</span><span class="p">);</span>
+
+<span class="c">% Get Memory region</span>
+<span class="n">start_address</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">str2num</span><span class="p">(</span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:AXI:START?&#39;</span><span class="p">))</span>
+<span class="nb">size</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">str2num</span><span class="p">(</span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:AXI:SIZE?&#39;</span><span class="p">));</span>
+<span class="n">start_address2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="n">start_address</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">size</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Reserved memory Start: %d Size: %d\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">start_address</span><span class="p">,</span><span class="w"> </span><span class="nb">size</span><span class="p">);</span>
+
+<span class="c">% Set decimation</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:AXI:DEC &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">dec</span><span class="p">)));</span>
+
+<span class="c">% Set units</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:AXI:DATA:UNITS VOLTS&#39;</span><span class="p">);</span>
+
+<span class="c">% Set trigger delay for both channels</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:AXI:SOUR1:Trig:Dly &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">DATA_SIZE</span><span class="p">)));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:AXI:SOUR2:Trig:Dly &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">DATA_SIZE</span><span class="p">)));</span>
+
+<span class="c">% Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:AXI:SOUR1:SET:Buffer &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">start_address</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="nb">size</span><span class="o">/</span><span class="mi">2</span><span class="p">)));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:AXI:SOUR2:SET:Buffer &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">start_address2</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="nb">size</span><span class="o">/</span><span class="mi">2</span><span class="p">)));</span>
+
+<span class="c">% Enable DMA</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:AXI:SOUR1:ENable ON&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:AXI:SOUR2:ENable ON&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Enable CHA and CHB\n&#39;</span><span class="p">);</span>
+
+<span class="c">% Specify the acquisition trigger</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:TRig:LEV &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">trig_lvl</span><span class="p">)));</span>
+
+
+<span class="c">%% ACQUISITION</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:START&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:TRig CH1_PE&#39;</span><span class="p">);</span>
+
+<span class="c">%% Wait for trigger</span>
+<span class="k">while</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">trig_rsp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:TRig:STAT?&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="s">&#39;TD&#39;</span><span class="p">,</span><span class="n">trig_rsp</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">))</span>
+<span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Triggered\n&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="nb">pause</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c">% wait for fill adc buffer</span>
+<span class="k">while</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">fill_state</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:AXI:SOUR1:TRIG:FILL?&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">fill_state</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;DMA buffer full\n&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c">% Stop Acquisition</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;ACQ:STOP&#39;</span><span class="p">);</span>
+
+<span class="c">%% Get write pointer at trigger location</span>
+<span class="n">posChA</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:AXI:SOUR1:Trig:Pos?&#39;</span><span class="p">)</span>
+<span class="n">posChB</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:AXI:SOUR2:Trig:Pos?&#39;</span><span class="p">)</span>
+
+<span class="c">%% Read &amp; plot</span>
+
+<span class="n">signal_str</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:AXI:SOUR1:DATA:Start:N? &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">posChA</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">READ_DATA_SIZE</span><span class="p">)));</span>
+<span class="n">signal_str2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:AXI:SOUR2:DATA:Start:N? &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">posChB</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">READ_DATA_SIZE</span><span class="p">)));</span>
+
+<span class="n">signal_num</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="nb">str2num</span><span class="p">(</span><span class="n">signal_str</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">signal_str</span><span class="p">)</span><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
+<span class="n">signal_num2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">str2num</span><span class="p">(</span><span class="n">signal_str</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">signal_str2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
+
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">READ_DATA_SIZE</span><span class="p">,</span><span class="w"> </span><span class="n">READ_DATA_SIZE</span><span class="p">);</span>
+<span class="nb">tiledlayout</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">length</span><span class="p">(</span><span class="n">signal_num</span><span class="p">)</span>
+<span class="nb">length</span><span class="p">(</span><span class="n">signal_num2</span><span class="p">)</span>
+
+<span class="c">% CH1 plot</span>
+<span class="nb">nexttile</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">signal_num</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;CH1 data&#39;</span><span class="p">)</span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
+
+<span class="c">% CH2 plot</span>
+<span class="nb">nexttile</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">signal_num2</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;CH2 data&#39;</span><span class="p">)</span>
+
+
+<span class="c">%% Close connection with Red Pitaya</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:AXI:SOUR1:ENable OFF&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:AXI:SOUR2:ENable OFF&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Releasing resources\n&#39;</span><span class="p">);</span>
+
+<span class="n">clear</span><span class="w"> </span><span class="s">RP</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-python">
+<h3><span class="section-number">2.4.6.7.3.2. </span>Code - Python<a class="headerlink" href="#code-python" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">redpitaya_scpi</span> <span class="k">as</span> <span class="nn">scpi</span>
+
+<span class="n">IP</span> <span class="o">=</span> <span class="s1">&#39;rp-f0b506.local&#39;</span>          <span class="c1"># local IP of Red Pitaya</span>
+<span class="n">rp_s</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">IP</span><span class="p">)</span>            <span class="c1"># open socket connection with Red Pitaya</span>
+
+
+<span class="c1">## size in samples 16Bit</span>
+<span class="n">DATA_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>          <span class="c1"># ((1024 * 1024 * 128) / 2)        ## for 128 MB ##</span>
+<span class="n">READ_DATA_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>     <span class="c1"># (1024 * 256)                     ## for 128 MB ##</span>
+
+<span class="n">dec</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">trig_lvl</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+
+<span class="c1">## Reset Acquisition</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:RST&#39;</span><span class="p">)</span>
+
+<span class="c1"># Get Memory region</span>
+<span class="n">start_address</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rp_s</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:START?&#39;</span><span class="p">))</span>
+<span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rp_s</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SIZE?&#39;</span><span class="p">))</span>
+<span class="n">start_address2</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">start_address</span> <span class="o">+</span> <span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reserved memory Start: </span><span class="si">{</span><span class="n">start_address</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2"> Size: </span><span class="si">{</span><span class="n">size</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set decimation</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:AXI:DEC </span><span class="si">{</span><span class="n">dec</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set units</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:DATA:UNITS VOLTS&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set trigger delay for both channels</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:AXI:SOUR1:Trig:Dly </span><span class="si">{</span><span class="n">DATA_SIZE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:AXI:SOUR2:Trig:Dly </span><span class="si">{</span><span class="n">DATA_SIZE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:AXI:SOUR1:SET:Buffer </span><span class="si">{</span><span class="n">start_address</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:AXI:SOUR2:SET:Buffer </span><span class="si">{</span><span class="n">start_address2</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Enable DMA</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SOUR1:ENable ON&#39;</span><span class="p">)</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SOUR2:ENable ON&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Enable CHA and CHB</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Specify the acquisition trigger</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:TRig:LEV </span><span class="si">{</span><span class="n">trig_lvl</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">## ACQUISITION</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:START&#39;</span><span class="p">)</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig CH1_PE&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wait for trigger</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s2">&quot;ACQ:TRig:STAT?&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;TD&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Triggered&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="c1"># wait for fill adc buffer</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SOUR1:TRIG:FILL?&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DMA buffer full</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="c1"># Stop Acquisition</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:STOP&#39;</span><span class="p">)</span>
+
+<span class="c1">## Get write pointer at trigger location</span>
+<span class="n">posChA</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rp_s</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SOUR1:Trig:Pos?&#39;</span><span class="p">))</span>
+<span class="n">posChB</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rp_s</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SOUR2:Trig:Pos?&#39;</span><span class="p">))</span>
+
+<span class="c1">## Read &amp; plot</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:AXI:SOUR1:DATA:Start:N? </span><span class="si">{</span><span class="n">posChA</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">READ_DATA_SIZE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">signal_str</span> <span class="o">=</span> <span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span>
+<span class="c1">#rp_s.tx_txt(f&quot;ACQ:AXI:SOUR2:DATA:Start:N? {posChB},{READ_DATA_SIZE}&quot;)</span>
+<span class="c1">#signal_str2 = rp_s.rx_txt()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Acquired</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">signal_num</span>  <span class="o">=</span> <span class="n">signal_str</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n\r</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="c1">#signal_num2 = signal_str2.strip(&#39;{}\n\r&#39;).replace(&quot;  &quot;, &quot;&quot;).split(&#39;,&#39;)</span>
+
+
+<span class="c1"># Writing data into a text file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Python_SCPI/out.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">read_size</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">read_size</span> <span class="o">&lt;</span> <span class="n">DATA_SIZE</span><span class="p">:</span>
+        <span class="n">size1</span> <span class="o">=</span> <span class="n">READ_DATA_SIZE</span>
+        <span class="n">size2</span> <span class="o">=</span> <span class="n">READ_DATA_SIZE</span>
+        <span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACQ:AXI:SOUR1:DATA:Start:N? </span><span class="si">{</span><span class="n">posChA</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">size1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">signal_str</span> <span class="o">=</span> <span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span>
+        <span class="c1">#rp_s.tx_txt(f&quot;ACQ:AXI:SOUR2:DATA:Start:N? {posChB},{size2}&quot;)</span>
+        <span class="c1">#signal_str2 = rp_s.rx_txt()</span>
+
+        <span class="n">buff1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">signal_str</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n\r</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))</span>
+        <span class="c1">#buff2 = list(map(float, signal_str2.strip(&#39;{}\n\r&#39;).replace(&quot;  &quot;, &quot;&quot;).split(&#39;,&#39;)))</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">READ_DATA_SIZE</span><span class="p">):</span>
+            <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">6d</span><span class="si">}</span><span class="s2">:  </span><span class="si">{</span><span class="n">buff1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">6f</span><span class="si">}</span><span class="se">\t\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#{buff2[i]:6f}\n&quot;)</span>
+
+        <span class="n">posChA</span> <span class="o">+=</span> <span class="n">size1</span>
+        <span class="n">posChB</span> <span class="o">+=</span> <span class="n">size2</span>
+        <span class="n">read_size</span> <span class="o">+=</span> <span class="n">READ_DATA_SIZE</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved data size </span><span class="si">{</span><span class="n">read_size</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">## Close connection with Red Pitaya</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SOUR1:ENable OFF&#39;</span><span class="p">)</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:AXI:SOUR2:ENable OFF&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Releasing resources</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python functions are accessible with the latest version of the <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a> document available on our GitHub.
+The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.</p>
+<p>For further information on functions please consult the <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a> code.</p>
+</div>
+</div>
+</div>
+<div class="section" id="api-code-examples">
+<h2><span class="section-number">2.4.6.7.4. </span>API Code Examples<a class="headerlink" href="#api-code-examples" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The API code examples don’t require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+Instructions on how to compile the code and other useful information are <a class="reference internal" href="../../../developerGuide/software/build/C%26Python_API.html#comc"><span class="std std-ref">here</span></a>.</p>
+</div>
+<div class="section" id="code-c-api">
+<h3><span class="section-number">2.4.6.7.4.1. </span>Code - C API<a class="headerlink" href="#code-c-api" title="Permalink to this heading"></a></h3>
+<p>Please note that checking whether a function was successful is not necessary.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  Red Pitaya C API example of acquiring 1024 samples of data</span>
+<span class="cm">    on both channels using DMA */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rp.h&quot;</span>
+
+
+<span class="c1">// size in samples 16Bit</span>
+<span class="cp">#define DATA_SIZE 1024          </span><span class="c1">// ((1024 * 1024 * 128) / 2)        /* for 128 MB */</span>
+<span class="cp">#define READ_DATA_SIZE 1024     </span><span class="c1">// (1024 * 256)                     /* for 128 MB */</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Initialise Red Pitaya */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_InitReset</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Rp api init failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_adc_axi_start</span><span class="p">,</span><span class="n">g_adc_axi_size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rp_AcqAxiGetMemoryRegion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_adc_axi_start</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g_adc_axi_size</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Reserved memory Start 0x%X Size 0x%X</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">g_adc_axi_start</span><span class="p">,</span><span class="w"> </span><span class="n">g_adc_axi_size</span><span class="p">);</span>
+
+
+<span class="w">    </span><span class="cm">/* Set decimation for both channels */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiSetDecimationFactor</span><span class="p">(</span><span class="n">RP_DEC_1</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiSetDecimationFactor failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Set trigger delay for both channels */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiSetTriggerDelay</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">,</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">)</span><span class="w">  </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiSetTriggerDelay RP_CH_1 failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiSetTriggerDelay</span><span class="p">(</span><span class="n">RP_CH_2</span><span class="p">,</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiSetTriggerDelay RP_CH_2 failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">    Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiSetBufferSamples</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">,</span><span class="w"> </span><span class="n">g_adc_axi_start</span><span class="p">,</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiSetBuffer RP_CH_1 failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiSetBufferSamples</span><span class="p">(</span><span class="n">RP_CH_2</span><span class="p">,</span><span class="w"> </span><span class="n">g_adc_axi_start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">g_adc_axi_size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiSetBuffer RP_CH_2 failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Enable DMA on both channels */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiEnable RP_CH_1 failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Enable CHA</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">RP_CH_2</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiEnable RP_CH_2 failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Enable CHB</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Specify the acquisition trigger */</span>
+<span class="w">    </span><span class="n">rp_AcqSetTriggerLevel</span><span class="p">(</span><span class="n">RP_T_CH_1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Start the acquisition */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqStart</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqStart failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ACQ Started</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+
+<span class="w">    </span><span class="cm">/* Specify trigger source */</span>
+<span class="w">    </span><span class="n">rp_AcqSetTriggerSrc</span><span class="p">(</span><span class="n">RP_TRIG_SRC_CHA_PE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rp_acq_trig_state_t</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RP_TRIG_STATE_TRIGGERED</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Wait for the triggering moment */</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+<span class="w">        </span><span class="n">rp_AcqGetTriggerState</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RP_TRIG_STATE_TRIGGERED</span><span class="p">){</span>
+<span class="w">            </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Wait until both buggers are full/data is acquired */</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">fillState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fillState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rp_AcqAxiGetBufferFillState</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fillState</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rp_AcqAxiGetBufferFillState RP_CH_1 failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Stop the acquisition */</span>
+<span class="w">    </span><span class="n">rp_AcqStop</span><span class="p">();</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Stop acq</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Get write pointer on the triggering location */</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">posChA</span><span class="p">,</span><span class="n">posChB</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rp_AcqAxiGetWritePointerAtTrig</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">posChA</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rp_AcqAxiGetWritePointerAtTrig</span><span class="p">(</span><span class="n">RP_CH_2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">posChB</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Allocate memory for the data */</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="o">*</span><span class="n">buff1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int16_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">READ_DATA_SIZE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int16_t</span><span class="p">));</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="o">*</span><span class="n">buff2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int16_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">READ_DATA_SIZE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int16_t</span><span class="p">));</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">read_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Writing data into a text file */</span>
+<span class="w">    </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;out.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">read_size</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">){</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">READ_DATA_SIZE</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">READ_DATA_SIZE</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rp_AcqAxiGetDataRaw</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">,</span><span class="w"> </span><span class="n">posChA</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size1</span><span class="p">,</span><span class="w"> </span><span class="n">buff1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rp_AcqAxiGetDataRaw</span><span class="p">(</span><span class="n">RP_CH_2</span><span class="p">,</span><span class="w"> </span><span class="n">posChB</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size2</span><span class="p">,</span><span class="w"> </span><span class="n">buff2</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">READ_DATA_SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="s">&quot;%d:  %d</span><span class="se">\t</span><span class="s">%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">line</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">buff1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">buff2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">posChA</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">size1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">posChB</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">size2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">read_size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">READ_DATA_SIZE</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Saved data size %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">read_size</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Releasing resources */</span>
+<span class="w">    </span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">RP_CH_2</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rp_Release</span><span class="p">();</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">buff1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">buff2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-python-api">
+<h3><span class="section-number">2.4.6.7.4.2. </span>Code - Python API<a class="headerlink" href="#code-python-api" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="sd">&quot;&quot;&quot;Example of DMA acquisition of 1024-samples of data on both channels&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">rp</span>
+
+
+<span class="c1">## size in samples 16Bit</span>
+<span class="n">DATA_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>          <span class="c1"># ((1024 * 1024 * 128) / 2)        ## for 128 MB ##</span>
+<span class="n">READ_DATA_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>     <span class="c1"># (1024 * 256)                     ## for 128 MB ##</span>
+
+<span class="n">dec</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_DEC_1</span>
+<span class="n">trig_lvl</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="c1"># Initialize the interface</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_Init</span><span class="p">()</span>
+
+
+<span class="c1">### Setting up DMA ###</span>
+<span class="c1"># Get Memory region</span>
+<span class="n">memoryRegion</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiGetMemoryRegion</span><span class="p">()</span>
+<span class="n">g_adc_axi_start</span> <span class="o">=</span> <span class="n">memoryRegion</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">g_adc_axi_size</span> <span class="o">=</span> <span class="n">memoryRegion</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reserved memory Start: </span><span class="si">{</span><span class="n">g_adc_axi_start</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2"> Size: </span><span class="si">{</span><span class="n">g_adc_axi_size</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set decimation</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiSetDecimationFactor</span><span class="p">(</span><span class="n">dec</span><span class="p">)</span>
+
+<span class="c1"># Set trigger delay for both channels</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiSetTriggerDelay</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">,</span> <span class="n">DATA_SIZE</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiSetTriggerDelay</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_2</span><span class="p">,</span> <span class="n">DATA_SIZE</span><span class="p">)</span>
+
+<span class="c1"># Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.</span>
+
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiSetBufferSamples</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">,</span> <span class="n">g_adc_axi_start</span><span class="p">,</span> <span class="n">DATA_SIZE</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiSetBufferSamples</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">g_adc_axi_start</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">g_adc_axi_size</span><span class="o">/</span><span class="mi">2</span><span class="p">)),</span> <span class="n">DATA_SIZE</span><span class="p">)</span>
+
+<span class="c1"># Enable DMA on both channels</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enable CHA</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_2</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enable CHB</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Specify the acquisition trigger</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetTriggerLevel</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_T_CH_1</span><span class="p">,</span> <span class="n">trig_lvl</span><span class="p">)</span>
+
+
+<span class="c1">### Acquisition ###</span>
+<span class="c1"># Start the DMA acquisition</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqStart</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ACQ Started</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Specify trigger source</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetTriggerSrc</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_TRIG_SRC_CHA_PE</span><span class="p">)</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_TRIG_STATE_TRIGGERED</span>
+
+<span class="c1"># Wait for the triggering moment</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqGetTriggerState</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_TRIG_STATE_TRIGGERED</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Triggered&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="c1"># Wait until both buggers are full/data is acquired</span>
+<span class="n">fillState</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">fillState</span><span class="p">:</span>
+    <span class="n">fillState</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiGetBufferFillState</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DMA buffer full&quot;</span><span class="p">)</span>
+
+<span class="c1"># Stop the acquisition</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqStop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stop DMA acq</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get write pointer on the triggering location</span>
+<span class="n">posChA</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiGetWritePointerAtTrig</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">posChB</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiGetWritePointerAtTrig</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_2</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="c1"># Allocate memory for the data</span>
+<span class="n">buff1</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">i16Buffer</span><span class="p">(</span><span class="n">READ_DATA_SIZE</span><span class="p">)</span>
+<span class="n">buff2</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">i16Buffer</span><span class="p">(</span><span class="n">READ_DATA_SIZE</span><span class="p">)</span>
+
+
+<span class="c1"># Writing data into a text file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;out.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">read_size</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">read_size</span> <span class="o">&lt;</span> <span class="n">DATA_SIZE</span><span class="p">:</span>
+        <span class="n">size1</span> <span class="o">=</span> <span class="n">READ_DATA_SIZE</span>
+        <span class="n">size2</span> <span class="o">=</span> <span class="n">READ_DATA_SIZE</span>
+        <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiGetDataRaw</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">,</span> <span class="n">posChA</span><span class="p">,</span> <span class="n">size1</span><span class="p">,</span> <span class="n">buff1</span><span class="o">.</span><span class="n">cast</span><span class="p">())</span>
+        <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiGetDataRaw</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_2</span><span class="p">,</span> <span class="n">posChB</span><span class="p">,</span> <span class="n">size2</span><span class="p">,</span> <span class="n">buff2</span><span class="o">.</span><span class="n">cast</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">READ_DATA_SIZE</span><span class="p">):</span>
+            <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">6d</span><span class="si">}</span><span class="s2">:  </span><span class="si">{</span><span class="n">buff1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">6d</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">buff2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">6d</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">posChA</span> <span class="o">+=</span> <span class="n">size1</span>
+        <span class="n">posChB</span> <span class="o">+=</span> <span class="n">size2</span>
+        <span class="n">read_size</span> <span class="o">+=</span> <span class="n">READ_DATA_SIZE</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved data size </span><span class="si">{</span><span class="n">read_size</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">### Releasing resources ###</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Releasing resources</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqAxiEnable</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_2</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_Release</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../multiboard_sync/click_shield-exm1.html" class="btn btn-neutral float-left" title="2.4.6.6.2. Synchronised Click Shield Generation and Acquisition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../communication_interfaces/digcomIF.html" class="btn btn-neutral float-right" title="2.4.6.8. Digital communication interfaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

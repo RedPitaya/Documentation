@@ -1,0 +1,810 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2.2.4. Build Red Pitaya ecosystem &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="3.2.2.5. Build Red Pitaya OS" href="../debian.html" />
+    <link rel="prev" title="3.2.2.3.9.6.5. Project - stream_app_250" href="../fpga/regset/in_dev/stream_app_250.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">3. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">3.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">3.2. Software</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">3.2.1. Console connection</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../build.html">3.2.2. Build &amp; compile instructions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../C%26Python_API.html">3.2.2.1. Running C and Python Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../comStreaming.html">3.2.2.2. Compiling and running Streaming client applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fpga/fpga.html">3.2.2.3. Build FPGA image</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">3.2.2.4. Build Red Pitaya ecosystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../debian.html">3.2.2.5. Build Red Pitaya OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../webapp/webApps.html">3.2.2.6. Create your own WEB applications</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../other_info/info.html">3.2.3. Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">3.2.4. Known software issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">3. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">3.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../build.html"><span class="section-number">3.2.2. </span>Build &amp; compile instructions</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.2.4. </span>Build Red Pitaya ecosystem</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="build-red-pitaya-ecosystem">
+<span id="ecosystem"></span><h1><span class="section-number">3.2.2.4. </span>Build Red Pitaya ecosystem<a class="headerlink" href="#build-red-pitaya-ecosystem" title="Permalink to this heading"></a></h1>
+<p>Go to the Red Pitaya (git) directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">It is recommended that you set <code class="docutils literal notranslate"><span class="pre">$LC_ALL</span></code> variable.</div>
+<div class="line">To check whether it is set, type the following command into a terminal:</div>
+</div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">echo $LC_ALL</span>
+</pre></div>
+</div>
+<p>If it returns an empty line, set it up by typing the following command into the terminal:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export LC_ALL=C</span>
+</pre></div>
+</div>
+<p>This line can also be added to the end of .bashrc and will automatically set the <code class="docutils literal notranslate"><span class="pre">$LC_ALL</span></code> variable each time the
+the terminal is started.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is not possible to build an ecosystem on an encrypted home directory since schroot can not access that
+directory. We recommend that you make a separate directory in the home directory that is not encrypted e.g.
+<code class="docutils literal notranslate"><span class="pre">/home/ecosystem_build</span></code></p>
+</div>
+<div class="section" id="red-pitaya-ecosystem-and-applications">
+<h2><span class="section-number">3.2.2.4.1. </span>Red Pitaya ecosystem and applications<a class="headerlink" href="#red-pitaya-ecosystem-and-applications" title="Permalink to this heading"></a></h2>
+<p>Here you will find the sources of various software components of the
+Red Pitaya system. The components are mainly contained in dedicated
+directories, however, due to the nature of the Xilinx SoC “All
+Programmable” paradigm and the way several components are interrelated,
+some components might be spread across many directories or found at
+different places one would expect.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 91%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>directories</p></th>
+<th class="head"><p>contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rp-api</p></td>
+<td><p>API source code for <code class="docutils literal notranslate"><span class="pre">librp.so</span></code> , <code class="docutils literal notranslate"><span class="pre">librp2.so</span></code> , <code class="docutils literal notranslate"><span class="pre">librp-gpio.so</span></code> , <code class="docutils literal notranslate"><span class="pre">librp-i2c.so</span></code> , <code class="docutils literal notranslate"><span class="pre">librp-spi.so</span></code>, etc …</p></td>
+</tr>
+<tr class="row-odd"><td><p>apps-free</p></td>
+<td><p>WEB application for the old environment (also with controller modules &amp; GUI clients)</p></td>
+</tr>
+<tr class="row-even"><td><p>apps-tools</p></td>
+<td><p>WEB interface home page and some system management applications</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bazaar</p></td>
+<td><p>Nginx server with dependencies, Bazaar module &amp; application controller module loader</p></td>
+</tr>
+<tr class="row-even"><td><p>fpga</p></td>
+<td><p>FPGA design (RTL, bench, simulation, and synthesis scripts) SystemVerilog based for newer applications</p></td>
+</tr>
+<tr class="row-odd"><td><p>OS</p></td>
+<td><p>GNU/Linux operating system components</p></td>
+</tr>
+<tr class="row-even"><td><p>patches</p></td>
+<td><p>Directory containing patches</p></td>
+</tr>
+<tr class="row-odd"><td><p>scpi-server</p></td>
+<td><p>SCPI server</p></td>
+</tr>
+<tr class="row-even"><td><p>Test</p></td>
+<td><p>Command line utilities (acquire, generate, …), tests</p></td>
+</tr>
+<tr class="row-odd"><td><p>Examples</p></td>
+<td><p>Examples in different programming languages for working with peripherals</p></td>
+</tr>
+<tr class="row-even"><td><p>build_scripts</p></td>
+<td><p>Scripts for building an ecosystem and preparing an image for writing to a memory card</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="supported-platforms">
+<h3><span class="section-number">3.2.2.4.1.1. </span>Supported platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this heading"></a></h3>
+<p>Red Pitaya is developed on Linux (64bit Ubuntu 18.04),
+so Linux is also the only platform we support.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ecosystem version 2.0 requires ubuntu version 22.04</p>
+</div>
+</div>
+<div class="section" id="software-requirements">
+<span id="sys-req-label"></span><h3><span class="section-number">3.2.2.4.1.2. </span>Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this heading"></a></h3>
+<p>You will need the following to build the Red Pitaya components:</p>
+<ol class="arabic">
+<li><p>Various development packages.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>generic<span class="w"> </span>dependencies
+<span class="go">sudo apt-get install make curl xz-utils</span>
+<span class="gp"># </span>U-Boot<span class="w"> </span>build<span class="w"> </span>dependencies
+<span class="go">sudo apt-get install libssl-dev device-tree-compiler u-boot-tools</span>
+<span class="gp"># </span>secure<span class="w"> </span>chroot
+<span class="go">sudo apt-get install schroot</span>
+<span class="gp"># </span>QEMU
+<span class="go">sudo apt-get install qemu qemu-user qemu-user-static</span>
+<span class="gp">#</span><span class="m">32</span>-bit<span class="w"> </span>libraries
+<span class="go">sudo apt-get install lib32z1 lib32ncurses5 libbz2-1.0:i386 lib32stdc++6</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Meson Build system (depends on Python 3) is used for some new code.
+It is not required but can be used during development on an x86 PC.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install python3 python3-pip</span>
+<span class="go">sudo pip3 install --upgrade pip</span>
+<span class="go">sudo pip3 install meson</span>
+<span class="go">sudo apt-get install ninja-build</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Xilinx <a class="reference external" href="http://www.xilinx.com/support/download.html">Vivado 2020.1</a> FPGA development tools.
+The SDK (bare metal toolchain) must also be installed, be careful during the installation process to select it.
+Preferably use the default install location.</p>
+<p>If you want to run Vivado from a virtual machine and Vivado is installed on a host shared
+folder, then we suggest you use VirtualBox since VMware has a bug in VMware-tools
+for Ubuntu guests and can not mount vmhgfs shared file system type.</p>
+<p>Then install Ubuntu 18.04 in VirtualBox (NOTE: don’t use encrypt installation,
+since it blocks some Red Pitaya build procedures).</p>
+<p>After successfully installation, change the settings for Ubuntu virtual machine.
+Go to the Shared Folders menu and choose the Xilinx installation directory on the host machine
+(by default is under /opt/ directory). And choose the Auto-mount option (checkbox).</p>
+<p>Then you must install (on Ubuntu guest) a package dkms.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>virtualbox.guest-dkms
+</pre></div>
+</div>
+<p>After rebooting Ubuntu guest, you can access (with superuser/root privileges) Xilinx shared
+folder under /media/sf_Xilinx subdirectory.</p>
+<p>Now you can manage this system to meet your requirements.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ecosystem version 2.0 requires Vivado version 2020.1 and SDK 2019.1</p>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Missing <code class="docutils literal notranslate"><span class="pre">gmake</span></code> path</p>
+<p>Vivado requires a <code class="docutils literal notranslate"><span class="pre">gmake</span></code> executable that does not exist on Ubuntu. It is necessary to create a symbolic link to the regular <code class="docutils literal notranslate"><span class="pre">make</span></code> executable.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/usr/bin/make<span class="w"> </span>/usr/bin/gmake
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="build-process">
+<span id="build-proc-label"></span><h2><span class="section-number">3.2.2.4.2. </span>Build process<a class="headerlink" href="#build-process" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To implement the build process, at least 8 GB of available space on the PC’s local machine is required.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-RWNvc3lzdGVtIDEuMDQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RWNvc3lzdGVtIDEuMDQ=" name="RWNvc3lzdGVtIDEuMDQ=" role="tab" tabindex="0">Ecosystem 1.04</button><button aria-controls="panel-0-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" name="RWNvc3lzdGVtIDIuMDAgYW5kIHVw" role="tab" tabindex="-1">Ecosystem 2.00 and up</button></div><div aria-labelledby="tab-0-RWNvc3lzdGVtIDEuMDQ=" class="sphinx-tabs-panel group-tab" id="panel-0-RWNvc3lzdGVtIDEuMDQ=" name="RWNvc3lzdGVtIDEuMDQ=" role="tabpanel" tabindex="0"><p><strong>1.</strong> Go to your preferred development directory and clone the Red Pitaya repository from GitHub.
+The choice of specific branches or tags is up to the user.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/RedPitaya/RedPitaya.git</span>
+<span class="go">cd RedPitaya</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can run a script that builds the ecosystem from the build_scripts folder. <br/>
+To build an ecosystem for boards 125-14:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd ./RedPitaya/build_scripts</span>
+<span class="go">sudo ./build_Z10.sh</span>
+</pre></div>
+</div>
+<p>To build an ecosystem for board 125-14 (Z7020):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd ./RedPitaya/build_scripts</span>
+<span class="go">sudo ./build_Z20_125.sh</span>
+</pre></div>
+</div>
+<p>To build an ecosystem for board 125-14 4-Input (Z7020):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd ./RedPitaya/build_scripts</span>
+<span class="go">sudo ./build_Z20_4CH.sh</span>
+</pre></div>
+</div>
+<p>To build an ecosystem for boards 122-16:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd ./RedPitaya/build_scripts</span>
+<span class="go">sudo ./build_Z20.sh</span>
+</pre></div>
+</div>
+<p>To build an ecosystem for board 250-12:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd ./RedPitaya/build_scripts</span>
+<span class="go">sudo ./build_Z250_12.sh</span>
+</pre></div>
+</div>
+<p>or follow the steps of the instructions and build yourself</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>2.</strong>  An example script <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code> is provided for setting all necessary environment variables.
+The script assumes some default tool install paths, so it might need editing if install paths other than the ones described above were used.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">settings.sh</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>3.</strong> Prepare a download cache for various source tarballs.
+This is an optional step that will speed up the build process by avoiding downloads for all but the first build.
+There is a default cache path defined in the <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code> script, you can edit it and avoid a rebuild the next time.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p dl</span>
+<span class="go">export DL=$PWD/dl</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>4.</strong> Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
+You can also create your root environment following the instructions in <a class="reference internal" href="../debian.html#os"><span class="std std-ref">OS image build instructions</span></a>.
+Correct file permissions are required for <code class="docutils literal notranslate"><span class="pre">schroot</span></code> to work properly.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_04-oct-2021.tar.gz</span>
+<span class="go">sudo chown root:root redpitaya_ubuntu_04-oct-2021.tar.gz</span>
+<span class="go">sudo chmod 664 redpitaya_ubuntu_04-oct-2021.tar.gz</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>5.</strong> Create schroot configuration file <code class="docutils literal notranslate"><span class="pre">/etc/schroot/chroot.d/red-pitaya-ubuntu.conf</span></code>.
+Replace the tarball path stub with the absolute path of the previously downloaded image.
+Replace user names with a comma-separated list of users who should be able to compile Red Pitaya.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[red-pitaya-ubuntu]
+description=Red Pitaya Debian/Ubuntu OS image
+type=file
+file=absolute-path-to-red-pitaya-ubuntu.tar.gz
+users=comma-separated-list-of-users-with-access-permissions
+root-users=comma-separated-list-of-users-with-root-access-permissions
+root-groups=root
+profile=desktop
+personality=linux
+preserve-environment=true
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Example of configuration file:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">[red-pitaya-ubuntu]</span>
+<span class="go">description= Red pitaya</span>
+<span class="go">type=file</span>
+<span class="go">file=/home/user/RedPitaya/redpitaya_ubuntu_04-oct-2021.tar.gz</span>
+<span class="go">users=root</span>
+<span class="go">root-users=root</span>
+<span class="go">root-groups=root</span>
+<span class="go">personality=linux</span>
+<span class="go">preserve-environment=true</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>6.</strong> To build everything a few <code class="docutils literal notranslate"><span class="pre">make</span></code> steps are required.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86</span>
+<span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make</span>
+<span class="go">EOL_CHROOT</span>
+<span class="go">make -f Makefile.x86 zip</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>7.</strong> If you want to build for 122-16 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20 in the makefile
+This parameter defines how to create projects and should be transferred to all makefiles.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 MODEL=Z20</span>
+<span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make MODEL=Z20</span>
+<span class="go">EOL_CHROOT</span>
+<span class="go">make -f Makefile.x86 zip MODEL=Z20</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>8.</strong> If you want to build for 125-14 4-Input based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_125_4CH in makefile
+This parameter defines how to create projects and should be transferred to all makefiles.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 MODEL=Z20_125_4CH</span>
+<span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make MODEL=Z20_125_4CH</span>
+<span class="go">EOL_CHROOT</span>
+<span class="go">make -f Makefile.x86 zip MODEL=Z20_125_4CH</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>9.</strong> If you want to build for 250-12 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_250_12 in the makefile
+This parameter defines how to create projects and should be transferred to all makefiles.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 MODEL=Z20_250_12</span>
+<span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make MODEL=Z20_250_12</span>
+<span class="go">EOL_CHROOT</span>
+<span class="go">make -f Makefile.x86 zip MODEL=Z20_250_12</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To get an interactive ARM shell do.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">schroot -c red-pitaya-ubuntu</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" name="RWNvc3lzdGVtIDIuMDAgYW5kIHVw" role="tabpanel" tabindex="0"><p><strong>1.</strong> Go to your preferred development directory and clone the Red Pitaya repository from GitHub.
+The choice of specific branches or tags is up to the user.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/RedPitaya/RedPitaya.git</span>
+<span class="go">cd RedPitaya</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can run a script that builds the ecosystem from the build_scripts folder. <br/>
+To build an ecosystem for all boards:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd ./RedPitaya/build_scripts</span>
+<span class="go">sudo ./build_OS.sh</span>
+</pre></div>
+</div>
+<p>or follow the steps of the instructions and build yourself</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>2.</strong>  An example script <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code> is provided for setting all necessary environment variables.
+The script assumes some default tool install paths, so it might need editing if install paths other than the ones described above were used.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">settings.sh</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>3.</strong> Prepare a download cache for various source tarballs.
+This is an optional step that will speed up the build process by avoiding downloads for all but the first build.
+There is a default cache path defined in the <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code> script, you can edit it and avoid a rebuild the next time.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p dl</span>
+<span class="go">export DL=$PWD/dl</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>4.</strong> Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
+You can also create your root environment following the instructions in <a class="reference internal" href="../debian.html#os"><span class="std std-ref">OS image build instructions</span></a>.
+Correct file permissions are required for <code class="docutils literal notranslate"><span class="pre">schroot</span></code> to work properly.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_OS_16-03-48_03-Nov-2022.tar.gz</span>
+<span class="go">sudo chown root:root redpitaya_OS_16-03-48_03-Nov-2022.tar.gz</span>
+<span class="go">sudo chmod 664 redpitaya_OS_16-03-48_03-Nov-2022.tar.gz</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>5.</strong> Create schroot configuration file <code class="docutils literal notranslate"><span class="pre">/etc/schroot/chroot.d/red-pitaya-ubuntu.conf</span></code>.
+Replace the tarball path stub with the absolute path of the previously downloaded image.
+Replace user names with a comma-separated list of users who should be able to compile Red Pitaya.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[red-pitaya-ubuntu]
+description=Red Pitaya Debian/Ubuntu OS image
+type=file
+file=absolute-path-to-red-pitaya-ubuntu.tar.gz
+users=comma-separated-list-of-users-with-access-permissions
+root-users=comma-separated-list-of-users-with-root-access-permissions
+root-groups=root
+profile=desktop
+personality=linux
+preserve-environment=true
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Example of configuration file:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">[red-pitaya-ubuntu]</span>
+<span class="go">description= Red pitaya</span>
+<span class="go">type=file</span>
+<span class="go">file=/home/user/RedPitaya/redpitaya_OS_16-03-48_03-Nov-2022.tar.gz</span>
+<span class="go">users=root</span>
+<span class="go">root-users=root</span>
+<span class="go">root-groups=root</span>
+<span class="go">personality=linux</span>
+<span class="go">preserve-environment=true</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>6.</strong> To build everything a few <code class="docutils literal notranslate"><span class="pre">make</span></code> steps are required.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86</span>
+<span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make</span>
+<span class="go">EOL_CHROOT</span>
+<span class="go">make -f Makefile.x86 zip</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To get an interactive ARM shell do.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">schroot -c red-pitaya-ubuntu</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ecosystem Build 2.0 cannot build for a specific board model as it was in version 1.04. Differences only in the assembly of FPGA for specific models.</p>
+</div>
+</div></div>
+</div>
+<div class="section" id="partial-rebuild-process">
+<h2><span class="section-number">3.2.2.4.3. </span>Partial rebuild process<a class="headerlink" href="#partial-rebuild-process" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-RWNvc3lzdGVtIDEuMDQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RWNvc3lzdGVtIDEuMDQ=" name="RWNvc3lzdGVtIDEuMDQ=" role="tab" tabindex="0">Ecosystem 1.04</button><button aria-controls="panel-1-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" name="RWNvc3lzdGVtIDIuMDAgYW5kIHVw" role="tab" tabindex="-1">Ecosystem 2.00 and up</button></div><div aria-labelledby="tab-1-RWNvc3lzdGVtIDEuMDQ=" class="sphinx-tabs-panel group-tab" id="panel-1-RWNvc3lzdGVtIDEuMDQ=" name="RWNvc3lzdGVtIDEuMDQ=" role="tabpanel" tabindex="0"><p>The next components can be built separately.
+By default, the project is built for RedPitaya 125-14 (Z7010), if necessary build for the (RedPitaya 122-16) Z7020, use the parameter MODEL=Z20 and parameter MODEL=Z20_250_12 for RedPitaya (250-12) Z7020.</p>
+<ul class="simple">
+<li><p>FPGA + device tree</p></li>
+<li><p>u-Boot</p></li>
+<li><p>Linux kernel</p></li>
+<li><p>Debian/Ubuntu OS</p></li>
+<li><p>API</p></li>
+<li><p>SCPI server</p></li>
+<li><p>free applications</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Base system</strong></p>
+<p>Here the <em>base system</em> represents everything before Linux user space.</p>
+<p>To be able to compile FPGA and cross-compile <em>base system</em> software, it is necessary to set up the Vivado FPGA tools and ARM SDK.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.<span class="w"> </span>settings.sh
+</pre></div>
+</div>
+<p>On some systems (including Ubuntu 18.04) the library setup provided by Vivado conflicts with default system libraries.
+To avoid this, disable library overrides specified by Vivado.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Once an ecosystem is built, it can be packaged into an archive for ease of use.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>-f<span class="w"> </span>Makefile.x86<span class="w"> </span>zip
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*FPGA and device tree sources*</strong></p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>-f<span class="w"> </span>Makefile.x86<span class="w"> </span>fpga
+</pre></div>
+</div>
+<p>Detailed instructions are provided for <a class="reference internal" href="../fpga/fpga.html#buildprocess"><span class="std std-ref">building the FPGA</span></a>
+including some <a class="reference internal" href="../fpga/fpga.html#devicetree"><span class="std std-ref">device tree details</span></a>.</p>
+<p><strong>Device Tree compiler + overlay patches</strong></p>
+<p>Download the Device Tree compiler with overlay patches from Pantelis Antoniou.
+Compile and install it.
+Otherwise, a binary is available in <code class="docutils literal notranslate"><span class="pre">tools/dtc</span></code>.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>flex<span class="w"> </span>bison
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:pantoniou/dtc.git
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>dtc
+<span class="gp">$ </span>git<span class="w"> </span>checkout<span class="w"> </span>overlays
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo<span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span><span class="nv">PREFIX</span><span class="o">=</span>/usr
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*U-boot*</strong></p>
+<p>To build the U-Boot binary and boot scripts (used to select between booting into Buildroot or Debian/Ubuntu):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 u-boot</span>
+</pre></div>
+</div>
+<p>The build process downloads the Xilinx version of U-Boot sources from Github, applies patches, and starts the build process.
+Patches are available in the <code class="docutils literal notranslate"><span class="pre">patches/</span></code> directory.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*Linux kernel and device tree binaries*</strong></p>
+<p>To build a Linux image:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 linux</span>
+<span class="go">make -f Makefile.x86 linux-install</span>
+<span class="go">make -f Makefile.x86 devicetree</span>
+<span class="go">make -f Makefile.x86 devicetree-install</span>
+</pre></div>
+</div>
+<p>The build process downloads the Xilinx version of Linux sources from Github, applies patches, and starts the build process.
+Patches are available in the <code class="docutils literal notranslate"><span class="pre">patches/</span></code> directory.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*Boot file*</strong></p>
+<p>The created boot file contains FSBL, FPGA bitstream, and U-Boot binary.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 boot</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RWNvc3lzdGVtIDIuMDAgYW5kIHVw" name="RWNvc3lzdGVtIDIuMDAgYW5kIHVw" role="tabpanel" tabindex="0"><p>The next components can be built separately.</p>
+<ul class="simple">
+<li><p>FPGA + overlays</p></li>
+<li><p>u-Boot</p></li>
+<li><p>Linux kernel</p></li>
+<li><p>API</p></li>
+<li><p>SCPI server</p></li>
+<li><p>Console tools and web app</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Base system</strong></p>
+<p>Here the <em>base system</em> represents everything before Linux user space.</p>
+<p>To be able to compile FPGA and cross-compile <em>base system</em> software, it is necessary to set up the Vivado FPGA tools and ARM SDK.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">./settings.sh</span>
+<span class="go">export CROSS_COMPILE=arm-linux-gnueabihf-</span>
+<span class="go">export ARCH=arm</span>
+<span class="go">export PATH=$PATH:/opt/Xilinx/Xilinx/Vivado/2020.1/bin</span>
+<span class="go">export PATH=$PATH:/opt/Xilinx/SDK/2019.1/bin</span>
+<span class="go">export PATH=$PATH:/opt/Xilinx/SDK/2019.1/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin/</span>
+</pre></div>
+</div>
+<p>Once an ecosystem is built, it can be packaged into an archive for ease of use.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>-f<span class="w"> </span>Makefile.x86<span class="w"> </span>zip
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*FPGA and overlays*</strong></p>
+<p>Each FPGA version uses its overlay with the devices necessary to work with FPGA. Previously, the device tree was fixed for a specific FPGA version and board. <br/>
+For each board, you need to call the assembly with the board version parameters. But to speed up the build, you can skip the unnecessary version.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 fpga MODEL=Z10</span>
+<span class="go">make -f Makefile.x86 fpga MODEL=Z20</span>
+<span class="go">make -f Makefile.x86 fpga MODEL=Z20_125</span>
+<span class="go">make -f Makefile.x86 fpga MODEL=Z20_125_4CH</span>
+<span class="go">make -f Makefile.x86 fpga MODEL=Z20_250_12</span>
+</pre></div>
+</div>
+<p>Detailed instructions are provided for <a class="reference internal" href="../fpga/fpga.html#buildprocess"><span class="std std-ref">building the FPGA</span></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*U-boot*</strong></p>
+<p>To build the U-Boot binary and boot scripts:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 boot</span>
+</pre></div>
+</div>
+<p>The build process downloads the Xilinx version of U-Boot sources from Github, applies patches, and starts the build process.
+Patches are available in the <code class="docutils literal notranslate"><span class="pre">patches/</span></code> directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The script builds two versions of boot.bin files. One version is for boards with 512 MB RAM, the second version is for boards with 1 GB of RAM. There are also two versions of the Linux kernel boot scripts.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The device tree for <code class="docutils literal notranslate"><span class="pre">uboot</span></code> is built using prepared files located in the <cite>dts_uboot</cite> folder. The device tree defines the minimum requirements for peripherals in order for the board to start.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*Linux kernel and device tree binaries*</strong></p>
+<p>To build a Linux image:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 linux</span>
+<span class="go">make -f Makefile.x86 devicetree</span>
+</pre></div>
+</div>
+<p>The build process downloads the Xilinx version of Linux sources from Github, applies patches, and starts the build process.
+Patches are available in the <code class="docutils literal notranslate"><span class="pre">patches/</span></code> directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To build device trees, you must first build the necessary FPGA projects for the required boards. Since dtb and dts files are built based on FPGA <cite>barebone</cite> projects.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>*API + SCPI server + Web Applications*</strong></p>
+<p>You can build separately each of the projects. The build requires a Linux image, see <a class="reference internal" href="#build-proc-label"><span class="std std-ref">Build process</span></a>.
+Use cases are shown below.:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make api</span>
+<span class="go">make nginx</span>
+<span class="go">make scpi</span>
+<span class="go">make sdr</span>
+<span class="go">make bode</span>
+<span class="go">make monitor</span>
+<span class="go">make generator</span>
+<span class="go">make acquire</span>
+<span class="go">make calib</span>
+<span class="go">make daisy_tool</span>
+<span class="go">make spectrum</span>
+<span class="go">make led_control</span>
+<span class="go">make ecosystem</span>
+<span class="go">make updater</span>
+<span class="go">make main_menu</span>
+<span class="go">make scpi_manager</span>
+<span class="go">make streaming_manager</span>
+<span class="go">make calib_app</span>
+<span class="go">make network_manager</span>
+<span class="go">make jupyter_manager</span>
+<span class="go">EOL_CHROOT</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Possible options for individual assemblies are listed. Some of them depend on each other. You can build everything at once if you start the build with <cite>make all</cite>.</p>
+</div>
+</div></div>
+<div class="section" id="linux-user-space">
+<h3><span class="section-number">3.2.2.4.3.1. </span>Linux user space<a class="headerlink" href="#linux-user-space" title="Permalink to this heading"></a></h3>
+<div class="section" id="debian-ubuntu-os">
+<h4><span class="section-number">3.2.2.4.3.1.1. </span>Debian/Ubuntu OS<a class="headerlink" href="#debian-ubuntu-os" title="Permalink to this heading"></a></h4>
+<p><a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/OS/debian">Debian/Ubuntu OS instructions</a> are detailed elsewhere.</p>
+</div>
+<div class="section" id="api">
+<h4><span class="section-number">3.2.2.4.3.1.2. </span>API<a class="headerlink" href="#api" title="Permalink to this heading"></a></h4>
+<p>To compile the API run:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make api</span>
+<span class="go">EOL_CHROOT</span>
+</pre></div>
+</div>
+<p>The output of this process is the Red Pitaya <code class="docutils literal notranslate"><span class="pre">librp.so</span></code> library in <code class="docutils literal notranslate"><span class="pre">api/lib</span></code> directory.
+The header file for the API is <code class="docutils literal notranslate"><span class="pre">redpitaya/rp.h</span></code> and can be found in <code class="docutils literal notranslate"><span class="pre">api/includes</span></code>.
+You can install it on Red Pitaya by copying it there:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">scp build/api/lib/*.so root@192.168.0.100:/opt/redpitaya/lib/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scpi-server">
+<h4><span class="section-number">3.2.2.4.3.1.3. </span>SCPI server<a class="headerlink" href="#scpi-server" title="Permalink to this heading"></a></h4>
+<p>Scpi server README can be found <a class="reference download external" download="" href="https://github.com/RedPitaya/RedPitaya/blob/master/scpi-server/README.md"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<p>To compile the server run:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">schroot -c red-pitaya-ubuntu &lt;&lt;- EOL_CHROOT</span>
+<span class="go">make scpi</span>
+<span class="go">EOL_CHROOT</span>
+</pre></div>
+</div>
+<p>The compiled executable is <code class="docutils literal notranslate"><span class="pre">scpi-server/scpi-server</span></code>.
+You can install it on Red Pitaya by copying it there:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">scp scpi-server/scpi-server root@192.168.0.100:/opt/redpitaya/bin/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To build the scpi server for RP, a special <a class="reference external" href="https://github.com/RedPitaya/scpi-parser/tree/redpitaya">version</a>  of scpi-parser is used. It added and optimized some functions.</p>
+</div>
+</div>
+<div class="section" id="free-applications">
+<h4><span class="section-number">3.2.2.4.3.1.4. </span>Free applications<a class="headerlink" href="#free-applications" title="Permalink to this heading"></a></h4>
+<p>To build free applications, follow the instructions given <a class="reference download external" download="" href="https://github.com/RedPitaya/RedPitaya/blob/master/apps-free/README.md"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../fpga/regset/in_dev/stream_app_250.html" class="btn btn-neutral float-left" title="3.2.2.3.9.6.5. Project - stream_app_250" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../debian.html" class="btn btn-neutral float-right" title="3.2.2.5. Build Red Pitaya OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4. Programming and remote-control tools &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)" href="scpi.html" />
+    <link rel="prev" title="2.3.4. Calibration" href="../systemtool/calibration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/apps-featured.html">2.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. Programming and remote-control tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API_scripts.html">2.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_top.html">2.4.6. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4. </span>Programming and remote-control tools</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="programming-and-remote-control-tools">
+<span id="programming"></span><h1><span class="section-number">2.4. </span>Programming and remote-control tools<a class="headerlink" href="#programming-and-remote-control-tools" title="Permalink to this heading"></a></h1>
+<p>Here you will find all the tools and examples you need to program and control your Red Pitaya. This section includes the following chapters</p>
+<ul class="simple">
+<li><p><strong>SCPI Server</strong> - How to set up an SCPI server on your Red Pitaya and control it remotely from Python, MATLAB or LabVIEW?</p></li>
+<li><p><strong>C and Python Applications</strong> - How to run C and Python programs directly on the Linux OS of your Red Pitaya board.</p></li>
+<li><p><strong>JupyterLab</strong> - How to use the JupyterLab application to create interactive documents with Python code.</p></li>
+<li><p><strong>Deep Memory Acquisition</strong> - How to acquire data directly into DDR RAM with variable buffer sizes at full speed.</p></li>
+<li><p><strong>List of Supported SCPI &amp; API Commands</strong> - A list of all the SCPI and API commands available on the Red Pitaya, with a short description of each command and the OS version in which the command was first introduced.</p></li>
+<li><p><strong>Examples</strong> - Code examples for SCPI and API covering everything from LED control to data acquisition and generation to digital communication interfaces.</p></li>
+<li><p><strong>Known SCPI &amp; API Issues and Changes by OS Version</strong> - Is your code not working as intended? Check this section for known command issues or release dates of newer commands.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API_scripts.html">2.4.2. C and Python Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_top.html">2.4.6. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../systemtool/calibration.html" class="btn btn-neutral float-left" title="2.3.4. Calibration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scpi.html" class="btn btn-neutral float-right" title="2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

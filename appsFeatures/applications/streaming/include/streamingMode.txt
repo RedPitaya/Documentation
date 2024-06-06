@@ -1,0 +1,25 @@
+rpsa_client.exe -s -h IPs [-p PORT] [-c PORT] -f tdms|wav|csv|bin [-d NAME] [-m raw|volt] [-l SAMPLES] [-t MSEC] [-v] [-b TD|F]
+rpsa_client.exe --streaming --hosts=IPs [--port=PORT] [--config_port=PORT] --format=tdms|wav|csv|bin [--dir=NAME] [--limit=SAMPLES] [--mode=raw|volt] [--timeout=MSEC] [--verbose] [--benchmark=TD|F]
+
+--streaming            -s           Enable streaming mode.
+--hosts=IP,...         -h IP,...    You can specify one or more board IP addresses through a separator - ','
+                                    Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                              -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+--port=PORT            -p PORT      Port for streaming server (Default: 8900).
+--config_port=PORT     -c PORT      Port for configuration server (Default: 8901).
+--format=FORMAT        -f FORMAT    The format in which the data will be saved.
+                                    Keys: tdsm = NI TDMS File Format.
+                                          wav = Waveform Audio File Format.
+                                          csv = Text file that uses a comma to separate values.
+                                          bin = Binary format.
+--dir=NAME             -d NAME      Path to the directory where to save files.
+--limit=SAMPLES        -l SAMPLES   Sample limit [1-2147483647] (no limit by default).
+--mode=MODE            -m MODE      Convert values in volts (store as ADC raw data by default).
+                                    Keys: raw = 8/16 Bit binary raw format.
+                                          volt = Converts binary integer format to floating point format.
+                                                 Measured in volts. In wav format, it is limited from -1 to 1.
+--timeout=MSEC         -t MSEC      Stops recording after a specified amount of time.
+--verbose              -v           Displays service information.
+--benchmark=MODE       -b MODE      Starts the throughput test mode at the current settings.
+                                    Keys: TD = Adds validation of data. Works only in network test mode.
+                                          F  = Full system performance testing.

@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2.1.2. Setting up the serial console &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="3.2.2. Build &amp; compile instructions" href="../../build/build.html" />
+    <link rel="prev" title="3.2.1.1. Establish remote SSH connection" href="../ssh/ssh.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">3. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">3.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">3.2. Software</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../console_con.html">3.2.1. Console connection</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../ssh/ssh.html">3.2.1.1. Establish remote SSH connection</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">3.2.1.2. Setting up the serial console</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/build.html">3.2.2. Build &amp; compile instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../other_info/info.html">3.2.3. Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">3.2.4. Known software issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">3. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">3.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../console_con.html"><span class="section-number">3.2.1. </span>Console connection</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.1.2. </span>Setting up the serial console</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="setting-up-the-serial-console">
+<span id="console"></span><h1><span class="section-number">3.2.1.2. </span>Setting up the serial console<a class="headerlink" href="#setting-up-the-serial-console" title="Permalink to this heading"></a></h1>
+<p>The debug console can be used to follow the boot process:</p>
+<ol class="arabic">
+<li><p>FSBL (if debug mode is enabled)</p>
+<p>The serial console can also be used to see the output
+of other bare metal applications, for example, the memory test.</p>
+</li>
+<li><p>U-Boot</p>
+<p>During the boot process, U-Boot will show status and debug information.</p>
+<p>After FSBL starts U-Boot, there is a 3-second delay
+before U-Boot starts the Linux kernel.
+If during this time a key is pressed,
+U-boot will stop the boot process
+and give the user access to its shell.</p>
+</li>
+<li><p>Linux console</p>
+<p>During the boot process, Linux will show status and debug information.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">systemd</span></code> reaches <code class="docutils literal notranslate"><span class="pre">multi-user.target</span></code> a login prompt will appear.</p>
+<blockquote>
+<div><p>User name: <code class="docutils literal notranslate"><span class="pre">root</span></code>
+Password: <code class="docutils literal notranslate"><span class="pre">root</span></code></p>
+</div></blockquote>
+</li>
+</ol>
+<div class="section" id="hardware-setup">
+<h2><span class="section-number">3.2.1.2.1. </span>Hardware setup<a class="headerlink" href="#hardware-setup" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For STEMlab 125-14, you will need an additional USB to micro USB cable.
+For STEMlab 125-10, you will need a serial to USB adapter (the pins must first be soldered).</p>
+</div>
+<div class="figure align-default">
+<img alt="../../../../_images/console-connector.png" src="../../../../_images/console-connector.png" />
+</div>
+<p>Connect your Red Pitaya and PC with a micro USB B to USB A cable and follow the instructions for your OS.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/pitaya-USB-connection-300x164.png" src="../../../../_images/pitaya-USB-connection-300x164.png" />
+</div>
+<div class="section" id="windows">
+<h3><span class="section-number">3.2.1.2.1.1. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<p>Download and install the <a href="http://www.ftdichip.com/Drivers/VCP.htm" target="_blank">FTDI driver</a> on your PC. After installation, a new COM port will appear in the Device Manager, which you can use in Hyperterminal or another terminal utility to connect to Red Pitaya. Connect your Red Pitaya to the micro USB port on the board. In your terminal utility, fill in the serial port name and set the <strong>speed to 115200</strong>.</p>
+<p>To adjust the connection settings for serial communication, right-click on the COM port and select Properties.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/device_manager.png" src="../../../../_images/device_manager.png" />
+</div>
+<div class="figure align-default">
+<img alt="../../../../_images/Comm_port.png" src="../../../../_images/Comm_port.png" />
+</div>
+<p>Boot reference must be done through Minicom or a similar serial console application.</p>
+<p>One of the options is to install the WSL (Windows Subsystem for Linux) and then install the relevant tools for the console interface.
+Here are the relevant links:</p>
+<ul class="simple">
+<li><p><a href="https://learn.microsoft.com/en-us/windows/wsl/install" target="_blank">Windows Subsystem for Linux</a></p></li>
+<li><p><a href="https://learn.microsoft.com/en-us/windows/wsl/connect-usb" target="_blank">Connect USB devices</a></p></li>
+</ul>
+<p>Afterwards, follow the instructions in the Linux section.</p>
+</div>
+<div class="section" id="linux">
+<h3><span class="section-number">3.2.1.2.1.2. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this heading"></a></h3>
+<p>There is broad support for USB to serial converters in the Linux kernel,
+so in most cases, the converter will be detected soon after connecting it.</p>
+<p>You can see the driver output in the kernel log using <code class="docutils literal notranslate"><span class="pre">dmesg</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ dmesg
+...
+[95074.784075] usb 1-2.4.3: new full-speed USB device number 20 using ehci-pci
+[95074.885386] usb 1-2.4.3: New USB device found, idVendor=0403, idProduct=6015
+[95074.885399] usb 1-2.4.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[95074.885406] usb 1-2.4.3: Product: FT231X USB UART
+[95074.885411] usb 1-2.4.3: Manufacturer: FTDI
+[95074.885416] usb 1-2.4.3: SerialNumber: DN003P0Q
+[95074.890105] ftdi_sio 1-2.4.3:1.0: FTDI USB Serial Device converter detected
+[95074.890228] usb 1-2.4.3: Detected FT-X
+<span class="hll">[95074.891157] usb 1-2.4.3: FTDI USB Serial Device converter now attached to ttyUSB0
+</span></pre></div>
+</div>
+<p>The first board connected to your PC will create a device named <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code>. If <strong>N</strong> USB or serial devices are connected, they will appear as ‘’/dev/ttyUSBn``, where <strong>n</strong> is <strong>{0, 1, …, N-1}</strong>. To access these devices, programs should be run with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
+<p>Boot reference must be done through Minicom or a similar serial console application.</p>
+<div class="section" id="minicom">
+<h4><span class="section-number">3.2.1.2.1.2.1. </span><code class="docutils literal notranslate"><span class="pre">minicom</span></code><a class="headerlink" href="#minicom" title="Permalink to this heading"></a></h4>
+<p>Minicom is a text-based modem control and terminal emulation program. It is commonly used for setting up a remote serial console.</p>
+<p>To configure <code class="docutils literal notranslate"><span class="pre">minicom</span></code> use the <code class="docutils literal notranslate"><span class="pre">-s</span></code> option.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo minicom -s</span>
+</pre></div>
+</div>
+<p>A configuration menu will open.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+-----[configuration]------+
+| Filenames and paths      |
+| File transfer protocols  |
+| Serial port setup        |
+| Modem and dialing        |
+| Screen and keyboard      |
+| Save setup as dfl        |
+| Save setup as..          |
+| Exit                     |
+| Exit from Minicom        |
++--------------------------+
+</pre></div>
+</div>
+<p>Go to <code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">Port</span> <span class="pre">Setup</span></code>, press <strong>Enter</strong>, and set up the next options:</p>
+<ul class="simple">
+<li><p>Serial Device: <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code> (device index <code class="docutils literal notranslate"><span class="pre">0</span></code> or a higher number)</p></li>
+<li><p>Bps/Par/Bits: <code class="docutils literal notranslate"><span class="pre">115200</span> <span class="pre">8N1</span></code> (baud rate, byte length, parity, and stop bits)</p></li>
+<li><p>Hardware/Software Flow Control: No (flow control should be disabled)</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+-----------------------------------------------------------------------+
+| A -    Serial Device      : /dev/ttyUSB0                              |
+| B - Lockfile Location     : /var/lock                                 |
+| C -   Callin Program      :                                           |
+| D -  Callout Program      :                                           |
+| E -    Bps/Par/Bits       : 115200 8N1                                |
+| F - Hardware Flow Control : No                                        |
+| G - Software Flow Control : No                                        |
+|                                                                       |
+|    Change which setting?                                              |
++-----------------------------------------------------------------------+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Minicom</span></code> requires some special <code class="docutils literal notranslate"><span class="pre">Control+A</span></code> key sequences to operate.
+Please see the <a href="https://linux.die.net/man/1/minicom" target="_blank">minicom manual</a> for details.</p>
+<p>After you have configured the details, exit the settings. Minicom should connect you to Red Pitaya, and you should be asked to log in after pressing Enter (see “3.2.1.2” at the top of the page” for the username and password). Should that not happen, leave the Minicom open and unplug Red Pitaya from power; after plugging it back in, you should see the boot sequence for Red Pitaya.</p>
+</div>
+<div class="section" id="screen">
+<h4><span class="section-number">3.2.1.2.1.2.2. </span><code class="docutils literal notranslate"><span class="pre">screen</span></code><a class="headerlink" href="#screen" title="Permalink to this heading"></a></h4>
+<p>GNU <code class="docutils literal notranslate"><span class="pre">screen</span></code> is, in general, a terminal multiplexer. It also supports connecting to a serial console and provides syntax to configure the serial connection’s baud rate, byte length, parity, and flow control.</p>
+<p>Compared to <code class="docutils literal notranslate"><span class="pre">Minicom</span></code>, it provides better fonts and support for terminal window resizing.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>screen<span class="w"> </span>/dev/ttyUSB1<span class="w"> </span><span class="m">115200</span><span class="w"> </span>cs8
+</pre></div>
+</div>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">Minicom</span></code>, <code class="docutils literal notranslate"><span class="pre">screen</span></code> requires some special <code class="docutils literal notranslate"><span class="pre">Control+A</span></code> key sequences to operate.
+Please see the <a href="https://www.gnu.org/software/screen/manual/screen.html" target="_blank">screen manual</a> for details.</p>
+</div>
+</div>
+</div>
+<div class="section" id="reference-boot-sequence">
+<h2><span class="section-number">3.2.1.2.2. </span>Reference boot sequence<a class="headerlink" href="#reference-boot-sequence" title="Permalink to this heading"></a></h2>
+<p>You can compare these reference boot sequences against yours.</p>
+<div class="section" id="u-boot">
+<h3><span class="section-number">3.2.1.2.2.1. </span>U-Boot<a class="headerlink" href="#u-boot" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>U-Boot 2016.01 (Nov 16 2016 - 12:23:28 +0100), Build: jenkins-redpitaya-master-156
+
+Model: Red Pitaya Board
+Board: Xilinx Zynq
+I2C:   ready
+DRAM:  ECC disabled 480 MiB
+I2C:EEPROM selection failed
+MMC:   sdhci@e0100000: 0
+In:    serial@e0000000
+Out:   serial@e0000000
+Err:   serial@e0000000
+Model: Red Pitaya Board
+Board: Xilinx Zynq
+Net:   ZYNQ GEM: e000b000, phyaddr 1, interface rgmii-id
+eth0: ethernet@e000b000
+Hit any key to stop autoboot:  0
+Running script from SD...
+Device: sdhci@e0100000
+Manufacturer ID: 19
+OEM: 4459
+Name: 00000
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: Yes
+Capacity: 3.7 GiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading u-boot.scr
+1203 bytes read in 17 ms (68.4 KiB/s)
+## Executing script at 02000000
+Set devicetree and ramdisk high loading address to 0x20000000
+Loading from SD card (FAT file system) to memory
+Device: sdhci@e0100000
+Manufacturer ID: 19
+OEM: 4459
+Name: 00000
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: Yes
+Capacity: 3.7 GiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading u-boot.scr
+1203 bytes read in 17 ms (68.4 KiB/s)
+## Executing script at 02000000
+Set devicetree and ramdisk high loading address to 0x20000000
+Loading from SD card (FAT file system) to memory
+Device: sdhci@e0100000
+Manufacturer ID: 19
+OEM: 4459
+Name: 00000
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: Yes
+Capacity: 3.7 GiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading uImage
+4590664 bytes read in 404 ms (10.8 MiB/s)
+reading devicetree.dtb
+17342 bytes read in 19 ms (890.6 KiB/s)
+Booting Linux kernel with ramdisk and devicetree
+## Booting kernel from Legacy Image at 02004000 ...
+   Image Name:   Linux-4.4.0-xilinx
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    4590600 Bytes = 4.4 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 04000000
+   Booting using the fdt blob at 0x4000000
+   Loading Kernel Image ... OK
+   Loading Device Tree to 1d33c000, end 1d3433bd ... OK
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../ssh/ssh.html" class="btn btn-neutral float-left" title="3.2.1.1. Establish remote SSH connection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../build/build.html" class="btn btn-neutral float-right" title="3.2.2. Build &amp; compile instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

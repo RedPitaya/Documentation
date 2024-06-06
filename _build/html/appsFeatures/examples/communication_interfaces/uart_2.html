@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4.6.8.7. UART (HW api) &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.4.6.8.8. CAN (HW api)" href="can.html" />
+    <link rel="prev" title="2.4.6.8.6. UART" href="uart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">2.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">2.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">2.4.6. Examples</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../digital/digital.html">2.4.6.1. Digital</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">2.4.6.2. Analog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">2.4.6.3. Generating signals at RF outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition/acqRF.html">2.4.6.4. Acquiring signals at RF inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition_generation/acq_genRF.html">2.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../multiboard_sync/multiboard.html">2.4.6.6. Multi-board signal acquisition and generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../DMA/deepMemoryAcq.html">2.4.6.7. Deep Memory Acquisition</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="digcomIF.html">2.4.6.8. Digital communication interfaces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">2.4.6. </span>Examples</a></li>
+          <li class="breadcrumb-item"><a href="digcomIF.html"><span class="section-number">2.4.6.8. </span>Digital communication interfaces</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4.6.8.7. </span>UART (HW api)</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="uart-hw-api">
+<h1><span class="section-number">2.4.6.8.7. </span>UART (HW api)<a class="headerlink" href="#uart-hw-api" title="Permalink to this heading"></a></h1>
+<div class="section" id="description">
+<h2><span class="section-number">2.4.6.8.7.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loopback by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When establishing UART communication with Red Pitaya and another device do not forget to connect the External Common Mode (GND) pin. Otherwise, the results might be unreliable.</p>
+</div>
+</div>
+<div class="section" id="required-hardware">
+<h2><span class="section-number">2.4.6.8.7.2. </span>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Red Pitaya</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-default">
+<img alt="../../../_images/RedPitaya_general.png" src="../../../_images/RedPitaya_general.png" />
+</div>
+</div>
+<div class="section" id="code-c">
+<h2><span class="section-number">2.4.6.8.7.3. </span>Code - C<a class="headerlink" href="#code-c" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the C code examples don’t require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages.
+Instructions on how to compile the code are <a class="reference internal" href="../../../developerGuide/software/build/C%26Python_API.html#comc"><span class="std std-ref">here</span></a>.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* @brief This is a simple application for testing UART communication on a RedPitaya</span>
+<span class="cm">*</span>
+<span class="cm">* (c) Red Pitaya  http://www.redpitaya.com</span>
+<span class="cm">*</span>
+<span class="cm">* This part of code is written in C programming language.</span>
+<span class="cm">* Please visit http://en.wikipedia.org/wiki/C_(programming_language)</span>
+<span class="cm">* for more details on the language used herein.</span>
+<span class="cm">*/</span>
+
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rp_hw.h&quot;</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TEST string&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">rx_buf</span><span class="p">[</span><span class="mi">255</span><span class="p">];</span>
+<span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">rx_buf</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartInit</span><span class="p">();</span><span class="w"> </span><span class="c1">// init uart api</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Init result: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartSetTimeout</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// set timeout in 1/10 sec. 10 = 1 sec</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Set timeout: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartSetSpeed</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"> </span><span class="c1">// set uart speed</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Set speed: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartSetBits</span><span class="p">(</span><span class="n">RP_UART_CS8</span><span class="p">);</span><span class="w"> </span><span class="c1">// set word size</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Set CS8: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartSetStopBits</span><span class="p">(</span><span class="n">RP_UART_STOP2</span><span class="p">);</span><span class="w"> </span><span class="c1">// set stop bits</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Set Stop Bits 2: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartSetParityMode</span><span class="p">(</span><span class="n">RP_UART_MARK</span><span class="p">);</span><span class="w"> </span><span class="c1">// set parity</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Set Parity Mode: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartSetSettings</span><span class="p">();</span><span class="w"> </span><span class="c1">// apply settings to uart</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Set settings: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartWrite</span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span><span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">));</span><span class="w"> </span><span class="c1">// write buffer to uart</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Write result: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartRead</span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">rx_buf</span><span class="p">,</span><span class="o">&amp;</span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="c1">// read from uart</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Read result: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Size: %d (%s)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">rx_buf</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_UartRelease</span><span class="p">();</span><span class="w"> </span><span class="c1">// close uart api</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;UnInit result: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-matlab">
+<h2><span class="section-number">2.4.6.8.7.4. </span>Code - MATLAB®<a class="headerlink" href="#code-matlab" title="Permalink to this heading"></a></h2>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Define Red Pitaya as TCP client object</span>
+
+<span class="n">IP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;192.168.178.56&#39;</span><span class="p">;</span><span class="w">              </span><span class="c">% Input IP of your Red Pitaya...</span>
+<span class="n">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<span class="n">RP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tcpclient</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+
+<span class="c">%% Open connection with your Red Pitaya</span>
+
+<span class="n">RP</span><span class="p">.</span><span class="n">ByteOrder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;big-endian&quot;</span><span class="p">;</span>
+<span class="nb">configureTerminator</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&quot;CR/LF&quot;</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:INIT&#39;</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:BITS CS7&#39;</span><span class="p">);</span><span class="w">              </span><span class="c">% set size 7 bit</span>
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:BITS?&#39;</span><span class="p">);</span><span class="w">           </span><span class="c">% check current settings for bit size</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Bit size %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:SPEED 57600&#39;</span><span class="p">);</span><span class="w">           </span><span class="c">% set uart speed</span>
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:SPEED?&#39;</span><span class="p">);</span><span class="w">          </span><span class="c">% check current settings for speed</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Speed %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:STOPB STOP2&#39;</span><span class="p">);</span><span class="w">           </span><span class="c">% set stop bits</span>
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:STOPB?&#39;</span><span class="p">);</span><span class="w">          </span><span class="c">% check current settings for stop bits</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Stop bits %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:PARITY ODD&#39;</span><span class="p">);</span><span class="w">            </span><span class="c">% set parity</span>
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:PARITY?&#39;</span><span class="p">);</span><span class="w">         </span><span class="c">% check current settings for parity</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Parity %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:TIMEOUT 10&#39;</span><span class="p">);</span><span class="w">            </span><span class="c">% set timeout in 1/10 sec. 10 = 1 sec</span>
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:TIMEOUT?&#39;</span><span class="p">);</span><span class="w">        </span><span class="c">% check current settings for parity</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Timeout %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:SETUP&#39;</span><span class="p">);</span><span class="w">                 </span><span class="c">% apply settings to uart</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:WRITE7 #H11,#H22,#H33,33,33,#Q11,#B11001100&#39;</span><span class="p">);</span><span class="w">       </span><span class="c">% write to uart 7 bytes</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Write 7 bytes to uart: #H11,#H22,#H33,33,33,#Q11,#B11001100\n&#39;</span><span class="p">);</span>
+
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:READ3&#39;</span><span class="p">);</span><span class="w">           </span><span class="c">% read from uart 3 bytes</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Read: %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:READ4&#39;</span><span class="p">);</span><span class="w">           </span><span class="c">% read from uart 4 bytes</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Read: %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;UART:RELEASE&#39;</span><span class="p">);</span><span class="w">               </span><span class="c">% close uart</span>
+
+<span class="c">%% Close connection with Red Pitaya</span>
+
+<span class="nb">clear</span><span class="w"> </span><span class="n">RP</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-python">
+<h2><span class="section-number">2.4.6.8.7.5. </span>Code - Python<a class="headerlink" href="#code-python" title="Permalink to this heading"></a></h2>
+<p>Using just SCPI commands:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">redpitaya_scpi</span> <span class="k">as</span> <span class="nn">scpi</span>
+
+<span class="n">rp_s</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:INIT&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Init UART&quot;</span><span class="p">)</span>
+
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:BITS CS7&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Set bit size CS7&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:BITS?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check bit size&quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:SPEED 57600&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Set speed 57600&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:SPEED?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check speed&quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:STOPB STOP2&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Set stop bit STOP2&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:STOPB?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check stop bit&quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:PARITY ODD&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Set parity mode: ODD&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:PARITY?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check parity mode&quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:TIMEOUT 10&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Set timeout: 10 decams&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:TIMEOUT?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check timeout&quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:SETUP&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setup settings&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:WRITE7 #H11,#H22,#H33,33,33,#Q11,#B11001100&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Write 7 bytes to uart: #H11,#H22,#H33,33,33,#Q11,#B11001100&#39;&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:READ3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read: &quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:READ4&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read: &quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:RELEASE&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Release UART&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">redpitaya_scpi</span> <span class="k">as</span> <span class="nn">scpi</span>
+
+<span class="n">rp_s</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">speed</span> <span class="o">=</span> <span class="mi">57600</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="s2">&quot;CS7&quot;</span>
+<span class="n">parity</span> <span class="o">=</span> <span class="s2">&quot;ODD&quot;</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># function for configuring UART settings</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">uart_set</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">parity</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="c1"># function to get UART settings</span>
+<span class="n">uart_set</span> <span class="o">=</span> <span class="n">rp_s</span><span class="o">.</span><span class="n">uart_get_setings</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:WRITE7 #H11,#H22,#H33,33,33,#Q11,#B11001100&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Write 7 bytes to uart: #H11,#H22,#H33,33,33,#Q11,#B11001100&#39;&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:READ3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read: &quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:READ4&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read: &quot;</span><span class="p">,</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># function to send a string through UART</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">uart_write_string</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>   <span class="c1"># set the ascii parameter to True if bits == CS7 or to False if bits == CS8</span>
+
+<span class="c1"># function to read a string through UART</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">rp_s</span><span class="o">.</span><span class="n">uart_read_string</span><span class="p">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;UART:RELEASE&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Release UART&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>.
+The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order. The code should function at approximately the same speed without them.</p>
+<p>For further information on functions please consult the redpitaya_scpi.py code.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="uart.html" class="btn btn-neutral float-left" title="2.4.6.8.6. UART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="can.html" class="btn btn-neutral float-right" title="2.4.6.8.8. CAN (HW api)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,814 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.1.1.10. SIGNALlab 250-12 &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.1.1.11. Product comparison table" href="../compares/vs.html" />
+    <link rel="prev" title="3.1.1.9. SDRlab 122-16 external clock" href="../122-16_EXT/top.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../devGuideTop.html">3. Developers guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../hardware.html">3.1. Hardware</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../platforms.html">3.1.1. Red Pitaya platforms</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../125-10/top.html">3.1.1.1. STEMlab 125-10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14/top.html">3.1.1.2. STEMlab 125-14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_EXT/top.html">3.1.1.3. STEMlab 125-14 external clock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_LN/top.html">3.1.1.4. STEMlab 125-14-LN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_4IN/top.html">3.1.1.5. STEMlab 125-14 4-Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14-Z20/top.html">3.1.1.6. STEMlab 125-14 Z7020-LN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_MULTI/top.html">3.1.1.7. STEMlab 125-14 X-Channel System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../122-16/top.html">3.1.1.8. SDRlab 122-16</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../122-16_EXT/top.html">3.1.1.9. SDRlab 122-16 external clock</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">3.1.1.10. SIGNALlab 250-12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../compares/vs.html">3.1.1.11. Product comparison table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cets.html">3.1.1.12. Certificates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../leds.html">3.1.1.13. Status LED Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../known_hw_issues/known_hw_issues.html">3.1.1.14. Known hardware issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ext_modules/ext_modules.html">3.1.2. Extension modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/software.html">3.2. Software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../devGuideTop.html"><span class="section-number">3. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../hardware.html"><span class="section-number">3.1. </span>Hardware</a></li>
+          <li class="breadcrumb-item"><a href="../platforms.html"><span class="section-number">3.1.1. </span>Red Pitaya platforms</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.1.1.10. </span>SIGNALlab 250-12</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="signallab-250-12">
+<span id="top-250-12"></span><h1><span class="section-number">3.1.1.10. </span>SIGNALlab 250-12<a class="headerlink" href="#signallab-250-12" title="Permalink to this heading"></a></h1>
+<div class="section" id="pinout">
+<h2><span class="section-number">3.1.1.10.1. </span>Pinout<a class="headerlink" href="#pinout" title="Permalink to this heading"></a></h2>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Red_Pitaya_pinout.jpg"><img alt="../../../_images/Red_Pitaya_pinout.jpg" src="../../../_images/Red_Pitaya_pinout.jpg" style="width: 700px;" /></a>
+</div>
+</div>
+<div class="section" id="technical-specifications">
+<h2><span class="section-number">3.1.1.10.2. </span>Technical specifications<a class="headerlink" href="#technical-specifications" title="Permalink to this heading"></a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>Basic</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Processor</p></td>
+<td><p>DUAL CORE ARM CORTEX A9</p></td>
+</tr>
+<tr class="row-odd"><td><p>FPGA</p></td>
+<td><p>FPGA Xilinx Zynq 7020 SOC</p></td>
+</tr>
+<tr class="row-even"><td><p>RAM</p></td>
+<td><p>1 GB (8 Gb)</p></td>
+</tr>
+<tr class="row-odd"><td><p>System memory</p></td>
+<td><p>Micro SD up to 32 GB</p></td>
+</tr>
+<tr class="row-even"><td><p>Console connection</p></td>
+<td><p>USB-C</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power connector</p></td>
+<td><div class="line-block">
+<div class="line">Power Jack,</div>
+<div class="line">RJ45 (PoE version only)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Power consumption</p></td>
+<td><p>24 V, 0.5 A max</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>Connectivity</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ethernet</p></td>
+<td><p>1 Gbit</p></td>
+</tr>
+<tr class="row-odd"><td><p>USB</p></td>
+<td><p>2 x USB 2.0</p></td>
+</tr>
+<tr class="row-even"><td><p>Wi-Fi</p></td>
+<td><p>Requires Wi-Fi dongle</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>RF inputs</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RF input channels</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample rate</p></td>
+<td><p>250 MS/s</p></td>
+</tr>
+<tr class="row-even"><td><p>ADC resolution</p></td>
+<td><p>12 bit</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input impedance</p></td>
+<td><p>1 MΩ</p></td>
+</tr>
+<tr class="row-even"><td><p>Full scale voltage range</p></td>
+<td><p>+-1 V/+-20 V (software selectable)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input coupling</p></td>
+<td><p>AC / DC (software selectable)</p></td>
+</tr>
+<tr class="row-even"><td><p>Absolute max. Input voltage range</p></td>
+<td><p>30 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input ESD protection</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Overload protection</p></td>
+<td><p>Protection diodes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bandwidth</p></td>
+<td><p>DC - 60 MHz</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>RF outputs</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RF output channels</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample rate</p></td>
+<td><p>250 MS/s</p></td>
+</tr>
+<tr class="row-even"><td><p>DAC resolution</p></td>
+<td><p>14 bit</p></td>
+</tr>
+<tr class="row-odd"><td><p>Load impedance</p></td>
+<td><p>50 Ω</p></td>
+</tr>
+<tr class="row-even"><td><p>Voltage range</p></td>
+<td><p>+-2 V / +-10 V (Hi-Z load)
+(software selectable)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Short circuit protection</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Connector type</p></td>
+<td><p>BNC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Output slew rate</p></td>
+<td><p>10 V / 17 ns</p></td>
+</tr>
+<tr class="row-even"><td><p>Bandwidth</p></td>
+<td><p>DC - 60 MHz</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>Extension connector</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Digital IOs</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p>Analog inputs</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>Analog inputs voltage range</p></td>
+<td><p>0-3.5 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample rate</p></td>
+<td><p>100 kS/s</p></td>
+</tr>
+<tr class="row-even"><td><p>Resolution</p></td>
+<td><p>12 bit</p></td>
+</tr>
+<tr class="row-odd"><td><p>Analog outputs</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>Analog outputs voltage range</p></td>
+<td><p>0-1.8 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Communication interfaces</p></td>
+<td><p>I2C, SPI, UART, CAN</p></td>
+</tr>
+<tr class="row-even"><td><p>Available voltages</p></td>
+<td><p>+5 V, +3.3 V, -4 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>External ADC clock</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>Synchronisation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Trigger input</p></td>
+<td><p>Through BNC connector</p></td>
+</tr>
+<tr class="row-odd"><td><p>Daisy chain connection</p></td>
+<td><p>Over SATA connection
+(up to 500 Mbps)</p></td>
+</tr>
+<tr class="row-even"><td><p>Ref. clock input</p></td>
+<td><p>Through SMA connector</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information, please refer to the <a class="reference internal" href="../compares/vs.html#rp-board-comp"><span class="std std-ref">Product comparison table</span></a>.</p>
+</div>
+</div>
+<div class="section" id="schematics">
+<h2><span class="section-number">3.1.1.10.3. </span>Schematics<a class="headerlink" href="#schematics" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/doc/Customer-DOC_STEM250-12_V1r1.pdf">STEM250-12_V1r1.pdf</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic has information on HW configuration, FPGA pin connection, and similar.</p>
+</div>
+</div>
+<div class="section" id="mechanical-specifications-and-3d-models">
+<h2><span class="section-number">3.1.1.10.4. </span>Mechanical Specifications and 3D Models<a class="headerlink" href="#mechanical-specifications-and-3d-models" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dpdf.zip">SIGNALlab 250-12 V1r2 3D pdf</a></p></li>
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dstep.zip">SIGNALlab 250-12 V1r2 3D step</a></p></li>
+</ul>
+</div>
+<div class="section" id="components">
+<h2><span class="section-number">3.1.1.10.5. </span>Components<a class="headerlink" href="#components" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/products/AD9613.html">ADC</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad9746.html">DAC</a></p></li>
+<li><p><a class="reference external" href="https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview">FPGA (Zynq 7020)</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/AD8000.html">Current Feedback 1.5 GHz Op. Amp.</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ada4817-1.html">Voltage Feedback 1 GHz FastFET Op. Amp.</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ada4817-1.html">Low Power Differential ADC Driver</a></p></li>
+</ul>
+</div>
+<div class="section" id="extension-connector-signallab">
+<h2><span class="section-number">3.1.1.10.6. </span>Extension connector SIGNALlab<a class="headerlink" href="#extension-connector-signallab" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Connector: 2 x 26 pins IDC (M)</p></li>
+<li><dl class="simple">
+<dt>Power supply:</dt><dd><ul>
+<li><p>Available voltages: +5 V, +3.3 V, -5.4 V</p></li>
+<li><p>Current limitations: 200 mA for +5 V, 50 mA  for +3.3 V (to be shared between extension module and USB devices), 10 mA for -5.4 V supply.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="extension-connector-e1">
+<span id="e1-signal"></span><h3><span class="section-number">3.1.1.10.6.1. </span>Extension connector E1<a class="headerlink" href="#extension-connector-e1" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>3V3 power source</p></li>
+<li><p>19 single ended or 9 differential digital I/Os with 3.3 V logic levels</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 27%" />
+<col style="width: 19%" />
+<col style="width: 31%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>FPGA pin number</p></th>
+<th class="head"><p>FPGA pin description</p></th>
+<th class="head"><p>Voltage levels</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3V3</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3V3</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>DIO0_P</p></td>
+<td><p>W10</p></td>
+<td><p>IO_L16P_T2_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>DIO0_N</p></td>
+<td><p>W9</p></td>
+<td><p>IO_L16N_T2_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>DIO1_P</p></td>
+<td><p>T9</p></td>
+<td><p>IO_L12P_T1_MRCC_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>DIO1_N</p></td>
+<td><p>U10</p></td>
+<td><p>IO_L12N_T1_MRCC_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>DIO2_P</p></td>
+<td><p>Y9</p></td>
+<td><p>IO_L14P_T2_SRCC_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>DIO2_N</p></td>
+<td><p>Y8</p></td>
+<td><p>IO_L14N_T2_SRCC_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>DIO3_P</p></td>
+<td><p>U9</p></td>
+<td><p>IO_L17P_T2_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>DIO3_N</p></td>
+<td><p>U8</p></td>
+<td><p>IO_L17N_T2_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>DIO4_P</p></td>
+<td><p>V8</p></td>
+<td><p>IO_L15P_T2_DQS_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>DIO4_N</p></td>
+<td><p>W8</p></td>
+<td><p>IO_L15N_T2_DQS_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>DIO5_P</p></td>
+<td><p>V11</p></td>
+<td><p>IO_L21P_T3_DQS_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>DIO5_N</p></td>
+<td><p>V10</p></td>
+<td><p>IO_L21N_T3_DQS_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>DIO6_P / CAN1_RX</p></td>
+<td><p>W11</p></td>
+<td><p>IO_L18P_T2_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>DIO6_N / CAN1_TX</p></td>
+<td><p>Y11</p></td>
+<td><p>IO_L18N_T2_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>DIO7_P / CAN0_RX</p></td>
+<td><p>Y12</p></td>
+<td><p>IO_L20P_T3_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>DIO7_N / CAN0_TX</p></td>
+<td><p>Y13</p></td>
+<td><p>IO_L20N_T3_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>DIO8_P</p></td>
+<td><p>Y7</p></td>
+<td><p>IO_L13P_T2_MRCC_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>DIO8_N</p></td>
+<td><p>Y6</p></td>
+<td><p>IO_L13N_T2_MRCC_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>DIO9_P</p></td>
+<td><p>U5</p></td>
+<td><p>IO_L19N_T3_VREF_13</p></td>
+<td><p>3.3V</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>+5VUSB3</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>USB2_P</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>USB2_N</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>GND</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>26</p></td>
+<td><p>GND</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the <strong>Housekeeping</strong> register value at address <strong>0x34</strong>. For more information, please reffer to the <a class="reference internal" href="../../software/build/fpga/fpga.html#fpga-registers"><span class="std std-ref">FPGA register section</span></a> (this feature is currently under development).</p>
+</div>
+<dl class="simple">
+<dt>All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:</dt><dd><ul class="simple">
+<li><p>min. -0.40 V</p></li>
+<li><p>max. 3.3 V + 0.55 V</p></li>
+<li><p>&lt;8 mA drive strength</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="extension-connector-e2">
+<span id="e2-signal"></span><h3><span class="section-number">3.1.1.10.6.2. </span>Extension connector E2<a class="headerlink" href="#extension-connector-e2" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>+5 V, -5.4 V power source</p></li>
+<li><p>SPI, UART, I2C</p></li>
+<li><p>4 x slow ADCs</p></li>
+<li><p>4 x slow DACs</p></li>
+<li><p>Ext. clock for fast ADC</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 46%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>FPGA pin number</p></th>
+<th class="head"><p>FPGA pin description</p></th>
+<th class="head"><p>Voltage levels</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>+5V</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>-4V2</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>SPI (MOSI)</p></td>
+<td><p>E9</p></td>
+<td><p>PS_MIO10_500</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>SPI (MISO)</p></td>
+<td><p>C6</p></td>
+<td><p>PS_MIO11_500</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>SPI (SCK)</p></td>
+<td><p>D9</p></td>
+<td><p>PS_MIO12_500</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>SPI (CS)</p></td>
+<td><p>E8</p></td>
+<td><p>PS_MIO13_500</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>UART (TX)</p></td>
+<td><p>D5</p></td>
+<td><p>PS_MIO8_500</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>UART (RX)</p></td>
+<td><p>B5</p></td>
+<td><p>PS_MIO9_500</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>I2C (SCL)</p></td>
+<td><p>B9</p></td>
+<td><p>PS_MIO50_501</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>I2C (SDA)</p></td>
+<td><p>B13</p></td>
+<td><p>PS_MIO51_501</p></td>
+<td><p>3.3 V</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Ext com.mode</p></td>
+<td></td>
+<td></td>
+<td><p>GND (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>GND</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Analog Input 0</p></td>
+<td><p>B19, A20</p></td>
+<td><p>IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35</p></td>
+<td><p>0-3.5 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Analog Input 1</p></td>
+<td><p>C20, B20</p></td>
+<td><p>IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35</p></td>
+<td><p>0-3.5 V</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Analog Input 2</p></td>
+<td><p>E17, D18</p></td>
+<td><p>IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35</p></td>
+<td><p>0-3.5 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>Analog Input 3</p></td>
+<td><p>E18, E19</p></td>
+<td><p>IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35</p></td>
+<td><p>0-3.5 V</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>Analog Output 0</p></td>
+<td><p>T10</p></td>
+<td><p>IO_L1N_T0_34</p></td>
+<td><p>0-1.8 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>Analog Output 1</p></td>
+<td><p>T11</p></td>
+<td><p>IO_L1P_T0_34</p></td>
+<td><p>0-1.8 V</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>Analog Output 2</p></td>
+<td><p>P15</p></td>
+<td><p>IO_L24P_T3_34</p></td>
+<td><p>0-1.8 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>Analog Output 3</p></td>
+<td><p>U13</p></td>
+<td><p>IO_L3P_T0_DQS_PUDC_B_34</p></td>
+<td><p>0-1.8 V</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>GND</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>GND</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>Ext Adc CLK+</p></td>
+<td></td>
+<td></td>
+<td><p>LVDS</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>Ext Adc CLK-</p></td>
+<td></td>
+<td></td>
+<td><p>LVDS</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>GND</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>26</p></td>
+<td><p>GND</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!</p>
+</div>
+</div>
+</div>
+<div class="section" id="other-specifications">
+<h2><span class="section-number">3.1.1.10.7. </span>Other specifications<a class="headerlink" href="#other-specifications" title="Permalink to this heading"></a></h2>
+<p>For all other specifications please refer to the schematics and standard <a class="reference internal" href="../125-14/top.html#top-125-14"><span class="std std-ref">STEMlab 125-14 specs</span></a>.</p>
+<p>Please note that the measurements on inputs and outputs differ from the standard STEMlab 125-14.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../122-16_EXT/top.html" class="btn btn-neutral float-left" title="3.1.1.9. SDRlab 122-16 external clock" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../compares/vs.html" class="btn btn-neutral float-right" title="3.1.1.11. Product comparison table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

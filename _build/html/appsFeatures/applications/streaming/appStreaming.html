@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.2.7. Streaming &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.2.8. X-Channel Streaming" href="appXCStreaming.html" />
+    <link rel="prev" title="2.2.6. LCR meter" href="../lcr_meter/lcr_meter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">2.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">2.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">2.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">2.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">2.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">2.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">2.2.6. LCR meter</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.2.7. Streaming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started-with-the-red-pitaya-streaming-feature">2.2.7.1. Getting started with the Red Pitaya streaming feature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stream-locally-to-a-file-on-red-pitaya-s-sd-card">2.2.7.2. Stream locally to a file on Red Pitaya’s SD card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#streaming-to-a-remote-computer-via-command-line-or-terminal">2.2.7.3. Streaming to a remote computer via Command Line or Terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#streaming-to-a-remote-computer-via-desktop-application-linux-windows">2.2.7.4. Streaming to a remote computer via Desktop Application (Linux, Windows)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">2.2.7.5. Source code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="appXCStreaming.html">2.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">2.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">2.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">2.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">2.2.12. Marketplace and contributed apps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">2.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.2.7. </span>Streaming</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="streaming">
+<span id="streaming-top"></span><h1><span class="section-number">2.2.7. </span>Streaming<a class="headerlink" href="#streaming" title="Permalink to this heading"></a></h1>
+<p>The Streaming application enables users to stream data from Red Pitaya to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A file saved on the Red Pitaya SD card</p></li>
+<li><p>A file saved on a remote computer via the ethernet protocol (UDP or TCP).</p></li>
+</ul>
+</div></blockquote>
+<p>The user can set:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The sampling frequency (rate)</p></li>
+<li><p>Input channel count (Channel 1, Channel 2, or Both (4 Channels for STEMlab 125-14 4-Input))</p></li>
+<li><p>Input channel resolution (8 or 16 bits)</p></li>
+<li><p>Input attenuation (HV/LV mode) (for 125-xx, a switch of the jumper is required)</p></li>
+<li><p>Whether to use the calibration or not (for 125-xx, the filter is also calibrated)</p></li>
+<li><p>RAW / Volts mode</p></li>
+<li><p>The number of samples or unlimited sampling</p></li>
+</ul>
+</div></blockquote>
+<p>Streamed data can be stored into:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Standard audio WAV file format</p></li>
+<li><p>Technical Data Management Streaming (TDMS) file format</p></li>
+<li><p>Fast and compact binary format (BIN). It can be converted to CSV format.</p></li>
+</ul>
+</div></blockquote>
+<p>Max. streaming speeds (per board) are limited to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance)</p></li>
+<li><p>20 MB/s for streaming over 1 Gbit network (A <a class="reference internal" href="../../../quickStart/connect/connect.html#dir-cab-connect"><span class="std std-ref">direct connection</span></a> is recommended to achieve the best streaming performance)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maximum continuous streaming speeds (per board) are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
+Here are a few examples of maximum data rates:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>One channel, 8-bits per sample: Max sampling frequency 20 MHz.</p></li>
+<li><p>One channel, 16-bits per sample: Max sampling frequency 10 MHz.</p></li>
+<li><p>Two channels, 8-bits per sample: Max sampling frequency per channel 10 MHz (assuming same frequencies for both channels)</p></li>
+<li><p>Two channels, 16-bits per sample: Max sampling frequency per channel 5 MHz (assuming same frequencies for both channels)</p></li>
+</ul>
+</div></blockquote>
+<p>If acquiring a limited amount of samples in a short duration, it is possible to reach higher sampling frequencies (up to the sampling speed of fast analog inputs).</p>
+</div>
+<p><strong>Minumum streamed data size</strong></p>
+<p>To increase the efficiency of the application, there is a minimum data size that can be sent through the network. This can have a big impact at high decimation values, as it takes a long time to fill a chunck. If the stream is stopped before a chunck is completed, the data is discarded and the saved file has a size of <strong>0 b</strong>.</p>
+<p>Here are the minimum chunck limitations sorted by file type and units:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File type \ Units</p></th>
+<th class="head"><p>VOLTS</p></th>
+<th class="head"><p>RAW</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WAV</p></td>
+<td><p>128.043 kb</p></td>
+<td><p>64.043 kb</p></td>
+</tr>
+<tr class="row-odd"><td><p>TDMS</p></td>
+<td><p>128.133 kb</p></td>
+<td><p>64.133 kb</p></td>
+</tr>
+<tr class="row-even"><td><p>BIN</p></td>
+<td><p>64.090 kb</p></td>
+<td><p>64.090 kb</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.</p>
+</div>
+<div class="section" id="getting-started-with-the-red-pitaya-streaming-feature">
+<h2><span class="section-number">2.2.7.1. </span>Getting started with the Red Pitaya streaming feature<a class="headerlink" href="#getting-started-with-the-red-pitaya-streaming-feature" title="Permalink to this heading"></a></h2>
+<p>Run the Streaming app from the Red Pitaya Web interface</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/redpitaya_main_page.png"><img alt="../../../_images/redpitaya_main_page.png" src="../../../_images/redpitaya_main_page.png" style="width: 600px;" /></a>
+</div>
+</div>
+<div class="section" id="stream-locally-to-a-file-on-red-pitaya-s-sd-card">
+<h2><span class="section-number">2.2.7.2. </span>Stream locally to a file on Red Pitaya’s SD card<a class="headerlink" href="#stream-locally-to-a-file-on-red-pitaya-s-sd-card" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tab" tabindex="0">OS version 2.00-15 or older</button><button aria-controls="panel-0-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" role="tab" tabindex="-1">OS version 2.00-23 or newer</button></div><div aria-labelledby="tab-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tabpanel" tabindex="0"><ol class="arabic">
+<li><p>Configure the stream properties &amp; click <strong>RUN</strong></p>
+<blockquote>
+<div><div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/settings.png"><img alt="../../../_images/settings.png" src="../../../_images/settings.png" style="width: 800px;" /></a>
+</div>
+<p>Example: streaming on ch1, 8-bit resolution, 5.208 MS/s into TDMS file format</p>
+</div></blockquote>
+</li>
+<li><p>Press <strong>STOP</strong> to stop streaming</p></li>
+<li><p>Click <em>Browse</em> to open the data file directory. Each data stream is split into three sections; <em>DATA</em> (collected data stream), <em>.log</em> (data log of the specific stream), <em>.log.lost</em> (report on lost packets). Click on the selected file to download it from Red Pitaya to the computer.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/capture.png"><img alt="../../../_images/capture.png" src="../../../_images/capture.png" style="width: 800px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Open the file in a program that supports the selected file format, visualisation, and processing, such as <a href="https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html" target="_blank">DIAdem</a> for TDMS files, or <a href="https://www.audacityteam.org" target="_blank">Audacity</a> for WAV.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/diadem_tdms_file_viewer.png"><img alt="../../../_images/diadem_tdms_file_viewer.png" src="../../../_images/diadem_tdms_file_viewer.png" style="width: 800px;" /></a>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div><div aria-labelledby="tab-0-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" role="tabpanel" tabindex="0"><ol class="arabic">
+<li><p>Configure the stream properties &amp; click <strong>RUN</strong></p>
+<blockquote>
+<div><div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Streaming_app_local.png"><img alt="../../../_images/Streaming_app_local.png" src="../../../_images/Streaming_app_local.png" style="width: 1000px;" /></a>
+</div>
+<p>Example: streaming on CH1 and CH2, 8-bit resolution, 100 ksps into WAV file format</p>
+</div></blockquote>
+</li>
+<li><p>Press <strong>STOP</strong> to stop streaming</p></li>
+<li><p>Check the <em>Files on SD card</em> section for the data files. Each data file has three buttons; <em>LOG</em> (data log of the specific stream), <em>LOST</em> (report on lost packets), and <em>DOWNLOAD</em> (collected data stream). Click on the selected file to download it from Red Pitaya to the computer.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Streaming_app_local.png"><img alt="../../../_images/Streaming_app_local.png" src="../../../_images/Streaming_app_local.png" style="width: 1000px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Open the file in a program that supports the selected file format, visualisation, and processing, such as <a href="https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html" target="_blank">DIAdem</a> for TDMS files, or <a href="https://www.audacityteam.org" target="_blank">Audacity</a> for WAV.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/diadem_tdms_file_viewer.png"><img alt="../../../_images/diadem_tdms_file_viewer.png" src="../../../_images/diadem_tdms_file_viewer.png" style="width: 800px;" /></a>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></div>
+</div>
+<div class="section" id="streaming-to-a-remote-computer-via-command-line-or-terminal">
+<h2><span class="section-number">2.2.7.3. </span>Streaming to a remote computer via Command Line or Terminal<a class="headerlink" href="#streaming-to-a-remote-computer-via-command-line-or-terminal" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tab" tabindex="0">OS version 2.00-15 or older</button><button aria-controls="panel-1-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" role="tab" tabindex="-1">OS version 2.00-23 or newer</button></div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tabpanel" tabindex="0"><ol class="arabic">
+<li><p>Download the streaming client for your computer. Clients are located on the board itself and can be downloaded from there.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/download_client.png"><img alt="../../../_images/download_client.png" src="../../../_images/download_client.png" style="width: 800px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Configure the stream properties &amp; click <strong>RUN</strong></p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/tcp_settings.png"><img alt="../../../_images/tcp_settings.png" src="../../../_images/tcp_settings.png" style="width: 300px;" /></a>
+</div>
+<p>Example: streaming on CH1, 16-bit resolution 5 Msps, TCP</p>
+</div></blockquote>
+</li>
+<li><p>Execute the <em>streaming client</em> via <em>Command Line or Terminal</em> on a remote computer (copy the IP address from the web interface and choose the required file format).</p>
+<blockquote>
+<div><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-2-V0FW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-V0FW" name="V0FW" role="tab" tabindex="0">WAV</button><button aria-controls="panel-2-VERNUw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-VERNUw==" name="VERNUw==" role="tab" tabindex="-1">TDMS</button><button aria-controls="panel-2-Q1NW" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-Q1NW" name="Q1NW" role="tab" tabindex="-1">CSV</button></div><div aria-labelledby="tab-2-V0FW" class="sphinx-tabs-panel group-tab" id="panel-2-V0FW" name="V0FW" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/tcp_client.png"><img alt="../../../_images/tcp_client.png" src="../../../_images/tcp_client.png" style="width: 600px;" /></a>
+</div>
+<p>Data streaming can be stopped by pressing <em>Ctrl+C</em>.</p>
+<p>The created wav file can be read or viewed in <a href="https://www.audacityteam.org" target="_blank">Audacity</a> or another program that supports WAV file type:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/audacity.png"><img alt="../../../_images/audacity.png" src="../../../_images/audacity.png" style="width: 600px;" /></a>
+</div>
+</div><div aria-labelledby="tab-2-VERNUw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-VERNUw==" name="VERNUw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/tcp_client2.png"><img alt="../../../_images/tcp_client2.png" src="../../../_images/tcp_client2.png" style="width: 600px;" /></a>
+</div>
+<p>Data streaming can be stopped by pressing <em>Ctrl+C</em>.</p>
+<p>The created tdms file can be read or viewed in <a href="https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html" target="_blank">DIAdem</a> or another program that supports TDMS file type.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/diadem_tdms_file_viewer.png"><img alt="../../../_images/diadem_tdms_file_viewer.png" src="../../../_images/diadem_tdms_file_viewer.png" style="width: 600px;" /></a>
+</div>
+</div><div aria-labelledby="tab-2-Q1NW" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Q1NW" name="Q1NW" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/tcp_client3.png"><img alt="../../../_images/tcp_client3.png" src="../../../_images/tcp_client3.png" style="width: 600px;" /></a>
+</div>
+<p>The application saves data from the board in binary (BIN) format.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_list.png"><img alt="../../../_images/csv_list.png" src="../../../_images/csv_list.png" style="width: 600px;" /></a>
+</div>
+<p>The binary file can be converted using the <em>convert_tool</em> application.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_list.png"><img alt="../../../_images/csv_list.png" src="../../../_images/csv_list.png" style="width: 600px;" /></a>
+</div>
+<p>The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_view.png"><img alt="../../../_images/csv_view.png" src="../../../_images/csv_view.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using the <em>convert_tool application</em> you can also see the structure of the received file and the state of the file.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_state.png"><img alt="../../../_images/csv_state.png" src="../../../_images/csv_state.png" style="width: 600px;" /></a>
+</div>
+</div>
+</div></div>
+</div></blockquote>
+</li>
+</ol>
+</div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" role="tabpanel" tabindex="0"><ol class="arabic">
+<li><p>Download the <em>command line streaming client</em> for your computer. Clients are located on the board itself and can be downloaded from there.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Streaming_app_cmd_clients.png"><img alt="../../../_images/Streaming_app_cmd_clients.png" src="../../../_images/Streaming_app_cmd_clients.png" style="width: 1000px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Configure the stream properties &amp; click <strong>RUN</strong></p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Streaming_app_network.png"><img alt="../../../_images/Streaming_app_network.png" src="../../../_images/Streaming_app_network.png" style="width: 1000px;" /></a>
+</div>
+<p>Example: streaming on CH1 and CH2, 16-bit resolution, 100 ksps, TCP</p>
+</div></blockquote>
+</li>
+<li><p>Execute the <em>streaming client</em> via <em>Command Line or Terminal</em> on a remote computer (copy the IP address from the web interface and choose the required file format).</p>
+<blockquote>
+<div><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-3-V0FW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-V0FW" name="V0FW" role="tab" tabindex="0">WAV</button><button aria-controls="panel-3-VERNUw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-VERNUw==" name="VERNUw==" role="tab" tabindex="-1">TDMS</button><button aria-controls="panel-3-Q1NW" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-Q1NW" name="Q1NW" role="tab" tabindex="-1">CSV</button></div><div aria-labelledby="tab-3-V0FW" class="sphinx-tabs-panel group-tab" id="panel-3-V0FW" name="V0FW" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/tcp_client.png"><img alt="../../../_images/tcp_client.png" src="../../../_images/tcp_client.png" style="width: 600px;" /></a>
+</div>
+<p>Data streaming can be stopped by pressing <em>Ctrl+C</em>.</p>
+<p>The created wav file can be read or viewed in <a href="https://www.audacityteam.org" target="_blank">Audacity</a> or another program that supports WAV file type:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/audacity.png"><img alt="../../../_images/audacity.png" src="../../../_images/audacity.png" style="width: 600px;" /></a>
+</div>
+</div><div aria-labelledby="tab-3-VERNUw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-VERNUw==" name="VERNUw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/tcp_client2.png"><img alt="../../../_images/tcp_client2.png" src="../../../_images/tcp_client2.png" style="width: 600px;" /></a>
+</div>
+<p>Data streaming can be stopped by pressing <em>Ctrl+C</em>.</p>
+<p>The created tdms file can be read or viewed in <a href="https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html" target="_blank">DIAdem</a> or another program that supports TDMS file type.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/diadem_tdms_file_viewer.png"><img alt="../../../_images/diadem_tdms_file_viewer.png" src="../../../_images/diadem_tdms_file_viewer.png" style="width: 600px;" /></a>
+</div>
+</div><div aria-labelledby="tab-3-Q1NW" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-Q1NW" name="Q1NW" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/tcp_client3.png"><img alt="../../../_images/tcp_client3.png" src="../../../_images/tcp_client3.png" style="width: 600px;" /></a>
+</div>
+<p>The application saves data from the board in binary (BIN) format.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_list.png"><img alt="../../../_images/csv_list.png" src="../../../_images/csv_list.png" style="width: 600px;" /></a>
+</div>
+<p>The binary file can be converted using the <em>convert_tool</em> application.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_list.png"><img alt="../../../_images/csv_list.png" src="../../../_images/csv_list.png" style="width: 600px;" /></a>
+</div>
+<p>The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_view.png"><img alt="../../../_images/csv_view.png" src="../../../_images/csv_view.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using the <em>convert_tool application</em> you can also see the structure of the received file and the state of the file.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/csv_state.png"><img alt="../../../_images/csv_state.png" src="../../../_images/csv_state.png" style="width: 600px;" /></a>
+</div>
+</div>
+</div></div>
+</div></blockquote>
+</li>
+</ol>
+</div></div>
+<div class="section" id="instructions-for-the-rpsa-client">
+<h3><span class="section-number">2.2.7.3.1. </span>Instructions for the rpsa_client<a class="headerlink" href="#instructions-for-the-rpsa-client" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Detect Mode</strong></p>
+<blockquote>
+<div><p>This mode allows you to determine the IP addresses that are in the network in streaming mode. By default, the search takes 5 seconds.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">d</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="n">SEC</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">detect</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="n">SEC</span><span class="p">]</span>
+
+<span class="o">--</span><span class="n">detect</span>               <span class="o">-</span><span class="n">d</span>           <span class="n">Enable</span> <span class="n">broadcast</span> <span class="n">search</span><span class="o">.</span>
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span>            <span class="o">-</span><span class="n">p</span> <span class="n">PORT</span>      <span class="n">Port</span> <span class="k">for</span> <span class="n">broadcast</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">8902</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="n">SEC</span>          <span class="o">-</span><span class="n">t</span> <span class="n">SEC</span>       <span class="n">Timeout</span><span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">5</span> <span class="n">sec</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>Configuration Mode</strong></p>
+<blockquote>
+<div><p>This mode allows you to get or set the configuration on the boards.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">h</span> <span class="n">IPs</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">V</span><span class="o">|</span><span class="n">VV</span><span class="o">|</span><span class="n">F</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">h</span> <span class="n">IPs</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span> <span class="o">-</span><span class="n">s</span> <span class="n">M</span><span class="o">|</span><span class="n">F</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="n">FILE</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">config</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IPs</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="o">--</span><span class="n">get</span><span class="o">=</span><span class="n">V</span><span class="o">|</span><span class="n">VV</span><span class="o">|</span><span class="n">F</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">config</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IPs</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="o">--</span><span class="nb">set</span><span class="o">=</span><span class="n">M</span><span class="o">|</span><span class="n">F</span> <span class="p">[</span><span class="o">--</span><span class="n">config_file</span><span class="o">=</span><span class="n">FILE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+
+<span class="o">--</span><span class="n">config</span>               <span class="o">-</span><span class="n">c</span>           <span class="n">Enable</span> <span class="n">config</span> <span class="n">mode</span><span class="o">.</span>
+<span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IP</span><span class="p">,</span><span class="o">...</span>         <span class="o">-</span><span class="n">h</span> <span class="n">IP</span><span class="p">,</span><span class="o">...</span>    <span class="n">You</span> <span class="n">can</span> <span class="n">specify</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">board</span> <span class="n">IP</span> <span class="n">addresses</span> <span class="n">through</span> <span class="n">a</span> <span class="n">separator</span> <span class="o">-</span> <span class="s1">&#39;,&#39;</span>
+                                    <span class="n">Example</span><span class="p">:</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span> <span class="ow">or</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span>
+                                              <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span>     <span class="ow">or</span>  <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span><span class="p">,</span><span class="mf">127.0.0.3</span>
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span>            <span class="o">-</span><span class="n">p</span> <span class="n">PORT</span>      <span class="n">Port</span> <span class="k">for</span> <span class="n">configuration</span> <span class="n">server</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">8901</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">get</span><span class="o">=</span><span class="n">V</span><span class="o">|</span><span class="n">V1</span><span class="o">|</span><span class="n">VV</span><span class="o">|</span><span class="n">F</span>        <span class="o">-</span><span class="n">g</span> <span class="n">V</span><span class="o">|</span><span class="n">V1</span><span class="o">|</span><span class="n">VV</span><span class="o">|</span><span class="n">F</span> <span class="n">Requests</span> <span class="n">configurations</span> <span class="kn">from</span> <span class="nn">all</span> <span class="n">boards</span><span class="o">.</span>
+                                    <span class="n">Keys</span><span class="p">:</span> <span class="n">V</span>  <span class="o">=</span> <span class="n">Displays</span> <span class="n">on</span> <span class="n">the</span> <span class="n">screen</span> <span class="ow">in</span> <span class="n">json</span> <span class="nb">format</span><span class="o">.</span>
+                                          <span class="n">V1</span> <span class="o">=</span> <span class="n">Displays</span> <span class="n">on</span> <span class="n">the</span> <span class="n">screen</span> <span class="ow">in</span> <span class="n">json</span> <span class="nb">format</span> <span class="p">(</span><span class="n">only</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span>
+                                          <span class="n">VV</span> <span class="o">=</span> <span class="n">Displays</span> <span class="n">on</span> <span class="n">the</span> <span class="n">screen</span> <span class="ow">in</span> <span class="n">a</span> <span class="nb">format</span> <span class="k">with</span> <span class="n">decoding</span> <span class="n">values</span><span class="o">.</span>
+                                          <span class="n">F</span>  <span class="o">=</span> <span class="n">Saves</span> <span class="n">to</span> <span class="n">a</span> <span class="n">config</span> <span class="n">files</span><span class="o">.</span>
+<span class="o">--</span><span class="nb">set</span><span class="o">=</span><span class="n">M</span><span class="o">|</span><span class="n">F</span>              <span class="o">-</span><span class="n">s</span> <span class="n">M</span><span class="o">|</span><span class="n">F</span>       <span class="n">Sets</span> <span class="n">configurations</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">boards</span><span class="o">.</span>
+                                    <span class="n">Keys</span><span class="p">:</span> <span class="n">M</span>  <span class="o">=</span> <span class="n">Sets</span> <span class="n">values</span> <span class="n">only</span> <span class="n">to</span> <span class="n">memory</span> <span class="n">without</span> <span class="n">saving</span> <span class="n">to</span> <span class="n">file</span><span class="o">.</span>
+                                          <span class="n">F</span>  <span class="o">=</span> <span class="n">Sets</span> <span class="n">configuration</span> <span class="ow">and</span> <span class="n">saves</span> <span class="n">to</span> <span class="n">file</span> <span class="n">on</span> <span class="n">remote</span> <span class="n">boards</span><span class="o">.</span>
+<span class="o">--</span><span class="n">config_file</span><span class="o">=</span><span class="n">FILE</span>     <span class="o">-</span><span class="n">f</span> <span class="n">FILE</span>      <span class="n">Configuration</span> <span class="n">file</span> <span class="k">for</span> <span class="n">setting</span> <span class="n">values</span> <span class="n">on</span> <span class="n">boards</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">verbose</span>              <span class="o">-</span><span class="n">v</span>           <span class="n">Displays</span> <span class="n">service</span> <span class="n">information</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>Remote control Mode</strong></p>
+<blockquote>
+<div><p>This mode allows you to control streaming as a client.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">h</span> <span class="n">IPs</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span> <span class="o">-</span><span class="n">m</span> <span class="n">start</span><span class="o">|</span><span class="n">stop</span><span class="o">|</span><span class="n">start_stop</span><span class="o">|</span><span class="n">start_dac</span><span class="o">|</span><span class="n">stop_dac</span><span class="o">|</span><span class="n">start_stop_dac</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="n">MSEC</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">remote</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IPs</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">start</span><span class="o">|</span><span class="n">stop</span><span class="o">|</span><span class="n">start_stop</span><span class="o">|</span><span class="n">start_dac</span><span class="o">|</span><span class="n">stop_dac</span><span class="o">|</span><span class="n">start_stop_dac</span> <span class="p">[</span><span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="n">MSEC</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+
+<span class="o">--</span><span class="n">remote</span>               <span class="o">-</span><span class="n">r</span>           <span class="n">Enable</span> <span class="n">remote</span> <span class="n">control</span> <span class="n">mode</span><span class="o">.</span>
+<span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IP</span><span class="p">,</span><span class="o">...</span>         <span class="o">-</span><span class="n">h</span> <span class="n">IP</span><span class="p">,</span><span class="o">...</span>    <span class="n">You</span> <span class="n">can</span> <span class="n">specify</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">board</span> <span class="n">IP</span> <span class="n">addresses</span> <span class="n">through</span> <span class="n">a</span> <span class="n">separator</span> <span class="o">-</span> <span class="s1">&#39;,&#39;</span>
+                                    <span class="n">Example</span><span class="p">:</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span> <span class="ow">or</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span>
+                                              <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span>     <span class="ow">or</span>  <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span><span class="p">,</span><span class="mf">127.0.0.3</span>
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span>            <span class="o">-</span><span class="n">p</span> <span class="n">PORT</span>      <span class="n">Port</span> <span class="k">for</span> <span class="n">configuration</span> <span class="n">server</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">8901</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">MODE</span>            <span class="o">-</span><span class="n">m</span> <span class="n">MODE</span>      <span class="n">Commands</span> <span class="k">for</span> <span class="n">managing</span> <span class="n">servers</span><span class="o">.</span>
+                                     <span class="n">Keys</span><span class="p">:</span> <span class="n">start</span> <span class="o">=</span> <span class="n">Starts</span> <span class="n">the</span> <span class="n">server</span><span class="o">.</span>
+                                           <span class="n">stop</span> <span class="o">=</span> <span class="n">Stop</span> <span class="n">the</span> <span class="n">server</span><span class="o">.</span>
+                                           <span class="n">start_stop</span> <span class="o">=</span> <span class="n">Sends</span> <span class="n">a</span> <span class="n">start</span> <span class="n">command</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">timeout</span> <span class="n">sends</span> <span class="n">a</span> <span class="n">stop</span> <span class="n">command</span><span class="o">.</span>
+                                           <span class="n">start_dac</span> <span class="o">=</span> <span class="n">Starts</span> <span class="n">the</span> <span class="n">DAC</span> <span class="n">server</span><span class="o">.</span>
+                                           <span class="n">stop_dac</span> <span class="o">=</span> <span class="n">Stop</span> <span class="n">the</span> <span class="n">DAC</span> <span class="n">server</span><span class="o">.</span>
+                                           <span class="n">start_stop_dac</span> <span class="o">=</span> <span class="n">Sends</span> <span class="n">a</span> <span class="n">start</span> <span class="n">command</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">timeout</span> <span class="n">sends</span> <span class="n">a</span> <span class="n">stop</span> <span class="n">command</span> <span class="k">for</span> <span class="n">DAC</span> <span class="n">mode</span><span class="o">.</span>
+<span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="n">MSEC</span>         <span class="o">-</span><span class="n">t</span> <span class="n">MSEC</span>      <span class="n">Timeout</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">1000</span> <span class="n">ms</span><span class="p">)</span><span class="o">.</span> <span class="n">Used</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">conjunction</span> <span class="k">with</span> <span class="n">the</span> <span class="n">start_stop</span> <span class="n">command</span><span class="o">.</span>
+<span class="o">--</span><span class="n">verbose</span>              <span class="o">-</span><span class="n">v</span>           <span class="n">Displays</span> <span class="n">service</span> <span class="n">information</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>Streaming Mode</strong></p>
+<blockquote>
+<div><p>This mode allows you to control streaming as a client, and also captures data in network streaming mode.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">h</span> <span class="n">IPs</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">PORT</span><span class="p">]</span> <span class="o">-</span><span class="n">f</span> <span class="n">tdms</span><span class="o">|</span><span class="n">wav</span><span class="o">|</span><span class="n">csv</span><span class="o">|</span><span class="nb">bin</span> <span class="p">[</span><span class="o">-</span><span class="n">d</span> <span class="n">NAME</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span> <span class="n">raw</span><span class="o">|</span><span class="n">volt</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="n">SAMPLES</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="n">MSEC</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="n">TD</span><span class="o">|</span><span class="n">F</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">streaming</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IPs</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">config_port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="n">tdms</span><span class="o">|</span><span class="n">wav</span><span class="o">|</span><span class="n">csv</span><span class="o">|</span><span class="nb">bin</span> <span class="p">[</span><span class="o">--</span><span class="nb">dir</span><span class="o">=</span><span class="n">NAME</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">limit</span><span class="o">=</span><span class="n">SAMPLES</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">raw</span><span class="o">|</span><span class="n">volt</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="n">MSEC</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">benchmark</span><span class="o">=</span><span class="n">TD</span><span class="o">|</span><span class="n">F</span><span class="p">]</span>
+
+<span class="o">--</span><span class="n">streaming</span>            <span class="o">-</span><span class="n">s</span>           <span class="n">Enable</span> <span class="n">streaming</span> <span class="n">mode</span><span class="o">.</span>
+<span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IP</span><span class="p">,</span><span class="o">...</span>         <span class="o">-</span><span class="n">h</span> <span class="n">IP</span><span class="p">,</span><span class="o">...</span>    <span class="n">You</span> <span class="n">can</span> <span class="n">specify</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">board</span> <span class="n">IP</span> <span class="n">addresses</span> <span class="n">through</span> <span class="n">a</span> <span class="n">separator</span> <span class="o">-</span> <span class="s1">&#39;,&#39;</span>
+                                    <span class="n">Example</span><span class="p">:</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span> <span class="ow">or</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span>
+                                              <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span>     <span class="ow">or</span>  <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span><span class="p">,</span><span class="mf">127.0.0.3</span>
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span>            <span class="o">-</span><span class="n">p</span> <span class="n">PORT</span>      <span class="n">Port</span> <span class="k">for</span> <span class="n">streaming</span> <span class="n">server</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">8900</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">config_port</span><span class="o">=</span><span class="n">PORT</span>     <span class="o">-</span><span class="n">c</span> <span class="n">PORT</span>      <span class="n">Port</span> <span class="k">for</span> <span class="n">configuration</span> <span class="n">server</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">8901</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="n">FORMAT</span>        <span class="o">-</span><span class="n">f</span> <span class="n">FORMAT</span>    <span class="n">The</span> <span class="nb">format</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">the</span> <span class="n">data</span> <span class="n">will</span> <span class="n">be</span> <span class="n">saved</span><span class="o">.</span>
+                                    <span class="n">Keys</span><span class="p">:</span> <span class="n">tdsm</span> <span class="o">=</span> <span class="n">NI</span> <span class="n">TDMS</span> <span class="n">File</span> <span class="n">Format</span><span class="o">.</span>
+                                          <span class="n">wav</span> <span class="o">=</span> <span class="n">Waveform</span> <span class="n">Audio</span> <span class="n">File</span> <span class="n">Format</span><span class="o">.</span>
+                                          <span class="n">csv</span> <span class="o">=</span> <span class="n">Text</span> <span class="n">file</span> <span class="n">that</span> <span class="n">uses</span> <span class="n">a</span> <span class="n">comma</span> <span class="n">to</span> <span class="n">separate</span> <span class="n">values</span><span class="o">.</span>
+                                          <span class="nb">bin</span> <span class="o">=</span> <span class="n">Binary</span> <span class="nb">format</span><span class="o">.</span>
+<span class="o">--</span><span class="nb">dir</span><span class="o">=</span><span class="n">NAME</span>             <span class="o">-</span><span class="n">d</span> <span class="n">NAME</span>      <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">where</span> <span class="n">to</span> <span class="n">save</span> <span class="n">files</span><span class="o">.</span>
+<span class="o">--</span><span class="n">limit</span><span class="o">=</span><span class="n">SAMPLES</span>        <span class="o">-</span><span class="n">l</span> <span class="n">SAMPLES</span>   <span class="n">Sample</span> <span class="n">limit</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">2147483647</span><span class="p">]</span> <span class="p">(</span><span class="n">no</span> <span class="n">limit</span> <span class="n">by</span> <span class="n">default</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">MODE</span>            <span class="o">-</span><span class="n">m</span> <span class="n">MODE</span>      <span class="n">Convert</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">volts</span> <span class="p">(</span><span class="n">store</span> <span class="k">as</span> <span class="n">ADC</span> <span class="n">raw</span> <span class="n">data</span> <span class="n">by</span> <span class="n">default</span><span class="p">)</span><span class="o">.</span>
+                                    <span class="n">Keys</span><span class="p">:</span> <span class="n">raw</span> <span class="o">=</span> <span class="mi">8</span><span class="o">/</span><span class="mi">16</span> <span class="n">Bit</span> <span class="n">binary</span> <span class="n">raw</span> <span class="nb">format</span><span class="o">.</span>
+                                          <span class="n">volt</span> <span class="o">=</span> <span class="n">Converts</span> <span class="n">binary</span> <span class="n">integer</span> <span class="nb">format</span> <span class="n">to</span> <span class="n">floating</span> <span class="n">point</span> <span class="nb">format</span><span class="o">.</span>
+                                                 <span class="n">Measured</span> <span class="ow">in</span> <span class="n">volts</span><span class="o">.</span> <span class="n">In</span> <span class="n">wav</span> <span class="nb">format</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">limited</span> <span class="kn">from</span> <span class="o">-</span><span class="mi">1</span> <span class="n">to</span> <span class="mf">1.</span>
+<span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="n">MSEC</span>         <span class="o">-</span><span class="n">t</span> <span class="n">MSEC</span>      <span class="n">Stops</span> <span class="n">recording</span> <span class="n">after</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">time</span><span class="o">.</span>
+<span class="o">--</span><span class="n">verbose</span>              <span class="o">-</span><span class="n">v</span>           <span class="n">Displays</span> <span class="n">service</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">--</span><span class="n">benchmark</span><span class="o">=</span><span class="n">MODE</span>       <span class="o">-</span><span class="n">b</span> <span class="n">MODE</span>      <span class="n">Starts</span> <span class="n">the</span> <span class="n">throughput</span> <span class="n">test</span> <span class="n">mode</span> <span class="n">at</span> <span class="n">the</span> <span class="n">current</span> <span class="n">settings</span><span class="o">.</span>
+                                    <span class="n">Keys</span><span class="p">:</span> <span class="n">TD</span> <span class="o">=</span> <span class="n">Adds</span> <span class="n">validation</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span> <span class="n">Works</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">network</span> <span class="n">test</span> <span class="n">mode</span><span class="o">.</span>
+                                          <span class="n">F</span>  <span class="o">=</span> <span class="n">Full</span> <span class="n">system</span> <span class="n">performance</span> <span class="n">testing</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>DAC streaming Mode</strong></p>
+<blockquote>
+<div><p>This mode allows you to generate output data using a signal from a file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">o</span> <span class="o">-</span><span class="n">h</span> <span class="n">IPs</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">PORT</span><span class="p">]</span> <span class="o">-</span><span class="n">f</span> <span class="n">tdms</span><span class="o">|</span><span class="n">wav</span> <span class="o">-</span><span class="n">d</span> <span class="n">FILE_NAME</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span> <span class="n">inf</span><span class="o">|</span><span class="n">COUNT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span> <span class="n">SIZE</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">out_streaming</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IPs</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">config_port</span><span class="o">=</span><span class="n">PORT</span><span class="p">]</span> <span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="n">tdms</span><span class="o">|</span><span class="n">wav</span> <span class="o">--</span><span class="n">data</span><span class="o">=</span><span class="n">FILE_NAME</span> <span class="p">[</span><span class="o">--</span><span class="n">repeat</span><span class="o">=</span><span class="n">inf</span><span class="o">|</span><span class="n">COUNT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">memory</span> <span class="n">SIZE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">benchmark</span><span class="p">]</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">oc</span> <span class="n">CONFIG_FILE</span>
+<span class="n">rpsa_client</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">out_streaming_conf</span> <span class="n">CONFIG_FILE</span>
+
+<span class="o">--</span><span class="n">out_streaming</span>        <span class="o">-</span><span class="n">o</span>           <span class="n">Enable</span> <span class="n">dac</span> <span class="n">streaming</span> <span class="n">mode</span><span class="o">.</span>
+<span class="o">--</span><span class="n">out_streaming_conf</span>   <span class="o">-</span><span class="n">oc</span>          <span class="n">Enable</span> <span class="n">dac</span> <span class="n">streaming</span> <span class="n">mode</span><span class="o">.</span>
+<span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="n">IP</span><span class="p">,</span><span class="o">...</span>         <span class="o">-</span><span class="n">h</span> <span class="n">IP</span><span class="p">,</span><span class="o">...</span>    <span class="n">You</span> <span class="n">can</span> <span class="n">specify</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">board</span> <span class="n">IP</span> <span class="n">addresses</span> <span class="n">through</span> <span class="n">a</span> <span class="n">separator</span> <span class="o">-</span> <span class="s1">&#39;,&#39;</span>
+                                    <span class="n">Example</span><span class="p">:</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span> <span class="ow">or</span> <span class="o">--</span><span class="n">hosts</span><span class="o">=</span><span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span>
+                                              <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span>     <span class="ow">or</span>  <span class="o">-</span><span class="n">h</span> <span class="mf">127.0.0.1</span><span class="p">,</span><span class="mf">127.0.0.2</span><span class="p">,</span><span class="mf">127.0.0.3</span>
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="n">PORT</span>            <span class="o">-</span><span class="n">p</span> <span class="n">PORT</span>      <span class="n">Port</span> <span class="k">for</span> <span class="n">dac</span> <span class="n">streaming</span> <span class="n">server</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">8903</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">config_port</span><span class="o">=</span><span class="n">PORT</span>     <span class="o">-</span><span class="n">c</span> <span class="n">PORT</span>      <span class="n">Port</span> <span class="k">for</span> <span class="n">configuration</span> <span class="n">server</span> <span class="p">(</span><span class="n">Default</span><span class="p">:</span> <span class="mi">8901</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="n">FORMAT</span>        <span class="o">-</span><span class="n">f</span> <span class="n">FORMAT</span>    <span class="n">The</span> <span class="nb">format</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">the</span> <span class="n">data</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
+                                    <span class="n">Keys</span><span class="p">:</span> <span class="n">tdsm</span> <span class="o">=</span> <span class="n">NI</span> <span class="n">TDMS</span> <span class="n">File</span> <span class="n">Format</span><span class="o">.</span>
+                                          <span class="n">wav</span> <span class="o">=</span> <span class="n">Waveform</span> <span class="n">Audio</span> <span class="n">File</span> <span class="n">Format</span><span class="o">.</span>
+<span class="o">--</span><span class="n">data</span><span class="o">=</span><span class="n">FILE_NAME</span>       <span class="o">-</span><span class="n">d</span> <span class="n">FILE_NAME</span> <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">file</span> <span class="k">for</span> <span class="n">streaming</span><span class="o">.</span>
+<span class="o">--</span><span class="n">memory</span><span class="o">=</span><span class="n">SIZE</span>          <span class="o">-</span><span class="n">m</span> <span class="n">SIZE</span>      <span class="n">Use</span> <span class="n">RAM</span> <span class="n">cache</span><span class="o">.</span>
+                                        <span class="n">Example</span><span class="p">:</span> <span class="o">--</span><span class="n">mmemory</span> <span class="mi">1048576</span> <span class="ow">or</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">1</span><span class="n">M</span> <span class="ow">or</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">1024</span><span class="n">k</span>
+                                                 <span class="o">-</span><span class="n">m</span> <span class="mi">1048576</span> <span class="ow">or</span> <span class="o">-</span><span class="n">m</span> <span class="mi">1</span><span class="n">M</span> <span class="ow">or</span> <span class="o">-</span><span class="n">m</span> <span class="mi">1024</span><span class="n">k</span>
+                                        <span class="n">Default</span><span class="p">:</span> <span class="mi">1</span><span class="n">M</span> <span class="nb">bytes</span>
+<span class="o">--</span><span class="n">repeat</span><span class="o">=</span><span class="n">inf</span><span class="o">|</span><span class="n">COUNT</span>     <span class="o">-</span><span class="n">r</span> <span class="n">inf</span><span class="o">|</span><span class="n">COUNT</span> <span class="n">The</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">the</span> <span class="n">file</span> <span class="n">has</span> <span class="n">been</span> <span class="n">resent</span><span class="o">.</span>
+                                    <span class="n">Keys</span><span class="p">:</span> <span class="n">inf</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">infinite</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span><span class="o">.</span>
+                                       <span class="n">COUNT</span> <span class="o">-</span> <span class="n">value</span> <span class="kn">from</span> <span class="p">[</span><span class="mi">1</span> <span class="o">...</span> <span class="mi">1000000</span><span class="p">]</span>
+<span class="o">--</span><span class="n">verbose</span>              <span class="o">-</span><span class="n">v</span>           <span class="n">Displays</span> <span class="n">service</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">--</span><span class="n">benchmark</span>            <span class="o">-</span><span class="n">b</span>           <span class="n">Starts</span> <span class="n">the</span> <span class="n">throughput</span> <span class="n">test</span> <span class="n">mode</span> <span class="n">at</span> <span class="n">the</span> <span class="n">current</span> <span class="n">settings</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="streaming-to-a-remote-computer-via-desktop-application-linux-windows">
+<h2><span class="section-number">2.2.7.4. </span>Streaming to a remote computer via Desktop Application (Linux, Windows)<a class="headerlink" href="#streaming-to-a-remote-computer-via-desktop-application-linux-windows" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.</p>
+</div>
+<p>The other option for streaming is utilyzing the Desktop Application.</p>
+<ol class="arabic">
+<li><p>Download the client application</p>
+<blockquote>
+<div><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-4-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tab" tabindex="0">OS version 2.00-15 or older</button><button aria-controls="panel-4-T1MgdmVyc2lvbiAyLjAwLjIzIG9yIG5ld2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-T1MgdmVyc2lvbiAyLjAwLjIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLjIzIG9yIG5ld2Vy" role="tab" tabindex="-1">OS version 2.00.23 or newer</button></div><div aria-labelledby="tab-4-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-4-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tabpanel" tabindex="0"><p>Files with clients are available <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>.</p>
+</div><div aria-labelledby="tab-4-T1MgdmVyc2lvbiAyLjAwLjIzIG9yIG5ld2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-T1MgdmVyc2lvbiAyLjAwLjIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLjIzIG9yIG5ld2Vy" role="tabpanel" tabindex="0"><p>Files with clients are in the Streaming Application (Data Stream Control). You can download it from Red Pitaya itself.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Streaming_app_desktop_client.png"><img alt="../../../_images/Streaming_app_desktop_client.png" src="../../../_images/Streaming_app_desktop_client.png" style="width: 1000px;" /></a>
+</div>
+</div></div>
+</div></blockquote>
+</li>
+<li><p>Unzip and run the client</p>
+<blockquote>
+<div><ul>
+<li><p>For Linux clients, after unpacking, the files (rpsa_client_qt.sh, bin/rpsa_client_qt) must be made executable.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/qt1.png"><img alt="../../../_images/qt1.png" src="../../../_images/qt1.png" style="width: 800px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>For Windows clients, you need to grant access to the network.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible that an Antivirus program might block the desktop client. If you experience this issue, we recommend whitelisting the Streaming Client folder.</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Once the Desktop application is running it automatically detects boards on the network, if the Streaming Application is running on them. The boards and the client must be on the same network.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/qt2.png"><img alt="../../../_images/qt2.png" src="../../../_images/qt2.png" style="width: 1000px;" /></a>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="source-code">
+<h2><span class="section-number">2.2.7.5. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager">Streaming application source code</a> is available on our GitHub.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../lcr_meter/lcr_meter.html" class="btn btn-neutral float-left" title="2.2.6. LCR meter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appXCStreaming.html" class="btn btn-neutral float-right" title="2.2.8. X-Channel Streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

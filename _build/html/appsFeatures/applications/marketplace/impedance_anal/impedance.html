@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.2.12.1.11. Impedance Analyzer &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="2.2.12.1.12. LTI DSP Workbench" href="../lti.html" />
+    <link rel="prev" title="2.2.12.1.10. Frequency Response Analyzer" href="../freq_res_anal/freq_res_anal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../apps-featured.html">2.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../oscSigGen/osc.html">2.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../spectrum/spectrum.html">2.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../logic/logic.html">2.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bode/bode.html">2.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../impedance/impedance.html">2.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lcr_meter/lcr_meter.html">2.2.6. LCR meter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../streaming/appStreaming.html">2.2.7. Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../streaming/appXCStreaming.html">2.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arb_manager/arb_manager.html">2.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sdr/appSDR.html">2.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../vna/appVNA.html">2.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../marketplace.html">2.2.12. Marketplace and contributed apps</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../marketplace.html#overview">2.2.12.1. Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../apps-featured.html"><span class="section-number">2.2. </span>Applications</a></li>
+          <li class="breadcrumb-item"><a href="../marketplace.html"><span class="section-number">2.2.12. </span>Marketplace and contributed apps</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.2.12.1.11. </span>Impedance Analyzer</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="impedance-analyzer">
+<span id="imp-anal-marketplace"></span><h1><span class="section-number">2.2.12.1.11. </span>Impedance Analyzer<a class="headerlink" href="#impedance-analyzer" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is outdated. The impedance analyzer application is now officially supported in the Red Pitaya OS since 2.00-30.
+Read more about the <a class="reference internal" href="#impedance-analyzer">Impedance Analyzer</a> here.</p>
+</div>
+<p>The Impedance analyzer application enables measurements of impedance, phase, and other parameters of the selected DUT (Device Under Test). Measurements can be taken in the <strong>Frequency sweep</strong> mode with a frequency resolution of 1 Hz or in the <strong>Measurements sweep</strong> mode with the desired number of measurements at a constant frequency. The selectable frequency range is from 1 Hz to 60 MHz, although the recommended frequency range is up to 1 MHz. The impedance range is from 0.1 Ω to 10 MΩ. When using the Impedance analyzer application with the LCR Extension module, insert 0 in the shunt resistor field.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../../_images/LCR_2.png"><img alt="../../../../_images/LCR_2.png" src="../../../../_images/LCR_2.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The impedance range is dependent on the selected frequency and maximum accuracy, and a suitable measurement can not be performed at all frequencies and impedance ranges. The impedance range is given in the picture below. The range of capacitors or inductors can be extrapolated from the given picture. The basic accuracy of the Impedance Analyzer is 5%. The Impedance Analyzer application is calibrated for 1 m Kelvin probes. More accurate measurements can be performed in the <strong>measurement sweep</strong> mode at a constant frequency.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../../_images/LCR_range.png"><img alt="../../../../_images/LCR_range.png" src="../../../../_images/LCR_range.png" style="width: 400px;" /></a>
+</div>
+<p>When using the Impedance Analyzer application, optimal results are achieved when the Red Pitaya GND is connected to your mains EARTH lead as is shown below. We also recommend the shielding of Red Pitaya and the LCR extension module.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../../_images/600px-E_module_connection.png"><img alt="../../../../_images/600px-E_module_connection.png" src="../../../../_images/600px-E_module_connection.png" style="width: 600px;" /></a>
+</div>
+<p>In the pictures below are shown comparison measurements of the selected DUT. Measurements are taken with a Red Pitaya and a Keysight precision LCR meter. From these plots, you can extract basic Red Pitaya accuracy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Red Pitaya LCR metre and Impedance Analyzer are not certified for certain accuracy or range.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../../_images/300px-LCR_100R.png"><img alt="../../../../_images/300px-LCR_100R.png" src="../../../../_images/300px-LCR_100R.png" style="width: 400px;" /></a>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../../_images/300px-LCR_100K.png"><img alt="../../../../_images/300px-LCR_100K.png" src="../../../../_images/300px-LCR_100K.png" style="width: 400px;" /></a>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../../_images/300px-LCR_1M.png"><img alt="../../../../_images/300px-LCR_1M.png" src="../../../../_images/300px-LCR_1M.png" style="width: 400px;" /></a>
+</div>
+<p>The Impedance Analyzer application can be used without the LCR Extension module using the manual setting of the shunt resistor. This option is described below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will need to change the <code class="docutils literal notranslate"><span class="pre">C_cable</span></code> parameter in the code when using your setup.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../../_images/600px-Impedance_analyzer_manaul_R_Shunt.png"><img alt="../../../../_images/600px-Impedance_analyzer_manaul_R_Shunt.png" src="../../../../_images/600px-Impedance_analyzer_manaul_R_Shunt.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Impedance Analyzer application is available on the Red Pitaya marketplace.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../freq_res_anal/freq_res_anal.html" class="btn btn-neutral float-left" title="2.2.12.1.10. Frequency Response Analyzer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../lti.html" class="btn btn-neutral float-right" title="2.2.12.1.12. LTI DSP Workbench" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

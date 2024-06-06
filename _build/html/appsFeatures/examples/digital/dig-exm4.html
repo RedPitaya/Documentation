@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4.6.1.4. Interactive LED bar graph &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.4.6.2. Analog" href="../analog/analog.html" />
+    <link rel="prev" title="2.4.6.1.3. Push button and turn on LED diode" href="dig-exm3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">2.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">2.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">2.4.6. Examples</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="digital.html">2.4.6.1. Digital</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">2.4.6.2. Analog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">2.4.6.3. Generating signals at RF outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition/acqRF.html">2.4.6.4. Acquiring signals at RF inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition_generation/acq_genRF.html">2.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../multiboard_sync/multiboard.html">2.4.6.6. Multi-board signal acquisition and generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../DMA/deepMemoryAcq.html">2.4.6.7. Deep Memory Acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../communication_interfaces/digcomIF.html">2.4.6.8. Digital communication interfaces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">2.4.6. </span>Examples</a></li>
+          <li class="breadcrumb-item"><a href="digital.html"><span class="section-number">2.4.6.1. </span>Digital</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4.6.1.4. </span>Interactive LED bar graph</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="interactive-led-bar-graph">
+<h1><span class="section-number">2.4.6.1.4. </span>Interactive LED bar graph<a class="headerlink" href="#interactive-led-bar-graph" title="Permalink to this heading"></a></h1>
+<div class="section" id="description">
+<h2><span class="section-number">2.4.6.1.4.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>This example shows how to make a bar graph by controlling the Red Pitaya on-board LEDs.
+The number of LEDs that will be turned ON, corresponds to the value of variable p that can be set by the MATLAB® slider bar.</p>
+</div>
+<div class="section" id="required-hardware">
+<h2><span class="section-number">2.4.6.1.4.2. </span>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Red Pitaya device</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-default">
+<img alt="../../../_images/RedPitaya_general.png" src="../../../_images/RedPitaya_general.png" />
+</div>
+</div>
+<div class="section" id="scpi-code-examples">
+<h2><span class="section-number">2.4.6.1.4.3. </span>SCPI Code Examples<a class="headerlink" href="#scpi-code-examples" title="Permalink to this heading"></a></h2>
+<div class="section" id="code-matlab">
+<h3><span class="section-number">2.4.6.1.4.3.1. </span>Code - MATLAB®<a class="headerlink" href="#code-matlab" title="Permalink to this heading"></a></h3>
+<p>The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the “Run” button. Change p with slider bar from 0-100.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">RP_sliderDemo</span>
+
+<span class="w">    </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">global</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c">%// initialize the slider</span>
+<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uicontrol</span><span class="p">(</span><span class="k">...</span>
+<span class="w">        </span><span class="s">&#39;parent&#39;</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="k">...</span>
+<span class="w">        </span><span class="s">&#39;units&#39;</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="s">&#39;normalized&#39;</span><span class="p">,</span><span class="k">...</span><span class="c">                 %// pixels settings</span>
+<span class="w">        </span><span class="s">&#39;style&#39;</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="s">&#39;slider&#39;</span><span class="p">,</span><span class="k">...</span>
+<span class="w">        </span><span class="s">&#39;position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">0.05</span><span class="w"> </span><span class="mf">0.05</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="mf">0.05</span><span class="p">],</span><span class="k">...</span>
+<span class="w">        </span><span class="s">&#39;min&#39;</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="k">...</span><span class="c">                            %// Make the &quot;value&quot; between min ...</span>
+<span class="w">        </span><span class="s">&#39;max&#39;</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="k">...</span><span class="c">                          %// max 10, with initial value</span>
+<span class="w">        </span><span class="s">&#39;value&#39;</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="k">...</span><span class="c">                           %// as set.</span>
+<span class="w">        </span><span class="s">&#39;callback&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">sliderCallback</span><span class="p">);</span><span class="w">                </span><span class="c">%// This is called when using the</span>
+<span class="w">                                                    </span><span class="c">%// arrows</span>
+<span class="w">                                                    </span><span class="c">%// and/or when clicking the slider bar</span>
+
+<span class="w">    </span><span class="n">hLstn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">handle</span><span class="p">.</span><span class="n">listener</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="s">&#39;ActionEvent&#39;</span><span class="p">,@</span><span class="n">sliderCallback</span><span class="p">);</span>
+<span class="w">    </span><span class="c">%// (variable appears unused, but not assigning it to anything means that</span>
+<span class="w">    </span><span class="c">%// the listener is stored in the &#39;ans&#39; variable. If &quot;ans&quot; is overwritten,</span>
+<span class="w">    </span><span class="c">%// the listener goes out of scope and is thus destroyed, and thus, it no</span>
+<span class="w">    </span><span class="c">%// longer works.</span>
+
+<span class="w">    </span><span class="k">function</span><span class="w">  </span><span class="nf">sliderCallback</span><span class="p">(</span>~,~<span class="p">)</span>
+<span class="w">        </span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">get</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c">% Define Red Pitaya as TCP client object</span>
+<span class="w">        </span><span class="n">IP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;192.168.178.56&#39;</span><span class="p">;</span><span class="w">           </span><span class="c">% Input IP of your Red Pitaya...</span>
+<span class="w">        </span><span class="n">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<span class="w">        </span><span class="n">RP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tcpclient</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c">%% Open connection with your Red Pitaya</span>
+<span class="w">        </span><span class="n">RP</span><span class="p">.</span><span class="n">ByteOrder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;big-endian&#39;</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">configureTerminator</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;CR/LF&#39;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED0,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED0,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED1,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED1,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED2,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED2,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED3,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED3,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED4,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED4,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mi">6</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED5,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED5,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mi">7</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED6,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED6,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED7,1&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED7,0&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">end</span>
+
+<span class="w">        </span><span class="nb">clear</span><span class="w"> </span><span class="n">RP</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-labview">
+<h3><span class="section-number">2.4.6.1.4.3.2. </span>Code - LabVIEW<a class="headerlink" href="#code-labview" title="Permalink to this heading"></a></h3>
+<div class="figure align-default">
+<img alt="../../../_images/Interactive-LED-bar-graph_LV.png" src="../../../_images/Interactive-LED-bar-graph_LV.png" />
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/Clients/labview/Interactive%20LED%20bar%20graph.vi">Download Example</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dig-exm3.html" class="btn btn-neutral float-left" title="2.4.6.1.3. Push button and turn on LED diode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../analog/analog.html" class="btn btn-neutral float-right" title="2.4.6.2. Analog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4.6.6.1. Daisy chain generation and acquisition &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.4.6.6.2. Synchronised Click Shield Generation and Acquisition" href="click_shield-exm1.html" />
+    <link rel="prev" title="2.4.6.6. Multi-board signal acquisition and generation" href="multiboard.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">2.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">2.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">2.4.6. Examples</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../digital/digital.html">2.4.6.1. Digital</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">2.4.6.2. Analog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">2.4.6.3. Generating signals at RF outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition/acqRF.html">2.4.6.4. Acquiring signals at RF inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition_generation/acq_genRF.html">2.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="multiboard.html">2.4.6.6. Multi-board signal acquisition and generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../DMA/deepMemoryAcq.html">2.4.6.7. Deep Memory Acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../communication_interfaces/digcomIF.html">2.4.6.8. Digital communication interfaces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">2.4.6. </span>Examples</a></li>
+          <li class="breadcrumb-item"><a href="multiboard.html"><span class="section-number">2.4.6.6. </span>Multi-board signal acquisition and generation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4.6.6.1. </span>Daisy chain generation and acquisition</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="daisy-chain-generation-and-acquisition">
+<span id="daisy-chain-sync-exam1"></span><h1><span class="section-number">2.4.6.6.1. </span>Daisy chain generation and acquisition<a class="headerlink" href="#daisy-chain-generation-and-acquisition" title="Permalink to this heading"></a></h1>
+<div class="section" id="description">
+<h2><span class="section-number">2.4.6.6.1.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>This example shows how to synchronise the Red Pitaya X-channel system (daisy chain) to simultaneously acquire 16k samples of a generated signal on multiple units (fast RF inputs and outputs).</p>
+</div>
+<div class="section" id="required-hardware">
+<h2><span class="section-number">2.4.6.6.1.2. </span>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Primary Red Pitaya device (STEMlab 125-14 LN)</p></li>
+<li><p>One or more Secondary devices (STEMlab 125-14 LN Secondary)</p></li>
+<li><p>SATA cables</p></li>
+<li><p>SMA cables and SMA T-connectors</p></li>
+</ul>
+</div></blockquote>
+<p>Wiring example:</p>
+<ul class="simple">
+<li><p>Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.</p></li>
+<li><p>Connect the Primary and Secondary devices with SATA cables</p></li>
+</ul>
+<p><strong>Pictures coming soon…</strong></p>
+</div>
+<div class="section" id="scpi-code-examples">
+<h2><span class="section-number">2.4.6.6.1.3. </span>SCPI Code Examples<a class="headerlink" href="#scpi-code-examples" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This code is written for <strong>2.00-23 or higher OS</strong>. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).</p>
+</div>
+<div class="section" id="code-matlab">
+<h3><span class="section-number">2.4.6.6.1.3.1. </span>Code - MATLAB<a class="headerlink" href="#code-matlab" title="Permalink to this heading"></a></h3>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ### DAISY CHAIN EXAMPLE ###</span>
+<span class="c">% This example is for setting up two units (one primary and one secondary)</span>
+<span class="c">% For multiple secondary units duplicate the code for the secondary unit</span>
+<span class="c">% and change the IP address and RP_SEC to for example, RP_SECx (where x is</span>
+<span class="c">% a consecutive secondary unit)</span>
+<span class="c">% This example is written for the X-channel System connected with SATA cables</span>
+
+<span class="c">%% Parameters</span>
+<span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="p">;</span>
+<span class="n">close</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
+<span class="n">clc</span>
+
+<span class="s">%</span><span class="w"> </span><span class="s">Generation</span>
+<span class="n">wave_form</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;SINE&#39;</span><span class="p">;</span>
+<span class="n">freq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">100e3</span><span class="p">;</span>
+<span class="n">ampl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c">% Acquisition</span>
+<span class="n">dec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="n">trig_lvl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<span class="n">trig_dly</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">7000</span><span class="p">;</span>
+
+<span class="c">%% Set up the IP and SCPI server</span>
+
+<span class="n">IP_PRI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;rp-f066c8.local&#39;</span><span class="p">;</span><span class="w">           </span><span class="c">% Primary unit</span>
+<span class="n">IP_SEC</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;rp-f0ac90.local&#39;</span><span class="p">;</span><span class="w">           </span><span class="c">% Secondary unit</span>
+
+<span class="n">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<span class="n">RP_PRI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tcpclient</span><span class="p">(</span><span class="n">IP_PRI</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span><span class="w">           </span><span class="c">% create a TCP client object</span>
+<span class="n">RP_SEC</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tcpclient</span><span class="p">(</span><span class="n">IP_SEC</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+
+<span class="n">RP_PRI</span><span class="p">.</span><span class="n">ByteOrder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;big-endian&#39;</span><span class="p">;</span><span class="w">            </span><span class="c">% Define byte order and terminator for both units</span>
+<span class="nb">configureTerminator</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;CR/LF&#39;</span><span class="p">);</span>
+<span class="n">RP_SEC</span><span class="p">.</span><span class="n">ByteOrder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;big-endian&#39;</span><span class="p">;</span>
+<span class="nb">configureTerminator</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;CR/LF&#39;</span><span class="p">);</span><span class="w">       </span><span class="c">% defines the line terminator (end sequence of input characters)</span>
+
+<span class="nb">flush</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Program start&#39;</span><span class="p">);</span>
+
+
+<span class="c">%% Reseting Generation and Acquisition</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;GEN:RST&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;ACQ:RST&#39;</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;GEN:RST&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;ACQ:RST&#39;</span><span class="p">);</span>
+
+
+<span class="c">%%% ENABLING THE DAISY CHAIN PRIMARY UNIT %%%</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DAISY:SYNC:TRig ON&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DAISY:SYNC:CLK ON&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DAISY:TRIG_O:SOUR ADC&#39;</span><span class="p">);</span><span class="w">      </span><span class="c">% Select which trigger will be passed on over SATA</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED5,1&#39;</span><span class="p">);</span><span class="w">     </span><span class="c">% indicator</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Trig: %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DAISY:SYNC:TRig?&#39;</span><span class="p">));</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;CLK: %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DAISY:SYNC:CLK?&#39;</span><span class="p">));</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Source: %s\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DAISY:TRIG_O:SOUR?&#39;</span><span class="p">));</span>
+
+<span class="c">%%% ENABLING THE DAISY CHAIN SECONDARY UNIT %%%</span>
+<span class="c">% this section must be copied if using multiple secondary devices (once for each device)</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;DAISY:SYNC:TRig ON&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;DAISY:SYNC:CLK ON&#39;</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED5,1&#39;</span><span class="p">);</span><span class="w">     </span><span class="c">% indicator</span>
+
+
+<span class="c">%% Generation - Primary unit</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;SOUR1:FUNC &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">wave_form</span><span class="p">));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;SOUR1:FREQ:FIX &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">freq</span><span class="p">)));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;SOUR1:VOLT &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">ampl</span><span class="p">)));</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;OUTPUT1:STATE ON&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Generation start\n&#39;</span><span class="p">);</span>
+
+
+<span class="c">%% Acquisition Setup</span>
+<span class="c">% Primary unit</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:DEC &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">int2str</span><span class="p">(</span><span class="n">dec</span><span class="p">)));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:TRig:LEV &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">trig_lvl</span><span class="p">)));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:TRig:DLY &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">trig_dly</span><span class="p">)));</span>
+
+<span class="c">% Secondary unit</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:DEC &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">dec</span><span class="p">)));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:TRig:LEV &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">trig_lvl</span><span class="p">)));</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="s">&#39;ACQ:TRig:DLY &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">trig_dly</span><span class="p">)));</span>
+
+
+<span class="c">%% Acquisition Start</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;ACQ Start\n&#39;</span><span class="p">);</span>
+<span class="c">% First on secondary unit</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:START&#39;</span><span class="p">);</span>
+<span class="nb">pause</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:TRig EXT_NE&#39;</span><span class="p">);</span>
+
+<span class="c">% Then on primary unit</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:START&#39;</span><span class="p">);</span>
+<span class="nb">pause</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:TRig CH1_PE&#39;</span><span class="p">);</span>
+
+<span class="nb">pause</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;SOUR1:TRig:INT&#39;</span><span class="p">);</span><span class="w">    </span><span class="c">% Simulate a trigger</span>
+
+<span class="c">% Acquisition check if data is ready</span>
+
+<span class="c">% ## Primary unit ##</span>
+<span class="k">while</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="c">% Get Trigger Status</span>
+<span class="w">    </span><span class="n">trigger</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ACQ:TRig:STAT?&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">trigger</span><span class="p">,</span><span class="s">&#39;TD&#39;</span><span class="p">)</span><span class="w">      </span><span class="c">% Triggerd?</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Trigger primary condition met.\n&#39;</span><span class="p">);</span>
+
+<span class="c">%%! OS 2.00 or higher only !%%</span>
+<span class="k">while</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;ACQ:TRig:FILL?&#39;</span><span class="p">),</span><span class="s">&#39;1&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Buffer primary filled.\n&#39;</span><span class="p">);</span>
+
+<span class="c">% ## Secondary unit ##</span>
+<span class="k">while</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="c">% Get Trigger Status</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;ACQ:TRig:STAT?&#39;</span><span class="p">),</span><span class="s">&#39;TD&#39;</span><span class="p">)</span><span class="w">      </span><span class="c">% Triggerd?</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Trigger secondary condition met.\n&#39;</span><span class="p">);</span>
+
+<span class="c">%%! OS 2.00 or higher only !%%</span>
+<span class="k">while</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;ACQ:TRig:FILL?&#39;</span><span class="p">),</span><span class="s">&#39;1&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Buffer secondary filled.\n&#39;</span><span class="p">);</span>
+
+
+<span class="c">%% Read and plot data</span>
+<span class="n">data_string_pri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;ACQ:SOUR1:DATA?&#39;</span><span class="p">);</span>
+<span class="n">data_string_sec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">writeread</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;ACQ:SOUR1:DATA?&#39;</span><span class="p">);</span>
+
+<span class="c">% Convert values to numbers.</span>
+<span class="c">% The first character in string is “{“</span>
+<span class="c">% and the last 3 are 2 spaces and “}”.</span>
+
+<span class="n">data_pri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">str2num</span><span class="p">(</span><span class="n">data_string_pri</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">data_string_pri</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
+<span class="n">data_sec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">str2num</span><span class="p">(</span><span class="n">data_string_sec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">data_string_sec</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
+
+<span class="c">% Plotting</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mi">16383</span><span class="p">;</span>
+
+<span class="c">% MATLAB 2019b or higher</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tiledlayout</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w">     </span><span class="c">% for MATLAB r2023a use &#39;vertical&#39;</span>
+
+<span class="nb">nexttile</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">data_pri</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Primary unit data&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;V&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Samples&#39;</span><span class="p">)</span>
+
+<span class="nb">nexttile</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">data_sec</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Secondary unit data&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;V&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Samples&#39;</span><span class="p">)</span>
+
+<span class="nb">title</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Acquired data&#39;</span><span class="p">)</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED5,0&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_SEC</span><span class="p">,</span><span class="s">&#39;DIG:PIN LED5,0&#39;</span><span class="p">);</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP_PRI</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;OUTPUT1:STATE OFF&#39;</span><span class="p">);</span>
+
+<span class="n">clear</span><span class="w"> </span><span class="s">RP_PRI</span><span class="w"> </span><span class="s">RP_SEC</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-python">
+<h3><span class="section-number">2.4.6.6.1.3.2. </span>Code - Python<a class="headerlink" href="#code-python" title="Permalink to this heading"></a></h3>
+<p><strong>Using just SCPI commands:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;Daisy chain example for Red Pitaya&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">redpitaya_scpi</span> <span class="k">as</span> <span class="nn">scpi</span>
+
+<span class="c1"># Connect OUT1 primary with IN1 primary and IN1 secondary</span>
+
+<span class="n">wave_form</span> <span class="o">=</span> <span class="s2">&quot;sine&quot;</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">ampl</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">dec</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">trig_lvl</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">trig_dly</span> <span class="o">=</span> <span class="mi">7000</span>
+
+
+<span class="n">IP_PRIM</span> <span class="o">=</span> <span class="s1">&#39;rp-f0a235.local&#39;</span>   <span class="c1"># IP Test OS Red Pitaya</span>
+<span class="n">IP_SEC</span> <span class="o">=</span> <span class="s1">&#39;rp-f0ac90.local&#39;</span>
+
+<span class="n">rp_prim</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">IP_PRIM</span><span class="p">)</span>
+<span class="n">rp_sec</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">IP_SEC</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program Start&quot;</span><span class="p">)</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;GEN:RST&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:RST&#39;</span><span class="p">)</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;GEN:RST&#39;</span><span class="p">)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:RST&#39;</span><span class="p">)</span>
+
+<span class="c1">###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:TRig ON&#39;</span><span class="p">)</span>    <span class="c1">#! OFF (without sync)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:CLK ON&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:TRIG_O:SOUR ADC&#39;</span><span class="p">)</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DIG:PIN LED5,1&#39;</span><span class="p">)</span>            <span class="c1"># LED Indicator</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trig: </span><span class="si">{</span><span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:TRig?&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CLK: </span><span class="si">{</span><span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:CLK?&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sour: </span><span class="si">{</span><span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:TRIG_O:SOUR?&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:TRig ON&#39;</span><span class="p">)</span>  <span class="c1">#! OFF (without sync)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:CLK ON&#39;</span><span class="p">)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:TRIG_O:SOUR ADC&#39;</span><span class="p">)</span>     <span class="c1"># Ext trigger will trigger the ADC</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DIG:PIN LED5,1&#39;</span><span class="p">)</span>             <span class="c1"># LED Indicator</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start generator</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">### Generation ### - Primary unit</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOUR1:FUNC </span><span class="si">{</span><span class="n">wave_form</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOUR1:FREQ:FIX </span><span class="si">{</span><span class="n">freq</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOUR1:VOLT </span><span class="si">{</span><span class="n">ampl</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;OUTPUT1:STATE ON&#39;</span><span class="p">)</span>
+
+<span class="c1">### Aquisition ###</span>
+
+<span class="c1"># Primary unit</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ACQ:DEC </span><span class="si">{</span><span class="n">dec</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ACQ:TRig:LEV </span><span class="si">{</span><span class="n">trig_lvl</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ACQ:TRig:DLY </span><span class="si">{</span><span class="n">trig_dly</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Secondary unit</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ACQ:DEC </span><span class="si">{</span><span class="n">dec</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ACQ:TRig:LEV </span><span class="si">{</span><span class="n">trig_lvl</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ACQ:TRig:DLY </span><span class="si">{</span><span class="n">trig_dly</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:START&#39;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>                           <span class="c1"># Not necessary</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig EXT_NE&#39;</span><span class="p">)</span>          <span class="c1">#! CH1_PE (without sync trig) EXT_NE (with sync trig)</span>
+                                          <span class="c1"># If not synchronised make sure no signal arrives before both units are set up</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:START&#39;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig CH1_PE&#39;</span><span class="p">)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                             <span class="c1"># Symulating a trigger after one second</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;SOUR1:TRig:INT&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ACQ start&quot;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Get Trigger Status</span>
+    <span class="k">if</span> <span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:STAT?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;TD&#39;</span><span class="p">:</span>               <span class="c1"># Triggerd?</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trigger primary condition met.&quot;</span><span class="p">)</span>
+
+<span class="c1">## ! OS 2.00 or higher only ! ##</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:FILL?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buffer primary filled.&quot;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Get Trigger Status</span>
+    <span class="k">if</span> <span class="n">rp_sec</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:STAT?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;TD&#39;</span><span class="p">:</span>               <span class="c1"># Triggerd?</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trigger secondary condition met.&quot;</span><span class="p">)</span>
+
+<span class="c1">## ! OS 2.00 or higher only ! ##</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rp_sec</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:FILL?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buffer secondary filled.&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Read data and plot</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:SOUR1:DATA?&#39;</span><span class="p">)</span>               <span class="c1"># Read full buffer primary (source 1)</span>
+<span class="n">data_string1</span> <span class="o">=</span> <span class="n">rp_prim</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span>                 <span class="c1"># data into a string</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:SOUR1:DATA?&#39;</span><span class="p">)</span>                <span class="c1"># Read full buffer secondary (source 1)</span>
+<span class="n">data_string2</span> <span class="o">=</span> <span class="n">rp_sec</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span>
+
+<span class="c1"># Display both buffers at once</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">buff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">16384</span><span class="p">))</span>
+
+<span class="c1"># Remove brackets and empty spaces + string =&gt; float</span>
+<span class="n">data_string1</span> <span class="o">=</span> <span class="n">data_string1</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n\r</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">data_string2</span> <span class="o">=</span> <span class="n">data_string2</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n\r</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="c1"># Transform data into data series</span>
+<span class="n">buff</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">data_string1</span><span class="p">))</span>
+<span class="n">buff</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">data_string2</span><span class="p">))</span>
+
+
+<span class="c1">######## PLOTTING THE DATA #########</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sharex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>               <span class="c1"># plot the data (n subplots)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Measurements P1 S2&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>                                  <span class="c1"># plotting the acquired buffers</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">buff</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Using functions:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;Daisy chain example for Red Pitaya&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">redpitaya_scpi</span> <span class="k">as</span> <span class="nn">scpi</span>
+
+<span class="c1"># Connect OUT1 primary with IN1 primary and IN1 secondary</span>
+
+
+<span class="n">IP_PRIM</span> <span class="o">=</span> <span class="s1">&#39;rp-f0a235.local&#39;</span>   <span class="c1"># IP Test OS Red Pitaya</span>
+<span class="n">IP_SEC</span> <span class="o">=</span> <span class="s1">&#39;rp-f0ac90.local&#39;</span>
+
+<span class="n">rp_prim</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">IP_PRIM</span><span class="p">)</span>
+<span class="n">rp_sec</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">IP_SEC</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program Start&quot;</span><span class="p">)</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;GEN:RST&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:RST&#39;</span><span class="p">)</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;GEN:RST&#39;</span><span class="p">)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:RST&#39;</span><span class="p">)</span>
+
+<span class="c1">###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:TRig ON&#39;</span><span class="p">)</span>    <span class="c1">#! OFF (without sync)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:CLK ON&#39;</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:TRIG_O:SOUR ADC&#39;</span><span class="p">)</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DIG:PIN LED5,1&#39;</span><span class="p">)</span>            <span class="c1"># LED Indicator</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trig: </span><span class="si">{</span><span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:TRig?&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CLK: </span><span class="si">{</span><span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:CLK?&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sour: </span><span class="si">{</span><span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:TRIG_O:SOUR?&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:TRig ON&#39;</span><span class="p">)</span>  <span class="c1">#! OFF (without sync)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:SYNC:CLK ON&#39;</span><span class="p">)</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DAISY:TRIG_O:SOUR ADC&#39;</span><span class="p">)</span>     <span class="c1"># Ext trigger will trigger the ADC</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;DIG:PIN LED5,1&#39;</span><span class="p">)</span>             <span class="c1"># LED Indicator</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start generator</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">### Generation ### - Primary unit</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">sour_set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;sine&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;OUTPUT1:STATE ON&#39;</span><span class="p">)</span>
+
+<span class="c1">### Aquisition ###</span>
+
+<span class="c1"># Primary unit</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">acq_set</span><span class="p">(</span><span class="n">dec</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="n">trig_lvl</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="n">trig_delay</span> <span class="o">=</span> <span class="mi">7000</span><span class="p">)</span>
+
+
+<span class="c1"># Secondary unit</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">acq_set</span><span class="p">(</span><span class="n">dec</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+               <span class="n">trig_lvl</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+               <span class="n">trig_delay</span> <span class="o">=</span> <span class="mi">7000</span><span class="p">)</span>
+
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:START&#39;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>                           <span class="c1"># Not necessary</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig EXT_NE&#39;</span><span class="p">)</span>          <span class="c1">#! CH1_PE (without sync trig) EXT_NE (with sync trig)</span>
+                                          <span class="c1"># If not synchronised make sure no signal arrives before both units are set up</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:START&#39;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig CH1_PE&#39;</span><span class="p">)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                             <span class="c1"># Symulating a trigger after one second</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;SOUR1:TRig:INT&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ACQ start&quot;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Get Trigger Status</span>
+    <span class="k">if</span> <span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:STAT?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;TD&#39;</span><span class="p">:</span>               <span class="c1"># Triggerd?</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trigger primary condition met.&quot;</span><span class="p">)</span>
+
+<span class="c1">## ! OS 2.00 or higher only ! ##</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rp_prim</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:FILL?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buffer primary filled.&quot;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Get Trigger Status</span>
+    <span class="k">if</span> <span class="n">rp_sec</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:STAT?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;TD&#39;</span><span class="p">:</span>               <span class="c1"># Triggerd?</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trigger secondary condition met.&quot;</span><span class="p">)</span>
+
+<span class="c1">## ! OS 2.00 or higher only ! ##</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rp_sec</span><span class="o">.</span><span class="n">txrx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:TRig:FILL?&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buffer secondary filled.&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Read data and plot</span>
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:SOUR1:DATA?&#39;</span><span class="p">)</span>               <span class="c1"># Read full buffer primary (source 1)</span>
+<span class="n">data_string1</span> <span class="o">=</span> <span class="n">rp_prim</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span>                 <span class="c1"># data into a string</span>
+
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;ACQ:SOUR1:DATA?&#39;</span><span class="p">)</span>                <span class="c1"># Read full buffer secondary (source 1)</span>
+<span class="n">data_string2</span> <span class="o">=</span> <span class="n">rp_sec</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">()</span>
+
+<span class="c1"># Display both buffers at once</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">buff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">16384</span><span class="p">))</span>
+
+<span class="c1"># Remove brackets and empty spaces + string =&gt; float</span>
+<span class="n">data_string1</span> <span class="o">=</span> <span class="n">data_string1</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n\r</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">data_string2</span> <span class="o">=</span> <span class="n">data_string2</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n\r</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="c1"># Transform data into data series</span>
+<span class="n">buff</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">data_string1</span><span class="p">))</span>
+<span class="n">buff</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">data_string2</span><span class="p">))</span>
+
+
+<span class="c1">######## PLOTTING THE DATA #########</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sharex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>               <span class="c1"># plot the data (n subplots)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Measurements P1 S2&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>                                  <span class="c1"># plotting the acquired buffers</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">buff</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">rp_prim</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">rp_sec</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python functions are accessible with the latest version of the <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a> document available on our GitHub.
+The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.</p>
+<p>For further information on functions please consult the <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a> code.</p>
+</div>
+</div>
+</div>
+<div class="section" id="api-code-examples">
+<h2><span class="section-number">2.4.6.6.1.4. </span>API Code Examples<a class="headerlink" href="#api-code-examples" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The API code examples don’t require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+Instructions on how to compile the code and other useful information are <a class="reference internal" href="../../../developerGuide/software/build/C%26Python_API.html#comc"><span class="std std-ref">here</span></a>.</p>
+</div>
+<div class="section" id="code-python-api">
+<h3><span class="section-number">2.4.6.6.1.4.1. </span>Code - Python API<a class="headerlink" href="#code-python-api" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rp</span>
+
+<span class="c1">########! Primary unit code !#########</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span>        <span class="c1"># rp.RP_CH_2</span>
+<span class="n">waveform</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_WAVEFORM_SINE</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">ampl</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">trig_lvl</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">trig_dly</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">dec</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_DEC_1</span>
+
+<span class="n">gen_trig_sour</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_GEN_TRIG_SRC_INTERNAL</span>
+
+<span class="n">acq_trig_sour</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_TRIG_SRC_CHA_PE</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">16384</span>
+
+<span class="c1"># Initialize the interface</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_Init</span><span class="p">()</span>
+
+<span class="c1"># Reset Generation and Acquisition</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenReset</span><span class="p">()</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqReset</span><span class="p">()</span>
+
+<span class="c1">###### Enable Daisy Chain #####</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_SetEnableDiasyChainClockSync</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>        <span class="c1"># Sync Clock</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_SetEnableDaisyChainTrigSync</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>         <span class="c1"># Sync Trigger</span>
+
+<span class="c1"># Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_SetSourceTrigOutput</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">OUT_TR_ADC</span><span class="p">)</span>
+
+<span class="c1"># LED indicator</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_DpinSetState</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_LED5</span><span class="p">,</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_HIGH</span><span class="p">)</span>
+
+
+<span class="c1">###### Generation #####</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gen_start&quot;</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenWaveform</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">waveform</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenFreqDirect</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenAmp</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">ampl</span><span class="p">)</span>
+
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenTriggerSource</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">gen_trig_sour</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenOutEnable</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+
+<span class="c1">##### Acquisition #####</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetDecimation</span><span class="p">(</span><span class="n">dec</span><span class="p">)</span>
+
+<span class="c1"># Set trigger level and delay</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetTriggerLevel</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_T_CH_1</span><span class="p">,</span> <span class="n">trig_lvl</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetTriggerDelay</span><span class="p">(</span><span class="n">trig_dly</span><span class="p">)</span>
+
+<span class="c1"># Start Acquisition</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acq_start&quot;</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqStart</span><span class="p">()</span>
+
+<span class="c1"># Specify trigger - input 1 positive edge</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetTriggerSrc</span><span class="p">(</span><span class="n">acq_trig_sour</span><span class="p">)</span>
+
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenTriggerOnly</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>       <span class="c1"># Trigger generator</span>
+
+<span class="c1"># Trigger state</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">trig_state</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqGetTriggerState</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">trig_state</span> <span class="o">==</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_TRIG_STATE_TRIGGERED</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="c1">## ! OS 2.00 or higher only ! ##</span>
+<span class="c1"># Fill state</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqGetBufferFillState</span><span class="p">()[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">break</span>
+
+<span class="c1">### Get data ###</span>
+<span class="c1"># Volts</span>
+<span class="n">fbuff</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">fBuffer</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqGetDataV</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">fbuff</span><span class="p">)</span>
+
+<span class="n">data_V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">data_V</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fbuff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data in Volts: </span><span class="si">{</span><span class="n">data_V</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Release resources</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_Release</span><span class="p">()</span>
+
+
+
+<span class="c1">########! Secondary unit code !#########</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span>        <span class="c1"># rp.RP_CH_2</span>
+<span class="n">waveform</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_WAVEFORM_SINE</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">ampl</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">trig_lvl</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">trig_dly</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">dec</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_DEC_1</span>
+
+<span class="c1"># Initialize the interface</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_Init</span><span class="p">()</span>
+
+<span class="c1"># Reset Generation and Acquisition</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_GenReset</span><span class="p">()</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqReset</span><span class="p">()</span>
+
+<span class="c1">###### Enable Daisy Chain #####</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_SetEnableDiasyChainClockSync</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>        <span class="c1"># Sync Clock</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_SetEnableDaisyChainTrigSync</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>         <span class="c1"># Sync Trigger</span>
+
+<span class="c1"># Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_SetSourceTrigOutput</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">OUT_TR_ADC</span><span class="p">)</span>
+
+<span class="c1"># LED indicator</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_DpinSetState</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_LED5</span><span class="p">,</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_HIGH</span><span class="p">)</span>
+
+
+<span class="c1">##### Acquisition #####</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetDecimation</span><span class="p">(</span><span class="n">dec</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetTriggerDelay</span><span class="p">(</span><span class="n">trig_dly</span><span class="p">)</span>
+
+<span class="c1"># Start Acquisition</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acq_start&quot;</span><span class="p">)</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqStart</span><span class="p">()</span>
+
+<span class="c1"># Specify trigger - must be EXT_NE</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqSetTriggerSrc</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_TRIG_SRC_EXT_NE</span><span class="p">)</span>
+
+<span class="c1"># Trigger state</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">trig_state</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqGetTriggerState</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">trig_state</span> <span class="o">==</span> <span class="n">rp</span><span class="o">.</span><span class="n">RP_TRIG_STATE_TRIGGERED</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="c1">## ! OS 2.00 or higher only ! ##</span>
+<span class="c1"># Fill state</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqGetBufferFillState</span><span class="p">()[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">break</span>
+
+<span class="c1">### Get data ###</span>
+<span class="c1"># Volts</span>
+<span class="n">fbuff</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">fBuffer</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">rp_AcqGetDataV</span><span class="p">(</span><span class="n">rp</span><span class="o">.</span><span class="n">RP_CH_1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">fbuff</span><span class="p">)</span>
+<span class="n">data_V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">data_V</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fbuff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data in Volts: </span><span class="si">{</span><span class="n">data_V</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Release resources</span>
+<span class="n">rp</span><span class="o">.</span><span class="n">rp_Release</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="multiboard.html" class="btn btn-neutral float-left" title="2.4.6.6. Multi-board signal acquisition and generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="click_shield-exm1.html" class="btn btn-neutral float-right" title="2.4.6.6.2. Synchronised Click Shield Generation and Acquisition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

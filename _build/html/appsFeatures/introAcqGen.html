@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1. Introduction to data acquisition and generation with Red Pitaya &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Applications" href="applications/apps-featured.html" />
+    <link rel="prev" title="2. Applications and Features" href="appsFeatures.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Introduction to data acquisition and generation with Red Pitaya</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#oscilloscope-and-other-applications">2.1.1. Oscilloscope and other applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scpi-commands">2.1.2. SCPI commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scpi-acquisition">2.1.2.1. SCPI Acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scpi-generation">2.1.2.2. SCPI generation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api-commands-c-python">2.1.3. API commands (C, Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streaming-application">2.1.4. Streaming application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deep-memory-acquisition-dma">2.1.5. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-acquisition-and-generatiron-fpga">2.1.6. Custom acquisition and generatiron (FPGA)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="applications/apps-featured.html">2.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.1. </span>Introduction to data acquisition and generation with Red Pitaya</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="introduction-to-data-acquisition-and-generation-with-red-pitaya">
+<span id="intro-gen-acq"></span><h1><span class="section-number">2.1. </span>Introduction to data acquisition and generation with Red Pitaya<a class="headerlink" href="#introduction-to-data-acquisition-and-generation-with-red-pitaya" title="Permalink to this heading"></a></h1>
+<p>In this section we will discuss all the options available for generating and acquiring data with Red Pitaya, from the simplest to the most advanced. We will also discuss the limitations of each mode and possible implementation issues.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some boards like <a class="reference internal" href="../developerGuide/hardware/122-16/top.html#top-122-16"><span class="std std-ref">SDRlab 122-16</span></a> have AC coupling on inputs and outputs, which may limit the available acquisition and generation frequency range.</p>
+</div>
+<p>Ordered from simplest to most complex:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#oscilloscope-and-other-applications">Oscilloscope and other applications</a></p></li>
+<li><p><a class="reference internal" href="#scpi-commands">SCPI commands</a></p></li>
+<li><p><a class="reference internal" href="#api-commands-c-python">API commands (C, Python)</a></p></li>
+<li><p><a class="reference internal" href="#deep-memory-acquisition-dma">Deep Memory Acquisition (DMA)</a></p></li>
+<li><p><a class="reference internal" href="#streaming-application">Streaming application</a></p></li>
+<li><p><a class="reference internal" href="#custom-acquisition-and-generatiron-fpga">Custom acquisition and generatiron (FPGA)</a></p></li>
+</ul>
+<div class="section" id="oscilloscope-and-other-applications">
+<h2><span class="section-number">2.1.1. </span>Oscilloscope and other applications<a class="headerlink" href="#oscilloscope-and-other-applications" title="Permalink to this heading"></a></h2>
+<p>The easiest way to acquire data is to use the pre-built applications such as oscilloscope, spectrum analyser, bode analyser, etc. that are accessible through the web interface.
+Use this option if you want to use Red Pitaya as a software-defined instrument and rarely need to download data to your computer and process it (usually screenshots and CSV data tables are sufficient).</p>
+<p>Data from each channel is captured in a 16384 sample buffer, processed and displayed in the web interface.
+The data can currently only be extracted from the application at the user’s request. Remote data acquisition by an application other than <a class="reference internal" href="applications/streaming/appStreaming.html#streaming-top"><span class="std std-ref">Data stream control</span></a> is not currently available.</p>
+<p>The same applies to data generation options - applications such as oscilloscope and spectrum analyzer also have signal generator capabilities so that both inputs and outputs can be used simultaneously.
+The signal generator can generate a predefined waveform, such as sine, square, saw up, saw down, etc. or act as an <a class="reference external" href="https://en.wikipedia.org/wiki/Arbitrary_waveform_generator">arbitrary waveform generator</a>.
+The signal generator includes <em>burst</em> and <em>sweep</em> generation capabilities.</p>
+<p>To use the AWG functionality, a 16384 sample long waveform representing one period of a custom signal is uploaded via the <a class="reference internal" href="applications/arb_manager/arb_manager.html#arb-manager-app"><span class="std std-ref">ARB manager application</span></a> in CSV format.
+The uploaded custom waveform can be selected from the <em>Waveform Type</em> dropdown menu. There are a few things to keep in mind when creating a custom waveform. Read more about this in the <a class="reference internal" href="#scpi-commands">SCPI commands</a> section.</p>
+<p>For more information on the applications and how they work, click here:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="applications/apps-featured.html#all-apps"><span class="std std-ref">Red Pitaya applications</span></a></p></li>
+<li><p>Application source code is available on our <a href="#id1"><span class="problematic" id="id2">`</span></a>GitHub &lt;<a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools">https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools</a></p></li>
+</ul>
+<p>&gt;`_.</p>
+</div>
+<div class="section" id="scpi-commands">
+<h2><span class="section-number">2.1.2. </span>SCPI commands<a class="headerlink" href="#scpi-commands" title="Permalink to this heading"></a></h2>
+<p>To remotely control the Red Pitaya from a Python, MATLAB or LabVIEW program running on your computer, and to acquire data from the Red Pitaya to your computer for further processing, use the SCPI commands.
+The code is executed on a computer and string commands are sent between Red Pitaya and your computer via <a class="reference external" href="https://en.wikipedia.org/wiki/Network_socket">socket communication</a>. Once the SCPI commands reach Red Pitaya, they are interpreted and an appropriate C API function is executed in the background.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Never</strong> use the oscilloscope or other web applications while the SCPI server is running. This may cause unpredictable behaviour of the SCPI commands.</p>
+</div>
+<div class="section" id="scpi-acquisition">
+<h3><span class="section-number">2.1.2.1. </span>SCPI Acquisition<a class="headerlink" href="#scpi-acquisition" title="Permalink to this heading"></a></h3>
+<p>For proper data acquisition using SCPI commands, a trigger condition must be specified, otherwise the data returned may be invalid or corrupted, as the FPGA can acquire data much faster than the Linux operating system can read it from the FPGA registers.</p>
+<p>After the capture is started and the first trigger condition is met, 16384 samples are captured on each of the Red Pitaya input channels and stored in a <em>circular memory buffer</em>. The <em>circular memory buffer</em> stores 16384 samples. The trigger position is at a random sample within the <em>circular memory buffer</em>:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/Circ_mem_buff.png"><img alt="../_images/Circ_mem_buff.png" src="../_images/Circ_mem_buff.png" style="width: 600px;" /></a>
+</div>
+<p>The <em>circular memory buffer</em> is then converted into a 16384 sample long <em>data buffer</em> with the trigger position in the middle of the buffer (at the position of the 8192nd sample). It is important to distinguish between the <em>circular memory buffer</em> and the <em>data buffer</em>. Most of the SCPI commands refer to the <em>data buffer</em> and its position, but there are commands that refer to the position within the <em>circular memory buffer</em>. The data pointer commands always refer to the position of the <em>circular memory buffer</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Circular memory buffer != Data buffer</strong></p>
+<p>The trigger position inside the <em>circular memory buffer</em> depends on the start of the acquisition and can be considered random, while the trigger position inside the <em>data buffer</em> is fixed to the 8192nd sample.
+The <em>circular memory buffer</em> is generally not visible to the user. The <em>data buffer</em> is what the user gets when they request data.</p>
+</div>
+<p>The <em>data buffer</em> is converted to a string and sent to the computer on request. There it can be converted back to a floating-point format. The acquisition must be restarted before further data can be acquired, resulting in a dead time between two successive data acquisitions.</p>
+<p>To set up the trigger correctly, the following settings must be made:</p>
+<ul class="simple">
+<li><p>Trigger level</p></li>
+<li><p>Trigger channel - IN1, IN2 or External. IN3 and IN4 are also available on the 4-input STEMlab 125-14.</p></li>
+<li><p>Trigger delay - see explanation below</p></li>
+</ul>
+<p>When acquiring data via SCPI commands, the triggering moment is in the middle of the <em>data buffer</em> (8192nd sample). This means that half the data is acquired before the trigger (samples between 0 and 8192) and half the data is acquired after the trigger (samples between 8193 and 16383). By changing the Trigger Delay parameter, you can either capture more data before the trigger event (by specifying a negative trigger delay, where the maximum is -8192) or capture more data after the trigger event (by specifying a positive trigger delay). The situation is illustrated below:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/Python_buff.png"><img alt="../_images/Python_buff.png" src="../_images/Python_buff.png" style="width: 800px;" /></a>
+</div>
+<p>Data can be acquired in the following ways:</p>
+<ul class="simple">
+<li><p>Read the entire <em>data buffer</em> (<code class="docutils literal notranslate"><span class="pre">ACQ:SOUR&lt;n&gt;:DATA?</span></code>)</p></li>
+<li><p>Read the oldest samples in the <em>data buffer</em> (<code class="docutils literal notranslate"><span class="pre">ACQ:SOUR&lt;n&gt;:DATA:Old:N?</span> <span class="pre">&lt;size&gt;</span></code>)</p></li>
+<li><p>Read the latest samples in the <em>data buffer</em> (<code class="docutils literal notranslate"><span class="pre">ACQ:SOUR&lt;n&gt;:DATA:LATest:N?</span> <span class="pre">&lt;size&gt;</span></code>)</p></li>
+<li><p>Read samples relative to trigger condition from <em>data buffer</em> (<code class="docutils literal notranslate"><span class="pre">ACQ:SOUR&lt;n&gt;:DATA:TRig?</span> <span class="pre">&lt;size&gt;,&lt;t_pos&gt;</span></code>)</p></li>
+<li><p>Read a number of samples from start position to end position from the <em>circular memory buffer</em> (<code class="docutils literal notranslate"><span class="pre">ACQ:SOUR&lt;n&gt;:DATA:STArt:End?</span></code>)</p></li>
+<li><p>Read a number of samples from start position out of the <em>circular memory buffer</em> (<code class="docutils literal notranslate"><span class="pre">ACQ:SOUR&lt;n&gt;:DATA:STArt:N?</span></code>)</p></li>
+</ul>
+<p>Variable buffer lengths can be achieved by using the <a class="reference internal" href="#deep-memory-acquisition-dma">Deep Memory Acquisition (DMA)</a> mode.</p>
+<div class="section" id="general-tips-for-programming-with-acquisition-scpi-commands">
+<h4><span class="section-number">2.1.2.1.1. </span>General tips for programming with acquisition SCPI commands<a class="headerlink" href="#general-tips-for-programming-with-acquisition-scpi-commands" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p>Always check your Red Pitaya OS version, as not all commands are compatible with all OS versions. The command release version can be found in the <a class="reference internal" href="remoteControl/command_list.html#command-list"><span class="std std-ref">Ecosystem column of the command table</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="remoteControl/examples_top.html#examples"><span class="std std-ref">SCPI code examples</span></a> are intended to run on the latest version of the Red Pitaya OS.</p></li>
+<li><p>Start with the <code class="docutils literal notranslate"><span class="pre">ACQ:RST</span></code> command.</p></li>
+<li><p>Then set the capture parameters.</p></li>
+<li><p>Set the trigger settings.</p></li>
+<li><p>Start the capture (<code class="docutils literal notranslate"><span class="pre">ACQ:START</span></code>).</p></li>
+<li><p>Make sure there is enough time for Red Pitaya to update half of the data buffer (at the current decimation) before the trigger condition arrives. This avoids situations where the first half of the signal frequency in the first part of the buffer is different from the second half.</p></li>
+<li><p>Check that the trigger condition is met and that the data buffer is full.</p></li>
+<li><p>Send a data request.</p></li>
+<li><p>To acquire another data buffer, restart the acquisition (<code class="docutils literal notranslate"><span class="pre">ACQ:START</span></code>). Note that the acquisition parameters remain the same until Red Pitaya is restarted or the <code class="docutils literal notranslate"><span class="pre">ACQ:RST</span></code> command is executed.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scpi-generation">
+<h3><span class="section-number">2.1.2.2. </span>SCPI generation<a class="headerlink" href="#scpi-generation" title="Permalink to this heading"></a></h3>
+<p>Red Pitaya’s SCPI generation commands can be divided into four sections:</p>
+<ul class="simple">
+<li><p>Continuous signal generation</p></li>
+<li><p>Burst signal generation</p></li>
+<li><p>Sweep signal generation</p></li>
+<li><p>Arbitrary Waveform Generation</p></li>
+</ul>
+<p>The general functionality is similar in all sections, but each section has a few special cases that need to be mentioned.</p>
+<div class="section" id="continuous-signal-generation">
+<h4><span class="section-number">2.1.2.2.1. </span>Continuous signal generation<a class="headerlink" href="#continuous-signal-generation" title="Permalink to this heading"></a></h4>
+<p>We will start with continuous signal generation, which is the easiest to understand. First we define the signal parameters:</p>
+<ul class="simple">
+<li><p>Waveform type (sine, square, triangle, saw up, saw down, etc.)</p></li>
+<li><p>Frequency [Hz] - between 1 Hz and 50 MHz</p></li>
+<li><p>Amplitude [V] - unidirectional amplitude referenced to GND between +-1 V.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The limitations are written for STEMlab 125-14 and may be different for other board models.</p>
+</div>
+<p>These are the minimum parameters required to generate a continuous signal. There are other parameters, but for the sake of simplicity we will skip them.</p>
+<p>Next we set the generator trigger source, which defines how and from where our generator will be triggered. This can be set to either internal (activated manually with a code command) or external positive or negative edge (triggered by an external trigger signal on pin DIO0_P on the <a class="reference internal" href="../developerGuide/hardware/125-14/extent.html#e1"><span class="std std-ref">E1 extension connector</span></a>).</p>
+<p>The external trigger signal passes through a debounce filter when it enters the FPGA, which is set to 500 microseconds by default. This value can be changed using the <code class="docutils literal notranslate"><span class="pre">SOUR:TRig:EXT:DEBouncer[:US]</span></code> command.</p>
+<p>All that remains is to trigger the signal generation, but this is where the tricky part comes in. Normally you would just trigger the generation and that would be it, but with Red Pitaya we need to enable the output first and then trigger the generation.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTPUT&lt;n&gt;:STATE</span> <span class="pre">ON</span></code> - enables the specified output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SOUR&lt;n&gt;:TRig:INT</span></code> - triggers the specified output generation.</p></li>
+</ul>
+<p>To enable both outputs simultaneously, use the following commands</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTPUT:STATE</span> <span class="pre">ON</span></code> - enables both outputs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SOUR:TRig:INT</span></code> - triggers generation on both outputs</p></li>
+</ul>
+<p>Of course, the second command is not necessary if the trigger source is configured to the external trigger.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Generation trigger != Acquisition trigger</strong>
+Generation and acquisition triggers are completely different and have separate logic behind them.</p>
+</div>
+</div>
+<div class="section" id="burst-signal-generation">
+<h4><span class="section-number">2.1.2.2.2. </span>Burst signal generation<a class="headerlink" href="#burst-signal-generation" title="Permalink to this heading"></a></h4>
+<p>Burst signals are very similar to continuous signals. The main difference between the two is that burst signals are typically finite (they end after a certain period of time). To fully describe them, we need to know a few more parameters in addition to those used for continuous signals:</p>
+<ul class="simple">
+<li><p>Number of cycles (NCYC) - number of signal periods in a burst</p></li>
+<li><p>Number of repetitions (NOR) - number of successive bursts</p></li>
+<li><p>Period [µs] - the time between the start of one burst and the start of the next (in microseconds).</p></li>
+</ul>
+<p>These and the parameters for defining continuous signals are the minimum parameters required to generate any burst signal. There are other parameters, but for the sake of simplicity we will leave them out.</p>
+<p>Besides defining new parameters, we also need to switch the Red Pitaya to burst mode instead of continuous mode, which we do with the following command:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SOUR&lt;n&gt;:BURS:STAT</span> <span class="pre">BURST</span></code></p></li>
+</ul>
+<p>The last thing we need to do to generate a burst signal is to trigger it. See the section on <cite>Continuous Signal Generation</cite> for more information.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Switch the oscilloscope trigger to <em>normal</em> mode when measuring burst signals.</p>
+</div>
+<p>As mentioned above, burst signals tend to last for a limited time after being triggered, but it is possible to set up continuous burst signal generation. To do this, set the Red Pitaya to the maximum possible NOR value (65536).</p>
+<p>The other thing to watch out for with burst generation is sequential triggering. We must be careful not to trigger another generation on the same channel after we are sure that the previous burst has ended. Otherwise, the Red Pitaya may superimpose the two bursts.</p>
+</div>
+<div class="section" id="sweep-signal-generation">
+<h4><span class="section-number">2.1.2.2.3. </span>Sweep signal generation<a class="headerlink" href="#sweep-signal-generation" title="Permalink to this heading"></a></h4>
+<p>Sweep signals are continuous signals that change frequency between two set frequency values in a specified time. We use the continuous signal parameters together with</p>
+<ul class="simple">
+<li><p>Sweep start frequency [Hz]</p></li>
+<li><p>Sweep end frequency [Hz]</p></li>
+<li><p>Sweep time [µs] - how long it takes the sweep signal to move from the start to the end frequency.</p></li>
+</ul>
+<p>These are the minimum parameters required to generate any sweep signal. There are other parameters, but for the sake of simplicity we will ignore them.</p>
+<p>The sweep mode is switched on manually with the following command:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SOUR&lt;n&gt;:SWeep:STATE</span> <span class="pre">ON</span></code></p></li>
+</ul>
+<p>When the sweep mode is stopped, the generator does not return to its initial state, but instead generates a continuous signal at the frequency of the last sweep mode step. For example, suppose we had a sweep between 1 kHz and 10 kHz lasting 1 second. We decide to stop sweep generation and execute the command. At the moment the command is executed, the sweep is generating an 8.5 kHz signal, which will continue to be generated as a continuous signal when the sweep mode is switched off.</p>
+</div>
+<div class="section" id="arbitrary-waveform-signal-generation">
+<h4><span class="section-number">2.1.2.2.4. </span>Arbitrary waveform signal generation<a class="headerlink" href="#arbitrary-waveform-signal-generation" title="Permalink to this heading"></a></h4>
+<p>The final generation option is the Arbitrary Waveform Generator (AWG), which generates a user-defined custom signal waveform. The Red Pitaya expects the user to pass a 16384 sample long waveform representing one period of the custom signal. The voltage levels should be within the output limits (+-1 V), otherwise Red Pitaya will normalise the entire waveform.</p>
+<p>The custom period is passed to Red Pitaya with the following SCPI command:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SOUR&lt;n&gt;:TRAC:DATA:DATA</span> <span class="pre">&lt;array&gt;</span></code></p></li>
+</ul>
+<p>By default, the AWG is a continuous signal and requires us to define the same basic parameters (amplitude and frequency). To enable the AWG, we pass the ARBITRARY keyword as the waveform type when selecting the waveform:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SOUR&lt;n&gt;:FUNC</span> <span class="pre">ARBITRARY</span></code></p></li>
+</ul>
+<p>There are a number of tricks and questions that we need to be aware of when using the Arbitrary Waveform Generator.</p>
+<p><strong>What happens if we have more than one signal period in the AWG buffer?</strong>.</p>
+<p>Consider the following example. We define a custom waveform buffer of 16384 samples containing two sine periods. We pass this buffer to Red Pitaya, specify the frequency as 10 kHz, the amplitude as 1 V and generate the signal.</p>
+<p>When we measure the generated signal, the actual output frequency has changed - we get a 20 kHz sine wave. What is happening?
+The explanation is quite simple, we are generating two sine wave periods with a frequency of 10 kHz, resulting in a 20 kHz sine wave.</p>
+<p>To calculate the actual output frequency we can use the following formula:</p>
+<div class="math notranslate nohighlight">
+\[f_{output} = f_{buff}\cdot\frac{N_{buff}}{N_{period}}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(f_{output}\)</span> is the actual output frequency, <span class="math notranslate nohighlight">\(f_{buff}\)</span> is the frequency of the whole buffer (passed to Red Pitaya as a parameter), <span class="math notranslate nohighlight">\(N_{buff}\)</span> is the total number of samples in the numpy buffer (16384), and <span class="math notranslate nohighlight">\(N_{period}\)</span> is the number of samples a signal period takes in the numpy buffer.</p>
+<p>It is possible to force Red Pitaya to generate frequency pulses higher than 50 MHz using the AWG.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Scenarios where the calculated output frequency exceeds 50 MHz should be avoided if possible, as this can lead to unpredictable results due to Red Pitaya not having enough points to create a nice waveform.</p>
+</div>
+<p><strong>What happens if less than 16384 samples are passed?</strong>.</p>
+<p><strong>Avoid passing less than 16384 samples to Red Pitaya, as this may lead to unpredictable results.</strong> In this case, the result is similar to the example above. Suppose we define a custom waveform buffer of 8192 samples containing one sine period. We pass this buffer to Red Pitaya and specify the frequency as 10 kHz, the amplitude as 1 V and generate the signal. The actual output is a 20 kHz sine wave.</p>
+<p>Here the waveform is duplicated within the buffer (the read pointer moves through the waveform twice as fast).</p>
+</div>
+<div class="section" id="general-tips-for-programming-with-generation-scpi-commands">
+<h4><span class="section-number">2.1.2.2.5. </span>General tips for programming with generation SCPI commands<a class="headerlink" href="#general-tips-for-programming-with-generation-scpi-commands" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p>Always check your Red Pitaya OS version, as not all commands are compatible with all OS versions. The command release version can be found in the <a class="reference internal" href="remoteControl/command_list.html#command-list"><span class="std std-ref">Ecosystem column of the command table</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="remoteControl/examples_top.html#examples"><span class="std std-ref">SCPI code examples</span></a> are intended to run on the latest version of the Red Pitaya OS.</p></li>
+<li><p>Start with the <code class="docutils literal notranslate"><span class="pre">GEN:RST</span></code> command.</p></li>
+<li><p>Set contiuous signal parameters.</p></li>
+<li><p>Optionally, switch to burst mode and set the burst signal parameters.</p></li>
+<li><p>Optionally, switch to sweep mode and set the sweep signal parameters.</p></li>
+<li><p>Set the generator trigger settings.</p></li>
+<li><p>Enable the outputs.</p></li>
+<li><p>Trigger the outputs.</p></li>
+<li><p>Remember that Red Pitaya remembers the settings, so to repeat the same signal at a later time, only the triggering needs to be done (there is no need to redefine the whole generated signal). Alternatively, you can change only certain parameters.</p></li>
+<li><p>By default, Red Pitaya is set to generate a 1kHz sine wave with an amplitude of 1 V.</p></li>
+</ul>
+<p>More information about the SCPI server can be found here:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="remoteControl/scpi.html#scpi-commands"><span class="std std-ref">Installation instructions</span></a></p></li>
+<li><p><a class="reference internal" href="remoteControl/command_list.html#command-list"><span class="std std-ref">Complete table of SCPI commands</span></a></p></li>
+<li><p><a class="reference internal" href="remoteControl/examples_top.html#examples"><span class="std std-ref">SCPI examples</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="api-commands-c-python">
+<h2><span class="section-number">2.1.3. </span>API commands (C, Python)<a class="headerlink" href="#api-commands-c-python" title="Permalink to this heading"></a></h2>
+<p>Another way to control the Red Pitaya is to use the C and Python API commands that run on the Red Pitaya’s Linux OS. The advantage over the SCPI commands is that the API commands are faster because there is no need to convert the data into strings, send it over the Ethernet and then reconstruct it. In addition, you have full access to the Linux operating system, which means you can configure programs to run directly at boot time, customise data interpretation, or write your own drivers to enhance the existing code. Finally, you have direct access to the FPGA’s registry space, making it much easier to write your own software.</p>
+<p>The Python API commands are the same as the C API commands, as they are simply a Python front-end to the C commands. You can run Python code directly on Red Pitaya starting with Red Pitaya 2.00-30 OS (out of the box).</p>
+<p>The overall functionality is exactly the same as with the SCPI commands, with the exception of using functions instead of string commands and the fact that there are more commands available that have not yet received their SCPI versions.</p>
+<p>One thing to note here is that deep memory acquisition of long sequences of data can be speeded up by using a C or Python program to acquire the data and then establishing a TCP connection to the computer to achieve a much faster transfer than using the SCPI commands. This requires custom code to establish the connection, transmit the data to the computer, and receive the data from a program such as MATLAB, where it can be processed.</p>
+<p>All information about running C and Python programs can be found here:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="remoteControl/API_scripts.html#api-commands"><span class="std std-ref">C &amp; Python API commands</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/rp-api">GitHub API source code</a></p></li>
+</ul>
+</div>
+<div class="section" id="streaming-application">
+<h2><span class="section-number">2.1.4. </span>Streaming application<a class="headerlink" href="#streaming-application" title="Permalink to this heading"></a></h2>
+<p>For those looking for continuous data acquisition, check out <a class="reference internal" href="applications/streaming/appStreaming.html#streaming-top"><span class="std std-ref">the streaming application</span></a> (also known as “data stream control”). It allows continuous data acquisition from one or both of Red Pitaya’s inputs directly to a file on a computer. The data can be captured indefinitely, but there are speed limitations and currently no triggering options.
+The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details and limitations are available <a class="reference internal" href="applications/streaming/appStreaming.html#streaming-top"><span class="std std-ref">here</span></a>.</p>
+<p>There are two ways to stream data. Either via Ethernet to a <em>bin</em>, <em>tdms</em> or <em>wav</em> file on a computer or to the Red Pitaya’s SD card. The streaming parameters can also be controlled from a desktop client application. If multiple boards are on the same network (such as when using the <a class="reference internal" href="applications/streaming/appXCStreaming.html#x-ch-streaming"><span class="std std-ref">X-channel system</span></a>), they can all be controlled simultaneously from the client application.</p>
+<p>All information about the streaming application is available from the links below:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="applications/streaming/appStreaming.html#streaming-top"><span class="std std-ref">Streaming application</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager">GitHub source code</a></p></li>
+</ul>
+</div>
+<div class="section" id="deep-memory-acquisition-dma">
+<h2><span class="section-number">2.1.5. </span>Deep Memory Acquisition (DMA)<a class="headerlink" href="#deep-memory-acquisition-dma" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deep memory acquisition is available on Red Pitaya OS versions 2.00-23 and later.</p>
+</div>
+<p>Deep memory acquisition is a special type of data acquisition that allows the user to stream data directly into Red Pitaya’s DDR3 RAM at full sampling speed of 125 Msps (depending on board model).
+The buffer length is variable and can be specified by the user, but cannot exceed the size of the allocated RAM region. The amount of dedicated RAM can be increased by the user, but it is recommended to leave at least 100 MB
+of DDR for proper operation of the Linux OS. Deep memory acquisition is based on the <a class="reference external" href="https://support.xilinx.com/s/article/1053914?language=en_US">AXI protocol (AXI DMA and AXI4-Stream)</a> (double the acronym for double the meaning).</p>
+<p>Once the acquisition is complete, Red Pitaya needs some time to transfer the entire file to the computer (RAM needs to be cleared) before the acquisition can be reset.
+DMA can be configured using SCPI, Python API and C API commands. The triggering options are also the same.</p>
+<p>To increase the speed of transferring the DMA data to the computer with SCPI, the data should be acquired in binary format (<code class="docutils literal notranslate"><span class="pre">ACQ:DATA:FORMAT</span> <span class="pre">BIN</span></code>).</p>
+<p>All information on DMA is available from the links below:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="remoteControl/deepMemoryAcquisition.html#deepmemoryacq"><span class="std std-ref">Deep Memory Acquisition</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="custom-acquisition-and-generatiron-fpga">
+<h2><span class="section-number">2.1.6. </span>Custom acquisition and generatiron (FPGA)<a class="headerlink" href="#custom-acquisition-and-generatiron-fpga" title="Permalink to this heading"></a></h2>
+<p>The final option for data acquisition and generation is to re-program and customise the FPGA image to create new methods or extend existing functionality. Red Pitaya is an open source platform, so the software can be fine-tuned for specific applications. Customisation can also be done by the Red Pitaya team on request.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/RedPitaya/RedPitaya">Red Pitaya ecosystem Github repository</a></p></li>
+<li><p><a class="reference external" href="https://github.com/RedPitaya/RedPitaya-FPGA">Red Pitaya FPGA Github repository</a></p></li>
+<li><p><a class="reference internal" href="../customization/custom.html#customization"><span class="std std-ref">Red Pitaya customization services</span></a></p></li>
+</ul>
+<p><a class="reference external" href="IntroductiontodataacquisitionandgenerationwithRedPitaya">Back to top</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="appsFeatures.html" class="btn btn-neutral float-left" title="2. Applications and Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="applications/apps-featured.html" class="btn btn-neutral float-right" title="2.2. Applications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

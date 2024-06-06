@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.7. FAQ &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Applications and Features" href="../../appsFeatures/appsFeatures.html" />
+    <link rel="prev" title="1.6. Red Pitaya heatsink interface setup" href="../heatsink/heatsink.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../quickStart.html">1. Quick start</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../needs.html">1.1. What do I need before I start?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../first.html">1.2. Connect to Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SDcard/SDcard.html">1.3. Prepare SD card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../alucase/alucase.html">1.4. Red Pitaya Aluminium Case Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvccase/pvccase.html">1.5. Red Pitaya Acrylic Case Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heatsink/heatsink.html">1.6. Red Pitaya heatsink interface setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.7. FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connectivity">1.7.1. Connectivity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-get-started-with-red-pitaya">1.7.1.1. How to get started with Red Pitaya?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-connect-to-red-pitaya-in-a-few-simple-steps">1.7.1.2. How to connect to Red Pitaya in a few simple steps?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#red-pitaya-not-booting-anymore">1.7.1.3. Red Pitaya not booting anymore?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#red-pitaya-is-constantly-rebooting">1.7.1.4. Red Pitaya is constantly rebooting?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-connect-the-external-clock-to-rp">1.7.1.5. How to connect the external clock to RP?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-make-sure-that-my-red-pitaya-has-access-to-the-internet">1.7.1.6. How can I make sure that my Red Pitaya has access to the internet?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-make-sure-that-red-pitaya-is-connected-to-the-same-network-as-my-computer-tablet-smartphone">1.7.1.7. How can I make sure that Red Pitaya is connected to the same network as my computer/tablet/smartphone?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-red-pitaya-connected-to-my-local-network">1.7.1.8. Is Red Pitaya connected to my local network?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#problems-connecting-to-rp">1.7.1.9. Problems connecting to RP?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-find-the-red-pitaya-url-if-it-is-not-written-on-the-sticker">1.7.1.10. How to find the Red Pitaya URL if it is not written on the sticker?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#slow-wi-fi-connection">1.7.1.11. Slow Wi-Fi connection?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wi-fi-dongle-not-detected">1.7.1.12. Wi-Fi dongle not detected?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#os">1.7.2. OS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-upgrade-os">1.7.2.1. How to upgrade OS?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-red-pitaya-not-booting-even-after-os-update">1.7.2.2. Is Red Pitaya not booting even after OS update?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-red-pitaya-failing-to-update">1.7.2.3. Is Red Pitaya failing to update?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#applications-web-interface">1.7.3. Applications &amp; Web Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-start-using-rp-measurement-applications">1.7.3.1. How can I start using RP measurement applications?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#my-device-shows-the-wrong-measurements-how-can-i-calibrate-it">1.7.3.2. My device shows the wrong measurements. How can I calibrate it?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#problems-with-os-update-application-and-accessing-the-marketplace">1.7.3.3. Problems with OS update application, and accessing the marketplace?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web-interface-not-functioning-properly-or-experimenting-with-freezing">1.7.3.4. Web interface not functioning properly, or experimenting with freezing?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#undesired-disconnections">1.7.3.5. Undesired disconnections?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#an-application-is-not-working">1.7.3.6. An application is not working?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#software">1.7.4. Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-acquire-data-with-red-pitaya">1.7.4.1. How can I acquire data with Red Pitaya?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-generate-data-with-red-pitaya">1.7.4.2. How can I generate data with Red Pitaya?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-control-red-pitaya-remotely-using-labview-matlab-and-python">1.7.4.3. How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#where-can-i-find-the-ecosystem-software-and-fpga-images">1.7.4.4. Where can I find the ecosystem, software, and FPGA images?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-start-with-fpga-development">1.7.4.5. How to start with FPGA development?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware">1.7.5. Hardware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-can-i-find-red-pitaya-schematics-3d-models-step-and-important-componetns">1.7.5.1. Where can I find Red Pitaya schematics, 3D models (.step), and important componetns?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-there-a-hardware-difference-between-the-stemlab125-14-and-the-iso17025-versions">1.7.5.2. Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-are-the-main-differences-between-different-red-pitaya-boards">1.7.5.3. What are the main differences between different Red Pitaya boards?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-report-a-bug">1.7.6. How to report a bug?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../quickStart.html"><span class="section-number">1. </span>Quick start</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.7. </span>FAQ</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="faq">
+<span id="id1"></span><h1><span class="section-number">1.7. </span>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not found what you are looking for? Please <a href="https://redpitaya.com/contact-us/" target="_blank">contact us</a> or <a class="reference internal" href="#report-bug"><span class="std std-ref">report a bug</span></a>. Please include all the relevant information regarding the problem.
+For easier debugging on OS versions 2.00 and above, please also include the <a class="reference internal" href="../../appsFeatures/systemtool/systemInfo.html#system-info"><span class="std std-ref">Downloaded system report</span></a> in the bottom left corner of your Red Pitaya main webpage.</p>
+</div>
+<div class="section" id="connectivity">
+<h2><span class="section-number">1.7.1. </span>Connectivity<a class="headerlink" href="#connectivity" title="Permalink to this heading"></a></h2>
+<div class="section" id="how-to-get-started-with-red-pitaya">
+<h3><span class="section-number">1.7.1.1. </span>How to get started with Red Pitaya?<a class="headerlink" href="#how-to-get-started-with-red-pitaya" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../quickStart.html#quick-start"><span class="std std-ref">Quick start</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="how-to-connect-to-red-pitaya-in-a-few-simple-steps">
+<h3><span class="section-number">1.7.1.2. </span>How to connect to Red Pitaya in a few simple steps?<a class="headerlink" href="#how-to-connect-to-red-pitaya-in-a-few-simple-steps" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../connect/connect.html#lan"><span class="std std-ref">Connected to router</span></a></p></li>
+<li><p><a class="reference internal" href="../connect/connect.html#dir-cab-connect"><span class="std std-ref">Direct connection to computer</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="red-pitaya-not-booting-anymore">
+<h3><span class="section-number">1.7.1.3. </span>Red Pitaya not booting anymore?<a class="headerlink" href="#red-pitaya-not-booting-anymore" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>A possible cause could be a corrupted card, and the recommendation is a manual OS re-write: <a class="reference internal" href="../SDcard/SDcard.html#preparesd"><span class="std std-ref">Prepare SD card</span></a></p></li>
+<li><p>Please check <a class="reference internal" href="#troubleshooting"><span class="std std-ref">Problems connecting to RP</span></a> for status LED description.</p></li>
+<li><p><a class="reference internal" href="#trouble-os"><span class="std std-ref">Was the OS updated recently?</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="red-pitaya-is-constantly-rebooting">
+<span id="rebooting"></span><h3><span class="section-number">1.7.1.4. </span>Red Pitaya is constantly rebooting?<a class="headerlink" href="#red-pitaya-is-constantly-rebooting" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. Repeated board resets suggest an <strong>external clock signal is missing</strong> (not connected) on the <strong>external clock board</strong> variations.</p></li>
+</ul>
+</div>
+<div class="section" id="how-to-connect-the-external-clock-to-rp">
+<h3><span class="section-number">1.7.1.5. </span>How to connect the external clock to RP?<a class="headerlink" href="#how-to-connect-the-external-clock-to-rp" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../developerGuide/hardware/125-14_EXT/top.html#top-125-14-ext"><span class="std std-ref">STEMlab 125-14 &amp; STEMlab 125-14-Z7020</span></a></p></li>
+<li><p><a class="reference internal" href="../../developerGuide/hardware/122-16_EXT/top.html#top-122-16-ext"><span class="std std-ref">SDRlab 122-16</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="how-can-i-make-sure-that-my-red-pitaya-has-access-to-the-internet">
+<span id="internetaccess"></span><h3><span class="section-number">1.7.1.6. </span>How can I make sure that my Red Pitaya has access to the internet?<a class="headerlink" href="#how-can-i-make-sure-that-my-red-pitaya-has-access-to-the-internet" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Connect to your Red Pitaya over <a class="reference internal" href="../../developerGuide/software/console/ssh/ssh.html#ssh"><span class="std std-ref">SSH</span></a>.</p></li>
+<li><p>Make sure that you can <code class="docutils literal notranslate"><span class="pre">ping</span> <span class="pre">google.com</span></code> website:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f03dee:~# </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>google.com
+<span class="go">PING google.com (216.58.212.142) 56(84) bytes of data.</span>
+<span class="go">64 bytes from ams15s21-in-f142.1e100.net (216.58.212.142): icmp_seq=1 ttl=57 time=27.3 ms</span>
+<span class="go">64 bytes from ams15s21-in-f142.1e100.net (216.58.212.142): icmp_seq=2 ttl=57 time=27.1 ms</span>
+<span class="go">64 bytes from ams15s21-in-f142.1e100.net (216.58.212.142): icmp_seq=3 ttl=57 time=27.1 ms</span>
+<span class="go">64 bytes from ams15s21-in-f142.1e100.net (216.58.212.142): icmp_seq=4 ttl=57 time=27.1 ms</span>
+
+<span class="go">--- google.com ping statistics ---</span>
+<span class="go">4 packets transmitted, 4 received, 0% packet loss, time 3004ms</span>
+<span class="go">rtt min/avg/max/mdev = 27.140/27.212/27.329/0.136 ms</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="how-can-i-make-sure-that-red-pitaya-is-connected-to-the-same-network-as-my-computer-tablet-smartphone">
+<span id="faqconnected"></span><h3><span class="section-number">1.7.1.7. </span>How can I make sure that Red Pitaya is connected to the same network as my computer/tablet/smartphone?<a class="headerlink" href="#how-can-i-make-sure-that-red-pitaya-is-connected-to-the-same-network-as-my-computer-tablet-smartphone" title="Permalink to this heading"></a></h3>
+<p>The most common answer would be: just make sure that your Red Pitaya and your PC/tablet/smartphone are both connected to the same router or your smartphone hotspot.</p>
+<p>In order to test it, you can use a PC that is connected to the same local network as your Red Pitaya and try the following:</p>
+<ol class="arabic">
+<li><p>Open the terminal window.</p>
+<ul class="simple">
+<li><p><strong>Windows</strong>: Go to RUN, type in <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and press enter.</p></li>
+<li><p><strong>Linux</strong>: Click on the application button, type in <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> and press enter.</p></li>
+<li><p><strong>macOS</strong>: Hit <strong>cmd + space</strong>, type in <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> and press enter.</p></li>
+</ul>
+</li>
+<li><p>Enter the <code class="docutils literal notranslate"><span class="pre">arp</span> <span class="pre">-a</span></code> command to get a list of all devices in your local area network
+and try to find your Red Pitaya MAC address on the list.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>arp<span class="w"> </span>-a
+<span class="go">? (192.168.178.117) at 00:08:aa:bb:cc:dd [ether] on eth0</span>
+<span class="go">? (192.168.178.118) at 00:26:32:f0:3d:ee [ether] on eth0</span>
+<span class="go">? (192.168.178.105) at e8:01:23:45:67:8a [ether] on eth0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have a cable connection, then your MAC address
+is written on your Red Pitaya LAN connector.</p>
+</div>
+<div class="figure align-center">
+<img alt="../../_images/MAC.png" src="../../_images/MAC.png" />
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have established a wireless connection, then you should check the MAC address of your wireless USB dongle. The MAC addresses are typically written on the USB dongles.</p>
+</div>
+<ol class="arabic" start="3">
+<li><p>Type your Red Pitaya IP into your WEB browser and connect to it.</p>
+<div class="figure align-center">
+<img alt="../../_images/Browser_IP.png" src="../../_images/Browser_IP.png" />
+</div>
+</li>
+</ol>
+<p>If your Red Pitaya is not listed on the list of your local network devices on the local network, then it is necessary to check that your Red Pitaya is connected to your local network.</p>
+</div>
+<div class="section" id="is-red-pitaya-connected-to-my-local-network">
+<span id="isconnected"></span><h3><span class="section-number">1.7.1.8. </span>Is Red Pitaya connected to my local network?<a class="headerlink" href="#is-red-pitaya-connected-to-my-local-network" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Connect your Red Pitaya to a PC over a <a class="reference internal" href="../../developerGuide/software/console/console/console.html#console"><span class="std std-ref">Serial Console</span></a>.</p></li>
+<li><p>Type “ip a” and hit enter to check the status of your ethernet connection on Red Pitaya.</p>
+<ol class="loweralpha simple">
+<li><p>If you have connected to your Red Pitaya over a wireless connection, you should check the status of the <code class="docutils literal notranslate"><span class="pre">wlan0</span></code> interface.</p></li>
+<li><p>If you have connected to your Red Pitaya over a cable connection, you should check the <code class="docutils literal notranslate"><span class="pre">eth0</span></code> interface.</p></li>
+</ol>
+</li>
+<li><p>Type Red Pitaya IP into your web browser to see if you can connect to it.</p>
+<div class="figure align-center">
+<img alt="../../_images/Browser_IP.png" src="../../_images/Browser_IP.png" />
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="problems-connecting-to-rp">
+<span id="troubleshooting"></span><h3><span class="section-number">1.7.1.9. </span>Problems connecting to RP?<a class="headerlink" href="#problems-connecting-to-rp" title="Permalink to this heading"></a></h3>
+<div class="figure align-center">
+<img alt="../../_images/blinking-pitaya-eth.gif" src="../../_images/blinking-pitaya-eth.gif" />
+</div>
+<p>Red Pitaya status LED description:</p>
+<ul class="simple">
+<li><p><strong>Green LED</strong> - power good</p></li>
+<li><p><strong>Blue LED</strong> - FPGA image loaded and OS booted</p></li>
+<li><p><strong>Red LED</strong> - CPU heartbeat</p></li>
+<li><p><strong>Orange LED</strong> - SD card access</p></li>
+</ul>
+<ol class="arabic">
+<li><p>First, check the LEDs:</p>
+<ol class="loweralpha">
+<li><p>If the <strong>green LED</strong> is <strong>OFF</strong> or is <strong>blinking</strong>. It seems like something is wrong with the power supply, or maybe it’s the USB cable. Make sure that:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>you have plugged the USB cable into the correct USB connector on the Red Pitaya</p></li>
+<li><p>your power supply is capable of 5 V/2 A (or 12 V/1 A for SIGNALlab 250-12)</p></li>
+<li><p>try to replace the USB cable and also the USB power supply</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>If the <strong>green LED</strong> is turned <strong>ON</strong> but the <strong>blue LED</strong> is turned <strong>OFF</strong>. In this case, there is an error while loading the Red Pitaya system from the SD card. Make sure that:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>you have correctly inserted the Red Pitaya SD card and the Red Pitaya OS has been installed (Notice that Red Pitayas already comes with a pre-installed OS on SD cards. Anyhow, SD cards might get corrupted - in such case follow these instruction on how to <a class="reference internal" href="../SDcard/SDcard.html#preparesd"><span class="std std-ref">Prepare SD card</span></a> to properly re-install Red Pitaya OS to SD card)</p></li>
+<li><p>try to use another SD card</p></li>
+<li><p>try connecting via a <a class="reference internal" href="../../developerGuide/software/console/console/console.html#console"><span class="std std-ref">serial console</span></a> and check the boot sequence</p></li>
+<li><p>if you have <strong>Pavel Demin’s Alpine Linux OS</strong> image installed, this may indicate normal behaviour. The status LEDs are normally turned OFF, check the <a href="https://github.com/pavel-demin/red-pitaya-notes" target="_blank">Pavel Demin's Red Pitaya Notes</a> for more information.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>If both the <strong>green</strong> and <strong>blue</strong> LEDs are <strong>ON</strong>, but the red and orange LEDs stop blinking a few seconds after the boot, only to remain ON for about 2 seconds, and then the cycle repeats. This indicates that the <strong>Red Pitaya is in a reboot cycle</strong>. Notice that the red and orange LEDs always start blinking approx 10 seconds after the green and blue LEDs are turned ON.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Check your Red Pitaya board model. If you are using an external clock version, check whether the external clock signal is properly connected to the <a class="reference internal" href="../../developerGuide/hardware/125-14/extent.html#e2"><span class="std std-ref">E2</span></a> connector.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</li>
+<li><p>If the status LEDs are working normally, the Red Pitaya is properly booted. If you are unable to connect to it, this is most likely a networking issue:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Make sure your Red Pitaya and computer are both connected to the same <a class="reference internal" href="#faqconnected"><span class="std std-ref">local network</span></a>.</p></li>
+<li><p>Consult the <a class="reference internal" href="../connect/connect.html#connection"><span class="std std-ref">connection guide</span></a> for advice.</p></li>
+<li><p>Try using the recommended Google Chrome browser.</p></li>
+<li><p>Disable any adblockers for the “rp-xxxxxx.local” website.</p></li>
+<li><p>Try disabling the VPN, because it may be preventing the connection.</p></li>
+<li><p>Type “arp -a” into the Comand Prompt or Terminal and look for Red Pitaya’s IP. Then try using the IP instead of “rp-xxxxxx.local” in the browser’s URL window.</p></li>
+<li><p>If you are a Windows user, please look at the note below.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Windows 7/8</strong> users should install <a class="reference external" href="https://downloads.redpitaya.com/tools/BonjourPSSetup.exe">Bonjour Print Services</a>, otherwise access to <code class="docutils literal notranslate"><span class="pre">*.local</span></code> addresses will not work.</p>
+</div>
+<p><strong>Windows 10 or higher</strong> already supports mDNS and DNS-SD, so there is no need to install additional software.</p>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic">
+<li><p><strong>Advanced troubleshooting:</strong></p>
+<blockquote>
+<div><ul>
+<li><p>If you are a Linux or macOS user and the Red Pitaya is directly connected to the computer (with the ethernet cable), check the ethernet connector settings if they are set to <strong>DHCP</strong> and <strong>Local Only</strong>. Alternatively, try connecting to the Red Pitaya through the router.</p></li>
+<li><p>If a MAC computer does not want to connect to the Red Pitaya, it is possible that <strong>Content and privacy settings</strong> are blocking websockets.  After updating settings you must log out and log in again.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/MAC_content_privacy1.png"><img alt="../../_images/MAC_content_privacy1.png" src="../../_images/MAC_content_privacy1.png" style="width: 800px;" /></a>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/MAC_content_privacy21.png"><img alt="../../_images/MAC_content_privacy21.png" src="../../_images/MAC_content_privacy21.png" style="width: 600px;" /></a>
+</div>
+</li>
+<li><p>If you updated form 1.04 to 2.00 OS version, check GitHub issues <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">#250</a> and <a href="https://github.com/RedPitaya/RedPitaya/issues/254" target="_blank">#254</a>.</p></li>
+<li><p>Try connecting via the <a class="reference internal" href="../../developerGuide/software/console/console/console.html#console"><span class="std std-ref">serial console</span></a>. Check the boot log and see whether you can access the on-board Linux Terminal.</p></li>
+<li><p>Check the <a class="reference internal" href="../SDcard/SDcard.html#nightly-builds"><span class="std std-ref">Nightly Builds Changelog</span></a> for any relevant updates.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Extremely rare cases:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If the board is operating normally, but the <strong>blue LED</strong> is <strong>OFF</strong>, check if the LED is damaged. If the board is in warranty, we will replace it.</p></li>
+<li><p>Check whether any of the SD card holder pins are bent upwards and do not have contact with the SD card pins. Take out the SD card and push them into the normal position.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="how-to-find-the-red-pitaya-url-if-it-is-not-written-on-the-sticker">
+<h3><span class="section-number">1.7.1.10. </span>How to find the Red Pitaya URL if it is not written on the sticker?<a class="headerlink" href="#how-to-find-the-red-pitaya-url-if-it-is-not-written-on-the-sticker" title="Permalink to this heading"></a></h3>
+<p>The Red Pitaya URL is <code class="docutils literal notranslate"><span class="pre">rp-xxxxxx.local</span></code> where <code class="docutils literal notranslate"><span class="pre">xxxxxx</span></code> must be replaced with the last 6 digits of the MAC address that is written on the sticker.</p>
+<p>If the RP MAC address is <code class="docutils literal notranslate"><span class="pre">00:26:33:F1:13:D5</span></code>, the last 6 digits are <code class="docutils literal notranslate"><span class="pre">F113D5</span></code> and the URL is <code class="docutils literal notranslate"><span class="pre">rp-f113d5.local</span></code>.</p>
+<div class="figure align-center">
+<img alt="../../_images/ethernet_MAC.png" src="../../_images/ethernet_MAC.png" />
+</div>
+</div>
+<div class="section" id="slow-wi-fi-connection">
+<h3><span class="section-number">1.7.1.11. </span>Slow Wi-Fi connection?<a class="headerlink" href="#slow-wi-fi-connection" title="Permalink to this heading"></a></h3>
+<p>If your wireless connection with Red Pitaya works very slowly and all the applications seem very unresponsive and not running smoothly, please check the following:</p>
+<ul class="simple">
+<li><p>Check the Wi-Fi signal strength on your PC/tablet/smartphone.</p></li>
+<li><p>Check the Wi-Fi signal strength of your Red Pitaya.</p></li>
+</ul>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Connect to your Red Pitaya via an <a class="reference internal" href="../../developerGuide/software/console/ssh/ssh.html#ssh"><span class="std std-ref">SSH</span></a> connection.</p></li>
+<li><p>Enter the <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/proc/net/wireless</span></code> command to get information about link quality and signal strength.</p>
+<div class="figure align-center">
+<img alt="../../_images/cat_wireless.png" src="../../_images/cat_wireless.png" />
+</div>
+<p>Link quality measures the number of packet errors that occur. The lower the number of packet errors, the higher this will be. Link quality goes from 0-100%.</p>
+<p>Level, or signal strength, is a simple measure of the amplitude of the signal that is received. The closer you are to the access point, the higher this will be.</p>
+</li>
+</ol>
+</div></blockquote>
+<ul class="simple">
+<li><p>If you are in an area with many routers around you, more of them might operate on the same Wi-Fi channel, which drastically decreases data throughput and slows down connection. Here are the instructions on how to <a href="http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/" target="_blank">change your wifi router channel in order to optimize your wireless signal</a>. For MAC users, we recommend using the Scan feature of the <a href="http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/" target="_blank">Wireless Diagnostic Tool</a> in order to find the best Wi-Fi channel.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For full performance, a wired connection is preferred.</p>
+</div>
+</div>
+<div class="section" id="wi-fi-dongle-not-detected">
+<h3><span class="section-number">1.7.1.12. </span>Wi-Fi dongle not detected?<a class="headerlink" href="#wi-fi-dongle-not-detected" title="Permalink to this heading"></a></h3>
+<p>Please note that not all are compatible. A list is in the documentation: <a class="reference internal" href="../../developerGuide/software/other_info/os/network.html#support-wifi-adapter"><span class="std std-ref">Supported USB Wi-Fi adapters</span></a></p>
+</div>
+</div>
+<div class="section" id="os">
+<span id="trouble-os"></span><h2><span class="section-number">1.7.2. </span>OS<a class="headerlink" href="#os" title="Permalink to this heading"></a></h2>
+<div class="section" id="how-to-upgrade-os">
+<h3><span class="section-number">1.7.2.1. </span>How to upgrade OS?<a class="headerlink" href="#how-to-upgrade-os" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../SDcard/SDcard.html#preparesd"><span class="std std-ref">Prepare SD card</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="is-red-pitaya-not-booting-even-after-os-update">
+<h3><span class="section-number">1.7.2.2. </span>Is Red Pitaya not booting even after OS update?<a class="headerlink" href="#is-red-pitaya-not-booting-even-after-os-update" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. <a class="reference internal" href="../SDcard/SDcard.html#preparesd"><span class="std std-ref">Prepare SD card</span></a></p></li>
+<li><p><strong>Upgraded from an older Red Pitaya OS to the 2.00 Unified OS?</strong> Please try <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">GitHub issue #250</a> and <a href="https://github.com/RedPitaya/RedPitaya/issues/255" target="_blank">GitHub issue #254</a></p></li>
+</ul>
+</div>
+<div class="section" id="is-red-pitaya-failing-to-update">
+<h3><span class="section-number">1.7.2.3. </span>Is Red Pitaya failing to update?<a class="headerlink" href="#is-red-pitaya-failing-to-update" title="Permalink to this heading"></a></h3>
+<p>Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. <a class="reference internal" href="../SDcard/SDcard.html#preparesd"><span class="std std-ref">Prepare SD card</span></a></p>
+</div>
+</div>
+<div class="section" id="applications-web-interface">
+<h2><span class="section-number">1.7.3. </span>Applications &amp; Web Interface<a class="headerlink" href="#applications-web-interface" title="Permalink to this heading"></a></h2>
+<div class="section" id="how-can-i-start-using-rp-measurement-applications">
+<h3><span class="section-number">1.7.3.1. </span>How can I start using RP measurement applications?<a class="headerlink" href="#how-can-i-start-using-rp-measurement-applications" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../first.html#connectstemlab"><span class="std std-ref">Connect to Red Pitaya</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="my-device-shows-the-wrong-measurements-how-can-i-calibrate-it">
+<h3><span class="section-number">1.7.3.2. </span>My device shows the wrong measurements. How can I calibrate it?<a class="headerlink" href="#my-device-shows-the-wrong-measurements-how-can-i-calibrate-it" title="Permalink to this heading"></a></h3>
+<p>The Red Pitaya can be calibrated using the <a class="reference internal" href="../../appsFeatures/systemtool/calibration.html#calibration-app"><span class="std std-ref">Calibration Tool</span></a></p>
+</div>
+<div class="section" id="problems-with-os-update-application-and-accessing-the-marketplace">
+<h3><span class="section-number">1.7.3.3. </span>Problems with OS update application, and accessing the marketplace?<a class="headerlink" href="#problems-with-os-update-application-and-accessing-the-marketplace" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Make sure your Red Pitaya has access to the <a class="reference internal" href="#internetaccess"><span class="std std-ref">internet</span></a>.</p></li>
+<li><p>Force a refresh of the Red Pitaya application page. <a href="http://www.wikihow.com/Force-Refresh-in-Your-Internet-Browser" target="_blank">How</a>?</p></li>
+</ol>
+</div>
+<div class="section" id="web-interface-not-functioning-properly-or-experimenting-with-freezing">
+<h3><span class="section-number">1.7.3.4. </span>Web interface not functioning properly, or experimenting with freezing?<a class="headerlink" href="#web-interface-not-functioning-properly-or-experimenting-with-freezing" title="Permalink to this heading"></a></h3>
+<p>Please ensure that your browser’s ad blockers are turned off for the “rp-xxxxxx.local” webpage and that your proxy settings are correct. For local connections to the Red Pitaya unit, proxy settings should not be required. A VPN may also be preventing the connection.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/AdBlock_disable.png"><img alt="../../_images/AdBlock_disable.png" src="../../_images/AdBlock_disable.png" style="width: 700px;" /></a>
+</div>
+</div>
+<div class="section" id="undesired-disconnections">
+<h3><span class="section-number">1.7.3.5. </span>Undesired disconnections?<a class="headerlink" href="#undesired-disconnections" title="Permalink to this heading"></a></h3>
+<p>If possible, we recommend testing the setup on a different computer and a different network, as well as, checking the state of the Ethernet cables and power supply, proxy settings, and re-writing the OS.</p>
+</div>
+<div class="section" id="an-application-is-not-working">
+<h3><span class="section-number">1.7.3.6. </span>An application is not working?<a class="headerlink" href="#an-application-is-not-working" title="Permalink to this heading"></a></h3>
+<p>We suggest upgrading to the latest OS and trying again. Otherwise, please <a class="reference internal" href="#report-bug"><span class="std std-ref">report the bug</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to note that applications developed by the Red Pitaya community are not distributed or tested by the Red Pitaya team and that our team accepts no responsibility. If you’d like to share feedback, report bugs, or need help on contributed projects, apps, or software, we highly recommend contacting the project authors.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The 2.00 Unified OS update has seen registry changes in the FPGA, so, likely, older applications will not work after the OS update (Xilinx also changed how the FPGA is loaded into the FPGA).</p>
+</div>
+</div>
+</div>
+<div class="section" id="software">
+<h2><span class="section-number">1.7.4. </span>Software<a class="headerlink" href="#software" title="Permalink to this heading"></a></h2>
+<p>For establishing an SSH connection, creating a custom FPGA image, custom ecosystem, and/or custom web applications, please refer to <a class="reference internal" href="../../developerGuide/software/software.html#software"><span class="std std-ref">Developers guide Software</span></a>.</p>
+<div class="section" id="how-can-i-acquire-data-with-red-pitaya">
+<h3><span class="section-number">1.7.4.1. </span>How can I acquire data with Red Pitaya?<a class="headerlink" href="#how-can-i-acquire-data-with-red-pitaya" title="Permalink to this heading"></a></h3>
+<p>There are multiple approaches to acquiring data with Red Pitaya. Here is a quick description of each possiblity:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Oscilloscope application</strong> – The data is acquired at full speed, but all the limitations of a standard oscilloscope apply (currently, the data can only be extracted upon user request via the application. Remote data collection is currently impossible). More info <a class="reference internal" href="../../appsFeatures/applications/oscSigGen/osc.html#osc-app"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>SCPI data acquisition (Python, MATLAB, LabVIEW)</strong> – Triggered data acquisition. The data is acquired in 16384 sample-long buffers. The code is executed on a computer, and string commands are sent to the Red Pitaya via <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank">socket communication</a>. Data is acquired on the Red Pitaya and then sent back as a string that can be converted to a floating-point format. Trigger can be set to either IN1, IN2, or External (also IN3 and IN4 for STEMlab 125-14 4-Input). Trigger level can be specified. The acquisition must be restarted before a new “data buffer” can be acquired. There is a dead time between capturing two consecutive buffers where data is not saved. More details <a class="reference internal" href="../../appsFeatures/remoteControl/scpi.html#scpi-commands"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>API commands (C, Python)</strong> – Functions exactly the same as SCPI data acquisition, but it is faster since everything is running on the Red Pitaya board itself (the code is executed on the board). More info <a class="reference internal" href="../../appsFeatures/remoteControl/API_scripts.html#api-commands"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>Streaming application</strong> – Continuous data acquisition. The data is streamed from one or both inputs directly to a file on a computer. The data can be acquired indefinitely, but there are speed limitations. The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details on the limitations are available <a class="reference internal" href="../../appsFeatures/applications/streaming/appStreaming.html#streaming-top"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>Deep Memory (AXI mode)</strong> <em>(OS 2.00-23 and higher)</em> – Long sequence triggered data acquisition. The data can be acquired at different speeds (up to 125 MHz), and it is saved directly into the DDR RAM. The buffer length can be specified by the user (some memory should be left for the Linux OS). After the acquisition is complete, Red Pitaya needs some time to transfer the whole file to the computer (the RAM must be emptied) before the acquisition can be reset. Functions exactly the same as <strong>API commands</strong>. More details are available <a class="reference internal" href="../../appsFeatures/remoteControl/deepMemoryAcquisition.html#deepmemoryacq"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>Custom Acquisition (FPGA)</strong> – Red Pitaya is open-source so any mode above can be customized by the user to tune it to their specific application.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="how-can-i-generate-data-with-red-pitaya">
+<h3><span class="section-number">1.7.4.2. </span>How can I generate data with Red Pitaya?<a class="headerlink" href="#how-can-i-generate-data-with-red-pitaya" title="Permalink to this heading"></a></h3>
+<p>Here are all possible generation options on the Red Pitaya (please be aware of AC coupling limitations on SDRlab 122-16):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Oscilloscope application</strong> - basic waveform generation. More info <a class="reference internal" href="../../appsFeatures/applications/oscSigGen/osc.html#osc-app"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>SCPI commands (Python, MATLAB, LabVIEW)</strong>, remote control from computer - can generate basic waveforms as well as custom/arbitrary waveforms (defined in a 16384 sample-long buffer which represents one period of the signal - the frequency is calculated for the whole buffer). More details <a class="reference internal" href="../../appsFeatures/remoteControl/scpi.html#scpi-commands"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>API commands (C, Python)</strong>, on-board program - same functionality as standard SCPI commands, but generally faster and includes the benefit of possible direct communication with the FPGA. More info <a class="reference internal" href="../../appsFeatures/remoteControl/API_scripts.html#api-commands"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>Custom/user-defined (FPGA reprogramming)</strong> - Red Pitaya is open-source, so anyone has the option of reprogramming the FPGA image to customise the functionality.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="how-to-control-red-pitaya-remotely-using-labview-matlab-and-python">
+<h3><span class="section-number">1.7.4.3. </span>How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?<a class="headerlink" href="#how-to-control-red-pitaya-remotely-using-labview-matlab-and-python" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../appsFeatures/remoteControl/scpi.html#scpi-commands"><span class="std std-ref">Remote control</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="where-can-i-find-the-ecosystem-software-and-fpga-images">
+<h3><span class="section-number">1.7.4.4. </span>Where can I find the ecosystem, software, and FPGA images?<a class="headerlink" href="#where-can-i-find-the-ecosystem-software-and-fpga-images" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya ecosystem</a> - please check the specific branches for older ecosystem versions</p></li>
+<li><p><a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">Red Pitaya FPGA</a></p></li>
+<li><p><a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive</a> - software archive</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Impossible. Perhaps the archives are incomplete.</em></p>
+<p>If you need a specific old version of the ecosystem or the OS that is missing from the archives, we suggest you ask the community on the <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya Forum</a>. There is a chance someone has it lying around on the disk.</p>
+</div>
+</div>
+<div class="section" id="how-to-start-with-fpga-development">
+<h3><span class="section-number">1.7.4.5. </span>How to start with FPGA development?<a class="headerlink" href="#how-to-start-with-fpga-development" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../developerGuide/software/software.html#software"><span class="std std-ref">Software</span></a></p></li>
+<li><p><a class="reference external" href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/fpga_learn.html#learn-fpga" title="(in Red Pitaya v2.00-35)"><span class="xref std std-ref">FPGA tutorials</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="hardware">
+<h2><span class="section-number">1.7.5. </span>Hardware<a class="headerlink" href="#hardware" title="Permalink to this heading"></a></h2>
+<p>For hardware schematics, step models, and specifications, please refer to <a class="reference internal" href="../../developerGuide/hardware/hardware.html#dev-guide-hardware"><span class="std std-ref">Developers guide Hardware</span></a>.</p>
+<div class="section" id="where-can-i-find-red-pitaya-schematics-3d-models-step-and-important-componetns">
+<h3><span class="section-number">1.7.5.1. </span>Where can I find Red Pitaya schematics, 3D models (.step), and important componetns?<a class="headerlink" href="#where-can-i-find-red-pitaya-schematics-3d-models-step-and-important-componetns" title="Permalink to this heading"></a></h3>
+<p>Please take a look at <strong>Developers guide Hardware =&gt; board model =&gt; Schematics, Mechanical Specifications and 3D Models</strong>. See the general link above, or board-specific links below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../developerGuide/hardware/125-10/top.html#top-125-10"><span class="std std-ref">STEMlab 125-10</span></a></p></li>
+<li><p><a class="reference internal" href="../../developerGuide/hardware/125-14/top.html#top-125-14"><span class="std std-ref">STEMlab 125-14</span></a></p></li>
+<li><p><a class="reference internal" href="../../developerGuide/hardware/122-16/top.html#top-122-16"><span class="std std-ref">SDRlab 122-16</span></a></p></li>
+<li><p><a class="reference internal" href="../../developerGuide/hardware/250-12/top.html#top-250-12"><span class="std std-ref">SIGNALlab 250-12</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="is-there-a-hardware-difference-between-the-stemlab125-14-and-the-iso17025-versions">
+<h3><span class="section-number">1.7.5.2. </span>Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?<a class="headerlink" href="#is-there-a-hardware-difference-between-the-stemlab125-14-and-the-iso17025-versions" title="Permalink to this heading"></a></h3>
+<p>No, the hardware is identical. The only difference is that the latter would have been sent to a certification lab and the appropriate measurements would have been made.</p>
+</div>
+<div class="section" id="what-are-the-main-differences-between-different-red-pitaya-boards">
+<h3><span class="section-number">1.7.5.3. </span>What are the main differences between different Red Pitaya boards?<a class="headerlink" href="#what-are-the-main-differences-between-different-red-pitaya-boards" title="Permalink to this heading"></a></h3>
+<p>Take a look at the <a class="reference internal" href="../../developerGuide/hardware/compares/vs.html#rp-board-comp"><span class="std std-ref">board comparison table</span></a>.</p>
+</div>
+</div>
+<div class="section" id="how-to-report-a-bug">
+<span id="report-bug"></span><h2><span class="section-number">1.7.6. </span>How to report a bug?<a class="headerlink" href="#how-to-report-a-bug" title="Permalink to this heading"></a></h2>
+<p>Please send us an e-mail at <a class="reference external" href="mailto:support&#37;&#52;&#48;redpitaya&#46;com">support<span>&#64;</span>redpitaya<span>&#46;</span>com</a> with the following information:</p>
+<ul class="simple">
+<li><p>The model of Red Pitaya used,</p></li>
+<li><p>Version of Red Pitaya OS,</p></li>
+<li><p>Information about the bug,</p></li>
+<li><p>Clear instructions about how to reproduce it.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../heatsink/heatsink.html" class="btn btn-neutral float-left" title="1.6. Red Pitaya heatsink interface setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../appsFeatures/appsFeatures.html" class="btn btn-neutral float-right" title="2. Applications and Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

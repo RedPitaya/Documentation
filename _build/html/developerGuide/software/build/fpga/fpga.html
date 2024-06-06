@@ -1,0 +1,1201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2.2.3. Build FPGA image &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="3.2.2.3.9.1. FPGA Register map (Release 2.00-15)" href="regset/2.00-15/list.html" />
+    <link rel="prev" title="3.2.2.2. Compiling and running Streaming client applications" href="../comStreaming.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">3. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">3.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">3.2. Software</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">3.2.1. Console connection</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../build.html">3.2.2. Build &amp; compile instructions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../C%26Python_API.html">3.2.2.1. Running C and Python Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../comStreaming.html">3.2.2.2. Compiling and running Streaming client applications</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">3.2.2.3. Build FPGA image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ecosystem/ecosystem.html">3.2.2.4. Build Red Pitaya ecosystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../debian.html">3.2.2.5. Build Red Pitaya OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../webapp/webApps.html">3.2.2.6. Create your own WEB applications</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../other_info/info.html">3.2.3. Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">3.2.4. Known software issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">3. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">3.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../build.html"><span class="section-number">3.2.2. </span>Build &amp; compile instructions</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.2.3. </span>Build FPGA image</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="build-fpga-image">
+<span id="build-fpga"></span><h1><span class="section-number">3.2.2.3. </span>Build FPGA image<a class="headerlink" href="#build-fpga-image" title="Permalink to this heading"></a></h1>
+<div class="contents local topic" id="index">
+<p class="topic-title"><strong>Index</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#prerequisites" id="id1">Prerequisites</a></p>
+<ul>
+<li><p><a class="reference internal" href="#libraries-used-by-modelsim-altera" id="id2">Libraries used by ModelSim-Altera</a></p></li>
+<li><p><a class="reference internal" href="#xilinx-vivado-2020-1" id="id3">Xilinx Vivado 2020.1</a></p></li>
+<li><p><a class="reference internal" href="#xilinx-sdk-development-environments-2019-1" id="id4">Xilinx SDK development environments 2019.1</a></p></li>
+<li><p><a class="reference internal" href="#device-tree-xilinx" id="id5">Device Tree Xilinx</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#directory-structure" id="id6">Directory structure</a></p></li>
+<li><p><a class="reference internal" href="#fpga-sub-projects" id="id7">FPGA sub-projects</a></p></li>
+<li><p><a class="reference internal" href="#building-process" id="id8">Building process</a></p>
+<ul>
+<li><p><a class="reference internal" href="#reprogramming-the-fpga-with-a-custom-image" id="id9">Reprogramming the FPGA with a custom image</a></p></li>
+<li><p><a class="reference internal" href="#reverting-to-original-fpga-image" id="id10">Reverting to original FPGA image</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#programming-via-jtag" id="id11">Programming via JTAG</a></p></li>
+<li><p><a class="reference internal" href="#simulation" id="id12">Simulation</a></p></li>
+<li><p><a class="reference internal" href="#device-tree" id="id13">Device tree</a></p></li>
+<li><p><a class="reference internal" href="#signal-mapping" id="id14">Signal mapping</a></p>
+<ul>
+<li><p><a class="reference internal" href="#xadc-inputs" id="id15">XADC inputs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#input-range" id="id16">Input range</a></p>
+<ul>
+<li><p><a class="reference internal" href="#v-power-supply" id="id17">5V power supply</a></p></li>
+<li><p><a class="reference internal" href="#general-purpose-inputs" id="id18">General purpose inputs</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#gpio-and-leds" id="id19">GPIO and LEDs</a></p></li>
+<li><p><a class="reference internal" href="#linux-access-to-led" id="id20">Linux access to LED</a></p></li>
+<li><p><a class="reference internal" href="#ps-pinctrl-for-mio-signals" id="id21">PS pinctrl for MIO signals</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#registers" id="id22">Registers</a></p></li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The following build instructions were tested on Ubuntu 20.04.
+It is important to install the correct Vivado and SDK versions as the projects and scripts are made for those versions and may return errors during the build.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that the FPGA code is located in a separate repository from the ecosystem on our GitHub page:</p>
+<ul class="simple">
+<li><p>Ecosystem: <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">RedPitaya/RedPitaya</a></p></li>
+<li><p>FPGA: <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">RedPitaya/RedPitaya-FPGA</a></p></li>
+</ul>
+<p>Running the “<a class="reference internal" href="#dev-tree-xil"><span class="std std-ref">Makefile.x86</span></a>” will download the necessary files from the RedPitaya/RedPitaya-FPGA repository.</p>
+<p>For building the FPGA image for different boards please see the <a class="reference internal" href="#buildprocess"><span class="std std-ref">Buildprocess</span></a>.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2><span class="section-number">3.2.2.3.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<div class="section" id="libraries-used-by-modelsim-altera">
+<h3><span class="section-number">3.2.2.3.1.1. </span>Libraries used by ModelSim-Altera<a class="headerlink" href="#libraries-used-by-modelsim-altera" title="Permalink to this heading"></a></h3>
+<p>Install libraries:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt-get<span class="w"> </span>install<span class="w"> </span>unixodbc<span class="w"> </span>unixodbc-dev<span class="w"> </span>libncurses-dev<span class="w"> </span>libzmq3-dev<span class="w"> </span>libxext6<span class="w"> </span>libasound2<span class="w"> </span>libxml2<span class="w"> </span>libx11-6<span class="w"> </span>libxtst6<span class="w"> </span>libedit-dev<span class="w"> </span>libxft-dev<span class="w"> </span>libxi6<span class="w"> </span>libx11-6:i386<span class="w"> </span>libxau6:i386<span class="w"> </span>libxdmcp6:i386<span class="w"> </span>libxext6:i386<span class="w"> </span>libxft-dev:i386<span class="w"> </span>libxrender-dev:i386<span class="w"> </span>libxt6:i386<span class="w"> </span>libxtst6:i386
+</pre></div>
+</div>
+</div>
+<div class="section" id="xilinx-vivado-2020-1">
+<h3><span class="section-number">3.2.2.3.1.2. </span>Xilinx Vivado 2020.1<a class="headerlink" href="#xilinx-vivado-2020-1" title="Permalink to this heading"></a></h3>
+<p>Xilinx Vivado is available from the <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">Xilinx downloads page</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that it might be necessary to download the <strong>Full installer</strong> as the <strong>Web installer</strong> might give an <em>Installer outdated</em> warning and refuse to proceed with the installation process.</p>
+<p>Additionally, on officially unsupported versions of <strong>Linux</strong>, the installer gives you a warning, but Vivado should work fine, for example running it on Ubuntu 20.04 or 22.04 instead of 18.04.</p>
+</div>
+<p>If the installer glitches out anyway, your /etc/os-release file needs to be changed to “fake” the OS version.
+First, backup the file and then open it as a superuser with a text editor such as nano:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/os-release
+</pre></div>
+</div>
+<p>and change the VERSION line to <code class="docutils literal notranslate"><span class="pre">VERSION=”18.04.4</span> <span class="pre">LTS</span> <span class="pre">(Bionic</span> <span class="pre">Beaver)&quot;</span></code> and save the file. The edited file should look something like this:</p>
+<div class="figure align-default">
+<img alt="../../../../_images/os_release.png" src="../../../../_images/os_release.png" />
+</div>
+<p>Afterward, you can either run the <strong>Xilinx_Unified_2020.1_0602_1208_Lin64.bin</strong> (Linux web installer) or the xsetup file from the extracted folder (unified installer).
+After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.</p>
+<p>For more information on Vivado installation <a class="reference external" href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html">click here</a>.</p>
+</div>
+<div class="section" id="xilinx-sdk-development-environments-2019-1">
+<h3><span class="section-number">3.2.2.3.1.3. </span>Xilinx SDK development environments 2019.1<a class="headerlink" href="#xilinx-sdk-development-environments-2019-1" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that it might be necessary to download the <strong>Full installer</strong> as the <strong>Web installer</strong> might give an <em>Installer outdated</em> warning and refuse to proceed with the installation process.</p>
+</div>
+<p>Xilinx SDK is available from the <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/archive-sdk.html" target="_blank">Xilinx downloads page</a>.</p>
+</div>
+<div class="section" id="device-tree-xilinx">
+<span id="dev-tree-xil"></span><h3><span class="section-number">3.2.2.3.1.4. </span>Device Tree Xilinx<a class="headerlink" href="#device-tree-xilinx" title="Permalink to this heading"></a></h3>
+<p>FPGA build requires a repository with a device tree from Xilinx.
+You can prepare it by running the command:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>-f<span class="w"> </span>Makefile.x86<span class="w"> </span>devicetree
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The file can be manually uploaded.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -L https://github.com/Xilinx/device-tree-xlnx/archive/xilinx-v2017.2.tar.gz/ -o device-tree-xlnx-xilinx-v2017.2.tar.gz</span>
+</pre></div>
+</div>
+<p>Extract the .tar.gz to <em>/&lt;redpitaya path&gt;/tmp/device-tree-xlnx-xilinx-v2017.2</em>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="directory-structure">
+<h2><span class="section-number">3.2.2.3.2. </span>Directory structure<a class="headerlink" href="#directory-structure" title="Permalink to this heading"></a></h2>
+<p>There are multiple FPGA projects, some with generic functionality, some with specific functionality for an application.
+Common code for all projects is placed directly into the <code class="docutils literal notranslate"><span class="pre">FPGA</span></code> directory. Common codes are mostly reusable modules.
+Project-specific code is placed inside the <code class="docutils literal notranslate"><span class="pre">fpga/prj/name/</span></code> directories and is similarly organized as common code.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>path</p></th>
+<th class="head"><p>contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/Makefile</span></code></p></td>
+<td><p>main Makefile, used to run FPGA-related tools</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/*.tcl</span></code></p></td>
+<td><p>TCL scripts to be run inside FPGA tools</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/archive/</span></code></p></td>
+<td><p>archive of XZ compressed FPGA bit files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/doc/</span></code></p></td>
+<td><p>documentation (block diagrams, address space, …)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/brd/</span></code></p></td>
+<td><p>board files <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug895-vivado-system-level-design-entry.pdf">Vivado System-Level Design Entry</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/ip/</span></code></p></td>
+<td><p>third party IP, for now, Zynq block diagrams</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/rtl/</span></code></p></td>
+<td><p>Verilog (SystemVerilog) <em>Register-Transfer Level</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/sdc/</span></code></p></td>
+<td><p><em>Synopsys Design Constraints</em> contains Xilinx design constraints</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/sim/</span></code></p></td>
+<td><p>simulation scripts</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/tbn/</span></code></p></td>
+<td><p>Verilog (SystemVerilog) <em>test bench</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/dts/</span></code></p></td>
+<td><p>device tree source include files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/prj/name</span></code></p></td>
+<td><p>project <cite>name</cite> specific code</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fpga/hsi/</span></code></p></td>
+<td><p><em>Hardware Software Interface</em> contains
+FSBL (First Stage Boot Loader) and
+DTS (Design Tree) builds</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="fpga-sub-projects">
+<h2><span class="section-number">3.2.2.3.3. </span>FPGA sub-projects<a class="headerlink" href="#fpga-sub-projects" title="Permalink to this heading"></a></h2>
+<p>There are multiple FPGA sub-projects they mostly contain incremental changes
+on the first Red Pitaya release.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If unsure which FPGA project to use for you project, please look at the “Application” column, where examples of use are presented.</p>
+<p>It is recommended to use the <strong>0.94</strong> release as the <em>default project</em>.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 63%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>prj/name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Application</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.93</p></td>
+<td><p>This is the original Red Pitaya release including all bugs.
+For deprecated application backward compatibility only.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>0.94</p></td>
+<td><ol class="arabic simple">
+<li><p>The CDC (clock domain crossing) code on the custom CPU bus <br/>
+was removed. Instead CDC for GP0 port already available in <br/>
+PS was used. This improves speed and reliability and reduces <br/>
+RTL complexity.                                              <br/></p></li>
+<li><p>A value increment bug in the generator was fixed, this should <br/>
+improve generated frequencies near half sampling rate.       <br/></p></li>
+<li><p>XADC custom RTL wrapper was replaced with Xilinx AXI XADC.  <br/>
+This enables the use of the Linux driver with IIO streaming <br/>
+support.</p></li>
+</ol>
+</td>
+<td><p>Oscilloscope <br/>
+Signal generator <br/>
+Spectrum analyzer <br/>
+Bode analyzer <br/>
+LCR meter <br/></p></td>
+</tr>
+<tr class="row-even"><td><p>stream_app</p></td>
+<td><ol class="arabic simple">
+<li><p>Streaming ADC and DAC data to/from DDR3 memory buffers. <br/></p></li>
+<li><p>Streaming GPIO inputs and outputs to/from DDR3 memory buffers.</p></li>
+</ol>
+</td>
+<td><p>Streaming manager</p></td>
+</tr>
+<tr class="row-odd"><td><p>classic</p></td>
+<td><ol class="arabic simple">
+<li><p>A lot of the code was rewritten in SystemVerilog. <br/></p></li>
+<li><p>Removed GPIO and LED registers from housekeeping, instead the <br/>
+GPIO controller inside PL is used. This enables the use of <br/>
+Linux kernel features for GPIO (IRQ, SPI, I2C, 1-wire) and <br/>
+LED (triggers).</p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>logic</p></td>
+<td><p>This image is used by the logic analyzer, it is using DMA to <br/>
+transfer data to main DDR3 RAM. ADC and DAS code is unfinished.</p></td>
+<td><p>Logic analyzer</p></td>
+</tr>
+<tr class="row-odd"><td><p>axi4lite</p></td>
+<td><p>Image intended for testing various AXI4 bus implementations. <br/>
+It contains a Vivado ILA (integrated logic analyzer) to <br/>
+observe and review the performance of the bus implementation.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="building-process">
+<span id="buildprocess"></span><h2><span class="section-number">3.2.2.3.4. </span>Building process<a class="headerlink" href="#building-process" title="Permalink to this heading"></a></h2>
+<p>The following table shows which projects are available on which boards.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 19%" />
+<col style="width: 14%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Build name</p></th>
+<th class="head"><p>Build Project Flag</p></th>
+<th class="head"><p>STEMlab 125-10 <br/>
+STEMlab 125-14 <br/>
+STEMlab 125-14-Z7020 <br/></p></th>
+<th class="head"><p>SIGNALlab 250-12</p></th>
+<th class="head"><p>SDRlab 122-16</p></th>
+<th class="head"><p>STEMlab 125-14 4-Input</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.94</p></td>
+<td><p>v0.94</p></td>
+<td><p>X</p></td>
+<td></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.94_250</p></td>
+<td><p>v0.94_250</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>stream_app</p></td>
+<td><p>stream_app</p></td>
+<td><p>X</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>stream_app_250</p></td>
+<td><p>stream_app_250</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>logic</p></td>
+<td><p>logic</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>logic_250</p></td>
+<td><p>logic_250</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>tft</p></td>
+<td><p>tft</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>axi4lite</p></td>
+<td><p>axi4lite</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>classic</p></td>
+<td><p>classic</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>mercury</p></td>
+<td><p>mercury</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Table of required build flags for FPGA projects per board</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 59%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Build Model flag</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STEMlab 125-10 <br/>
+STEMlab 125-14 <br/></p></td>
+<td><p>MODEL=Z10</p></td>
+</tr>
+<tr class="row-odd"><td><p>STEMlab 125-14-Z7020</p></td>
+<td><p>MODEL=Z20_14</p></td>
+</tr>
+<tr class="row-even"><td><p>SDRlab 122-16</p></td>
+<td><p>MODEL=Z20</p></td>
+</tr>
+<tr class="row-odd"><td><p>SIGNALlab 250-12</p></td>
+<td><p>MODEL=Z20_250</p></td>
+</tr>
+<tr class="row-even"><td><p>STEMlab 125-14 4-Input</p></td>
+<td><p>MODEL=Z20_4</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic">
+<li><p>On the PC that has Vivado installed run the following commands to properly configure system variables (needs to be done every time you open a new terminal window).
+Alternatively, you can add the following lines to your .bashrc file using a text editor – this will ensure that they are run at the system startup:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">source &lt;path to Xilinx installation directory&gt;/Xilinx/Vivado/2020.1/settings64.sh</span>
+<span class="go">source &lt;path to Xilinx installation directory&gt;/Xilinx/SDK/2019.1/settings64.sh</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" id="xilinx-path" start="2">
+<li><p>The Xilinx installation directory should be located in <em>/opt</em> directory (or <em>/tools</em>, if you used the default Vivado installation directory).
+These two commands will set up the $PATH environment variable.
+It might also be necessary to add the SDK bin folder to the $PATH environment variable:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export PATH=&lt;path to Xilinx installation directory&gt;/Xilinx/SDK/2019.1/bin:$PATH</span>
+</pre></div>
+</div>
+<p>On Windows, please check <a href="https://www.computerhope.com/issues/ch000549.htm" target="_blank">this link</a> or search the web. Add the path to the <em>/bin</em> directory for Vivado and SDK.</p>
+</li>
+</ol>
+<ol class="arabic" start="3">
+<li><p>Check if you have Git command line tools installed on your computer:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+<span class="go">sudo apt install git</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a new directory for the Red Pitaya code. Then download the code by running the following command in the newly created directory:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/RedPitaya/RedPitaya.git</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For an alternative way to create an FPGA project plese check <a href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga2.html#programming-the-fpga" target="_blank">Red Pitaya FPGA tutorial</a>. If following the FPGA tutorial you can reffer to <strong>step 6 and later</strong> in this section, please note that all paths in the following section start with <em>&lt;Red Pitaya repository&gt;/RedPitaya-FPGA/prj</em> instead of <em>&lt;Red Pitaya repository&gt;/fpga/prj</em>.</p>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="5">
+<li><p>The devicetree sources must also be downloaded and extracted by running</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">make -f Makefile.x86 devicetree</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The default mode for building the FPGA is to run a TCL script inside Vivado.
+Non-project mode is used, to avoid the generation of project files,
+which are too many and difficult to handle.
+This allows us to only place source files and scripts under version control.</p>
+<p>The following scripts perform various tasks:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>TCL script</p></th>
+<th class="head"><p>action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">red_pitaya_vivado.tcl</span></code></p></td>
+<td><p>creates the bitstream and reports</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">red_pitaya_vivado_project.tcl</span></code></p></td>
+<td><p>creates a Vivado project for graphical editing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">red_pitaya_hsi_fsbl.tcl</span></code></p></td>
+<td><p>creates FSBL executable binary</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">red_pitaya_hsi_dts.tcl</span></code></p></td>
+<td><p>creates device tree sources</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic" start="6">
+<li><p><strong>Non-project mode:</strong> First, change your directory to <em>&lt;path to Red Pitaya repository&gt;/RedPitaya/fpga</em>.
+To generate a bit file, reports, device tree, and FSBL, run (replace <code class="docutils literal notranslate"><span class="pre">name</span></code> with project name and <code class="docutils literal notranslate"><span class="pre">model</span></code> with model flag):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span><span class="nv">PRJ</span><span class="o">=</span>name<span class="w"> </span><span class="nv">MODEL</span><span class="o">=</span>model
+</pre></div>
+</div>
+<p>For example, build v0.94 for STEMlab 125-14:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span><span class="nv">PRJ</span><span class="o">=</span>v0.94<span class="w"> </span><span class="nv">MODEL</span><span class="o">=</span>Z10
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running the commands above will automatically generate the whole project without openning Vivado in the process (non-project mode).</p>
+<p>To open the project inside Vivado and edit the FPGA code there please check <strong>step 8</strong>.</p>
+</div>
+</li>
+<li><p>The resulting .bit file is located in <em>/prj/&lt;project name&gt;/out/redpitaya.bit</em>
+This file must be copied to <em>/opt/redpitaya/fpga</em> on the Red Pitaya itself.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the script returns the following error:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">BD_TCL-109&quot; &quot;ERROR&quot; &quot;This script was generated using Vivado 2020.1 ...</span>
+</pre></div>
+</div>
+<p>First, find the line containing</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">set scripts_vivado_version 2020.1</span>
+</pre></div>
+</div>
+<p>and change 2020.1 to your version.
+This is a quick and dirty way to get the build working in other versions of Vivado.
+However, solving the problem this way could be problematic if some of the IPs used are different in your version.</p>
+<p>To update the script properly, open the project GUI (see below), and go to the menu <strong>Reports-&gt; Report IP Status</strong>. A new tab opens below the code window.
+If all IPs are not up-to-date, they need to be updated.
+Before doing this, the TCL script must still be manually modified to your Vivado version, or the block design will not be created when Vivado starts.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/IPupdate.png" src="../../../../_images/IPupdate.png" />
+</div>
+<p>When IPs are up-to-date, go to the tab Tcl console and run the command:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">write_bd_tcl systemZ10.tcl</span>
+</pre></div>
+</div>
+<p>Of course, the script may also be named <em>systemZ20.tcl</em> or <em>systemZ20_14.tcl</em>, depending on your board.</p>
+<p>This generates a new tcl script that replaces the old script in <em>fpga/prj/&lt;project name&gt;/ip</em>.</p>
+</div>
+<ol class="arabic" start="8">
+<li><p><strong>Project mode:</strong> To generate and open a Vivado project using <strong>GUI</strong>, run:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>project<span class="w"> </span><span class="nv">PRJ</span><span class="o">=</span>name<span class="w"> </span><span class="nv">MODEL</span><span class="o">=</span>model
+</pre></div>
+</div>
+<p>For example, the v0.94 project for STEMlab 125-14:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>project<span class="w"> </span><span class="nv">PRJ</span><span class="o">=</span>v0.94<span class="w"> </span><span class="nv">MODEL</span><span class="o">=</span>Z10
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../../../_images/project_make.png" src="../../../../_images/project_make.png" />
+</div>
+<p>A new, blank project will automatically be built and all the necessary files associated with Red Pitaya will be added.
+You can add/write your Verilog module at the end of <em>red_pitaya_top.sv</em> file (or add a new source by right-clicking the <em>Design Sources</em> folder and <em>Add Source</em>):</p>
+<div class="figure align-default">
+<img alt="../../../../_images/vivado_project.png" src="../../../../_images/vivado_project.png" />
+</div>
+<p>You can connect newly added sources in the Diagram (Block Design) section (If it is not open: <em>Window =&gt; Design =&gt; double click system</em>).
+Add them to the design by right click =&gt; Add Module in the design window (for more information check the <em>Learn FPGA programming =&gt; FPGA lessons section</em>)
+<a class="reference external" href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html">https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html</a></p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before you try to Run Synthesis, Run Implementation, or Write Bitstream, you should check <em>Language and Region settings</em> on your Ubuntu/Linux computer –
+make sure you have a <strong>Format</strong> that uses <strong>a dot (“.”) as a decimal separator</strong> (the United Kingdom or the United States will work).
+Otherwise, the Synthesis might fail as some parts of <strong>Vivado demand a dot as the decimal separator</strong>, which will, in turn, cause Vivado not to recognize certain parts of the model.</p>
+</div>
+<ol class="arabic" start="9">
+<li><p>The resulting .bit file is located in <strong>&lt;Red Pitaya repository&gt;/fpga/prj/&lt;project name&gt;/project/redpitaya.runs/impl_1/red_pitaya_top.bit</strong>
+This file must be copied to the Red Pitaya Linux OS into the <strong>/opt/redpitaya/fpga</strong> directory.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/vivadoGUI.png" src="../../../../_images/vivadoGUI.png" />
+</div>
+<ol class="arabic simple">
+<li><p>Run Synthesis</p></li>
+<li><p>Run Implementation</p></li>
+<li><p>Generate Bitstream</p></li>
+</ol>
+<p>The resulting .bit file is located in <strong>&lt;Red Pitaya repository&gt;/fpga/prj/&lt;project name&gt;/project/redpitaya.runs/impl_1/</strong> as <strong>red_pitaya_top.bit</strong> (the name of the .bit file is the same as the top module of the design).</p>
+</li>
+</ol>
+<div class="section" id="reprogramming-the-fpga-with-a-custom-image">
+<h3><span class="section-number">3.2.2.3.4.1. </span>Reprogramming the FPGA with a custom image<a class="headerlink" href="#reprogramming-the-fpga-with-a-custom-image" title="Permalink to this heading"></a></h3>
+<p>How the FPGA is reprogrammed depends on the OS version as well as whether the project has been executed in project mode (GUI) or non-project mode.</p>
+<p>Please make sure that the PATH environment variable is set correctly. See <a class="reference internal" href="#xilinx-path"><span class="std std-ref">Step 2</span></a> in the chapter above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Windows, the process can also be done through a standard Command Prompt, but any <code class="docutils literal notranslate"><span class="pre">echo</span></code> commands must be executed inside the Windows Subsystem for Linux (WSL) Terminal (The output file encoding is a problem with Windows <code class="docutils literal notranslate"><span class="pre">echo</span></code>). For more information, refer to the following forum topics:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a href="https://superuser.com/questions/601282/%cc%81-is-not-recognized-as-an-internal-or-external-command" target="_blank">́╗┐' is not recognized as an internal or external command</a></p></li>
+<li><p><a href="https://devblogs.microsoft.com/oldnewthing/20210726-00/?p=105483" target="_blank">Diagnosing why your batch file prints a garbage character, one character, and nothing more</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Please note that you need to change the forward slashes to backward slashes on Windows.</p>
+<ol class="arabic">
+<li><p>Open Terminal or CMD and go to the .bit file location.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;Path/to/RedPitaya/repository&gt;/prj/v0.94/project/repitaya.runs/impl_1
+</pre></div>
+</div>
+</li>
+<li><p>Send the file .bit (<em>red_pitaya_top.bit</em> is the default name) to the Red Pitaya with the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>red_pitaya_top.bit<span class="w"> </span>root@rp-xxxxxx.local:/root
+</pre></div>
+</div>
+</li>
+<li><p>Now establish an <a class="reference internal" href="../../console/ssh/ssh.html#ssh"><span class="std std-ref">SSH communication</span></a> with your Red Pitaya and check if you have the copy <em>red_pitaya_top.bit</em> in the root directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>redpitaya&gt;<span class="w"> </span>ls
+</pre></div>
+</div>
+</li>
+<li><p>Load the <em>red_pitaya_top.bit</em> to <strong>xdevcfg</strong> with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>redpitaya&gt;<span class="w"> </span>cat<span class="w"> </span>red_pitaya_top.bit<span class="w"> </span>&gt;<span class="w"> </span>/dev/xdevcfg
+</pre></div>
+</div>
+</li>
+</ol>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the <code class="docutils literal notranslate"><span class="pre">echo</span></code> command functinality differs bewteen the two.</p>
+<p>Please note that you need to change the forward slashes to backward slashes on Windows.</p>
+<p><strong>Non-project mode:</strong> Skip to <em>step 3</em>.</p>
+<ol class="arabic">
+<li><p>On Windows, open <strong>Vivado HSL Command Prompt</strong> and go to the <em>.bit</em> file location.</p>
+<p>On Linux, open the <strong>Terminal</strong> and go to the <em>.bit</em> file location.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;Path/to/RedPitaya/repository&gt;/prj/v0.94/project/repitaya.runs/impl_1
+</pre></div>
+</div>
+</li>
+<li><p>Create <em>.bif</em> file (for example, <em>red_pitaya_top.bif</em>) and use it to generate a binary bitstream file (<em>red_pitaya_top.bit.bin</em>)</p>
+<p><strong>Windows (Vivado HSL Command Prompt):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>all:<span class="o">{</span><span class="w"> </span>path/to/bitfile/fpga.bit<span class="w"> </span><span class="o">}</span><span class="w"> </span>&gt;<span class="w">  </span>path/to/biffile/fpga.bif
+bootgen<span class="w"> </span>-image<span class="w"> </span>path/to/biffile/fpga.bif<span class="w"> </span>-arch<span class="w"> </span>zynq<span class="w"> </span>-process_bitstream<span class="w"> </span>bin<span class="w"> </span>-o<span class="w"> </span>path/to/binfile/red_pitaya.bit.bin<span class="w"> </span>-w
+</pre></div>
+</div>
+<p>Example code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>all:<span class="o">{</span><span class="w"> </span>red_pitaya_top.bit<span class="w"> </span><span class="o">}</span><span class="w"> </span>&gt;<span class="w">  </span>red_pitaya_top.bif
+bootgen<span class="w"> </span>-image<span class="w"> </span>red_pitaya_top.bif<span class="w"> </span>-arch<span class="w"> </span>zynq<span class="w"> </span>-process_bitstream<span class="w"> </span>bin<span class="w"> </span>-o<span class="w"> </span>red_pitaya_top.bit.bin<span class="w"> </span>-w
+</pre></div>
+</div>
+<p><strong>Linux and Windows (WSL + Normal CMD):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;all:{ red_pitaya_top.bit }&quot;</span><span class="w"> </span>&gt;<span class="w">  </span>red_pitaya_top.bif
+bootgen<span class="w"> </span>-image<span class="w"> </span>red_pitaya_top.bif<span class="w"> </span>-arch<span class="w"> </span>zynq<span class="w"> </span>-process_bitstream<span class="w"> </span>bin<span class="w"> </span>-o<span class="w"> </span>red_pitaya_top.bit.bin<span class="w"> </span>-w
+</pre></div>
+</div>
+</li>
+<li><p>Send the file <em>.bit.bin</em> to the Red Pitaya with the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>red_pitaya_top.bit.bin<span class="w"> </span>root@rp-xxxxxx.local:/root
+</pre></div>
+</div>
+</li>
+<li><p>Now establish an <a class="reference internal" href="../../console/ssh/ssh.html#ssh"><span class="std std-ref">SSH communication</span></a> with your Red Pitaya and check if you have the copy <em>red_pitaya_top.bit.bin</em> in the root directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>redpitaya&gt;<span class="w"> </span>ls
+</pre></div>
+</div>
+</li>
+<li><p>Load the <em>red_pitaya_top.bit.bin</em> image into the FPGA:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>redpitaya&gt;<span class="w"> </span>/opt/redpitaya/bin/fpgautil<span class="w"> </span>-b<span class="w"> </span>red_pitaya_top.bit.bin
+</pre></div>
+</div>
+</li>
+</ol>
+</div></div>
+</div>
+<div class="section" id="reverting-to-original-fpga-image">
+<h3><span class="section-number">3.2.2.3.4.2. </span>Reverting to original FPGA image<a class="headerlink" href="#reverting-to-original-fpga-image" title="Permalink to this heading"></a></h3>
+<p>If you want to roll back to the official Red Pitaya FPGA program, run the following command:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-1-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-1-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; cat /opt/redpitaya/fpga/fpga_0.94.bit &gt; /dev/xdevcfg</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; overlay.sh v0.94</span>
+</pre></div>
+</div>
+</div></div>
+<p>or simply restart your Red Pitaya.</p>
+</div>
+</div>
+<div class="section" id="programming-via-jtag">
+<h2><span class="section-number">3.2.2.3.5. </span>Programming via JTAG<a class="headerlink" href="#programming-via-jtag" title="Permalink to this heading"></a></h2>
+<p>These instructions show how to use a JTAG cable to program a Red Pitaya directly from Xilinx Vivado.
+To do so we use <em>Red Pitaya STEMlab 125-14</em>, <em>Ubuntu 20.04</em>, <em>Vivado 2020.1</em>, <em>Digilent JTAG-HS3 cable with a 14 to 6-pin adapter</em>, and <em>Digilent Adept 2 software</em>.</p>
+<p>To start, get an appropriate JTAG cable. In these instructions, we use a Digilent JTAG-HS3 cable with a 14 to 6-pin adapter.
+Digilent JTAG-HS2 may be used as well and might be more appropriate, as it uses a 6-pin connector that can connect directly to Red Pitaya’s JTAG.
+For a complete list of JTAG cables, supported by Vivado, see Xilinx UG908 - Programming and Debugging, appendix D.
+<a class="reference external" href="https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf">https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf</a></p>
+<p>See if the JTAG cable is detected. In Ubuntu, that is done with:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>lsusb
+</pre></div>
+</div>
+<p>JTAG-HS3 is displayed as an FTDI device.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/lsusb.jpg" src="../../../../_images/lsusb.jpg" />
+</div>
+<p>Now, install Digilent Adept 2 software from <a class="reference external" href="https://digilent.com/reference/software/adept/start">https://digilent.com/reference/software/adept/start</a>.
+You will need both Utilities and Runtime. These are both available as .deb packages. If installing from GUI does not work, they can be installed using:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>package&gt;
+</pre></div>
+</div>
+<p>Once these packages are installed, you can check if the driver detects your adapter (only applies to Digilent cables):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>djtgcfg<span class="w"> </span>enum
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../../../_images/driver_check.jpg" src="../../../../_images/driver_check.jpg" />
+</div>
+<p>Now, open Vivado 2020.1, click <em>Program and Debug -&gt; Open Target -&gt; Auto Connect</em>.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/program_menu.jpg" src="../../../../_images/program_menu.jpg" />
+</div>
+<p>This will display a Xilinx-compatible JTAG cable in the Hardware window, under localhost.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/cable.jpg" src="../../../../_images/cable.jpg" />
+</div>
+<p>Now plug your cable into Red Pitaya’s JTAG connector. The pins are marked on the bottom side of Red Pitaya’s PCB.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/JTAG_pins.jpg" src="../../../../_images/JTAG_pins.jpg" />
+</div>
+<p>A Xilinx device should now appear in Vivado (on the detected cable). In this case, it’s an xc7z010_1.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/program.jpg" src="../../../../_images/program.jpg" />
+</div>
+<p>Now, you can click Program Device.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/connected.jpg" src="../../../../_images/connected.jpg" />
+</div>
+<p>A bitfile selector prompt appears and when a valid file is selected, Red Pitaya can be programmed.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/file_select.jpg" src="../../../../_images/file_select.jpg" />
+</div>
+</div>
+<div class="section" id="simulation">
+<h2><span class="section-number">3.2.2.3.6. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading"></a></h2>
+<p>ModelSim as provided for free from Altera is used to run simulations.
+Scripts expect the default install location.
+On Ubuntu, the install process fails to create an appropriate path to executable files,
+so this path must be created:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="nv">$HOME</span>/intelFPGA/16.1/modelsim_ase/linux<span class="w"> </span><span class="nv">$HOME</span>/intelFPGA/16.1/modelsim_ase/linux_rh60
+<span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libxft2:i386
+</pre></div>
+</div>
+<p>To run the simulation, Vivado tools have to be installed.
+There is no need to source <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code>.
+For now, the path to the ModelSim simulator is hard coded into the simulation <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>fpga/sim
+</pre></div>
+</div>
+<p>Simulations can be run by running <code class="docutils literal notranslate"><span class="pre">make</span></code> with the bench file name as target:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>top_tb
+</pre></div>
+</div>
+<p>Some simulations have a waveform window configuration script like <code class="docutils literal notranslate"><span class="pre">top_tb.tcl</span></code>
+which will prepare an organized waveform window.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>top_tb<span class="w"> </span><span class="nv">WAV</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="device-tree">
+<span id="devicetree"></span><h2><span class="section-number">3.2.2.3.7. </span>Device tree<a class="headerlink" href="#device-tree" title="Permalink to this heading"></a></h2>
+<p>The device tree is used by Linux to describe features and address the space of memory-mapped hardware attached to the CPU.</p>
+<p>Running <code class="docutils literal notranslate"><span class="pre">make</span></code> of a project will create a device tree source and some include files in the directory <code class="docutils literal notranslate"><span class="pre">dts</span></code>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>device tree file</p></th>
+<th class="head"><p>contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>zynq-7000.dtsi</cite></p></td>
+<td><p>Description of peripherals inside PS (processing system)</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>pl.dtsi</cite></p></td>
+<td><p>description of AXI attached peripherals inside PL (programmable logic)</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>system.dts</cite></p></td>
+<td><p>description of all peripherals, includes the above <code class="docutils literal notranslate"><span class="pre">*.dtsi</span></code> files</p></td>
+</tr>
+</tbody>
+</table>
+<p>To enable some Linux drivers (Ethernet, XADC, I2C EEPROM, SPI, GPIO, and LED) additional configuration files.
+Generic device tree files can be found in <code class="docutils literal notranslate"><span class="pre">fpga/dts</span></code> while project-specific code is in <code class="docutils literal notranslate"><span class="pre">fpga/prj/name/dts/</span></code>.</p>
+</div>
+<div class="section" id="signal-mapping">
+<h2><span class="section-number">3.2.2.3.8. </span>Signal mapping<a class="headerlink" href="#signal-mapping" title="Permalink to this heading"></a></h2>
+<div class="section" id="xadc-inputs">
+<h3><span class="section-number">3.2.2.3.8.1. </span>XADC inputs<a class="headerlink" href="#xadc-inputs" title="Permalink to this heading"></a></h3>
+<p>XADC input data can be accessed through the Linux IIO (Industrial IO) driver interface.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 11%" />
+<col style="width: 10%" />
+<col style="width: 9%" />
+<col style="width: 23%" />
+<col style="width: 20%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>E2 con</p></th>
+<th class="head"><p>schematic</p></th>
+<th class="head"><p>ZYNQ p/n</p></th>
+<th class="head"><p>XADC in</p></th>
+<th class="head"><p>IIO filename</p></th>
+<th class="head"><p>Measurement target</p></th>
+<th class="head"><p>Full scale range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AI0</p></td>
+<td><p>AIF[PN]0</p></td>
+<td><p>B19/A20</p></td>
+<td><p>AD8</p></td>
+<td><p>in_voltage11_raw</p></td>
+<td><p>general purpose</p></td>
+<td><p>3.50 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>AI1</p></td>
+<td><p>AIF[PN]1</p></td>
+<td><p>C20/B20</p></td>
+<td><p>AD0</p></td>
+<td><p>in_voltage9_raw</p></td>
+<td><p>general purpose</p></td>
+<td><p>3.50 V</p></td>
+</tr>
+<tr class="row-even"><td><p>AI2</p></td>
+<td><p>AIF[PN]2</p></td>
+<td><p>E17/D18</p></td>
+<td><p>AD1</p></td>
+<td><p>in_voltage10_raw</p></td>
+<td><p>general purpose</p></td>
+<td><p>3.50 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>AI3</p></td>
+<td><p>AIF[PN]3</p></td>
+<td><p>E18/E19</p></td>
+<td><p>AD9</p></td>
+<td><p>in_voltage12_raw</p></td>
+<td><p>general purpose</p></td>
+<td><p>3.50 V</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>AIF[PN]4</p></td>
+<td><p>K9 /L10</p></td>
+<td><p>AD</p></td>
+<td><p>in_voltage8_vpvn_raw</p></td>
+<td><p>5V power supply</p></td>
+<td><p>6.10 V</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="input-range">
+<h4><span class="section-number">3.2.2.3.8.1.1. </span>Input range<a class="headerlink" href="#input-range" title="Permalink to this heading"></a></h4>
+<p>The default mounting intends for unipolar XADC inputs, which allow for observing only positive signals with a saturation range of <strong>0 V ~ 0.5 V</strong>.
+There are additional voltage dividers used to extend this range to <strong>0 V ~ 3.5 V</strong>.</p>
+<p>It is possible to configure XADC inputs into a bipolar mode with a range of <strong>-0.5 V ~ +0.5 V</strong> (<strong>-3.5 V ~ 3.5 V</strong> with the dividers), but it requires removing R273 and providing a <strong>0.5 V ~ 1 V</strong> common voltage on the <a class="reference internal" href="../../../hardware/125-14/extent.html#e2"><span class="std std-ref">E2</span></a> connector. Please consult the <a class="reference internal" href="../../../hardware/125-14/top.html#schematics-125-14"><span class="std std-ref">schematics</span></a> for the position of R273. Afterwards, open the Red Pitaya v0.94 (or v0.94_250 for SIGNALlab 250-12) FPGA project. In the block diagram, the XADC wizard has a setting in the <em>Channel Sequencer</em> page to switch the XADCs to bipolar mode. After rebuilding the FPGA, the values are read as 12-bit 2’s complement values.</p>
+<div class="section" id="v-power-supply">
+<h5><span class="section-number">3.2.2.3.8.1.1.1. </span>5V power supply<a class="headerlink" href="#v-power-supply" title="Permalink to this heading"></a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                       ------------------0  Vout
+          -----------  |  -----------
+Vin  0----| 56.0 kΩ |-----| 4.99 kΩ |----0  GND
+          -----------     -----------
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}ratio = \frac{4.99 k\Omega}{56.0 k\Omega +4.99 k\Omega} = 0.0818\\range = \frac{0.5 V}{ratio} = 6.11 V\end{aligned}\end{align} \]</div>
+</div>
+<div class="section" id="general-purpose-inputs">
+<h5><span class="section-number">3.2.2.3.8.1.1.2. </span>General purpose inputs<a class="headerlink" href="#general-purpose-inputs" title="Permalink to this heading"></a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                       ------------------0  Vout
+          -----------  |  -----------
+Vin  0----| 30.0 kΩ |-----| 4.99 kΩ |----0  GND
+          -----------     -----------
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}ratio = \frac{4.99 k\Omega}{30.0 k\Omega + 4.99  k\Omega} = 0.143\\range = \frac{0.5 V}{ratio} = 3.50 V\end{aligned}\end{align} \]</div>
+</div>
+</div>
+</div>
+<div class="section" id="gpio-and-leds">
+<h3><span class="section-number">3.2.2.3.8.2. </span>GPIO and LEDs<a class="headerlink" href="#gpio-and-leds" title="Permalink to this heading"></a></h3>
+<p>Handling of GPIO and LED signals depends on whether they are connected to Zynq-7000 PS (MIO) or PL (EMIO or FPGA) block.</p>
+<p>MIO pins signals are controlled by the PS block.
+Each pin has a few multiplexed functions.
+The multiplexer, slew rate, and pull-up resistor enable can be controlled using software usually with device tree <cite>pinctrl</cite> code.
+AMD (Xilinx) also provides Linux drivers for all PS based peripherals, so all MIO signals can be managed using Linux drivers.</p>
+<p>Pins connected to the PL block require FPGA code to function.
+If the pin signals are wired directly (in the FPGA sources) from PS-based EMIO signals to the FPGA pads, then they can be managed using Linux drivers intended for the PS block.</p>
+<p>The default pin assignment for GPIO is described in the next table.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 14%" />
+<col style="width: 23%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>FPGA</p></th>
+<th class="head"><p>Connector</p></th>
+<th class="head"><p>GPIO</p></th>
+<th class="head"><p>MIO/EMIO index</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">sysfs</span></code> index</p></th>
+<th class="head"><p>Comments, LED color, dedicated meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>green, <em>Power Good</em> status</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>blue, FPGA programming <em>DONE</em></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp_p_io</span> <span class="pre">[7:0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMIO[15:</span> <span class="pre">8]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+54+[15:</span> <span class="pre">8]=[975:968]</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp_n_io</span> <span class="pre">[7:0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMIO[23:16]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+54+[23:16]=[983:976]</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>LED <code class="docutils literal notranslate"><span class="pre">[7:0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMIO[</span> <span class="pre">7:</span> <span class="pre">0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+54+[</span> <span class="pre">7:</span> <span class="pre">0]=[967:960]</span></code></p></td>
+<td><p>yellow</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>LED ``  [8]``</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[</span> <span class="pre">0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[</span> <span class="pre">0]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">906</span></code></p></td>
+<td><p>yellow = SD card access  (user defined)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>LED ``  [9]``</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[</span> <span class="pre">7]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[</span> <span class="pre">7]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">913</span></code></p></td>
+<td><p>red    = CPU heartbeat (user defined)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[</span> <span class="pre">7]</span></code></p></td>
+<td><p>UART1_TX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[</span> <span class="pre">8]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[</span> <span class="pre">8]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">914</span></code></p></td>
+<td><p>output only</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[</span> <span class="pre">8]</span></code></p></td>
+<td><p>UART1_RX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[</span> <span class="pre">9]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[</span> <span class="pre">9]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">915</span></code></p></td>
+<td><p>requires <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> changes to be active</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">E9</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[</span> <span class="pre">3]</span></code></p></td>
+<td><p>SPI1_MOSI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[10]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[10]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">916</span></code></p></td>
+<td><p>requires <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> changes to be active</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">C6</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[</span> <span class="pre">4]</span></code></p></td>
+<td><p>SPI1_MISO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[11]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[11]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">917</span></code></p></td>
+<td><p>requires <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> changes to be active</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D9</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[</span> <span class="pre">5]</span></code></p></td>
+<td><p>SPI1_SCK</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[12]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[12]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">918</span></code></p></td>
+<td><p>requires <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> changes to be active</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">E8</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[</span> <span class="pre">6]</span></code></p></td>
+<td><p>SPI1_CS#</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[13]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[13]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">919</span></code></p></td>
+<td><p>requires <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> changes to be active</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">B13</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[</span> <span class="pre">9]</span></code></p></td>
+<td><p>I2C0_SCL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[50]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[50]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">956</span></code></p></td>
+<td><p>requires <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> changes to be active</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B9</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2[10]</span></code></p></td>
+<td><p>I2C0_SDA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIO[51]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+</span>&#160;&#160; <span class="pre">[51]</span>&#160;&#160; <span class="pre">=</span> <span class="pre">957</span></code></p></td>
+<td><p>requires <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> changes to be active</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="linux-access-to-led">
+<h3><span class="section-number">3.2.2.3.8.3. </span>Linux access to LED<a class="headerlink" href="#linux-access-to-led" title="Permalink to this heading"></a></h3>
+<p>This document is used as a reference: <a class="reference external" href="http://www.wiki.xilinx.com/Linux+GPIO+Driver">http://www.wiki.xilinx.com/Linux+GPIO+Driver</a></p>
+<p>By providing GPIO/LED details in the device tree, it is possible to access LEDs using a dedicated kernel interface.</p>
+<p>To show CPU load on LED 9 use:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>heartbeat<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/leds/led0/trigger
+</pre></div>
+</div>
+<p>To switch LED 8 ON use:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/leds/led0/brightness
+</pre></div>
+</div>
+</div>
+<div class="section" id="ps-pinctrl-for-mio-signals">
+<h3><span class="section-number">3.2.2.3.8.4. </span>PS pinctrl for MIO signals<a class="headerlink" href="#ps-pinctrl-for-mio-signals" title="Permalink to this heading"></a></h3>
+<p>It is possible to modify MIO pin functionality using device tree files during Linux bootup.
+The listed files should be included in the main device tree.</p>
+<p>These files can be modified into device tree overlays, which can be used to modify MIO functionality at runtime.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>device tree file</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spi2gpio.dtsi</span></code></p></td>
+<td><p>E2 connector, SPI1 signals are repurposed as GPIO</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i2c2gpio.dtsi</span></code></p></td>
+<td><p>E2 connector, I2C0 signals are repurposed as GPIO</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uart2gpio.dtsi</span></code></p></td>
+<td><p>E2 connector, UART1 signals are repurposed as GPIO</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">miso2gpio.dtsi</span></code></p></td>
+<td><p>E2 connector, SPI1 MISO signal is repurposed as GPIO
+SPI can then only be used for writing (maybe 3-wire)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="registers">
+<span id="fpga-registers"></span><h2><span class="section-number">3.2.2.3.9. </span>Registers<a class="headerlink" href="#registers" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="regset/2.00-15/list.html">3.2.2.3.9.1. FPGA Register map (Release 2.00-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regset/2.00-18/list.html">3.2.2.3.9.2. FPGA Register map (Release 2.00-18)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regset/2.00-23/list.html">3.2.2.3.9.3. FPGA Register map (Release 2.00-23)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regset/2.00-30/list.html">3.2.2.3.9.4. FPGA Register map (Release 2.00-30)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regset/2.00-35/list.html">3.2.2.3.9.5. FPGA Register map (Release 2.00-35)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regset/in_dev/list.html">3.2.2.3.9.6. FPGA Register map in dev</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../comStreaming.html" class="btn btn-neutral float-left" title="3.2.2.2. Compiling and running Streaming client applications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="regset/2.00-15/list.html" class="btn btn-neutral float-right" title="3.2.2.3.9.1. FPGA Register map (Release 2.00-15)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

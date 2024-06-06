@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4.6.4.4. Sampling rate and decimations &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.4.6.5. Generating and Acquiring signals at RF inputs/outputs" href="../acquisition_generation/acq_genRF.html" />
+    <link rel="prev" title="2.4.6.4.3. Triggering on external trigger" href="acqRF-exm3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">2.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">2.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">2.4.6. Examples</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../digital/digital.html">2.4.6.1. Digital</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">2.4.6.2. Analog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">2.4.6.3. Generating signals at RF outputs</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="acqRF.html">2.4.6.4. Acquiring signals at RF inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition_generation/acq_genRF.html">2.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../multiboard_sync/multiboard.html">2.4.6.6. Multi-board signal acquisition and generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../DMA/deepMemoryAcq.html">2.4.6.7. Deep Memory Acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../communication_interfaces/digcomIF.html">2.4.6.8. Digital communication interfaces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">2.4.6. </span>Examples</a></li>
+          <li class="breadcrumb-item"><a href="acqRF.html"><span class="section-number">2.4.6.4. </span>Acquiring signals at RF inputs</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4.6.4.4. </span>Sampling rate and decimations</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="sampling-rate-and-decimations">
+<span id="s-rate-and-dec"></span><h1><span class="section-number">2.4.6.4.4. </span>Sampling rate and decimations<a class="headerlink" href="#sampling-rate-and-decimations" title="Permalink to this heading"></a></h1>
+<p>Examples of decimations and time scales of a buffer are given in the tables below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The table lists only a few decimation examples, users can in practice use the following decimations:</p>
+<p><strong>SCPI commands:</strong></p>
+<ul class="simple">
+<li><p>OS 2.00-30 and higher: [1, 2, 4, 8, 16, 17, 18, …, 65535, 65536] - <em>(powers of 2 up to 16 and then any whole number up to 65536)</em> - <strong>ACQ:DEC:F</strong></p></li>
+<li><p>OS 2.00-23 and lower: [1, 2, 4, 8, 16, 64, 256, …, 32768, 65536] - <em>(powers of 2 up to 65536)</em> - <strong>ACQ:DEC</strong></p></li>
+</ul>
+<p><strong>API commands:</strong></p>
+<ul class="simple">
+<li><p>OS 2.00-23 and higher: [1, 2, 4, 8, 16, 17, 18, …, 65535, 65536] - <em>(powers of 2 up to 16 and then any whole number up to 65536)</em> - <strong>rp_AcqSetDecimationFactor</strong></p></li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>STEMlab 125-14, STEMlab 125-10, STEMlab 125-14 4-Input:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 15%" />
+<col style="width: 27%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Decimation</strong></p></td>
+<td><p><strong>Sampling Rate</strong></p></td>
+<td><p><strong>Time scale/length of a buffer</strong></p></td>
+<td><p><strong>Trigger delay in samples</strong></p></td>
+<td><p><strong>Trigger delay in seconds</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>125 MS/s</p></td>
+<td><p>131.072 us</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-6.554E-5 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>15.6 MS/s</p></td>
+<td><p>1.049 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-5.243E-4 to x</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>1.953 MS/s</p></td>
+<td><p>8.389 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-4.194E-3 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>122.07 kS/s</p></td>
+<td><p>134.218 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-6.711E-2 to x</p></td>
+</tr>
+<tr class="row-even"><td><p>8192</p></td>
+<td><p>15.258 kS/s</p></td>
+<td><p>1.074 s</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-5.369E-1 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>65536</p></td>
+<td><p>1.907 kS/s</p></td>
+<td><p>8.590 s</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-4.295E+0 to x</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>SDRlab 122-16:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 15%" />
+<col style="width: 27%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Decimation</strong></p></td>
+<td><p><strong>Sampling Rate</strong></p></td>
+<td><p><strong>Time scale/length of a buffer</strong></p></td>
+<td><p><strong>Trigger delay in samples</strong></p></td>
+<td><p><strong>Trigger delay in seconds</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>122.8 MS/s</p></td>
+<td><p>133.42 us</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-6.671E-5 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>15.35 MS/s</p></td>
+<td><p>1.067 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-5.335E-4 to x</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>1.918 MS/s</p></td>
+<td><p>8.538 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-4.269E-3 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>119.92 MS/s</p></td>
+<td><p>136.622 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-6.831E-2 to x</p></td>
+</tr>
+<tr class="row-even"><td><p>8192</p></td>
+<td><p>14.99 kS/s</p></td>
+<td><p>1.092 s</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-5.460E-1 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>65536</p></td>
+<td><p>1.8737 kS/s</p></td>
+<td><p>8.743 s</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-4.371E+0 to x</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>SIGNALlab 250-12:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 15%" />
+<col style="width: 27%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Decimation</strong></p></td>
+<td><p><strong>Sampling Rate</strong></p></td>
+<td><p><strong>Time scale/length of a buffer</strong></p></td>
+<td><p><strong>Trigger delay in samples</strong></p></td>
+<td><p><strong>Trigger delay in seconds</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>250 MS/s</p></td>
+<td><p>65.536 us</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-3.227E-5 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>31.250 MS/s</p></td>
+<td><p>0.524 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-2.621E-4 to x</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>3.906 MS/s</p></td>
+<td><p>4.194 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-2.097E-3 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>244.14 kS/s</p></td>
+<td><p>67.108 ms</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-3.355E-2 to x</p></td>
+</tr>
+<tr class="row-even"><td><p>8192</p></td>
+<td><p>30.517 kS/s</p></td>
+<td><p>0.536 s</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-2.684E-1 to x</p></td>
+</tr>
+<tr class="row-odd"><td><p>65536</p></td>
+<td><p>3.814 kS/s</p></td>
+<td><p>4.294 s</p></td>
+<td><p>from - 8192 to x</p></td>
+<td><p>-2.147E+0 to x</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="acqRF-exm3.html" class="btn btn-neutral float-left" title="2.4.6.4.3. Triggering on external trigger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../acquisition_generation/acq_genRF.html" class="btn btn-neutral float-right" title="2.4.6.5. Generating and Acquiring signals at RF inputs/outputs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

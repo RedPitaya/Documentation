@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2.2.6.2. Creating first app &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="3.2.2.6.3. Examples" href="webExamples.html" />
+    <link rel="prev" title="3.2.2.6.1. System overview" href="sysOver.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">1. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">3. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">3.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">3.2. Software</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">3.2.1. Console connection</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../build.html">3.2.2. Build &amp; compile instructions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../C%26Python_API.html">3.2.2.1. Running C and Python Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../comStreaming.html">3.2.2.2. Compiling and running Streaming client applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fpga/fpga.html">3.2.2.3. Build FPGA image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ecosystem/ecosystem.html">3.2.2.4. Build Red Pitaya ecosystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../debian.html">3.2.2.5. Build Red Pitaya OS</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="webApps.html">3.2.2.6. Create your own WEB applications</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../other_info/info.html">3.2.3. Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">3.2.4. Known software issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">4. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">3. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">3.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../build.html"><span class="section-number">3.2.2. </span>Build &amp; compile instructions</a></li>
+          <li class="breadcrumb-item"><a href="webApps.html"><span class="section-number">3.2.2.6. </span>Create your own WEB applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.2.6.2. </span>Creating first app</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="creating-first-app">
+<h1><span class="section-number">3.2.2.6.2. </span>Creating first app<a class="headerlink" href="#creating-first-app" title="Permalink to this heading"></a></h1>
+<p>Before you start creating your first application you need to set your development environment. Instructions how to do
+that are in article <a class="reference internal" href="../../console/ssh/ssh.html#ssh"><span class="std std-ref">Setting development environment</span></a>. Also it’s recommended to read brief System overview in order to
+understand what are the main components of system and how they communicate with each other.</p>
+<div class="section" id="preparations">
+<h2><span class="section-number">3.2.2.6.2.1. </span>Preparations<a class="headerlink" href="#preparations" title="Permalink to this heading"></a></h2>
+<p>First of all you need to connect to your Red Pitaya via SSH. Follow this instructions SSH connection or simply open
+SSH shells in Eclipse.
+After successful connection execute rw command in order to make file-system writable:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rw
+</pre></div>
+</div>
+<p>Also you need to install Git for cloning Red Pitaya project from GitHub. It will help you to manage changes.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+<p>After installing you should configure it:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;username&quot;</span>
+<span class="gp">$ </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;username@mail.com&quot;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">username</span></code> is your or any other name, and <code class="docutils literal notranslate"><span class="pre">username&#64;mail.com</span></code> is your email.</p>
+<p>When these steps are done go to root directory and clone Red Pitaya Project:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/root/
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/RedPitaya/RedPitaya.git
+</pre></div>
+</div>
+<p>Examples will be situated in “/root/RedPitaya/Examples/web-tutorial/” folder.
+All preparations were done. Let’s go!</p>
+</div>
+<div class="section" id="ecosystem-structure">
+<h2><span class="section-number">3.2.2.6.2.2. </span>Ecosystem structure<a class="headerlink" href="#ecosystem-structure" title="Permalink to this heading"></a></h2>
+<p>As you know from System overview application contains two parts. They are frontend and backend. Backend contains all
+required files for working with hardware of Red Pitaya. You can find your applications in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">redpitaya</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>This is done for ease of use all applications. All available FPGA images can be found here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">redpitaya</span><span class="o">/</span><span class="n">fpga</span>
+</pre></div>
+</div>
+<p>All libraries you may need to link your app with can be found here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">redpitaya</span><span class="o">/</span><span class="n">lib</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="project-structure">
+<h2><span class="section-number">3.2.2.6.2.3. </span>Project structure<a class="headerlink" href="#project-structure" title="Permalink to this heading"></a></h2>
+<p>Each application folder contains both frontend and backend files in same location. Using specific directory structure
+you will not have a mess between UI files and your controller. Frontend is web-based application so it requires HTML
+code for layout, CSS for elements styles, and JavaScript for application logic. Let have look on it first.
+At first you need to copy “1.template” folder to “/opt/redpitaya/www/apps” directory and rename it, for example
+“myFirstApp”.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/opt/redpitaya/www/apps
+<span class="gp">$ </span>cp<span class="w"> </span>-r<span class="w"> </span>/root/RedPitaya/Examples/web-tutorial/1.template<span class="w"> </span>./myFirstApp
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>myFirstApp
+</pre></div>
+</div>
+<p>This will be your application folder. Notice: the name of the application folder defines unique Application ID!</p>
+<p>You can edit application name &amp; description in /info/info.json file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    &quot;name&quot;: “My First App&quot;,
+    &quot;version&quot;: &quot;0.91-BUILD_NUMBER&quot;,
+    &quot;revision&quot;: &quot;REVISION&quot;,
+    &quot;description&quot;: &quot;This is my first app.&quot;
+}
+</pre></div>
+</div>
+<p>Application icon image is “/info/icon.png”. You may also change it.</p>
+<p>Modify application title in index.html file:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+ <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">meta</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Application<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/style.css&quot;</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/jquery-2.1.3.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span> <span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;hello_message&#39;</span><span class="p">&gt;</span>
+         Connecting...
+     <span class="p">&lt;</span> <span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Obviously you may want to have your own unique look of application. For that case you need to edit file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">css</span><span class="o">/</span><span class="n">style</span><span class="o">.</span><span class="n">css</span>
+</pre></div>
+</div>
+<p>By default it contains this code:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    color: #cdcccc;
+    overflow: auto;
+    margin: 0;
+}
+
+#hello_message{
+    width: 500px;
+    height: 250px;
+    margin: 0 auto;
+    background-color: #333333;
+    text-align: center;
+}
+</pre></div>
+</div>
+<p>JavaScript application establishes connection with your Red Pitaya:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">js</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>You should change application id to name of your application folder. From:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APP</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">app_id</span> <span class="o">=</span> <span class="s1">&#39;1.template&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APP</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">app_id</span> <span class="o">=</span> <span class="s1">&#39;myFirstApp&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Entry point of JS is <strong>APP.startApp().</strong> It sends request for loading application status. If status is not “OK” request
+will be sent again. If application was loaded JS application tries to connect to Red Pitaya via WebSocket calling
+<strong>APP.connectWebSocket().</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>if (window.WebSocket) {
+    APP.ws = new WebSocket(APP.config.socket_url);
+    APP.ws.binaryType = &quot;arraybuffer&quot;;
+} else if (window.MozWebSocket) {
+    APP.ws = new MozWebSocket(APP.config.socket_url);
+    APP.ws.binaryType = &quot;arraybuffer&quot;;
+} else {
+    console.log(&#39;Browser does not support WebSocket&#39;);
+}
+
+if (APP.ws) {
+
+    APP.ws.onopen = function() {
+        $(&#39;#hello_message&#39;).text(&quot;Hello, Red Pitaya!&quot;);
+        console.log(&#39;Socket opened&#39;);
+    };
+
+    APP.ws.onclose = function() {
+        console.log(&#39;Socket closed&#39;);
+    };
+
+    APP.ws.onerror = function(ev) {
+         $(&#39;#hello_message&#39;).text(&quot;Connection error&quot;);
+         console.log(&#39;Websocket error: &#39;, ev);
+    };
+
+    APP.ws.onmessage = function(ev) {
+         console.log(&#39;Message received&#39;);
+    };
+}
+</pre></div>
+</div>
+<p>First of all application checks if there is WebSocket support in browser. Then new WebSocket connection creates.
+There are four WebSocket callbacks:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>APP.ws.onopen()</strong> - called when socket connection was successfully opened</p></li>
+<li><p><strong>APP.ws.onclose()</strong> - called when socket connection was successfully closed</p></li>
+<li><p><strong>APP.ws.onerror()</strong> - called when there is an error in establishing socket connection</p></li>
+<li><p><strong>APP.ws.onmessage()</strong> - called when message was received</p></li>
+</ul>
+</div></blockquote>
+<p>Backend is a C/C++ application which controls Red Pitaya peripherals. Source code of this application is stored in src folder. It can be compiled intro controller.</p>
+<div class="line-block">
+<div class="line">Main file must contain 11 mandatory functions:</div>
+<div class="line"><strong>const char *rp_app_desc(void)</strong> - returns application description</div>
+<div class="line"><strong>int rp_app_init(void)</strong> - called when application was started</div>
+<div class="line"><strong>int rp_app_exit(void)</strong> - called when application was closed</div>
+<div class="line"><strong>int rp_set_params(rp_app_params_t *p, int len) -</strong></div>
+<div class="line"><strong>int rp_get_params(rp_app_params_t **p) -</strong></div>
+<div class="line"><strong>int rp_get_signals(float ***s, int *sig_num, int *sig_len) -</strong></div>
+<div class="line"><strong>void UpdateSignals(void)</strong> - updates signals(you should set update interval)</div>
+<div class="line"><strong>void UpdateParams(void)</strong> - updates parametes(you should set update interval)</div>
+<div class="line"><strong>void OnNewParams(void)</strong> - called when parameters were changed</div>
+<div class="line"><strong>void OnNewSignals(void)</strong> - called when signals were changed</div>
+<div class="line"><strong>void PostUpdateSignals(void)</strong> -</div>
+</div>
+<p>This functions are called by NGINX. We will add some code into this part later.</p>
+<p>Also there is a file called <strong>fpga.conf</strong>. It defines which FPGA image is loaded when application is started (FPGA images are located in /opt/redpitaya/fpga).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In OS 2.0, the fpga.conf file has become deprecated and is no longer used. The new file for loading fpga is called <strong>fpga.sh</strong>. Also, the method of loading FPGA has changed, as xdevcfg has also become deprecated and does not work on the latest versions of the linux kernel.
+See the example for more details: <a class="reference internal" href="webexamples/addLEDbut.html#abcled"><span class="std std-ref">Add a button to control LED</span></a></p>
+</div>
+</div>
+<div class="section" id="compiling-application">
+<h2><span class="section-number">3.2.2.6.2.4. </span>Compiling application<a class="headerlink" href="#compiling-application" title="Permalink to this heading"></a></h2>
+<p>To compile application run in /opt/redpitaya/www/apps/<strong>&lt;your_app_name&gt;</strong> folder on Red Pitaya:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/opt/redpitaya/www/apps/myFirstApp/
+<span class="gp">$ </span>make<span class="w"> </span><span class="nv">INSTALL_DIR</span><span class="o">=</span>/opt/redpitaya
+</pre></div>
+</div>
+<p>Compiling process will start. After comping will be created file “controller.so”. Try to connect to Red Pitaya in
+browser. Application should appear in the list.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Compiling is needed if you haven’t compile it yet or change source files. If you change only WEB files don’t recompile.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sysOver.html" class="btn btn-neutral float-left" title="3.2.2.6.1. System overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="webExamples.html" class="btn btn-neutral float-right" title="3.2.2.6.3. Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
