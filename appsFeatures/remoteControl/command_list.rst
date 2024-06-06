@@ -2476,6 +2476,7 @@ Status LEDs
 **Parameter options:**
 
 - ``<enable> = {OFF, ON}``  Default: ``ON``
+- ``<mode> = {LOOPBACK, BERR_REPORTING}``
 
 **Available Jupyter and API macros:**
 
@@ -2577,3 +2578,140 @@ Temperature protection
 | |                                   | | Python: ``rp_GetRuntimeTempAlarm(<channel>)``                             | |                                                                                  |                    |
 | |                                   | |                                                                           | |                                                                                  |                    |
 +-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
+
+
+
+.. _commands_lcr:
+
+========
+LCR mode
+========
+
+**Parameter options:**
+
+- ``<enable> = {OFF, ON}``  Default: ``ON``
+- ``<mode> = {SERIES, PARALLEL}``  Default: ``SERIES``
+- ``<ext_mode> = {LCR_EXT, CUSTOM}``  Default: ``LCR_EXT``
+- ``<ext_module_shunt> = {S10, S100, S1k, S10k, S100k, S1M}``  Default: ``S10``
+- ``<frequency> = {0 ... 62.5e6}`` (in Hertz). Default: ``1000``
+- ``<amplitude> = {-1 ... 1}`` (in Volts). Default: ``0.5``
+- ``<offset> = {-1 ... 1}`` (in Volts). Default: ``0``
+- ``<shunt> = {1 ... 100000000}`` (in Hertz). Default: ``100``
+- ``<json>`` Result of measure in JSON format
+
+**Available Jupyter and API macros:**
+
+- *(Future OS release)*
+
+
+.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| SCPI                                      | API, Jupyter                                                     | DESCRIPTION                                                                         |  ECOSYSTEM         |
++===========================================+==================================================================+=====================================================================================+====================+
+| | ``LCR:START``                           | | C: ``lcrApp_LcrRun()``                                         | | Starts the LCR processing thread and resets settings to default.                  | in dev             |
+| | Example:                                | |                                                                | | Settings for the generator need to be made after starting the thread.             |                    |
+| | ``LCR:START``                           | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:START:GEN``                       | | C: ``lcrApp_LcrReset()``                                       | | Starts the generator on out 1 with the specified settings.                        | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:START:GEN``                       | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:STOP``                            | | C: ``lcrApp_LcrStop()``                                        | | Stops the LCR thread.                                                             | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:STOP``                            | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:RESET``                           | | C: ``lcrApp_LcrReset()``                                       | | Resets default settings in LCR api.                                               | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:RESET``                           | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:MEASURE?`` > ``<json>``           | | C: ``lcrApp_LcrCopyParams(lcr_main_data_t *data)``             | | Returns calculations of the last processed data wrapped in json format.           | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:MEASURE?`` > ``{...}``            | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:FREQ <frequency>``                | | C: ``lcrApp_LcrSetFrequency(float frequency)``                 | | Sets the frequency for the generator.                                             | in dev             |
+| | Example:                                | |                                                                | | To apply all the settings you need to call the command that starts the generator. |                    |
+| | ``LCR:FREQ 1000``                       | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:FREQ?`` > ``<frequency>``         | | C: ``lcrApp_LcrGetFrequency(float *frequency)``                | | Returns the current frequency setting of the generator.                           | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:FREQ?`` > ``1000``                | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:VOLT <amplitude>``                | | C: ``lcrApp_LcrSetAmplitude(float volt)``                      | | Sets the amplitude for the generator. The default value is 0.5V.                  | in dev             |
+| | Example:                                | |                                                                | | You can set any value up to 1V.  But you need to take into account that when      |                    |
+| | ``LCR:VOLT 1000``                       | | Python:                                                        | | working with LCR, the position of the jumpers should be in the Hi-Z position.     |                    |
+| |                                         | |                                                                | | Therefore, amplitude values greater than 0.5 will not be                          |                    |
+| |                                         | |                                                                | | correct for most measurements.                                                    |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:VOLT?`` > ``<amplitude>``         | | C: ``lcrApp_LcrGetAmplitude(float *volt)``                     | | Returns the current amplitude setting.                                            | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:VOLT?`` > ``1000``                | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:VOLT:OFFS <offset>``              | | C: ``lcrApp_LcrSetOffset(float offset)``                       | | Sets the signal offset of the generator.                                          | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:VOLT:OFFS 0``                     | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:VOLT:OFFS?`` > ``<offset>``       | | C: ``lcrApp_LcrGetOffset(float *offset)``                      | | Returns the signal offset of the generator.                                       | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:VOLT:OFFS?`` > ``0``              | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:SHUNT <ext_module_shunt>``        | | C: ``lcrApp_LcrSetShunt(lcr_shunt_t shunt)``                   | | Sets the shunt on the expansion board for the LCR.                                | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:SHUNT S10``                       | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:SHUNT?`` > ``<ext_module_shunt>`` | | C: ``lcrApp_LcrGetShunt(lcr_shunt_t *shunt)``                  | | Returns the current shunt value. Even in AUTO shunt mode.                         | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:SHUNT?`` > ``S10``                | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:SHUNT:CUSTOM <shunt>``            | | C: ``lcrApp_LcrSetCustomShunt(int shunt)``                     | | Sets the shunt value when the expansion card is not in use.                       | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:SHUNT:CUSTOM 10``                 | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:SHUNT:CUSTOM?`` > ``<shunt>``     | | C: ``lcrApp_LcrGetCustomShunt(int *shunt)``                    | | Sets the shunt value when the expansion card is not in use.                       | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:SHUNT:CUSTOM?`` > ``10``          | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:SHUNT:MODE <ext_mode>``           | | C: ``lcrApp_LcrSetShuntMode(lcr_shunt_mode_t shunt_mode)``     | | Sets the usage mode. With and without expansion board.                            | in dev             |
+| | Example:                                | |                                                                | | Must be set before starting the LCR.                                              |                    |
+| | ``LCR:SHUNT:MODE LCR_EXT``              | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:SHUNT:MODE?`` > ``<ext_mode>``    | | C: ``lcrApp_LcrGetShuntMode(lcr_shunt_mode_t *shunt_mode)``    | | Returns the current shunt operation mode.                                         | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:SHUNT:MODE?`` > ``LCR_EXT``       | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:SHUNT:AUTO <enable>``             | | C: ``lcrApp_LcrSetShuntIsAuto(bool isShuntAuto)``              | | Enables or disables the automatic shunt selection mode for the expansion board.   | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:SHUNT:AUTO OFF``                  | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:CIRCUIT <mode>``                  | | C: ``lcrApp_LcrSetMeasSeries(bool series)``                    | | Sets the measuring mode to serial or parallel. Affects the parameters: L, C, R.   | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:CIRCUIT SERIES``                  | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:CIRCUIT?`` > ``<mode>``           | | C: ``lcrApp_LcrGetMeasSeries(bool *series)``                   | | Returns the measurement mode.                                                     | in dev             |
+| | Example:                                | |                                                                |                                                                                     |                    |
+| | ``LCR:CIRCUIT?`` > ``SERIES``           | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+| | ``LCR:EXT:MODULE?`` > ``<enable>``      | | C: ``lcrApp_LcrIsModuleConnected(bool *state)``                | | Returns the status of the expansion board.                                        | in dev             |
+| | Example:                                | |                                                                | | If the value is ON, the board is connected.                                       |                    |
+| | ``LCR:EXT:MODULE?`` > ``ON``            | | Python:                                                        |                                                                                     |                    |
+| |                                         | |                                                                |                                                                                     |                    |
++-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
