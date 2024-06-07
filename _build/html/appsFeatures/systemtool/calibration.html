@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.3.4. Calibration &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.4. Programming and remote-control tools" href="../remoteControl/remoteAndProg.html" />
+    <link rel="prev" title="3.3.3. Software update" href="softwareupdate.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/apps-featured.html">3.2. Applications</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="systool.html">3.3. System tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="systemInfo.html">3.3.1. System Info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="newtworkManager.html">3.3.2. Network Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="softwareupdate.html">3.3.3. Software update</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.3.4. Calibration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dc-calibration">3.3.4.1. DC Calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frequency-calibration">3.3.4.2. Frequency calibration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="systool.html"><span class="section-number">3.3. </span>System tools</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.3.4. </span>Calibration</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="calibration">
+<span id="calibration-app"></span><h1><span class="section-number">3.3.4. </span>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The calibration application does not affect the SDRlab 122-16.</p>
+</div>
+<p>To open the Calibration application click on <strong>System Tools</strong> and then select <strong>Calibration</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/Main_menu_system.jpg"><img alt="../../_images/Main_menu_system.jpg" class="align-center" src="../../_images/Main_menu_system.jpg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../../_images/Calibration_app_menu.jpg"><img alt="../../_images/Calibration_app_menu.jpg" class="align-center" src="../../_images/Calibration_app_menu.jpg" style="width: 70%;" /></a>
+<p>When the Calibration application opens, you will see four options:</p>
+<a class="reference internal image-reference" href="../../_images/Calibration_api.png"><img alt="../../_images/Calibration_api.png" class="align-center" src="../../_images/Calibration_api.png" style="width: 50%;" /></a>
+<div class="section" id="dc-calibration">
+<h2><span class="section-number">3.3.4.1. </span>DC Calibration<a class="headerlink" href="#dc-calibration" title="Permalink to this heading"></a></h2>
+<p>With the DC calibration, you can fine-tune Red Pitaya’s ADCs and DACs.</p>
+<p>Required materials:</p>
+<ul class="simple">
+<li><p>two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)</p></li>
+<li><p>two SMA T adapters</p></li>
+<li><p>Short termination</p></li>
+<li><p>Accurate Volage reference source (the more accurate the voltage source, the better the calibration)</p></li>
+<li><p>Accurate Multimeter (optional)</p></li>
+</ul>
+<div class="section" id="auto-dc-calibration">
+<h3><span class="section-number">3.3.4.1.1. </span>Auto DC calibration<a class="headerlink" href="#auto-dc-calibration" title="Permalink to this heading"></a></h3>
+<p>Auto DC calibration will guide you step-by-step through the calibration process and is the option we recommend for beginners.</p>
+<p>Step-by-step video guide:</p>
+<div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
+    <iframe src="https://www.youtube.com/embed/vLCa9oU7DMI" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div><p>The YouTube video is also available <a href="https://www.youtube.com/watch?v=vLCa9oU7DMI" target="_blank">on this link</a>.</p>
+</div>
+<div class="section" id="manual-dc-calibration">
+<h3><span class="section-number">3.3.4.1.2. </span>Manual DC calibration<a class="headerlink" href="#manual-dc-calibration" title="Permalink to this heading"></a></h3>
+<p>Manual DC calibration will let you do the calibration manually and fine-tune all the variables.
+Apart from calibration, this option will also allow you to identify any parasitics on your measurement lines.</p>
+<a class="reference internal image-reference" href="../../_images/DC_manual.jpg"><img alt="../../_images/DC_manual.jpg" class="align-center" src="../../_images/DC_manual.jpg" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p><strong>RESET</strong>:</p>
+<ul>
+<li><p><strong>DEFAULT</strong> - reset all offset values to 0 and gain values to 1</p></li>
+<li><p><strong>FACTORY</strong> - reset the board to the factory calibration parameters</p></li>
+</ul>
+</li>
+<li><p><strong>APPLY</strong> the calibration - save the DC offset in the system settings</p></li>
+<li><p><strong>CLOSE</strong> the calibration</p></li>
+</ul>
+<p>When closing the application without saving the values, the following prompt will appear:</p>
+<a class="reference internal image-reference" href="../../_images/Calib_save.png"><img alt="../../_images/Calib_save.png" class="align-center" src="../../_images/Calib_save.png" style="width: 70%;" /></a>
+<div class="section" id="adc-calibration-parameters">
+<h4><span class="section-number">3.3.4.1.2.1. </span>ADC calibration parameters<a class="headerlink" href="#adc-calibration-parameters" title="Permalink to this heading"></a></h4>
+<a class="reference internal image-reference" href="../../_images/DC_manual_ADC.jpg"><img alt="../../_images/DC_manual_ADC.jpg" class="align-center" src="../../_images/DC_manual_ADC.jpg" style="width: 70%;" /></a>
+<ol class="arabic simple">
+<li><p><strong>Voltage measurements</strong> (Mean, minimum, maximum, and peak-to-peak). Displayed in the graph with the corresponding colour.</p></li>
+<li><p><strong>Sine wave detection</strong>. Detects wheter a sine wave is present on the channel. The “x” indicates how many sine periods were detected.</p></li>
+<li><p><strong>ADC Offset</strong>. Change the offset by the number in the middle. The amount can be selected from the dropdown menu.</p></li>
+<li><p><strong>ADC Gain</strong>. Change the gain by the number in the middle. The amount can be selected from the dropdown menu.</p></li>
+<li><p><strong>LV/HV</strong>. Select the calibration voltage range. Should be the same as the input jumpers.</p></li>
+<li><p><strong>LAST/AVG</strong>. Select either the last or average voltage measurements.</p></li>
+<li><p><strong>Decimation</strong>. Select the decimation from the dropdown menu.</p></li>
+</ol>
+</div>
+<div class="section" id="dac-calibration-parameters">
+<h4><span class="section-number">3.3.4.1.2.2. </span>DAC calibration parameters<a class="headerlink" href="#dac-calibration-parameters" title="Permalink to this heading"></a></h4>
+<a class="reference internal image-reference" href="../../_images/DC_manual_DAC.jpg"><img alt="../../_images/DC_manual_DAC.jpg" class="align-center" src="../../_images/DC_manual_DAC.jpg" style="width: 70%;" /></a>
+<ol class="arabic simple">
+<li><p><strong>ON/OFF</strong>. Turn the specified output ON or OFF.</p></li>
+<li><p><strong>DAC settings</strong>. Change the output waveform (type), frequency, amplitude, and offset.</p></li>
+<li><p><strong>DAC Offset</strong>. Change the offset by the number in the middle. The amount can be selected from the dropdown menu.</p></li>
+<li><p><strong>DAC Gain</strong>. Change the gain by the number in the middle. The amount can be selected from the dropdown menu.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="frequency-calibration">
+<h2><span class="section-number">3.3.4.2. </span>Frequency calibration<a class="headerlink" href="#frequency-calibration" title="Permalink to this heading"></a></h2>
+<p>Required materials:</p>
+<ul class="simple">
+<li><p>two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)</p></li>
+<li><p>one SMA T adapter</p></li>
+<li><p>External reference function generator capable of generating at least +-10 V (Optional)</p></li>
+</ul>
+<div class="section" id="auto-frequency-calibration">
+<h3><span class="section-number">3.3.4.2.1. </span>Auto Frequency calibration<a class="headerlink" href="#auto-frequency-calibration" title="Permalink to this heading"></a></h3>
+<p>Auto Frequency calibration will guide you step-by-step through the calibration process and is the option we recommend for beginners.</p>
+<p><strong>Step-by-step guide:</strong></p>
+<p>Once the auto frequency calibration is started, you will be presented with the following window:</p>
+<a class="reference internal image-reference" href="../../_images/Calib_freq_auto_start.png"><img alt="../../_images/Calib_freq_auto_start.png" class="align-center" src="../../_images/Calib_freq_auto_start.png" style="width: 70%;" /></a>
+<p>The header columns represent the following:</p>
+<ul class="simple">
+<li><p><strong>MODE</strong> - correlates to how the jumpers should be set.</p></li>
+<li><p><strong>Channel</strong> - indicates which channel the subsequential column settings apply to.</p></li>
+<li><p><strong>Before and After</strong> - values before and after the calibration.</p></li>
+<li><p><strong>AA, BB, PP, and KK</strong> - coefficients for the filter inside the FPGA that affects the inputs. For more details, please refer to the “Manual Frequency calibration” section.</p></li>
+<li><p><strong>STATE</strong> - displays the progression of the calibration process.</p></li>
+</ul>
+<p>Please pay attention to the <strong>STATE</strong> column, as clickable buttons which progress the process will appear.</p>
+<ol class="arabic">
+<li><p><strong>LV calibration</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Calib_freq_auto_LV.png"><img alt="../../_images/Calib_freq_auto_LV.png" class="align-center" src="../../_images/Calib_freq_auto_LV.png" style="width: 70%;" /></a>
+<ul class="simple">
+<li><p>Clicking on the “START” button will provide further instructions and a choice between an internal and external reference generator:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/Calib_freq_auto_LV_int.png"><img alt="../../_images/Calib_freq_auto_LV_int.png" class="align-center" src="../../_images/Calib_freq_auto_LV_int.png" style="width: 50%;" /></a>
+<ul class="simple">
+<li><p>Please select “INTERNAL” if you do not have an external reference generator. Red Pitaya will use OUT1 to generate a 0.9 Volt 1 kHz Square signal.</p></li>
+<li><p>Set the jumpers to the LV position and connect OUT1 to IN1 and IN2 using the SMA cables and the T adapter.</p></li>
+<li><p>Click on Calibrate button to start the calibration process.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/Calib_freq_auto_LV_ext.png"><img alt="../../_images/Calib_freq_auto_LV_ext.png" class="align-center" src="../../_images/Calib_freq_auto_LV_ext.png" style="width: 50%;" /></a>
+<ul class="simple">
+<li><p>Please configure the external reference generator to produce a 1 kHz square signal and input the “reference voltage” (one-way amplitude) of the signal.</p></li>
+<li><p>Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.</p></li>
+<li><p>Click on Calibrate button to start the calibration process.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>LV calibration in progress</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Calib_freq_auto_LV_load.png"><img alt="../../_images/Calib_freq_auto_LV_load.png" class="align-center" src="../../_images/Calib_freq_auto_LV_load.png" style="width: 70%;" /></a>
+<p>Please wait until the LV calibration is finished.</p>
+</div></blockquote>
+</li>
+<li><p><strong>HV calibration</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Calib_freq_auto_HV.png"><img alt="../../_images/Calib_freq_auto_HV.png" class="align-center" src="../../_images/Calib_freq_auto_HV.png" style="width: 70%;" /></a>
+<ul class="simple">
+<li><p>Change the jumpers to the HV position and choose the generator source.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/Calib_freq_auto_HV_int.png"><img alt="../../_images/Calib_freq_auto_HV_int.png" class="align-center" src="../../_images/Calib_freq_auto_HV_int.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/Calib_freq_auto_HV_ext.png"><img alt="../../_images/Calib_freq_auto_HV_ext.png" class="align-center" src="../../_images/Calib_freq_auto_HV_ext.png" style="width: 50%;" /></a>
+<ul class="simple">
+<li><p>The external reference generator amplitude should be changed by at least a factor of 10 to a maximum of 20 Volts.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>HV calibration in progress</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Calib_freq_auto_HV_load.png"><img alt="../../_images/Calib_freq_auto_HV_load.png" class="align-center" src="../../_images/Calib_freq_auto_HV_load.png" style="width: 70%;" /></a>
+<ul class="simple">
+<li><p>Please wait until the HV calibration is finished.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Save calibration values</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Calib_freq_auto_save.png"><img alt="../../_images/Calib_freq_auto_save.png" class="align-center" src="../../_images/Calib_freq_auto_save.png" style="width: 70%;" /></a>
+</div></blockquote>
+</li>
+<li><p><strong>Finish the calibration</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Calib_freq_auto_complete.png"><img alt="../../_images/Calib_freq_auto_complete.png" class="align-center" src="../../_images/Calib_freq_auto_complete.png" style="width: 70%;" /></a>
+<ul class="simple">
+<li><p>Clicking on the “DONE” button will return you to the starting screen of the Calibration application.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="manual-frequency-calibration">
+<h3><span class="section-number">3.3.4.2.2. </span>Manual Frequency calibration<a class="headerlink" href="#manual-frequency-calibration" title="Permalink to this heading"></a></h3>
+<p>Manual Frequency calibration will let you do the calibration manually and fine-tune all the variables.
+Apart from calibration, this option will also allow you to identify any parasitics on your measurement lines.</p>
+<a class="reference internal image-reference" href="../../_images/Calib_freq_manual.jpg"><img alt="../../_images/Calib_freq_manual.jpg" class="align-center" src="../../_images/Calib_freq_manual.jpg" style="width: 70%;" /></a>
+<ul class="simple">
+<li><p><strong>SETTINGS MENU</strong> - <em>APPLY</em> the calibration parameters, restore the <em>DEFAULT</em> parameters, or <em>CLOSE</em> the manual frequency calibration.</p></li>
+<li><p><strong>CHANNEL &amp; JUMPER SETTINGS</strong> - Choose a channel and voltage range (LV or HV depending on the jumper settings) to calibrate.</p></li>
+<li><p><strong>CALIBRATION PARAMETERS</strong> - Choose between <em>DEC</em> and <em>HEX</em> values, click on <em>AUTO</em> to perform an automatic frequency calibration, and input the FPGA filter coefficients.</p></li>
+<li><p><strong>GENERATOR SETTINGS</strong> - Turn the internal generator (OUT1) <em>ON</em> and <em>OFF</em>. The frequency, one-way amplitude, and offset cannot be changed.</p></li>
+<li><p><strong>DECIMATION &amp; HYSTERESIS</strong> - Change the decimation and hysteresis.</p></li>
+<li><p><strong>EDGE ZOOM</strong> - Zoom in on the square waveform edge for better calibration.</p></li>
+<li><p><strong>CURSORS</strong> - Can be moved to observe the positive or negative edge, and the white area in-between represents the zoom-in area.</p></li>
+</ul>
+<p>Here is a MATLAB code to simulate the filter inside the FPGA:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clc</span>
+<span class="nb">close</span><span class="w"> </span><span class="nb">all</span>
+<span class="nb">clear</span>
+
+<span class="n">aa_hex</span><span class="p">=</span><span class="s">&#39;7D93&#39;</span>
+<span class="n">bb_hex</span><span class="p">=</span><span class="s">&#39;437C7&#39;</span>
+<span class="n">pp_hex</span><span class="p">=</span><span class="s">&#39;2666&#39;</span>
+<span class="n">kk_hex</span><span class="p">=</span><span class="s">&#39;D9999A&#39;</span>
+
+<span class="n">aa</span><span class="p">=</span><span class="nb">hex2dec</span><span class="p">(</span><span class="n">aa_hex</span><span class="p">)</span>
+<span class="n">bb</span><span class="p">=</span><span class="nb">hex2dec</span><span class="p">(</span><span class="n">bb_hex</span><span class="p">)</span>
+<span class="n">pp</span><span class="p">=</span><span class="nb">hex2dec</span><span class="p">(</span><span class="n">pp_hex</span><span class="p">)</span>
+<span class="n">kk</span><span class="p">=</span><span class="nb">hex2dec</span><span class="p">(</span><span class="n">kk_hex</span><span class="p">)</span>
+
+<span class="c">% H[z]=K*(z-B) / (z^4*(z-P) * (z-A))</span>
+<span class="c">% where:</span>
+<span class="c">% K=KK/2^24</span>
+<span class="c">% B=1-(BB/2^28)</span>
+<span class="c">% P=PP/2^16</span>
+<span class="c">% A=1-(AA/2^25)</span>
+
+<span class="n">fs</span><span class="p">=</span><span class="mf">125e6</span><span class="p">;</span>
+<span class="n">f</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="mf">1e3</span><span class="p">:</span><span class="n">fs</span><span class="p">;</span>
+
+<span class="n">z</span><span class="p">=</span><span class="nb">exp</span><span class="p">(</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">/</span><span class="n">fs</span><span class="p">);</span>
+
+<span class="n">k</span><span class="p">=</span><span class="n">kk</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span>^<span class="mi">24</span><span class="p">);</span>
+<span class="n">b</span><span class="p">=</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">bb</span><span class="o">/</span><span class="mi">2</span>^<span class="mi">28</span><span class="p">);</span>
+<span class="n">p</span><span class="p">=</span><span class="n">pp</span><span class="o">/</span><span class="mi">2</span>^<span class="mi">16</span><span class="p">;</span>
+<span class="n">a</span><span class="p">=</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">aa</span><span class="o">/</span><span class="mi">2</span>^<span class="mi">25</span><span class="p">);</span>
+
+<span class="n">h</span><span class="p">=</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="n">z</span><span class="o">.^</span><span class="mi">4</span><span class="o">.*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">.*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">a</span><span class="p">));</span>
+
+<span class="c">%figure</span>
+<span class="c">%plot(f,20*log10(abs(h)))</span>
+<span class="nb">figure</span>
+<span class="nb">semilogx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h</span><span class="p">)))</span>
+<span class="nb">title</span><span class="p">(</span><span class="nb">strcat</span><span class="p">(</span><span class="s">&#39;Frequency response for AA=&#39;</span><span class="p">,</span><span class="n">aa_hex</span><span class="p">,</span><span class="s">&#39; BB=&#39;</span><span class="p">,</span><span class="n">bb_hex</span><span class="p">,</span><span class="s">&#39; PP=&#39;</span><span class="p">,</span><span class="n">pp_hex</span><span class="p">,</span><span class="s">&#39; KK=&#39;</span><span class="p">,</span><span class="n">kk_hex</span><span class="p">))</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;gain (dB)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="softwareupdate.html" class="btn btn-neutral float-left" title="3.3.3. Software update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../remoteControl/remoteAndProg.html" class="btn btn-neutral float-right" title="3.4. Programming and remote-control tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

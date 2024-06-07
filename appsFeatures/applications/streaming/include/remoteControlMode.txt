@@ -1,0 +1,17 @@
+rpsa_client.exe -r -h IPs [-p PORT] -m start|stop|start_stop|start_dac|stop_dac|start_stop_dac [-t MSEC] [-v]
+rpsa_client.exe --remote --hosts=IPs [--port=PORT] --mode=start|stop|start_stop|start_dac|stop_dac|start_stop_dac [--timeout=MSEC] [--verbose]
+
+--remote               -r           Enable remote control mode.
+--hosts=IP,...         -h IP,...    You can specify one or more board IP addresses through a separator - ','
+                                    Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                              -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+--port=PORT            -p PORT      Port for configuration server (Default: 8901).
+--mode=MODE            -m MODE      Commands for managing servers.
+                                     Keys: start = Starts the server.
+                                           stop = Stop the server.
+                                           start_stop = Sends a start command at the end of the timeout sends a stop command.
+                                           start_dac = Starts the DAC server.
+                                           stop_dac = Stop the DAC server.
+                                           start_stop_dac = Sends a start command at the end of the timeout sends a stop command for DAC mode.
+--timeout=MSEC         -t MSEC      Timeout (Default: 1000 ms). Used only in conjunction with the start_stop command.
+--verbose              -v           Displays service information.

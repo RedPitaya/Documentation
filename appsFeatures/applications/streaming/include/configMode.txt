@@ -1,0 +1,20 @@
+rpsa_client.exe -c -h IPs [-p PORT] -g V|VV|F [-v]
+rpsa_client.exe -c -h IPs [-p PORT] -s M|F [-f FILE] [-v]
+rpsa_client.exe --config --hosts=IPs [--port=PORT] --get=V|VV|F [--verbose]
+rpsa_client.exe --config --hosts=IPs [--port=PORT] --set=M|F [--config_file=FILE] [--verbose]
+
+--config               -c           Enable config mode.
+--hosts=IP,...         -h IP,...    You can specify one or more board IP addresses through a separator - ','
+                                    Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                              -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+--port=PORT            -p PORT      Port for configuration server (Default: 8901).
+--get=V|V1|VV|F        -g V|V1|VV|F Requests configurations from all boards.
+                                    Keys: V  = Displays on the screen in json format.
+                                          V1 = Displays on the screen in json format (only data).
+                                          VV = Displays on the screen in a format with decoding values.
+                                          F  = Saves to a config files.
+--set=M|F              -s M|F       Sets configurations for all boards.
+                                    Keys: M  = Sets values only to memory without saving to file.
+                                          F  = Sets configuration and saves to file on remote boards.
+--config_file=FILE     -f FILE      Configuration file for setting values on boards (Default: config.json).
+--verbose              -v           Displays service information.

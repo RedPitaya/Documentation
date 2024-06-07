@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.5. Command-line tools &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.5.9.1. Saving data buffers" href="clt_other.html" />
+    <link rel="prev" title="3.4.7. Known SCPI &amp; API issues and changes by OS version" href="../remoteControl/knownIssues.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/apps-featured.html">3.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.5. Command-line tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#signal-generator-utility">3.5.1. Signal generator utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signal-acquisition-utility">3.5.2. Signal acquisition utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor-utility">3.5.3. Monitor utility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-system-registers">3.5.3.1. Accessing system registers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-fpga-registers">3.5.3.2. Accessing FPGA registers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bode-analyzer">3.5.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lcr-meter">3.5.5. LCR meter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streaming-application">3.5.6. Streaming application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#led-enable-disable-utility">3.5.7. LED enable/disable utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration-utility">3.5.8. Calibration utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-useful-information-related-to-command-line-tools">3.5.9. Other useful information related to command-line tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="clt_other.html">3.5.9.1. Saving data buffers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.5. </span>Command-line tools</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="command-line-tools">
+<span id="com-line-tools"></span><h1><span class="section-number">3.5. </span>Command-line tools<a class="headerlink" href="#command-line-tools" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Command-line utilities must not be used in parallel with a WEB application.</p>
+<p>For correct operation of the acquire, generate, and monitor tools, the correct FPGA image must be loaded. Please note that some applications can change the FPGA image loaded.
+To load the FPGA image, open a terminal on the Red Pitaya and execute the following command:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-0-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; cat /opt/redpitaya/fpga/fpga_0.94.bit &gt; /dev/xdevcfg</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; overlay.sh v0.94</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#signal-generator-utility" id="id1">Signal generator utility</a></p></li>
+<li><p><a class="reference internal" href="#signal-acquisition-utility" id="id2">Signal acquisition utility</a></p></li>
+<li><p><a class="reference internal" href="#monitor-utility" id="id3">Monitor utility</a></p></li>
+<li><p><a class="reference internal" href="#bode-analyzer" id="id4">Bode Analyzer</a></p></li>
+<li><p><a class="reference internal" href="#lcr-meter" id="id5">LCR meter</a></p></li>
+<li><p><a class="reference internal" href="#streaming-application" id="id6">Streaming application</a></p></li>
+<li><p><a class="reference internal" href="#led-enable-disable-utility" id="id7">LED enable/disable utility</a></p></li>
+<li><p><a class="reference internal" href="#calibration-utility" id="id8">Calibration utility</a></p></li>
+<li><p><a class="reference internal" href="#other-useful-information-related-to-command-line-tools" id="id9">Other useful information related to command-line tools</a></p></li>
+</ul>
+</div>
+<div class="section" id="signal-generator-utility">
+<span id="sig-gen-util"></span><h2><span class="section-number">3.5.1. </span>Signal generator utility<a class="headerlink" href="#signal-generator-utility" title="Permalink to this heading"></a></h2>
+<p>The Red Pitaya signal generator can be controlled through the <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Test/generate" target="_blank">generate</a> command line utility.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" role="tab" tabindex="0">OS version 0.99 or older</button><button aria-controls="panel-1-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" name="T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" role="tab" tabindex="-1">OS version 1.00-1.04</button><button aria-controls="panel-1-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-1-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; generate</span>
+<span class="go">generate version 0.90-299-1278</span>
+
+<span class="go">Usage: generate   channel amplitude frequency &lt;type&gt;</span>
+
+<span class="go">    channel     Channel to generate a signal on [1, 2].</span>
+<span class="go">    amplitude   Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].</span>
+<span class="go">    frequency   Signal frequency in Hz [0.0 - 6.2e+07].</span>
+<span class="go">    type        Signal type [sine, sqr, tri].</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" name="T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; generate</span>
+<span class="go">generate version 1.00-35-25a03ad-25a03ad</span>
+
+<span class="go">Usage: generate channel amplitude frequency &lt;gain&gt; &lt;type&gt; &lt;end frequency&gt; &lt;calib&gt;</span>
+
+<span class="go">    channel         Channel to generate a signal on [1, 2].</span>
+<span class="go">    amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].</span>
+<span class="go">    frequency       Signal frequency in Hz [0.00 - 1.2e+08].</span>
+<span class="go">    gain            Gain output value [x1, x5] (default value x1).</span>
+<span class="go">    type            Signal type [sine, sqr, tri, sweep].</span>
+<span class="go">    end frequency   Sweep-to frequency in Hz [0.00 - 1.2e+08].</span>
+<span class="go">    calib           Disable calibration [-c]. By default calibration enabled</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f0a235:~# </span>generate
+<span class="go">generate version 2.00-0-6181e0263</span>
+
+<span class="go">Usage: generate   channel amplitude frequency &lt;type&gt; &lt;end frequency&gt; &lt;calib&gt; &lt;debug&gt;</span>
+
+<span class="go">        channel         Channel to generate signal on [1, 2].</span>
+<span class="go">        amplitude       Peak-to-peak signal amplitude in Vpp [0.0 - 2.0].</span>
+<span class="go">        frequency       Signal frequency in Hz [0 - 62500000].</span>
+<span class="go">        type            Signal type [sine, sqr, tri, sweep, dc].</span>
+<span class="go">        end frequency   Sweep-to frequency in Hz [0 - 62500000].</span>
+<span class="go">        calib           Disable calibration [-c]. By default calibration enabled.</span>
+<span class="go">        debug           Debug FPGA registers [-d].</span>
+
+<span class="go">Setting the frequency to 0 will disable the generator completely.</span>
+</pre></div>
+</div>
+</div></div>
+<p>The performance of the signal generator differs from one Red Pitaya model to another. For more information, please refer to the <a class="reference internal" href="../../developerGuide/hardware/compares/vs.html#rp-board-comp"><span class="std std-ref">Red Pitaya boards comparison</span></a>.</p>
+</div>
+<div class="section" id="signal-acquisition-utility">
+<span id="sig-acq-util"></span><h2><span class="section-number">3.5.2. </span>Signal acquisition utility<a class="headerlink" href="#signal-acquisition-utility" title="Permalink to this heading"></a></h2>
+<p>The signal from Red Pitaya can be acquired through the <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Test/acquire" target="_blank">acquire</a> command line utility. It will return raw samples from the ADC buffer to standard output with no calibration compensation. Usage instructions:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-2-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" role="tab" tabindex="0">OS version 0.99 or older</button><button aria-controls="panel-2-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" name="T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" role="tab" tabindex="-1">OS version 1.00-1.04</button><button aria-controls="panel-2-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-2-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-2-T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAwLjk5IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; acquire</span>
+<span class="go">acquire version 0.90-299-1278</span>
+
+<span class="go">Usage: acquire  size &lt;dec&gt;</span>
+
+<span class="go">    size     Number of samples to acquire [0 - 16384].</span>
+<span class="go">    dec      Decimation [1,8,64,1024,8192,65536] (default=1).</span>
+</pre></div>
+</div>
+<p>Example (acquire 1024 samples with decimation 8):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; acquire 1024 8</span>
+<span class="go">    -148     -81</span>
+<span class="go">    -143     -84</span>
+<span class="go">    -139     -88</span>
+<span class="go">    -134     -82</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" name="T1MgdmVyc2lvbiAxLjAwLTEuMDQ=" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; acquire</span>
+
+<span class="go">Usage: acquire [OPTION]... SIZE &lt;DEC&gt;</span>
+
+<span class="go">    --equalization  -e    Use equalization filter in FPGA (default: disabled).</span>
+<span class="go">    --shaping       -s    Use shaping filter in FPGA (default: disabled).</span>
+<span class="go">    --atten1=a      -1 a  Use Channel 1 attenuator setting a [1, 20] (default: 1).</span>
+<span class="go">    --atten2=a      -2 a  Use Channel 2 attenuator setting a [1, 20] (default: 1).</span>
+<span class="go">    --dc=c          -d c  Enable DC mode. Setting c use for channels [1, 2, B(Both channels)].</span>
+<span class="go">                            By default, AC mode is turned on.</span>
+<span class="go">    --tr_ch=c       -t c  Enable trigger by channel. Setting c use for channels [1P, 1N, 2P, 2N, EP (external channel), EN (external channel)].</span>
+<span class="go">                            P - positive edge, N -negative edge. By default trigger no set</span>
+<span class="go">    --tr_level=c    -l c  Set trigger level (default: 0).</span>
+<span class="go">    --version       -v    Print version info.</span>
+<span class="go">    --help          -h    Print this message.</span>
+<span class="go">    --hex           -x    Print value in hex.</span>
+<span class="go">    --volt          -o    Print value in volt.</span>
+<span class="go">    --no_reg        -r    Disable load registers config for DAC and ADC.</span>
+<span class="go">    --calib         -c    Disable calibration parameters</span>
+<span class="go">        SIZE                Number of samples to acquire [0 - 16384].</span>
+<span class="go">        DEC                 Decimation [1,2,4,8,16,...] (default: 1). Valid values are from 1 to 65536</span>
+</pre></div>
+</div>
+<p>Example (acquire 1024 samples with decimation 8, ch1 with at 1:20, results displayed in voltage):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; acquire 1024 8 -1 20 -o</span>
+<span class="go">    -0.175803   0.000977</span>
+<span class="go">    0.021975    0.001099</span>
+<span class="go">    -0.075693   0.000977</span>
+<span class="go">    -0.190453   0.001099</span>
+<span class="go">    0.004883    0.001221</span>
+<span class="go">    -0.046392   0.001099</span>
+<span class="go">    -0.200220   0.000977</span>
+<span class="go">    -0.014650   0.001099</span>
+<span class="go">    -0.019534   0.001099</span>
+<span class="go">    -0.195336   0.000977</span>
+<span class="go">    -0.041509   0.001099</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; acquire</span>
+<span class="go">acquire Version: 2.00-15-5e06f6363</span>
+
+<span class="go">Usage: acquire [OPTION]... SIZE &lt;DEC&gt;</span>
+
+<span class="go">--equalization  -e    Use equalization filter in FPGA (default: disabled).</span>
+<span class="go">--shaping       -s    Use shaping filter in FPGA (default: disabled).</span>
+<span class="go">--gain1=g       -1 g  Use Channel 1 gain setting g [lv, hv] (default: lv).</span>
+<span class="go">--gain2=g       -2 g  Use Channel 2 gain setting g [lv, hv] (default: lv).</span>
+<span class="go">--tr_ch=c       -t c  Enable trigger by channel. Setting c use for channels [1P, 1N, 2P, 2N, EP (external channel), EN (external channel)].</span>
+<span class="go">                        P - positive edge, N -negative edge. By default trigger no set</span>
+<span class="go">--tr_level=c    -l c  Set trigger level (default: 0).</span>
+<span class="go">--version       -v    Print version info.</span>
+<span class="go">--help          -h    Print this message.</span>
+<span class="go">--hex           -x    Print value in hex.</span>
+<span class="go">--volt          -o    Print value in volt.</span>
+<span class="go">--calib         -c    Disable calibration parameters</span>
+<span class="go">--hk            -k    Reset houskeeping (Reset state for GPIO). Default: disabled</span>
+<span class="go">    SIZE                Number of samples to acquire [0 - 16384].</span>
+<span class="go">    DEC                 Decimation [1,2,4,8,16,...] (default: 1). Valid values are from 1 to 65536</span>
+</pre></div>
+</div>
+<p>Example (acquire 1024 samples with decimation 8, ch1 with at 1:20, results displayed in voltage):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; acquire 1024 8 -1 20 -o</span>
+<span class="go">    -0.175803   0.000977</span>
+<span class="go">    0.021975    0.001099</span>
+<span class="go">    -0.075693   0.000977</span>
+<span class="go">    -0.190453   0.001099</span>
+<span class="go">    0.004883    0.001221</span>
+<span class="go">    -0.046392   0.001099</span>
+<span class="go">    -0.200220   0.000977</span>
+<span class="go">    -0.014650   0.001099</span>
+<span class="go">    -0.019534   0.001099</span>
+<span class="go">    -0.195336   0.000977</span>
+<span class="go">    -0.041509   0.001099</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+</div></div>
+<p>The performance of the acquisition tool differs from one Red Pitaya model to another.
+Please see the <a class="reference internal" href="../../developerGuide/hardware/compares/vs.html#rp-board-comp"><span class="std std-ref">Red Pitaya boards comparison</span></a> for more information.</p>
+</div>
+<div class="section" id="monitor-utility">
+<span id="monitor-util"></span><h2><span class="section-number">3.5.3. </span>Monitor utility<a class="headerlink" href="#monitor-utility" title="Permalink to this heading"></a></h2>
+<div class="section" id="accessing-system-registers">
+<h3><span class="section-number">3.5.3.1. </span>Accessing system registers<a class="headerlink" href="#accessing-system-registers" title="Permalink to this heading"></a></h3>
+<p>The system registers can be accessed through the <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Test/monitor" target="_blank">monitor</a> utility. Usage instructions:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-3-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-3-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-3-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-3-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt;  monitor</span>
+<span class="go">monitor version 1.03-0-ab43ad0-ab43ad0</span>
+
+<span class="go">Usage:</span>
+<span class="go">    read addr: address</span>
+<span class="go">    write addr: address value</span>
+<span class="go">    read analog mixed signals: -ams</span>
+<span class="go">    set slow DAC: -sdac AO0 AO1 AO2 AO3 [V]</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">monitor version 2.00-15-5e06f6363</span>
+
+<span class="go">Usage:</span>
+<span class="go">    read addr: address</span>
+<span class="go">    write addr: address value</span>
+<span class="go">    read analog mixed signals: -ams</span>
+<span class="go">    set slow DAC: -sdac AO0 AO1 AO2 AO3 [V]</span>
+<span class="go">    Show current profile: -p</span>
+<span class="go">    Show all profiles: -pa</span>
+<span class="go">    Print fpga version: -f</span>
+<span class="go">    Print model name: -n</span>
+<span class="go">    Print model id: -i</span>
+</pre></div>
+</div>
+</div></div>
+<p>Example (system register reading):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; monitor -ams</span>
+<span class="gp">#</span>ID<span class="w">         </span>Desc<span class="w">            </span>Raw<span class="w">                 </span>Val
+<span class="go">0           Temp(0C-85C)    0x00000b12          75.670</span>
+<span class="go">1           AI0(0-3.5V)     0x00000008          0.014</span>
+<span class="go">2           AI1(0-3.5V)     0x00000017          0.039</span>
+<span class="go">3           AI2(0-3.5V)     0x00000008          0.014</span>
+<span class="go">4           AI3(0-3.5V)     0x00000006          0.010</span>
+<span class="go">5           AI4(5V0)        0x000004f9          3.800</span>
+<span class="go">6           VCCPINT(1V0)    0x0000055e          1.006</span>
+<span class="go">7           VCCPAUX(1V8)    0x00000995          1.797</span>
+<span class="go">8           VCCBRAM(1V0)    0x00000561          1.009</span>
+<span class="go">9           VCCINT(1V0)     0x00000561          1.009</span>
+<span class="go">10          VCCAUX(1V8)     0x00000997          1.798</span>
+<span class="go">11          VCCDDR(1V5)     0x00000806          1.504</span>
+<span class="go">12          AO0(0-1.8V)     0x0000000f          0.173</span>
+<span class="go">13          AO1(0-1.8V)     0x0000004e          0.900</span>
+<span class="go">14          AO2(0-1.8V)     0x00000075          1.350</span>
+<span class="go">15          AO3(0-1.8V)     0x0000009c          1.800</span>
+</pre></div>
+</div>
+<p>You can find a more detailed description of the above-mentioned pins <a class="reference internal" href="../../developerGuide/hardware/125-14/extent.html#e1"><span class="std std-ref">here</span></a>.
+The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –SADC switch:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; monitor -sdac 0.9 0.8 0.7 0.6</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="accessing-fpga-registers">
+<h3><span class="section-number">3.5.3.2. </span>Accessing FPGA registers<a class="headerlink" href="#accessing-fpga-registers" title="Permalink to this heading"></a></h3>
+<p>Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the
+<a class="reference internal" href="../../developerGuide/software/build/fpga/fpga.html#fpga-registers"><span class="std std-ref">Red Pitaya HDL memory map</span></a> document (please make sure to reference the correct OS version). The registers can be accessed using the described monitor utility.
+For example, the following sequence of monitor commands checks modifies, and verifies the acquisition decimation parameter (at address 0x40100014):</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; monitor 0x40100014</span>
+<span class="go">0x00000001</span>
+<span class="go">redpitaya&gt;</span>
+<span class="go">redpitaya&gt; monitor 0x40100014 0x8</span>
+<span class="go">redpitaya&gt; monitor 0x40100014</span>
+<span class="go">0x00000008</span>
+<span class="go">redpitaya&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CPU algorithms communicate with the FPGA through these registers. Therefore, the user should be aware of possible interference with Red Pitaya applications which are reading or acting upon these same FPGA registers. For simple tasks, however, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.</p>
+</div>
+</div>
+</div>
+<div class="section" id="bode-analyzer">
+<span id="bode-util"></span><h2><span class="section-number">3.5.4. </span>Bode Analyzer<a class="headerlink" href="#bode-analyzer" title="Permalink to this heading"></a></h2>
+<p>The Bode Analyzer can be used from the console.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The preparation of the environment can be found in this <a class="reference internal" href="../applications/bode/bode.html#bode-app"><span class="std std-ref">chapter</span></a>.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; bode</span>
+<span class="go">Too few arguments!</span>
+
+<span class="go">Bode analyzer version 1.04-133-feaf63b43, compiled at Fri Jan 22 04:25:24 2021</span>
+
+<span class="go">Usage:       bode [channel] [amplitude] [dc bias] [averaging] [count/steps] [start freq] [stop freq] [scale type]</span>
+<span class="go">or</span>
+<span class="go">   bode -calib</span>
+
+<span class="go">   channel            Channel to generate a signal on [1 / 2].</span>
+<span class="go">   amplitude          Signal amplitude in V [0 - 1, which means max 2Vpp].</span>
+<span class="go">   dc bias            DC bias/offset/component in V [0 - 1].</span>
+<span class="go">                     Max sum of amplitude and DC bias is (0-1]V.</span>
+<span class="go">   averaging          Number of samples per measurement [&gt;1].</span>
+<span class="go">   count/steps        Number of measurements [&gt;2].</span>
+<span class="go">   start freq         Lower frequency limit in Hz [3 - 62.5e6].</span>
+<span class="go">   stop freq          Upper frequency limit in Hz [3 - 62.5e6].</span>
+<span class="go">   scale type         0 - linear, 1 - logarithmic.</span>
+<span class="go">   -calib             Starts calibration mode. The calibration values will be saved in:/tmp/ba_calib.data</span>
+<span class="go">Output:      frequency [Hz], phase [deg], amplitude [dB]</span>
+</pre></div>
+</div>
+<p>To run the bode, you need to do 2 steps:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Load the FPGA image of streaming</p>
+<blockquote>
+<div><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-4-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-4-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-4-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-4-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; cat /opt/redpitaya/fpga/fpga_0.94.bit &gt; /dev/xdevcfg</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; overlay.sh v0.94</span>
+</pre></div>
+</div>
+</div></div>
+</div></blockquote>
+</li>
+<li><p>Launch a console application.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f09508:~# </span>bode<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="m">100000</span><span class="w"> </span><span class="m">0</span>
+<span class="go">1000.00     0.00025    0.34855</span>
+<span class="go">12000.00    0.00090    0.34481</span>
+<span class="go">23000.00    0.00209    0.32803</span>
+<span class="go">34000.00    0.00859    0.33696</span>
+<span class="go">45000.00    0.00335    0.26568</span>
+<span class="go">56000.00    -0.00580   0.38830</span>
+<span class="go">67000.00    -0.01751   0.36922</span>
+<span class="go">78000.00    0.00635    0.32767</span>
+<span class="go">89000.00    0.00521    0.38478</span>
+<span class="go">100000.00   -0.00933   0.36610</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="lcr-meter">
+<span id="lcr-util"></span><h2><span class="section-number">3.5.5. </span>LCR meter<a class="headerlink" href="#lcr-meter" title="Permalink to this heading"></a></h2>
+<p>The LCR meter can be used from the console.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The preparation of the environment can be found in this <a class="reference internal" href="../applications/lcr_meter/lcr_meter.html#lrc-app"><span class="std std-ref">chapter</span></a>.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f0a235:~# </span>lcr
+<span class="go">Too few arguments!</span>
+
+<span class="go">LCR meter version 2.00-0, compiled at Sat Mar 30 05:03:52 2024</span>
+
+<span class="go">Usage:  lcr freq r_shunt [-v]</span>
+
+<span class="go">        freq               Signal frequency used for measurement Hz.</span>
+<span class="go">        r_shunt            Shunt resistor value in Ohms [ 10, 100, 1000, 10000, 100000, 1000000 ]. If set to 0, Automatic ranging is used.</span>
+<span class="go">        -v                 Verbose mode</span>
+<span class="go">                        Automatic ranging demands Extenson module.</span>
+
+<span class="go">Output: Frequency [Hz], |Z| [Ohm], P [deg], Ls [H], Cs [F], Rs [Ohm], Lp [H], Cp [F], Rp [Ohm], Q, D, Xs [H], Gp [S], Bp [S], |Y| [S], -P [deg]</span>
+</pre></div>
+</div>
+<p>To run the LCR meter, perform the following three steps:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>When not using the <a class="reference internal" href="../applications/lcr_meter/lcr_meter.html#lrc-app"><span class="std std-ref">LCR meter extension shield</span></a>. Connect the shunt resistor and the DUT (device under test) according to the schematic below:</p>
+<blockquote>
+<div><div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/600px-Impedance_analyzer_manaul_R_Shunt1.png"><img alt="../../_images/600px-Impedance_analyzer_manaul_R_Shunt1.png" src="../../_images/600px-Impedance_analyzer_manaul_R_Shunt1.png" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Load the default FPGA image</p>
+<blockquote>
+<div><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-5-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-5-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-5-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-5-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; cat /opt/redpitaya/fpga/fpga_0.94.bit &gt; /dev/xdevcfg</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; overlay.sh v0.94</span>
+</pre></div>
+</div>
+</div></div>
+</div></blockquote>
+</li>
+<li><p>Launch the console application.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f01c35:~# </span>lcr<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">100000</span><span class="w"> </span>-v
+<span class="go">Frequency       100 Hz</span>
+<span class="go">Z       5.424000 kOmh</span>
+<span class="go">Phase   1.364216 deg</span>
+<span class="go">L(s)    205.533997 mH</span>
+<span class="go">C(s)    -12.324000 uF</span>
+<span class="go">R(s)    5.422000 kOmh</span>
+<span class="go">L(p)    0.000000 H</span>
+<span class="go">C(p)    0.000000 F</span>
+<span class="go">R(p)    5.425000 kOmh</span>
+<span class="go">Q       0.023815</span>
+<span class="go">D       -41.991112</span>
+<span class="go">X_s     129.141129</span>
+<span class="go">G_p     0.000184</span>
+<span class="go">B_p     0.000000</span>
+<span class="go">|Y|     0.000184</span>
+<span class="go">-P_Y    -1.364216 deg</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="streaming-application">
+<span id="stream-util"></span><h2><span class="section-number">3.5.6. </span>Streaming application<a class="headerlink" href="#streaming-application" title="Permalink to this heading"></a></h2>
+<p>The server for streaming can be started not only using the web interface but also through the command line.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f07167:/# </span>streaming-server
+<span class="go">Missing parameters: Configuration file</span>
+<span class="go">Usage: streaming-server</span>
+<span class="go">        -b run service in the background</span>
+<span class="go">        -c path to the config file</span>
+</pre></div>
+</div>
+<p>To start the server, you need to do 3 steps:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Load the FPGA image for streaming</p>
+<blockquote>
+<div><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-6-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-6-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-6-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-6-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; cat /opt/redpitaya/fpga/fpga_streaming.bit &gt; /dev/xdevcfg</span>
+<span class="go">redpitaya&gt; /opt/redpitaya/sbin/mkoverlay.sh stream_app</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-6-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; overlay.sh stream_app</span>
+</pre></div>
+</div>
+</div></div>
+</div></blockquote>
+</li>
+<li><p>Prepare a configuration file.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In version 2.00, the configuration file has been moved to a new location: <strong>/root/.config/redpitaya/apps/streaming/streaming_config.json</strong></p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Launch the console application.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f07167:/# </span>streaming-server<span class="w"> </span>-c<span class="w"> </span>/root/.streaming_config
+<span class="go">streaming-server started</span>
+<span class="go">Lost rate: 0 / 763 (0 %)</span>
+<span class="go">Lost rate: 0 / 766 (0 %)</span>
+<span class="go">Lost rate: 0 / 766 (0 %)</span>
+<span class="go">Lost rate: 0 / 766 (0 %)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+<p>The configuration for streaming is automatically created and saved in the file: <strong>/root/.streaming_config</strong> during the editing of the parameters in the web application.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any changes to the web application will automatically modify the configuration file. If you want to save the configuration, then make a copy of the file.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The server can be started in the background. To do this, use the -b parameter. In this mode, the application can be used as a service at system startup. Service information from the application is saved in the syslog file (by default, the Syslog is not installed on RP).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Streaming always creates two files:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The first stores of streamed data</p></li>
+<li><p>The second stores the data transfer report</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Streaming app sources are available here: <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming app</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. You can also build a version from source files under Mac OS using <a class="reference internal" href="../../developerGuide/software/build/comStreaming.html#comstreaming"><span class="std std-ref">QT Creator</span></a>.</p>
+</div>
+</div>
+<div class="section" id="led-enable-disable-utility">
+<span id="led-util"></span><h2><span class="section-number">3.5.7. </span>LED enable/disable utility<a class="headerlink" href="#led-enable-disable-utility" title="Permalink to this heading"></a></h2>
+<p>The Red Pitaya LED indications can be enabled or disabled through the led_control command-line utility. Disabling LEDs is important for applications where the noise level needs to be reduced to its minimum.</p>
+<p>Use instructions:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f09508:~# </span>led_control
+
+<span class="go">Usage: led_control -y[=State] | -r[=State] | -e [=State]</span>
+
+<span class="go">    -y    9 Yellow LED. Responsible for the status of reading the memory card.</span>
+<span class="go">    -r    Red LED, which is responsible for the heartbeat.</span>
+<span class="go">    -e    LEDs on the ethernet connector.</span>
+
+<span class="go">Optional parameter:</span>
+<span class="go">    State = [Off | On]  Turns LEDs on or off</span>
+</pre></div>
+</div>
+<p>To disable the LEDs:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f09508:~# </span>led_control<span class="w"> </span>-y<span class="o">=</span>Off<span class="w"> </span>-e<span class="o">=</span>Off<span class="w"> </span>-r<span class="o">=</span>Off
+</pre></div>
+</div>
+<p>To enable the LEDs:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f09508:~# </span>led_control<span class="w"> </span>-y<span class="o">=</span>On<span class="w"> </span>-e<span class="o">=</span>On<span class="w"> </span>-r<span class="o">=</span>On
+</pre></div>
+</div>
+</div>
+<div class="section" id="calibration-utility">
+<span id="calib-util"></span><h2><span class="section-number">3.5.8. </span>Calibration utility<a class="headerlink" href="#calibration-utility" title="Permalink to this heading"></a></h2>
+<p>Red Pitaya calibration can be accessed and configured throgh the command-line utility.</p>
+<p>Usage instructions:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f0a235:~# </span>calib
+<span class="go">calib version 2.00-0-da52519c4</span>
+
+<span class="go">Usage: calib [OPTION]...</span>
+
+<span class="go">OPTIONS:</span>
+<span class="go"> -r    Read calibration values from eeprom (to stdout).</span>
+<span class="go">       The -n flag has no effect. The system automatically determines the type of stored data.</span>
+
+<span class="go"> -w    Write calibration values to eeprom (from stdin).</span>
+<span class="go">       Possible combination of flags: -wn, -wf, -wfn, -wmn, -wfmn</span>
+
+<span class="go"> -f    Use factory address space.</span>
+<span class="go"> -d    Reset calibration values in eeprom from factory zone. WARNING: Saves automatic to a new format</span>
+
+<span class="go"> -i    Reset calibration values in eeprom by default</span>
+<span class="go">       Possible combination of flags: -in , -inf.</span>
+
+<span class="go"> -o    Converts the calibration from the user zone to the old calibration format. For ecosystem version 0.98</span>
+
+<span class="go"> -v    Produce verbose output.</span>
+<span class="go"> -h    Print this info.</span>
+<span class="go"> -x    Print in hex.</span>
+<span class="go"> -u    Print stored calibration in unified format.</span>
+
+<span class="go"> -m    Modify specific parameter in universal calibration</span>
+<span class="go"> -n    Flag for working with the new calibration storage format.</span>
+</pre></div>
+</div>
+<p>Printing current calibration values:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f0a235:~# </span>calib<span class="w"> </span>-u
+</pre></div>
+</div>
+<p>Reseting calibration values to factory default:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f0a235:~# </span>calib<span class="w"> </span>-d
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-useful-information-related-to-command-line-tools">
+<h2><span class="section-number">3.5.9. </span>Other useful information related to command-line tools<a class="headerlink" href="#other-useful-information-related-to-command-line-tools" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="clt_other.html">3.5.9.1. Saving data buffers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clt_other.html#copying-data-linux-users">3.5.9.1.1. Copying data - Linux users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clt_other.html#copying-data-windows-users">3.5.9.1.2. Copying data - Windows users</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../remoteControl/knownIssues.html" class="btn btn-neutral float-left" title="3.4.7. Known SCPI &amp; API issues and changes by OS version" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="clt_other.html" class="btn btn-neutral float-right" title="3.5.9.1. Saving data buffers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

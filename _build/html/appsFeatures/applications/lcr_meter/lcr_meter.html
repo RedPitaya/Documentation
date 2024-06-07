@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2.6. LCR meter &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2.7. Streaming" href="../streaming/appStreaming.html" />
+    <link rel="prev" title="3.2.5. Impedance Analyzer" href="../impedance/impedance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">3.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">3.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">3.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">3.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">3.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">3.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2.6. LCR meter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-the-lcr-module">3.2.6.1. Connecting the LCR module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#features">3.2.6.2. Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">3.2.6.3. Source code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appStreaming.html">3.2.7. Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appXCStreaming.html">3.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">3.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">3.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">3.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">3.2.12. Marketplace and contributed apps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">3.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.6. </span>LCR meter</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="lcr-meter">
+<span id="lrc-app"></span><h1><span class="section-number">3.2.6. </span>LCR meter<a class="headerlink" href="#lcr-meter" title="Permalink to this heading"></a></h1>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/01_iPad_Combo_LCR.jpg"><img alt="../../../_images/01_iPad_Combo_LCR.jpg" src="../../../_images/01_iPad_Combo_LCR.jpg" style="width: 1600px;" /></a>
+</div>
+<p>This application will turn your Red Pitaya into an affordable LCR meter. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. Resistors, capacitors, and inductors are basic components of all electrical circuits, and while working on your projects, you will need to measure some components lying around on your working bench. The Red Pitaya’s LCR meter will enable you to speed up the procedure and accurately measure the components just by switching from one application to another.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An additional extension module is needed to use the LCR metre application. The module can be purchased from the <a class="reference external" href="https://redpitaya.com/shop/">Red Pitaya store</a>.</p>
+</div>
+<p>All Red Pitaya applications are web-based and don’t require the installation of any native software. Users can access them via a browser using their smartphone, tablet or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS). The elements of the LCR meter application are arranged logically and offer a familiar user interface similar to bench LCR meters.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_01_LCR_meter_WEB_page.png"><img alt="../../../_images/Slika_01_LCR_meter_WEB_page.png" src="../../../_images/Slika_01_LCR_meter_WEB_page.png" style="width: 1000px;" /></a>
+</div>
+<p>The graphical interface is divided into 6 main areas:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Hold/Run button:</strong> Used to start and stop the measurement. <strong>Log data button:</strong> When selected, the measurements of parameters selected in the “Data options” field are logged in the table shown in area 6.</p></li>
+<li><p><strong>Data options panel:</strong> It is used for selecting the desired parameter for which the measurement will be displayed on the main window panel shown in area 4.</p></li>
+<li><p><strong>Measurement option panel:</strong> Select a measuring frequency, range mode, and range value. The user can select between the Parallel and Series measuring modes as well as between the Tolerance, Relative or Normal modes (modes described in the features section).</p></li>
+<li><p><strong>Main display:</strong> On this panel, the measurements of the parameters selected in the “Data option” field are shown. The primary parameter is shown with a larger font and the secondary parameter with a smaller one. This is a very common practice since, by reading values from the display, the user can automatically see the most important results.</p></li>
+<li><p><strong>Secondary display:</strong> On the secondary display, the main settings are shown: current selected parameters, measuring frequency, and range mode. Also, the Min, Max, and average values or primary parameters are shown.</p></li>
+<li><p><strong>Logging table:</strong> Used to log and export measured data. Logging is started by selecting the “Log Data” button. The maximum number of rows/measurements in the table is 1000.</p></li>
+<li><p><strong>Optional button field:</strong> Used to manipulate the table. The “Clear Min/Max” button will reset the Min and Max values on the secondary display. The “Export table” button will export the measured data in .csv format. The “Clear all” button will delete all measurements from the table, and the “Clear” button will delete the currently selected measurement.</p></li>
+</ol>
+</div></blockquote>
+<div class="section" id="connecting-the-lcr-module">
+<h2><span class="section-number">3.2.6.1. </span>Connecting the LCR module<a class="headerlink" href="#connecting-the-lcr-module" title="Permalink to this heading"></a></h2>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/E_module_connection1.png"><img alt="../../../_images/E_module_connection1.png" src="../../../_images/E_module_connection1.png" style="width: 1000px;" /></a>
+</div>
+</div>
+<div class="section" id="features">
+<h2><span class="section-number">3.2.6.2. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<p>The main features of the LCR meter applications are described below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 36%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>STEMlab 125-10 (discontiued)</p></th>
+<th class="head"><p>STEMlab 125-14</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Measured primary parameters</p></td>
+<td><p>Z, L, C, R</p></td>
+<td><p>Z, L, C, R</p></td>
+</tr>
+<tr class="row-odd"><td><p>Measured secondary parameters</p></td>
+<td><p>P, D, Q, E</p></td>
+<td><p>P, D, Q, E</p></td>
+</tr>
+<tr class="row-even"><td><p>Selectable frequencies</p></td>
+<td><p>100 Hz, 1 kHz,
+10 kHz, 100 kHz</p></td>
+<td><p>100 Hz, 1 kHz,
+10 kHz, 100 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Impedance range</p></td>
+<td><p>1 Ω - 10 MΩ</p></td>
+<td><p>1 Ω - 10 MΩ</p></td>
+</tr>
+<tr class="row-even"><td><p>DC bias</p></td>
+<td><p>0.5 V</p></td>
+<td><p>0.5 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Basic accuracy</p></td>
+<td><p>5,00 %</p></td>
+<td><p>1,00 %</p></td>
+</tr>
+<tr class="row-even"><td><p>Max input voltage</p></td>
+<td><p>0.5 Vpp</p></td>
+<td><p>0.5 Vpp</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input protection</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Parameter range Z</p></td>
+<td><p>1 Ω - 10 MΩ</p></td>
+<td><p>1 Ω - 10 MΩ</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parameter range Rs, Rp</p></td>
+<td><p>1 Ω - 10 MΩ</p></td>
+<td><p>1 Ω - 10 MΩ</p></td>
+</tr>
+<tr class="row-even"><td><p>Parameter range Ls, Lp</p></td>
+<td><p>100 nH - 1000 H</p></td>
+<td><p>100 nH - 1000 H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parameter range Cs, Cp</p></td>
+<td><p>10 pF - 100 mF</p></td>
+<td><p>1 pF - 100 mF</p></td>
+</tr>
+<tr class="row-even"><td><p>Parameter range P</p></td>
+<td><p>± 180 deg</p></td>
+<td><p>± 180 deg</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="measured-primary-parameters-z-l-c-r">
+<h3><span class="section-number">3.2.6.2.1. </span>MEASURED PRIMARY PARAMETERS: Z, L, C, R<a class="headerlink" href="#measured-primary-parameters-z-l-c-r" title="Permalink to this heading"></a></h3>
+<p>The LCR meter application will enable you to measure the basic parameters of the passive electrical components:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>R</strong> - resistance</p></li>
+<li><p><strong>C</strong> - capacitance</p></li>
+<li><p><strong>L</strong> - inductance</p></li>
+<li><p><strong>Z</strong> - impedance</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="measured-secondary-parameters-p-d-q-e">
+<h3><span class="section-number">3.2.6.2.2. </span>MEASURED SECONDARY PARAMETERS: P, D, Q, E<a class="headerlink" href="#measured-secondary-parameters-p-d-q-e" title="Permalink to this heading"></a></h3>
+<p>Alongside the main parameters, the secondary parameters are also measured and calculated. These parameters are common in describing the properties and the quality of the passive components:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>P</strong> - impedance phase (phase between measured current and voltage)</p></li>
+<li><p><strong>D</strong> - dissipation factor (often used to quantify capacitor quality)</p></li>
+<li><p><strong>Q</strong> - quality factor (often used to quantify inductor quality)</p></li>
+<li><p><strong>ESR</strong> - equivalent series resistance</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="selectable-frequencies-100-hz-1-khz-10-khz-100-khz">
+<h3><span class="section-number">3.2.6.2.3. </span>SELECTABLE FREQUENCIES: 100 Hz, 1 kHz, 10 kHz, 100 kHz<a class="headerlink" href="#selectable-frequencies-100-hz-1-khz-10-khz-100-khz" title="Permalink to this heading"></a></h3>
+<p>The LCR meter enables measurements at four different frequencies (100 Hz, 1 kHz, 10 kHz, 100 kHz). The user can select a desired frequency, and the LCR application will use sine signals with the selected frequency to measure the impedance.</p>
+</div>
+<div class="section" id="range-mode-auto-manual">
+<h3><span class="section-number">3.2.6.2.4. </span>RANGE MODE: AUTO, MANUAL<a class="headerlink" href="#range-mode-auto-manual" title="Permalink to this heading"></a></h3>
+<p>Since the measured values are unknown, the LCR meter will adjust the measuring range to provide the best accuracy. If the user expects some value in creating ranges, then the Manual mode can be used.</p>
+</div>
+<div class="section" id="measurement-mode-tolerance-relative-normal">
+<h3><span class="section-number">3.2.6.2.5. </span>MEASUREMENT MODE: TOLERANCE, RELATIVE, NORMAL<a class="headerlink" href="#measurement-mode-tolerance-relative-normal" title="Permalink to this heading"></a></h3>
+<p>The “Tolerance” and “Relative” buttons are used for measuring the tolerance and relative modes. When neither is selected, the LCR meter measures in the “Normal” mode.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Tolerance mode:</strong> The last value measured before clicking the “Tolerance” button is saved and used to calculate the percentage difference between the new value and the saved one.</p></li>
+<li><p><strong>Relative mode:</strong> The last value measured before clicking the “Relative” button is saved and used to calculate the relative difference between the new value and the saved one.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="equivalent-circuit-calculation-mode-parallel-series">
+<h3><span class="section-number">3.2.6.2.6. </span>EQUIVALENT CIRCUIT CALCULATION MODE: PARALLEL, SERIES<a class="headerlink" href="#equivalent-circuit-calculation-mode-parallel-series" title="Permalink to this heading"></a></h3>
+<p>The Parallel and Series measuring modes denote the use of a series or parallel equivalent circuit to calculate the parameters (R, C, L…) from the measured impedance Z. The LCR metre will only measure the complex value <em>Z=|Z|e(jP)</em>, where P is the measured phase and <em>|Z|</em> is the impedance amplitude. All other parameters are calculated from the series or parallel equivalent circuit.</p>
+</div>
+</div>
+<div class="section" id="source-code">
+<h2><span class="section-number">3.2.6.3. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/lcr_meter">LCR Meter source code</a> is available on our GitHub.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../impedance/impedance.html" class="btn btn-neutral float-left" title="3.2.5. Impedance Analyzer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../streaming/appStreaming.html" class="btn btn-neutral float-right" title="3.2.7. Streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

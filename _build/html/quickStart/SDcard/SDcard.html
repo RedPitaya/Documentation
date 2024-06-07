@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.3. Prepare SD card &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.4. Red Pitaya Aluminium Case Assembly" href="../alucase/alucase.html" />
+    <link rel="prev" title="2.2.1.1. Wired" href="../connect/connect.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../quickStart.html">2. Quick start</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../needs.html">2.1. What do I need before I start?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../first.html">2.2. Connect to Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. Prepare SD card</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#os-versions">2.3.1. OS Versions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#os">2.3.1.1. 2.00 OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">2.3.1.2. 1.04 OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#older-os-versions">2.3.1.3. Older OS versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nightly-builds">2.3.1.4. Nightly Builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#download-and-install-the-sd-card-image">2.3.2. Download and install the SD card image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows">2.3.2.1. Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">2.3.2.2. Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">2.3.2.3. macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#background">2.3.3. Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-upgrade">2.3.4. Manual upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resize-file-system">2.3.5. Resize file system</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../alucase/alucase.html">2.4. Red Pitaya Aluminium Case Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvccase/pvccase.html">2.5. Red Pitaya Acrylic Case Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heatsink/heatsink.html">2.6. Red Pitaya heatsink interface setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/troubleshooting.html">2.7. FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../quickStart.html"><span class="section-number">2. </span>Quick start</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.3. </span>Prepare SD card</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="prepare-sd-card">
+<span id="preparesd"></span><h1><span class="section-number">2.3. </span>Prepare SD card<a class="headerlink" href="#prepare-sd-card" title="Permalink to this heading"></a></h1>
+<div class="section" id="os-versions">
+<h2><span class="section-number">2.3.1. </span>OS Versions<a class="headerlink" href="#os-versions" title="Permalink to this heading"></a></h2>
+<p>The OS versions are listed from newest to oldest. For development OS (Nightly Builds), please check the <a class="reference internal" href="#id12">Nightly Builds</a> chapter located at the end of the OS section.</p>
+<div class="section" id="os">
+<h3><span class="section-number">2.3.1.1. </span>2.00 OS<a class="headerlink" href="#os" title="Permalink to this heading"></a></h3>
+<p>With the 2.00 OS versions we moved to a unified OS image for all boards (One OS to rule them all).</p>
+<p><strong>RedPitaya OS 2.0</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-35_beta.img.zip">Latest Beta (2.00-35)</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 05895fe4e5e327a9db27204ccac9ef7d)</p></li>
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-30_stable.img.zip">Latest Stable (2.00-30)</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 53f03af3ff891c078369dad78b74d526)</p></li>
+</ul>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.</p>
+<p>Please make sure that your Red Pitaya OS and the downloaded <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya GitHub</a> ecosystem repository are compatible.
+We recommend using a <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya GitHub</a> ecosystem that is meant to run on your current Red Pitaya OS version:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>2.00-35 - Branch 2024.2</p></li>
+<li><p>2.00-30 - Branch 2024.1</p></li>
+<li><p>2.00-23 - Branch 2023.3</p></li>
+<li><p>2.00-18 - Branch 2023.2</p></li>
+<li><p>2.00-15 - Branch 2023.1</p></li>
+<li><p>1.04-28 - Branch 2022.2</p></li>
+<li><p>1.04-18 - Branch 2022.1</p></li>
+</ul>
+</div></blockquote>
+<p>Using an old OS with a newer GitHub ecosystem can result in compatibility isses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya’s web interface and head to <strong>System =&gt; Calibration =&gt; Manual DC calibration</strong>. Click on <strong>Reset</strong>, select <strong>Factory</strong>, and confirm the reset. For more details on calibration, please see the <a class="reference internal" href="../../appsFeatures/systemtool/calibration.html#calibration-app"><span class="std std-ref">Calibration application</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have problems running the 2.00 version of the OS and you updated from the 1.04 or older OS image, please check <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">this GitHub solution</a>. For all other problems please contact the <a href="https://redpitaya.com/contact-us/" target="_blank">support team</a>.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">2.3.1.2. </span>1.04 OS<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>The 1.04 OS versions are board specific. Please download only versions compatible with your board type.</p>
+<p><strong>STEMlab 125-14 &amp; STEMlab 125-10</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip">1.04-28</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0)</p></li>
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip">1.04-18</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a> (MD5 (zipped): f6cde9b3264a12372873d039535e58d5)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>STEMlab 125-14 (SECONDARY/SLAVE board)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip">1.04-06</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a> (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>STEMlab 125-14-Z7020</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip">1.04-14</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a> (MD5 (zipped): c740aab5d7b374924f19171e1edd3161)</p></li>
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip">1.04-10</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>STEMlab 125-14 4-Input</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip">1.04-03</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>SDRlab 122-16</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip">1.04-15</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20.md" target="_blank">CHANGELOG</a> (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392)</p></li>
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip">1.04-11</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>SIGNALlab 250-12</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip">1.04-30</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8)</p></li>
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip">1.04-27</a>  - <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a> (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To run the C applications with 1.04 or older OS, please use the 2022.2 or older release/branch of the GitHub ecosystem</p>
+</div>
+</div>
+<div class="section" id="older-os-versions">
+<h3><span class="section-number">2.3.1.3. </span>Older OS versions<a class="headerlink" href="#older-os-versions" title="Permalink to this heading"></a></h3>
+<p>All older OS versions that are in our database are available in our archive:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a></p></li>
+</ul>
+</div></blockquote>
+<p>For manual ecosystem upgrades please refer to <a class="reference internal" href="#manual-upgrade">Manual upgrade</a>.</p>
+</div>
+<div class="section" id="nightly-builds">
+<span id="id12"></span><h3><span class="section-number">2.3.1.4. </span>Nightly Builds<a class="headerlink" href="#nightly-builds" title="Permalink to this heading"></a></h3>
+<p>The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.</p>
+<p>We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time to fix some of the reported issues or implement some new features reported as suggestions for improvement.</p>
+<p>As these builds are snapshots of the latest code, odds are you will encounter more issues compared to stable releases. Please report any issues to <a class="reference external" href="mailto:support&#37;&#52;&#48;redpitaya&#46;com">support<span>&#64;</span>redpitaya<span>&#46;</span>com</a> so that our developers can review them and make any needed fixes.</p>
+<p><strong>Nightly Builds ecosystem</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>  -  <a class="reference external" href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt">NIGHTLY CHANGELOG</a></p></li>
+</ul>
+</div></blockquote>
+<p>Ecosystem builds run every Saturday night.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These OS versions may be unstable and may cause misconfigurations or measurement data loss.
+We recommend that you use them solely for testing purposes, or you have reported a bug or requested a feature and our technical staff has instructed you to proceed.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When updating from an OS version older than 2.00 to a Nightly Build version, a factory reset of calibration parameters must be performed. Please open the Red Pitaya’s web interface and head to <strong>System =&gt; Calibration =&gt; Manual DC calibration</strong>. Click on <strong>Reset</strong>, select <strong>Factory</strong>, and confirm the reset. For more details on calibration, please see the <a class="reference internal" href="../../appsFeatures/systemtool/calibration.html#calibration-app"><span class="std std-ref">Calibration application</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="download-and-install-the-sd-card-image">
+<h2><span class="section-number">2.3.2. </span>Download and install the SD card image<a class="headerlink" href="#download-and-install-the-sd-card-image" title="Permalink to this heading"></a></h2>
+<p>The next procedure will create a clean SD card image.</p>
+<ol class="arabic">
+<li><p>Select an appropriate OS version from above and download it.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/microSDcard-RP.png"><img alt="../../_images/microSDcard-RP.png" src="../../_images/microSDcard-RP.png" style="width: 10%;" /></a>
+</div>
+</li>
+<li><p>Unzip the SD card image.</p></li>
+<li><p>Write the image onto an SD card. Instructions are available for various operating systems:</p></li>
+</ol>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#windows" id="id17">Windows</a></p></li>
+<li><p><a class="reference internal" href="#linux" id="id18">Linux</a></p></li>
+<li><p><a class="reference internal" href="#macos" id="id19">macOS</a></p></li>
+</ul>
+</div>
+<ol class="arabic" start="4">
+<li><p>Insert the SD card into the Red Pitaya.</p>
+<div class="figure align-center">
+<img alt="../../_images/pitaya-quick-start-insert-sd-card.png" src="../../_images/pitaya-quick-start-insert-sd-card.png" />
+</div>
+</li>
+<li><p>Reset the calibration parameters to <strong>Factory Default</strong> (or <a class="reference internal" href="../../appsFeatures/systemtool/calibration.html#calibration-app"><span class="std std-ref">recalibrate your Red Pitaya</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya’s web interface and head to <strong>System =&gt; Calibration =&gt; Manual DC calibration</strong>. Click on <strong>Reset</strong>, select <strong>Factory</strong>, and confirm the reset. For more details on calibration, please see the <a class="reference internal" href="../../appsFeatures/systemtool/calibration.html#calibration-app"><span class="std std-ref">Calibration application</span></a>.</p>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This video shows how to identify your Red Pitaya model and write a memory card.</p>
+<div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
+    <iframe src="https://www.youtube.com/embed/Qq_YRv2nk3c" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div></div>
+<div class="section" id="windows">
+<h3><span class="section-number">2.3.2.1. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<ol class="arabic" id="windows-gui">
+<li><p>Insert the SD card into your PC or SD card reader.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_insert.jpg" src="../../_images/SDcard_insert.jpg" />
+</div>
+</li>
+<li><p>Download <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a> and install it.</p>
+</li>
+<li><p>Open the newly installed Balena Etcher application.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_Win_BalenaEtcher.png" src="../../_images/SDcard_Win_BalenaEtcher.png" />
+</div>
+</li>
+<li><p>Under <strong>Flash from file</strong> select an unzipped Red Pitaya image file.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_Win_BalEtc_FlashFromFile.png" src="../../_images/SDcard_Win_BalEtc_FlashFromFile.png" />
+</div>
+</li>
+<li><p>Under <strong>Select target</strong> choose the drive letter of the SD card. Balena Etcher will only show you external drives.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_Win_BalEtc_SelectTarget.png" src="../../_images/SDcard_Win_BalEtc_SelectTarget.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Balena Etcher will only show you external drives, but please be careful to select the correct drive if you have multiple cards or USBs plugged into your computer. If you choose the wrong one, you risk erasing data from the selected drive. You can easily see the drive letter (for example, E:) by looking in the left column of Windows Explorer.</p>
+</div>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_Win_BalEtc_SelectTarget2.png" src="../../_images/SDcard_Win_BalEtc_SelectTarget2.png" />
+</div>
+</li>
+<li><p>When you click <strong>Flash</strong> the computer will prompt you to allow the operation. Click <strong>yes</strong> and wait for the flashing and validation to be completed.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_Win_BalEtc_Flash.png" src="../../_images/SDcard_Win_BalEtc_Flash.png" />
+</div>
+</li>
+<li><p>Close Balena Etcher.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_Win_BalEtc_FlashComplete.png" src="../../_images/SDcard_Win_BalEtc_FlashComplete.png" />
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="linux">
+<h3><span class="section-number">2.3.2.2. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this heading"></a></h3>
+<div class="admonition note" id="linux-gui">
+<p class="admonition-title">Note</p>
+<p>You can also use <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a> on Linux and macOS. Instructions are under <a class="reference internal" href="#windows-gui"><span class="std std-ref">Windows section</span></a>.</p>
+</div>
+<div class="section" id="ubuntu-using-image-writer">
+<h4><span class="section-number">2.3.2.2.1. </span>Ubuntu using Image Writer<a class="headerlink" href="#ubuntu-using-image-writer" title="Permalink to this heading"></a></h4>
+<ol class="arabic">
+<li><p>Right-click on the extracted SD card image and select <strong>Open With &gt; Disk Image Writer</strong>.</p>
+<div class="figure align-center" id="id14">
+<a class="reference internal image-reference" href="../../_images/DIW_1.png"><img alt="../../_images/DIW_1.png" src="../../_images/DIW_1.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">Context menu</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-center" id="id15">
+<a class="reference internal image-reference" href="../../_images/DIW_2.png"><img alt="../../_images/DIW_2.png" src="../../_images/DIW_2.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">Select tool dialog</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="2">
+<li><p>In the <strong>Restore Disk Image</strong> window, select your SD card in the <strong>Destination</strong> pull-down menu.
+Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).</p>
+<div class="figure align-center" id="id16">
+<a class="reference internal image-reference" href="../../_images/DIW_3.png"><img alt="../../_images/DIW_3.png" src="../../_images/DIW_3.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">Select drive dialog</span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>You will be asked to confirm your choice and enter a password.
+Additional dialog windows will again show the selected destination drive.
+Take the opportunity to reconsider whether you chose the right device.</p></li>
+</ol>
+</div>
+<div class="section" id="command-line">
+<span id="linux-cli"></span><h4><span class="section-number">2.3.2.2.2. </span>Command line<a class="headerlink" href="#command-line" title="Permalink to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that the use of the <code class="docutils literal notranslate"><span class="pre">dd</span></code> tool can overwrite any partition of your machine.
+If you specify the wrong device in the instructions below, you could delete your primary Linux partition.
+Please be careful.</p>
+</div>
+<ol class="arabic">
+<li><p>Insert the SD card into your PC or SD card reader.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_insert.jpg" src="../../_images/SDcard_insert.jpg" />
+</div>
+</li>
+<li><p>Open the terminal and check the available disks with <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">-h</span></code>.
+Our SD card is 16 GB. It is named <code class="docutils literal notranslate"><span class="pre">/dev/sdx</span></code> and divided into two partitions, <code class="docutils literal notranslate"><span class="pre">/dev/sdx1</span></code> and <code class="docutils literal notranslate"><span class="pre">/dev/sdx2</span></code>.
+The drive mounted at <code class="docutils literal notranslate"><span class="pre">/</span></code> is your main drive.
+Be careful not to use it.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>df<span class="w"> </span>-h
+<span class="go">Filesystem       Size  Used   Avail  Use%  Mounted on</span>
+<span class="go">/dev/sdx1        118M   27M     92M   23%  /media/somebody/CAD5-1E3D</span>
+<span class="go">/dev/sdx2       15.9G 1013M   15.8G   33%  /media/somebody/7b2d3ba8-95ed-4bf4-bd67-eb52fe65df55</span>
+</pre></div>
+</div>
+</li>
+<li><p>Unmount all SD card partitions with <code class="docutils literal notranslate"><span class="pre">umount</span> <span class="pre">/dev/sdxN</span></code>
+(make sure you replace N with the right numbers).</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>umount<span class="w"> </span>/dev/sdx1<span class="w"> </span>/dev/sdx2
+</pre></div>
+</div>
+</li>
+<li><p>Write the image onto the SD card with the following command.
+Replace the <code class="docutils literal notranslate"><span class="pre">red_pitaya_image_file.img</span></code> with
+the name of the unzipped Red Pitaya SD Card Image
+and replace <code class="docutils literal notranslate"><span class="pre">/dev/device_name</span></code> with the path to the SD card.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dd<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="k">if</span><span class="o">=</span>red_pitaya_image_file.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/device_name
+</pre></div>
+</div>
+</li>
+<li><p>Wait until the process has finished.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="macos">
+<h3><span class="section-number">2.3.2.3. </span>macOS<a class="headerlink" href="#macos" title="Permalink to this heading"></a></h3>
+<div class="admonition note" id="macos-gui">
+<p class="admonition-title">Note</p>
+<p>You can also use <a href="https://www.balena.io/etcher/" target="_blank">Balena Ethcer</a> on Linux and macOS. Instructions are under <a class="reference internal" href="#windows-gui"><span class="std std-ref">Windows section</span></a>.</p>
+</div>
+<div class="section" id="using-applepi-baker">
+<h4><span class="section-number">2.3.2.3.1. </span>Using ApplePi-Baker<a class="headerlink" href="#using-applepi-baker" title="Permalink to this heading"></a></h4>
+<ol class="arabic">
+<li><p>Insert the SD card into your PC or SD card reader.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_insert.jpg" src="../../_images/SDcard_insert.jpg" />
+</div>
+</li>
+<li><p>Download <a href="https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2" target="_blank">ApplePi-Baker</a>. Direct link:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-v2.2.3.dmg">ApplePi-Baker-v2.2.3.dmg</a></p></li>
+<li><p><a class="reference external" href="https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-1.9.9.dmg">ApplePi-Baker-1.9.9.dmg</a></p></li>
+</ul>
+</li>
+<li><p>Click on <em>ApplePi-Baker</em> icon, then click <em>Open</em> in order to run it.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_open.png" src="../../_images/SDcard_macOS_open.png" />
+</div>
+</li>
+<li><p>Drag and drop <em>ApplePi-Baker</em> for installation.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_install.png" src="../../_images/SDcard_macOS_install.png" />
+</div>
+</li>
+<li><p>Enter your admin password and click OK.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_password.png" src="../../_images/SDcard_macOS_password.png" />
+</div>
+</li>
+<li><p>Select the SD card drive. This can be recognised by the size of the card, which is 16 GB.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_ApplePi-Baker_drive.png" src="../../_images/SDcard_macOS_ApplePi-Baker_drive.png" />
+</div>
+</li>
+<li><p>Select the Red Pitaya OS image file.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_ApplePi-Baker_image.png" src="../../_images/SDcard_macOS_ApplePi-Baker_image.png" />
+</div>
+</li>
+<li><p>It’s coffee time. The application will show you the estimated time for accomplishment.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_ApplePi-Baker_wait.png" src="../../_images/SDcard_macOS_ApplePi-Baker_wait.png" />
+</div>
+</li>
+<li><p>When the operation is finished, the status will change to idle.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_ApplePi-Baker_quit.png" src="../../_images/SDcard_macOS_ApplePi-Baker_quit.png" />
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="macos-cli">
+<span id="id13"></span><h4><span class="section-number">2.3.2.3.2. </span>Command line<a class="headerlink" href="#macos-cli" title="Permalink to this heading"></a></h4>
+<ol class="arabic">
+<li><p>Insert the SD card into your PC or SD card reader.</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_insert.jpg" src="../../_images/SDcard_insert.jpg" />
+</div>
+</li>
+<li><p>Click <strong>cmd + space</strong>, type <strong>Disk Utility</strong> into the search box and press enter.
+From the menu, select your SD card and click on the <strong>Erase</strong> button (be careful not to delete your disk!).</p>
+<div class="figure align-center">
+<img alt="../../_images/SDcard_macOS_DiskUtility.png" src="../../_images/SDcard_macOS_DiskUtility.png" />
+</div>
+</li>
+<li><p>Click <strong>cmd + space</strong>, then enter <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the <strong>Terminal</strong>.
+Then type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Desktop</span></code> and press enter once more.</p></li>
+<li><p>Unmount the partition so that you will be able to overwrite the disk.
+Type <code class="docutils literal notranslate"><span class="pre">diskutil</span> <span class="pre">list</span></code> into the Terminal and press enter.
+This will show you the list of all memory devices.</p>
+<div class="figure align-center">
+<img alt="../../_images/Screen-Shot-2015-08-07-at-16.59.50.png" src="../../_images/Screen-Shot-2015-08-07-at-16.59.50.png" />
+</div>
+<p>Unmount with: <code class="docutils literal notranslate"><span class="pre">diskutil</span> <span class="pre">UnmountDisk</span> <span class="pre">/dev/diskn</span></code>
+(insert the number <code class="docutils literal notranslate"><span class="pre">n</span></code> of your disk correctly!)</p>
+<div class="figure align-center">
+<img alt="../../_images/Screen-Shot-2015-08-07-at-17.14.34.png" src="../../_images/Screen-Shot-2015-08-07-at-17.14.34.png" />
+</div>
+</li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dd</span> <span class="pre">bs=1m</span> <span class="pre">if=path_of_your_image.img</span> <span class="pre">of=/dev/rdiskn</span></code>
+(Remember to replace <code class="docutils literal notranslate"><span class="pre">n</span></code> with the number that you noted before!)
+(notice that there is a letter <code class="docutils literal notranslate"><span class="pre">r</span></code> in front of the disk name, use that as well!)</p>
+<div class="figure align-center">
+<img alt="../../_images/Screen-Shot-2015-08-07-at-17.14.45.png" src="../../_images/Screen-Shot-2015-08-07-at-17.14.45.png" />
+</div>
+</li>
+<li><p>Type in your password and wait a few minutes for the image to be written.</p></li>
+<li><p>When the image is written, type: <code class="docutils literal notranslate"><span class="pre">diskutil</span> <span class="pre">eject</span> <span class="pre">/dev/diskn</span></code> and press enter.</p></li>
+<li><p>Safely eject the SD card.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="background">
+<h2><span class="section-number">2.3.3. </span>Background<a class="headerlink" href="#background" title="Permalink to this heading"></a></h2>
+<p>A Red Pitaya SD card contains two partitions:</p>
+<ol class="arabic simple">
+<li><p>128 MB FAT contains the <strong>ecosystem</strong>:</p>
+<ul class="simple">
+<li><p>boot files: FSBL, FPGA images, U-Boot, Linux kernel</p></li>
+<li><p>Red Pitaya API libraries and header files</p></li>
+<li><p>Red Pitaya web applications, scripts, tools</p></li>
+<li><p>customized Nginx web server</p></li>
+</ul>
+</li>
+<li><p>~8 GB Ext4 contains the <strong>OS</strong>:</p>
+<ul class="simple">
+<li><p>Ubuntu/Debian OS</p></li>
+<li><p>various libraries</p></li>
+<li><p>network setup customization</p></li>
+<li><p>systemd services customization</p></li>
+</ul>
+</li>
+</ol>
+<p>Most of Red Pitaya’s source code translates into the ecosystem.
+Therefore, it is updated more often.
+The OS is changed less frequently.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find older and developed Red Pitaya OS images and Ecosystem zip files
+on our <a href="https://downloads.redpitaya.com/downloads/" target="_blank">download server</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A list of new features, bug fixes, and known bugs for each Red Pitaya release
+can be found in our <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a>.</p>
+</div>
+</div>
+<div class="section" id="manual-upgrade">
+<h2><span class="section-number">2.3.4. </span>Manual upgrade<a class="headerlink" href="#manual-upgrade" title="Permalink to this heading"></a></h2>
+<p>Instead of writing the whole SD card image,
+it is possible to upgrade only the ecosystem.</p>
+<p>A manual upgrade allows you to fix a corrupted SD card image
+(if only the FAT partition is corrupted) or to install
+older, newer, or custom ecosystem zip files.</p>
+<ol class="arabic simple">
+<li><p>Download a zip file from our <a href="https://downloads.redpitaya.com/downloads/" target="_blank">download server</a>.</p></li>
+<li><p>Insert the SD card into the card reader.</p></li>
+<li><p>Delete all files from the FAT partition.
+Use <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Delete</span></code> to avoid placing files
+into the trash bin on the same partition.</p></li>
+<li><p>Extract the ecosystem zip file contents onto the now empty partition.</p></li>
+</ol>
+<p>If you wish to keep wireless settings, skip deleting the next files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wpa_supplicant.conf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hostapd.conf</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="resize-file-system">
+<h2><span class="section-number">2.3.5. </span>Resize file system<a class="headerlink" href="#resize-file-system" title="Permalink to this heading"></a></h2>
+<p>When recording an image to a flash card of any size, we get sections of the file system of 4 GB in size.
+In order to increase the available free space, you need to execute the following script:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f03dee:~# </span>/opt/redpitaya/sbin/resize.sh
+</pre></div>
+</div>
+</div></blockquote>
+<p>After the script is completed, the system will ask you to restart your Red Pitaya.
+If everything is done correctly, the system will start with an increased space size. This can be checked with the following command:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f03dee:~# </span>df<span class="w"> </span>-h
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the file system size has not changed, try to manually run the command:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">root@rp-f03dee:~# </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span>/dev/mmcblk0p2
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../connect/connect.html" class="btn btn-neutral float-left" title="2.2.1.1. Wired" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../alucase/alucase.html" class="btn btn-neutral float-right" title="2.4. Red Pitaya Aluminium Case Assembly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -38,6 +38,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
     'sphinx.ext.intersphinx',
+#    'sphinx.ext.autosectionlabel',
     'sphinx_tabs.tabs',
     'github',
     'sphinx_rtd_theme'
@@ -86,7 +87,7 @@ author = "Red Pitaya"
 # built documents.
 #
 # The short X.Y version.
-version = "2.00-30"
+version = "2.00-35"
 # The full version, including alpha/beta/rc tags.
 release = version
 

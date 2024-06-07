@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2.2. Spectrum Analyzer &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2.3. Logic Analyzer" href="../logic/logic.html" />
+    <link rel="prev" title="3.2.1. Oscilloscope &amp; Signal Generator" href="../oscSigGen/osc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">3.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">3.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2.2. Spectrum Analyzer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#features">3.2.2.1. Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specifications">3.2.2.2. Specifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">3.2.2.3. Source code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">3.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">3.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">3.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">3.2.6. LCR meter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appStreaming.html">3.2.7. Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appXCStreaming.html">3.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">3.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">3.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">3.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">3.2.12. Marketplace and contributed apps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">3.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.2. </span>Spectrum Analyzer</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="spectrum-analyzer">
+<span id="spec-anal-app"></span><h1><span class="section-number">3.2.2. </span>Spectrum Analyzer<a class="headerlink" href="#spectrum-analyzer" title="Permalink to this heading"></a></h1>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/01_iPad_Combo_Spectrum.jpg"><img alt="../../../_images/01_iPad_Combo_Spectrum.jpg" src="../../../_images/01_iPad_Combo_Spectrum.jpg" style="width: 1600px;" /></a>
+</div>
+<p>This application will turn your RedPitaya board into a 2-channel DFT Spectrum Analyzer. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. The DFT Spectrum Analyzer application enables a quick and powerful spectrum analysis using a DFT algorithm.</p>
+<p>The frequency span is from DC up to 62.5 MHz, where the frequency range can be arbitrarily selected. You can easily measure the quality of your signals, signal harmonics, spuriousness, and power. All Red Pitaya applications are web-based and do not require the installation of any native software. Users can access them via a web browser using their smartphone, tablet, or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS). The elements of the DFT Spectrum analyzer application are arranged logically and offer a familiar user interface.</p>
+<p>The graphical interface is divided into four main areas:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Run/Stop</strong> and <strong>Export button:</strong> The “Run/Stop” button is used to start and stop measurements. With the “Export” button, you can select in which format you want to download the measured data (plotted spectrum). Two formats are available: .png and .csv.</p></li>
+<li><p><strong>Inputs / Cursors / Range / Axis control panel:</strong> This menu provides controls for inputs, cursors, and frequency range settings. Horizontal +/- buttons are used to select the span of the X (frequency) axis (zooming in/out). The vertical +/- buttons change the Y (amplitude)-axis range.</p></li>
+<li><p><strong>Graph area:</strong> Here, the currently calculated signal spectrum is plotted in the selected frequency range.</p></li>
+<li><p><strong>Waterfall plots:</strong> Waterfall plots are a different way of representing the signal spectrum where the colour of the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful to enable the representation of a signal spectrum in a time-dependent fashion.</p></li>
+</ol>
+</div></blockquote>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_02_SA.png"><img alt="../../../_images/Slika_02_SA.png" src="../../../_images/Slika_02_SA.png" style="width: 1000px;" /></a>
+</div>
+<div class="section" id="features">
+<h2><span class="section-number">3.2.2.1. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<p>The main features of the DFT Spectrum analyser are described below:</p>
+<div class="section" id="inputs">
+<h3><span class="section-number">3.2.2.1.1. </span>INPUTS:<a class="headerlink" href="#inputs" title="Permalink to this heading"></a></h3>
+<p>Input controls are shown in the picture below. With the “SHOW” select button, displaying the spectrum of the selected input can be enabled or disabled. The “FREEZE” button is used to stop the measurements of the selected input. The “MIN” and “MAX” select buttons are used to enable or disable the persist mode for the spectrum plot. The “MIN” signal spectrum plot will show the lowest values of the signal spectrum taken after enabling the “MIN” button. The same logic is used for the “MAX” signal, where the MAX values of the signal spectrum are shown. This feature is mostly used for detecting signal glitches and calculating the max/min spectrum amplitude values during the measurement.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_03_SA.png"><img alt="../../../_images/Slika_03_SA.png" src="../../../_images/Slika_03_SA.png" style="width: 1000px;" /></a>
+</div>
+<p>For SIGNALlab 250-12, there are additional settings available where the user can select:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Input attenuation</strong></p></li>
+<li><p><strong>Coupling</strong></p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_09_SA.png"><img alt="../../../_images/Slika_09_SA.png" src="../../../_images/Slika_09_SA.png" style="width: 300px;" /></a>
+</div>
+</div>
+<div class="section" id="cursors">
+<h3><span class="section-number">3.2.2.1.2. </span>CURSORS:<a class="headerlink" href="#cursors" title="Permalink to this heading"></a></h3>
+<p>The cursors are an additional vertical and horizontal pair of lines useful for extracting the values of the spectrum plots.</p>
+<p>The cursors are interactive, and they can be set on any part of the graph while the frequency value is shown corresponding to the place where the X cursors are set and the amplitude value where the Y cursors are set. Cursor delta values are useful for measuring signal harmonics and relative ratios between amplitudes and frequencies.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_04_SA.png"><img alt="../../../_images/Slika_04_SA.png" src="../../../_images/Slika_04_SA.png" style="width: 1000px;" /></a>
+</div>
+</div>
+<div class="section" id="range">
+<h3><span class="section-number">3.2.2.1.3. </span>RANGE:<a class="headerlink" href="#range" title="Permalink to this heading"></a></h3>
+<p>The range settings are used to set a frequency span. This feature is useful when the frequency range of interest is
+smaller than the full frequency range of the Spectrum analyzer application.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_05_SA.png"><img alt="../../../_images/Slika_05_SA.png" src="../../../_images/Slika_05_SA.png" style="width: 1000px;" /></a>
+</div>
+</div>
+<div class="section" id="peak-detection">
+<h3><span class="section-number">3.2.2.1.4. </span>PEAK DETECTION:<a class="headerlink" href="#peak-detection" title="Permalink to this heading"></a></h3>
+<p>During the measurement, peak values of the signal spectrum are measured and shown in the “Peak Values” field. Peak values are the max values of the signal spectrum regardless of the selected frequency range. This peak finding prevents not seeing peak values that are outside the selected frequency span.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_06_SA.png"><img alt="../../../_images/Slika_06_SA.png" src="../../../_images/Slika_06_SA.png" style="width: 1000px;" /></a>
+</div>
+</div>
+<div class="section" id="waterfall-plots">
+<h3><span class="section-number">3.2.2.1.5. </span>WATERFALL PLOTS:<a class="headerlink" href="#waterfall-plots" title="Permalink to this heading"></a></h3>
+<p>Waterfall plots are a different way of representing the signal spectrum where the colour on the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful when enabling the representation of the signal spectrum in a time dependency.</p>
+</div>
+<div class="section" id="axis-controls">
+<h3><span class="section-number">3.2.2.1.6. </span>AXIS CONTROLS:<a class="headerlink" href="#axis-controls" title="Permalink to this heading"></a></h3>
+<p>Horizontal +/- buttons are used to select the span of the X (frequency) axis (zooming in/out). The vertical +/- buttons change the Y (amplitude)-axis range. When the Reset button is pressed, the frequency and amplitude span are reset to their default values.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_07_SA.png"><img alt="../../../_images/Slika_07_SA.png" src="../../../_images/Slika_07_SA.png" style="width: 1000px;" /></a>
+</div>
+</div>
+<div class="section" id="outputs">
+<h3><span class="section-number">3.2.2.1.7. </span>OUTPUTS:<a class="headerlink" href="#outputs" title="Permalink to this heading"></a></h3>
+<p>The Spectrum Analyzer applications also include a signal generator, so users can simultaneously generate a signal and observe the signal spectrum. For the signal generator settings and specifications, refer to <a class="reference internal" href="../oscSigGen/osc.html#output-ref"><span class="std std-ref">outputs</span></a>.</p>
+</div>
+<div class="section" id="external-reference-clock-signallab-250-12-only">
+<h3><span class="section-number">3.2.2.1.8. </span>External reference clock (SIGNALlab 250-12 only):<a class="headerlink" href="#external-reference-clock-signallab-250-12-only" title="Permalink to this heading"></a></h3>
+<p>The external reference clock input can be enabled through the settings menu. Once enabled, its status is displayed in the main interface. The “green” status indicates that the sampling clock is locked to the external reference clock.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/Slika_08_SA.png"><img alt="../../../_images/Slika_08_SA.png" src="../../../_images/Slika_08_SA.png" style="width: 400px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="specifications">
+<h2><span class="section-number">3.2.2.2. </span>Specifications<a class="headerlink" href="#specifications" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 18%" />
+<col style="width: 14%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>STEMlab 125-10
+(discontinued)</p></td>
+<td><p>STEMlab 125-14</p></td>
+<td><p>STEMlab 125-14 4-Input</p></td>
+<td><p>SDRlab 122-16</p></td>
+<td><p>SIGNALlab 250-12</p></td>
+</tr>
+<tr class="row-even"><td><p>Input channels</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bandwidth</p></td>
+<td><p>0 - 50 MHz</p></td>
+<td><p>0 - 60 MHz</p></td>
+<td><p>0 - 60 MHz</p></td>
+<td><p>0 - 60 MHz</p></td>
+<td><p>0 - 60 MHz</p></td>
+</tr>
+<tr class="row-even"><td><p>Resolution</p></td>
+<td><p>10 bit</p></td>
+<td><p>14 bit</p></td>
+<td><p>14 bit</p></td>
+<td><p>16 bit</p></td>
+<td><p>12 bit</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT buffer</p></td>
+<td><p>16384</p></td>
+<td><p>16384</p></td>
+<td><p>16384</p></td>
+<td><p>16384</p></td>
+<td><p>16384</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic Range</p></td>
+<td><p>60 dB</p></td>
+<td><p>80 dB</p></td>
+<td><p>80 dB</p></td>
+<td><p>96 dB</p></td>
+<td><p>74 dB</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input noise level</p></td>
+<td><p>&lt; -100 dBm/Hz</p></td>
+<td><p>&lt; -119 dBm/Hz</p></td>
+<td><p>&lt; -119 dBm/Hz</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Input range</p></td>
+<td><p>10 dBm</p></td>
+<td><p>10 dBm</p></td>
+<td><p>10 dBm</p></td>
+<td><p>-2 dBm</p></td>
+<td><p>10 dBm (when att. is disabled)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input impedance</p></td>
+<td><p>1 MΩ / 10 pF</p></td>
+<td><p>1 MΩ / 10 pF</p></td>
+<td><p>1 MΩ / 10 pF</p></td>
+<td><p>50 Ω</p></td>
+<td><p>1 MΩ / 10 pF</p></td>
+</tr>
+<tr class="row-even"><td><p>Input coupling</p></td>
+<td><p>DC</p></td>
+<td><p>DC</p></td>
+<td><p>DC</p></td>
+<td><p>AC</p></td>
+<td><p>AC/DC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Spurious frequency components</p></td>
+<td><p>&lt; -70 dBFS Typically</p></td>
+<td><p>&lt; -90 dBFS Typically</p></td>
+<td><p>&lt; -90 dBFS Typically</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="source-code">
+<h2><span class="section-number">3.2.2.3. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/spectrumpro">Spectrum analyzer source code</a> is available on our GitHub.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../oscSigGen/osc.html" class="btn btn-neutral float-left" title="3.2.1. Oscilloscope &amp; Signal Generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../logic/logic.html" class="btn btn-neutral float-right" title="3.2.3. Logic Analyzer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

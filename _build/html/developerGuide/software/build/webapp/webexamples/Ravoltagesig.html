@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2.2.6.3.3. Reading analog voltage from slow inputs + graph &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="4.2.2.6.3.4. Reading analog voltage from slow inputs + graph + gain and offset" href="Ravoltagesiggo.html" />
+    <link rel="prev" title="4.2.2.6.3.2. Reading analog voltage from slow inputs" href="Ravoltagesi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../devGuideTop.html">4. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../hardware/hardware.html">4.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../software.html">4.2. Software</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../console/console_con.html">4.2.1. Console connection</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../build.html">4.2.2. Build &amp; compile instructions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../C%26Python_API.html">4.2.2.1. Running C and Python Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../comStreaming.html">4.2.2.2. Compiling and running Streaming client applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fpga/fpga.html">4.2.2.3. Build FPGA image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ecosystem/ecosystem.html">4.2.2.4. Build Red Pitaya ecosystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../debian.html">4.2.2.5. Build Red Pitaya OS</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../webApps.html">4.2.2.6. Create your own WEB applications</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../other_info/info.html">4.2.3. Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../known_sw_issues/known_sw_issues.html">4.2.4. Known software issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../devGuideTop.html"><span class="section-number">4. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../../software.html"><span class="section-number">4.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../../build.html"><span class="section-number">4.2.2. </span>Build &amp; compile instructions</a></li>
+          <li class="breadcrumb-item"><a href="../webApps.html"><span class="section-number">4.2.2.6. </span>Create your own WEB applications</a></li>
+          <li class="breadcrumb-item"><a href="../webExamples.html"><span class="section-number">4.2.2.6.3. </span>Examples</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.2.6.3.3. </span>Reading analog voltage from slow inputs + graph</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="reading-analog-voltage-from-slow-inputs-graph">
+<h1><span class="section-number">4.2.2.6.3.3. </span>Reading analog voltage from slow inputs + graph<a class="headerlink" href="#reading-analog-voltage-from-slow-inputs-graph" title="Permalink to this heading"></a></h1>
+<p>In this example we will plot on graph voltage measured on one of Red Pitaya slow analog inputs. We take
+Reading analog voltage from slow inputs <a class="reference internal" href="Ravoltagesi.html#readavsi"><span class="std std-ref">example</span></a> as a basis.</p>
+<div class="section" id="web-ui">
+<h2><span class="section-number">4.2.2.6.3.3.1. </span>Web UI<a class="headerlink" href="#web-ui" title="Permalink to this heading"></a></h2>
+<p>You also need new .js file:</p>
+<p><strong>jquery.flot.js</strong> - for drawing graphs</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/jquery-2.1.3.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/jquery.flot.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/pako.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Add graph placeholder using this string in <strong>index.html</strong>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;placeholder&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In <strong>app.js</strong> we should draw signal value on graph. Change <strong>APP.ws.onmessage()</strong> callback. Now we should decompress
+message and push it to stack. Data arrives quite faster than we can process it. That’s why we should firsly save it,
+and then process.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var data = new Uint8Array(ev.data);
+var inflate = pako.inflate(data);
+var text = String.fromCharCode.apply(null, new Uint8Array(inflate));
+var receive = JSON.parse(text);
+
+if (receive.signals) {
+    APP.signalStack.push(receive.signals);
+}
+</pre></div>
+</div>
+<p>Processing of signals is also located in <strong>APP.processSignals()</strong> function, which is called every 15ms by
+<strong>APP.signalHandler()</strong>. In this function we draw points according to values and update graph:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>var pointArr = [];
+var voltage;
+
+for (sig_name in new_signals) {
+
+    if (new_signals[sig_name].size == 0) continue;
+
+    var points = [];
+    for (var i = 0; i &lt; new_signals[sig_name].size; i++) {
+        points.push([i, new_signals[sig_name].value[i]]);
+    }
+
+    pointArr.push(points);
+
+    voltage = new_signals[sig_name].value[new_signals[sig_name].size - 1];
+}
+
+$(&#39;#value&#39;).text(parseFloat(voltage).toFixed(2) + &quot;V&quot;);
+
+APP.plot.setData(pointArr);
+APP.plot.resize();
+APP.plot.setupGrid();
+APP.plot.draw();
+</pre></div>
+</div>
+<div class="section" id="controller">
+<h3><span class="section-number">4.2.2.6.3.3.1.1. </span>Controller<a class="headerlink" href="#controller" title="Permalink to this heading"></a></h3>
+<p>As in a previous tutorial we will read values from pins using controller. In <strong>main.cpp</strong> we should make changes.</p>
+<p>As you remember we added signal in global variables:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CFloatSignal</span><span class="w"> </span><span class="n">VOLTAGE</span><span class="p">(</span><span class="s">&quot;VOLTAGE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SIGNAL_SIZE_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now <strong>SIGNAL_SIZE_DEFAULT</strong> should be 1024. We will send 1024 points to Web UI.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In <strong>rp_app_init()</strong> we should set signal update interval:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CDataManager</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetSignalInterval</span><span class="p">(</span><span class="n">SIGNAL_UPDATE_INTERVAL</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>SIGNAL_UPDATE_INTERVAL</strong> is also our constant. It is 10ms. It means how often program will call function void
+<strong>UpdateSignals(void)</strong>. In this function we will read value from <strong>AIpin0</strong> and write it to signal:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rp_AIpinGetValue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>val</strong> - is buffer variable, which will get value from <strong>AIpin0</strong>. We should write this value to data vector in last
+position. First measurement should be deleted from this vector.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">g_data</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">g_data</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+<span class="n">g_data</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">GAIN</span><span class="p">.</span><span class="n">Value</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>After all steps write data to signal and it will be sent to server.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">SIGNAL_SIZE_DEFAULT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">VOLTAGE</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Ravoltagesi.html" class="btn btn-neutral float-left" title="4.2.2.6.3.2. Reading analog voltage from slow inputs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Ravoltagesiggo.html" class="btn btn-neutral float-right" title="4.2.2.6.3.4. Reading analog voltage from slow inputs + graph + gain and offset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

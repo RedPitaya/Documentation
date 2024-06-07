@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2.3.2. General purpose input output &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="4.2.3.3. SPI interface" href="../spi/spi.html" />
+    <link rel="prev" title="4.2.3.1. Network" href="../os/network.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">4. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">4.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">4.2. Software</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">4.2.1. Console connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/build.html">4.2.2. Build &amp; compile instructions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../info.html">4.2.3. Other useful information</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../os/network.html">4.2.3.1. Network</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.3.2. General purpose input output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../spi/spi.html">4.2.3.3. SPI interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tft/TFT.html">4.2.3.4. Interfacing SPI TFT displays with touch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remote_software/remote_sw_deploy.html">4.2.3.5. Remote software deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">4.2.4. Known software issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">4. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">4.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../info.html"><span class="section-number">4.2.3. </span>Other useful information</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.3.2. </span>General purpose input output</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="general-purpose-input-output">
+<h1><span class="section-number">4.2.3.2. </span>General purpose input output<a class="headerlink" href="#general-purpose-input-output" title="Permalink to this heading"></a></h1>
+<div class="section" id="gpios">
+<h2><span class="section-number">4.2.3.2.1. </span>GPIOs<a class="headerlink" href="#gpios" title="Permalink to this heading"></a></h2>
+<p>This document introduces handling of GPIO signals that are conected to Zynq-7000 PS EMIO block
+and is accesible as general purpose input / output pins on Extension conector E1 with Linux gpio subsystem userspace interfaces.</p>
+<p>There are two interfaces legacy sysfs interface and new character device based one.</p>
+</div>
+<div class="section" id="pins">
+<h2><span class="section-number">4.2.3.2.2. </span>PINS<a class="headerlink" href="#pins" title="Permalink to this heading"></a></h2>
+<p>Pins connected to the PL block require FPGA code to function. If the pin signals are wired directly (in the FPGA sources) from PS based EMIO signals to the FPGA pads,
+then they can be managed using Linux drivers intended for the PS block. This is currently done with two fpga projects: classic and mercury.</p>
+<p>Apropriate fpga bitstream can be applied using bash command.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tab" tabindex="0">OS version 1.04 or older</button><button aria-controls="panel-0-T1MgdmVyc2lvbiAyLjAw" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tab" tabindex="-1">OS version 2.00</button></div><div aria-labelledby="tab-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-0-T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAxLjA0IG9yIG9sZGVy" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; cat /opt/redpitaya/fpga/fpga_0.94.bit &gt; /dev/xdevcfg</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-T1MgdmVyc2lvbiAyLjAw" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-T1MgdmVyc2lvbiAyLjAw" name="T1MgdmVyc2lvbiAyLjAw" role="tabpanel" tabindex="0"><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; overlay.sh v0.94</span>
+</pre></div>
+</div>
+</div></div>
+<p>There are 54+64=118 GPIO provided by ZYNQ PS, MIO provides 54 GPIO,
+and EMIO provide additional 64 GPIO and only 16 out of those are accesible on board.
+On Extension connector E1; pins from DIO0_N to DIO7_N and DIO0_P to DIO7_P.</p>
+<p>The next formula is used to calculate the <code class="docutils literal notranslate"><span class="pre">gpio_base</span></code> index.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>base_gpio = ARCH_NR_GPIOS - ZYNQ_GPIO_NR_GPIOS = 1024 - 118 = 906
+</pre></div>
+</div>
+<p>Values for the used macros can be found in the kernel sources.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>grep<span class="w"> </span>ZYNQ_GPIO_NR_GPIOS<span class="w"> </span>drivers/gpio/gpio-zynq.c
+<span class="gp">#</span>define<span class="w">      </span>ZYNQ_GPIO_NR_GPIOS<span class="w">      </span><span class="m">118</span>
+<span class="gp">$ </span>grep<span class="w"> </span>-r<span class="w"> </span>CONFIG_ARCH_NR_GPIO<span class="w"> </span>tmp/linux-xlnx-xilinx-v2017.2
+<span class="go">tmp/linux-xlnx-xilinx-v2017.2/.config:CONFIG_ARCH_NR_GPIO=1024</span>
+</pre></div>
+</div>
+<p>Another way to find the <cite>gpio_base</cite> index is to check the given name inside <cite>sysfs</cite>.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>find<span class="w"> </span>/sys/class/gpio/<span class="w"> </span>-name<span class="w"> </span>gpiochip*
+<span class="go">/sys/class/gpio/gpiochip906</span>
+</pre></div>
+</div>
+<p>GPIOs are accessible at the <code class="docutils literal notranslate"><span class="pre">sysfs</span></code> index.</p>
+<p>The default pin assignment for GPIO is described in the next table.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 14%" />
+<col style="width: 23%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>FPGA</p></th>
+<th class="head"><p>connector</p></th>
+<th class="head"><p>GPIO</p></th>
+<th class="head"><p>MIO/EMIO index</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">sysfs</span></code> index</p></th>
+<th class="head"><p>comments, LED color, dedicated meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp_p_io</span> <span class="pre">[7:0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMIO[15:</span> <span class="pre">8]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+54+[15:</span> <span class="pre">8]=[975:968]</span></code></p></td>
+<td><p>DIO7_P : DIO0_P</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp_n_io</span> <span class="pre">[7:0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMIO[23:16]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">906+54+[23:16]=[983:976]</span></code></p></td>
+<td><p>DIO7_N : DIO0_N</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="linux-access-to-gpio">
+<h2><span class="section-number">4.2.3.2.3. </span>Linux access to GPIO<a class="headerlink" href="#linux-access-to-gpio" title="Permalink to this heading"></a></h2>
+<div class="section" id="sysfs-access">
+<h3><span class="section-number">4.2.3.2.3.1. </span>SYSFS access<a class="headerlink" href="#sysfs-access" title="Permalink to this heading"></a></h3>
+<p>This document is used as reference:
+<a class="reference external" href="http://www.wiki.xilinx.com/Linux+GPIO+Driver">Linux+GPIO+Driver</a></p>
+<p>Bash example for writing to and reading from gpio value for pins from 968(DIO0_P) to 983(DIO7_N).</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="nb">export</span><span class="w"> </span>pin<span class="w"> </span><span class="m">968</span>
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;968&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/export
+<span class="gp">#</span><span class="nb">set</span><span class="w"> </span>direction<span class="w"> </span>to<span class="w"> </span>output
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;out&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/gpio968/direction
+<span class="gp">#</span><span class="nb">set</span><span class="w"> </span>pin<span class="w"> </span>to<span class="w"> </span>LOW
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/gpio968/value
+<span class="gp">#</span><span class="nb">set</span><span class="w"> </span>pin<span class="w"> </span>to<span class="w"> </span>HIGH
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/gpio968/value
+<span class="gp">#</span><span class="nb">set</span><span class="w"> </span>pin<span class="w"> </span>direction<span class="w"> </span>to<span class="w"> </span>input
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/gpio968/direction
+<span class="gp">#</span>output<span class="w"> </span>pin<span class="w"> </span>value
+<span class="gp">$ </span>cat<span class="w"> </span>/sys/class/gpio/gpio968/value
+<span class="gp">#</span>when<span class="w"> </span><span class="k">done</span><span class="w"> </span>with<span class="w"> </span>pin<span class="w"> </span>you<span class="w"> </span>should<span class="w"> </span>unexport<span class="w"> </span>it<span class="w"> </span>with
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="m">968</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/unexport
+</pre></div>
+</div>
+<p>SYSFS GPIO C example is available at github: <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/Examples/gpio_sysfs">https://github.com/RedPitaya/RedPitaya/tree/master/Examples/gpio_sysfs</a></p>
+</div>
+<div class="section" id="character-device-access">
+<h3><span class="section-number">4.2.3.2.3.2. </span>Character device access<a class="headerlink" href="#character-device-access" title="Permalink to this heading"></a></h3>
+<p>Character device usersace access to gpio kernel subsystem is confirmed working on kernels newer and including 4.8.</p>
+<p>References: <a class="reference external" href="http://elinux.org/images/9/9b/GPIO_for_Engineers_and_Makers.pdf">GPIO for Engineers and Maker</a></p>
+<div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
+    <iframe src="https://www.youtube.com/embed/lQRCDl0tFiQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div><p>The Linux kernel contains GPIO utilities in its <a class="reference external" href="https://github.com/torvalds/linux/tree/master/tools/gpio">tools</a> directory.</p>
+<p>We isolated the sources and created a library from <code class="docutils literal notranslate"><span class="pre">gpio-utils.c</span></code> and
+executables from other source files.</p>
+<p><a class="reference external" href="https://github.com/RedPitaya/gpio-utils">https://github.com/RedPitaya/gpio-utils</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../os/network.html" class="btn btn-neutral float-left" title="4.2.3.1. Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../spi/spi.html" class="btn btn-neutral float-right" title="4.2.3.3. SPI interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

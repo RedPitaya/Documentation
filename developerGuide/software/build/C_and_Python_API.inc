@@ -410,16 +410,8 @@ C and Python API all available commands
 The API functions/commands are written in the :ref:`available commands' list <command_list>`.
 As of now the list does not include all possible options. If you want to check out all available API commands they are available here:
     
-    - C - Check the |rp-api| section of the GitHub repository (|RP_H|).
+    - C - Check the `"rp-api" section of the GitHub repository <https://github.com/RedPitaya/RedPitaya/blob/master/rp-api>`_ section of the GitHub repository (`Function info <https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/rp.h>`_).
     - Python - Establish an :ref:`SSH <ssh>` connection to your Red Pitaya and look into the "/opt/redpitaya/lib/python" directoy.
-
-.. |rp-api| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api" target="_blank">"rp-api" section of the GitHub repository</a>
-
-.. |RP_H| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/redpitaya/rp.h" target="_blank">Functions info</a>
 
 
 C and Python API examples

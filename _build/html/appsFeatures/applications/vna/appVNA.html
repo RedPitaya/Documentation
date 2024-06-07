@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2.11. Vector Network Analyzer &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2.12. Marketplace and contributed apps" href="../marketplace/marketplace.html" />
+    <link rel="prev" title="3.2.10. SDR" href="../sdr/appSDR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">3.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">3.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">3.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">3.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">3.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">3.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">3.2.6. LCR meter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appStreaming.html">3.2.7. Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appXCStreaming.html">3.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">3.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">3.2.10. SDR</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2.11. Vector Network Analyzer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-do-i-need-before-i-start">3.2.11.1. What do I need before I start?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-using-red-pitaya-as-a-vector-network-analyser">3.2.11.2. Start using Red Pitaya as a Vector Network Analyser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#perform-calibration-and-start-measuring">3.2.11.3. Perform calibration and start measuring</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">3.2.12. Marketplace and contributed apps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">3.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.11. </span>Vector Network Analyzer</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="vector-network-analyzer">
+<span id="vna-extension"></span><h1><span class="section-number">3.2.11. </span>Vector Network Analyzer<a class="headerlink" href="#vector-network-analyzer" title="Permalink to this heading"></a></h1>
+<div class="section" id="what-do-i-need-before-i-start">
+<h2><span class="section-number">3.2.11.1. </span>What do I need before I start?<a class="headerlink" href="#what-do-i-need-before-i-start" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>VNA application requirements:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Windows or Linux-based personal computer (PC).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>The following accessories and materials are available in the Red Pitaya store:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>any kit that includes a STEMlab 125-14, SDRlab 122-16, or 125-10 (discontinued) board</p></li>
+<li><p>Vector Network Analyzer bridge module</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="start-using-red-pitaya-as-a-vector-network-analyser">
+<h2><span class="section-number">3.2.11.2. </span>Start using Red Pitaya as a Vector Network Analyser<a class="headerlink" href="#start-using-red-pitaya-as-a-vector-network-analyser" title="Permalink to this heading"></a></h2>
+<div class="section" id="connect-vector-network-analyzer-bridge-to-the-red-pitaya">
+<h3><span class="section-number">3.2.11.2.1. </span>Connect Vector Network Analyzer bridge to the Red Pitaya<a class="headerlink" href="#connect-vector-network-analyzer-bridge-to-the-red-pitaya" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Connect the VNA module’s OUT to the Red Pitaya IN1</p></li>
+<li><p>Connect the VNA module’s IN to the Red Pitaya OUT1.</p></li>
+<li><p>Set the IN1 jumpers on the Red Pitaya to the LV position.</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/vna_bridge_module_connections.png"><img alt="../../../_images/vna_bridge_module_connections.png" src="../../../_images/vna_bridge_module_connections.png" style="width: 600px;" /></a>
+</div>
+</div>
+<div class="section" id="install-run-network-vector-network-analyzer-control-app">
+<h3><span class="section-number">3.2.11.2.2. </span>Install &amp; run network Vector Network Analyzer control app<a class="headerlink" href="#install-run-network-vector-network-analyzer-control-app" title="Permalink to this heading"></a></h3>
+<div class="section" id="windows-users-only">
+<h4><span class="section-number">3.2.11.2.2.1. </span>Windows users only<a class="headerlink" href="#windows-users-only" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Open the VNA application</p></li>
+<li><p>Head to <a href="https://pavel-demin.github.io/red-pitaya-notes/vna/" target="_blank">Pavel Demin's Red Pitaya Notes VNA page</a>. There you can read more about the inner workings of the application as well as find links to other useful information.</p></li>
+<li><p>Find the <strong>Getting started with MS Windows</strong> section and follow the bullet points. <strong>SKIP the first three points</strong> if you are using official Red Pitaya OS!</p></li>
+<li><p>Download and unpack the <em>release zip folder</em> from the link above to your computer.</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">vna.exe</span></code> program located in the <em>control</em> directory.</p></li>
+<li><p>Type in the IP address of the Red Pitaya board and press the <em>Connect</em> button.</p></li>
+<li><p>Perform calibration and measurements.</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="linux-users-only">
+<h4><span class="section-number">3.2.11.2.2.2. </span>Linux users only<a class="headerlink" href="#linux-users-only" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Open the VNA application</p></li>
+<li><p>Head to <a href="https://pavel-demin.github.io/red-pitaya-notes/vna/" target="_blank">Pavel Demin's Red Pitaya Notes VNA page</a>. There you can read more about the inner workings of the application as well as find links to other useful information.</p></li>
+<li><p>Find the <strong>Getting started with GNU/Linux</strong> section and follow the bullet points. <strong>SKIP the first three points</strong> if you are using official Red Pitaya OS!</p></li>
+<li><p>Install <a href="https://www.python.org/" target="_blank">Python 3</a> and all the required libraries:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">apt-get install python3-numpy python3-matplotlib python3-pyqt5</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Clone the source code repository to your computer:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/pavel-demin/red-pitaya-notes</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Run the control program:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd red-pitaya-notes/projects/vna/client</span>
+<span class="go">python3 vna.py</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Type in the IP address of the Red Pitaya board and press the <em>Connect</em> button.</p></li>
+<li><p>Perform calibration and measurements.</p></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="type-in-the-ip-or-url-address-of-the-red-pitaya-board">
+<h3><span class="section-number">3.2.11.2.3. </span>Type in the IP or URL address of the Red Pitaya board<a class="headerlink" href="#type-in-the-ip-or-url-address-of-the-red-pitaya-board" title="Permalink to this heading"></a></h3>
+<div class="section" id="connect-by-entering-the-red-pitaya-s-ip">
+<h4><span class="section-number">3.2.11.2.3.1. </span>Connect by entering the Red Pitaya’s IP:<a class="headerlink" href="#connect-by-entering-the-red-pitaya-s-ip" title="Permalink to this heading"></a></h4>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/1_ip.png"><img alt="../../../_images/1_ip.png" src="../../../_images/1_ip.png" style="width: 600px;" /></a>
+</div>
+<p>To find the IP address of your Red Pitaya board, first connect to Red Pitaya by following these <a class="reference internal" href="../../../quickStart/quickStart.html#quick-start"><span class="std std-ref">instructions</span></a>.</p>
+<p>Then go to <strong>System-&gt;Network Manager</strong>. The IP is written next to the label.
+Address: xxx.xxx.xxx.xxx .</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/network_manager_icon.png"><img alt="../../../_images/network_manager_icon.png" src="../../../_images/network_manager_icon.png" style="width: 150px;" /></a>
+</div>
+</div>
+<div class="section" id="connect-by-entering-redpitaya-url">
+<h4><span class="section-number">3.2.11.2.3.2. </span>Connect by entering RedPitaya URL:<a class="headerlink" href="#connect-by-entering-redpitaya-url" title="Permalink to this heading"></a></h4>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/1_url.png"><img alt="../../../_images/1_url.png" src="../../../_images/1_url.png" style="width: 600px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="run-the-vector-network-analyzer-application-on-the-red-pitaya">
+<h3><span class="section-number">3.2.11.2.4. </span>Run the Vector Network Analyzer application on the Red Pitaya<a class="headerlink" href="#run-the-vector-network-analyzer-application-on-the-red-pitaya" title="Permalink to this heading"></a></h3>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/vna_icon.png"><img alt="../../../_images/vna_icon.png" src="../../../_images/vna_icon.png" style="width: 150px;" /></a>
+</div>
+</div>
+<div class="section" id="click-connect-inside-the-vector-network-analyzer-control-app">
+<h3><span class="section-number">3.2.11.2.5. </span>Click “Connect” inside the Vector Network Analyzer control app<a class="headerlink" href="#click-connect-inside-the-vector-network-analyzer-control-app" title="Permalink to this heading"></a></h3>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/2_connect.png"><img alt="../../../_images/2_connect.png" src="../../../_images/2_connect.png" style="width: 600px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="perform-calibration-and-start-measuring">
+<h2><span class="section-number">3.2.11.3. </span>Perform calibration and start measuring<a class="headerlink" href="#perform-calibration-and-start-measuring" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On SDRlab 122-16 the VNA module works for frequencies above 500 kHz. Please start the calibration process at 500 kHz (ignore calibration values in the pictrures).</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/3_calibrate.png"><img alt="../../../_images/3_calibrate.png" src="../../../_images/3_calibrate.png" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</div>
+<ol class="arabic">
+<li><p>Connect the SMA OPEN calibration connector marked with the letter O to the DUT SMA connector of the network vector analyzer bridge module. Click the button “Open” and wait for the calibration procedure to complete.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/04_Calibration_O.jpg"><img alt="../../../_images/04_Calibration_O.jpg" src="../../../_images/04_Calibration_O.jpg" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Connect the SMA SHORT calibration connector marked with the letter S to the DUT SMA connector of the network vector analyzer bridge module. Click the button “Short” and wait for the calibration procedure to complete.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/03_Calibration_S.jpg"><img alt="../../../_images/03_Calibration_S.jpg" src="../../../_images/03_Calibration_S.jpg" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Connect the SMA LOAD calibration connector marked with the letter L to the DUT SMA connector of the network vector analyzer bridge module. Click the button “Load” and wait for the calibration procedure to complete.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/05_Calibration_L.jpg"><img alt="../../../_images/05_Calibration_L.jpg" src="../../../_images/05_Calibration_L.jpg" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Select the Smith chart tab at the bottom and then click the Single button to perform a single measurement of the DUT. A dot in the middle of the Smith chart circle (&#64; 50 Ohm) will indicate that VNA is properly measuring the reference 50 Ohm LOAD.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/4-load_DUT_smith_chart.png"><img alt="../../../_images/4-load_DUT_smith_chart.png" src="../../../_images/4-load_DUT_smith_chart.png" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Disconnect the LOAD SMA connector and connect whatever DUT you’d like to measure.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/07_Product_Combo.jpg"><img alt="../../../_images/07_Product_Combo.jpg" src="../../../_images/07_Product_Combo.jpg" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<div class="section" id="examples">
+<h3><span class="section-number">3.2.11.3.1. </span>Examples:<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><dl>
+<dt>Measurement of a 21-meter vertical antenna</dt><dd><p>The antenna is not properly tuned (at frequency 14, 21 MHz, SWR should be = 1.5).</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/antenna.png"><img alt="../../../_images/antenna.png" src="../../../_images/antenna.png" style="width: 600px;" /></a>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>20-meter bandpass filter for HAM RADIO</dt><dd><p>SWR is better than 1.5 between the start and stop band frequencies, and the filter load is around 50 Ohm.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/bandpass_filter.png"><img alt="../../../_images/bandpass_filter.png" src="../../../_images/bandpass_filter.png" style="width: 600px;" /></a>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/bandpass_filter_smith_chart.png"><img alt="../../../_images/bandpass_filter_smith_chart.png" src="../../../_images/bandpass_filter_smith_chart.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition-credits admonition">
+<p class="admonition-title">Credits</p>
+<div class="line-block">
+<div class="line">The original developer of the Vector Network Analyzer RedPitaya application is Pavel Demin.</div>
+<div class="line">Repositories used by our builds:</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><a href="https://github.com/RedPitaya/red-pitaya-notes" target="_blank">Red Pitaya notes repository</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../sdr/appSDR.html" class="btn btn-neutral float-left" title="3.2.10. SDR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../marketplace/marketplace.html" class="btn btn-neutral float-right" title="3.2.12. Marketplace and contributed apps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

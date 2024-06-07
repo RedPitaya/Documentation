@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.4.6.8.3. I2C (HW api for 250-12 only) &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.4.6.8.4. SPI" href="spi.html" />
+    <link rel="prev" title="3.4.6.8.2. I2C (HW api)" href="i2c_2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">3.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">3.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">3.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">3.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">3.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">3.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">3.4.6. Examples</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../digital/digital.html">3.4.6.1. Digital</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">3.4.6.2. Analog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">3.4.6.3. Generating signals at RF outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition/acqRF.html">3.4.6.4. Acquiring signals at RF inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition_generation/acq_genRF.html">3.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../multiboard_sync/multiboard.html">3.4.6.6. Multi-board signal acquisition and generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../DMA/deepMemoryAcq.html">3.4.6.7. Deep Memory Acquisition</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="digcomIF.html">3.4.6.8. Digital communication interfaces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">3.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">3.4. </span>Programming and remote-control tools</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">3.4.6. </span>Examples</a></li>
+          <li class="breadcrumb-item"><a href="digcomIF.html"><span class="section-number">3.4.6.8. </span>Digital communication interfaces</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.4.6.8.3. </span>I2C (HW api for 250-12 only)</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="i2c-hw-api-for-250-12-only">
+<h1><span class="section-number">3.4.6.8.3. </span>I2C (HW api for 250-12 only)<a class="headerlink" href="#i2c-hw-api-for-250-12-only" title="Permalink to this heading"></a></h1>
+<div class="section" id="description">
+<h2><span class="section-number">3.4.6.8.3.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>This 250-12 board example shows how to switch AC/DC modes over I2C using the SMBUS protocol.</p>
+</div>
+<div class="section" id="required-hardware">
+<h2><span class="section-number">3.4.6.8.3.2. </span>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Red Pitaya 250-12</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="code-c">
+<h2><span class="section-number">3.4.6.8.3.3. </span>Code - C<a class="headerlink" href="#code-c" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the C code examples don’t require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages.
+Instructions on how to compile the code are <a class="reference internal" href="../../../developerGuide/software/build/C%26Python_API.html#comc"><span class="std std-ref">here</span></a>.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* @brief This is a simple application for testing I2C communication on a RedPitaya</span>
+<span class="cm">*</span>
+<span class="cm">* (c) Red Pitaya  http://www.redpitaya.com</span>
+<span class="cm">*</span>
+<span class="cm">* This part of code is written in C programming language.</span>
+<span class="cm">* Please visit http://en.wikipedia.org/wiki/C_(programming_language)</span>
+<span class="cm">* for more details on the language used herein.</span>
+<span class="cm">*/</span>
+
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rp_hw.h&quot;</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_I2C_InitDevice</span><span class="p">(</span><span class="s">&quot;/dev/i2c-0&quot;</span><span class="p">,</span><span class="mh">0x21</span><span class="p">);</span><span class="w"> </span><span class="c1">// Init i2c api.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Init result: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_I2C_setForceMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set force mode.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Set force mode: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Turn on AC/DC ch1 &amp; ch2</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0055</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_I2C_SMBUS_WriteWord</span><span class="p">(</span><span class="mh">0x02</span><span class="p">,</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Write 2 bytes: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="mh">0x000F</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_I2C_SMBUS_WriteWord</span><span class="p">(</span><span class="mh">0x02</span><span class="p">,</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Write 2 bytes: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">usleep</span><span class="p">(</span><span class="mi">3000000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Turn off AC/DC ch1 &amp; ch2</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00AA</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_I2C_SMBUS_WriteWord</span><span class="p">(</span><span class="mh">0x02</span><span class="p">,</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Write 2 bytes: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="mh">0x000F</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_I2C_SMBUS_WriteWord</span><span class="p">(</span><span class="mh">0x02</span><span class="p">,</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Write 2 bytes: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">read_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rp_I2C_SMBUS_ReadWord</span><span class="p">(</span><span class="mh">0x02</span><span class="p">,</span><span class="o">&amp;</span><span class="n">read_value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Read 2 bytes: 0x%x (res: %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">read_value</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-matlab">
+<h2><span class="section-number">3.4.6.8.3.4. </span>Code - MATLAB®<a class="headerlink" href="#code-matlab" title="Permalink to this heading"></a></h2>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Define Red Pitaya as TCP/IP object</span>
+
+<span class="n">IP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;192.168.178.56&#39;</span><span class="p">;</span><span class="w">              </span><span class="c">% Input IP of your Red Pitaya...</span>
+<span class="n">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<span class="n">RP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tcpclient</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+
+<span class="c">%% Open connection with your Red Pitaya</span>
+
+<span class="n">RP</span><span class="p">.</span><span class="n">ByteOrder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;big-endian&quot;</span><span class="p">;</span>
+<span class="nb">configureTerminator</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&quot;CR/LF&quot;</span><span class="p">);</span>
+
+<span class="c">% working with RP 250-12 v1.2. For RP version 1.1 need replace dev address to 32 (0x20)</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;I2C:DEV33 &quot;/dev/i2c-0&quot;&#39;</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;I2C:FMODE ON&#39;</span><span class="p">);</span><span class="w">          </span><span class="c">% set force mode</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Turn on AC/DC ch1 &amp; ch2\n&#39;</span><span class="p">);</span>
+
+<span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>0<span class="n">x55</span><span class="p">;</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;I2C:S:W2 %d&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">));</span><span class="w"> </span><span class="c">% write 2 bytes in i2c throw SMBUS</span>
+
+<span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span>0<span class="n">x0F</span><span class="p">;</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;I2C:S:W2 %d&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">));</span><span class="w"> </span><span class="c">% write 2 bytes in i2c throw SMBUS</span>
+
+<span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Turn off AC/DC ch1 &amp; ch2\n&#39;</span><span class="p">);</span>
+
+<span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>0<span class="n">xAA</span><span class="p">;</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;I2C:S:W2 %d&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">));</span><span class="w"> </span><span class="c">% write 2 bytes in i2c throw SMBUS</span>
+
+<span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span>0<span class="n">x0F</span><span class="p">;</span>
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;I2C:S:W2 %d&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">));</span><span class="w"> </span><span class="c">% write 2 bytes in i2c throw SMBUS</span>
+
+<span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="nb">writeline</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;I2C:S:R2?&#39;</span><span class="p">);</span><span class="w"> </span><span class="c">% read 2 bytes from reg 0x02 throw SMBUS</span>
+<span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">str2num</span><span class="p">(</span><span class="n">writeread</span><span class="p">(</span><span class="n">RP</span><span class="p">,</span><span class="s">&#39;I2C:S:R2?&#39;</span><span class="p">));</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Reg 0x02: %x\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+
+
+<span class="c">%% Close connection with Red Pitaya</span>
+
+<span class="nb">clear</span><span class="w"> </span><span class="n">RP</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-python">
+<h2><span class="section-number">3.4.6.8.3.5. </span>Code - Python<a class="headerlink" href="#code-python" title="Permalink to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">redpitaya_scpi</span> <span class="k">as</span> <span class="nn">scpi</span>
+
+<span class="n">rp_s</span> <span class="o">=</span> <span class="n">scpi</span><span class="o">.</span><span class="n">scpi</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># working with RP 250-12 v1.2. For RP version 1.1 need replace dev address to 32</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;I2C:DEV33 &quot;/dev/i2c-0&quot;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Init I2C&quot;</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;I2C:FMODE ON&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Set force mode&quot;</span><span class="p">)</span>
+
+<span class="c1">#  Swich AC_DC for In 1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Turn on AC/DC ch1 &amp; ch2&quot;</span><span class="p">)</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="mh">0x55</span><span class="p">;</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;I2C:S:W2 &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="c1"># write to i2c</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Write value for reg 0x2&quot;</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0x0F</span><span class="p">);</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;I2C:S:W2 &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="c1"># write to i2c</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Write value for reg 0x2&quot;</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Turn off AC/DC ch1 &amp; ch2&quot;</span><span class="p">)</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="mh">0xAA</span><span class="p">;</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;I2C:S:W2 &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="c1"># write to i2c</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Write value for reg 0x2&quot;</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0x0F</span><span class="p">);</span>
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;I2C:S:W2 &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="c1"># write to i2c</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Write value for reg 0x2&quot;</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">rp_s</span><span class="o">.</span><span class="n">tx_txt</span><span class="p">(</span><span class="s1">&#39;I2C:S:R2?&#39;</span><span class="p">)</span>
+<span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rp_s</span><span class="o">.</span><span class="n">rx_txt</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read value for reg 0x2&quot;</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python functions are accessible with the latest version of the redpitaya_scpi.py document available on our <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>.
+The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order. The code should function at approximately the same speed without them.</p>
+<p>For further information on functions please consult the redpitaya_scpi.py code.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="i2c_2.html" class="btn btn-neutral float-left" title="3.4.6.8.2. I2C (HW api)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="spi.html" class="btn btn-neutral float-right" title="3.4.6.8.4. SPI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1.1.2.6.1. Analog inputs &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4.1.1.2.7.1. Extension connector" href="extent.html" />
+    <link rel="prev" title="4.1.1.2. STEMlab 125-14" href="top.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../devGuideTop.html">4. Developers guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../hardware.html">4.1. Hardware</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../platforms.html">4.1.1. Red Pitaya platforms</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../125-10/top.html">4.1.1.1. STEMlab 125-10</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="top.html">4.1.1.2. STEMlab 125-14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_EXT/top.html">4.1.1.3. STEMlab 125-14 external clock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_LN/top.html">4.1.1.4. STEMlab 125-14-LN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_4IN/top.html">4.1.1.5. STEMlab 125-14 4-Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14-Z20/top.html">4.1.1.6. STEMlab 125-14 Z7020-LN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../125-14_MULTI/top.html">4.1.1.7. STEMlab 125-14 X-Channel System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../122-16/top.html">4.1.1.8. SDRlab 122-16</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../122-16_EXT/top.html">4.1.1.9. SDRlab 122-16 external clock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../250-12/top.html">4.1.1.10. SIGNALlab 250-12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../compares/vs.html">4.1.1.11. Product comparison table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cets.html">4.1.1.12. Certificates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../leds.html">4.1.1.13. Status LED Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../known_hw_issues/known_hw_issues.html">4.1.1.14. Known hardware issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ext_modules/ext_modules.html">4.1.2. Extension modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/software.html">4.2. Software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../devGuideTop.html"><span class="section-number">4. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../hardware.html"><span class="section-number">4.1. </span>Hardware</a></li>
+          <li class="breadcrumb-item"><a href="../platforms.html"><span class="section-number">4.1.1. </span>Red Pitaya platforms</a></li>
+          <li class="breadcrumb-item"><a href="top.html"><span class="section-number">4.1.1.2. </span>STEMlab 125-14</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.1.1.2.6.1. </span>Analog inputs</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="analog-inputs">
+<span id="anain"></span><h1><span class="section-number">4.1.1.2.6.1. </span>Analog inputs<a class="headerlink" href="#analog-inputs" title="Permalink to this heading"></a></h1>
+<p>The Red Pitaya board analog front-end features 2 fast analog inputs.</p>
+<div class="section" id="general-specifications">
+<h2><span class="section-number">4.1.1.2.6.1.1. </span>General Specifications<a class="headerlink" href="#general-specifications" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Number of channels</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample rate</p></td>
+<td><p>125 Msps</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADC resolution</p></td>
+<td><p>14 bits</p></td>
+</tr>
+<tr class="row-even"><td><p>Input coupling</p></td>
+<td><p>DC</p></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Absolute maximum input</strong></div>
+<div class="line"><strong>voltage rating</strong></div>
+</div>
+</td>
+<td><p><strong>30 V (S) (1500 V ESD)</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Overload protection</p></td>
+<td><p>protection diodes
+(under the input voltage rating conditions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Connector type</p></td>
+<td><p>SMA</p></td>
+</tr>
+<tr class="row-even"><td><p>Input stage voltage ranges</p></td>
+<td><div class="line-block">
+<div class="line">LV (±1 V)</div>
+<div class="line">HV (±20 V)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Bandwidth</p></td>
+<td><p>50 MHz (3 dB)</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The overload protection is valid for low-frequency signals. For input signals that contain frequency components beyond 1 kHz, the full-scale value defines the maximum admissible input voltage.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of suitable length, otherwise, the SMA connector installed in Red Pitaya will mechanically damage the SMA connector.
+The central pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).</p>
+</div>
+</div></blockquote>
+<div class="section" id="jumpers">
+<span id="jumper-pos"></span><h3><span class="section-number">4.1.1.2.6.1.1.1. </span>Jumpers<a class="headerlink" href="#jumpers" title="Permalink to this heading"></a></h3>
+<p>Voltage ranges are set by input jumpers, as shown here:</p>
+<div class="figure align-default">
+<img alt="../../../_images/Jumper_settings.png" src="../../../_images/Jumper_settings.png" />
+</div>
+<p>Gain can be adjusted independently for both input channels. The adjustment is done by bridging the jumpers located behind the corresponding input SMA connector.</p>
+<div class="figure align-default" id="id6">
+<img alt="../../../_images/Jumper_settings_photo.png" src="../../../_images/Jumper_settings_photo.png" />
+<p class="caption"><span class="caption-text">Jumper setting</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<div class="legend">
+<ul class="simple">
+<li><p>The left setting (LV) adjusts to ± 1 V full scale.</p></li>
+<li><p>The right setting (HV) adjusts to ± 20 V full scale.</p></li>
+</ul>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Jumper settings are limited to the described positions. Any other configuration or use of different jumper types may damage the product and void the warranty.</p>
+</div>
+</div>
+<div class="section" id="jumper-orientation">
+<h3><span class="section-number">4.1.1.2.6.1.1.2. </span>Jumper orientation<a class="headerlink" href="#jumper-orientation" title="Permalink to this heading"></a></h3>
+<p>Jumper position can affect the measurements taken with Red Pitaya. The jumpers are internally connected with a small metal plate, which acts as a capacitor and has an effect on the overall capacitance, which in turn affects the input impedance. If the jumpers are moved from an incorrect to a correct position, a calibration is highly recommended.</p>
+<ol class="arabic">
+<li><p>The position of the jumper bumps must be as indicated in this image.</p>
+<blockquote>
+<div><div class="figure align-default">
+<img alt="../../../_images/Jumper_position_Note.png" src="../../../_images/Jumper_position_Note.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>The metallic part of the jumper should look toward the PCB so that it is not visible once the jumpers are installed. Here is an example on the STEMlab 125-14 4-Input:</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Jumper_position_4IN_0.png"><img alt="../../../_images/Jumper_position_4IN_0.png" src="../../../_images/Jumper_position_4IN_0.png" style="width: 700px;" /></a>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Jumper_position_4IN_1.png"><img alt="../../../_images/Jumper_position_4IN_1.png" src="../../../_images/Jumper_position_4IN_1.png" style="width: 700px;" /></a>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<p>Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square-type signals, as shown in the picture below.</p>
+<div class="figure align-default" id="id7">
+<img alt="../../../_images/Jumper_position_wrong_signal.jpg" src="../../../_images/Jumper_position_wrong_signal.jpg" />
+<p class="caption"><span class="caption-text">As it can be observed, <strong>if the jumpers are not placed correctly, the step response becomes under-compensated.</strong></span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</div>
+<p>With the correct placement of the jumper pins, that same waveform looks much better.</p>
+<div class="figure align-default">
+<img alt="../../../_images/Jumper_position_right_signal.jpg" src="../../../_images/Jumper_position_right_signal.jpg" />
+</div>
+</div>
+<div class="section" id="input-stage-schematics">
+<h3><span class="section-number">4.1.1.2.6.1.1.3. </span>Input stage schematics<a class="headerlink" href="#input-stage-schematics" title="Permalink to this heading"></a></h3>
+<div class="figure align-default" id="id8">
+<img alt="../../../_images/Fast_analog_inputs_sch.png" src="../../../_images/Fast_analog_inputs_sch.png" />
+<p class="caption"><span class="caption-text">Fast analog inputs schematics</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="coupling">
+<h3><span class="section-number">4.1.1.2.6.1.1.4. </span>Coupling<a class="headerlink" href="#coupling" title="Permalink to this heading"></a></h3>
+<p>Fast analog inputs are <strong>DC coupled</strong>. Input impedance is given in the picture below.</p>
+<div class="figure align-default" id="id9">
+<img alt="../../../_images/Input_impedance_of_fast_analog_inputs.png" src="../../../_images/Input_impedance_of_fast_analog_inputs.png" />
+<p class="caption"><span class="caption-text">The input impedance of fast analog inputs</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="bandwidth">
+<h3><span class="section-number">4.1.1.2.6.1.1.5. </span>Bandwidth<a class="headerlink" href="#bandwidth" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Bandwidth</p></td>
+<td><p>50 MHz (3 dB)</p></td>
+</tr>
+</tbody>
+</table>
+<p>In the picture below, the Frequency Response - Bandwidth of fast analog inputs is shown. Measurements are taken using an <a href="http://www.keysight.com/en/pd-1000000803%3Aepsg%3Apro-pn-33250A/function-arbitrary-waveform-generator-80-mhz?cc=US&lc=eng" target="_blank">Agilent 33250A</a> signal generator as a reference. The measured signal is acquired using <a class="reference internal" href="../../../appsFeatures/remoteControl/command_list.html#command-list"><span class="std std-ref">remote control commands</span></a>. An amplitude voltage is extracted from the acquired signal and compared to the reference signal amplitude.</p>
+<div class="figure align-default" id="id10">
+<img alt="../../../_images/Bandwidth_of_Fast_Analog_Inputs.png" src="../../../_images/Bandwidth_of_Fast_Analog_Inputs.png" />
+<p class="caption"><span class="caption-text">The bandwidth of fast analog inputs</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</div>
+<p>Because of the maximum sampling rate of 125 MS/s when measuring signals above 10 MHz, we have used sin(x)/x interpolation to get more accurate results of Vpp voltage and, with that, more accurate measurements of analog bandwidth. When measuring signals above 10 MHz, similar results should be obtained without interpolation or directly with an Oscilloscope application and P2P measurements.</p>
+<p>Notice: When making measurements without interpolation, you need to extract the maximum and minimum of the acquired signal using a complete 16k buffer. When using P2P measurements on an oscilloscope, you need to take the maximum value shown as a measurement result. An example of sin(x)/x interpolation for a 40 MHz signal is shown in the picture below (right).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the picture, only 10 samples of 16k buffer are shown to represent a few periods of 40 MHz signal.</p>
+</div>
+<div class="figure align-default" id="id11">
+<img alt="../../../_images/Sin%28x%29x_Interpolation.png" src="../../../_images/Sin%28x%29x_Interpolation.png" />
+<p class="caption"><span class="caption-text">Sin(x)/x Interpolation</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="input-noise">
+<h3><span class="section-number">4.1.1.2.6.1.1.6. </span>Input noise<a class="headerlink" href="#input-noise" title="Permalink to this heading"></a></h3>
+<p>Measurements refer to a high gain (LV +/-1 V) jumper setting, with limited environmental noise, inputs and outputs terminated, output signals disabled, and the PCB grounded through SMA ground. Measurements are performed on 16k continuous samples at full rate (125 MS/s). (Typical full bandwidth std(Vn) &lt; 0.5 mV). The noise spectrum shown in the picture below (right) is calculated using FFT analysis on N = 16384 samples sampled at Fs = 125E6 MS/s.</p>
+<div class="figure align-default" id="id12">
+<img alt="../../../_images/Noise_distribution.png" src="../../../_images/Noise_distribution.png" />
+<p class="caption"><span class="caption-text">Noise distribution</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-default" id="id13">
+<img alt="../../../_images/Noise_level.png" src="../../../_images/Noise_level.png" />
+<p class="caption"><span class="caption-text">Noise level</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="input-channel-isolation">
+<h3><span class="section-number">4.1.1.2.6.1.1.7. </span>Input channel isolation<a class="headerlink" href="#input-channel-isolation" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Typical performance:</dt><dd><ul class="simple">
+<li><p>65 dB &#64; 10 kHz</p></li>
+<li><p>50 dB &#64; 100 kHz</p></li>
+<li><p>55 dB &#64; 1 M</p></li>
+<li><p>55 dB &#64; 10 MHz</p></li>
+<li><p>52 dB &#64; 20 MHz</p></li>
+<li><p>48 dB &#64; 30 MHz</p></li>
+<li><p>44 dB &#64; 40 MHz</p></li>
+<li><p>40 dB &#64; 50 MHz</p></li>
+</ul>
+</dd>
+</dl>
+<p>Crosstalk is measured with a high gain (LV) jumper setting on both channels. The SMA connectors not involved in the measurement are terminated.</p>
+</div>
+<div class="section" id="harmonics">
+<h3><span class="section-number">4.1.1.2.6.1.1.8. </span>Harmonics<a class="headerlink" href="#harmonics" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>at -3 dBFS: typical performance &lt; -45 dBc</p></li>
+<li><p>at -20 dBFS: typical performance &lt; -60 dBc</p></li>
+</ul>
+<p>Measurements refer to the LV jumper setting, inputs matched and outputs terminated, outputs signal disabled, and PCB grounded through SMA ground.</p>
+</div>
+<div class="section" id="spurious-frequency-components">
+<h3><span class="section-number">4.1.1.2.6.1.1.9. </span>Spurious frequency components<a class="headerlink" href="#spurious-frequency-components" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Typically &lt; -90 dBFS</p></li>
+</ul>
+<p>Measurements refer to the LV jumper setting, inputs, and outputs terminated, outputs signal disabled, and the PCB grounded through SMA ground. In the pictures below, typical performances of Red Pitaya fast analog inputs are shown. For the reference signal generation, we have used the <a href="http://www.keysight.com/en/pd-1000000803%3Aepsg%3Apro-pn-33250A/function-arbitrary-waveform-generator-80-mhz?cc=US&lc=eng" target="_blank">Agilent 33250A</a> Signal generator. For the reference spectrum measurements of the generated signal, we have used the <a href="https://www.keysight.com/us/en/product/E4404B/esae-spectrum-analyzer-9-khz-to-67-ghz.html" target="_blank">Agilent E4404B</a> Spectrum analyzer.  The same signal is acquired with the <strong>Red Pitaya board and FFT analysis</strong> is performed. Results are shown in the figures below, where Red Pitaya measurements are on the right.</p>
+<p>Measurements refer to the LV jumper setting, inputs, and outputs terminated, outputs signal disabled, and the PCB grounded through SMA ground.</p>
+<div class="figure align-default" id="id14">
+<img alt="../../../_images/Measurement_setup.png" src="../../../_images/Measurement_setup.png" />
+<p class="caption"><span class="caption-text">Measurement setup</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="reference-signals">
+<h3><span class="section-number">4.1.1.2.6.1.1.10. </span>Reference signals<a class="headerlink" href="#reference-signals" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Reference signal: -20 dBm, 2 MHz</p>
+<div class="figure align-default" id="id15">
+<img alt="../../../_images/-20dBm_2MHz_RP_AG.png" src="../../../_images/-20dBm_2MHz_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: -20 dBm 2 MHz</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: -20 dBm, 10 MHz</p>
+<div class="figure align-default" id="id16">
+<img alt="../../../_images/-20dBm_10MHz_RP_AG.png" src="../../../_images/-20dBm_10MHz_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: -20 dBm 10 MHz</span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: -20 dBm, 30 MHz</p>
+<div class="figure align-default" id="id17">
+<img alt="../../../_images/-20dBm_30MHz_RP_AG.png" src="../../../_images/-20dBm_30MHz_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: -20 dBm 30 MHz</span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: 0  dBm, 2 MHz</p>
+<div class="figure align-default" id="id18">
+<img alt="../../../_images/0dBm_2MHz_RP_AG.png" src="../../../_images/0dBm_2MHz_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: 0 dBm 2 MHz</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: 0 dBm, 10 MHz</p>
+<div class="figure align-default" id="id19">
+<img alt="../../../_images/0dBm_10MHz_RP_AG.png" src="../../../_images/0dBm_10MHz_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: 0 dBm 10 MHz</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: 0 dBm, 30 MHz</p>
+<div class="figure align-default" id="id20">
+<img alt="../../../_images/0dBm_30MHz_RP_AG.png" src="../../../_images/0dBm_30MHz_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: 0 dBm 30 MHz</span><a class="headerlink" href="#id20" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: -3 dBFS, 2 MHz</p>
+<div class="figure align-default" id="id21">
+<img alt="../../../_images/-3dBFS_2MHZ_RP_AG.png" src="../../../_images/-3dBFS_2MHZ_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: -3 dBFS 2 MHz</span><a class="headerlink" href="#id21" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: -3 dBFS, 10 MHz</p>
+<div class="figure align-default" id="id22">
+<img alt="../../../_images/-3dBFS_10MHZ_RP_AG.png" src="../../../_images/-3dBFS_10MHZ_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: -3 dBFS 10 MHz</span><a class="headerlink" href="#id22" title="Permalink to this image"></a></p>
+</div>
+</li>
+<li><p>Reference signal: -3 dBFS, 30 MHz</p>
+<div class="figure align-default" id="id23">
+<img alt="../../../_images/-3dBFS_30MHZ_RP_AG.png" src="../../../_images/-3dBFS_30MHZ_RP_AG.png" />
+<p class="caption"><span class="caption-text">Reference Signal: -3 dBFS 30 MHz</span><a class="headerlink" href="#id23" title="Permalink to this image"></a></p>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<p>Due to the natural distribution of the electrical characteristics of the analog inputs and outputs, their offsets and gains will differ slightly across various Red Pitaya boards and may change over time. The calibration coefficients are stored in EEPROM on the Red Pitaya and can be accessed and modified with the calibration utility:</p>
+</div>
+<div class="section" id="dc-offset-error">
+<h3><span class="section-number">4.1.1.2.6.1.1.11. </span>DC offset error<a class="headerlink" href="#dc-offset-error" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>&lt;5 % Full Scale</p></li>
+</ul>
+</div>
+<div class="section" id="gain-error">
+<h3><span class="section-number">4.1.1.2.6.1.1.12. </span>Gain error<a class="headerlink" href="#gain-error" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>&lt; 3% (at LV jumper setting), &lt;10% (at HV jumper setting)</p></li>
+</ul>
+<p>Further corrections can be applied through more precise gain and DC offset <a class="reference internal" href="#calib"><span class="std std-ref">calibration</span></a>.</p>
+</div>
+</div>
+<div class="section" id="analog-inputs-calibration">
+<span id="calib"></span><h2><span class="section-number">4.1.1.2.6.1.2. </span>Analog inputs calibration<a class="headerlink" href="#analog-inputs-calibration" title="Permalink to this heading"></a></h2>
+<p>Calibration processes can be performed using the <a class="reference internal" href="../../../appsFeatures/systemtool/calibration.html#calibration-app"><span class="std std-ref">Calibration app</span></a>.
+or using the <strong>calib</strong> <a class="reference internal" href="../../../appsFeatures/command_line_tools/com_line_tool.html#com-line-tools"><span class="std std-ref">command line utility</span></a>. When performing calibration with the
+<a class="reference internal" href="../../../appsFeatures/systemtool/calibration.html#calibration-app"><span class="std std-ref">Calibration app</span></a>, just select <em>Settings -&gt; Calibration</em> and follow the instructions.</p>
+<ul class="simple">
+<li><p>Calibration using <strong>calib</strong> utility</p></li>
+</ul>
+<p>Start your Red Pitaya and connect to it via a terminal.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; calib</span>
+
+<span class="go"> Usage: calib [OPTION]...</span>
+
+<span class="go"> OPTIONS:</span>
+<span class="go">  -r    Read calibration values from EEPROM (to stdout).</span>
+<span class="go">  -w    Write calibration values to EEPROM (from stdin).</span>
+<span class="go">  -f    Use factory address space.</span>
+<span class="go">  -d    Reset calibration values in EEPROM with factory defaults.</span>
+<span class="go">  -v    Produce verbose output.</span>
+<span class="go">  -h    Print this info.</span>
+</pre></div>
+</div>
+<p>The EEPROM is a non-volatile memory, therefore the calibration coefficients will not change during Red Pitaya power cycles, nor will they change with software upgrades via Bazaar or with manual modifications of the SD card content.
+An example of calibration parameters readout from EEPROM with verbose output:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; calib -r -v</span>
+<span class="go">FE_CH1_FS_G_HI = 45870551      # IN1 gain coefficient for LV (± 1V range)  jumper configuration.</span>
+<span class="go">FE_CH2_FS_G_HI = 45870551      # IN2 gain coefficient for LV (± 1V range)  jumper configuration.</span>
+<span class="go">FE_CH1_FS_G_LO = 1016267064    # IN1 gain coefficient for HV (± 20V range) jumper configuration.</span>
+<span class="go">FE_CH2_FS_G_LO = 1016267064    # IN2 gain coefficient for HV (± 20V range) jumper configuration.</span>
+<span class="go">FE_CH1_DC_offs = 78            # IN1 DC offset  in ADC samples.</span>
+<span class="go">FE_CH2_DC_offs = 25            # IN2 DC offset  in ADC samples.</span>
+<span class="go">BE_CH1_FS = 42755331           # OUT1 gain coefficient.</span>
+<span class="go">BE_CH2_FS = 42755331           # OUT2 gain coefficient.</span>
+<span class="go">BE_CH1_DC_offs = -150          # OUT1 DC offset in DAC samples.</span>
+<span class="go">BE_CH2_DC_offs = -150          # OUT2 DC offset in DAC samples.</span>
+</pre></div>
+</div>
+<p>An example of the same calibration parameters readout from EEPROM with non-verbose output, suitable for editing within scripts:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; calib -r</span>
+<span class="go">       45870551            45870551          1016267064          1016267064</span>
+</pre></div>
+</div>
+<p>You can write the changed calibration parameters using the <code class="docutils literal notranslate"><span class="pre">calib</span> <span class="pre">-w</span></code> command:</p>
+<ol class="arabic simple">
+<li><p>In the command line (terminal), type calib-w.</p></li>
+<li><p>Press enter.</p></li>
+<li><p>Paste or write new calibration parameters.</p></li>
+<li><p>Press enter.</p></li>
+</ol>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; calib -w</span>
+
+<span class="go">           40000000           45870551          1016267064          1016267064                  78                  25            42755331            42755331                -150                -150</span>
+</pre></div>
+</div>
+<p>Should you bring the calibration vector to an undesired state, you can always reset it to factory defaults using the following command:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">redpitaya&gt; calib -d</span>
+</pre></div>
+</div>
+<p>The DC offset calibration parameter can be obtained as the average of the acquired signal at grounded input. A reference voltage source and an old version of an oscilloscope application can be used to calculate the gain parameter. Start the Oscilloscope app, connect the reference voltage to the desired input, and take measurements. Change the gain calibration parameter using the instructions above, reload the Oscilloscope application, and make measurements again with new calibration parameters. Gain parameters can be optimized by repeating the calibration and measurement steps.</p>
+<p>In the table below, typical results after calibration are shown.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Jumper settings</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DC GAIN ACCURACY &#64; 122 kS/s</p></td>
+<td><p>LV</p></td>
+<td><p>0.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>DC OFFSET &#64; 122 kS/s</p></td>
+<td><p>LV</p></td>
+<td><p>± 0.5 mV</p></td>
+</tr>
+<tr class="row-even"><td><p>DC GAIN ACCURACY &#64; 122 kS/s</p></td>
+<td><p>HV</p></td>
+<td><p>0.5%</p></td>
+</tr>
+<tr class="row-odd"><td><p>DC OFFSET &#64; 122 kS/s</p></td>
+<td><p>HV</p></td>
+<td><p>± 5 mV</p></td>
+</tr>
+</tbody>
+</table>
+<p>AC gain accuracy can be extracted from Frequency response - Bandwidth.</p>
+<div class="figure align-default">
+<img alt="../../../_images/800px-Bandwidth_of_Fast_Analog_Inputs.png" src="../../../_images/800px-Bandwidth_of_Fast_Analog_Inputs.png" />
+</div>
+</div>
+</div>
+<div class="section" id="analog-outputs">
+<h1><span class="section-number">4.1.1.2.6.2. </span>Analog outputs<a class="headerlink" href="#analog-outputs" title="Permalink to this heading"></a></h1>
+<p>The Red Pitaya board analog front-end features two fast analog outputs.</p>
+<div class="section" id="id1">
+<h2><span class="section-number">4.1.1.2.6.2.1. </span>General Specifications<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Number of channels</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample rate</p></td>
+<td><p>125 Msps</p></td>
+</tr>
+<tr class="row-odd"><td><p>DAC resolution</p></td>
+<td><p>14 bits</p></td>
+</tr>
+<tr class="row-even"><td><p>Output coupling</p></td>
+<td><p>DC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Load impedance</p></td>
+<td><p>50 Ω</p></td>
+</tr>
+<tr class="row-even"><td><p>Full scale power</p></td>
+<td><p>&gt; 9 dBm</p></td>
+</tr>
+<tr class="row-odd"><td><p>Connector type</p></td>
+<td><p>SMA</p></td>
+</tr>
+<tr class="row-even"><td><p>Output slew rate limit</p></td>
+<td><p>200 V/us</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bandwidth</p></td>
+<td><p>50 MHz (3 dB)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The output channels are designed to drive 50 Ω loads. Terminate outputs when channels are not used. Connect a 50 Ω parallel load (SMA Tee junction) in high-impedance load applications.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The typical power level with 1 MHz sine is 9.5 dBm. Output power is subject to slew rate limitations.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of a suitable length, otherwise, the SMA connector, installed on the Red Pitaya, will mechanically damage the SMA connector. The central pin of the SMA connector on the Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).</p>
+</div>
+<div class="figure align-default" id="id24">
+<img alt="../../../_images/Outputs.png" src="../../../_images/Outputs.png" />
+<p class="caption"><span class="caption-text">Output channel Output voltage range: ± 1 V</span><a class="headerlink" href="#id24" title="Permalink to this image"></a></p>
+</div>
+<p>The output stage is shown in the picture below.</p>
+<div class="figure align-default" id="id25">
+<img alt="../../../_images/Outputs_stage.png" src="../../../_images/Outputs_stage.png" />
+<p class="caption"><span class="caption-text">Output channel schematics</span><a class="headerlink" href="#id25" title="Permalink to this image"></a></p>
+</div>
+<div class="section" id="output-impedance">
+<h3><span class="section-number">4.1.1.2.6.2.1.1. </span>Output impedance<a class="headerlink" href="#output-impedance" title="Permalink to this heading"></a></h3>
+<p>The impedance of the output channels (output amplifier and filter) is shown in the figure below.</p>
+<div class="figure align-default" id="id26">
+<img alt="../../../_images/Output_impedance.png" src="../../../_images/Output_impedance.png" />
+<p class="caption"><span class="caption-text">Output impedance</span><a class="headerlink" href="#id26" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3><span class="section-number">4.1.1.2.6.2.1.2. </span>Bandwidth<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Bandwidth</p></td>
+<td><p>50 MHz (3 dB)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Bandwidth measurements are shown in the picture below. Measurements are taken with the <a href="http://www.keysight.com/en/pdx-x201799-pn-MSO7104B/mixed-signal-oscilloscope-1-ghz-4-analog-plus-16-digital-channels?pm=spc&nid=-32535.1150174&cc=SI&lc=eng" target="_blank">Agilent MSO7104B</a> oscilloscope for each frequency step (10 Hz – 60 MHz) of the measured signal. The Red Pitaya board OUT1 is used with 0 dBm output power. The second output channel and both input channels are terminated with 50 Ohm termination. The Oscilloscope ground is used to ground the Red Pitaya board. The oscilloscope input must be set to 50 Ohm input impedance.</p>
+<div class="figure align-default">
+<img alt="../../../_images/Fast_Analog_Outputs_Bandwidt.png" src="../../../_images/Fast_Analog_Outputs_Bandwidt.png" />
+</div>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">4.1.1.2.6.2.1.3. </span>Harmonics<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Typical performance: (at 8 dBm)</dt><dd><ul class="simple">
+<li><p>-51 dBc &#64; 1 MHz</p></li>
+<li><p>-49 dBc &#64; 10 MHz</p></li>
+<li><p>-48 dBc &#64; 20 MHz</p></li>
+<li><p>-53 dBc &#64; 45 MHz</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">4.1.1.2.6.2.1.4. </span>DC offset error<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>&lt; 5% FS</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">4.1.1.2.6.2.1.5. </span>Gain error<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>&lt; 5%</p></li>
+</ul>
+<p>Further corrections can be applied through more precise gain and DC offset calibration.</p>
+</div>
+</div>
+<div class="section" id="analog-output-calibration">
+<h2><span class="section-number">4.1.1.2.6.2.2. </span>Analog output calibration<a class="headerlink" href="#analog-output-calibration" title="Permalink to this heading"></a></h2>
+<p>Calibration is performed in a noise-controlled environment. Inputs’ and outputs’ gains are calibrated with 0.02% and 0.003% DC reference voltage standards. Input gain calibration is performed in a medium-sized timebase range. The Red Pitaya is a non-shielded device, and its input/output ground is not connected to the earth’s ground, as is the case in most classical oscilloscopes. To achieve the calibration results given below, Red Pitaya must be grounded and shielded.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 63%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DC GAIN ACCURACY</p></td>
+<td><p>0.4%</p></td>
+</tr>
+<tr class="row-odd"><td><p>DC OFFSET</p></td>
+<td><p>± 4 mV</p></td>
+</tr>
+<tr class="row-even"><td><p>RIPPLE(&#64; 0.5V DC)</p></td>
+<td><p>0.4 mVpp</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>Typical specifications after calibration</p>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="top.html" class="btn btn-neutral float-left" title="4.1.1.2. STEMlab 125-14" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="extent.html" class="btn btn-neutral float-right" title="4.1.1.2.7.1. Extension connector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

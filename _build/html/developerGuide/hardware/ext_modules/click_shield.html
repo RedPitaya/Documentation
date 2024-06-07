@@ -1,0 +1,971 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1.2.3. Click Shield &mdash; Red Pitaya 2.00-35 documentation</title>
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/new_style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/click_examples.html" />
+    <link rel="prev" title="4.1.2.2. Sensor extension module" href="sensor_ext.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+  <a href="https://redpitaya.com" target="_blank">
+
+
+
+  
+  <img src="../../../_static/redpitaya-logo.svg" class="logo" />
+
+</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../devGuideTop.html">4. Developers guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../hardware.html">4.1. Hardware</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../platforms.html">4.1.1. Red Pitaya platforms</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ext_modules.html">4.1.2. Extension modules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="extent_temp.html">4.1.2.1. Extension module template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensor_ext.html">4.1.2.2. Sensor extension module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.1.2.3. Click Shield</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lcr_ext.html">4.1.2.4. LCR meter extension module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/software.html">4.2. Software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Red Pitaya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../devGuideTop.html"><span class="section-number">4. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../hardware.html"><span class="section-number">4.1. </span>Hardware</a></li>
+          <li class="breadcrumb-item"><a href="ext_modules.html"><span class="section-number">4.1.2. </span>Extension modules</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.1.2.3. </span>Click Shield</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="click-shield">
+<span id="id1"></span><h1><span class="section-number">4.1.2.3. </span>Click Shield<a class="headerlink" href="#click-shield" title="Permalink to this heading"></a></h1>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-click-shield-banner.jpg"><img alt="../../../_images/red-pitaya-click-shield-banner.jpg" src="../../../_images/red-pitaya-click-shield-banner.jpg" style="width: 900px;" /></a>
+</div>
+<p>The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two <a href="https://www.mikroe.com/click" target="_blank">MIKROE Click Board™</a> and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt external power supply. Using U.FL patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units and/or other devices. An external reference clock can also be connected to the shield through the U.FL connector.</p>
+<p><strong>Highlights:</strong></p>
+<ul class="simple">
+<li><p>Two <a href="https://www.mikroe.com/mikrobus" target="_blank">mikroBUS™</a> sockets, allowing interface with more than 1500 <a href="https://www.mikroe.com/click" target="_blank">MIKROE Click Board™</a> devices.</p></li>
+<li><p>High-performance clock and trigger synchronisation between multiple Red Pitaya units or other devices.</p></li>
+<li><p>Powering Red Pitaya through an external power supply (12-24 V or via USB-C connector).</p></li>
+</ul>
+<p><a class="reference internal" href="../../../_images/red-pitaya-click-shield-front.png"><img alt="click_shield_front" src="../../../_images/red-pitaya-click-shield-front.png" style="width: 450px;" /></a> <a class="reference internal" href="../../../_images/red-pitaya-click-shield-back.png"><img alt="click_shield_back" src="../../../_images/red-pitaya-click-shield-back.png" style="width: 450px;" /></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="what-is-in-the-box">
+<h2><span class="section-number">4.1.2.3.1. </span>What is in the box?<a class="headerlink" href="#what-is-in-the-box" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>1x Red Pitaya Click Shield</p></li>
+<li><p>3x U.FL to U.FL patch cable for trigger and clock synchronisation</p></li>
+</ul>
+</div>
+<div class="section" id="compatibility">
+<span id="click-shield-compatibility"></span><h2><span class="section-number">4.1.2.3.2. </span>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on which Red Pitaya board model you are using, some features of the Red Pitaya Click Shield might not be applicable.</p>
+</div>
+<p>The clock synchronisation is compatible only with the following board models (and their Low-Noise versions):</p>
+<ul class="simple">
+<li><p>STEMlab 125-14 External Clock</p></li>
+<li><p>SDRlab 122-16 External Clock</p></li>
+<li><p>STEMlab 125-14 4-Input</p></li>
+</ul>
+<p>Switching between the External and Internal clock is available only on the STEMlab 125-14 4-Input (CLK SEL pin) but will be compatible with all future Red Pitaya board redesigns.</p>
+<p>Trigger synchronisation and <a href="https://www.mikroe.com/click" target="_blank">MIKROE Click Board™</a> are compatible with all board models.</p>
+<p>Here is a compatibility table:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="6"><p>Click Shield Feature Compatibility</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>STEMlab 125-14 <br/>
+STEMlab 125-14 LN <br/>
+STEMlab 125-14-Z7020-LN</p></td>
+<td><p>SDRlab 122-16</p></td>
+<td><p>STEMlab 125-14 ext. clk <br/>
+SDRlab 122-16 ext. clk</p></td>
+<td><p>STEMlab 125-14 4-Input</p></td>
+<td><p>SIGNALlab 250-12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Click Boards (microBus)</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>High speed Clock Synchronisation</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Powering options</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Clk Switch (Internal/External)</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="what-are-click-boards">
+<h2><span class="section-number">4.1.2.3.3. </span>What are Click Boards?<a class="headerlink" href="#what-are-click-boards" title="Permalink to this heading"></a></h2>
+<p><a href="https://www.mikroe.com/click" target="_blank">MIKROE Click Board™</a> by <a href="https://www.mikroe.com/" target="_blank">MirkoElektronika</a> are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/click-boards-header-banner.jpg"><img alt="../../../_images/click-boards-header-banner.jpg" src="../../../_images/click-boards-header-banner.jpg" style="width: 450px;" /></a>
+</div>
+<p>These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard <a href="https://www.mikroe.com/mikrobus" target="_blank">mikroBUS™</a> socket connector that can be easily plugged into the Red Pitaya Click Shield.</p>
+</div>
+<div class="section" id="technical-specifications">
+<h2><span class="section-number">4.1.2.3.4. </span>Technical specifications<a class="headerlink" href="#technical-specifications" title="Permalink to this heading"></a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-click-shield-logo.jpg"><img alt="../../../_images/red-pitaya-click-shield-logo.jpg" src="../../../_images/red-pitaya-click-shield-logo.jpg" style="width: 900px;" /></a>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="connectors">
+<h3><span class="section-number">4.1.2.3.4.1. </span>Connectors<a class="headerlink" href="#connectors" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-click-shield-connectors.png"><img alt="../../../_images/red-pitaya-click-shield-connectors.png" class="align-center" src="../../../_images/red-pitaya-click-shield-connectors.png" style="width: 500px;" /></a>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 24%" />
+<col style="width: 47%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Click Shield Label</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>CLK IN+</p></td>
+<td><p>ADC CLK+</p></td>
+<td><p>One-cable clock</p></td>
+</tr>
+<tr class="row-odd"><td><p>CLK IN-</p></td>
+<td><p>ADC CLK-</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CLK OUT+</p></td>
+<td><p>ADC CLK+</p></td>
+<td><p>One-cable clock</p></td>
+</tr>
+<tr class="row-odd"><td><p>CLK OUT-</p></td>
+<td><p>ADC CLK-</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>REF CLK IN</p></td>
+<td><p>DIO10_P</p></td>
+<td><p>Reference clock Input</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRIG IN</p></td>
+<td><p>DIO0_P</p></td>
+<td><p>External trigger Input</p></td>
+</tr>
+<tr class="row-even"><td><p>TRIG OUT</p></td>
+<td><p>DIO0_N</p></td>
+<td><p>External trigger Output</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="switches">
+<h3><span class="section-number">4.1.2.3.4.2. </span>Switches<a class="headerlink" href="#switches" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-click-shield-switches.png"><img alt="../../../_images/red-pitaya-click-shield-switches.png" class="align-center" src="../../../_images/red-pitaya-click-shield-switches.png" style="width: 500px;" /></a>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 19%" />
+<col style="width: 57%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Click Shield Label</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Clock Select</p></td>
+<td><p>ADC CLK Select</p></td>
+<td><p>External (LOW) or internal clock (HIGH)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CLK OSC</p></td>
+<td><p>NA</p></td>
+<td><p>Turn the 125 MHz Oscillator on the Click Shield ON/OFF</p></td>
+</tr>
+<tr class="row-even"><td><p>VCC Select (2x)</p></td>
+<td><p>NA</p></td>
+<td><p>Select the digital logic levels for mikroBUS™ 3V3/5V</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Click board logic:</strong>
+If a specific Click Board requires 5V logic levels, please switch the <em>VCC Select</em> switch to the <strong>5V</strong> position.</p>
+</div>
+<div class="section" id="jumpers">
+<h3><span class="section-number">4.1.2.3.4.3. </span>Jumpers<a class="headerlink" href="#jumpers" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-click-shield-jumpers.png"><img alt="../../../_images/red-pitaya-click-shield-jumpers.png" class="align-center" src="../../../_images/red-pitaya-click-shield-jumpers.png" style="width: 500px;" /></a>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Click Shield Label</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>J1</p></td>
+<td><p>Connect CLK IN- to Virtual GND (one-cable clock only)</p></td>
+</tr>
+<tr class="row-odd"><td><p>J4</p></td>
+<td><p>Connect Oscillator CLK- to CLK IN-</p></td>
+</tr>
+<tr class="row-even"><td><p>J5</p></td>
+<td><p>Connect Oscillator CLK+ to CLK IN+</p></td>
+</tr>
+<tr class="row-odd"><td><p>J6</p></td>
+<td><p>Connect DIO0_N (EXT TRIG OUT) pin to TRIG IN</p></td>
+</tr>
+<tr class="row-even"><td><p>J7</p></td>
+<td><p>Trigger sync.: Connect DIO0_P (EXT TRIG IN) pin to TRIG OUT</p></td>
+</tr>
+<tr class="row-odd"><td><p>VIN SEL</p></td>
+<td><p>Select the external power between VEXT and VUSB</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="power-supply">
+<h3><span class="section-number">4.1.2.3.4.4. </span>Power supply<a class="headerlink" href="#power-supply" title="Permalink to this heading"></a></h3>
+<p>The Click Shields provide two alternative ways to power the Red Pitaya:</p>
+<ul class="simple">
+<li><p>USB-C external power supply</p></li>
+<li><p>12-24 V External Power Supply (2-pin screw Terminal Block)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Set the VIN SEL jumper into the correct position depending on whether the USB-C or External Power supply (Terminal Block) is used.</p>
+</div>
+<p>The external power supply powers both the Red Pitaya and the Red Pitaya Click Shield. The maximum power consumption of Red Pitaya is 10 W (5 V, 2 A). The power consumption of the Click Shield greatly depends on the type of Click Boards attached to it (we recommend leaving 5 W just in case).
+Minimal requirements for the external power supplies:</p>
+<ul class="simple">
+<li><p>USB-C - 5 V, 3 A (15 W)</p></li>
+<li><p>External Power Supply - 12-24 V, 1.5 A (15 W)</p></li>
+</ul>
+<p>The voltages must be in the specified range.</p>
+<p>If the power is supplied through the Red Pitaya Click Shield, the microUSB power connector on the Red Pitaya board can be disconnected.
+In short, you do not have to rely on the original Red Pitaya power supply but can use a better power supply if available.</p>
+<p><strong>Power options</strong></p>
+<ol class="arabic">
+<li><p><strong>USB-C or External power supply</strong></p>
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-power-01.png"><img alt="../../../_images/red-pitaya-power-01.png" src="../../../_images/red-pitaya-power-01.png" style="width: 400px;" /></a>
+<p>When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will <strong>glow Blue</strong>, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>Standard power supply</strong></p>
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-power-02.png"><img alt="../../../_images/red-pitaya-power-02.png" src="../../../_images/red-pitaya-power-02.png" style="width: 400px;" /></a>
+<p>When the USB is connected to the Red Pitaya board, the PWR diode will <strong>glow Green</strong>, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>Standard and external power supply</strong></p>
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-power-03.png"><img alt="../../../_images/red-pitaya-power-03.png" src="../../../_images/red-pitaya-power-03.png" style="width: 400px;" /></a>
+<p>When the USB type C connector is connected to the Click Shield, and the other USB is connected to the Red Pitaya board, the PWR diode will <strong>glow Cyan</strong>, and in this setup, the mikroBUS™ sockets are powered from the Click Shield side.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="pinout">
+<h3><span class="section-number">4.1.2.3.4.5. </span>Pinout<a class="headerlink" href="#pinout" title="Permalink to this heading"></a></h3>
+<p>Here you will find the interconnections between Click Boards (<a href="https://www.mikroe.com/mikrobus" target="_blank">mikroBUS™</a> pinout) and Red Pitaya pins.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/mikrobus.png"><img alt="../../../_images/mikrobus.png" src="../../../_images/mikrobus.png" style="width: 300px;" /></a>
+</div>
+<p><strong>Short pin descriptions:</strong></p>
+<ul class="simple">
+<li><p>Digital pins: <em>PWM, RST, INT</em></p></li>
+<li><p>Analog pins: <em>AN</em></p></li>
+<li><p>UART pins: <em>RX, TX</em></p></li>
+<li><p>SPI pins: <em>CS, SCK, MISO, MOSI</em></p></li>
+<li><p>I2C pins: <em>SCL, SDA</em></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Red Pitaya only has one set of UART and SPI pins, to achieve the functionality of two click boards, some of the digital pins are used for switching SPI and UART between the two click boards:</p>
+<ul class="simple">
+<li><p>DIO1_N  ==  Chip Select 1 (Click board 1)</p></li>
+<li><p>DIO3_N  ==  Chip Select 2 (Click board 2)</p></li>
+<li><p>DIO5_N  ==  Switching between UART0 (Click board 1)/UART1 (Click board 2)</p></li>
+</ul>
+</div>
+<div class="section" id="click-board-1">
+<h4><span class="section-number">4.1.2.3.4.5.1. </span>Click Board 1<a class="headerlink" href="#click-board-1" title="Permalink to this heading"></a></h4>
+<p>Closer to <strong>+CLK OUT- pins</strong>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 11%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 12%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Notes</strong></p></td>
+<td colspan="2"><p><strong>mikroBUS Pin</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td colspan="2"><p><strong>mikroBUS Pin</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Analog input</p></td>
+<td><p>1</p></td>
+<td><p>AN</p></td>
+<td><p>AIN0</p></td>
+<td><p>DIO1_P</p></td>
+<td><p>PWM</p></td>
+<td><p>16</p></td>
+<td><p>PWM</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reset</p></td>
+<td><p>2</p></td>
+<td><p>RST</p></td>
+<td><p>DIO2_N</p></td>
+<td><p>DIO2_P</p></td>
+<td><p>INT</p></td>
+<td><p>15</p></td>
+<td><p>Interrupt</p></td>
+</tr>
+<tr class="row-even"><td><p>SPI Chip select 1</p></td>
+<td><p>3</p></td>
+<td><p>CS</p></td>
+<td><p>DIO1_N</p></td>
+<td><p>RX</p></td>
+<td><p>RX</p></td>
+<td><p>14</p></td>
+<td><p>UART0 RX</p></td>
+</tr>
+<tr class="row-odd"><td><p>SPI Serial clock</p></td>
+<td><p>4</p></td>
+<td><p>SCK</p></td>
+<td><p>SCK</p></td>
+<td><p>TX</p></td>
+<td><p>TX</p></td>
+<td><p>13</p></td>
+<td><p>UART0 TX</p></td>
+</tr>
+<tr class="row-even"><td><p>SPI MISO (SDO)</p></td>
+<td><p>5</p></td>
+<td><p>MISO</p></td>
+<td><p>MISO</p></td>
+<td><p>SCL</p></td>
+<td><p>SCL</p></td>
+<td><p>12</p></td>
+<td><p>I2C Clock</p></td>
+</tr>
+<tr class="row-odd"><td><p>SPI MOSI (SDI)</p></td>
+<td><p>6</p></td>
+<td><p>MOSI</p></td>
+<td><p>MOSI</p></td>
+<td><p>SDA</p></td>
+<td><p>SDA</p></td>
+<td><p>11</p></td>
+<td><p>I2C Data</p></td>
+</tr>
+<tr class="row-even"><td><p>Power supply</p></td>
+<td><p>7</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>5V</p></td>
+<td><p>5V</p></td>
+<td><p>10</p></td>
+<td><p>Power supply</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ground</p></td>
+<td><p>8</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>9</p></td>
+<td><p>Ground</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="click-board-2">
+<h4><span class="section-number">4.1.2.3.4.5.2. </span>Click Board 2<a class="headerlink" href="#click-board-2" title="Permalink to this heading"></a></h4>
+<p>Closer to <strong>+CLK IN- pins</strong>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 11%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 12%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Notes</strong></p></td>
+<td colspan="2"><p><strong>mikroBUS Pin</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td colspan="2"><p><strong>mikroBUS Pin</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Analog input</p></td>
+<td><p>1</p></td>
+<td><p>AN</p></td>
+<td><p>AIN1</p></td>
+<td><p>DIO3_P</p></td>
+<td><p>PWM</p></td>
+<td><p>16</p></td>
+<td><p>PWM</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reset</p></td>
+<td><p>2</p></td>
+<td><p>RST</p></td>
+<td><p>DIO4_N</p></td>
+<td><p>DIO4_P</p></td>
+<td><p>INT</p></td>
+<td><p>15</p></td>
+<td><p>Interrupt</p></td>
+</tr>
+<tr class="row-even"><td><p>SPI Chip select 2</p></td>
+<td><p>3</p></td>
+<td><p>CS</p></td>
+<td><p>DIO3_N</p></td>
+<td><p>RX</p></td>
+<td><p>RX</p></td>
+<td><p>14</p></td>
+<td><p>UART1 RX</p></td>
+</tr>
+<tr class="row-odd"><td><p>SPI Serial clock</p></td>
+<td><p>4</p></td>
+<td><p>SCK</p></td>
+<td><p>SCK</p></td>
+<td><p>TX</p></td>
+<td><p>TX</p></td>
+<td><p>13</p></td>
+<td><p>UART1 TX</p></td>
+</tr>
+<tr class="row-even"><td><p>SPI MISO (SDO)</p></td>
+<td><p>5</p></td>
+<td><p>MISO</p></td>
+<td><p>MISO</p></td>
+<td><p>SCL</p></td>
+<td><p>SCL</p></td>
+<td><p>12</p></td>
+<td><p>I2C Clock</p></td>
+</tr>
+<tr class="row-odd"><td><p>SPI MOSI (SDI)</p></td>
+<td><p>6</p></td>
+<td><p>MOSI</p></td>
+<td><p>MOSI</p></td>
+<td><p>SDA</p></td>
+<td><p>SDA</p></td>
+<td><p>11</p></td>
+<td><p>I2C Data</p></td>
+</tr>
+<tr class="row-even"><td><p>Power supply</p></td>
+<td><p>7</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>5V</p></td>
+<td><p>5V</p></td>
+<td><p>10</p></td>
+<td><p>Power supply</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ground</p></td>
+<td><p>8</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>9</p></td>
+<td><p>Ground</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="logic-analyzer-connector">
+<h4><span class="section-number">4.1.2.3.4.5.3. </span>Logic Analyzer Connector<a class="headerlink" href="#logic-analyzer-connector" title="Permalink to this heading"></a></h4>
+<a class="reference internal image-reference" href="../../../_images/red-pitaya-click-shield-la.png"><img alt="../../../_images/red-pitaya-click-shield-la.png" class="align-center" src="../../../_images/red-pitaya-click-shield-la.png" style="width: 500px;" /></a>
+<p>Pin 1 is marked with a small white dot. On the bottom-left side of the connector when the shield is oriented according to the <em>LOGIC ANALYZER</em> text.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 19%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Notes</strong></p></td>
+<td><p><strong>LA Connector Pin</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td><p><strong>Red Pitaya Pin</strong></p></td>
+<td><p><strong>LA Connector Pin</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Not Connected</p></td>
+<td><p>1</p></td>
+<td><p>NC</p></td>
+<td><p>NC</p></td>
+<td><p>2</p></td>
+<td><p>Not Connected</p></td>
+</tr>
+<tr class="row-odd"><td><p>Not Connected</p></td>
+<td><p>3</p></td>
+<td><p>NC</p></td>
+<td><p>NC</p></td>
+<td><p>4</p></td>
+<td><p>Not Connected</p></td>
+</tr>
+<tr class="row-even"><td><p>DIN7</p></td>
+<td><p>5</p></td>
+<td><p>DIO7_P</p></td>
+<td><p>DIO3_P</p></td>
+<td><p>6</p></td>
+<td><p>DIN3</p></td>
+</tr>
+<tr class="row-odd"><td><p>DIN6</p></td>
+<td><p>7</p></td>
+<td><p>DIO6_P</p></td>
+<td><p>DIO2_P</p></td>
+<td><p>8</p></td>
+<td><p>DIN2</p></td>
+</tr>
+<tr class="row-even"><td><p>DIN5</p></td>
+<td><p>9</p></td>
+<td><p>DIO5_P</p></td>
+<td><p>DIO1_P</p></td>
+<td><p>10</p></td>
+<td><p>DIN1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DIN4</p></td>
+<td><p>11</p></td>
+<td><p>DIO4_P</p></td>
+<td><p>DIO0_P</p></td>
+<td><p>12</p></td>
+<td><p>DIN0</p></td>
+</tr>
+<tr class="row-even"><td><p>Not Connected</p></td>
+<td><p>13</p></td>
+<td><p>NC</p></td>
+<td><p>NC</p></td>
+<td><p>14</p></td>
+<td><p>Not Connected</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ground</p></td>
+<td><p>15</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>16</p></td>
+<td><p>Ground</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="other">
+<h4><span class="section-number">4.1.2.3.4.5.4. </span>Other<a class="headerlink" href="#other" title="Permalink to this heading"></a></h4>
+<p>Red Pitaya only has one set of UART pins, to achieve the functionality of two click boards, the following pins are used for switching UART between the two click boards:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Red Pitaya Pin</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>DIO5_N</p></td>
+<td><p>Switching UART0/UART1 (output set to LOW/HIGH)</p></td>
+</tr>
+<tr class="row-odd"><td><p>DIO6_N</p></td>
+<td><p>Switching UART2/UART3 (Possible future expansion)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="components">
+<h2><span class="section-number">4.1.2.3.5. </span>Components<a class="headerlink" href="#components" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a> LVDS clock fanout buffer.</p></li>
+<li><p><a href="https://www.digikey.com/en/products/detail/texas-instruments/TXS0108ERGYR/1910182" target="_blank">TXS0108</a> level-shifting voltage translators.</p></li>
+</ul>
+</div>
+<div class="section" id="schematics">
+<h2><span class="section-number">4.1.2.3.6. </span>Schematics<a class="headerlink" href="#schematics" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/doc/Click_shield_for_Red_Pitaya_v103_Schematic.pdf">Click_shield_for_Red_Pitaya_v103_Schematic.pdf</a></p></li>
+</ul>
+</div>
+<div class="section" id="mechanical-specifications-and-3d-models">
+<h2><span class="section-number">4.1.2.3.7. </span>Mechanical Specifications and 3D Models<a class="headerlink" href="#mechanical-specifications-and-3d-models" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://downloads.redpitaya.com/doc/red-pitaya-click-shield-2d-3d-files.zip">red-pitaya-click-shield-2d-3d-files.zip</a></p></li>
+</ul>
+</div>
+<div class="section" id="examples-of-use">
+<h2><span class="section-number">4.1.2.3.8. </span>Examples of use<a class="headerlink" href="#examples-of-use" title="Permalink to this heading"></a></h2>
+<div class="section" id="synchronisation">
+<h3><span class="section-number">4.1.2.3.8.1. </span>Synchronisation<a class="headerlink" href="#synchronisation" title="Permalink to this heading"></a></h3>
+<p>The Red Pitaya Click Shield can synchronise multiple Red Pitaya units together. As U.FL cables are used for clock and trigger synchronisation, other external clock devices can also be included in the chain.
+The connection provides minimal clock signal delay between multiple Red Pitaya units, as there is only a single ZL40213 LVDS clock fanout buffer between two units.</p>
+<p>To synchronise two or more Red Pitaya units, establish the following connections with U.FL cables between the primary board (transmitting clock and trigger signals) and the secondary board (receiving the clock and trigger signals). Use one of the two schemes depending on whether you want to connect an external clock or use the oscillator on the Red Pitaya Click Shields.</p>
+<div class="section" id="oscillator">
+<h4><span class="section-number">4.1.2.3.8.1.1. </span>Oscillator<a class="headerlink" href="#oscillator" title="Permalink to this heading"></a></h4>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Click_Shield_Oscillator_Sync1.png"><img alt="../../../_images/Click_Shield_Oscillator_Sync1.png" src="../../../_images/Click_Shield_Oscillator_Sync1.png" style="width: 700px;" /></a>
+</div>
+<p>When using the oscillator, the first Red Pitaya Click Shield transmits the clock and trigger signals to all devices in the chain. Here are the most important things to check:</p>
+<p><strong>Primary board:</strong></p>
+<ul class="simple">
+<li><p>Jumpers J4 and J5 connected. Connect the oscillator to the clocking transmission line.</p></li>
+<li><p>Jumpers J6 and J7 connected. Connect the Red Pitaya trigger to the trigger transmission line.</p></li>
+<li><p>Jumper J1 disconnected (unless using a single wire clock).</p></li>
+<li><p>CLK OSC switch in ON position.</p></li>
+<li><p>CLK SELECT switch in EXT position.</p></li>
+</ul>
+<p><strong>Secondary board:</strong></p>
+<ul class="simple">
+<li><p>Jumper J6 connected. Connect the trigger to the Ext. Trigger pin.</p></li>
+<li><p>Jumper J1 disconnected (unless using a single wire clock).</p></li>
+<li><p>CLK OSC switch in OFF position.</p></li>
+<li><p>CLK SELECT switch in EXT position.</p></li>
+</ul>
+<p>If an external trigger signal is used, copy the secondary board’s trigger connections to the primary board (disconnect J7 and connect the external trigger U.FL cable).
+Otherwise, DIO0_N acts as external trigger output (on the primary board), and DIO0_P acts as external trigger input.</p>
+</div>
+<div class="section" id="external-clock">
+<h4><span class="section-number">4.1.2.3.8.1.2. </span>External Clock<a class="headerlink" href="#external-clock" title="Permalink to this heading"></a></h4>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/Click_Shield_Ext_Clock_Sync1.png"><img alt="../../../_images/Click_Shield_Ext_Clock_Sync1.png" src="../../../_images/Click_Shield_Ext_Clock_Sync1.png" style="width: 700px;" /></a>
+</div>
+<p>When using an external clock and external trigger, the clock and trigger signals are transmitted to all devices in the chain. All the Click Shields share the same configuration:</p>
+<p><strong>Primary and Secondary boards:</strong></p>
+<ul class="simple">
+<li><p>Jumper J6 connected. Connect the trigger to the Ext. Trigger pin.</p></li>
+<li><p>Jumper J1 disconnected (unless using a single wire clock).</p></li>
+<li><p>CLK OSC switch in OFF position.</p></li>
+<li><p>CLK SELECT switch in EXT position.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="synchronisation-example">
+<h3><span class="section-number">4.1.2.3.8.2. </span>Synchronisation example<a class="headerlink" href="#synchronisation-example" title="Permalink to this heading"></a></h3>
+<p>Here are examples for synchronising two Red Pitayas with Click Shields through SCPI commands.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../appsFeatures/examples/multiboard_sync/click_shield-exm1.html#click-shield-sync-exam1"><span class="std std-ref">Synchronised Click Shield Generation and Acquisition</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="click-boards">
+<h3><span class="section-number">4.1.2.3.8.3. </span>Click Boards<a class="headerlink" href="#click-boards" title="Permalink to this heading"></a></h3>
+<p>Here are some examples of how to use click boards together with Click Shield and Red Pitaya.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/basic/basic_top.html">4.1.2.3.8.3.1. Basic Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/basic/button.html">4.1.2.3.8.3.1.1. Button G Click Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/basic/captouch.html">4.1.2.3.8.3.1.2. Cap Touch Click Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/basic/relay.html">4.1.2.3.8.3.1.3. Relay Click Board</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/sensor/sensor_top.html">4.1.2.3.8.3.2. Sensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/sensor/current.html">4.1.2.3.8.3.2.1. Current Click Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/sensor/light.html">4.1.2.3.8.3.2.2. Light Click Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/sensor/motion.html">4.1.2.3.8.3.2.3. Motion Click Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/sensor/thermo16.html">4.1.2.3.8.3.2.4. Thermo 16 Click Board</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/motor/motor_top.html">4.1.2.3.8.3.3. Motors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/motor/dcmotor.html">4.1.2.3.8.3.3.1. DC Motor 2 Click Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/motor/vibromotor.html">4.1.2.3.8.3.3.2. Vibro Motor Click Board</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/data/data_top.html">4.1.2.3.8.3.4. Data Acquisition Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/data/iso_adc3.html">4.1.2.3.8.3.4.1. ISO ADC 3 Click Board</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="click-shield-q-a">
+<span id="id2"></span><h2><span class="section-number">4.1.2.3.9. </span>Click Shield Q&amp;A<a class="headerlink" href="#click-shield-q-a" title="Permalink to this heading"></a></h2>
+<p>Here is a special Q&amp;A section regarding the Red Pitaya Click Shields and their comparison to the X-Channel System. For general Red Pitaya Q&amp;A, please see the <a class="reference internal" href="../../../quickStart/troubleshooting/troubleshooting.html#faq"><span class="std std-ref">FAQ section</span></a>.</p>
+<div class="section" id="can-i-synchronise-multiple-different-red-pitaya-board-models-with-the-click-shields">
+<h3><span class="section-number">4.1.2.3.9.1. </span>Can I synchronise multiple different Red Pitaya board models with the Click Shields?<a class="headerlink" href="#can-i-synchronise-multiple-different-red-pitaya-board-models-with-the-click-shields" title="Permalink to this heading"></a></h3>
+<p>Yes, you can. There can be different board models in a Red Pitaya Click Shield daisy chain. For example, the primary device can be a STEMlab 125-14 4-Input board,
+the first secondary device a STEMlab 125-14 ext. clk., and the second secondary device another 4-Input. We recommend daisy chaining only devices with the same base clock speed.</p>
+<p>Please take into account that SDRlab 122-16 ext. clk. is meant to receive a 122.88 MHz clock signal, so although synchronisation with STEMlab 125-14 boards is possible, we do not recommend it.</p>
+<p>While multiple different board models can be daisy chained, some features might be unavailable. See the <a class="reference internal" href="#click-shield-compatibility"><span class="std std-ref">Click Shield compatibitily section</span></a>.</p>
+</div>
+<div class="section" id="what-is-the-difference-between-red-pitaya-x-channel-system-and-red-pitaya-click-shield-synchronisation">
+<h3><span class="section-number">4.1.2.3.9.2. </span>What is the difference between Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation?<a class="headerlink" href="#what-is-the-difference-between-red-pitaya-x-channel-system-and-red-pitaya-click-shield-synchronisation" title="Permalink to this heading"></a></h3>
+<p>In this section we will talk about the difference between the Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation. It might seem like these two are completely the same, but that is far from the truth.</p>
+<p>More info on <a class="reference internal" href="../125-14_MULTI/top.html#top-125-14-multi"><span class="std std-ref">Red Pitaya X-channel System</span></a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p><strong>X-Channel System</strong></p></th>
+<th class="head"><p><strong>Click Shield Synchronisation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="3"><p><strong>Clock &amp; Sampling rate</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Recommended sampling rate</p></td>
+<td><p>up to 100 ksps</p></td>
+<td><p>up to full sampling rate</p></td>
+</tr>
+<tr class="row-even"><td><p>Shared clock signal</p></td>
+<td><p>Primary device CLK</p></td>
+<td><p>Click Shield Oscillator OR EXT CLK</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clock signal delays</p></td>
+<td><div class="line-block">
+<div class="line">Slightly higher delay per unit</div>
+<div class="line">(signal through each FPGA) <a class="footnote-reference brackets" href="#f1" id="id3">1</a></div>
+</div>
+</td>
+<td><p>1x Clock buffer per unit - <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Trigger signal delays</p></td>
+<td><div class="line-block">
+<div class="line">Slightly higher delay per unit</div>
+<div class="line">(signal through each FPGA) <a class="footnote-reference brackets" href="#f1" id="id4">1</a></div>
+</div>
+</td>
+<td><dl class="simple">
+<dt>1x Trigger buffer per unit -</dt><dd><p><a href="  https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578" target="_blank"> 74FCT38072DCGI</a></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p><strong>Pinout</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>GPIO access</p></td>
+<td><p>Full access <a class="footnote-reference brackets" href="#f2" id="id5">2</a></p></td>
+<td><p>Max 10 digital pins <a class="footnote-reference brackets" href="#f3" id="id6">3</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Slow analog access</p></td>
+<td><p>Full access (4/4)</p></td>
+<td><p>Max 2 pins (2/4) <a class="footnote-reference brackets" href="#f3" id="id7">3</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Digital communication pins</p></td>
+<td><p>1x UART, 1x SPI, 1x I2C, 1x CAN</p></td>
+<td><p>2x UART, 2x SPI, 2xI2C (no CAN) <a class="footnote-reference brackets" href="#f3" id="id8">3</a></p></td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p><strong>Units</strong></p></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Compatible Red Pitaya board</div>
+<div class="line">models</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Primary - STEMlab 125-14 LN</div>
+<div class="line"><br /></div>
+<div class="line">Secondary - STEMlab 125-14 LN Secondary</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">All units are the same:</div>
+<div class="line">STEMlab 125-14 Ext Clk</div>
+<div class="line">SDRlab 122-16 Ext Clk</div>
+<div class="line">STEMlab 125-14 4-Input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">Choosing between External</div>
+<div class="line">and Internal clock</div>
+</div>
+</td>
+<td><p>No</p></td>
+<td><p>Yes (4-Input and future HW board
+redesigns only)</p></td>
+</tr>
+<tr class="row-even"><td><p>Aluminium case compatibility</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><p>Exact measurements will be provided in the future.</p>
+</dd>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dd><p>Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the <a class="reference internal" href="../compares/vs.html#rp-board-comp"><span class="std std-ref">Comparison table</span></a> for more information.</p>
+</dd>
+<dt class="label" id="f3"><span class="brackets">3</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id7">2</a>,<a href="#id8">3</a>)</span></dt>
+<dd><p>Through the microBUS connectors.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sensor_ext.html" class="btn btn-neutral float-left" title="4.1.2.2. Sensor extension module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../appsFeatures/examples/click_shield_examples/click_board_examples/click_examples.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Red Pitaya d.o.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
