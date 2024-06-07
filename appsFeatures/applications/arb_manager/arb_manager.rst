@@ -73,13 +73,6 @@ Here is an example of Python code for creating a custom waveform.
 Source code
 =============
 
-The |arb_manager_source_code| is available on our GitHub.
-
-.. |arb_manager_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/arb_manager" target="_blank">Arbitrary Waveform Manager source code</a>
-
-
-
+The `Arbitrary Waveform Manager source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/arb_manager>`_ is available on our GitHub.
 
 

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.4.6.5. Generating and Acquiring signals at RF inputs/outputs &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>3.4.6.5. Generating and Acquiring signals at RF inputs/outputs &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.4.6.5.1. Synchronised one-pulse signal generation and acquisition" href="acq_genRF-exm1.html" />
-    <link rel="prev" title="2.4.6.4.4. Sampling rate and decimations" href="../acquisition/acqRF-samp-and-dec.html" /> 
+    <link rel="next" title="3.4.6.5.1. Synchronised one-pulse signal generation and acquisition" href="acq_genRF-exm1.html" />
+    <link rel="prev" title="3.4.6.4.4. Sampling rate and decimations" href="../acquisition/acqRF-samp-and-dec.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,37 +59,38 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">2.2. Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">2.4.2. C and Python Applications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">2.4.6. Examples</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../digital/digital.html">2.4.6.1. Digital</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">2.4.6.2. Analog</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">2.4.6.3. Generating signals at RF outputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../acquisition/acqRF.html">2.4.6.4. Acquiring signals at RF inputs</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">2.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../multiboard_sync/multiboard.html">2.4.6.6. Multi-board signal acquisition and generation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../DMA/deepMemoryAcq.html">2.4.6.7. Deep Memory Acquisition</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../communication_interfaces/digcomIF.html">2.4.6.8. Digital communication interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/apps-featured.html">3.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/scpi.html">3.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/API_scripts.html">3.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/jupyter/Jupyter.html">3.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/deepMemoryAcquisition.html">3.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/command_list.html">3.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../remoteControl/examples_top.html">3.4.6. Examples</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../digital/digital.html">3.4.6.1. Digital</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../analog/analog.html">3.4.6.2. Analog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generation/genRF.html">3.4.6.3. Generating signals at RF outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../acquisition/acqRF.html">3.4.6.4. Acquiring signals at RF inputs</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">3.4.6.5. Generating and Acquiring signals at RF inputs/outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../multiboard_sync/multiboard.html">3.4.6.6. Multi-board signal acquisition and generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../DMA/deepMemoryAcq.html">3.4.6.7. Deep Memory Acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../communication_interfaces/digcomIF.html">3.4.6.8. Digital communication interfaces</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../remoteControl/knownIssues.html">3.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -106,10 +107,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
-          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
-          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">2.4.6. </span>Examples</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.4.6.5. </span>Generating and Acquiring signals at RF inputs/outputs</li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/remoteAndProg.html"><span class="section-number">3.4. </span>Programming and remote-control tools</a></li>
+          <li class="breadcrumb-item"><a href="../../remoteControl/examples_top.html"><span class="section-number">3.4.6. </span>Examples</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.4.6.5. </span>Generating and Acquiring signals at RF inputs/outputs</li>
 
   </ul>
   <hr/>
@@ -118,22 +119,22 @@
            <div itemprop="articleBody">
              
   <div class="section" id="generating-and-acquiring-signals-at-rf-inputs-outputs">
-<h1><span class="section-number">2.4.6.5. </span>Generating and Acquiring signals at RF inputs/outputs<a class="headerlink" href="#generating-and-acquiring-signals-at-rf-inputs-outputs" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">3.4.6.5. </span>Generating and Acquiring signals at RF inputs/outputs<a class="headerlink" href="#generating-and-acquiring-signals-at-rf-inputs-outputs" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="acq_genRF-exm1.html">2.4.6.5.1. Synchronised one-pulse signal generation and acquisition</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#description">2.4.6.5.1.1. Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#required-hardware">2.4.6.5.1.2. Required hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#circuit">2.4.6.5.1.3. Circuit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#scpi-code-examples">2.4.6.5.1.4. SCPI Code Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#api-code-examples">2.4.6.5.1.5. API Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acq_genRF-exm1.html">3.4.6.5.1. Synchronised one-pulse signal generation and acquisition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#description">3.4.6.5.1.1. Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#required-hardware">3.4.6.5.1.2. Required hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#circuit">3.4.6.5.1.3. Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#scpi-code-examples">3.4.6.5.1.4. SCPI Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm1.html#api-code-examples">3.4.6.5.1.5. API Code Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="acq_genRF-exm2.html">2.4.6.5.2. Generating a signal and checking its shape</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#description">2.4.6.5.2.1. Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#required-hardware">2.4.6.5.2.2. Required hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#circuit">2.4.6.5.2.3. Circuit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#api-code-examples">2.4.6.5.2.4. API Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acq_genRF-exm2.html">3.4.6.5.2. Generating a signal and checking its shape</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#description">3.4.6.5.2.1. Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#required-hardware">3.4.6.5.2.2. Required hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#circuit">3.4.6.5.2.3. Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acq_genRF-exm2.html#api-code-examples">3.4.6.5.2.4. API Code Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -144,8 +145,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../acquisition/acqRF-samp-and-dec.html" class="btn btn-neutral float-left" title="2.4.6.4.4. Sampling rate and decimations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="acq_genRF-exm1.html" class="btn btn-neutral float-right" title="2.4.6.5.1. Synchronised one-pulse signal generation and acquisition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../acquisition/acqRF-samp-and-dec.html" class="btn btn-neutral float-left" title="3.4.6.4.4. Sampling rate and decimations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="acq_genRF-exm1.html" class="btn btn-neutral float-right" title="3.4.6.5.1. Synchronised one-pulse signal generation and acquisition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

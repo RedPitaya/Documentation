@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. Quick start &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>2. Quick start &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../_static/page_width.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. What do I need before I start?" href="needs.html" />
-    <link rel="prev" title="Welcome to the Red Pitaya documentation" href="../index.html" /> 
+    <link rel="next" title="2.1. What do I need before I start?" href="needs.html" />
+    <link rel="prev" title="1. What is Red Pitaya?" href="../intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,19 +59,20 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Quick start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="needs.html">1.1. What do I need before I start?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="first.html">1.2. Connect to Red Pitaya</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDcard/SDcard.html">1.3. Prepare SD card</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alucase/alucase.html">1.4. Red Pitaya Aluminium Case Assembly</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pvccase/pvccase.html">1.5. Red Pitaya Acrylic Case Assembly</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heatsink/heatsink.html">1.6. Red Pitaya heatsink interface setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="troubleshooting/troubleshooting.html">1.7. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Quick start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="needs.html">2.1. What do I need before I start?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first.html">2.2. Connect to Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDcard/SDcard.html">2.3. Prepare SD card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alucase/alucase.html">2.4. Red Pitaya Aluminium Case Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pvccase/pvccase.html">2.5. Red Pitaya Acrylic Case Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatsink/heatsink.html">2.6. Red Pitaya heatsink interface setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/troubleshooting.html">2.7. FAQ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -88,7 +89,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">1. </span>Quick start</li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>Quick start</li>
 
   </ul>
   <hr/>
@@ -97,35 +98,16 @@
            <div itemprop="articleBody">
              
   <div class="section" id="quick-start">
-<span id="id1"></span><h1><span class="section-number">1. </span>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h1>
-<p>Red Pitaya is a software-defined multi-instrument, digitiser and open-source FPGA development platform. Out of the box, it can be used as multiple software-defined instruments such as oscilloscope, signal generator, spectrum analyser and many more, all accessible as applications through a web interface.</p>
-<p>The main feature of Red Pitaya is two fast analog inputs and two fast analog outputs with 125 Msps and 14 bit resolution. The voltage ranges are +-1 V or +-20 V for the inputs (depending on jumper settings) and +-1 V for the outputs. The board also has additional low-speed analog inputs and outputs, 16 digital GPIO pins, I2C, SPI, UART and CAN digital interfaces and eight programmable LEDs. The heart of the Red Pitaya is the AMD Xilinx Zynq 7010 SoC with a dual-core ARM Cortex A9 processor. The board runs on the Ubuntu Linux operating system, which is stored on the micro SD card.</p>
-<p>The board is compatible with any computer operating system (Windows, Linux, MacOS). Ethernet is used to transfer data between the board and the computer.</p>
-<p>In addition, the board can be remotely controlled using SCPI commands with Python, MATLAB or LabVIEW code running on the computer. Access to the board via SSH allows control of the Linux operating system, as well as custom C and Python programs to run directly on the Red Pitaya. A deep dive into the FPGA code and complete reprogramming is also on the table.</p>
-<p>The Red Pitaya is used everywhere. From the International Space Station to counting fish, which is why we call it the “Swiss Army knife for engineers”.</p>
-<p>So how are you going to use it?</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="first.html#connectstemlab"><span class="std std-ref">Connection</span></a></p></li>
-<li><p><a class="reference internal" href="../appsFeatures/applications/apps-featured.html#all-apps"><span class="std std-ref">Applications</span></a></p></li>
-<li><p><a class="reference internal" href="../appsFeatures/remoteControl/remoteAndProg.html#programming"><span class="std std-ref">Programming</span></a></p></li>
-<li><p><a class="reference internal" href="../developerGuide/software/build/fpga/fpga.html#build-fpga"><span class="std std-ref">FPGA</span></a></p></li>
-<li><p><a class="reference internal" href="../customization/custom.html#customization"><span class="std std-ref">Customization</span></a></p></li>
-<li><p><a href="https://redpitaya.com/shop/" target="_blank">I'll take your entire stock :D</a></p></li>
-</ul>
-<p>GitHub source code:</p>
-<ul class="simple">
-<li><p>Ecosystem and applications: <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">RedPitaya/RedPitaya</a></p></li>
-<li><p>FPGA: <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">RedPitaya/RedPitaya-FPGA</a></p></li>
-</ul>
+<span id="id1"></span><h1><span class="section-number">2. </span>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="needs.html">1.1. What do I need before I start?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="first.html">1.2. Connect to Red Pitaya</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SDcard/SDcard.html">1.3. Prepare SD card</a></li>
-<li class="toctree-l1"><a class="reference internal" href="alucase/alucase.html">1.4. Red Pitaya Aluminium Case Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pvccase/pvccase.html">1.5. Red Pitaya Acrylic Case Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="heatsink/heatsink.html">1.6. Red Pitaya heatsink interface setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting/troubleshooting.html">1.7. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="needs.html">2.1. What do I need before I start?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first.html">2.2. Connect to Red Pitaya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDcard/SDcard.html">2.3. Prepare SD card</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alucase/alucase.html">2.4. Red Pitaya Aluminium Case Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pvccase/pvccase.html">2.5. Red Pitaya Acrylic Case Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heatsink/heatsink.html">2.6. Red Pitaya heatsink interface setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting/troubleshooting.html">2.7. FAQ</a></li>
 </ul>
 </div>
 </div>
@@ -134,8 +116,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to the Red Pitaya documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="needs.html" class="btn btn-neutral float-right" title="1.1. What do I need before I start?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../intro.html" class="btn btn-neutral float-left" title="1. What is Red Pitaya?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="needs.html" class="btn btn-neutral float-right" title="2.1. What do I need before I start?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

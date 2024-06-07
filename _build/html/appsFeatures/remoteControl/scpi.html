@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python) &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>3.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python) &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/page_width.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.4.2. C and Python Applications" href="API_scripts.html" />
-    <link rel="prev" title="2.4. Programming and remote-control tools" href="remoteAndProg.html" /> 
+    <link rel="next" title="3.4.2. C and Python Applications" href="API_scripts.html" />
+    <link rel="prev" title="3.4. Programming and remote-control tools" href="remoteAndProg.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,31 +60,33 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../appsFeatures.html">2. Applications and Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/apps-featured.html">2.2. Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../systemtool/systool.html">2.3. System tools</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#quick-start">2.4.1.1. Quick start</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#starting-scpi-server-manually">2.4.1.2. Starting SCPI server manually</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/apps-featured.html">3.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="remoteAndProg.html">3.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quick-start">3.4.1.1. Quick start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starting-scpi-server-manually">3.4.1.2. Starting SCPI server manually</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-scpi-commands-work">3.4.1.3. How do SCPI commands work?</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="API_scripts.html">2.4.2. C and Python Applications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deepMemoryAcquisition.html">2.4.4. Deep Memory Acquisition (DMA)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_top.html">2.4.6. Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API_scripts.html">3.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jupyter/Jupyter.html">3.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deepMemoryAcquisition.html">3.4.4. Deep Memory Acquisition (DMA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_list.html">3.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_top.html">3.4.6. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knownIssues.html">3.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -101,9 +103,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
-          <li class="breadcrumb-item"><a href="remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.4.1. </span>SCPI server (MATLAB, LabVIEW, Scilab or Python)</li>
+          <li class="breadcrumb-item"><a href="../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="remoteAndProg.html"><span class="section-number">3.4. </span>Programming and remote-control tools</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.4.1. </span>SCPI server (MATLAB, LabVIEW, Scilab or Python)</li>
 
   </ul>
   <hr/>
@@ -112,14 +114,16 @@
            <div itemprop="articleBody">
              
   <div class="section" id="scpi-server-matlab-labview-scilab-or-python">
-<span id="scpi-commands"></span><h1><span class="section-number">2.4.1. </span>SCPI server (MATLAB, LabVIEW, Scilab or Python)<a class="headerlink" href="#scpi-server-matlab-labview-scilab-or-python" title="Permalink to this heading"></a></h1>
+<span id="scpi-commands"></span><h1><span class="section-number">3.4.1. </span>SCPI server (MATLAB, LabVIEW, Scilab or Python)<a class="headerlink" href="#scpi-server-matlab-labview-scilab-or-python" title="Permalink to this heading"></a></h1>
 <div class="figure align-default">
 <img alt="../../_images/SCPI_web_lr.png" src="../../_images/SCPI_web_lr.png" />
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands. The SCPI interface/environment is commonly used to control T&amp;M instruments for development, research, or test automation. SCPI uses a set of commands recognised by the instruments to enable specific actions (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). The SCPI commands are extremely useful when complex signal analysis is required. A SW environment such as MATLAB that provides powerful data analysis tools is a perfect combination for the SCPI commands’ simple access to raw data acquired on the Red Pitaya board.</p>
+<p>The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands.
+The SCPI interface/environment is commonly used to control T&amp;M instruments for development, research, or test automation. SCPI uses a set of commands recognised by the instruments to enable specific actions (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform).
+The SCPI commands are extremely useful when complex signal analysis is required. A software environment such as MATLAB that provides powerful data analysis tools is a perfect combination for the SCPI commands’ simple access to raw data acquired on the Red Pitaya board.</p>
 <p><strong>Features</strong></p>
 <ul class="simple">
 <li><p>Quickly write control routines and programs using MATLAB, LabVIEW, Scilab, or Python.</p></li>
@@ -136,8 +140,9 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="quick-start">
-<h2><span class="section-number">2.4.1.1. </span>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h2>
-<p>To initiate the SCPI server, just click on the SCPI server icon. Once the SCPI server is operational, your board’s IP address will be displayed. This IP address should be incorporated into your scripts. Alternatively, you can manually commence the SCPI server using the Terminal (refer to the instructions below).</p>
+<h2><span class="section-number">3.4.1.1. </span>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h2>
+<p>To initiate the SCPI server, just click on the SCPI server icon. Once the SCPI server is operational, your board’s IP address will be displayed. This IP address should be incorporated into your scripts.
+Alternatively, you can manually commence the SCPI server using the Terminal (refer to the instructions below).</p>
 <p>To run an example, follow the instructions below:</p>
 <ol class="arabic">
 <li><p>Go to your Red Pitaya web interface and select the SCPI server in the <em>Development</em> section.</p>
@@ -151,7 +156,7 @@
 <img alt="../../_images/scpi-development.png" src="../../_images/scpi-development.png" />
 </div>
 </li>
-<li><p>Start the SCPI server by selecting the RUN button. Please note the IP of your Red Pitaya (in our case, 192.168.178.100) board, as it will be needed to establish a socket communication with your board. Alternatively, you can use the <em>“rp-xxxxxx.local”</em> address instead of the IP address.</p>
+<li><p>Start the SCPI server by selecting the RUN button. Please note the IP addreess (in our case, <em>192.168.178.100</em>) or the .local address (in our case, <em>rp-f03e5f.local</em>) of your Red Pitaya board , as it will be needed to establish a socket communication with your board.</p>
 <div class="figure align-default">
 <img alt="../../_images/scpi-app-run.png" src="../../_images/scpi-app-run.png" />
 </div>
@@ -181,7 +186,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="matlab">
-<h3><span class="section-number">2.4.1.1.1. </span>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.4.1.1.1. </span>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this heading"></a></h3>
 <p><strong>Requirements and Setup</strong></p>
 <p>The basic MATLAB installation already has everything you need to control your Red Pitaya. However, we recommend installing the <em>Signal Processing</em> and
 <em>Instrumentat control</em> toolboxes, which might come in handy.</p>
@@ -198,7 +203,7 @@
 </div>
 </div>
 <div class="section" id="python">
-<h3><span class="section-number">2.4.1.1.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.4.1.1.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this heading"></a></h3>
 <p><strong>Requirements and Setup</strong></p>
 <p>Here are the requirements for setting up a Python environment to remotely control your Red Pitaya. Here we present setting up the environment in <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>, due to high adaptability and easily expandable functionality.</p>
 <ol class="arabic">
@@ -308,7 +313,7 @@ During the installation process, do not forget to check the <strong>Add python.e
 </div>
 </div>
 <div class="section" id="labview">
-<h3><span class="section-number">2.4.1.1.3. </span>LabVIEW<a class="headerlink" href="#labview" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.4.1.1.3. </span>LabVIEW<a class="headerlink" href="#labview" title="Permalink to this heading"></a></h3>
 <p><strong>Requirements and Setup</strong></p>
 <p>For proper operation, the <a href="https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip" target="_blank">Red Pitaya LabVIEW driver</a> must be installed.</p>
 <ol class="arabic simple">
@@ -334,7 +339,7 @@ During the installation process, do not forget to check the <strong>Add python.e
 </div>
 </div>
 <div class="section" id="scilab">
-<h3><span class="section-number">2.4.1.1.4. </span>SCILAB<a class="headerlink" href="#scilab" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.4.1.1.4. </span>SCILAB<a class="headerlink" href="#scilab" title="Permalink to this heading"></a></h3>
 <p><strong>Requirements and Setup</strong></p>
 <p>To control Red Pitaya through Scilab, the <em>Scilab socket toolbox</em> extension is required. Internet connection is required for the installation process.</p>
 <ol class="arabic simple">
@@ -362,7 +367,7 @@ During the installation process, do not forget to check the <strong>Add python.e
 </div>
 </div>
 <div class="section" id="starting-scpi-server-manually">
-<h2><span class="section-number">2.4.1.2. </span>Starting SCPI server manually<a class="headerlink" href="#starting-scpi-server-manually" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4.1.2. </span>Starting SCPI server manually<a class="headerlink" href="#starting-scpi-server-manually" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Connect to your Red Pitaya through <a class="reference internal" href="../../developerGuide/software/console/ssh/ssh.html#ssh"><span class="std std-ref">SSH</span></a>.</p></li>
 <li><p>Start the SCPI server with the following command:</p>
@@ -388,14 +393,54 @@ During the installation process, do not forget to check the <strong>Add python.e
 </div>
 </div>
 </div>
+<div class="section" id="how-do-scpi-commands-work">
+<h2><span class="section-number">3.4.1.3. </span>How do SCPI commands work?<a class="headerlink" href="#how-do-scpi-commands-work" title="Permalink to this heading"></a></h2>
+<p>Here we explain the “behind the scenes” functionality of the redpitaya_SCPI.py script, which establishes the socket connection between Red Pitaya (host) and the computer (client).
+The principles explained here can also be applied to other environments that already support SCPI commands (MATLAB, LabVIEW), or used as a basis for developing a script that enables SCPI commands in another environment.</p>
+<p>SCPI commands are basically string commands that either contain a user-defined parameter that needs to be changed in the board settings, or are a request to the board to return a specific setting or captured data.
+Consequently, we can divide the SCPI commands into two categories, <em>control commands</em> and <em>query commands</em>, which we will discuss in the following chapters.</p>
+<p>SCPI commands are easy to use and memorise, but suffer from a lack of speed because all data, regardless of size or type, must be converted into a string which is then sent over the TCP connection.
+When an SCPI command string arrives at the Red Pitaya board, it is compared with the list of all possible SCPI commands, if the correct command is found, the parameters are taken from the string and converted back into the usual format,
+then the appropriate C API function is executed. Otherwise an error is returned.</p>
+<div class="section" id="control-commands">
+<h3><span class="section-number">3.4.1.3.1. </span>Control commands<a class="headerlink" href="#control-commands" title="Permalink to this heading"></a></h3>
+<p>Control commands send user-defined settings to the Red Pitaya.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/SCPI_control_commands.png"><img alt="../../_images/SCPI_control_commands.png" src="../../_images/SCPI_control_commands.png" style="width: 800px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Control commands never return anything.</p></li>
+<li><p>Error checking is done via the status byte.</p></li>
+<li><p>Error checking is optional.</p></li>
+<li><p>The error code from the API consists of two parts. 9000 or 9500, indicating whether the error is normal or critical, and the API error number. For example: 9500 + RP_EOED = 9501 (Failed to Open EEPROM Device)</p></li>
+</ul>
+</div>
+<div class="section" id="query-commands">
+<h3><span class="section-number">3.4.1.3.2. </span>Query commands<a class="headerlink" href="#query-commands" title="Permalink to this heading"></a></h3>
+<p>Query commands request data or a setting to be returned to the user. They always have a question mark (?) at the end.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/SCPI_query_commands.png"><img alt="../../_images/SCPI_query_commands.png" src="../../_images/SCPI_query_commands.png" style="width: 800px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Query commands always return data</p></li>
+<li><p>Error checking via status byte</p></li>
+<li><p>Error checking is optional</p></li>
+<li><p>The data returned by the command can be of two types: binary data and text data.</p></li>
+<li><p>Binary data response has the format <strong>#&lt;DATA SIZE&gt;&lt;BYTES&gt;</strong>. If an error occurs, the response format is as follows #0</p></li>
+<li><p>Text data format: <strong>&lt;ANSWER&gt;rn</strong> or <strong>&lt;ANSWER&gt;;&lt;ANSWER&gt;;…;&lt;ANSWER&gt;rn</strong> (If you’re sending multiple commands at once.) If an error occurs, the response format will be like this: “rn”.</p></li>
+<li><p>In ASCII mode, data buffers are represented in the form {dd,dd,dd,…,dd}.</p></li>
+<li><p>The API error code consists of two parts. 9000 or 9500, indicating whether the error is normal or critical, and the API error number. For example: 9500 + RP_EOED = 9501 (Failed to Open EEPROM Device)</p></li>
+</ul>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="remoteAndProg.html" class="btn btn-neutral float-left" title="2.4. Programming and remote-control tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="API_scripts.html" class="btn btn-neutral float-right" title="2.4.2. C and Python Applications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="remoteAndProg.html" class="btn btn-neutral float-left" title="3.4. Programming and remote-control tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="API_scripts.html" class="btn btn-neutral float-right" title="3.4.2. C and Python Applications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

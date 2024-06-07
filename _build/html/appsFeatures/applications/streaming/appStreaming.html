@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.2.7. Streaming &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>3.2.7. Streaming &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.2.8. X-Channel Streaming" href="appXCStreaming.html" />
-    <link rel="prev" title="2.2.6. LCR meter" href="../lcr_meter/lcr_meter.html" /> 
+    <link rel="next" title="3.2.8. X-Channel Streaming" href="appXCStreaming.html" />
+    <link rel="prev" title="3.2.6. LCR meter" href="../lcr_meter/lcr_meter.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,39 +60,40 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">2.2. Applications</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">2.2.1. Oscilloscope &amp; Signal Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">2.2.2. Spectrum Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">2.2.3. Logic Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">2.2.4. Bode Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">2.2.5. Impedance Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">2.2.6. LCR meter</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2.2.7. Streaming</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#getting-started-with-the-red-pitaya-streaming-feature">2.2.7.1. Getting started with the Red Pitaya streaming feature</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#stream-locally-to-a-file-on-red-pitaya-s-sd-card">2.2.7.2. Stream locally to a file on Red Pitaya’s SD card</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#streaming-to-a-remote-computer-via-command-line-or-terminal">2.2.7.3. Streaming to a remote computer via Command Line or Terminal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#streaming-to-a-remote-computer-via-desktop-application-linux-windows">2.2.7.4. Streaming to a remote computer via Desktop Application (Linux, Windows)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#source-code">2.2.7.5. Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">3.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">3.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">3.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">3.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">3.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">3.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">3.2.6. LCR meter</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2.7. Streaming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started-with-the-red-pitaya-streaming-feature">3.2.7.1. Getting started with the Red Pitaya streaming feature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stream-locally-to-a-file-on-red-pitaya-s-sd-card">3.2.7.2. Stream locally to a file on Red Pitaya’s SD card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#streaming-to-a-remote-computer-via-command-line-or-terminal">3.2.7.3. Streaming to a remote computer via Command Line or Terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#streaming-to-a-remote-computer-via-desktop-application-linux-windows">3.2.7.4. Streaming to a remote computer via Desktop Application (Linux, Windows)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">3.2.7.5. Source code</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="appXCStreaming.html">2.2.8. X-Channel Streaming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">2.2.9. Arbitrary Waveform Manager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">2.2.10. SDR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">2.2.11. Vector Network Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">2.2.12. Marketplace and contributed apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appXCStreaming.html">3.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">3.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">3.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">3.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">3.2.12. Marketplace and contributed apps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -109,9 +110,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
-          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">2.2. </span>Applications</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.2.7. </span>Streaming</li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">3.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.7. </span>Streaming</li>
 
   </ul>
   <hr/>
@@ -120,7 +121,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="streaming">
-<span id="streaming-top"></span><h1><span class="section-number">2.2.7. </span>Streaming<a class="headerlink" href="#streaming" title="Permalink to this heading"></a></h1>
+<span id="streaming-top"></span><h1><span class="section-number">3.2.7. </span>Streaming<a class="headerlink" href="#streaming" title="Permalink to this heading"></a></h1>
 <p>The Streaming application enables users to stream data from Red Pitaya to:</p>
 <blockquote>
 <div><ul class="simple">
@@ -204,14 +205,14 @@ Here are a few examples of maximum data rates:</p>
 <p>We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.</p>
 </div>
 <div class="section" id="getting-started-with-the-red-pitaya-streaming-feature">
-<h2><span class="section-number">2.2.7.1. </span>Getting started with the Red Pitaya streaming feature<a class="headerlink" href="#getting-started-with-the-red-pitaya-streaming-feature" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.7.1. </span>Getting started with the Red Pitaya streaming feature<a class="headerlink" href="#getting-started-with-the-red-pitaya-streaming-feature" title="Permalink to this heading"></a></h2>
 <p>Run the Streaming app from the Red Pitaya Web interface</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../../../_images/redpitaya_main_page.png"><img alt="../../../_images/redpitaya_main_page.png" src="../../../_images/redpitaya_main_page.png" style="width: 600px;" /></a>
 </div>
 </div>
 <div class="section" id="stream-locally-to-a-file-on-red-pitaya-s-sd-card">
-<h2><span class="section-number">2.2.7.2. </span>Stream locally to a file on Red Pitaya’s SD card<a class="headerlink" href="#stream-locally-to-a-file-on-red-pitaya-s-sd-card" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.7.2. </span>Stream locally to a file on Red Pitaya’s SD card<a class="headerlink" href="#stream-locally-to-a-file-on-red-pitaya-s-sd-card" title="Permalink to this heading"></a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tab" tabindex="0">OS version 2.00-15 or older</button><button aria-controls="panel-0-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" role="tab" tabindex="-1">OS version 2.00-23 or newer</button></div><div aria-labelledby="tab-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-0-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tabpanel" tabindex="0"><ol class="arabic">
 <li><p>Configure the stream properties &amp; click <strong>RUN</strong></p>
@@ -266,7 +267,7 @@ Here are a few examples of maximum data rates:</p>
 </div></div>
 </div>
 <div class="section" id="streaming-to-a-remote-computer-via-command-line-or-terminal">
-<h2><span class="section-number">2.2.7.3. </span>Streaming to a remote computer via Command Line or Terminal<a class="headerlink" href="#streaming-to-a-remote-computer-via-command-line-or-terminal" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.7.3. </span>Streaming to a remote computer via Command Line or Terminal<a class="headerlink" href="#streaming-to-a-remote-computer-via-command-line-or-terminal" title="Permalink to this heading"></a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tab" tabindex="0">OS version 2.00-15 or older</button><button aria-controls="panel-1-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" name="T1MgdmVyc2lvbiAyLjAwLTIzIG9yIG5ld2Vy" role="tab" tabindex="-1">OS version 2.00-23 or newer</button></div><div aria-labelledby="tab-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" class="sphinx-tabs-panel group-tab" id="panel-1-T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" name="T1MgdmVyc2lvbiAyLjAwLTE1IG9yIG9sZGVy" role="tabpanel" tabindex="0"><ol class="arabic">
 <li><p>Download the streaming client for your computer. Clients are located on the board itself and can be downloaded from there.</p>
@@ -410,7 +411,7 @@ Here are a few examples of maximum data rates:</p>
 </ol>
 </div></div>
 <div class="section" id="instructions-for-the-rpsa-client">
-<h3><span class="section-number">2.2.7.3.1. </span>Instructions for the rpsa_client<a class="headerlink" href="#instructions-for-the-rpsa-client" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.7.3.1. </span>Instructions for the rpsa_client<a class="headerlink" href="#instructions-for-the-rpsa-client" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
 <li><p><strong>Detect Mode</strong></p>
 <blockquote>
@@ -546,7 +547,7 @@ Here are a few examples of maximum data rates:</p>
 </div>
 </div>
 <div class="section" id="streaming-to-a-remote-computer-via-desktop-application-linux-windows">
-<h2><span class="section-number">2.2.7.4. </span>Streaming to a remote computer via Desktop Application (Linux, Windows)<a class="headerlink" href="#streaming-to-a-remote-computer-via-desktop-application-linux-windows" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.7.4. </span>Streaming to a remote computer via Desktop Application (Linux, Windows)<a class="headerlink" href="#streaming-to-a-remote-computer-via-desktop-application-linux-windows" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.</p>
@@ -595,7 +596,7 @@ Here are a few examples of maximum data rates:</p>
 </ol>
 </div>
 <div class="section" id="source-code">
-<h2><span class="section-number">2.2.7.5. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.7.5. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager">Streaming application source code</a> is available on our GitHub.</p>
 </div>
 </div>
@@ -604,8 +605,8 @@ Here are a few examples of maximum data rates:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../lcr_meter/lcr_meter.html" class="btn btn-neutral float-left" title="2.2.6. LCR meter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="appXCStreaming.html" class="btn btn-neutral float-right" title="2.2.8. X-Channel Streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../lcr_meter/lcr_meter.html" class="btn btn-neutral float-left" title="3.2.6. LCR meter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appXCStreaming.html" class="btn btn-neutral float-right" title="3.2.8. X-Channel Streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

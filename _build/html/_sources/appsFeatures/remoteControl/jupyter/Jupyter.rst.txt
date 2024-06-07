@@ -99,8 +99,8 @@ The code examples are available here:
 
 .. |jupyterlab_github| raw:: html
 
-    <a href="https://github.com/RedPitaya/jupyter/tree/redpitaya_OS_2.x_rp_api" target="_blank">Red Pitaya Jupyter GitHub</a>
+    <a href="https://github.com/RedPitaya/jupyter/tree/master" target="_blank">Red Pitaya Jupyter GitHub</a>
 
 .. |welcome_ipynb| raw:: html
 
-    <a href="https://github.com/RedPitaya/jupyter/blob/redpitaya_OS_2.x_rp_api/welcome.ipynb" target="_blank">Red Pitaya JupyterLab welcome page</a>
+    <a href="https://github.com/RedPitaya/jupyter/blob/master/welcome.ipynb" target="_blank">Red Pitaya JupyterLab welcome page</a>

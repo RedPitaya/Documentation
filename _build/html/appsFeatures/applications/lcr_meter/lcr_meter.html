@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.2.6. LCR meter &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>3.2.6. LCR meter &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.2.7. Streaming" href="../streaming/appStreaming.html" />
-    <link rel="prev" title="2.2.5. Impedance Analyzer" href="../impedance/impedance.html" /> 
+    <link rel="next" title="3.2.7. Streaming" href="../streaming/appStreaming.html" />
+    <link rel="prev" title="3.2.5. Impedance Analyzer" href="../impedance/impedance.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,37 +59,38 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">2.2. Applications</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">2.2.1. Oscilloscope &amp; Signal Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">2.2.2. Spectrum Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">2.2.3. Logic Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">2.2.4. Bode Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">2.2.5. Impedance Analyzer</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2.2.6. LCR meter</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#connecting-the-lcr-module">2.2.6.1. Connecting the LCR module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#features">2.2.6.2. Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#source-code">2.2.6.3. Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">3.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">3.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">3.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">3.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">3.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">3.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2.6. LCR meter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-the-lcr-module">3.2.6.1. Connecting the LCR module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#features">3.2.6.2. Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">3.2.6.3. Source code</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../streaming/appStreaming.html">2.2.7. Streaming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../streaming/appXCStreaming.html">2.2.8. X-Channel Streaming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">2.2.9. Arbitrary Waveform Manager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">2.2.10. SDR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">2.2.11. Vector Network Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">2.2.12. Marketplace and contributed apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appStreaming.html">3.2.7. Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appXCStreaming.html">3.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">3.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">3.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">3.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">3.2.12. Marketplace and contributed apps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -106,9 +107,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
-          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">2.2. </span>Applications</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.2.6. </span>LCR meter</li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">3.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.6. </span>LCR meter</li>
 
   </ul>
   <hr/>
@@ -117,14 +118,14 @@
            <div itemprop="articleBody">
              
   <div class="section" id="lcr-meter">
-<span id="lrc-app"></span><h1><span class="section-number">2.2.6. </span>LCR meter<a class="headerlink" href="#lcr-meter" title="Permalink to this heading"></a></h1>
+<span id="lrc-app"></span><h1><span class="section-number">3.2.6. </span>LCR meter<a class="headerlink" href="#lcr-meter" title="Permalink to this heading"></a></h1>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../../_images/01_iPad_Combo_LCR.jpg"><img alt="../../../_images/01_iPad_Combo_LCR.jpg" src="../../../_images/01_iPad_Combo_LCR.jpg" style="width: 1600px;" /></a>
 </div>
 <p>This application will turn your Red Pitaya into an affordable LCR meter. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment. Resistors, capacitors, and inductors are basic components of all electrical circuits, and while working on your projects, you will need to measure some components lying around on your working bench. The Red Pitaya’s LCR meter will enable you to speed up the procedure and accurately measure the components just by switching from one application to another.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>An additional extension module is needed to use the LCR metre application. The module can be purchased from the <a href="https://redpitaya.com/shop/" target="_blank">Red Pitaya store</a>.</p>
+<p>An additional extension module is needed to use the LCR metre application. The module can be purchased from the <a class="reference external" href="https://redpitaya.com/shop/">Red Pitaya store</a>.</p>
 </div>
 <p>All Red Pitaya applications are web-based and don’t require the installation of any native software. Users can access them via a browser using their smartphone, tablet or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS). The elements of the LCR meter application are arranged logically and offer a familiar user interface similar to bench LCR meters.</p>
 <div class="figure align-default">
@@ -143,13 +144,13 @@
 </ol>
 </div></blockquote>
 <div class="section" id="connecting-the-lcr-module">
-<h2><span class="section-number">2.2.6.1. </span>Connecting the LCR module<a class="headerlink" href="#connecting-the-lcr-module" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.6.1. </span>Connecting the LCR module<a class="headerlink" href="#connecting-the-lcr-module" title="Permalink to this heading"></a></h2>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../../_images/E_module_connection1.png"><img alt="../../../_images/E_module_connection1.png" src="../../../_images/E_module_connection1.png" style="width: 1000px;" /></a>
 </div>
 </div>
 <div class="section" id="features">
-<h2><span class="section-number">2.2.6.2. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.6.2. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
 <p>The main features of the LCR meter applications are described below:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -221,7 +222,7 @@
 </tbody>
 </table>
 <div class="section" id="measured-primary-parameters-z-l-c-r">
-<h3><span class="section-number">2.2.6.2.1. </span>MEASURED PRIMARY PARAMETERS: Z, L, C, R<a class="headerlink" href="#measured-primary-parameters-z-l-c-r" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.6.2.1. </span>MEASURED PRIMARY PARAMETERS: Z, L, C, R<a class="headerlink" href="#measured-primary-parameters-z-l-c-r" title="Permalink to this heading"></a></h3>
 <p>The LCR meter application will enable you to measure the basic parameters of the passive electrical components:</p>
 <blockquote>
 <div><ul class="simple">
@@ -233,7 +234,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="measured-secondary-parameters-p-d-q-e">
-<h3><span class="section-number">2.2.6.2.2. </span>MEASURED SECONDARY PARAMETERS: P, D, Q, E<a class="headerlink" href="#measured-secondary-parameters-p-d-q-e" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.6.2.2. </span>MEASURED SECONDARY PARAMETERS: P, D, Q, E<a class="headerlink" href="#measured-secondary-parameters-p-d-q-e" title="Permalink to this heading"></a></h3>
 <p>Alongside the main parameters, the secondary parameters are also measured and calculated. These parameters are common in describing the properties and the quality of the passive components:</p>
 <blockquote>
 <div><ul class="simple">
@@ -245,15 +246,15 @@
 </div></blockquote>
 </div>
 <div class="section" id="selectable-frequencies-100-hz-1-khz-10-khz-100-khz">
-<h3><span class="section-number">2.2.6.2.3. </span>SELECTABLE FREQUENCIES: 100 Hz, 1 kHz, 10 kHz, 100 kHz<a class="headerlink" href="#selectable-frequencies-100-hz-1-khz-10-khz-100-khz" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.6.2.3. </span>SELECTABLE FREQUENCIES: 100 Hz, 1 kHz, 10 kHz, 100 kHz<a class="headerlink" href="#selectable-frequencies-100-hz-1-khz-10-khz-100-khz" title="Permalink to this heading"></a></h3>
 <p>The LCR meter enables measurements at four different frequencies (100 Hz, 1 kHz, 10 kHz, 100 kHz). The user can select a desired frequency, and the LCR application will use sine signals with the selected frequency to measure the impedance.</p>
 </div>
 <div class="section" id="range-mode-auto-manual">
-<h3><span class="section-number">2.2.6.2.4. </span>RANGE MODE: AUTO, MANUAL<a class="headerlink" href="#range-mode-auto-manual" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.6.2.4. </span>RANGE MODE: AUTO, MANUAL<a class="headerlink" href="#range-mode-auto-manual" title="Permalink to this heading"></a></h3>
 <p>Since the measured values are unknown, the LCR meter will adjust the measuring range to provide the best accuracy. If the user expects some value in creating ranges, then the Manual mode can be used.</p>
 </div>
 <div class="section" id="measurement-mode-tolerance-relative-normal">
-<h3><span class="section-number">2.2.6.2.5. </span>MEASUREMENT MODE: TOLERANCE, RELATIVE, NORMAL<a class="headerlink" href="#measurement-mode-tolerance-relative-normal" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.6.2.5. </span>MEASUREMENT MODE: TOLERANCE, RELATIVE, NORMAL<a class="headerlink" href="#measurement-mode-tolerance-relative-normal" title="Permalink to this heading"></a></h3>
 <p>The “Tolerance” and “Relative” buttons are used for measuring the tolerance and relative modes. When neither is selected, the LCR meter measures in the “Normal” mode.</p>
 <blockquote>
 <div><ul class="simple">
@@ -263,13 +264,13 @@
 </div></blockquote>
 </div>
 <div class="section" id="equivalent-circuit-calculation-mode-parallel-series">
-<h3><span class="section-number">2.2.6.2.6. </span>EQUIVALENT CIRCUIT CALCULATION MODE: PARALLEL, SERIES<a class="headerlink" href="#equivalent-circuit-calculation-mode-parallel-series" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.6.2.6. </span>EQUIVALENT CIRCUIT CALCULATION MODE: PARALLEL, SERIES<a class="headerlink" href="#equivalent-circuit-calculation-mode-parallel-series" title="Permalink to this heading"></a></h3>
 <p>The Parallel and Series measuring modes denote the use of a series or parallel equivalent circuit to calculate the parameters (R, C, L…) from the measured impedance Z. The LCR metre will only measure the complex value <em>Z=|Z|e(jP)</em>, where P is the measured phase and <em>|Z|</em> is the impedance amplitude. All other parameters are calculated from the series or parallel equivalent circuit.</p>
 </div>
 </div>
 <div class="section" id="source-code">
-<h2><span class="section-number">2.2.6.3. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
-<p>The <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/lcr_meter" target="_blank">LCR Meter source code</a> is available on our GitHub.</p>
+<h2><span class="section-number">3.2.6.3. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/lcr_meter">LCR Meter source code</a> is available on our GitHub.</p>
 </div>
 </div>
 
@@ -277,8 +278,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../impedance/impedance.html" class="btn btn-neutral float-left" title="2.2.5. Impedance Analyzer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../streaming/appStreaming.html" class="btn btn-neutral float-right" title="2.2.7. Streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../impedance/impedance.html" class="btn btn-neutral float-left" title="3.2.5. Impedance Analyzer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../streaming/appStreaming.html" class="btn btn-neutral float-right" title="3.2.7. Streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

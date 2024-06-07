@@ -223,7 +223,7 @@ Accelerometer ``not supported at the moment``                                   
 
 .. |Temperature sensor| raw:: html
 
-    <a href="https://wiki.seeedstudio.com/Sensor_temperature" target="_blank">Temperature sensor</a>
+    <a href="https://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/" target="_blank">Temperature sensor</a>
 
 .. |Motion sensor| raw:: html
 

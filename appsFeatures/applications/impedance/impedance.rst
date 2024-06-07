@@ -17,19 +17,19 @@ Features
 
 The impedance analyzer enables the measurement of the following parameters:
 
-- Impedance :math:`|Z| (Ω)`
-- Phase :math:`P (°)`
-- Admittance :math:`Y (S)`
-- Inverse phase :math:`-P (°)`
-- Serial resistance :math:`R_S (Ω)`
-- Parallel resistance :math:`R_P (Ω)`
-- Serial reactance :math:`X_S (Ω)`
-- Parallel conductance :math:`G_P (S)`
-- Parallel susceptance :math:`B_P (S)`
-- Serial capacitance :math:`C_S (F)`
-- Parallel capacitance :math:`C_P (F)`
-- Serial inductance :math:`L_S (H)`
-- Parallel inducatnce :math:`L_P (H)`
+- Impedance :math:`|Z|\, [Ω]`
+- Phase :math:`P\, [°]`
+- Admittance :math:`Y\, [S]`
+- Inverse phase :math:`-P\, [°]`
+- Serial resistance :math:`R_S\, [Ω]`
+- Parallel resistance :math:`R_P\, [Ω]`
+- Serial reactance :math:`X_S\, [Ω]`
+- Parallel conductance :math:`G_P\, [S]`
+- Parallel susceptance :math:`B_P\, [S]`
+- Serial capacitance :math:`C_S\, [F]`
+- Parallel capacitance :math:`C_P\, [F]`
+- Serial inductance :math:`L_S\, [H]`
+- Parallel inducatnce :math:`L_P\, [H]`
 - Quality factor :math:`Q`
 - Dissipation factor :math:`D`
 
@@ -97,19 +97,19 @@ The frequency axis is scalled to show the full range between **start** and **end
 
 - **Y-axis data:** Choose between the following data options. Once the measurements are taken, the graph automatically recalculates the data to the chosen setting:
 
-    - Impedance :math:`|Z| (Ω)`
-    - Phase :math:`P (°)`
-    - Admittance :math:`Y (S)`
-    - Inverse phase :math:`-P (°)`
-    - Serial resistance :math:`R_S (Ω)`
-    - Parallel resistance :math:`R_P (Ω)`
-    - Serial reactance :math:`X_S (Ω)`
-    - Parallel conductance :math:`G_P (S)`
-    - Parallel susceptance :math:`B_P (S)`
-    - Serial capacitance :math:`C_S (F)`
-    - Parallel capacitance :math:`C_P (F)`
-    - Serial inductance :math:`L_S (H)`
-    - Parallel inducatnce :math:`L_P (H)`
+    - Impedance :math:`|Z|\, [Ω]`
+    - Phase :math:`P\, [°]`
+    - Admittance :math:`Y\, [S]`
+    - Inverse phase :math:`-P\, [°]`
+    - Serial resistance :math:`R_S\, [Ω]`
+    - Parallel resistance :math:`R_P\, [Ω]`
+    - Serial reactance :math:`X_S\, [Ω]`
+    - Parallel conductance :math:`G_P\, [S]`
+    - Parallel susceptance :math:`B_P\, [S]`
+    - Serial capacitance :math:`C_S\, [F]`
+    - Parallel capacitance :math:`C_P\, [F]`
+    - Serial inductance :math:`L_S\, [H]`
+    - Parallel inducatnce :math:`L_P\, [H]`
     - Quality factor :math:`Q`
     - Dissipation factor :math:`D`
 

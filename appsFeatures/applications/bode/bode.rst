@@ -205,9 +205,4 @@ Specifications
 Source code
 *************
 
-The |bode_anal_source_code| is available on our GitHub.
-
-.. |bode_anal_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/ba_pro" target="_blank">Bode Analyzer source code</a>
-
+The `Bode Analyzer source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/ba_pro>`_ is available on our GitHub.

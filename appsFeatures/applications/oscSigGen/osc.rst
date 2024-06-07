@@ -406,10 +406,5 @@ Signal generator
 Source code
 ************
 
-The |osc_source_code| is available on our GitHub.
-
-.. |osc_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/scopegenpro" target="_blank">Oscilloscope and Signal Generator source code</a>
-
+The `Oscilloscope and Signal Generator source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/scopegenpro>`_ is available on our GitHub.
 

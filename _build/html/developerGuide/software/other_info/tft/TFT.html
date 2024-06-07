@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3.2.3.4. Interfacing SPI TFT displays with touch &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>4.2.3.4. Interfacing SPI TFT displays with touch &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="3.2.3.5. Remote software deployment" href="../remote_software/remote_sw_deploy.html" />
-    <link rel="prev" title="3.2.3.3. SPI interface" href="../spi/spi.html" /> 
+    <link rel="next" title="4.2.3.5. Remote software deployment" href="../remote_software/remote_sw_deploy.html" />
+    <link rel="prev" title="4.2.3.3. SPI interface" href="../spi/spi.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,27 +59,28 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">3. Developers guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">3.1. Hardware</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">3.2. Software</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">3.2.1. Console connection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../build/build.html">3.2.2. Build &amp; compile instructions</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../info.html">3.2.3. Other useful information</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../os/network.html">3.2.3.1. Network</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../gpio/gpio.html">3.2.3.2. General purpose input output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../spi/spi.html">3.2.3.3. SPI interface</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">3.2.3.4. Interfacing SPI TFT displays with touch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../remote_software/remote_sw_deploy.html">3.2.3.5. Remote software deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">4. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">4.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">4.2. Software</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">4.2.1. Console connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/build.html">4.2.2. Build &amp; compile instructions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../info.html">4.2.3. Other useful information</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../os/network.html">4.2.3.1. Network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../gpio/gpio.html">4.2.3.2. General purpose input output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../spi/spi.html">4.2.3.3. SPI interface</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.3.4. Interfacing SPI TFT displays with touch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remote_software/remote_sw_deploy.html">4.2.3.5. Remote software deployment</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">3.2.4. Known software issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">4.2.4. Known software issues</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -96,10 +97,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">3. </span>Developers guide</a></li>
-          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">3.2. </span>Software</a></li>
-          <li class="breadcrumb-item"><a href="../info.html"><span class="section-number">3.2.3. </span>Other useful information</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">3.2.3.4. </span>Interfacing SPI TFT displays with touch</li>
+          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">4. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">4.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../info.html"><span class="section-number">4.2.3. </span>Other useful information</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.3.4. </span>Interfacing SPI TFT displays with touch</li>
 
   </ul>
   <hr/>
@@ -108,7 +109,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="interfacing-spi-tft-displays-with-touch">
-<h1><span class="section-number">3.2.3.4. </span>Interfacing SPI TFT displays with touch<a class="headerlink" href="#interfacing-spi-tft-displays-with-touch" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">4.2.3.4. </span>Interfacing SPI TFT displays with touch<a class="headerlink" href="#interfacing-spi-tft-displays-with-touch" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Instructions work for OS versions 0.97 and 0.98!</strong> (might also work on 1.04 OS version, but were not tested on there)</p>
@@ -134,9 +135,9 @@ calibration data in the EEPROM.</p></li>
 <li><p>Backlight control is not supported.</p></li>
 </ul>
 <div class="section" id="hardware-setup">
-<h2><span class="section-number">3.2.3.4.1. </span>Hardware setup<a class="headerlink" href="#hardware-setup" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2.3.4.1. </span>Hardware setup<a class="headerlink" href="#hardware-setup" title="Permalink to this heading"></a></h2>
 <div class="section" id="pinctrl">
-<h3><span class="section-number">3.2.3.4.1.1. </span>pinctrl<a class="headerlink" href="#pinctrl" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.3.4.1.1. </span>pinctrl<a class="headerlink" href="#pinctrl" title="Permalink to this heading"></a></h3>
 <p>It is possible to reconfigure <strong>Zynq</strong> MIO signals using the <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> kernel driver.
 This TFT display setup takes advantage of this by repurposing SPI, I2C, and UART signals
 on the <a class="reference internal" href="../../../hardware/125-14/extent.html#e2"><span class="std std-ref">E2</span></a> connector as SPI and GPIO signals which are required by the TFT display interface.</p>
@@ -309,7 +310,7 @@ using the I2C EEPROM, for example calibration access from <em>Oscilloscope</em> 
 the easiest solution is to hard wire the display backlight pin to VCC.</p>
 </div>
 <div class="section" id="spi-clock-speed">
-<h3><span class="section-number">3.2.3.4.1.2. </span>SPI clock speed<a class="headerlink" href="#spi-clock-speed" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.3.4.1.2. </span>SPI clock speed<a class="headerlink" href="#spi-clock-speed" title="Permalink to this heading"></a></h3>
 <p>Only a limited set of SPI clock speeds can be set depending on
 the clock driving the SPI controller.
 The SPI controller itself provides only the power of 2 clock divider options.
@@ -372,7 +373,7 @@ The maximum clock speed for this SPI controller is 50 MHz.</p>
 </div>
 </div>
 <div class="section" id="software-setup">
-<h2><span class="section-number">3.2.3.4.2. </span>Software setup<a class="headerlink" href="#software-setup" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2.3.4.2. </span>Software setup<a class="headerlink" href="#software-setup" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><dl class="field-list simple">
 <dt class="field-odd">download</dt>
@@ -406,7 +407,7 @@ A script that can be used to generate an image with full support is available on
 </div>
 </div>
 <div class="section" id="tested-supported-devices">
-<h2><span class="section-number">3.2.3.4.3. </span>Tested/Supported devices<a class="headerlink" href="#tested-supported-devices" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2.3.4.3. </span>Tested/Supported devices<a class="headerlink" href="#tested-supported-devices" title="Permalink to this heading"></a></h2>
 <p>The next table lists supported devices and corresponding device tree files each supporting a set of displays depending on the used TFT and touch drivers.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -454,7 +455,7 @@ A script that can be used to generate an image with full support is available on
 <div class="line"><br /></div>
 </div>
 <div class="section" id="mi0283qt-adapter-rev-1-5">
-<h3><span class="section-number">3.2.3.4.3.1. </span>MI0283QT Adapter Rev 1.5<a class="headerlink" href="#mi0283qt-adapter-rev-1-5" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.3.4.3.1. </span>MI0283QT Adapter Rev 1.5<a class="headerlink" href="#mi0283qt-adapter-rev-1-5" title="Permalink to this heading"></a></h3>
 <p>The device is powered by <strong>+5V</strong>,
 and it generates 3.3V using an onboard LDO.
 Therefore all IO is 3.3V, so there are no conflicts.</p>
@@ -551,7 +552,7 @@ Otherwise, it would be possible to repurpose a LED on Red Pitaya.</p>
 <p>The 95-ads7846.rules UDEV rule will create a symbolik link <code class="docutils literal notranslate"><span class="pre">/dev/input/touchscreen</span></code>.</p>
 </div>
 <div class="section" id="adafruit-pitft-3-5">
-<h3><span class="section-number">3.2.3.4.3.2. </span>Adafruit PiTFT 3.5”<a class="headerlink" href="#adafruit-pitft-3-5" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.3.4.3.2. </span>Adafruit PiTFT 3.5”<a class="headerlink" href="#adafruit-pitft-3-5" title="Permalink to this heading"></a></h3>
 <p>There are two versions of this display the older <strong>Assembled</strong>
 (sometimes called <strong>Original</strong> and the newer <strong>Plus</strong>.</p>
 <ul class="simple">
@@ -659,7 +660,7 @@ Therefore all IO is 3.3V, so there are no conflicts.</p>
 <p>The 95-stmpe.rules UDEV rule will create a symbolic link <code class="docutils literal notranslate"><span class="pre">/dev/input/touchscreen</span></code>.</p>
 <p>A calibration file should be added to the system 99-calibration.conf.</p>
 <div class="section" id="block-diagram">
-<h4><span class="section-number">3.2.3.4.3.2.1. </span>Block diagram<a class="headerlink" href="#block-diagram" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">4.2.3.4.3.2.1. </span>Block diagram<a class="headerlink" href="#block-diagram" title="Permalink to this heading"></a></h4>
 <div class="figure align-center" id="id1">
 <img alt="../../../../_images/TFT_connection.svg" src="../../../../_images/TFT_connection.svg" /><p class="caption"><span class="caption-text">Graphical representation of how to connect Red Pitayas <a class="reference internal" href="../../../hardware/125-14/extent.html#e2"><span class="std std-ref">E2</span></a> connetor to the Adafruit PiTFT 3.5”.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
@@ -668,9 +669,9 @@ Therefore all IO is 3.3V, so there are no conflicts.</p>
 </div>
 </div>
 <div class="section" id="assembled-version-hardware-modifications">
-<span id="assembled-hw-mods"></span><h4><span class="section-number">3.2.3.4.3.2.2. </span>Assembled version hardware modifications<a class="headerlink" href="#assembled-version-hardware-modifications" title="Permalink to this heading"></a></h4>
+<span id="assembled-hw-mods"></span><h4><span class="section-number">4.2.3.4.3.2.2. </span>Assembled version hardware modifications<a class="headerlink" href="#assembled-version-hardware-modifications" title="Permalink to this heading"></a></h4>
 <div class="section" id="explanation">
-<h5><span class="section-number">3.2.3.4.3.2.2.1. </span>Explanation<a class="headerlink" href="#explanation" title="Permalink to this heading"></a></h5>
+<h5><span class="section-number">4.2.3.4.3.2.2.1. </span>Explanation<a class="headerlink" href="#explanation" title="Permalink to this heading"></a></h5>
 <p>The device is powered by a single <strong>+5V</strong> supply,
 and it generates 3.3V using an on board LDO.
 So 3.3V interfaces between Red Pitaya and the display
@@ -754,7 +755,7 @@ It is evident configuration signals are stable.</p>
 </div>
 </div>
 <div class="section" id="modifications">
-<h5><span class="section-number">3.2.3.4.3.2.2.2. </span>Modifications<a class="headerlink" href="#modifications" title="Permalink to this heading"></a></h5>
+<h5><span class="section-number">4.2.3.4.3.2.2.2. </span>Modifications<a class="headerlink" href="#modifications" title="Permalink to this heading"></a></h5>
 <p>To avoid the power supply race condition,
 the LDO on the <strong>Assembled</strong> TFT board can be disabled,
 and instead, +3.3V from Red Pitaya is used.
@@ -774,9 +775,9 @@ and pin 1 on the JP1 connector connected to an unmounted resistor pad.</p>
 </div>
 </div>
 <div class="section" id="debugging-troubleshooting">
-<h2><span class="section-number">3.2.3.4.4. </span>Debugging/Troubleshooting<a class="headerlink" href="#debugging-troubleshooting" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2.3.4.4. </span>Debugging/Troubleshooting<a class="headerlink" href="#debugging-troubleshooting" title="Permalink to this heading"></a></h2>
 <div class="section" id="pinctrl-gpio-and-interrupts">
-<h3><span class="section-number">3.2.3.4.4.1. </span><code class="docutils literal notranslate"><span class="pre">pinctrl</span></code>, GPIO and interrupts<a class="headerlink" href="#pinctrl-gpio-and-interrupts" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.3.4.4.1. </span><code class="docutils literal notranslate"><span class="pre">pinctrl</span></code>, GPIO and interrupts<a class="headerlink" href="#pinctrl-gpio-and-interrupts" title="Permalink to this heading"></a></h3>
 <p>To see current <code class="docutils literal notranslate"><span class="pre">pinctrl</span></code> settings try:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>/sys/kernel/debug/pinctrl/pinctrl-maps
 </pre></div>
@@ -791,7 +792,7 @@ and pin 1 on the JP1 connector connected to an unmounted resistor pad.</p>
 </div>
 </div>
 <div class="section" id="touch">
-<h3><span class="section-number">3.2.3.4.4.2. </span>Touch<a class="headerlink" href="#touch" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.3.4.4.2. </span>Touch<a class="headerlink" href="#touch" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">evtest</span></code> can be used to see low-level touch events (and keyboard/mouse):</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y evtest</span>
 </pre></div>
@@ -804,8 +805,8 @@ and pin 1 on the JP1 connector connected to an unmounted resistor pad.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../spi/spi.html" class="btn btn-neutral float-left" title="3.2.3.3. SPI interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../remote_software/remote_sw_deploy.html" class="btn btn-neutral float-right" title="3.2.3.5. Remote software deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../spi/spi.html" class="btn btn-neutral float-left" title="4.2.3.3. SPI interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../remote_software/remote_sw_deploy.html" class="btn btn-neutral float-right" title="4.2.3.5. Remote software deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.4.4. Deep Memory Acquisition (DMA) &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>3.4.4. Deep Memory Acquisition (DMA) &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/page_width.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.4.5. List of supported SCPI &amp; API commands" href="command_list.html" />
-    <link rel="prev" title="2.4.3. Jupyter Lab" href="jupyter/Jupyter.html" /> 
+    <link rel="next" title="3.4.5. List of supported SCPI &amp; API commands" href="command_list.html" />
+    <link rel="prev" title="3.4.3. Jupyter Lab" href="jupyter/Jupyter.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,35 +59,36 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../appsFeatures.html">2. Applications and Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/apps-featured.html">2.2. Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../systemtool/systool.html">2.3. System tools</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="remoteAndProg.html">2.4. Programming and remote-control tools</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="scpi.html">2.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="API_scripts.html">2.4.2. C and Python Applications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="jupyter/Jupyter.html">2.4.3. Jupyter Lab</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2.4.4. Deep Memory Acquisition (DMA)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#description">2.4.4.1. Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#required-hardware">2.4.4.2. Required hardware</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#functionality">2.4.4.3. Functionality</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-reserved-memory">2.4.4.4. Changing reserved memory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#api-functions">2.4.4.5. API functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#api-code-examples">2.4.4.6. API Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/apps-featured.html">3.2. Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="remoteAndProg.html">3.4. Programming and remote-control tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="scpi.html">3.4.1. SCPI server (MATLAB, LabVIEW, Scilab or Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API_scripts.html">3.4.2. C and Python Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jupyter/Jupyter.html">3.4.3. Jupyter Lab</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.4.4. Deep Memory Acquisition (DMA)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#description">3.4.4.1. Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#required-hardware">3.4.4.2. Required hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functionality">3.4.4.3. Functionality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-reserved-memory">3.4.4.4. Changing reserved memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api-functions">3.4.4.5. API functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api-code-examples">3.4.4.6. API Code Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="command_list.html">2.4.5. List of supported SCPI &amp; API commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_top.html">2.4.6. Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="knownIssues.html">2.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_list.html">3.4.5. List of supported SCPI &amp; API commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_top.html">3.4.6. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knownIssues.html">3.4.7. Known SCPI &amp; API issues and changes by OS version</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -104,9 +105,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
-          <li class="breadcrumb-item"><a href="remoteAndProg.html"><span class="section-number">2.4. </span>Programming and remote-control tools</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.4.4. </span>Deep Memory Acquisition (DMA)</li>
+          <li class="breadcrumb-item"><a href="../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="remoteAndProg.html"><span class="section-number">3.4. </span>Programming and remote-control tools</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.4.4. </span>Deep Memory Acquisition (DMA)</li>
 
   </ul>
   <hr/>
@@ -115,9 +116,9 @@
            <div itemprop="articleBody">
              
   <div class="section" id="deep-memory-acquisition-dma">
-<span id="deepmemoryacq"></span><h1><span class="section-number">2.4.4. </span>Deep Memory Acquisition (DMA)<a class="headerlink" href="#deep-memory-acquisition-dma" title="Permalink to this heading"></a></h1>
+<span id="deepmemoryacq"></span><h1><span class="section-number">3.4.4. </span>Deep Memory Acquisition (DMA)<a class="headerlink" href="#deep-memory-acquisition-dma" title="Permalink to this heading"></a></h1>
 <div class="section" id="description">
-<h2><span class="section-number">2.4.4.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4.4.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>The Deep Memory Acquisition allows you to set a buffer of any size (The buffer must be a multiple of 64 bytes) for capturing data from the ADC. Data is written directly to RAM.
 The DMA relies on the <a href="https://support.xilinx.com/s/article/1053914?language=en_US" target="_blank">AXI protocol</a>. Consequently, the functions to work with the DMA are named after it.</p>
 <p><strong>Features</strong></p>
@@ -129,14 +130,14 @@ The DMA relies on the <a href="https://support.xilinx.com/s/article/1053914?lang
 </ul>
 </div>
 <div class="section" id="required-hardware">
-<h2><span class="section-number">2.4.4.2. </span>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4.4.2. </span>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Any Red Pitaya device</p></li>
 <li><p>FPGA v0.94</p></li>
 </ul>
 </div>
 <div class="section" id="functionality">
-<h2><span class="section-number">2.4.4.3. </span>Functionality<a class="headerlink" href="#functionality" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4.4.3. </span>Functionality<a class="headerlink" href="#functionality" title="Permalink to this heading"></a></h2>
 <p>Here is a representation of how the DMA data saving functions:</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../../_images/Deep_Memory.png"><img alt="../../_images/Deep_Memory.png" src="../../_images/Deep_Memory.png" style="width: 700px;" /></a>
@@ -169,7 +170,7 @@ The DMA relies on the <a href="https://support.xilinx.com/s/article/1053914?lang
 <p>Once finished, please do not forget to free the resources and reserved memory locations. Otherwise, the performance of your Red Pitaya can decrease over time.</p>
 </div>
 <div class="section" id="changing-reserved-memory">
-<h2><span class="section-number">2.4.4.4. </span>Changing reserved memory<a class="headerlink" href="#changing-reserved-memory" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4.4.4. </span>Changing reserved memory<a class="headerlink" href="#changing-reserved-memory" title="Permalink to this heading"></a></h2>
 <p>By default, 2 MB of the DDR RAM are reserved for the Deep Memory Acquisition. The DDR memory allocated to the DMA can be configured through the <strong>reg</strong> parameter. Afterwards, you must <strong>rebuild the device tree</strong> and <strong>restart</strong> the Red Pitaya for this change to take effect.</p>
 <p>The maximum memory allocation is restricted to the size of the board’s DDR (512 MB for STEMlab 125-14). However, DMA and Linux share the DDR resources, so allocating too many to the DMA may result in decreased performance. To prevent problems, we recommend leaving 100 MB of the DDR for the Linux, resulting in a maximum DMA region of 412 MB (for STEMlab 125-14).</p>
 <ol class="arabic">
@@ -204,11 +205,11 @@ The DMA relies on the <a href="https://support.xilinx.com/s/article/1053914?lang
 </div>
 </div>
 <div class="section" id="api-functions">
-<h2><span class="section-number">2.4.4.5. </span>API functions<a class="headerlink" href="#api-functions" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4.4.5. </span>API functions<a class="headerlink" href="#api-functions" title="Permalink to this heading"></a></h2>
 <p>Check the <a class="reference internal" href="command_list.html#commands-dma"><span class="std std-ref">DMA section under the commands’ list</span></a>.</p>
 </div>
 <div class="section" id="api-code-examples">
-<h2><span class="section-number">2.4.4.6. </span>API Code Examples<a class="headerlink" href="#api-code-examples" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4.4.6. </span>API Code Examples<a class="headerlink" href="#api-code-examples" title="Permalink to this heading"></a></h2>
 <p>Check the <a class="reference internal" href="examples_top.html#examples"><span class="std std-ref">DMA section under the examples</span></a>.</p>
 </div>
 </div>
@@ -217,8 +218,8 @@ The DMA relies on the <a href="https://support.xilinx.com/s/article/1053914?lang
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="jupyter/Jupyter.html" class="btn btn-neutral float-left" title="2.4.3. Jupyter Lab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="command_list.html" class="btn btn-neutral float-right" title="2.4.5. List of supported SCPI &amp; API commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="jupyter/Jupyter.html" class="btn btn-neutral float-left" title="3.4.3. Jupyter Lab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="command_list.html" class="btn btn-neutral float-right" title="3.4.5. List of supported SCPI &amp; API commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

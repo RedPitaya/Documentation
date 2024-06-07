@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3.2.3.3. SPI interface &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>4.2.3.3. SPI interface &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/page_width.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="3.2.3.4. Interfacing SPI TFT displays with touch" href="../tft/TFT.html" />
-    <link rel="prev" title="3.2.3.2. General purpose input output" href="../gpio/gpio.html" /> 
+    <link rel="next" title="4.2.3.4. Interfacing SPI TFT displays with touch" href="../tft/TFT.html" />
+    <link rel="prev" title="4.2.3.2. General purpose input output" href="../gpio/gpio.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,27 +59,28 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">2. Applications and Features</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">3. Developers guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">3.1. Hardware</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">3.2. Software</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">3.2.1. Console connection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../build/build.html">3.2.2. Build &amp; compile instructions</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../info.html">3.2.3. Other useful information</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../os/network.html">3.2.3.1. Network</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../gpio/gpio.html">3.2.3.2. General purpose input output</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">3.2.3.3. SPI interface</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../tft/TFT.html">3.2.3.4. Interfacing SPI TFT displays with touch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../remote_software/remote_sw_deploy.html">3.2.3.5. Remote software deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../appsFeatures/appsFeatures.html">3. Applications and Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../devGuideTop.html">4. Developers guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../hardware/hardware.html">4.1. Hardware</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../software.html">4.2. Software</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../console/console_con.html">4.2.1. Console connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/build.html">4.2.2. Build &amp; compile instructions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../info.html">4.2.3. Other useful information</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../os/network.html">4.2.3.1. Network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../gpio/gpio.html">4.2.3.2. General purpose input output</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.3.3. SPI interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tft/TFT.html">4.2.3.4. Interfacing SPI TFT displays with touch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remote_software/remote_sw_deploy.html">4.2.3.5. Remote software deployment</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">3.2.4. Known software issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../known_sw_issues/known_sw_issues.html">4.2.4. Known software issues</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -96,10 +97,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">3. </span>Developers guide</a></li>
-          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">3.2. </span>Software</a></li>
-          <li class="breadcrumb-item"><a href="../info.html"><span class="section-number">3.2.3. </span>Other useful information</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">3.2.3.3. </span>SPI interface</li>
+          <li class="breadcrumb-item"><a href="../../../devGuideTop.html"><span class="section-number">4. </span>Developers guide</a></li>
+          <li class="breadcrumb-item"><a href="../../software.html"><span class="section-number">4.2. </span>Software</a></li>
+          <li class="breadcrumb-item"><a href="../info.html"><span class="section-number">4.2.3. </span>Other useful information</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.3.3. </span>SPI interface</li>
 
   </ul>
   <hr/>
@@ -108,7 +109,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="spi-interface">
-<h1><span class="section-number">3.2.3.3. </span>SPI interface<a class="headerlink" href="#spi-interface" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">4.2.3.3. </span>SPI interface<a class="headerlink" href="#spi-interface" title="Permalink to this heading"></a></h1>
 <p>SPI interface support for the <a class="reference internal" href="../../../hardware/125-14/extent.html#e2"><span class="std std-ref">E2</span></a> connector without the need for a specific FPGA code.</p>
 <p>By default, on all RedPitaya boards, the CS state of the SPI is set to HIGH (inactive).</p>
 <p>If you want to set the default value to LOW (inactive), then you need to rebuild the device tree. This can be done on the Red Pitaya itself.
@@ -147,8 +148,8 @@ and add the line <em>spi-cs-high</em> to this device;</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../gpio/gpio.html" class="btn btn-neutral float-left" title="3.2.3.2. General purpose input output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../tft/TFT.html" class="btn btn-neutral float-right" title="3.2.3.4. Interfacing SPI TFT displays with touch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../gpio/gpio.html" class="btn btn-neutral float-left" title="4.2.3.2. General purpose input output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tft/TFT.html" class="btn btn-neutral float-right" title="4.2.3.4. Interfacing SPI TFT displays with touch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

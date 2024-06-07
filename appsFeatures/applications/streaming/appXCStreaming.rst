@@ -281,9 +281,4 @@ Here are examples for synchronising two unit X-channel System through SCPI and A
 Source code
 ==============
 
-The |stream_source_code| is available on our GitHub.
-
-.. |stream_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Streaming application source code</a>
-
+The `Streaming application source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager>`_ is available on our GitHub.

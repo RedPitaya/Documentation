@@ -11,11 +11,7 @@ The Logic Analyzer application enables the representation of the binary states o
 
 .. note::
 
-    An additional extension module extends the voltage range of the *Logic Analyzer* application to 5 V. The module provides protection for the GPIO pins and can be purchased from the |RP_store|.
-
-.. |RP_store| raw:: html
-
-   <a href="https://redpitaya.com/shop/" target="_blank">Red Pitaya store</a>
+    An additional extension module extends the voltage range of the *Logic Analyzer* application to 5 V. The module provides protection for the GPIO pins and can be purchased from the `Red Pitaya store <https://redpitaya.com/shop/>`_.
 
 The graphical user interface of the Logic Analyzer fits well into the overall design of the Red Pitaya applications, providing the same operating concept. The Logic Analyzer user interface is shown below.
 
@@ -143,8 +139,5 @@ To use the Logic Analyzer without the extension module, you need to be more care
 Source code
 ************
 
-The |la_source_code| is available on our GitHub.
+The `Logic Analyzer source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/la_pro>`_ is available on our GitHub.
 
-.. |la_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/la_pro" target="_blank">Logic Analyzer source code</a>

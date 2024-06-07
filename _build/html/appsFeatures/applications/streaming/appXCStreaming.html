@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.2.8. X-Channel Streaming &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>3.2.8. X-Channel Streaming &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.2.9. Arbitrary Waveform Manager" href="../arb_manager/arb_manager.html" />
-    <link rel="prev" title="2.2.7. Streaming" href="appStreaming.html" /> 
+    <link rel="next" title="3.2.9. Arbitrary Waveform Manager" href="../arb_manager/arb_manager.html" />
+    <link rel="prev" title="3.2.7. Streaming" href="appStreaming.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,39 +60,40 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">2.2. Applications</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">2.2.1. Oscilloscope &amp; Signal Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">2.2.2. Spectrum Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">2.2.3. Logic Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">2.2.4. Bode Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">2.2.5. Impedance Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">2.2.6. LCR meter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appStreaming.html">2.2.7. Streaming</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2.2.8. X-Channel Streaming</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#overview">2.2.8.1. Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setup">2.2.8.2. Setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#use-case-examples">2.2.8.3. Use case examples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#code-examples">2.2.8.4. Code examples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#source-code">2.2.8.5. Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">3.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">3.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">3.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">3.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bode/bode.html">3.2.4. Bode Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">3.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">3.2.6. LCR meter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appStreaming.html">3.2.7. Streaming</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2.8. X-Channel Streaming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">3.2.8.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup">3.2.8.2. Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-case-examples">3.2.8.3. Use case examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-examples">3.2.8.4. Code examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">3.2.8.5. Source code</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">2.2.9. Arbitrary Waveform Manager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">2.2.10. SDR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">2.2.11. Vector Network Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">2.2.12. Marketplace and contributed apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">3.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">3.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">3.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">3.2.12. Marketplace and contributed apps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -109,9 +110,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
-          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">2.2. </span>Applications</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.2.8. </span>X-Channel Streaming</li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">3.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.8. </span>X-Channel Streaming</li>
 
   </ul>
   <hr/>
@@ -120,7 +121,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="x-channel-streaming">
-<span id="x-ch-streaming"></span><h1><span class="section-number">2.2.8. </span>X-Channel Streaming<a class="headerlink" href="#x-channel-streaming" title="Permalink to this heading"></a></h1>
+<span id="x-ch-streaming"></span><h1><span class="section-number">3.2.8. </span>X-Channel Streaming<a class="headerlink" href="#x-channel-streaming" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We have decided to use PRIMARY and SECONDARY device terminology instead of the standard MASTER and SLAVE device.</p>
@@ -131,7 +132,7 @@
 <p>The comparison between <a class="reference internal" href="../../../developerGuide/hardware/ext_modules/click_shield.html#click-shield-q-a"><span class="std std-ref">Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here</span></a>.</p>
 </div>
 <div class="section" id="overview">
-<h2><span class="section-number">2.2.8.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.8.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>X-Channel streaming is suitable for applications that require multiple acquisition or generation channels.</p>
 <p>Red Pitaya X-Channel streaming software allows streaming analog and digital signals to client PCs from several Red Pitaya devices simultaneously, with a synchronised clock and trigger among all Red Pitayas in the system.</p>
 <p>Streaming can be done in both directions. Users can stream acquired analog and digital signals from Red Pitaya devices to a client computer or stream analog and digital signals from the client to Red Pitaya device outputs. The X-Channel streaming software also provides the ability to control streaming completely remotely from client PCs.</p>
@@ -142,7 +143,7 @@
 <a class="reference internal image-reference" href="../../../_images/RPs_to_PC_conn.png"><img alt="../../../_images/RPs_to_PC_conn.png" src="../../../_images/RPs_to_PC_conn.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="setup">
-<h2><span class="section-number">2.2.8.2. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.8.2. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
 <p><strong>What do I need before I start?</strong></p>
 <p>The Red Pitaya STEMlab 125-14 X-Channel System consists of multiple Low-Noise STEMlab 125-14 devices that are modified for clock and trigger synchronization and also comes with SATA synchronisation cables and software that supports X-Channel RF signal acquisition and generation.</p>
 <div class="figure align-default">
@@ -171,7 +172,7 @@ However, by modifying the software, the Linux OS itself can boot even without th
 </ul>
 </div>
 <div class="section" id="hardware-setup">
-<h3><span class="section-number">2.2.8.2.1. </span>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.8.2.1. </span>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><ol class="arabic">
 <li><p>Connect all Red Pitayas to the same network via ethernet cables (switch or router that is connected to the client PC).</p>
@@ -194,7 +195,7 @@ However, by modifying the software, the Linux OS itself can boot even without th
 </div>
 </div>
 <div class="section" id="download-and-install-an-x-channel-streaming-client-on-your-computer">
-<h3><span class="section-number">2.2.8.2.2. </span>Download and install an X-channel streaming client on your computer<a class="headerlink" href="#download-and-install-an-x-channel-streaming-client-on-your-computer" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.8.2.2. </span>Download and install an X-channel streaming client on your computer<a class="headerlink" href="#download-and-install-an-x-channel-streaming-client-on-your-computer" title="Permalink to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.</p>
@@ -219,7 +220,7 @@ However, by modifying the software, the Linux OS itself can boot even without th
 </div>
 </div>
 <div class="section" id="use-case-examples">
-<h2><span class="section-number">2.2.8.3. </span>Use case examples<a class="headerlink" href="#use-case-examples" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.8.3. </span>Use case examples<a class="headerlink" href="#use-case-examples" title="Permalink to this heading"></a></h2>
 <p><strong>Simultaneous acquisition of 6 input signals.</strong></p>
 <p>In this example, we will acquire data from all 3 RP units, which gives us 6 RF input channels.</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">PRIMARY_IP=192.168.2.141, SECONDARY1_IP=192.168.2.60 SECONDARY2_IP=192.168.2.25</span>
@@ -345,15 +346,15 @@ However, by modifying the software, the Linux OS itself can boot even without th
 <p>In this example, a 1 kHz sinewave signal was connected to all 6 inputs.</p>
 </div>
 <div class="section" id="code-examples">
-<h2><span class="section-number">2.2.8.4. </span>Code examples<a class="headerlink" href="#code-examples" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.8.4. </span>Code examples<a class="headerlink" href="#code-examples" title="Permalink to this heading"></a></h2>
 <p>Here are examples for synchronising two unit X-channel System through SCPI and API commands.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../examples/multiboard_sync/daisy_chain-exm1.html#daisy-chain-sync-exam1"><span class="std std-ref">Daisy chain generation and acquisition</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="source-code">
-<h2><span class="section-number">2.2.8.5. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
-<p>The <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Streaming application source code</a> is available on our GitHub.</p>
+<h2><span class="section-number">3.2.8.5. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager">Streaming application source code</a> is available on our GitHub.</p>
 </div>
 </div>
 
@@ -361,8 +362,8 @@ However, by modifying the software, the Linux OS itself can boot even without th
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="appStreaming.html" class="btn btn-neutral float-left" title="2.2.7. Streaming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../arb_manager/arb_manager.html" class="btn btn-neutral float-right" title="2.2.9. Arbitrary Waveform Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="appStreaming.html" class="btn btn-neutral float-left" title="3.2.7. Streaming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../arb_manager/arb_manager.html" class="btn btn-neutral float-right" title="3.2.9. Arbitrary Waveform Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

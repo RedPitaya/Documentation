@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.2.4. Bode Analyzer &mdash; Red Pitaya 2.00-35 documentation</title>
+  <title>3.2.4. Bode Analyzer &mdash; Red Pitaya 2.00-35 documentation</title>
       <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
       <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/page_width.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.2.5. Impedance Analyzer" href="../impedance/impedance.html" />
-    <link rel="prev" title="2.2.3. Logic Analyzer" href="../logic/logic.html" /> 
+    <link rel="next" title="3.2.5. Impedance Analyzer" href="../impedance/impedance.html" />
+    <link rel="prev" title="3.2.3. Logic Analyzer" href="../logic/logic.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,36 +60,37 @@
 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">1. Quick start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">2. Applications and Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">2.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">2.2. Applications</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">2.2.1. Oscilloscope &amp; Signal Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">2.2.2. Spectrum Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">2.2.3. Logic Analyzer</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2.2.4. Bode Analyzer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">2.2.4.1. Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#source-code">2.2.4.2. Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. What is Red Pitaya?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickStart/quickStart.html">2. Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../appsFeatures.html">3. Applications and Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introAcqGen.html">3.1. Introduction to data acquisition and generation with Red Pitaya</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../apps-featured.html">3.2. Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../oscSigGen/osc.html">3.2.1. Oscilloscope &amp; Signal Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">3.2.2. Spectrum Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logic/logic.html">3.2.3. Logic Analyzer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2.4. Bode Analyzer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#features">3.2.4.1. Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">3.2.4.2. Source code</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">2.2.5. Impedance Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">2.2.6. LCR meter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../streaming/appStreaming.html">2.2.7. Streaming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../streaming/appXCStreaming.html">2.2.8. X-Channel Streaming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">2.2.9. Arbitrary Waveform Manager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">2.2.10. SDR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">2.2.11. Vector Network Analyzer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">2.2.12. Marketplace and contributed apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../impedance/impedance.html">3.2.5. Impedance Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lcr_meter/lcr_meter.html">3.2.6. LCR meter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appStreaming.html">3.2.7. Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/appXCStreaming.html">3.2.8. X-Channel Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arb_manager/arb_manager.html">3.2.9. Arbitrary Waveform Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdr/appSDR.html">3.2.10. SDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vna/appVNA.html">3.2.11. Vector Network Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marketplace/marketplace.html">3.2.12. Marketplace and contributed apps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">2.3. System tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">2.4. Programming and remote-control tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">2.5. Command-line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">2.6. Supported features and apps by Red Pitaya model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../systemtool/systool.html">3.3. System tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../remoteControl/remoteAndProg.html">3.4. Programming and remote-control tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command_line_tools/com_line_tool.html">3.5. Command-line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supportedFeaturesAndApps.html">3.6. Supported features and apps by Red Pitaya model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">3. Developers guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">4. Customization services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developerGuide/devGuideTop.html">4. Developers guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customization/custom.html">5. Customization services</a></li>
 </ul>
 
         </div>
@@ -106,9 +107,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">2. </span>Applications and Features</a></li>
-          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">2.2. </span>Applications</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.2.4. </span>Bode Analyzer</li>
+          <li class="breadcrumb-item"><a href="../../appsFeatures.html"><span class="section-number">3. </span>Applications and Features</a></li>
+          <li class="breadcrumb-item"><a href="../apps-featured.html"><span class="section-number">3.2. </span>Applications</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2.4. </span>Bode Analyzer</li>
 
   </ul>
   <hr/>
@@ -117,7 +118,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="bode-analyzer">
-<span id="bode-app"></span><h1><span class="section-number">2.2.4. </span>Bode Analyzer<a class="headerlink" href="#bode-analyzer" title="Permalink to this heading"></a></h1>
+<span id="bode-app"></span><h1><span class="section-number">3.2.4. </span>Bode Analyzer<a class="headerlink" href="#bode-analyzer" title="Permalink to this heading"></a></h1>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../../_images/01_iPad_Combo_Bode.jpg"><img alt="../../../_images/01_iPad_Combo_Bode.jpg" src="../../../_images/01_iPad_Combo_Bode.jpg" style="width: 1600px;" /></a>
 </div>
@@ -136,7 +137,7 @@ The basic user interface enables quick interaction and parameter settings. The B
 <li><p><strong>Main graph area:</strong> Main graph area is divided into Gain and Phase frequency response plots of the DUT (device under test).</p></li>
 </ol>
 <div class="section" id="features">
-<h2><span class="section-number">2.2.4.1. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2.4.1. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
 <p>The main features of the Bode analyzer application are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -153,7 +154,7 @@ The basic user interface enables quick interaction and parameter settings. The B
 <a class="reference internal image-reference" href="../../../_images/Bode_analyzer.png"><img alt="../../../_images/Bode_analyzer.png" src="../../../_images/Bode_analyzer.png" style="width: 1000px;" /></a>
 </div>
 <div class="section" id="top-settings-menu">
-<h3><span class="section-number">2.2.4.1.1. </span>Top settings menu<a class="headerlink" href="#top-settings-menu" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.4.1.1. </span>Top settings menu<a class="headerlink" href="#top-settings-menu" title="Permalink to this heading"></a></h3>
 <div class="figure align-default">
 <img alt="../../../_images/Bode_analyzer_top_settings.png" src="../../../_images/Bode_analyzer_top_settings.png" />
 </div>
@@ -173,10 +174,10 @@ The basic user interface enables quick interaction and parameter settings. The B
 </ol>
 </div>
 <div class="section" id="measurement-control-panel">
-<h3><span class="section-number">2.2.4.1.2. </span>Measurement control panel<a class="headerlink" href="#measurement-control-panel" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.4.1.2. </span>Measurement control panel<a class="headerlink" href="#measurement-control-panel" title="Permalink to this heading"></a></h3>
 <p>Here we can set measurement parameters such as the frequency range, scale, number of steps, excitation signal amplitude, excitation signal DC bias, and averaging number.</p>
 <div class="section" id="settings">
-<h4><span class="section-number">2.2.4.1.2.1. </span>Settings<a class="headerlink" href="#settings" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">3.2.4.1.2.1. </span>Settings<a class="headerlink" href="#settings" title="Permalink to this heading"></a></h4>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../../_images/Bode_analyzer_settings.png"><img alt="../../../_images/Bode_analyzer_settings.png" src="../../../_images/Bode_analyzer_settings.png" style="width: 260px;" /></a>
 </div>
@@ -203,7 +204,7 @@ The <strong>Averaging</strong> deterimines wheter the final measurement is an av
 </div>
 </div>
 <div class="section" id="plot-settings">
-<h4><span class="section-number">2.2.4.1.2.2. </span>Plot settings<a class="headerlink" href="#plot-settings" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">3.2.4.1.2.2. </span>Plot settings<a class="headerlink" href="#plot-settings" title="Permalink to this heading"></a></h4>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../../_images/Bode_analyzer_plot_settings.png"><img alt="../../../_images/Bode_analyzer_plot_settings.png" src="../../../_images/Bode_analyzer_plot_settings.png" style="width: 260px;" /></a>
 </div>
@@ -215,7 +216,7 @@ The <strong>Averaging</strong> deterimines wheter the final measurement is an av
 </ul>
 </div>
 <div class="section" id="cursor-settings">
-<h4><span class="section-number">2.2.4.1.2.3. </span>Cursor settings<a class="headerlink" href="#cursor-settings" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">3.2.4.1.2.3. </span>Cursor settings<a class="headerlink" href="#cursor-settings" title="Permalink to this heading"></a></h4>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../../_images/Bode_analyzer_cursor_settings.png"><img alt="../../../_images/Bode_analyzer_cursor_settings.png" src="../../../_images/Bode_analyzer_cursor_settings.png" style="width: 260px;" /></a>
 </div>
@@ -224,7 +225,7 @@ Cursors can be moved with <em>Click+Drag</em>.</p>
 </div>
 </div>
 <div class="section" id="calibration">
-<h3><span class="section-number">2.2.4.1.3. </span>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.4.1.3. </span>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading"></a></h3>
 <p>For optimal results, it is recommended to perform the Bode analyzer calibration each time the measurement setup is changed.
 The calibration function enables calibrating long leads and removing leads’ and cables’ effects on final measurements. The calibration will also calibrate your Red Pitaya if any parasitic effects are present. Bode calibration data is stored in <strong>/tmp/ba_calib.data</strong>.</p>
 <p>When uncalibrated, a <strong>Red</strong> light appears next to the <strong>Calibration</strong> status in the <em>Measurement control pannel</em>.</p>
@@ -275,7 +276,7 @@ The calibration function enables calibrating long leads and removing leads’ an
 </ol>
 </div>
 <div class="section" id="specifications">
-<h3><span class="section-number">2.2.4.1.4. </span>Specifications<a class="headerlink" href="#specifications" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.2.4.1.4. </span>Specifications<a class="headerlink" href="#specifications" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -366,8 +367,8 @@ The calibration function enables calibrating long leads and removing leads’ an
 </div>
 </div>
 <div class="section" id="source-code">
-<h2><span class="section-number">2.2.4.2. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
-<p>The <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/ba_pro" target="_blank">Bode Analyzer source code</a> is available on our GitHub.</p>
+<h2><span class="section-number">3.2.4.2. </span>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/ba_pro">Bode Analyzer source code</a> is available on our GitHub.</p>
 </div>
 </div>
 
@@ -375,8 +376,8 @@ The calibration function enables calibrating long leads and removing leads’ an
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../logic/logic.html" class="btn btn-neutral float-left" title="2.2.3. Logic Analyzer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../impedance/impedance.html" class="btn btn-neutral float-right" title="2.2.5. Impedance Analyzer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../logic/logic.html" class="btn btn-neutral float-left" title="3.2.3. Logic Analyzer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../impedance/impedance.html" class="btn btn-neutral float-right" title="3.2.5. Impedance Analyzer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

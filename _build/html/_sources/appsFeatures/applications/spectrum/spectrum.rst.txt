@@ -135,10 +135,4 @@ Specifications
 Source code
 =============
 
-The |spectrum_source_code| is available on our GitHub.
-
-.. |spectrum_source_code| raw:: html
-
-  <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/spectrumpro" target="_blank">Spectrum analyzer source code</a>
-
-
+The `Spectrum analyzer source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/spectrumpro>`_ is available on our GitHub.

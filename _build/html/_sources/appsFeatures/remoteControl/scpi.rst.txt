@@ -9,7 +9,9 @@ SCPI server (MATLAB, LabVIEW, Scilab or Python)
 
 |
 
-The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands. The SCPI interface/environment is commonly used to control T&M instruments for development, research, or test automation. SCPI uses a set of commands recognised by the instruments to enable specific actions (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). The SCPI commands are extremely useful when complex signal analysis is required. A SW environment such as MATLAB that provides powerful data analysis tools is a perfect combination for the SCPI commands' simple access to raw data acquired on the Red Pitaya board.
+The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands.
+The SCPI interface/environment is commonly used to control T&M instruments for development, research, or test automation. SCPI uses a set of commands recognised by the instruments to enable specific actions (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). 
+The SCPI commands are extremely useful when complex signal analysis is required. A software environment such as MATLAB that provides powerful data analysis tools is a perfect combination for the SCPI commands' simple access to raw data acquired on the Red Pitaya board.
 
 **Features**
 
@@ -30,7 +32,8 @@ The Red Pitaya board can be controlled remotely over a LAN or wireless interface
 Quick start
 ***********
 
-To initiate the SCPI server, just click on the SCPI server icon. Once the SCPI server is operational, your board's IP address will be displayed. This IP address should be incorporated into your scripts. Alternatively, you can manually commence the SCPI server using the Terminal (refer to the instructions below).
+To initiate the SCPI server, just click on the SCPI server icon. Once the SCPI server is operational, your board's IP address will be displayed. This IP address should be incorporated into your scripts. 
+Alternatively, you can manually commence the SCPI server using the Terminal (refer to the instructions below).
 
 To run an example, follow the instructions below:
 
@@ -43,7 +46,7 @@ To run an example, follow the instructions below:
     .. figure:: img/scpi-development.png
 
 
-#.  Start the SCPI server by selecting the RUN button. Please note the IP of your Red Pitaya (in our case, 192.168.178.100) board, as it will be needed to establish a socket communication with your board. Alternatively, you can use the *"rp-xxxxxx.local"* address instead of the IP address.
+#.  Start the SCPI server by selecting the RUN button. Please note the IP addreess (in our case, *192.168.178.100*) or the .local address (in our case, *rp-f03e5f.local*) of your Red Pitaya board , as it will be needed to establish a socket communication with your board.
 
     .. figure:: img/scpi-app-run.png
 
@@ -344,3 +347,49 @@ Starting SCPI server manually
         RP:LOGmode CONSOLE
 
 
+
+***************************
+How do SCPI commands work?
+***************************
+
+Here we explain the "behind the scenes" functionality of the redpitaya_SCPI.py script, which establishes the socket connection between Red Pitaya (host) and the computer (client).
+The principles explained here can also be applied to other environments that already support SCPI commands (MATLAB, LabVIEW), or used as a basis for developing a script that enables SCPI commands in another environment.
+
+SCPI commands are basically string commands that either contain a user-defined parameter that needs to be changed in the board settings, or are a request to the board to return a specific setting or captured data.
+Consequently, we can divide the SCPI commands into two categories, *control commands* and *query commands*, which we will discuss in the following chapters.
+
+SCPI commands are easy to use and memorise, but suffer from a lack of speed because all data, regardless of size or type, must be converted into a string which is then sent over the TCP connection.
+When an SCPI command string arrives at the Red Pitaya board, it is compared with the list of all possible SCPI commands, if the correct command is found, the parameters are taken from the string and converted back into the usual format, 
+then the appropriate C API function is executed. Otherwise an error is returned.
+
+==================
+Control commands
+==================
+
+Control commands send user-defined settings to the Red Pitaya.
+
+.. figure:: img/SCPI_control_commands.png
+    :width: 800
+
+- Control commands never return anything.
+- Error checking is done via the status byte.
+- Error checking is optional.
+- The error code from the API consists of two parts. 9000 or 9500, indicating whether the error is normal or critical, and the API error number. For example: 9500 + RP_EOED = 9501 (Failed to Open EEPROM Device)
+
+================
+Query commands
+================
+
+Query commands request data or a setting to be returned to the user. They always have a question mark (?) at the end.
+
+.. figure:: img/SCPI_query_commands.png
+    :width: 800
+
+- Query commands always return data
+- Error checking via status byte
+- Error checking is optional
+- The data returned by the command can be of two types: binary data and text data.
+- Binary data response has the format **#<DATA SIZE><BYTES>**. If an error occurs, the response format is as follows #0
+- Text data format: **<ANSWER>\r\n** or **<ANSWER>;<ANSWER>;...;<ANSWER>\r\n** (If you're sending multiple commands at once.) If an error occurs, the response format will be like this: "\r\n".
+- In ASCII mode, data buffers are represented in the form {dd,dd,dd,...,dd}.
+- The API error code consists of two parts. 9000 or 9500, indicating whether the error is normal or critical, and the API error number. For example: 9500 + RP_EOED = 9501 (Failed to Open EEPROM Device)

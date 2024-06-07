@@ -5,6 +5,7 @@ Welcome to the Red Pitaya documentation
     :maxdepth: 2
     :numbered:
     
+    ./intro.rst
     ./quickStart/quickStart.rst
     ./appsFeatures/appsFeatures.rst
     ./developerGuide/devGuideTop.rst
