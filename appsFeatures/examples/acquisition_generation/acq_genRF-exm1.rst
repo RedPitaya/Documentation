@@ -332,7 +332,7 @@ Code - C API
         rp_acq_trig_state_t state = RP_TRIG_STATE_TRIGGERED;
 
         sleep(0.5);
-        rp_GenTrigger(RP_CH_1);         // Trigger generator
+        rp_GenTriggerOnly(RP_CH_1);         // Trigger generator
 
         while(1){
             rp_AcqGetTriggerState(&state);
