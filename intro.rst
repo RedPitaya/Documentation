@@ -32,3 +32,7 @@ The Red Pitaya has been used everywhere. From the `International Space Station <
 **Use cases:**
 
 - `Red Pitaya blog <https://content.redpitaya.com/blog>`_
+
+**FPGA lessons and tutorials**
+
+- :ref:`FPGA tutorials <knowledgebase:learn_FPGA>`

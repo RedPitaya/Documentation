@@ -433,7 +433,7 @@ Instructions on how to compile the code and other useful information are <a clas
 <span class="w">    </span><span class="n">rp_acq_trig_state_t</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RP_TRIG_STATE_TRIGGERED</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
-<span class="w">    </span><span class="n">rp_GenTrigger</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">);</span><span class="w">         </span><span class="c1">// Trigger generator</span>
+<span class="w">    </span><span class="n">rp_GenTriggerOnly</span><span class="p">(</span><span class="n">RP_CH_1</span><span class="p">);</span><span class="w">         </span><span class="c1">// Trigger generator</span>
 
 <span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
 <span class="w">        </span><span class="n">rp_AcqGetTriggerState</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">);</span>

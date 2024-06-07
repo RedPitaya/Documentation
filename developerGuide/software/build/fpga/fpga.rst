@@ -75,7 +75,7 @@ and change the VERSION line to ``VERSION=”18.04.4 LTS (Bionic Beaver)"`` and s
 Afterward, you can either run the **Xilinx_Unified_2020.1_0602_1208_Lin64.bin** (Linux web installer) or the xsetup file from the extracted folder (unified installer).
 After the installation finishes replace the modified file with the one you backed up – failure to do so might cause some problems with other programs.
 
-For more information on Vivado installation `click here <https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga1.html>`_.
+For more information on Vivado installation :ref:`click here <knowledgebase:install_Vivado>`.
 
 .. |Vivado download page| raw:: html
 
@@ -316,13 +316,7 @@ Table of required build flags for FPGA projects per board
 
     .. note::
 
-       For an alternative way to create an FPGA project plese check |FPGA_tutorial|. If following the FPGA tutorial you can reffer to **step 6 and later** in this section, please note that all paths in the following section start with *<Red Pitaya repository>/RedPitaya-FPGA/prj* instead of *<Red Pitaya repository>/fpga/prj*.
-
-
-
-.. |FPGA_tutorial| raw:: html
-
-      <a href="https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/3_vivado_env/tutorfpga2.html#programming-the-fpga" target="_blank">Red Pitaya FPGA tutorial</a>
+       For an alternative way to create an FPGA project plese check :ref:`Red Pitaya FPGA tutorial <knowledgebase:create_fpga_project>`. If following the FPGA tutorial you can reffer to **step 6 and later** in this section, please note that all paths in the following section start with *<Red Pitaya repository>/RedPitaya-FPGA/prj* instead of *<Red Pitaya repository>/fpga/prj*.
 
 5.  The devicetree sources must also be downloaded and extracted by running
 
@@ -438,7 +432,7 @@ The following scripts perform various tasks:
 
     You can connect newly added sources in the Diagram (Block Design) section (If it is not open: *Window => Design => double click system*).
     Add them to the design by right click => Add Module in the design window (for more information check the *Learn FPGA programming => FPGA lessons section*)
-    https://redpitaya-knowledge-base.readthedocs.io/en/latest/learn_fpga/4_lessons/top.html
+    :ref:`click here<knowledgebase:learn_FPGA>`.
 
 
 .. note::

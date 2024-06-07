@@ -38,8 +38,7 @@ The uploaded custom waveform can be selected from the *Waveform Type* dropdown m
 For more information on the applications and how they work, click here:
 
 - :ref:`Red Pitaya applications<all_apps>`
-- Application source code is available on our `GitHub <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools
->`_.
+- Application source code is available on our `GitHub <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools>`_.
 
 
 
@@ -335,4 +334,4 @@ The final option for data acquisition and generation is to re-program and custom
 
 
 
-`Back to top <Introduction to data acquisition and generation with Red Pitaya>`_
+:ref:`Back to top <intro_gen_acq>`

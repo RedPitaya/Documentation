@@ -10,7 +10,7 @@ Description
 
 The Sensor extension board redirects the digital and analog pins of the Red Pitaya so that Groove sensors are easily connected. It also has the same pinout as Arduino shields.
 
-.. figure:: img/Sensor-Extension-Module.jpg
+.. figure:: img/sensor_ext/Sensor-Extension-Module.jpg
   :width: 500
 
 |
@@ -21,7 +21,7 @@ Code examples of controlling the digital and analog inputs and outputs are avail
 
 Getting started with electronics is way more fun and engaging when you have loads of sensors you can use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is select the desired module, find the correct connector, and get going with your project.
 
-.. figure:: img/extension_module_and_sensors.png
+.. figure:: img/sensor_ext/extension_module_and_sensors.png
   :width: 500
 
 |

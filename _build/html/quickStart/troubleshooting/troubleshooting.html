@@ -470,29 +470,15 @@ is written on your Red Pitaya LAN connector.</p>
 <p>For establishing an SSH connection, creating a custom FPGA image, custom ecosystem, and/or custom web applications, please refer to <a class="reference internal" href="../../developerGuide/software/software.html#software"><span class="std std-ref">Developers guide Software</span></a>.</p>
 <div class="section" id="how-can-i-acquire-data-with-red-pitaya">
 <h3><span class="section-number">2.7.4.1. </span>How can I acquire data with Red Pitaya?<a class="headerlink" href="#how-can-i-acquire-data-with-red-pitaya" title="Permalink to this heading"></a></h3>
-<p>There are multiple approaches to acquiring data with Red Pitaya. Here is a quick description of each possiblity:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Oscilloscope application</strong> – The data is acquired at full speed, but all the limitations of a standard oscilloscope apply (currently, the data can only be extracted upon user request via the application. Remote data collection is currently impossible). More info <a class="reference internal" href="../../appsFeatures/applications/oscSigGen/osc.html#osc-app"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>SCPI data acquisition (Python, MATLAB, LabVIEW)</strong> – Triggered data acquisition. The data is acquired in 16384 sample-long buffers. The code is executed on a computer, and string commands are sent to the Red Pitaya via <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank">socket communication</a>. Data is acquired on the Red Pitaya and then sent back as a string that can be converted to a floating-point format. Trigger can be set to either IN1, IN2, or External (also IN3 and IN4 for STEMlab 125-14 4-Input). Trigger level can be specified. The acquisition must be restarted before a new “data buffer” can be acquired. There is a dead time between capturing two consecutive buffers where data is not saved. More details <a class="reference internal" href="../../appsFeatures/remoteControl/scpi.html#scpi-commands"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>API commands (C, Python)</strong> – Functions exactly the same as SCPI data acquisition, but it is faster since everything is running on the Red Pitaya board itself (the code is executed on the board). More info <a class="reference internal" href="../../appsFeatures/remoteControl/API_scripts.html#api-commands"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>Streaming application</strong> – Continuous data acquisition. The data is streamed from one or both inputs directly to a file on a computer. The data can be acquired indefinitely, but there are speed limitations. The total data flow at the inputs (IN1 and IN2) must not exceed 20 MB/s when streaming directly to a computer or 10 MB/s when streaming to the SD card. More details on the limitations are available <a class="reference internal" href="../../appsFeatures/applications/streaming/appStreaming.html#streaming-top"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>Deep Memory (AXI mode)</strong> <em>(OS 2.00-23 and higher)</em> – Long sequence triggered data acquisition. The data can be acquired at different speeds (up to 125 MHz), and it is saved directly into the DDR RAM. The buffer length can be specified by the user (some memory should be left for the Linux OS). After the acquisition is complete, Red Pitaya needs some time to transfer the whole file to the computer (the RAM must be emptied) before the acquisition can be reset. Functions exactly the same as <strong>API commands</strong>. More details are available <a class="reference internal" href="../../appsFeatures/remoteControl/deepMemoryAcquisition.html#deepmemoryacq"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>Custom Acquisition (FPGA)</strong> – Red Pitaya is open-source so any mode above can be customized by the user to tune it to their specific application.</p></li>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../appsFeatures/introAcqGen.html#intro-gen-acq"><span class="std std-ref">Introduction to data acquisition and generation with Red Pitaya</span></a></p></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="how-can-i-generate-data-with-red-pitaya">
 <h3><span class="section-number">2.7.4.2. </span>How can I generate data with Red Pitaya?<a class="headerlink" href="#how-can-i-generate-data-with-red-pitaya" title="Permalink to this heading"></a></h3>
-<p>Here are all possible generation options on the Red Pitaya (please be aware of AC coupling limitations on SDRlab 122-16):</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Oscilloscope application</strong> - basic waveform generation. More info <a class="reference internal" href="../../appsFeatures/applications/oscSigGen/osc.html#osc-app"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>SCPI commands (Python, MATLAB, LabVIEW)</strong>, remote control from computer - can generate basic waveforms as well as custom/arbitrary waveforms (defined in a 16384 sample-long buffer which represents one period of the signal - the frequency is calculated for the whole buffer). More details <a class="reference internal" href="../../appsFeatures/remoteControl/scpi.html#scpi-commands"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>API commands (C, Python)</strong>, on-board program - same functionality as standard SCPI commands, but generally faster and includes the benefit of possible direct communication with the FPGA. More info <a class="reference internal" href="../../appsFeatures/remoteControl/API_scripts.html#api-commands"><span class="std std-ref">here</span></a>.</p></li>
-<li><p><strong>Custom/user-defined (FPGA reprogramming)</strong> - Red Pitaya is open-source, so anyone has the option of reprogramming the FPGA image to customise the functionality.</p></li>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../appsFeatures/introAcqGen.html#intro-gen-acq"><span class="std std-ref">Introduction to data acquisition and generation with Red Pitaya</span></a></p></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="how-to-control-red-pitaya-remotely-using-labview-matlab-and-python">
 <h3><span class="section-number">2.7.4.3. </span>How to control Red Pitaya remotely using LabVIEW, MATLAB, and Python?<a class="headerlink" href="#how-to-control-red-pitaya-remotely-using-labview-matlab-and-python" title="Permalink to this heading"></a></h3>

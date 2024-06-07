@@ -1,10 +1,10 @@
- .. _click_shield:
+.. _click_shield:
 
 ##############
 Click Shield
 ##############
 
-.. figure:: img/red-pitaya-click-shield-banner.jpg
+.. figure:: img/click_shield/red-pitaya-click-shield-banner.jpg
     :width: 900
     :align: center
 
@@ -20,10 +20,10 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 
 |click_shield_front| |click_shield_back|
 
-.. |click_shield_front| image:: img/red-pitaya-click-shield-front.png
+.. |click_shield_front| image:: img/click_shield/red-pitaya-click-shield-front.png
     :width: 450
 
-.. |click_shield_back| image:: img/red-pitaya-click-shield-back.png
+.. |click_shield_back| image:: img/click_shield/red-pitaya-click-shield-back.png
     :width: 450
 
 |
@@ -87,7 +87,7 @@ What are Click Boards?
 
 |Click Boards| by |MIKROE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
 
-.. figure:: img/click-boards-header-banner.jpg
+.. figure:: img/click_shield/click-boards-header-banner.jpg
     :width: 450
 
 These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard |mikroBUS| socket connector that can be easily plugged into the Red Pitaya Click Shield.
@@ -109,7 +109,7 @@ These Click Boards are an innovative and efficient way to develop hardware proje
 Technical specifications
 ==========================
 
-.. figure:: img/red-pitaya-click-shield-logo.jpg
+.. figure:: img/click_shield/red-pitaya-click-shield-logo.jpg
     :width: 900
     :align: center
 
@@ -118,7 +118,7 @@ Technical specifications
 Connectors
 -------------
 
-.. image:: img/red-pitaya-click-shield-connectors.png
+.. image:: img/click_shield/red-pitaya-click-shield-connectors.png
     :width: 500
     :align: center
 
@@ -146,7 +146,7 @@ Connectors
 Switches
 ---------
 
-.. image:: img/red-pitaya-click-shield-switches.png
+.. image:: img/click_shield/red-pitaya-click-shield-switches.png
     :width: 500
     :align: center
 
@@ -169,7 +169,7 @@ If a specific Click Board requires 5V logic levels, please switch the *VCC Selec
 Jumpers
 ---------
 
-.. image:: img/red-pitaya-click-shield-jumpers.png
+.. image:: img/click_shield/red-pitaya-click-shield-jumpers.png
     :width: 500
     :align: center
 
@@ -221,7 +221,7 @@ In short, you do not have to rely on the original Red Pitaya power supply but ca
 
 #. **USB-C or External power supply**
 
-   .. image:: img/red-pitaya-power-01.png
+   .. image:: img/click_shield/red-pitaya-power-01.png
        :width: 400
 
    When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will **glow Blue**, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.
@@ -230,7 +230,7 @@ In short, you do not have to rely on the original Red Pitaya power supply but ca
 
 #. **Standard power supply**
 
-   .. image:: img/red-pitaya-power-02.png
+   .. image:: img/click_shield/red-pitaya-power-02.png
        :width: 400
 
    When the USB is connected to the Red Pitaya board, the PWR diode will **glow Green**, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.
@@ -239,7 +239,7 @@ In short, you do not have to rely on the original Red Pitaya power supply but ca
 
 #. **Standard and external power supply**
    
-   .. image:: img/red-pitaya-power-03.png
+   .. image:: img/click_shield/red-pitaya-power-03.png
        :width: 400
 
    When the USB type C connector is connected to the Click Shield, and the other USB is connected to the Red Pitaya board, the PWR diode will **glow Cyan**, and in this setup, the mikroBUS™ sockets are powered from the Click Shield side.
@@ -251,7 +251,7 @@ Pinout
 
 Here you will find the interconnections between Click Boards (|mikroBUS| pinout) and Red Pitaya pins.
 
-.. figure:: img/mikrobus.png
+.. figure:: img/click_shield/mikrobus.png
     :width: 300
 
 **Short pin descriptions:**
@@ -331,7 +331,7 @@ Closer to **+CLK IN- pins**.
 Logic Analyzer Connector
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: img/red-pitaya-click-shield-la.png
+.. image:: img/click_shield/red-pitaya-click-shield-la.png
        :width: 500
        :align: center
 
@@ -423,7 +423,7 @@ To synchronise two or more Red Pitaya units, establish the following connections
 Oscillator
 ~~~~~~~~~~~~
 
-.. figure:: img/Click_Shield_Oscillator_Sync.png
+.. figure:: img/click_shield/Click_Shield_Oscillator_Sync.png
     :width: 700
     :align: center
 
@@ -451,7 +451,7 @@ Otherwise, DIO0_N acts as external trigger output (on the primary board), and DI
 External Clock
 ~~~~~~~~~~~~~~~~
 
-.. figure:: img/Click_Shield_Ext_Clock_Sync.png
+.. figure:: img/click_shield/Click_Shield_Ext_Clock_Sync.png
     :width: 700
     :align: center
 
