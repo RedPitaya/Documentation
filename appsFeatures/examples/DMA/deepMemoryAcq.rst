@@ -129,7 +129,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     signal_str2 = writeread(RP, append('ACQ:AXI:SOUR2:DATA:Start:N? ', posChB, ',', num2str(READ_DATA_SIZE)));
     
     signal_num  = str2num(signal_str(1, 2:length(signal_str)  - 3));
-    signal_num2 = str2num(signal_str(1, 2:length(signal_str2) - 3));
+    signal_num2 = str2num(signal_str2(1, 2:length(signal_str2) - 3));
     
     x = linspace(1, READ_DATA_SIZE, READ_DATA_SIZE);
     tiledlayout(2,1)
