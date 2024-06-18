@@ -1777,6 +1777,12 @@ DMA data read
 | | ``{1.2,3.2,-1.2}``                               | |         ``rp_AcqAxiGetDataRaw(<channel>, <pos>, <size>, <buffer>)``                                                      | | **API:** Returns the Deep Memory buffer in specified units from specified     |                    |
 | |                                                  | |                                                                                                                          | | position and desired size.                                                    |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
+| | - (NA)                                           | | C: NA                                                                                                                    | | Copies the captured DMA buffer data into the passed NumPy buffer from ``pos`` | in dev             |
+| |                                                  | |                                                                                                                          | | onwards. The length of the copied data matches the ``np_buffer`` length.      |                    |
+| |                                                  | | Python: ``rp_AcqAxiGetDataVNP(channel, pos, np_buffer)``                                                                 | | A lot faster than the Python function above.                                  |                    |
+| |                                                  | |         ``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)``                                                               | |                                                                               |                    |
+| |                                                  | |                                                                                                                          | |                                                                               |                    |
++----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
 
 
 
