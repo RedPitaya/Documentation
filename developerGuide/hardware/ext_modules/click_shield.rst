@@ -510,6 +510,11 @@ In this section we will talk about the difference between the Red Pitaya X-chann
 
 More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 
+.. note::
+
+    Please note that the limitations of the Streaming applications are the same for both systems (continuous streaming). More information is available :ref:`here <streaming_top>`.
+
+
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 |                                | **X-Channel System**                       | **Click Shield Synchronisation**           |
 +================================+============================================+============================================+
