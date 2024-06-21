@@ -5,6 +5,7 @@ PyPRL
 #######################
 
 The application is based on a repository: |original_repository|
+
 For more information, see the official documentation: |original_doc|
 
 .. |original_repository| raw:: html
@@ -22,7 +23,7 @@ What do I need before I start?
 
 1. PyPRL application requirements:
 
-    *   Windows, MacOS (arm64 for prebuild app) or Linux-based personal computer (PC).
+    *   Windows, MacOS (arm64 for pre-built app) or Linux-based personal computer (PC).
 
 2. The application is designed for boards:
 
@@ -31,12 +32,12 @@ What do I need before I start?
 
 
 Install & run PyRPL
-=========================================================
+********************************
 
 There are two ways to run the application:
 
     *   Download the pre-built application for the appropriate platform: |pyrpl_download|
-    *   Run from source code taken from repository: |pyrpl_github|
+    *   Run from source code from repository: |pyrpl_github|
 
 
 .. |pyrpl_download| raw:: html
