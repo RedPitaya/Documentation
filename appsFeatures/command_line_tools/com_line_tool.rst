@@ -213,7 +213,7 @@ The signal from Red Pitaya can be acquired through the |acquire| command line ut
 
         .. code-block:: shell-session
 
-            redpitaya> acquire 1024 8 -1 20 -o
+            redpitaya> acquire 1024 8 -1 lv -o
                 -0.175803   0.000977
                 0.021975    0.001099
                 -0.075693   0.000977
