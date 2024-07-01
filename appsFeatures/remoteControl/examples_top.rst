@@ -25,6 +25,7 @@ You can edit and change them according to your needs and develop customized prog
    ../examples/multiboard_sync/multiboard.rst
    ../examples/DMA/deepMemoryAcq.rst
    ../examples/communication_interfaces/digcomIF.rst
+   ../examples/lcr/lcr.rst
 
 
 Web-API example: :ref:`ABCLED`
