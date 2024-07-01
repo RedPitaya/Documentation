@@ -42,7 +42,7 @@ When compiling on the target no special preparations are needed. A native toolch
 Compiling and running Example code
 -----------------------------------
 
-1.  **First connect to your board over :ref:`SSH <ssh>`** (replace the IP, the default password is `root`).
+1.  **First connect to your board over :ref:`SSH <ssh>` connection** (replace the IP, the default password is `root`).
 
     .. code-block:: shell-session
 
