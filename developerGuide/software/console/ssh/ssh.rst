@@ -19,34 +19,50 @@ Connection instructions are available for:
     :depth: 1
 
 
-
 Windows 10
 ==========
 
-For this example, the|PuTTy tool| was used on Windows XP and Windows 7 Starter OS.
-Run PuTTy and enter the Red Pitaya's IP address into the **Host Name (or IP address)** field.
+On Windows you can establish an SSH connection directly through the Command Prompt or use a program like |Putty| or |WinScp|. Here we will discuss both options.
 
-.. |PuTTy tool| raw:: html
+.. |PuTTy| raw:: html
 
-   <a href="http://www.putty.org" target="_blank">PuTTy tool</a>
+   <a href="http://www.putty.org" target="_blank">PuTTy</a>
 
+.. |WinScp| raw:: html
 
-.. figure:: 445px-PuTTy_connection_settings.png
-   :align: center
+   <a href="https://winscp.net/eng/index.php" target="_blank">WinScp</a>
 
-   PuTTy SSH connection settings.
+Command Prompt
+---------------
 
+To establish an SSH connection through the Command Prompt, first open the Command Prompt console window (search for "command prompt" in Windows Search).
 
-If you attempt to connect to Red Pitaya for the first time, a security alert will pop up asking you to confirm the connection.
-At this time, the ssh-key will be added to the registry on your computer. A command prompt pops up after login is successful.
+Enter the following command:
 
-When connected to RP via SSH (PuTTy), you get the following command prompt screen:
+.. tabs::
 
-.. figure:: 445px-Win_putty_logged.png
-   :align: center
+    .. tab:: IP
 
-   SSH connection via PuTTy
+        .. code-block:: console
+        
+            ssh root@<Red Pitaya IP address>
 
+    .. tab:: Local address
+
+        .. code-block:: console
+        
+            ssh root@rp-xxxxxx.local
+
+If you attempt to connect to Red Pitaya for the first time, a security alert will display asking you to confirm the connection (type "yes").
+At this time, the ssh-key will be added to the registry on your computer.
+
+Next, the console will ask for a password (``root``).
+
+After the password was entered, the login text will appear. Here is a picture of the whole exchange:
+
+.. figure:: img/ssh_console_win.png
+    :width: 600 px
+    :align: center
 
 The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (the default home directory on Red Pitaya is /root).
 
@@ -82,6 +98,52 @@ The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (th
     Alternatively, open Explorer and go to **C:/Users/<your-username>/.ssh** and open the **known_hosts** file. Delete all lines containing *rp-xxxxxx.local*.
 
 
+Connection via a program (PuTTy, WinSCP, ...)
+-----------------------------------------------
+
+For this example, the PuTTy and WinSCP tools were used on Windows 11.
+Run PuTTy/WinSCP and enter the Red Pitaya's IP (or .local) address into the **Host Name (or IP address)** field.
+
+.. figure:: img/ssh_putty_config.png
+   :width: 600
+   :align: center
+
+   PuTTy SSH connection settings.
+
+.. figure:: img/ssh_winscp_config.png
+   :width: 600
+   :align: center
+
+   WinSCP SSH connection settings.
+
+Make sure the port number is set to 22. Fill the "User name" as ``root`` on WinSCP. Then select **Open/Login**.
+
+Input password ``root``.
+
+If you attempt to connect to Red Pitaya for the first time, a security alert will pop up asking you to confirm the connection.
+At this time, the ssh-key will be added to the registry on your computer. A command prompt pops up after login is successful.
+
+.. figure:: img/ssh_putty_alert.png
+   :width: 600
+   :align: center
+
+When connected to RP via SSH, you get the following command prompt screen:
+
+.. figure:: img/ssh_putty.png
+   :width: 600
+   :align: center
+
+   SSH connection via PuTTy
+
+.. figure:: img/ssh_winscp_con.png
+   :width: 600
+   :align: center
+
+   SSH connection via WinSCP
+
+The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (the default home directory on Red Pitaya is /root).
+
+
 Linux
 =====
 
@@ -94,7 +156,7 @@ Start Terminal and type (replace the IP address with the right one):
    Red Pitaya GNU/Linux/Ecosystem version 0.90-299
    redpitaya>
 
-.. figure:: linux_terminal.png
+.. figure:: img/linux_terminal.png
    :align: center
 
 
