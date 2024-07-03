@@ -120,7 +120,7 @@ Code - Python
     
     rp.close()
 
-**Using functions:**
+**Using functions: (IN DEV)**
 
 .. code-block:: python
 
