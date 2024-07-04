@@ -364,7 +364,35 @@ We suggest upgrading to the latest OS and trying again. Otherwise, please :ref:`
 
 .. note::
 
-   The 2.00 Unified OS update has seen registry changes in the FPGA, so, likely, older applications will not work after the OS update (Xilinx also changed how the FPGA is loaded into the FPGA).
+   With the 2.00 Unified OS, we also updated Ubuntu to 22.04 LTS, which introduced registry changes implemented by AMD Xilinx in the way the FPGA bitstream image is loaded into the FPGA. As a result, we had to update all official applications to work with the new structure.
+   Unfortunately, not all 3rd party applications have been updated, so they may not work with the latest OS versions. In this case, we recommend either downgrading the Red Pitaya OS version to 1.04 or using an alternative application.
+
+
+Lock-in PID applications not working?
+--------------------------------------
+
+Depending on the Red Pitaya OS version you are currently using, some of the Lock-In PID applications may not work. Here is a compatibility table:
+
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+| **Lock-in PID application**   | **Application type** | **Compatible Red Pitaya OS**            | **Red Pitaya board compatibility**  | **Link to documentation**                                                   |
++===============================+======================+=========================================+=====================================+=============================================================================+
+| Linien                        | 3rd party            | | 2.00-15 and above                     | | STEMlab 125-14                    | `Linien GitHub <https://github.com/linien-org/linien>`_                     |
+|                               |                      | | 1.04 (Limited compatibility)          |                                     |                                                                             |
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+| Lock-in+PID (Marcelo Luda)    | 3rd party            | | 1.04-28 or older                      | | STEMlab 125-14                    | `Lock-in+PID GitHub <https://marceluda.github.io/rp_lock-in_pid/>`_         |
+|                               |                      | |                                       | | STEMlab 125-10 (discontinued)     |                                                                             |
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+| PyRPL                         | | (in-dev) official  | | in-dev                                | | STEMlab 125-14                    | `PyRPL documentation <https://pyrpl.readthedocs.io/en/latest/>`_            |
+|                               | | 3rd party          | | 1.04-28 or older                      | | STEMlab 125-10 (discontinued)     |                                                                             |
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+
+In the future, we will fully support PyRPL in the official Red Pitaya OS (). Currently, it is available in the latest :ref:`nightly build versions of the OS <nightly_builds>`.
+If you find a bug in the official Red Pitaya PyRPL, please :ref:`report it <report_bug>`.
+
+.. note::
+
+   With the 2.00 Unified OS, we also updated Ubuntu to 22.04 LTS, which introduced registry changes implemented by AMD Xilinx in the way the FPGA bitstream image is loaded into the FPGA. As a result, we had to update all official applications to work with the new structure.
+   Unfortunately, not all 3rd party applications have been updated, so they may not work with the latest OS versions. In this case, we recommend either downgrading the Red Pitaya OS version to 1.04 or using an alternative application.
 
 
 
