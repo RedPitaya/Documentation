@@ -347,10 +347,19 @@ Please ensure that your browser's ad blockers are turned off for the "rp-xxxxxx.
    :align: center
    :width: 700
 
+Here are a few things you can try:
+
+- Disable ad blocker's for the "rp-xxxxxx.local" website
+- Disable VPN
+- Clear cookies for the "rp-xxxxxx.local" website
+- Try *incognito mode*
+
+
 Undesired disconnections?
 ---------------------------
 
-If possible, we recommend testing the setup on a different computer and a different network, as well as, checking the state of the Ethernet cables and power supply, proxy settings, and re-writing the OS.
+We recommend connecting the Red Pitaya to a router (or an ethernet port that is connected to it) and testing the setup again.
+If the problem persists, please test the setup on a different computer and a different network. Also check the state of the Ethernet cables and power supply, proxy settings, and re-writing the OS.
 
 
 An application is not working?
@@ -385,6 +394,8 @@ Depending on the Red Pitaya OS version you are currently using, some of the Lock
 | PyRPL                         | | (in-dev) official  | | in-dev                                | | STEMlab 125-14                    | `PyRPL documentation <https://pyrpl.readthedocs.io/en/latest/>`_            |
 |                               | | 3rd party          | | 1.04-28 or older                      | | STEMlab 125-10 (discontinued)     |                                                                             |
 +-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+
+|
 
 In the future, we will fully support PyRPL in the official Red Pitaya OS (). Currently, it is available in the latest :ref:`nightly build versions of the OS <nightly_builds>`.
 If you find a bug in the official Red Pitaya PyRPL, please :ref:`report it <report_bug>`.
