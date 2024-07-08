@@ -230,7 +230,156 @@ API Code Examples
 Code - C API
 --------------
 
-**Coming soon**
+The LCR meter requires two additional libraries ("-lrpapp_lcr -lrp-dsp") to be inlcuded into the "Makefile". Check if they are added and add them into *line 7* if not.
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <math.h>
+    #include <complex.h>
+    #include <string.h>
+    #include <unistd.h>
+    #include <getopt.h>
+    
+    #include "rp.h"
+    #include "apiApp/lcrApp.h"
+    
+    #include "rp_hw-calib.h"
+    
+    const char *g_argv0 = NULL; // Program name
+    
+    
+    char GetPrefix(float value, float *new_value){
+        if (fabs(value) > 1e6){
+            *new_value = ((float)((int)value / 1000))/1000.0;
+            return 'M';
+        }
+        if (fabs(value) > 1e3){
+            *new_value = ((float)((int)value))/1000.0;
+            return 'k';
+        }
+        if (fabs(value) > 1){
+            *new_value = ((float)((int)(value * 1000)))/1000.0;
+            return 0;
+        }
+        if (fabs(value) > 1e-3){
+            *new_value = ((float)((int)(value * 1e6)))/1000.0;
+            return 'm';
+        }
+        if (fabs(value) > 1e-6){
+            *new_value = ((float)((int)(value * 1e9)))/1000.0;
+            return 'u';
+        }
+        if (fabs(value) > 1e-9){
+            *new_value = ((float)((int)(value * 1e12)))/1000.0;
+            return 'n';
+        }
+        *new_value = 0;
+        return 0;
+    }
+    
+    int main(int argc, char *argv[]){
+    
+        // Variables
+        lcr_main_data_t *data = (lcr_main_data_t *)malloc(sizeof(lcr_main_data_t));
+        float lcr_shunt = 100;
+        float lcr_freq = 100000;
+        float lcr_ampl = 0.5;
+        float lcr_offs = 0;
+        //lcr_shunt_t module_shunt[] = {RP_LCR_S_10, RP_LCR_S_100, RP_LCR_S_1k, RP_LCR_S_10k, RP_LCR_S_100k, RP_LCR_S_1M};
+        lcr_shunt_mode_t shunt_mode = RP_LCR_S_CUSTOM ;   // RP_LCR_S_EXTENSION,  RP_LCR_S_CUSTOM 
+    
+        // Other
+        //lcr_shunt_mode_t mode;
+        //int res;
+        char pref = 0;
+        float modify_value = 0;
+    
+        if (rp_HPGetFastADCIsAC_DCOrDefault()){
+            rp_AcqSetAC_DC(RP_CH_1,RP_DC);
+            rp_AcqSetAC_DC(RP_CH_2,RP_DC);
+        }
+    
+        // Check external board
+        bool connected = lcrApp_LcrCheckExtensionModuleConnection(true) == RP_OK;
+        printf("LCR extension module connection: %d\n", connected);
+    
+        // Set shunt mode
+        lcrApp_LcrSetShuntMode(shunt_mode);
+        printf("Shunt mode set to: %d (1 == custom, 0 == extension)\n", shunt_mode);
+    
+        // Initialize LCR
+        lcrApp_lcrInit();
+    
+        // Start LCR
+        lcrApp_LcrRun();
+    
+        // Disable automatic shunt setting
+        lcrApp_LcrSetShuntIsAuto(false);
+    
+        // Set custom shunt resistor
+        lcrApp_LcrSetCustomShunt(lcr_shunt);
+    
+        // Set LCR settings
+        lcrApp_LcrSetFrequency(lcr_freq);
+        lcrApp_LcrSetAmplitude(lcr_ampl);
+        lcrApp_LcrSetOffset(lcr_offs);
+        // lcr_circuit
+    
+        // Start the generator
+        lcrApp_GenRun();
+        usleep(100);        // short delay for the generator to set up properly
+    
+        // Start LCR
+        lcrApp_LcrRun();    // Capture the measurement
+    
+        // Trigger measurement
+        lcrApp_LcrCopyParams(data);    // Copy parameters into the variable
+
+        // Print parameters
+        printf("Frequency\t%f Hz\n",lcr_freq);
+        pref = GetPrefix(data->lcr_amplitude,&modify_value);
+        printf("Z\t%lf %cOmh\n",modify_value,pref);
+    
+        printf("Phase\t%lf deg\n",data->lcr_phase);
+    
+        pref = GetPrefix(data->lcr_L_s,&modify_value);
+        printf("L(s)\t%lf %cH\n",modify_value,pref);
+    
+        pref = GetPrefix(data->lcr_C_s,&modify_value);
+        printf("C(s)\t%lf %cF\n",modify_value,pref);
+    
+        pref = GetPrefix(data->lcr_R_s,&modify_value);
+        printf("R(s)\t%lf %cOmh\n",modify_value,pref);
+    
+        pref = GetPrefix(data->lcr_L_p,&modify_value);
+        printf("L(p)\t%lf %cH\n",modify_value,pref);
+    
+        pref = GetPrefix(data->lcr_C_p,&modify_value);
+        printf("C(p)\t%lf %cF\n",modify_value,pref);
+    
+        pref = GetPrefix(data->lcr_R_p,&modify_value);
+        printf("R(p)\t%lf %cOmh\n",modify_value,pref);
+    
+        printf("Q\t%lf\n",data->lcr_Q_s);
+        printf("D\t%lf\n",data->lcr_D_s);
+        printf("X_s\t%lf\n",data->lcr_X_s);
+        printf("G_p\t%lf\n",data->lcr_G_p);
+        printf("B_p\t%lf\n",data->lcr_B_p);
+        printf("|Y|\t%lf\n",data->lcr_Y_abs);
+        printf("-P_Y\t%lf deg\n",data->lcr_Phase_Y);
+    
+        // Stop LCR meter
+        lcrApp_GenStop();
+        lcrApp_LcrStop();
+    
+        free(data);
+    
+        // Releasing resources
+        lcrApp_LcrRelease();
+        return 0;
+    }
 
 
 Code - Python API
