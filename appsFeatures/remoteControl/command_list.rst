@@ -454,12 +454,12 @@ Daisy chain clocks and triggers
 
 .. note::
 
-   The daisy chain commands only work for the :ref:`X-channel system <x-ch_streaming>` and the :ref:`Red Pitaya Click Shields <click_shield>`.
+   The daisy chain commands are meant to work with the :ref:`X-channel system <x-ch_streaming>` and the :ref:`Red Pitaya Click Shields <click_shield>`.
 
 .. note::
 
    The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software.
-   The generation and acquisition trigger fronts apply after the signals have been combined and trigger either DAC or ADC depending on the ``DAISY:TRIG_O:SOUR <mode>`` command.
+   The generation and acquisition trigger fronts apply after the signals have been combined and trigger either DAC or ADC depending on the ``DAISY:TRig:Out:SOUR <mode>`` command.
 
 
 
