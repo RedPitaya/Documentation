@@ -100,9 +100,9 @@ SCPI Code Examples
     This code is written for **2.00-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 
-    Code - MATLAB®
-    ---------------
-    
+Code - MATLAB®
+---------------
+        
     %% ### CLICK SHIELD EXAMPLE ###
     % This example is for setting up two units (one primary and one secondary)
     % For multiple secondary units duplicate the code for the secondary unit
@@ -110,8 +110,8 @@ SCPI Code Examples
     % a consecutive secondary unit)
     % This example is for External clock Red Pitaya units connected with Red
     % Pitaya Click Shields
-    
-    
+        
+        
     %% Parameters
     
     clear all;
@@ -127,7 +127,6 @@ SCPI Code Examples
     dec = 2;
     trig_lvl = 0.5;
     trig_dly = 7000;
-    
     
     
     %% Set up the IP and SCPI server
@@ -146,7 +145,6 @@ SCPI Code Examples
     
     flush(RP_PRI);
     fprintf('Program start');
-    
     
     
     %% Reseting Generation and Acquisition
