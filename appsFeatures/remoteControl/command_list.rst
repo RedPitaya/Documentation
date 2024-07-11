@@ -1620,7 +1620,7 @@ Data read
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | | ``ACQ:SOUR<n>:DATA:LATest:N? <size>``     | | C: ``rp_AcqGetLatestDataRaw(rp_channel_t channel, uint32_t* size, int16_t* buffer)``                                                   | | Read the latest ``<size>`` samples in the buffer.                                    | 1.04-18 and up     |
 | | Example:                                  | |    ``rp_AcqGetLatestDataV(rp_channel_t channel, uint32_t* size, float* buffer)``                                                       | |                                                                                      |                    |
-| | ``ACQ:SOUR1:DATA:LAT:N? 3`` >             | | Python: ``rp_AcqGetLatestDataRaw(<channel>, <size>, <buffer>)``                                                                        | |                                                                                      |                    |
+| | ``ACQ:SOUR1:DATA:LATest:N? 3`` >          | | Python: ``rp_AcqGetLatestDataRaw(<channel>, <size>, <buffer>)``                                                                        | |                                                                                      |                    |
 | | ``{1.2,3.2,-1.2}``                        | |         ``rp_AcqGetLatestDataV(<channel>, <size>, <buffer>)``                                                                          | |                                                                                      |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | | ''                                        | | Python: ``rp_AcqGetLatestDataRawNP(channel, np_buffer)`` (Numpy buffer ``dtype=np.int16``)                                             | | Copies the latest captured buffer data into the passed NumPy buffer.                 | in dev             |
@@ -1638,6 +1638,8 @@ Data read
 | |                                           | |                                                                                                                                        | | Numpy buffer must have the specified ``dtype`` format.                               |                    |
 | |                                           | |                                                                                                                                        | | Faster than the Python functions above.                                              |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+
+
 
 .. _commands_dma:
 
