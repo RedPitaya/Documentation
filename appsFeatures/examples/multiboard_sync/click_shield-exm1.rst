@@ -123,6 +123,7 @@ Code - Python
     import redpitaya_scpi as scpi
 
     # Connect OUT1 primary with IN1 primary and IN1 secondary
+
     wave_form = "sine"
     freq = 100000
     ampl = 1
@@ -132,7 +133,7 @@ Code - Python
     trig_dly = 7000
 
 
-    IP_PRIM = 'rp-f0a235.local'   # IP Test OS Red Pitaya
+    IP_PRIM = 'rp-f0a235.local'   # Red Pitaya IP
     IP_SEC = 'rp-f0ac90.local'
 
     rp_prim = scpi.scpi(IP_PRIM)
@@ -270,7 +271,8 @@ Code - Python
     import redpitaya_scpi as scpi
 
     # Connect OUT1 primary with IN1 primary and IN1 secondary
-    IP_PRIM = 'rp-f0a235.local'   # IP Test OS Red Pitaya
+
+    IP_PRIM = 'rp-f0a235.local'   # Red Pitaya IP
     IP_SEC = 'rp-f0ac90.local'
 
     rp_prim = scpi.scpi(IP_PRIM)
