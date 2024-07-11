@@ -123,7 +123,6 @@ Code - Python
     import redpitaya_scpi as scpi
 
     # Connect OUT1 primary with IN1 primary and IN1 secondary
-
     wave_form = "sine"
     freq = 100000
     ampl = 1
@@ -149,26 +148,20 @@ Code - Python
 
     ###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######
 
-    rp_prim.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
-    rp_prim.tx_txt('DAISY:SYNC:CLK ON')
-    rp_prim.tx_txt('DAISY:TRIG_O:ENable ON')     # Enables GPIO0_N as trigger output
-    rp_prim.tx_txt('DAISY:TRIG_O:SOUR ADC')      # Ext trigger will trigger the ADC
+    rp_prim.tx_txt('DAISY:TRig:Out:ENable ON')   # Enables DIO0_N as trigger output
+    rp_prim.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_prim.tx_txt('DIG:PIN LED5,1')             # LED Indicator
 
     time.sleep(0.2)
 
-    print(f"Trig sync: {rp_prim.txrx_txt('DAISY:SYNC:TRig?')}")
-    print(f"CLK sync: {rp_prim.txrx_txt('DAISY:SYNC:CLK?')}")
-    print(f"GPIO0_N trig: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
-    print(f"Source: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
+    print(f"DIO0_N trig: {rp_prim.txrx_txt('DAISY:TRig:Out:ENable?')}\n")
+    print(f"Trig source: {rp_prim.txrx_txt('DAISY:TRig:Out:SOUR?')}\n")
 
     ###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######
   
-    rp_sec.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
-    rp_sec.tx_txt('DAISY:SYNC:CLK ON')
-    rp_sec.tx_txt('DAISY:TRIG_O:ENable ON')     # Enables GPIO0_N as trigger output
-    rp_sec.tx_txt('DAISY:TRIG_O:SOUR ADC')      # Ext trigger will trigger the ADC
+    rp_sec.tx_txt('DAISY:TRig:Out:ENable OFF')   # Disables DIO0_N as trigger output
+    rp_sec.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_sec.tx_txt('DIG:PIN LED5,1')             # LED Indicator
 
@@ -185,18 +178,17 @@ Code - Python
     ### Aquisition ###
 
     # Primary unit
-    rp_prim.tx_txt(f'ACQ:DEC {dec}')
+    rp_prim.tx_txt(f'ACQ:DEC:Factor {dec}')
     rp_prim.tx_txt(f'ACQ:TRig:LEV {trig_lvl}')
     rp_prim.tx_txt(f'ACQ:TRig:DLY {trig_dly}')
 
     # Secondary unit
-    rp_sec.tx_txt(f'ACQ:DEC {dec}')
+    rp_sec.tx_txt(f'ACQ:DEC:Factor {dec}')
     rp_sec.tx_txt(f'ACQ:TRig:LEV {trig_lvl}')
     rp_sec.tx_txt(f'ACQ:TRig:DLY {trig_dly}')
 
   
     rp_sec.tx_txt('ACQ:START')
-    time.sleep(0.2)                           # Not necessary
     rp_sec.tx_txt('ACQ:TRig EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
                                               # If not synchronised make sure no signal arrives before both units are set up
 
@@ -209,22 +201,22 @@ Code - Python
 
     print("ACQ start")
 
-    while 1:
-        # Get Trigger Status
-        if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger primary condition met.")
+    # while 1:
+    #     # Get Trigger Status
+    #     if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #         break
+    # print("Trigger primary condition met.")
 
     while 1:
         if rp_prim.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer primary filled.")
 
-    while 1:
-        # Get Trigger Status
-        if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger secondary condition met.")
+    # while 1:
+    #     # Get Trigger Status
+    #     if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #         break
+    # print("Trigger secondary condition met.")
 
     while 1:
         if rp_sec.txrx_txt('ACQ:TRig:FILL?') == '1':
@@ -278,8 +270,6 @@ Code - Python
     import redpitaya_scpi as scpi
 
     # Connect OUT1 primary with IN1 primary and IN1 secondary
-
-
     IP_PRIM = 'rp-f0a235.local'   # IP Test OS Red Pitaya
     IP_SEC = 'rp-f0ac90.local'
 
@@ -296,26 +286,20 @@ Code - Python
 
     ###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######
 
-    rp_prim.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
-    rp_prim.tx_txt('DAISY:SYNC:CLK ON')
-    rp_prim.tx_txt('DAISY:TRIG_O:ENable ON')     # Enables GPIO0_N as trigger output
-    rp_prim.tx_txt('DAISY:TRIG_O:SOUR ADC')
+    rp_prim.tx_txt('DAISY:TRig:Out:ENable ON')   # Enables DIO0_N as trigger output
+    rp_prim.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_prim.tx_txt('DIG:PIN LED5,1')            # LED Indicator
 
     time.sleep(0.2)
 
-    print(f"Trig sync: {rp_prim.txrx_txt('DAISY:SYNC:TRig?')}")
-    print(f"CLK sync: {rp_prim.txrx_txt('DAISY:SYNC:CLK?')}")
-    print(f"GPIO0_N trig: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
-    print(f"Source: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
+    print(f"DIO0_N trig: {rp_prim.txrx_txt('DAISY:TRig:Out:ENable?')}\n")
+    print(f"Trig source: {rp_prim.txrx_txt('DAISY:TRig:Out:SOUR?')}\n")
 
     ###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######
   
-    rp_sec.tx_txt('DAISY:SYNC:TRig ON')  #! OFF (without sync)  
-    rp_sec.tx_txt('DAISY:SYNC:CLK ON')
-    rp_sec.tx_txt('DAISY:TRIG_O:ENable ON')    # Enables GPIO0_N as trigger output
-    rp_sec.tx_txt('DAISY:TRIG_O:SOUR ADC')     # Ext trigger will trigger the ADC
+    rp_sec.tx_txt('DAISY:TRig:Out:ENable OFF')   # Disables DIO0_N as trigger output
+    rp_sec.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_sec.tx_txt('DIG:PIN LED5,1')            # LED Indicator
 
@@ -341,7 +325,6 @@ Code - Python
 
 
     rp_sec.tx_txt('ACQ:START')
-    time.sleep(0.2)                           # Not necessary
     rp_sec.tx_txt('ACQ:TRig EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
                                               # If not synchronised make sure no signal arrives before both units are set up
 
@@ -354,22 +337,22 @@ Code - Python
 
     print("ACQ start")
 
-    while 1:
-        # Get Trigger Status
-        if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger primary condition met.")
+    # while 1:
+    #    # Get Trigger Status
+    #    if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #        break
+    # print("Trigger primary condition met.")
 
     while 1:
         if rp_prim.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer primary filled.")
 
-    while 1:
-        # Get Trigger Status
-        if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger secondary condition met.")
+    # while 1:
+    #    # Get Trigger Status
+    #    if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #        break
+    # print("Trigger secondary condition met.")
 
     while 1:
         if rp_sec.txrx_txt('ACQ:TRig:FILL?') == '1':
@@ -470,8 +453,6 @@ Code - Python API
     rp.rp_AcqReset()
     
     ###### Enable Daisy Chain #####
-    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
-    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
     rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
     
     # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
@@ -506,14 +487,12 @@ Code - Python API
     rp.rp_GenTriggerOnly(channel)       # Trigger generator
     
     # Trigger state
-    while 1:
-        trig_state = rp.rp_AcqGetTriggerState()[1]
-        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
-            break
+    # while 1:
+    #    trig_state = rp.rp_AcqGetTriggerState()[1]
+    #    if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+    #        break
     
     # Fill state
-    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
-    
     while 1:
         if rp.rp_AcqGetBufferFillState()[1]:
             break
@@ -554,12 +533,7 @@ Code - Python API
     rp.rp_AcqReset()
     
     ###### Enable Daisy Chain #####
-    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
-    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
-    rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
-    
-    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
-    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+    rp.rp_SetDpinEnableTrigOutput(False)             # Disable trigger output on DIO0_N
     
     # LED indicator
     rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
@@ -575,14 +549,11 @@ Code - Python API
     # Specify trigger - must be EXT_NE
     rp.rp_AcqSetTriggerSrc(rp.RP_TRIG_SRC_EXT_NE)
     
-    # Trigger state
-    while 1:
-        trig_state = rp.rp_AcqGetTriggerState()[1]
-        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
-            break
-    
-    # Fill state
-    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
+    # # Trigger state
+    # while 1:
+    #    trig_state = rp.rp_AcqGetTriggerState()[1]
+    #    if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+    #        break
     
     while 1:
         if rp.rp_AcqGetBufferFillState()[1]:
@@ -592,7 +563,7 @@ Code - Python API
     
     # Volts
     fbuff = rp.fBuffer(N)
-    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    res = rp.rp_AcqGetDataVNP(rp.RP_CH_1, 0, N, fbuff)
     
     data_V = np.zeros(N, dtype = float)
     
