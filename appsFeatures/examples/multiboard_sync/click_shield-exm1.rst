@@ -102,6 +102,8 @@ SCPI Code Examples
 
 Code - MATLAB®
 ---------------
+
+.. code-block:: matlab
         
     %% ### CLICK SHIELD EXAMPLE ###
     % This example is for setting up two units (one primary and one secondary)
