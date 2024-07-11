@@ -56,7 +56,7 @@ Initialization commands
 
 Table of correlated SCPI and API commands for the Red Pitaya.
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
 | SCPI                                                 | API, Jupyter                                | DESCRIPTION                                               |  ECOSYSTEM         |
@@ -138,7 +138,7 @@ Board control commands
 ..    - ``RP_EMNC`` -
 ..    - ``RP_NOTS`` -
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+--------------------+
 | SCPI                                                 | API, Jupyter                                     | DESCRIPTION                                               |  ECOSYSTEM         |
@@ -228,7 +228,7 @@ LEDs and GPIOs
 - DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` *Goes up to 9 on SDRlab and STEMlab 4-Input*
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
@@ -310,7 +310,7 @@ Analog Inputs and Outputs
 - Analog inputs - ``RP_AIN0, RP_AIN1, ..., RP_AIN3``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | SCPI                                  | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
@@ -375,7 +375,7 @@ Daisy chain clocks and triggers
 - Shared trigger source - ``OUT_TR_ADC, OUT_TR_DAC``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-------------------------------------------+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+-------------------------------+
 | SCPI                                      | API, Jupyter                                                                       | DESCRIPTION                                                                                                |  ECOSYSTEM                    |
@@ -479,7 +479,7 @@ Phase locked loop
 - ``<state> = {OFF, ON}``
 - ``<enable> = {true, false}``
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
@@ -523,7 +523,7 @@ Generator control
 - ``<enable> = {true, false}`` Default: ``false``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
@@ -579,7 +579,7 @@ Generator trigger
 
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
@@ -661,7 +661,7 @@ Generator settings
 - Generator gain - ``RP_GAIN_1X, RP_GAIN_5X``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
@@ -800,7 +800,7 @@ Burst mode
 - Generator modes - ``RP_GEN_MODE_CONTINUOUS, RP_GEN_MODE_BURST``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
@@ -887,7 +887,7 @@ Set the waveform type to sweep to enable
 - Sweep mode - ``RP_GEN_SWEEP_MODE_LINEAR, RP_GEN_SWEEP_MODE_LOG``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
@@ -960,7 +960,7 @@ Sweep mode extended
 
     This API uses a class to control the sweep mode. This class is available in the rp-sweep library.
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                            | DESCRIPTION                                                                                  |  ECOSYSTEM         |
@@ -1073,7 +1073,7 @@ Acquisition Control
 
 - ``<n> = {3,4}`` (set channel IN3, or IN4)
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-------------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
 | SCPI                                | API, Jupyter                                    | DESCRIPTION                                                                |  ECOSYSTEM         |
@@ -1171,7 +1171,7 @@ Acquisition settings
 - Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                                   | DESCRIPTION                                                                   |  ECOSYSTEM         |
@@ -1341,7 +1341,7 @@ Acquisition trigger
 - Acquisition trigger - ``RP_TRIG_SRC_CHC_PE, RP_TRIG_SRC_CHC_NE, RP_TRIG_SRC_CHD_PE, RP_TRIG_SRC_CHD_NE``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +--------------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------------+
 | SCPI                                                   | API, Jupyter                                                                         | DESCRIPTION                                                                   |  ECOSYSTEM              |
@@ -1506,7 +1506,7 @@ even though it is displayed to happen at approximately 8192nd sample in the acqu
 
 - ``<n> = {3,4}`` (set channel IN3, or IN4)
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +---------------------------------------+-----------------------------------------------------------------------------------+----------------------------------------------------------+--------------------+
 | SCPI                                  | API, Jupyter                                                                      | DESCRIPTION                                              |  ECOSYSTEM         |
@@ -1558,7 +1558,7 @@ Data read
 - Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | SCPI                                        | API, Jupyter                                                                                                                             | DESCRIPTION                                                                            |  ECOSYSTEM         |
@@ -1780,7 +1780,7 @@ DMA data read
 
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
 | SCPI                                               | API, Jupyter                                                                                                               | DESCRIPTION                                                                     |  ECOSYSTEM         |
@@ -1838,14 +1838,16 @@ UART
 
 **Available Jupyter and API macros:**
 
-- *(Future OS release)*
-
+- UART bit size - ``RP_UART_CS6, RP_UART_CS7, RP_UART_CS8``
+- UART stop bits - ``RP_UART_STOP1, RP_UART_STOP2``
+- UART parity mode - ``RP_UART_NONE, RP_UART_EVEN, RP_UART_ODD, RP_UART_MARK, RP_UART_SPACE``
 
 .. note::
 
     When establishing UART communication with Red Pitaya and another device, do not forget to connect the External Common Mode (GND) pin (in addition to the RX and TX pins). Otherwise, the communication might be unreliable.
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
 | SCPI                                | API, Jupyter                                                        | DESCRIPTION                                                                            |  ECOSYSTEM         |
@@ -1951,9 +1953,13 @@ SPI
 
 **Available Jupyter and API macros:**
 
-- *(Future OS release)*
+- SPI mode - ``RP_SPI_MODE_LISL, RP_SPI_MODE_LIST, RP_SPI_MODE_HISL, RP_SPI_MODE_HIST``
+- SPI bit order - ``RP_SPI_ORDER_BIT_MSB, RP_SPI_ORDER_BIT_LSB``
+- SPI state - ``RP_SPI_STATE_NOT, RP_SPI_STATE_READY``
+- SPI CS mode - ``RP_SPI_CS_NORMAL, RP_SPI_CS_HIGH``
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | SCPI                                       | API, Jupyter                                                                                                             | DESCRIPTION                                                                        |  ECOSYSTEM         |
@@ -2109,11 +2115,10 @@ I2C
    - ``#QXXX`` = Oct format
    - ``#BXXXXXXXX`` = Bin format
 
-**Available Jupyter and API macros:**
+.. **Available Jupyter and API macros:**
 
-- *(Future OS release)*
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
 | SCPI                                             | API, Jupyter                                                                    | DESCRIPTION                                                           |  ECOSYSTEM         |
@@ -2279,49 +2284,49 @@ CAN
     - ``RP_HW_CAN_ESR `` - Failed read frame from socket
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | SCPI                                                                                | API, Jupyter                                                                                                 | DESCRIPTION                                                                 |  ECOSYSTEM         |
 +=====================================================================================+==============================================================================================================+=============================================================================+====================+
 | | ``CAN:FPGA <bool>``                                                               | | C: ``rp_CanSetFPGAEnable(bool enable)``                                                                    | Enables FPGA forwarding from CAN controller to GPIO.                        | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN:FPGA ON``                                                                   | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN:FPGA ON``                                                                   | | Python: ``rp_CanSetFPGAEnable(enable)``                                                                    |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN:FPGA?`` > ``<bool>``                                                        | | C: ``rp_CanGetFPGAEnable(bool *state)``                                                                    | Gets the status of FPGA forwarding from CAN controller to GPIO.             | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN:FPGA?`` > ``ON``                                                            | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN:FPGA?`` > ``ON``                                                            | | Python: ``rp_CanGetFPGAEnable()``                                                                          |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:START``                                                                  | | C: ``rp_CanStart(rp_can_interface_t interface)``                                                           | | Sets the state of the specified interface to UP.                          | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | Bitrate must be set before starting or restarting the interface.          |                    |
-| | ``CAN0:START``                                                                    | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:START``                                                                    | | Python: ``rp_CanStart(interface)``                                                                         | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:STOP``                                                                   | | C: ``rp_CanStop(rp_can_interface_t interface)``                                                            | Sets the state of the specified interface to DOWN.                          | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:STOP``                                                                     | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:STOP``                                                                     | | Python: ``rp_CanStop(interface)``                                                                          |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:RESTART``                                                                | | C: ``rp_CanRestart(rp_can_interface_t interface)``                                                         | | Restarts the specified interface.                                         | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | Bitrate must be set before starting or restarting the interface.          |                    |
-| | ``CAN0:RESTART``                                                                  | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:RESTART``                                                                  | | Python: ``rp_CanRestart(interface)``                                                                       | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:STATE?`` > ``<state>``                                                   | | C: ``rp_CanGetState(rp_can_interface_t interface, rp_can_state_t *state)``                                 | | Returns the current state of the CAN interface.                           | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | ``ERROR_ACTIVE`` - RX/TX error count < 96                                 |                    |
-| | ``CAN0:STATE?`` > ``ERROR_ACTIVE``                                                | | Python:                                                                                                    | | ``ERROR_WARNING`` - RX/TX error count < 128                               |                    |
+| | ``CAN0:STATE?`` > ``ERROR_ACTIVE``                                                | | Python: ``rp_CanGetState(interface)``                                                                      | | ``ERROR_WARNING`` - RX/TX error count < 128                               |                    |
 | |                                                                                   | |                                                                                                            | | ``ERROR_PASSIVE`` - RX/TX error count < 256                               |                    |
 | |                                                                                   | |                                                                                                            | | ``BUS_OFF`` - RX/TX error count >= 256                                    |                    |
 | |                                                                                   | |                                                                                                            | | ``STOPPED`` - Device is stopped                                           |                    |
@@ -2329,21 +2334,21 @@ CAN
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:BITRate <speed>``                                                        | | C: ``rp_CanSetBitrate(rp_can_interface_t interface, uint32_t bitRate)``                                    | | Sets the bitrate (Hz) for the specified interface. Sample point is        | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | set automatically.                                                        |                    |
-| | ``CAN0:BITRate 200000``                                                           | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:BITRate 200000``                                                           | | Python: ``rp_CanGetStateName(state)``                                                                      | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:BITRate:SP <speed>,<sp>``                                                | | C: ``rp_CanSetBitrateAndSamplePoint(rp_can_interface_t interface,uint32_t bitRate,float samplePoint)``     | Sets the bitrate (Hz) and sample point (0.1%) for the specified interface.  | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:BITRate:SP 200000,0.8``                                                    | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:BITRate:SP 200000,0.8``                                                    | | Python: ``rp_CanSetBitrateAndSamplePoint(interface, bitRate, samplePoint)``                                |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:BITRate:SP?`` > ``<speed>,<sp>``                                         | | C: ``rp_CanGetBitrateAndSamplePoint(rp_can_interface_t interface,uint32_t *bitRate, float *samplePoint)``  | | Shows the real bit-rate ``speed``in bits/sec and the sample-point ``sp``  | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | in the range 0.000...0.999.                                               |                    |
-| | ``CAN0:BITRate:SP?`` > ``200000,0.8``                                             | | Python:                                                                                                    | | If the calculation of bit-timing parameters is enabled in the kernel      |                    |
+| | ``CAN0:BITRate:SP?`` > ``200000,0.8``                                             | | Python: ``rp_CanGetBitrateAndSamplePoint(interface)``                                                      | | If the calculation of bit-timing parameters is enabled in the kernel      |                    |
 | |                                                                                   | |                                                                                                            | | (CONFIG_CAN_CALC_BITTIMING=y), the bit-timing can be defined by setting   |                    |
 | |                                                                                   | |                                                                                                            | | the "bitrate" argument. Optionally, the "sample-point" can be specified.  |                    |
 | |                                                                                   | |                                                                                                            | | By default it's 0.000 assuming CIA-recommended sample-points.             |                    |
@@ -2351,21 +2356,21 @@ CAN
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:BITTiming <tq>,<prop_seg>,<phase_seg1>,<phase_seg2>,<sjw>,<brp>``        | | C: ``rp_CanSetBitTiming(rp_can_interface_t interface, rp_can_bittiming_t bitTiming)``                      | | Set bit-timing settings.                                                  | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | `Bit timming info <https://en.wikipedia.org/wiki/CAN_bus#Bit_timing>`_    |                    |
-| | ``CAN0:BITTiming 1000,1,2,1,1,10``                                                | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:BITTiming 1000,1,2,1,1,10``                                                | | Python: ``rp_CanSetBitTiming(interface, bitTiming)``                                                       | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:BITTiming?`` > ``<tq>,<prop_seg>,<phase_seg1>,<phase_seg2>,<sjw>,<brp>`` | | C: ``rp_CanGetBitTiming(rp_can_interface_t interface, rp_can_bittiming_t *bitTiming)``                     | | Shows the time quanta ``tq`` in ns, propagation segment ``prop_seg``,     | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | phase buffer segment 1 and 2 ``phase_seg1, phase_seg2``, and the          |                    |
-| | ``CAN0:BITTiming?`` > ``1000,1,2,1,1,10``                                         | | Python:                                                                                                    | | synchronisation jump width ``sjw`` in units of time quanta.               |                    |
+| | ``CAN0:BITTiming?`` > ``1000,1,2,1,1,10``                                         | | Python: ``rp_CanGetBitTiming(interface, bitTiming)``                                                       | | synchronisation jump width ``sjw`` in units of time quanta.               |                    |
 | |                                                                                   | |                                                                                                            | | These settings define CAN bit timing in a hardware-independent format     |                    |
 | |                                                                                   | |                                                                                                            | | proposed by Bosch CAN 2.0 specification (Chapter 8).                      |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:BITTiming:Limits?`` > ``<limits>``                                       | | C: ``rp_CanGetBitTimingLimits(rp_can_interface_t interface, rp_can_bittiming_limits_t *bitTiming)``        | | Displays the CAN controller bit timing constants ("sja1000"), the         | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | minimum and maximum values of time segment 1 and 2, the synchronisation   |                    |
-| | ``CAN0:BITTiming:Limits?`` > ``1,16,1,8,4,1,256,1``                               | | Python:                                                                                                    | | jump width ``swj`` in time quanta (``tq``) units, the bit rate            |                    |
+| | ``CAN0:BITTiming:Limits?`` > ``1,16,1,8,4,1,256,1``                               | | Python: ``rp_CanGetBitTimingLimits(interface, bitTiming)``                                                 | | jump width ``swj`` in time quanta (``tq``) units, the bit rate            |                    |
 | |                                                                                   | |                                                                                                            | | prescaler ``brp`` and the CAN system clock frequency in Hz.               |                    |
 | |                                                                                   | |                                                                                                            | | These constants can be used for user defined (non-standard) bit timing    |                    |
 | |                                                                                   | |                                                                                                            | | calculation algorithms in user space.                                     |                    |
@@ -2373,35 +2378,35 @@ CAN
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:CLOCK?`` > ``<clock>``                                                   | | C: ``rp_CanGetClockFreq(rp_can_interface_t interface, uint32_t *freq)``                                    | Returns the CAN clock frequency in Hz.                                      | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:CLOCK?`` > ``10000000``                                                    | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:CLOCK?`` > ``10000000``                                                    | | Python: ``rp_CanGetClockFreq(interface)``                                                                  |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:BUS:ERROR?`` > ``<tx_err>,<rx_err>``                                     | | C: ``rp_CanGetBusErrorCounters(rp_can_interface_t interface, uint16_t *tx, uint16_t *rx)``                 | Returns the number of errors on the RX and TX busses.                       | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:BUS:ERROR?`` > ``0,0``                                                     | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:BUS:ERROR?`` > ``0,0``                                                     | | Python: ``rp_CanGetBusErrorCounters(interface)``                                                           |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Restart:Time <rs_ms>``                                                   | | C: ``rp_CanSetRestartTime(rp_can_interface_t interface, uint32_t ms)``                                     | | Automatic restart delay time. If set to a non-zero value, the CAN         | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | controller will automatically restart after the specified delay time      |                    |
-| | ``CAN0:Restart:Time 10``                                                          | | Python:                                                                                                    | | in milliseconds in the event of a bus-off condition.                      |                    |
+| | ``CAN0:Restart:Time 10``                                                          | | Python: ``rp_CanSetRestartTime(interface, ms)``                                                            | | in milliseconds in the event of a bus-off condition.                      |                    |
 | |                                                                                   | |                                                                                                            | | Set to ``0`` (OFF) by default.                                            |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Restart:Time?`` > ``<rs_ms>``                                            | | C: ``rp_CanGetRestartTime(rp_can_interface_t interface, uint32_t *ms)``                                    | Returns the current restart delay time (ms).                                | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:Restart:Time?`` > ``10``                                                   | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:Restart:Time?`` > ``10``                                                   | | Python: ``rp_CanGetRestartTime(interface)``                                                                |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:MODE <mode>,<bool>``                                                     | | C: ``rp_CanSetControllerMode(rp_can_interface_t interface, rp_can_mode_t mode, bool state)``               | | Sets the controller mode:                                                 | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | ``LOOPBACK`` - Internal connection between TX and RX                      |                    |
-| | ``CAN0:MODE LOOPBACK,ON``                                                         | | Python:                                                                                                    | | ``LISTENONLY`` - Disabled TX, RX only, CAN bus monitoring                 |                    |
+| | ``CAN0:MODE LOOPBACK,ON``                                                         | | Python: ``rp_CanSetControllerMode(interface, mode, state)``                                                | | ``LISTENONLY`` - Disabled TX, RX only, CAN bus monitoring                 |                    |
 | |                                                                                   | |                                                                                                            | | ``3_SAMPLES`` -  Tripple sampling mode                                    |                    |
 | |                                                                                   | |                                                                                                            | | ``ONE_SHOT`` - One shot mode                                              |                    |
 | |                                                                                   | |                                                                                                            | | ``BERR_REPORTING`` - Buss error reporting                                 |                    |
@@ -2409,28 +2414,28 @@ CAN
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:MODE? <mode>`` > ``<bool>``                                              | | C: ``rp_CanGetControllerMode(rp_can_interface_t interface, rp_can_mode_t mode, bool *state)``              | Checks the status of the selected mode.                                     | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:MODE? LOOPBACK`` > ``ON``                                                  | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:MODE? LOOPBACK`` > ``ON``                                                  | | Python: ``rp_CanGetControllerMode(interface, mode)``                                                       |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:OPEN``                                                                   | | C: ``rp_CanOpen(rp_can_interface_t interface)``                                                            | Opens a socket connection for the specified interface.                      | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:OPEN``                                                                     | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:OPEN``                                                                     | | Python: ``rp_CanOpen(interface)``                                                                          |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:CLOSE``                                                                  | | C: ``rp_CanClose(rp_can_interface_t interface)``                                                           | Closes an open connection.                                                  | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:CLOSE``                                                                    | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:CLOSE``                                                                    | | Python: ``rp_CanClose(interface)``                                                                         |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Send<can_id> <buffer>``                                                  | | C: ``rp_CanSend(rp_can_interface_t interface, uint32_t canId, unsigned char *data, uint8_t dataSize,``     | | Sends the frame to the specified address ``can_id``.                      | 2.00-30 and up     |
 | | Example:                                                                          | |    ``bool isExtended, bool rtr, uint32_t timeout)``                                                        | | Data exceeding 8 bytes will be ignored.                                   |                    |
-| | ``CAN0:Send123 1,2,3``                                                            | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:Send123 1,2,3``                                                            | | Python: ``rp_CanSend(interface, canId, data, dataSize, isExtended, rtr, timeout)``                         | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | | C, Python: Option to enable RTR, Extended Frame and add timeout           |                    |
 | |                                                                                   | |                                                                                                            | |            (see below).                                                   |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
@@ -2487,7 +2492,7 @@ CAN
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Read?`` > ``<frame>``                                                    | | C: ``rp_CanRead(rp_can_interface_t interface, uint32_t timeout, rp_can_frame_t *frame)``                   | | Reads 1 frame from the specified CAN interface.                           | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | |                                                                           |                    |
-| | ``CAN0:Read?`` > ``123,123,0,0,0,3,{1,2,3}``                                      | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:Read?`` > ``123,123,0,0,0,3,{1,2,3}``                                      | | Python: ``rp_CanRead(interface, timeout, frame)``                                                          | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | | C, Python: Option to add timeout (see below).                             |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
@@ -2501,35 +2506,35 @@ CAN
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Filter:Add <filter>,<mask>``                                             | | C: ``rp_CanAddFilter(rp_can_interface_t interface, uint32_t filter, uint32_t mask)``                       | | Adds the specified "ID filter" ``filter`` (with mask ``mask``) to the     | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | list of filters. Once all the filters have been added, the command to     |                    |
-| | ``CAN0:Filter:Add 0,0``                                                           | | Python:                                                                                                    | | apply filters to the socket must be called ``CAN<n>:Filter:Set``.         |                    |
+| | ``CAN0:Filter:Add 0,0``                                                           | | Python: ``rp_CanAddFilter(interface, filter, mask)``                                                       | | apply filters to the socket must be called ``CAN<n>:Filter:Set``.         |                    |
 | |                                                                                   | |                                                                                                            | | A filter matches if ``<received_can_id> & mask == filter & mask``         |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Filter:Remove <filter>,<mask>``                                          | | C: ``rp_CanRemoveFilter(rp_can_interface_t interface, uint32_t filter, uint32_t mask)``                    | | Deletes the specified "ID filter" from the filter list of the specified   | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | CAN interface.                                                            |                    |
-| | ``CAN0:Filter:Remove 0,0``                                                        | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:Filter:Remove 0,0``                                                        | | Python: ``rp_CanRemoveFilter(interface, filter, mask)``                                                    | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Filter:Clear``                                                           | | C: ``rp_CanClearFilter(rp_can_interface_t interface)``                                                     | Removes all filters from the filter list of the specified CAN interface.    | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            |                                                                             |                    |
-| | ``CAN0:Filter:Clear``                                                             | | Python:                                                                                                    |                                                                             |                    |
+| | ``CAN0:Filter:Clear``                                                             | | Python: ``rp_CanClearFilter(interface)``                                                                   |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 | |                                                                                   | |                                                                                                            |                                                                             |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:Filter:Set``                                                             | | C: ``rp_CanSetFilter(rp_can_interface_t interface, bool isJoinFilter)``                                    | | Applies the list of ID filters to the socket connection of the specified  | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | CAN interface.                                                            |                    |
-| | ``CAN0:Filter:Set``                                                               | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:Filter:Set``                                                               | | Python: ``rp_CanSetFilter(interface, isJoinFilter)``                                                       | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------+
 | | ``CAN<n>:SHOW:ERROR``                                                             | | C: ``rp_CanShowErrorFrames(rp_can_interface_t interface, bool enable)``                                    | | When this mode is on, all errors will be converted to data frames with    | 2.00-30 and up     |
 | | Example:                                                                          | |                                                                                                            | | the error frame marker.                                                   |                    |
-| | ``CAN0:SHOW:ERROR``                                                               | | Python:                                                                                                    | |                                                                           |                    |
+| | ``CAN0:SHOW:ERROR``                                                               | | Python: ``rp_CanShowErrorFrames(interface, enable)``                                                       | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
 | |                                                                                   | |                                                                                                            | |                                                                           |                    |
@@ -2553,7 +2558,7 @@ Status LEDs
 - *(Future OS release)*
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-------------------------------------+---------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | SCPI                                | API, Jupyter                                      | DESCRIPTION                                                                        |  ECOSYSTEM         |
@@ -2618,7 +2623,7 @@ Temperature protection
 - Fast analog channels - ``RP_CH_3, RP_CH_4``
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | SCPI                                | API, Jupyter                                                                | DESCRIPTION                                                                        |  ECOSYSTEM         |
@@ -2675,7 +2680,7 @@ LCR mode
 - *(Future OS release)*
 
 
-.. tabularcolumns:: |p{28mm}|p{28mm}|p{28mm}|p{28mm}|
+.. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
 
 +-------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
 | SCPI                                      | API, Jupyter                                                     | DESCRIPTION                                                                         |  ECOSYSTEM         |
