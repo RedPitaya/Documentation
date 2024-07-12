@@ -28,7 +28,7 @@ Technical specifications
 ===========================
 
 .. table::
-    :widths: 10 18
+    :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **Basic**                                                               |
@@ -52,7 +52,7 @@ Technical specifications
 |
 
 .. table::
-    :widths: 10 18
+    :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **Connectivity**                                                        |
@@ -67,7 +67,7 @@ Technical specifications
 |
 
 .. table::
-    :widths: 10 18
+    :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **RF inputs**                                                           |
@@ -97,7 +97,7 @@ Technical specifications
 |
 
 .. table::
-    :widths: 10 18
+    :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **RF outputs**                                                          |
@@ -126,7 +126,7 @@ Technical specifications
 |
 
 .. table::
-    :widths: 10 18
+    :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **Extension connector**                                                 | 
@@ -161,7 +161,7 @@ Technical specifications
 |
 
 .. table::
-    :widths: 10 18
+    :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
