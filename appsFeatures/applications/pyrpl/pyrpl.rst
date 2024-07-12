@@ -1,4 +1,4 @@
-.. _vna_extension:
+.. _pyrpl:
 
 #######################
 PyPRL
