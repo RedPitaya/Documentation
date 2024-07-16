@@ -8,3 +8,4 @@ Extension modules
    sensor_ext.rst
    click_shield.rst
    lcr_ext.rst
+   logic_ext.rst
