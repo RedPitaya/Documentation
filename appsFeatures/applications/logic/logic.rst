@@ -128,9 +128,7 @@ The Logic Analyser extension module is recommended for maximum performance of th
 
 To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyser probes to the :ref:`E1 <E1>` on the Red Pitaya board (3V3 logic ONLY). The pins used for the logic analyser board are shown in the picture below.
 
-.. note::
-
-    Direct use of the GPIO :ref:`E1 <E1>` pins of the Red Pitaya board works only with STEMlab 125-10! The connection for the STEMlab 125-10 board is shown in the image below (left).
+    The direct use of the GPIO :ref:`E1 <E1>` pins of the Red Pitaya board works on any Red Pitaya model. A connection example is shown in the image below (left).
     
 .. figure:: img/Slika_10_LA.png
 	:width: 1000
