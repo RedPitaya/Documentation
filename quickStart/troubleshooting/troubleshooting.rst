@@ -293,7 +293,7 @@ How to upgrade OS?
 Is Red Pitaya not booting even after OS update?
 -------------------------------------------------
 
-*    Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
+*    Please use the Balena Etcher application to rewrite the OS manually. :ref:`Prepare SD card <prepareSD>`
 *    **Upgraded from an older Red Pitaya OS to the 2.00 Unified OS?** Please try |GitHub_250| and |GitHub_254|
 
 .. |GitHub_250| raw:: html
@@ -308,7 +308,12 @@ Is Red Pitaya not booting even after OS update?
 Is Red Pitaya failing to update?
 ----------------------------------
 
-Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
+There are two possible solutions to this problem:
+
+-   If the :ref:`Software update tool <software_update>` reports that your Red Pitaya is offline, please connect the Red Pitaya into an ethernet socket with internet access.
+    Internet connection is not shared with the directly connected devices without some setting configurations.
+
+-   Please use the Balena Etcher application to manually rewrite the Red Pitaya OS on the SD card. :ref:`Prepare SD card <prepareSD>`
 
 
 
