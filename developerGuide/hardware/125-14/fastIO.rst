@@ -388,14 +388,14 @@ An example of reading the same calibration parameters from EEPROM with non-verbo
 
 You can write the changed calibration parameters using the ``calib -w`` command:
 
-1. In the command line (terminal), type calib-w.
+1. In the command line (terminal), type calib -w.
 #. Press enter.
 #. Paste or write new calibration parameters.
 #. Press enter.
 
 .. code-block:: shell-session
    
-    root@rp-xxxxxx:~# calib -w
+    root@rp-xxxxxx:~# calib -wn
                         1             2674690                   2                 -69                   3             2692407
                         4                 -94                   9             2817122                  10                -159
                        11             2811646                  12                -126                  17             3113286
