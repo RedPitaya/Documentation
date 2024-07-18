@@ -4,7 +4,7 @@ Generate sweep signal
 Description
 =============
 
-This example shows how to program Red Pitaya to generate a sweep signal from 100 Hz to 100 kHz. Voltage and frequency ranges depend on the Red Pitaya model.
+This example shows how to program Red Pitaya to generate a sweep signal from 1 kHz to 100 kHz. Voltage and frequency ranges depend on the Red Pitaya model.
 
 
 Required hardware
@@ -36,7 +36,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     ampl = 1;
     
     % Sweep settings
-    sweep_start_freq = 100;
+    sweep_start_freq = 1000;
     sweep_stop_freq = 100000;
     sweep_time_us = 5000000;    % in microseconds
     sweep_mode = 'log';         % linear / log
@@ -91,7 +91,7 @@ Code - Python
     ampl = 1
     
     # Sweep settings
-    sweep_start_freq = 100
+    sweep_start_freq = 1000
     sweep_stop_freq = 100000
     sweep_time_us = 5000000     # in microseconds
     sweep_mode = "log"          # linear / log
@@ -133,7 +133,7 @@ Code - Python
     ampl = 1
     
     # Sweep settings
-    sweep_start_freq = 100
+    sweep_start_freq = 1000
     sweep_stop_freq = 100000
     sweep_time_us = 5000000     # in microseconds
     sweep_mode = "log"          # linear / log
@@ -180,10 +180,80 @@ API Code Examples
     The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
     Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
 
-Code - C API
+Code - C++ API
 ---------------
 
-.. code-block:: c
+.. code-block:: cpp
+
+    /* Red Pitaya C++ API example of generating a sweep signal */
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <math.h>
+    
+    #include "rp.h"
+    #include "common/rp_sweep.h"
+    
+    
+    using namespace rp_sweep_api;
+    
+    int main(int argc, char *argv[]) {
+
+        /* Variables */
+        int start_freq = 1000;
+        int stop_freq = 100000;
+        int sweep_time_us = 5000000;
+        rp_gen_sweep_mode_t sweep_mode = RP_GEN_SWEEP_MODE_LINEAR;  // RP_GEN_SWEEP_MODE_LOG
+        rp_gen_sweep_dir_t sweep_dir = RP_GEN_SWEEP_DIR_NORMAL;     // RP_GEN_SWEEP_DIR_UP_DOWN
+    
+        /* Print error, if rp_Init() function failed */
+        if(rp_Init() != RP_OK){
+            fprintf(stderr, "Rp api init failed!\n");
+        }
+    
+        if(rp_SWInit() != RP_OK){
+            fprintf(stderr, "Rp sweep init failed!\n");
+        }
+    
+    
+        /* Reset Generation and clear all sweep parameters */
+        rp_GenReset();
+        rp_SWResetAll();
+    
+        /* Configure Generator parameters */
+        rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
+        rp_GenFreq(RP_CH_1, start_freq);
+        rp_GenAmp(RP_CH_1, 1.0);
+    
+        /* Configure sweep parameters */
+        rp_SWSetStartFreq(RP_CH_1, start_freq);
+        rp_SWSetStopFreq(RP_CH_1, stop_freq);
+        rp_SWSetTime(RP_CH_1, sweep_time_us);
+        rp_SWSetMode(RP_CH_1, sweep_mode);
+        rp_SWSetDir(RP_CH_1, sweep_dir);
+    
+        /* Turn on the output */
+        rp_GenOutEnable(RP_CH_1);
+        rp_GenTriggerOnly(RP_CH_1);
+    
+        /* Turn ON Sweep generator */
+        rp_SWGenSweep(RP_CH_1, true);
+    
+        /* Start sweep generation */
+        rp_SWRun();
+        printf("Press enter to continue...\n");
+        getchar();
+        /* Stop sweep generation */
+        rp_SWStop();
+        printf("Press enter to continue...\n");
+        getchar();
+    
+        /* Release resources */
+        rp_SWRelease();
+        rp_Release();
+        return 0;
+    }
 
 
 
@@ -192,6 +262,67 @@ Code - Python API
 
 .. code-block:: python
 
+    #!/usr/bin/python3
+    
+    import time
+    import rp
+    import rp_sweep
+    
+    
+    channel = rp.RP_CH_1        # rp.RP_CH_2
+    waveform = rp.RP_WAVEFORM_SINE
+    ampl = 1
+    
+    # Sweep settings
+    sweep_start_freq = 1000
+    sweep_stop_freq = 100000
+    sweep_time_us = 5000000                         # in microseconds
+    sweep_mode = rp_sweep.RP_GEN_SWEEP_MODE_LINEAR  # linear / log
+    sweep_dir = rp_sweep.RP_GEN_SWEEP_DIR_NORMAL    # normal / up_down
+    
+    # Initialize the interface
+    rp.rp_Init()
+    rp_sweep.rp_SWInit()
+    
+    # Reset generator and sweep mode
+    rp.rp_GenReset()
+    rp_sweep.rp_SWResetAll()
+    
+    print("Reset")
+    ###### Generation #####
+    rp.rp_GenWaveform(channel, waveform)
+    rp.rp_GenFreqDirect(channel, sweep_start_freq)
+    rp.rp_GenAmp(channel, ampl)
+    
+    ## Sweep settings
+    rp_sweep.rp_SWSetStartFreq(channel, sweep_start_freq)
+    rp_sweep.rp_SWSetStopFreq(channel, sweep_stop_freq)
+    rp_sweep.rp_SWSetTime(channel, sweep_time_us)
+    rp_sweep.rp_SWSetMode(channel, sweep_mode)
+    rp_sweep.rp_SWSetDir(channel, sweep_dir)
+    
+    print(f"Start freq: {rp_sweep.rp_SWGetStartFreq(channel)[1]}")
+    print(f"Stop freq: {rp_sweep.rp_SWGetStopFreq(channel)[1]}")
+    print(f"Time [us]: {rp_sweep.rp_SWGetTime(channel)[1]}")
+    print(f"Mode: {rp_sweep.rp_SWGetMode(channel)[1]}")
+    print(f"Dir: {rp_sweep.rp_SWGetDir(channel)[1]}")
+    print("Sweep set")
+    
+    rp_sweep.rp_SWGenSweep(channel, True)
+    
+    # Enable output and trigger the generator
+    rp.rp_GenOutEnable(channel)
+    rp.rp_GenTriggerOnly(channel)
+    
+    rp_sweep.rp_SWRun()
+    input()
+    rp_sweep.rp_SWStop()
+    
+    rp_sweep.rp_SWGenSweep(channel, False)
+    
+    # Release resources
+    rp_sweep.rp_SWRelease()
+    rp.rp_Release()
 
 
 
