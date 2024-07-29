@@ -13,3 +13,4 @@ Digital communication interfaces
    uart
    uart_2
    can_loopback
+   can

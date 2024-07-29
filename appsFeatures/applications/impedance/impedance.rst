@@ -128,7 +128,7 @@ LCR meter indicator
 
 The indicator displays a green light when the LCR meter extension board is connected. Otherwise, a red light is shown.
 
-
+.. _impedance_connection:
 
 How to use the impedance analyzer
 ==================================

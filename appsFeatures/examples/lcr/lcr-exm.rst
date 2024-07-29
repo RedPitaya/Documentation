@@ -16,7 +16,7 @@ Required hardware
     -   LCR circuit or some components
     -   Either LCR meter extension or an external shunt resistor
 
-Instructions on how to connect the circuit to the Red Pitaya board are available :ref:`here <How to use the impedance analyzer>`.
+Instructions on how to connect the circuit to the Red Pitaya board are available :ref:`here <impedance_connection>`.
 
 Circuit
 =======

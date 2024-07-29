@@ -2219,7 +2219,7 @@ CAN
 
 **Parameter options:**
 
-- ``<n> = {0,1}``(set CAN interface CAN0 or CAN1)
+- ``<n> = {0,1}`` (set CAN interface CAN0 or CAN1)
 - ``<bool> = {OFF, ON}`` Default: ``OFF``
 - ``<state> = {ERROR_ACTIVE, ERROR_WARNING, ERROR_PASSIVE, BUS_OFF, STOPPED, SLEEPING}``
 - ``<mode> = {LOOPBACK, LISTENONLY, 3_SAMPLES, ONE_SHOT, BERR_REPORTING}``
@@ -2293,7 +2293,7 @@ CAN
     - ``RP_HW_CAN_ESFA`` - Failed add filter. Filter already present in list
     - ``RP_HW_CAN_ESFS`` - Failed apply filter
     - ``RP_HW_CAN_ESEF`` - Failed to set error handling
-    - ``RP_HW_CAN_ESR `` - Failed read frame from socket
+    - ``RP_HW_CAN_ESR`` - Failed read frame from socket
 
 
 .. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|

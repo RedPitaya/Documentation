@@ -1,4 +1,4 @@
-.. _canLoopback_example
+.. _canLoopback_example:
 
 CAN Loopback (HW api)
 ######################
