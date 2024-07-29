@@ -202,6 +202,11 @@ Red Pitaya status LED description:
       .. figure:: img/MAC_content_privacy2.png
          :width: 600
 
+      It may be necessary to completely disable the Content & Privacy settings.
+
+      .. figure:: img/MAC_content_privacy3.png
+         :width: 600
+
     - If you updated form 1.04 to 2.00 OS version, check GitHub issues |#250| and |#254|.
     - Try connecting via the :ref:`serial console <console>`. Check the boot log and see whether you can access the on-board Linux Terminal.
     - Check the :ref:`Nightly Builds Changelog <nightly_builds>` for any relevant updates.
