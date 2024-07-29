@@ -78,6 +78,10 @@ Assembly instructions
 #. Remove the protective film from the top of the thermal pad.
 #. Insert the Red Pitaya board into the heatsink interface, bottom side down. Make sure the holes on the board and the interface are aligned.
 
+    .. figure:: img/Heatsink_stack.png
+        :align: center
+        :width: 600
+
     .. figure:: img/Heatsink_side_view2.jpg
         :align: center
         :width: 600

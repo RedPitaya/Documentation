@@ -140,6 +140,10 @@ Connectors
 | TRIG OUT                | DIO0_N             | External trigger Output                |
 +-------------------------+--------------------+----------------------------------------+
 
+.. note::
+
+    REF CLK IN connector is connected to the DIO10_P GPIO pin, which can act as a reference clock input, but the functionatlity is not included in the base FPGA image, so it must be added by the user.
+
 |
  
 

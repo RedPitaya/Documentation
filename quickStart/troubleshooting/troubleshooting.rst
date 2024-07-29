@@ -202,6 +202,11 @@ Red Pitaya status LED description:
       .. figure:: img/MAC_content_privacy2.png
          :width: 600
 
+      It may be necessary to completely disable the Content & Privacy settings.
+
+      .. figure:: img/MAC_content_privacy3.png
+         :width: 600
+
     - If you updated form 1.04 to 2.00 OS version, check GitHub issues |#250| and |#254|.
     - Try connecting via the :ref:`serial console <console>`. Check the boot log and see whether you can access the on-board Linux Terminal.
     - Check the :ref:`Nightly Builds Changelog <nightly_builds>` for any relevant updates.
@@ -293,7 +298,7 @@ How to upgrade OS?
 Is Red Pitaya not booting even after OS update?
 -------------------------------------------------
 
-*    Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
+*    Please use the Balena Etcher application to rewrite the OS manually. :ref:`Prepare SD card <prepareSD>`
 *    **Upgraded from an older Red Pitaya OS to the 2.00 Unified OS?** Please try |GitHub_250| and |GitHub_254|
 
 .. |GitHub_250| raw:: html
@@ -308,7 +313,12 @@ Is Red Pitaya not booting even after OS update?
 Is Red Pitaya failing to update?
 ----------------------------------
 
-Please use the Balena Etcher application to rewrite the OS manually. The latest Windows update has been reported to have broken the Win32 disc imager. :ref:`Prepare SD card <prepareSD>`
+There are two possible solutions to this problem:
+
+-   If the :ref:`Software update tool <software_update>` reports that your Red Pitaya is offline, please connect the Red Pitaya into an ethernet socket with internet access.
+    Internet connection is not shared with the directly connected devices without some setting configurations.
+
+-   Please use the Balena Etcher application to manually rewrite the Red Pitaya OS on the SD card. :ref:`Prepare SD card <prepareSD>`
 
 
 
@@ -347,10 +357,19 @@ Please ensure that your browser's ad blockers are turned off for the "rp-xxxxxx.
    :align: center
    :width: 700
 
+Here are a few things you can try:
+
+- Disable ad blocker's for the "rp-xxxxxx.local" website
+- Disable VPN
+- Clear cookies for the "rp-xxxxxx.local" website
+- Try *incognito mode*
+
+
 Undesired disconnections?
 ---------------------------
 
-If possible, we recommend testing the setup on a different computer and a different network, as well as, checking the state of the Ethernet cables and power supply, proxy settings, and re-writing the OS.
+We recommend connecting the Red Pitaya to a router (or an ethernet port that is connected to it) and testing the setup again.
+If the problem persists, please test the setup on a different computer and a different network. Also check the state of the Ethernet cables and power supply, proxy settings, and re-writing the OS.
 
 
 An application is not working?
@@ -364,7 +383,37 @@ We suggest upgrading to the latest OS and trying again. Otherwise, please :ref:`
 
 .. note::
 
-   The 2.00 Unified OS update has seen registry changes in the FPGA, so, likely, older applications will not work after the OS update (Xilinx also changed how the FPGA is loaded into the FPGA).
+   With the 2.00 Unified OS, we also updated Ubuntu to 22.04 LTS, which introduced registry changes implemented by AMD Xilinx in the way the FPGA bitstream image is loaded into the FPGA. As a result, we had to update all official applications to work with the new structure.
+   Unfortunately, not all 3rd party applications have been updated, so they may not work with the latest OS versions. In this case, we recommend either downgrading the Red Pitaya OS version to 1.04 or using an alternative application.
+
+
+Lock-in PID applications not working?
+--------------------------------------
+
+Depending on the Red Pitaya OS version you are currently using, some of the Lock-In PID applications may not work. Here is a compatibility table:
+
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+| **Lock-in PID application**   | **Application type** | **Compatible Red Pitaya OS**            | **Red Pitaya board compatibility**  | **Link to documentation**                                                   |
++===============================+======================+=========================================+=====================================+=============================================================================+
+| Linien                        | 3rd party            | | 2.00-15 and above                     | | STEMlab 125-14                    | `Linien GitHub <https://github.com/linien-org/linien>`_                     |
+|                               |                      | | 1.04 (Limited compatibility)          |                                     |                                                                             |
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+| Lock-in+PID (Marcelo Luda)    | 3rd party            | | 1.04-28 or older                      | | STEMlab 125-14                    | `Lock-in+PID GitHub <https://marceluda.github.io/rp_lock-in_pid/>`_         |
+|                               |                      | |                                       | | STEMlab 125-10 (discontinued)     |                                                                             |
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+| PyRPL                         | | (in-dev) official  | | in-dev                                | | STEMlab 125-14                    | `PyRPL documentation <https://pyrpl.readthedocs.io/en/latest/>`_            |
+|                               | | 3rd party          | | 1.04-28 or older                      | | STEMlab 125-10 (discontinued)     |                                                                             |
++-------------------------------+----------------------+-----------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
+
+|
+
+In the future, we will fully support PyRPL in the official Red Pitaya OS (). Currently, it is available in the latest :ref:`nightly build versions of the OS <nightly_builds>`.
+If you find a bug in the official Red Pitaya PyRPL, please :ref:`report it <report_bug>`.
+
+.. note::
+
+   With the 2.00 Unified OS, we also updated Ubuntu to 22.04 LTS, which introduced registry changes implemented by AMD Xilinx in the way the FPGA bitstream image is loaded into the FPGA. As a result, we had to update all official applications to work with the new structure.
+   Unfortunately, not all 3rd party applications have been updated, so they may not work with the latest OS versions. In this case, we recommend either downgrading the Red Pitaya OS version to 1.04 or using an alternative application.
 
 
 

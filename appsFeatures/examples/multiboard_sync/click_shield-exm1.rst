@@ -88,7 +88,7 @@ When using an external clock and external trigger, the clock and trigger signals
 
 .. note::
 
-  The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software. The generation and acquisition trigger fronts apply after the "OR gate" and trigger either DAC or ADC, depending on the ``DAISY:TRIG_O:SOUR <mode>`` command.
+    The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software. The generation and acquisition trigger fronts apply after the "OR gate" and trigger either DAC or ADC, depending on the ``DAISY:TRIG_O:SOUR <mode>`` command.
 
 
 
@@ -97,13 +97,189 @@ SCPI Code Examples
 
 .. note::
 
-  This code is written for **2.00-30 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+    This code is written for **2.00-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 
-.. Code - MATLAB®
-.. ---------------
+Code - MATLAB®
+---------------
 
-
+.. code-block:: matlab
+        
+    %% ### CLICK SHIELD EXAMPLE ###
+    % This example is for setting up two units (one primary and one secondary)
+    % For multiple secondary units duplicate the code for the secondary unit
+    % and change the IP address and RP_SEC to for example, RP_SECx (where x is
+    % a consecutive secondary unit)
+    % This example is for External clock Red Pitaya units connected with Red
+    % Pitaya Click Shields
+        
+        
+    %% Parameters
+    
+    clear all;
+    close all;
+    clc
+    
+    % Generation
+    wave_form = 'SINE';
+    freq = 100e3;
+    ampl = 1;
+    
+    % Acquisition
+    dec = 2;
+    trig_lvl = 0.5;
+    trig_dly = 7000;
+    
+    
+    %% Set up the IP and SCPI server
+    
+    IP_PRI = 'rp-f066c8.local';           % Primary unit
+    IP_SEC = 'rp-f0ac90.local';           % Secondary unit
+    
+    port = 5000;
+    RP_PRI = tcpclient(IP_PRI, port);           % create a TCP client object
+    RP_SEC = tcpclient(IP_SEC, port);
+    
+    RP_PRI.ByteOrder = 'big-endian';            % Define byte order and terminator for both units
+    configureTerminator(RP_PRI, 'CR/LF'); 
+    RP_SEC.ByteOrder = 'big-endian';
+    configureTerminator(RP_SEC, 'CR/LF');       % defines the line terminator (end sequence of input characters)
+    
+    flush(RP_PRI);
+    fprintf('Program start');
+    
+    
+    %% Reseting Generation and Acquisition
+    writeline(RP_PRI,'GEN:RST');
+    writeline(RP_PRI,'ACQ:RST');
+    
+    writeline(RP_SEC,'GEN:RST');
+    writeline(RP_SEC,'ACQ:RST');
+    
+    
+    %%% PRIMARY UNIT %%%
+    writeline(RP_PRI,'DAISY:TRig:Out:ENable ON');
+    writeline(RP_PRI,'DAISY:TRig:Out:SOUR ADC');      % Select which trigger will be shared
+    
+    writeline(RP_PRI,'DIG:PIN LED5,1');     % indicator
+    
+    fprintf('DIO0_N trigger: %s\n', writeread(RP_PRI,'DAISY:TRig:Out:ENable?'));
+    fprintf('Trigger source: %s\n', writeread(RP_PRI,'DAISY:TRig:Out:SOUR?'));
+    
+    %%% SECONDARY UNIT %%%
+    % this section must be copied if using multiple secondary devices (once for each device)
+    writeline(RP_PRI,'DAISY:TRig:Out:ENable OFF');
+    
+    writeline(RP_SEC,'DIG:PIN LED5,1');     % indicator
+    
+    
+    %% Generation - Primary unit
+    writeline(RP_PRI, append('SOUR1:FUNC ', wave_form));
+    writeline(RP_PRI, append('SOUR1:FREQ:FIX ', num2str(freq)));
+    writeline(RP_PRI, append('SOUR1:VOLT ', num2str(ampl)));
+    
+    writeline(RP_PRI, 'OUTPUT1:STATE ON');
+    fprintf('Generation start\n');
+    
+    
+    %% Acquisition Setup
+    % Primary unit
+    writeline(RP_PRI, append('ACQ:DEC:Factor ', int2str(dec)));
+    writeline(RP_PRI, append('ACQ:TRig:LEV ', num2str(trig_lvl)));
+    writeline(RP_PRI, append('ACQ:TRig:DLY ', num2str(trig_dly)));
+    
+    % Secondary unit
+    writeline(RP_SEC, append('ACQ:DEC:Factor ', num2str(dec)));
+    writeline(RP_SEC, append('ACQ:TRig:LEV ', num2str(trig_lvl)));
+    writeline(RP_SEC, append('ACQ:TRig:DLY ', num2str(trig_dly)));
+    
+    
+    %% Acquisition Start
+    fprintf('ACQ Start\n');
+    % First on secondary unit
+    writeline(RP_SEC, 'ACQ:START');
+    writeline(RP_SEC, 'ACQ:TRig EXT_NE');
+    
+    % Then on primary unit
+    writeline(RP_PRI, 'ACQ:START');
+    pause(0.05);
+    writeline(RP_PRI, 'ACQ:TRig CH1_PE');
+    
+    pause(0.1);
+    writeline(RP_PRI, 'SOUR1:TRig:INT');    % Simulate a trigger
+    
+    % Acquisition check if data is ready
+    
+    % ## Primary unit ##
+    % while 1
+    %     % Get Trigger Status
+    %     trigger = writeread(RP_PRI, 'ACQ:TRig:STAT?');
+    %     if strcmp(trigger,'TD')      % Triggerd?
+    %         break
+    %     end
+    % end
+    % fprintf('Trigger primary condition met.\n');
+    
+    while 1
+        if strcmp(writeread(RP_PRI,'ACQ:TRig:FILL?'),'1')
+            break
+        end
+    end
+    fprintf('Buffer primary filled.\n');
+    
+    % ## Secondary unit ##
+    % while 1
+    %     % Get Trigger Status
+    %     if strcmp(writeread(RP_SEC,'ACQ:TRig:STAT?'),'TD')      % Triggerd?
+    %         break
+    %     end
+    % end
+    % fprintf('Trigger secondary condition met.\n');
+    
+    while 1
+        if strcmp(writeread(RP_SEC,'ACQ:TRig:FILL?'),'1')
+            break
+        end
+    end
+    fprintf('Buffer secondary filled.\n');
+    
+    
+    %% Read and plot data
+    data_string_pri = writeread(RP_PRI,'ACQ:SOUR1:DATA?');
+    data_string_sec = writeread(RP_SEC,'ACQ:SOUR1:DATA?');
+    
+    % Convert values to numbers.
+    % The first character in string is “{“
+    % and the last 3 are 2 spaces and “}”.
+    
+    data_pri = str2num(data_string_pri(1, 2:length(data_string_pri) - 3));
+    data_sec = str2num(data_string_sec(1, 2:length(data_string_sec) - 3));
+    
+    % Plotting
+    x = 0:16383;
+    
+    % MATLAB 2019b or higher
+    t = tiledlayout(2,1);     % for MATLAB r2023a use 'vertical'
+    
+    nexttile
+    plot(x, data_pri)
+    title('Primary unit data')
+    ylabel('V')
+    xlabel('Samples')
+    
+    nexttile
+    plot(x,data_sec)
+    title('Secondary unit data')
+    ylabel('V')
+    xlabel('Samples')
+    
+    title(t, 'Acquired data')
+    
+    writeline(RP_PRI,'DIG:PIN LED5,0');
+    writeline(RP_SEC,'DIG:PIN LED5,0');
+    writeline(RP_PRI, 'OUTPUT1:STATE OFF');
+    
+    clear RP_PRI RP_SEC;
 
 
 Code - Python
@@ -133,7 +309,7 @@ Code - Python
     trig_dly = 7000
 
 
-    IP_PRIM = 'rp-f0a235.local'   # IP Test OS Red Pitaya
+    IP_PRIM = 'rp-f0a235.local'   # Red Pitaya IP
     IP_SEC = 'rp-f0ac90.local'
 
     rp_prim = scpi.scpi(IP_PRIM)
@@ -149,26 +325,20 @@ Code - Python
 
     ###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######
 
-    rp_prim.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
-    rp_prim.tx_txt('DAISY:SYNC:CLK ON')
-    rp_prim.tx_txt('DAISY:TRIG_O:ENable ON')     # Enables GPIO0_N as trigger output
-    rp_prim.tx_txt('DAISY:TRIG_O:SOUR ADC')      # Ext trigger will trigger the ADC
+    rp_prim.tx_txt('DAISY:TRig:Out:ENable ON')   # Enables DIO0_N as trigger output
+    rp_prim.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_prim.tx_txt('DIG:PIN LED5,1')             # LED Indicator
 
     time.sleep(0.2)
 
-    print(f"Trig sync: {rp_prim.txrx_txt('DAISY:SYNC:TRig?')}")
-    print(f"CLK sync: {rp_prim.txrx_txt('DAISY:SYNC:CLK?')}")
-    print(f"GPIO0_N trig: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
-    print(f"Source: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
+    print(f"DIO0_N trig: {rp_prim.txrx_txt('DAISY:TRig:Out:ENable?')}\n")
+    print(f"Trig source: {rp_prim.txrx_txt('DAISY:TRig:Out:SOUR?')}\n")
 
     ###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######
   
-    rp_sec.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
-    rp_sec.tx_txt('DAISY:SYNC:CLK ON')
-    rp_sec.tx_txt('DAISY:TRIG_O:ENable ON')     # Enables GPIO0_N as trigger output
-    rp_sec.tx_txt('DAISY:TRIG_O:SOUR ADC')      # Ext trigger will trigger the ADC
+    rp_sec.tx_txt('DAISY:TRig:Out:ENable OFF')   # Disables DIO0_N as trigger output
+    rp_sec.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_sec.tx_txt('DIG:PIN LED5,1')             # LED Indicator
 
@@ -185,18 +355,17 @@ Code - Python
     ### Aquisition ###
 
     # Primary unit
-    rp_prim.tx_txt(f'ACQ:DEC {dec}')
+    rp_prim.tx_txt(f'ACQ:DEC:Factor {dec}')
     rp_prim.tx_txt(f'ACQ:TRig:LEV {trig_lvl}')
     rp_prim.tx_txt(f'ACQ:TRig:DLY {trig_dly}')
 
     # Secondary unit
-    rp_sec.tx_txt(f'ACQ:DEC {dec}')
+    rp_sec.tx_txt(f'ACQ:DEC:Factor {dec}')
     rp_sec.tx_txt(f'ACQ:TRig:LEV {trig_lvl}')
     rp_sec.tx_txt(f'ACQ:TRig:DLY {trig_dly}')
 
   
     rp_sec.tx_txt('ACQ:START')
-    time.sleep(0.2)                           # Not necessary
     rp_sec.tx_txt('ACQ:TRig EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
                                               # If not synchronised make sure no signal arrives before both units are set up
 
@@ -209,22 +378,22 @@ Code - Python
 
     print("ACQ start")
 
-    while 1:
-        # Get Trigger Status
-        if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger primary condition met.")
+    # while 1:
+    #     # Get Trigger Status
+    #     if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #         break
+    # print("Trigger primary condition met.")
 
     while 1:
         if rp_prim.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer primary filled.")
 
-    while 1:
-        # Get Trigger Status
-        if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger secondary condition met.")
+    # while 1:
+    #     # Get Trigger Status
+    #     if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #         break
+    # print("Trigger secondary condition met.")
 
     while 1:
         if rp_sec.txrx_txt('ACQ:TRig:FILL?') == '1':
@@ -279,8 +448,7 @@ Code - Python
 
     # Connect OUT1 primary with IN1 primary and IN1 secondary
 
-
-    IP_PRIM = 'rp-f0a235.local'   # IP Test OS Red Pitaya
+    IP_PRIM = 'rp-f0a235.local'   # Red Pitaya IP
     IP_SEC = 'rp-f0ac90.local'
 
     rp_prim = scpi.scpi(IP_PRIM)
@@ -296,26 +464,20 @@ Code - Python
 
     ###### ENABLING THE DAISY CHAIN PRIMARY UNIT ######
 
-    rp_prim.tx_txt('DAISY:SYNC:TRig ON')    #! OFF (without sync)
-    rp_prim.tx_txt('DAISY:SYNC:CLK ON')
-    rp_prim.tx_txt('DAISY:TRIG_O:ENable ON')     # Enables GPIO0_N as trigger output
-    rp_prim.tx_txt('DAISY:TRIG_O:SOUR ADC')
+    rp_prim.tx_txt('DAISY:TRig:Out:ENable ON')   # Enables DIO0_N as trigger output
+    rp_prim.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_prim.tx_txt('DIG:PIN LED5,1')            # LED Indicator
 
     time.sleep(0.2)
 
-    print(f"Trig sync: {rp_prim.txrx_txt('DAISY:SYNC:TRig?')}")
-    print(f"CLK sync: {rp_prim.txrx_txt('DAISY:SYNC:CLK?')}")
-    print(f"GPIO0_N trig: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
-    print(f"Source: {rp_prim.txrx_txt('DAISY:TRIG_O:SOUR?')}\n")
+    print(f"DIO0_N trig: {rp_prim.txrx_txt('DAISY:TRig:Out:ENable?')}\n")
+    print(f"Trig source: {rp_prim.txrx_txt('DAISY:TRig:Out:SOUR?')}\n")
 
     ###### ENABLING THE DAISY CHAIN SECONDARY UNIT ######
   
-    rp_sec.tx_txt('DAISY:SYNC:TRig ON')  #! OFF (without sync)  
-    rp_sec.tx_txt('DAISY:SYNC:CLK ON')
-    rp_sec.tx_txt('DAISY:TRIG_O:ENable ON')    # Enables GPIO0_N as trigger output
-    rp_sec.tx_txt('DAISY:TRIG_O:SOUR ADC')     # Ext trigger will trigger the ADC
+    rp_sec.tx_txt('DAISY:TRig:Out:ENable OFF')   # Disables DIO0_N as trigger output
+    rp_sec.tx_txt('DAISY:TRig:Out:SOUR ADC')    # Ext trigger will trigger the ADC
   
     rp_sec.tx_txt('DIG:PIN LED5,1')            # LED Indicator
 
@@ -341,7 +503,6 @@ Code - Python
 
 
     rp_sec.tx_txt('ACQ:START')
-    time.sleep(0.2)                           # Not necessary
     rp_sec.tx_txt('ACQ:TRig EXT_NE')          #! CH1_PE (without sync trig) EXT_NE (with sync trig)
                                               # If not synchronised make sure no signal arrives before both units are set up
 
@@ -354,22 +515,22 @@ Code - Python
 
     print("ACQ start")
 
-    while 1:
-        # Get Trigger Status
-        if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger primary condition met.")
+    # while 1:
+    #    # Get Trigger Status
+    #    if rp_prim.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #        break
+    # print("Trigger primary condition met.")
 
     while 1:
         if rp_prim.txrx_txt('ACQ:TRig:FILL?') == '1':
             break
     print("Buffer primary filled.")
 
-    while 1:
-        # Get Trigger Status
-        if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
-            break
-    print("Trigger secondary condition met.")
+    # while 1:
+    #    # Get Trigger Status
+    #    if rp_sec.txrx_txt('ACQ:TRig:STAT?') == 'TD':               # Triggerd?
+    #        break
+    # print("Trigger secondary condition met.")
 
     while 1:
         if rp_sec.txrx_txt('ACQ:TRig:FILL?') == '1':
@@ -470,8 +631,6 @@ Code - Python API
     rp.rp_AcqReset()
     
     ###### Enable Daisy Chain #####
-    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
-    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
     rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
     
     # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
@@ -506,14 +665,12 @@ Code - Python API
     rp.rp_GenTriggerOnly(channel)       # Trigger generator
     
     # Trigger state
-    while 1:
-        trig_state = rp.rp_AcqGetTriggerState()[1]
-        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
-            break
+    # while 1:
+    #    trig_state = rp.rp_AcqGetTriggerState()[1]
+    #    if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+    #        break
     
     # Fill state
-    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
-    
     while 1:
         if rp.rp_AcqGetBufferFillState()[1]:
             break
@@ -554,12 +711,7 @@ Code - Python API
     rp.rp_AcqReset()
     
     ###### Enable Daisy Chain #####
-    rp.rp_SetEnableDiasyChainClockSync(True)        # Sync Clock
-    rp.rp_SetEnableDaisyChainTrigSync(True)         # Sync Trigger
-    rp.rp_SetDpinEnableTrigOutput(True)             # Enable trigger output on DIO0_N
-    
-    # Choose which trigger to synchronise (rp.OUT_TR_ADC, rp.OUT_TR_DAC)
-    rp.rp_SetSourceTrigOutput(rp.OUT_TR_ADC)
+    rp.rp_SetDpinEnableTrigOutput(False)             # Disable trigger output on DIO0_N
     
     # LED indicator
     rp.rp_DpinSetState(rp.RP_LED5, rp.RP_HIGH)
@@ -575,14 +727,11 @@ Code - Python API
     # Specify trigger - must be EXT_NE
     rp.rp_AcqSetTriggerSrc(rp.RP_TRIG_SRC_EXT_NE)
     
-    # Trigger state
-    while 1:
-        trig_state = rp.rp_AcqGetTriggerState()[1]
-        if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
-            break
-    
-    # Fill state
-    print(f"Fill state: {rp.rp_AcqGetBufferFillState()}")
+    # # Trigger state
+    # while 1:
+    #    trig_state = rp.rp_AcqGetTriggerState()[1]
+    #    if trig_state == rp.RP_TRIG_STATE_TRIGGERED:
+    #        break
     
     while 1:
         if rp.rp_AcqGetBufferFillState()[1]:
@@ -592,7 +741,7 @@ Code - Python API
     
     # Volts
     fbuff = rp.fBuffer(N)
-    res = rp.rp_AcqGetDataV(rp.RP_CH_1, 0, N, fbuff)
+    res = rp.rp_AcqGetDataVNP(rp.RP_CH_1, 0, N, fbuff)
     
     data_V = np.zeros(N, dtype = float)
     

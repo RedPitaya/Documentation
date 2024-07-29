@@ -19,7 +19,8 @@ Each Groove connector connects to the power (3V3), ground, and two digital or an
 
 Code examples of controlling the digital and analog inputs and outputs are available :ref:`here <examples>`.
 
-Getting started with electronics is way more fun and engaging when you have loads of sensors you can use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is select the desired module, find the correct connector, and get going with your project.
+Getting started with electronics is way more fun and engaging when you have loads of sensors you can use straight away. Whether you want to measure temperature, vibration, movement, etc.,
+we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is select the desired module, find the correct connector, and get going with your project.
 
 .. figure:: img/sensor_ext/extension_module_and_sensors.png
   :width: 500
@@ -28,7 +29,9 @@ Getting started with electronics is way more fun and engaging when you have load
 
 Want to use an Arduino Uno shield? They can be plugged directly into the Sensor extension board. The extension module can also be powered from the external power supply using a micro USB cable.
 
-A set of nine Jumpers can reconnect certain extension module connectors to different :ref:`E1 <E1>` or :ref:`E2 <E2>` pins or change power supply settings. For example, with J1 and J3, you can set the shield power source (VCC) to either an external power supply or get the power from Red Pitaya. A full schematic of the extension module is available below.
+A set of nine Jumpers can reconnect certain extension module connectors to different :ref:`E1 <E1>` or :ref:`E2 <E2>` pins or change power supply settings.
+For example, with J1 and J3, you can set the shield power source (VCC) to either an external power supply or get the power from Red Pitaya.
+A full schematic of the extension module is available below.
 
 .. note:: 
 

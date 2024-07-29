@@ -7,20 +7,19 @@ Deep Memory Acquisition (DMA)
 Description
 ===============
 
-The Deep Memory Acquisition allows you to set a buffer of any size (The buffer must be a multiple of 64 bytes) for capturing data from the ADC. Data is written directly to RAM.
-The DMA relies on the |AXI protocol|. Consequently, the functions to work with the DMA are named after it.
+Deep memory acquisition is a special type of data acquisition that allows the user to stream data directly into Red Pitaya's DDR3 RAM at full sampling speed of 125 Msps (depending on board model).
+The buffer length is variable and can be specified by the user (must be a multiple of 64 bytes), but cannot exceed the size of the allocated RAM region. The amount of dedicated RAM can be increased by the user, but it is recommended to leave at least 100 MB
+of DDR for proper operation of the Linux OS. Deep memory acquisition is based on the `AXI protocol (AXI DMA and AXI4-Stream) <https://support.xilinx.com/s/article/1053914?language=en_US>`_. The Deep Memory Acuisition uses Direct Memory Access (double the acronym for double the meaning).
 
-.. |AXI protocol| raw:: html
-
-   <a href="https://support.xilinx.com/s/article/1053914?language=en_US" target="_blank">AXI protocol</a>
+Once the acquisition is complete, Red Pitaya needs some time to transfer the entire file to the computer (RAM needs to be cleared) before the acquisition can be reset.
+DMA can be configured using SCPI, Python API and C API commands.
 
 **Features**
 
 - Deep Memory Acquisition can work in parallel with regular data capture mode in v0.94, only work with triggers is common.
-- By default, the maximum size of two buffers (1 and 2 channels) is set to 2 MB.
+- By default, the RAM memory reagion allocated for the DMA is set to 2 MB (maximum space to capture data from all input channels).
 - Deep Memory Acquisition can run at maximum ADC speed.
 - Deep Memory can be assigned to only one buffer, thereby allocating all memory to only one channel.
-
 
 Required hardware
 ===================
@@ -42,9 +41,9 @@ For easier explanation, the start and end addresses of the DMA buffer are labele
 
 The starting address of the DMA buffer (**ADC_AXI_START**) and the size of the DMA buffer (**ADC_AXI_SIZE**) are acquired through the **rp_AcqAxiGetMemoryRegion** function.
 
-The memory region can capture data from a single channel (the whole memory is allocated to a single channel), or it can be split between both input channels (CH1 (IN1) and CH2 (IN2)) by passing the following parameters to the *rp_AcqAxiSetBuffer()* function:
+The memory region can capture data from a single channel (the whole memory is allocated to a single channel), or it can be split between multiple input channels (CH1 (IN1) and CH2 (IN2)) (also CH3 and CH4 on STEMlab 125-14 4-Input) by passing the following parameters to the *rp_AcqAxiSetBuffer()* function:
 
-   - Captured channel number (*RP_CH_1* or *RP_CH_2*)
+   - Captured channel number (*RP_CH_1* or *RP_CH_2*) (also *RP_CH_3* or *RP_CH_4* for STEMlab 125-14 4-Input)
    - Start address
    - Number of samples (to be captured)
 
@@ -62,6 +61,10 @@ Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGet
 .. note::
 
    Depending on the size of the acquired data and how much DDR memory is reserved for the Deep Memory Acquisition, the data transfer from DDR might take a while.
+   Here are a few tips to speed things up:
+
+   - SCPI commands - acquire the data in binary format (``ACQ:DATA:FORMAT BIN``) - for long data buffers we recommend capturing the data on the Red Pitaya board itself (C or Python API) and then establishing a TCP connection with the Red Pitaya board to transfer the data to the computer. The SCPI performs a string conversion before the transfer and then converts the string back to data on the other side, which slows the transfer a lot.
+   - Python API - use the new (IN DEV) functions ``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)`` and ``rp_AcqAxiGetDataVNP(channel, pos, np_buffer)`` that return the data as a Numpy buffer directly.
 
 Once finished, please do not forget to free the resources and reserved memory locations. Otherwise, the performance of your Red Pitaya can decrease over time.
 
@@ -90,7 +93,7 @@ The maximum memory allocation is restricted to the size of the board's DDR (512 
              reg = <0x1000000 0x200000>;
          };
 
-     The first parameter in **reg** is *start address (0x1000000)*, and the second is the *region size (0x200000)*.
+     The first parameter in **reg** is *start address (0x1000000)*, and the second is the *region size (0x200000)*. Leave the start address the same and change the region size to suit your program needs. The values are in hexadecimal format.
 
 4.   Finally, rebuild the tree and restart the board.
 

@@ -1,176 +1,92 @@
-CAN (HW api)
-#############
+.. _can_example:
 
-.. http://blog.redpitaya.com/examples-new/uart/
+CAN (HW api)
+######################
 
 Description
-***********
+============
 
-This example demonstrates communication using the Red Pitaya CAN interface. The code below simulates a loopback by sending a message from the CAN socket.
+This example demonstrates communication using the Red Pitaya CAN interface. The code below sends CAN frames between CAN0 and CAN1 interface.
 
+- CAN0 - TX == DIO7_N, RX == DIO7_P
+- CAN1 - TX == DIO6_N, RX == DIO6_P
 
+  
 Required hardware
-*****************
+==================
 
     - Red Pitaya
+    - 2x CAN controllers
 
 .. figure:: ../general_img/RedPitaya_general.png
 
-Code - C
-********
+  
+SCPI Code Examples
+====================
 
 .. note::
 
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
-
-
-.. code-block:: c
-
-    /* @brief This is a simple application for testing CAN communication on a RedPitaya
-    *
-    * (c) Red Pitaya  http://www.redpitaya.com
-    *
-    * This part of code is written in C programming language.
-    * Please visit http://en.wikipedia.org/wiki/C_(programming_language)
-    * for more details on the language used herein.
-    */
-
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include "rp_hw_can.h"
-
-
-    int main(int argc, char *argv[]){
-
-        int res = rp_CanSetFPGAEnable(true); // init can in fpga for pass can controller to GPIO (N7,P7) 
-        printf("Init result: %d\n",res);
-        
-        res = rp_CanStop(RP_CAN_0); // set can0 interface to DOWN  for configure
-        printf("Stop can0: %d\n",res);
-        
-        res = rp_CanSetBitrate(RP_CAN_0,200000); // set can0 bitrate
-        printf("Set bitrate: %d\n",res);
-
-        res = rp_CanSetControllerMode(RP_CAN_0,RP_CAN_MODE_LOOPBACK,true); // set loopback mode
-        printf("Set loopback mode ON: %d\n",res);
-
-        res = rp_CanStart(RP_CAN_0); // set can0 interface to UP
-        printf("Start can0: %d\n",res);
-
-        res = rp_CanOpen(RP_CAN_0); // open socket for can0
-        printf("Open socket: %d\n",res);
-
-        unsigned char tx_buffer[8];
-        tx_buffer[0] = 1;
-        tx_buffer[1] = 2;
-        tx_buffer[2] = 3;
-        res = rp_CanSend(RP_CAN_0,123, tx_buffer,3,false,false,0); // write buffer to can0
-        printf("Write result: %d\n",res);
-
-        rp_can_frame_t frame;
-        res = rp_CanRead(RP_CAN_0,2000, &frame); // read frame from can0
-        printf("Read result: %d\n",res);   
-        printf("Can ID: %d data: %d,%d,%d\n",frame.can_id,frame.data[0],frame.data[1],frame.data[2]);
-
-        res = rp_CanClose(RP_CAN_0); // close socket for can0
-        printf("Close can0 result: %d\n",res);
-        return 0;
-    }
-
+  This code is written for **2.00-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 
 Code - MATLAB®
-**************
+---------------
 
-.. code-block:: matlab
+The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
 
-    %% Define Red Pitaya as TCP/IP object
-
-    IP= '';           % Input IP of your Red Pitaya...
-    port = 5000;
-    tcpipObj=tcpip(IP, port);
-
-    %% Open connection with your Red Pitaya
-
-    fopen(tcpipObj);
-    tcpipObj.Terminator = 'CR/LF';
-    fprintf(tcpipObj,'CAN:FPGA ON');
-
-    fprintf(tcpipObj,'CAN0:STOP');             % stop can interface for configure
-
-    fprintf(tcpipObj,'CAN0:BITRate 200000');   % set bitrate for can0
-    res = query(tcpipObj,'CAN0:BITRate:SP?');
-    fprintf('Bitrate %s\n', res);
-
-    fprintf(tcpipObj,'CAN0:MODE LOOPBACK,ON'); % set loopback mode
-
-    fprintf(tcpipObj,'CAN0:START');            % start can0 interface 
-
-    fprintf(tcpipObj,'CAN0:OPEN');             % open can0 socket 
-
-    fprintf(tcpipObj,'CAN0:Send123 1,2,3');    % write to can0 3 bytes
-    fprintf('CAN0:Send123 1,2,3\n');
-
-    res = query(tcpipObj,'CAN0:Read:Timeout2000?'); % read frame from can0
-    fprintf('Read: %s', res);
-
-    fprintf(tcpipObj,'CAN0:CLOSE');            % close can0
-
-    %% Close connection with Red Pitaya
-
-    fclose(tcpipObj);
-
+**Coming soon**
+.. .. code-block:: matlab
+    
 
 
 Code - Python
-*************
+---------------
 
-Using just SCPI commands:
+.. **Using just SCPI commands:**
 
-.. code-block:: python
+**Coming soon**
 
-    #!/usr/bin/python3
+.. .. code-block:: python
 
-    import sys
-    import time
-    import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi(sys.argv[1])
+.. note::
 
-    rp_s.tx_txt('CAN:FPGA ON')
-    print("CAN:FPGA ON")
-    rp_s.check_error()
+    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
+    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
 
-    rp_s.tx_txt('CAN0:STOP')
-    print("CAN0:START")
-    rp_s.check_error()
+    For further information on functions please consult the |redpitaya_scpi| code.
 
-    rp_s.tx_txt('CAN0:BITRate 200000')
-    print("CAN0:BitRate 200000")
-    rp_s.check_error()
+.. |redpitaya_scpi| raw:: html
 
-    rp_s.tx_txt('CAN0:MODE LOOPBACK,ON')
-    print("CAN0:MODE LOOPBACK,ON")
-    rp_s.check_error()
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
 
-    rp_s.tx_txt('CAN0:START')
-    print("CAN0:START")
-    rp_s.check_error()
 
-    rp_s.tx_txt('CAN0:OPEN')
-    print("CAN0:OPEN")
-    rp_s.check_error()
+API Code Examples
+====================
 
-    rp_s.tx_txt('CAN0:Send123 1,2,3')
-    print("CAN0:SEND123 1,2,3")
-    rp_s.check_error()
+.. note::
 
-    rp_s.tx_txt('CAN0:Read:Timeout2000?')
-    print("CAN0:Read:Timeout2000?",rp_s.rx_txt_check_error())
+    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
+    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
 
-    rp_s.tx_txt('CAN0:CLOSE')
-    print("CAN0:CLOSE")
-    rp_s.check_error()
+
+Code - C++
+-------------
+
+.. note::
+
+    Although the C++ code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
+    Instructions on how to compile the code are :ref:`here <comC>`.
+
+
+.. .. code-block:: cpp
+
+
+Code - Python API
+-------------------
+
+.. .. code-block:: python
+
+   
+    
+

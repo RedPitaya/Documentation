@@ -134,7 +134,13 @@ Compiling and running custom code
    (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
 
 
-1.  First connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
+1.  First, send the custom C code example from your computer to the Red Pitaya board. Here is an example of how to copy the code to */root* directory on the Red Pitaya.
+
+    .. code-block:: shell-session
+
+        scp /path/to/custom/c/api/ root@rp-xxxxxx.local:/root
+
+2.  Then connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
 
     .. code-block:: shell-session
 
@@ -145,13 +151,6 @@ Compiling and running custom code
     .. code-block:: shell-session
 
         ssh root@rp-xxxxxx.local
-
-
-2.  Send the custom C code example from your computer to the Red Pitaya board. Here is an example of how to copy the code to */root* directory on the Red Pitaya.
-
-    .. code-block:: shell-session
-
-        scp /path/to/custom/c/api/ root@rp-xxxxxx.local:/root
 
 
 3.  To avoid the step of having to specify the library path explicitly everytime before executing a C API script,

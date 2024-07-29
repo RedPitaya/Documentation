@@ -295,64 +295,116 @@ Further corrections can be applied through more precise gain and DC offset :ref:
 Analog inputs calibration
 *************************
 
-Calibration processes can be performed using the :ref:`Calibration app <calibration_app>`.
-or using the **calib** :ref:`command line utility <com_line_tools>`. When performing calibration with the
-:ref:`Calibration app <calibration_app>`, just select *Settings -> Calibration* and follow the instructions.
+Calibration processes can be performed using the :ref:`Calibration application <calibration_app>` or using the **calib** :ref:`command line utility <com_line_tools>`.
+To calibrate the Red Pitaya using the :ref:`Calibration application <calibration_app>`, simply select *System -> Calibration* and follow the instructions.
 
-- Calibration using **calib** utility
+**Calibration using **calib** utility**
     
-Start your Red Pitaya and connect to it via a terminal.
+Start your Red Pitaya and connect to it via :ref:`SSH <ssh>`.
 
 .. code-block:: shell-session
    
-   redpitaya> calib
- 
+    root@rp-xxxxxx:~# calib
+    calib version 2.00-0-f6ded7198
+    
     Usage: calib [OPTION]...
     
     OPTIONS:
-     -r    Read calibration values from EEPROM (to stdout).
-     -w    Write calibration values to EEPROM (from stdin).
+     -r    Read calibration values from eeprom (to stdout).
+           The -n flag has no effect. The system automatically determines the type of stored data.
+    
+     -w    Write calibration values to eeprom (from stdin).
+           Possible combination of flags: -wn, -wf, -wfn, -wmn, -wfmn
+    
      -f    Use factory address space.
-     -d    Reset calibration values in EEPROM with factory defaults.
+     -d    Reset calibration values in eeprom from factory zone. WARNING: Saves automatic to a new format
+    
+     -i    Reset calibration values in eeprom by default
+           Possible combination of flags: -in , -inf.
+    
+     -o    Converts the calibration from the user zone to the old calibration format. For ecosystem version 0.98
+    
      -v    Produce verbose output.
      -h    Print this info.
+     -x    Print in hex.
+     -u    Print stored calibration in unified format.
+    
+     -m    Modify specific parameter in universal calibration
+     -n    Flag for working with the new calibration storage format.
 
-The EEPROM is a non-volatile memory, therefore the calibration coefficients will not change during Red Pitaya power cycles, nor will they change with software upgrades via Bazaar or with manual modifications of the SD card content. 
-An example of calibration parameters readout from EEPROM with verbose output:
-
-.. code-block:: shell-session
-   
-   redpitaya> calib -r -v
-   FE_CH1_FS_G_HI = 45870551      # IN1 gain coefficient for LV (± 1V range)  jumper configuration.
-   FE_CH2_FS_G_HI = 45870551      # IN2 gain coefficient for LV (± 1V range)  jumper configuration.
-   FE_CH1_FS_G_LO = 1016267064    # IN1 gain coefficient for HV (± 20V range) jumper configuration.
-   FE_CH2_FS_G_LO = 1016267064    # IN2 gain coefficient for HV (± 20V range) jumper configuration.
-   FE_CH1_DC_offs = 78            # IN1 DC offset  in ADC samples.
-   FE_CH2_DC_offs = 25            # IN2 DC offset  in ADC samples.
-   BE_CH1_FS = 42755331           # OUT1 gain coefficient.
-   BE_CH2_FS = 42755331           # OUT2 gain coefficient.
-   BE_CH1_DC_offs = -150          # OUT1 DC offset in DAC samples.
-   BE_CH2_DC_offs = -150          # OUT2 DC offset in DAC samples.
-
-An example of the same calibration parameters readout from EEPROM with non-verbose output, suitable for editing within scripts:
+The EEPROM is a non-volatile memory, so the calibration coefficients will not change during Red Pitaya power cycles, software upgrades via Bazaar, or manual changes to the contents of the SD card. 
+An example of reading calibration parameters from the EEPROM with verbose output:
 
 .. code-block:: shell-session
 
-    redpitaya> calib -r
-           45870551            45870551          1016267064          1016267064
+    root@rp-xxxxxx:~# calib -r -v
+    dataStructureId = 5
+    wpCheck = 53
+    count = 28
+    DAC Ch1 Gain (1) = 2674690              # OUT1 gain coefficient
+    DAC Ch1 Offset (2) = -69                # OUT1 DC offset 
+    DAC Ch2 Gain (3) = 2692407              # OUT2 gain coefficient
+    DAC Ch2 Offset (4) = -94                # OUT2 DC offset
+    ADC Ch1 Gain 1/1 (9) = 2817122          # IN1 gain coefficient for LV (± 1V range)  jumper configuration
+    ADC Ch1 Offset 1/1 (10) = -159          # IN1 DC offset for LV (± 1V range)  jumper configuration
+    ADC Ch2 Gain 1/1 (11) = 2811646         # IN2 gain coefficient for LV (± 1V range)  jumper configuration
+    ADC Ch2 Offset 1/1 (12) = -126          # IN2 DC offset for LV (± 1V range)  jumper configuration
+    ADC Ch1 Gain 1/20 (17) = 3113286        # IN1 gain coefficient for HV (± 20V range) jumper configuration
+    ADC Ch1 Offset 1/20 (18) = -186         # IN1 DC offset for HV (± 20V range) jumper configuration
+    ADC Ch2 Gain 1/20 (19) = 3115407        # IN2 gain coefficient for HV (± 20V range) jumper configuration
+    ADC Ch2 Offset 1/20 (20) = -148         # IN2 DC offset for HV (± 20V range) jumper configuration
+    ADC Ch1 AA 1/1 (33) = 32147             # IN1 FPGA filter coefficient AA for LV
+    ADC Ch1 BB 1/1 (34) = 276423            # IN1 FPGA filter coefficient BB for LV
+    ADC Ch1 PP 1/1 (35) = 9830              # IN1 FPGA filter coefficient PP for LV
+    ADC Ch1 KK 1/1 (36) = 14260634          # IN1 FPGA filter coefficient KK for LV
+    ADC Ch2 AA 1/1 (37) = 32147             # IN2 FPGA filter coefficient AA for LV
+    ADC Ch2 BB 1/1 (38) = 276423            # IN2 FPGA filter coefficient BB for LV
+    ADC Ch2 PP 1/1 (39) = 9830              # IN2 FPGA filter coefficient PP for LV
+    ADC Ch2 KK 1/1 (40) = 14260634          # IN2 FPGA filter coefficient KK for LV
+    ADC Ch1 AA 1/20 (49) = 16901            # IN1 FPGA filter coefficient AA for HV
+    ADC Ch1 BB 1/20 (50) = 193419           # IN1 FPGA filter coefficient BB for HV
+    ADC Ch1 PP 1/20 (51) = 9830             # IN1 FPGA filter coefficient PP for HV
+    ADC Ch1 KK 1/20 (52) = 14260634         # IN1 FPGA filter coefficient KK for HV
+    ADC Ch2 AA 1/20 (53) = 16901            # IN2 FPGA filter coefficient AA for HV
+    ADC Ch2 BB 1/20 (54) = 193419           # IN2 FPGA filter coefficient BB for HV
+    ADC Ch2 PP 1/20 (55) = 9830             # IN2 FPGA filter coefficient PP for HV
+    ADC Ch2 KK 1/20 (56) = 14260634         # IN2 FPGA filter coefficient KK for HV
+
+An example of reading the same calibration parameters from EEPROM with non-verbose output, suitable for editing within scripts:
+
+.. code-block:: shell-session
+
+    root@rp-xxxxxx:~# calib -r
+                        1             2674690                   2                 -69                   3             2692407
+                        4                 -94                   9             2817122                  10                -159
+                       11             2811646                  12                -126                  17             3113286
+                       18                -186                  19             3115407                  20                -148
+                       33               32147                  34              276423                  35                9830
+                       36            14260634                  37               32147                  38              276423
+                       39                9830                  40            14260634                  49               16901
+                       50              193419                  51                9830                  52            14260634
+                       53               16901                  54              193419                  55                9830
+                       56            14260634
 
 You can write the changed calibration parameters using the ``calib -w`` command:
 
-1. In the command line (terminal), type calib-w.
+1. In the command line (terminal), type calib -w.
 #. Press enter.
 #. Paste or write new calibration parameters.
 #. Press enter.
 
 .. code-block:: shell-session
    
-   redpitaya> calib -w
-      
-              40000000           45870551          1016267064          1016267064                  78                  25            42755331            42755331                -150                -150
+    root@rp-xxxxxx:~# calib -wn
+                        1             2674690                   2                 -69                   3             2692407
+                        4                 -94                   9             2817122                  10                -159
+                       11             2811646                  12                -126                  17             3113286
+                       18                -186                  19             3115407                  20                -148
+                       33               32147                  34              276423                  35                9830
+                       36            14260634                  37               32147                  38              276423
+                       39                9830                  40            14260634                  49               16901
+                       50              193419                  51                9830                  52            14260634
+                       53               16901                  54              193419                  55                9830
 
 Should you bring the calibration vector to an undesired state, you can always reset it to factory defaults using the following command:
 
