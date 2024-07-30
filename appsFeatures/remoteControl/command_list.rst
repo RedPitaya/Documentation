@@ -494,12 +494,12 @@ Phase locked loop
 +-----------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | SCPI                                                | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
 +=====================================================+====================================================================================+===================================================================================+====================+
-| | ``RP:PLL:ENable <enable>``                         | | C: ``rp_SetPllControlEnable(bool enable)``                                      | | Enables/disables PLL control (SIGNALlab 250-12 only).                           | 2.00-35 and up     |
+| | ``RP:PLL:ENable <enable>``                        | | C: ``rp_SetPllControlEnable(bool enable)``                                       | | Enables/disables PLL control (SIGNALlab 250-12 only).                           | 2.00-35 and up     |
 | | Examples:                                         | |                                                                                  | | Enables synchronisation with the 10 MHz reference clock connected to the        |                    |
 | | ``RP:PLL:ENable ON``                              | | Python: ``rp_SetPllControlEnable(<enable>)``                                     | | SMA connector at the back.                                                      |                    |
 | |                                                   | |                                                                                  | |                                                                                 |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-| | ``RP:PLL:ENable?`` > ``<enable>``                  | | C: ``rp_GetPllControlEnable(bool *enable)``                                     | Get the state of the PLL enable setting (SIGNALlab 250-12 only).                  | 2.00-35 and up     |
+| | ``RP:PLL:ENable?`` > ``<enable>``                 | | C: ``rp_GetPllControlEnable(bool *enable)``                                      | Get the state of the PLL enable setting (SIGNALlab 250-12 only).                  | 2.00-35 and up     |
 | | Examples:                                         | |                                                                                  |                                                                                   |                    |
 | | ``RP:PLL:ENable?`` > ``ON``                       | | Python: ``rp_GetPllControlEnable()``                                             |                                                                                   |                    |
 | |                                                   | |                                                                                  |                                                                                   |                    |
@@ -509,7 +509,6 @@ Phase locked loop
 | | ``RP:PLL:STATE?`` > ``1``                         | | Python: ``rp_GetPllControlLocked()``                                             | | ``0`` - Unit is not synced with the reference clock                             |                    |
 | |                                                   | |                                                                                  | | (SIGNALlab 250-12 only).                                                        |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-
 
 
 .. _commands_gen:
