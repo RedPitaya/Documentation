@@ -19,8 +19,8 @@ With the 2.00 OS versions we moved to a unified OS image for all boards (One OS 
 
 **RedPitaya OS 2.0**:
 
-  - `Latest Beta (2.00-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-35_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 05895fe4e5e327a9db27204ccac9ef7d)
-  - `Latest Stable (2.00-30) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.00-30_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 53f03af3ff891c078369dad78b74d526)
+  - `Latest Beta (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ad55cb45cf92bf8e40e3901f24a677ba)
+  - `Latest Stable (2.04-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.04-35_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): d3d59bca29421987550289fce29b87b5)
 
 |
 
@@ -29,6 +29,7 @@ New C libraries were added with the Unified (2.00) OS ecosystem, which causes th
 Please make sure that your Red Pitaya OS and the downloaded |GitHub| ecosystem repository are compatible.
 We recommend using a |GitHub| ecosystem that is meant to run on your current Red Pitaya OS version:
 
+  - 2.00-37 - Branch 2024.3
   - 2.00-35 - Branch 2024.2
   - 2.00-30 - Branch 2024.1
   - 2.00-23 - Branch 2023.3
