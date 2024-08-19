@@ -8,7 +8,8 @@ acquisition, digital I/O control, communication (I2C, SPI, UART, CAN) and more).
     Please make sure that your Red Pitaya OS and the downloaded GitHub ecosystem repository are compatible.
     We recommend using a GitHub ecosystem that is meant to run on your current Red Pitaya OS version:
 
-    - 2.00-35 - Branch 2024.2
+    - 2.05-37 - Branch 2024.3
+    - 2.04-35 - Branch 2024.2
     - 2.00-30 - Branch 2024.1
     - 2.00-23 - Branch 2023.3
     - 2.00-18 - Branch 2023.2
