@@ -101,7 +101,7 @@ Specifications
 +-------------------------+----------------------+----------------------+
 | Input voltage           | 3.3 V                | 2.5 ... 5.5 V        |
 +-------------------------+----------------------+----------------------+
-| Overload protection     | not available        | integrated           |
+| Overvoltage protection  | N/A                  | Integrated           |
 +-------------------------+----------------------+----------------------+
 | Level thresholds        | | 0.8V (low)         | | 0.8V (low)         |
 |                         | | 2.0V (high)        | | 2.0V (high)        |
