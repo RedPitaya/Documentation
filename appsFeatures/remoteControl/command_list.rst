@@ -1127,14 +1127,14 @@ Acquisition Control
 | |                                   | | Python: ``rp_AcqResetCh(<channel>)``          | | Used only in split trigger mode                                          |                    |
 | |                                   | |                                               | |                                                                          |                    |
 +-------------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SPLIT:TRig <state>``        | | C: ``rp_AcqResetCh(rp_channel_t channel)``    | Enables split trigger mode.                                                | 2.00-37 and up     |
+| | ``ACQ:SPLIT:TRig <state>``        | | C: ``rp_AcqSetSplitTrigger(bool enable)``     | Enables split trigger mode.                                                | 2.00-37 and up     |
 | |                                   | |                                               |                                                                            |                    |
-| |                                   | | Python: ``rp_AcqResetCh(<channel>)``          |                                                                            |                    |
+| |                                   | | Python: ``rp_AcqSetSplitTrigger(<enable>)``   |                                                                            |                    |
 | |                                   | |                                               |                                                                            |                    |
 +-------------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
-| | ``ACQ:SPLIT:TRig?`` > ``<state>`` | | C: ``rp_AcqResetCh(rp_channel_t channel)``    | Returns the split trigger mode status                                      | 2.00-37 and up     |
+| | ``ACQ:SPLIT:TRig?`` > ``<state>`` | | C: ``rp_AcqGetSplitTrigger(bool* state)``     | Returns the split trigger mode status                                      | 2.00-37 and up     |
 | |                                   | |                                               |                                                                            |                    |
-| |                                   | | Python: ``rp_AcqResetCh(<channel>)``          |                                                                            |                    |
+| |                                   | | Python: ``rp_AcqGetSplitTrigger()``           |                                                                            |                    |
 | |                                   | |                                               |                                                                            |                    |
 +-------------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+--------------------+
 | | -                                 | | C: ``rp_AcqResetFpga()``                      | Reset the acqusition writing state machine.                                | 1.04-18 and up     |
