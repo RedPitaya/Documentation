@@ -87,7 +87,7 @@ author = "Red Pitaya"
 # built documents.
 #
 # The short X.Y version.
-version = "2.00-35"
+version = "2.05-37"
 # The full version, including alpha/beta/rc tags.
 release = version
 
