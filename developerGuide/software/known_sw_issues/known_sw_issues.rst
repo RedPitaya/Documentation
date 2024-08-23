@@ -69,6 +69,12 @@ When connected to a laptop the same Wi-Fi dongles work and show correct levels.
 This issue will be fixed by updating the Linux kernel driver to 6.3.
 
 
+STEMlab 125-10 logic analyzer
+----------------------------------
+
+The logic analyzer application fails to load on the STEMlab 125-10. Please use an older version of the OS.
+
+
 
 ==========
 2.00-30
