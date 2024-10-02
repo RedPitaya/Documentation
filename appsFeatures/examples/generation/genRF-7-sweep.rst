@@ -18,7 +18,7 @@ Required hardware
 Required software
 ==================
 
-- :ref:`Red Pitaya Nightly Build OS or higher <prepareSD>`
+- :ref:`OS 2.05-37 or higher <prepareSD>`
 
 
 SCPI Code Examples

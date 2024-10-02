@@ -11,7 +11,7 @@ If you are facing an issue with one of the examples, a command is not working, o
 How to find all available SCPI commands per OS version?
 ========================================================
 
-Use the ``SYSTem:Help?`` (IN DEV) SCPI command, which lists all available SCPI commands.
+Use the ``SYSTem:Help?`` (2.04-35) SCPI command, which lists all available SCPI commands.
 
 You can also find all SCPI commands that the board will accept depending on the Red Pitaya OS version here:
 
@@ -19,7 +19,8 @@ You can also find all SCPI commands that the board will accept depending on the 
 
 For all other Red Pitaya OS versions, go to the link above and change the branch version to:
 
-- 2.00-35 - Branch 2024.2 *(file ends in .cpp)*
+- 2.05-37 - Branch 2024.3 *(file ends in .cpp)*
+- 2.04-35 - Branch 2024.2 *(file ends in .cpp)*
 - 2.00-30 - Branch 2024.1 *(file ends in .cpp)*
 - 2.00-23 - Branch 2023.3 *(file ends in .cpp)*
 - 2.00-18 - Branch 2023.2 *(file ends in .c)*
@@ -39,36 +40,37 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 
     <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
 
-IN DEV
+
+2.05-37
 =======
 
 New Commands
 -------------
 
-- DMA commands to return data as Numpy array (``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)``, ``rp_AcqAxiGetDataVNP``). Check */opt/redpitaya/lib/python/rp.py* on NB 261 or later for more options.
-- Acquisition commands to return data as Numpy array (``rp_AcqGetDataPosRawNP``, ``rp_AcqGetDataPosVNP``, ``rp_AcqGetLatestDataRawNP``, etc.). Check */opt/redpitaya/lib/python/rp.py* on NB 261 or later for more options.
+- Split trigger commands for standard acquisition and DMA (currently 4-Input only) - same as existing commands, but end with "CH"
 - LCR meter commands (:ref:`LCR mode<commands_lcr>`)
+- DMA API commands to return data as Numpy array (``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)``, ``rp_AcqAxiGetDataVNP``). Check */opt/redpitaya/lib/python/rp.py* on the Red Pitaya board for more options.
+- Acquisition API commands to return data as Numpy array (``rp_AcqGetDataPosRawNP``, ``rp_AcqGetDataPosVNP``, ``rp_AcqGetLatestDataRawNP``, etc.). Check */opt/redpitaya/lib/python/rp.py* on the Red Pitaya board for more options.
+- Acquisition get data around trigger postion ``ACQ:SOUR<n>:DATA:TRig? <size>,<t_pos>``
+- Burst Init and Last value commands: ``SOUR<n>:BURS:INITValue <amplitude>`` and ``SOUR<n>:BURS:LASTValue <amplitude>`` - the same functionality as ``SOUR<n>:INITValue <amplitude>`` and ``SOUR<n>:LASTValue <amplitude>``
+- Additional sweep command ``SOUR:SWeep:DEFault``
 
-2.00-35
-===========
+
+Command changes
+-----------------
+
+- ``SYSTem:DATE "<year>-<month>-<day>"`` - now accepts the "standard" date-time formatting with dashes in between instead of commas
+
 
 Issues
-----------
+--------
 
-- Changed ``ACQ:TRig:EXT:LEV`` to ``TRig:EXT:LEV`` (generation and acquisition share this command).
-- Changed ``DAISY:TRIG_O:ENable`` to ``DAISY:TRig:Out:ENable``
-- Changed ``DAISY:TRIG_O:SOUR`` to ``DAISY:TRig:Out:SOUR``
-- For all SCPI commands ``TRIG`` was renamed to ``TRig`` (does not affect the backwards compatibility).
-- Renamed ``SOUR:TRIG:EXT:DEBouncerUs`` to ``SOUR:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
-- Renamed ``ACQ:TRIG:EXT:DEBouncerUs`` to ``ACQ:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
-- ``ACQ:SOUR<n>:DATA:Start:End?`` to ``ACQ:SOUR<n>:DATA:STArt:End?`` (backwards compatible with 2.00-23 and older)
-- ``ACQ:SOUR<n>:DATA:Start:N?`` to ``ACQ:SOUR<n>:DATA:STArt:N?`` (backwards compatible with 2.00-23 and older)
-- ``ACQ:SOUR<n>:DATA:Last:N?`` to ``ACQ:SOUR<n>:DATA:LATest:N?`` (backwards compatible with 2.00-23 and older)
+- Split trigger commands work only on STEMlab 125-14 4-Input
 
-- ``SOUR<n>:TRIG:SOUR?`` - stuck in an infinite loop, does not return
-- ``SOUR<n>:FUNC?``, ``SOUR<n>:VOLT?``, ``SOUR<n>:Sweep:STAT?``, ``SOUR<n>:Sweep:FREQ:START?`` - all return in format **"None\r\n<actual value>\r\n"** (the next command ending in ``?`` will return in multiple lines, creating unexpected returns)
-- Sweep mode automatically starts changing frequency as soon as it is turned on regardless of whether the output is turned on or generator trigger happened or not.
 
+
+2.04-35
+===========
 
 New Commands
 --------------
@@ -80,21 +82,44 @@ New Commands
 - ``SOUR<n>:LOAD <load_mode>`` - Select output load (50 Ohm or INF) for SIGNALlab 250-12
 
 
+Command changes
+-----------------
+
+- Changed ``ACQ:TRig:EXT:LEV`` to ``TRig:EXT:LEV`` (generation and acquisition share this command).
+- Changed ``DAISY:TRIG_O:ENable`` to ``DAISY:TRig:Out:ENable``
+- Changed ``DAISY:TRIG_O:SOUR`` to ``DAISY:TRig:Out:SOUR``
+
+- For all SCPI commands ``TRIG`` was renamed to ``TRig`` (does not affect the backwards compatibility).
+- Renamed ``SOUR:TRIG:EXT:DEBouncerUs`` to ``SOUR:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
+- Renamed ``ACQ:TRIG:EXT:DEBouncerUs`` to ``ACQ:TRig:EXT:DEBouncer[:US]`` (the previous command was misleading - will not be reverted).
+- ``ACQ:SOUR<n>:DATA:Start:End?`` to ``ACQ:SOUR<n>:DATA:STArt:End?`` (backwards compatible with 2.00-23 and older)
+- ``ACQ:SOUR<n>:DATA:Start:N?`` to ``ACQ:SOUR<n>:DATA:STArt:N?`` (backwards compatible with 2.00-23 and older)
+- ``ACQ:SOUR<n>:DATA:Last:N?`` to ``ACQ:SOUR<n>:DATA:LATest:N?`` (backwards compatible with 2.00-23 and older)
+
+
+Issues
+----------
+
+- Sweep mode automatically starts changing frequency as soon as it is turned on regardless of whether the output is turned on or generator trigger happened or not.
+- ``SOUR<n>:TRIG:SOUR?`` - stuck in an infinite loop, does not return
+- ``SOUR<n>:FUNC?``, ``SOUR<n>:VOLT?``, ``SOUR<n>:Sweep:STAT?``, ``SOUR<n>:Sweep:FREQ:START?`` - all return in format **"None\r\n<actual value>\r\n"** (the next command ending in ``?`` will return in multiple lines, creating unexpected returns)
+- Specific SCPI CAN commands to fetch data can result in an endless loop in Python if the parameters are not yet specified or the interface is disabled (``CAN:FPGA?``, ``CAN<n>:STATE?``, etc.)
+
+
 2.00-30
 ===========
 
-Issues
----------
+New commands
+--------------
 
-.. note::
+- ``ACQ:DEC:F <decimation_ext>`` command - better version of ``ACQ:DEC`` command.
+- CAN commands (:ref:`CAN<commands_can>`)
 
-    **TEMPORARY CHANGE OF COMMANDS**
-    We realized this command renaming is not backwards compatible, so we will be reverting it to the old version with the next OS update.
+
+Command changes
+----------------
 
 - For all SCPI commands ``TRIG`` was renamed to ``TRig`` (does not affect the backwards compatibility).
-
-Reanmed commands:
-
 - ``ACQ:SOUR<n>:DATA:STA:END?`` to ``ACQ:SOUR<n>:DATA:Start:End?``
 - ``ACQ:SOUR<n>:DATA:STA:N?`` to ``ACQ:SOUR<n>:DATA:Start:N?``
 - ``ACQ:SOUR<n>:DATA:OLD:N?`` to ``ACQ:SOUR<n>:DATA:Old:N?`` (does not affect the backwards compatibility).
@@ -108,21 +133,19 @@ Reanmed commands:
 - ``I2C:Smbus:Read#:Buffer#`` to ``I2C:Smbus:Read#:Buffer#?``
 - ``I2C:IOctl:Read:Buffer#`` to ``I2C:IOctl:Read:Buffer#?``
 
-New commands
---------------
-
-- ``ACQ:DEC:F <decimation_ext>`` command - better version of ``ACQ:DEC`` command.
-- CAN commands (:ref:`CAN<commands_can>`)
-
-
-2.00-23
-===========
 
 Issues
 ---------
 
-- Deep Memory Acquisition does not work on SDRlab 122-16 (upgrade to 2.00-30).
+.. note::
 
+    **TEMPORARY CHANGE OF COMMANDS**
+    We realized this command renaming is not backwards compatible, so we will be reverting it to the old version with the next OS update.
+
+
+
+2.00-23
+===========
 
 New commands
 --------------
@@ -131,19 +154,18 @@ New commands
 
     - ``rp_createBuffer(<maxChannels>, <length>, <initInt16>, <initDouble>, <initFloat>)``
     - ``rp_deleteBuffer(<buffer>)``
+
+
+Issues
+---------
+
+- Deep Memory Acquisition does not work on SDRlab 122-16 (upgrade to 2.00-30).
+
                        
 
 
 2.00-18
 ===========
-
-Issues
----------
-
-- Deep Memory Acquisition only works on STEMlab 125-14.
-- Removed ``DAISY:ENable <state>``- functionality replaced by ``DAISY:SYNC:TRIG <state>`` and ``DAISY:SYNC:CLK <state>`` commands.
-
-
 
 New commands
 --------------
@@ -183,16 +205,17 @@ New commands
 - ``SPI:SETtings:CSMODE <cs_mode>`` command - sets the default value of the CS pin upon boot
 
 
-
-2.00-15
-===========
-
 Issues
 ---------
 
-- ``SPI:SET:CSMODE`` and ``SPI:SET:CSMODE?`` do not work.
-- X-channel SCPI control buggy.
+- Deep Memory Acquisition only works on STEMlab 125-14.
+- Removed ``DAISY:ENable <state>``- functionality replaced by ``DAISY:SYNC:TRIG <state>`` and ``DAISY:SYNC:CLK <state>`` commands.
 
+
+
+
+2.00-15
+===========
 
 New commands
 --------------
@@ -216,9 +239,22 @@ New commands
 - ``ACQ:TRig:FILL?`` command - checks whether the acquisition buffer is full.
 
 
+Issues
+---------
+
+- ``SPI:SET:CSMODE`` and ``SPI:SET:CSMODE?`` do not work.
+- X-channel SCPI control buggy.
+
+
 
 1.04-28
 ===========
+
+New commands
+--------------
+
+- NA
+
 
 Issues
 ---------
@@ -226,11 +262,6 @@ Issues
 - ``SOUR:TRIG:INT`` command does not work. It is supposed to synchronously trigger both outputs, but is ignored. Use ``SOUR<n>:TRIG:INT`` to trigger individual outputs seperately.
 - ``ACQ:SOUR<n>:STA:END?`` does not work.
 
-
-New commands
---------------
-
-- NA
 
 
 1.04-18 and older
