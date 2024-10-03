@@ -12,4 +12,4 @@ More about this application can be found here:
 
 .. |teslameter| raw:: html
 
-   <a href="https://dl.dropboxusercontent.com/s/6akk0nzebsa93u6/EMC%26Teslameter_doc.pdf" target="_blank">Teslameter</a>
+   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-free/teslameter" target="_blank">Teslameter API code</a>
