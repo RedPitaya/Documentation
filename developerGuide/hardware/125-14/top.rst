@@ -263,10 +263,6 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 
 .. note::
 
-    Please note that there are differences in the FPGA pin numbers for SDRlab 122-16, STEMlab 125-14 Z7020, and SIGNALlab 250-12. Additionally, these models have more digital pins available. For precise configuration details, please refer to the board model documentation and schematics.
-
-.. note::
-
     To change the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please modify the **housekeeping** register value at **address 0x34**. For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
 
     The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
@@ -282,7 +278,7 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 Extension connector E2
 ------------------------
 
-- +5 V & -3V4 power supplies
+- +5 V, -3V4 power supplies
 - SPI, UART, I2C
 - 4 x slow ADCs (100 kSps)
 - 4 x slow DACs (100 kSps)
