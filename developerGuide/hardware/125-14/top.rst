@@ -204,6 +204,179 @@ Components
     STEMlab 125-14 Low Noise and STEMlab 125-14 4-Input feature Zynq 7020 instead of Zynq 7010.
 
 
+====================================
+Extension connector STEMlab 125-14
+====================================
+
+- Connector: 2 x 26 pins IDC (M) 
+
+Power Supply
+--------------
+
+- **Available voltages**: +5 V, +3.3 V, -3.4 V 
+- **Current limitations**:
+
+    - 500 mA for +5 V (to be shared between extension module and USB devices)
+    - 500 mA for +3V3 (to be shared between extension module and USB devices)
+    - 50 mA for -3.4 V supply
+
+
+.. _E1_stem:
+
+Extension connector E1
+------------------------
+
+- +3V3 power source
+- 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
+- 2x CAN
+
+===  =====================  ===============  ========================  ==============
+Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
+===  =====================  ===============  ========================  ==============
+1    3V3                                                                             
+2    3V3                                                                             
+3    DIO0_P / EXT TRIG      G17              IO_L16P_T2_35             3.3V          
+4    DIO0_N                 G18              IO_L16N_T2_35             3.3V          
+5    DIO1_P                 H16              IO_L13P_T2_MRCC_35        3.3V          
+6    DIO1_N                 H17              IO_L13N_T2_MRCC_35        3.3V          
+7    DIO2_P                 J18              IO_L14P_T2_AD4P_SRCC_35   3.3V          
+8    DIO2_N                 H18              IO_L14N_T2_AD4N_SRCC_35   3.3V          
+9    DIO3_P                 K17              IO_L12P_T1_MRCC_35        3.3V          
+10   DIO3_N                 K18              IO_L12N_T1_MRCC_35        3.3V          
+11   DIO4_P                 L14              IO_L22P_T3_AD7P_35        3.3V          
+12   DIO4_N                 L15              IO_L22N_T3_AD7N_35        3.3V          
+13   DIO5_P                 L16              IO_L11P_T1_SRCC_35        3.3V          
+14   DIO5_N                 L17              IO_L11N_T1_SRCC_35        3.3V          
+15   DIO6_P / CAN1_RX       K16              IO_L24P_T3_AD15P_35       3.3V          
+16   DIO6_N / CAN1_TX       J16              IO_L24N_T3_AD15N_35       3.3V          
+17   DIO7_P / CAN0_RX       M14              IO_L23P_T3_35             3.3V          
+18   DIO7_N / CAN0_TX       M15              IO_L23N_T3_35             3.3V          
+19   NC                                                                              
+20   NC                                                                              
+21   NC                                                                              
+22   NC                                                                              
+23   NC                                                                              
+24   NC                                                                              
+25   GND                                                                             
+26   GND                                                                             
+===  =====================  ===============  ========================  ==============
+
+.. note::
+
+  Please note that there are differences in the FPGA pin numbers for SDRlab 122-16, STEMlab 125-14 Z7020, and SIGNALlab 250-12. Additionally, these models have more digital pins available. For precise configuration details, please refer to the board model documentation and schematics.
+
+.. note::
+
+    To change the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please modify the **housekeeping** register value at **address 0x34**. For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
+
+    The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
+
+All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
+    - min. -0.40 V
+    - max. 3.3 V + 0.55 V
+    - < 8 mA drive strength
+
+
+.. _E2_stem:
+
+Extension connector E2
+------------------------
+
+- +5 V & -3V4 power supplies
+- SPI, UART, I2C
+- 4 x slow ADCs (100 kSps)
+- 4 x slow DACs (100 kSps)
+- Ext. clock for fast ADC
+ 
+.. Table 6: Extension connector E2 pin description
+
+===  ===========================  ===============  ==============================================  ==============
+Pin  Description                  FPGA pin number  FPGA pin description                            Voltage levels
+===  ===========================  ===============  ==============================================  ==============
+1    +5 V                                                                                                        
+2    -3.3 V / -3.4 V [1]_                                                                                        
+3    SPI (MOSI)                   E9               PS_MIO10_500                                    3.3 V         
+4    SPI (MISO)                   C6               PS_MIO11_500                                    3.3 V         
+5    SPI (SCK)                    D9               PS_MIO12_500                                    3.3 V         
+6    SPI (CS)                     E8               PS_MIO13_500                                    3.3 V         
+7    UART (TX)                    D5               PS_MIO8_500                                     3.3 V         
+8    UART (RX)                    B5               PS_MIO9_500                                     3.3 V         
+9    I2C (SCL)                    B9               PS_MIO50_501                                    3.3 V         
+10   I2C (SDA)                    B13              PS_MIO51_501                                    3.3 V         
+11   Ext com. mode                                                                                 GND (default) 
+12   GND                                                                                                         
+13   Analog Input 0               B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V       
+14   Analog Input 1               C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V       
+15   Analog Input 2               E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V       
+16   Analog Input 3               E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V       
+17   Analog Output 0              T10              IO_L1N_T0_34                                    0-1.8 V       
+18   Analog Output 1              T11              IO_L1P_T0_34                                    0-1.8 V       
+19   Analog Output 2              P15              IO_L24P_T3_34                                   0-1.8 V       
+20   Analog Output 3              U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V       
+21   GND                                                                                                         
+22   GND                                                                                                         
+23   Ext Adc CLK+                                                                                  LVDS          
+24   Ext Adc CLK-                                                                                  LVDS          
+25   GND                                                                                                         
+26   GND                                                                                                         
+===  ===========================  ===============  ==============================================  ==============
+
+.. [1] Red Pitaya Version 1.0 has -3.3 V on pin 2. Red Pitaya Version 1.1 has -3.4 V on pin 2.
+
+
+The pinout of the extension connectors is shown in the figure below.
+
+.. figure:: img/Red_Pitaya_pinout.jpg
+    :width: 700
+    :align: center
+
+|
+
+.. NEEDS CORRECTION - CHECK OTHER SOURCES FOR PROPER INFO
+
+Auxiliary analog input channels
+===============================
+
+- Number of channels: 4 
+- Nominal sampling rate: 100 ksps (H) 
+- ADC resolution 12 bits 
+- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
+- Input voltage range: 0 to +3.5 V 
+- Input coupling: DC 
+
+
+Auxiliary analog output channels 
+================================
+
+- Number of channels: 4 
+- Output type: Low pass filtered PWM (I) 
+- PWM time resolution: 4 ns (1/250 MHz)
+- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) v - Output voltage range: 0 to +1.8 V 
+- Output coupling: DC 
+
+
+General purpose digital input/output channels: (N) 
+==================================================
+
+- Number of digital input/output pins: 16 
+- Voltage level: 3.3 V 
+- Direction: configurable 
+- Location: IDC connector :ref:`E1 <E1>` (pins 324) 
+
+
+Powering Red Pitaya through extension connector
+===============================================
+
+The Red Pitaya can also be powered through pin 1 of the extension connector :ref:`E2 <E2>`, but in such a case, external protection must be provided by the user in order to protect the board!
+
+.. figure:: img/schematics/Protection.png
+
+|
+
+Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension connector :ref:`E2 <E2>`.
+
+
+
 .. _external_125_14:
 
 ===================
