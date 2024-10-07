@@ -254,14 +254,15 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 
 
 .. note::
-
-   To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
-
-
+        
+    To change the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please modify the **housekeeping** register value at **address 0x34**. For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
+        
+    The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
+        
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
-    - <8 mA drive strength
+    - < 8 mA drive strength
 
 .. _E2_sdr:
 
@@ -321,38 +322,34 @@ External ADC clock
 
 ADC clock can be provided by:
 
-  * On board 122.88 MHz XO (default)
-  * From external source / through extension connector (instructions provided below)
+- On board 122.88 MHz XO (default)
+- From external source / through extension connector (instructions provided below)
 
 .. warning::
 
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-* Remove: R37, R46
-* Add: R34 = 0R, R35 = 0R
+- Remove: R37, R46
+- Add: R34 = 0R, R35 = 0R
 
+    .. figure:: External_img1.png
+        :align: center
 
- .. figure:: External_img1.png
-    :align: center
+- Remove: FB11
 
+    .. figure:: External_img2.png
+        :align: center
 
-* Remove: FB11
+- Remove: 0R on C64, R24
+- Add: C64 = 100nF, C63 = 100nF, R36 = 100R
 
- .. figure:: External_img2.png
-    :align: center
+    .. figure:: External_img3.png
+        :align: center
 
-
-* Remove: 0R on C64, R24
-* Add: C64 = 100nF, C63 = 100nF, R36 = 100R
-
- .. figure:: External_img3.png
-    :align: center
-
-
- .. figure:: External_shem.png
-    :width: 50%
-    :align: center
+    .. figure:: External_shem.png
+        :width: 50%
+        :align: center
 
 
 Other specifications
