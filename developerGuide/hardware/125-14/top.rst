@@ -4,17 +4,17 @@
 STEMlab 125-14
 ##############
 
-*******
+========
 Pinout
-*******
+========
 
 .. figure:: img/Red_Pitaya_pinout.jpg
     :alt: Red Pitaya pinout
     :width: 700
 
-************************
+==========================
 Technical specifications
-************************
+==========================
 
 .. table::
     :widths: 40 40
@@ -170,64 +170,45 @@ Technical specifications
 
 .. _schematics_125_14:
 
-**********
+============
 Schematics
-**********
+============
 
-* `Red_Pitaya_Schematics_v1.0.1.pdf <https://downloads.redpitaya.com/doc//Red_Pitaya_Schematics_v1.0.1.pdf>`_
+- `Red_Pitaya_Schematics_v1.0.1.pdf <https://downloads.redpitaya.com/doc//Red_Pitaya_Schematics_v1.0.1.pdf>`_
 
 .. note::
 
     FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
 
-****************************************
+========================================
 Mechanical Specifications and 3D Models
-****************************************
+========================================
 
-* `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
+- `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
 
 
-***********
+===========
 Components
-***********
+===========
 
-* `ADC <https://www.analog.com/en/products/ltc2145-14.html>`_
-* `DAC <https://www.analog.com/en/products/AD9767.html>`_
-* `FPGA (Zynq 7010) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
-* `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
-* `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
-* `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information)
+- `ADC <https://www.analog.com/en/products/ltc2145-14.html>`_
+- `DAC <https://www.analog.com/en/products/AD9767.html>`_
+- `FPGA (Zynq 7010) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
+- `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
+- `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
+- `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
+- `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information)
 
 .. note::
 
     STEMlab 125-14 Low Noise and STEMlab 125-14 4-Input feature Zynq 7020 instead of Zynq 7010.
 
 
-**************
-Fast analog IO
-**************
-
-.. toctree::
-   :maxdepth: 6
-
-   fastIO
-
-*********
-Extension
-*********
-
-.. toctree::
-   :maxdepth: 6
-
-   extent
-
-
 .. _external_125_14:
 
-******************
+===================
 External ADC clock
-******************
+===================
 
 The ADC clock can be provided by:
 
@@ -273,39 +254,13 @@ The ADC clock can be provided by:
 
     Bottom side
 
-.. _qspi_chip:
-
-*********
+===========
 QSPI 
-*********
+===========
 
-The QSPI chip is by default not populated on Red Pitaya boards. Please write to support@redpitaya.com or info@redpitaya.com for information regarding board modifications.
+The QSPI chip is by default not populated on Red Pitaya boards. For further information on board modifications, please contact support@redpitaya.com or info@redpitaya.com.
 
 .. warning::
 
     Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
-
-***************
-Cooling options
-***************
-
-For additional cooling, we recommend a 30 mm or 25 mm fan. You can use the board's power connector to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
-
-.. figure:: img/cooling/cooling-powerPin.jpg
-    :width: 50%
-    :align: center
-
-    Red Pitaya power connector. Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
-
-
-.. note::
-
-    The power connector is a standard 2-pin 0.1" connector.
-    Supplies only 5 V.
-
-
-.. toctree::
-   :maxdepth: 6
-
-   cooling
