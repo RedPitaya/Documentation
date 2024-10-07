@@ -1,7 +1,6 @@
    
-********
 Assembly
-********
+===========
 
 1. Replace the fans' 0.05" plug with a standard 2-pin 0.1" connector.
  
@@ -20,10 +19,8 @@ Assembly
 
    Red Pitaya with an attached fan.
 
-
-************
 Measurements
-************
+===============
 
 .. figure:: img/cooling/cooling-result.png
    :align: center
