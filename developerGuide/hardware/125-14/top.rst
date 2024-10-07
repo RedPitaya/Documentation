@@ -263,7 +263,7 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 
 .. note::
 
-  Please note that there are differences in the FPGA pin numbers for SDRlab 122-16, STEMlab 125-14 Z7020, and SIGNALlab 250-12. Additionally, these models have more digital pins available. For precise configuration details, please refer to the board model documentation and schematics.
+    Please note that there are differences in the FPGA pin numbers for SDRlab 122-16, STEMlab 125-14 Z7020, and SIGNALlab 250-12. Additionally, these models have more digital pins available. For precise configuration details, please refer to the board model documentation and schematics.
 
 .. note::
 
