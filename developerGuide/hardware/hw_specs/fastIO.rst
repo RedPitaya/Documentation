@@ -7,9 +7,9 @@ Analog inputs
 The Red Pitaya board analog front-end features 2 fast analog inputs. 
 
 
-**********************
+*************************
 General Specifications
-**********************
+*************************
     
 +---------------------------------+-----------------------------------------------+
 | Number of channels              | 2                                             |
@@ -20,10 +20,10 @@ General Specifications
 +---------------------------------+-----------------------------------------------+
 | Input coupling                  | DC                                            |
 +---------------------------------+-----------------------------------------------+
-| | **Absolute maximum input**    | **30 V (S) (1500 V ESD)**                     |
-| | **voltage rating**            |                                               |
+| | **Absolute maximum input**    | | **LV: 6 V (S) (1500 V ESD)**                |
+| | **voltage rating**            | | **HV: 30 V (S) (1500 V ESD)**               |
 +---------------------------------+-----------------------------------------------+
-| Overload protection             | protection diodes                             |
+| Overload protection             | Protection diodes                             |
 |                                 | (under the input voltage rating conditions)   |
 +---------------------------------+-----------------------------------------------+
 | Connector type                  | SMA                                           |
@@ -553,5 +553,41 @@ RIPPLE(@ 0.5V DC) 0.4 mVpp
 ================= ==========
 
     Typical specifications after calibration
+
+
+
+============
+Footnotes
+============
+
+.. [#]_ Input capacitance depends on jumper settings and may vary.
+.. [#]_ A 50 Ω termination can be connected through an SMA T connector in parallel to the input for measurements in a 50 Ω system. 
+.. [#]_ Crosstalk was measured with a high gain jumper setting on both channels. The SMA connectors not involved in the measurement were terminated.
+.. [#]_ Measurements referred to high gain jumper setting with limited environmental noise, inputs and outputs terminated, output signals disabled, and the PCB grounded through SMA ground. The specified noise floor measurement is calculated from the standard deviation of 16k contiguous samples at full rate. (Typically full bandwidth std(Vn) < 2 mV). The noise floor specification does not treat spurious spectral components separately and represents a time domain noise average referred to a 1 Hz bandwidth. In the presence of spurious components, the actual noise floor would be lower.
+.. [#]_ Measurement referred at high gain jumper setting, inputs matched and outputs terminated, outputs signal disabled, PCB grounded through SMA ground. 
+.. [#]_ Measurement referred to high gain jumper setting, inputs and outputs terminated, outputs signal disabled, PCB grounded through SMA ground. 
+.. [#]_ Further corrections can be applied through more precise gain and DC offset calibration. 
+.. [#]_ Default software enables sampling at CPU dependent speed. The acquisition of sequence at 100 ksps rate requires the implementation of additional FPGA processing.
+.. [#]_ First order low pass filter implementation. Additional filtering can be externally applied according to application requirements. 
+.. [#]_ The output channels are designed to drive 50 Ω loads. Terminate outputs when channels are not used. Connect parallel 50 Ω load (SMA tee junction) in high impedance load applications. 
+.. [#]_ Measured at 10 dBm output power level 
+.. [#]_ The typical power level with 1 MHz sine is 9.5 dBm. Output power is subject to slew rate limitations.
+.. [#]_ The detailed scheme can be found in the documentation (Red_Pitaya_Schematics_v1.0.1.pdf). 
+.. [#]_ To avoid speed limitations on digital General Purpose Input / Output pins are directly connected to the FPGA. FPGA decoupling and pin protection is to be addressed within extension module designs. The user is responsible for pin handling.
+.. [#]_ The use of an unapproved power supply may deteriorate performance or damage the product.
+.. [#]_ A heatsink must be installed and the board must be operated on a flat surface without airflow obstructions. Operation at higher ambient temperatures and lower pressure conditions within enclosures will be addressed by means of adequate ventilation. The operation of the product is automatically disabled at increased temperatures.
+.. [#]_ Some parts may become hot during and after operation. Do not touch them. 
+.. [#]_ Measurement performance is specified within this range. 
+.. [#]_ Valid for low frequency signals. For input signals that contain frequency components beyond 1 kHz, the full scale value defines the maximum admissible input voltage.
+.. [#]_ The jumper settings are limited to the positions described in the user manual. Any other configuration or use of different jumper types may damage the product and void the warranty.
+.. [#]_ The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MILC39012. It's important that the central pin is of a suitable length, otherwise the SMA connector installed on the Red Pitaya will mechanically damage the SMA connector. The central pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
+.. [#]_ Jumpers are not symmetrical; they have latches. Always install jumpers with the latch on its outer side in order to avoid problems with hard to remove jumpers.
+.. [#]_ Dimensions are rounded to the nearest millimeter. For exact dimensions, please see the technical drawings and product model. (Red_Pitaya_Dimensions_v1.0.1.pdf)
+
+|
+
+The information provided by Red Pitaya d.o.o. is believed to be accurate and reliable. However, no liability is accepted for its use. Please note that the contents may be subject to change without prior notice. 
+
+
 
 
