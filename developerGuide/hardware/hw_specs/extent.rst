@@ -1,5 +1,4 @@
 
-
 ######################
 Extension connector
 ######################
@@ -19,8 +18,6 @@ Extension connector power supply
 
 .. _E1:
 
-.. TABLE FOR SDRLAB STEMLAB, 4-IN, and SIGNALLAB
-
 Extension connector E1
 ======================
 
@@ -32,7 +29,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
         - +3V3 power source
         - 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
-        - 2x CAN
+        - 2 CAN busses
         
         ===  =====================  ===============  ========================  ==============
         Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -69,7 +66,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
         - 3V3 power source
         - 22 single ended or 8 differential digital I/Os with 3.3 V logic levels
-        - 2x CAN
+        - 2 CAN busses
         
         ===  =====================  ===============  ========================  ==============
         Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -106,7 +103,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
         - 3V3 power source
         - 19 single ended or 9 differential digital I/Os with 3.3 V logic levels
-        
+        - 2 CAN busses
         
         ===  =====================  ===============  ========================  ==============
         Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -143,7 +140,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
         - 3V3 power source
         - 22 single ended or 8 differential digital I/Os with 3.3 V logic levels
-        
+        - 2 CAN busses
         
         ===  =====================  ===============  ========================  ==============
         Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -200,8 +197,8 @@ Extension connector E2
 
         - +5 V, -3V4 power sources
         - SPI, UART, I2C
-        - 4 x slow ADCs (100 kSps)
-        - 4 x slow DACs (100 kSps)
+        - 4 slow ADCs
+        - 4 slow DACs
         - Ext. clock for fast ADC
          
         .. Table 6: Extension connector E2 pin description
@@ -243,8 +240,8 @@ Extension connector E2
 
         - +5 V power source
         - SPI, UART, I2C
-        - 4 x slow ADCs (100 kSps)
-        - 4 x slow DACs (100 kSps)
+        - 4 slow ADCs
+        - 4 slow DACs
         - Ext. clock for fast ADC
 
         .. Table 6: Extension connector E2 pin description
@@ -284,10 +281,9 @@ Extension connector E2
 
         - +5 V, -5.4 V power sources
         - SPI, UART, I2C
-        - 4 x slow ADCs (100 kSps)
-        - 4 x slow DACs (100 kSps)
+        - 4 slow ADCs
+        - 4 slow DACs
         - Ext. clock for fast ADC
-        
         
         .. Table 6: Extension connector E2 pin description
         
@@ -326,8 +322,8 @@ Extension connector E2
 
         - +5 V, -3V4 power sources
         - SPI, UART, I2C
-        - 4 x slow ADCs
-        - 4 x slow DACs
+        - 4 slow ADCs
+        - 4 slow DACs
         - Ext. clock for fast ADC
 
         .. Table 6: Extension connector E2 pin description
@@ -363,10 +359,9 @@ Extension connector E2
         26   GND                                                                                                    
         ===  ======================  ===============  ==============================================  ==============
 
-
 .. note::
 
-    UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
+    **UART TX (PS_MIO08)** is an output only. It must be connected to GND or left floating at power-up (no external pull-ups)!
 
 The pinout of the extension connectors is shown in the figure below.
 
@@ -376,17 +371,15 @@ The pinout of the extension connectors is shown in the figure below.
 
 |
 
-.. NEEDS CORRECTION - CHECK OTHER SOURCES FOR PROPER INFO
-
 Auxiliary analog input channels
 ===============================
 
 - Number of channels: 4 
 - Nominal sampling rate: 100 ksps (H) 
 - ADC resolution 12 bits 
-- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
-- Input voltage range: 0 to +3.5 V 
+- Input voltage range: 0 - 3.5 V 
 - Input coupling: DC 
+- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
 
 
 Auxiliary analog output channels 
@@ -395,17 +388,59 @@ Auxiliary analog output channels
 - Number of channels: 4 
 - Output type: Low pass filtered PWM (I) 
 - PWM time resolution: 4 ns (1/250 MHz)
-- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) v - Output voltage range: 0 to +1.8 V 
+- Analog output resolution: 8 bit
+- Analog output sample rate ≲ 3.2 MS/s
+- Analog output bandwidth ≈ 3.2 MS/s
+- Analog outputs voltage range: 0 - 1.8 V
 - Output coupling: DC 
+- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) V
 
 
 General purpose digital input/output channels: (N) 
 ==================================================
 
-- Number of digital input/output pins: 16 
-- Voltage level: 3.3 V 
-- Direction: configurable 
-- Location: IDC connector :ref:`E1 <E1>` (pins 324) 
+.. tabs::
+
+    .. tab:: STEMlab 125-14
+
+        - Number of digital input/output pins: 16
+        - Voltage level: 3.3 V
+        - Current limitation: < 8mA
+        - Abs. min. voltage: -0.40 V
+        - Abs. max. voltage: 3.3 V + 0.55 V
+        - Current limitation: < 8 mA drive strength
+        - Direction: configurable 
+        - Location: IDC connector :ref:`E1 <E1>`
+
+    .. tab:: SDRlab 122-16
+
+        - Number of digital input/output pins: 22
+        - Voltage level: 3.3 V 
+        - Abs. min. voltage: -0.40 V
+        - Abs. max. voltage: 3.3 V + 0.55 V
+        - Current limitation: < 8 mA drive strength
+        - Direction: configurable 
+        - Location: IDC connector :ref:`E1 <E1>`
+
+    .. tab::SIGNALlab 250-12
+
+        - Number of digital input/output pins: 19
+        - Voltage level: 3.3 V 
+        - Abs. min. voltage: -0.40 V
+        - Abs. max. voltage: 3.3 V + 0.55 V
+        - Current limitation: < 8 mA drive strength
+        - Direction: configurable 
+        - Location: IDC connector :ref:`E1 <E1>`
+
+    .. tab:: STEMlab 125-14 4-Input
+
+        - Number of digital input/output pins: 22
+        - Voltage level: 3.3 V
+        - Abs. min. voltage: -0.40 V
+        - Abs. max. voltage: 3.3 V + 0.55 V
+        - Current limitation: < 8 mA drive strength
+        - Direction: configurable
+        - Location: IDC connector :ref:`E1 <E1>`
 
 
 Powering Red Pitaya through extension connector
