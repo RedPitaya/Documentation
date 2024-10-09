@@ -102,7 +102,7 @@ Incorrect jumper placement can cause the front part of the acquired square wave 
 
 With the jumper pins correctly placed, the same waveform looks much better.
 
-.. figure:: img/jumpers/Jumper_position_right_signal.jpg
+.. figure:: img/jumpers/Jumper_position_correct_signal.jpg
 
 
 
