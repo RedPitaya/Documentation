@@ -1,9 +1,13 @@
 .. _top_125_10:
 
-###############
-STEMlab 125-10
-###############
+################################
+STEMlab 125-10 (DISCONTINUED)
+################################
 
+.. note::
+
+    STEMlab 125-10 is discontinued. The documentation here is provided as a reference for existing users.
+    Please note that the board will soon reach end-of-life for software support (exact date to be determined). All users will be informed in advance.
 
 Pinout
 ========
@@ -175,7 +179,7 @@ Technical specifications
 Schematics
 ============
 
-* `Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
+- `Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
 
 .. note::
 
@@ -185,7 +189,7 @@ Schematics
 Mechanical Specifications and 3D Models
 ==========================================
 
-* `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
+- `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
 
 
 
