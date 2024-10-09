@@ -2,10 +2,12 @@
 Red Pitaya platforms
 ####################
 
+Gen 1
+=======
+
 .. toctree::
    :maxdepth: 2
 
-   125-10/top
    125-14/top
    125-14_EXT/top
    125-14_LN/top
@@ -15,6 +17,7 @@ Red Pitaya platforms
    122-16/top
    122-16_EXT/top
    250-12/top
+   125-10/top
    compares/vs
    cets
    leds
