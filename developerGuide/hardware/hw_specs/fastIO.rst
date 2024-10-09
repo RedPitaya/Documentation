@@ -4,8 +4,11 @@
 Analog inputs
 #############
 
-The Red Pitaya board analog front-end features 2 fast analog inputs. 
+.. note::
 
+    The measurements in this section have been made using STEMlab 125-14. Most measurements can be extended to other board models, but may vary depending on the board model.
+
+The STEMlab 125-14 board analog front-end features 2 fast analog inputs. 
 
 *************************
 General Specifications
@@ -36,14 +39,12 @@ General Specifications
     
     .. note::
     
-       The overload protection is valid for low-frequency signals. For input signals that contain frequency components beyond 1 kHz, the full-scale value defines the maximum admissible input voltage.
-    
+       Overload protection applies to low frequency signals. For input signals containing frequency components above 1 kHz, the full scale value defines the maximum permissible input voltage.
 
     .. note::
     
-        The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of suitable length, otherwise, the SMA connector installed in Red Pitaya will mechanically damage the SMA connector.
-        The central pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
-
+        The SMA connectors on the cables connected to Red Pitaya must comply with the MILC39012 standard. The centre pin must be of suitable length, otherwise the SMA connector installed in Red Pitaya will mechanically damage the SMA connector.
+        The centre pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be repairable due to the mechanical damage (separation of the pad from the board).
 
 
 .. _jumper_pos:
@@ -75,15 +76,15 @@ Gain can be adjusted independently for both input channels. The adjustment is do
 Jumper orientation
 ==================
 
-Jumper position can affect the measurements taken with Red Pitaya. The jumpers are internally connected with a small metal plate, which acts as a capacitor and has an effect on the overall capacitance, which in turn affects the input impedance. If the jumpers are moved from an incorrect to a correct position, a calibration is highly recommended.
+The position of the jumpers can affect the measurements taken by the Red Pitaya. The jumpers are internally connected to a small metal plate which acts as a capacitor and affects the overall capacitance which in turn affects the input impedance. If the jumpers are moved from an incorrect to a correct position, calibration is strongly recommended.
 
 
-1) The position of the jumper bumps must be as indicated in this image.
+1) The position of the jumper bumps must be as shown in this diagram.
 
     .. figure:: img/jumpers/Jumper_position_Note.png
 
 
-2) The metallic part of the jumper should look toward the PCB so that it is not visible once the jumpers are installed. Here is an example on the STEMlab 125-14 4-Input:
+2) The metal part of the jumper should face the PCB so that it is not visible once the jumpers are installed. Here is an example on the STEMlab 125-14 4 input:
 
     .. figure:: img/jumpers/Jumper_position_4IN_0.png
         :align: center
@@ -93,15 +94,13 @@ Jumper position can affect the measurements taken with Red Pitaya. The jumpers a
         :align: center
         :width: 700 px
 
-
-Incorrect placement of the jumpers can cause overshooting or undercutting of the front part of the acquired square-type signals, as shown in the picture below.
+Incorrect jumper placement can cause the front part of the acquired square wave signals to be overshot or undercut. This is shown in the figure below.
 
 .. figure:: img/jumpers/Jumper_position_wrong_signal.jpg
 
-    As it can be observed, **if the jumpers are not placed correctly, the step response becomes under-compensated.**
+    As can be seen, **if the jumpers are not set correctly, the step response will be under-compensated.**.
 
-
-With the correct placement of the jumper pins, that same waveform looks much better.
+With the jumper pins correctly placed, the same waveform looks much better.
 
 .. figure:: img/jumpers/Jumper_position_right_signal.jpg
 
