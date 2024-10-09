@@ -16,6 +16,12 @@ Fixed
 - Local network visibility fixed
 
 
+STEMlab 125-10 out-of-memory
+-----------------------------
+
+..TODO
+
+
 Direct connection on MAC
 -------------------------
 
