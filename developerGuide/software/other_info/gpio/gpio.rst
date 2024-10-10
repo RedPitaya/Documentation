@@ -42,15 +42,22 @@ Although the Zynq SoC provides 118 GPIO lines, only 16 are accessible to the use
 #. the “GPIO number”, also documented in the device tree
 #. the “pin name”, used in the SCPI interface, in the APIs (prefixed with ``RP_``), and throughout the Red Pitaya documentation.
 
+.. note::
+
+    Red Pitaya board models that use Zynq 7020 provide access to more GPIO pins:
+
+        - *SDRlab 122-16, STEMlab 125-14 4-Input, STEMlab 125-14-Z7020-LN* - **22 pins**
+        - *SIGNALlab 250-12* - **19 pins**
+
 This is the mapping between all these numbering/naming schemes:
 
-+-------------+--------------+-----------------+------------------+-----------------+
-| line number | sysfs number | EMIO signal     | GPIO number      | pin name        |
-+=============+==============+=================+==================+=================+
-| 62 – 69     | 968 – 975    | EMIO8  – EMIO15 | GPIO 0 – GPIO 7  | DIO0_P – DIO7_P |
-+-------------+--------------+-----------------+------------------+-----------------+
-| 70 – 77     | 976 – 983    | EMIO16 – EMIO23 | GPIO 8 – GPIO 15 | DIO0_N – DIO7_N |
-+-------------+--------------+-----------------+------------------+-----------------+
++-------------+--------------+--------------------+-----------------+------------------+-----------------+
+| line number | sysfs number | FPGA signal name   | EMIO signal     | GPIO number      | pin name        |
++=============+==============+====================+=================+==================+=================+
+| 62 – 69     | 968 – 975    | exp_p_io[7:0]      | EMIO8  – EMIO15 | GPIO 0 – GPIO 7  | DIO0_P – DIO7_P |
++-------------+--------------+--------------------+-----------------+------------------+-----------------+
+| 70 – 77     | 976 – 983    | exp_n_io[7:0]      | EMIO16 – EMIO23 | GPIO 8 – GPIO 15 | DIO0_N – DIO7_N |
++-------------+--------------+--------------------+-----------------+------------------+-----------------+
 
 The command ``gpioinfo``, from the package ``gpiod``, can be used to list the available lines, with their line number, EMIO signal name and GPIO number:
 
