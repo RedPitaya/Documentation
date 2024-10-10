@@ -34,48 +34,32 @@ Apropriate fpga bitstream can be applied using bash command.
             redpitaya> overlay.sh v0.94
 
 
-There are 54+64=118 GPIO provided by ZYNQ PS, MIO provides 54 GPIO,
-and EMIO provide additional 64 GPIO and only 16 out of those are accesible on board.
-On Extension connector E1; pins from DIO0_N to DIO7_N and DIO0_P to DIO7_P.
+Although the Zynq SoC provides 118 GPIO lines, only 16 are accessible to the user. They can be found on the extension connector E1, as pins DIO0_P to DIO7_P and DIO0_N to DIO7_N. These pins can be identified by different numbering/naming schemes:
 
+#. the “line number”, used by the gpiod tools, libgpiod, and the underlying character device interface
+#. the “sysfs number”, used by the legacy sysfs interface: this is the line number offset by 906
+#. the “EMIO signal name”, documented in the device tree
+#. the “GPIO number”, also documented in the device tree
+#. the “pin name”, used in the SCPI interface, in the APIs (prefixed with ``RP_``), and throughout the Red Pitaya documentation.
 
-The next formula is used to calculate the ``gpio_base`` index.
+This is the mapping between all these numbering/naming schemes:
 
-.. code-block:: none
++-------------+--------------+-----------------+------------------+-----------------+
+| line number | sysfs number | EMIO signal     | GPIO number      | pin name        |
++=============+==============+=================+==================+=================+
+| 62 – 69     | 968 – 975    | EMIO8  – EMIO15 | GPIO 0 – GPIO 7  | DIO0_P – DIO7_P |
++-------------+--------------+-----------------+------------------+-----------------+
+| 70 – 77     | 976 – 983    | EMIO16 – EMIO23 | GPIO 8 – GPIO 15 | DIO0_N – DIO7_N |
++-------------+--------------+-----------------+------------------+-----------------+
 
-   base_gpio = ARCH_NR_GPIOS - ZYNQ_GPIO_NR_GPIOS = 1024 - 118 = 906
-
-
-Values for the used macros can be found in the kernel sources.
-
-.. code-block:: shell-session
-
-   $ grep ZYNQ_GPIO_NR_GPIOS drivers/gpio/gpio-zynq.c
-   #define	ZYNQ_GPIO_NR_GPIOS	118
-   $ grep -r CONFIG_ARCH_NR_GPIO tmp/linux-xlnx-xilinx-v2017.2
-   tmp/linux-xlnx-xilinx-v2017.2/.config:CONFIG_ARCH_NR_GPIO=1024
-
-
-Another way to find the `gpio_base` index is to check the given name inside `sysfs`.
+The command ``gpioinfo``, from the package ``gpiod``, can be used to list the available lines, with their line number, EMIO signal name and GPIO number:
 
 .. code-block:: shell-session
 
-   # find /sys/class/gpio/ -name gpiochip*
-   /sys/class/gpio/gpiochip906
-
-
-GPIOs are accessible at the ``sysfs`` index.
-
-The default pin assignment for GPIO is described in the next table.
-
-+--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
-| FPGA   | connector  | GPIO               | MIO/EMIO index   | ``sysfs`` index              | comments, LED color, dedicated meaning    |
-+========+============+====================+==================+==============================+===========================================+
-|        |            | ``exp_p_io [7:0]`` | ``EMIO[15: 8]``  | ``906+54+[15: 8]=[975:968]`` |  DIO7_P : DIO0_P                          |
-+--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
-|        |            | ``exp_n_io [7:0]`` | ``EMIO[23:16]``  | ``906+54+[23:16]=[983:976]`` |  DIO7_N : DIO0_N                          |
-+--------+------------+--------------------+------------------+------------------------------+-------------------------------------------+
-
+    redpitaya> gpioinfo | grep GPIO
+            line  62: "EMIO8  (GPIO 0)" unused input active-high
+            line  63: "EMIO9  (GPIO 1)" unused input active-high
+            ...
 
 
 Linux access to GPIO
@@ -88,7 +72,7 @@ This document is used as reference:
 `Linux+GPIO+Driver <http://www.wiki.xilinx.com/Linux+GPIO+Driver>`_
 
 
-Bash example for writing to and reading from gpio value for pins from 968(DIO0_P) to 983(DIO7_N).
+Bash example for writing to and reading from pin DIO0_P (sysfs number 968):
 
 .. code-block:: shell-session
 
