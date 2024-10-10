@@ -1,9 +1,13 @@
 .. _top_125_10:
 
-###############
-STEMlab 125-10
-###############
+################################
+STEMlab 125-10 (DISCONTINUED)
+################################
 
+.. note::
+
+    STEMlab 125-10 is discontinued. The documentation here is provided as a reference for existing users.
+    Please note that the board will soon reach end-of-life for software support (exact date to be determined). All users will be informed in advance.
 
 Pinout
 ========
@@ -33,7 +37,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | System memory                      | Micro SD up to 32 GB               |
     +------------------------------------+------------------------------------+
-    | Console connection                 | Micro USB                          |
+    | Console connection                 | USB to serial converter required   |
     +------------------------------------+------------------------------------+
     | Power connector                    | Micro USB                          |
     |                                    |                                    |
@@ -76,8 +80,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 |
     +------------------------------------+------------------------------------+
-    | Absolute max. Input voltage range  | 30 V                               |
-    |                                    |                                    |
+    | | **Absolute max. Input**          | | **LV +-6 V**                     |
+    | | **voltage range**                | | **HV +-30 V**                    |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
@@ -125,29 +129,31 @@ Technical specifications
     +====================================+====================================+
     | Digital IOs                        | 16                                 |
     +------------------------------------+------------------------------------+
+    | Digital voltage levels             | 3.3 V                              |
+    +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 – 3.5 V                          |
+    | Analog inputs voltage range        | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bits                            |
+    | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
     | Analog input sample rate           | 100 kS/s                           |
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 – 1.8 V                          |
+    | Analog outputs voltage range       | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bits                             |
+    | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
     | Analog output sample rate          | ≲ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
+    | Analog output bandwidth            | ≈ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
     | Available voltages                 | +5 V, +3.3 V, -4 V                 |
     +------------------------------------+------------------------------------+
-    | External ADC clock                 |  N/A                               |
+    | External ADC clock                 | N/A                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -158,13 +164,22 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through extension connector        |
+    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | High-Z (digital input)             |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | N/A                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
+
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
 .. note::
@@ -175,7 +190,7 @@ Technical specifications
 Schematics
 ============
 
-* `Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
+- `Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-10_V1.0.pdf>`_
 
 .. note::
 
@@ -185,7 +200,7 @@ Schematics
 Mechanical Specifications and 3D Models
 ==========================================
 
-* `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
+- `RP_STEM_125-10_V1.0_STEP.zip <https://downloads.redpitaya.com/doc/RP_STEM_125-10_V1.0_STEP.zip>`_
 
 
 

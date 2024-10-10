@@ -555,14 +555,11 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 | Aluminium case compatibility   | No                                         | Yes                                        |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 
-.. [#f1]
-    Exact measurements will be provided in the future.
+.. [#f1] Exact measurements will be provided in the future.
 
-.. [#f2]
-    Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Comparison table <rp-board-comp>` for more information.
+.. [#f2] Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Comparison table <rp-board-comp>` for more information.
  
-.. [#f3]
-    Through the microBUS connectors.
+.. [#f3] Through the microBUS connectors.
 
 .. |74FCT38072DCGI| raw:: html
 

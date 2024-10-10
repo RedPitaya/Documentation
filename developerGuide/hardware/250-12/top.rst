@@ -4,7 +4,6 @@
 SIGNALlab 250-12
 #################
 
-
 Pinout
 =========
 
@@ -72,8 +71,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | AC / DC (software selectable)      |
     +------------------------------------+------------------------------------+
-    | Absolute max. Input voltage range  | 30 V                               |
-    |                                    |                                    |
+    | | **Absolute max. Input**          | | **LV +-6 V**                     |
+    | | **voltage range**                | | **HV +-30 V**                    |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
@@ -121,29 +120,31 @@ Technical specifications
     +====================================+====================================+
     | Digital IOs                        | 19                                 |
     +------------------------------------+------------------------------------+
+    | Digital voltage levels             | 3.3 V                              |
+    +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 – 3.5 V                          |
+    | Analog inputs voltage range        | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bits                            |
+    | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
     | Analog input sample rate           | 100 kS/s                           |
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 – 1.8 V                          |
+    | Analog outputs voltage range       | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bits                             |
+    | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
     | Analog output sample rate          | ≲ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
+    | Analog output bandwidth            | ≈ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Communication interfaces           | I2C, SPI, UART, CAN                |
+    | Communication interfaces           | I2C, SPI, UART, CAN, USB           |
     +------------------------------------+------------------------------------+
     | Available voltages                 | +5 V, +3.3 V, -4 V                 |
     +------------------------------------+------------------------------------+
-    | External ADC clock                 |  Yes                               |
+    | External ADC clock                 | Yes                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -154,13 +155,22 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through BNC connector              |
+    | External trigger input             | Through BNC connector              |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | | 10 kΩ (HW_rev 1.0-1.2a)          |
+    |                                    | | 1 kΩ (HW_rev 1.2b)               |
+    +------------------------------------+------------------------------------+
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | Through SMA connector              |
     +------------------------------------+------------------------------------+
+
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
 .. note::
@@ -171,7 +181,7 @@ Technical specifications
 Schematics
 ============
 
-* `STEM250-12_V1r1.pdf <https://downloads.redpitaya.com/doc/Customer-DOC_STEM250-12_V1r1.pdf>`_
+- `STEM250-12_V1r1.pdf <https://downloads.redpitaya.com/doc/Customer-DOC_STEM250-12_V1r1.pdf>`_
 
 .. note::
 
@@ -182,19 +192,19 @@ Schematics
 Mechanical Specifications and 3D Models
 ===========================================
 
-* `SIGNALlab 250-12 V1r2 3D pdf <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dpdf.zip>`_
-* `SIGNALlab 250-12 V1r2 3D step <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dstep.zip>`_
+- `SIGNALlab 250-12 V1r2 3D pdf <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dpdf.zip>`_
+- `SIGNALlab 250-12 V1r2 3D step <https://downloads.redpitaya.com/doc/SIGNAL250-12_V1r2_3Dstep.zip>`_
 
 
 Components
 ==============
 
-* `ADC <https://www.analog.com/en/products/AD9613.html>`_
-* `DAC <https://www.analog.com/en/products/ad9746.html>`_
-* `FPGA (Zynq 7020) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
-* `Current Feedback 1.5 GHz Op. Amp. <https://www.analog.com/en/products/AD8000.html>`_
-* `Voltage Feedback 1 GHz FastFET Op. Amp. <https://www.analog.com/en/products/ada4817-1.html>`_
-* `Low Power Differential ADC Driver <https://www.analog.com/en/products/ada4817-1.html>`_
+- `ADC <https://www.analog.com/en/products/AD9613.html>`_
+- `DAC <https://www.analog.com/en/products/ad9746.html>`_
+- `FPGA (Zynq 7020) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
+- `Current Feedback 1.5 GHz Op. Amp. <https://www.analog.com/en/products/AD8000.html>`_
+- `Voltage Feedback 1 GHz FastFET Op. Amp. <https://www.analog.com/en/products/ada4817-1.html>`_
+- `Low Power Differential ADC Driver <https://www.analog.com/en/products/ada4817-1.html>`_
 
 .. * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
 .. * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
@@ -203,6 +213,8 @@ Components
 
 Extension connector SIGNALlab
 ================================
+
+The SIGNALlab 250-12 board, with the exception of "bare OEM" boards, is enclosed in an aluminium housing which should be removed to allow access to the E1 and E2 extension connectors.
 
 - Connector: 2 x 26 pins IDC (M) 
 - Power supply: 
@@ -217,7 +229,7 @@ Extension connector E1
 
 - 3V3 power source
 - 19 single ended or 9 differential digital I/Os with 3.3 V logic levels
-
+- 2 CAN busses
 
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -252,14 +264,15 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 
 
 .. note::
-
-   To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
-
-
+        
+    To change the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please modify the **housekeeping** register value at **address 0x34**. For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
+        
+    The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
+        
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
-    - <8 mA drive strength
+    - < 8 mA drive strength
 
 
 .. _E2_signal:
@@ -267,20 +280,19 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 Extension connector E2
 -------------------------
 
-- +5 V, -5.4 V power source
+- +5 V, -5.4 V power sources
 - SPI, UART, I2C
-- 4 x slow ADCs
-- 4 x slow DACs
+- 4 slow ADCs
+- 4 slow DACs
 - Ext. clock for fast ADC
-
-
+        
 .. Table 6: Extension connector E2 pin description
-
+        
 ===  ======================  ===============  ==============================================  ==============
 Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
 ===  ======================  ===============  ==============================================  ==============
 1    +5V                                                                                                    
-2    -4V2                                                                                                   
+2    -5.4 V                                                                                                   
 3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
 4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
 5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
@@ -307,11 +319,9 @@ Pin  Description             FPGA pin number  FPGA pin description              
 26   GND                                                                                                    
 ===  ======================  ===============  ==============================================  ==============
 
-
 .. note::
 
-    UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
-
+    **UART TX (PS_MIO08)** is an output only. It must be connected to GND or left floating at power-up (no external pull-ups)!
 
 
 Other specifications

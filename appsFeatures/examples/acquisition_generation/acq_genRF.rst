@@ -2,7 +2,7 @@ Generating and Acquiring signals at RF inputs/outputs
 #####################################################
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
    
     acq_genRF-exm1
     acq_genRF-exm2

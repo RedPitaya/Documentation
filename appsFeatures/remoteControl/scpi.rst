@@ -212,8 +212,6 @@ Here are the requirements for setting up a Python environment to remotely contro
 
 1.  Open the :ref:`blink <blink>` tutorial and copy the code to your favourite text editor.
 
-    |
-
 2.  Save the file to your working folder as ``blink.py``. Make sure that **redpitaya_scpi.py** is located next to it.
 
     .. note::
@@ -222,8 +220,6 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     .. figure:: img/scpi-examples.png
         :width: 600
-
-    |
 
 3.  Edit ``blink.py`` so that the *IP* variable contains the IP or the "rp-xxxxxx.local" address of your Red Pitaya.
 
@@ -324,7 +320,13 @@ Starting SCPI server manually
 
 1. Connect to your Red Pitaya through :ref:`SSH <ssh>`.
 
-2. Start the SCPI server with the following command:
+#. Before starting SCPI service, make sure Nginx service is not running. Running them at the same time will cause conflicts, since they access the same hardware.
+
+   .. code-block:: shell-session
+
+        systemctl stop redpitaya_nginx
+
+#. Start the SCPI server with the following command:
 
     .. code-block:: shell-session
 
@@ -345,6 +347,18 @@ Starting SCPI server manually
     .. code-block::
 
         RP:LOGmode CONSOLE
+
+
+**********************************
+Starting SCPI server at boot time
+**********************************
+
+The next commands will enable running SCPI service at boot time and disable Nginx service.
+
+.. code-block::
+
+   systemctl disable redpitaya_nginx
+   systemctl enable  redpitaya_scpi
 
 
 

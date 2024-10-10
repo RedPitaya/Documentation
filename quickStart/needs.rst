@@ -4,8 +4,7 @@
 What do I need before I start?
 ##############################
 
-The following essential items needed to start are already included
-in each of the RedPitaya kits available on our |WEBstore|:
+The following items are required for proper board operation. They are already included in each of the Red Pitaya kits available on our |WEBstore|:
 
 .. |WEBstore| raw:: html
 
@@ -25,16 +24,18 @@ in each of the RedPitaya kits available on our |WEBstore|:
       *   16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
       *   Ethernet cable.
 
-Additional required items which are not provided with the Red Pitaya kits:
+Additional items required that are not included in the Red Pitaya kits:
 
 *   A computer with an internet browser (Google Chrome is recommended),
-*   router with DHCP server enabled and access to the internet.
+*   Router with DHCP server enabled and access to the internet.
 
 .. note::
 
-   Red Pitaya boards should not be powered by a power supply that provides less power than specified above or has very thin power wires, since this will result in abnormal behaviour of the device, causing reboots and network disconnections. 
-   The same problem might appear if the Red Pitaya board is powered directly from USB on a PC or HUB that cannot provide enough power (current) or when using a bad power cable.
+   It is important to note that Red Pitaya boards should **not** be powered by a power supply that provides less power than specified above or has very thin power wires. Doing so may result in abnormal behaviour of the device, causing reboots and network disconnections.
+   Similarly, the Red Pitaya board may malfunction if powered directly from a USB port on a PC (due to insufficient current supply) or hub that cannot provide sufficient power or if a faulty power cable is used.
+    
+   Furthermore, the use of an unapproved power supply may impair performance or cause damage to the product.
 
 .. note::
 
-   We recommend using at least a 16 GB SD card with Red Pitaya OS versions 2.00 and above. With 1.04 OS versions, a minimum of 8 GB card is recommended. With older OS versions (0.9), you might get away with a 4 GB SD card.
+   We recommend a minimum of 16 GB SD card for Red Pitaya OS versions 2.00 and above. With OS versions 1.04, a minimum 8 GB card is recommended. For older OS versions (0.9) you may be able to get away with a 4 GB SD card.

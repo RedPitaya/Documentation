@@ -582,7 +582,7 @@ Code - Python API
             
             rp.rp_Release()
 
-    .. group-tab:: NumPy (in-dev)
+    .. group-tab:: NumPy (OS 2.05-37 or higher)
 
         .. code-block:: python
 

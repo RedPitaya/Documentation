@@ -6,10 +6,10 @@ STEMlab 125-14 4-Input
 
 STEMlab 125-14 4-Input is a single-board RF signal acquisition platform that offers the same general hardware features as STEMlab 125-14. The main differences/benefits are that:
 
-* There are 4 analog input channels @ 125 Msps & 14 bits (instead of 2 inputs and 2 outputs).
-* RF inputs come with better performance (less crosstalk, noise, and distortions).
-* Zynq 7020 (bigger FPGA that offers more processing capabilities and more digital IO pins available on the extension connector).
-* Switching between internal and external clocks can be done using a jumper or control signal on the extension connector. Connect the CLK_SEL pin to GND for the board to switch to EXT clock and to 3V3 (Vcc) to use the internal clock.
+- There are 4 analog input channels @ 125 Msps & 14 bits (instead of 2 inputs and 2 outputs).
+- RF inputs come with better performance (less crosstalk, noise, and distortions).
+- Zynq 7020 (bigger FPGA that offers more processing capabilities and more digital IO pins available on the extension connector).
+- Switching between internal and external clocks can be done using a jumper or control signal on the extension connector. Connect the CLK_SEL pin to GND for the board to switch to EXT clock and to 3V3 (Vcc) to use the internal clock.
 
 .. note::
 
@@ -84,8 +84,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 |
     +------------------------------------+------------------------------------+
-    | Absolute max. Input voltage range  | 30 V                               |
-    |                                    |                                    |
+    | | **Absolute max. Input**          | | **LV +-6 V**                     |
+    | | **voltage range**                | | **HV +-30 V**                    |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
@@ -133,23 +133,25 @@ Technical specifications
     +====================================+====================================+
     | Digital IOs                        | 22                                 |
     +------------------------------------+------------------------------------+
+    | Digital voltage levels             | 3.3 V                              |
+    +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 – 3.5 V                          |
+    | Analog inputs voltage range        | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bits                            |
+    | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
     | Analog input sample rate           | 100 kS/s                           |
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 – 1.8 V                          |
+    | Analog outputs voltage range       | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bits                             |
+    | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
     | Analog output sample rate          | ≲ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
+    | Analog output bandwidth            | ≈ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
@@ -166,13 +168,22 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through extension connector        |
+    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | High-Z (digital input)             |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
+
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
 .. note::
@@ -198,22 +209,24 @@ When STEMlab 125-14 4-Input is in External clock mode the ADC clock must be prov
 Schematics
 ==============
 
-* `STEMlab_125-14-4_IN_V1r3.PDF <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-14-4_IN_V1r3.PDF>`_
+- `STEMlab_125-14-4_IN_V1r3.PDF <https://downloads.redpitaya.com/doc/Red_Pitaya_Schematics_STEM_125-14-4_IN_V1r3.PDF>`_
 
 
 Mechanical Specifications and 3D Models
 ============================================
 
-* `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEM125-14-4_IN_V1r3_3Dstep.zip>`_
+- `STEMlab_125-14-4_IN_V1r3.zip <https://downloads.redpitaya.com/doc/STEM125-14-4_IN_V1r3_3Dstep.zip>`_
 
 
 Extension connector STEMlab 125-14 4-Input
 =============================================
 
-- Connector: 2 x 26 pins IDC (M) 
-- Power supply: 
-    - Available voltages: +5 V, +3.3 V, -3.3 V
-    - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA for -3.3 V supply. 
+- **Available voltages**: +5 V, +3.3 V, -3.4 V 
+- **Current limitations**:
+
+    - 500 mA for +5 V (to be shared between extension module and USB devices)
+    - 500 mA for +3V3 (to be shared between extension module and USB devices)
+    - 50 mA for -3V4 supply
 
 
 .. _E1_4-IN:
@@ -223,7 +236,7 @@ Extension connector E1
 
 - 3V3 power source
 - 22 single ended or 8 differential digital I/Os with 3.3 V logic levels
-
+- 2 CAN busses
 
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -256,16 +269,16 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 26   GND                                                                             
 ===  =====================  ===============  ========================  ==============
 
-
 .. note::
-
-   To switch the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please change the **Housekeeping** register value at address **0x34**. For more information, please reffer to the :ref:`FPGA register section <fpga_registers>` (this feature is currently under development).
-
-
+        
+    To change the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please modify the **housekeeping** register value at **address 0x34**. For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
+        
+    The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
+        
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
-    - <8 mA drive strength
+    - < 8 mA drive strength
 
 
 .. _E2_4-in:
@@ -273,12 +286,11 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 Extension connector E2
 -------------------------
 
-- +5 V, -4V2 power source
+- +5 V, -3V4 power sources
 - SPI, UART, I2C
-- 4 x slow ADCs
-- 4 x slow DACs
+- 4 slow ADCs
+- 4 slow DACs
 - Ext. clock for fast ADC
-
 
 .. Table 6: Extension connector E2 pin description
 
@@ -286,7 +298,7 @@ Extension connector E2
 Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
 ===  ======================  ===============  ==============================================  ==============
 1    +5V                                                                                                    
-2    -4V2                                                                                                   
+2    -3V4                                                                                                   
 3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
 4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
 5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
@@ -313,10 +325,9 @@ Pin  Description             FPGA pin number  FPGA pin description              
 26   GND                                                                                                    
 ===  ======================  ===============  ==============================================  ==============
 
-
 .. note::
 
-    UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
+    **UART TX (PS_MIO08)** is an output only. It must be connected to GND or left floating at power-up (no external pull-ups)!
 
 
 Other specifications

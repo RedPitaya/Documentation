@@ -32,6 +32,7 @@ A combination of physical design (i.e. bus capacitance) and interaction between 
     :align: center
     :width: 700px
 
+|
 
 UART TX preventing connection
 ------------------------------
