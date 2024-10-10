@@ -174,7 +174,12 @@ Product comparison table
     |                                    | STEMlab 125-14 LN |br|             |                                    |                                    | SDRlab 122-16 ext. clk             |                                    | (discontinued)                     |
     |                                    | STEMlab 125-14 ext. clk            |                                    |                                    |                                    |                                    |                                    |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
-    | Trigger input                      | Through extension connector        | Through extension connector        | Through extension connector        | Through extension connector        | Through BNC connector              | Through extension connector        |
+    | External trigger input             | Through E1 ext. connector (DIO0_P) | Through E1 ext. connector (DIO0_P) | Through E1 ext. connector (DIO0_P) | Through E1 ext. connector (DIO0_P) | Through BNC connector              | Through E1 ext. connector (DIO0_P) |
+    +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
+    | External trigger input impedance   | High-Z (digital input)             | High-Z (digital input)             | High-Z (digital input)             | High-Z (digital input)             | | 10 kΩ (HW_rev 1.0-1.2a)          | High-Z (digital input)             |
+    |                                    |                                    |                                    |                                    |                                    | | 1 kΩ (HW_rev 1.2b)               |                                    |
+    +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
+    | Trigger output [#f1_]              | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | N/A                                |
     |                                    | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   |                                    |
@@ -182,6 +187,7 @@ Product comparison table
     | Ref. clock input                   | N/A                                | N/A                                | N/A                                | N/A                                | Through SMA connector              | N/A                                |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 
+.. [#f1] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
 .. note::
