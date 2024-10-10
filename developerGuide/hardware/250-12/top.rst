@@ -4,7 +4,6 @@
 SIGNALlab 250-12
 #################
 
-
 Pinout
 =========
 
@@ -154,7 +153,10 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through BNC connector              |
+    | External trigger input             | Through BNC connector              |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | | 10 kΩ (HW_rev 1.0-1.2a)          |
+    |                                    | | 1 kΩ (HW_rev 1.2b)               |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection               |
     |                                    | (up to 500 Mbps)                   |
@@ -203,6 +205,8 @@ Components
 
 Extension connector SIGNALlab
 ================================
+
+The SIGNALlab 250-12 board, with the exception of "bare OEM" boards, is enclosed in an aluminium housing which should be removed to allow access to the E1 and E2 extension connectors.
 
 - Connector: 2 x 26 pins IDC (M) 
 - Power supply: 
@@ -281,7 +285,7 @@ Extension connector E2
 Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
 ===  ======================  ===============  ==============================================  ==============
 1    +5V                                                                                                    
-2    -4V2                                                                                                   
+2    -5.4 V                                                                                                   
 3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
 4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
 5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
