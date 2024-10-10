@@ -3,7 +3,12 @@
 Extension connector
 ######################
 
-- Connector: 2 x 26 pins IDC (M) 
+- Connector: 2 x 26 pins IDC
+
+.. figure:: img/Red_Pitaya_pinout.jpg
+    :width: 800
+
+|
 
 Extension connector power supply
 ==================================
@@ -375,18 +380,20 @@ Auxiliary analog input channels
 ===============================
 
 - Number of channels: 4 
-- Nominal sampling rate: 100 ksps (H) 
+- Nominal sampling rate: 100 ksps [#]_ 
 - ADC resolution 12 bits 
 - Input voltage range: 0 - 3.5 V 
 - Input coupling: DC 
 - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
+
+.. [#] The default software enables sampling at a CPU-dependent speed. To acquire data at a 100 ksps rate, additional FPGA processing must be implemented.
 
 
 Auxiliary analog output channels 
 ================================
 
 - Number of channels: 4 
-- Output type: Low pass filtered PWM (I) 
+- Output type: Low pass filtered PWM [#]_
 - PWM time resolution: 4 ns (1/250 MHz)
 - Analog output resolution: 8 bit
 - Analog output sample rate ≲ 3.2 MS/s
@@ -395,9 +402,17 @@ Auxiliary analog output channels
 - Output coupling: DC 
 - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) V
 
+.. [#] The output is passed through a first-order low-pass filter. Should additional filtering be required, this can be applied externally in line with the specific requirements of the application.  
 
-General purpose digital input/output channels: (N) 
+
+
+General purpose digital input/output channels 
 ==================================================
+
+.. note::
+
+    To ensure compliance with speed limitations on digital General Purpose Input/Output pins, these are directly connected to the FPGA.
+    It is the responsibility of the user to address FPGA decoupling and pin protection within extension module designs. The user is also responsible for pin handling.
 
 .. tabs::
 
@@ -405,7 +420,6 @@ General purpose digital input/output channels: (N)
 
         - Number of digital input/output pins: 16
         - Voltage level: 3.3 V
-        - Current limitation: < 8mA
         - Abs. min. voltage: -0.40 V
         - Abs. max. voltage: 3.3 V + 0.55 V
         - Current limitation: < 8 mA drive strength
@@ -454,4 +468,6 @@ The Red Pitaya can also be powered through pin 1 of the extension connector :ref
 
 Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension connector :ref:`E2 <E2>`.
 
+.. note::
 
+    The information provided by Red Pitaya d.o.o. is believed to be accurate and reliable. However, no liability is accepted for its use. Please note that the contents may be subject to change without prior notice. 

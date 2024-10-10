@@ -74,8 +74,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 |
     +------------------------------------+------------------------------------+
-    | Absolute max. Input voltage range  | 30 V                               |
-    |                                    |                                    |
+    | | **Absolute max. Input**          | | **LV +-6 V**                     |
+    | | **voltage range**                | | **HV +-30 V**                    |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
@@ -123,23 +123,25 @@ Technical specifications
     +====================================+====================================+
     | Digital IOs                        | 16                                 |
     +------------------------------------+------------------------------------+
+    | Digital voltage levels             | 3.3 V                              |
+    +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 – 3.5 V                          |
+    | Analog inputs voltage range        | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bits                            |
+    | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
     | Analog input sample rate           | 100 kS/s                           |
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 – 1.8 V                          |
+    | Analog outputs voltage range       | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bits                             |
+    | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
     | Analog output sample rate          | ≲ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
+    | Analog output bandwidth            | ≈ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
@@ -148,21 +150,29 @@ Technical specifications
     | External ADC clock                 |  Yes                               |
     +------------------------------------+------------------------------------+
 
-|
-
 .. table::
     :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through extension connector        |
+    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | High-Z (digital input)             |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
+
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
+
 
 .. note::
     
@@ -228,8 +238,8 @@ Extension connector E1
 
 - +3V3 power source
 - 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
-- 2x CAN
-
+- 2 CAN busses
+        
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
 ===  =====================  ===============  ========================  ==============
@@ -262,11 +272,11 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
 ===  =====================  ===============  ========================  ==============
 
 .. note::
-
+        
     To change the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please modify the **housekeeping** register value at **address 0x34**. For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
-
+        
     The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
-
+        
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - min. -0.40 V
     - max. 3.3 V + 0.55 V
@@ -278,10 +288,10 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 Extension connector E2
 ------------------------
 
-- +5 V, -3V4 power supplies
+- +5 V, -3V4 power sources
 - SPI, UART, I2C
-- 4 x slow ADCs (100 kSps)
-- 4 x slow DACs (100 kSps)
+- 4 slow ADCs
+- 4 slow DACs
 - Ext. clock for fast ADC
  
 .. Table 6: Extension connector E2 pin description
@@ -319,6 +329,10 @@ Pin  Description                  FPGA pin number  FPGA pin description         
 
 .. [1] Red Pitaya Version 1.0 has -3.3 V on pin 2. Red Pitaya Version 1.1 has -3.4 V on pin 2.
 
+.. note::
+
+    **UART TX (PS_MIO08)** is an output only. It must be connected to GND or left floating at power-up (no external pull-ups)!
+
 
 The pinout of the extension connectors is shown in the figure below.
 
@@ -328,7 +342,6 @@ The pinout of the extension connectors is shown in the figure below.
 
 |
 
-.. NEEDS CORRECTION - CHECK OTHER SOURCES FOR PROPER INFO
 
 Auxiliary analog input channels
 ===============================
@@ -336,9 +349,9 @@ Auxiliary analog input channels
 - Number of channels: 4 
 - Nominal sampling rate: 100 ksps (H) 
 - ADC resolution 12 bits 
-- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
-- Input voltage range: 0 to +3.5 V 
+- Input voltage range: 0 - 3.5 V 
 - Input coupling: DC 
+- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
 
 
 Auxiliary analog output channels 
@@ -347,17 +360,24 @@ Auxiliary analog output channels
 - Number of channels: 4 
 - Output type: Low pass filtered PWM (I) 
 - PWM time resolution: 4 ns (1/250 MHz)
-- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) v - Output voltage range: 0 to +1.8 V 
+- Analog output resolution: 8 bit
+- Analog output sample rate ≲ 3.2 MS/s
+- Analog output bandwidth ≈ 3.2 MS/s
+- Analog outputs voltage range: 0 - 1.8 V
 - Output coupling: DC 
+- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) V
 
 
 General purpose digital input/output channels: (N) 
 ==================================================
 
-- Number of digital input/output pins: 16 
-- Voltage level: 3.3 V 
+- Number of digital input/output pins: 16
+- Voltage level: 3.3 V
+- Abs. min. voltage: -0.40 V
+- Abs. max. voltage: 3.3 V + 0.55 V
+- Current limitation: < 8 mA drive strength
 - Direction: configurable 
-- Location: IDC connector :ref:`E1 <E1>` (pins 324) 
+- Location: IDC connector :ref:`E1 <E1>`
 
 
 Powering Red Pitaya through extension connector

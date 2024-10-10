@@ -83,8 +83,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 |
     +------------------------------------+------------------------------------+
-    | Absolute max. Input voltage range  | 30 V                               |
-    |                                    |                                    |
+    | | **Absolute max. Input**          | | **LV +-6 V**                     |
+    | | **voltage range**                | | **HV +-30 V**                    |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
@@ -132,23 +132,25 @@ Technical specifications
     +====================================+====================================+
     | Digital IOs                        | 16                                 |
     +------------------------------------+------------------------------------+
+    | Digital voltage levels             | 3.3 V                              |
+    +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 – 3.5 V                          |
+    | Analog inputs voltage range        | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bits                            |
+    | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
     | Analog input sample rate           | 100 kS/s                           |
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 – 1.8 V                          |
+    | Analog outputs voltage range       | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bits                             |
+    | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
     | Analog output sample rate          | ≲ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
+    | Analog output bandwidth            | ≈ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
@@ -157,21 +159,29 @@ Technical specifications
     | External ADC clock                 |  Yes                               |
     +------------------------------------+------------------------------------+
 
-|
-
 .. table::
     :widths: 40 40
 
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through extension connector        |
+    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | High-Z (digital input)             |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
+
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
+
 
 
 .. note::
@@ -182,7 +192,7 @@ Technical specifications
 Schematics
 ===========
 
-* `User-DOC_STEMlab_125-14_V1.1_STEMlab 125-14 LN.PDF <https://downloads.redpitaya.com/doc/User-DOC_STEMlab_125-14_V1.1%28STEMlab%20125-14%20LN%29.PDF>`_
+- `User-DOC_STEMlab_125-14_V1.1_STEMlab 125-14 LN.PDF <https://downloads.redpitaya.com/doc/User-DOC_STEMlab_125-14_V1.1%28STEMlab%20125-14%20LN%29.PDF>`_
 
 .. note::
 
@@ -193,7 +203,7 @@ Schematics
 Mechanical Specifications and 3D Models
 =========================================
 
-* `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
+- `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
 
 
 Other specifications

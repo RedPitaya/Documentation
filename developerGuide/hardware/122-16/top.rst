@@ -4,7 +4,7 @@
 SDRlab 122-16
 ###############
 
-.. figure:: SDRlab-122-16.jpg
+.. figure:: img/SDRlab-122-16.jpg
     :width: 500
 
 
@@ -125,23 +125,25 @@ Technical specifications
     +====================================+====================================+
     | Digital IOs                        | 22                                 |
     +------------------------------------+------------------------------------+
+    | Digital voltage levels             | 3.3 V                              |
+    +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 – 3.5 V                          |
+    | Analog inputs voltage range        | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bits                            |
+    | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
     | Analog input sample rate           | 100 kS/s                           |
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 – 1.8 V                          |
+    | Analog outputs voltage range       | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bits                             |
+    | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
     | Analog output sample rate          | ≲ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
+    | Analog output bandwidth            | ≈ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
@@ -158,13 +160,22 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through extension connector        |
+    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | High-Z (digital input)             |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
+
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
 .. note::
@@ -177,7 +188,7 @@ Technical specifications
 Schematics
 ============
 
-* `STEM122-16SDR_V1r1_Series1.PDF <https://downloads.redpitaya.com/doc/Customer_Schematics_STEM122-16SDR_V1r1%28Series1%29.PDF>`_
+- `STEM122-16SDR_V1r1_Series1.PDF <https://downloads.redpitaya.com/doc/Customer_Schematics_STEM122-16SDR_V1r1%28Series1%29.PDF>`_
 
 .. note::
 
@@ -187,20 +198,20 @@ Schematics
 Mechanical Specifications and 3D Models
 ===========================================
 
-* `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
-* `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
+- `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
+- `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
 
 
 Components
 =============
 
-* `ADC <https://www.analog.com/en/products/LTC2185.html>`_
-* `DAC <https://www.analog.com/en/products/AD9767.html>`_
-* `FPGA (Zynq 7020) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
-* `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
-* `Oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_
-* `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information).
+- `ADC <https://www.analog.com/en/products/LTC2185.html>`_
+- `DAC <https://www.analog.com/en/products/AD9767.html>`_
+- `FPGA (Zynq 7020) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
+- `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
+- `Oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_
+- `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
+- `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information).
 
 
 Extension connector SDRlab
@@ -219,7 +230,7 @@ Extension connector E1
 
 - 3V3 power source
 - 22 single ended or 8 differential digital I/Os with 3.3 V logic levels
-
+- 2 CAN busses
 
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -271,10 +282,9 @@ Extension connector E2
 
 - +5 V power source
 - SPI, UART, I2C
-- 4 x slow ADCs
-- 4 x slow DACs
+- 4 slow ADCs
+- 4 slow DACs
 - Ext. clock for fast ADC
-
 
 .. Table 6: Extension connector E2 pin description
 
@@ -282,7 +292,7 @@ Extension connector E2
 Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
 ===  ======================  ===============  ==============================================  ==============
 1    +5V                                                                                                    
-2    -4V2                                                                                                   
+2    NC                                                                                                   
 3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
 4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
 5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
@@ -312,7 +322,7 @@ Pin  Description             FPGA pin number  FPGA pin description              
 
 .. note::
 
-    UART TX (PS_MIO08) is output only and must be low level at power-up (no external pull-ups)!
+    **UART TX (PS_MIO08)** is an output only. It must be connected to GND or left floating at power-up (no external pull-ups)!
 
 
 .. _external_122_16:
@@ -333,21 +343,21 @@ ADC clock can be provided by:
 - Remove: R37, R46
 - Add: R34 = 0R, R35 = 0R
 
-    .. figure:: External_img1.png
+    .. figure:: img/External_img1.png
         :align: center
 
 - Remove: FB11
 
-    .. figure:: External_img2.png
+    .. figure:: img/External_img2.png
         :align: center
 
 - Remove: 0R on C64, R24
 - Add: C64 = 100nF, C63 = 100nF, R36 = 100R
 
-    .. figure:: External_img3.png
+    .. figure:: img/External_img3.png
         :align: center
 
-    .. figure:: External_shem.png
+    .. figure:: img/External_shem.png
         :width: 50%
         :align: center
 

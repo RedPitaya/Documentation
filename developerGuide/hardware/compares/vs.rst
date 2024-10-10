@@ -82,7 +82,7 @@ Product comparison table
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
     | Overload protection                | Protection diodes                  | Protection diodes                  | Protection diodes                  | DC voltage protection              | Protection diodes                  | Protection diodes                  |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 60 MHz                        | DC - 60 MHz                        | DC - 60 MHz                        | 300 kHz - 550 MHz                  | DC - 60 MHz                        | DC - 50 MHz                        |
+    | Bandwidth                          | DC - 60 MHz                        | DC - 60 MHz                        | DC - 60 MHz                        | 300 kHz - 550 MHz (undersampling)  | DC - 60 MHz                        | DC - 50 MHz                        |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 
 |
@@ -179,7 +179,7 @@ Product comparison table
     | External trigger input impedance   | High-Z (digital input)             | High-Z (digital input)             | High-Z (digital input)             | High-Z (digital input)             | | 10 kΩ (HW_rev 1.0-1.2a)          | High-Z (digital input)             |
     |                                    |                                    |                                    |                                    |                                    | | 1 kΩ (HW_rev 1.2b)               |                                    |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
-    | Trigger output [#f1_]              | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) |
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | Over SATA connection |br|          | N/A                                |
     |                                    | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   | (up to 500 Mbps)                   |                                    |
@@ -187,7 +187,9 @@ Product comparison table
     | Ref. clock input                   | N/A                                | N/A                                | N/A                                | N/A                                | Through SMA connector              | N/A                                |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 
-.. [#f1] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
 .. note::

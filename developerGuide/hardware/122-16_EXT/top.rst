@@ -141,23 +141,25 @@ Technical specifications
     +====================================+====================================+
     | Digital IOs                        | 22                                 |
     +------------------------------------+------------------------------------+
+    | Digital voltage levels             | 3.3 V                              |
+    +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 – 3.5 V                          |
+    | Analog inputs voltage range        | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bits                            |
+    | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
     | Analog input sample rate           | 100 kS/s                           |
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 – 1.8 V                          |
+    | Analog outputs voltage range       | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bits                             |
+    | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
     | Analog output sample rate          | ≲ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
+    | Analog output bandwidth            | ≈ 3.2 MS/s                         |
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
@@ -174,13 +176,23 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | Trigger input                      | Through extension connector        |
+    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    +------------------------------------+------------------------------------+
+    | External trigger input impedance   | High-Z (digital input)             |
+    |                                    |                                    |
+    +------------------------------------+------------------------------------+
+    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
     +------------------------------------+------------------------------------+
     | Daisy chain connection             | Over SATA connection               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
     +------------------------------------+------------------------------------+
+
+.. rubric:: Footnotes
+
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
+
 
 .. note::
     
@@ -190,7 +202,7 @@ Technical specifications
 Schematics
 =============
 
-* `STEM122-16SDR_V1r1_Series1.PDF <https://downloads.redpitaya.com/doc/Customer_Schematics_STEM122-16SDR_V1r1%28Series1%29.PDF>`_
+- `STEM122-16SDR_V1r1_Series1.PDF <https://downloads.redpitaya.com/doc/Customer_Schematics_STEM122-16SDR_V1r1%28Series1%29.PDF>`_
 
 .. note::
 
@@ -200,26 +212,24 @@ Schematics
 Mechanical Specifications and 3D Models
 ===========================================
 
-* `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
-* `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
+- `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_
+- `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_
 
 
 ADC specifications
 ====================
 
-* `Data sheets <https://www.analog.com/en/products/LTC2185.html>`_
+- `Data sheets <https://www.analog.com/en/products/LTC2185.html>`_
 
 
 
 RP clock wiring
 ==================
 
-* :ref:`External ADC clock <external_122_16>`
+- :ref:`External ADC clock <external_122_16>`
 
 
 Other specifications
 =====================
 
 For all other specifications please refer to standard :ref:`SDRlab 122-16 specs <top_122_16>`.
-
-

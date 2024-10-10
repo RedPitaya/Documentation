@@ -2,12 +2,11 @@
 Red Pitaya platforms
 ####################
 
-Gen 1
-=======
-
 .. toctree::
+   :caption: GEN 1
    :maxdepth: 2
 
+   hw_specs/hw_specs
    125-14/top
    125-14_EXT/top
    125-14_LN/top
@@ -19,6 +18,5 @@ Gen 1
    250-12/top
    125-10/top
    compares/vs
-   cets
-   leds
    known_hw_issues/known_hw_issues
+   cets

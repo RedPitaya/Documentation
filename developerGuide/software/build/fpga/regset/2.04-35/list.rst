@@ -1,4 +1,4 @@
-FPGA Register map (Release 2.00-35)
+FPGA Register map (Release 2.04-35)
 ###################################
 
 .. toctree::
