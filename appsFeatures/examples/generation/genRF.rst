@@ -2,7 +2,7 @@ Generating signals at RF outputs
 ################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
    genRF-1-continuous
    genRF-2-burst.rst

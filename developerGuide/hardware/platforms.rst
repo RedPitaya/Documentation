@@ -4,7 +4,7 @@ Red Pitaya platforms
 
 .. toctree::
    :caption: GEN 1
-   :maxdepth: 2
+   :maxdepth: 3
 
    hw_specs/hw_specs
    125-14/top

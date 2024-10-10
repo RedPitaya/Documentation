@@ -2,7 +2,7 @@
 
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
 
   basic/basic_top
   sensor/sensor_top

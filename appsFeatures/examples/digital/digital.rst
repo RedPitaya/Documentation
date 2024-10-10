@@ -2,8 +2,7 @@ Digital
 #######
 
 .. toctree::
-   :maxdepth: 2
-   
+   :maxdepth: 1
    
    dig-exm1
    dig-exm2

@@ -30,7 +30,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
 .. tabs::
 
-   .. tab:: STEMlab 125-14
+    .. tab:: STEMlab 125-14
 
         - +3V3 power source
         - 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
@@ -198,7 +198,7 @@ Extension connector E2
 
 .. tabs::
 
-   .. tab:: STEMlab 125-14
+    .. tab:: STEMlab 125-14
 
         - +5 V, -3V4 power sources
         - SPI, UART, I2C
@@ -436,7 +436,7 @@ General purpose digital input/output channels
         - Direction: configurable 
         - Location: IDC connector :ref:`E1 <E1>`
 
-    .. tab::SIGNALlab 250-12
+    .. tab:: SIGNALlab 250-12
 
         - Number of digital input/output pins: 19
         - Voltage level: 3.3 V 
