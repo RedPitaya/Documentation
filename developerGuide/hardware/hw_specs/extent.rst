@@ -397,7 +397,7 @@ Auxiliary analog output channels
 - PWM time resolution: 4 ns (1/250 MHz)
 - Analog output resolution: 8 bit
 - Analog output sample rate ≲ 3.2 MS/s
-- Analog output bandwidth ≈ 3.2 MS/s
+- Analog output bandwidth ≈ 160 kHz
 - Analog outputs voltage range: 0 - 1.8 V
 - Output coupling: DC 
 - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) V
