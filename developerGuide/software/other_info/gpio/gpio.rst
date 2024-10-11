@@ -54,9 +54,9 @@ This is the mapping between all these numbering/naming schemes:
 +-------------+--------------+--------------------+-----------------+------------------+-----------------+
 | line number | sysfs number | FPGA signal name   | EMIO signal     | GPIO number      | pin name        |
 +=============+==============+====================+=================+==================+=================+
-| 62 – 69     | 968 – 975    | exp_p_io[7:0]      | EMIO8  – EMIO15 | GPIO 0 – GPIO 7  | DIO0_P – DIO7_P |
+| 62 - 69     | 968 - 975    | exp_p_io[7:0]      | EMIO8  - EMIO15 | GPIO 0 - GPIO 7  | DIO0_P - DIO7_P |
 +-------------+--------------+--------------------+-----------------+------------------+-----------------+
-| 70 – 77     | 976 – 983    | exp_n_io[7:0]      | EMIO16 – EMIO23 | GPIO 8 – GPIO 15 | DIO0_N – DIO7_N |
+| 70 - 77     | 976 - 983    | exp_n_io[7:0]      | EMIO16 - EMIO23 | GPIO 8 - GPIO 15 | DIO0_N - DIO7_N |
 +-------------+--------------+--------------------+-----------------+------------------+-----------------+
 
 The command ``gpioinfo``, from the package ``gpiod``, can be used to list the available lines, with their line number, EMIO signal name and GPIO number:
