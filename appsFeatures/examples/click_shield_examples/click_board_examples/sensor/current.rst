@@ -19,6 +19,12 @@ Required hardware
     -   Current click board
 
 
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
+
+
 Code C
 =======
 

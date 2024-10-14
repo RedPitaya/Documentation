@@ -21,7 +21,7 @@ Examples of decimations and time scales of a buffer are given in the tables belo
 
 |
 
-**STEMlab 125-14, STEMlab 125-10, STEMlab 125-14 4-Input:**
+**STEMlab 125-14, STEMlab 125-14 4-Input, STEMlab 125-10 (discontinued):**
 
 +-----------------+--------------------+-----------------------------------+------------------------------+------------------------------+
 | **Decimation**  | **Sampling Rate**  | **Time scale/length of a buffer** | **Trigger delay in samples** | **Trigger delay in seconds** | 

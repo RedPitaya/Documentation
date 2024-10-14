@@ -10,12 +10,19 @@ Description
 This is an example of using Red Pitaya with the Red Pitaya Click Shield and Light Click Board.
 Light intensity is measured and messages are printed through the command prompt
 
+
 Required hardware
 ==================
 
     -   Red Pitaya device
     -   Red Pitaya Click Shield
     -   Light click board
+
+
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
 
 
 Code C

@@ -20,6 +20,13 @@ Wiring example for STEMlab 125-14 & STEMlab 125-10:
  
 .. figure:: img/generate_continous_signal_on_fast_analog_output.png
 
+
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
+
+
 Circuit
 ========
 
@@ -28,10 +35,6 @@ Circuit
 
 SCPI Code Examples
 ====================
-
-.. note::
-
-  This code is written for **2.00-23 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 .. note::
 
@@ -117,7 +120,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 Code - Python
 --------------
 
-**Using just SCPI commands:**
+**Using SCPI commands:**
 
 .. code-block:: python
     
@@ -263,10 +266,8 @@ Code - LabVIEW
 API Code Examples
 ====================
 
-.. note::
+.. include:: ../c_code_note.inc
 
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
 
 Code - C API
 --------------

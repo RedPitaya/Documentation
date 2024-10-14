@@ -3,6 +3,12 @@
 Extension connector
 ######################
 
+.. contents:: **Index**
+   :local:
+   :backlinks: none
+
+|
+
 - Connector: 2 x 26 pins IDC
 
 .. figure:: img/Red_Pitaya_pinout.jpg

@@ -19,6 +19,12 @@ Required hardware
     -   Cap Touch click board
 
 
+Required software
+=====================
+
+.. include:: ../sw_requirement.inc
+
+
 Code C
 =======
 

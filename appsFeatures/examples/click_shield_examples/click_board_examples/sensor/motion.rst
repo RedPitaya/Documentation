@@ -18,6 +18,11 @@ Required hardware
     -   Red Pitaya Click Shield
     -   Motion click board
 
+Required software
+=================
+
+.. include:: ../sw_requirement.inc
+    
 
 Code C
 =======

@@ -327,7 +327,7 @@ Pin  Description             FPGA pin number  FPGA pin description              
 Other specifications
 =====================
 
-For all other specifications please refer to the schematics and standard :ref:`STEMlab 125-14 specs <top_125_14>`.
+For all other specifications please refer to the schematics and the :ref:`common hardware specifications <hw_specs>`.
 
 Please note that the measurements on inputs and outputs differ from the standard STEMlab 125-14.
 

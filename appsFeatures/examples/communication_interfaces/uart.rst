@@ -1,10 +1,12 @@
+
 UART
 #####
 
 .. http://blog.redpitaya.com/examples-new/uart/
 
+
 Description
-***********
+=============
 
 This example demonstrates communication using the Red Pitaya UART protocol. The code below simulates a loopback by sending a message from the UART TX connector to the UART RX connector on the Red Pitaya.
 
@@ -13,19 +15,27 @@ This example demonstrates communication using the Red Pitaya UART protocol. The 
     When establishing UART communication with Red Pitaya and another device do not forget to connect the External Common Mode (GND) pin. Otherwise, the results might be unreliable.
 
 Required hardware
-*****************
+==================
 
     - Red Pitaya
 
 .. figure:: ../general_img/RedPitaya_general.png
 
+
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
+
+
+API Code Examples
+==================
+
+.. include:: ../c_code_note.inc
+
+
 Code - C
-********
-
-.. note::
-
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
+---------
 
 
 .. code-block:: c

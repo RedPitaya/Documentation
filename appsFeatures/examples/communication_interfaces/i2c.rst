@@ -4,25 +4,34 @@ I2C
 .. http://blog.redpitaya.com/examples-new/i2c/
 
 Description
-***********
+============
 
 This example demonstrates communication with the internal EEPROM memory on the Red Pitaya using the I2C protocol. The code below writes a message to a given address inside the EEPROM and then prints the entire content of the EEPROM.
 
+
 Required hardware
-*****************
+====================
 
     - Red Pitaya
 
 .. figure:: ../general_img/RedPitaya_general.png
 
+
+Required software
+===================
+
+.. include:: ../sw_requirement.inc
+
+
+API Code Examples
+====================
+
+.. include:: ../c_code_note.inc
+
+
 Code - C
-********
+----------
 
-.. note::
-
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
-    
 
 .. code-block:: c
 

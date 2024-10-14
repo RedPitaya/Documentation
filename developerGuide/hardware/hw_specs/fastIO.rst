@@ -1,3 +1,10 @@
+
+.. contents:: **Index**
+   :local:
+   :backlinks: none
+
+|
+
 .. _anain:
 
 #############
@@ -9,6 +16,7 @@ Analog inputs
     The measurements in this section have been made using STEMlab 125-14. Most measurements can be extended to other board models, but may vary depending on the board model.
 
 The STEMlab 125-14 board analog front-end features 2 fast analog inputs. 
+
 
 *************************
 General Specifications

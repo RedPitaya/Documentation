@@ -453,3 +453,9 @@ The QSPI chip is by default not populated on Red Pitaya boards. For further info
 
     Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
+
+Other specifications
+=====================
+
+For all other specifications please refer to the :ref:`common hardware specifications <hw_specs>`.
+

@@ -7,7 +7,7 @@ Description
 This example shows how to instantly acquire 16k samples of a signal on fast analog inputs.
 The time length of the acquired signal depends on the time scale of a buffer that can be set with a decimation factor.
 The decimations and time scales of a buffer are given in the :ref:`sample rate and decimation <s_rate_and_dec>`.
-Voltage and frequency ranges depend on the Red Pitaya model. 
+Voltage and frequency ranges depend on the Red Pitaya model.
 
 
 Required hardware
@@ -20,6 +20,13 @@ Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
 .. figure:: img/on_given_trigger_acquire_signal_on_fast_analog_input.png
 
+
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
+
+
 Circuit
 =========
 
@@ -28,10 +35,6 @@ Circuit
 
 SCPI Code Examples
 ====================
-
-.. note::
-
-  This code is written for **2.00-23 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 .. note::
 
@@ -138,7 +141,7 @@ Code - MATLAB®
 Code - Python
 --------------
 
-Using just SCPI commands:
+Using SCPI commands:
 
 .. code-block:: python
     
@@ -237,16 +240,13 @@ Using functions:
 API Code Examples
 ====================
 
-.. note::
-
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+.. include:: ../c_code_note.inc
 
 
 Code - C API
 --------------
 
-.. code-block: c
+.. code-block:: c
 
     /* Red Pitaya C API example of Instantly acquiring a signal on a specific channel */
 

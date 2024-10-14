@@ -19,6 +19,12 @@ Required hardware
     -   Vibro Motor click board
 
 
+Required software
+===================
+
+.. include:: ../sw_requirement.inc
+    
+
 Code C
 =======
 
