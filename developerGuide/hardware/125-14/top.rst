@@ -344,7 +344,7 @@ The pinout of the extension connectors is shown in the figure below.
 
 
 Auxiliary analog input channels
-===============================
+--------------------------------
 
 - Number of channels: 4 
 - Nominal sampling rate: 100 ksps (H) 
@@ -355,7 +355,7 @@ Auxiliary analog input channels
 
 
 Auxiliary analog output channels 
-================================
+---------------------------------
 
 - Number of channels: 4 
 - Output type: Low pass filtered PWM (I) 
@@ -368,8 +368,8 @@ Auxiliary analog output channels
 - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) V
 
 
-General purpose digital input/output channels: (N) 
-==================================================
+General purpose digital input/output channels
+----------------------------------------------
 
 - Number of digital input/output pins: 16
 - Voltage level: 3.3 V
@@ -380,8 +380,9 @@ General purpose digital input/output channels: (N)
 - Location: IDC connector :ref:`E1 <E1>`
 
 
+================================================
 Powering Red Pitaya through extension connector
-===============================================
+================================================
 
 The Red Pitaya can also be powered through pin 1 of the extension connector :ref:`E2 <E2>`, but in such a case, external protection must be provided by the user in order to protect the board!
 
@@ -453,7 +454,7 @@ The QSPI chip is by default not populated on Red Pitaya boards. For further info
 
     Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
-
+=====================
 Other specifications
 =====================
 
