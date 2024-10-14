@@ -1,6 +1,6 @@
-************
+##############
 Certificates
-************
+##############
 
 Besides the functional testing, Red Pitaya passed the safety and electromagnetic compatibility (EMC) tests at an
 external `testing and certification institute <http://www.siq.si/?L=3>`_.

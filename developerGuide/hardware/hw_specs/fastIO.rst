@@ -1,10 +1,4 @@
 
-.. contents:: **Index**
-   :local:
-   :backlinks: none
-
-|
-
 .. _anain:
 
 #############
@@ -17,6 +11,12 @@ Analog inputs
 
 The STEMlab 125-14 board analog front-end features 2 fast analog inputs. 
 
+
+.. contents:: **Index**
+   :local:
+   :backlinks: none
+
+|
 
 *************************
 General Specifications
