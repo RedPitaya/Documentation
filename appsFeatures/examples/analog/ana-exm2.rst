@@ -19,10 +19,18 @@ Wiring example for STEMlab 125-14 & STEMlab 125-10:
 
 .. figure:: img/Set_analog_voltage_on_slow_analog_input1.png
 
+
+Required software
+===================
+
+.. include:: ../sw_requirement.inc
+
+
 Circuit
 ========
 
 .. figure:: img/Set_analog_voltage_on_slow_analog_input_circuit1.png
+
 
 SCPI Code Examples
 ====================
@@ -90,10 +98,8 @@ Code - LabVIEW
 API Code Examples
 ====================
 
-.. note::
-
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+.. include:: ../c_code_note.inc
+    
 
 Code - C API
 ---------------

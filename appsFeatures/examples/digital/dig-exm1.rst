@@ -1,6 +1,5 @@
 .. _blink:
 
-#####
 Blink
 #####
 
@@ -19,6 +18,12 @@ Required hardware
     - Red Pitaya device
 
 .. figure:: img/redpitaya_led0_blink.gif
+
+
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
 
 
 SCPI Code Examples
@@ -121,10 +126,8 @@ Code - LabVIEW
 API Code Examples
 ====================
 
-.. note::
+.. include:: ../c_code_note.inc
 
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
 
 Code - C API
 -------------

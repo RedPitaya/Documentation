@@ -1,16 +1,23 @@
 .. _hw_specs:
 
-#########################
-Hardware specifications
-#########################
+################################
+Common hardware specifications
+################################
 
-In this section you can find hardware specifications for all Red Pitaya board models. The specifications are measured on the **STEMlab 125-14 Gen1** board, but are similar on the other board models (except where specifically stated). Any future measurements will be added to this section.
+In this section you can find common hardware specifications for all Red Pitaya board models. The measurements were performed on the **STEMlab 125-14** (Gen 1) board, but are similar on the other board models (except where specifically stated). Any future measurements will be added to this section.
 
 Please refer to the board model documentation for schematics, relevant components, mechanical specifications, and 3D models. Please note that the full hardware schematics for the Red Pitaya boards are not available. While Red Pitaya has open-source code, the hardware schematics are not open source. However, development schematics with information regarding hardware configuration, FPGA pin connections, and similar, are available.
 
 .. note::
 
     The information provided by Red Pitaya d.o.o. is believed to be accurate and reliable. However, no liability is accepted for its use. Please note that the contents may be subject to change without prior notice. 
+
+
+.. contents:: **Index**
+   :local:
+   :backlinks: none
+
+|
 
 
 Power Supply
@@ -38,7 +45,7 @@ Fast analog IO
 ===============
 
 .. toctree::
-    :maxdepth: 6
+    :maxdepth: 3
 
     fastIO
 
@@ -47,7 +54,7 @@ Extension connectors
 ======================
 
 .. toctree::
-    :maxdepth: 6
+    :maxdepth: 3
 
     extent
 

@@ -21,14 +21,16 @@ Wiring example for STEMlab 125-14:
 .. figure:: img/DMA_temp.png
 
 
+Required software
+==================
+
+- 2.00-23 (STEMlab 125-14)
+- 2.00-30 (all other board models)
+
+.. .. include:: ../sw_requirement.inc
 
 SCPI Code Examples
 ====================
-
-.. note::
-
-  This code is functional on **STEMlab 125-14 with 2.00-23 or higher OS** and with **2.00-30 OS on all other board models**.
-
 
 Code - MATLAB®
 ---------------
@@ -302,10 +304,7 @@ Code - Python
 API Code Examples
 ====================
 
-.. note::
-
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+.. include:: ../c_code_note.inc
 
 
 Code - C API

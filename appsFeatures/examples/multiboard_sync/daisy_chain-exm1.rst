@@ -25,15 +25,15 @@ Wiring example:
 -   Connect OUT1 of the primary device with IN1 of the primary device and IN1 of the secondary device.
 -   Connect the Primary and Secondary devices with SATA cables
 
-**Pictures coming soon...**
+
+Required software
+===================
+
+.. include:: ../sw_requirement.inc
 
 
 SCPI Code Examples
 ====================
-
-.. note::
-
-  This code is written for **2.00-23 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 
 Code - MATLAB
@@ -224,7 +224,7 @@ Code - MATLAB
 Code - Python
 --------------
 
-**Using just SCPI commands:**
+**Using SCPI commands:**
 
 .. code-block:: python
     
@@ -539,10 +539,7 @@ Code - Python
 API Code Examples
 ====================
 
-.. note::
-
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+.. include:: ../c_code_note.inc
 
 .. Code - C API
 .. ---------------

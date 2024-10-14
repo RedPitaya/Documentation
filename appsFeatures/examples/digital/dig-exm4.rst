@@ -17,6 +17,12 @@ Required hardware
 .. figure:: ../general_img/RedPitaya_general.png
 
 
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
+
+
 SCPI Code Examples
 ====================
 

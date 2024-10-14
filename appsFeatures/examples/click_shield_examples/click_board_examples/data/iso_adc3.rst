@@ -19,6 +19,12 @@ Required hardware
     -   ISO ADC 3 click board
 
 
+Required software
+===================
+
+.. include:: ../../../sw_requirement.inc
+
+
 Code C
 =======
 

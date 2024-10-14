@@ -13,12 +13,20 @@ This example demonstrates communication using the Red Pitaya CAN interface. The 
 - CAN0 - TX == DIO7_N, RX == DIO7_P
 - CAN1 - TX == DIO6_N, RX == DIO6_P
 
+
 Required hardware
 ==================
 
     - Red Pitaya
 
 .. figure:: ../general_img/RedPitaya_general.png
+
+
+Require software
+================
+
+.. include:: ../sw_requirement.inc
+
 
 SCPI Code Examples
 ====================
@@ -82,7 +90,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 Code - Python
 ---------------
 
-**Using just SCPI commands:**
+**Using SCPI commands:**
 
 .. code-block:: python
 
@@ -155,10 +163,7 @@ Code - Python
 API Code Examples
 ====================
 
-.. note::
-
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
+.. include:: ../c_code_note.inc
 
 
 Code - C++

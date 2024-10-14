@@ -19,6 +19,12 @@ Required hardware
     -   DC Motor 2 click board
 
 
+Required software
+=================
+
+.. include:: ../../../sw_requirement.inc
+    
+
 Code C
 =======
 

@@ -29,6 +29,18 @@ Required hardware
     STEMlab 125-14 4-Input has a Clock Select pin to determine whether the clock should be internal or external. For more information, see :ref:`STEMlab 125-14 4-Input documentation <top_125_14_4-IN>`.
 
 
+Required software
+==================
+
+- **2.04-35 or higher OS**
+
+.. note::
+
+    This code is written for **2.04-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+.. .. include:: ../sw_requirement.inc
+
+
 Wiring example
 ====================
 
@@ -94,10 +106,6 @@ When using an external clock and external trigger, the clock and trigger signals
 
 SCPI Code Examples
 ====================
-
-.. note::
-
-    This code is written for **2.00-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 
 Code - MATLAB®
@@ -285,7 +293,7 @@ Code - MATLAB®
 Code - Python
 ---------------
 
-**Using just SCPI commands:**
+**Using SCPI commands:**
 
 .. code-block:: python
 
@@ -586,11 +594,9 @@ Code - Python
 API Code Examples
 ====================
 
-.. note::
+.. include:: ../c_code_note.inc
 
-    The API code examples don't require the use of the SCPI server. Instead, the code should be compiled and executed on the Red Pitaya itself (inside Linux OS).
-    Instructions on how to compile the code and other useful information are :ref:`here <comC>`.
-
+    
 .. Code - C API
 .. ---------------
 

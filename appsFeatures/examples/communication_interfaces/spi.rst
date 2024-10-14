@@ -4,26 +4,36 @@ SPI
 .. http://blog.redpitaya.com/examples-new/spi/
 
 Description
-***********
+=============
 
 This example shows communication with the Red Pitaya SPI Micron flash chip. The code below simulates a simple loop back by writing and then getting the flash ID of the Red Pitaya SPI flash chip operation.
 
 
 Required hardware
-*****************
+===================
 
     - Red Pitaya device
 
 .. figure:: ../general_img/RedPitaya_general.png
 
+
+Required software
+==================
+
+.. include:: ../sw_requirement.inc
+
+
+
+
+API Code Examples
+==================
+
+.. include:: ../c_code_note.inc
+
+
 Code - C
-********
+----------
 
-.. note::
-
-    Although the C code examples don't require the use of the SCPI server, we have included them here to demonstrate how the same functionality can be achieved with different programming languages. 
-    Instructions on how to compile the code are :ref:`here <comC>`.
-    
 
 .. code-block:: c
 
