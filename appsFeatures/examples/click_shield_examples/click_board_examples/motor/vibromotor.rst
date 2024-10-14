@@ -22,7 +22,7 @@ Required hardware
 Required software
 ===================
 
-.. include:: ../sw_requirement.inc
+.. include:: ../../../sw_requirement.inc
     
 
 Code C
