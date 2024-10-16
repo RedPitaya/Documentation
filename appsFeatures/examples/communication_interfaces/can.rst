@@ -50,6 +50,7 @@ Connecting the MCP2452 Click Board (or another CAN transciever) to the Red Pitay
 .. figure:: img/rp_can_connection.png
     :width: 700 px
 
+
 Here is the CAN pinout for the DB-9 connector:
 
 .. figure:: img/db9_pinout.png
@@ -57,7 +58,7 @@ Here is the CAN pinout for the DB-9 connector:
 
     Image source: |can-intro|
 
-.. |MCP2542-click| raw:: html
+.. |can-intro| raw:: html
 
   <a href="https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial" target="_blank">CSS Electronics</a>
 
