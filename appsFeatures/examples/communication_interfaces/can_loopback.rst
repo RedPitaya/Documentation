@@ -10,10 +10,6 @@ Description
 
 This example demonstrates communication using the Red Pitaya CAN interface. The code below simulates a loopback by sending a message from the CAN socket.
 
-- CAN0 - TX == DIO7_N, RX == DIO7_P
-- CAN1 - TX == DIO6_N, RX == DIO6_P
-
-
 Required hardware
 ==================
 
@@ -25,7 +21,44 @@ Required hardware
 Require software
 ================
 
-.. include:: ../sw_requirement.inc
+- **2.04-35 or higher OS**
+
+.. note::
+
+    This code is written for **2.04-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+
+Connections
+============
+
+Although the CAN transceiver is not required for this example because the loopback mode connects the TX and RX pins on the FPGA level, the connection instructions are still included.
+
+Connecting the MCP2452 Click Board (or another CAN transciever) to the Red Pitaya: 
+
+- TX pins of the CAN transceivers to the CAN RX pins on the Red Pitaya
+- RX pins of the CAN transceivers to the CAN TX pins on the Red Pitaya
+- Connect the power and ground pins
+- Use a DB-9 (or a different) cable to connect the CAN transceiver to an external CAN bus or to another MPC2542 click board
+
+.. note::
+
+    - **CAN0** - TX == DIO7_N, RX == DIO7_P
+    - **CAN1** - TX == DIO6_N, RX == DIO6_P
+
+.. figure:: img/rp_can_connection.png
+    :width: 700 px
+
+
+Here is the CAN pinout for the DB-9 connector:
+
+.. figure:: img/db9_pinout.png
+    :width: 700 px
+
+    Image source: |can-intro|
+
+.. |can-intro| raw:: html
+
+  <a href="https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial" target="_blank">CSS Electronics</a>
 
 
 SCPI Code Examples
@@ -33,7 +66,7 @@ SCPI Code Examples
 
 .. note::
 
-  This code is written for **2.00-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+  This code is written for **2.04-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
 
 
 Code - MATLAB®
