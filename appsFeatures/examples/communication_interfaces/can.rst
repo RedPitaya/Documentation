@@ -6,7 +6,7 @@ CAN (HW api)
 Description
 ============
 
-This example demonstrates communication using the Red Pitaya CAN interface. The code below sends CAN frames between the CAN0 and CAN1 interfaces on the same Red Pitaya. The following principle can also be used to communicate with other devices on the CAN bus.
+This example demonstrates communication using the Red Pitaya CAN interface. The code below sends CAN frames between the CAN0 and CAN1 interfaces on the same Red Pitaya using the |MCP2542-click|. The following principle can also be used to communicate with other devices on the CAN bus.
 
 - CAN0 - TX == DIO7_N, RX == DIO7_P
 - CAN1 - TX == DIO6_N, RX == DIO6_P
@@ -15,10 +15,16 @@ This example demonstrates communication using the Red Pitaya CAN interface. The 
 Required hardware
 ==================
 
-    - Red Pitaya
-    - 2x CAN controllers
+- Red Pitaya
+- 2x CAN transceivers (for example, the |MCP2542-click|)
+- a cable to connect the transcievers (for example, DB-9)
+- pin jumper wires
 
 .. figure:: ../general_img/RedPitaya_general.png
+
+.. |MCP2542-click| raw:: html
+
+  <a href="https://www.mikroe.com/mcp2542-click" target="_blank">MCP2542 Click Board</a>
 
 
 Required software
@@ -29,6 +35,32 @@ Required software
 .. note::
 
     This code is written for **2.04-35 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+
+
+Connections
+============
+
+Connecting the MCP2452 Click Board (or another CAN transciever) to the Red Pitaya: 
+
+- TX pins of the CAN transceivers to the CAN RX pins on the Red Pitaya
+- RX pins of the CAN transceivers to the CAN TX pins on the Red Pitaya
+- Connect the power and ground pins
+- Use a DB-9 (or a different) cable to connect the CAN transceiver to an external CAN bus or to another MPC2542 click board
+
+.. figure:: img/rp_can_connection.png
+    :width: 700 px
+
+Here is the CAN pinout for the DB-9 connector:
+
+.. figure:: img/db9_pinout.png
+    :width: 700 px
+
+    Image source: |can-intro|
+
+.. |MCP2542-click| raw:: html
+
+  <a href="https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial" target="_blank">CSS Electronics</a>
+
 
   
 SCPI Code Examples
