@@ -8,10 +8,7 @@ Description
 
 This example demonstrates communication using the Red Pitaya CAN interface. The code below sends CAN frames between the CAN0 and CAN1 interfaces on the same Red Pitaya using the |MCP2542-click|. The following principle can also be used to communicate with other devices on the CAN bus.
 
-- CAN0 - TX == DIO7_N, RX == DIO7_P
-- CAN1 - TX == DIO6_N, RX == DIO6_P
 
-  
 Required hardware
 ==================
 
@@ -46,6 +43,11 @@ Connecting the MCP2452 Click Board (or another CAN transciever) to the Red Pitay
 - RX pins of the CAN transceivers to the CAN TX pins on the Red Pitaya
 - Connect the power and ground pins
 - Use a DB-9 (or a different) cable to connect the CAN transceiver to an external CAN bus or to another MPC2542 click board
+
+.. note::
+
+    - **CAN0** - TX == DIO7_N, RX == DIO7_P
+    - **CAN1** - TX == DIO6_N, RX == DIO6_P
 
 .. figure:: img/rp_can_connection.png
     :width: 700 px
