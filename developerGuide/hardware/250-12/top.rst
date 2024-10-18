@@ -4,6 +4,18 @@
 SIGNALlab 250-12
 #################
 
+
+.. figure:: img/Signal-Lab-250-12_full.jpg
+    :width: 600
+
+.. figure:: img/Signal-Lab-250-12.jpg
+    :width: 600
+
+.. note::
+
+    The SIGNALlab 250-12 OEM board comes without the case, but includes the ribbed black heat sink that can be seen on the top of the first picture.
+
+
 Pinout
 =========
 

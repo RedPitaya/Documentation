@@ -4,6 +4,10 @@
 SDRlab 122-16 external clock
 #############################
 
+.. figure:: ../122-16/img/SDRlab-122-16.jpg
+    :width: 500
+
+
 This version of the SDRlab is a standard SDRlab 122-16 which has been modified in such a way that the ADC, the DAC and the FPGA clock can be provided by an external clock source. An external clock should be connected to the Ext ADC CLK- and + pin
 
 **External clock specifications:**

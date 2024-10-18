@@ -1,9 +1,19 @@
 
+################
+Fast analog IO
+################
+
+.. contents:: **Index**
+   :local:
+   :backlinks: none
+
+|
+
 .. _anain:
 
-#############
+*************************
 Analog inputs
-#############
+*************************
 
 .. note::
 
@@ -12,15 +22,8 @@ Analog inputs
 The STEMlab 125-14 board analog front-end features 2 fast analog inputs. 
 
 
-.. contents:: **Index**
-   :local:
-   :backlinks: none
-
-|
-
-*************************
 General Specifications
-*************************
+=======================
 
 +---------------------------------+-----------------------------------------------+
 | Number of channels              | 2                                             |
@@ -59,9 +62,9 @@ General Specifications
 
 .. _jumper_pos:
 
-=======
+
 Jumpers
-=======
+----------
 
 Voltage ranges are set by input jumpers, as shown here:
 
@@ -82,9 +85,9 @@ Gain can be adjusted independently for both input channels. The adjustment is do
     
     Please note that jumper settings are limited to the described positions. Any other configuration or use of different jumper types may damage the product and void the warranty.
 
-==================
+
 Jumper orientation
-==================
+----------------------
 
 The position of the jumpers can affect the measurements taken by the Red Pitaya. The jumpers are internally connected to a small metal plate which acts as a capacitor and affects the overall capacitance which in turn affects the input impedance.
 If the jumpers are moved from an incorrect to a correct position, calibration is strongly recommended as the input capacitance depends on jumper settings and may vary between positions.
@@ -119,18 +122,18 @@ With the jumper pins correctly placed, the same waveform looks much better.
 
 
 
-======================
+
 Input stage schematics
-======================
+------------------------
 
 .. figure:: img/schematics/Fast_analog_inputs_sch.png
     :width: 1200
         
     Fast analog inputs schematics
 
-========
+
 Coupling
-========
+-----------
 
 Fast analog inputs are **DC coupled**. Input impedance is given in the picture below. 
 
@@ -139,9 +142,9 @@ Fast analog inputs are **DC coupled**. Input impedance is given in the picture b
        
     The input impedance of fast analog inputs
 
-=========
+
 Bandwidth
-=========
+-----------
 
 +---------------------------------+-----------------------------------------------+
 | Bandwidth                       | 50 MHz (3 dB)                                 |
@@ -169,9 +172,9 @@ When using P2P measurements on an oscilloscope, you need to take the maximum val
         
     Sin(x)/x Interpolation
    
-===========
+
 Input noise
-===========
+---------------
 
 Measurements refer to a high gain (LV +/-1 V) jumper setting, with limited environmental noise, inputs and outputs terminated, output signals disabled, and the PCB grounded through SMA ground.
 Measurements are performed on 16k continuous samples at full rate (125 MS/s). (Typical full bandwidth std(Vn) < 0.5 mV). The noise spectrum shown in the picture below (right) is calculated using FFT analysis on N = 16384 samples sampled at Fs = 125E6 MS/s.
@@ -186,9 +189,9 @@ Measurements are performed on 16k continuous samples at full rate (125 MS/s). (T
         
     Noise level
         
-=======================
+
 Input channel isolation
-=======================
+-------------------------
     
 Typical performance:
     - 65 dB @ 10 kHz
@@ -202,18 +205,18 @@ Typical performance:
 
 Crosstalk is measured with a high gain (LV) jumper setting on both channels. The SMA connectors not involved in the measurement are terminated.
     
-=========
+
 Harmonics
-=========
+-----------
        
 - at -3 dBFS: typical performance < -45 dBc 
 - at -20 dBFS: typical performance < -60 dBc 
        
 Measurements refer to the LV jumper setting, inputs matched and outputs terminated, outputs signal disabled, and PCB grounded through SMA ground.
 
-=============================
+
 Spurious frequency components
-=============================
+-------------------------------
 
 - Typically < -90 dBFS 
     
@@ -227,9 +230,9 @@ Results are shown in the figures below, where Red Pitaya measurements are on the
             
     Measurement setup
     
-=================
+
 Reference signals
-=================
+------------------
 
     #. Reference signal: -20 dBm, 2 MHz
 
@@ -278,15 +281,15 @@ Reference signals
             
 Due to the natural distribution of the electrical characteristics of the analog inputs and outputs, their offsets and gains will differ slightly across various Red Pitaya boards and may change over time. The calibration coefficients are stored in EEPROM on the Red Pitaya and can be accessed and modified with the calibration utility:
     
-===============
+
 DC offset error
-===============
+-----------------
 
 - < 5 % Full Scale 
  
-==========
+
 Gain error
-==========
+-----------
 
 - < 3% (at LV jumper setting), < 10% (at HV jumper setting) 
     
@@ -305,9 +308,9 @@ Further corrections can be applied through more precise gain and DC offset :ref:
 
 .. _calib:
 
-*************************
+
 Analog inputs calibration
-*************************
+============================
 
 Calibration processes can be performed using the :ref:`Calibration application <calibration_app>` or using the **calib** :ref:`command line utility <com_line_tools>`.
 To calibrate the Red Pitaya using the :ref:`Calibration application <calibration_app>`, simply select *System -> Calibration* and follow the instructions.
@@ -450,15 +453,15 @@ AC gain accuracy can be extracted from Frequency response - Bandwidth.
     :width: 1000
 
 
-##############
+****************
 Analog outputs
-##############
+****************
 
 The Red Pitaya board analog front-end features two fast analog outputs.
 
-**********************
+
 General Specifications
-**********************
+========================
 
 +---------------------------------+-----------------------------------------------+
 | Number of channels              | 2                                             |
@@ -506,9 +509,9 @@ The output stage is shown in the picture below.
        
     Output channel schematics
            
-================
+
 Output impedance
-================
+-------------------
 
 The impedance of the output channels (output amplifier and filter) is shown in the figure below.
     
@@ -517,9 +520,9 @@ The impedance of the output channels (output amplifier and filter) is shown in t
     
     Output impedance
 
-=========
+
 Bandwidth
-=========
+-----------
 
 +---------------------------------+-----------------------------------------------+
 | Bandwidth                       | 50 MHz (3 dB)                                 |
@@ -532,9 +535,9 @@ The Red Pitaya board OUT1 is used with 0 dBm output power. The second output cha
     :width: 1000
 
 
-=========
+
 Harmonics
-=========
+------------
 
 Typical performance: (at 8 dBm) 
 
@@ -543,15 +546,15 @@ Typical performance: (at 8 dBm)
     - -48 dBc @ 20 MHz
     - -53 dBc @ 45 MHz 
 
-===============
+
 DC offset error
-===============
+-----------------
 
 - < 5% FS 
 
-==========
+
 Gain error
-==========
+-----------
 
 - < 5% 
     
@@ -563,9 +566,9 @@ Further corrections can be applied through more precise gain and DC offset calib
     <a href="http://www.keysight.com/en/pdx-x201799-pn-MSO7104B/mixed-signal-oscilloscope-1-ghz-4-analog-plus-16-digital-channels?pm=spc&nid=-32535.1150174&cc=SI&lc=eng" target="_blank">Agilent MSO7104B</a>
 
 
-*************************
+==========================
 Analog output calibration
-*************************
+==========================
 
 Calibration is performed in a noise-controlled environment. Inputs' and outputs' gains are calibrated with 0.02% and 0.003% DC reference voltage standards. Input gain calibration is performed in a medium-sized timebase range. The Red Pitaya is a non-shielded device, and its input/output ground is not connected to the earth's ground, as is the case in most classical oscilloscopes. To achieve the calibration results given below, Red Pitaya must be grounded and shielded.
 
@@ -586,7 +589,6 @@ RIPPLE(@ 0.5V DC) 0.4 mVpp
 .. note::
 
     The information provided by Red Pitaya d.o.o. is believed to be accurate and reliable. However, no liability is accepted for its use. Please note that the contents may be subject to change without prior notice. 
-
 
 
 
