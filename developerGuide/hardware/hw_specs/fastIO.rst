@@ -566,7 +566,6 @@ Further corrections can be applied through more precise gain and DC offset calib
     <a href="http://www.keysight.com/en/pdx-x201799-pn-MSO7104B/mixed-signal-oscilloscope-1-ghz-4-analog-plus-16-digital-channels?pm=spc&nid=-32535.1150174&cc=SI&lc=eng" target="_blank">Agilent MSO7104B</a>
 
 
-==========================
 Analog output calibration
 ==========================
 
