@@ -4,10 +4,15 @@
 STEMlab 125-10 (DISCONTINUED)
 ################################
 
+.. figure:: img/STEMlab-125-10.jpg
+    :width: 700
+
+
 .. note::
 
     STEMlab 125-10 is discontinued. The documentation here is provided as a reference for existing users.
     Please note that the board will soon reach end-of-life for software support (exact date to be determined). All users will be informed in advance.
+
 
 Pinout
 ========

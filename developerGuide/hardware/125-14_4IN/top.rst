@@ -4,6 +4,11 @@
 STEMlab 125-14 4-Input
 #######################
 
+
+.. figure:: img/STEMlab-125-14-4-Input.jpg
+    :width: 700
+
+
 STEMlab 125-14 4-Input is a single-board RF signal acquisition platform that offers the same general hardware features as STEMlab 125-14. The main differences/benefits are that:
 
 - There are 4 analog input channels @ 125 Msps & 14 bits (instead of 2 inputs and 2 outputs).

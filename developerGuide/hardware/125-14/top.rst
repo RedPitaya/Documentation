@@ -4,6 +4,11 @@
 STEMlab 125-14
 ##############
 
+
+.. figure:: img/STEMlab-125-14.jpg
+    :width: 500
+
+
 ========
 Pinout
 ========

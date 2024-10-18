@@ -4,6 +4,11 @@
 STEMlab 125-14 Z7020-LN
 ########################
 
+
+.. figure:: ../125-14/img/STEMlab-125-14.jpg
+    :width: 500
+
+
 The STEMlab 125-14-Z7020-LN is a standard STEMlab 125-14 board that:
 
 

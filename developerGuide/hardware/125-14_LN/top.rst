@@ -4,6 +4,11 @@
 STEMlab 125-14-LN
 ##################
 
+
+.. figure:: ../125-14/img/STEMlab-125-14.jpg
+    :width: 500
+
+
 STEMlab 125-14 low noise is a STEMlab 125-14 board that is populated with additional linear analog power for analog power supplies to reduce RF input and output noise and consequently increase ENOB.
 
 To find out more about the performance of the STEMlab 125-14 with DC analog power supplies, we suggest you refer to Leonhard Neuhaus’s blog.

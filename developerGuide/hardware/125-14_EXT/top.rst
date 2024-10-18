@@ -4,6 +4,11 @@
 STEMlab 125-14 external clock
 #############################
 
+
+.. figure:: ../125-14/img/STEMlab-125-14.jpg
+    :width: 500
+
+
 This version of the STEMlab is a standard STEMlab 125-14 which has been modified in such a way that the ADC, the DAC and the FPGA clock can be provided by an external clock source. An external clock should be connected to the Ext ADC CLK- and + pin
 
 **External clock specifications:**
