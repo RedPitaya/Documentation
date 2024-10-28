@@ -1,9 +1,8 @@
 
 
-I2C (HW api for 250-12 only)
-############################
+I2C switch AC/DC mode (SIGNALlab 250-12)
+#########################################
 
-.. http://blog.redpitaya.com/examples-new/i2c/
 
 Description
 ===========
