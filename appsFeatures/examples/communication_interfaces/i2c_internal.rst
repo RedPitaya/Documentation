@@ -1,12 +1,11 @@
-I2C
-###
 
-.. http://blog.redpitaya.com/examples-new/i2c/
+I2C internal
+###############
 
 Description
 ============
 
-This example demonstrates communication with the internal EEPROM memory on the Red Pitaya using the I2C protocol. The code below writes a message to a given address inside the EEPROM and then prints the entire content of the EEPROM.
+This example demonstrates communication with the internal 24LC64 EEPROM memory on the Red Pitaya using the I2C protocol. The code below writes a message to a given address inside the EEPROM and then prints the entire content of the EEPROM.
 
 
 Required hardware
