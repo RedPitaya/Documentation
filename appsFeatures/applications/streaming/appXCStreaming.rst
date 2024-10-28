@@ -60,7 +60,7 @@ In order to achieve synchronization, the PRIMARY device provides a clock and tri
     However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
 
 .. note::
-    
+
     We recommend using :ref:`OS 2.00-23 or higher <prepareSD>` for the X-channel system.
 
     - With 2.00 OS both the PRIMARY and the SECONDARY devices use the SAME OS!
@@ -145,11 +145,6 @@ In this example, we will acquire data from all 3 RP units, which gives us 6 RF i
 
 Configuration can be set over the WEB interface UI, which is then stored in **/root/.streaming_config** or **/root/.config/redpitaya/apps/streaming/streaming_config.json** (for version 2.00) on the Red Pitaya.
 
-In this example, we will show how to set configuration remotely using an already prepared |test configuration| that will set all PRIMARY and SECONDARY devices to these settings.
-
-.. |test configuration| raw:: html
-
-    <a href="https://downloads.redpitaya.com/doc/streaming/test.conf" target="_blank">test.conf</a>
 
 .. tabs::
 
