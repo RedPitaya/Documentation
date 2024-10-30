@@ -14,6 +14,9 @@ SIGNALlab 250-12
 .. note::
 
     The SIGNALlab 250-12 OEM board comes without the case, but includes the ribbed black heat sink that can be seen on the top of the first picture.
+    The heatsink is mounted on the bottom side of the board.
+
+
 
 
 Pinout

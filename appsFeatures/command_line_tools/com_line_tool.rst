@@ -303,7 +303,7 @@ Example (system register reading):
     15          AO3(0-1.8V)     0x0000009c	    1.800
 
 You can find a more detailed description of the above-mentioned pins :ref:`here <E1>`.
-The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –SADC switch:
+The -ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the -SADC switch:
 
 .. code-block:: shell-session
 
@@ -612,7 +612,7 @@ Usage instructions:
 .. code-block:: shell-session
 
     root@rp-f0a235:~# calib
-    calib version 2.00-0-da52519c4
+    calib version 2.05-404-9a0244437
 
     Usage: calib [OPTION]...
 

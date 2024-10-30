@@ -1,0 +1,25 @@
+PS computer\path\to\downloaded\client> .\convert_tool.exe .\output_data\data_file_1.bin -i
+Segments count: 18
+Samples per segment: 1048576
+Samples in last segment: 1048576
+Status of last segment: OK
+
+Channel 1:
+        Data format type:       Int16
+        Samples count:  1048576
+        Lost samples count: 0
+
+Channel 2:
+        Data format type:       Unknown
+        Samples count:  0
+        Lost samples count: 0
+
+Channel 3:
+        Data format type:       Unknown
+        Samples count:  0
+        Lost samples count: 0
+
+Channel 4:
+        Data format type:       Unknown
+        Samples count:  0
+        Lost samples count: 0

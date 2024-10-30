@@ -1,0 +1,6 @@
+Usage: <path/to/tool>/convert_tool.exe file_name [-i][-s start][-e end][-f format][-t]
+        -i get info about file
+        -s Segment from which the conversion starts
+        -e Segment where the conversion will end
+        -f File format. [CSV|WAV|TDMS]. By default used CSV format
+        -t Creates test data files for DAC streaming
