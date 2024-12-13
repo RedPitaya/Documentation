@@ -49,9 +49,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     % flush(RP, 'output')
     
     %% Open connection with your Red Pitaya and the close previous one
-    x = instrfind;
     clear RP;
-
 
     RP = tcpclient(IP, port);
     RP.ByteOrder = "big-endian";
@@ -89,7 +87,6 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
 
     writeline(RP,'SOUR1:FREQ:FIX 4000');        % Set frequency of output signal
     writeline(RP,'SOUR2:FREQ:FIX 4000');
-
 
     writeline(RP,'OUTPUT:STATE ON');            % Start both channels simultaneously
     writeline(RP,'SOUR:TRig:INT');              % Generate triggers
