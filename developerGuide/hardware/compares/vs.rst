@@ -75,8 +75,8 @@ Product comparison table
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 | DC                                 | DC                                 | AC                                 | AC / DC (software selectable)      | DC                                 |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
-    | | **Absolute max. Input**          | | **LV +-6 V**                     | | **LV +-6 V**                     | | **LV +-6 V**                     | | DC max 50 V (AC-coupled),        | | **LV +-6 V**                     |  | **LV +-6 V**                    |
-    | | **voltage range**                | | **HV +-30 V**                    | | **HV +-30 V**                    | | **HV +-30 V**                    | | 1 Vpp for RF                     | | **HV +-30 V**                    |  | **HV +-30 V**                   |
+    | | **Absolute max. Input**          | | **LV +-6 V**                     | | **LV +-6 V**                     | | **LV +-6 V**                     | | **DC max 50 V (AC-coupled)**     | | **LV +-6 V**                     | | **LV +-6 V**                    |
+    | | **voltage range**                | | **HV +-30 V**                    | | **HV +-30 V**                    | | **HV +-30 V**                    | | **1 Vpp for RF**                 | | **HV +-30 V**                    | | **HV +-30 V**                   |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                | Yes                                | Yes                                | Yes                                | Yes                                | Yes                                |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
@@ -196,9 +196,9 @@ Product comparison table
 
     Red Pitaya devices:
 
-    - should be operated in normal conditions with ambient temperatures not exceeding 30°C (86°F) and should not be covered.
-    - are intended for indoor use at a maximum altitude of 2000m, pollution severity 2 and relative humidity less than 90%.
-    - are intended for use with low voltage power sources and signals and should not be used in direct connection with voltages exceeding 30 volts.
+    - should be operated in normal conditions with ambient temperatures not exceeding 30 °C (86 °F) and should not be covered.
+    - are intended for indoor use at a maximum altitude of 2000 m, pollution severity 2 and relative humidity less than 90%.
+    - are intended for use with low voltage power sources and signals and should not be used in direct connection with voltages exceeding 30 Volts.
 
 .. warning::
 
@@ -208,7 +208,7 @@ Product comparison table
 
     Power supply precautions:
 
-    - STEMlab 125-14, STEMlab 125-14-Z7020, STEMlab 125-14 4-Input, STEMlab 125-10, SDRlab 122-16 may only be powered by an isolated external power supply of 5 volts DC with a maximum current of 2 amps.
+    - STEMlab 125-14, STEMlab 125-14-Z7020, STEMlab 125-14 4-Input, STEMlab 125-10, SDRlab 122-16 may only be powered by an isolated external power supply of 5 Volts DC with a maximum current of 2 Amps.
       The recommended model is KA23-0502000DES. Any other external power supply used with Red Pitaya must comply with the relevant regulations and standards applicable in the country of use.
     - SIGNALlab 250-12 may only be powered by an original KA2401A 24 V/1 A isolated power supply or via the RJ45 Ethernet connector (PoE version only).
 
