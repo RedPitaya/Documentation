@@ -31,7 +31,7 @@ STEMlab 125-10 has 256 MB (2 Gb) of RAM, which is half the resources of STEMlab 
     Please note that STEMlab 125-10 will soon reach end-of-life for software support (exact date to be determined). All users will be notified in advance. Before this happens, we will provide a final OS version where all applications will work.
 
 Currently, the fastest solution is to add a SWAP space to the Red Pitaya's SD card (about 1GB should be sufficient).
-Here are instructions on how to add a SWAP file to the Red Pitaya: `https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04`_
+Here are instructions on how to `add a SWAP file to Ubuntu OS <https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04>`_
 
 It may be necessary to increase the size of the Red Pitaya OS partition on the SD card:
 

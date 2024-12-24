@@ -18,6 +18,7 @@ The Ext ADC CLK+ and - pins are connected to the ENC+ and ENC- pins of the ADC.
 Acording to the ADC specifications, the ENC+ and ENC- inputs can be driven differentially or single-ended with a sine wave, PECL, LVDS, TTL or CMOS input.
 An optional clock duty cycle stabiliser allows high performance at full speed over a wide range of clock duty cycles. 
 The input voltage range for differentially driven ENC+ and ENC- is 0.2 to 3.6 V (towards GND) and 0 to 3.6 V (ENC+) for single-ended with a frequency between 1 MHz and 125 MHz according to the ADC specification.
+
 The operating voltage of the Red Pitaya is 3V3.
 
 .. note::
@@ -26,17 +27,17 @@ The operating voltage of the Red Pitaya is 3V3.
    The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
    However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
 
-******
+
 Pinout
-******
+=======
 
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
+|
 
-************************
 Technical specifications
-************************
+==========================
 
 .. table::
     :widths: 40 40
@@ -44,15 +45,15 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Basic**                                                               |
     +====================================+====================================+
-    | Processor                          | DUAL CORE ARM CORTEX A9            |
+    | Processor                          | Dual core ARM Cortex-A9            |
     +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7010 SOC          |
+    | FPGA                               | FPGA Xilinx Zynq 7010 SoC          |
     +------------------------------------+------------------------------------+
     | RAM                                | 512 MB (4 Gb)                      |
     +------------------------------------+------------------------------------+
     | System memory                      | Micro SD up to 32 GB               |
     +------------------------------------+------------------------------------+
-    | Console connection                 | Micro USB                          |
+    | Console connector                  | Micro USB                          |
     +------------------------------------+------------------------------------+
     | Power connector                    | Micro USB                          |
     |                                    |                                    |
@@ -71,7 +72,7 @@ Technical specifications
     +====================================+====================================+
     | Ethernet                           | 1 Gbit                             |
     +------------------------------------+------------------------------------+
-    | USB                                | USB 2.0                            |
+    | USB                                | USB-A 2.0                          |
     +------------------------------------+------------------------------------+
     | Wi-Fi                              | requires Wi-Fi dongle              |
     +------------------------------------+------------------------------------+
@@ -96,14 +97,16 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 |
     +------------------------------------+------------------------------------+
-    | | **Absolute max. Input**          | | **LV +-6 V**                     |
-    | | **voltage range**                | | **HV +-30 V**                    |
+    | | **Absolute max.**                | | **LV ±6 V**                      |
+    | | **Input voltage**                | | **HV ±30 V**                     |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
     | Overload protection                | Protection diodes                  |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 60 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -128,11 +131,11 @@ Technical specifications
     | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
     | Output slew rate                   | 2 V / 10 ns                        |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 50 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -149,7 +152,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog inputs voltage range        | 0 - 3.5 V                          |
+    | Analog input voltage range         | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
     | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
@@ -157,7 +160,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog outputs voltage range       | 0 - 1.8 V                          |
+    | Analog output voltage range        | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
     | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
@@ -167,9 +170,9 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3.3 V, -4 V                 |
+    | Available voltages                 | +5 V, +3V3, -4 V                   |
     +------------------------------------+------------------------------------+
-    | External ADC clock                 |  Yes                               |
+    | External ADC clock                 | Yes                                |
     +------------------------------------+------------------------------------+
 
 .. table::
@@ -178,14 +181,14 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    | External trigger input             | E1 connector (DIO0_P)              |
     +------------------------------------+------------------------------------+
-    | External trigger input impedance   | High-Z (digital input)             |
+    | External trigger input impedance   | Hi-Z (digital input)               |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
+    | Trigger output [#f1]_              | E1 connector (DIO0_N)              |
     +------------------------------------+------------------------------------+
-    | Daisy chain connection             | Over SATA connection               |
+    | Daisy chain connection             | SATA connectors |br|               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
@@ -196,10 +199,26 @@ Technical specifications
 .. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
+.. table::
+    :widths: 40 40
+
+    +------------------------------------+------------------------------------+
+    | **Boot options**                                                        |
+    +====================================+====================================+
+    | SD card                            | Yes                                |
+    +------------------------------------+------------------------------------+
+    | QSPI                               | Not populated                      |
+    +------------------------------------+------------------------------------+
+    | eMMC                               | N/A                                |
+    +------------------------------------+------------------------------------+
 
 .. note::
 
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
+
+.. |br| raw:: html
+
+    <br/>
 
 
 Schematics

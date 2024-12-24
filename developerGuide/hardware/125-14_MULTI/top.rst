@@ -8,8 +8,8 @@ The Red Pitaya X-Channel system consists of multiple Low-Noise STEMlab 125-14 de
 
 Red Pitaya X-Channel system consists of:
 
-* one PRIMARY Low-Noise STEMlab 125-14 device, a standard Low-Noise STEMlab 125-14 device that provides clock and trigger signals to other SECONDARY Low-Noise STEMlab 125-14 devices.
-* one or multiple SECONDARY Low-Noise STEMlab 125-14 devices, that are modified in a way that they can receive clock and trigger signals from a PRIMARY device and distribute them to the next SECONDARY device. These are marked with an “S” sticker.
+* **one PRIMARY Low-Noise STEMlab 125-14** device, a standard Low-Noise STEMlab 125-14 device that provides clock and trigger signals to other SECONDARY Low-Noise STEMlab 125-14 devices.
+* one or **multiple SECONDARY Low-Noise STEMlab 125-14 devices**, that are modified in a way that they can receive clock and trigger signals from a PRIMARY device and distribute them to the next SECONDARY device. These are marked with an “S” sticker.
 
 The PRIMARY device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SECONDARY 1 board. SECONDARY 1 then passes the clock forward to SECONDARY 2, SECONDARY 2 to SECONDARY 3, and so on (SECONDARY N to SECONDARY N+1). This way, we can achieve clock and trigger synchronisation of all boards in the system.
 
@@ -31,9 +31,9 @@ Setup
 
 #.  Connect all Red Pitayas to the same network via ethernet cables (switch or router that is connected to the client PC).
 
-.. note::
+    .. note::
 
-    Make sure that your network has enough throughput for all the data you are about to stream. It is also recommended to use a dedicated network only for the X-channel system.
+        Make sure that your network has enough throughput for all the data you are about to stream. It is also recommended to use a dedicated network only for the X-channel system.
 
 
 #.  Connect the SATA cables between the PRIMARY and SECONDARY devices.
@@ -50,6 +50,7 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
+|
 
 Technical specifications (one board)
 ------------------------------------
@@ -60,15 +61,15 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | **Basic**                                                               |
     +====================================+====================================+
-    | Processor                          | DUAL CORE ARM CORTEX A9            |
+    | Processor                          | Dual core ARM Cortex-A9            |
     +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7010 SOC          |
+    | FPGA                               | FPGA Xilinx Zynq 7010 SoC          |
     +------------------------------------+------------------------------------+
     | RAM                                | 512 MB (4 Gb)                      |
     +------------------------------------+------------------------------------+
     | System memory                      | Micro SD up to 32 GB               |
     +------------------------------------+------------------------------------+
-    | Console connection                 | Micro USB                          |
+    | Console connector                  | Micro USB                          |
     +------------------------------------+------------------------------------+
     | Power connector                    | Micro USB                          |
     |                                    |                                    |
@@ -87,7 +88,7 @@ Technical specifications (one board)
     +====================================+====================================+
     | Ethernet                           | 1 Gbit                             |
     +------------------------------------+------------------------------------+
-    | USB                                | USB 2.0                            |
+    | USB                                | USB-A 2.0                          |
     +------------------------------------+------------------------------------+
     | Wi-Fi                              | requires Wi-Fi dongle              |
     +------------------------------------+------------------------------------+
@@ -112,14 +113,16 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 |
     +------------------------------------+------------------------------------+
-    | | **Absolute max. Input**          | | **LV +-6 V**                     |
-    | | **voltage range**                | | **HV +-30 V**                    |
+    | | **Absolute max.**                | | **LV ±6 V**                      |
+    | | **Input voltage**                | | **HV ±30 V**                     |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
     | Overload protection                | Protection diodes                  |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 60 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -144,11 +147,11 @@ Technical specifications (one board)
     | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
     | Output slew rate                   | 2 V / 10 ns                        |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 50 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -165,7 +168,7 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog inputs voltage range        | 0 - 3.5 V                          |
+    | Analog input voltage range         | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
     | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
@@ -173,7 +176,7 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog outputs voltage range       | 0 - 1.8 V                          |
+    | Analog output voltage range        | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
     | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
@@ -183,9 +186,9 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3.3 V, -4 V                 |
+    | Available voltages                 | +5 V, +3V3, -4 V                   |
     +------------------------------------+------------------------------------+
-    | External ADC clock                 |  Yes                               |
+    | External ADC clock                 | SATA connector (secondary units)   |
     +------------------------------------+------------------------------------+
 
 .. table::
@@ -194,14 +197,14 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    | External trigger input             | E1 connector (DIO0_P)              |
     +------------------------------------+------------------------------------+
-    | External trigger input impedance   | High-Z (digital input)             |
+    | External trigger input impedance   | Hi-Z (digital input)               |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
+    | Trigger output [#f1]_              | E1 connector (DIO0_N)              |
     +------------------------------------+------------------------------------+
-    | Daisy chain connection             | Over SATA connection               |
+    | Daisy chain connection             | SATA connectors |br|               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
@@ -211,7 +214,20 @@ Technical specifications (one board)
 
 .. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
-|
+
+.. table::
+    :widths: 40 40
+
+    +------------------------------------+------------------------------------+
+    | **Boot options**                                                        |
+    +====================================+====================================+
+    | SD card                            | Yes                                |
+    +------------------------------------+------------------------------------+
+    | QSPI                               | Not populated                      |
+    +------------------------------------+------------------------------------+
+    | eMMC                               | N/A                                |
+    +------------------------------------+------------------------------------+
+
 
 .. table::
     :widths: 40 40
@@ -233,7 +249,9 @@ Technical specifications (one board)
 
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>` and :ref:`STEMlab 125-14 Low-Noise <top_125_14_LN>`.
 
+.. |br| raw:: html
 
+    <br/>
 
 Other specifications
 =====================
@@ -259,6 +277,13 @@ Yes, you can use any version of the STEMlab 125-14 as the primary device. This i
 - STEMlab 125-14 LN Z7020
 - STEMlab 125-14 4-Input
 - STEMlab 125-14 Ext Clk (Please note that an external clock must be provided)
+
+
+What is the difference between Primary and Secondary devices in the X-channel system?
+---------------------------------------------------------------------------------------
+
+The primary device is a standard STEMlab 125-14 Low-Noise device. The secondary devices are STEMlab 125-14 Low-Noise Red Pitayas that are hardware modified to receive the clock and trigger signal from the "SATA" connectors.
+Using a normal STEMlab 125-14 as a secondary device will not work as it does not have the necessary hardware modifications.
 
 
 Can I boot the secondary/external clock devices without the external clock present?

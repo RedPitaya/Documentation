@@ -33,7 +33,6 @@ Command-line tools
 
 .. _sig_gen_util:
 
-========================
 Signal generator utility
 ========================
 
@@ -103,7 +102,6 @@ The performance of the signal generator differs from one Red Pitaya model to ano
 
 .. _sig_acq_util:
 
-==========================
 Signal acquisition utility
 ==========================
 
@@ -233,12 +231,11 @@ Please see the :ref:`Red Pitaya boards comparison <rp-board-comp>` for more info
 
 .. _monitor_util:
 
-===============
 Monitor utility
 ===============
 
 Accessing system registers
-==========================
+---------------------------
 
 The system registers can be accessed through the |monitor| utility. Usage instructions:
 
@@ -309,8 +306,9 @@ The -ams switch provides access to analog mixed signals including Zynq SoC tempe
 
    redpitaya> monitor -sdac 0.9 0.8 0.7 0.6
 
+
 Accessing FPGA registers
-========================
+-------------------------
 
 Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the
 :ref:`Red Pitaya HDL memory map <fpga_registers>` document (please make sure to reference the correct OS version). The registers can be accessed using the described monitor utility.
@@ -333,7 +331,6 @@ For example, the following sequence of monitor commands checks modifies, and ver
 
 .. _bode_util:
 
-=============
 Bode Analyzer
 =============
 
@@ -406,7 +403,6 @@ To run the bode, you need to do 2 steps:
 
 .. _lcr_util:
 
-=========
 LCR meter
 =========
 
@@ -480,7 +476,6 @@ To run the LCR meter, perform the following three steps:
 
 .. _stream_util:
 
-=====================
 Streaming application
 =====================
 
@@ -564,7 +559,6 @@ The configuration for streaming is automatically created and saved in the file: 
 
 .. _led_util:
 
-==========================
 LED enable/disable utility
 ==========================
 
@@ -601,7 +595,6 @@ To enable the LEDs:
 
 .. _calib_util:
 
-======================
 Calibration utility
 ======================
 
@@ -741,7 +734,6 @@ Load from a file:
     root@rp-f0a235:~# cat calib.txt | calib -w
 
 
-======================================================
 Other useful information related to command-line tools
 ======================================================
 
