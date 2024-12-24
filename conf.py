@@ -149,7 +149,7 @@ html_theme_options = {
     'display_version':False
 }
 
-# Add any paths that contain custom themes here, relative to this directory.
+# Not needed (latest sphinx) Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to

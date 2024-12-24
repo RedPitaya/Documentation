@@ -33,7 +33,6 @@ Command-line tools
 
 .. _sig_gen_util:
 
-========================
 Signal generator utility
 ========================
 
@@ -103,7 +102,6 @@ The performance of the signal generator differs from one Red Pitaya model to ano
 
 .. _sig_acq_util:
 
-==========================
 Signal acquisition utility
 ==========================
 
@@ -233,12 +231,11 @@ Please see the :ref:`Red Pitaya boards comparison <rp-board-comp>` for more info
 
 .. _monitor_util:
 
-===============
 Monitor utility
 ===============
 
 Accessing system registers
-==========================
+---------------------------
 
 The system registers can be accessed through the |monitor| utility. Usage instructions:
 
@@ -303,14 +300,15 @@ Example (system register reading):
     15          AO3(0-1.8V)     0x0000009c	    1.800
 
 You can find a more detailed description of the above-mentioned pins :ref:`here <E1>`.
-The –ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the –SADC switch:
+The -ams switch provides access to analog mixed signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages, and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the -SADC switch:
 
 .. code-block:: shell-session
 
    redpitaya> monitor -sdac 0.9 0.8 0.7 0.6
 
+
 Accessing FPGA registers
-========================
+-------------------------
 
 Red Pitaya signal processing is based on two computational engines: the FPGA and the dual-core processor, to effectively split the tasks. Most of the high data rate signal processing is implemented within the FPGA building blocks. These blocks can be configured parametrically through registers. The FPGA registers are documented in the
 :ref:`Red Pitaya HDL memory map <fpga_registers>` document (please make sure to reference the correct OS version). The registers can be accessed using the described monitor utility.
@@ -333,7 +331,6 @@ For example, the following sequence of monitor commands checks modifies, and ver
 
 .. _bode_util:
 
-=============
 Bode Analyzer
 =============
 
@@ -406,7 +403,6 @@ To run the bode, you need to do 2 steps:
 
 .. _lcr_util:
 
-=========
 LCR meter
 =========
 
@@ -480,7 +476,6 @@ To run the LCR meter, perform the following three steps:
 
 .. _stream_util:
 
-=====================
 Streaming application
 =====================
 
@@ -564,7 +559,6 @@ The configuration for streaming is automatically created and saved in the file: 
 
 .. _led_util:
 
-==========================
 LED enable/disable utility
 ==========================
 
@@ -601,7 +595,6 @@ To enable the LEDs:
 
 .. _calib_util:
 
-======================
 Calibration utility
 ======================
 
@@ -612,7 +605,7 @@ Usage instructions:
 .. code-block:: shell-session
 
     root@rp-f0a235:~# calib
-    calib version 2.00-0-da52519c4
+    calib version 2.05-404-9a0244437
 
     Usage: calib [OPTION]...
 
@@ -639,20 +632,108 @@ Usage instructions:
      -m    Modify specific parameter in universal calibration
      -n    Flag for working with the new calibration storage format.
 
-Printing current calibration values:
+To properly calibrate the Red Pitaya using the *calib* utility, we need to understand the calibration format we are working with. There are 4 different types of calibration:
+
+- The first three are used in 1.04 OS versions and depend on the Red Pitaya board model:
+	- STEMlab 125-14 and 125-10
+	- STEMlab 125-14 4-Input
+	- SIGNALlab 250-12
+
+   You can find the specifics |calib specs|.
+
+- The new universal calibration used in OS versions 2.00 and above.
+
+.. |calib specs| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api-hw-calib/src/calib_structs.h" target="_blank">here</a>
+
+The Calibration API allows you to work with all types of structures, but the old ones only work in backward compatibility mode (so there are no problems when moving to OS version 2.0).
+
+
+New calibration storage format
+--------------------------------
+
+.. note::
+
+    To convert from the old format to the new, load calibration values from a file in the new format or perform one of the calibration resets.
+
+Reset calibration values to factory defaults:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -dn
+
+Reset calibration values to defaults:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -in
+
+Print current calibration values:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -rv
+
+Print current calibration values in the unified format:
 
 .. code-block:: shell-session
 
     root@rp-f0a235:~# calib -u
 
-Reseting calibration values to factory default:
+Save to a file:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -r > calib.txt
+
+Load from a file:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# cat calib.txt | calib -wn
+
+
+Old calibration storage format
+--------------------------------
+
+Convert calibration values to the old format:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -o
+
+Reset calibration values to factory defaults:
 
 .. code-block:: shell-session
 
     root@rp-f0a235:~# calib -d
 
+Reset calibration values to defaults:
 
-======================================================
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -i
+
+Print current calibration values:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -rv
+
+Save to a file:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# calib -r > calib.txt
+
+Load from a file:
+
+.. code-block:: shell-session
+
+    root@rp-f0a235:~# cat calib.txt | calib -w
+
+
 Other useful information related to command-line tools
 ======================================================
 

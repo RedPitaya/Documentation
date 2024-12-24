@@ -14,24 +14,24 @@ High-end specifications will satisfy more demanding users looking for powerful t
 
 .. tabs::
 
-   .. tab:: STEMlab 125-10, 125-14, SDRlab 122-16, SIGNALlab 250-12
+   .. tab:: STEMlab 125-14, 125-10, SDRlab 122-16, SIGNALlab 250-12
 
         .. figure:: img/Slika_02_OSC.png
-            :width: 1000 px
+            :width: 1000
             :align: center
 
    .. tab:: STEMlab 125-14 4-Input
 
         .. figure:: img/Slika_02_OSC_4-in.png
-            :width: 1000 px
+            :width: 1000
             :align: center
 
 Apart from the graph, there are six areas in which the surface is divided:
 
     1. **Top Settings Menu:** Includes basic functionality like Settings, Exporting data, Autoscale and Running/Stopping the measurements.
-    #. **Channels / Trigger / Measuring Tools:** This menu provides control over inputs and outputs, triggers, guides, and measurements.
-    #. **Axis Control Panel:** By pressing the horizontal ± buttons, the time axis (X axis) scale is changed. The vertical ± buttons change the amplitude axis (Y axis) and thus the displayed voltage range of the signal.
-    #. **Time and Trigger Info:** Displays the current time scale per division, trigger settings (time frame, trigger, zero point of the X-axis) and sampling rate.
+    #. **Channels / Trigger / Measuring Tools:** This menu provides control over inputs and outputs, triggers, guides, and measurements.
+    #. **Axis Control Panel:** By pressing the horizontal ± buttons, the time axis (X axis) scale is changed. The vertical ± buttons change the amplitude axis (Y axis) and thus the displayed voltage range of the signal.
+    #. **Time and Trigger Info:** Displays the current time scale per division, trigger settings (time frame, trigger, zero point of the X-axis) and sampling rate.
     #. **Channel Amplitude Scale:** Indicates the Y axis scale for all displayed channels.
     #. **Measurements Display:** Displays the results of performed measurements.
 
@@ -56,7 +56,7 @@ The Oscilloscope & Signal generator's main features are listed below:
 Top Settings Menu
 ===================
 
-Provides contol over the Oscilloscope Application. The blue question mark leads to this exact documentation page.
+Provides contol over the Oscilloscope application. The blue question mark leads to this exact documentation page.
 
 .. figure:: img/Slika_OSC_top_menu.png
     :width: 600
@@ -79,7 +79,7 @@ External reference clock (only SIGNALlab 250-12)
 The external reference clock input can be enabled through the settings menu. Once enabled, its status is displayed in the main interface. The "green" status indicates that the sampling clock is locked to the external reference clock.
 
 .. figure:: img/Silka_EXT_CLOCK.png
-    :width: 300 px
+    :width: 500
 
 Export
 ---------
@@ -87,7 +87,7 @@ Export
 Exports the currently displayed data as either a "Graph" or a "File". If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, the data is exported in either WAV, CSV, or TDMS format, with the ability to normalize the data and export the view.
 
 .. figure:: img/Slika_14_OSC_Export_data.png
-    :width: 300 px
+    :width: 500
 
 Autoscale
 ----------
@@ -95,11 +95,11 @@ Autoscale
 Automatically sets up the Oscilloscope to best display the input signal. By pressing this button, the voltage axis and the time axis are set so that at least one full period of the signal fills the screen.
 
     .. figure:: img/Slika_03_OSC_left.png
-        :width: 800 px
+        :width: 1000
         :align: center
 
     .. figure:: img/Slika_03_OSC_right.png
-        :width: 800 px
+        :width: 1000
         :align: center
 
 
@@ -114,7 +114,7 @@ The available settings by device model:
     .. tab:: STEMlab 125-10, 125-14, 125-14 4-Input
 
         .. figure:: img/Slika_05_OSC_IN_125.png
-            :height: 400px
+            :height: 400
 
         -   **SHOW:** Shows or hides the curve associated with the channel.
         -   **INVERT:** Reflects the graph on the X-axis.
@@ -127,7 +127,7 @@ The available settings by device model:
     .. tab:: SDRlab 122-16
      
         .. figure:: img/Slika_05_OSC_IN_122.png
-            :height: 400px
+            :height: 400
 
         -   **SHOW:** Shows or hides the curve associated with the channel.
         -   **INVERT:** Reflects the graph on the X-axis.
@@ -138,7 +138,7 @@ The available settings by device model:
     .. tab:: SIGNALlab 250-12
 
         .. figure:: img/Slika_05_OSC_IN_250.png
-            :height: 400px
+            :height: 400
 
         -   **SHOW:** Shows or hides the curve associated with the channel.
         -   **INVERT:** Reflects the graph on the X-axis.
@@ -166,7 +166,7 @@ The available settings are the following:
   .. tab:: STEMlab 125-10, 125-14, SDRlab 122-16
 
       .. figure:: img/Slika_06_OSC_OUT_125.png
-          :height: 500px
+          :height: 500
 
       -   **ON:** Turns the generator output ON/OFF.
       -   **SHOW:** Shows a signal preview (notice that the signal is not phase aligned with the input/output signal).
@@ -185,7 +185,7 @@ The available settings are the following:
   .. tab:: SIGNALlab 250-12
 
       .. figure:: img/Slika_06_OSC_OUT_250.png
-          :height: 500px
+          :height: 500
 
       -   **ON:** Turns the generator output ON/OFF.
       -   **SHOW:** Shows a signal preview (notice that the signal is not phase aligned with the input/output signal).
@@ -215,7 +215,7 @@ Configure the output to operate in burst mode. Frequency, amplitude, and other s
 Here are the available settings:
 
 .. figure:: img/Slika_06_OSC_OUT_burst.png
-    :height: 300px
+    :height: 300
 
 - **Number of periods (NCYC):** Number of signal periods in one burst. Also known as Number of Cycles (NCYC).
 - **Repetitions (NOR):** Number of repeated bursts. Also known as Number Of Repetitions (NOR).
@@ -230,7 +230,7 @@ Configure the output to operate in sweep mode. All other settings, except freque
 Here are the available settings:
 
 .. figure:: img/Slika_06_OSC_OUT_sweep.png
-    :height: 300px
+    :height: 300
 
 - **Start Freq (Hz):** Sweep start frequency in Hertz.
 - **End Freq (Hz):** Sweep end/stop frequency in Hertz.
@@ -243,7 +243,7 @@ Trigger
 =======
 
 .. figure:: img/Slika_07_OSC_Trigger.png
-    :width: 300px
+    :width: 250
 
 The trigger is used to enable the scope to display changing waveforms on the scope screen in a steady fashion. Here are the available settings:
 
@@ -278,7 +278,7 @@ Math
 =====
 
 .. figure:: img/Slika_08_OSC.png
-    :width: 800 px
+    :width: 1000
 
 Among the more interesting features of a digital oscilloscope is the "math" channel. The available settings are the following:
 
@@ -297,7 +297,7 @@ Out/E2
 Control the voltage on the slow analog outputs. Type in the value in Volts into the field labeled by the slow analog output number.
 
 .. figure:: img/Slika_11_OSC_E2.png
-    :width: 300 px
+    :width: 250
 
 Cursor
 ======
@@ -305,7 +305,7 @@ Cursor
 This feature enables the user to easily get the data of relevant basic measurements, such as signal period, amplitude, time delay, amplitude difference between two points, time difference between two points, etc. The cursors can be moved by clicking and dragging them on the screen.
 
 .. figure:: img/Slika_09_OSC.png
-    :width: 800
+    :width: 1000
 
 
 Navigate
@@ -315,7 +315,7 @@ When you have a lot of data to analyse, it is very important to get through it e
 dragging the data where you want and effortlessly zooming in and out by using your mouse scroll wheel.
 
 .. figure:: img/Slika_04_OSC.png
-    :width: 800px
+    :width: 1000
 
 
 Measurements
@@ -335,7 +335,7 @@ The menu can be found under the **MEAS** button. Here you can select up to 4 mea
 The measurements are removed by clicking on the specific measurement from the list.
 
 .. figure:: img/Slika_10_OSC.png
-    :width: 800 px
+    :width: 1000
 
 
 Specifications
@@ -344,56 +344,60 @@ Specifications
 Oscilloscope
 ============
 
-.. tabularcolumns:: |p{70mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|
 
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-|                             | **STEMlab 125-14**              | **STEMlab 125-14 4-Input**      | **SDRlab 122-16**            | **SIGNALlab 250-12**         | **STEMlab 125-10**              |
-|                             |                                 |                                 |                              |                              | **(discontinued)**              |
-+=============================+=================================+=================================+==============================+==============================+=================================+
-| Input channels              | 2                               | 4                               | 2                            | 2                            | 2                               |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| Bandwidth                   | 50 MHz                          | 50 MHz                          | 300 kHz - 50 MHz             | 60 MHz                       | 40 MHz                          |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| Resolution                  | 14 bit                          | 14 bit                          | 16 bit                       | 12 bit                       | 10 bit                          |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| Memory depth                | 16k samples                     | 16k samples                     | 16k samples                  | 16k samples                  | 16k samples                     |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| Input range                 | ± 1V (LV) and ± 20V (HV) [#f1]_ | ± 1V (LV) and ± 20V (HV) [#f1]_ | ± 0.25V / -2 dBm             | ± 1V / ± 20V [#f2]_          | ± 1V (LV) and ± 20V (HV) [#f1]_ |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| Input coupling              | DC                              | DC                              | AC                           | AC/DC [#f2]_                 | DC                              |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| Minimal Voltage Sensitivity | ± 0.122mV / ± 2.44mV            | ± 0.122mV / ± 2.44mV            | ± 7.6uV                      | ± 0.488mV / ± 9.76mV         | ± 1.95mV / ± 39mV               |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| External Trigger            | through extension connector     | through extension connector     | through extension connector  | through BNC connector        | through extension connector     |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
-| Input impedance             | 1 MΩ                            | 1 MΩ                            | 50 Ω                         | 1 MΩ                         | 1 MΩ                            |
-+-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+
+.. table::
+    :widths: 30 30 30 30 30 30
+
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    |                             | **STEMlab 125-14**              | **STEMlab 125-14 4-Input**      | **SDRlab 122-16**            | **SIGNALlab 250-12**         | **STEMlab 125-10**              |
+    |                             |                                 |                                 |                              |                              | **(discontinued)**              |
+    +=============================+=================================+=================================+==============================+==============================+=================================+
+    | Input channels              | 2                               | 4                               | 2                            | 2                            | 2                               |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | Bandwidth                   | 50 MHz                          | 50 MHz                          | 300 kHz - 50 MHz             | 60 MHz                       | 40 MHz                          |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | Resolution                  | 14 bit                          | 14 bit                          | 16 bit                       | 12 bit                       | 10 bit                          |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | Memory depth                | 16k samples                     | 16k samples                     | 16k samples                  | 16k samples                  | 16k samples                     |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | Input range                 | ±1 V (LV) and ±20 V (HV) [#f1]_ | ±1 V (LV) and ±20 V (HV) [#f1]_ | ±0.25 V / -2 dBm             | ±1 V / ±20 V [#f2]_          | ±1 V (LV) and ±20 V (HV) [#f1]_ |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | Input coupling              | DC                              | DC                              | AC                           | AC/DC [#f2]_                 | DC                              |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | Minimal Voltage Sensitivity | ±0.122mV / ±2.44mV              | ±0.122mV / ±2.44mV              | ±7.6uV                       | ±0.488mV / ±9.76mV           | ± 1.95mV / ± 39mV               |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | External Trigger            | E1 connector (DIO0_P)           | E1 connector (DIO0_P)           | E1 connector (DIO0_P)        | BNC trigger connector        | E1 connector (DIO0_P)           |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
+    | Input impedance             | 1 MΩ                            | 1 MΩ                            | 50 Ω                         | 1 MΩ                         | 1 MΩ                            |
+    +-----------------------------+---------------------------------+---------------------------------+------------------------------+------------------------------+---------------------------------+
 
 
 Signal generator
 ================
 
-.. tabularcolumns:: |p{70mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|p{50mm}|
+.. table::
+    :widths: 30 30 30 30 30 30
 
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
-|                      | **STEMlab 125-14**              | **STEMlab 125-14 4-Input**      | **SDRlab 122-16**            | **SIGNALlab 250-12**                    | **STEMlab 125-10**              |
-|                      |                                 |                                 |                              |                                         | **(discontinued)**              |
-+======================+=================================+=================================+==============================+=========================================+=================================+
-| Output channels      | 2                               | N/A                             | 2                            | 2                                       | 2                               |
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
-| Frequency Range      | 0 - 50 MHz                      | N/A                             | 300 kHz - 60 MHz             | 0 - 60 MHz                              | 0 - 50 MHz                      |
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
-| Resolution           | 14 bit                          | N/A                             | 14 bit                       | 12 bit                                  | 10 bit                          |
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
-| Signal buffer        | 16k samples                     | N/A                             | 16k samples                  | 16k samples                             | 16k samples                     |
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
-| Output range         | ± 1V                            | N/A                             | ± 0.25V/ -2 dBm              | ± 1V / ± 5V (into 50 Ω load) [#f2]_     | ± 1V                            |
-|                      |                                 |                                 | (50 Ω load)                  | ± 2V / ± 10V (High-Z load) [#f2]_       |                                 |
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
-| Coupling             | DC                              | N/A                             | AC                           | AC/DC [#f2]_                            | DC                              |
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
-| Output load          | 50 Ω                            | N/A                             | 50 Ω                         | 50 Ω / High-Z [#f2]_                    | 50 Ω                            |
-+----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    |                      | **STEMlab 125-14**              | **STEMlab 125-14 4-Input**      | **SDRlab 122-16**            | **SIGNALlab 250-12**                    | **STEMlab 125-10**              |
+    |                      |                                 |                                 |                              |                                         | **(discontinued)**              |
+    +======================+=================================+=================================+==============================+=========================================+=================================+
+    | Output channels      | 2                               | N/A                             | 2                            | 2                                       | 2                               |
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    | Frequency Range      | 0 - 50 MHz                      | N/A                             | 300 kHz - 60 MHz             | 0 - 60 MHz                              | 0 - 50 MHz                      |
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    | Resolution           | 14 bit                          | N/A                             | 14 bit                       | 12 bit                                  | 10 bit                          |
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    | Signal buffer        | 16k samples                     | N/A                             | 16k samples                  | 16k samples                             | 16k samples                     |
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    | Output range         | ±1 V                            | N/A                             | ±0.25 V/ -2 dBm              | ±1 V / ±5 V (into 50 Ω load) [#f2]_     | ±1 V                            |
+    |                      |                                 |                                 | (50 Ω load)                  | ±2 V / ±10 V (High-Z load) [#f2]_       |                                 |
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    | Coupling             | DC                              | N/A                             | AC                           | AC/DC [#f2]_                            | DC                              |
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
+    | Output load          | 50 Ω                            | N/A                             | 50 Ω                         | 50 Ω / High-Z [#f2]_                    | 50 Ω                            |
+    +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
 
 
 .. [#f1]

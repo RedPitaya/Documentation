@@ -11,11 +11,13 @@ OS Versions
 
 The OS versions are listed from newest to oldest. For development OS (Nightly Builds), please check the `Nightly Builds`_ chapter located at the end of the OS section.
 
-==========
-2.00 OS
-==========
+===============
+Latest 2.00 OS
+===============
 
-With the 2.00 OS versions we moved to a unified OS image for all boards (One OS to rule them all).
+.. note::
+
+   The 2.00 OS works on all Red Pitaya board models (One OS to rule them all).
 
 **RedPitaya OS 2.0**:
 
@@ -24,7 +26,7 @@ With the 2.00 OS versions we moved to a unified OS image for all boards (One OS 
 
 |
 
-New C libraries were added with the Unified (2.00) OS ecosystem, which causes the C program compilation to fail on older OS.
+New C libraries were added in the 2.00 OS ecosystem, which causes the C program compilation to fail on older OS versions.
 
 Please make sure that your Red Pitaya OS and the downloaded |GitHub| ecosystem repository are compatible.
 We recommend using a |GitHub| ecosystem that is meant to run on your current Red Pitaya OS version:
@@ -182,7 +184,7 @@ The next procedure will create a clean SD card image.
 1. Select an appropriate OS version from above and download it.
 
    .. figure:: img/microSDcard-RP.png
-       :width: 10%
+      :width: 200
 
 #. Unzip the SD card image.
 
@@ -193,7 +195,7 @@ The next procedure will create a clean SD card image.
    :backlinks: none
    :depth: 1
 
-4. Insert the SD card into the Red Pitaya.
+#. Insert the SD card into the Red Pitaya.
 
    .. figure:: img/pitaya-quick-start-insert-sd-card.png
       :align: center
@@ -236,7 +238,7 @@ Windows
    .. figure:: img/SDcard_Win_BalenaEtcher.png
       :align: center
 
-#. Under **Flash from file** select an unzipped Red Pitaya image file.
+#. Under **Flash from file** select the downloaded Red Pitaya image file (Balena Etcher accepts both zipped and unzipped files).
 
    .. figure:: img/SDcard_Win_BalEtc_FlashFromFile.png
       :align: center
@@ -248,7 +250,8 @@ Windows
 
    .. note::
 
-      Balena Etcher will only show you external drives, but please be careful to select the correct drive if you have multiple cards or USBs plugged into your computer. If you choose the wrong one, you risk erasing data from the selected drive. You can easily see the drive letter (for example, E:) by looking in the left column of Windows Explorer.
+      Balena Etcher will only show you external drives, but please be careful to select the correct drive if you have multiple cards or USBs plugged into your computer.
+      If you choose the wrong one, you risk erasing data from the selected drive. You can easily see the drive letter (for example, E:) by looking in the left column of Windows Explorer.
 
    .. figure:: img/SDcard_Win_BalEtc_SelectTarget2.png
       :align: center

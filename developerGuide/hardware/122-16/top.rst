@@ -14,6 +14,7 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
+|
 
 Technical specifications
 ==========================
@@ -24,15 +25,15 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Basic**                                                               |
     +====================================+====================================+
-    | Processor                          | DUAL CORE ARM CORTEX A9            |
+    | Processor                          | Dual core ARM Cortex-A9            |
     +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7020 SOC          |
+    | FPGA                               | FPGA Xilinx Zynq 7020 SoC          |
     +------------------------------------+------------------------------------+
     | RAM                                | 512 MB (4 Gb)                      |
     +------------------------------------+------------------------------------+
     | System memory                      | Micro SD up to 32 GB               |
     +------------------------------------+------------------------------------+
-    | Console connection                 | Micro USB                          |
+    | Console connector                  | Micro USB                          |
     +------------------------------------+------------------------------------+
     | Power connector                    | Micro USB                          |
     |                                    |                                    |
@@ -51,7 +52,7 @@ Technical specifications
     +====================================+====================================+
     | Ethernet                           | 1 Gbit                             |
     +------------------------------------+------------------------------------+
-    | USB                                | USB 2.0                            |
+    | USB                                | USB-A 2.0                          |
     +------------------------------------+------------------------------------+
     | Wi-Fi                              | requires Wi-Fi dongle              |
     +------------------------------------+------------------------------------+
@@ -76,14 +77,16 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | AC                                 |
     +------------------------------------+------------------------------------+
-    | Absolute max. Input voltage range  | | DC max 50 V (AC-coupled),        |
-    |                                    | | 1 Vpp for RF                     |
+    | | **Absolute max.**                | | **DC max 50 V (AC-coupled)**     |
+    | | **Input voltage**                | | **1 Vpp for RF**                 |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
     | Overload protection                | DC voltage protection              |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | 300 kHz - 550 MHz (undersampling)  |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -102,17 +105,17 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Load impedance                     | 50 Ω                               |
     +------------------------------------+------------------------------------+
-    | Voltage range                      | 0.5 Vpp/-2 dBm                     |
+    | Voltage range                      | 0.5 Vpp/ -2 dBm                    |
     |                                    | (50 Ω load)                        |
     +------------------------------------+------------------------------------+
     | Short circuit protection           | N/A, RF transformer                |
     |                                    | & AC-coupled                       |
     +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
     | Output slew rate                   | N/A                                |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | 300 kHz - 60 MHz                   |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -147,9 +150,9 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3.3 V, -4 V                 |
+    | Available voltages                 | +5 V, +3V3, -4 V                   |
     +------------------------------------+------------------------------------+
-    | External ADC clock                 |  Yes                               |
+    | External ADC clock                 | No                                 |
     +------------------------------------+------------------------------------+
 
 |
@@ -160,14 +163,14 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    | External trigger input             | E1 connector (DIO0_P)              |
     +------------------------------------+------------------------------------+
-    | External trigger input impedance   | High-Z (digital input)             |
+    | External trigger input impedance   | Hi-Z (digital input)               |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
+    | Trigger output [#f1]_              | E1 connector (DIO0_N)              |
     +------------------------------------+------------------------------------+
-    | Daisy chain connection             | Over SATA connection               |
+    | Daisy chain connection             | SATA connectors |br|               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
@@ -178,10 +181,28 @@ Technical specifications
 .. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
+.. table::
+    :widths: 40 40
+
+    +------------------------------------+------------------------------------+
+    | **Boot options**                                                        |
+    +====================================+====================================+
+    | SD card                            | Yes                                |
+    +------------------------------------+------------------------------------+
+    | QSPI                               | Not populated                      |
+    +------------------------------------+------------------------------------+
+    | eMMC                               | N/A                                |
+    +------------------------------------+------------------------------------+
+
+
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
+
+.. |br| raw:: html
+
+    <br/>
 
 .. TODO Add Extension connectors to FPGA pin description
 

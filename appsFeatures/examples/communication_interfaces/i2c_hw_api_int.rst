@@ -1,12 +1,11 @@
-I2C
-###
 
-.. http://blog.redpitaya.com/examples-new/i2c/
+I2C internal (HW API)
+#####################
 
 Description
 ============
 
-This example demonstrates communication with the internal EEPROM memory on the Red Pitaya using the I2C protocol. The code below writes a message to a given address inside the EEPROM and then prints the entire content of the EEPROM.
+This example demonstrates communication with the internal 24LC64 EEPROM memory on the Red Pitaya using the I2C protocol. The code below writes a message to a given address inside the EEPROM and then prints the entire content of the EEPROM.
 
 
 Required hardware
@@ -58,21 +57,20 @@ Code - C
     #include <stdint.h>
     
     
-    #define I2C_SLAVE_FORCE 		   0x0706
-    #define I2C_SLAVE    			   0x0703    /* Change slave address            */
-    #define I2C_FUNCS    			   0x0705    /* Get the adapter functionality */
-    #define I2C_RDWR    			   0x0707    /* Combined R/W transfer (one stop only)*/
+    #define I2C_SLAVE_FORCE          0x0706
+    #define I2C_SLAVE                0x0703    /* Change slave address          */
+    #define I2C_FUNCS                0x0705    /* Get the adapter functionality */
+    #define I2C_RDWR                 0x0707    /* Combined R/W transfer (one stop only)*/
     
-
-    #define EEPROM_ADDR            	   0x50
+    #define EEPROM_ADDR              0x50
     
     /*
     * Page size of the EEPROM. This depends on the type of the EEPROM available
     * on board.
     */
-    #define PAGESIZE                   32
+    #define PAGESIZE                 32
     /* eeprom size on a redpitaya */
-    #define EEPROMSIZE                 64*1024/8
+    #define EEPROMSIZE               64*1024/8
     
 
     /* Inline functions definition */ 
@@ -91,8 +89,7 @@ Code - C
         /* Read buffer to hold the data */
         char *buffer = (char *)malloc(EEPROMSIZE * sizeof(char));
 
-        char data[] = "THIS IS A TEST MESSAGE FOR THE I2C PROTOCOL COMMUNICATION WITH A EEPROM. IT WAS WRITTEN FOR A 
-        REDPITAYA MEASURMENT TOOL.";
+        char data[] = "THIS IS A TEST MESSAGE FOR THE I2C PROTOCOL COMMUNICATION WITH A EEPROM. IT WAS WRITTEN FOR A REDPITAYA MEASURMENT TOOL.";
         size_t size = strlen(data);
 
         /* Sample offset inside an eeprom */
@@ -116,7 +113,7 @@ Code - C
             return -1;
         }
 
-        /* Write to redpitaya eeprom */
+        /* Write to redpitaya eeprom - change write/read pointer*/
         status = iic_write((char *)data, offset, size);
         if(status){
             fprintf(stderr, "Cannot Write to EEPROM\n");

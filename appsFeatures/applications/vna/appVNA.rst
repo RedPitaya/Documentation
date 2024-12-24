@@ -39,6 +39,17 @@ Install & run network Vector Network Analyzer control app
 Windows users only
 ------------------
 
+
+    #. Open the VNA application
+    #. Download and unpack the Windows |official_os_client|.
+    #. Run the ``vna.exe`` program located in the *control* directory.
+    #. Type in the IP address of the Red Pitaya board and press the *Connect* button.
+    #. Perform calibration and measurements.
+
+.. note::
+
+    To get access to the latest community version of the VNA, please check out |red_pitaya_notes_vna|. The installation instructions differ only slightly:
+
     #. Open the VNA application
     #. Head to |red_pitaya_notes_vna|. There you can read more about the inner workings of the application as well as find links to other useful information.
     #. Find the **Getting started with MS Windows** section and follow the bullet points. **SKIP the first three points** if you are using official Red Pitaya OS! 
@@ -47,13 +58,48 @@ Windows users only
     #. Type in the IP address of the Red Pitaya board and press the *Connect* button.
     #. Perform calibration and measurements.
 
+
 .. |red_pitaya_notes_vna| raw:: html
 
    <a href="https://pavel-demin.github.io/red-pitaya-notes/vna/" target="_blank">Pavel Demin's Red Pitaya Notes VNA page</a>
 
+.. |official_os_client| raw:: html
+
+   <a href="https://downloads.redpitaya.com/downloads/Clients/vna/" target="_blank">control client</a>
+
 
 Linux users only
 ----------------
+
+    #. Open the VNA application
+    #. Download and unpack the Linux |official_os_client|.
+    #. Install |Python 3| and all the required libraries:
+
+        .. code-block:: shell-session
+
+            sudo apt-get install python3-dev python3-pip python3-numpy python3-pyqt5 libfreetype6-dev
+            sudo pip3 install matplotlib mpldatacursor
+
+    #. Run the control program:
+
+        .. code-block:: shell-session
+
+            cd /vna/client
+            python3 vna.py
+
+    #. Type in the IP address of the Red Pitaya board and press the *Connect* button.
+    #. Perform calibration and measurements.
+
+.. |Python 3| raw:: html
+
+   <a href="https://www.python.org/" target="_blank">Python 3</a>
+
+
+
+
+.. note::
+
+    To get access to the latest community version of the VNA, please check out |red_pitaya_notes_vna|. The installation instructions differ only slightly:
 
     #. Open the VNA application
     #. Head to |red_pitaya_notes_vna|. There you can read more about the inner workings of the application as well as find links to other useful information.
@@ -63,6 +109,7 @@ Linux users only
         .. code-block:: shell-session
 
             apt-get install python3-numpy python3-matplotlib python3-pyqt5
+
     #. Clone the source code repository to your computer:
 
         .. code-block:: shell-session
@@ -79,9 +126,6 @@ Linux users only
     #. Type in the IP address of the Red Pitaya board and press the *Connect* button.
     #. Perform calibration and measurements.
 
-.. |Python 3| raw:: html
-
-   <a href="https://www.python.org/" target="_blank">Python 3</a>
 
 
 Type in the IP or URL address of the Red Pitaya board
@@ -127,6 +171,7 @@ Click "Connect" inside the Vector Network Analyzer control app
     :align: center
     :width: 600
 
+
 ***************************************
 Perform calibration and start measuring
 ***************************************
@@ -163,7 +208,7 @@ Perform calibration and start measuring
         :align: center
         :width: 600
 
-#. Disconnect the LOAD SMA connector and connect whatever DUT you’d like to measure.
+#. Disconnect the LOAD SMA connector and connect whatever DUT you'd like to measure.
 
     .. figure::  img/07_Product_Combo.jpg
         :align: center
@@ -193,7 +238,7 @@ Examples:
 
 .. admonition:: Credits
 
-    | The original developer of the Vector Network Analyzer RedPitaya application is Pavel Demin.
+    | The original developer of the Vector Network Analyzer Red Pitaya application is Pavel Demin.
     | Repositories used by our builds:
 
         *   |red-pitaya-notes|

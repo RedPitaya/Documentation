@@ -76,12 +76,12 @@ different places one would expect.
 Supported platforms
 -------------------
 
-Red Pitaya is developed on Linux (64bit Ubuntu 18.04),
+Red Pitaya is developed on Linux (64-bit Ubuntu 18.04),
 so Linux is also the only platform we support.
 
 .. note::
 
-   Ecosystem version 2.0 requires ubuntu version 22.04
+   Ecosystem version 2.0 or higher requires Ubuntu version 22.04
 
 
 .. _sys-req-label:

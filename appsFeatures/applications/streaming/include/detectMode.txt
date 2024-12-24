@@ -1,6 +1,5 @@
-rpsa_client.exe -d [-p PORT] [-t SEC]
-rpsa_client.exe --detect [--port=PORT] [--timeout=SEC]
+rpsa_client.exe -d [-t SEC]
+rpsa_client.exe --detect [--timeout=SEC]
 
---detect               -d           Enable broadcast search.
---port=PORT            -p PORT      Port for broadcast (Default: 8902).
---timeout=SEC          -t SEC       Timeout(Default: 5 sec).
+--detect               -d              Enable broadcast search.
+--timeout=SEC          -t SEC          Timeout(Default: 5 sec).

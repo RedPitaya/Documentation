@@ -403,7 +403,7 @@ Query commands request data or a setting to be returned to the user. They always
 - Error checking via status byte
 - Error checking is optional
 - The data returned by the command can be of two types: binary data and text data.
-- Binary data response has the format **#<DATA SIZE><BYTES>**. If an error occurs, the response format is as follows #0
-- Text data format: **<ANSWER>\r\n** or **<ANSWER>;<ANSWER>;...;<ANSWER>\r\n** (If you're sending multiple commands at once.) If an error occurs, the response format will be like this: "\r\n".
-- In ASCII mode, data buffers are represented in the form {dd,dd,dd,...,dd}.
+- Binary data response has the format ``#<DATA SIZE><BYTES>``. If an error occurs, the response format is as follows ``#0``.
+- Text data format: ``<ANSWER>\r\n`` or ``<ANSWER>;<ANSWER>;...;<ANSWER>\r\n`` (If you're sending multiple commands at once.) If an error occurs, the response format will be like this: ``\r\n``.
+- In ASCII mode, data buffers are represented in the form ``{dd,dd,dd,...,dd}``.
 - The API error code consists of two parts. 9000 or 9500, indicating whether the error is normal or critical, and the API error number. For example: 9500 + RP_EOED = 9501 (Failed to Open EEPROM Device)

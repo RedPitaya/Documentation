@@ -346,15 +346,19 @@ Instructions for the rpsa_client
 
 1. **Detect Mode**
 
-	This mode allows you to determine the IP addresses that are in the network in streaming mode. By default, the search takes 5 seconds.
+	This mode allows you to determine the IP addresses that are in the local network in streaming mode. By default, the search takes 5 seconds.
 
    	.. literalinclude:: include/detectMode.txt
 
 2. **Configuration Mode**
 
-	This mode allows you to get or set the configuration on the boards.
+	This mode allows you to get or set the streaming configuration on the boards.
 
    	.. literalinclude:: include/configMode.txt
+
+    Variables can also be set individually:
+
+    .. literalinclude:: include/configModeSingle.txt
 
 3. **Remote control Mode**
       
@@ -374,6 +378,43 @@ Instructions for the rpsa_client
 
     .. literalinclude:: include/dacStreamingMode.txt
 
+6. **Configuration Variables**
+
+    Configuration file variables and their valid values.
+
+    .. literalinclude:: include/configVariables.txt
+
+
+Convert tool
+--------------
+
+.. tabs::
+
+    .. group-tab:: OS version IN DEV
+
+        The convert tool allows you to convert the *.bin* file format into a *.csv*, *.tdms*, or *.wav* file.
+
+        .. literalinclude:: include/convert_tool.txt
+
+        To convert the binary file, first check the file information using:
+
+        .. code-block:: bash
+
+            .\convert_tool.exe .\<path_to_bin_file>\data_file.bin -i
+
+        .. literalinclude:: include/convert_tool_info.txt
+
+        The file information includes the number of segments into which the data is split. Using the convert tool, you can choose to convert only the specfied portion of the streamed file to the desired forma
+
+        .. code-block:: bash
+
+            .\convert_tool.exe .\<path_to_bin_file>\data_file.bin -s 1 -e 18 -f CSV
+
+        The converted file will appear next to the original file.
+
+        .. note::
+
+            The file type (CSV, TDMS or WAV) must be capitalised.
 
 
 Streaming to a remote computer via Desktop Application (Linux, Windows)
@@ -381,7 +422,7 @@ Streaming to a remote computer via Desktop Application (Linux, Windows)
 
 .. note::
 
-    The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.
+    The streaming client application currently does not work on Windows 11. This issue is fixed in the latest :ref:`Nightly Builds <nightly_builds>`.
 
 
 The other option for streaming is utilyzing the Desktop Application.
@@ -427,6 +468,14 @@ The other option for streaming is utilyzing the Desktop Application.
 .. |Streaming Client| raw:: html
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
+
+
+Streaming data to Red Pitaya Linux
+====================================
+
+Downloading and extracting the **RP rpsa** streaming client onto the Red Pitaya board allows you to access the streamed data from Python code running directly on the Red Pitaya.
+
+This mode is currently **IN DEV**. Documentation will be updated when full functionality is available.
 
 
 Source code

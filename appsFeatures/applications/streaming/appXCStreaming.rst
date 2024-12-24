@@ -99,10 +99,9 @@ Download and install an X-channel streaming client on your computer
 ---------------------------------------------------------------------
 
 .. note::
-
-   The streaming client application currently does not work on Windows 11. This issue will be fixed in the future.
-
-
+    
+    Streaming clients from OS versions older than 2.05-37 are not compatible with Windows 11. Please use 2.05-37 OS or newer OS.
+    
 1. Connect to the PRIMARY board by entering the URL from the sticker into a web browser and launching the streaming app.
 
 .. figure:: img/run_app.png

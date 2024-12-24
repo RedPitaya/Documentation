@@ -1,0 +1,15 @@
+rpsa_client.exe -c [-h IPs] -i NAME [-v]
+rpsa_client.exe -c [-h IPs] -i NAME=VALUE [-w] [-v]
+
+--config               -c              Enable config mode.
+--hosts=IP,...         -h IP,...       You can specify one or more board IP addresses through a separator - ','
+                                       You can not specify the board address, then the client will take the first board found via broadcast
+                                       Example: --hosts=127.0.0.1 or --hosts=127.0.0.1,127.0.0.2
+                                              -h 127.0.0.1     or  -h 127.0.0.1,127.0.0.2,127.0.0.3
+                       -i NAME         Returns the value of a variable from the server.
+                                       Keys: NAME = The name of the variable that is specified in the Json configuration file.
+                       -i NAME VALUE   Sets a value to a variable on the server.
+                                       Keys: NAME = The name of the variable that is specified in the Json configuration file.
+                                             VALUE = The value is valid for this variable.
+--write                -w              Writes changes to the configuration file on the server.
+--verbose              -v              Displays service information.

@@ -14,6 +14,9 @@ SIGNALlab 250-12
 .. note::
 
     The SIGNALlab 250-12 OEM board comes without the case, but includes the ribbed black heat sink that can be seen on the top of the first picture.
+    The heatsink is mounted on the bottom side of the board.
+
+
 
 
 Pinout
@@ -22,6 +25,7 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
+|
 
 Technical specifications
 ============================
@@ -32,7 +36,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Basic**                                                               |
     +====================================+====================================+
-    | Processor                          | DUAL CORE ARM CORTEX A9            |
+    | Processor                          | Dual core ARM Cortex-A9            |
     +------------------------------------+------------------------------------+
     | FPGA                               | FPGA Xilinx Zynq 7020 SOC          |
     +------------------------------------+------------------------------------+
@@ -40,7 +44,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | System memory                      | Micro SD up to 32 GB               |
     +------------------------------------+------------------------------------+
-    | Console connection                 | USB-C                              |
+    | Console connector                  | USB-C                              |
     +------------------------------------+------------------------------------+
     | Power connector                    | | Power Jack,                      |
     |                                    | | RJ45 (PoE version only)          |
@@ -58,7 +62,7 @@ Technical specifications
     +====================================+====================================+
     | Ethernet                           | 1 Gbit                             |
     +------------------------------------+------------------------------------+
-    | USB                                | 2 x USB 2.0                        |
+    | USB                                | 2 x USB-A 2.0                      |
     +------------------------------------+------------------------------------+
     | Wi-Fi                              | Requires Wi-Fi dongle              |
     +------------------------------------+------------------------------------+
@@ -79,18 +83,20 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input impedance                    | 1 MΩ                               |
     +------------------------------------+------------------------------------+
-    | Full scale voltage range           | +-1 V/+-20 V (software selectable) |
+    | Full scale voltage range           | ±1 V / ±20 V (SW selectable)       |
     +------------------------------------+------------------------------------+
-    | Input coupling                     | AC / DC (software selectable)      |
+    | Input coupling                     | AC / DC (SW selectable)            |
     +------------------------------------+------------------------------------+
-    | | **Absolute max. Input**          | | **LV +-6 V**                     |
-    | | **voltage range**                | | **HV +-30 V**                    |
+    | | **Absolute max.**                | | **LV ±6 V**                      |
+    | | **Input voltage**                | | **HV ±30 V**                     |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
     | Overload protection                | Protection diodes                  |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 60 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | BNC                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -107,19 +113,19 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | DAC resolution                     | 14 bit                             |
     +------------------------------------+------------------------------------+
-    | Load impedance                     | 50 Ω                               |
+    | Load impedance                     | 50 Ω / Hi-Z                        |
     +------------------------------------+------------------------------------+
-    | Voltage range                      | +-2 V / +-10 V (Hi-Z load)         |
-    |                                    | (software selectable)              |
+    | Voltage range                      | | ±2 V @ 50 Ω                      |
+    |                                    | | ±10 V @ Hi-Z (SW selectable)     |
     +------------------------------------+------------------------------------+
     | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Connector type                     | BNC                                |
-    +------------------------------------+------------------------------------+
     | Output slew rate                   | 10 V / 17 ns                       |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 60 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | BNC                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -136,7 +142,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog inputs voltage range        | 0 - 3.5 V                          |
+    | Analog input voltage range         | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
     | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
@@ -144,7 +150,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog outputs voltage range       | 0 - 1.8 V                          |
+    | Analog output voltage range        | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
     | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
@@ -154,7 +160,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN, USB           |
     +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3.3 V, -4 V                 |
+    | Available voltages                 | +5 V, +3V3, -4 V                   |
     +------------------------------------+------------------------------------+
     | External ADC clock                 | Yes                                |
     +------------------------------------+------------------------------------+
@@ -167,17 +173,17 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | External trigger input             | Through BNC connector              |
+    | External trigger input             | BNC connector                      |
     +------------------------------------+------------------------------------+
     | External trigger input impedance   | | 10 kΩ (HW_rev 1.0-1.2a)          |
     |                                    | | 1 kΩ (HW_rev 1.2b)               |
     +------------------------------------+------------------------------------+
-    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
+    | Trigger output [#f1]_              | E1 connector (DIO0_N)              |
     +------------------------------------+------------------------------------+
-    | Daisy chain connection             | Over SATA connection               |
+    | Daisy chain connection             | SATA connectors |br|               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
-    | Ref. clock input                   | Through SMA connector              |
+    | Ref. clock input                   | SMA connector (back)               |
     +------------------------------------+------------------------------------+
 
 .. rubric:: Footnotes
@@ -185,9 +191,26 @@ Technical specifications
 .. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
 
+.. table::
+    :widths: 40 40
+
+    +------------------------------------+------------------------------------+
+    | **Boot options**                                                        |
+    +====================================+====================================+
+    | SD card                            | Yes                                |
+    +------------------------------------+------------------------------------+
+    | QSPI                               | N/A                                |
+    +------------------------------------+------------------------------------+
+    | eMMC                               | N/A                                |
+    +------------------------------------+------------------------------------+
+
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
+
+.. |br| raw:: html
+
+    <br/>
 
 
 Schematics

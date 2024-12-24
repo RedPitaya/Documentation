@@ -26,9 +26,10 @@ Pinout
 .. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
 
+|
 
 Technical specifications
-============================
+==========================
 
 .. table::
     :widths: 40 40
@@ -36,15 +37,15 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Basic**                                                               |
     +====================================+====================================+
-    | Processor                          | DUAL CORE ARM CORTEX A9            |
+    | Processor                          | Dual core ARM Cortex-A9            |
     +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7020 SOC          |
+    | FPGA                               | FPGA Xilinx Zynq 7020 SoC          |
     +------------------------------------+------------------------------------+
     | RAM                                | 512 MB (4 Gb)                      |
     +------------------------------------+------------------------------------+
     | System memory                      | Micro SD up to 32 GB               |
     +------------------------------------+------------------------------------+
-    | Console connection                 | Micro USB                          |
+    | Console connector                  | Micro USB                          |
     +------------------------------------+------------------------------------+
     | Power connector                    | Micro USB                          |
     |                                    |                                    |
@@ -63,7 +64,7 @@ Technical specifications
     +====================================+====================================+
     | Ethernet                           | 1 Gbit                             |
     +------------------------------------+------------------------------------+
-    | USB                                | USB 2.0                            |
+    | USB                                | USB-A 2.0                          |
     +------------------------------------+------------------------------------+
     | Wi-Fi                              | requires Wi-Fi dongle              |
     +------------------------------------+------------------------------------+
@@ -88,14 +89,16 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Input coupling                     | DC                                 |
     +------------------------------------+------------------------------------+
-    | | **Absolute max. Input**          | | **LV +-6 V**                     |
-    | | **voltage range**                | | **HV +-30 V**                    |
+    | | **Absolute max.**                | | **LV ±6 V**                      |
+    | | **Input voltage**                | | **HV ±30 V**                     |
     +------------------------------------+------------------------------------+
     | Input ESD protection               | Yes                                |
     +------------------------------------+------------------------------------+
     | Overload protection                | Protection diodes                  |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 60 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -120,11 +123,11 @@ Technical specifications
     | Short circuit protection           | Yes                                |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
     | Output slew rate                   | 2 V / 10 ns                        |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 50 MHz                        |
+    +------------------------------------+------------------------------------+
+    | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
 
 |
@@ -141,7 +144,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Analog inputs                      | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog inputs voltage range        | 0 - 3.5 V                          |
+    | Analog input voltage range         | 0 - 3.5 V                          |
     +------------------------------------+------------------------------------+
     | Analog input resolution            | 12 bit                             |
     +------------------------------------+------------------------------------+
@@ -149,7 +152,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Analog outputs                     | 4                                  |
     +------------------------------------+------------------------------------+
-    | Analog outputs voltage range       | 0 - 1.8 V                          |
+    | Analog output voltage range        | 0 - 1.8 V                          |
     +------------------------------------+------------------------------------+
     | Analog output resolution           | 8 bit                              |
     +------------------------------------+------------------------------------+
@@ -159,12 +162,10 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Communication interfaces           | I2C, SPI, UART, CAN                |
     +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3.3 V, -4 V                 |
+    | Available voltages                 | +5 V, +3V3, -4 V                   |
     +------------------------------------+------------------------------------+
-    | External ADC clock                 |  Yes                               |
+    | External ADC clock                 | Ext. clock models only             |
     +------------------------------------+------------------------------------+
-
-|
 
 .. table::
     :widths: 40 40
@@ -172,14 +173,14 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | **Synchronisation**                                                     |
     +====================================+====================================+
-    | External trigger input             | Through E1 ext. connector (DIO0_P) |
+    | External trigger input             | E1 connector (DIO0_P)              |
     +------------------------------------+------------------------------------+
-    | External trigger input impedance   | High-Z (digital input)             |
+    | External trigger input impedance   | Hi-Z (digital input)               |
     |                                    |                                    |
     +------------------------------------+------------------------------------+
-    | Trigger output [#f1]_              | Through E1 ext. connector (DIO0_N) |
+    | Trigger output [#f1]_              | E1 connector (DIO0_N)              |
     +------------------------------------+------------------------------------+
-    | Daisy chain connection             | Over SATA connection               |
+    | Daisy chain connection             | SATA connectors |br|               |
     |                                    | (up to 500 Mbps)                   |
     +------------------------------------+------------------------------------+
     | Ref. clock input                   | N/A                                |
@@ -189,10 +190,27 @@ Technical specifications
 
 .. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation example <click_shield_sync_exam1>`.
 
+
+.. table::
+    :widths: 40 40
+
+    +------------------------------------+------------------------------------+
+    | **Boot options**                                                        |
+    +====================================+====================================+
+    | SD card                            | Yes                                |
+    +------------------------------------+------------------------------------+
+    | QSPI                               | Not populated                      |
+    +------------------------------------+------------------------------------+
+    | eMMC                               | N/A                                |
+    +------------------------------------+------------------------------------+
+
 .. note::
     
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp>`.
 
+.. |br| raw:: html
+
+    <br/>
 
 
 Schematics
@@ -282,43 +300,43 @@ Extension connector E2
 -------------------------
 
 - +5 V, -3V4 power sources
-        - SPI, UART, I2C
-        - 4 slow ADCs
-        - 4 slow DACs
-        - Ext. clock for fast ADC
+- SPI, UART, I2C
+- 4 slow ADCs
+- 4 slow DACs
+- Ext. clock for fast ADC
 
-        .. Table 6: Extension connector E2 pin description
+.. Table 6: Extension connector E2 pin description
 
-        ===  ======================  ===============  ==============================================  ==============
-        Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
-        ===  ======================  ===============  ==============================================  ==============
-        1    +5V                                                                                                    
-        2    -3V4                                                                                                   
-        3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
-        4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
-        5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
-        6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V         
-        7    UART (TX)               D5               PS_MIO8_500                                     3.3 V         
-        8    UART (RX)               B5               PS_MIO9_500                                     3.3 V         
-        9    I2C (SCL)               B9               PS_MIO50_501                                    3.3 V         
-        10   I2C (SDA)               B13              PS_MIO51_501                                    3.3 V         
-        11   Ext com.mode                                                                             GND (default) 
-        12   GND                                                                                                    
-        13   Analog Input 0          B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V       
-        14   Analog Input 1          C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V       
-        15   Analog Input 2          E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V       
-        16   Analog Input 3          E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V       
-        17   Analog Output 0         T10              IO_L1N_T0_34                                    0-1.8 V       
-        18   Analog Output 1         T11              IO_L1P_T0_34                                    0-1.8 V       
-        19   Analog Output 2         P15              IO_L24P_T3_34                                   0-1.8 V       
-        20   Analog Output 3         U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V       
-        21   GND                                                                                              
-        22   GND                                                                                                    
-        23   Ext Adc CLK+                                                                             LVDS          
-        24   Ext Adc CLK-                                                                             LVDS          
-        25   GND                                                                                                    
-        26   GND                                                                                                    
-        ===  ======================  ===============  ==============================================  ==============
+===  ======================  ===============  ==============================================  ==============
+Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
+===  ======================  ===============  ==============================================  ==============
+1    +5V                                                                                                    
+2    -3V4                                                                                                   
+3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
+4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
+5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
+6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V         
+7    UART (TX)               D5               PS_MIO8_500                                     3.3 V         
+8    UART (RX)               B5               PS_MIO9_500                                     3.3 V         
+9    I2C (SCL)               B9               PS_MIO50_501                                    3.3 V         
+10   I2C (SDA)               B13              PS_MIO51_501                                    3.3 V         
+11   Ext com.mode                                                                             GND (default) 
+12   GND                                                                                                    
+13   Analog Input 0          B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V       
+14   Analog Input 1          C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V       
+15   Analog Input 2          E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V       
+16   Analog Input 3          E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V       
+17   Analog Output 0         T10              IO_L1N_T0_34                                    0-1.8 V       
+18   Analog Output 1         T11              IO_L1P_T0_34                                    0-1.8 V       
+19   Analog Output 2         P15              IO_L24P_T3_34                                   0-1.8 V       
+20   Analog Output 3         U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V       
+21   GND                                                                                              
+22   GND                                                                                                    
+23   Ext Adc CLK+                                                                             LVDS          
+24   Ext Adc CLK-                                                                             LVDS          
+25   GND                                                                                                    
+26   GND                                                                                                    
+===  ======================  ===============  ==============================================  ==============
 
 
 .. note::

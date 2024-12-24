@@ -6,9 +6,9 @@ Red Pitaya Aluminium Case Assembly
 
 Whether you bought your Red Pitaya aluminium case in a kit or as a separate add-on, you will need to assemble it by hand.
 
-**********
+
 Components
-**********
+============
 
 .. figure:: rp_alucase_02.jpg
     :align: center
@@ -41,9 +41,9 @@ Contents:
     :align: center
     :width: 600
 
-*********************
+
 Assembly Instructions
-*********************
+=======================
 
 #. Remove the small plastic feet by pressing on the clips at the top with a small pair of pliers and pushing the feet down.
    

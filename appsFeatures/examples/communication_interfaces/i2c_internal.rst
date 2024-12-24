@@ -1,12 +1,10 @@
-I2C (HW api)
-############
-
-.. http://blog.redpitaya.com/examples-new/i2c/
+I2C internal
+#############
 
 Description
 ============
 
-This example demonstrates communication with the EEPROM memory on the Red Pitaya using the I2C protocol. The code below reads the calibration values from the EEPROM and displays them. The data is displayed correctly only on 125-xx boards.
+This example demonstrates communication with the 24LC64 EEPROM memory on the Red Pitaya using the I2C protocol through SPCI and API commands. The code below reads the calibration values from the EEPROM and displays them. The data is displayed correctly only on 125-xx boards.
 
 
 Required hardware
@@ -31,6 +29,7 @@ SCPI Code Examples
 
     The calibration parameter order has changed with 2.00 OS. We will update the example soon.
 
+
 Code - MATLAB®
 ---------------
 
@@ -43,25 +42,19 @@ Code - MATLAB®
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
-
     RP.ByteOrder = 'big-endian';
     configureTerminator(RP,'CR/LF');
 
     writeline(RP,'I2C:DEV80 "/dev/i2c-0"');
-
     writeline(RP,'I2C:FMODE ON');       % set force mode
 
-    % EEPROM 24c64 supports reading only 32 bytes of data at a time and only works through IOCTL
-
+    % EEPROM 24LC64 only works through IOCTL
     writeline(RP,'I2C:IO:W:B2 0,0');    % set read address = 0
 
-
     b1 = writeread(RP,'I2C:IO:R:B32');  % read 32 bytes from iic 
-
     b2 = writeread(RP,'I2C:IO:R:B16');  % read 16 bytes from iic
 
     b_num = str2num(b1(1,2:length(b1)-3));
-
     b_num(33:48) = str2num(b2(1, 2:length(b2)-3));
  
     calib = typecast(uint8(b_num),'int32');
@@ -102,8 +95,7 @@ Code - Python
     rp_s.tx_txt('I2C:FMODE ON')
     print("Set force mode")
 
-    # Eeprom 24c64 supports reading only 32 bytes of data at a time and only works through IOCTL
-
+    % EEPROM 24LC64 only works through IOCTL
     # set read address = 0
     rp_s.tx_txt('I2C:IO:W:B2 0,0')
     print("Write address for read")

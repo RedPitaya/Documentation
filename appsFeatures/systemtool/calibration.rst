@@ -4,26 +4,22 @@
 Calibration
 ###########
 
-.. note::
-
-    The calibration application does not affect the SDRlab 122-16.
-
 To open the Calibration application click on **System Tools** and then select **Calibration**.
 
 .. image:: img/Main_menu_system.jpg
     :align: center
-    :width: 70 %
+    :width: 1200
 
 .. image:: img/Calibration_app_menu.jpg
     :align: center
-    :width: 70 %
+    :width: 1200
 
 
 When the Calibration application opens, you will see four options:
 
 .. image:: img/Calibration_api.png
     :align: center
-    :width: 50 %
+    :width: 600
 
 ***************
 DC Calibration
@@ -35,9 +31,10 @@ Required materials:
 
 *   two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
 *   two SMA T adapters
-*   Short termination
-*   Accurate Volage reference source (the more accurate the voltage source, the better the calibration)
-*   Accurate Multimeter (optional)
+*   two 50 Ω terminators
+*   two SMA Short terminators
+*   Stable volage reference source (the more stable the voltage source, the better the calibration)
+*   Accurate Multimeter for measuring the reference voltage source and DAC outputs
 
 
 Auto DC calibration
@@ -63,12 +60,13 @@ The YouTube video is also available |YT-video|.
 Manual DC calibration
 ======================
 
-Manual DC calibration will let you do the calibration manually and fine-tune all the variables.
-Apart from calibration, this option will also allow you to identify any parasitics on your measurement lines.
+Manual DC Calibration allows you to perform the calibration manually and fine tune all the variables.
+Apart from calibration, this option also allows you to identify any parasitics on your measurement lines.
+A **50 Ω load** should be connected to the outputs (DACs) during calibration.
 
 .. image:: img/DC_manual.jpg
     :align: center
-    :width: 80 %
+    :width: 1200
 
 -   **RESET**:
 
@@ -82,16 +80,22 @@ When closing the application without saving the values, the following prompt wil
 
 .. image:: img/Calib_save.png
     :align: center
-    :width: 70 %
+    :width: 800
 
+.. note::
 
+    SDRlab 122-16 only has access to manual DC calibration. The interface has less functionality as SDRlab 122-16 has no jumpers to switch the voltage range and can only generate sine waveforms due to AC coupling.
+
+    .. image:: img/DC_manual_sdr.png
+        :align: center
+        :width: 1200
 
 ADC calibration parameters
 ---------------------------
 
 .. image:: img/DC_manual_ADC.jpg
     :align: center
-    :width: 70 %
+    :width: 800
 
 1. **Voltage measurements** (Mean, minimum, maximum, and peak-to-peak). Displayed in the graph with the corresponding colour.
 #. **Sine wave detection**. Detects wheter a sine wave is present on the channel. The "x" indicates how many sine periods were detected.
@@ -107,7 +111,7 @@ DAC calibration parameters
 
 .. image:: img/DC_manual_DAC.jpg
     :align: center
-    :width: 70 %
+    :width: 800
 
 1. **ON/OFF**. Turn the specified output ON or OFF.
 #. **DAC settings**. Change the output waveform (type), frequency, amplitude, and offset.
@@ -137,7 +141,7 @@ Once the auto frequency calibration is started, you will be presented with the f
 
 .. image:: img/Calib_freq_auto_start.png
     :align: center
-    :width: 70 %
+    :width: 1200
 
 The header columns represent the following:
 
@@ -154,13 +158,13 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_LV.png
         :align: center
-        :width: 70 %
+        :width: 1200
 
     * Clicking on the "START" button will provide further instructions and a choice between an internal and external reference generator:
 
     .. image:: img/Calib_freq_auto_LV_int.png
         :align: center
-        :width: 50 %
+        :width: 800
 
     * Please select "INTERNAL" if you do not have an external reference generator. Red Pitaya will use OUT1 to generate a 0.9 Volt 1 kHz Square signal.
     * Set the jumpers to the LV position and connect OUT1 to IN1 and IN2 using the SMA cables and the T adapter.
@@ -169,7 +173,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_LV_ext.png
         :align: center
-        :width: 50 %
+        :width: 800
 
     * Please configure the external reference generator to produce a 1 kHz square signal and input the "reference voltage" (one-way amplitude) of the signal.
     * Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.
@@ -179,7 +183,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_LV_load.png
         :align: center
-        :width: 70 %
+        :width: 1200
 
     Please wait until the LV calibration is finished.
 
@@ -187,17 +191,17 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_HV.png
         :align: center
-        :width: 70 %
+        :width: 1200
 
     * Change the jumpers to the HV position and choose the generator source.
 
     .. image:: img/Calib_freq_auto_HV_int.png
         :align: center
-        :width: 50 %
+        :width: 800
 
     .. image:: img/Calib_freq_auto_HV_ext.png
         :align: center
-        :width: 50 %
+        :width: 800
 
     * The external reference generator amplitude should be changed by at least a factor of 10 to a maximum of 20 Volts.
 
@@ -205,7 +209,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_HV_load.png
         :align: center
-        :width: 70 %
+        :width: 1200
 
     * Please wait until the HV calibration is finished.
 
@@ -213,13 +217,13 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. image:: img/Calib_freq_auto_save.png
         :align: center
-        :width: 70 %
+        :width: 1200
 
 6. **Finish the calibration**:
 
     .. image:: img/Calib_freq_auto_complete.png
         :align: center
-        :width: 70 %
+        :width: 1200
 
     * Clicking on the "DONE" button will return you to the starting screen of the Calibration application.
 
@@ -232,7 +236,7 @@ Apart from calibration, this option will also allow you to identify any parasiti
 
 .. image:: img/Calib_freq_manual.jpg
         :align: center
-        :width: 70 %
+        :width: 1200
 
 *   **SETTINGS MENU** - *APPLY* the calibration parameters, restore the *DEFAULT* parameters, or *CLOSE* the manual frequency calibration.
 *   **CHANNEL & JUMPER SETTINGS** - Choose a channel and voltage range (LV or HV depending on the jumper settings) to calibrate.
@@ -251,39 +255,40 @@ Here is a MATLAB code to simulate the filter inside the FPGA:
     close all
     clear
 
-    aa_hex='7D93'
-    bb_hex='437C7'
-    pp_hex='2666'
-    kk_hex='D9999A'
+    % Filter parameters %
+    aa_hex = '7D93'
+    bb_hex = '437C7'
+    pp_hex = '2666'
+    kk_hex = 'D9999A'
 
-    aa=hex2dec(aa_hex)
-    bb=hex2dec(bb_hex)
-    pp=hex2dec(pp_hex) 
-    kk=hex2dec(kk_hex)
+    aa = hex2dec(aa_hex)
+    bb = hex2dec(bb_hex)
+    pp = hex2dec(pp_hex) 
+    kk = hex2dec(kk_hex)
 
     % H[z]=K*(z-B) / (z^4*(z-P) * (z-A))
     % where:
-    % K=KK/2^24
-    % B=1-(BB/2^28)
-    % P=PP/2^16
-    % A=1-(AA/2^25)
+    % K = KK / 2^24
+    % B = 1 - (BB / 2^28)
+    % P = PP / 2^16
+    % A = 1 - (AA / 2^25)
 
-    fs=125e6;
-    f=0:1e3:fs;
+    fs = 125e6;
+    f = 0:1e3:fs;
 
-    z=exp(j*2*pi*f/fs);
+    z = exp(j*2*pi*f/fs);
 
-    k=kk/(2^24);
-    b=1-(bb/2^28);
-    p=pp/2^16;
-    a=1-(aa/2^25);
+    k = kk/(2^24);
+    b = 1-(bb/2^28);
+    p = pp/2^16;
+    a = 1-(aa/2^25);
 
-    h=k*(z-b)./(z.^4.*(z-p).*(z-a));
+    h = k*(z-b)./(z.^4.*(z-p).*(z-a));
 
-    %figure
-    %plot(f,20*log10(abs(h)))
+    % Figure
+    % plot(f,20*log10(abs(h)))
     figure
-    semilogx(f,20*log10(abs(h)))
+    semilogx(f, 20*log10(abs(h)))
     title(strcat('Frequency response for AA=',aa_hex,' BB=',bb_hex,' PP=',pp_hex,' KK=',kk_hex))
     xlabel('frequency (Hz)')
     ylabel('gain (dB)')

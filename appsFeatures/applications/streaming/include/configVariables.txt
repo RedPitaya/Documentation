@@ -1,0 +1,32 @@
+Name                      Parameters
+format_sd               : WAV,TDMS,BIN
+data_type_sd            : RAW,VOLT
+samples_limit_sd        : An unsigned integer value. 0 - Disables write limit.
+adc_pass_mode           : NET,FILE
+resolution              : BIT_8,BIT_16
+adc_decimation          : An unsigned integer value: 1-65535.
+use_calib               : OFF,ON
+channel_state_1         : OFF,ON
+channel_attenuator_1    : A_1_1,A_1_20
+channel_ac_dc_1         : AC,DC
+channel_state_2         : OFF,ON
+channel_attenuator_2    : A_1_1,A_1_20
+channel_ac_dc_2         : AC,DC
+channel_state_3         : OFF,ON
+channel_attenuator_3    : A_1_1,A_1_20
+channel_ac_dc_3         : AC,DC
+channel_state_4         : OFF,ON
+channel_attenuator_4    : A_1_1,A_1_20
+channel_ac_dc_4         : AC,DC
+dac_rate                : An unsigned integer value. Indicates the rate for signal generation. The maximum value should not be greater than the base frequency of the FPGA.
+file_sd                 : Path to the file on the memory card in RP that will be used to generate the signal.
+file_type_sd            : WAV,TDMS,BIN
+dac_pass_mode           : DAC_NET,DAC_FILE
+repeat                  : DAC_REP_OFF,DAC_REP_INF,DAC_REP_ON
+repeatCount             : An unsigned integer value.
+channel_gain_1          : X1,X5
+channel_gain_2          : X1,X5
+block_size              : An unsigned integer value. The value must be less than the reserved memory in the system divided by 16. By default, 32MB is allocated, the allowed maximum value is 2MB.
+adc_size                : Minimum value 12 * (block_size + 128)
+dac_size                : Minimum value 12 * (block_size + 128)
+gpio_size               : Minimum value 12 * (block_size + 128)
