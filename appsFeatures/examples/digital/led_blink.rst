@@ -3,9 +3,6 @@
 Blink
 #####
 
-.. http://blog.redpitaya.com/examples-new/blink/
-
-
 Description
 ===========
 
@@ -32,30 +29,40 @@ SCPI Code Examples
 Code - MATLAB ®
 ----------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. include:: ../matlab.inc
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP/IP object
-            
-    IP = '192.168.178.56';              % Input IP of your Red Pitaya...
+   %% Define Red Pitaya as TCP/IP object
+
+    IP = ('192.168.0.157');                 % Input IP of your Red Pitaya...
     port = 5000;
-    RP = tcpclient(IP, port);           % Define Red Pitaya as an TCP client object
-
-    %% Open connection with your Red Pitaya
+    RP = tcpclient(IP, port);               % creates a TCP client object
     
+    %% Open connection with your Red Pitaya
     RP.ByteOrder = "big-endian";
-    configureTerminator(RP, 'CR/LF');   % defines the line terminator (end sequence of input characters)
-
+    configureTerminator(RP, 'CR/LF');       % defines the line terminator (end sequence of input characters)
+    
     %% Send SCPI command to Red Pitaya to turn ON LED1
-    writeline(RP,'DIG:PIN LED1,1');
-
-    pause(5);                         % Set time of LED ON
-
+    for i=1:5
+        writeline(RP,'DIG:PIN LED1,1');     % Peripheral_Unit: Unit_Part/function:subfunction/settings 
+        % readline()                        % reading data
+        % writeread()                       % send a command and read the reply
+    
+        pause(1);                           % Set time of LED ON
+    
     %% Send SCPI command to Red Pitaya to turn OFF LED1
-    writeline(RP,'DIG:PIN LED1,0');
-
+        writeline(RP,'DIG:PIN LED1,0');
+    
+        % other possible commands:
+        % DIG:PIN:DIR <dir>,<gpio>
+        % DIG:PIN <pin>,<state>
+        % DIG:PIN? <pin> => <state>         % Acquire status or read data
+    
+        pause(1);
+    end
     %% Close connection with Red Pitaya
+    
     clear RP;
 
 
