@@ -9,3 +9,4 @@ Extension modules
    click_shield.rst
    lcr_ext.rst
    logic_ext.rst
+   sdr_module/sdr_module.rst

@@ -26,22 +26,6 @@ Latest 2.00 OS
 
 |
 
-New C libraries were added in the 2.00 OS ecosystem, which causes the C program compilation to fail on older OS versions.
-
-Please make sure that your Red Pitaya OS and the downloaded |GitHub| ecosystem repository are compatible.
-We recommend using a |GitHub| ecosystem that is meant to run on your current Red Pitaya OS version:
-
-  - 2.05-37 - Branch 2024.3
-  - 2.04-35 - Branch 2024.2
-  - 2.00-30 - Branch 2024.1
-  - 2.00-23 - Branch 2023.3
-  - 2.00-18 - Branch 2023.2
-  - 2.00-15 - Branch 2023.1
-  - 1.04-28 - Branch 2022.2
-  - 1.04-18 - Branch 2022.1
-
-Using an old OS with a newer GitHub ecosystem can result in compatibility isses.
-
 .. note::
 
    When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
@@ -62,7 +46,6 @@ Using an old OS with a newer GitHub ecosystem can result in compatibility isses.
 .. |GitHub| raw:: html
 
    <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya GitHub</a>
-
 
 
 
@@ -106,11 +89,6 @@ The 1.04 OS versions are board specific. Please download only versions compatibl
    *   `1.04-27 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01)
 
 
-.. note::
-
-   To run the C applications with 1.04 or older OS, please use the 2022.2 or older release/branch of the GitHub ecosystem
-
-
 .. |CHANGELOG| raw:: html
 
    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a>
@@ -136,11 +114,22 @@ All older OS versions that are in our database are available in our archive:
 
    *   |Red Pitaya archive|
 
-For manual ecosystem upgrades please refer to `Manual upgrade`_.
+.. note::
+
+   *Impossible. Perhaps the archives are incomplete.*
+
+   OS images not in our archive have been lost to the sands of time. If you are looking for a specific OS or ecosystem that is missing from the archives, we suggest you ask the community on the |RP_forum|. There is a chance someone has it lying around on the disk.
+
+For manual ecosystem upgrade please refer to `Manual upgrade`_.
 
 .. |Red Pitaya archive| raw:: html
 
-   <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive link</a>
+   <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive</a>
+
+.. |RP_forum| raw:: html
+
+   <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya forum</a>
+
 
 .. _nightly_builds:
 
@@ -158,7 +147,6 @@ As these builds are snapshots of the latest code, odds are you will encounter mo
 
    *    |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_
 
-Ecosystem builds run every Saturday night.
 
 .. note::
 
@@ -471,9 +459,9 @@ Command line
 Background
 **********
 
-A Red Pitaya SD card contains two partitions:
+The Red Pitaya OS image on the SD card contains two partitions. As of OS 2.05-37, the partitions are as follows:
 
-1. 128 MB FAT contains the **ecosystem**:
+1. 1 GB FAT contains the **ecosystem**:
 
    *   boot files: FSBL, FPGA images, U-Boot, Linux kernel
    *   Red Pitaya API libraries and header files
@@ -488,24 +476,17 @@ A Red Pitaya SD card contains two partitions:
    *   network setup customization
    *   systemd services customization
 
-Most of Red Pitaya's source code translates into the ecosystem.
-Therefore, it is updated more often.
-The OS is changed less frequently.
+Most of Red Pitaya's source code translates into the ecosystem. Therefore, it is updated more often to accomodate new features and bug fixes. The newer the ecosystem, the larger the FAT partitions (the earlies Red Pitaya OS images have around 128 MB FAT partitions).
+The Linux OS is updated less frequently.
 
 .. note::
 
-   You can find older and developed Red Pitaya OS images and Ecosystem zip files
-   on our |download server|.
-
-.. |download server| raw:: html
-
-   <a href="https://downloads.redpitaya.com/downloads/" target="_blank">download server</a>
-
+   Genereally, the newer the ecosystem, the larger the FAT partition size.
+   You can find all available Red Pitaya OS images and Ecosystem zip files on our |Red Pitaya archive|.
 
 .. note::
 
-   A list of new features, bug fixes, and known bugs for each Red Pitaya release
-   can be found in our |CHANGELOG|.
+   A list of new features, bug fixes, and known bugs for each Red Pitaya release can be found in our |CHANGELOG|.
 
 
 **************
@@ -519,7 +500,7 @@ A manual upgrade allows you to fix a corrupted SD card image
 (if only the FAT partition is corrupted) or to install
 older, newer, or custom ecosystem zip files.
 
-#. Download a zip file from our |download server|.
+#. Download a zip file from our |Red Pitaya archive|.
 
 #. Insert the SD card into the card reader.
 

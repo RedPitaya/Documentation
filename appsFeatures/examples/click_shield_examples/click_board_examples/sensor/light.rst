@@ -90,5 +90,3 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
     
         return EXIT_SUCCESS;
     }
-
-Code written by Žiga Fon

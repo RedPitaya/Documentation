@@ -1,8 +1,6 @@
 Generate continuous signal
 ##########################
 
-.. http://blog.redpitaya.com/examples-new/generate-continuous-signal-on-fast-analog-outputs/
-
 Description
 =============
 
@@ -29,37 +27,38 @@ SCPI Code Examples
 Code - MATLAB®
 ---------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. include:: ../matlab.inc
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as TCP client object
-
-    IP = '192.168.178.111';           % Input IP of your Red Pitaya...
+    %% Define Red Pitaya as TCP/IP object
+    IP = 'rp-f0a235.local';           % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP, 'CR/LF');
 
-    RP.ByteOrder = "big-endian";
-    configureTerminator(RP, "CR/LF");
+    waveform = 'sine';
+    freq = 20000;
+    ampl = 0.4;
 
-    % Reset Generation
     writeline(RP,'GEN:RST');
 
-    %% GENERATION
-    writeline(RP,'SOUR1:FUNC SINE');            % Set function of output signal
-                                                % {sine, square, triangle, sawu, sawd, pwm}
-    writeline(RP,'SOUR1:FREQ:FIX 2000');        % Set frequency of output signal
-    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
-    writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
+    writeline(RP, append('SOUR1:FUNC ', waveform));             % Set function of output signal % {sine, square, triangle, sawu,sawd, pwm}
+    writeline(RP, append('SOUR1:FREQ:FIX ', num2str(freq)));    % Set frequency of output signal
+    writeline(RP, append('SOUR1:VOLT ', num2str(ampl)));        % Set amplitude of output signal
 
-    writeline(RP,'SOUR1:TRig:INT');             % Generate trigger
+    writeline(RP,'SOUR1:TRig:SOUR INT');
+    writeline(RP,'OUTPUT1:STATE ON');               % Set output to ON
+
+    writeline(RP,'SOUR1:TRig:INT');                 % Generate trigger
 
     %% Close connection with Red Pitaya
     clear RP;
-    
-    
+
+
 Code - Python
 ----------------
 
@@ -120,18 +119,7 @@ Code - Python
 
 
 
-.. note::
-
-    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
-    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
-
-    For further information on functions please consult the |redpitaya_scpi| code.
-
-
-.. |redpitaya_scpi| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
-
+.. include:: ../python_scpi_note.inc
 
 
 Code - LabVIEW

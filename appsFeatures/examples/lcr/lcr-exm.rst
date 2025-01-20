@@ -71,7 +71,7 @@ SCPI Code Examples
 Code - MATLAB®
 ---------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. include:: ../matlab.inc
 
 .. code-block:: matlab
 
@@ -223,6 +223,8 @@ Code - Python
     rp.tx_txt("LCR:STOP")
     
     rp.close()
+
+.. include:: ../python_scpi_note.inc
 
 
 API Code Examples

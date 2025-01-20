@@ -22,7 +22,9 @@ For offline application installation, please see the :ref:`Developers Guide manu
    streaming/appStreaming.rst
    streaming/appXCStreaming.rst
    arb_manager/arb_manager.rst
-   sdr/appSDR.rst
+   sdr_tx_rx/sdr_tx_rx.rst
    vna/appVNA.rst
    pyrpl/pyrpl.rst
    marketplace/marketplace.rst
+
+

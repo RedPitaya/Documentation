@@ -479,6 +479,20 @@ How to start with FPGA development?
 *   :ref:`FPGA tutorials <knowledgebase:learn_FPGA>`
 
 
+Are there any restrictions on installing Python packages?
+---------------------------------------------------------
+
+No, there are no restrictions on installing Python packages. Any package that can be installed on Ubuntu Linux can be installed on Red Pitaya.
+If you are facing issues with the installation, they are most likely caused by one of the following reasons:
+
+- Not enough space on the SD card. Ensure there is enough space on the SD card as some packages may require a lot of space.
+- Not enough memory. If the package installation requires a lot of memory, it may not be possible to install it on Red Pitaya (512 MB RAM).
+
+Enabling "swap" does not help with this issues.
+
+Building packages from source tarball may help circumvent these issues.
+
+
 Hardware
 ===========
 

@@ -1,8 +1,6 @@
 Custom waveform signal generation
 #################################
 
-.. http://blog.redpitaya.com/examples-new/custom-signal-generating
-
 Description
 =============
 
@@ -32,31 +30,35 @@ SCPI Code Examples
 Code - MATLAB®
 ----------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. include:: ../matlab.inc
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as a TCP client object
+    %% Define Red Pitaya as TCP client object
     clc
-    clear all
     close all
-    IP = '192.168.178.102';           % Input IP of your Red Pitaya...
+    IP = 'rp-f0a235.local';           % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
     flush(RP);                              % Flush input and output
     % flush(RP, 'input')
     % flush(RP, 'output')
-    
-    %% Open connection with your Red Pitaya and the close previous one
+
+    %% Open connection with your Red Pitaya and close previous one
     clear RP;
 
+    waveform = 'arbitrary';                  % {sine, square, triangle, sawu, sawd, pwm}
+    freq = 1000;
+    ampl_1 = 1;
+    ampl_2 = 0.7;
+
     RP = tcpclient(IP, port);
-    RP.ByteOrder = "big-endian";
-    configureTerminator(RP,"CR/LF");
-    
-    %% Calculate arbitrary waveform with 16384 samples
-    % Values of arbitrary waveform must be in the range from -1 to 1.
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP, 'CR/LF');
+
+    %% Calcualte arbitrary waveform with 16384 samples
+    % Values of arbitrary waveform must be in range from -1 to 1.
     N = 16383;
     t = 0:(2*pi)/N:2*pi;
     x = sin(t) + 1/3*sin(3*t);
@@ -69,30 +71,28 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     waveform_ch_2_0 = num2str(y,'%1.5f,');
 
     % the last two elements are empty spaces “,”.
-    waveform_ch_1 =waveform_ch_1_0(1,1:length(waveform_ch_1_0)-3);
-    waveform_ch_2 =waveform_ch_2_0(1,1:length(waveform_ch_2_0)-3);
+    waveform_ch_1 = waveform_ch_1_0(1,1:length(waveform_ch_1_0)-1);
+    waveform_ch_2 = waveform_ch_2_0(1,1:length(waveform_ch_2_0)-1);
 
-     % Reset Generation
+    %% Generation
     writeline(RP,'GEN:RST')                     % Reset to default settings
 
-    %% GENERATION
-    writeline(RP,'SOUR1:FUNC ARBITRARY');       % Set function of output signal
-    writeline(RP,'SOUR2:FUNC ARBITRARY');       % {sine, square, triangle, sawu, sawd}
+    writeline(RP, append('SOUR1:FUNC ', waveform));
+    writeline(RP, append('SOUR2:FUNC ', waveform));
 
-    writeline(RP,['SOUR1:TRAC:DATA:DATA ' waveform_ch_1])  % Send waveforms to Red Pitya
-    writeline(RP,['SOUR2:TRAC:DATA:DATA ' waveform_ch_2])
+    writeline(RP,['SOUR1:TRAC:DATA:DATA ' waveform_ch_1]);   % Send waveforms to Red Pitya
+    writeline(RP,['SOUR2:TRAC:DATA:DATA ' waveform_ch_2]);
 
-    writeline(RP,'SOUR1:VOLT 0.7');             % Set amplitude of output signal
-    writeline(RP,'SOUR2:VOLT 1');
+    writeline(RP, append('SOUR1:FREQ:FIX ', num2str(freq)));
+    writeline(RP, append('SOUR2:FREQ:FIX ', num2str(freq)));
 
-    writeline(RP,'SOUR1:FREQ:FIX 4000');        % Set frequency of output signal
-    writeline(RP,'SOUR2:FREQ:FIX 4000');
+    writeline(RP, append('SOUR1:VOLT ', num2str(ampl_1)));
+    writeline(RP, append('SOUR2:VOLT ', num2str(ampl_2)));
 
-    writeline(RP,'OUTPUT:STATE ON');            % Start both channels simultaneously
-    writeline(RP,'SOUR:TRig:INT');              % Generate triggers
+    writeline(RP,'OUTPUT:STATE ON');                % Start both channels simultaneously
+    writeline(RP,'SOUR:TRig:INT');                  % Generate triggers
 
     clear RP;
-
 
 
 Code - Python
@@ -198,18 +198,7 @@ Code - Python
     rp_s.close()
 
 
-.. note::
-
-    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
-    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
-
-    For further information on functions please consult the |redpitaya_scpi| code.
-
-
-.. |redpitaya_scpi| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
-
+.. include:: ../python_scpi_note.inc
 
 
 Code - LabVIEW

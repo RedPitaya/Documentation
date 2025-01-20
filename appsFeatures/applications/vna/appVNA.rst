@@ -4,6 +4,11 @@
 Vector Network Analyzer
 #######################
 
+.. note::
+
+    The VNA application is a 3rd party application created and maintained by Pavel Demin and the SDR community. The application in the official Red Pitaya OS is ported from the community Alpine Linux image.
+    For the access to the latest community updates, please check the |red_pitaya_notes_vna|.
+
 ********************************
 What do I need before I start?
 ********************************
@@ -236,13 +241,17 @@ Examples:
     :align: center
     :width: 600
 
+
+Author & Source
+===============
+
 .. admonition:: Credits
 
     | The original developer of the Vector Network Analyzer Red Pitaya application is Pavel Demin.
     | Repositories used by our builds:
 
-        *   |red-pitaya-notes|
-     
-.. |red-pitaya-notes| raw:: html
+        *   `Red Pitaya Notes <https://pavel-demin.github.io/red-pitaya-notes/>`_
 
-    <a href="https://github.com/RedPitaya/red-pitaya-notes" target="_blank">Red Pitaya notes repository</a>
+Pavel Demin has developed several other SDR applications that are compatible with the Red Pitaya board. These applications are available in the Pavel Demin's Alpine Linux OS image.
+For more information on these applications, please refer to the `Red Pitaya Notes <https://pavel-demin.github.io/red-pitaya-notes/>`_.
+
