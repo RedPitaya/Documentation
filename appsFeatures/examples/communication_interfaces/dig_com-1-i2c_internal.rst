@@ -97,13 +97,13 @@ Code - Python
 
     # EEPROM 24LC64 only works through IOCTL
     # set read address = 0
-    rp_s.tx_txt('I2C:IO:W:B2 0,0')
+    rp_s.tx_txt('I2C:IOctl:Write:Buffer2 0,0')
     print("Write address for read")
 
-    rp_s.tx_txt('I2C:IO:R:B32')
+    rp_s.tx_txt('I2C:IOctl:Read:Buffer32?')
     b1 = rp_s.rx_txt().strip('{').strip('}')
 
-    rp_s.tx_txt('I2C:IO:R:B16')
+    rp_s.tx_txt('I2C:IOctl:Read:Buffer16?')
     b2 = rp_s.rx_txt().strip('{').strip('}')
 
     buff = (b1 + "," + b2).split(",")
