@@ -222,7 +222,7 @@ LEDs and GPIOs
 
 - ``<dir> = {OUT,IN}``
 - ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
-- ``<led> = {LED0...LED8}``
+- ``<led> = {LED0...LED7}``
 - ``<pin> = {gpio, led}``
 - ``<state> = {0,1}``
 - ``<reg_state> = {0b00000000}`` - One LED/DIO per bit.  *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
