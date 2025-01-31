@@ -223,7 +223,7 @@ LEDs and GPIOs
 
 - ``<dir> = {OUT,IN}``
 - ``<gpio> = {{DIO0_P...DIO7_P}, {DIO0_N...DIO7_N}}``
-- ``<led> = {LED0...LED8}``
+- ``<led> = {LED0...LED7}``
 - ``<pin> = {gpio, led}``
 - ``<state> = {0,1}``
 - ``<reg_state> = {0b00000000}`` - One LED/DIO per bit.  *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
@@ -256,8 +256,8 @@ LEDs and GPIOs
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN:DIR? <gpio>``             | | C: ``rp_DpinGetDirection(rp_dpin_t pin, rp_pinDirection_t* direction)``          | Get digital input output pin direction.                                           | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN:DIR? DIO0_N``             | | Python: ``rp_DpinGetDirection(<pin>)``                                           |                                                                                   |                    |
-| | ``DIG:PIN:DIR? DIO1_P``             | |                                                                                  |                                                                                   |                    |
+| | ``DIG:PIN:DIR? DIO0_N`` > ``OUT``   | | Python: ``rp_DpinGetDirection(<pin>)``                                           |                                                                                   |                    |
+| | ``DIG:PIN:DIR? DIO1_P`` > ``IN``    | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN <pin>,<state>``           | | C: ``rp_DpinSetState(rp_dpin_t pin, rp_pinState_t state)``                       | | Set the state of digital outputs to 1 (HIGH) or 0 (LOW).                        | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  | | Returns a 1 (HIGH) if the pin is floating.                                      |                    |
@@ -266,8 +266,8 @@ LEDs and GPIOs
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``DIG:PIN? <pin>`` > ``<state>``    | | C: ``rp_DpinGetState(rp_dpin_t pin, rp_pinState_t* state)``                      | Get state of digital inputs and outputs.                                          | 1.04-18 and up     |
 | | Examples:                           | |                                                                                  |                                                                                   |                    |
-| | ``DIG:PIN? DIO0_N``                 | | Python: ``rp_DpinGetState(<pin>)``                                               |                                                                                   |                    |
-| | ``DIG:PIN? LED2``                   | |                                                                                  |                                                                                   |                    |
+| | ``DIG:PIN? DIO0_N``  > ``1``        | | Python: ``rp_DpinGetState(<pin>)``                                               |                                                                                   |                    |
+| | ``DIG:PIN? LED2``  > ``0``          | |                                                                                  |                                                                                   |                    |
 +---------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | -                                   | | C: ``rp_LEDSetState(uint32_t reg_state)``                                        | | Set the state of the 8-bit LED register. Each bit corresponds to the state      | 1.04-18 and up     |
 | |                                     | |                                                                                  | | of one LED.                                                                     |                    |
