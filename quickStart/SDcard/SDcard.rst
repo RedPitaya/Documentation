@@ -21,8 +21,8 @@ Latest 2.00 OS
 
 **RedPitaya OS 2.0**:
 
-  - `Latest Beta (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_beta.img.zip>`_  - |CHANGELOG| (MD5 (unzipped): ad55cb45cf92bf8e40e3901f24a677ba)
-  - `Latest Stable (2.04-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.04-35_stable.img.zip>`_  - |CHANGELOG| (MD5 (unzipped): d3d59bca29421987550289fce29b87b5)
+  - `Latest Beta (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_beta.img.zip>`_  - |CHANGELOG| (MD5 (extracted): ad55cb45cf92bf8e40e3901f24a677ba)
+  - `Latest Stable (2.04-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.04-35_stable.img.zip>`_  - |CHANGELOG| (MD5 (extracted): d3d59bca29421987550289fce29b87b5)
 
 |
 
@@ -166,6 +166,8 @@ As these builds are snapshots of the latest code, odds are you will encounter mo
 **************************************
 Download and install the SD card image
 **************************************
+
+..! Add delete the existing partitions on the SD card
 
 The next procedure will create a clean SD card image.
 

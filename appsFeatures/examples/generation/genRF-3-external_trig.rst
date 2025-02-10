@@ -99,28 +99,28 @@ Code - Python
     import redpitaya_scpi as scpi
     
     IP = '192.168.178.56'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 200
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR1:VOLT ' + str(ampl))
     
-    rp_s.tx_txt('SOUR1:BURS:STAT BURST')        # Set burst mode to CONTINUOUS/skip this section for sine wave generation on External trigger
-    rp_s.tx_txt('SOUR1:BURS:NCYC 1')
+    rp.tx_txt('SOUR1:BURS:STAT BURST')        # Set burst mode to CONTINUOUS/skip this section for sine wave generation on External trigger
+    rp.tx_txt('SOUR1:BURS:NCYC 1')
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
-    rp_s.tx_txt('SOUR1:TRig:SOUR EXT_PE')
+    rp.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
+    rp.tx_txt('SOUR1:TRig:SOUR EXT_PE')
 
-    rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp.tx_txt('OUTPUT1:STATE ON')
     
-    rp_s.close()
+    rp.close()
 
 **Using functions:**
 
@@ -132,23 +132,23 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = '192.168.178.56'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 200
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
     # Function for configuring a Source
-    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=1, trig="EXT_PE")
+    rp.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=1, trig="EXT_PE")
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
+    rp.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
     
-    rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp.tx_txt('OUTPUT1:STATE ON')
     
-    rp_s.close()
+    rp.close()
 
 
 .. include:: ../python_scpi_note.inc

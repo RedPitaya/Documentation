@@ -134,7 +134,9 @@ Here are the recommended *Tools* settings:
    :align: center
    :width: 1000px
 
-6. Open the Arduino sketch for the E3 board. You can find the sketch in the `Red Pitaya GitHub repository <>`_.
+6. Open the Arduino sketch for the E3 board. You can find the sketch in the .. !PLACEHOLDER!#.
+
+.. `Red Pitaya GitHub repository <>`_.
 .. TODO add the link to the script 
 
 
@@ -160,7 +162,7 @@ When programming the E3 board we need to be careful to perform the following ste
     - **PeripheralPins.h** - this library provides the pin definitions for the STM32L412K8T6 microcontroller. It includes the pin definitions for all the peripherals on the microcontroller.
     - **Wire.h** - this library provides the I2C communication functions.
 
-#. **Redefine the default weak pinmap declarations.** The pin declarations are defined in the *PeripheralPins.h* library, but we need to redefine them in the arduino sketch to get the correct pinout. Add the following lines at the beginning of the arduino sketch:
+#. **Redefine the default weak pinmap declarations.** The pin declarations are defined as "weak" in the *PeripheralPins.h* library. We must redefine them in the arduino sketch as not all the interface pins are used or available on the microcontroller. Add the following lines at the beginning of the arduino sketch:
 
    .. code-block:: c
 
@@ -193,6 +195,10 @@ When programming the E3 board we need to be careful to perform the following ste
         { PA_12, USB, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_NOPULL, GPIO_AF10_USB_FS) },  // USB_DP
         { NC, NP, 0 }
         };
+
+    .. note::
+
+        Pin redefinitions are cruicial for proper operation of the E3 add-on module. If the pins are not redefined, the microcontroller will not work as expected.
 
 #. **Redefine the pin names:**
 
@@ -284,13 +290,6 @@ Programming the board
 
 
 
-
-
-Add the opt script
-
-
-Link the pin declarations at the beginning of the .ide file.
-
 Link relevant resources.
 
 
@@ -311,7 +310,10 @@ UART - hit reset button during the uploading stage, select Cube programmer - Ser
 USB - make sure USB is detected, select Cube programmer - DFU
 
 
+FAQ
+===
 
+Troubleshooting
 
 
 .. TODO add installation instructions for Arduino IDE, STM32 cube programer, drivers and other stuff necessary for programming the E3 board

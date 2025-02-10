@@ -140,42 +140,42 @@ Code - Python
     tx_buffer = np.arange(3)
     print(f"Data: {np.array2string(tx_buffer, separator=',').replace('[','').replace(']','')}")
     
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
     
     # INIT CAN #
-    rp_s.tx_txt('CAN:FPGA ON')
+    rp.tx_txt('CAN:FPGA ON')
     print("CAN:FPGA ON")
-    rp_s.check_error()
+    rp.check_error()
     
     ## CAN 0 SETUP ##
     # GPIO (N7,P7) 
-    rp_s.tx_txt(f'CAN{can_bus}:STOP')
-    rp_s.check_error()
+    rp.tx_txt(f'CAN{can_bus}:STOP')
+    rp.check_error()
     
-    rp_s.tx_txt(f'CAN{can_bus}:BITRate {bitrate}')
-    rp_s.check_error()
+    rp.tx_txt(f'CAN{can_bus}:BITRate {bitrate}')
+    rp.check_error()
     
-    rp_s.tx_txt(f'CAN{can_bus}:MODE {can_mode.upper()},ON')
-    rp_s.check_error()
+    rp.tx_txt(f'CAN{can_bus}:MODE {can_mode.upper()},ON')
+    rp.check_error()
     
     # Start and open the CAN0 interface
-    rp_s.tx_txt(f'CAN{can_bus}:START')
-    rp_s.check_error()
+    rp.tx_txt(f'CAN{can_bus}:START')
+    rp.check_error()
     
-    rp_s.tx_txt(f'CAN{can_bus}:OPEN')
-    rp_s.check_error()
+    rp.tx_txt(f'CAN{can_bus}:OPEN')
+    rp.check_error()
     
     # Send and read data
-    rp_s.tx_txt(f'CAN{can_bus}:Send{can_id} {np.array2string(tx_buffer, separator=',').replace('[','').replace(']','')}')
-    rp_s.check_error()
+    rp.tx_txt(f'CAN{can_bus}:Send{can_id} {np.array2string(tx_buffer, separator=',').replace('[','').replace(']','')}')
+    rp.check_error()
     
-    rp_s.tx_txt(f'CAN{can_bus}:Read:Timeout{timeout_rx}?')
-    print(f"Read data: {rp_s.rx_txt()}")
+    rp.tx_txt(f'CAN{can_bus}:Read:Timeout{timeout_rx}?')
+    print(f"Read data: {rp.rx_txt()}")
     
     # Close the interface
-    rp_s.tx_txt(f'CAN{can_bus}:CLOSE')
-    rp_s.check_error()
-    rp_s.close()
+    rp.tx_txt(f'CAN{can_bus}:CLOSE')
+    rp.check_error()
+    rp.close()
 
 
 .. include:: ../python_scpi_note.inc

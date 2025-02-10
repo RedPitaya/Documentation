@@ -72,23 +72,23 @@ Code - Python
     import redpitaya_scpi as scpi
     
     IP = "192.168.178.111"
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 2000
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR1:VOLT ' + str(ampl))
 
     # Enable output
-    rp_s.tx_txt('OUTPUT1:STATE ON')
-    rp_s.tx_txt('SOUR1:TRig:INT')
+    rp.tx_txt('OUTPUT1:STATE ON')
+    rp.tx_txt('SOUR1:TRig:INT')
 
-    rp_s.close()
+    rp.close()
 
 **Using functions:**
 
@@ -104,18 +104,18 @@ Code - Python
     ampl = 1
 
     IP = "192.168.178.111"
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
     
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
     
     # Function for configuring a Source 
-    rp_s.sour_set(1, wave_form, ampl, freq)
+    rp.sour_set(1, wave_form, ampl, freq)
     
     # Enable output
-    rp_s.tx_txt('OUTPUT1:STATE ON')
-    rp_s.tx_txt('SOUR1:TRig:INT')
+    rp.tx_txt('OUTPUT1:STATE ON')
+    rp.tx_txt('SOUR1:TRig:INT')
 
-    rp_s.close()
+    rp.close()
 
 
 

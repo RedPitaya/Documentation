@@ -149,27 +149,27 @@ Using SCPI commands:
 
     IP = 'rp-f066c8.local'
 
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
-    rp_s.tx_txt('ACQ:RST')
+    rp.tx_txt('ACQ:RST')
 
-    rp_s.tx_txt('ACQ:DEC 4')
-    rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRig NOW')
+    rp.tx_txt('ACQ:DEC 4')
+    rp.tx_txt('ACQ:START')
+    rp.tx_txt('ACQ:TRig NOW')
 
     while 1:
-        rp_s.tx_txt('ACQ:TRig:STAT?')
-        if rp_s.rx_txt() == 'TD':
+        rp.tx_txt('ACQ:TRig:STAT?')
+        if rp.rx_txt() == 'TD':
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRig:FILL?')
-        if rp_s.rx_txt() == '1':
+        rp.tx_txt('ACQ:TRig:FILL?')
+        if rp.rx_txt() == '1':
             break
 
-    rp_s.tx_txt('ACQ:SOUR1:DATA?')
-    buff_string = rp_s.rx_txt()
+    rp.tx_txt('ACQ:SOUR1:DATA?')
+    buff_string = rp.rx_txt()
     buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
     buff = list(map(float, buff_string))
 
@@ -189,31 +189,31 @@ Using functions:
 
     IP = 'rp-f066c8.local'
 
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
     
-    rp_s.tx_txt('ACQ:RST')
+    rp.tx_txt('ACQ:RST')
     
     dec = 4
     
     # Function for configuring Acquisition
-    rp_s.acq_set(dec)
+    rp.acq_set(dec)
 
-    rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRig NOW')
+    rp.tx_txt('ACQ:START')
+    rp.tx_txt('ACQ:TRig NOW')
 
     while 1:
-        rp_s.tx_txt('ACQ:TRig:STAT?')
-        if rp_s.rx_txt() == 'TD':
+        rp.tx_txt('ACQ:TRig:STAT?')
+        if rp.rx_txt() == 'TD':
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRig:FILL?')
-        if rp_s.rx_txt() == '1':
+        rp.tx_txt('ACQ:TRig:FILL?')
+        if rp.rx_txt() == '1':
             break
 
     # function for Data Acquisition
-    buff = rp_s.acq_data(1, convert= True)
+    buff = rp.acq_data(1, convert= True)
 
     plot.plot(buff)
     plot.ylabel('Voltage')

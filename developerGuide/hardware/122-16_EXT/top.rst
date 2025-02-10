@@ -18,6 +18,8 @@ Acording to the ADC specifications, the ENC+ and ENC- inputs can be driven diffe
 An optional clock duty cycle stabiliser allows high performance at full speed over a wide range of clock duty cycles. 
 The input voltage range for differentially driven ENC+ and ENC- is 0.2 to 3.6 V (towards GND) and 0 to 3.6 V (ENC+) for single-ended with a frequency between 1 MHz and 125 MHz according to the ADC specification.
 
+We recommend using an LVDS clock with similar characteristics to the one provided by the SDRlab 122-16 on-board `Oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_.
+
 The operating voltage of the Red Pitaya is 3V3.
 
 .. note::

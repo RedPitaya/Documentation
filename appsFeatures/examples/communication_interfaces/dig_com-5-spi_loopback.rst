@@ -6,6 +6,13 @@ Description
 
 This example shows communication with the Red Pitaya SPI. This code is for testing writing and reading via the SPI protocol. In order for the code to work, you need to connect the MISO and MOSI connectors.
 
+Red Pitaya SPI does not use the standard ``cpol`` and ``cpha`` parameters, instead the mode can be one of the following:
+
+- ``LISL`` - Low idle level, sample on leading edge - equivalent to ``cpol=0, cpha=0``
+- ``LIST`` - Low idle level, sample on trailing edge - equivalent to ``cpol=0, cpha=1``
+- ``HISL`` - High idle level, sample on leading edge - equivalent to ``cpol=1, cpha=0``
+- ``HIST`` - High idle level, sample on trailing edge - equivalent to ``cpol=1, cpha=1``
+
 
 Required hardware
 ==================
@@ -111,70 +118,70 @@ Using SCPI commands:
     import time
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi(sys.argv[1])
+    rp = scpi.scpi(sys.argv[1])
 
-    rp_s.tx_txt('SPI:INIT:DEV "/dev/spidev1.0"')
+    rp.tx_txt('SPI:INIT:DEV "/dev/spidev1.0"')
     print("Init SPI")
 
-    rp_s.tx_txt('SPI:SET:DEF')
+    rp.tx_txt('SPI:SET:DEF')
     print("Set default settings")
 
-    rp_s.tx_txt('SPI:SET:GET')
+    rp.tx_txt('SPI:SET:GET')
     print("Get settings")
 
-    rp_s.tx_txt('SPI:SET:MODE LIST')
+    rp.tx_txt('SPI:SET:MODE LIST')
     print("Set mode")
 
-    rp_s.tx_txt('SPI:SET:MODE?')
-    print("Get mode:",rp_s.rx_txt())
+    rp.tx_txt('SPI:SET:MODE?')
+    print("Get mode:",rp.rx_txt())
 
 
-    rp_s.tx_txt('SPI:SET:SPEED 5000000')
+    rp.tx_txt('SPI:SET:SPEED 5000000')
     print("Set speed")
 
-    rp_s.tx_txt('SPI:SET:SPEED?')
-    print("Get speed:",rp_s.rx_txt())
+    rp.tx_txt('SPI:SET:SPEED?')
+    print("Get speed:",rp.rx_txt())
 
-    rp_s.tx_txt('SPI:SET:WORD 8')
+    rp.tx_txt('SPI:SET:WORD 8')
     print("Set word length")
 
-    rp_s.tx_txt('SPI:SET:WORD?')
-    print("Get word length:",rp_s.rx_txt())
+    rp.tx_txt('SPI:SET:WORD?')
+    print("Get word length:",rp.rx_txt())
 
-    rp_s.tx_txt('SPI:SET:SET')
+    rp.tx_txt('SPI:SET:SET')
     print("Set settings")
 
-    rp_s.tx_txt('SPI:MSG:CREATE 2')
+    rp.tx_txt('SPI:MSG:CREATE 2')
     print("Create message")
 
-    rp_s.tx_txt('SPI:MSG:SIZE?')
-    print("Message size:",rp_s.rx_txt())
+    rp.tx_txt('SPI:MSG:SIZE?')
+    print("Message size:",rp.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG0:TX4:RX 13,14,15,16')
+    rp.tx_txt('SPI:MSG0:TX4:RX 13,14,15,16')
     print("Set message")
 
-    rp_s.tx_txt('SPI:MSG1:RX7:CS')
+    rp.tx_txt('SPI:MSG1:RX7:CS')
     print("Set message 2")
 
-    rp_s.tx_txt('SPI:PASS')
+    rp.tx_txt('SPI:PASS')
     print("Pass message")
 
-    rp_s.tx_txt('SPI:MSG0:TX?')
-    print("Tx buffer:",rp_s.rx_txt())
+    rp.tx_txt('SPI:MSG0:TX?')
+    print("Tx buffer:",rp.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG0:RX?')
-    print("Received data:",rp_s.rx_txt())
+    rp.tx_txt('SPI:MSG0:RX?')
+    print("Received data:",rp.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG1:RX?')
-    print("Received data 2:",rp_s.rx_txt())
+    rp.tx_txt('SPI:MSG1:RX?')
+    print("Received data 2:",rp.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG1:CS?')
-    print("CS state for message 2:",rp_s.rx_txt())
+    rp.tx_txt('SPI:MSG1:CS?')
+    print("CS state for message 2:",rp.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG:DEL')
+    rp.tx_txt('SPI:MSG:DEL')
     print("Delete message")
 
-    rp_s.tx_txt('SPI:RELEASE')
+    rp.tx_txt('SPI:RELEASE')
     print("Release SPI")
 
 
@@ -191,54 +198,54 @@ Using functions:
     speed = 5e6
     word_len = 8
 
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
-    rp_s.tx_txt('SPI:INIT:DEV "/dev/spidev1.0"')
+    rp.tx_txt('SPI:INIT:DEV "/dev/spidev1.0"')
     print("Init SPI")
 
-    rp_s.tx_txt('SPI:SET:DEF')
+    rp.tx_txt('SPI:SET:DEF')
     print("Set default settings")
 
-    rp_s.spi_set(spi_mode, cs_mode, speed, word_len)
+    rp.spi_set(spi_mode, cs_mode, speed, word_len)
     print("\n")
 
 
-    rp_s.tx_txt('SPI:MSG:CREATE 2')
+    rp.tx_txt('SPI:MSG:CREATE 2')
     print("Create message")
 
     rp_test.spi_get_settings()
     print("\n")
 
 
-    rp_s.tx_txt('SPI:MSG0:TX4:RX 13,#H14,#B00001111,16')
+    rp.tx_txt('SPI:MSG0:TX4:RX 13,#H14,#B00001111,16')
     print("Set message")
 
-    rp_s.tx_txt('SPI:MSG1:RX7:CS')
+    rp.tx_txt('SPI:MSG1:RX7:CS')
     print("Set message 2")
 
-    rp_s.tx_txt('SPI:PASS')
+    rp.tx_txt('SPI:PASS')
     print("Pass message")
 
-    rp_s.tx_txt('SPI:MSG0:TX?')
+    rp.tx_txt('SPI:MSG0:TX?')
     print("Tx buffer:",rp_test.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG0:RX?')
+    rp.tx_txt('SPI:MSG0:RX?')
     print("Received data:",rp_test.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG1:RX?')
+    rp.tx_txt('SPI:MSG1:RX?')
     print("Received data 2:",rp_test.rx_txt())
 
-    rp_s.tx_txt('SPI:MSG1:CS?')
+    rp.tx_txt('SPI:MSG1:CS?')
     print("CS state for message 2:",rp_test.rx_txt())
     
 
-    rp_s.tx_txt('SPI:MSG:DEL')
+    rp.tx_txt('SPI:MSG:DEL')
     print("Delete message")
 
-    rp_s.tx_txt('SPI:RELEASE')
+    rp.tx_txt('SPI:RELEASE')
     print("Release SPI")
     
-    rp_s.close()
+    rp.close()
 
 
 .. include:: ../python_scpi_note.inc

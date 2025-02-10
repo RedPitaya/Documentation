@@ -1,3 +1,5 @@
+.. _firstWebApp:
+
 Creating first app
 ##################
 

@@ -79,7 +79,7 @@ Code - MATLAB®
     clc
     clear all
     close all
-    IP = '169.254.162.154';           % IP of your Red Pitaya
+    IP = 'rp-f0a235.local';           % IP of your Red Pitaya
     port = 5000;
     RP = tcpclient(IP, port);
     
@@ -92,7 +92,6 @@ Code - MATLAB®
     lcr_ampl = 0.5;              % Generator amplitude    (MAX 0.5 V (amplitude + offset)) - (ABSOLUTE MAX 0.75 V (amplitude + offset))
     lcr_offs = 0;                % Generator offset
     lcr_circuit = "series";      % "series" or "parallel" - measurement mode (affects L, C, and R parameters)
-    
     
     %% Open connection with your Red Pitaya
     RP.ByteOrder = "big-endian";

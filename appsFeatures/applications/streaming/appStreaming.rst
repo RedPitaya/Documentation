@@ -4,6 +4,13 @@
 Streaming
 #########
 
+..! JOIN X-Channel Streaming and this
+..! OPEN STREAMING on all boards
+
+.. figure:: img/settings_2.00.png
+    :width: 1000
+    :align: center
+
 The Streaming application enables users to stream data from Red Pitaya to:
 
     * A file saved on the Red Pitaya SD card
@@ -72,7 +79,7 @@ Here are the minimum chunck limitations sorted by file type and units:
    We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
 
 
-
+..! TODO: Document the new fast streaming feature and prepare the examples
 
 Getting started with the Red Pitaya streaming feature
 =======================================================
@@ -135,6 +142,7 @@ Stream locally to a file on Red Pitaya's SD card
                 :width: 800
                 :align: center
 
+.. _stream_command_client:
 
 Streaming to a remote computer via Command Line or Terminal
 =============================================================
@@ -416,13 +424,14 @@ Convert tool
 
             The file type (CSV, TDMS or WAV) must be capitalised.
 
+.. _stream_desktop_app:
 
 Streaming to a remote computer via Desktop Application (Linux, Windows)
 =========================================================================
 
 .. note::
 
-    The streaming client application currently does not work on Windows 11. This issue is fixed in the latest :ref:`Nightly Builds <nightly_builds>`.
+    The state of the settings in the web interface does not necessarily reflect the actual settings of the streaming application. To get the current settings from each board, please use the "Get settings" button.
 
 
 The other option for streaming is utilyzing the Desktop Application.

@@ -37,17 +37,17 @@ Code - MATLAB®
         p = 0;
 
         sld = uislider( ...                                 % Create slider
-            Parent= fig,...                               % Parent figure
-            Value= 0,...                                  % Default value
-            Limits= [0 100],...                           % Slider limits
-            Orientation= 'horizontal',...                 % Orientation
+            Parent= fig,...                                 % Parent figure
+            Value= 0,...                                    % Default value
+            Limits= [0 100],...                             % Slider limits
+            Orientation= 'horizontal',...                   % Orientation
             ValueChangedFcn= @(src, event)sliderCallback(src, event, p));
                                                             % Callback function
         function  sliderCallback(src, event, p)
             p = event.Value;                                % Update p with value of slider
 
             %% Define Red Pitaya as TCP/IP object
-            IP = 'rp-f0a235.local';                   % Input IP of your Red Pitaya...
+            IP = 'rp-f0a235.local';                         % Input IP of your Red Pitaya...
             port = 5000;
             RP = tcpclient(IP, port);
         

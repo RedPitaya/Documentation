@@ -26,6 +26,11 @@ You can edit and change them according to your needs and develop customized prog
    ../examples/DMA/deepMemoryAcq.rst
    ../examples/communication_interfaces/digcomIF.rst
    ../examples/lcr/lcr-exm.rst
+   ../examples/logic_analyzer/logic_analyzer_top.rst
 
 
-Web-API example: :ref:`ABCLED`
+Web application examples
+------------------------
+
+- :ref:`Web application prerequisites <firstWebApp>`
+- :ref:`Web application examples <webAppExamples>`

@@ -14,6 +14,14 @@ The HAMlab program required to operate the SDR module is not available in the cu
 
    <a href="https://downloads.redpitaya.com/downloads/STEMlab-125-1x/old/" target="_blank">Red Pitaya archive</a>
 
+.. note::
+
+	The HAMlab documentation is available here: |hamlab_docs|.
+
+.. |hamlab_docs| raw:: html
+
+   <a href="https://hamlabdoc.readthedocs.io/en/latest/index.html" target="_blank">HAMlab documentation</a>
+
 
 What is in the box?
 ===================
@@ -57,8 +65,8 @@ Connecting the cables
 	Before connecting the Red Pitaya to the SDR transceiver module, switch off the Red Pitaya by unplugging the power cable.
 
 
-1. Connect the Tx of the SDR transceiver module to the OUT1 connector of the Red Pitaya.
-#. Connect the Rx of the SDR transceiver module to the Red Pitaya IN1 (note that this cable has a transformer).
+1. Connect the TX of the SDR transceiver module to the OUT1 connector of the Red Pitaya.
+#. Connect the RX of the SDR transceiver module to the Red Pitaya IN1 (note that this cable has a transformer).
 #. Connect the control cable from the SDR transceiver to the Red Pitaya.
 
 	.. figure:: img/18_RedPitaya_Close.jpg
@@ -70,9 +78,9 @@ Connecting the cables
 #. Check that the jumper is configured as shown in the figure above.
 #. Check that the SD card is still inserted.
 #. Check that your Ethernet cable is still connected.
-#. Reconnect the power supply (5V 2A) to restart the Red Pitaya.
+#. Reconnect the power supply (5 V, 2 A) to restart the Red Pitaya.
 #. Connect the antenna
-#. Connect the SDR transceiver to the 13.8V 3A power supply.
+#. Connect the SDR transceiver to the 13.8 V, 3 A power supply.
 
 	.. note::
 
@@ -92,92 +100,92 @@ Click here_ to download the Power SDR installation package.
 
 1. Start the installation by double-clicking the *Setup_PowerSDR_STEMlab_HAMlab_Edition.exe* file.
 
-	.. image:: img/PowerSDRinstallation1.png
+	.. image:: img/SDR_software/PowerSDRinstallation1.png
 		:align: center
 
 #. If you are asked for extended user rights during the installation, click **Yes!**. Running the installer with administrator rights will also work.
 
-	.. image:: img/PowerSDRinstallation2.png
+	.. image:: img/SDR_software/PowerSDRinstallation2.png
    		:align: center
 		:width: 400
 
 	On Windows 10, you may receive a warning from an unknown publisher. You can continue with the installation by clicking **More Info** and then **Run anyway**.
 
-	.. figure:: img/PowerSDRinstallation3.png
+	.. figure:: img/SDR_software/PowerSDRinstallation3.png
    		:align: center
 		:width: 600
 
-	.. figure:: img/PowerSDRinstallation4.png
+	.. figure:: img/SDR_software/PowerSDRinstallation4.png
 		:align: center
 		:width: 600
 
 #. Follow the instructions in the setup routine and accept the licence agreements if asked.
 
-	.. figure:: img/Capture1.png
+	.. figure:: img/SDR_software/Capture1.png
 		:align: center
 		:width: 600
 
-	.. figure:: img/Capture2.png
+	.. figure:: img/SDR_software/Capture2.png
 		:align: center
 		:width: 800
 
-	.. figure:: img/Capture3.png
+	.. figure:: img/SDR_software/Capture3.png
 		:align: center
 		:width: 800
 
-	.. figure:: img/Capture4.png
+	.. figure:: img/SDR_software/Capture4.png
 		:align: center
 		:width: 800
 
-	.. figure:: img/Capture5.png
+	.. figure:: img/SDR_software/Capture5.png
 		:align: center
 		:width: 800
 
-	.. figure:: img/Capture6.png
+	.. figure:: img/SDR_software/Capture6.png
 		:align: center
 		:width: 800
 
-	.. figure:: img/Capture7.png
+	.. figure:: img/SDR_software/Capture7.png
 		:align: center
 		:width: 800
 
-	.. figure:: img/Capture8.png
+	.. figure:: img/SDR_software/Capture8.png
 		:align: center
 		:width: 800
 
 #. At the end of the installation you will be asked if you want to run the PowerSDR software immediately. This is optional.
 
-	.. figure:: img/Capture9.png
+	.. figure:: img/SDR_software/Capture9.png
 		:align: center
 		:width: 800
 
 5. The PowerSDR software will start to calculate the FFT wisdom file, **which may take a while** depending on the CPU power of your computer. This will only happen once, even if you upgrade to a new version of the software in the future:
 
-	.. figure:: img/Capture10.png
+	.. figure:: img/SDR_software/Capture10.png
 		:align: center
 		:width: 800
 
 6. After starting the PowerSDR software, you will be guided through the PowerSDR software specific setup wizard to configure the software for use with your Red Pitaya. Select the HAMlab/RedPitaya radio model.
 
-	.. figure:: img/Capture11.png
+	.. figure:: img/SDR_software/Capture11.png
 		:align: center
 		:width: 800
 
 7. Select the region in which you will be using your Red Pitaya. This is important due to the different frequency ranges you are allowed to transmit in different countries around the world:
 
-	.. figure:: img/Capture12.png
+	.. figure:: img/SDR_software/Capture12.png
 		:align: center
 		:width: 800
 
 8. Your initial setup is complete. Click **Finish**.
 
-	.. figure:: img/Capture13.png
+	.. figure:: img/SDR_software/Capture13.png
 		:align: center
 		:width: 800
 
 9. Click on Power to connect the Power SDR to Red Pitaya. The input signal should appear on the screen.
 
-	.. figure:: img/Capture20.png
+	.. figure:: img/SDR_software/Capture20.png
 		:align: center
 		:width: 1200
 
@@ -432,7 +440,7 @@ Measurement instruments specifications
 Front panel controls and connections
 ======================================
 
-.. figure:: img/Front_panel_controls_and_connections.png
+.. figure:: img/HAMlab/Front_panel_controls_and_connections.png
 	:align: center
 	:width: 1200
 
@@ -455,7 +463,7 @@ Microphone connector (RJ45)
 
 The HAMlab 80-10 10W front microphone connector **(2)** can support the Kenwood KMC 30 electret microphone or compatible types.
 
-.. figure:: img/microfono-kmc-30-ml.jpg
+.. figure:: img/HAMlab/microfono-kmc-30-ml.jpg
 	:align: center
 	:width: 800
 
@@ -558,7 +566,7 @@ Back panel controls and connections
 =====================================
 
 
-.. figure:: img/Back_panel_controls_and_connections.png
+.. figure:: img/HAMlab/Back_panel_controls_and_connections.png
 	:width: 1200
 
 |
@@ -631,11 +639,11 @@ If you choose to use your own Powerpole cabling, be sure to properly size the wi
 There are two internal fuses in the HAMlab. One protects the whole system while the other one is just for the transceiver. If you ever need to replace the internal fuse, remove the top cover and the shield of the power board.
 
 
-.. figure:: img/IMG_20161202_105403.jpg
+.. figure:: img/HAMlab/IMG_20161202_105403.jpg
 	:align: center
 	:width: 800
 
-.. figure:: img/IMG_20161202_105424.jpg
+.. figure:: img/HAMlab/IMG_20161202_105424.jpg
 	:align: center
 	:width: 800
 

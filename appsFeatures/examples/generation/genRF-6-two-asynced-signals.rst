@@ -51,7 +51,6 @@ Code - MATLAB®
     nor  = [1 1];
     period = [5000 5000];
 
-    %% The example generate sine bursts every 0.5 seconds indefinety
     writeline(RP,'GEN:RST');
 
     writeline(RP, append('SOUR1:FUNC ', waveform(1)));
@@ -74,11 +73,11 @@ Code - MATLAB®
 
     writeline(RP,'OUTPUT:STATE ON');                                    % Enable both outputs
     pause(2)
-    writeline(RP,'SOUR1:TRIG:INT');
+    writeline(RP,'SOUR1:TRig:INT');
     pause(2)
-    writeline(RP,'SOUR2:TRIG:INT');
+    writeline(RP,'SOUR2:TRig:INT');
     pause(1)
-    writeline(RP,'SOUR:TRIG:INT');
+    writeline(RP,'SOUR:TRig:INT');
 
     %% Close connection with Red Pitaya
     clear RP;
@@ -98,41 +97,41 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = '192.168.1.97'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 4
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR1:VOLT ' + str(ampl))
 
-    rp_s.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR2:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR2:VOLT ' + str(ampl))
 
-    rp_s.tx_txt('SOUR1:BURS:STAT BURST')
-    rp_s.tx_txt('SOUR1:BURS:NCYC 2')
-    rp_s.tx_txt('SOUR1:BURS:NOR 1')
-    rp_s.tx_txt('SOUR1:BURS:INT:PER 5000')
+    rp.tx_txt('SOUR1:BURS:STAT BURST')
+    rp.tx_txt('SOUR1:BURS:NCYC 2')
+    rp.tx_txt('SOUR1:BURS:NOR 1')
+    rp.tx_txt('SOUR1:BURS:INT:PER 5000')
 
-    rp_s.tx_txt('SOUR2:BURS:STAT BURST')
-    rp_s.tx_txt('SOUR2:BURS:NCYC 2')
-    rp_s.tx_txt('SOUR2:BURS:NOR 1')
-    rp_s.tx_txt('SOUR2:BURS:INT:PER 5000')
+    rp.tx_txt('SOUR2:BURS:STAT BURST')
+    rp.tx_txt('SOUR2:BURS:NCYC 2')
+    rp.tx_txt('SOUR2:BURS:NOR 1')
+    rp.tx_txt('SOUR2:BURS:INT:PER 5000')
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('OUTPUT:STATE ON')
     time.sleep(2)
-    rp_s.tx_txt('SOUR1:TRig:INT')
+    rp.tx_txt('SOUR1:TRig:INT')
     time.sleep(2)
-    rp_s.tx_txt('SOUR2:TRig:INT')
+    rp.tx_txt('SOUR2:TRig:INT')
     time.sleep(1)
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 **Using functions:**
 
@@ -145,27 +144,27 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = '192.168.1.97'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 4
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
     
     # Function for configuring a Source 
-    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=2, nor=1, period= 5000)
-    rp_s.sour_set(2, wave_form, ampl, freq, burst=True, ncyc=2, nor=1, period= 5000)
+    rp.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=2, nor=1, period= 5000)
+    rp.sour_set(2, wave_form, ampl, freq, burst=True, ncyc=2, nor=1, period= 5000)
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('OUTPUT:STATE ON')
     time.sleep(2)
-    rp_s.tx_txt('SOUR1:TRig:INT')
+    rp.tx_txt('SOUR1:TRig:INT')
     time.sleep(2)
-    rp_s.tx_txt('SOUR2:TRig:INT')
+    rp.tx_txt('SOUR2:TRig:INT')
     time.sleep(1)
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 
 .. include:: ../python_scpi_note.inc

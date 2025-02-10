@@ -46,7 +46,6 @@ Code - MATLAB®
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
-
     RP.ByteOrder = 'big-endian';
     configureTerminator(RP,'CR/LF');
 
@@ -70,7 +69,7 @@ Code - Python
 
     IP = 'rp-f066c8.local'
 
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     value = [1,1,1,1]
     for i in range(4):
@@ -79,9 +78,9 @@ Code - Python
         print ("Voltage setting for AO["+str(i)+"] = "+str(value[i])+"V")
 
     for i in range(4):
-        rp_s.tx_txt('ANALOG:PIN AOUT' + str(i) + ',' + str(value[i]))
+        rp.tx_txt('ANALOG:PIN AOUT' + str(i) + ',' + str(value[i]))
 
-    rp_s.close()
+    rp.close()
 
 .. include:: ../python_scpi_note.inc
 

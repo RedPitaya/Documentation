@@ -78,25 +78,25 @@ Code - Python
     import sys
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi("192.168.1.17")
+    rp = scpi.scpi("192.168.1.17")
 
     wave_form = 'sine'
     freq = 2000
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
-    rp_s.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR2:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR2:VOLT ' + str(ampl))
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 **Using functions:**
 
@@ -107,22 +107,22 @@ Code - Python
     import sys
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi("192.168.1.17")
+    rp = scpi.scpi("192.168.1.17")
 
     wave_form = 'sine'
     freq = 2000
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
     
     # Function for configuring a Source 
-    rp_s.sour_set(1, wave_form, ampl, freq)
-    rp_s.sour_set(2, wave_form, ampl, freq)
+    rp.sour_set(1, wave_form, ampl, freq)
+    rp.sour_set(2, wave_form, ampl, freq)
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 
 .. include:: ../python_scpi_note.inc

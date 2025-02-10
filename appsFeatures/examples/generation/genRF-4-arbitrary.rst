@@ -70,7 +70,7 @@ Code - MATLAB®
     waveform_ch_1_0 = num2str(x,'%1.5f,');
     waveform_ch_2_0 = num2str(y,'%1.5f,');
 
-    % the last two elements are empty spaces “,”.
+    % the last element is a comma “,”.
     waveform_ch_1 = waveform_ch_1_0(1,1:length(waveform_ch_1_0)-1);
     waveform_ch_2 = waveform_ch_2_0(1,1:length(waveform_ch_2_0)-1);
 
@@ -110,7 +110,7 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = '192.168.178.102'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'arbitrary'
     freq = 10000
@@ -139,24 +139,24 @@ Code - Python
     waveform_ch_2 = ", ".join(map(str, waveform_ch_20))
 
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
 
-    rp_s.tx_txt('SOUR1:TRAC:DATA:DATA ' + waveform_ch_1)
-    rp_s.tx_txt('SOUR2:TRAC:DATA:DATA ' + waveform_ch_2)
+    rp.tx_txt('SOUR1:TRAC:DATA:DATA ' + waveform_ch_1)
+    rp.tx_txt('SOUR2:TRAC:DATA:DATA ' + waveform_ch_2)
 
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
 
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
-    rp_s.tx_txt('SOUR2:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR2:VOLT ' + str(ampl))
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 **Using functions:**
 
@@ -170,7 +170,7 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = '192.168.178.102'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'arbitrary'
     freq = 10000
@@ -186,16 +186,16 @@ Code - Python
     plt.title('Custom waveform')
     plt.show()
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
     # Function for configuring a Source 
-    rp_s.sour_set(1, wave_form, ampl, freq, data= x)
-    rp_s.sour_set(2, wave_form, ampl, freq, data= y)
+    rp.sour_set(1, wave_form, ampl, freq, data= x)
+    rp.sour_set(2, wave_form, ampl, freq, data= y)
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 
 .. include:: ../python_scpi_note.inc

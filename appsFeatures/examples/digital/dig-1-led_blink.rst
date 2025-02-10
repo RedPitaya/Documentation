@@ -61,8 +61,8 @@ Code - MATLAB ®
     
         pause(1);
     end
+
     %% Close connection with Red Pitaya
-    
     clear RP;
 
 
@@ -78,7 +78,7 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = 'rp-f066c8.local'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     if (len(sys.argv) > 2):
         led = int(sys.argv[2])
@@ -91,11 +91,11 @@ Code - Python
 
     while 1:
         time.sleep(period/2.0)
-        rp_s.tx_txt('DIG:PIN LED' + str(led) + ',' + str(1))
+        rp.tx_txt('DIG:PIN LED' + str(led) + ',' + str(1))
         time.sleep(period/2.0)
-        rp_s.tx_txt('DIG:PIN LED' + str(led) + ',' + str(0))
+        rp.tx_txt('DIG:PIN LED' + str(led) + ',' + str(0))
 
-    rp_s.close()
+    rp.close()
 
 .. include:: ../python_scpi_note.inc
 

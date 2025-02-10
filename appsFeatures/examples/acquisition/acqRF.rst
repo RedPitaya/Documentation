@@ -7,4 +7,5 @@ Acquiring signals at RF inputs
    acqRF-1-treshold
    acqRF-2-instant
    acqRF-3-external
+   acqRF-5-split_trig
    acqRF-samp-and-dec

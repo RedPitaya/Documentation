@@ -43,9 +43,7 @@ Code - MATLAB®
     port = 5000;
     RP = tcpclient(IP, port);
 
-
     %% Variables
-
     % EEPROM 24LC64 DATA
     dev_addr = 0b1010110;
     eeprom_size = 8192;
@@ -68,7 +66,6 @@ Code - MATLAB®
 
     % Communication with external 24LC64 EEPROM, for other devices, please refer to the device datasheet
     buf = zeros(1, length(txt)+2, 'uint8');
-
 
     buf(1) = bitshift(offset, -8);              % 24LC64 address byte 1
     buf(2) = bitand(offset, uint16(0xFF));      % 24LC64 address byte 2

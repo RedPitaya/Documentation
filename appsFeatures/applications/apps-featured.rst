@@ -14,6 +14,7 @@ For offline application installation, please see the :ref:`Developers Guide manu
    :maxdepth: 1
 
    oscSigGen/osc.rst
+   arb_manager/arb_manager.rst
    spectrum/spectrum.rst
    logic/logic.rst
    bode/bode.rst
@@ -21,7 +22,7 @@ For offline application installation, please see the :ref:`Developers Guide manu
    lcr_meter/lcr_meter.rst
    streaming/appStreaming.rst
    streaming/appXCStreaming.rst
-   arb_manager/arb_manager.rst
+   playback&record/playback&record.rst
    sdr_tx_rx/sdr_tx_rx.rst
    vna/appVNA.rst
    pyrpl/pyrpl.rst

@@ -50,7 +50,7 @@ The format can be ASCII or BIN. The units can be VOLTS or RAW.
     % Define Red Pitaya as TCP/IP object
     close all
     clc
-    IP = 'rp-f0a235.local';                % Input IP of your Red Pitaya...
+    IP = 'rp-f0a235.local';         % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
@@ -58,8 +58,8 @@ The format can be ASCII or BIN. The units can be VOLTS or RAW.
     trig_lvl = 0;
     gain = 'LV';
     data_format = 'VOLTS';
-    data_units = 'RAW';
-    % coupling = 'AC';      % SIGNALlab 250-12 only
+    data_units = 'ASCII';
+    % coupling = 'AC';              % SIGNALlab 250-12 only
     trig_dly = 0;
     acq_trig = 'CH1_PE';
 
@@ -77,12 +77,12 @@ The format can be ASCII or BIN. The units can be VOLTS or RAW.
     writeline(RP,append('ACQ:TRig:LEV ', num2str(trig_lvl)));
 
     % Select acquisition units and format
-    writeline(RP, append('ACQ:SOUR1:GAIN ', gain));         % LV gain is selected by default
+    writeline(RP, append('ACQ:SOUR1:GAIN ', gain));             % LV gain is selected by default
     writeline(RP, append('ACQ:DATA:FORMAT ', data_format));    
-    writeline(RP, append('ACQ:DATA:Units ', data_units));        % BIN/VOLTS => VOLTS, BIN/RAW => RAW
+    writeline(RP, append('ACQ:DATA:Units ', data_units));       % RAW/VOLTS => VOLTS, ASCII/RAW => ASCII
 
     % SIGNALlab 250-12 has an option to select input coupling
-    % writeline(RP, append('ACQ:SOUR1:COUP ', coupling));   % enables AC coupling on channel 1
+    % writeline(RP, append('ACQ:SOUR1:COUP ', coupling));       % enables AC coupling on channel 1
 
     % Set trigger delay to 0 samples
     % 0 samples delay set trigger to center of the acquired data buffer
@@ -127,7 +127,7 @@ The decoding of the acquired data depends on the selected format and units. The 
 
 .. tabs::
 
-    .. tab:: ASCII/VOLTS mode
+    .. tab:: ASCII/VOLTS and ASCII/RAW mode
 
         .. code-block:: matlab
                 

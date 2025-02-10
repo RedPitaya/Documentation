@@ -109,22 +109,22 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = 'rp-f066c8.local'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     if (len(sys.argv) > 2):
         percent = int(sys.argv[2])
     else:
         percent = 50
 
-    print ("Bar showing "+str(percent)+"%")
+    print("Bar showing "+str(percent)+"%")
 
     for i in range(8):
-        if (percent > (i * (100.0/8))):
-            rp_s.tx_txt('DIG:PIN LED' + str(i) + ',' + str(1))
+        if (percent > ((i+1) * (100.0/9))):
+            rp.tx_txt('DIG:PIN LED' + str(i) + ',' + str(1))
         else:
-            rp_s.tx_txt('DIG:PIN LED' + str(i) + ',' + str(0))
+            rp.tx_txt('DIG:PIN LED' + str(i) + ',' + str(0))
 
-    rp_s.close()
+    rp.close()
 
 .. include:: ../python_scpi_note.inc
 
@@ -172,7 +172,7 @@ Code - C API
 
         // Turning on leds based on parameter percent
         for (int i=0; i<8; i++) {
-            if (percent > (i*(100.0/8))) {
+            if (percent > ((i+1)*(100.0/9))) {
                 rp_DpinSetState(i+RP_LED0, RP_HIGH);
             } else {
                 rp_DpinSetState(i+RP_LED0, RP_LOW);

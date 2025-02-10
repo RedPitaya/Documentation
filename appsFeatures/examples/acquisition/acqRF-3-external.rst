@@ -53,7 +53,7 @@ Code - MATLAB®
     dec = 1;
     trig_lvl = 0.1;
     gain = 'LV';
-    % coupling = 'AC';      % SIGNALlab 250-12 only
+    % coupling = 'AC';                      % SIGNALlab 250-12 only
     trig_dly = 0;
     acq_trig = 'EXT_PE';
     ext_trig_deb = 500;
@@ -67,7 +67,6 @@ Code - MATLAB®
     writeline(RP,'ACQ:RST');
 
     %% ACQUISITION
-
     writeline(RP, append('ACQ:DEC:Factor ', num2str(dec)));
 
     % For short triggering signals set the length of internal debounce filter in µs (minimum of 1 µs)
@@ -100,14 +99,13 @@ Code - MATLAB®
         end
     end 
 
-        
-        % Read data from buffer 
+    % Read data from buffer 
     data_str   = writeread(RP,'ACQ:SOUR1:DATA?');
     data_str_2 = writeread(RP,'ACQ:SOUR2:DATA?');
 
-        % Convert values to numbers.
-        % The first character in string is “{“   
-        % and the last 3 are 2 spaces and “}”.  
+    % Convert values to numbers.
+    % The first character in string is “{“   
+    % and the last is “}”.  
 
     data   = str2num(data_str  (2:length(data_str  )-1));
     data_2 = str2num(data_str_2(2:length(data_str_2)-1));
@@ -137,31 +135,31 @@ Using SCPI commands:
 
     IP = 'rp-f066c8.local'
 
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
     
-    rp_s.tx_txt('ACQ:RST')
+    rp.tx_txt('ACQ:RST')
 
-    rp_s.tx_txt('ACQ:DEC 4')
+    rp.tx_txt('ACQ:DEC 4')
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('ACQ:TRig:EXT:DEBouncerUs 500')
+    rp.tx_txt('ACQ:TRig:EXT:DEBouncerUs 500')
 
-    rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRig EXT_PE')
+    rp.tx_txt('ACQ:START')
+    rp.tx_txt('ACQ:TRig EXT_PE')
 
     while 1:
-        rp_s.tx_txt('ACQ:TRig:STAT?')
-        if rp_s.rx_txt() == 'TD':
+        rp.tx_txt('ACQ:TRig:STAT?')
+        if rp.rx_txt() == 'TD':
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRig:FILL?')
-        if rp_s.rx_txt() == '1':
+        rp.tx_txt('ACQ:TRig:FILL?')
+        if rp.rx_txt() == '1':
             break
 
-    rp_s.tx_txt('ACQ:SOUR1:DATA?')
-    buff_string = rp_s.rx_txt()
+    rp.tx_txt('ACQ:SOUR1:DATA?')
+    buff_string = rp.rx_txt()
     buff_string = buff_string.strip('{}\n\r').replace("  ", "").split(',')
     buff = list(map(float, buff_string))
 
@@ -184,32 +182,32 @@ Using functions:
 
     dec = 4
 
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
-    rp_s.tx_txt('ACQ:RST')
+    rp.tx_txt('ACQ:RST')
     
     # Function for configuring Acquisitio
-    rp_s.acq_set(dec)
+    rp.acq_set(dec)
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('ACQ:TRig:EXT:DEBouncerUs 500')
+    rp.tx_txt('ACQ:TRig:EXT:DEBouncerUs 500')
     
-    rp_s.tx_txt('ACQ:START')
-    rp_s.tx_txt('ACQ:TRig EXT_PE')
+    rp.tx_txt('ACQ:START')
+    rp.tx_txt('ACQ:TRig EXT_PE')
 
     while 1:
-        rp_s.tx_txt('ACQ:TRig:STAT?')
-        if rp_s.rx_txt() == 'TD':
+        rp.tx_txt('ACQ:TRig:STAT?')
+        if rp.rx_txt() == 'TD':
             break
 
     ## ! OS 2.00 or higher only ! ##
     while 1:
-        rp_s.tx_txt('ACQ:TRig:FILL?')
-        if rp_s.rx_txt() == '1':
+        rp.tx_txt('ACQ:TRig:FILL?')
+        if rp.rx_txt() == '1':
             break
 
     # function for Data Acquisition
-    buff = rp_s.acq_data(1, convert= True)
+    buff = rp.acq_data(1, convert= True)
 
     plot.plot(buff)
     plot.ylabel('Voltage')

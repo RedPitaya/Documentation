@@ -248,41 +248,41 @@ Code - Python
     tx_buffer = np.arange(3)
     tx_buffer2 = np.arange(5)
     
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
     
     # INIT CAN #
-    rp_s.tx_txt('CAN:FPGA ON')
+    rp.tx_txt('CAN:FPGA ON')
     print("CAN:FPGA ON")
-    rp_s.check_error()
+    rp.check_error()
     
     ## CAN 0 SETUP ##
     # GPIO (N7,P7) 
-    rp_s.tx_txt(f'CAN{can_bus1}:STOP')
-    rp_s.tx_txt(f'CAN{can_bus1}:BITRate {bitrate}')
-    rp_s.tx_txt(f'CAN{can_bus1}:MODE {can_mode.upper()},OFF')
-    rp_s.check_error()
+    rp.tx_txt(f'CAN{can_bus1}:STOP')
+    rp.tx_txt(f'CAN{can_bus1}:BITRate {bitrate}')
+    rp.tx_txt(f'CAN{can_bus1}:MODE {can_mode.upper()},OFF')
+    rp.check_error()
     
     ## CAN 1 SETUP ##
     # GPIO (N6,P6) 
-    rp_s.tx_txt(f'CAN{can_bus2}:STOP')
-    rp_s.tx_txt(f'CAN{can_bus2}:BITRate {bitrate}')
-    rp_s.tx_txt(f'CAN{can_bus2}:MODE {can_mode.upper()},OFF')
+    rp.tx_txt(f'CAN{can_bus2}:STOP')
+    rp.tx_txt(f'CAN{can_bus2}:BITRate {bitrate}')
+    rp.tx_txt(f'CAN{can_bus2}:MODE {can_mode.upper()},OFF')
     
     
     # Start and open both interfaces
-    rp_s.tx_txt(f'CAN{can_bus1}:START')
-    rp_s.tx_txt(f'CAN{can_bus1}:OPEN')
+    rp.tx_txt(f'CAN{can_bus1}:START')
+    rp.tx_txt(f'CAN{can_bus1}:OPEN')
     
-    rp_s.tx_txt(f'CAN{can_bus2}:START')
-    rp_s.tx_txt(f'CAN{can_bus2}:OPEN')
+    rp.tx_txt(f'CAN{can_bus2}:START')
+    rp.tx_txt(f'CAN{can_bus2}:OPEN')
     
     # Send and read data
     print("Transmission CAN0 => CAN1")
-    rp_s.tx_txt(f'CAN{can_bus1}:Send{can_id} {np.array2string(tx_buffer, separator=',').replace('[','').replace(']','')}')
-    rp_s.tx_txt(f'CAN{can_bus1}:Send{can_id2} {np.array2string(tx_buffer2, separator=',').replace('[','').replace(']','')}')
+    rp.tx_txt(f'CAN{can_bus1}:Send{can_id} {np.array2string(tx_buffer, separator=',').replace('[','').replace(']','')}')
+    rp.tx_txt(f'CAN{can_bus1}:Send{can_id2} {np.array2string(tx_buffer2, separator=',').replace('[','').replace(']','')}')
     
-    rp_s.tx_txt(f'CAN{can_bus2}:Read:Timeout{timeout_rx}?')
-    can0_info1,can0_data1 = can_data_split(rp_s.rx_txt())
+    rp.tx_txt(f'CAN{can_bus2}:Read:Timeout{timeout_rx}?')
+    can0_info1,can0_data1 = can_data_split(rp.rx_txt())
     # canID, canIDraw, EXT_Frame, ERR_frame, RTR, Length, {data1, data2, data3, ...}
     print("Package info:\n",
         f"CAN ID: {can0_info1[0]}\n"
@@ -293,8 +293,8 @@ Code - Python
         f"Data length: {can0_info1[5]}\n")
     print(f"Received data: {can0_data1}\n")
     
-    rp_s.tx_txt(f'CAN{can_bus2}:Read:Timeout{timeout_rx}?')
-    can0_info2,can0_data2 = can_data_split(rp_s.rx_txt())
+    rp.tx_txt(f'CAN{can_bus2}:Read:Timeout{timeout_rx}?')
+    can0_info2,can0_data2 = can_data_split(rp.rx_txt())
     print("Package info:\n",
         f"CAN ID: {can0_info2[0]}\n"
         f"CAN ID raw: {can0_info2[1]}\n",
@@ -306,11 +306,11 @@ Code - Python
     
     # Send data the other way
     print("Transmission CAN1 => CAN0")
-    rp_s.tx_txt(f'CAN{can_bus2}:Send{can_id} {np.array2string(tx_buffer, separator=',').replace('[','').replace(']','')}')
-    rp_s.tx_txt(f'CAN{can_bus2}:Send{can_id2} {np.array2string(tx_buffer2, separator=',').replace('[','').replace(']','')}')
+    rp.tx_txt(f'CAN{can_bus2}:Send{can_id} {np.array2string(tx_buffer, separator=',').replace('[','').replace(']','')}')
+    rp.tx_txt(f'CAN{can_bus2}:Send{can_id2} {np.array2string(tx_buffer2, separator=',').replace('[','').replace(']','')}')
     
-    rp_s.tx_txt(f'CAN{can_bus1}:Read:Timeout{timeout_rx}?')
-    can1_info1,can1_data1 = can_data_split(rp_s.rx_txt())
+    rp.tx_txt(f'CAN{can_bus1}:Read:Timeout{timeout_rx}?')
+    can1_info1,can1_data1 = can_data_split(rp.rx_txt())
     print("Package info:\n",
         f"CAN ID: {can1_info1[0]}\n"
         f"CAN ID raw: {can1_info1[1]}\n",
@@ -320,8 +320,8 @@ Code - Python
         f"Data length: {can1_info1[5]}\n")
     print(f"Received data: {can1_data1}\n")
     
-    rp_s.tx_txt(f'CAN{can_bus1}:Read:Timeout{timeout_rx}?')
-    can1_info2,can1_data2 = can_data_split(rp_s.rx_txt())
+    rp.tx_txt(f'CAN{can_bus1}:Read:Timeout{timeout_rx}?')
+    can1_info2,can1_data2 = can_data_split(rp.rx_txt())
     print("Package info:\n",
         f"CAN ID: {can1_info2[0]}\n"
         f"CAN ID raw: {can1_info2[1]}\n",
@@ -332,10 +332,10 @@ Code - Python
     print(f"Received data: {can1_data2}\n")
     
     # Close the interface
-    rp_s.tx_txt(f'CAN{can_bus1}:CLOSE')
-    rp_s.tx_txt(f'CAN{can_bus2}:CLOSE')
-    rp_s.check_error()
-    rp_s.close()
+    rp.tx_txt(f'CAN{can_bus1}:CLOSE')
+    rp.tx_txt(f'CAN{can_bus2}:CLOSE')
+    rp.check_error()
+    rp.close()
 
 
 .. include:: ../python_scpi_note.inc

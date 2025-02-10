@@ -40,7 +40,7 @@ Code - MATLAB®
 .. code-block:: matlab
 
     %% Define Red Pitaya as TCP/IP object
-    IP= 'rp-f0a235.local';              % Input IP of your Red Pitaya...
+    IP= 'rp-f0a235.local';                  % Input IP of your Red Pitaya...
     port = 5000;
     RP=tcpclient(IP, port);
 
@@ -48,7 +48,7 @@ Code - MATLAB®
     RP.ByteOrder = 'big-endian';
     configureTerminator(RP,'CR/LF');
 
-    writeline(RP,'DIG:RST');               % Reset digital pins and LED states
+    writeline(RP,'DIG:RST');                % Reset digital pins and LED states
     writeline(RP,'DIG:PIN:DIR IN,DIO5_N');  % Set DIO5_N  to be input
     i=1;
 
@@ -80,22 +80,23 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = 'rp-f066c8.local'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     # set all DIO*_N pins to inputs
     for i in range(8):
-        rp_s.tx_txt('DIG:PIN:DIR IN,DIO'+str(i)+'_N')
+        rp.tx_txt('DIG:PIN:DIR IN,DIO'+str(i)+'_N')
 
     # copy DIOi_N pin state to LEDi state fir each i [0:7]
     while 1:
         for i in range(8):
-            rp_s.tx_txt('DIG:PIN? DIO'+str(i)+'_N')
-            state = rp_s.rx_txt()
-            rp_s.tx_txt('DIG:PIN LED'+str(i)+','+str(state))
+            rp.tx_txt('DIG:PIN? DIO'+str(i)+'_N')
+            state = rp.rx_txt()
+            rp.tx_txt('DIG:PIN LED'+str(i)+','+str(state))
 
-    rp_s.close()
+    rp.close()
 
 .. include:: ../python_scpi_note.inc
+
 
 Code - LabVIEW
 ---------------

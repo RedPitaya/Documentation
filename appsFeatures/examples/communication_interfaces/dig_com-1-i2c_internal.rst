@@ -87,24 +87,24 @@ Code - Python
     from struct import *
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi(sys.argv[1])
+    rp = scpi.scpi(sys.argv[1])
 
-    rp_s.tx_txt('I2C:DEV80 "/dev/i2c-0"')
+    rp.tx_txt('I2C:DEV80 "/dev/i2c-0"')
     print("Init I2C")
 
-    rp_s.tx_txt('I2C:FMODE ON')
+    rp.tx_txt('I2C:FMODE ON')
     print("Set force mode")
 
     # EEPROM 24LC64 only works through IOCTL
     # set read address = 0
-    rp_s.tx_txt('I2C:IOctl:Write:Buffer2 0,0')
+    rp.tx_txt('I2C:IOctl:Write:Buffer2 0,0')
     print("Write address for read")
 
-    rp_s.tx_txt('I2C:IOctl:Read:Buffer32?')
-    b1 = rp_s.rx_txt().strip('{').strip('}')
+    rp.tx_txt('I2C:IOctl:Read:Buffer32?')
+    b1 = rp.rx_txt().strip('{').strip('}')
 
-    rp_s.tx_txt('I2C:IOctl:Read:Buffer16?')
-    b2 = rp_s.rx_txt().strip('{').strip('}')
+    rp.tx_txt('I2C:IOctl:Read:Buffer16?')
+    b2 = rp.rx_txt().strip('{').strip('}')
 
     buff = (b1 + "," + b2).split(",")
     byte_array = bytearray(b'')
