@@ -4,8 +4,8 @@
 Streaming
 #########
 
-..! JOIN X-Channel Streaming and this
-..! OPEN STREAMING on all boards
+.. ! JOIN X-Channel Streaming and this
+.. ! OPEN STREAMING on all boards
 
 .. figure:: img/settings_2.00.png
     :width: 1000
@@ -39,15 +39,15 @@ Max. streaming speeds (per board) are limited to:
 
 .. note::
 
-   The maximum continuous streaming speeds (per board) are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
-   Here are a few examples of maximum data rates:
+    The maximum continuous streaming speeds (per board) are limited to the total input data rate, not the network transfer rates. If the maximum data rate is exceeded, the data pipeline inside Red Pitaya starts to clog, which leads to unpredictable behaviour.
+    Here are a few examples of maximum data rates:
 
-      - One channel, 8-bits per sample: Max sampling frequency 20 MHz.
-      - One channel, 16-bits per sample: Max sampling frequency 10 MHz.
-      - Two channels, 8-bits per sample: Max sampling frequency per channel 10 MHz (assuming same frequencies for both channels)
-      - Two channels, 16-bits per sample: Max sampling frequency per channel 5 MHz (assuming same frequencies for both channels)
+    * One channel, 8-bits per sample: Max sampling frequency 20 MHz.
+    * One channel, 16-bits per sample: Max sampling frequency 10 MHz.
+    * Two channels, 8-bits per sample: Max sampling frequency per channel 10 MHz (assuming same frequencies for both channels)
+    * Two channels, 16-bits per sample: Max sampling frequency per channel 5 MHz (assuming same frequencies for both channels)
 
-   If acquiring a limited amount of samples in a short duration, it is possible to reach higher sampling frequencies (up to the sampling speed of fast analog inputs).
+    If acquiring a limited amount of samples in a short duration, it is possible to reach higher sampling frequencies (up to the sampling speed of fast analog inputs).
 
 **Minumum streamed data size**
 
@@ -57,29 +57,29 @@ Here are the minimum chunck limitations sorted by file type and units:
 
 
 .. list-table::
-   :widths: 20 20 20
-   :header-rows: 1
+    :widths: 20 20 20
+    :header-rows: 1
 
-   * - File type \\ Units
-     - VOLTS
-     - RAW
-   * - WAV 
-     - 128.043 kb
-     - 64.043 kb
-   * - TDMS
-     - 128.133 kb
-     - 64.133 kb
-   * - BIN
-     - 64.090 kb
-     - 64.090 kb
+    * - File type \\ Units
+      - VOLTS
+      - RAW
+    * - WAV 
+      - 128.043 kb
+      - 64.043 kb
+    * - TDMS
+      - 128.133 kb
+      - 64.133 kb
+    * - BIN
+      - 64.090 kb
+      - 64.090 kb
 
 
 .. note::
 
-   We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
+    We plan to expand the functionality by adding the generation to the Streaming application in the future. For now, it is possible for a user to implement it by themselves.
 
 
-..! TODO: Document the new fast streaming feature and prepare the examples
+.. ! TODO: Document the new fast streaming feature and prepare the examples
 
 Getting started with the Red Pitaya streaming feature
 =======================================================

@@ -1,7 +1,7 @@
 .. _top_125_10:
 
 ################################
-STEMlab 125-10 (DISCONTINUED)
+STEMlab 125-10 (discontinued)
 ################################
 
 .. figure:: img/STEMlab-125-10.jpg

@@ -167,7 +167,7 @@ As these builds are snapshots of the latest code, odds are you will encounter mo
 Download and install the SD card image
 **************************************
 
-..! Add delete the existing partitions on the SD card
+.. ! Add delete the existing partitions on the SD card
 
 The next procedure will create a clean SD card image.
 

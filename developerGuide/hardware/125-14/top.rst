@@ -206,7 +206,7 @@ Technical specifications
 Schematics
 ============
 
-- `Red_Pitaya_Schematics_v1.0.1.pdf <https://downloads.redpitaya.com/doc//Red_Pitaya_Schematics_v1.0.1.pdf>`_
+    * `Red_Pitaya_Schematics_v1.0.1.pdf <https://downloads.redpitaya.com/doc//Red_Pitaya_Schematics_v1.0.1.pdf>`_.
 
 .. note::
 
@@ -215,19 +215,19 @@ Schematics
 Mechanical Specifications and 3D Models
 ========================================
 
-- `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
+    * `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_.
 
 
 Components
 ===========
 
-- `ADC <https://www.analog.com/en/products/ltc2145-14.html>`_
-- `DAC <https://www.analog.com/en/products/AD9767.html>`_
-- `FPGA (Zynq 7010) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
-- `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_
-- `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
-- `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
-- `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information)
+    * `ADC <https://www.analog.com/en/products/ltc2145-14.html>`_.
+    * `DAC <https://www.analog.com/en/products/AD9767.html>`_.
+    * `FPGA (Zynq 7010) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_.
+    * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_.
+    * `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_.
+    * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_.
+    * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information).
 
 .. note::
 
@@ -237,17 +237,17 @@ Components
 Extension connector STEMlab 125-14
 ====================================
 
-- Connector: 2 x 26 pins IDC (M) 
+    * Connector: 2 x 26 pins IDC (M).
 
 Power Supply
 --------------
 
-- **Available voltages**: +5 V, +3.3 V, -3.4 V 
-- **Current limitations**:
+    * **Available voltages**: +5 V, +3.3 V, -3.4 V .
+    * **Current limitations**:
 
-    - 500 mA for +5 V (to be shared between extension module and USB devices)
-    - 500 mA for +3V3 (to be shared between extension module and USB devices)
-    - 50 mA for -3.4 V supply
+        * 500 mA for +5 V (to be shared between extension module and USB devices).
+        * 500 mA for +3V3 (to be shared between extension module and USB devices).
+        * 50 mA for -3.4 V supply.
 
 
 .. _E1_stem:
@@ -255,9 +255,9 @@ Power Supply
 Extension connector E1
 ------------------------
 
-- +3V3 power source
-- 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
-- 2 CAN busses
+    * +3V3 power source
+    * 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
+    * 2 CAN busses
         
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
@@ -297,9 +297,10 @@ Pin  Description            FPGA pin number  FPGA pin description      Voltage l
     The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
         
 All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
-    - min. -0.40 V
-    - max. 3.3 V + 0.55 V
-    - < 8 mA drive strength
+
+    * Min. -0.40 V
+    * Max. 3.3 V + 0.55 V
+    * < 8 mA drive strength
 
 
 .. _E2_stem:
@@ -307,11 +308,11 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 Extension connector E2
 ------------------------
 
-- +5 V, -3V4 power sources
-- SPI, UART, I2C
-- 4 slow ADCs
-- 4 slow DACs
-- Ext. clock for fast ADC
+    * +5 V, -3V4 power sources
+    * SPI, UART, I2C
+    * 4 slow ADCs
+    * 4 slow DACs
+    * Ext. clock for fast ADC
  
 .. Table 6: Extension connector E2 pin description
 
@@ -365,38 +366,38 @@ The pinout of the extension connectors is shown in the figure below.
 Auxiliary analog input channels
 --------------------------------
 
-- Number of channels: 4 
-- Nominal sampling rate: 100 ksps (H) 
-- ADC resolution 12 bits 
-- Input voltage range: 0 - 3.5 V 
-- Input coupling: DC 
-- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
+    * Number of channels: 4 
+    * Nominal sampling rate: 100 ksps (H) 
+    * ADC resolution 12 bits 
+    * Input voltage range: 0 - 3.5 V 
+    * Input coupling: DC 
+    * Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13, 14, 15, 16) 
 
 
 Auxiliary analog output channels 
 ---------------------------------
 
-- Number of channels: 4 
-- Output type: Low pass filtered PWM (I) 
-- PWM time resolution: 4 ns (1/250 MHz)
-- Analog output resolution: 8 bit
-- Analog output sample rate ≲ 3.2 MS/s
-- Analog output bandwidth ≈ 160 kHz
-- Analog outputs voltage range: 0 - 1.8 V
-- Output coupling: DC 
-- Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) V
+    * Number of channels: 4 
+    * Output type: Low pass filtered PWM (I) 
+    * PWM time resolution: 4 ns (1/250 MHz)
+    * Analog output resolution: 8 bit
+    * Analog output sample rate ≲ 3.2 MS/s
+    * Analog output bandwidth ≈ 160 kHz
+    * Analog outputs voltage range: 0 - 1.8 V
+    * Output coupling: DC 
+    * Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17, 18, 19, 20) V
 
 
 General purpose digital input/output channels
 ----------------------------------------------
 
-- Number of digital input/output pins: 16
-- Voltage level: 3.3 V
-- Abs. min. voltage: -0.40 V
-- Abs. max. voltage: 3.3 V + 0.55 V
-- Current limitation: < 8 mA drive strength
-- Direction: configurable 
-- Location: IDC connector :ref:`E1 <E1>`
+    * Number of digital input/output pins: 16
+    * Voltage level: 3.3 V
+    * Abs. min. voltage: -0.40 V
+    * Abs. max. voltage: 3.3 V + 0.55 V
+    * Current limitation: < 8 mA drive strength
+    * Direction: configurable 
+    * Location: IDC connector :ref:`E1 <E1>`
 
 
 Powering Red Pitaya through extension connector
@@ -419,47 +420,57 @@ External ADC clock
 
 The ADC clock can be provided by:
 
-    - On board 125 MHz XO (default)
-    - From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
-    - Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
+    * On board 125 MHz XO (default).
+    * From an external source (through extension connector) - External clock :ref:`E2 <E2>`. (R25, R26 should be moved to location R23, R24).
+    * From SATA connectors (directly from FPGA) - X-channel secondary/slave (R25, R26 should be relocated to R27, R28).
 
 .. figure:: img/schematics/External_clk.png
-    :alt: Schematic
     :align: center
+    :width: 800
 
-    Schematic
+    Clock schematic
     
 
 .. warning::
 
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
+**Instructions**
 
-.. figure:: img/schematics/External_clock_top.png
-    :alt: Top side schematic
-    :align: center
+#. Remove R25 and R26 from the top side of the board.
 
-    Top side schematic
+    .. figure:: img/schematics/External_clock_top.png
+        :alt: Top side schematic
+        :align: center
+        :width: 400
 
+        Top side schematic
 
-.. figure:: img/schematics/External_clock_bottom.png
-    :alt: Bottom side schematic
-    :align: center
+#. Relocate the desoldered resistors from R25 and R26 to:
 
-    Bottom side schematic
+    * R23 and R24 for external clock (Ext. ADC CLK+- pins).
+    * R27 and R28 for X-channel secondary (SATA connectors).
 
-.. figure:: img/schematics/External_clock_bottom_photo.png
-    :alt: Bottom side photo
-    :align: center
-    :width:  400px
+    .. figure:: img/schematics/External_clock_bottom.png
+        :alt: Bottom side schematic
+        :align: center
+        :width: 400
 
-    Bottom side photo
+        Bottom side schematic
 
-.. figure:: img/schematics/External_clock_resistors.jpeg
-    :alt: Bottom side all
-    :align: center
+    .. figure:: img/schematics/External_clock_bottom_photo.png
+        :alt: Bottom side photo
+        :align: center
+        :width: 400
 
-    Bottom side
+        Bottom side photo
+
+    .. figure:: img/schematics/External_clock_resistors.jpeg
+        :alt: Bottom side all
+        :align: center
+        :width: 800
+
+        Bottom side
 
 QSPI 
 ===========

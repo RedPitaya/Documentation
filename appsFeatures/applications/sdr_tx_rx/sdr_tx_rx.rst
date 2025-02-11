@@ -9,9 +9,9 @@ SDR applications
 
 The Red Pitaya SDR applications allow you to use the Red Pitaya board as a Software Defined Radio. The following applications are available in the official Red Pitaya OS:
 
-- SDR Transceiver compatible with HPSDR
-- SDR Receiver compatible with HPSDR
-- SDR Transceiver
+    * SDR Transceiver compatible with HPSDR.
+    * SDR Receiver compatible with HPSDR.
+    * SDR Transceiver.
 
 The instructions in this section refer to operating the applications above on the official Red Pitaya OS.
 
@@ -37,8 +37,8 @@ This SDR transceiver emulates a HPSDR transceiver similar to Hermes with a netwo
 
 The HPSDR/Metis communication protocol is described in the following documents:
 
-- `Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`_
-- `HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`_
+    * `Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`_.
+    * `HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`_.
 
 
 Software
@@ -46,11 +46,11 @@ Software
 
 The HPSDR compatible SDR transceiver should work with most programs that support the HPSDR/Metis communication protocol:
 
-- `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`_ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`_.
-- `QUISK <https://james.ahlstrom.name/quisk>`_ with the ``hermes/quisk_conf.py`` configuration file.
-- `ghpsdr3-alex <https://napan.ca/ghpsdr3>`_ distributed client-server system.
-- `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.be/2015/01/openhpsdr-android-application.html>`_.
-- `Java desktop application <https://g0orx.blogspot.co.uk/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application
+    * `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`_ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`_.
+    * `QUISK <https://james.ahlstrom.name/quisk>`_ with the ``hermes/quisk_conf.py`` configuration file.
+    * `ghpsdr3-alex <https://napan.ca/ghpsdr3>`_ distributed client-server system.
+    * `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.be/2015/01/openhpsdr-android-application.html>`_.
+    * `Java desktop application <https://g0orx.blogspot.co.uk/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application.
 
 .. note::
 
@@ -84,8 +84,8 @@ For example, to send the TX signal to OUT2, the corresponding line in start.sh s
 
 In the official Red Pitaya OS the start.sh script is located in:
 
-- ``/opt/redpitaya/www/apps/sdr-transceiver-hpsdr`` directory on **STEMlab 125-14**.
-- ``/opt/redpitaya/www/apps/sdr-transceiver-122-88`` directory on **SDRlab 122-16**.
+    * ``/opt/redpitaya/www/apps/sdr-transceiver-hpsdr`` directory on **STEMlab 125-14**.
+    * ``/opt/redpitaya/www/apps/sdr-transceiver-122-88`` directory on **SDRlab 122-16**.
 
 
 More information
@@ -93,8 +93,8 @@ More information
 
 For more information on hardware connections, software configuration, and other details, please refer to the Red Pitaya Notes. Please select the appropriate version of the Red Pitaya board:
 
-- `STEMlab 125-14 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-hpsdr/>`_
-- `SDRlab 122-16 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-122-88/>`_
+    * `STEMlab 125-14 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-hpsdr/>`_.
+    * `SDRlab 122-16 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-122-88/>`_.
 
 
 SDR Receiver compatible with HPSDR
@@ -102,24 +102,24 @@ SDR Receiver compatible with HPSDR
 
 This version of the Red Pitaya SDR receiver emulates:
 
-- **STEMlab 125-14**: a single `Hermes <https://openhpsdr.org/hermes.php>`_ module with eight receivers. It may be useful for projects that require eight receivers compatible with the programs that support the HPSDR/Metis communication protocol.
-- **SDRlab 122-16**: two `Hermes <https://openhpsdr.org/hermes.php>`_ modules with eight receivers. It may be useful for projects that require sixteen receivers compatible with the programs that support the HPSDR/Metis communication protocol.
+    * **STEMlab 125-14**: a single `Hermes <https://openhpsdr.org/hermes.php>`_ module with eight receivers. It may be useful for projects that require eight receivers compatible with the programs that support the HPSDR/Metis communication protocol.
+    * **SDRlab 122-16**: two `Hermes <https://openhpsdr.org/hermes.php>`_ modules with eight receivers. It may be useful for projects that require sixteen receivers compatible with the programs that support the HPSDR/Metis communication protocol.
 
 The HPSDR/Metis communication protocol is described in the following documents:
 
-- `Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`_
-- `HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`_
+    * `Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`_.
+    * `HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`_.
 
 Software
 --------
 
 The HPSDR compatible SDR receiver should work with most programs that support the HPSDR/Metis communication protocol:
 
-- `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`_ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`_.
-- `QUISK <https://james.ahlstrom.name/quisk>`_ with the ``hermes/quisk_conf.py`` configuration file.
-- `ghpsdr3-alex <https://napan.ca/ghpsdr3>`_ distributed client-server system.
-- `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.be/2015/01/openhpsdr-android-application.html>`_.
-- `Java desktop application <https://g0orx.blogspot.co.uk/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application
+    * `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`_ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`_.
+    * `QUISK <https://james.ahlstrom.name/quisk>`_ with the ``hermes/quisk_conf.py`` configuration file.
+    * `ghpsdr3-alex <https://napan.ca/ghpsdr3>`_ distributed client-server system.
+    * `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.be/2015/01/openhpsdr-android-application.html>`_.
+    * `Java desktop application <https://g0orx.blogspot.co.uk/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application.
 
 .. note::
 
@@ -139,8 +139,8 @@ More information
 
 For more information on hardware connections, software configuration, and other details, please refer to the Red Pitaya Notes. Please select the appropriate version of the Red Pitaya board:
 
-- `STEMlab 125-14 SDR receiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-receiver-hpsdr/>`_
-- `SDRlab 122-16 SDR receiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-receiver-hpsdr-122-88/>`_
+    * `STEMlab 125-14 SDR receiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-receiver-hpsdr/>`_.
+    * `SDRlab 122-16 SDR receiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-receiver-hpsdr-122-88/>`_.
 
 
 
@@ -155,17 +155,17 @@ The SDR transceiver consists of two SDR receivers and of two SDR transmitters.
 
         The implementation of the SDR receivers is quite straightforward:
 
-            - An antenna is connected to one of the high-impedance analog inputs.
-            - The on-board ADC (125 MS/s sampling frequency, 14-bit resolution) digitizes the RF signal from the antenna.
-            - The data coming from the ADC is processed by a in-phase/quadrature (I/Q) digital down-converter (DDC) running on the Red Pitaya's FPGA.
+            * An antenna is connected to one of the high-impedance analog inputs.
+            * The on-board ADC (125 MS/s sampling frequency, 14-bit resolution) digitizes the RF signal from the antenna.
+            * The data coming from the ADC is processed by a in-phase/quadrature (I/Q) digital down-converter (DDC) running on the Red Pitaya's FPGA.
 
         The SDR receiver is described in more details at this link.
 
         The SDR transmitters consist of the similar blocks but arranged in an opposite order:
 
-            - The I/Q data is processed by a digital up-converter (DUC) running on the Red Pitaya's FPGA.
-            - The on-board DAC (125 MS/s sampling frequency, 14-bit resolution) outputs RF signal.
-            - An antenna is connected to one of the analog outputs.
+            * The I/Q data is processed by a digital up-converter (DUC) running on the Red Pitaya's FPGA.
+            * The on-board DAC (125 MS/s sampling frequency, 14-bit resolution) outputs RF signal.
+            * An antenna is connected to one of the analog outputs.
 
         The tunable frequency range covers from 0 Hz to 60 MHz.
 
@@ -175,18 +175,17 @@ The SDR transceiver consists of two SDR receivers and of two SDR transmitters.
 
         The implementation of the SDR receivers is quite straightforward:
 
-            - An antenna is connected to one of the high-impedance analog inputs.
-            - The on-board ADC (122.88 MS/s sampling frequency, 16-bit resolution) digitizes the RF signal from the antenna.
-            - The data coming from the ADC is processed by a in-phase/quadrature (I/Q) digital down-converter (DDC) running on the Red Pitaya's FPGA.
+            * An antenna is connected to one of the high-impedance analog inputs.
+            * The on-board ADC (122.88 MS/s sampling frequency, 16-bit resolution) digitizes the RF signal from the antenna.
+            * The data coming from the ADC is processed by a in-phase/quadrature (I/Q) digital down-converter (DDC) running on the Red Pitaya's FPGA.
 
         The SDR transmitters consist of the similar blocks but arranged in an opposite order:
 
-            - The I/Q data is processed by a digital up-converter (DUC) running on the Red Pitaya's FPGA.
-            - The on-board DAC (122.88 MS/s sampling frequency, 14-bit resolution) outputs RF signal.
-            - An antenna is connected to one of the analog outputs.
+            * The I/Q data is processed by a digital up-converter (DUC) running on the Red Pitaya's FPGA.
+            * The on-board DAC (122.88 MS/s sampling frequency, 14-bit resolution) outputs RF signal.
+            * An antenna is connected to one of the analog outputs.
 
         The tunable frequency range covers from 0 Hz to 60 MHz.
-
         The I/Q data rate is configurable and five settings are available: 24, 48, 96, 192, 384, 768 and 1536 kSPS.
 
 
@@ -229,8 +228,8 @@ More information
 
 For more information on hardware connections, software configuration, and other details, please refer to the Red Pitaya Notes. Please select the appropriate version of the Red Pitaya board:
 
-- `STEMlab 125-14 SDR transceiver <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver/>`_
-- `SDRlab 122-16 SDR transceiver <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-122-88/>`_
+    * `STEMlab 125-14 SDR transceiver <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver/>`_.
+    * `SDRlab 122-16 SDR transceiver <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-122-88/>`_.
 
 
 Author & Source
@@ -241,7 +240,7 @@ Author & Source
     | The original developer of the SDR applications for Red Pitaya in this section is Pavel Demin.
     | Repositories used by our builds:
 
-        *   `Red Pitaya Notes <https://pavel-demin.github.io/red-pitaya-notes/>`_
+        *   `Red Pitaya Notes <https://pavel-demin.github.io/red-pitaya-notes/>`_.
 
 Pavel Demin has developed several other SDR applications that are compatible with the Red Pitaya board. These applications are available in the Pavel Demin's Alpine Linux OS image.
 For more information on these applications, please refer to the `Red Pitaya Notes <https://pavel-demin.github.io/red-pitaya-notes/>`_.

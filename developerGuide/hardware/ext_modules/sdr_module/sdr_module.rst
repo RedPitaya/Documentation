@@ -1,7 +1,7 @@
 .. _sdr_module:
 
-SDR Module (OBSOLETE)
-##########################
+SDR Module and HAMlab (obsolete)
+################################
 
 .. note::
 
@@ -13,6 +13,10 @@ The HAMlab program required to operate the SDR module is not available in the cu
 .. |red_pitaya_archive| raw:: html
 
    <a href="https://downloads.redpitaya.com/downloads/STEMlab-125-1x/old/" target="_blank">Red Pitaya archive</a>
+
+
+HAMlab documentation
+=====================
 
 .. note::
 

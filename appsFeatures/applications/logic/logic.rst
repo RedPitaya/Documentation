@@ -38,10 +38,10 @@ Provides contol over the Logic analyzer application. The blue question mark lead
 Settings
 ---------
 
-- **Default** - Resets the settings to the default values.
-- **Sys info** - Displays information on Red Pitaya board (FPS, data throughput, CPU load, memory usage).
-- **Ext. Module** - Check if the LA extension module is connected (inverses the logic levels).
-- **Stop/Run** - Stops/Starts the data acquisition/Logic analyzer. When STOP, the application ignores any trigger conditions.
+    * **Default** - Resets the settings to the default values.
+    * **Sys info** - Displays information on Red Pitaya board (FPS, data throughput, CPU load, memory usage).
+    * **Ext. Module** - Check if the LA extension module is connected (inverses the logic levels).
+    * **Stop/Run** - Stops/Starts the data acquisition/Logic analyzer. When STOP, the application ignores any trigger conditions.
 
 Export
 ------
@@ -64,10 +64,10 @@ The Logic Analyzer application can capture up to 8 different digital signals. Th
 
 The digital settings are split into four sections:
 
-- **Lines** - Enable or disable the individual digital channels.
-- **Bus** - Assign digital channels to a particular bus and configure the bus decoding settings.
-- **Data** - Display the decoded data of one or more busses in a table format.
-- **Acq** - Set the sample rate and pre-sample data buffer.
+    * **Lines** - Enable or disable the individual digital channels.
+    * **Bus** - Assign digital channels to a particular bus and configure the bus decoding settings.
+    * **Data** - Display the decoded data of one or more busses in a table format.
+    * **Acq** - Set the sample rate and pre-sample data buffer.
 
 As long as no bus systems have been configured, the channels operate as purely digital inputs and correspondingly show progress. The **ACQ** tab opens the selection field for the sample rate settings. 
 
@@ -101,47 +101,53 @@ Select the desired decoding protocol. Up to different four buses can be defined.
 
 The following settings can be adjusted:
 
-- **Serial line** - Select the digital channel that represents the TX or RX signal.
-- **Baud rate** - Set the baud rate of the UART signal.
-- **Data bits** - Set the number of data bits in the UART signal (5, 6, 7, 8, 9).
-- **Stop bits** - Set the number of stop bits in the UART signal (0, 0.5, 1, 1.5, 2).
-- **Parity** - Set the parity of the UART signal (None, Even, Odd, Mark, Space).
-- **Bit order** - Set the bit order of the UART signal (LSB first, MSB first).
-- **Polarity** - Set the polarity of the UART signal (Normal, Inverted).
+    * **Serial line** - Select the digital channel that represents the TX or RX signal.
+    * **Baud rate** - Set the baud rate of the UART signal.
+    * **Data bits** - Set the number of data bits in the UART signal (5, 6, 7, 8, 9).
+    * **Stop bits** - Set the number of stop bits in the UART signal (0, 0.5, 1, 1.5, 2).
+    * **Parity** - Set the parity of the UART signal (None, Even, Odd, Mark, Space).
+    * **Bit order** - Set the bit order of the UART signal (LSB first, MSB first).
+    * **Polarity** - Set the polarity of the UART signal (Normal, Inverted).
 
 **SPI**
 
 .. figure:: img/06_LA_digital_bus_spi.png
     :width: 600
 
-- **Input signals** - Select the digital channels that represent the MOSI, MISO, SCK, and CS signals.
-- **Bit order** - Set the bit order of the SPI signal (LSB first, MSB first).
-- **Data bits** - Set the number of data bits in the SPI signal (7, 8, 9).
-- **Clock polarity** - Set the clock polarity of the SPI signal (Low, High).
-- **Clock phase** - Set the clock phase of the SPI signal (Leading, Trailing).
-- **Enable** - Set the enable signal of the SPI signal (Low, High).
-- **Polarity** - Set the polarity of the SPI signals (Normal, Inverted).
+The following settings can be adjusted:
+
+    * **Input signals** - Select the digital channels that represent the MOSI, MISO, SCK, and CS signals.
+    * **Bit order** - Set the bit order of the SPI signal (LSB first, MSB first).
+    * **Data bits** - Set the number of data bits in the SPI signal (7, 8, 9).
+    * **Clock polarity** - Set the clock polarity of the SPI signal (Low, High).
+    * **Clock phase** - Set the clock phase of the SPI signal (Leading, Trailing).
+    * **Enable** - Set the enable signal of the SPI signal (Low, High).
+    * **Polarity** - Set the polarity of the SPI signals (Normal, Inverted).
 
 **I2C**
 
 .. figure:: img/07_LA_digital_bus_i2c.png
     :width: 600
 
-- **Input signals** - Select the digital channels that represent the SDA and SCL signals.
-- **Address display** - Set the address display of the I2C signal (shifted, unshifted).
-- **Polarity** - Set the polarity of the I2C signals (Normal, Inverted).
+The following settings can be adjusted:
+
+    * **Input signals** - Select the digital channels that represent the SDA and SCL signals.
+    * **Address display** - Set the address display of the I2C signal (shifted, unshifted).
+    * **Polarity** - Set the polarity of the I2C signals (Normal, Inverted).
 
 **CAN**
 
 .. figure:: img/08_LA_digital_bus_can.png
     :width: 600
 
-- **Input signals** - Select the digital channels that represent the CAN_RX and CAN_TX signals.
-- **Nominal bit rate** - Set the nominal bit rate of the CAN signal.
-- **Fast bit rate** - Set the fast bit rate of the CAN signal.
-- **Sample point** - Set the sample point of the CAN signal.
-- **Polarity** - Set the polarity of the CAN signals (Normal, Inverted).
-- **Max detected frames** - Set the maximum number of detected frames.
+The following settings can be adjusted:
+
+    * **Input signals** - Select the digital channels that represent the CAN_RX and CAN_TX signals.
+    * **Nominal bit rate** - Set the nominal bit rate of the CAN signal.
+    * **Fast bit rate** - Set the fast bit rate of the CAN signal.
+    * **Sample point** - Set the sample point of the CAN signal.
+    * **Polarity** - Set the polarity of the CAN signals (Normal, Inverted).
+    * **Max detected frames** - Set the maximum number of detected frames.
 
 
 Data
@@ -164,12 +170,12 @@ The trigger settings are accessible by clicking the gear icon next to the "TRIG"
 
 The trigger settings allow you to define the conditions under which data acquisition starts. Each digital channel can be set as a trigger source with specific criteria. The following trigger types are available:
 
-- **X - Ignore** - No event.
-- **0 - Low** - Low level.
-- **1 - High** - High level.
-- **R - Rising** - Rising edge.
-- **F - Falling** - Falling edge.
-- **E - Either** - Edge change (rising or falling edge).
+    * **X - Ignore** - No event.
+    * **0 - Low** - Low level.
+    * **1 - High** - High level.
+    * **R - Rising** - Rising edge.
+    * **F - Falling** - Falling edge.
+    * **E - Either** - Edge change (rising or falling edge).
 
 The trigger condition is met when all digital channel trigger sources are in the desired state (only "AND" mode is available currently).
 

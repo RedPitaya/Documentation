@@ -18,8 +18,8 @@ Setup
 
 The application requires the following OS version:
 
-- **IN DEV**
-- Nightly Build 426 (or higher) together with Red Pitaya Linux 2.06 (or higher).
+    * **IN DEV**.
+    * Nightly Build 426 (or higher) together with Red Pitaya Linux 2.06 (or higher).
 
 Please make sure that Red Pitaya inputs and outputs are properly terminated (matched impedance). Failure to do so may lead to undefined behaviour of the *Record and Playback* application due to the `ringing <https://incompliancemag.com/circuit-theory-model-of-ringing-on-a-transmission-line/>`_ on the `transmission line <https://en.wikipedia.org/wiki/Transmission_line>`.
 Red Pitaya fast analog inputs have input impedance of 1 MΩ. The fast analog outputs have output impedace of 50 Ω.
@@ -84,16 +84,16 @@ The settings are split into acquisition (ADC) and generation (DAC):
 
 **Acquisition (ADC)**
 
-- Trigger level (in Volts)
-- Trigger source (CH1_PE, CH1_NE, CH2_PE, CH2_NE)
-- Record buffer lenght (uses Deep Memory Acquisition) in microseconds (between 1 and 30 µs)
+    * *Trigger level* (in Volts).
+    * *Trigger source* (CH1_PE, CH1_NE, CH2_PE, CH2_NE).
+    * *Record buffer lenght* (uses Deep Memory Acquisition) in microseconds (between 1 and 30 µs).
 
 **Generation (DAC)**
 
-- Signal generation source channel (IN1 or IN2) - which input channel should be generated/repeated on OUT1
-- Number of Cycles (NCYC) - Number of Cycles/Periods in one burst/repetition (without any delay between them)
-- Number of Repetitions (NOR) - Number of repeated bursts (with delay between them). Each burst includes a number of repetitions without delay.
-- Delay between repetitions (PERIOD) - Delay between repetitions in microseconds (µs). The minimum value must be no less than ("Record buffer lenght" * NCYC + 1)µS
+    * *Signal generation source channel (IN1 or IN2)* - which input channel should be generated/repeated on OUT1.
+    * *Number of Cycles (NCYC)* - Number of Cycles/Periods in one burst/repetition (without any delay between them).
+    * *Number of Repetitions (NOR)* - Number of repeated bursts (with delay between them). Each burst includes a number of repetitions without delay.
+    * *Delay between repetitions (PERIOD)* - Delay between repetitions in microseconds (µs). The minimum value must be no less than ("Record buffer lenght" * NCYC + 1) µS.
 
 Example of "config.ini":
 
@@ -127,7 +127,7 @@ Disable the Record and Play
 
 Once the *Record and Play* application is set up, it will start each time Red Pitaya boots. Here is how you can disable the process.
 
-- **One time disable** - to stop the application until the next boot use the ``top`` command inside Red Pitaya Linux and ``kill`` the *main.py* process. By entering the PID of the process, the Linux will kill it.
+1. **One time disable** - to stop the application until the next boot use the ``top`` command inside Red Pitaya Linux and ``kill`` the *main.py* process. By entering the PID of the process, the Linux will kill it.
   
     .. figure:: img/Rec_and_play_top.png
         :alt: Top command and kill PID
@@ -144,7 +144,7 @@ Once the *Record and Play* application is set up, it will start each time Red Pi
         :align: center
         :width: 800px
 
-- **Full disable** - First kill the *main.py* process as described in the point above. Then head to the "/opt/redpitaya/sbin" directory and find the **startup.sh** script (you may have to enter *rw* mode). Either delete or comment the following lines of code:
+2. **Full disable** - First kill the *main.py* process as described in the point above. Then head to the "/opt/redpitaya/sbin" directory and find the **startup.sh** script (you may have to enter *rw* mode). Either delete or comment the following lines of code.
   
     .. code-block:: bash
 

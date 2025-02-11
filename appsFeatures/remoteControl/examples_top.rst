@@ -6,11 +6,11 @@ Examples
 
 In the list below, you will find examples of how to control Red Pitaya remotely through SCPI commands, as well as with onboard C and Python API commands. JupyterLab also falls into the second category. These examples cover all basic Red Pitaya functionalities, such as:
 
-- signal generation
-- signal acquisition
-- deep memory acquisition
-- digital I/O control
-- communication protocols
+   * Signal generation
+   * Signal acquisition
+   * Deep memory acquisition
+   * Digital I/O control
+   * Communication protocols
 
 You can edit and change them according to your needs and develop customized programs and routines.
 
@@ -32,5 +32,5 @@ You can edit and change them according to your needs and develop customized prog
 Web application examples
 ------------------------
 
-- :ref:`Web application prerequisites <firstWebApp>`
-- :ref:`Web application examples <webAppExamples>`
+   * :ref:`Web application prerequisites <firstWebApp>`
+   * :ref:`Web application examples <webAppExamples>`
