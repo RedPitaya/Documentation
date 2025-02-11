@@ -71,7 +71,7 @@ SCPI Code Examples
 Code - MATLAB®
 ---------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. include:: ../matlab.inc
 
 .. code-block:: matlab
 
@@ -79,7 +79,7 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     clc
     clear all
     close all
-    IP = '169.254.162.154';           % IP of your Red Pitaya
+    IP = 'rp-f0a235.local';           % IP of your Red Pitaya
     port = 5000;
     RP = tcpclient(IP, port);
     
@@ -92,7 +92,6 @@ The code is written in MATLAB. In the code, we use SCPI commands and TCP client 
     lcr_ampl = 0.5;              % Generator amplitude    (MAX 0.5 V (amplitude + offset)) - (ABSOLUTE MAX 0.75 V (amplitude + offset))
     lcr_offs = 0;                % Generator offset
     lcr_circuit = "series";      % "series" or "parallel" - measurement mode (affects L, C, and R parameters)
-    
     
     %% Open connection with your Red Pitaya
     RP.ByteOrder = "big-endian";
@@ -223,6 +222,8 @@ Code - Python
     rp.tx_txt("LCR:STOP")
     
     rp.close()
+
+.. include:: ../python_scpi_note.inc
 
 
 API Code Examples

@@ -7,6 +7,15 @@ Known software issues
 In this section is a list of known software issues with the Red Pitaya platforms on 2.00 OS. These issues will be fixed with the next major software updates.
 
 
+Streaming application EOL error
+================================
+
+The :ref:`Streaming desktop application <stream_desktop_app>` and :ref:`command line client <stream_command_client>` are not working on beta OS version 2.05-37. Red Pitaya unit reports an EOL error within two minuts of starting the desktop application. This also affects the command line client, where specifying the stream time (-t) parameter will cause the same error.
+
+This issue is fixed in the latest :ref:`Nightly Build OS versions <nightly_builds>`. We will fix this issue for the 2.05-37 stable release.
+
+Please use the :ref:`2.04-35 OS version <prepareSD>` for the streaming application until the issue is resolved.
+
 
 Direct connection on MAC
 ===========================
@@ -21,27 +30,6 @@ If a MAC computer will not connect to the Red Pitaya, it is possible that **Cont
 
 |
 
-STEMlab 125-10 Out-of-Memory
-=============================
-
-STEMlab 125-10 has 256 MB (2 Gb) of RAM, which is half the resources of STEMlab 125-14 (512 MB (4 Gb)). With the revision of the applications in the 2.00 OS, the applications require more RAM resources than before, which overloads the resources of STEMlab 125-10 (causes the Logic Analyzer application to crash on startup with an out-of-memory error from NGINX).
-
-.. note::
-
-    Please note that STEMlab 125-10 will soon reach end-of-life for software support (exact date to be determined). All users will be notified in advance. Before this happens, we will provide a final OS version where all applications will work.
-
-Currently, the fastest solution is to add a SWAP space to the Red Pitaya's SD card (about 1GB should be sufficient).
-Here are instructions on how to `add a SWAP file to Ubuntu OS <https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04>`_
-
-It may be necessary to increase the size of the Red Pitaya OS partition on the SD card:
-
-- Create a copy of the Red Pitaya OS on the SD card (e.g. using the `dd` command).
-- Resize the OS partition on the SD card using a tool like `parted`.
-- Add SWAP space
-
-For more information on SWAP, see the link above.
-
-|
 
 Wi-Fi Low Signal Bug
 ======================
@@ -63,3 +51,29 @@ Local network visibility
 
 Red Pitaya does not appear in the ARP table at boot time (when using the "arp -a" command). It is still pingable and appears in the ARP table when a connection is made to the rp-xxxxxx.local address.
 
+
+STEMlab 125-10 Out-of-Memory
+-----------------------------
+
+**Fixed on Nightly Build versions 447 or higher together with Linux 2.06**
+
+STEMlab 125-10 has 256 MB (2 Gb) of RAM, which is half the resources of STEMlab 125-14 (512 MB (4 Gb)). With the revision of the applications in the 2.00 OS, the applications require more RAM resources than before, which overloads the resources of STEMlab 125-10 (causes the Logic Analyzer application to crash on startup with an out-of-memory error from NGINX).
+
+.. note::
+
+    Please note that STEMlab 125-10 will soon reach end-of-life for software support (exact date to be determined). All users will be notified in advance. Before this happens, we will provide a final OS version where all applications will work.
+
+**For previous OS versions, please follow the instructions below:**
+
+Currently, the fastest solution is to add a SWAP space to the Red Pitaya's SD card (about 1 GB should be sufficient).
+Here are instructions on how to `add a SWAP file to Ubuntu OS <https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04>`_
+
+It may be necessary to increase the size of the Red Pitaya OS partition on the SD card:
+
+- Create a copy of the Red Pitaya OS on the SD card (e.g. using the `dd` command).
+- Resize the OS partition on the SD card using a tool like `parted`.
+- Add SWAP space
+
+For more information on SWAP, see the link above.
+
+|

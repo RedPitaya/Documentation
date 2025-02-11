@@ -28,51 +28,51 @@ SCPI Code Examples
 Code - MATLAB®
 ---------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
-
+.. include:: ../matlab.inc
+    
 .. code-block:: matlab
 
     %% Variables
     waveform = 'sine';
     ampl = 1;
-    
+
     % Sweep settings
-    sweep_start_freq = 1000;
+    sweep_start_freq = 100;
     sweep_stop_freq = 100000;
     sweep_time_us = 5000000;    % in microseconds
     sweep_mode = 'log';         % linear / log
     sweep_dir = 'up_down';       % normal / up_down
-    
-    
+
     %% Define Red Pitaya as TCP client object
-    
+
     IP = 'rp-f0a235.local';           % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
-    
+
     %% Open connection with your Red Pitaya
-    RP.ByteOrder = "big-endian";
-    configureTerminator(RP, "CR/LF");
-    
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP, 'CR/LF');
+
     % Reset Generation
     writeline(RP,'GEN:RST');
-    
+
     writeline(RP, append('SOUR1:FUNC ', upper(waveform)));
-    
+
     % Configure sweep settings
     writeline(RP, append('SOUR1:SWeep:FREQ:START ', num2str(sweep_start_freq)));
     writeline(RP, append('SOUR1:SWeep:FREQ:STOP ', num2str(sweep_stop_freq)));
     writeline(RP, append('SOUR1:SWeep:TIME ', num2str(sweep_time_us)));
-    
+
     writeline(RP, append('SOUR1:SWeep:MODE ', upper(sweep_mode)));
     writeline(RP, append('SOUR1:SWeep:DIR ', upper(sweep_dir)));
-    
+
     writeline(RP, 'SOUR1:SWeep:STATE ON');
     writeline(RP, 'OUTPUT1:STATE ON');
-    writeline(RP, 'SOUR1:TRIG:INT');
-    
+    writeline(RP, 'SOUR1:TRig:INT');
+
     %% Close connection with Red Pitaya
     clear RP;
+
 
 
 
@@ -159,18 +159,7 @@ Code - Python
     rp.close()
 
 
-.. note::
-
-    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
-    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
-
-    For further information on functions please consult the |redpitaya_scpi| code.
-
-
-.. |redpitaya_scpi| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
-
+.. include:: ../python_scpi_note.inc
 
 
 API Code Examples

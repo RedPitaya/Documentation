@@ -342,27 +342,24 @@ The Bode Analyzer can be used from the console.
 
 .. code-block:: console
 
-   redpitaya> bode
-   Too few arguments!
+   Bode analyzer version 2.06-447, compiled at Wed Jan 15 06:40:40 2025
 
-   Bode analyzer version 1.04-133-feaf63b43, compiled at Fri Jan 22 04:25:24 2021
+    Usage:  bode [channel] [amplitude] [dc bias] [averaging] [count/steps] [start freq] [stop freq] [scale type] [probe]
+    or
+            bode -calib
 
-   Usage:	bode [channel] [amplitude] [dc bias] [averaging] [count/steps] [start freq] [stop freq] [scale type]
-   or
-      bode -calib
-
-      channel            Channel to generate a signal on [1 / 2].
-      amplitude          Signal amplitude in V [0 - 1, which means max 2Vpp].
-      dc bias            DC bias/offset/component in V [0 - 1].
-                        Max sum of amplitude and DC bias is (0-1]V.
-      averaging          Number of samples per measurement [>1].
-      count/steps        Number of measurements [>2].
-      start freq         Lower frequency limit in Hz [3 - 62.5e6].
-      stop freq          Upper frequency limit in Hz [3 - 62.5e6].
-      scale type         0 - linear, 1 - logarithmic.
-      -calib             Starts calibration mode. The calibration values will be saved in:/tmp/ba_calib.data
-   Output:	frequency [Hz], phase [deg], amplitude [dB]
-
+            channel            Channel to generate signal on [1 / 2].
+            amplitude          Signal amplitude in V [0 - 1, which means max 2 Vpp].
+            dc bias            DC bias/offset/component in V [0 - 1].
+                            Max sum of amplitude and DC bias is (0-1] V.
+            averaging          Number of samples per one measurement [>1].
+            count/steps        Number of measurements [>2].
+            start freq         Lower frequency limit in Hz [3 - 62.5e6].
+            stop freq          Upper frequency limit in Hz [3 - 62.5e6].
+            scale type         0 - linear, 1 - logarithmic.
+            probe              Probe value [1-1000].
+            -calib             Starts calibration mode. The calibration values will be saved in:/tmp/ba_calib.data
+    Output: frequency [Hz], phase [deg], amplitude [dB]
 
 
 To run the bode, you need to do 2 steps:
@@ -547,9 +544,6 @@ The configuration for streaming is automatically created and saved in the file: 
 .. note::
 
     Streaming app sources are available here: |streaming app|.
-
-.. note::
-
     For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
 
 .. |streaming app| raw:: html

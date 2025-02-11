@@ -158,7 +158,7 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
         For optimal results use 50 Ω termination on the OUT1.
 
 #. Click on the **Calibrate** button in the bottom-right of the calibration screen. The **Reset Calibration** button deletes any stored Bode calibration data. 
-#. The calibration will go through the full frequency range of Red Pitaya (1 Hz to 62.5 MHz) in logarithmic mode and 500 points. Wait for the calibration to finish.
+#. The calibration will perform a 500-point measurement between 100 Hz and 62.5 MHz in logarithmic mode. Wait for the calibration to finish.
 #. Once the calibration is complete a **Green** light appears next to the **Calibration** status in the *Measurement control pannel*.
 
     .. figure:: img/Bode_analyzer_calibrated.png

@@ -1,8 +1,6 @@
 Generate two synchronous signals
 ################################
 
-.. http://blog.redpitaya.com/examples-new/generate-signal-on-fast-analog-outputs-with-external-triggering/
-
 Description
 ============
 
@@ -29,41 +27,40 @@ SCPI Code Examples
 Code - MATLAB®
 -----------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
+.. include:: ../matlab.inc
 
 .. code-block:: matlab
 
-    %% Define Red Pitaya as a TCP client object
+    %% Define Red Pitaya as TCP/IP object
     clc
-    clear all
     close all
 
-    IP = '192.168.178.56';            % Input IP of your Red Pitaya...
+    IP = 'rp-f0a235.local';            % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
-
     %% Open connection with your Red Pitaya
- 
-    RP.ByteOrder = "big-endian";
-    configureTerminator(RP, "CR/LF");
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP, 'CR/LF');
 
-    % Reset Generation
+    waveform = 'sine';                  % {sine, square, triangle, sawu, sawd, pwm}
+    freq = 1000;
+    ampl = 1;
+    waveform2 = 'triangle';                  % {sine, square, triangle, sawu, sawd, pwm}
+    freq2 = 2000;
+    ampl2 = 0.5;
+
     writeline(RP,'GEN:RST');
+    writeline(RP, append('SOUR1:FUNC ', waveform));
+    writeline(RP, append('SOUR1:FREQ:FIX ', num2str(freq)));
+    writeline(RP, append('SOUR1:VOLT ', num2str(ampl)));
 
-    %% GENERATION
-    writeline(RP,'SOUR1:FUNC SINE');            % Set function of output signal
-                                                    % {sine, square, triangle, sawu, sawd, pwm}
-    writeline(RP,'SOUR1:FREQ:FIX 2000');        % Set frequency of output signal
-    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
+    writeline(RP, append('SOUR2:FUNC ', waveform2));
+    writeline(RP, append('SOUR2:FREQ:FIX ', num2str(freq2)));
+    writeline(RP, append('SOUR2:VOLT ', num2str(ampl2)));
 
-    writeline(RP,'SOUR2:FUNC SINE');            % Set function of output signal
-                                                    % {sine, square, triangle, sawu, sawd, pwm}
-    writeline(RP,'SOUR2:FREQ:FIX 2000');        % Set frequency of output signal
-    writeline(RP,'SOUR2:VOLT 1');               % Set amplitude of output signal
-
-    writeline(RP,'OUTPUT:STATE ON');            % Start both channels simultaneously
-    writeline(RP,'SOUR:TRig:INT');              % Generate triggers
+    writeline(RP,'OUTPUT:STATE ON');       % Start two channels simultaneously
+    writeline(RP,'SOUR:TRig:INT');
 
     %% Close connection with Red Pitaya
     clear RP;
@@ -81,25 +78,25 @@ Code - Python
     import sys
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi("192.168.1.17")
+    rp = scpi.scpi("192.168.1.17")
 
     wave_form = 'sine'
     freq = 2000
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
-    rp_s.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR2:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR2:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR2:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR2:VOLT ' + str(ampl))
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 **Using functions:**
 
@@ -110,36 +107,25 @@ Code - Python
     import sys
     import redpitaya_scpi as scpi
 
-    rp_s = scpi.scpi("192.168.1.17")
+    rp = scpi.scpi("192.168.1.17")
 
     wave_form = 'sine'
     freq = 2000
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
     
     # Function for configuring a Source 
-    rp_s.sour_set(1, wave_form, ampl, freq)
-    rp_s.sour_set(2, wave_form, ampl, freq)
+    rp.sour_set(1, wave_form, ampl, freq)
+    rp.sour_set(2, wave_form, ampl, freq)
 
-    rp_s.tx_txt('OUTPUT:STATE ON')
-    rp_s.tx_txt('SOUR:TRig:INT')
+    rp.tx_txt('OUTPUT:STATE ON')
+    rp.tx_txt('SOUR:TRig:INT')
     
-    rp_s.close()
+    rp.close()
 
 
-.. note::
-
-    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
-    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
-
-    For further information on functions please consult the |redpitaya_scpi| code.
-
-
-.. |redpitaya_scpi| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
-
+.. include:: ../python_scpi_note.inc
 
 
 API Code Examples

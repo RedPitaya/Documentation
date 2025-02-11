@@ -29,20 +29,18 @@ With the DC calibration, you can fine-tune Red Pitaya's ADCs and DACs.
 
 Required materials:
 
-*   two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
-*   two SMA T adapters
-*   two 50 Ω terminators
-*   two SMA Short terminators
-*   Stable volage reference source (the more stable the voltage source, the better the calibration)
-*   Accurate Multimeter for measuring the reference voltage source and DAC outputs
+    * Two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables).
+    * Two SMA T adapters.
+    * Two 50 Ω terminators.
+    * Two SMA Short terminators.
+    * Stable volage reference source (the more stable the voltage source, the better the calibration).
+    * Accurate Multimeter for measuring the reference voltage source and DAC outputs.
 
 
 Auto DC calibration
 ====================
 
-Auto DC calibration will guide you step-by-step through the calibration process and is the option we recommend for beginners.
-
-Step-by-step video guide:
+Auto DC calibration will guide you step-by-step through the calibration process and is the option we recommend for beginners. Step-by-step video guide:
 
 .. raw:: html
 
@@ -68,13 +66,13 @@ A **50 Ω load** should be connected to the outputs (DACs) during calibration.
     :align: center
     :width: 1200
 
--   **RESET**:
+1. **RESET**:
 
-    -   **DEFAULT** - reset all offset values to 0 and gain values to 1
-    -   **FACTORY** - reset the board to the factory calibration parameters
+    * **DEFAULT** - reset all offset values to 0 and gain values to 1.
+    * **FACTORY** - reset the board to the factory calibration parameters.
 
--   **APPLY** the calibration - save the DC offset in the system settings
--   **CLOSE** the calibration
+#. **APPLY** the calibration - save the DC offset in the system settings.
+#. **CLOSE** the calibration.
 
 When closing the application without saving the values, the following prompt will appear:
 
@@ -125,15 +123,19 @@ Frequency calibration
 
 Required materials:
 
-*   two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
-*   one SMA T adapter
-*   External reference function generator capable of generating at least +-10 V (Optional)
+    * Two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables).
+    * One SMA T adapter.
+    * External reference function generator capable of generating at least +-10 V (Optional).
 
 
 Auto Frequency calibration
 ===========================
 
 Auto Frequency calibration will guide you step-by-step through the calibration process and is the option we recommend for beginners.
+
+.. note::
+
+    There is a bug with the frequency calibration on OS 2.05-37. Please use the manual frequency calibration instead.
 
 **Step-by-step guide:**
 
@@ -145,11 +147,11 @@ Once the auto frequency calibration is started, you will be presented with the f
 
 The header columns represent the following:
 
-*   **MODE** - correlates to how the jumpers should be set.
-*   **Channel** - indicates which channel the subsequential column settings apply to.
-*   **Before and After** - values before and after the calibration.
-*   **AA, BB, PP, and KK** - coefficients for the filter inside the FPGA that affects the inputs. For more details, please refer to the "Manual Frequency calibration" section.
-*   **STATE** - displays the progression of the calibration process.
+    * **MODE** - correlates to how the jumpers should be set.
+    * **Channel** - indicates which channel the subsequential column settings apply to.
+    * **Before and After** - values before and after the calibration.
+    * **AA, BB, PP, and KK** - coefficients for the filter inside the FPGA that affects the inputs. For more details, please refer to the "Manual Frequency calibration" section.
+    * **STATE** - displays the progression of the calibration process.
 
 Please pay attention to the **STATE** column, as clickable buttons which progress the process will appear. 
 
@@ -159,6 +161,8 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
     .. image:: img/Calib_freq_auto_LV.png
         :align: center
         :width: 1200
+
+    |
 
     * Clicking on the "START" button will provide further instructions and a choice between an internal and external reference generator:
 
@@ -174,6 +178,8 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
     .. image:: img/Calib_freq_auto_LV_ext.png
         :align: center
         :width: 800
+
+    |
 
     * Please configure the external reference generator to produce a 1 kHz square signal and input the "reference voltage" (one-way amplitude) of the signal.
     * Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.
@@ -192,6 +198,8 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
     .. image:: img/Calib_freq_auto_HV.png
         :align: center
         :width: 1200
+    
+    |
 
     * Change the jumpers to the HV position and choose the generator source.
 
@@ -202,6 +210,8 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
     .. image:: img/Calib_freq_auto_HV_ext.png
         :align: center
         :width: 800
+    
+    |
 
     * The external reference generator amplitude should be changed by at least a factor of 10 to a maximum of 20 Volts.
 
@@ -210,6 +220,8 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
     .. image:: img/Calib_freq_auto_HV_load.png
         :align: center
         :width: 1200
+
+    |
 
     * Please wait until the HV calibration is finished.
 
@@ -238,13 +250,15 @@ Apart from calibration, this option will also allow you to identify any parasiti
         :align: center
         :width: 1200
 
-*   **SETTINGS MENU** - *APPLY* the calibration parameters, restore the *DEFAULT* parameters, or *CLOSE* the manual frequency calibration.
-*   **CHANNEL & JUMPER SETTINGS** - Choose a channel and voltage range (LV or HV depending on the jumper settings) to calibrate.
-*   **CALIBRATION PARAMETERS** - Choose between *DEC* and *HEX* values, click on *AUTO* to perform an automatic frequency calibration, and input the FPGA filter coefficients.
-*   **GENERATOR SETTINGS** - Turn the internal generator (OUT1) *ON* and *OFF*. The frequency, one-way amplitude, and offset cannot be changed.
-*   **DECIMATION & HYSTERESIS** - Change the decimation and hysteresis.
-*   **EDGE ZOOM** - Zoom in on the square waveform edge for better calibration.
-*   **CURSORS** - Can be moved to observe the positive or negative edge, and the white area in-between represents the zoom-in area.
+|
+
+    * **SETTINGS MENU** - *APPLY* the calibration parameters, restore the *DEFAULT* parameters, or *CLOSE* the manual frequency calibration.
+    * **CHANNEL & JUMPER SETTINGS** - Choose a channel and voltage range (LV or HV depending on the jumper settings) to calibrate.
+    * **CALIBRATION PARAMETERS** - Choose between *DEC* and *HEX* values, click on *AUTO* to perform an automatic frequency calibration, and input the FPGA filter coefficients.
+    * **GENERATOR SETTINGS** - Turn the internal generator (OUT1) *ON* and *OFF*. The frequency, one-way amplitude, and offset cannot be changed.
+    * **DECIMATION & HYSTERESIS** - Change the decimation and hysteresis.
+    * **EDGE ZOOM** - Zoom in on the square waveform edge for better calibration.
+    * **CURSORS** - Can be moved to observe the positive or negative edge, and the white area in-between represents the zoom-in area.
 
 
 Here is a MATLAB code to simulate the filter inside the FPGA:
@@ -292,7 +306,3 @@ Here is a MATLAB code to simulate the filter inside the FPGA:
     title(strcat('Frequency response for AA=',aa_hex,' BB=',bb_hex,' PP=',pp_hex,' KK=',kk_hex))
     xlabel('frequency (Hz)')
     ylabel('gain (dB)')
-
-
-    
-

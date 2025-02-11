@@ -1,8 +1,6 @@
 Generate a signal on external trigger
 #####################################
 
-.. http://blog.redpitaya.com/examples-new/generate-signal-on-fast-analog-outputs-with-external-triggering/
-
 Description
 =============
 
@@ -29,44 +27,56 @@ SCPI Code Examples
 Code - MATLAB®
 -----------------
 
-The code is written in MATLAB. In the code, we use SCPI commands and TCP client communication. Copy the code from below into the MATLAB editor, save the project, and hit the "Run" button.
-
+.. include:: ../matlab.inc
+    
 .. code-block:: matlab
 
-    %% Define Red Pitaya as a TCP client object
+    %% Define Red Pitaya as TCP/IP object
     clc
-    clear all
     close all
-
-    IP = '192.168.178.56';          % Input IP of your Red Pitaya...
+    IP = 'rp-f0a235.local';            % Input IP of your Red Pitaya...
     port = 5000;
     RP = tcpclient(IP, port);
 
     %% Open connection with your Red Pitaya
-    RP.ByteOrder = "big-endian";
-    configureTerminator(RP,"CR/LF");
+    RP.ByteOrder = 'big-endian';
+    configureTerminator(RP,'CR/LF');
 
     flush(RP);                      % clear input & output buffers
     % flush(RP, 'input')
     % flush(RP, 'output')
 
+    %% Variables
+    waveform = 'sine';                  % {sine, square, triangle, sawu, sawd, pwm}
+    freq = 1000;
+    ampl = 1;
+
+    ncyc = 3;
+    nor = 4;
+    period = 5000;
+
+    debounce_dly = 500;                 % External trigger debounce delay
 
     % Reset Generation
     writeline(RP, 'GEN:RST')
 
-    %% GENERATION
-    writeline(RP,'SOUR1:FUNC SINE');            % Set function of output signal {sine, square, triangle, sawu, sawd, pwm}
-    writeline(RP,'SOUR1:FREQ:FIX 200');         % Set frequency of output signal
-    writeline(RP,'SOUR1:VOLT 1');               % Set amplitude of output signal
+    %% Generate a signal
+    writeline(RP, append('SOUR1:FUNC ', waveform));
+    writeline(RP, append('SOUR1:FREQ:FIX ', num2str(freq)));
+    writeline(RP, append('SOUR1:VOLT ', num2str(ampl)));
 
-    writeline(RP,'SOUR1:BURS:STAT BURST');      % Set burst mode to CONTINUOUS for sine wave generation on External trigger
-    writeline(RP,'SOUR1:BURS:NCYC 1');          % Set 1 pulses of sine wave
+    writeline(RP,'SOUR1:BURS:STAT BURST');                          % Set burst mode to ON (Red Pitaya will 
+                                                                    % generate R number of N periods of signal and then stop.
+                                                                    % Time between bursts is P.)
+    writeline(RP, append('SOUR1:BURS:NCYC ', num2str(ncyc)));       % N (waveform) periods in one burst
+    writeline(RP, append('SOUR1:BURS:NOR ', num2str(nor)));         % Number bursts R (set to 65536 for INF pulses)
+    writeline(RP, append('SOUR1:BURS:INT:PER ', num2str(period)));  % Time (P) between start of one and start of second burst in µs
 
     % For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    writeline(RP,'SOUR:TRig:EXT:DEBouncerUs 500');    % OS 2.00 and above
-    writeline(RP,'SOUR1:TRig:SOUR EXT_PE');     % Set generator trigger to external
+    writeline(RP,append('SOUR:TRig:EXT:DEBouncerUs ', num2str(debounce_dly)));
+    writeline(RP,'SOUR1:TRig:SOUR EXT_PE');                         % Set generator trigger to external
 
-    writeline(RP,'OUTPUT1:STATE ON');           % Set output to ON
+    writeline(RP,'OUTPUT1:STATE ON');                               % Set output to ON
 
     % For generating signal pulses, your trigger signal frequency must be less than
     % frequency of generating signal pulses. If your trigger signal frequency
@@ -89,28 +99,28 @@ Code - Python
     import redpitaya_scpi as scpi
     
     IP = '192.168.178.56'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 200
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
-    rp_s.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
-    rp_s.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
-    rp_s.tx_txt('SOUR1:VOLT ' + str(ampl))
+    rp.tx_txt('SOUR1:FUNC ' + str(wave_form).upper())
+    rp.tx_txt('SOUR1:FREQ:FIX ' + str(freq))
+    rp.tx_txt('SOUR1:VOLT ' + str(ampl))
     
-    rp_s.tx_txt('SOUR1:BURS:STAT BURST')        # Set burst mode to CONTINUOUS/skip this section for sine wave generation on External trigger
-    rp_s.tx_txt('SOUR1:BURS:NCYC 1')
+    rp.tx_txt('SOUR1:BURS:STAT BURST')        # Set burst mode to CONTINUOUS/skip this section for sine wave generation on External trigger
+    rp.tx_txt('SOUR1:BURS:NCYC 1')
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
-    rp_s.tx_txt('SOUR1:TRig:SOUR EXT_PE')
+    rp.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
+    rp.tx_txt('SOUR1:TRig:SOUR EXT_PE')
 
-    rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp.tx_txt('OUTPUT1:STATE ON')
     
-    rp_s.close()
+    rp.close()
 
 **Using functions:**
 
@@ -122,37 +132,26 @@ Code - Python
     import redpitaya_scpi as scpi
 
     IP = '192.168.178.56'
-    rp_s = scpi.scpi(IP)
+    rp = scpi.scpi(IP)
 
     wave_form = 'sine'
     freq = 200
     ampl = 1
 
-    rp_s.tx_txt('GEN:RST')
+    rp.tx_txt('GEN:RST')
 
     # Function for configuring a Source
-    rp_s.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=1, trig="EXT_PE")
+    rp.sour_set(1, wave_form, ampl, freq, burst=True, ncyc=1, trig="EXT_PE")
 
     # For short triggering signals set the length of internal debounce filter in us (minimum of 1 us)
-    rp_s.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
+    rp.tx_txt('SOUR:TRig:EXT:DEBouncerUs 500')
     
-    rp_s.tx_txt('OUTPUT1:STATE ON')
+    rp.tx_txt('OUTPUT1:STATE ON')
     
-    rp_s.close()
+    rp.close()
 
 
-.. note::
-
-    The Python functions are accessible with the latest version of the |redpitaya_scpi| document available on our GitHub.
-    The functions represent a quality-of-life improvement as they combine the SCPI commands in an optimal order and also check for improper user inputs. The code should function at approximately the same speed without them.
-
-    For further information on functions please consult the |redpitaya_scpi| code.
-
-
-.. |redpitaya_scpi| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
-
+.. include:: ../python_scpi_note.inc
 
 Code - LabVIEW
 ---------------

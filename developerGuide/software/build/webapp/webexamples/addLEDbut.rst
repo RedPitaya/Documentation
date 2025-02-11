@@ -38,7 +38,7 @@ Pitaya using parameters.
 Web UI
 ******
 
-Let’s start with UI, in index.html file we have to add a button that will be used to control LED::
+Let's start with UI, in index.html file we have to add a button that will be used to control LED::
 
     <button id='led_state'>Turn on</button>
 
@@ -104,7 +104,7 @@ Red Pitaya can update real LED state.
 .. note::
 
     Parameter that transfers local LED state to Red Pitaya backend is called LED_STATE. You can change name of this
-    parameter, but don’t forget to use the same name also in controller.
+    parameter, but don't forget to use the same name also in controller.
 
 
 Controller
@@ -143,12 +143,12 @@ they will arrive each time you press the button in UI.
 
 **ledState.Update()** - updates value of parameter. It takes value from NGINX by parameter's name. That's why names
 of parameters in **controller** and **app.js** should be the same.
-**rp_DpinSetState** - is a Red Pitaya API function, which sets state of some pin. Its’ arguments are **rp_dpin_t** pin
+**rp_DpinSetState** - is a Red Pitaya API function, which sets state of some pin. Its arguments are **rp_dpin_t** pin
 and **rp_pinState_t *state**. In our program we control **RP_LED0**. There are 8 leds, thad we can control
 **RP_LED0 - RP_LED7**.
 
 There are two states of a LED - **RP_HIGH** (turned on) and **RP_LOW** (turned off).
 
-Don’t forget to init **rpApp** and release it in **rp_app_init()** and **rp_app_exit()**.
+Don't forget to init **rpApp** and release it in **rp_app_init()** and **rp_app_exit()**.
 
 Compile the controller, start app and try to push the button.

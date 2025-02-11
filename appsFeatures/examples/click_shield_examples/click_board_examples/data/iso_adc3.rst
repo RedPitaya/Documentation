@@ -129,5 +129,3 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
         close(fd);
         return (adcValue < 0) ? -1 : 0;
     }
-
-Code written by Žiga Fon.

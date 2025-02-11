@@ -353,34 +353,46 @@ External ADC clock
 
 ADC clock can be provided by:
 
-- On board 122.88 MHz XO (default)
-- From external source / through extension connector (instructions provided below)
+* On board 122.88 MHz XO (default)
+* From external source (through extension connector) - External clock (instructions provided below)
 
 .. warning::
 
     We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 
-- Remove: R37, R46
-- Add: R34 = 0R, R35 = 0R
+**Required materials**
+
+* 2x 100 nF 0402 capacitors
+* 1x 100 Ω 0402 resistor
+
+**Instructions**
+
+To perform the external clock modification, follow these steps. Any components crossed out with a red X are not placed on the SDRlab 122-16.
+
+1. Move the 0R resistors R37 and R46 to the positions R34 and R35.
 
     .. figure:: img/External_img1.png
         :align: center
+        :width: 800
 
-- Remove: FB11
+#. Remove the ferrite bead FB11.
 
     .. figure:: img/External_img2.png
         :align: center
+        :width: 800
 
-- Remove: 0R on C64, R24
-- Add: C64 = 100nF, C63 = 100nF, R36 = 100R
+#. Remove 0R resistors on positons C64 and R24. Yes, there is a 0R resitor placed across the capacitor C64.
+#. Add 100 nF 0402 capacitors to positions C64 and C63.
+#. Add a 100R resitor to position R36.
 
     .. figure:: img/External_img3.png
         :align: center
+        :width: 600
 
     .. figure:: img/External_shem.png
-        :width: 50%
         :align: center
+        :width: 1200
 
 
 Other specifications
@@ -389,4 +401,3 @@ Other specifications
 For all other specifications please refer to the :ref:`common hardware specifications <hw_specs>`.
 
 Please note that the measurements on inputs will differ from the standard STEMlab 125-14.
-

@@ -383,25 +383,53 @@ Red Pitaya Python library list
 
 Here is a full list of Red Pitaya libraries with functionalities you can include into your projects:
 
-+-------------------+------------------------------------------------------------------------------+-------------+
-| Library           | Description                                                                  | Ecosystem   |
-+===================+==============================================================================+=============+
-| **rp**            | API commands for API initialisation, controlling LEDs, Analog pins, GPIOs,   | 2.00-23     |
-|                   | Generation, Acquisition, Board Control commands, and DMA.                    |             |
-|                   | Default library, should be included in every project.                        |             |
-+-------------------+------------------------------------------------------------------------------+-------------+
-| **rp_hw_calib**   | API commands for configuring calibration parameters and settings.            | 2.00-23     |
-|                   |                                                                              |             |
-|                   |                                                                              |             |
-+-------------------+------------------------------------------------------------------------------+-------------+
-| **rp_hw_can**     | API commands for the CAN interface.                                          | 2.00-30     |
-|                   |                                                                              |             |
-|                   |                                                                              |             |
-+-------------------+------------------------------------------------------------------------------+-------------+
-| **rp_hw**         | API commands for UART, SPI, and I2C interface, and Status LED control.       | 2.00-23     |
-|                   |                                                                              |             |
-|                   |                                                                              |             |
-+-------------------+------------------------------------------------------------------------------+-------------+
++------------------------+------------------------------------------------------------------------------+-------------+
+| Library                | Description                                                                  | Ecosystem   |
++========================+==============================================================================+=============+
+| **rp**                 | API commands for API initialisation, controlling LEDs, Analog pins, GPIOs,   | 2.00-23     |
+|                        | Generation, Acquisition, Board Control commands, and DMA.                    |             |
+|                        | Default library, should be included in almost every project.                 |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_hw**              | API commands for UART, SPI, and I2C interface, and Status LED control.       | 2.00-23     |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_hw_calib**        | API commands for configuring calibration parameters and settings.            | 2.00-23     |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_hw_profiles**     | API commands for the CAN interface.                                          | 2.00-23     |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_dsp**             | API commands for digital signal processing (FFT, window functions, convert   | 2.00-23     |
+|                        | to dB, ...). Used by the Spectrum analyzer application.                      |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_overlay**         | Changing the current FPGA image.                                             | 2.00-30     |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_hw_can**          | API commands for the CAN interface.                                          | 2.00-30     |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_formatter**       | API commands for converting streamed data between wav, tdms and csv.         | 2.00-30     |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_arb**             | API commands for uploading and configuring the arbitrary waveform manager.   | 2.00-30     |
+|                        | Used by the Arbitrary waveform manager application.                          |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_sweep**           | API commands for controlling Sweep mode.                                     | 2.04-35     |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
+| **rp_la**              | API commands for logic analyzer and decoding of UART, SPI, I2C and CAN data. | in dev      |
+|                        |                                                                              |             |
+|                        |                                                                              |             |
++------------------------+------------------------------------------------------------------------------+-------------+
 
 
 C and Python API all available commands

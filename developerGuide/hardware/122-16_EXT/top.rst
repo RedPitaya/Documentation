@@ -12,11 +12,14 @@ This version of the SDRlab is a standard SDRlab 122-16 which has been modified i
 
 **External clock specifications:**
 
-The Ext ADC CLK+ and - pins are connected to the ENC+ and ENC- pins of the ADC.
+The Ext ADC CLK+ and - pins are connected to the ENC+ and ENC- pins of the ADC. The clock from the ADC is then passed to the FPGA.
 
-Acording to the ADC specifications, the ENC+ and ENC- inputs can be driven differentially or single-ended with a sine wave, PECL, LVDS, TTL or CMOS input.
+Acording to the ADC specs Acording to the ADC specifications, the ENC+ and ENC- inputs can be driven differentially or single-ended with a sine wave, PECL, LVDS, TTL or CMOS input.
 An optional clock duty cycle stabiliser allows high performance at full speed over a wide range of clock duty cycles. 
 The input voltage range for differentially driven ENC+ and ENC- is 0.2 to 3.6 V (towards GND) and 0 to 3.6 V (ENC+) for single-ended with a frequency between 1 MHz and 125 MHz according to the ADC specification.
+
+We recommend using an LVDS clock with similar characteristics to the one provided by the SDRlab 122-16 on-board `oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_.
+If you decide to use a different clock source, please make sure that it is compatible with the `Zynq 7010 reference manual <https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM>`_.
 
 The operating voltage of the Red Pitaya is 3V3.
 

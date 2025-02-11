@@ -6,7 +6,6 @@ Red Pitaya heatsink interface setup
 
 The heatsink interface is CNC machined from aluminium to match the profile of the STEMlab 125-14. It connects to the bottom of the STEMlab 125-14 and has additional holes to connect the interface (attached to the board) to a larger heatsink for even better heat dissipation.
 
-
 Components
 ============
 
@@ -17,10 +16,12 @@ Components
     Components of the Red Pitaya heatsink interface
     
 Table of contents:
+
     * Heatsink interface
     * Dark grey thermal pad
 
 Not included:
+
     * 4 M3x0.5 screws to fix the STEMlab 125-14 to the heatsink interface
     * 6 M3x0.5 screws to fix the heatsink interface to the external cooling surface
     * External heat sink
@@ -97,39 +98,17 @@ Assembly instructions
     .. figure:: img/Heatsink_bottom_view.jpg
         :align: center
         :width: 600
+        
+        Example of connection of Red Pitaya with heatsink interface to an external heatsink.
 
+    .. note::
 
-.. note::
+        Since the size and shape of an external heatsink may vary from application to application, the external heatsink is not supplied with the heatsink interface.
+        Any external heat sink the size of Red Pitaya or larger can be used. The heatsink should have a flat surface on the side that will be in contact with the heatsink interface.
+        
+        The heatsink interface can also be mounted directly on the case of the device in which the Red Pitaya is installed. In this case, the heatsink interface can be secured to the case using screws or thermal adhesive.
 
-    The heatsink interface provides better cooling than the standard heatsink on the STEMlab 125-14. During the installation process of the heatsink interface, the default heatsink is removed and replaced with the heatsink interface.
+.. warning::
+
+    The heatsink interface provides better cooling than the standard heatsink on the STEMlab 125-14. During the installation process of the heatsink interface, the heatsink on the top of Red Pitaya is removed and replaced with the heatsink interface.
     Please do not power up the board without either the default heatsink or the heatsink interface attached, as this may cause excessive heating which will prevent the board from functioning properly.
-
-
-.. Assembly with top side of aluminium case
-.. =========================================
-.. 
-.. .. note:: #removethis text
-.. 
-..     This section uses the top side of the :ref:`Red Pitaya aluminium case <alucase>` together with the heatsink interface. To maximize the cooling efficiency.
-.. 
-.. Follow the :ref:`aluminium case assembly instructions <alucase>` to assemble the aluminium case, up to step 8, or remove the screws if they are already there.
-.. 
-.. #. Remove the four screws.
-.. #. Hold the aluminium case together with the Red Pitaya board and turn it upside down.
-.. #. Remove the bottom part of the aluminium case.
-.. #. Place the heat sink interface in front of you.
-.. 
-..     .. figure:: img/Heatsink_no_foam.png
-..         :align: center
-..         :width: 600
-.. 
-.. #. Use the dark grey thermal pad. This is a special thermal pad with protective film on both sides. Remove the protective film from the side facing the heat sink interface and attach it to the heat sink interface. Take care to remove the film from the correct side as the pad is not symmetrical. The interface should now look like this. The top side of the thermal pad will still have foil attached at this point.
-.. 
-..     .. figure:: img/Heatsink_thermal_foam.png
-..         :align: center
-..         :width: 600
-.. 
-.. #. Remove the protective film from the top of the thermal pad.
-.. #. Use the heat sink interface and the top of the aluminium case to enclose the Red Pitaya board. Make sure the holes on the board, the interface and the top of the aluminium case are aligned.
-.. #. Install four M3 screws to hold the assembly together. You may need to modify the external heat sink to fit the screw heads.
-

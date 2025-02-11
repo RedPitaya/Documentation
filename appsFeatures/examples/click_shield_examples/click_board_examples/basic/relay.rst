@@ -84,5 +84,3 @@ The code should be copied to the Red Pitaya using the *"scp"* or similar command
         rp_Release();
         return EXIT_SUCCESS;
     }
-
-Code made by Žiga Fon.

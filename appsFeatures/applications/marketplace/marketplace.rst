@@ -6,7 +6,13 @@ Marketplace and contributed apps
 
 .. note::
 
-    Due to unpopularity we have decided to move away from the Application Marketplace. This means that Applicaton Marketplace will not longer be available in the future OS versions. All unique applications will be moved to the official Red Pitaya OS and accessible on the main web interface page.
+    Due to its unpopularity, we have decided to move away from the Application Marketplace. This means that the Application Marketplace will no longer be available in future OS versions. All unique applications will be moved to the official Red Pitaya OS and will be accessible from the main web interface page.
+
+.. note::
+
+    Unless the authors have updated the applications, all applications in the Application Marketplace are **obsolete** for the 2.00 OS releases. Please check the linked pages for information on updates.
+    Applications created by Pavel Demin and PyRPL are exceptions to this rule, as they both work with the latest OS releases.
+
 
 ==========
 Overview
@@ -16,7 +22,7 @@ More Red Pitaya applications can be obtained from the Red Pitaya marketplace tha
 
 .. note:: 
 
-   It is important to note that applications developed by the Red Pitaya community are not distributed or tested by the Red Pitaya team, and that our team accepts no responsibility. If you’d like to share feedback, report bugs, or need help on contributed projects, apps, or software, we highly recommend contacting the project authors.
+   It is important to note that applications developed by the Red Pitaya community are not distributed or tested by the Red Pitaya team, and that our team accepts no responsibility. If you'd like to share feedback, report bugs, or need help on contributed projects, apps, or software, we highly recommend contacting the project authors.
 
 
 To download the applications from the application marketplace, **Red Pitaya must have access to the internet**, otherwise the Marketplace Application will fail to open.
