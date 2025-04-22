@@ -19,15 +19,15 @@ Setup
 The application requires the following OS version:
 
     * **IN DEV**.
-    * Nightly Build 426 (or higher) together with Red Pitaya Linux 2.06 (or higher).
+    * Nightly Build 466 (or higher) together with Red Pitaya Linux 2.06 (or higher).
 
 Please make sure that Red Pitaya inputs and outputs are properly terminated (matched impedance). Failure to do so may lead to undefined behaviour of the *Record and Playback* application due to the `ringing <https://incompliancemag.com/circuit-theory-model-of-ringing-on-a-transmission-line/>`_ on the `transmission line <https://en.wikipedia.org/wiki/Transmission_line>`.
 Red Pitaya fast analog inputs have input impedance of 1 MΩ. The fast analog outputs have output impedace of 50 Ω.
 
-Installation  steps
+Installation steps
 -------------------
 
-1.  Establish SSH connection with your Red Pitaya
+1.  Establish :ref:`SSH <ssh>` connection with your Red Pitaya
 #.  Download the |rec_and_play| GitHub Repository to the Red Pitaya.
 
     .. code-block:: bash
@@ -53,21 +53,22 @@ Installation  steps
 
         chmod +x setup.sh config.ini main.py
 
-#.  To autorun the application at boot, execute the following script:
+#.  For automatic setup execute the setup script.
 
     .. code-block:: bash
 
         ./setup.sh
 
-#.  For manual installation enter read-write mode in Red Pitaya and copy the scripts into the */opt/redpitaya/bin* folder.
+#.  For manual installation enter read-write mode and copy the scripts into the */opt/redpitaya/bin* folder.
 
     .. code-block:: bash
 
         rw
         cp -f ./main.py /opt/redpitaya/bin/
         cp -f ./config.ini /opt/redpitaya/bin/
-
-#.  The configuration file is located in */opt/redpitaya/bin/config.ini*.
+    
+#. In either case the application is now set up and will start automatically at boot.
+#.  To change the settings, edit the configuration file which is located in */opt/redpitaya/bin/config.ini*.
 #.  Reboot the Red Pitaya.
 
 
@@ -94,6 +95,9 @@ The settings are split into acquisition (ADC) and generation (DAC):
     * *Number of Cycles (NCYC)* - Number of Cycles/Periods in one burst/repetition (without any delay between them).
     * *Number of Repetitions (NOR)* - Number of repeated bursts (with delay between them). Each burst includes a number of repetitions without delay.
     * *Delay between repetitions (PERIOD)* - Delay between repetitions in microseconds (µs). The minimum value must be no less than ("Record buffer lenght" * NCYC + 1) µS.
+
+To change the settings, either edit the *config.ini* file in */opt/redpitaya/bin/* directly, or edit the *config.ini* file in the *record and play* directory and run the *setup.sh* script again.
+For the changes to take effect, *main.py* must be restarted (either by rebooting the Red Pitaya or by killing the process and starting it again).
 
 Example of "config.ini":
 
@@ -152,7 +156,7 @@ Once the *Record and Play* application is set up, it will start each time Red Pi
         export PYTHONPATH=/opt/redpitaya/lib/python/:$PYTHONPATH
         /opt/redpitaya/bin/main.py
 
-    You can also remove the *main.py* and *config.ini* from */opt/redpitaya/bin*.
+    Afterwards, you can also remove the *main.py* and *config.ini* from */opt/redpitaya/bin*.
 
 
 Source code

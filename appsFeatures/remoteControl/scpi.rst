@@ -1,22 +1,21 @@
 .. _scpi_commands:
 
-SCPI server (MATLAB, LabVIEW, Scilab or Python)
+SCPI server (MATLAB, LabVIEW, or Python)
 ##################################################
 
-.. https://owncloud.redpitaya.com/index.php/apps/files/?dir=%2FWEB%20page%2Fapps%2FSCPI
-
 .. figure:: img/SCPI_web_lr.png
+    :width: 1200
 
 |
 
-The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, Scilab, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands.
+The Red Pitaya board can be controlled remotely over a LAN or wireless interface using MATLAB, LabVIEW, or Python via the Red Pitaya SCPI (Standard Commands for Programmable Instrumentation) list of commands.
 The SCPI interface/environment is commonly used to control T&M instruments for development, research, or test automation. SCPI uses a set of commands recognised by the instruments to enable specific actions (e.g., acquiring data from fast analog inputs, generating signals, and controlling other peripheries of the Red Pitaya platform). 
 The SCPI commands are extremely useful when complex signal analysis is required. A software environment such as MATLAB that provides powerful data analysis tools is a perfect combination for the SCPI commands' simple access to raw data acquired on the Red Pitaya board.
 
 **Features**
 
-- Quickly write control routines and programs using MATLAB, LabVIEW, Scilab, or Python.
-- Use powerful data analysis tools like MATLAB, LabVIEW, Scilab, or Python to analyse raw signals acquired by the Red Pitaya board.
+- Quickly write control routines and programs using MATLAB, LabVIEW, or Python.
+- Use powerful data analysis tools like MATLAB, LabVIEW, or Python to analyse raw signals acquired by the Red Pitaya board.
 - Write testing scripts and routines.
 - Incorporate your Red Pitaya and LabVIEW into testing and production lines.
 - Take quick measurements directly on your PC.
@@ -40,19 +39,23 @@ To run an example, follow the instructions below:
 #.  Go to your Red Pitaya web interface and select the SCPI server in the *Development* section.
 
     .. figure:: img/scpi-homepage.png
+        :width: 800
 
     |
 
     .. figure:: img/scpi-development.png
+        :width: 800
 
 
 #.  Start the SCPI server by selecting the RUN button. Please note the IP addreess (in our case, *192.168.178.100*) or the .local address (in our case, *rp-f03e5f.local*) of your Red Pitaya board , as it will be needed to establish a socket communication with your board.
 
     .. figure:: img/scpi-app-run.png
+        :width: 800
 
     |
 
     .. figure:: img/scpi-app-stop.png
+        :width: 800
 
 
 #.  Follow the instructions below depending on the OS environment of your computer.
@@ -100,12 +103,12 @@ Here are the requirements for setting up a Python environment to remotely contro
     During the installation process, do not forget to check the **Add python.exe to PATH** box!
 
     .. figure:: img/install_python.png
-        :width: 400
+        :width: 600
 
 2.  Install a coding environment. We recommend using |VSCode|.
 
     .. figure:: img/install_vsc.png
-        :width: 400
+        :width: 600
 
 3.  Install appropriate extensions for your coding environment (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
 
@@ -205,7 +208,7 @@ Here are the requirements for setting up a Python environment to remotely contro
 
 .. |redpitaya_scpi.py| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
+    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
 
 
 **Running code**
@@ -273,46 +276,6 @@ More examples on how to control Red Pitaya from LabVIEW can be found :ref:`here 
 
 |
 
-======
-SCILAB
-======
-
-**Requirements and Setup**
-
-To control Red Pitaya through Scilab, the *Scilab socket toolbox* extension is required. Internet connection is required for the installation process.
-
-#.  Go to the |Scilab download page| and download and install Scilab for your OS.
-#.  Go to the |Scilab toolbox| and download the *basic socket function* for Scilab.
-#.  Go to the extracted Scilab folder, then to the folder named ``contrib``.
-#.  Copy the *socket_toolbox* zip file to the ``contrib`` folder.
-#.  Extract the *socket_toolbox* zip file inside the ``contrib`` folder.
-#.  Delete the *socket_toolbox* zip file, as it is no longer required
-#.  Go to the *socket_toolbox* folder.
-#.  Open *loader.sce* with your Scilab and press RUN (grey run button on SCILAB editor GUI).
-
-The last two steps must be executed each time you start Scilab. 
-
-
-**Running code**
-
-Running the examples is the same as on MATLAB.
-
-#.  In the Scilab workspace, paste the code from the :ref:`blink <blink>` tutorial example.
-#.  Replace the IP in the example with the IP of your Red Pitaya board or the *"rp-xxxxxx.local"* address.
-#.  Hit *RUN* to run the code.
-
-The code examples can be found :ref:`here <examples>`. Please reffer to the MATLAB examples.
-
-.. |Scilab download page| raw:: html
-
-    <a href="http://www.scilab.org/download/" target="_blank">Scilab download page</a>
-
-.. |Scilab toolbox| raw:: html
-
-    <a href="https://atoms.scilab.org/toolboxes/socket_toolbox" target="_blank">Scilab socket toolbox page</a>
-
-
-|
 
 *****************************
 Starting SCPI server manually
@@ -385,10 +348,10 @@ Control commands send user-defined settings to the Red Pitaya.
 .. figure:: img/SCPI_control_commands.png
     :width: 800
 
-- Control commands never return anything.
-- Error checking is done via the status byte.
-- Error checking is optional.
-- The error code from the API consists of two parts. 9000 or 9500, indicating whether the error is normal or critical, and the API error number. For example: 9500 + RP_EOED = 9501 (Failed to Open EEPROM Device)
+* Control commands never return anything.
+* Error checking is done via the status byte.
+* Error checking is optional.
+* The error code from the API consists of two parts. ``9000`` or ``9500``, indicating whether the error is normal or critical, and the API error number. For example: ``9500 + RP_EOED = 9501`` (Failed to Open EEPROM Device)
 
 ================
 Query commands
@@ -399,11 +362,11 @@ Query commands request data or a setting to be returned to the user. They always
 .. figure:: img/SCPI_query_commands.png
     :width: 800
 
-- Query commands always return data
-- Error checking via status byte
-- Error checking is optional
-- The data returned by the command can be of two types: binary data and text data.
-- Binary data response has the format ``#<DATA SIZE><BYTES>``. If an error occurs, the response format is as follows ``#0``.
-- Text data format: ``<ANSWER>\r\n`` or ``<ANSWER>;<ANSWER>;...;<ANSWER>\r\n`` (If you're sending multiple commands at once.) If an error occurs, the response format will be like this: ``\r\n``.
-- In ASCII mode, data buffers are represented in the form ``{dd,dd,dd,...,dd}``.
-- The API error code consists of two parts. 9000 or 9500, indicating whether the error is normal or critical, and the API error number. For example: 9500 + RP_EOED = 9501 (Failed to Open EEPROM Device)
+* Query commands always return data.
+* Error checking via status byte.
+* Error checking is optional.
+* The data returned by the command can be of two types: binary data and text data.
+* Binary data response has the format ``#<DATA SIZE><BYTES>``. If an error occurs, the response format is as follows ``#0``.
+* Text data format: ``<ANSWER>\r\n`` or ``<ANSWER>;<ANSWER>;...;<ANSWER>\r\n`` (If you're sending multiple commands at once.) If an error occurs, the response format will be like this: ``\r\n``.
+* In ASCII mode, data buffers are represented in the form ``{dd,dd,dd,...,dd}``.
+* The API error code consists of two parts. ``9000`` or ``9500``, indicating whether the error is normal or critical, and the API error number. For example: ``9500 + RP_EOED = 9501`` (Failed to Open EEPROM Device).

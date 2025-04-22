@@ -743,7 +743,7 @@ Input range
 The default mounting intends for unipolar XADC inputs, which allow for observing only positive signals with a saturation range of **0 V ~ 0.5 V**.
 There are additional voltage dividers used to extend this range to **0 V ~ 3.5 V**.
 
-It is possible to configure XADC inputs into a bipolar mode with a range of **-0.5 V ~ +0.5 V** (**-3.5 V ~ 3.5 V** with the dividers), but it requires removing R273 and providing a **0.5 V ~ 1 V** common voltage on the :ref:`E2 <E2>` connector. Please consult the :ref:`schematics <schematics_125_14>` for the position of R273. Afterwards, open the Red Pitaya v0.94 (or v0.94_250 for SIGNALlab 250-12) FPGA project. In the block diagram, the XADC wizard has a setting in the *Channel Sequencer* page to switch the XADCs to bipolar mode. After rebuilding the FPGA, the values are read as 12-bit 2's complement values.
+It is possible to configure XADC inputs into a bipolar mode with a range of **-0.5 V ~ +0.5 V** (**-3.5 V ~ 3.5 V** with the dividers), but it requires removing R273 and providing a **0.5 V ~ 1 V** common voltage on the :ref:`E2 <E2_gen1>` connector. Please consult the :ref:`schematics <schematics_125_14>` for the position of R273. Afterwards, open the Red Pitaya v0.94 (or v0.94_250 for SIGNALlab 250-12) FPGA project. In the block diagram, the XADC wizard has a setting in the *Channel Sequencer* page to switch the XADCs to bipolar mode. After rebuilding the FPGA, the values are read as 12-bit 2's complement values.
 
 
 5V power supply

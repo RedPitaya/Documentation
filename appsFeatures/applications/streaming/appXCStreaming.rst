@@ -269,7 +269,7 @@ Code examples
 
 Here are examples for synchronising two unit X-channel System through SCPI and API commands.
 
-- :ref:`Daisy chain generation and acquisition <daisy_chain_sync_exam1>`
+- :ref:`Multiboard acquisition and generation examples <multiboard_sync_examples>`
 
 
 Source code

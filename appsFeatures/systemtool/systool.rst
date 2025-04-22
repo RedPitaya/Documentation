@@ -3,9 +3,9 @@ System tools
 ############
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   systemInfo.rst
-   newtworkManager.rst
-   softwareupdate.rst
-   calibration.rst
+    system_info/systemInfo.rst
+    network_manager/networkManager.rst
+    OS_updater/softwareupdate.rst
+    calibration/calibration.rst

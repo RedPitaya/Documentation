@@ -1671,8 +1671,9 @@ Daisy Chain
 
 
 
-E3 connector serial lines test (GEN2 Z20 only)
---------------------------------------------------
+
+E3 connector serial lines test (GEN2 Z7020 Pro only)
+-----------------------------------------------------
 
 .. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
 
