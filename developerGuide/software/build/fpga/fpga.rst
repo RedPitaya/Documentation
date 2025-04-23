@@ -4,9 +4,8 @@
 Build FPGA image
 ################
 
-.. contents:: **Index**
-    :local:
-    :backlinks: none
+.. contents:: FPGA index
+    :backlinks: top
 
 |
 

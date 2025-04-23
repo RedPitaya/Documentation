@@ -35,3 +35,8 @@ Phase locked loop
 | | ``RP:PLL:STATE?`` > ``1``                         | | Python: ``rp_GetPllControlLocked()``                                             | | ``0`` - Unit is not synced with the reference clock                             |                    |
 | |                                                   | |                                                                                  | | (SIGNALlab 250-12 only).                                                        |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+
+|
+
+* :ref:`Back to top <commands_pll>`
+* :ref:`Back to command list <command_list>`

@@ -102,3 +102,7 @@ Daisy chain clocks and triggers
    The trigger signals from the SATA connector and the DIO0_P (External trigger pin) are OR-ed together in the software.
    The generation and acquisition trigger fronts apply after the signals have been combined and trigger either DAC or ADC depending on the ``DAISY:TRig:Out:SOUR <mode>`` command.
 
+|
+
+* :ref:`Back to top <commands_daisy>`
+* :ref:`Back to command list <command_list>`

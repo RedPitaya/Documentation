@@ -9,6 +9,10 @@ The table describes address space partitioning implemented on FPGA via the AXI G
 The memory block is divided into 8 parts. Each part is occupied by an individual IP core. The address space of individual applications is described in the subsection below. The size of each IP core address space is 4MByte. 
 For additional information and better understanding check other documents (schematics, specifications...).
 
+.. contents:: Register index
+    :backlinks: top
+
+|
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|
 

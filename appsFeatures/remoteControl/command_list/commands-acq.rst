@@ -5,10 +5,10 @@
 Acquisition
 ==============
 
-.. contents:: Index
+.. contents:: Acquisition command index
    :local:
    :depth: 2
-   :backlinks: none
+   :backlinks: top
 
 |
 
@@ -602,3 +602,8 @@ Data read
 | |                                           | |                                                                                                                                        | | Numpy buffer must have the specified ``dtype`` format.                               |                    |
 | |                                           | |                                                                                                                                        | | Faster than the Python functions above.                                              |                    |
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+--------------------+
+
+|
+
+* :ref:`Back to top <commands_acq>`
+* :ref:`Back to command list <command_list>`

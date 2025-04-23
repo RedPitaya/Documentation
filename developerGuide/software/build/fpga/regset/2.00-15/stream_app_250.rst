@@ -3,6 +3,10 @@
 Project - stream_app_250
 ==========================
 
+.. contents:: Register index
+    :backlinks: top
+
+|
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|
 

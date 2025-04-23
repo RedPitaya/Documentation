@@ -1,3 +1,5 @@
+.. _regset_in_dev:
+
 FPGA Register map in dev
 #########################
 

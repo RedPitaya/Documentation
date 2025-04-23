@@ -1,5 +1,4 @@
 
-
 .. _commands_i2c:
 
 ===
@@ -110,3 +109,7 @@ I2C
 
     <a href="http://smbus.org/specs/" target="_blank">SMBUS specifcations</a>
 
+|
+
+* :ref:`Back to top <commands_i2c>`
+* :ref:`Back to command list <command_list>`

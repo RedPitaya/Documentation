@@ -13,10 +13,32 @@ For API commands you can find a detailed description in these C header files:
 
 * `Red Pitaya GitHub API header files <https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include>`_.
 
+|
 
-========================================================
-How to find all available SCPI commands per OS version?
-========================================================
+.. toctree::
+    :caption: Command list
+
+    command_list/commands-init.rst
+    command_list/commands-board.rst
+    command_list/commands-digital.rst
+    command_list/commands-analog.rst
+    command_list/commands-pll.rst
+    command_list/commands-daisy.rst
+    command_list/commands-gen.rst
+    command_list/commands-acq.rst
+    command_list/commands-dmm.rst
+    command_list/commands-lcr.rst
+    command_list/commands-uart.rst
+    command_list/commands-spi.rst
+    command_list/commands-i2c.rst
+    command_list/commands-can.rst
+    command_list/commands-status-leds.rst
+    command_list/commands-temp-prot.rst
+
+
+
+**How to find all available SCPI commands per OS version?**
+
 
 Use the ``SYSTem:Help?`` SCPI command, which lists all available SCPI commands.
 
@@ -47,27 +69,7 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 
     <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
 
-
-.. toctree::
-    :maxdepth: 1
-    :glob:
-
-    command_list/commands-init.rst
-    command_list/commands-board.rst
-    command_list/commands-digital.rst
-    command_list/commands-analog.rst
-    command_list/commands-pll.rst
-    command_list/commands-daisy.rst
-    command_list/commands-gen.rst
-    command_list/commands-acq.rst
-    command_list/commands-dmm.rst
-    command_list/commands-lcr.rst
-    command_list/commands-uart.rst
-    command_list/commands-spi.rst
-    command_list/commands-i2c.rst
-    command_list/commands-can.rst
-    command_list/commands-status-leds.rst
-    command_list/commands-temp-prot.rst
+|
    
 
 :ref:`Back to top <command_list>`

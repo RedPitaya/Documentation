@@ -1,3 +1,4 @@
+
 .. _commands_init:
 
 =========================
@@ -36,3 +37,8 @@ Table of correlated SCPI and API commands for the Red Pitaya.
 | |                                                    | | Python: ``rp_Reset()``                    | |                                                         |                    |
 | |                                                    | |                                           | |                                                         |                    |
 +------------------------------------------------------+---------------------------------------------+-----------------------------------------------------------+--------------------+
+
+|
+
+* :ref:`Back to top <commands_init>`
+* :ref:`Back to command list <command_list>`

@@ -1,15 +1,14 @@
 
-
 .. _commands_gen:
 
 ================
 Signal Generator
 ================
 
-.. contents::
+.. contents:: Generation command index
    :local:
    :depth: 2
-   :backlinks: none
+   :backlinks: top
 
 |
 
@@ -576,3 +575,8 @@ Sweep mode extended
 | | ``SOUR1:SWeep:DIR?`` > ``UP_DOWN``                | | Python: ``getDir(<channel>)``                                                         |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+|
+
+* :ref:`Back to top <commands_gen>`
+* :ref:`Back to command list <command_list>`
