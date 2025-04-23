@@ -10,36 +10,44 @@ Whether you bought your Red Pitaya aluminium case in a kit or as a separate add-
 Components
 ============
 
-.. figure:: rp_alucase_02.jpg
+.. figure:: img/rp_alucase_02.jpg
     :align: center
     :width: 600
 
     Components of the Red Pitaya aluminium case.
     
 Contents:
+
     * 4 screws to close the case and hold the board in place
     * 4 rubber feet for secure positioning on the desk
     * A thermal pad (barely visible in the photo)
     * A transparent plastic rod that directs the light of a red LED (Ready/CPU activity) to the top of the case.
 
-.. figure:: rp_alucase_03.jpg
+.. figure:: img/rp_alucase_03.jpg
    :align: center
    :width: 600
 
    The inside of the Red Pitaya aluminium case.
     
-
 * On the inside, there is a block in the upper part of the case (on the right in the picture above) that dissipates heat to the case. So the whole case acts as a heat sink.
 * On the bottom of the case, there are openings for some air vents (left in the picture above).
-* The openings in the case expose the connections to the expansion ports **E1** and **E2**.
+* The openings in the case expose the connections to the expansion ports :ref:`E1 <E1_gen1>` and :ref:`E2 <E2_gen1>`.
 
-.. figure:: rp_alucase_04.jpg
+.. figure:: img/rp_alucase_04.jpg
     :align: center
     :width: 600
 
-.. figure:: rp_alucase_05.jpg
+.. figure:: img/rp_alucase_05.jpg
     :align: center
     :width: 600
+
+Compatibility
+==================
+
+The aluminium case is compatible with the following Red Pitaya boards:
+
+* STEMlab 125-14 Gen 1.
+* STEMlab 125-10 (discontinued).
 
 
 Assembly Instructions
@@ -47,7 +55,7 @@ Assembly Instructions
 
 #. Remove the small plastic feet by pressing on the clips at the top with a small pair of pliers and pushing the feet down.
    
-    .. figure:: rp_alucase_07.jpg
+    .. figure:: img/rp_alucase_07.jpg
         :align: center
         :width: 600
       
@@ -57,10 +65,10 @@ Assembly Instructions
    
 #. The heat sink of the STEMlab 125-10 is glued to the FPGA. Turn the heatsink slightly, as shown in the picture below, until it comes loose.
 
-    .. figure:: STEMlab_10_heatsink.png
+    .. figure:: img/STEMlab_10_heatsink.png
         :align: center
 
-    .. figure:: rp_alucase_08.jpg
+    .. figure:: img/rp_alucase_08.jpg
         :align: center
         :width: 600
    
@@ -81,12 +89,6 @@ Assembly Instructions
 #. Replace the rubber feet.
 
 
-.. figure:: rp_alucase.jpg
+.. figure:: img/rp_alucase.jpg
     :align: center
     :width: 600
-
-
-
-
-
-

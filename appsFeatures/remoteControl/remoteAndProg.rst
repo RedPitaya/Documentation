@@ -15,12 +15,12 @@ Here you will find all the tools and examples you need to program and control yo
 - **Known SCPI & API Issues and Changes by OS Version** - Is your code not working as intended? Check this section for known command issues or release dates of newer commands.
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
-   scpi
-   API_scripts
-   jupyter/Jupyter
-   deepMemoryAcquisition
-   command_list
-   examples_top
-   knownIssues
+    scpi
+    API_scripts
+    jupyter/Jupyter
+    deepMemoryAcquisition
+    command_list
+    examples_top
+    knownIssues

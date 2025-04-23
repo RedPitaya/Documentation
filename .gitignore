@@ -1,2 +1,5 @@
 # Cache generated when the documentation is built.
 __pycache__/
+
+# Build artifacts
+_build/

@@ -12,25 +12,21 @@ JupyterLab includes all the functionality of the Jupyter Notebook (an open-sourc
 Features
 ***********
 
-- In-browser editing of code, with automatic syntax highlighting, indentation, and tab completion/introspection.
-- The ability to execute code from the browser, with the results of computations attached to the code which generated 
-  them. 
-- Displaying the result of computation using rich media representations, such as HTML, LaTeX, PNG, SVG, etc. For 
-  example, publication-quality figures rendered by the |matplotlib| library can be included inline.
-- In-browser editing for rich text using the |Markdown| markup 
-  language, which can provide commentary for the code, is not limited to plain text.
-- The ability to easily include mathematical notation within markdown cells using LaTeX, and rendered natively by 
-  |MathJax|
+* In-browser editing of code, with automatic syntax highlighting, indentation, and tab completion/introspection.
+* The ability to execute code from the browser, with the results of computations attached to the code which generated them. 
+* Displaying the result of computation using rich media representations, such as HTML, LaTeX, PNG, SVG, etc. For example, publication-quality figures rendered by the |matplotlib| library can be included inline.
+* In-browser editing for rich text using the |Markdown| markup language, which can provide commentary for the code, is not limited to plain text.
+* The ability to easily include mathematical notation within markdown cells using LaTeX, and rendered natively by |MathJax|.
 
 .. note::
 
-   We do not recommend running more than 10 JupyterLab kernels simultaneously, as the board can run out of memory and force the shutdown of the JupyterLab application.
-   Red Pitaya remembers which Notebooks were opened the last time JupyterLab was used, so exiting the application without closing most of the Notebooks can lead to very long JupyterLab loading times. Therefore, it is inadvisable to exit JupyterLab with more than 5 tabs (Notebooks) open.
+    We do not recommend running more than 10 JupyterLab kernels simultaneously, as the board can run out of memory and force the shutdown of the JupyterLab application.
+    Red Pitaya remembers which Notebooks were opened the last time JupyterLab was used, so exiting the application without closing most of the Notebooks can lead to very long JupyterLab loading times. Therefore, it is inadvisable to exit JupyterLab with more than 5 tabs (Notebooks) open.
 
-   Active kernels are found here:
+    Active kernels are found here:
 
-   .. figure:: img/Jupyter_kernel.png
-      :width: 800
+    .. figure:: img/Jupyter_kernel.png
+        :width: 800
 
 .. |matplotlib| raw:: html
 
@@ -49,10 +45,8 @@ Features
 Notebook documents
 ==================
 
-Notebook documents contain the inputs and outputs of an interactive session as well as additional text that 
-accompanies the code but is not meant for execution. In this way, notebook files can serve as a complete computational
-record of a session, interleaving executable code with explanatory text, mathematics, and rich representations of
-resulting objects. These documents are internal |JSON| files and are saved with 
+Notebook documents contain the inputs and outputs of an interactive session as well as additional text that accompanies the code but is not meant for execution. In this way, notebook files can serve as a complete computational
+record of a session, interleaving executable code with explanatory text, mathematics, and rich representations of resulting objects. These documents are internal |JSON| files and are saved with 
 the *.ipynb* extension. Since JSON is a plain text format, they can be version-controlled and shared with colleagues.
 
 .. |JSON| raw:: html
@@ -60,8 +54,7 @@ the *.ipynb* extension. Since JSON is a plain text format, they can be version-c
     <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>
 
 
-Notebooks may be exported to a range of static formats, including HTML (for example, for blog posts), 
-reStructuredText, LaTeX, PDF, and slide shows, via the |nbconvert| command.
+Notebooks may be exported to a range of static formats, including HTML (for example, for blog posts), reStructuredText, LaTeX, PDF, and slide shows, via the |nbconvert| command.
 
 .. |nbconvert| raw:: html
 
@@ -71,13 +64,13 @@ Furthermore, any *.ipynb* notebook document available from a public URL can be s
 
 
 **************************************
-Hardware – Sensor extension module
+Hardware - Sensor extension module
 **************************************
 
 Although the usage of the JupyterLab does not require any additional hardware except the Red Pitaya board, getting started with electronics is way more fun and interesting when you have loads of sensors that you can put to good use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is to select the desired module, find the correct connector, and get going with your project. We have also placed the Arduino shield headers on the extension module.
 
 .. figure:: img/extension_module_and_sensors.png
-   :width: 500
+    :width: 500
 
 Here you can find more information regarding the :ref:`Sensor extension module <sensor_extension_module>`.
 
@@ -92,9 +85,9 @@ Examples
 
 The code examples are available here:
 
-- :ref:`JupyterLab examples <examples>` (Use Python API examples)
-- |jupyterlab_github|
-- |welcome_ipynb|
+* :ref:`JupyterLab examples <examples>` (Use Python API examples).
+* |jupyterlab_github|.
+* |welcome_ipynb|.
 
 
 .. |jupyterlab_github| raw:: html

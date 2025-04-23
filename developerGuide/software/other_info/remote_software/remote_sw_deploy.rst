@@ -4,7 +4,7 @@
 Remote software deployment
 ###########################
 
-The :ref:`Software update system tool<software_update>` can be configured to upload custom software from a user-defined server.
+The :ref:`Software update manager <software_update_manager>` can be configured to upload custom software from a user-defined server.
 
 To implement this, modification of the following two files from Red Pitaya Github is required, where the Red Pitaya download server ("http://downloads.redpitaya.com/downloads/$1") is replaced with the user-defined server address.
 

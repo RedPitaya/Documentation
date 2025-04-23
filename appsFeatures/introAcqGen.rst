@@ -140,7 +140,7 @@ We will start with continuous signal generation, which is the easiest to underst
 
 These are the minimum parameters required to generate a continuous signal. There are other parameters, but for the sake of simplicity we will skip them.
 
-Next we set the generator trigger source, which defines how and from where our generator will be triggered. This can be set to either internal (activated manually with a code command) or external positive or negative edge (triggered by an external trigger signal on pin DIO0_P on the :ref:`E1 extension connector<e1>`).
+Next we set the generator trigger source, which defines how and from where our generator will be triggered. This can be set to either internal (activated manually with a code command) or external positive or negative edge (triggered by an external trigger signal on pin DIO0_P on the :ref:`E1 extension connector <E1_gen1>`).
 
 The external trigger signal passes through a debounce filter when it enters the FPGA, which is set to 500 microseconds by default. This value can be changed using the ``SOUR:TRig:EXT:DEBouncer[:US]`` command.
 
