@@ -16,11 +16,12 @@ All notable changes to this project will be documented in this file.
 - Fixed and updated Gen 1 specifications.
 - Updated and clarified E3 add-on board instructions.
 - Updated Gen 2 booting instructions.
+- Fixed Sphinx dependency issues with the documentation build process.
+- Added changelog.
 
 **Links affected:**
 
 - Added redirects for broken links from *April 2025 - Update 1*.
-- Fixed Sphinx dependency issues with the documentation build process.
 - None.
 
 ## April 2025 - Update 1
