@@ -15,13 +15,22 @@ This version of the SDRlab is a standard SDRlab 122-16 which has been modified i
 The Ext ADC CLK+ and - pins are connected to the ENC+ and ENC- pins of the ADC. The clock from the ADC is then passed to the FPGA.
 The ports operate differentially and should be driven with **LVDS clock with voltage levels similar to the one provided by the SDRlab 122-16 on-board `oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_**.
 
+The maximum and minimum clock frequencies are limited by the ADC specifications.
+
 The operating voltage of the Red Pitaya is 3V3.
 
 .. note::
 
-   **Booting without the external clock present?**
-   The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
-   However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
+    **Booting without the external clock present?**
+    The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
+    However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
+
+.. note::
+
+    When synchronising multiple Red Pitaya boards, please keep in mind that:
+
+    * :ref:`Click Shield synchronisation <click_shield>` requires external clock models.
+    * :ref:`X-channel synchronisation <x-ch_streaming>` requires the X-channel system (master and slave boards) which differ from external clock models.
 
 
 Pinout

@@ -4,7 +4,7 @@ Hardware
 ########
 
 .. toctree::
-   :maxdepth: 3
-   
-   platforms
-   ext_modules/ext_modules
+    :maxdepth: 1
+      
+    platforms
+    ext_modules/ext_modules

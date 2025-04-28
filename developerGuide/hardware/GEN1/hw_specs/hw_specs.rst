@@ -147,7 +147,7 @@ Status LED Description
 Heating
 --------
 
-It is not uncommon for the board to reach temperatures of 60 degrees Celsius or above during operation (please refer to the `Cooling options` section for further details).
+It is not uncommon for the board to reach temperatures of 60°C or above during operation (please refer to the `Cooling options`_ section for further details).
 
 .. note::
 
@@ -157,13 +157,20 @@ It is not uncommon for the board to reach temperatures of 60 degrees Celsius or 
 
     It is imperative that a heatsink is installed and that the board is operated on a flat surface devoid of any obstructions that could impede airflow.
     In order to mitigate the effects of elevated ambient temperatures and reduced pressure conditions within enclosures, it is necessary to implement an effective ventilation strategy.
-    The product's operational functionality is automatically disabled at elevated temperatures to prevent any potential damage.
+    The product's operational functionality is automatically disabled at temperatures of 85°C to prevent any potential damage.
+
 
 
 Cooling options
 -----------------
 
-For enhanced cooling, we suggest utilising a 30 mm or 25 mm fan. The board's power connector can be employed to power the fan, however, it is important to note that it provides a maximum of 5 V. The power connector is situated between the micro-SD socket and the host USB connector.
+For enhanced cooling, we suggest utilising one or more of the following options:
+
+* :ref:`Gen 1 Aluminium case <alucase>` - to improve heat dissipation and protect the board from external factors.
+* :ref:`Gen 1 Heatsink interface <heatsink>` - to improve heat dissipation and connect the board to an external heatsink.
+* External cooling fan - to increase airflow around the board.
+
+You can utilise a 30 mm or 25 mm fan. The board's power connector can be employed to power the fan, however, it is important to note that it provides a maximum of 5 V. The power connector is situated between the micro-SD socket and the host USB connector.
 
 .. figure:: img/cooling/cooling-powerPin.jpg
     :align: center
@@ -215,7 +222,7 @@ Board dimensions
 
 Please refer to the technical drawings in the Red Pitaya board specifications for exact board dimensions.
 
-* :ref:`STEMlab 125-14 <schematics_125_14>`
+* :ref:`STEMlab 125-14 Gen 1 <schematics_125_14>`
 * :ref:`STEMlab 125-14 Z7020 <schematics_125_14_Z7020>`
 * :ref:`STEMlab 125-14 4-Input <schematics_125_14_4_IN>`
 * :ref:`SDRlab 122-16 <schematics_122_16>`
@@ -226,8 +233,10 @@ Please refer to the technical drawings in the Red Pitaya board specifications fo
 
 .. _qspi_chip:
 
-QSPI 
-========
+External booting options
+=========================
+
+Red Pitaya Gen 1 boards can be booted from an on-board QSPI flash memory chip or from an external SD card. The QSPI flash memory chip is not populated by default on Red Pitaya boards, but it can be added later if needed. The QSPI flash memory chip is used for booting the board and can be used to store the operating system and other files.
 
 Please note that the `QSPI chip <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_, located on the top layer of the board just to the right of TP1A under the heatsink (:ref:`STEMlab 125-14 schematics <schematics_125_14>`), is not populated by default on Red Pitaya boards. For further information on board modifications, please contact support@redpitaya.com or info@redpitaya.com.
 

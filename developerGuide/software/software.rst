@@ -1,4 +1,4 @@
-.. _software:
+.. _dev_guide_software:
 
 Software
 ########

@@ -8,7 +8,7 @@ In this section you will find instrucitons on how to install the Red Pitaya OS o
 
 .. contents::
     :local:
-    :backlinks: none
+    :backlinks: top
     :depth: 2
 
 

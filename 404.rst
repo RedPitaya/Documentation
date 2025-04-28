@@ -1,0 +1,28 @@
+:orphan:
+
+####################
+404 Page Not Found
+####################
+
+.. figure:: img/RedPitayaFruit.jpg
+    :width: 1000
+
+    Not the Pitaya you are looking for?
+
+|
+
+Try using one of the links below or use the search bar to find what you are looking for.
+
+Here are a few suggestions:
+
+* :ref:`Quick start guide <quick_start>`.
+* :ref:`Applications and programming <appsFeatures>`.
+* :ref:`Red Pitaya Gen 1 and Gen 2 hardware specifications <dev_guide_hardware>`.
+* :ref:`Software development guide <dev_guide_software>`.
+* :ref:`FAQ and troubleshooting <faq>`.
+
+|
+
+Still not found what you are looking for?
+
+* :ref:`Contact us <report_problem>`.
