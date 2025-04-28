@@ -8,10 +8,10 @@ The Red Pitaya X-Channel system consists of multiple Low-Noise STEMlab 125-14 de
 
 Red Pitaya X-Channel system consists of:
 
-* **one PRIMARY Low-Noise STEMlab 125-14** device, a standard Low-Noise STEMlab 125-14 device that provides clock and trigger signals to other SECONDARY Low-Noise STEMlab 125-14 devices.
-* one or **multiple SECONDARY Low-Noise STEMlab 125-14 devices**, that are modified in a way that they can receive clock and trigger signals from a PRIMARY device and distribute them to the next SECONDARY device. These are marked with an “S” sticker.
+* **One Primary Low-Noise STEMlab 125-14** device, a standard Low-Noise STEMlab 125-14 device that provides clock and trigger signals to other *Secondary* Low-Noise STEMlab 125-14 devices.
+* One or **multiple Secondary Low-Noise STEMlab 125-14 devices**, that are modified in a way that they can receive clock and trigger signals from a *Primary* device and distribute them to the next *Secondary* device. These are marked with an “S” sticker.
 
-The PRIMARY device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the SECONDARY 1 board. SECONDARY 1 then passes the clock forward to SECONDARY 2, SECONDARY 2 to SECONDARY 3, and so on (SECONDARY N to SECONDARY N+1). This way, we can achieve clock and trigger synchronisation of all boards in the system.
+The *Primary* device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the *Secondary* 1 board. *Secondary* 1 then passes the clock forward to *Secondary* 2, *Secondary* 2 to *Secondary* 3, and so on (*Secondary* N to *Secondary* N+1). This way, we can achieve clock and trigger synchronisation of all boards in the system.
 
 For more information about the software, please refer to: :ref:`X-Channel streaming <x-ch_streaming>`.
 
@@ -19,8 +19,22 @@ For more information about the software, please refer to: :ref:`X-Channel stream
     
     We recommend using :ref:`OS 2.00-23 or higher <prepareSD>` for the X-channel system.
 
-    - With 2.00 OS both the PRIMARY and the SECONDARY devices use the SAME OS!
-    - With 1.04 OS the PRIMARY and SECONDARY boards use DIFFERENT OS!
+    * With 2.00 OS both the *Primary* and the *Secondary* devices use the **same** Red Pitaya OS images!
+    * With 1.04 OS the Primanry and *Secondary* boards use **different** Red Pitaya OS images!
+
+
+.. note::
+
+    **Booting without the external clock present?**
+    The official Red Pitaya OS will not boot on *Secondary* devices without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
+    However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
+
+.. note::
+
+    When synchronising multiple Red Pitaya boards, please keep in mind that:
+
+    * :ref:`Click Shield synchronisation <click_shield>` requires external clock models.
+    * :ref:`X-channel synchronisation <x-ch_streaming>` requires the X-channel system (master and slave boards) which differ from external clock models.
 
 
 Setup
@@ -36,11 +50,11 @@ Setup
         Make sure that your network has enough throughput for all the data you are about to stream. It is also recommended to use a dedicated network only for the X-channel system.
 
 
-#.  Connect the SATA cables between the PRIMARY and SECONDARY devices.
+#.  Connect the SATA cables between the *Primary* and *Secondary* devices.
 
-    PRIMARY SATA S1 -> SECONDARY 1 SATA S2
-    SECONDARY 1 SATA S1 -> SECONDARY 2 SATA S2
-    SECONDARY 2 SATA S1 -> SECONDARY 3 SATA S2
+    *Primary* SATA S1 -> *Secondary* 1 SATA S2
+    *Secondary* 1 SATA S1 -> *Secondary* 2 SATA S2
+    *Secondary* 2 SATA S1 -> *Secondary* 3 SATA S2
     ...
 
 
@@ -188,7 +202,7 @@ Technical specifications (one board)
     +------------------------------------+------------------------------------+
     | Available voltages                 | +5 V, +3V3, -4 V                   |
     +------------------------------------+------------------------------------+
-    | External ADC clock                 | SATA connector (secondary units)   |
+    | External ADC clock                 | SATA connector (Secondary units)   |
     +------------------------------------+------------------------------------+
 
 .. table::
@@ -271,7 +285,7 @@ The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Sh
 Can a different Red Pitaya STEMlab 125-14 unit be used as a primary device in the X-channel system?
 --------------------------------------------------------------------------------------------------------
 
-Yes, you can use any version of the STEMlab 125-14 as the primary device. This includes:
+Yes, you can use any version of the STEMlab 125-14 as the *Primary* device. This includes:
 
 - STEMlab 125-14 LN
 - STEMlab 125-14 LN Z7020
@@ -282,8 +296,8 @@ Yes, you can use any version of the STEMlab 125-14 as the primary device. This i
 What is the difference between Primary and Secondary devices in the X-channel system?
 ---------------------------------------------------------------------------------------
 
-The primary device is a standard STEMlab 125-14 Low-Noise device. The secondary devices are STEMlab 125-14 Low-Noise Red Pitayas that are hardware modified to receive the clock and trigger signal from the "SATA" connectors.
-Using a normal STEMlab 125-14 as a secondary device will not work as it does not have the necessary hardware modifications.
+The *Primary* device is a standard STEMlab 125-14 Low-Noise device. The *Secondary* devices are STEMlab 125-14 Low-Noise Red Pitayas that are hardware modified to receive the clock and trigger signal from the "SATA" connectors.
+Using a normal STEMlab 125-14 as a *Secondary* device will not work as it does not have the necessary hardware modifications.
 
 
 Can I boot the secondary/external clock devices without the external clock present?

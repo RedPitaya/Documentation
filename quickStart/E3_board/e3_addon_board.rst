@@ -15,6 +15,11 @@ The E3 add-on module provides secure and robust Red Pitaya boot and shutdown opt
     :width: 600
 
 
+.. note::
+        
+    When the E3 board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the :ref:`E3 board booting section <e3_board_boot>` for more information.
+
+
 Features
 ========
 
@@ -61,6 +66,7 @@ Here is a quick installation guide for the E3 board:
 
     .. TODO Add picture
 
+.. _e3_board_boot:
 
 Booting Red Pitaya with E3 board
 ==================================
@@ -68,10 +74,11 @@ Booting Red Pitaya with E3 board
 Once the E3 add-on board is connected to the Red Pitaya board, you can power on the Red Pitaya board by pressing the button on the E3 board. The Red Pitaya board will boot from the SD card. To boot from the eMMC or QSPI, Linux settings must be configured.
 
 1. Connect the power supply and ethernet cable to the Red Pitaya board. Unlike in normal operation, the Red Pitaya board **will not power on automatically**. You will see the **green power LED** on the Red Pitaya board perform a blink, then turn off.
-#. To start the booting process, press and hold the **P-ON** button on the E3 board for 2 seconds. The **green power LED** on the Red Pitaya board will turn on and the boot process will start. The **green status LED** on the E3 board will blink during the boot process and turn on when the boot is complete.
+#. To start the booting process, press and hold the **P-ON** button on the E3 board for 2 seconds. The **green power LED** on the Red Pitaya board will turn on and the boot process will start. The **green status LED** on the E3 board will *blink during the boot process* and *turn on when the boot is complete* (1 minute).
 #. Once the Red Pitaya board is booted, the E3 board will monitor the state of the Watchdog timer of the Red Pitaya board. If Red Pitaya freezes or hangs, the E3 board will automatically reboot the Red Pitaya board.
 #. To power off the Red Pitaya board, press and hold the **P-ON** button on the E3 board for 2 seconds. The Red Pitaya board will perform a safe shutdown and turn off.
 #. If the **P-ON** button is pressed and held for more than 10 seconds, the E3 board will immediately power off the Red Pitaya board.
+
 
 QSPI and eMMC boot options
 ==========================
@@ -88,5 +95,7 @@ To boot the board from the eMMC, please turn on the switch on the E3 board.
 Hardware and software specifications
 ==================================================
 
-For full information on the E3 software and hardware specifications including state machine diagram, modes of operation and schematics, please refer to the :ref:`E3 board software section <E3_SW>` and :ref:`E3 board hardware section <E3_HW>`.
+For full information on the E3 software including state machine diagram, modes of operation, and source code, please refer to the :ref:`E3 board software section <E3_SW>`.
+
+For full information on the E3 hardware specifications and schematics, please refer to the :ref:`E3 board hardware section <E3_HW>`.
 

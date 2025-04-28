@@ -1,3 +1,5 @@
+.. _appsFeatures:
+
 #########################
 Applications and Features
 #########################

@@ -487,7 +487,7 @@ The PyRPL executables for 2.00 are available :ref:`here <pyrpl>`.
 Software
 ===========
 
-For establishing an SSH connection, creating a custom FPGA image, custom ecosystem, and/or custom web applications, please refer to :ref:`Developers guide Software <software>`.
+For establishing an SSH connection, creating a custom FPGA image, custom ecosystem, and/or custom web applications, please refer to :ref:`Developers guide Software <dev_guide_software>`.
 
 
 How can I acquire data with Red Pitaya?
@@ -542,7 +542,7 @@ Where can I find the ecosystem, software, and FPGA images?
 How to start with FPGA development?
 -------------------------------------
 
-    * :ref:`Software <software>`.
+    * :ref:`Software <dev_guide_software>`.
     * :ref:`FPGA tutorials <knowledgebase:learn_FPGA>`.
 
 

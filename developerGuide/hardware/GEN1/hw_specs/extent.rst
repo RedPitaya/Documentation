@@ -3,6 +3,11 @@
 Extension connectors (Gen 1)
 #############################
 
+.. note::
+
+    The information provided by Red Pitaya d.o.o. is believed to be accurate and reliable. However, no liability is accepted for its use. Please note that the contents may be subject to change without prior notice. 
+
+
 .. TODO update to GEN 1
 
 .. contents:: **Index**
@@ -106,7 +111,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
     .. group-tab:: SDRlab 122-16
 
-        * Two 3V3 power sources.
+        * Two +3V3 power sources.
         * 22 single ended or 11 differential digital I/Os with 3.3 V logic levels.
         * Two CAN busses.
         
@@ -168,7 +173,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
     .. group-tab:: SIGNALlab 250-12
 
-        * Two 3V3 power sources.
+        * Two +3V3 power sources.
         * 19 single ended or 9 differential digital I/Os with 3.3 V logic levels.
         * Two CAN busses.
         
@@ -231,8 +236,8 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
     .. group-tab:: STEMlab 125-14 4-Input
 
-        * Two 3V3 power sources.
-        * 22 single ended or 8 differential digital I/Os with 3.3 V logic levels.
+        * Two +3V3 power sources.
+        * 22 single ended or 11 differential digital I/Os with 3.3 V logic levels.
         * Two CAN busses.
         
         +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
@@ -729,6 +734,21 @@ To achieve the best performance, the GPIO pins are directly connected to the FPG
 
 
 
+
+.. _sync_connectors_gen1:
+
+Synchronisation connectors
+===========================
+
+The SATA :ref:`S1 and S2 connectors <sync_connectors_gen1>` on Red Pitaya boards are used for daisy chaining multiple Red Pitaya boards together. The S1 connector is used exclusively for transmitting clock and trigger signals of the currnet board
+to the next board in the chain while the S2 connector is used exclusively for receiving clock and trigger signals from the previous board in the chain.
+
+.. note::
+
+    The S1 and S2 connectors are used only for interconnection between two Red Pitaya modules. However they can be used for connecting other devices by modifying the FPGA image (the official Red Pitaya OS supports only daisy chaining).
+
+
+
 Powering Red Pitaya through extension connector
 ===============================================
 
@@ -753,9 +773,37 @@ Red Pitaya boards can be powered through the +5V pin (pin 1) of the extension |E
 
 Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension |E2|.
 
+
+External ADC clock
+===================
+
+The main ADC and FPGA CLK signal can be supplied from an external source through the **Ext. ADC Clk±** ports. Only specific Red Pitaya boards support this option:
+
+* :ref:`STEMlab 125-14 External clock <top_125_14_EXT>`.
+* :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
+* :ref:`STEMlab 125-14 4-Input <top_125_14_4-IN>`.
+
+
+**External clock specifications**
+
+The external ADC clock should comply with the LVDS standard. Additional detals are available under each board's documentation. The maximum and minimum clock frequencies are limited by the ADC specifications.
+
+The clock signal then traveles from the input pins through the ADC to the FPGA.
+
+
+.. note::
+
+    When synchronising multiple Red Pitaya boards, please keep in mind that:
+
+    * :ref:`Click Shield synchronisation <click_shield>` requires external clock models.
+    * :ref:`X-channel synchronisation <x-ch_streaming>` requires the X-channel system (master and slave boards) which differ from external clock models.
+
+
+
 .. note::
 
     The information provided by Red Pitaya d.o.o. is believed to be accurate and reliable. However, no liability is accepted for its use. Please note that the contents may be subject to change without prior notice. 
+
 
 
 .. substitutions

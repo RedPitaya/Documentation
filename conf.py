@@ -15,7 +15,7 @@
 import sys
 import os
 import datetime
-import sphinx_rtd_theme     # import theme
+#import sphinx_rtd_theme     # import theme
 
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -38,14 +38,16 @@ from _links import *
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_rtd_theme',
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
     'sphinx.ext.intersphinx',
     'sphinx_tabs.tabs',
-    'github',
-    'sphinx_rtd_theme'
+    'notfound.extension',
+    'github'
+    
 #    'myst_parser',
 #    'xref'
 ]
@@ -151,12 +153,13 @@ html_theme = 'sphinx_rtd_theme'
 # documentation.
 # html_theme_options = {'body_max_width':'70%'}
 html_theme_options = {
-    'logo_only':True,
-    'display_version':False
+    'logo_only': True,
+    'collapse_navigation': True,
+    'navigation_depth': 5
 }
 
 # Not needed (latest sphinx) Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".

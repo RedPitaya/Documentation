@@ -11,7 +11,7 @@ Extension connectors (Gen 2)
 
 .. contents:: **Index**
    :local:
-   :backlinks: none
+   :backlinks: top
 
 |
 
@@ -771,19 +771,27 @@ to the next board in the chain while the S2 connector is used exclusively for re
 Powering Red Pitaya through extension connector
 ===============================================
 
-The Red Pitaya can also be powered through pin 1 of the extension |E2|, but in such a case, external protection must be provided by the user in order to protect the board!
+Red Pitaya boards can be powered through the +5V pin (pin 1) of the extension |E2|.
 
-.. figure:: img/schematics/Protection.png
++--------------------------+----------------------------------+
+| **External power specifications**                           |
++--------------------------+----------------------------------+
+| Power supply voltage     | 5 V, 3.0 A (max)                 |
++--------------------------+----------------------------------+
+| Power supply type        | DC                               |
++--------------------------+----------------------------------+
+| Abs. max. voltage        | 5.5 V (max)                      |
++--------------------------+----------------------------------+
+| Abs. min. voltage        | 4.5 V (min)                      |
++--------------------------+----------------------------------+
 
-|
-
-Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension |E2|.
+The +5V pin features a 3.0 A PTC resetable fuse, which protects the board from overcurrent. The fuse is located on the PCB, near the extension |E2|.
 
 
 External ADC clock
 ===================
 
-The main FPGA CLK signal on |STEMlab 125-14 Gen 2 Pro| and |STEMlab 125-14 Gen 2 Z7020 Pro| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
+The main ADC and FPGA CLK signal on |STEMlab 125-14 Gen 2 Pro| and |STEMlab 125-14 Gen 2 Z7020 Pro| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
 
 Both the internal oscillator clock and the external clock signal are connected to the `NB6L72`_ Differential Crosspoint Switch.
 The **CLK_SEL** pin is used to select the clock source:
@@ -791,9 +799,10 @@ The **CLK_SEL** pin is used to select the clock source:
 * 3V3 (logic high) or unconnected - **Internal clock**.
 * GND (logic low) - **External clock**.
 
-The clock signal then travelles from the output of the NB6L72 through the ADC to the FPGA.
+The clock signal then traveles from the output of the NB6L72 through the ADC to the FPGA.
 
 **External clock specifications**
+
 The external ADC clock should comply with `NB6L72`_ input specifications. The chip is powered by 3V3.
 
 .. note::

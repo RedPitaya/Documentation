@@ -215,7 +215,7 @@ Board dimensions
 
 Please refer to the technical drawings in the Red Pitaya board specifications for exact board dimensions.
 
-* :ref:`STEMlab 125-14 <schematics_125_14>`
+* :ref:`STEMlab 125-14 Gen 1 <schematics_125_14>`
 * :ref:`STEMlab 125-14 Z7020 <schematics_125_14_Z7020>`
 * :ref:`STEMlab 125-14 4-Input <schematics_125_14_4_IN>`
 * :ref:`SDRlab 122-16 <schematics_122_16>`
@@ -226,8 +226,10 @@ Please refer to the technical drawings in the Red Pitaya board specifications fo
 
 .. _qspi_chip:
 
-QSPI 
-========
+External booting options
+=========================
+
+Red Pitaya Gen 1 boards can be booted from an on-board QSPI flash memory chip or from an external SD card. The QSPI flash memory chip is not populated by default on Red Pitaya boards, but it can be added later if needed. The QSPI flash memory chip is used for booting the board and can be used to store the operating system and other files.
 
 Please note that the `QSPI chip <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_, located on the top layer of the board just to the right of TP1A under the heatsink (:ref:`STEMlab 125-14 schematics <schematics_125_14>`), is not populated by default on Red Pitaya boards. For further information on board modifications, please contact support@redpitaya.com or info@redpitaya.com.
 

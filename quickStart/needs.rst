@@ -16,7 +16,7 @@ The following items are required for proper board operation. They are already in
 
         .. tabs::
 
-            .. tab:: 125-14 Gen2, 125-14 Gen2 Pro, 125-14 Gen2 Z7020 Pro
+            .. tab:: 125-14 Gen 2, 125-14 Gen 2 Pro, 125-14 Gen 2 Z7020 Pro
 
                 * 5 V / 3 A USB-C power supply.
                 * 16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS.
