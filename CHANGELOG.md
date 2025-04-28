@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 **Links affected:**
 
 - Added redirects for broken links from *April 2025 - Update 1*.
+- Fixed Sphinx dependency issues with the documentation build process.
 - None.
 
 ## April 2025 - Update 1
