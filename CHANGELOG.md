@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file.
 **Minor updates:**
 
 - Fixed and updated Gen 1 specifications.
-- Updated and clarifier E3 add-on board instructions.
+- Updated and clarified E3 add-on board instructions.
 - Updated Gen 2 booting instructions.
 
 **Links affected:**

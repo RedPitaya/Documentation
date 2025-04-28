@@ -46,9 +46,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx_tabs.tabs',
     'notfound.extension',
-    'github'
-    
-#    'myst_parser',
+    'github',
+    'myst_parser'
 #    'xref'
 ]
 
