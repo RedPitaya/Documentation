@@ -44,6 +44,7 @@ This issue will be resolved in a future OS version by updating the Linux kernel 
 Fixed
 ======
 
+
 Local network visibility
 --------------------------
 
@@ -70,9 +71,9 @@ Here are instructions on how to `add a SWAP file to Ubuntu OS <https://www.digit
 
 It may be necessary to increase the size of the Red Pitaya OS partition on the SD card:
 
-- Create a copy of the Red Pitaya OS on the SD card (e.g. using the `dd` command).
-- Resize the OS partition on the SD card using a tool like `parted`.
-- Add SWAP space
+* Create a copy of the Red Pitaya OS on the SD card (e.g. using the `dd` command).
+* Resize the OS partition on the SD card using a tool like `parted`.
+* Add SWAP space.
 
 For more information on SWAP, see the link above.
 

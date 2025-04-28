@@ -43,10 +43,14 @@ Heatsink interface dimensions:
 Compatibility
 ===================
 
-The heatsink interface is compatible with the following Red Pitaya models:
+The heatsink interface is compatible with the following Red Pitaya models and their variations:
 
-    * STEMlab 125-14 Gen 1 (all board models),
+    * STEMlab 125-14 Gen 1,
     * STEMlab 125-10 (discontinued).
+
+.. note::
+
+    Please note that STEMlab 125-14 4-Input is not compatible with the heatsink interface.
 
 
 Before the assembly
