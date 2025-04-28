@@ -1,1 +1,0 @@
-- Script that automatically resizes the partition to maximum size if there is any unallocated space on the SD card (2.06 Linux).
