@@ -4,13 +4,15 @@
 Supported features and apps by Red Pitaya model
 ###############################################
 
+.. TODO update for Gen 2
+
 .. note::
 
     Due to unpopularity we have decided to move away from the Application Marketplace. This means that Applicaton Marketplace will not longer be available in the future OS versions. All unique applications will be moved to the official OS and accessible on the main web interface page.
 
 
 +------------------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
-|                                    | STEMlab 125-10 (discont.) | STEMlab 125-14            | STEMlab 125-14-Z7020      | STEMlab 125-14 4-Input    | SDRlab 122-16             | SIGNALlab 250-12          |
+|                                    | STEMlab 125-10 (discont.) | STEMlab 125-14 (Gen 1)    | STEMlab 125-14-Z7020      | STEMlab 125-14 4-Input    | SDRlab 122-16             | SIGNALlab 250-12          |
 +====================================+===========================+===========================+===========================+===========================+===========================+===========================+
 | **Applications**                                                                                                                                                                                           |
 +------------------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+

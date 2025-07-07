@@ -6,7 +6,7 @@ PyPRL
 
 The application is based on the `official PyRPL GitHub repository <https://github.com/pyrpl-fpga/pyrpl>`_ developed by Leonard Neuhaus
 
-For more information, see the `official documentation <https://pyrpl.readthedocs.io/en/latest/>`
+For more information, see the `official documentation <https://pyrpl.readthedocs.io/en/latest/>`_.
 
 
 What do I need before I start?
@@ -60,10 +60,7 @@ Author & Source
 
 .. admonition:: Credits
 
-    | The original developer of the PyRPL application for Red Pitaya is Leonard Neuhaus.
+    | The original developer of the PyRPL application for Red Pitaya is Leonard Neuhaus. The repository is currently maintained by the PyRPL community lead by michaelcroquette and peteasa.
     | Repositories used by our builds:
 
-        * `Red Pitaya Notes <https://pavel-demin.github.io/red-pitaya-notes/>`_.
-
-Pavel Demin has developed several other SDR applications that are compatible with the Red Pitaya board. These applications are available in the Pavel Demin's Alpine Linux OS image.
-For more information on these applications, please refer to the `Red Pitaya Notes <https://pavel-demin.github.io/red-pitaya-notes/>`_.
+        * `PyRPL GitHub <https://github.com/pyrpl-fpga/pyrpl>`_

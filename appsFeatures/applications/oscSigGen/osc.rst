@@ -266,7 +266,7 @@ The Source parameter defines the source used for this purpose. With the IN1, IN2
 
    .. tab:: STEMlab 125-10, 125-14, 125-14 4-Input, SDRlab 122-16
 
-      Pin 3 (DIO0_P) on the header row :ref:`E1 <E1>`.
+      Pin 3 (DIO0_P) on the header row :ref:`E1 <E1_gen1>`.
       
 
    .. tab:: SIGNALlab 250-12

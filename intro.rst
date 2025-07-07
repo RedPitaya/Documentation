@@ -17,22 +17,22 @@ The Red Pitaya has been used everywhere. From the `International Space Station <
 
 **The question is, how will you use it?**
 
-- :ref:`Connection <ConnectSTEMlab>`
-- :ref:`Applications <all_apps>`
-- :ref:`Programming <programming>`
-- :ref:`FPGA <build-fpga>`
-- :ref:`Customization <customization>`
-- `Shop <https://redpitaya.com/shop/>`_
+* :ref:`Connection <quickstart_connect>`.
+* :ref:`Applications <all_apps>`.
+* :ref:`Programming <programming>`.
+* :ref:`FPGA <build-fpga>`.
+* :ref:`Customization <customization>`.
+* `Shop <https://redpitaya.com/shop/>`_.
 
 **GitHub source code:**
 
-- `Ecosystem and applications <https://github.com/RedPitaya/RedPitaya>`_
-- `FPGA <https://github.com/RedPitaya/RedPitaya-FPGA>`_
+* `Ecosystem and applications <https://github.com/RedPitaya/RedPitaya>`_.
+* `FPGA <https://github.com/RedPitaya/RedPitaya-FPGA>`_.
 
 **Use cases:**
 
-- `Red Pitaya blog <https://content.redpitaya.com/blog>`_
+* `Red Pitaya blog <https://content.redpitaya.com/blog>`_.
 
 **FPGA lessons and tutorials**
 
-- :ref:`FPGA tutorials <knowledgebase:learn_FPGA>`
+* :ref:`FPGA tutorials <knowledgebase:learn_FPGA>`.

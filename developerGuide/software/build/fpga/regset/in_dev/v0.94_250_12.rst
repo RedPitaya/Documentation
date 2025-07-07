@@ -9,6 +9,10 @@ The table describes address space partitioning implemented on FPGA via the AXI G
 The memory block is divided into 8 parts. Each part is occupied by an individual IP core. The address space of individual applications is described in the subsection below. The size of each IP core address space is 4MByte. 
 For additional information and better understanding check other documents (schematics, specifications...).
 
+.. contents:: Register index
+    :backlinks: top
+
+|
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|
 
@@ -640,14 +644,14 @@ Arbitrary Signal Generator (ASG)
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:16 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Number of repeats of table readout. 0=infinite               | 15:0  | R/W |
+|                    | Number of repeats of table readout. 0=Disable burst mode     | 15:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x1C**           | **CH A number of burst repetitions**                         |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:16 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Number of repetitions.                                       |       |     |
-|                    | 0=disabled 0xffff=infinite                                   | 15:0  | R/W |
+|                    | 0x0=1 rep, 0x1=2 rep, ... , 0xffff=infinite                  | 15:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x20**           | **CH A delay between burst repetitions**                     |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
@@ -698,14 +702,14 @@ Arbitrary Signal Generator (ASG)
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:16 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Number of repeats of table readout. 0=infinite               | 15:0  | R/W |
+|                    | Number of repeats of table readout. 0=Disable burst mode     | 15:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x3C**           | **CH B number of burst repetitions**                         |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:16 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Number of repetitions.                                       |       |     |
-|                    | 0=disabled 0xffff=infinite                                   | 15:0  | R/W |
+|                    | 0x0=1 rep, 0x1=2 rep, ... , 0xffff=infinite                  | 15:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x40**           | **CH B delay between burst repetitions**                     |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+

@@ -15,14 +15,19 @@
 import sys
 import os
 import datetime
+#import sphinx_rtd_theme     # import theme
 
-import sphinx_rtd_theme     # import theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 sys.path.append(os.path.abspath('.') + '/_extensions')
+sys.path.append(os.path.abspath('.')+ '/_links')
+sys.path.append(os.path.abspath('.'))
+
+from _links.link import *
+from _links import *
 
 # -- General configuration ------------------------------------------------
 
@@ -33,16 +38,17 @@ sys.path.append(os.path.abspath('.') + '/_extensions')
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_rtd_theme',
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
     'sphinx.ext.intersphinx',
-#    'sphinx.ext.autosectionlabel',
     'sphinx_tabs.tabs',
+    'notfound.extension',
     'github',
-    'sphinx_rtd_theme'
-#    'sphinx_design'
+    'myst_parser'
+#    'xref'
 ]
 
 sphinx_tabs_valid_builders = ['linkcheck']
@@ -56,7 +62,8 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 # source_suffix = ['.rst', '.md']
 source_suffix = {
-    '.rst': 'restructuredtext'
+    '.rst': 'restructuredtext',
+    '.md': 'markdown'
     }
 
 # The encoding of source files.
@@ -69,7 +76,7 @@ root_doc = 'index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build', 'README.md']
 
 # Warns about all references not being found
 nitpicky = True
@@ -79,7 +86,7 @@ nitpicky = True
 # General information about the project.
 project = "Red Pitaya"
 title = "Red Pitaya Documentation"
-copyright = f"{datetime.date.today().year}, Red Pitaya d.o.o."
+copyright = f"{datetime.date.today().year}, Red Pitaya d.o.o"
 author = "Red Pitaya"
 
 # The version info for the project you're documenting, acts as a replacement for
@@ -145,12 +152,13 @@ html_theme = 'sphinx_rtd_theme'
 # documentation.
 # html_theme_options = {'body_max_width':'70%'}
 html_theme_options = {
-    'logo_only':True,
-    'display_version':False
+    'logo_only': True,
+    'collapse_navigation': True,
+    'navigation_depth': 5
 }
 
 # Not needed (latest sphinx) Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -167,12 +175,13 @@ html_static_path = ['_static']
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "img/redpitaya-logo.svg"
+# html_logo = "img/redpitaya-logo.svg"
+html_logo = "img/redpitaya-logo.png"
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-html_favicon = "img/favicon.ico"
+html_favicon = "img/favicon.png"
 
 
 

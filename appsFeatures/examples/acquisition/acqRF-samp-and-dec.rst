@@ -12,7 +12,7 @@ Examples of decimation values and corresponding time scales of a buffer are give
 
     **SCPI commands:**
 
-    - OS 2.00-30 and higher: [1, 2, 4, 8, 16, 17, 18, ..., 65535, 65536] - *(powers of 2 up to 16 and then any whole number up to 65536)* - **ACQ:DEC:F**
+    - OS 2.00-30 and higher: [1, 2, 4, 8, 16, 17, 18, ..., 65535, 65536] - *(powers of 2 up to 16 and then any whole number up to 65536)* - **ACQ:DEC:Factor**
     - OS 2.00-23 and lower: [1, 2, 4, 8, 16, 64, 256, ..., 32768, 65536] - *(powers of 2 up to 65536)* - **ACQ:DEC**
 
     **API commands:**

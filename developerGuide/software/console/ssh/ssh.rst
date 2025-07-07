@@ -9,7 +9,7 @@ Access information for SSH connection:
 * Username: ``root``
 * Password: ``root``
 
-If you are unable to connect, check that Red Pitaya is connected to your :ref:`local network <isConnected>`.
+If you are unable to connect, check that Red Pitaya is connected to your :ref:`local network <faq_isConnected>`.
 
 Connection instructions are available for:
 

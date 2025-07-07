@@ -13,6 +13,7 @@ Red Pitaya SPI does not use the standard ``cpol`` and ``cpha`` parameters, inste
 - ``HISL`` - High idle level, sample on leading edge - equivalent to ``cpol=1, cpha=0``
 - ``HIST`` - High idle level, sample on trailing edge - equivalent to ``cpol=1, cpha=1``
 
+.. TODO add picture of CPOL CPHA
 
 Required hardware
 ==================

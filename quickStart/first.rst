@@ -1,82 +1,155 @@
-.. _ConnectSTEMlab:
+.. _quickstart_connect:
 
 #####################
 Connect to Red Pitaya
 #####################
 
-This is the most common and recommended way of connecting and using your Red Pitaya boards.
-Your LAN network must have DHCP settings enabled which is true with most local networks.
-With this, a simple *plug and play* approach is enabled.
-Having a Red Pitaya board connected to the local network will enable quick access to all Red Pitaya applications using only your web browser.
+Red Pitaya boards use *plug and play* approach. You can connect to the Red Pitaya board in multiple ways:
+
+* **LAN network connection** (recommended),
+* **Direct Ethernet cable connection** (PC to Red Pitaya board),
+* **Wi-Fi connection**.
+
+We recommend using the LAN network connection as it is the most straightforward and reliable method, which gives you quick access to all Red Pitaya applications using only your web browser.
+The other methods of connection are described in the :ref:`Network manager tool <network_manager>` chapter.
+
+.. note::
+
+    **Prerequisites:**
+    DHCP must be enabled on your local network. Here is a link to the `Wikipedia page with more information`_.
+
 
 Follow these five simple steps to start using your Red Pitaya:
 
 .. tabs::
 
-   .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
+    .. group-tab:: Gen 1
 
-      #. Update the Red Pitaya OS on the included SD card to the :ref:`latest version <prepareSD>`
-      #. Insert the SD card into your Red Pitaya board
+        .. tabs::
 
-         .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-            :width: 400
-            :align: center
+            .. tab:: 125-14, 122-16, 4-Input, 125-10 (discontinued)
 
-      #. Connect your Red Pitaya board to the router
+                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
+                #. Insert the SD card into your Red Pitaya board.
 
-         .. figure:: connect/125_router.png
-            :width: 400
-            :align: center
+                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+                        :width: 400
+                        :align: center
 
-      #. Connect the power supply to the Red Pitaya board
-      #. Open your web browser and type ``rp-xxxxxx.local/`` into the address bar
+                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
 
-         .. figure:: connect/125_stiker.png
-            :width: 400
-            :align: center
+                    .. figure:: img/125_router.png
+                        :width: 400
+                        :align: center
 
-         .. figure:: connect/125_stiker_2.png
-            :width: 400
-            :align: center
-   
-   .. tab:: 250-12
+                #. Connect the power supply to the Red Pitaya board.
+                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
 
-      #. Update the Red Pitaya OS on the included SD card to the :ref:`latest version <prepareSD>`
-      #. Insert the SD card into your Red Pitaya board
 
-         .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-            :width: 400
-            :align: center
+                    .. figure:: img/125_stiker.png
+                        :width: 400
+                        :align: center
 
-      #. Connect your Red Pitaya board to the router
+                    .. figure:: img/125_stiker_2.png
+                        :width: 400
+                        :align: center
 
-         .. figure:: connect/250_router.png
-            :width: 400
-            :align: center
+            .. tab:: 250-12
 
-      #. Connect the power supply to the Red Pitaya board
-      #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar
+                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
+                #. Insert the SD card into your Red Pitaya board.
 
-         .. figure:: connect/250_stiker.png
-            :width: 800
-            :align: center
+                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+                        :width: 400
+                        :align: center
 
-.. note::
+                #. Connect your Red Pitaya board to the router.
 
-   When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
+                    .. figure:: img/250_router.png
+                        :width: 400
+                        :align: center
 
-.. note::
+                #. Connect the power supply to the Red Pitaya board.
+                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
 
-   ``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board. The MAC address is written on the Ethernet connector.
+                    .. figure:: img/250_stiker.png
+                        :width: 800
+                        :align: center
 
-   Alternatively, you can replace the ``rp-xxxxxx.local`` with Red Pitaya's IP address, which you can get by matching Red Pitaya's MAC address in the APR table (type ``arp -a`` into the terminal/CMD).
-    
+    .. group-tab:: Gen 2
+
+        .. note::
+        
+            When the E3 board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the E3 tab below or the :ref:`E3 board booting section <e3_board_boot>` for more information.
+
+
+        .. tabs::
+
+            .. tab:: 125-14 Gen 2, 125-14 Gen 2 Pro, 125-14 Gen 2 Z7020 Pro
+
+                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
+                #. Insert the SD card into your Red Pitaya board.
+
+                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+                        :width: 400
+                        :align: center
+
+                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
+
+                    .. figure:: img/125_router.png
+                        :width: 400
+                        :align: center
+
+                #. Connect the power supply to the Red Pitaya board.
+                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
+
+
+                    .. figure:: img/125_stiker.png
+                        :width: 400
+                        :align: center
+
+                    .. figure:: img/125_stiker_2.png
+                        :width: 400
+                        :align: center
+
+            .. tab:: E3 add-on board booting
+
+                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
+                #. Insert the SD card into your Red Pitaya board.
+
+                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+                        :width: 400
+                        :align: center
+
+                #. Connect your Red Pitaya board to the router.
+
+                    .. figure:: img/125_router.png
+                        :width: 400
+                        :align: center
+
+                #. Connect the power supply to the Red Pitaya board.
+                #. Press and hold the **P-ON** button on the E3 add-on board for 2 seconds to turn on the Red Pitaya board. Read more about the E3 add-on board in the :ref:`E3 add-on board <e3_addon_board>` chapter.
+                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
+
+                    .. figure:: img/125_stiker.png
+                        :width: 400
+                        :align: center
+
+                    .. figure:: img/125_stiker_2.png
+                        :width: 400
+                        :align: center
+
+
+``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board. The MAC address is written on the Ethernet connector.
+Alternatively, you can replace the ``rp-xxxxxx.local`` with Red Pitaya's IP address, which you can get by matching Red Pitaya's MAC address in the APR table (type ``arp -a`` into the terminal/CMD).
+        
 After the **fifth step**, you will get a Red Pitaya main page, as shown below.
 
-.. figure:: connect/connect-3.png
-   :align: center
+.. figure:: img/main_web_interface.png
+    :width: 800
+    :align: center
 
-   Red Pitaya's main page user interface.
+    Red Pitaya's main page user interface.
 
 .. raw:: html
 
@@ -84,45 +157,29 @@ After the **fifth step**, you will get a Red Pitaya main page, as shown below.
         <iframe src="https://www.youtube.com/embed/I21xyTCiZ-8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
+For connecting to the Red Pitaya board through 
 
 .. note::
 
     For any issues during setup, check :ref:`troubleshooting <faq>` or look on the |forum| for a solution.
     If you cannot find a solution, please write to support@redpitaya.com or post your problem on the forum, providing the following details:
 
-       - Red Pitaya board model (STEMlab 125-14, SDRlab 122-16, SIGNALlab 250-12, etc.),
-       - Is the board a variation of any board models (Low Noise, External Clock),
-       - Red Pitaya OS version (bottom-right corner of the web interface),
-       - Description of the problem in as much detail as possible,
-       - Any other information you think might be relevant to the situation.
+    * Red Pitaya board model (STEMlab 125-14, SDRlab 122-16, SIGNALlab 250-12, etc.),
+    * Is the board a variation of any board models (Low Noise, External Clock),
+    * Red Pitaya OS version (bottom-right corner of the web interface),
+    * Description of the problem in as much detail as possible,
+    * Any other information you think might be relevant to the situation.
+
+
+
+.. substitutions
+
+.. |latestOS| replace:: :ref:`latest version <prepareSD>`
+
+.. _Wikipedia page with more information: https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol
 
 
 .. |forum| raw:: html
 
-   <a href="https://forum.redpitaya.com/" target="_blank">forum</a>
+    <a href="https://forum.redpitaya.com/" target="_blank">forum</a>
 
-
-================
-Connection types
-================
-
-For detailed instructions on connection types, please check out the sections below:
-
-.. toctree::
-   :maxdepth: 2
-   
-   connect/connect
-
-.. note::
-
-   **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_,
-   otherwise access to ``*.local`` addresses will not work.
-
-   **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install additional software.
-
-.. note::
-
-   Access to the internet is only required when:
-
-   *   using the OS update application,
-   *   installing applications from the marketplace.

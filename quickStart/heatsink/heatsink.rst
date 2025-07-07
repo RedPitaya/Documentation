@@ -6,6 +6,12 @@ Red Pitaya heatsink interface setup
 
 The heatsink interface is CNC machined from aluminium to match the profile of the STEMlab 125-14. It connects to the bottom of the STEMlab 125-14 and has additional holes to connect the interface (attached to the board) to a larger heatsink for even better heat dissipation.
 
+Benefits of the heatsink interface:
+
+    * Better cooling than the standard heatsink on the STEMlab 125-14 (increased :ref:`temperature operating range <board_operation_gen1>`),
+    * Easy to install,
+    * Can be used with any external heatsink.
+
 Components
 ============
 
@@ -17,14 +23,14 @@ Components
     
 Table of contents:
 
-    * Heatsink interface
-    * Dark grey thermal pad
+    * Heatsink interface,
+    * Dark grey thermal pad.
 
 Not included:
 
-    * 4 M3x0.5 screws to fix the STEMlab 125-14 to the heatsink interface
-    * 6 M3x0.5 screws to fix the heatsink interface to the external cooling surface
-    * External heat sink
+    * 4 M3x0.5 screws to fix the STEMlab 125-14 to the heatsink interface,
+    * 6 M3x0.5 screws to fix the heatsink interface to the external cooling surface,
+    * External heat sink.
 
 Heatsink interface dimensions:
 
@@ -33,6 +39,18 @@ Heatsink interface dimensions:
     :width: 1000
 
     Dimensioned drawing of heatsink interface
+
+Compatibility
+===================
+
+The heatsink interface is compatible with the following Red Pitaya models and their variations:
+
+    * STEMlab 125-14 Gen 1,
+    * STEMlab 125-10 (discontinued).
+
+.. note::
+
+    Please note that STEMlab 125-14 4-Input is not compatible with the heatsink interface.
 
 
 Before the assembly
@@ -81,6 +99,10 @@ Assembly instructions
     .. figure:: img/Heatsink_stack.png
         :align: center
         :width: 600
+
+    .. note::
+
+        The external heatsink shown in the picture above is not included in the package and is only shown for illustrative purposes. The heatsink interface can be used with any external heatsink that has a flat surface and is the same size or larger than the Red Pitaya board.
 
     .. figure:: img/Heatsink_side_view2.jpg
         :align: center

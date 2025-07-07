@@ -8,34 +8,51 @@ The following items are required for proper board operation. They are already in
 
 .. |WEBstore| raw:: html
 
-   <a href="https://redpitaya.com/shop/" target="_blank">WEB store</a>
+    <a href="https://redpitaya.com/shop/" target="_blank">WEB store</a>
 
 .. tabs::
 
-   .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
+    .. group-tab:: Gen 2
 
-      *   5 V / 2 A micro USB power supply,
-      *   16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
-      *   Ethernet cable.
-      
-   .. tab:: 250-12
+        .. tabs::
 
-      *   12 V / 1 A power adapter with jack connector,
-      *   16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS,
-      *   Ethernet cable.
+            .. tab:: 125-14 Gen 2, 125-14 Gen 2 Pro, 125-14 Gen 2 Z7020 Pro
+
+                * 5 V / 3 A USB-C power supply.
+                * 16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS.
+                * Ethernet cable.
+
+    .. group-tab:: Gen 1
+
+        .. tabs::
+
+            .. tab:: 125-10, 125-14, 122-16, 125-14 4-Input
+
+                * 5 V / 2 A micro USB power supply.
+                * 16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS.
+                * Ethernet cable.
+
+            .. tab:: 250-12
+
+                * 12 V / 1 A power adapter with jack connector.
+                * 16 GB (up to 32 GB) Class 10 micro SD card with pre-loaded Red Pitaya OS.
+                * Ethernet cable.
 
 Additional items required that are not included in the Red Pitaya kits:
 
-*   A computer with an internet browser (Google Chrome is recommended),
-*   Router with DHCP server enabled and access to the internet.
+    * A computer with an internet browser (Google Chrome is recommended).
+    * Router with DHCP server enabled and access to the internet.
 
 .. note::
 
-   It is important to note that Red Pitaya boards should **not** be powered by a power supply that provides less power than specified above or has very thin power wires. Doing so may result in abnormal behaviour of the device, causing reboots and network disconnections.
-   Similarly, the Red Pitaya board may malfunction if powered directly from a USB port on a PC (due to insufficient current supply) or hub that cannot provide sufficient power or if a faulty power cable is used.
+    The board should be powered by the included power supply or an external power supply with appropriate specifications. Computer USB ports do not provide sufficient power to operate the Red Pitaya card.
+
+    .. tabs::
+
+        .. group-tab:: Gen 2
+
+            Please refer to the :ref:`Gen 2 hardware specifications <hw_specs_gen2>` for further technical specifications regarding power supply, SD card and operating temperature range.
     
-   Furthermore, the use of an unapproved power supply may impair performance or cause damage to the product.
-
-.. note::
-
-   We recommend a minimum of 16 GB SD card for Red Pitaya OS versions 2.00 and above. With OS versions 1.04, a minimum 8 GB card is recommended. For older OS versions (0.9) you may be able to get away with a 4 GB SD card.
+        .. group-tab:: Gen 1
+                
+            Please refer to the :ref:`Gen 1 hardware specifications <hw_specs_gen1>` for further technical specifications regarding power supply, SD card and operating temperature range.
