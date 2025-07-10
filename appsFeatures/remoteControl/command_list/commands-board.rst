@@ -8,6 +8,7 @@ Board control commands
 **Parameter options:**
 
 - ``<year> = {1900, ...}`` Default: ``OS release date and time``
+- ``<bool> = {OFF, ON}`` Default: ``OFF``
 - ``<month> = {1, 12}``
 - ``<day> = {1, 31}``
 - ``<hours> = {0, 23}``
@@ -58,6 +59,11 @@ Board control commands
 | | Examples:                                          | |                                                |                                                           |                        |
 | | ``RP:LOGmode SYSLOG``                              | |                                                |                                                           |                        |
 | |                                                    | |                                                |                                                           |                        |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+------------------------+
+| | ``RP:RET_ON_ERROR <bool>``                         | | -                                              | | Enables a special mode for compatibility                | in dev                 |
+| | Examples:                                          | |                                                | | with older SCPI clients. When this mode is enabled,     |                        |
+| | ``RP:RET_ON_ERROR ON``                             | |                                                | | if errors occur when executing query commands,          |                        |
+| |                                                    | |                                                | | the server will return empty data with delimiters "\r\n"|                        |
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+------------------------+
 | | ``SYSTem:TIME <hours>,<minutes>,<seconds>``        | | -                                              | Sets the time on the board.                               | 2.00-18 and 2.00-36    |
 | | Examples:                                          | |                                                |                                                           |                        |
