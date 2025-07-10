@@ -5,6 +5,57 @@
 SPI
 ====
 
+Functionality overview
+------------------------
+
+Red Pitaya SPI does not use the standard ``cpol`` and ``cpha`` parameters, instead the mode can be one of the following:
+
+* ``LISL`` - Low idle level, sample on leading edge - equivalent to ``cpol=0, cpha=0``
+* ``LIST`` - Low idle level, sample on trailing edge - equivalent to ``cpol=0, cpha=1``
+* ``HISL`` - High idle level, sample on leading edge - equivalent to ``cpol=1, cpha=0``
+* ``HIST`` - High idle level, sample on trailing edge - equivalent to ``cpol=1, cpha=1``
+
+.. figure:: img/SPI_modes.png
+    :align: center
+    :width: 600px
+
+    SPI modes
+
+
+The SPI commands feature three different function to configure the buffers for messages (using SCPI commands for explanation, but the same applies to the API commands).
+
+* ``SPI:MSG<n>:TX<m>:RX`` - Creates both the read (receive) and write (send) buffers for the specified message.
+* ``SPI:MSG<n>:TX<m>`` - Creates only the write buffer for the specified message. Deletes any previously created read buffer for the same message.
+* ``SPI:MSG<n>:RX<m>`` - Creates only the read buffer for the specified message. Deletes any previously created write buffer for the same message.
+
+In the background (API commands) all the commands call the same function ``rp_SPI_SetBufferForMessage()`` which initializes the data for both the buffers for sending and receiving at the same time.
+Calling the function multiple times for the same message will delete the previous buffers and create new ones. This means that to create both the buffers for sending and receiving you have to use the ``SPI:MSG<n>:TX<m>:RX`` command.
+Calling the ``SPI:MSG<n>:TX<m>`` command and then the ``SPI:MSG<n>:RX<m>`` command will first create the buffer for sending (and not initialize the receiving buffer), then the second command will delete the previously created buffer for sending and create a new one for receiving.
+Consequently, it is impossible to create both the buffers for sending and receiving using a sequence of ``SPI:MSG<n>:TX<m>`` and ``SPI:MSG<n>:RX<m>`` commands as one of the buffers will never be initialized, resulting in an error when trying to read or write data (for SCPI commands this can result in an infinite loop when attempting to read the data from a nonexisting buffer).
+
+Adding the ``:CS`` suffix (or setting the *cs_change* to `true`) to the command will toggle the CS line after sending/receiving the message. For most basic applications this is not needed.
+
+
+
+
+Important notes
+----------------
+
+* The SPI device path on Gen 2 boards is "/dev/spidev2.0" instead of the classic "/dev/spidev1.0".
+
+
+Code examples
+-----------------
+
+Here are some examples of how to use the SPI commands on Red Pitaya:
+
+* :ref:`Digital communication examples <examples_digcom>`.
+
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<mode> = {LISL, LIST, HISL, HIST}``  Default: ``LISL``
@@ -39,7 +90,7 @@ SPI
 | | ``SPI:INIT:DEV <path>``                  | | C: ``rp_SPI_InitDevice(const char *device)``                                                                           | | Initializes the API for working with SPI. ``<path>`` - Path to the SPI device.   | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        | | On some boards, it may be different from the standard: /dev/spidev1.0            |                    |
 | | ``SPI:INIT:DEV "/dev/spidev1.0"``        | | Python: ``rp_SPI_InitDevice(<device>)``                                                                                | |                                                                                  |                    |
-| |                                          | |                                                                                                                        | |                                                                                  |                    |
+| |                                          | |                                                                                                                        | | Shoulld be set to /dev/spidev2.0 on Gen 2 boards.                                |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
 | | ``SPI:RELEASE``                          | | C: ``rp_SPI_Release()``                                                                                                | Releases all used resources.                                                       | 1.04-18 and up     |
 | | Example:                                 | |                                                                                                                        |                                                                                    |                    |
@@ -177,6 +228,8 @@ SPI
 | |                                          | | Python: ``Buffer(<size>)``                                                                                             |                                                                                    |                    |
 | |                                          | |                                                                                                                        |                                                                                    |                    |
 +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+--------------------+
+
+
 
 |
 

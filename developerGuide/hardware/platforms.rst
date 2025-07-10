@@ -13,8 +13,12 @@ Gen 2
     GEN2/125-14_Gen2/top.rst
     GEN2/125-14_Gen2_Pro/top.rst
     GEN2/125-14_Gen2_Z7020_Pro/top.rst
+    GEN2/65-16_TI/top.rst
+    GEN2/125-14_TI/top.rst
     GEN2/compares/vs.rst
     GEN2/known_hw_issues/known_hw_issues.rst
+    GEN2/faq/faq.rst
+
 
 Gen 1
 ======
@@ -35,6 +39,7 @@ Gen 1
     GEN1/125-10/top.rst
     GEN1/compares/vs.rst
     GEN1/known_hw_issues/known_hw_issues.rst
+
 
 Certificates
 =============

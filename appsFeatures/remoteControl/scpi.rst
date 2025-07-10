@@ -159,7 +159,10 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     On Windows, you can use **py** instead of **python** in the command line.
 
-10. Download and save the |redpitaya_scpi.py| library into the VS Code workspace folder/directory. This library must be in the same folder as the python scripts.
+10. Download and save the |redpitaya_scpi.py| library into the VS Code workspace folder/directory. This library must be in the same folder as the python scripts. You can find the source code of the library on GitHub: |redpitaya_scpi github|. Alternatively, you can download it directly from here: |redpitaya_scpi.py|.
+
+    .. figure:: img/scpi-examples.png
+        :width: 600
 
 11. Create a new python file with the following code.
 
@@ -206,9 +209,13 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     <a href="https://code.visualstudio.com/docs/python/environments" target="_blank">virtual environment</a>
 
-.. |redpitaya_scpi.py| raw:: html
+.. |redpitaya_scpi github| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
+    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py GitHub source code</a>
+
+.. |redpitaya_scpi.py| replace::
+
+    :download:`redpitaya_scpi.py <https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/redpitaya_scpi.py>`
 
 
 **Running code**

@@ -77,6 +77,10 @@ The -ams switch provides access to mixed analog signals including Zynq SoC tempe
 
    redpitaya> monitor -sdac 0.9 0.8 0.7 0.6
 
+.. note::
+
+    The expected VCCDDR voltage is 1.35 V for boards with 1 GB of RAM (SIGNALlab 250-12 and STEMlab 125-14 Pro Z7020 Gen 2) and 1.5 V for all other boards.
+
 
 Accessing FPGA registers
 -------------------------
@@ -98,6 +102,7 @@ For example, the following sequence of monitor commands checks, modifies and ver
 .. note::
 
     The CPU algorithms communicate with the FPGA via these registers. Therefore, the user should be aware of possible interference with Red Pitaya applications that read or write to the same FPGA registers. However, for simple tasks, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.
+
 
 Source code
 -----------

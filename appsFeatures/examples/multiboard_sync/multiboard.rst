@@ -1,4 +1,4 @@
-.. _multiboard_sync_examples:
+.. _examples_multiboard_sync:
 
 Multi-board signal acquisition and generation
 ##############################################

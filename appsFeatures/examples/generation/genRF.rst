@@ -1,3 +1,5 @@
+.. _examples_genRF:
+
 Generating signals at RF outputs
 ################################
 

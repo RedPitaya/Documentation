@@ -63,7 +63,7 @@ Follow these five simple steps to start using your Red Pitaya:
                         :width: 400
                         :align: center
 
-                #. Connect your Red Pitaya board to the router.
+                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
 
                     .. figure:: img/250_router.png
                         :width: 400
@@ -80,12 +80,12 @@ Follow these five simple steps to start using your Red Pitaya:
 
         .. note::
         
-            When the E3 board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the E3 tab below or the :ref:`E3 board booting section <e3_board_boot>` for more information.
+            When the QSPI eMMC board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the E3 tab below or the :ref:`QSPI eMMC board booting section <QSPI_eMMC_board_boot>` for more information.
 
 
         .. tabs::
 
-            .. tab:: 125-14 Gen 2, 125-14 Gen 2 Pro, 125-14 Gen 2 Z7020 Pro
+            .. tab:: 125-14 Gen 2, 125-14 Pro Gen 2, 125-14 Pro Z7020 Gen 2
 
                 #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
                 #. Insert the SD card into your Red Pitaya board.
@@ -112,7 +112,7 @@ Follow these five simple steps to start using your Red Pitaya:
                         :width: 400
                         :align: center
 
-            .. tab:: E3 add-on board booting
+            .. tab:: QSPI eMMC board booting
 
                 #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
                 #. Insert the SD card into your Red Pitaya board.
@@ -128,7 +128,7 @@ Follow these five simple steps to start using your Red Pitaya:
                         :align: center
 
                 #. Connect the power supply to the Red Pitaya board.
-                #. Press and hold the **P-ON** button on the E3 add-on board for 2 seconds to turn on the Red Pitaya board. Read more about the E3 add-on board in the :ref:`E3 add-on board <e3_addon_board>` chapter.
+                #. Press and hold the **P-ON** button on the QSPI eMMC board for 2 seconds to turn on the Red Pitaya board. Read more about the QSPI eMMC board in the :ref:`QSPI eMMC board <QSPI_eMMC_board>` chapter.
                 #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
 
                     .. figure:: img/125_stiker.png
@@ -164,10 +164,10 @@ For connecting to the Red Pitaya board through
     For any issues during setup, check :ref:`troubleshooting <faq>` or look on the |forum| for a solution.
     If you cannot find a solution, please write to support@redpitaya.com or post your problem on the forum, providing the following details:
 
-    * Red Pitaya board model (STEMlab 125-14, SDRlab 122-16, SIGNALlab 250-12, etc.),
-    * Is the board a variation of any board models (Low Noise, External Clock),
-    * Red Pitaya OS version (bottom-right corner of the web interface),
-    * Description of the problem in as much detail as possible,
+    * **Red Pitaya board model** (STEMlab 125-14, SDRlab 122-16, SIGNALlab 250-12, etc.),
+    * Is the board a variation of any board models (Low Noise, External Clock, etc.),
+    * **Red Pitaya OS version** (bottom-right corner of the web interface),
+    * **Description of the problem** in as much detail as possible,
     * Any other information you think might be relevant to the situation.
 
 

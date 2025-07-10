@@ -1,3 +1,5 @@
+.. _examples_digcom:
+
 Digital communication interfaces
 ################################
 

@@ -1,7 +1,7 @@
-.. _top_125_14_gen2_z7020_pro:
+.. _top_125_14_pro_z7020_gen2:
 
 ##############################
-STEMlab 125-14 Gen2 Z7020 Pro
+STEMlab 125-14 Pro Z7020 Gen 2
 ##############################
 
 .. note::
@@ -189,7 +189,16 @@ Technical specifications
     <br/>
 
 
-.. _schematics_125_14_gen2_z7020_pro:
+Measurements
+=================
+
+You can find the measurements of the fast analog frontend here:
+
+* :ref:`Gen 1 - STEMlab 125-14 Gen 1 <measurements_gen1>`.
+* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
+
+
+.. _schematics_125_14_pro_z7020_gen2:
 
 Schematics
 ============
@@ -199,7 +208,7 @@ Schematics
 
 .. note::
 
-    FULL HW schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connections, and similar.
+    Full hardware schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, development schematics are available. This schematic will give you information about hardware configuration, FPGA pin connections, and similar.
 
 
 Mechanical Specifications and 3D Models
@@ -274,9 +283,9 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | Pin | Description           | FPGA pin number   | FPGA pin description                          | Voltage levels |
 +=====+=======================+===================+===============================================+================+
-| 1   | 3V3                   | -                 | -                                             | -              |
+| 1   | 3V3                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 2   | 3V3                   | -                 | -                                             | -              |
+| 2   | 3V3                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 3   | DIO0_P / EXT TRIG     | G17               | IO_L16P_T2_35                                 | 3V3            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
@@ -322,9 +331,9 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 24  | DIO10_N               | Y6                | IO_L13N_T2_MRCC_13                            | 3V3            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 25  | GND                   | -                 | -                                             | -              |
+| 25  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 26  | GND                   | -                 | -                                             | -              |
+| 26  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 
 .. note::
@@ -349,9 +358,9 @@ The E2 extension connector features the following ports:
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | Pin | Description           | FPGA pin number   | FPGA pin description                          | Voltage levels |
 +=====+=======================+===================+===============================================+================+
-| 1   | +5V                   | -                 | -                                             | -              |
+| 1   | +5V                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 2   | -5V                   | -                 | -                                             | -              |
+| 2   | -5V                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 3   | SPI (MOSI)            | E9                | PS_MIO10_500                                  | 3V3            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
@@ -369,9 +378,9 @@ The E2 extension connector features the following ports:
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 10  | I2C (SDA)             | B9                | PS_MIO51_501                                  | 3V3            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 11  | Ext com. mode (AIN)   | -                 | -                                             | Ext. GND       |
+| 11  | Ext com. mode (AIN)   |                   |                                               | Ext. GND       |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 12  | GND                   | -                 | -                                             | -              |
+| 12  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 13  | Analog Input 0        | B19, A20          | IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35          | 0-3.5 V        |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
@@ -389,17 +398,17 @@ The E2 extension connector features the following ports:
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 20  | Analog Output 3       | U13               | IO_L3P_T0_DQS_PUDC_B_34                       | 0-1.8 V        |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 21  | ADC CLK Sel.          | -                 | -                                             | 3V3 [2]_       |
+| 21  | ADC CLK Sel.          |                   |                                               | 3V3 [2]_       |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 22  | GND                   | -                 | -                                             | -              |
+| 22  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 23  | Ext. ADC Clk+ [1]_    | U18               | IO_L12P_T1_MRCC_34                            | LVDS [2]_      |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 24  | Ext. ADC Clk- [1]_    | U19               | IO_L12P_T1_MRCC_34                            | LVDS [2]_      |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 25  | GND                   | -                 | -                                             | -              |
+| 25  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 26  | GND                   | -                 | -                                             | -              |
+| 26  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 
 .. rubric:: Footnotes
@@ -422,13 +431,13 @@ The E3 connector features the following ports:
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | Pin | Description                        | FPGA pin number | FPGA pin description   | Voltage levels | Voltage levels | FPGA pin description   | FPGA pin number | Description                        | Pin |
 +=====+====================================+=================+========================+================+================+========================+=================+====================================+=====+
-| 1   | I2C0_SCL                           | -               | -                      | 3V3            | 3V3            | PS_MIO0_500            | E6              | E3_SHDN                            | 2   |
+| 1   | I2C0_SCL                           |                 |                        | 3V3            | 3V3            | PS_MIO0_500            | E6              | E3_SHDN                            | 2   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 3   | PS_POR#                            | C7              | PS_POR_B_500           | 3V3            | 3V3            | PS_MIO7_500            | D8              | E3_WDT_KICK                        | 4   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 5   | PWR_ON                             | -               | -                      | 3V3            | 3V3            | PS_MIO46_501           | D16             | SDIO_SEL [#f3]_                    | 6   |
+| 5   | PWR_ON                             |                 |                        | 3V3            | 3V3            | PS_MIO46_501           | D16             | SDIO_SEL [#f3]_                    | 6   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 7   | DIO17_P                            | T5              | IO_L19P_T3_13          | LVDS           | 3V3            | -                      | -               | I2C0_SDA                           | 8   |
+| 7   | DIO17_P                            | T5              | IO_L19P_T3_13          | LVDS           | 3V3            |                        |                 | I2C0_SDA                           | 8   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 9   | DIO17_N                            | U5              | IO_L19N_T3_VREF_13     | LVDS           | 3V3            | PS_MIO41_501           | C17             | EMMC_CMD                           | 10  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
@@ -436,17 +445,17 @@ The E3 connector features the following ports:
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 13  | DIO11_N                            | V7              | IO_L11N_T1_SRCC_13     | LVDS           | 3V3            | PS_MIO44_501           | F13             | EMMC_DAT2                          | 14  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 15  | DIO13_P                            | V8              | IO_L15P_T2_DQS_13      | LVDS           | -              | -                      | -               | GND                                | 16  |
+| 15  | DIO13_P                            | V8              | IO_L15P_T2_DQS_13      | LVDS           |                |                        |                 | GND                                | 16  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 17  | DIO13_N                            | W8              | IO_L15N_T2_DQS_13      | LVDS           | 3V3            | PS_MIO43_501           | A9              | EMMC_DAT1                          | 18  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 19  | DIO15_P                            | U9              | IO_L17P_T2_13          | LVDS           | 3V3            | PS_MIO42_501           | E12             | EMMC_DAT0                          | 20  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 21  | DIO15_N                            | U8              | IO_L17N_T2_13          | LVDS           | -              | -                      |                 | GND                                | 22  |
+| 21  | DIO15_N                            | U8              | IO_L17N_T2_13          | LVDS           |                |                        |                 | GND                                | 22  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 23  | DIO14_P                            | W10             | IO_L16P_T2_13          | LVDS           | 3V3            | PS_MIO40_501           | D14             | EMMC_CLK                           | 24  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 25  | DIO14_N                            | W9              | IO_L16N_T2_13          | LVDS           | -              | -                      | -               | GND                                | 26  |
+| 25  | DIO14_N                            | W9              | IO_L16N_T2_13          | LVDS           |                |                        |                 | GND                                | 26  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 27  | DIO16_P                            | W11             | IO_L18P_T2_13          | LVDS           | 3V3            | PS_MIO5_500            | A6              | SFSPI_IO3                          | 28  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
@@ -460,7 +469,7 @@ The E3 connector features the following ports:
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 37  | DIO12_N (I2C1_SDA/UART_RX) [#f2]_  | U10             | IO_L12N_T1_MRCC_13     | LVDS           | 3V3            | PS_MIO6_500            | A5              | SFSPI_SCK                          | 38  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 39  | +5V                                | -               | -                      | -              | -              |  -                     | -               | +5V                                | 40  |
+| 39  | +5V                                |                 |                        |                |                |                        |                 | +5V                                | 40  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 
 
@@ -596,7 +605,7 @@ The +5V pin features a 3.0 A PTC resetable fuse, which protects the board from o
 External ADC clock
 ===================
 
-The main FPGA CLK signal on |STEMlab 125-14 Gen 2 Pro| and |STEMlab 125-14 Gen 2 Z7020 Pro| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
+The main FPGA CLK signal on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
 
 Both the internal oscillator clock and the external clock signal are connected to the `NB6L72`_ Differential Crosspoint Switch.
 The **CLK_SEL** pin is used to select the clock source:
@@ -611,7 +620,7 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 
 .. note::
 
-    When synchronising multiple Red Pitaya Gen 2 Pro boards, please keep in mind that:
+    When synchronising multiple Red Pitaya *Pro Gen 2* boards, please keep in mind that:
 
     * :ref:`Click Shield synchronisation <click_shield>` works out-of-the-box.
     * :ref:`X-channel synchronisation <x-ch_streaming>` requires a hardware modification as secondary boards differ from the primary board.
@@ -620,7 +629,7 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 External booting options
 ==========================
 
-The E3 connector on the |STEMlab 125-14 Gen 2 Pro| and |STEMlab 125-14 Gen 2 Z7020 Pro| has pins for connecting an **external QSPI** (SFSPI pins) or **eMMC** (EMMC pins) chip.
+The E3 connector on the |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| has pins for connecting an **external QSPI** (SFSPI pins) or **eMMC** (EMMC pins) chip.
 QSPI or eMMC provides a more reliable and robust booting of the Red Pitaya board, which is extremely important for mission critical applications across a variety of industry sectors.
 
 These chips should be placed on an external module or extension board (for example, the :ref:`E3 Add-on board <E3_HW>`).
@@ -638,7 +647,7 @@ For all other specifications and measurements please refer to the common |Gen 2 
 
 .. rubric:: Footnotes
 
-.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <multiboard_sync_examples>`.
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
 
 .. [#f2] DIO12 differential pin pair is connected by default. The I2C1 and UART pins can be connected by changing the position of the resistors on the E3 board.
 
@@ -656,9 +665,10 @@ For all other specifications and measurements please refer to the common |Gen 2 
 .. |E3| replace:: :ref:`E3 connector <E3_gen2>`
 .. |Gen 2 hardware specs| replace:: :ref:`Gen 2 hardware specifications <hw_specs_gen2>`
 .. |Gen 2 comparison table| replace:: :ref:`Gen 2 board comparison table <rp-board-comp-gen2>`
-.. |STEMlab 125-14 Gen 2 Pro| replace:: :ref:`STEMlab 125-14 Gen2 Pro <top_125_14_gen2_pro>`
-.. |STEMlab 125-14 Gen 2 Z7020 Pro| replace:: :ref:`STEMlab 125-14 Gen2 Z7020 Pro <top_125_14_gen2_z7020_pro>`
+.. |STEMlab 125-14 Pro Gen 2| replace:: :ref:`STEMlab 125-14 Pro Gen 2 <top_125_14_pro_gen2>`
+.. |STEMlab 125-14 Pro Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
 .. _NB6L72: https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf
+
 
 .. :xref:`NB6172_datasheet`
 .. :xref:`NB6L72 <NB6172_datasheet>`

@@ -51,7 +51,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen2
+    .. group-tab:: STEMlab 125-14 Gen 2
 
         * Two +3V3 power sources.
         * 16 single ended or 8 differential digital I/Os with 3.3 V logic levels.
@@ -115,7 +115,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
         | 26  | GND                   |                   |                                               |                |
         +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 
-    .. group-tab:: STEMlab 125-14 Gen2 Pro
+    .. group-tab:: STEMlab 125-14 Pro Gen 2
 
         * Two +3V3 power sources.
         * 16 single ended or 8 differential digital I/Os with 3.3 V logic levels.
@@ -179,7 +179,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
         | 26  | GND                   | -                 | -                                             | -              |
         +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 
-    .. group-tab:: STEMlab 125-14 Gen2 Z7020 Pro
+    .. group-tab:: STEMlab 125-14 Pro Z7020 Gen 2
 
         * Two +3V3 power sources (max 0.5 A of current).
         * 22 single ended or 11 differential digital I/Os with 3.3 V logic levels.
@@ -270,7 +270,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen2
+    .. group-tab:: STEMlab 125-14 Gen 2
 
         * ±5 V power sources.
         * SPI, UART, I2C communication interfaces.
@@ -335,7 +335,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
         | 26  | GND                   |                   |                                               |                |
         +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 
-    .. group-tab:: STEMlab 125-14 Gen2 Pro
+    .. group-tab:: STEMlab 125-14 Pro Gen 2
 
         * ±5 V power sources (max 3 A of current per port).
         * SPI, UART, I2C communication interfaces.
@@ -401,7 +401,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
         | 26  | GND                   | -                 | -                                             | -              |
         +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 
-    .. group-tab:: STEMlab 125-14 Gen2 Z7020 Pro
+    .. group-tab:: STEMlab 125-14 Pro Z7020 Gen 2
 
         * ±5 V power sources (max 3 A of current per port).
         * SPI, UART, I2C communication interfaces.
@@ -487,11 +487,11 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen2
+    .. group-tab:: STEMlab 125-14 Gen 2
 
-        The E3 connector is not available on the STEMlab 125-14 Gen2 board.
+        The E3 connector is not available on the STEMlab 125-14 Gen 2 board.
 
-    .. group-tab:: STEMlab 125-14 Gen2 Pro
+    .. group-tab:: STEMlab 125-14 Pro Gen 2
 
         * QSPI pins.
         * eMMC pins.
@@ -543,7 +543,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
         +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 
 
-    .. group-tab:: STEMlab 125-14 Gen2 Z7020 Pro
+    .. group-tab:: STEMlab 125-14 Pro Z7020 Gen 2
 
         * QSPI pins.
         * eMMC pins.
@@ -657,7 +657,7 @@ To achieve the best performance, the GPIO pins are directly connected to the FPG
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen2
+    .. group-tab:: STEMlab 125-14 Gen 2
 
         +--------------------------+----------------------------------+
         | Number of GPIOs          | 16                               |
@@ -677,7 +677,7 @@ To achieve the best performance, the GPIO pins are directly connected to the FPG
         | Location                 | |E1|                             |
         +--------------------------+----------------------------------+
 
-    .. group-tab:: STEMlab 125-14 Gen2 Pro
+    .. group-tab:: STEMlab 125-14 Pro Gen 2
 
         +--------------------------+----------------------------------+
         | Number of GPIOs          | 16                               |
@@ -697,7 +697,7 @@ To achieve the best performance, the GPIO pins are directly connected to the FPG
         | Location                 | |E1|                             |
         +--------------------------+----------------------------------+
 
-    .. group-tab:: STEMlab 125-14 Gen2 Z7020 Pro
+    .. group-tab:: STEMlab 125-14 Pro Z7020 Gen 2
 
         +--------------------------+----------------------------------+
         | Number of GPIOs          | 22                               |
@@ -725,15 +725,15 @@ There are 16 GPIO pins on the |E3| which can be used as normal GPIO pins or as f
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen2
+    .. group-tab:: STEMlab 125-14 Gen 2
 
-        The fast differential paris are not available on the STEMlab 125-14 Gen2 board.
+        The fast differential paris are not available on the STEMlab 125-14 Gen 2 board.
 
-    .. group-tab:: STEMlab 125-14 Gen2 Pro
+    .. group-tab:: STEMlab 125-14 Pro Gen 2
 
-        The fast differential paris are not available on the STEMlab 125-14 Gen2 Pro board.
+        The fast differential paris are not available on the STEMlab 125-14 Pro Gen 2 board.
 
-    .. group-tab:: STEMlab 125-14 Gen2 Z7020 Pro
+    .. group-tab:: STEMlab 125-14 Pro Z7020 Gen 2
 
         +--------------------------+----------------------------------+
         | | Number of GPIOs        | | 16                             |
@@ -759,7 +759,7 @@ There are 16 GPIO pins on the |E3| which can be used as normal GPIO pins or as f
 Synchronisation connectors
 ===========================
 
-The USB-C :ref:`S1 and S2 connectors <sync_connectors_gen2>` on |STEMlab 125-14 Gen 2 Pro| and |STEMlab 125-14 Gen 2 Z7020 Pro| boards are used for daisy chaining multiple Red Pitaya boards together. The S1 connector is used exclusively for transmitting clock and trigger signals of the currnet board
+The USB-C :ref:`S1 and S2 connectors <sync_connectors_gen2>` on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards are used for daisy chaining multiple Red Pitaya boards together. The S1 connector is used exclusively for transmitting clock and trigger signals of the currnet board
 to the next board in the chain while the S2 connector is used exclusively for receiving clock and trigger signals from the previous board in the chain.
 
 .. note::
@@ -791,7 +791,7 @@ The +5V pin features a 3.0 A PTC resetable fuse, which protects the board from o
 External ADC clock
 ===================
 
-The main ADC and FPGA CLK signal on |STEMlab 125-14 Gen 2 Pro| and |STEMlab 125-14 Gen 2 Z7020 Pro| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
+The main ADC and FPGA CLK signal on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
 
 Both the internal oscillator clock and the external clock signal are connected to the `NB6L72`_ Differential Crosspoint Switch.
 The **CLK_SEL** pin is used to select the clock source:
@@ -807,7 +807,7 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 
 .. note::
 
-    When synchronising multiple Red Pitaya Gen 2 Pro boards, please keep in mind that:
+    When synchronising multiple Red Pitaya *Pro Gen 2* boards, please keep in mind that:
 
     * :ref:`Click Shield synchronisation <click_shield>` works out-of-the-box.
     * :ref:`X-channel synchronisation <x-ch_streaming>` requires a hardware modification as secondary boards differ from the primary board.
@@ -816,7 +816,7 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 External booting options
 ==========================
 
-The |E3| on the |STEMlab 125-14 Gen 2 Pro| and |STEMlab 125-14 Gen 2 Z7020 Pro| has pins for connecting an **external QSPI** (SFSPI pins) or **eMMC** (EMMC pins) chip.
+The |E3| on the |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| has pins for connecting an **external QSPI** (SFSPI pins) or **eMMC** (EMMC pins) chip.
 QSPI or eMMC provides a more reliable and robust booting of the Red Pitaya board, which is extremely important for mission critical applications across a variety of industry sectors.
 
 These chips should be located on an external module (for example, the :ref:`E3 Add-on board <E3_HW>`).
@@ -850,8 +850,8 @@ These chips should be located on an external module (for example, the :ref:`E3 A
 .. |E3| replace:: :ref:`E3 connector <E3_gen2>`
 .. |Gen 2 hardware specs| replace:: :ref:`Gen 2 hardware specifications <hw_specs_gen2>`
 .. |Gen 2 comparison table| replace:: :ref:`Gen 2 board comparison table <rp-board-comp-gen2>`
-.. |STEMlab 125-14 Gen 2 Pro| replace:: :ref:`STEMlab 125-14 Gen2 Pro <top_125_14_gen2_pro>`
-.. |STEMlab 125-14 Gen 2 Z7020 Pro| replace:: :ref:`STEMlab 125-14 Gen2 Z7020 Pro <top_125_14_gen2_z7020_pro>`
+.. |STEMlab 125-14 Pro Gen 2| replace:: :ref:`STEMlab 125-14 Pro Gen 2 <top_125_14_pro_gen2>`
+.. |STEMlab 125-14 Pro Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
 .. _NB6L72: https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf
 
 .. :xref:`Clock selector (internal/external) <NB6172_datasheet>`_.

@@ -21,7 +21,6 @@ For offline application installation, please see the :ref:`Developers Guide manu
    impedance/impedance.rst
    lcr_meter/lcr_meter.rst
    streaming/appStreaming.rst
-   streaming/appXCStreaming.rst
    playback&record/playback&record.rst
    sdr_tx_rx/sdr_tx_rx.rst
    vna/appVNA.rst

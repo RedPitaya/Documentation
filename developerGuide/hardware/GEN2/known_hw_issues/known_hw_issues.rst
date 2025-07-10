@@ -9,9 +9,9 @@ In this section is a list of known hardware issues with the Red Pitaya GEN 2 pla
 Boards and models Gen 2
 ========================
 
-* STEMlab 125-14 Gen2 (HW V1r1 or higher)
-* STEMlab 125-14 Gen2 Pro (HW V1r1 or higher)
-* STEMlab 125-14 Gen2 Z7020 Pro (HW V1r1 or higher)
+* STEMlab 125-14 Gen 2 (HW V1r1 or higher)
+* STEMlab 125-14 Pro Gen 2 (HW V1r1 or higher)
+* STEMlab 125-14 Pro Z7020 Gen 2 (HW V1r1 or higher)
 
 Issues
 ========

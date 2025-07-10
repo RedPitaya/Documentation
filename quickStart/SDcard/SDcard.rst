@@ -40,7 +40,7 @@ The following steps will guide you through the process of installing the Red Pit
     .. raw:: html
 
         <div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
-            <iframe src="https://www.youtube.com/watch?v=9xZCAkXAkw8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            <iframe src="https://www.youtube.com/embed/9xZCAkXAkw8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
         </div>
 
     If you spot any unexpected behaviour, please check the :ref:`FAQ troubleshooting section <faq>`.
@@ -73,10 +73,10 @@ Latest 2.00 OS
     *One OS to rule them all*.
     The 2.00 OS versions work on all Red Pitaya board models.
 
-**RedPitaya OS 2.0**:
+**Red Pitaya OS 2.0**:
 
-* `Latest Beta (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_beta.img.zip>`_  - |CHANGELOG| (MD5 (extracted): ad55cb45cf92bf8e40e3901f24a677ba).
-* `Latest Stable (2.04-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.04-35_stable.img.zip>`_  - |CHANGELOG| (MD5 (extracted): d3d59bca29421987550289fce29b87b5).
+* :download:`Latest Beta (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_beta.img.zip>`  - |CHANGELOG| (MD5 (extracted): ad55cb45cf92bf8e40e3901f24a677ba).
+* :download:`Latest Stable (2.04-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.04-35_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): d3d59bca29421987550289fce29b87b5).
 
 |
 
@@ -88,19 +88,6 @@ Latest 2.00 OS
 .. note::
 
     If you have problems running the 2.00 version of the OS and you updated from the 1.04 or older OS image, please check |this GitHub solution|. For all other problems please contact the |SUPPORT TEAM|.
-
-.. |this GitHub solution| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">this GitHub solution</a>
-
-.. |SUPPORT TEAM| raw:: html
-
-    <a href="https://redpitaya.com/contact-us/" target="_blank">support team</a>
-
-.. |GitHub| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya GitHub</a>
-
 
 
 =========
@@ -120,53 +107,37 @@ Here is a video on how to identify the Red Pitaya board model and install 1.04 o
 
 **STEMlab 125-14 & STEMlab 125-10**:
 
-* `1.04-28 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0).
-* `1.04-18 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5).
+* :download:`1.04-28 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-28_beta.img.zip>`  - |CHANGELOG| (MD5 (zipped): 92e14e68d27e63568fb87954239e9fb0).
+* :download:`1.04-18 <https://downloads.redpitaya.com/downloads/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-18_stable.img.zip>`  - |CHANGELOG| (MD5 (zipped): f6cde9b3264a12372873d039535e58d5).
 
 
-**STEMlab 125-14 (SECONDARY/SLAVE board)** (not recommended - use 2.00 version instead):
+**STEMlab 125-14 (secondary/slave board)** (not recommended - use 2.00 version instead):
 
-* `1.04-06 <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99).
+* :download:`1.04-06 <https://downloads.redpitaya.com/downloads/Streaming_slave_boards/STEMlab-125-1x/STEMlab_125-xx_OS_1.04-6_slave_beta.img.zip>`  - |CHANGELOG| (MD5 (zipped): ef928d3014d806539e4360e59b7f6a99).
 
 
-**STEMlab 125-14-Z7020**:
+**STEMlab 125-14 Z7020**:
 
-* `1.04-14 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`_  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161).
-* `1.04-10 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`_  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d).
+* :download:`1.04-14 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-14_beta.img.zip>`  - |CHANGELOG| (MD5 (zipped): c740aab5d7b374924f19171e1edd3161).
+* :download:`1.04-10 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020/STEMlab_125-14-Z7020_OS_1.04-10_stable.img.zip>`  - |CHANGELOG| (MD5 (zipped): 3770f34e954674b0423db33ed8a3471d).
 
 
 **STEMlab 125-14 4-Input** (not recommended - use 2.00 version instead):
 
-* `1.04-03 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`_  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac).
+* :download:`1.04-03 <https://downloads.redpitaya.com/downloads/STEMlab-125-14-Z7020-4CH/STEMlab_125-14-4CH_OS_1.04-3_beta.img.zip>`  - |CHANGELOG_Z20_4CH| (MD5 (zipped): 414c1e7572ec116657a356f3ee2000ac).
 
 
 **SDRlab 122-16**:
 
-* `1.04-15 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392).
-* `1.04-11 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`_  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9).
+* :download:`1.04-15 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-15_beta.img.zip>`  - |CHANGELOG_Z20| (MD5 (zipped): ba9f8be2f19630b42ee7b56bdd1d4392).
+* :download:`1.04-11 <https://downloads.redpitaya.com/downloads/SDRlab-122-16/SDRlab_122-16_OS_1.04-11_stable.img.zip>`  - |CHANGELOG_Z20| (MD5 (zipped): 634cf27555d4ae8900c92833afc1ddb9).
 
 
 **SIGNALlab 250-12**:
 
-* `1.04-30 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8).
-* `1.04-27 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`_  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01).
+* :download:`1.04-30 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8).
+* :download:`1.04-27 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01).
 
-
-.. |CHANGELOG| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a>
-
-.. |CHANGELOG_Z20| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20.md" target="_blank">CHANGELOG</a>
-
-.. |CHANGELOG_Z20_250_12| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a>
-
-.. |CHANGELOG_Z20_4CH| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
 
 
 =================
@@ -185,13 +156,6 @@ All older OS versions that are in our database are available in our archive:
 
 For manual ecosystem upgrade please refer to `Manual ecosystem upgrade`_.
 
-.. |Red Pitaya archive| raw:: html
-
-    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive</a>
-
-.. |RP_forum| raw:: html
-
-    <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya forum</a>
 
 
 .. _nightly_builds:
@@ -200,7 +164,8 @@ For manual ecosystem upgrade please refer to `Manual ecosystem upgrade`_.
 Nightly Builds
 ==============
 
-The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.
+The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier 
+for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.
 We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time to fix some of the reported issues or implement some new features reported as suggestions for improvement.
 As these builds are snapshots of the latest code, odds are you will encounter more issues compared to stable releases. Please report any issues to support@redpitaya.com so that our developers can review them and make any needed fixes.
 
@@ -213,13 +178,9 @@ The instructions for installing the Nightly Builds are available in the :ref:`Ni
 
 .. note::
 
-    These OS versions may be unstable and may cause misconfigurations or measurement data loss.
+    These OS versions are Alpha releases and may be unstable and may cause misconfigurations or measurement data loss.
     We recommend that you use them solely for testing purposes, or you have reported a bug or requested a feature and our technical staff has instructed you to proceed.
 
-
-.. |nightly builds| raw:: html
-
-    <a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>
 
 
 
@@ -256,10 +217,6 @@ Windows
         :width: 800
 
 #. Download |balenaEtcher| and install it.
-
-    .. |balenaEtcher| raw:: html
-
-        <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a>
 
 #. Open the newly installed Balena Etcher application.
 
@@ -411,10 +368,6 @@ Using ApplePi-Baker
 
     * `ApplePi-Baker-v2.2.3.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-v2.2.3.dmg>`_.
     * `ApplePi-Baker-1.9.9.dmg <https://www.tweaking4all.com/downloads/raspberrypi/ApplePi-Baker-1.9.9.dmg>`_.
-
-    .. |ApplePi| raw:: html
-
-        <a href="https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2" target="_blank">ApplePi-Baker</a>
 
 #. Click on *ApplePi-Baker* icon, then click *Open* in order to run it.
 
@@ -579,60 +532,60 @@ Nightly build installation guide
 .. note::
 
     Nightly builds are released several times a week and contain the latest features and bug fixes.
-    The nightly builds are not as thoroughly tested as the official releases, so they may contain bugs.
+    The nightly builds are alpha versions of the OS and are not as thoroughly tested as the official releases, so they may contain bugs.
 
 As mentioned in the :ref:`Red Pitaya OS partitions <SDcard_partitions>` chapter, each Red Pitaya OS consists of two separate files:
 
 * **Linux OS** - *red_pitaya_OS-beta_<Linux OS version>.img.zip* - which contains Ubuntu OS, Red Pitaya libraries, etc.
-* **Ecosystem** - *ecosystem-<Linux OS version>-<Nightly Build ecosystem number>-<ID>.zip* - Red Pitaya Web APIs
+* **Ecosystem** - *ecosystem-<Linux OS version>-<Nightly Build ecosystem number>-<ID>.zip* - Red Pitaya Web APIs.
     
-The official Red Pitaya OS releases have both the Linux OS and the ecosystem combined into one image file. For new feature development it is easier to have the two separated, so the nightly builds are released as two separate files.
+The official Red Pitaya OS releases have both the Linux OS and the ecosystem combined into one image file. For new feature development used for Nightly build (alpha OS) versions it is easier to have the two separated, so the nightly builds are released as two separate files.
 
-+-----------------+-----------------+-----------------------------+-------------------+
-| Red Pitaya OS   | OS release date | Nightly Build versions      | Linux OS version  |
-+=================+=================+=============================+===================+
-| 2.00-18         | 26.7.2023       | up to NB 141                | 2.00              |
-+-----------------+-----------------+-----------------------------+-------------------+
-| 2.00-22         | 4.10.2023       | up to NB 160                | 2.01              |
-+-----------------+-----------------+-----------------------------+-------------------+
-| 2.00-23         | 5.10.2023       | up to NB 162                | 2.01              |
-+-----------------+-----------------+-----------------------------+-------------------+
-| 2.00-30         | 11.1.2024       | up to NB 215                | 2.03              |
-+-----------------+-----------------+-----------------------------+-------------------+
-| 2.04-35         | 15.3.2024       | up to NB 258                | 2.04              |
-+-----------------+-----------------+-----------------------------+-------------------+
-| 2.05-37         | 7.8.2024        | up to NB 345                | 2.05              |
-+-----------------+-----------------+-----------------------------+-------------------+
-| IN DEV          | -               | 346 and later               | 2.06 and newer    |
-+-----------------+-----------------+-----------------------------+-------------------+
++-----------------+-----------------+---------------------------------------+-------------------+
+| Red Pitaya OS   | OS release date | Nightly Build (alpha) versions        | Linux version     |
++=================+=================+=======================================+===================+
+| 2.00-18         | 26.7.2023       | up to NB 141                          | 2.00              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.00-22         | 4.10.2023       | up to NB 160                          | 2.01              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.00-23         | 5.10.2023       | up to NB 162                          | 2.01              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.00-30         | 11.1.2024       | up to NB 215                          | 2.03              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.04-35         | 15.3.2024       | up to NB 258                          | 2.04              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.05-37         | 7.8.2024        | up to NB 345                          | 2.05              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| IN DEV          | -               | 346 and later                         | 2.06 and newer    |
++-----------------+-----------------+---------------------------------------+-------------------+
 
 
 1.  Download the .zip containing the `Nightly Build Ecosystem <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_ (usually the highest number available).
     
-    * Nightly build ecosystems are named **ecosystem-<Linux OS version>-<Nightly build ecosystem number>-<ID>.zip**.
+    * Nightly build (alpha) ecosystems are named **ecosystem-<Linux OS version>-<Nightly build ecosystem number>-<ID>.zip**.
 
-#.  Go to the RedPitaya/downloads page and download the `latest Linux OS <https://downloads.redpitaya.com/downloads/LinuxOS/>`_
+#.  Go to the *RedPitaya/downloads* page and download the `latest Linux OS <https://downloads.redpitaya.com/downloads/LinuxOS/>`_.
 
     * Linux OS versions are named **red_pitaya_OS-beta_<Linux OS version>.img.zip**.
 
     .. note::
     
-        Make sure the Linux OS version is the same as the one listed in the ecosystem name
+        Make sure the Linux OS version is the same as the one listed in the name of selected Nightly build (alpha ecosystem).
 
     .. note::
 
-        Please note that **Official Red Pitaya OS != Red Pitaya Linux OS**
+        Please note that **Official Red Pitaya OS != Red Pitaya Linux OS**. The Linux contains just the Linux, while the official relase contains both the ecosystem and the Linux. We are looking for just the Linux here.
 
 #.  Write the Linux OS to the SD card using the BalenaEtcher. As the BalenaEtcher will automatically close the connection between the SD and the computer at the end of the installation process, reinsert the SD card into the computer.
 
-#.  Extract the ecosystem from the .zip directly to the SD card (if possible without first extracting it to a folder on the computer).
+#.  Extract the alpha ecosystem from the .zip directly to the SD card (if possible without first extracting it to a folder on the computer).
 
 #.  Insert the SD card into the Red Pitaya and power it on.
 
 
 **Please read this section carefully**
 
-When unpacking the ecosystem, some files may be overwritten because the FAT file system is not case-sensitive. 
+When unpacking the alpha ecosystem, some files may be overwritten because the FAT file system is not case-sensitive. 
 Files such as CONNMARK.h and connmark.h will appear to the search system to be the same file, so you will be prompted to choose which file to keep.
 Choose from the following options (depending on the byte size of the files):
 
@@ -702,3 +655,57 @@ If everything is done correctly, the system will start with an increased disk si
     .. code-block:: shell-session
 
         root@rp-f03dee:~# sudo resize2fs /dev/mmcblk0p2
+
+
+
+.. substitutions
+
+
+.. |this GitHub solution| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">this GitHub solution</a>
+
+.. |SUPPORT TEAM| raw:: html
+
+    <a href="https://redpitaya.com/contact-us/" target="_blank">support team</a>
+
+.. |GitHub| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya GitHub</a>
+
+
+.. |CHANGELOG| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">CHANGELOG</a>
+
+.. |CHANGELOG_Z20| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20.md" target="_blank">CHANGELOG</a>
+
+.. |CHANGELOG_Z20_250_12| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_250_12.md" target="_blank">CHANGELOG</a>
+
+.. |CHANGELOG_Z20_4CH| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG_Z20_4CH.md" target="_blank">CHANGELOG</a>
+
+.. |Red Pitaya archive| raw:: html
+
+    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive</a>
+
+.. |RP_forum| raw:: html
+
+    <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya forum</a>
+
+.. |nightly builds| raw:: html
+
+    <a href="https://downloads.redpitaya.com/downloads/Unify/nightly_builds/" target="_blank">Red Pitaya downloads</a>
+
+.. |balenaEtcher| raw:: html
+
+    <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a>
+
+.. |ApplePi| raw:: html
+
+    <a href="https://www.tweaking4all.com/hardware/raspberry-pi/applepi-baker-v2" target="_blank">ApplePi-Baker</a>

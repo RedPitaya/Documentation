@@ -15,7 +15,7 @@ Product comparison table (Gen 2)
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
     | **Basic**                                                                                                                                                                              |
     +====================================+====================================+====================================+====================================+====================================+
-    |                                    | STEMlab 125-14 Gen1                | STEMlab 125-14 Gen2                | STEMlab 125-14 Gen2 Pro            | STEMlab 125-14 Gen2 Z7020 Pro      |
+    |                                    | **STEMlab 125-14 (Gen 1)**         | **STEMlab 125-14 Gen 2**           | **STEMlab 125-14 Pro Gen 2**       | **STEMlab 125-14 Pro Z7020 Gen 2** |
     |                                    |                                    |                                    |                                    |                                    |
     |                                    |                                    |                                    |                                    |                                    |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
@@ -157,7 +157,7 @@ Product comparison table (Gen 2)
     | eMMC                               | N/A                                | N/A                                | E3 add-on module                   | E3 add-on module                   |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
 
-.. [#f1] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <multiboard_sync_examples>`.
+.. [#f1] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
 
 
 .. |br| raw:: html

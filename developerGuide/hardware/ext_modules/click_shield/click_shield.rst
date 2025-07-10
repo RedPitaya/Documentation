@@ -13,9 +13,9 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 
 **Highlights:**
 
-- Two |mikroBUS| sockets, allowing interface with more than 1500 |Click Boards| devices. 
-- High-performance clock and trigger synchronisation between multiple Red Pitaya units or other devices.
-- Powering Red Pitaya through an external power supply (12-24 V or via USB-C connector). 
+* Two |mikroBUS| sockets, allowing interface with more than 1500 |Click Boards| devices. 
+* High-performance clock and trigger synchronisation between multiple Red Pitaya units or other devices.
+* Powering Red Pitaya through an external power supply (12-24 V or via USB-C connector). 
 
 
 |click_shield_front| |click_shield_back|
@@ -31,8 +31,8 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 What is in the box?
 =====================
 
-- 1x Red Pitaya Click Shield
-- 3x U.FL to U.FL patch cable for trigger and clock synchronisation
+* 1x Red Pitaya Click Shield.
+* 3x U.FL to U.FL patch cable for trigger and clock synchronisation.
 
 
 .. _click_shield_compatibility:
@@ -42,13 +42,14 @@ Compatibility
 
 .. note::
 
-   Depending on which Red Pitaya board model you are using, some features of the Red Pitaya Click Shield might not be applicable.
+    Depending on which Red Pitaya board model you are using, some features of the Red Pitaya Click Shield might not be applicable.
 
-The clock synchronisation is compatible only with the following board models (and their Low-Noise versions):
+The clock synchronisation is compatible only with the following board models:
 
-- STEMlab 125-14 External Clock
-- SDRlab 122-16 External Clock
-- STEMlab 125-14 4-Input
+* :ref:`STEMlab 125-14 Pro Gen 2 (All Pro versions) <top_125_14_pro_gen2>`.
+* :ref:`STEMlab 125-14 External Clock (Gen 1) <top_125_14_EXT>` [#f1]_.
+* :ref:`SDRlab 122-16 External Clock <top_122_16_EXT>`.
+* :ref:`STEMlab 125-14 4-Input <top_125_14_4-IN>`.
 
 Switching between the External and Internal clock is available only on the STEMlab 125-14 4-Input (CLK SEL pin) but will be compatible with all future Red Pitaya board redesigns.
 
@@ -57,28 +58,44 @@ Trigger synchronisation and |Click Boards| are compatible with all board models.
 Here is a compatibility table:
 
 .. table::
+    :widths: 10 18 18
+    :align: center
+
+    +------------------------------------+--------------------------------------+--------------------------------------+
+    | Click Shield Feature Compatibility Gen 2                                                                         |
+    +====================================+======================================+======================================+
+    |                                    | **STEMlab 125-14 Gen 2**             | **STEMlab 125-14 Pro Gen 2** |br|    |
+    |                                    |                                      | **STEMlab 125-14 Pro Z7020 Gen 2**   |
+    |                                    |                                      |                                      |
+    +------------------------------------+--------------------------------------+--------------------------------------+
+    | Click Boards (microBus)            | Yes                                  | Yes                                  |
+    +------------------------------------+--------------------------------------+--------------------------------------+
+    | High speed Clock Synchronisation   | No                                   | Yes                                  |
+    +------------------------------------+--------------------------------------+--------------------------------------+
+    | Powering options                   | Yes                                  | Yes                                  |
+    +------------------------------------+--------------------------------------+--------------------------------------+
+    | Clk Switch (Internal/External)     | No                                   | Yes                                  |
+    +------------------------------------+--------------------------------------+--------------------------------------+
+
+.. table::
     :widths: 10 18 18 18 18 18
     :align: center
 
-    +------------------------------------+--------------------------+--------------------------+------------------------------+--------------------------+--------------------------+
-    | Click Shield Feature Compatibility                                                                                                                                            |
-    +====================================+==========================+==========================+==============================+==========================+==========================+
-    |                                    | STEMlab 125-14 |br|      | SDRlab 122-16            | STEMlab 125-14 ext. clk |br| | STEMlab 125-14 4-Input   | SIGNALlab 250-12         |
-    |                                    | STEMlab 125-14 LN |br|   |                          | SDRlab 122-16 ext. clk       |                          |                          |
-    |                                    | STEMlab 125-14-Z7020-LN  |                          |                              |                          |                          |
-    +------------------------------------+--------------------------+--------------------------+------------------------------+--------------------------+--------------------------+
-    | Click Boards (microBus)            | Yes                      | Yes                      | Yes                          | Yes                      | Yes                      |
-    +------------------------------------+--------------------------+--------------------------+------------------------------+--------------------------+--------------------------+
-    | High speed Clock Synchronisation   | No                       | No                       | Yes                          | Yes                      | No                       |
-    +------------------------------------+--------------------------+--------------------------+------------------------------+--------------------------+--------------------------+
-    | Powering options                   | Yes                      | Yes                      | Yes                          | Yes                      | No                       |
-    +------------------------------------+--------------------------+--------------------------+------------------------------+--------------------------+--------------------------+
-    | Clk Switch (Internal/External)     | No                       | No                       | No                           | Yes                      | No                       |
-    +------------------------------------+--------------------------+--------------------------+------------------------------+--------------------------+--------------------------+
-
-.. |br| raw:: html
-
-    <br/>
+    +------------------------------------+------------------------------+------------------------------+----------------------------------+------------------------------+------------------------------+
+    | Click Shield Feature Compatibility Gen 1                                                                                                                                                          |
+    +====================================+==============================+==============================+==================================+==============================+==============================+
+    |                                    | **STEMlab 125-14** |br|      | **SDRlab 122-16**            | **STEMlab 125-14 ext. clk** |br| | **STEMlab 125-14 4-Input**   | **SIGNALlab 250-12**         |
+    |                                    | **STEMlab 125-14 LN** |br|   |                              | **SDRlab 122-16 ext. clk**       |                              |                              |
+    |                                    | **STEMlab 125-14-Z7020-LN**  |                              |                                  |                              |                              |
+    +------------------------------------+------------------------------+------------------------------+----------------------------------+------------------------------+------------------------------+
+    | Click Boards (microBus)            | Yes                          | Yes                          | Yes                              | Yes                          | Yes                          |
+    +------------------------------------+------------------------------+------------------------------+----------------------------------+------------------------------+------------------------------+
+    | High speed Clock Synchronisation   | No                           | No                           | Yes                              | Yes                          | No                           |
+    +------------------------------------+------------------------------+------------------------------+----------------------------------+------------------------------+------------------------------+
+    | Powering options                   | Yes                          | Yes                          | Yes                              | Yes                          | No                           |
+    +------------------------------------+------------------------------+------------------------------+----------------------------------+------------------------------+------------------------------+
+    | Clk Switch (Internal/External)     | No                           | No                           | No                               | Yes                          | No                           |
+    +------------------------------------+------------------------------+------------------------------+----------------------------------+------------------------------+------------------------------+
 
 |
 
@@ -91,19 +108,6 @@ What are Click Boards?
     :width: 450
 
 These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard |mikroBUS| socket connector that can be easily plugged into the Red Pitaya Click Shield.
-
-
-.. |MIKROE| raw:: html
-
-  <a href="https://www.mikroe.com/" target="_blank">MirkoElektronika</a>
-
-.. |Click Boards| raw:: html
-
-  <a href="https://www.mikroe.com/click" target="_blank">MIKROE Click Board™</a>
-
-.. |mikroBUS| raw:: html
-
-  <a href="https://www.mikroe.com/mikrobus" target="_blank">mikroBUS™</a>
 
 
 Technical specifications
@@ -202,8 +206,8 @@ Power supply
 
 The Click Shields provide two alternative ways to power the Red Pitaya: 
 
-- USB-C external power supply
-- 12-24 V External Power Supply (2-pin screw Terminal Block)
+* USB-C external power supply.
+* 12-24 V External Power Supply (2-pin screw Terminal Block).
 
 .. note::
 
@@ -212,8 +216,8 @@ The Click Shields provide two alternative ways to power the Red Pitaya:
 The external power supply powers both the Red Pitaya and the Red Pitaya Click Shield. The maximum power consumption of Red Pitaya is 10 W (5 V, 2 A). The power consumption of the Click Shield greatly depends on the type of Click Boards attached to it (we recommend leaving 5 W just in case).
 Minimal requirements for the external power supplies:
 
-- USB-C - 5 V, 3 A (15 W)
-- External Power Supply - 12-24 V, 1.5 A (15 W)
+* USB-C - 5 V, 3 A (15 W).
+* External Power Supply - 12-24 V, 1.5 A (15 W).
 
 The voltages must be in the specified range.
 
@@ -223,30 +227,30 @@ In short, you do not have to rely on the original Red Pitaya power supply but ca
 
 **Power options**
 
-#. **USB-C or External power supply**
+#.  **USB-C or External power supply**
 
-   .. image:: img/red-pitaya-power-01.png
-       :width: 400
+    .. image:: img/red-pitaya-power-01.png
+        :width: 400
 
-   When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will **glow Blue**, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.
+    When the USB type C connector or the External Power Supply is connected to the Click Shield, the PWR diode will **glow Blue**, and in this setup, the connected Red Pitaya baseboard and all mikroBUS™ sockets will be powered from it.
 
-   |
+    |
 
-#. **Standard power supply**
+#.  **Standard power supply**
 
-   .. image:: img/red-pitaya-power-02.png
-       :width: 400
+    .. image:: img/red-pitaya-power-02.png
+        :width: 400
 
-   When the USB is connected to the Red Pitaya board, the PWR diode will **glow Green**, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.
+    When the USB is connected to the Red Pitaya board, the PWR diode will **glow Green**, and in this setup, the Red Pitaya baseboard itself will be supplied, and it will provide power to the Click Shield, including all mikroBUS™ sockets.
 
-   |
+    |
 
-#. **Standard and external power supply**
+#.  **Standard and external power supply**
    
-   .. image:: img/red-pitaya-power-03.png
-       :width: 400
+    .. image:: img/red-pitaya-power-03.png
+        :width: 400
 
-   When the USB type C connector is connected to the Click Shield, and the other USB is connected to the Red Pitaya board, the PWR diode will **glow Cyan**, and in this setup, the mikroBUS™ sockets are powered from the Click Shield side.
+    When the USB type C connector is connected to the Click Shield, and the other USB is connected to the Red Pitaya board, the PWR diode will **glow Cyan**, and in this setup, the mikroBUS™ sockets are powered from the Click Shield side.
 
 
 
@@ -260,20 +264,20 @@ Here you will find the interconnections between Click Boards (|mikroBUS| pinout)
 
 **Short pin descriptions:**
 
-- Digital pins: *PWM, RST, INT*
-- Analog pins: *AN*
-- UART pins: *RX, TX*
-- SPI pins: *CS, SCK, MISO, MOSI*
-- I2C pins: *SCL, SDA*
+* Digital pins: *PWM, RST, INT*
+* Analog pins: *AN*
+* UART pins: *RX, TX*
+* SPI pins: *CS, SCK, MISO, MOSI*
+* I2C pins: *SCL, SDA*
 
 
 .. note::
 
-   Red Pitaya only has one set of UART and SPI pins, to achieve the functionality of two click boards, some of the digital pins are used for switching SPI and UART between the two click boards:
+    Red Pitaya only has one set of UART and SPI pins, to achieve the functionality of two click boards, some of the digital pins are used for switching SPI and UART between the two click boards:
 
-   - DIO1_N  ==  Chip Select 1 (Click board 1)
-   - DIO3_N  ==  Chip Select 2 (Click board 2)
-   - DIO5_N  ==  Switching between UART0 (Click board 1)/UART1 (Click board 2)
+    * DIO1_N  ==  Chip Select 1 (Click board 1).
+    * DIO3_N  ==  Chip Select 2 (Click board 2).
+    * DIO5_N  ==  Switching between UART0 (Click board 1)/UART1 (Click board 2).
 
 
 Click Board 1
@@ -335,9 +339,9 @@ Closer to **+CLK IN- pins**.
 Logic Analyzer Connector
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: img/red-pitaya-click-shield-la.png
-       :width: 500
-       :align: center
+.. figure:: img/red-pitaya-click-shield-la.png
+    :width: 500
+    :align: center
 
 Pin 1 is marked with a small white dot. On the bottom-left side of the connector when the shield is oriented according to the *LOGIC ANALYZER* text.
 
@@ -384,24 +388,14 @@ Red Pitaya only has one set of UART pins, to achieve the functionality of two cl
 Components
 ===============
 
-- |ZL40213| LVDS clock fanout buffer.
-- |TXS0108| level-shifting voltage translators.
-
-
-.. |ZL40213| raw:: html
-
-  <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
-
-.. |TXS0108| raw:: html
-
-  <a href="https://www.digikey.com/en/products/detail/texas-instruments/TXS0108ERGYR/1910182" target="_blank">TXS0108</a>
-
+* |ZL40213| LVDS clock fanout buffer.
+* |TXS0108| level-shifting voltage translators.
 
 
 Schematics
 ================
 
-- `Click_shield_for_Red_Pitaya_v103_Schematic.pdf <https://downloads.redpitaya.com/doc/Click_shield_for_Red_Pitaya_v103_Schematic.pdf>`_
+* `Click_shield_for_Red_Pitaya_v103_Schematic.pdf <https://downloads.redpitaya.com/doc/Click_shield_for_Red_Pitaya_v103_Schematic.pdf>`_
 
 .. TODO E1 and E2 connectors mixed up and have reverse pin numbers
 .. TODO should add a LDO after the DC/DC converter for both rails.
@@ -411,73 +405,25 @@ Schematics
 Mechanical Specifications and 3D Models
 =========================================
 
-- `red-pitaya-click-shield-2d-3d-files.zip <https://downloads.redpitaya.com/doc/red-pitaya-click-shield-2d-3d-files.zip>`_
+* `red-pitaya-click-shield-2d-3d-files.zip <https://downloads.redpitaya.com/doc/red-pitaya-click-shield-2d-3d-files.zip>`_
 
 
 
 Examples of use
 ================
 
-Synchronisation
-----------------
+Synchronisation options
+-------------------------
 
-The Red Pitaya Click Shield can synchronise multiple Red Pitaya units together. As U.FL cables are used for clock and trigger synchronisation, other external clock devices can also be included in the chain.
-The connection provides minimal clock signal delay between multiple Red Pitaya units, as there is only a single ZL40213 LVDS clock fanout buffer between two units.
-
-To synchronise two or more Red Pitaya units, establish the following connections with U.FL cables between the primary board (transmitting clock and trigger signals) and the secondary board (receiving the clock and trigger signals). Use one of the two schemes depending on whether you want to connect an external clock or use the oscillator on the Red Pitaya Click Shields.
-
-
-Oscillator
-~~~~~~~~~~~~
-
-.. figure:: img/Click_Shield_Oscillator_Sync.png
-    :width: 700
-    :align: center
-
-When using the oscillator, the first Red Pitaya Click Shield transmits the clock and trigger signals to all devices in the chain. Here are the most important things to check:
-
-**Primary board:**
-
-- Jumpers J4 and J5 connected. Connect the oscillator to the clocking transmission line.
-- Jumpers J6 and J7 connected. Connect the Red Pitaya trigger to the trigger transmission line.
-- Jumper J1 disconnected (unless using a single wire clock).
-- CLK OSC switch in ON position.
-- CLK SELECT switch in EXT position.
-
-**Secondary board:**
-
-- Jumper J6 connected. Connect the trigger to the Ext. Trigger pin.
-- Jumper J1 disconnected (unless using a single wire clock).
-- CLK OSC switch in OFF position.
-- CLK SELECT switch in EXT position.
-
-If an external trigger signal is used, copy the secondary board's trigger connections to the primary board (disconnect J7 and connect the external trigger U.FL cable). 
-Otherwise, DIO0_N acts as external trigger output (on the primary board), and DIO0_P acts as external trigger input.
-
-
-External Clock
-~~~~~~~~~~~~~~~~
-
-.. figure:: img/Click_Shield_Ext_Clock_Sync.png
-    :width: 700
-    :align: center
-
-When using an external clock and external trigger, the clock and trigger signals are transmitted to all devices in the chain. All the Click Shields share the same configuration:
-
-**Primary and Secondary boards:**
-
-- Jumper J6 connected. Connect the trigger to the Ext. Trigger pin.
-- Jumper J1 disconnected (unless using a single wire clock).
-- CLK OSC switch in OFF position.
-- CLK SELECT switch in EXT position.
+For detailed guide on synchronisation options and Click Shield connection diagram, please refer to the :ref:`multiboard synchronisation section <multiboard_sync>`.
 
 
 Synchronisation example
 --------------------------
 
-Here are examples for synchronising two Red Pitayas with Click Shields through SCPI commands.
+Here are examples for synchronising two external clock Red Pitaya units with Click Shields through SCPI commands.
 
-* :ref:`Multiboard synchronisation examples <multiboard_sync_examples>`.
+* :ref:`Multiboard synchronisation examples <examples_multiboard_sync>`.
 
 
 Click Boards
@@ -492,79 +438,35 @@ Here are some examples of how to use click boards together with Click Shield and
 
 
 
-.. _click_shield_Q&A:
 
-Click Shield Q&A
-==================
+.. sustitutions
 
-Here is a special Q&A section regarding the Red Pitaya Click Shields and their comparison to the X-Channel System. For general Red Pitaya Q&A, please see the :ref:`FAQ section <faq>`.
+.. rubric:: Footnotes
 
-Can I synchronise multiple different Red Pitaya board models with the Click Shields?
---------------------------------------------------------------------------------------
-
-Yes, you can. There can be different board models in a Red Pitaya Click Shield daisy chain. For example, the primary device can be a STEMlab 125-14 4-Input board,
-the first secondary device a STEMlab 125-14 ext. clk., and the second secondary device another 4-Input. We recommend daisy chaining only devices with the same base clock speed.
-
-Please take into account that SDRlab 122-16 ext. clk. is meant to receive a 122.88 MHz clock signal, so although synchronisation with STEMlab 125-14 boards is possible, we do not recommend it.
-
-While multiple different board models can be daisy chained, some features might be unavailable. See the :ref:`Click Shield compatibitily section <click_shield_compatibility>`.
+.. [#f1] This also includes other variations of STEMlab 125-14 external clock (Gen 1) boards, such as STEMlab 125-14 Z7020 external clock, STEMlab 125-14 LN external clock, etc.
 
 
-What is the difference between Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation?
---------------------------------------------------------------------------------------------------------
 
-In this section we will talk about the difference between the Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation. It might seem like these two are completely the same, but that is far from the truth.
+.. |MIKROE| raw:: html
 
-More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
+    <a href="https://www.mikroe.com/" target="_blank">MirkoElektronika</a>
 
-.. note::
+.. |Click Boards| raw:: html
 
-    Please note that the limitations of the Streaming applications are the same for both systems (continuous streaming). More information is available :ref:`here <streaming_top>`.
+    <a href="https://www.mikroe.com/click" target="_blank">MIKROE Click Board™</a>
 
+.. |mikroBUS| raw:: html
 
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-|                                | **X-Channel System**                       | **Click Shield Synchronisation**           |
-+================================+============================================+============================================+
-| **Clock & Sampling rate**                                                                                                |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Recommended sampling rate      | up to 100 ksps                             | up to full sampling rate                   |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Shared clock signal            | Primary device CLK                         | Click Shield Oscillator OR EXT CLK         |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Clock signal delays            | | Slightly higher delay per unit           | 1x Clock buffer per unit - |ZL40213|       |
-|                                | | (signal through each FPGA) [#f1]_        |                                            |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Trigger signal delays          | | Slightly higher delay per unit           | 1x Trigger buffer per unit -               |
-|                                | | (signal through each FPGA) [#f1]_        |  |74FCT38072DCGI|                          |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| **Pinout**                                                                                                               |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| GPIO access                    | Full access [#f2]_                         | Max 10 digital pins [#f3]_                 |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Slow analog access             | Full access (4/4)                          | Max 2 pins (2/4) [#f3]_                    |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Digital communication pins     | 1x UART, 1x SPI, 1x I2C, 1x CAN            | 2x UART, 2x SPI, 2xI2C (no CAN) [#f3]_     |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| **Units**                                                                                                                |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| | Compatible Red Pitaya board  | | Primary - STEMlab 125-14 LN              | | All units are the same:                  |
-| | models                       | |                                          | | STEMlab 125-14 Ext Clk                   |
-| |                              | | Secondary - STEMlab 125-14 LN Secondary  | | SDRlab 122-16 Ext Clk                    |
-| |                              | |                                          | | STEMlab 125-14 4-Input                   |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| | Choosing between External    | No                                         | Yes (4-Input and future HW board           |
-| | and Internal clock           |                                            | redesigns only)                            |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Aluminium case compatibility   | No                                         | Yes                                        |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
+    <a href="https://www.mikroe.com/mikrobus" target="_blank">mikroBUS™</a>
 
-.. [#f1] Exact measurements will be provided in the future.
+.. |br| raw:: html
 
-.. [#f2] Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Gen 1 <rp-board-comp-gen1>` or :ref:`Gen 2 <rp-board-comp-gen2>` comparison table for more information.
- 
-.. [#f3] Through the microBUS connectors.
+    <br/>
 
-.. |74FCT38072DCGI| raw:: html
+.. |ZL40213| raw:: html
 
-  <a href="  https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578" target="_blank"> 74FCT38072DCGI</a>
+    <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
 
+.. |TXS0108| raw:: html
+
+    <a href="https://www.digikey.com/en/products/detail/texas-instruments/TXS0108ERGYR/1910182" target="_blank">TXS0108</a>

@@ -1,3 +1,5 @@
+.. _examples_acq_genRF:
+
 Generating and Acquiring signals at RF inputs/outputs
 #####################################################
 

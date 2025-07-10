@@ -1,6 +1,6 @@
 
 
-The E3 I2C controller is a command line tool that can be used to control the E3 board. The tool can be used to read and write values to the E3 board using the I2C communication. The tool can be used to control the power state of the E3 board, read the power state of the E3 board, and check for errors.
+The E3 I2C controller is a command line tool that can be used to control the QSPI eMMC board. The tool can be used to read and write values to the QSPI eMMC board using the I2C communication. The tool can be used to control the power state of the QSPI eMMC board, read the power state of the QSPI eMMC board, and check for errors.
 
 .. code-block:: shell-session
 
@@ -46,9 +46,9 @@ The utility can switch between the following **states**:
 * ``VERB`` - 0xFF - Toggle verbose mode.
 
 Switching to other states would immediately cut power to the Red Pitaya unit and is therefore prevented by the software.
-Toggling verbose mode does not change the state. When verbose mode is enabled, the E3 board will send status information to the UART bus on the E3 board.
+Toggling verbose mode does not change the state. When verbose mode is enabled, the QSPI eMMC board will send status information to the UART bus on the QSPI eMMC board.
 
-When requesting a state change, the E3 board will return one of the following **error codes**:
+When requesting a state change, the QSPI eMMC board will return one of the following **error codes**:
 
 * ``E3_OK`` - 0x00 - State change successful
 * ``E3_NOK`` - 0x01 - State change prevented. Changing to the requested state would cut the power to the Red Pitaya unit.
