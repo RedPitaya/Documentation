@@ -200,8 +200,8 @@ For client installation and usage, please see the :ref:`Streaming application <s
     PRIMARY_IP=192.168.2.141, SECONDARY1_IP=192.168.2.60 SECONDARY2_IP=192.168.2.25
 
 
-1.  Open the streaming app on all Red Pitaya boards (primary and secondary) via the web interface.
-#.  Adjust the streaming mode and settings. For more information on specific settings check the :ref:`Data stream control application <streaming_top>`.
+1. **Open the streaming app** on all Red Pitaya boards (primary and secondary) via the web interface.
+#. **Adjust the streaming mode and settings.** For more information on specific settings check the :ref:`Data stream control application <streaming_top>`.
 
     .. code-block:: shell-session
 
@@ -223,7 +223,7 @@ For client installation and usage, please see the :ref:`Streaming application <s
         2022.06.02-15.20.21.357:  SAVE TO FILE: 192.168.2.25 [OK]
         2022.06.02-15.20.21.363:  SAVE TO FILE: 192.168.2.60 [OK]
 
-#. Start the X-channel streaming of 6 inputs
+#. **Start the X-channel streaming** of 6 inputs.
 
     .. code-block:: shell-session
 
@@ -296,7 +296,7 @@ For client installation and usage, please see the :ref:`Streaming application <s
                         +...................+...................+...................+...................+                  |
         =====================================================================================================================
 
-#. To view acquired data, drag the .wav files from **/acq** to |Audacity|.
+#. To **view acquired data**, drag the .wav files from **/acq** to |Audacity|.
 
     .. figure:: img/audacity_2.png
         :width: 800
@@ -316,22 +316,20 @@ Here are examples for synchronising the X-channel system and Click shields throu
 
 .. _multiboard_Q&A:
 
-.. _click_shield_Q&A:
-
-Multiboard Q&A
-==================
+Multiboard synchronisation Q&A
+===============================
 
 Here is a special Q&A section regarding the Red Pitaya Click Shields and their comparison to the X-Channel System. For general Red Pitaya Q&A, please see the :ref:`FAQ section <faq>`.
 
 Can I synchronise multiple different Red Pitaya board models with the Click Shields?
 --------------------------------------------------------------------------------------
 
-Yes, you can. There can be different board models in a Red Pitaya Click Shield daisy chain. For example, the primary device can be a STEMlab 125-14 4-Input board,
-the first secondary device a STEMlab 125-14 ext. clk., and the second secondary device another 4-Input. We recommend daisy chaining only devices with the same base clock speed.
+Yes, you can. There can be different board models in a Red Pitaya Click Shield daisy chain. For example, the primary device can be a *STEMlab 125-14 4-Input* board,
+the first secondary device a *STEMlab 125-14 ext. clk.*, and the second secondary device another *4-Input*. We recommend daisy chaining only devices with the same core clock speed.
 
-Please take into account that SDRlab 122-16 ext. clk. is meant to receive a 122.88 MHz clock signal, so although synchronisation with STEMlab 125-14 boards is possible, we do not recommend it.
+Please take into account that *SDRlab 122-16 ext. clk.* is meant to receive a 122.88 MHz clock signal, so although synchronisation with *STEMlab 125-14* boards is possible, we do not recommend it.
 
-While multiple different board models can be daisy chained, some features might be unavailable. See the :ref:`Click Shield compatibitily section <click_shield_compatibility>`.
+While multiple different board models can be daisy chained, some features might be unavailable. See the :ref:`Click Shield compatibility section <click_shield_compatibility>`.
 
 
 What is the difference between Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation?
@@ -351,9 +349,11 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 +================================+============================================+============================================+
 | **Clock & Sampling rate**                                                                                                |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Recommended sampling rate      | up to 100 ksps                             | up to full sampling rate                   |
+| Recommended sampling rate      | Up to 100 ksps                             | Up to full sampling rate                   |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
-| Shared clock signal            | Primary device CLK                         | Click Shield Oscillator OR extermal clock  |
+| Shared clock signal            | Primary device CLK                         | Click Shield Oscillator OR external clock  |
++--------------------------------+--------------------------------------------+--------------------------------------------+
+| External clock type            | N/A                                        | See |ZL40213| AC clock input specs         |
 +--------------------------------+--------------------------------------------+--------------------------------------------+
 | Clock signal delays            | | Slightly higher delay per unit           | 1x clock buffer per unit - |ZL40213|       |
 |                                | | (signal through each FPGA) [#f1]_        |                                            |

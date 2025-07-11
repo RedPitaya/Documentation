@@ -45,7 +45,7 @@ Once the Streaming application (or the coresponding FPGA image) is loaded, LED 2
     :backlinks: top
 
 
-
+|
 
 Features
 **********
@@ -103,8 +103,8 @@ The ADC configuration section allows the user to set the parameters for the data
             
             * Channel 1 (CH1),
             * Channel 2 (CH2),
-            * Channel 3 (CH3) - STEMlab 125-14 4-Input only,
-            * Channel 4 (CH4) - STEMlab 125-14 4-Input only.
+            * Channel 3 (CH3) - *STEMlab 125-14 4-Input only*,
+            * Channel 4 (CH4) - *STEMlab 125-14 4-Input only*.
 
         * **Input attenuation:** For each channel select the input attenuation mode. The following options are available:
             
@@ -140,8 +140,8 @@ The ADC configuration section allows the user to set the parameters for the data
             
             * Channel 1 (CH1),
             * Channel 2 (CH2),
-            * Channel 3 (CH3) - STEMlab 125-14 4-Input only,
-            * Channel 4 (CH4) - STEMlab 125-14 4-Input only.
+            * Channel 3 (CH3) - *STEMlab 125-14 4-Input only*,
+            * Channel 4 (CH4) - *STEMlab 125-14 4-Input only*.
 
         * **Input attenuation:** For each channel select the input attenuation mode. The following options are available:
             
@@ -164,15 +164,15 @@ The DAC configuration section allows the user to set the parameters for the data
 
         The user can set:
 
-        * **Rate:** The sampling frequency (rate). Should be calculated from the selected settings and the :ref:`data streming limitation <streaming_limits>`.
+        * **Rate:** The DAC sample output frequency (rate). Should be selected according to the :ref:`data streming limitations <streaming_limits>`.
 
-        The other settings are specified in the configuration file located in **/root/.config/redpitaya/apps/streaming/streaming_config.json**. The file can be updated manually or through the :ref:`Command Line Client <stream_command_client>`.
+        The other settings are specified in the configuration file located in */root/.config/redpitaya/apps/streaming/streaming_config.json*. The file can be updated manually or through the :ref:`Command Line Client <stream_command_client>`.
 
     .. group-tab:: Local
 
         The user can set:
 
-        * **Rate:** The sampling frequency (rate). Should be calculated from the selected settings and the :ref:`data streming limitation <streaming_limits>`.
+        * **Rate:** The DAC sample output frequency (rate). Should be selected according to the :ref:`data streming limitations <streaming_limits>`.
         * **File name:** Select the file to be used for data generation from the dropdown menu. The file must be in WAV or TDMS format. The two buttons are used for file upload and deleting the selected file.
         * **File format:** Select the file format of the file used for the data generation. The following formats are supported:
             
@@ -181,7 +181,7 @@ The DAC configuration section allows the user to set the parameters for the data
 
         * **Repeat mode:** Select the repeat mode for the data generation. The following modes are supported:
             
-            * **Off:** The file is generated once then the streaming stops 
+            * **Off:** The file is generated once then the streaming stops. 
             * **On:** The file is generated *Repeat count* times then the streaming stops.
             * **Infinity:** The file is continuously generated until the streaming is stopped.
 
@@ -233,15 +233,13 @@ Here is an example of how to generate a sine wave signal on the DAC outputs usin
 
         wavfile.write('arb_waveform_signed16.wav', sample_rate, y_signed16)
     
-#. **Establish SSH connection.** 
-    Connect to the Red Pitaya board using SSH. For example, using the command line:
+#. **Establish SSH connection.** Connect to the Red Pitaya board using SSH. For example, using the command line:
 
     .. code-block:: console
 
         ssh root@<IP_ADDRESS or .LOCAL_ADDRESS>
 
-#. **Load the FPGA and start the streaming application.**
-    We must load the FPGA first, then start the streaming application. The FPGA image can be loaded using the `overlay.sh` command.
+#. **Load the FPGA and start the streaming application.** We must load the FPGA first, then start the streaming application. The FPGA image can be loaded using the `overlay.sh` command.
 
     .. code-block:: console
 
@@ -323,7 +321,11 @@ Here is an example of how to generate a sine wave signal on the DAC outputs usin
 ADC and DAC streaming configuration
 ====================================
 
-ADC and DAC streaming can work simultaneously, allowing the user to acquire data from the fast analog inputs and generate signals on the fast analog outputs at the same time. Please note that the load on the processor will increase and the maximum performance will decrease.
+ADC and DAC streaming can work simultaneously, allowing the user to acquire data from the fast analog inputs and generate signals on the fast analog outputs at the same time.
+
+.. note::
+    
+    Please note that the load on the processor will increase and the maximum performance of each mode will decrease.
 
 
 
@@ -331,7 +333,7 @@ DMM memory configuration
 ===========================
 
 .. figure:: img/streaming_dmm.png
-    :width: 600
+    :width: 500
 
 In this section, the user can specify the following settings:
 
@@ -372,7 +374,7 @@ Streaming status
 
 The streaming status section displays the current status of the ADC and DAC streaming process (GPIO will be added in the future). Each section has the following options:
 
-* **Status LED:** Indicates the current status of the streaming process. The LED is green when the streaming is running and red when it is stopped.
+* **Status circle:** Indicates the current status of the streaming process. The circle is green when the streaming is running and red when it is stopped.
 * **Start and stop buttons:** Start and stop the streaming process.
 * **Status message:** Displays the current status of the streaming process as well as any error messages that may occur during the streaming process.
 
@@ -492,9 +494,10 @@ Configuration can be set over the WEB interface UI, which is afterwards stored i
 
 .. note::
 
-    The file sizes are in Bytes (1 MB = 1024 kB = 1024*1024 Bytes = 1048576 Bytes), so the default memory size is 128 MB (134217728 Bytes).
+    The "Memory Manager" file sizes are in Bytes.
+    1 MiB = 1024*1024 Bytes = 2^20 Bytes = 1048576 Bytes. We are using Mebibytes (MiB) instead of Megabytes (MB) to avoid confusion with the decimal system.
 
-
+|
 
 How does it work?
 *******************
@@ -503,7 +506,7 @@ The streaming application uses the following data transfer path.
 
 .. TODO add picture of the data path
 
-    *Inputs ==> FPGA ==> DDR ==> Processor ==> PHY ==> Network ==> PC*
+*Inputs ==> FPGA ==> DDR ==> Processor ==> PHY ==> Network ==> PC*
 
 The FPGA streams data directly from the fast analog inputs to the DDR memory. Two ping pong buffers are used to store the data in the DDR memory. FPGA first fills one buffer while the other is being read by the processor.
 Once the buffer is full the FPGA raises a "buffer full" flag. Then the FPGA checks whether the processor has finished reading the data from the second buffer. If yes, then it starts overwriting the second buffer. 
@@ -557,13 +560,13 @@ The following calculation can be used to determine the maximum sampling frequenc
 
 .. math::
 
-    Max sampling frequency = \frac{Max data rate}{Number of channels \times Bytes per sample}
+    f_{S, max} = \frac{v_{max}}{N \times Bps}
 
 Where:
 
-    * **Max data rate** is the maximum data rate for the selected streaming mode (10 MB/s for local streaming, 62.5 MB/s for network streaming).
-    * **Number of channels** is the number of input channels selected for data acquisition (1, 2, 3 or 4).
-    * **Bytes per sample** is the number of bytes used to represent each sample (1 for 8-bit resolution, 2 for 16-bit resolution).
+    * :math:`v_{max}` - is the maximum data rate for the selected streaming mode (10 MB/s for local streaming, 62.5 MB/s for network streaming).
+    * :math:`N` - is the number of input channels selected for data acquisition (1, 2, 3 or 4).
+    * :math:`Bps` - (Bytes per sample) is the number of bytes used to represent each sample (1 for 8-bit resolution, 2 for 16-bit resolution).
 
 .. note::
 
@@ -613,7 +616,7 @@ Here are limitations for the **dac_rate** variable for each of the two modes:
 
 .. ! TODO: Document the new fast streaming feature and prepare the examples
 
-
+|
 
 
 Streaming options
@@ -621,11 +624,13 @@ Streaming options
 
 In this section, we will describe the different options for streaming data from Red Pitaya to a remote computer or to a file on the Red Pitaya SD card. Here is a list of the available options:
 
-.. contents::
-    :local:
-    :depth: 2
-    :backlinks: none
+.. toctree::
+    :maxdepth: 1
 
+    stream_options/stream_local.rst
+    stream_options/stream_command_line.rst
+    stream_options/stream_desktop_api.rst
+    stream_options/stream_redpitaya_linux.rst
 
 
 Compatibility
@@ -634,508 +639,6 @@ Compatibility
 Red Pitaya boards are compatible with any computer operating system. However, the same cannot be said for the streaming client applications which are meant to run on the computer, which are available for Linux and Windows operating systems. Any specific requirements for the operating systems are listed below.
 
 * **Windows 11** - Please use Red Pitaya OS 2.05-37 or newer as older streaming client versions are incompatible with Windows 11.
-
-
-
-Local streaming (SD card)
-==========================
-
-When using the local streaming option, the data is streamed to a file on the Red Pitaya SD card. This option is useful for applications where the data needs to be stored locally for later analysis or processing.
-
-.. tabs::
-
-    .. group-tab:: OS version 2.00-15 or older
-
-        #. Configure the stream properties & click **RUN**
-
-            .. figure:: img/streaming_interface_104.png
-                :width: 800
-            
-            Example: streaming on ch1, 8-bit resolution, 5.208 MS/s into TDMS file format
-
-        #. Press **STOP** to stop streaming
-
-        #. Click *Browse* to open the data file directory. Each data stream is split into three sections; *DATA* (collected data stream), *.log* (data log of the specific stream), *.log.lost* (report on lost packets). Click on the selected file to download it from Red Pitaya to the computer.
-
-            .. figure:: img/capture.png
-                :width: 600
-                :align: center
-
-        #. Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
-
-            .. figure:: img/diadem_tdms_file_viewer.png
-                :width: 800
-                :align: center
-
-    .. group-tab:: OS version 2.00-23 or newer
-
-        #. Configure the stream properties & click **RUN**
-
-            .. figure:: img/streaming_interface.png
-                :width: 1000
-            
-            Example: streaming on CH1 and CH2, 8-bit resolution, 100 ksps into WAV file format
-
-        #. Press **STOP** to stop streaming
-
-        #. Check the *Files on SD card* section for the data files. Each data file has three buttons; *LOG* (data log of the specific stream), *LOST* (report on lost packets), and *DOWNLOAD* (collected data stream). Click on the selected file to download it from Red Pitaya to the computer.
-
-            .. figure:: img/streaming_interface.png
-                :width: 1000
-                :align: center
-
-        #. Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
-
-            .. figure:: img/diadem_tdms_file_viewer.png
-                :width: 800
-                :align: center
-
-
-
-.. _stream_command_client:
-
-Remote streaming (command line client)
-=======================================
-
-When using the remote streaming option, the data is streamed to a remote computer over the network. This option is useful for applications where the necessary data processing exceeds the capabilities of the Red Pitaya board and must therefor be done with more powerful tools on a remote computer.
-Streaming through the command line client is the most effective way to transfer the data, allowing for the highest possible data transfer rate.
-
-The command line client is available for Windows and Linux operating systems and supports `Multiboard streaming`_.
-
-.. tabs::
-
-    .. group-tab:: OS version 2.00-15 or older
-
-        #.  Download the streaming client for your computer. Clients are located on the board itself and can be downloaded from there.
-
-            .. figure:: img/download_client_104.png
-                :width: 800
-                :align: center
-        
-        #.  Start the Streaming application from the web interface or from the :ref:`Command line <stream_util>`.
-
-        #.  Configure the stream properties & click **RUN**
-
-            .. figure:: img/streaming_network_104.png
-                :width: 300
-                :align: center
-
-            Example: streaming on IN1, 16-bit resolution 5 MS/s, TCP
-
-        #.  Execute the *streaming client* via *Command Line or Terminal* on a remote computer (copy the IP address from the web interface and choose the required file format).
-
-            .. tabs::
-
-                .. group-tab:: WAV
-
-                    .. code-block:: console
-
-                        rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
-
-                    .. figure:: img/tcp_client.png
-                        :width: 600
-                        :align: center
-
-                    Data streaming can be stopped by pressing *Ctrl+C*.
-
-                    The created wav file can be read or viewed in |Audacity| or another program that supports WAV file type:
-
-                    .. figure:: img/audacity.png
-                        :width: 600
-                        :align: center
-
-                .. group-tab:: TDMS
-
-                    .. code-block:: console
-
-                        rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
-
-                    .. figure:: img/tcp_client2.png
-                        :width: 600
-                        :align: center
-
-                    Data streaming can be stopped by pressing *Ctrl+C*.
-
-                    The created tdms file can be read or viewed in |DIAdem| or another program that supports TDMS file type.
-
-                    .. figure:: img/diadem_tdms_file_viewer.png
-                        :width: 600
-                        :align: center
-
-                .. group-tab:: CSV
-
-                    .. code-block:: console
-
-                        rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
-
-
-                    .. figure:: img/tcp_client3.png
-                        :width: 600
-                        :align: center
-
-
-                    The application saves data from the board in binary (BIN) format.
-
-                    .. figure:: img/csv_list.png
-                        :width: 600
-                        :align: center
-
-                    The binary file can be converted using the *convert_tool* application.
-
-                    .. figure:: img/csv_list.png
-                        :width: 600
-                        :align: center
-
-                    The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:
-
-                    .. figure:: img/csv_view.png
-                        :width: 600
-                        :align: center
-
-                    .. note::
-
-                        Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
-
-                        .. figure:: img/csv_state.png
-                            :width: 600
-                            :align: center
-
-    .. group-tab:: OS version 2.00-23 or newer
-
-        #.  Download the *command line streaming client* for your computer. Clients are located on the board itself and can be downloaded from there.
-
-            .. figure:: img/streaming_cmd_clients_200_23.png
-                :width: 1000
-                :align: center
-
-        #.  Start the Streaming application from the web interface or from the :ref:`Command line <stream_util>`.
-
-        #.  Configure the stream properties & click **RUN**
-
-            .. figure:: img/streaming_adc_network_200_23.png
-                :width: 1000
-                :align: center
-
-            Example: streaming on CH1 and CH2, 16-bit resolution, 100 ksps, TCP 
-
-        #.  Execute the *streaming client* via *Command Line or Terminal* on a remote computer (copy the IP address from the web interface and choose the required file format).
-
-            .. tabs::
-
-                .. group-tab:: WAV
-
-                    .. code-block:: console
-
-                        rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t wav
-
-                    .. figure:: img/tcp_client.png
-                        :width: 600
-                        :align: center
-
-                    Data streaming can be stopped by pressing *Ctrl+C*.
-
-                    The created wav file can be read or viewed in |Audacity| or another program that supports WAV file type:
-
-                    .. figure:: img/audacity.png
-                        :width: 600
-                        :align: center
-
-                .. group-tab:: TDMS
-
-                    .. code-block:: console
-
-                        rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t tdms
-
-                    .. figure:: img/tcp_client2.png
-                        :width: 600
-                        :align: center
-
-                    Data streaming can be stopped by pressing *Ctrl+C*.
-
-                    The created tdms file can be read or viewed in |DIAdem| or another program that supports TDMS file type.
-
-                    .. figure:: img/diadem_tdms_file_viewer.png
-                        :width: 600
-                        :align: center
-
-                .. group-tab:: CSV
-
-                    .. code-block:: console
-
-                        rpsa_client.exe -h 192.168.1.29 -p TCP -f ./ -t csv -s 100000 -v
-
-
-                    .. figure:: img/tcp_client3.png
-                        :width: 600
-                        :align: center
-
-
-                    The application saves data from the board in binary (BIN) format.
-
-                    .. figure:: img/csv_list.png
-                        :width: 600
-                        :align: center
-
-                    The binary file can be converted using the *convert_tool* application.
-
-                    .. figure:: img/csv_list.png
-                        :width: 600
-                        :align: center
-
-                    The created CSV file can be opened with any text editor, spreadsheet editor, or any other application that supports the CSV file type:
-
-                    .. figure:: img/csv_view.png
-                        :width: 600
-                        :align: center
-
-                    .. note::
-
-                        Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
-
-                        .. figure:: img/csv_state.png
-                            :width: 600
-                            :align: center
-
-.. note::
-
-    For best performance, the web interface should be closed and the streaming application should be started from the terminal via the :ref:`Streaming utility <stream_util>`.
-
-
-Instructions for the rpsa_client
------------------------------------
-
-1. **Detect mode**
-
-    This mode allows you to determine the IP addresses that are in the local network in streaming mode. By default, the search takes 5 seconds.
-
-   	.. literalinclude:: include/detectMode.txt
-
-    If no IP is specified, the client will automatically detect boards on the network and connect to a random board.
-
-2. **Configuration mode**
-
-	This mode allows you to get or set the streaming configuration on the boards.
-
-   	.. literalinclude:: include/configMode.txt
-
-    Variables can also be set individually:
-
-    .. literalinclude:: include/configModeSingle.txt
-
-3. **Remote control mode**
-      
-    This mode allows you to control streaming as a client.
-
-   	.. literalinclude:: include/remoteControlMode.txt
-
-4. **Streaming mode**
-
-    This mode allows you to control streaming as a client, and also captures data in network streaming mode.
-
-    .. literalinclude:: include/streamingMode.txt
-
-5. **DAC streaming mode**
-
-    This mode allows you to generate output data using a signal from a file.
-
-    .. literalinclude:: include/dacStreamingMode.txt
-
-6. **Configuration variables**
-
-    Configuration file variables and their valid values.
-
-    .. literalinclude:: include/configVariables.txt
-
-
-.. note::
-
-    If you run the console client with no parameters, the help menu will open, displaying a list of settings and their respective acceptable values.
-
-
-Convert tool
---------------
-
-.. tabs::
-
-    .. group-tab:: OS version IN DEV
-
-        The convert tool allows you to convert the *.bin* file format into a *.csv*, *.tdms*, or *.wav* file.
-
-        .. literalinclude:: include/convert_tool.txt
-
-        To convert the binary file, first check the file information using:
-
-        .. code-block:: bash
-
-            .\convert_tool.exe .\<path_to_bin_file>\data_file.bin -i
-
-        .. literalinclude:: include/convert_tool_info.txt
-
-        The file information includes the number of segments into which the data is split. Using the convert tool, you can choose to convert only the specfied portion of the streamed file to the desired forma
-
-        .. code-block:: bash
-
-            .\convert_tool.exe .\<path_to_bin_file>\data_file.bin -s 1 -e 18 -f CSV
-
-        The converted file will appear next to the original file.
-
-        .. note::
-
-            The file type (CSV, TDMS or WAV) must be capitalised.
-
-
-
-.. _stream_desktop_app:
-
-Remote streaming (Desktop application)
-=======================================
-
-When using the remote streaming option, the data is streamed to a remote computer over the network. This option is useful for applications where the necessary data processing exceeds the capabilities of the Red Pitaya board and must therefor be done with more powerful tools on a remote computer.
-
-The desktop application is available for Windows and Linux operating systems and supports `Multiboard streaming`_.
-
-.. note::
-
-    The stream options should be configured from the Desktop application and not from the web interface as the web interface does not necessarily reflect the actual settings of the streaming application.
-
-    Use the "Get settings" button to get the current settings from each board.
-
-
-#. Download the desktop client application.
-
-    .. tabs::
-
-        .. group-tab:: OS version 2.00-15 or older
-
-            Files with clients are available |Streaming Client|.
-
-        .. group-tab:: OS version 2.00.23 or newer
-
-            Files with clients are in the Streaming Application (Data Stream Control). You can download it from Red Pitaya itself.
-
-            .. figure:: img/streaming_desktop_clients_200_23.png
-                :width: 1000
-                :align: center
-
-#. Unzip and run the application.
-
-    .. tabs::
-
-        .. group-tab:: Linux
-        
-            After unpacking, enable the execution of the following files:
-    
-            * *rpsa_client_qt.sh*.
-            * *bin/rpsa_client_qt*.
-
-                .. figure:: img/qt1.png
-                    :width: 800
-                    :align: center
-
-        .. group-tab:: Windowns
-    
-            Running the streaming desktop application should trigger a firewall warning (allowing access to the local network), which should be confirmed for proper operation.
-
-            .. note::
-
-                It is possible that an Antivirus program may (temporarily) block the desktop client. If you experience this issue, we recommend whitelisting the Streaming Client folder.
-
-#. Once running, the desktop application autmatically detects Red Pitaya boards on the same local network which are running the Streaming Application (or have the *stream_app* FPGA image loaded). The boards and the client must be on the same network.
-
-    .. figure:: img/qt2.png
-        :width: 1000
-        :align: center
-
-
-Desktop client application
----------------------------
-
-.. figure:: img/streaming_desktop_client_app.png
-    :width: 1000
-
-The GUI of desktop client application is split into the following sections:
-
-1. **Board list:** The list of detected Red Pitaya boards on the same local network running the Streaming Application. Each detected board in the list has configurable settings that match the ones in the streaming application.
-#. **Streaming settings:** Common settings for all detected boards.
-
-
-Board list
-~~~~~~~~~~~
-
-.. figure:: img/streaming_desktop_client_app_settings.png
-    :width: 800
-
-The board list displays all detected Red Pitaya boards on the same local network running the Streaming Application. Red Pitaya boards that are not running the Steaming Application will not be detected. For optimal performance, the boards should be connected to a router.
-
-Two types of boards are detected as indicated by the icon in the top left corner:
-
-    * **M** - Master or primary board.
-    * **S** - Slave or secondary board.
-
-The colour of the icon (as well as the dot in the top right corner) indicates the current status of the board:
-
-    * **Green** - The board is ready to stream data.
-    * **Red** - The board was available at some point since the start of the application, but is currently unavailable (either not running the Streaming application or is not connected to the network).
-
-Beside the status icon, the IP address of the board is displayed.
-
-In addition to the settings in the streaming application, the following settings are available:
-
- * **Test Mode:** Special mode for testing the desktop application. It is not recommended to use this mode for normal operation.
-
-Four buttons are located across the bottom of each board settings section:
-
-* **Get settings:** Get the current streaming application settings from the board. Pressing this button will fetch the current settings of the board and apply them to the desktop application.
-* **Send settings:** Send the current streaming application settings to the board. When updating the settings in the desktop application, clicking the **send settings** button will ensure that the settings in the desktop application are sent to the board.
-* **Start streaming:** Start the streaming process for the selected board. The streaming process will start immediately after clicking this button.
-* **Stop streaming:** Stop the streaming process for the selected board. The streaming process will stop immediately after clicking this button.
-
-For descritption of all other settings, please refer to the `ADC streaming configuration`_ and `DAC streaming configuration`_ sections.
-
-.. figure:: img/streaming_desktop_client_app_console.png
-    :width: 800
-
-With the button in the top right corner, you can switch between the console and the signal windows which thake up the right side of each board listing.
-
-* The console section displays the current status of the streaming process as well as any error messages that may occur during the streaming process.
-* The signal section displays the acquired data stream while the streaming process is running. The displayed signal should be used only as a reference and should not be used for any measurements or analysis.
-
-The rest of the bottom part of the board box is used to display the statistics of the streaming process:
-
-* **Bytes:** Number of bytes received from the board.
-* **Speed:** Current data transfer speed in MB/s.
-* **Ch1:** Number of samples received from channel 1.
-* **Ch2:** Number of samples received from channel 2.
-* **Lost:** Number of lost samples during the streaming process.
-
-
-Streaming settings
-~~~~~~~~~~~~~~~~~~~
-
-The streaming settings section displays the common settings for all detected boards:
-
-* **Start all boards:** Start the streaming process for all detected boards. The streaming process will start immediately after clicking this button.
-* **Stop all boards:** Stop the streaming process for all detected boards. The streaming process will stop immediately after clicking this button.
-* **Open folder:** Open the folder where the streamed data is saved. The folder is automatically created in the same directory as the desktop application when the streaming process is started.
-
-With each stream, three files are created:
-
-1. **Data file:** The data file contains the acquired data stream. The file format is determined by the selected settings in the ADC configuration section.
-2. **Lost log file:** The lost log file contains information about any lost packets during the streaming process. It is recommended to check this file after each streaming session to ensure that no data was lost.
-3. **Log file:** The log file contains information about the streaming process, such as the number of samples acquired, the sampling frequency, and any error messages that may occur during the streaming process.
-
-The three files are named data_file_<board_IP>_<date>_<time>.<file type>, where the date and time are the date and time of the data acquisition process. The file type is determined by the selected settings in the ADC configuration section.
-
-
-
-Streaming data to Red Pitaya Linux
-====================================
-
-.. TODO add picture
-
-Downloading and extracting the Red Pitaya **rpsa streaming client** onto the Red Pitaya board allows you to access the streamed data from Python code running directly on the Red Pitaya.
-
-This mode is currently **IN DEV**. Documentation will be updated when full functionality is available.
 
 
 

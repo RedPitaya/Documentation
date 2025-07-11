@@ -37,11 +37,18 @@ DMA can be configured using SCPI, Python API and C API commands.
 * Deep Memory Acquisition can run at maximum ADC speed.
 * The reserved memory can be assigned to only one buffer, thereby allocating all memory to a single one channel.
 
+
 Required hardware
 ------------------
 
 * Any Red Pitaya device.
-* FPGA v0.94.
+
+
+Required software
+------------------
+
+* Red Pitaya OS 2.00-18 or higher.
+* FPGA v0.94 image.
 
 
 Functionality
@@ -93,6 +100,7 @@ Once finished, please do not forget to free the resources and reserved memory lo
 Deep Memory Generation (DMG)
 ==============================
 
+
 Description
 -----------
 
@@ -111,11 +119,18 @@ DMG can be configured using Python API and C API commands. We will add SCPI comm
 * Deep Memory Generations runs at maximum DAC speed, but the output frequency of continuous signals is limited to 1.953 MHz.
 * The reserved memory can be assigned to only one buffer, thereby allocating all memory to a single output channel.
 
+
 Required hardware
 ------------------
 
 * Any Red Pitaya device.
-* FPGA v0.94.
+
+
+Required software
+------------------
+
+* Red Pitaya OS IN-DEV or higher.
+* FPGA v0.94 image.
 
 
 Functionality

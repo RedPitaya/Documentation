@@ -20,6 +20,7 @@ Here is a comprehensive guide to troubleshooting common problems with Red Pitaya
     * :ref:`Applications & Web Interface <faq_apis_interface>`.
     * :ref:`Software <faq_sw>`.
     * :ref:`Hardware <faq_hw>`.
+    * :ref:`Multiboard synchronisation FAQ <faq_multiboard>`.
     * :ref:`Gen 2 FAQ <faq_gen2>`.
     * :ref:`How to report a problem? <report_problem>`.
 
@@ -117,6 +118,7 @@ If the status LEDs are working normally and the network connection debugging doe
 #. In a command prompt or terminal, type ``arp -a`` and check if the Red Pitaya is listed on the local network.
 #. ``ping`` the Red Pitaya IP address or the ``rp-xxxxxx.local`` address. Do this even if the IP address is unreachable or the board does not appear on the local network.
 #. Try connecting to the board's web interface using either the IP address or the ``rp-xxxxxx.local`` address in the browser's URL window.
+#. Restart the router (or clear the internal cache/ARP table of the router) and try connecting to the board again.
 
 If you are unable to connect to the board after an OS update, please use the above sequence. This issue may occur when connecting to the board for the first time after an OS update, but it should not happen again after the first boot.
 This should resolve most issues related to the 'OPENBSD failed to start' error reported in the serial console boot log.

@@ -1,4 +1,4 @@
-... _examples_analog:
+.. _examples_analog:
 
 Analog
 ######
