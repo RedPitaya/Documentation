@@ -74,6 +74,7 @@ Here are the main features of the Streaming application:
     The Streaming application supports only continuous data streaming and does not have triggering capabilities. The data is streamed continuously from the moment the application is started until it is stopped.
 
 
+.. _adc_streaming_configuration:
 
 ADC streaming configuration
 ============================
@@ -149,6 +150,7 @@ The ADC configuration section allows the user to set the parameters for the data
             * 1:1 - LV (low voltage mode).
 
 
+.. _dac_streaming_configuration:
 
 DAC streaming configuration
 ============================
@@ -642,6 +644,7 @@ Red Pitaya boards are compatible with any computer operating system. However, th
 
 
 
+.. _multiboard_stream:
 
 Multiboard streaming
 ***********************

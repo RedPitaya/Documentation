@@ -6,7 +6,7 @@ Remote streaming (Desktop application)
 
 When using the remote streaming option, the data is streamed to a remote computer over the network. This option is useful for applications where the necessary data processing exceeds the capabilities of the Red Pitaya board and must therefor be done with more powerful tools on a remote computer.
 
-The desktop application is available for Windows and Linux operating systems and supports `Multiboard streaming`_.
+The desktop application is available for Windows and Linux operating systems and supports :ref:`Multiboard streaming <multiboard_stream>`.
 
 .. note::
 
@@ -27,7 +27,7 @@ The desktop application is available for Windows and Linux operating systems and
 
             Files with clients are in the Streaming Application (Data Stream Control). You can download it from Red Pitaya itself.
 
-            .. figure:: img/streaming_desktop_clients_200_23.png
+            .. figure:: ../img/streaming_desktop_clients_200_23.png
                 :width: 1000
                 :align: center
 
@@ -42,7 +42,7 @@ The desktop application is available for Windows and Linux operating systems and
             * *rpsa_client_qt.sh*.
             * *bin/rpsa_client_qt*.
 
-                .. figure:: img/qt1.png
+                .. figure:: ../img/qt1.png
                     :width: 800
                     :align: center
 
@@ -56,7 +56,7 @@ The desktop application is available for Windows and Linux operating systems and
 
     Once running, the desktop application autmatically detects Red Pitaya boards on the same local network which are running the Streaming Application (or have the *stream_app* FPGA image loaded). The boards and the client must be on the same network.
 
-    .. figure:: img/qt2.png
+    .. figure:: ../img/qt2.png
         :width: 1000
         :align: center
 
@@ -68,7 +68,7 @@ The desktop application is available for Windows and Linux operating systems and
 Desktop client application
 ---------------------------
 
-.. figure:: img/streaming_desktop_client_app.png
+.. figure:: ../img/streaming_desktop_client_app.png
     :width: 1000
 
 The GUI of desktop client application is split into the following sections:
@@ -80,7 +80,7 @@ The GUI of desktop client application is split into the following sections:
 Board list
 ~~~~~~~~~~~
 
-.. figure:: img/streaming_desktop_client_app_settings.png
+.. figure:: ../img/streaming_desktop_client_app_settings.png
     :width: 800
 
 The board list displays all detected Red Pitaya boards on the same local network running the Streaming Application. Red Pitaya boards that are not running the Steaming Application will not be detected. For optimal performance, the boards should be connected to a router.
@@ -108,9 +108,9 @@ Four buttons are located across the bottom of each board settings section:
 * **Start streaming:** Start the streaming process for the selected board. The streaming process will start immediately after clicking this button.
 * **Stop streaming:** Stop the streaming process for the selected board. The streaming process will stop immediately after clicking this button.
 
-For descritption of all other settings, please refer to the `ADC streaming configuration`_ and `DAC streaming configuration`_ sections.
+For descritption of all other settings, please refer to the :ref:`ADC streaming configuration <adc_streaming_configuration>` and :ref:`DAC streaming configuration <dac_streaming_configuration>` sections.
 
-.. figure:: img/streaming_desktop_client_app_console.png
+.. figure:: ../img/streaming_desktop_client_app_console.png
     :width: 800
 
 With the button in the top right corner, you can switch between the console and the signal windows which thake up the right side of each board listing.
@@ -143,3 +143,24 @@ With each stream, three files are created:
 3. **Log file:** The log file contains information about the streaming process, such as the number of samples acquired, the sampling frequency, and any error messages that may occur during the streaming process.
 
 The three files are named data_file_<board_IP>_<date>_<time>.<file type>, where the date and time are the date and time of the data acquisition process. The file type is determined by the selected settings in the ADC configuration section.
+
+
+.. substitutions
+
+.. |DIAdem| raw:: html
+
+    <a href="https://www.ni.com/en-us/shop/data-acquisition-and-control/application-software-for-data-acquisition-and-control-category/what-is-diadem.html" target="_blank">DIAdem</a>
+
+
+.. |Audacity| raw:: html
+
+    <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
+
+.. |Streaming Client| raw:: html
+
+    <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
+
+.. |br| raw:: html
+
+    <br>
+

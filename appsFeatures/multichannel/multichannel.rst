@@ -12,7 +12,7 @@ There are two ways to achieve clock and trigger synchronisation across multiple 
 
 The synchronized boards can be controlled as any normal Red Pitaya board. However, remote control from a computer is usually preferred to as it allows for more flexibility and easier control of multiple boards from the same program.
 
-For direct comparison of the two systems, please see the :ref:`Q&A section <multiboard_Q&A>`.
+For direct comparison of the two systems, please see the :ref:`Q&A section <faq_multiboard>`.
 
 .. note::
 
@@ -314,7 +314,7 @@ Here are examples for synchronising the X-channel system and Click shields throu
 
 
 
-.. _multiboard_Q&A:
+.. _faq_multiboard:
 
 Multiboard synchronisation Q&A
 ===============================

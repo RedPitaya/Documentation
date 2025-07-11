@@ -295,7 +295,7 @@ FAQ
 Comparison between Red Pitaya X-channel System and Click Shield synchronisation?
 ---------------------------------------------------------------------------------
 
-The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <click_shield_Q&A>`.
+The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <faq_multiboard>`.
 
 
 Can a different Red Pitaya STEMlab 125-14 unit be used as a primary device in the X-channel system?
