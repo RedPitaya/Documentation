@@ -88,7 +88,7 @@ The board must be rebooted after changing the size of the reserved memory for th
 
 .. note::
 
-    TThe allocation limit applies to the options in the Memory Manager dropdown menu. The reserved region size can be adjusted more precisely using the manual method.
+    The allocation limit applies to the options in the Memory Manager dropdown menu. The reserved region size can be adjusted more precisely using the manual method.
     Careful consideration and testing is required before exceeding the maximum size specified in the table above, as this may affect the operation of memory-intensive applications and programs.
 
 

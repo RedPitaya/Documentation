@@ -6,7 +6,7 @@ orphan: true
 
 All notable changes to this project will be documented in this file.
 
-## July 2025 - Update 1
+## July 2025 - Update 2
 
 **Major updates:**
 
@@ -34,14 +34,25 @@ All notable changes to this project will be documented in this file.
 - Updated measurements for Gen 1 boards.
 - Separated QSPI eMMC module into its own section.
 - Updated intro with new messaging.
+- Single reactor ignition on the doc bugs.
 - Clarified Nightly Build installation instructions.
 - Updated Gen 2 board names.
 - Added new troubleshooting section to FAQ.
+- Added Python SCPI library explanation.
+- Syntax and grammar fixes.
 
 **Links affected:**
 
 - Links to streaming application docs.
 - Links to Deep Memory Acquisition page.
+
+## July 2025 - Update 1
+
+**Changes:**
+
+- Added 65-16 TI, 125-14 TI to Gen 2 comparison table.
+- TI boards added to the tree.
+- Output jitter measurements added to Gen 2.
 
 ## April 2025 - Update 2
 

@@ -397,6 +397,11 @@ Schematics
 
 * `Click_shield_for_Red_Pitaya_v103_Schematic.pdf <https://downloads.redpitaya.com/doc/Click_shield_for_Red_Pitaya_v103_Schematic.pdf>`_
 
+
+.. note::
+
+    E1 and E2 connector labels are mixed up in the schematics.
+
 .. TODO E1 and E2 connectors mixed up and have reverse pin numbers
 .. TODO should add a LDO after the DC/DC converter for both rails.
 
@@ -407,6 +412,20 @@ Mechanical Specifications and 3D Models
 
 * `red-pitaya-click-shield-2d-3d-files.zip <https://downloads.redpitaya.com/doc/red-pitaya-click-shield-2d-3d-files.zip>`_
 
+
+
+External clock specifications
+==============================
+
+According to the datasheet the |ZL40213| fanout buffer supports a wide range of differential or single-ended input clock signals:
+
+* LVPECL
+* LVDS
+* CML
+* HSTL
+* LVCMOS
+
+For more information on the external clock signal, please check the |ZL40213| datasheet. The inputs are in the AC coupling configuration. The chip is powered by a 3V3 power supply.
 
 
 Examples of use
@@ -465,7 +484,7 @@ Here are some examples of how to use click boards together with Click Shield and
 
 .. |ZL40213| raw:: html
 
-    <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
+    <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/ZL40213-Data-Sheet.pdf" target="_blank">ZL40213</a>
 
 .. |TXS0108| raw:: html
 

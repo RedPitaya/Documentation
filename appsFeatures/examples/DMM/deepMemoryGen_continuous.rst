@@ -10,7 +10,7 @@ The example shows how to generate continuous signals from two 64-sample (256-byt
 
 Limitations:
 
-* The minimum buffer size is 64 samples (256 bytes). This results in a maximum continuous output frequency of 1.953 MHz.
+* The minimum buffer size is 64 samples (256 bytes). This results in a maximum continuous output frequency of 1.953 MHz (if we consider one period per buffer).
 * Buffer start addresses must be multiples of 4096 (DDR page size).
 
 To learn more about the Deep Memory Generation, please refer to the :ref:`Deep Memory Generation <deepMemoryGen>` section.

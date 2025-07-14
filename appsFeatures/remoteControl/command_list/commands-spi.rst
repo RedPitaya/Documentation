@@ -19,7 +19,7 @@ Red Pitaya SPI does not use the standard ``cpol`` and ``cpha`` parameters, inste
     :align: center
     :width: 600px
 
-    SPI modes
+    SPI modes (`Image source <https://digilent.com/blog/wp-content/uploads/2018/09/SPI_timing_diagram.svg_.png>`_)
 
 
 The SPI commands feature three different function to configure the buffers for messages (using SCPI commands for explanation, but the same applies to the API commands).
@@ -33,7 +33,7 @@ Calling the function multiple times for the same message will delete the previou
 Calling the ``SPI:MSG<n>:TX<m>`` command and then the ``SPI:MSG<n>:RX<m>`` command will first create the buffer for sending (and not initialize the receiving buffer), then the second command will delete the previously created buffer for sending and create a new one for receiving.
 Consequently, it is impossible to create both the buffers for sending and receiving using a sequence of ``SPI:MSG<n>:TX<m>`` and ``SPI:MSG<n>:RX<m>`` commands as one of the buffers will never be initialized, resulting in an error when trying to read or write data (for SCPI commands this can result in an infinite loop when attempting to read the data from a nonexisting buffer).
 
-Adding the ``:CS`` suffix (or setting the *cs_change* to `true`) to the command will toggle the CS line after sending/receiving the message. For most basic applications this is not needed.
+Adding the ``:CS`` suffix (or setting the *cs_change* to ``true``) to the command will toggle the CS line after sending/receiving the message. For most basic applications this is not needed.
 
 
 

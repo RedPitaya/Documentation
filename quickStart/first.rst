@@ -23,6 +23,69 @@ Follow these five simple steps to start using your Red Pitaya:
 
 .. tabs::
 
+    .. group-tab:: Gen 2
+
+        .. note::
+        
+            When the QSPI eMMC board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the E3 tab below or the :ref:`QSPI eMMC board booting section <QSPI_eMMC_board_boot>` for more information.
+
+
+        .. tabs::
+
+            .. tab:: 125-14 Gen 2, 125-14 Pro Gen 2, 125-14 Pro Z7020 Gen 2
+
+                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
+                #. Insert the SD card into your Red Pitaya board.
+
+                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+                        :width: 400
+                        :align: center
+
+                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
+
+                    .. figure:: img/125_router.png
+                        :width: 400
+                        :align: center
+
+                #. Connect the power supply to the Red Pitaya board.
+                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
+
+
+                    .. figure:: img/125_stiker.png
+                        :width: 400
+                        :align: center
+
+                    .. figure:: img/125_stiker_2.png
+                        :width: 400
+                        :align: center
+
+            .. tab:: QSPI eMMC board booting
+
+                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
+                #. Insert the SD card into your Red Pitaya board.
+
+                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
+                        :width: 400
+                        :align: center
+
+                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
+
+                    .. figure:: img/125_router.png
+                        :width: 400
+                        :align: center
+
+                #. Connect the power supply to the Red Pitaya board.
+                #. Press and hold the **P-ON** button on the QSPI eMMC board for 2 seconds to turn on the Red Pitaya board. Read more about the QSPI eMMC board in the :ref:`QSPI eMMC board <QSPI_eMMC_board>` chapter.
+                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
+
+                    .. figure:: img/125_stiker.png
+                        :width: 400
+                        :align: center
+
+                    .. figure:: img/125_stiker_2.png
+                        :width: 400
+                        :align: center
+
     .. group-tab:: Gen 1
 
         .. tabs::
@@ -74,69 +137,6 @@ Follow these five simple steps to start using your Red Pitaya:
 
                     .. figure:: img/250_stiker.png
                         :width: 800
-                        :align: center
-
-    .. group-tab:: Gen 2
-
-        .. note::
-        
-            When the QSPI eMMC board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the E3 tab below or the :ref:`QSPI eMMC board booting section <QSPI_eMMC_board_boot>` for more information.
-
-
-        .. tabs::
-
-            .. tab:: 125-14 Gen 2, 125-14 Pro Gen 2, 125-14 Pro Z7020 Gen 2
-
-                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
-                #. Insert the SD card into your Red Pitaya board.
-
-                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-                        :width: 400
-                        :align: center
-
-                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
-
-                    .. figure:: img/125_router.png
-                        :width: 400
-                        :align: center
-
-                #. Connect the power supply to the Red Pitaya board.
-                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
-
-
-                    .. figure:: img/125_stiker.png
-                        :width: 400
-                        :align: center
-
-                    .. figure:: img/125_stiker_2.png
-                        :width: 400
-                        :align: center
-
-            .. tab:: QSPI eMMC board booting
-
-                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
-                #. Insert the SD card into your Red Pitaya board.
-
-                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-                        :width: 400
-                        :align: center
-
-                #. Connect your Red Pitaya board to the router.
-
-                    .. figure:: img/125_router.png
-                        :width: 400
-                        :align: center
-
-                #. Connect the power supply to the Red Pitaya board.
-                #. Press and hold the **P-ON** button on the QSPI eMMC board for 2 seconds to turn on the Red Pitaya board. Read more about the QSPI eMMC board in the :ref:`QSPI eMMC board <QSPI_eMMC_board>` chapter.
-                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
-
-                    .. figure:: img/125_stiker.png
-                        :width: 400
-                        :align: center
-
-                    .. figure:: img/125_stiker_2.png
-                        :width: 400
                         :align: center
 
 

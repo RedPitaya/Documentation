@@ -297,7 +297,7 @@ Mechanical Specifications and 3D Models
 Software specifications
 =======================
 
-For software specifications, please refer to the `E3 software documentation <E3_QSPI_eMMC_module_SW>`_.
+For software specifications, please refer to the :ref:`E3 software documentation <E3_QSPI_eMMC_module_SW>`.
 
 
 Examples of use

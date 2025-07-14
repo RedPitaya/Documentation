@@ -3,7 +3,7 @@
 Remote streaming (command line client)
 =======================================
 
-When using the remote streaming option, the data is streamed to a remote computer over the network. This option is useful for applications where the necessary data processing exceeds the capabilities of the Red Pitaya board and must therefor be done with more powerful tools on a remote computer.
+When using the remote streaming option, the data is streamed to a remote computer over the network. This option is useful for applications where the necessary data processing exceeds the capabilities of the Red Pitaya board and must therefore be done with more powerful tools on a remote computer.
 Streaming through the command line client is the most effective way to transfer the data, allowing for the highest possible data transfer rate.
 
 The command line client is available for Windows and Linux operating systems and supports :ref:`Multiboard streaming <multiboard_stream>`.
@@ -86,7 +86,7 @@ The command line client is available for Windows and Linux operating systems and
                         :width: 600
                         :align: center
 
-                    The binary file can be converted using the *convert_tool* application.
+                    The binary file can be converted using the :ref:`convert_tool <streaming_convert_tool>` application.
 
                     .. figure:: ../img/csv_list.png
                         :width: 600
@@ -100,7 +100,7 @@ The command line client is available for Windows and Linux operating systems and
 
                     .. note::
 
-                        Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
+                        Using the :ref:`convert_tool <streaming_convert_tool>` you can also see the structure of the received file and the state of the file.
 
                         .. figure:: ../img/csv_state.png
                             :width: 600
@@ -116,13 +116,13 @@ The command line client is available for Windows and Linux operating systems and
 
         #.  **Start the Streaming application** from the web interface or from the :ref:`Command line <stream_util>`.
 
-        #.  **Configure the stream properties** & click **RUN**
+        #.  **Configure the stream properties** & click **Start**
 
             .. figure:: ../img/streaming_adc_network_200_23.png
                 :width: 1000
                 :align: center
 
-            Example: streaming on CH1 and CH2, 16-bit resolution, 100 ksps, TCP 
+                Example: streaming on CH1 and CH2, 16-bit resolution, 100 ksps, TCP 
 
         #.  **Run the streaming client** via *Command Line or Terminal* on a remote computer (copy the IP address from the web interface and choose the required file format).
 
@@ -182,7 +182,7 @@ The command line client is available for Windows and Linux operating systems and
                         :width: 600
                         :align: center
 
-                    The binary file can be converted using the *convert_tool* application.
+                    The binary file can be converted using the :ref:`convert_tool <streaming_convert_tool>` application.
 
                     .. figure:: ../img/csv_list.png
                         :width: 600
@@ -196,7 +196,7 @@ The command line client is available for Windows and Linux operating systems and
 
                     .. note::
 
-                        Using the *convert_tool application* you can also see the structure of the received file and the state of the file.
+                        Using the :ref:`convert_tool <streaming_convert_tool>` application you can also see the structure of the received file and the state of the file.
 
                         .. figure:: ../img/csv_state.png
                             :width: 600
@@ -212,7 +212,7 @@ Instructions for the rpsa_client
 
 1. **Detect mode**
 
-    This mode allows you to determine the IP addresses that are in the local network in streaming mode. By default, the search takes 5 seconds.
+    This mode allows you to determine the IP addresses that are in the local network in streaming mode. By default, the search takes about 5 seconds.
 
    	.. literalinclude:: ../include/detectMode.txt
 
@@ -220,7 +220,7 @@ Instructions for the rpsa_client
 
 2. **Configuration mode**
 
-	This mode allows you to get or set the streaming configuration on the boards.
+    This mode allows you to get or set the streaming configuration on the boards.
 
    	.. literalinclude:: ../include/configMode.txt
 
@@ -258,12 +258,17 @@ Instructions for the rpsa_client
     If you run the console client with no parameters, the help menu will open, displaying a list of settings and their respective acceptable values.
 
 
+The configuration file is located in the same folder as the client application. The file is named **config_<board_IP>.json** and contains the current settings of the streaming application. The file is created after the first configuration file request.
+
+
+.. _streaming_convert_tool:
+
 Convert tool
 --------------
 
 .. tabs::
 
-    .. group-tab:: OS version IN DEV
+    .. group-tab:: OS IN DEV or newer
 
         The convert tool allows you to convert the *.bin* file format into a *.csv*, *.tdms*, or *.wav* file.
 

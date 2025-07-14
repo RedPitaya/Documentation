@@ -34,7 +34,7 @@ Features
 * Arduino firmware with open source code.
 * Connector for 8 high-speed differential lines directly connected to the Zynq FPGA (or 16 GPIOs).
 
-More information about the QSPI eMMC module can be found in the `hardware section <E3_QSPI_eMMC_module_HW>`_.
+More information about the QSPI eMMC module can be found in the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
 
 
 Software and hardware requirements
@@ -135,7 +135,7 @@ Arduino IDE setup
     .. figure:: img/Arduino_IDE_board_part_num.png
         :alt: Arduino IDE board part number selection
         :align: center
-        :width: 1000px
+        :width: 800px
 
 #. Under *Tools -> USB Support*, select *CDC (generic 'Serial' supersede U(S)ART)*.
 #. Under *Tools -> Upload Method*, select the preferred upload method:
@@ -149,12 +149,13 @@ Arduino IDE setup
     .. figure:: img/Arduino_IDE_tool_settings.png
         :alt: Arduino IDE tools settings
         :align: center
-        :width: 1000px
+        :width: 800px
 
 6. Open the Arduino sketch for the QSPI eMMC module. You can find the sketch and the latest version of the QSPI eMMC module firmware in the .. !PLACEHOLDER!#.
 
 .. `Red Pitaya GitHub repository <>`_.
-.. TODO add the link to the script
+
+.. ..TODO add the link to the script
 
 
 Arduino script setup
@@ -375,7 +376,7 @@ Alternatively, you can use the STM32CubeProgrammer software to program the QSPI 
 QSPI eMMC module schematics and pinout
 ========================================
 
-You can find the QSPI eMMC module schematics and pinout in the `hardware section <E3_QSPI_eMMC_module_HW>`_.
+You can find the QSPI eMMC module schematics and pinout in the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
 
 
 QSPI eMMC module firmware
@@ -422,7 +423,7 @@ E3 I2C controller
 E3 Hardware specifications
 ==========================
 
-For information on hardware specifications such as pinout of the QSPI eMMC module, please refer to the `hardware section <E3_QSPI_eMMC_module_HW>`_.
+For information on hardware specifications such as pinout of the QSPI eMMC module, please refer to the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
 
 
 FAQ
