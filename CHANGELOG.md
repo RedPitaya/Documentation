@@ -1,6 +1,47 @@
+---
+orphan: true
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
+
+## July 2025 - Update 1
+
+**Major updates:**
+
+- Updated streaming application documentation.
+- Separated Multichannel synchronisation (click shield and X-channel) into a separate section.
+- DAC streaming added.
+- Deep memory generation instructions added.
+- Combined Deep Memory Acquisition and Deep Memory Generation into a single section called Deep Memory Mode.
+- Added functionality overview for the commands under each command table section (currently only for SPI). Looking to expand this to all commands in the future.
+- Gen 2 supported features and apps.
+- Added links to measurements under each board model docs.
+- Added TItanium board documentation.
+- Gen 2 FAQ section added.
+- Additional Gen 2 measurements and improvements over Gen 1 boards.
+
+**Minor updates:**
+
+- Text align set to justify for better readability.
+- Updated LCR meter docs style and grammar.
+- Renamed E3 add-on module to QSPI eMMC module.
+- Minor update to streaming application command line util.
+- Added examples on Deep Memory Acquisition comparison and Deep Memory Generation.
+- Added clarification on OS updater process check.
+- Documented new functionality in System Info section.
+- Updated measurements for Gen 1 boards.
+- Separated QSPI eMMC module into its own section.
+- Updated intro with new messaging.
+- Clarified Nightly Build installation instructions.
+- Updated Gen 2 board names.
+- Added new troubleshooting section to FAQ.
+
+**Links affected:**
+
+- Links to streaming application docs.
+- Links to Deep Memory Acquisition page.
 
 ## April 2025 - Update 2
 
@@ -16,11 +57,12 @@ All notable changes to this project will be documented in this file.
 - Fixed and updated Gen 1 specifications.
 - Updated and clarified E3 add-on board instructions.
 - Updated Gen 2 booting instructions.
+- Fixed Sphinx dependency issues with the documentation build process.
+- Added changelog.
 
 **Links affected:**
 
 - Added redirects for broken links from *April 2025 - Update 1*.
-- Fixed Sphinx dependency issues with the documentation build process.
 - None.
 
 ## April 2025 - Update 1
@@ -30,7 +72,7 @@ All notable changes to this project will be documented in this file.
 - Partial Gen 2 board documentation added.
 - E3 add-on module documentation added.
 - Added E3 I2C controller and ecosystem updater command line utilities.
-- Reorganized the prepare SD card section to be more user-friendly and added instructions for installing Nightly builds. 
+- Reorganized the prepare SD card section to be more user-friendly and added instructions for installing Nightly builds.
 - OS updater tool documentation added.
 - OS update options section added.
 - Network manager docs updated and merged with instructions for different connections (WiFi, Ethernet, etc.).

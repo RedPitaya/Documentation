@@ -15,9 +15,6 @@ To find out more about the performance of the STEMlab 125-14 with DC analog powe
 
 - |Red Pitaya DAC performance|
 
-.. |Red Pitaya DAC performance| raw:: html
-
-    <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 
 
 Pinout
@@ -188,7 +185,7 @@ Technical specifications
 
 .. rubric:: Footnotes
 
-.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <multiboard_sync_examples>`.
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
 
 
 .. table::
@@ -214,6 +211,20 @@ Technical specifications
 
     <br/>
 
+
+Measurements
+=================
+
+.. note::
+
+    Although we do not have specific measurements for the STEMlab 125-14 LN board, the performance of the fast analog inputs is the same as for STEMlab 125-14 Gen 1. The output performance is covered in Leonhard Neuhaus's blog about |Red Pitaya DAC performance| (measurements with added linear power supplies).
+
+You can find the measurements of the fast analog frontend here:
+
+* :ref:`Gen 1 - STEMlab 125-14 Gen 1 <measurements_gen1>`.
+* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
+
+
 Schematics
 ===========
 
@@ -237,6 +248,12 @@ Other specifications
 For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.
 
 
+
+.. Substitutions
+
+.. |Red Pitaya DAC performance| raw:: html
+
+    <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 
 
 

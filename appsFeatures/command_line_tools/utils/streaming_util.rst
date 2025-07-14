@@ -1,24 +1,26 @@
 
 .. _stream_util:
 
-.. TODO check if this is even available!!!
-
 Streaming application
 =====================
 
-The server for streaming can be started not only using the web interface but also through the command line.
+The streaming server can also be started through the command line.
 
 .. code-block:: console
 
-    root@rp-f07167:/# streaming-server
-    Missing parameters: Configuration file
-    Usage: streaming-server
-	    -b run service in the background
-	    -c path to the config file
+    root@rp-f0a235:~# streaming-server -h
+    Usage:
+            streaming-server [-b] [-f PATH] [-p PORT] [-s PORT] [-v]
+            streaming-server [--background] [--file=PATH] [--port=PORT] [--search_port=PORT] [--verbose]
 
-To start the server, you need to do 3 steps:
+            --background          -b        Run service in background.
+            --file=PATH           -f FILE   Path to configuration file.
+                                            By default uses the config file /root/.config/redpitaya/apps/streaming/streaming_config.json.
+            --verbose             -v        Displays information.
 
-    #. Load the FPGA image for streaming
+To start the server, follow these steps:
+
+    #. Load the FPGA image for streaming.
 
         .. tabs::
 
@@ -35,6 +37,9 @@ To start the server, you need to do 3 steps:
 
                     redpitaya> overlay.sh stream_app
 
+        .. note::
+
+            **SIGNALlab 250-12** uses **stream_app_250** FPGA image.
 
     #. Prepare a configuration file.
 
@@ -62,7 +67,7 @@ The configuration for streaming is automatically created and saved in the file: 
 
 .. note::
 
-    The server can be started in the background. To do this, use the -b parameter. In this mode, the application can be used as a service at system startup. Service information from the application is saved in the syslog file (by default, the Syslog is not installed on RP).
+    The server can be started in the background. To do this, use the -b parameter. In this mode, the application can be used as a service at system startup. Service information from the application is saved in the syslog file (by default, the Syslog is not installed on Red Pitaya).
 
 .. note::
 
@@ -71,10 +76,19 @@ The configuration for streaming is automatically created and saved in the file: 
         *   The first stores of streamed data
         *   The second stores the data transfer report
 
-.. note::
 
-    Streaming app sources are available here: |streaming app|.
-    For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
+Data streaming
+----------------
+
+Once the streaming server is running, you can start streaming data from ADC and to DACs of the Red Pitaya board. For more information, please refer to the :ref:`Streaming application <streaming_top>` documentation.
+
+
+Source Code
+------------
+
+The Streaming app source code is available here: |streaming app|.
+
+For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
 
 .. |streaming app| raw:: html
 

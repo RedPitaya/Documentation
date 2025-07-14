@@ -14,7 +14,7 @@ Product comparison table (Gen 1)
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
     | **Basic**                                                                                                                                                                                                                                                        |
     +====================================+====================================+====================================+====================================+====================================+====================================+====================================+
-    |                                    | STEMlab 125-14 |br|                | STEMlab 125-14-Z7020-LN            | STEMlab 125-14 4-Input             | SDRlab 122-16  |br|                | SIGNALlab 250-12                   | STEMlab 125-10 |br|                |
+    |                                    | STEMlab 125-14 |br|                | STEMlab 125-14 Z7020 LN            | STEMlab 125-14 4-Input             | SDRlab 122-16  |br|                | SIGNALlab 250-12                   | STEMlab 125-10 |br|                |
     |                                    | STEMlab 125-14 LN |br|             |                                    |                                    | SDRlab 122-16 ext. clk             |                                    | (discontinued)                     |
     |                                    | STEMlab 125-14 ext. clk            |                                    |                                    |                                    |                                    |                                    |
     +------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+------------------------------------+
@@ -152,7 +152,7 @@ Product comparison table (Gen 1)
 
 .. rubric:: Footnotes
 
-.. [#f1] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <multiboard_sync_examples>`.
+.. [#f1] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
 
 
 .. |br| raw:: html

@@ -188,7 +188,7 @@ Technical specifications
 
 .. rubric:: Footnotes
 
-.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <multiboard_sync_examples>`.
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
 
 
 .. table::
@@ -211,6 +211,20 @@ Technical specifications
 .. |br| raw:: html
 
     <br/>
+
+
+Measurements
+=================
+
+.. note::
+
+    We do not have specific measurements for the STEMlab 250-12 board.
+    
+You can find the measurements of the fast analog frontend here:
+
+* :ref:`Gen 1 - STEMlab 125-14 Gen 1 <measurements_gen1>`.
+* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
+
 
 .. _schematics_250_12:
 

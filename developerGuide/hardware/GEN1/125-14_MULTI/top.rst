@@ -36,6 +36,8 @@ For more information about the software, please refer to: :ref:`X-Channel stream
     * :ref:`Click Shield synchronisation <click_shield>` requires external clock models.
     * :ref:`X-channel synchronisation <x-ch_streaming>` requires the X-channel system (master and slave boards) which differ from external clock models.
 
+    For more information about Red Pitaya synchronisation, please refer to the :ref:`multiboard synchronisation chapter <multiboard_sync>`.
+
 
 Setup
 =========
@@ -226,7 +228,7 @@ Technical specifications (one board)
 
 .. rubric:: Footnotes
 
-.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <multiboard_sync_examples>`.
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
 
 
 .. table::
@@ -267,6 +269,20 @@ Technical specifications (one board)
 
     <br/>
 
+
+Measurements
+=================
+
+.. note::
+
+    Although we do not have specific measurements for the STEMlab 125-14 LN boards, the performance of the fast analog inputs is the same as for STEMlab 125-14 Gen 1. The output performance is covered in Leonhard Neuhaus's blog about |Red Pitaya DAC performance| (measurements with added linear power supplies).
+
+You can find the measurements of the fast analog frontend here:
+
+* :ref:`Gen 1 - STEMlab 125-14 Gen 1 <measurements_gen1>`.
+* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
+
+
 Other specifications
 =====================
 
@@ -279,7 +295,7 @@ FAQ
 Comparison between Red Pitaya X-channel System and Click Shield synchronisation?
 ---------------------------------------------------------------------------------
 
-The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <click_shield_Q&A>`.
+The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <faq_multiboard>`.
 
 
 Can a different Red Pitaya STEMlab 125-14 unit be used as a primary device in the X-channel system?
@@ -306,4 +322,12 @@ Can I boot the secondary/external clock devices without the external clock prese
 The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
 However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
 
+
+
+
+.. Substitutions
+
+.. |Red Pitaya DAC performance| raw:: html
+
+    <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 

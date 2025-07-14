@@ -12,7 +12,7 @@ Streaming application EOL error
 
 The :ref:`Streaming desktop application <stream_desktop_app>` and :ref:`command line client <stream_command_client>` are not working on beta OS version 2.05-37. Red Pitaya unit reports an EOL error within two minuts of starting the desktop application. This also affects the command line client, where specifying the stream time (-t) parameter will cause the same error.
 
-This issue is fixed in the latest :ref:`Nightly Build OS versions <nightly_builds>`. We will fix this issue for the 2.05-37 stable release.
+This issue is fixed in the latest :ref:`Nightly Build OS versions <nightly_builds>`. We will fix this issue in the next official OS release.
 
 Please use the :ref:`2.04-35 OS version <prepareSD>` for the streaming application until the issue is resolved.
 
@@ -38,6 +38,8 @@ The Wi-Fi dongles, when connected to the Red Pitaya board (all board models), sh
 When connected to a laptop, the same Wi-Fi dongles work and show correct levels.
 
 This issue will be resolved in a future OS version by updating the Linux kernel driver to 6.3.
+
+We also plan on adding support for new Wi-Fi dongles.
 
 
 
@@ -76,5 +78,15 @@ It may be necessary to increase the size of the Red Pitaya OS partition on the S
 * Add SWAP space.
 
 For more information on SWAP, see the link above.
+
+
+SIGNALlab 250-12 output voltage range
+---------------------------------------
+
+On 1.04 OS versions, the oscilloscope application on SIGNALlab 250-12 has issues with setting output voltage range (gain x1 and gain x5) and cannot reach ±10 V.
+
+The issue is not present when using the SCPI or API commands.
+
+The issue is fixed in the 2.00 OS versions.
 
 |

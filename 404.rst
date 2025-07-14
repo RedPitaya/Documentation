@@ -5,7 +5,7 @@
 ####################
 
 .. figure:: img/RedPitayaFruit.jpg
-    :width: 1000
+    :width: 600
 
     Not the Pitaya you are looking for?
 

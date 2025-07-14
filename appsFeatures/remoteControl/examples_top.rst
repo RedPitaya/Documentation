@@ -23,7 +23,7 @@ You can edit and change them according to your needs and develop customized prog
     ../examples/acquisition/acqRF.rst
     ../examples/acquisition_generation/acq_genRF.rst
     ../examples/multiboard_sync/multiboard.rst
-    ../examples/DMA/deepMemoryAcq.rst
+    ../examples/DMM/dmm.rst
     ../examples/communication_interfaces/digcomIF.rst
     ../examples/lcr/lcr-exm.rst
     ../examples/logic_analyzer/logic_analyzer_top.rst

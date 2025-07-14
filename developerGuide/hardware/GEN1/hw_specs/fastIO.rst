@@ -1,4 +1,6 @@
 
+.. _measurements_gen1:
+
 #######################
 Fast analog IO (Gen 1)
 #######################
@@ -13,15 +15,16 @@ Fast analog IO (Gen 1)
 
     All inputs and outputs available through SMA and BNC connectors share a common ground connected to the power supply ground.
 
+.. note::
+
+    The measurements in this section have been made using STEMlab 125-14 Gen 1. Most measurements can be extended to other board models, but may vary depending on the board model.
+
 .. _anain:
 
 *************************
 Analog inputs
 *************************
 
-.. note::
-
-    The measurements in this section have been made using STEMlab 125-14. Most measurements can be extended to other board models, but may vary depending on the board model.
 
 The STEMlab 125-14 board analog front-end features 2 fast analog inputs. 
 
@@ -136,8 +139,8 @@ Input stage schematics
     Fast analog inputs schematics
 
 
-Coupling
------------
+Input coupling
+------------------
 
 Fast analog inputs are **DC coupled**. Input impedance is given in the picture below. 
 
@@ -147,8 +150,8 @@ Fast analog inputs are **DC coupled**. Input impedance is given in the picture b
     The input impedance of fast analog inputs
 
 
-Bandwidth
------------
+Input bandwidth
+----------------
 
 +---------------------------------+-----------------------------------------------+
 | Bandwidth                       | 50 MHz (3 dB)                                 |
@@ -194,10 +197,32 @@ Measurements are performed on 16k continuous samples at full rate (125 MS/s). (T
     Noise level
         
 
-Input channel isolation
+Input crosstalk
 -------------------------
-    
+
+Crosstalk measurements were performed between input channels 1 and 2 for both LV and HV modes.
+
++------------------------------------+------------------+------------------+------------------+------------------+
+|                                    | **Up to 30 MHz**                    | **Above 30 MHz**                    |
++------------------------------------+------------------+------------------+------------------+------------------+
+| |br|                               | |br|             | |br|             | |br|             | |br|             |
+| **IN1 \ IN2**                      | **LV**           | **HV**           | **LV**           | **HV**           |
++------------------------------------+------------------+------------------+------------------+------------------+
+| **LV**                             | >55 dB           | >60 dB           | 40 dB            | 40 dB            |
++------------------------------------+------------------+------------------+------------------+------------------+
+| **HV**                             | >40 dB           | >50 dB           | 35 dB            | 35 dB            |
++------------------------------------+------------------+------------------+------------------+------------------+
+| |br|                               | |br|             | |br|             | |br|             | |br|             |
+| **IN2 \ IN1**                      | **LV**           | **HV**           | **LV**           | **HV**           |
++------------------------------------+------------------+------------------+------------------+------------------+
+| **LV**                             | >55 dB           | 50 dB            | 40 dB            | 40 dB            |
++------------------------------------+------------------+------------------+------------------+------------------+
+| **HV**                             | >55 dB           | >50 dB           | >40 dB           | >35 dB           |
++------------------------------------+------------------+------------------+------------------+------------------+
+
+
 Typical performance:
+
     - 65 dB @ 10 kHz
     - 50 dB @ 100 kHz
     - 55 dB @ 1 M
@@ -207,22 +232,29 @@ Typical performance:
     - 44 dB @ 40 MHz
     - 40 dB @ 50 MHz
 
-Crosstalk is measured with a high gain (LV) jumper setting on both channels. The SMA connectors not involved in the measurement are terminated.
+The typical performance characteristics were measured on LV jumper setting on both channels. The SMA connectors not involved in the measurement are terminated.
     
 
-Harmonics
------------
+Input harmonics
+----------------
+
++------------------------------------+------------------------------------+
+| Amplitude                          | Harmonics                          |
++====================================+====================================+
+| -3 dBFS                            | -45 dBc                            |
++------------------------------------+------------------------------------+
+| -20 dBFS                           | -60 dBc                            |
++------------------------------------+------------------------------------+ 
        
-- at -3 dBFS: typical performance < -45 dBc 
-- at -20 dBFS: typical performance < -60 dBc 
-       
-Measurements refer to the LV jumper setting, inputs matched and outputs terminated, outputs signal disabled, and PCB grounded through SMA ground.
+The typical measurements refer to the LV jumper setting, inputs matched and outputs terminated, outputs signal disabled, and PCB grounded through SMA ground.
 
 
-Spurious frequency components
+Input SFDR
 -------------------------------
 
-- Typically < -90 dBFS 
++---------------------------------+-----------------------------------------------+
+| Input SFDR                      | < -90 dBFS                                    |
++---------------------------------+-----------------------------------------------+
     
 Measurements refer to the LV jumper setting, inputs, and outputs terminated, outputs signal disabled, and the PCB grounded through SMA ground.
 In the pictures below, typical performances of Red Pitaya fast analog inputs are shown. For the reference signal generation, we have used the |Agilent 33250A| Signal generator.
@@ -286,16 +318,24 @@ Reference signals
 Due to the natural distribution of the electrical characteristics of the analog inputs and outputs, their offsets and gains will differ slightly across various Red Pitaya boards and may change over time. The calibration coefficients are stored in EEPROM on the Red Pitaya and can be accessed and modified with the calibration utility:
     
 
-DC offset error
------------------
+Input DC offset error
+----------------------
 
-- < 5 % Full Scale 
++---------------------------------+-----------------------------------------------+
+| DC offset error                 | < 5% FS                                       |
++---------------------------------+-----------------------------------------------+
  
 
-Gain error
------------
+Input gain error
+-----------------
 
-- < 3% (at LV jumper setting), < 10% (at HV jumper setting) 
++------------------------------------+------------------------------------+
+| Jumper settings                    | Gain error                         |
++====================================+====================================+
+| LV                                 | <3%                                |
++------------------------------------+------------------------------------+
+| HV                                 | <10%                               |
++------------------------------------+------------------------------------+ 
     
 Further corrections can be applied through more precise gain and DC offset :ref:`calibration <calib>`.  
         
@@ -525,8 +565,8 @@ The impedance of the output channels (output amplifier and filter) is shown in t
     Output impedance
 
 
-Bandwidth
------------
+Output bandwidth
+-----------------
 
 +---------------------------------+-----------------------------------------------+
 | Bandwidth                       | 50 MHz (3 dB)                                 |
@@ -540,27 +580,39 @@ The Red Pitaya board OUT1 is used with 0 dBm output power. The second output cha
 
 
 
-Harmonics
-------------
+Output harmonics
+------------------
 
-Typical performance: (at 8 dBm) 
+Typical performance of the output harmonics is shown in the table below.
 
-    - -51 dBc @ 1 MHz
-    - -49 dBc @ 10 MHz
-    - -48 dBc @ 20 MHz
-    - -53 dBc @ 45 MHz 
++------------------------------------+------------------------------------+
+| Output signal frequency (8 dBm)    | Harmonics                          |
++====================================+====================================+
+| 1 MHz                              | -51 dBc                            |
++------------------------------------+------------------------------------+
+| 10 MHz                             | -49 dBc                            |
++------------------------------------+------------------------------------+
+| 20 MHz                             | -48 dBc                            |
++------------------------------------+------------------------------------+
+| 45 MHz                             | -53 dBc                            |
++------------------------------------+------------------------------------+
 
 
-DC offset error
------------------
 
-- < 5% FS 
+Output DC offset error
+------------------------
+
++---------------------------------+-----------------------------------------------+
+| DC offset error                 | < 5% FS                                       |
++---------------------------------+-----------------------------------------------+
 
 
-Gain error
------------
+Output gain error
+------------------
 
-- < 5% 
++---------------------------------+-----------------------------------------------+
+| Output gain error               | < 5%                                          |
++---------------------------------+-----------------------------------------------+
     
 Further corrections can be applied through more precise gain and DC offset calibration.
 
@@ -595,3 +647,8 @@ RIPPLE(@ 0.5V DC) 0.4 mVpp
 
 
 
+.. substitutions
+
+.. |br| raw:: html
+
+    <br/>

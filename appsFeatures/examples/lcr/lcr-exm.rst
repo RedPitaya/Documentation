@@ -1,4 +1,4 @@
-.. _lcr_example:
+.. _examples_lcr:
 
 LCR meter example
 ######################################

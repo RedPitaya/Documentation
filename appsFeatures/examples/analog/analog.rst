@@ -1,3 +1,5 @@
+.. _examples_analog:
+
 Analog
 ######
 

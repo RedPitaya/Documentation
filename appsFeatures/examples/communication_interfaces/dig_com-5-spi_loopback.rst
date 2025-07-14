@@ -6,19 +6,13 @@ Description
 
 This example shows communication with the Red Pitaya SPI. This code is for testing writing and reading via the SPI protocol. In order for the code to work, you need to connect the MISO and MOSI connectors.
 
-Red Pitaya SPI does not use the standard ``cpol`` and ``cpha`` parameters, instead the mode can be one of the following:
+For more information on the command functionality, please refer to the :ref:`SPI command table <commands_spi>` documentation.
 
-- ``LISL`` - Low idle level, sample on leading edge - equivalent to ``cpol=0, cpha=0``
-- ``LIST`` - Low idle level, sample on trailing edge - equivalent to ``cpol=0, cpha=1``
-- ``HISL`` - High idle level, sample on leading edge - equivalent to ``cpol=1, cpha=0``
-- ``HIST`` - High idle level, sample on trailing edge - equivalent to ``cpol=1, cpha=1``
-
-.. TODO add picture of CPOL CPHA
 
 Required hardware
 ==================
 
-    - Red Pitaya device
+    * Red Pitaya device.
 
 .. figure:: ../general_img/RedPitaya_general.png
 

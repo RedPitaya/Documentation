@@ -23,6 +23,8 @@ If the Red Pitaya board has access to the internet, it will notify you if a new 
     :align: center
     :width: 600
 
+The software update manager checks and compares the current OS version with the files in the `Red Pitaya downloads repository <https://downloads.redpitaya.com/downloads/Unify/ecosystems/>`_.
+
 
 Updating the OS
 ----------------

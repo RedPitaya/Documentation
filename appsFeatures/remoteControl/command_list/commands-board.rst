@@ -5,6 +5,31 @@
 Board control commands
 ======================
 
+Functionality overview
+------------------------
+
+Board control commands provide general information about the Red Pitaya board, such as its ID, version, and date/time settings. They allow you to set general parameters for how the board operates, including logging modes and error handling.
+These commands are essential for managing the board's configuration and ensuring it operates correctly.
+
+They are meant to be executed once at the start of the application during the initialisation phase.
+
+
+Important notes
+----------------
+
+*   ``RP:RET_ON_ERROR <bool>`` command is a non-standard SCPI command feature that enables a special mode for compatibility with older SCPI clients. When this mode is enabled, if errors occur when executing query commands, the server will return empty data with delimiters "\r\n", 
+    which will prevent SCPI data or parameter requests to end in an infinite waiting-for-return loop when an error occurs on the Red Pitaya side. This is useful for maintaining compatibility with legacy systems that expect this behavior.
+
+
+Code examples
+-----------------
+
+Since these commands are meant to be a one-time setup, no special code examples are provided.
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<year> = {1900, ...}`` Default: ``OS release date and time``
@@ -60,7 +85,7 @@ Board control commands
 | | ``RP:LOGmode SYSLOG``                              | |                                                |                                                           |                        |
 | |                                                    | |                                                |                                                           |                        |
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+------------------------+
-| | ``RP:RET_ON_ERROR <bool>``                         | | -                                              | | Enables a special mode for compatibility                | in dev                 |
+| | ``RP:RET_ON_ERROR <bool>``                         | | N/A                                            | | Enables a special mode for compatibility                | in dev                 |
 | | Examples:                                          | |                                                | | with older SCPI clients. When this mode is enabled,     |                        |
 | | ``RP:RET_ON_ERROR ON``                             | |                                                | | if errors occur when executing query commands,          |                        |
 | |                                                    | |                                                | | the server will return empty data with delimiters "\r\n"|                        |

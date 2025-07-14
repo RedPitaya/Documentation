@@ -3,7 +3,7 @@ Build & compile instructions
 
 
 .. toctree::
-    :maxdepth: 4
+    :maxdepth: 2
    
     C&Python_API
     comStreaming

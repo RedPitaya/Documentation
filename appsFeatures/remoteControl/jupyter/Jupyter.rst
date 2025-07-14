@@ -8,9 +8,18 @@ JupyterLab is the latest web-based interactive development environment for noteb
 
 JupyterLab includes all the functionality of the Jupyter Notebook (an open-source web application that allows you to create and share documents that contain live code, equations, visualizations, explanatory text, and direct control or monitor hardware).
 
-***********
+JupyterLab is located in the **Development** section of the Red Pitaya web interface.
+
+.. figure:: img/development_section.png
+    :width: 800
+
+.. figure:: img/development_section_jupyter.png
+    :width: 800
+
+|
+
 Features
-***********
+============
 
 * In-browser editing of code, with automatic syntax highlighting, indentation, and tab completion/introspection.
 * The ability to execute code from the browser, with the results of computations attached to the code which generated them. 
@@ -41,9 +50,8 @@ Features
     <a href="https://www.mathjax.org/" target="_blank">MathJax</a>
 
 
-==================
 Notebook documents
-==================
+----------------------
 
 Notebook documents contain the inputs and outputs of an interactive session as well as additional text that accompanies the code but is not meant for execution. In this way, notebook files can serve as a complete computational
 record of a session, interleaving executable code with explanatory text, mathematics, and rich representations of resulting objects. These documents are internal |JSON| files and are saved with 
@@ -63,9 +71,8 @@ Notebooks may be exported to a range of static formats, including HTML (for exam
 Furthermore, any *.ipynb* notebook document available from a public URL can be shared via the Jupyter Notebook Viewer (nbviewer). This service loads the notebook document from the URL and renders it as a static web page. The results may thus be shared with a colleague, or as a public blog post, without other users needing to install the Jupyter notebook themselves. In effect, nbviewer is simply nbconvert as a web service, so you can do your own static conversions with nbconvert without relying on nbviewer.
 
 
-**************************************
 Hardware - Sensor extension module
-**************************************
+======================================
 
 Although the usage of the JupyterLab does not require any additional hardware except the Red Pitaya board, getting started with electronics is way more fun and interesting when you have loads of sensors that you can put to good use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is to select the desired module, find the correct connector, and get going with your project. We have also placed the Arduino shield headers on the extension module.
 
@@ -79,9 +86,9 @@ Here you can find more information regarding the :ref:`Sensor extension module <
     <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Seeed®</a>
 
 
-********
+
 Examples
-********
+===========
 
 The code examples are available here:
 

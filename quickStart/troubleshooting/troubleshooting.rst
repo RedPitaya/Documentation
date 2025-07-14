@@ -20,6 +20,8 @@ Here is a comprehensive guide to troubleshooting common problems with Red Pitaya
     * :ref:`Applications & Web Interface <faq_apis_interface>`.
     * :ref:`Software <faq_sw>`.
     * :ref:`Hardware <faq_hw>`.
+    * :ref:`Multiboard synchronisation FAQ <faq_multiboard>`.
+    * :ref:`Gen 2 FAQ <faq_gen2>`.
     * :ref:`How to report a problem? <report_problem>`.
 
 
@@ -50,7 +52,7 @@ Firstly, you should check the status LEDs as they will give you feedback on the 
 #. If the **green LED** is **OFF** or **blinking**. There appears to be something wrong with the power supply or USB cable. Make sure that:
 
     * You have plugged the USB cable into the correct USB port on the Red Pitaya.
-    * Your power supply is capable of delivering 5V/2A (or 12V/1A for SIGNALlab 250-12).
+    * Your power supply is capable of delivering 5 V/2 A (or 12 V/1 A for SIGNALlab 250-12).
     * Try replacing the USB cable and the USB power supply.
         
     If none of the above helps, please :ref:`contact us <report_problem>`.
@@ -106,10 +108,29 @@ If the status LEDs are working normally, the Red Pitaya is booting correctly. If
 
 |
 
+Check the serial console boot log
+----------------------------------
+
+If the status LEDs are working normally and the network connection debugging does not resolve the issue, meaning that the board is inaccessible through the web interface or the :ref:`SSH connection <ssh>`, please try the following sequence:
+
+1. Power up the board and connect the Ethernet cable as normal.
+#. After booting the board, connect a serial console cable (micro-USB to USB-A for Gen 1 boards, or USB-C to USB-A for Gen 2 boards) between the Red Pitaya board and your computer.
+#. In a command prompt or terminal, type ``arp -a`` and check if the Red Pitaya is listed on the local network.
+#. ``ping`` the Red Pitaya IP address or the ``rp-xxxxxx.local`` address. Do this even if the IP address is unreachable or the board does not appear on the local network.
+#. Try connecting to the board's web interface using either the IP address or the ``rp-xxxxxx.local`` address in the browser's URL window.
+#. Restart the router (or clear the internal cache/ARP table of the router) and try connecting to the board again.
+
+If you are unable to connect to the board after an OS update, please use the above sequence. This issue may occur when connecting to the board for the first time after an OS update, but it should not happen again after the first boot.
+This should resolve most issues related to the 'OPENBSD failed to start' error reported in the serial console boot log.
+
+If the issue persists, please establish a :ref:`serial console <console>` connection and check the boot log sequence for feedback. Then, :ref:`report the problem <report_problem>` and attach the boot log file.
+
+|
+
 Advanced Troubleshooting
 ------------------------
 
-1. If you are a Linux or MacOS user and the Red Pitaya is connected directly to the computer (via the Ethernet cable), check the Ethernet port settings to see if they are set to **DHCP** and **Local Only**. Alternatively, try connecting to the Red Pitaya through your router.
+1. If you are a Linux or MacOS user and the Red Pitaya is connected directly to the computer (via the Ethernet cable), check the Ethernet port settings to see if they are set to **DHCP** and **Local Only**. Alternatively, connecting to the Red Pitaya  router.
 #. If a MAC computer will not connect to the Red Pitaya, it is possible that **Content and privacy settings** are blocking websockets.  After updating the settings you will need to log out and log in again.
 
     .. figure:: img/MAC_content_privacy.png
@@ -135,18 +156,6 @@ Extremely rare cases
 
 #. If the board works normally but the **blue LED** is **OFF**, check that the LED is not damaged. If the board is under warranty, we will replace it.
 #. Check that one of the pins of the SD card holder is bent upwards and not in contact with the pins of the SD card. Remove the SD card and push it into the normal position.
-
-.. |red_pitaya_notes| raw:: html
-
-   <a href="https://github.com/pavel-demin/red-pitaya-notes" target="_blank">Pavel Demin's Red Pitaya Notes</a>
-
-.. |#250| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">#250</a>
-
-.. |#254| raw:: html
-
-   <a href="https://github.com/RedPitaya/RedPitaya/issues/254" target="_blank">#254</a>
 
 
 
@@ -184,16 +193,16 @@ Red Pitaya is constantly rebooting?
     * A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations.
       Check the external clock specifications and instructions for your Red Pitaya board model:
 
-        * :ref:`Gen 2 STEMlab 125-14 <top_125_14_gen2>`.
-        * :ref:`Gen 1 STEMlab 125-14 External clock <top_125_14_EXT>`.
+        * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
+        * :ref:`STEMlab 125-14 External clock (Gen 1) <top_125_14_EXT>`.
         * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
 
 
 How to connect the external clock to RP?
 ------------------------------------------
 
-    * :ref:`Gen 2 STEMlab 125-14 <top_125_14_gen2>`.
-    * :ref:`Gen 1 STEMlab 125-14 & STEMlab 125-14-Z7020 External clock <top_125_14_EXT>`.
+    * :ref:`STEMlab 125-14 Gen 2<top_125_14_gen2>`.
+    * :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 External clock (Gen 1) <top_125_14_EXT>`.
     * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
 
 
@@ -246,8 +255,7 @@ In order to test it, you can use a PC that is connected to the same local networ
 
     .. note::
 
-        If you have a cable connection, then your MAC address
-        is written on your Red Pitaya LAN connector.
+        Red Pitaya's MAC address is written on the ethernet connector.
 
     .. figure:: img/MAC.png
         :align: center
@@ -325,14 +333,6 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
     
     For full performance, a wired connection is preferred.
 
-.. |Wifi channel| raw:: html
-
-    <a href="http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/" target="_blank">change your wifi router channel in order to optimize your wireless signal</a>
-
-.. |Wireless Diagnostic Tool| raw:: html
-
-    <a href="http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/" target="_blank">Wireless Diagnostic Tool</a>
-
 
 Wi-Fi dongle not detected?
 ---------------------------
@@ -409,7 +409,7 @@ Problems with OS update application, and accessing the marketplace?
 
 
 Web interface not functioning properly, or freezing?
--------------------------------------------------------------------------
+------------------------------------------------------
 
 Please ensure that your browser's ad blockers are turned off for the ``rp-xxxxxx.local`` webpage and that your proxy settings are correct. For local connections to the Red Pitaya unit, proxy settings should not be required. A VPN may also be preventing the connection.
 
@@ -449,19 +449,19 @@ We suggest :ref:`upgrading to the latest OS <prepareSD>` and trying again. Other
     Unfortunately, not all 3rd party applications have been updated, so they may not work with the latest OS versions. In this case, we recommend either downgrading the Red Pitaya OS version to 1.04 or using an alternative application.
 
 
-Lock-in PID applications not working?
+Lock-in PID applications
 --------------------------------------
 
-Depending on the Red Pitaya OS version you are currently using, some of the Lock-In PID applications may not work. Here is a compatibility table:
+Here is a compatibility table for all the lock-in and PID applications that are compatible with Red Pitaya boards. Please note that some of these applications are developed by 3rd parties and may not be supported by the Red Pitaya team.
 
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 | **Lock-in PID application**   | **Application type** | **Compatible Red Pitaya OS**                         | **Red Pitaya board compatibility**  | **Link to documentation**                                                   |
 +===============================+======================+======================================================+=====================================+=============================================================================+
-| Linien                        | 3rd party            | | 2.00-15 and above                                  | | STEMlab 125-14 (LN, Ext. clk)     | `Linien GitHub <https://github.com/linien-org/linien>`_                     |
-|                               |                      | | 1.04 (Limited compatibility)                       |                                     |                                                                             |
+| Linien                        | 3rd party            | | 2.00-15 and above                                  | STEMlab 125-14 (LN, Ext. clk)       | `Linien GitHub <https://github.com/linien-org/linien>`_                     |
+|                               |                      | | 1.04 (limited compatibility)                       |                                     |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
-| Lock-in+PID (Marcelo Luda)    | 3rd party            | | 1.04-28 or older                                   | | STEMlab 125-14 (LN, Ext. clk)     | `Lock-in+PID GitHub <https://marceluda.github.io/rp_lock-in_pid/>`_         |
-|                               |                      | |                                                    | | STEMlab 125-10 (discontinued)     |                                                                             |
+| Lock-in+PID (Marcelo Luda)    | 3rd party            | 1.04-28 or older                                     | | STEMlab 125-14 (LN, Ext. clk)     | `Lock-in+PID GitHub <https://marceluda.github.io/rp_lock-in_pid/>`_         |
+|                               |                      |                                                      | | STEMlab 125-10 (discontinued)     |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 | PyRPL                         | 3rd party            | | 2.00 or higher (check :ref:`our docs <pyrpl>`)     | | STEMlab 125-14 (LN, Ext. clk)     | `PyRPL documentation <https://pyrpl.readthedocs.io/en/latest/>`_            |
 |                               |                      | | 1.04-28 or older (from PyRPL docs)                 | | STEMlab 125-10 (discontinued)     |                                                                             |
@@ -521,22 +521,6 @@ Where can I find the ecosystem, software, and FPGA images?
 
     If you need a specific old version of the ecosystem or the OS that is missing from the archives, we suggest you ask the community on the |RP_forum|. There is a chance someone has it lying around on the disk.
 
-
-.. |RP_GitHub| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya ecosystem</a>
-
-.. |RP_GitHub_FPGA| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">Red Pitaya FPGA</a>
-
-.. |RP_archive| raw:: html
-
-    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive</a>
-
-.. |RP_forum| raw:: html
-
-    <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya Forum</a>
 
 
 How to start with FPGA development?
@@ -623,6 +607,10 @@ All Red Pitaya boards operate in the base band (DC to approximately 60 MHz). The
 To reach higher frequency ranges, additional analog fronted modules are required (for example, frequency mixers).
 
 
+Gen 2 FAQ
+==========
+
+For the Gen 2 boards, please refer to the :ref:`Gen 2 FAQ <faq_gen2>` section for more information on hardware specifications.
 
 
 .. _report_problem:
@@ -637,3 +625,44 @@ Please email us at support@redpitaya.com with the following information
     * Information about the problem you are experiencing and any additional information that may be relevant.
     * Any visual material showing the status LEDs or the state of the board is welcome.
     * Clear instructions on how to reproduce the problem.
+
+
+.. substitutions
+
+.. |Wifi channel| raw:: html
+
+    <a href="http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/" target="_blank">change your wifi router channel in order to optimize your wireless signal</a>
+
+.. |Wireless Diagnostic Tool| raw:: html
+
+    <a href="http://www.howtogeek.com/211034/troubleshoot-and-analyze-your-mac%E2%80%99s-wi-fi-with-the-wireless-diagnostics-tool/" target="_blank">Wireless Diagnostic Tool</a>
+
+
+.. |red_pitaya_notes| raw:: html
+
+   <a href="https://github.com/pavel-demin/red-pitaya-notes" target="_blank">Pavel Demin's Red Pitaya Notes</a>
+
+.. |#250| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/250" target="_blank">#250</a>
+
+.. |#254| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/issues/254" target="_blank">#254</a>
+
+.. |RP_GitHub| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya" target="_blank">Red Pitaya ecosystem</a>
+
+.. |RP_GitHub_FPGA| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya-FPGA" target="_blank">Red Pitaya FPGA</a>
+
+.. |RP_archive| raw:: html
+
+    <a href="https://downloads.redpitaya.com/downloads/" target="_blank">Red Pitaya archive</a>
+
+.. |RP_forum| raw:: html
+
+    <a href="https://forum.redpitaya.com/" target="_blank">Red Pitaya Forum</a>
+
