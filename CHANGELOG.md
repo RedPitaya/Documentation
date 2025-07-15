@@ -47,7 +47,6 @@ All notable changes to this project will be documented in this file.
 - Links to Deep Memory Acquisition page - renamed to "Deep Memory Mode".
 - Links to Deep Memory Acquisition examples.
 
-
 ## July 2025 - Update 1
 
 **Changes:**
