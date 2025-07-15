@@ -246,30 +246,31 @@ Components
 Texas Instruments components
 -----------------------------
 
-    * TPD4E02B04DQA
-    * CAHCT1G125QDCKRG4Q
-    * SN74LVC1G86DCKR
-    * TXS02612RTWR
-    * LSF0102DTM
-    * PCA9306DCUR
-    * TPS25821
-    * DAC2904Y
-    * ADC3663IRSBR
-    * THS4541QRGTR
-    * OPA810IDBVR
-    * OPA695IDBVR
-    * LM393DGK
-    * LMK03318
-    * TPS62080ADSGT
-    * LM27762DSSR
+    * `TPD4E02B04 <https://www.ti.com/lit/ds/symlink/tpd4e02b04.pdf>`_ - ESD protection for USB-C
+    * `SN74AHCT1G125-Q1 <https://www.ti.com/lit/ds/symlink/sn74ahct1g125-q1.pdf>`_ - Single buffer/driver with 3-state output
+    * `SN74LVC1G86 <https://www.ti.com/lit/ds/symlink/sn74lvc1g86.pdf>`_ - Single 2-input XOR gate
+    * `TXS02612 <https://www.ti.com/lit/ds/symlink/txs02612.pdf>`_ - Voltage level translator
+    * `LSF0102 <https://www.ti.com/lit/ds/symlink/lsf0102.pdf>`_ - Bidirectional voltage level translator
+    * `PCA9306 <https://www.ti.com/lit/ds/symlink/pca9306.pdf>`_ - Dual bidirectional I2C bus and SMBus voltage level translator
+    * `TPS25821 <https://www.ti.com/lit/ds/symlink/tps25821.pdf>`_ - USB Type-C and USB Power Delivery controller
+    * `DAC2904 <https://www.ti.com/lit/ds/symlink/dac2904.pdf>`_ - Quad-channel, 14-bit, 125 MSPS DAC
+    * `ADC3663 <https://www.ti.com/lit/ds/symlink/adc3663.pdf>`_ - 16-bit, 65 MSPS ADC
+    * `THS4541-Q1 <https://www.ti.com/lit/ds/symlink/ths4541-q1.pdf>`_ - Differential amplifier
+    * `OPA810 <https://www.ti.com/lit/ds/symlink/opa810.pdf>`_ - Rail-to-rail operational amplifier
+    * `OPA695 <https://www.ti.com/lit/ds/symlink/opa695.pdf>`_ - Current feedback operational amplifier
+    * `LM393 <https://www.ti.com/lit/ds/symlink/lm393.pdf>`_ - Dual comparator
+    * `LMK03318 <https://www.ti.com/lit/ds/symlink/lmk03318.pdf>`_ - Ultra-Low-Noise Jitter Clock Generator
+    * `TPS62080 <https://www.ti.com/lit/ds/symlink/tps62080.pdf>`_ - Step-down converter
+    * `LM27762 <https://www.ti.com/lit/ds/symlink/lm27762.pdf>`_ - Dual charge pump plus LDO
+
 
 Analog Devices components
 ---------------------------
 
-    * ADP7182ACPZ
-    * ADP151ACPZ-3.3
-    * ADM7170ACPZ-R7
-    * AD8007AKS-R2 (Liner technologies)
+    * `ADP7182 <https://www.analog.com/media/en/technical-documentation/data-sheets/ADP7182.pdf>`_ - Linear regulator
+    * `ADP151 <https://www.analog.com/media/en/technical-documentation/data-sheets/ADP151.pdf>`_ - Low dropout linear regulator
+    * `ADM7170 <https://www.analog.com/media/en/technical-documentation/data-sheets/ADM7170.pdf>`_ - Low dropout linear regulator
+    * `AD8007 <https://www.analog.com/media/en/technical-documentation/data-sheets/AD8007_8008.pdf>`_ - High speed op-amp
 
 
 Extension connectors
