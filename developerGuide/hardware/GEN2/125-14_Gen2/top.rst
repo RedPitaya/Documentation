@@ -23,11 +23,9 @@ STEMlab 125-14 Gen 2
 Pinout
 ========
 
-.. TODO replace pinout
-
-.. .. figure:: img/Red_Pitaya_pinout.jpg
-..     :alt: Red Pitaya pinout
-..     :width: 700
+.. figure:: img/RedPitaya_Gen2_pinout.png
+    :alt: Red Pitaya Gen 2 pinout
+    :width: 800
 
 |
 
