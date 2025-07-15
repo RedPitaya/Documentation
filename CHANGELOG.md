@@ -43,8 +43,10 @@ All notable changes to this project will be documented in this file.
 
 **Links affected:**
 
-- Links to streaming application docs.
-- Links to Deep Memory Acquisition page.
+- X-channel streaming page doesn't exist anymore - it is now a part of "multichannel synchronisation" page.
+- Links to Deep Memory Acquisition page - renamed to "Deep Memory Mode".
+- Links to Deep Memory Acquisition examples.
+
 
 ## July 2025 - Update 1
 
