@@ -1,9 +1,8 @@
-:orphan:
 
 .. _top_125_14_TI_gen2:
 
 #################################
-STEMlab 125-14 TItanum Gen 2
+STEMlab 125-14 TItanium Gen 2
 #################################
 
 .. note::
@@ -27,8 +26,10 @@ Features
 =============
 
 * Same frontend improvements as Gen 2 boards.
-* Low latency ADCs
-* Low jitter DAC clock.
+* TI ADC3664 14-bit, 125 MSps SAR ADC with high SNR, low latency, on-chip digital filtering & DDC  
+* TI DAC2904Y 14-bit, 125 MSps dual-channel DAC with low-latency, low-jitter outputs  
+* TI LMK03318 programmable ultra-low-jitter clock generator (5 ps RMS @ 40 MHz)  
+* Ultra-low RF output jitter: 5 ps RMS @ 40 MHz (vs. 20 ps on standard Gen 1 units)  
 
 
 
@@ -123,6 +124,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Output slew rate                   | 2 V / 10 ns                        |
     +------------------------------------+------------------------------------+
+    | RF output jitter @40 MHz           | 5 ps                               |
+    +------------------------------------+------------------------------------+ 
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |

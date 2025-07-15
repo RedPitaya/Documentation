@@ -1,5 +1,3 @@
-:orphan:
-
 .. _top_65_16_TI_gen2:
 
 #################################
@@ -26,9 +24,11 @@ STEMlab 65-16 TItanium Gen 2
 Features
 =============
 
-* 16-bit DC coupled low latency ADCs.
-* Low jitter DAC clock.
-* Same frontend improvements as Gen 2 boards.
+* TI ADC3663 dual-channel 16-bit, 65 MSps SAR ADC with high SNR & low latency  
+* TI DAC2904Y 14-bit, 125 MSps dual-channel DAC with low-jitter outputs  
+* TI LMK03318 ultra-low-jitter clock generator (100 fs RMS @ >100 MHz)  
+* Ultra-low RF output jitter: 5 ps RMS @ 40 MHz (same DAC/clock path as 125-14 TI)  
+* All Gen 2 front-end improvements: improved ENOB, lower noise/jitter  
 
 
 
@@ -82,7 +82,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | RF input channels                  | 2                                  |
     +------------------------------------+------------------------------------+
-    | Sampling rate                      | 65 MS/s                            |
+    | Sampling rate                      | 62.5 MS/s                          |
     +------------------------------------+------------------------------------+
     | ADC resolution                     | 16 bit                             |
     +------------------------------------+------------------------------------+
@@ -100,7 +100,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Overload protection                | Protection diodes                  |
     +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 32 MHz                        |
+    | Bandwidth                          | DC - 30 MHz                        |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
@@ -123,7 +123,9 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Output slew rate                   | 2 V / 10 ns                        |
     +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 60 MHz                        |
+    | RF Output Jitter @40 MHz           | 5 ps                               |
+    +------------------------------------+------------------------------------+
+    | Bandwidth                          | DC - 30 MHz                        |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |
     +------------------------------------+------------------------------------+
