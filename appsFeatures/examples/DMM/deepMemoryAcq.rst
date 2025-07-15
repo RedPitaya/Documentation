@@ -1,4 +1,3 @@
-.. _deepMemoryAcq_example:
 
 Deep Memory Acquisition
 ########################
@@ -8,12 +7,18 @@ Description
 
 The example shows how to capture data into two 1024-byte buffers using the Deep Memory Acquisition. DMA can work in parallel with starndard SCPI acquisition.
 
+Limitations:
+
+* Buffer size must be a multiple of 8.
+* The buffer start addresses must be a multiple of 4096 (DDR page size).
+
+To learn more about the Deep Memory Acquisition, please refer to the :ref:`Deep Memory Acquisition <deepMemoryAcq>` section.
 
 Required hardware
 ==================
 
-  -   Red Pitaya device
-  -   Signal (function) generator
+* Red Pitaya device.
+* Signal (function) generator.
 
 
 Wiring example:
@@ -24,8 +29,8 @@ Wiring example:
 Required software
 ==================
 
-- 2.00-23 (STEMlab 125-14)
-- 2.00-30 (all other board models)
+* 2.00-23 (STEMlab 125-14).
+* 2.00-30 (all other board models).
 
 .. .. include:: ../sw_requirement.inc
 
@@ -320,7 +325,7 @@ Code - C API
     #include "rp.h"
     
     
-    // size in samples 16Bit
+    // size in samples 16 Bit
     #define DATA_SIZE 1024          // ((1024 * 1024 * 128) / 2)        /* for 128 MB */
     #define READ_DATA_SIZE 1024     // (1024 * 256)                     /* for 128 MB */
     
@@ -447,9 +452,12 @@ Code - C API
         /* Releasing resources */
         rp_AcqAxiEnable(RP_CH_1, false);
         rp_AcqAxiEnable(RP_CH_2, false);
+
         rp_Release();
+
         free(buff1);
         free(buff2);
+        
         fclose(fp);
         return 0;
     }
@@ -460,7 +468,8 @@ Code - Python API
 
 .. note::
 
-  The new functions that return the data directly into the NumPy buffer (NumPy tab) are a lot faster than the previous iteration (Normal tab), especially noticeable on longer data sequences. The passed NumPy buffer must either have "dtype=np.float32", when acquiring data in Volts or "dtype=np.int16" when acquiring RAW data.
+  The new functions that return the data directly into the NumPy buffer (NumPy tab) are a lot faster than the previous iteration (Normal tab), especially noticeable on longer data sequences.
+  The passed NumPy buffer must either have "dtype=np.float32", when acquiring data in Volts or "dtype=np.int16" when acquiring RAW data.
 
 .. tabs::
 
@@ -470,14 +479,12 @@ Code - Python API
 
             #!/usr/bin/python3
             """Example of DMA acquisition of 1024-samples of data on both channels"""
-            
-            import time
+
             import rp
             
-            
-            ## size in samples 16Bit
-            DATA_SIZE = 1024          # ((1024 * 1024 * 128) / 2)        ## for 128 MB ##
-            READ_DATA_SIZE = 1024     # (1024 * 256)                     ## for 128 MB ##
+            ## size in samples 16 Bit
+            DATA_SIZE = 1024            # ((1024 * 1024 * 128) / 2)        ## for 128 MB ##
+            READ_DATA_SIZE = 1024       # (1024 * 256)                     ## for 128 MB ##
             
             dec = rp.RP_DEC_1
             trig_lvl = 0.2
@@ -585,24 +592,20 @@ Code - Python API
             #!/usr/bin/python3
             """Example of DMA acquisition of 1024-samples of data on both channels"""
 
-            import time
             import numpy as np
             import rp
 
 
-            ## size in samples 16Bit
-            DATA_SIZE = 1024          # ((1024 * 1024 * 128) / 2)        ## for 128 MB ##
-            READ_DATA_SIZE = 1024     # (1024 * 256)                     ## for 128 MB ##
+            ## Data size in samples 16 bit
+            bufferSize = 1024                                           # ((1024 * 1024 * 128) / 2)        ## for 128 MB ##
 
             dec = rp.RP_DEC_1
             trig_lvl = 0.2
-            dma_data = np.zeros((DATA_SIZE), dtype=np.float32)           #! dtype must be "np.float32"
-            dma_data2 = np.zeros((DATA_SIZE), dtype=np.float32)
-            print(type(dma_data2[0]))
+            dma_data  = np.zeros((bufferSize), dtype=np.int16)          #! np.float32 for Volts data
+            dma_data2 = np.zeros((bufferSize), dtype=np.int16)          #! np.int16 for Raw data
 
             # Initialize the interface
             rp.rp_Init()
-
 
             ### Setting up DMA ###
             # Get Memory region
@@ -615,16 +618,18 @@ Code - Python API
             rp.rp_AcqAxiSetDecimationFactor(dec)
 
             # Set trigger delay for both channels
-            rp.rp_AcqAxiSetTriggerDelay(rp.RP_CH_1, DATA_SIZE)
-            rp.rp_AcqAxiSetTriggerDelay(rp.RP_CH_2, DATA_SIZE)
+            rp.rp_AcqAxiSetTriggerDelay(rp.RP_CH_1, bufferSize)
+            rp.rp_AcqAxiSetTriggerDelay(rp.RP_CH_2, bufferSize)
+
+            acq1_start_address = g_adc_axi_start
+            acq2_start_address = int(g_adc_axi_start + (g_adc_axi_size/2))
 
             # Set-up the Channel 1 and channel 2 buffers to each work with half the available memory space.
-            test = int(g_adc_axi_start + (g_adc_axi_size/2))
-            print(test)
-            #print(type(test))
+            rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_1, acq1_start_address, bufferSize)
+            print(f"Reserved memory for IN1 Start: {acq1_start_address:x} Size: {bufferSize:x} End: {acq1_start_address + bufferSize:x}\n")
+            rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, acq2_start_address, bufferSize)
+            print(f"Reserved memory for IN1 Start: {acq2_start_address:x} Size: {bufferSize:x} End: {acq2_start_address + bufferSize:x}\n")
 
-            rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_1, g_adc_axi_start, DATA_SIZE)
-            rp.rp_AcqAxiSetBufferSamples(rp.RP_CH_2, int(g_adc_axi_start + (g_adc_axi_size/2)), DATA_SIZE)
 
             # Enable DMA on both channels
             rp.rp_AcqAxiEnable(rp.RP_CH_1, True)
@@ -645,12 +650,13 @@ Code - Python API
             state = rp.RP_TRIG_STATE_TRIGGERED
 
             ## Wait for the triggering moment
-            #while 1:
-            #    state = rp.rp_AcqGetTriggerState()[1]
-            #    if state == rp.RP_TRIG_STATE_TRIGGERED:
-            #        print("Triggered")
-            #        time.sleep(1)
-            #        break
+            # while 1:
+            #     state = rp.rp_AcqGetTriggerState()[1]
+            #     if state == rp.RP_TRIG_STATE_TRIGGERED:
+            #         print("Triggered")
+            #         time.sleep(0.1)
+            #         break
+
 
             # Wait until both buggers are full/data is acquired
             fillState = False
@@ -667,12 +673,12 @@ Code - Python API
             posChA = rp.rp_AcqAxiGetWritePointerAtTrig(rp.RP_CH_1)[1]
             posChB = rp.rp_AcqAxiGetWritePointerAtTrig(rp.RP_CH_2)[1]
 
-            rp.rp_AcqAxiGetDataVNP(rp.RP_CH_1, posChA, dma_data)
-            rp.rp_AcqAxiGetDataVNP(rp.RP_CH_2, posChB, dma_data2)
+            rp.rp_AcqAxiGetDataRawNP(rp.RP_CH_1, posChA, dma_data)
+            rp.rp_AcqAxiGetDataRawNP(rp.RP_CH_2, posChB, dma_data2)
 
             print("Captured data:")
             print("N     CH1               CH2")
-            for i in range(0, DATA_SIZE, 1):
+            for i in range(0, bufferSize, 1):
                 print(f"{i+1:<4}  {dma_data[i]:<16}  {dma_data2[i]:<16}")
 
             ### Releasing resources ###
@@ -681,6 +687,10 @@ Code - Python API
             rp.rp_AcqAxiEnable(rp.RP_CH_2, False)
 
             rp.rp_Release()
+
+
+
+
 
 
 

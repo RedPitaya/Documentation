@@ -25,4 +25,4 @@ Code Examples
 
 Example code of how to perform measurements using the LCR meter extension module is available here:
 
-- :ref:`LCR example <lcr_example>`
+- :ref:`LCR example <examples_lcr>`

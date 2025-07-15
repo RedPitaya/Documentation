@@ -15,4 +15,3 @@ rpsa_client.exe --out_streaming [--hosts=IPs] --format=tdms|wav --data=FILE_NAME
                                        Keys: inf is an infinite number of times.
                                           COUNT - value from [1 ... 1000000]
 --verbose              -v              Displays service information.
-

@@ -6,6 +6,10 @@ html, body, html * {
   font-family: 'Barlow Semi Condensed'
 }
 
+section {
+    text-align: justify;
+}
+
 .wy-side-nav-search{
     background-color: #fcfcfc;
 }

@@ -1,3 +1,5 @@
+.. _examples_acqRF:
+
 Acquiring signals at RF inputs
 ##############################
 

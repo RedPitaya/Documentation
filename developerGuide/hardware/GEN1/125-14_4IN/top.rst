@@ -21,7 +21,7 @@ STEMlab 125-14 4-Input is a single-board RF signal acquisition platform that off
 **External clock specifications:**
 
 The Ext ADC CLK+ and - pins are connected to the ENC+ and ENC- pins of the ADC. The clock from the ADC is then passed to the FPGA.
-The ports operate differentially and should be driven with **LVDS clock with voltage levels similar to the one provided by the STEMlab 125-14 on-board `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_**.
+The ports operate differentially and should be driven with **LVDS** clock with voltage levels similar to the one provided by the STEMlab 125-14 on-board `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_.
 
 The maximum and minimum clock frequencies are limited by the ADC specifications.
 
@@ -214,7 +214,7 @@ Technical specifications
 
 .. rubric:: Footnotes
 
-.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <multiboard_sync_examples>`.
+.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
 
 
 .. table::
@@ -242,6 +242,19 @@ Technical specifications
 .. |br| raw:: html
 
     <br/>
+
+
+Measurements
+=================
+
+.. note::
+
+    Although we do not have specific measurements for the STEMlab 125-14 4-Input board, it is expected to fall within the measurement range of the STEMlab 125-14 Gen 1 and Gen 2 boards. This is because the 4-Input board was produced immediately prior to the STEMlab 125-14 Gen 2, incorporating some of the Gen 2 analog front-end improvements.
+
+You can find the measurements of the fast analog frontend here:
+
+* :ref:`Gen 1 - STEMlab 125-14 Gen 1 <measurements_gen1>`.
+* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
 
 
 Switching between internal and external clock
