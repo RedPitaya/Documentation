@@ -25,7 +25,7 @@ The desktop application is available for Windows and Linux operating systems and
 
         .. group-tab:: OS version 2.00.23 or newer
 
-            Files with clients are in the Streaming Application (Data Stream Control). You can download it from Red Pitaya itself.
+            Files with clients are in the *Streaming Application (Data Stream Control)*. You can download it from Red Pitaya itself.
 
             .. figure:: ../img/streaming_desktop_clients_200_23.png
                 :width: 1000
@@ -52,9 +52,9 @@ The desktop application is available for Windows and Linux operating systems and
 
             .. note::
 
-                It is possible that an Antivirus program may (temporarily) block the desktop client. If you experience this issue, we recommend whitelisting the Streaming Client folder.
+                It is possible that an Antivirus program may (temporarily) block the desktop client. If you experience this issue, we recommend whitelisting the *Streaming Client* folder.
 
-    Once running, the desktop application autmatically detects Red Pitaya boards on the same local network which are running the Streaming Application (or have the *stream_app* FPGA image loaded). The boards and the client must be on the same network.
+    Once running, the desktop application automatically detects Red Pitaya boards on the same local network which are running the Streaming Application (or have the *stream_app* FPGA image loaded). The boards and the client must be on the same network.
 
     .. figure:: ../img/qt2.png
         :width: 1000
@@ -83,7 +83,7 @@ Board list
 .. figure:: ../img/streaming_desktop_client_app_settings.png
     :width: 800
 
-The board list displays all detected Red Pitaya boards on the same local network running the Streaming Application. Red Pitaya boards that are not running the Steaming Application will not be detected. For optimal performance, the boards should be connected to a router.
+The board list displays all detected Red Pitaya boards on the same local network running the Streaming Application. Red Pitaya boards that are not running the *Streaming Application* or the *stream_app* FPGA image will not be detected. For optimal performance, the boards should be connected to a router.
 
 Two types of boards are detected as indicated by the icon in the top left corner:
 
@@ -93,7 +93,7 @@ Two types of boards are detected as indicated by the icon in the top left corner
 The colour of the icon (as well as the dot in the top right corner) indicates the current status of the board:
 
     * **Green** - The board is ready to stream data.
-    * **Red** - The board was available at some point since the start of the application, but is currently unavailable (either not running the Streaming application or is not connected to the network).
+    * **Red** - The board was available at some point since the start of the application, but is currently unavailable (either not running the *Streaming application* or is not connected to the network).
 
 Beside the status icon, the IP address of the board is displayed.
 
@@ -142,7 +142,7 @@ With each stream, three files are created:
 2. **Lost log file:** The lost log file contains information about any lost packets during the streaming process. It is recommended to check this file after each streaming session to ensure that no data was lost.
 3. **Log file:** The log file contains information about the streaming process, such as the number of samples acquired, the sampling frequency, and any error messages that may occur during the streaming process.
 
-The three files are named data_file_<board_IP>_<date>_<time>.<file type>, where the date and time are the date and time of the data acquisition process. The file type is determined by the selected settings in the ADC configuration section.
+The three files are named **data_file_<board_IP>_<date>_<time>.<file type>**, where the date and time are the date and time of the data acquisition process. The file type is determined by the selected settings in the ADC configuration section.
 
 
 .. substitutions

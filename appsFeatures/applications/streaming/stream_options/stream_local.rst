@@ -9,21 +9,21 @@ When using the local streaming option, the data is streamed to a file on the Red
 
     .. group-tab:: OS version 2.00-15 or older
 
-        #. Configure the stream propertie & click **RUN**
+        #. Configure the stream propertie & click **Run**
 
             .. figure:: ../img/streaming_interface_104.png
                 :width: 800
             
-            Example: streaming on ch1, 8-bit resolution, 5.208 MS/s into TDMS file format
+            Example: streaming on CH1, 8-bit resolution, 5.208 MS/s into TDMS file format
 
         #. Press **STOP** to stop streaming
 
         #. Click *Browse* to open the data file directory. Each data stream is split into three sections:
-        
-            * *DATA* (collected data stream),
-            * *.log* (data log of the specific stream),
-            * *.log.lost* (report on lost packets).
-            
+
+            * *DATA* - collected data stream,
+            * *.log* - data log of the specific stream,
+            * *.log.lost* - report on lost packets.
+
             Click on the selected file to download it from Red Pitaya to the computer.
 
             .. figure:: ../img/capture.png
@@ -38,21 +38,21 @@ When using the local streaming option, the data is streamed to a file on the Red
 
     .. group-tab:: OS version 2.00-23 or newer
 
-        #. **Configure the stream properties** & click **RUN**
+        #. **Configure the stream properties** & click **Start**
 
             .. figure:: ../img/streaming_interface.png
                 :width: 1000
             
             Example: streaming on CH1 and CH2, 8-bit resolution, 100 ksps into WAV file format
 
-        #. Press **STOP** to stop streaming
+        #. Press **Stop** to stop streaming
 
         #. Check the *Files on SD card* section for the data files. Each data file has three buttons:
-        
-            * *LOG* (data log of the specific stream),
-            * *LOST* (report on lost packets),
-            * *DOWNLOAD* (collected data stream). 
-        
+
+            * *Log* - data log of the specific stream,
+            * *Lost* - report on lost packets,
+            * *Download* - collected data stream.
+
             Click on the selected file to download it from Red Pitaya to the computer.
 
             .. figure:: ../img/streaming_interface.png

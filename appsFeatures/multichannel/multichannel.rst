@@ -29,7 +29,8 @@ How can I control synchronised boards?
 
 .. note::
 
-    Any restrictions or limitations of applications and control methods also apply to multiboard synchronisation. However, these should be interpreted **per board** and not for the full system. For example, the Streaming application has an input data limitation of 20 MB/s per board. Therefore, if you have three boards in the system, the total input data rate is 60 MB/s (20 MB/s per board).
+    Any restrictions or limitations of applications and control methods also apply to multiboard synchronisation. However, these should be interpreted **per board** and not for the full system. For example, if the Streaming application has an input data limitation of 20 MB/s per board (OS 2.05-37).
+    Therefore, if you have three boards in the system, the total input data rate is 60 MB/s (20 MB/s per board).
 
 
 
@@ -42,7 +43,7 @@ Red Pitaya Click Shields enable high-performance clock and trigger synchronisati
 
 .. note::
 
-    The clock and trigger synchronisation with Click Shields is available only with Red Pitaya board models that can accept an external clock (External clock models). Please see the :ref:`Click Shield compatibility section <click_shield_compatibility>` for more information.
+    The clock and trigger synchronisation with Click Shields is available only with Red Pitaya board models that can accept an external clock (External clock models, STEMlab 125-14 4-Input and Pro versions of Gen 2 boards). Please see the :ref:`Click Shield compatibility section <click_shield_compatibility>` for more information.
 
 
 Setup
@@ -52,7 +53,7 @@ The :ref:`Red Pitaya Click Shields <click_shield>` can synchronise multiple exte
 The connection provides minimal clock signal delay between multiple Red Pitaya units, as there is only a single ZL40213 LVDS clock fanout buffer between two units.
 
 To synchronise two or more external clock Red Pitaya units, establish the following connections with U.FL cables between the primary board (transmitting clock and trigger signals) and the secondary board (receiving the clock and trigger signals). Use one of the two schemes depending on whether you want to connect an external clock or use the oscillator on the Red Pitaya Click Shields.
-
+Use the configuration for the secondary board for any additional boards in the chain.
 
 Oscillator
 ~~~~~~~~~~~~
@@ -98,12 +99,25 @@ When using an external clock and external trigger, the clock and trigger signals
 * CLK OSC switch in OFF position.
 * CLK SELECT switch in EXT position.
 
+**External clock type:**
+
+According to the datasheet the |ZL40213| fanout buffer supports a wide range of differential or single-ended input clock signals:
+
+* LVPECL
+* LVDS
+* CML
+* HSTL
+* LVCMOS
+
+For more information on the external clock signal, please check the |ZL40213| datasheet. The inputs are in the AC coupling configuration. The chip is powered by a 3V3 power supply.
+
 
 Hardware specifications
 -------------------------
 
 For more information on the Click Shield, please see the :ref:`Click Shield documentation <click_shield>`.
 
+|
 
 
 .. _x-ch_streaming:
@@ -129,8 +143,20 @@ Setup
 
 The Red Pitaya X-Channel system includes two types of devices:
 
-    * one STEMlab 125-14 primary device (STEMlab 125-14 Low Noise).
-    * one or more STEMlab 125-14 Low Noise secondary devices denoted by an "S" sticker.
+.. tabs::
+
+    .. group-tab:: Gen 2
+
+        * one STEMlab 125-14 Pro Gen 2 primary device.
+        * one or more STEMlab 125-14 Pro Gen 2 secondary devices denoted by an "S" sticker.
+
+        Both devices must be one of the Pro board models (STEMlab 125-14 Pro Gen 2, STEMlab 125-14 Pro Z7020 Gen 2).
+
+    .. group-tab:: Gen 1
+
+        * one STEMlab 125-14 primary device (STEMlab 125-14 Gen 1 Low Noise).
+        * one or more STEMlab 125-14 Gen 1 Low Noise secondary devices denoted by an "S" sticker.
+
 
 S1 and S2 connectors are used to connect the primary and secondary devices:
 
@@ -138,23 +164,27 @@ S1 and S2 connectors are used to connect the primary and secondary devices:
     * **S2** - input for (external) clock and trigger signals.
 
 In order to achieve synchronization, the primary device outputs its clock and trigger signals through the S1 connector. The cable connection should therefore connect S1 connector of the primary device with S2 connector of the secondary device.
-To continiue the daisy chain, connect the S1 connector of the first secondary device to the S2 connector of the second secondary device, and so on. 
+To continue the daisy chain, connect the S1 connector of the first secondary device to the S2 connector of the second secondary device, and so on.
 
 It should be noted that **the secondary devices differ from the primary device hardware-wise**. The secondary devices are a special type of external clock Red Pitaya that receives the clock signal from the "FPGA".
+
+
+Cable orientation
+~~~~~~~~~~~~~~~~~~
+
+The S1 and S2 connectors are SATA connectors on Gen 1 boards and USB-C connectors on Gen 2 boards. Usually, USB-C cables are bipolar can be connected in either direction, however, the S1 and S2 connectors are meant for sharing the clock and trigger signals and not connecting external devices.
+Therefore, the orientation of the cable is important. On Gen 2 boards, two LEDs (**L** - Link and **O** - Orientation) are located next to the S1 connector:
+
+* The **O** LED indicates the orientation of the cable.
+* The **L** LED indicates whether the connection between the boards was successfully established.
+
+When connecting the boards, make sure both LEDs are lit. If the **O** LED is not lit, change the orientation of the cable.
 
 .. note::
 
     **Booting secondary units without the external clock present?**
     The official Red Pitaya OS will not boot on the secondary units without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
     However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
-
-The S1 and S2 connectors are SATA connectors on Gen 1 boards and USB-C connectors on Gen 2 boards. Usually, USB-C cables are bipolar can be connected in either direction, however, the S1 and S2 connectors are meant for sharing the clock and trigger signals and not connecting external devices.
-Therefore, the orientation of the cable is improtant. On Gen 2 boards, two LEDs (**L** - Link and **O** - Orientation) are located next to the S1 connector:
-
-* The **O** LED indicates the orientation of the cable.
-* The **L** LED indicates whether the connection between the boards was successfully established.
-
-When connecting the boards, make sure both LEDs are lit. If the **O** LED is not lit, change the orientation of the cable.
 
 .. note::
 
@@ -176,13 +206,15 @@ In either case, connecting external devices to the S1 and S2 connectors requires
 Board compatibility
 ---------------------
 
-The X-channel synchronisation is compatible with the following Red Pitaya board models:
+The X-channel synchronisation is out-of-the-box compatible with the following Red Pitaya board models:
 
 * :ref:`STEMlab 125-14 Pro Gen 2 <top_125_14_pro_gen2>`.
 * :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_125_14_pro_Z7020_gen2>`.
 * :ref:`STEMlab 125-14 (Gen 1) <top_125_14>`.
 * :ref:`STEMlab 125-14 Low Noise (Gen 1) <top_125_14_LN>`.
 * :ref:`STEMlab 125-14 Z7020 Low Noise (Gen 1) <top_125_14_Z7020_LN>`.
+
+Board models like STEMlab 125-14 4-Input, SDRlab 122-16 have the appropriate connectors, but the FPGA is not configured to support the X-channel system.
 
 The secondary devices all require hardware modifications to be able to receive the clock signal from the primary device.
 
@@ -397,7 +429,7 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 
 .. |ZL40213| raw:: html
 
-    <a href="https://www.digikey.si/en/htmldatasheets/production/1239190/0/0/1/zl40213" target="_blank">ZL40213</a>
+    <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/ZL40213-Data-Sheet.pdf" target="_blank">ZL40213</a>
 
 .. |74FCT38072DCGI| raw:: html
 

@@ -23,11 +23,9 @@ STEMlab 125-14 Pro Gen 2
 Pinout
 ========
 
-.. TODO replace pinout
-
-.. .. figure:: img/Red_Pitaya_pinout.jpg
-..     :alt: Red Pitaya pinout
-..     :width: 700
+.. figure:: ../125-14_Gen2/img/RedPitaya_Gen2_pinout.png
+    :alt: Red Pitaya Gen 2 pinout
+    :width: 800
 
 |
 
@@ -110,6 +108,8 @@ Technical specifications
     |                                    |                                    |
     +------------------------------------+------------------------------------+
     | Output slew rate                   | 2 V / 10 ns                        |
+    +------------------------------------+------------------------------------+
+    | RF Output Jitter @40 MHz           | 20 ps                              |
     +------------------------------------+------------------------------------+
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+

@@ -1,9 +1,8 @@
-:orphan:
 
 .. _top_125_14_TI_gen2:
 
 #################################
-STEMlab 125-14 TItanum Gen 2
+STEMlab 125-14 TItanium Gen 2
 #################################
 
 .. note::
@@ -27,19 +26,19 @@ Features
 =============
 
 * Same frontend improvements as Gen 2 boards.
-* Low latency ADCs
-* Low jitter DAC clock.
+* TI ADC3664 14-bit, 125 MSps SAR ADC with high SNR, low latency, on-chip digital filtering & DDC  
+* TI DAC2904Y 14-bit, 125 MSps dual-channel DAC with low-latency, low-jitter outputs  
+* TI LMK03318 programmable ultra-low-jitter clock generator (5 ps RMS @ 40 MHz)  
+* Ultra-low RF output jitter: 5 ps RMS @ 40 MHz (vs. 20 ps on standard Gen 1 units)  
 
 
 
 Pinout
 ========
 
-.. TODO replace pinout
-
-.. .. figure:: img/Red_Pitaya_pinout.jpg
-..     :alt: Red Pitaya pinout
-..     :width: 700
+.. figure:: ../125-14_Gen2/img/RedPitaya_Gen2_pinout.png
+    :alt: Red Pitaya Gen 2 pinout
+    :width: 800
 
 |
 
@@ -123,6 +122,8 @@ Technical specifications
     +------------------------------------+------------------------------------+
     | Output slew rate                   | 2 V / 10 ns                        |
     +------------------------------------+------------------------------------+
+    | RF output jitter @40 MHz           | 5 ps                               |
+    +------------------------------------+------------------------------------+ 
     | Bandwidth                          | DC - 60 MHz                        |
     +------------------------------------+------------------------------------+
     | Connector type                     | SMA                                |
@@ -241,7 +242,36 @@ Components
     * `Oscillator <https://support.epson.biz/td/api/doc_check.php?dl=brief_SG3225VAN&lang=en>`_.
     * `NB6L72`_.
 
-.. TODO Texas instruments and Analog devices components
+
+Texas Instruments components
+-----------------------------
+
+    * `TPD4E02B04 <https://www.ti.com/lit/ds/symlink/tpd4e02b04.pdf>`_ - ESD protection for USB-C
+    * `SN74AHCT1G125-Q1 <https://www.ti.com/lit/ds/symlink/sn74ahct1g125-q1.pdf>`_ - Single buffer/driver with 3-state output
+    * `SN74LVC1G86 <https://www.ti.com/lit/ds/symlink/sn74lvc1g86.pdf>`_ - Single 2-input XOR gate
+    * `TXS02612 <https://www.ti.com/lit/ds/symlink/txs02612.pdf>`_ - Voltage level translator
+    * `LSF0102 <https://www.ti.com/lit/ds/symlink/lsf0102.pdf>`_ - Bidirectional voltage level translator
+    * `PCA9306 <https://www.ti.com/lit/ds/symlink/pca9306.pdf>`_ - Dual bidirectional I2C bus and SMBus voltage level translator
+    * `TPS25821 <https://www.ti.com/lit/ds/symlink/tps25821.pdf>`_ - USB Type-C and USB Power Delivery controller
+    * `DAC2904 <https://www.ti.com/lit/ds/symlink/dac2904.pdf>`_ - Quad-channel, 14-bit, 125 MSPS DAC
+    * `ADC3664 <https://www.ti.com/lit/ds/symlink/adc3664.pdf>`_ - 14-bit, 125 MSPS ADC
+    * `THS4541-Q1 <https://www.ti.com/lit/ds/symlink/ths4541-q1.pdf>`_ - Differential amplifier
+    * `OPA810 <https://www.ti.com/lit/ds/symlink/opa810.pdf>`_ - Rail-to-rail operational amplifier
+    * `OPA695 <https://www.ti.com/lit/ds/symlink/opa695.pdf>`_ - Current feedback operational amplifier
+    * `LM393 <https://www.ti.com/lit/ds/symlink/lm393.pdf>`_ - Dual comparator
+    * `LMK03318 <https://www.ti.com/lit/ds/symlink/lmk03318.pdf>`_ - Ultra-Low-Noise Jitter Clock Generator
+    * `TPS62080 <https://www.ti.com/lit/ds/symlink/tps62080.pdf>`_ - Step-down converter
+    * `LM27762 <https://www.ti.com/lit/ds/symlink/lm27762.pdf>`_ - Dual charge pump plus LDO
+
+
+Analog Devices components
+---------------------------
+
+    * `ADP7182 <https://www.analog.com/media/en/technical-documentation/data-sheets/ADP7182.pdf>`_ - Linear regulator
+    * `ADP151 <https://www.analog.com/media/en/technical-documentation/data-sheets/ADP151.pdf>`_ - Low dropout linear regulator
+    * `ADM7170 <https://www.analog.com/media/en/technical-documentation/data-sheets/ADM7170.pdf>`_ - Low dropout linear regulator
+    * `AD8007 <https://www.analog.com/media/en/technical-documentation/data-sheets/AD8007_8008.pdf>`_ - High speed op-amp
+
 
 
 Extension connectors

@@ -98,7 +98,7 @@ The ADC configuration section allows the user to set the parameters for the data
             
             * WAV (standard audio file format) (maximum WAV file size is 4 GB),
             * TDMS (Technical Data Management Streaming file format),
-            * BIN (Fast and compact binary format). It can be converted to CSV format using the `convert_tool` application.
+            * BIN (Fast and compact binary format). It can be converted to CSV format using the :ref:`convert_tool <streaming_convert_tool>` application.
         
         * **Input channels:** Select the input channels to be used for data acquisition by turning on the corresponding switches. The following options are available:
             
@@ -130,7 +130,7 @@ The ADC configuration section allows the user to set the parameters for the data
             
             * WAV (standard audio file format) (maximum WAV file size is 4 GB),
             * TDMS (Technical Data Management Streaming file format),
-            * BIN (Fast and compact binary format). It can be converted to CSV format using the `convert_tool` application.
+            * BIN (Fast and compact binary format). It can be converted to CSV format using the :ref:`convert_tool <streaming_convert_tool>` application.
 
         * **Save mode:** Select the save mode for the data. The following modes are supported:
             
@@ -193,14 +193,14 @@ WAV and TDMS file formats can have up to two channel signals at the same time. W
 
 .. note::
 
-    Currently, the only supported format are RAW 16-bit samples. In the future we will also support other formats and 8-bit mode.
+    Currently, the only supported format is 16-bit RAW . In the future we will also support other formats and 8-bit mode.
 
 
-To prevent data loss when generating small data files at a high DAC frequency, only one memory block will be sent and generated if the data file size is smaller than the memory block size. Otherwise, the data will be sent and generated a *repetition* number of times.
+To prevent data loss when generating small data files at a high DAC frequency, only one memory block will be sent and generated if the data file size is smaller than the memory block size. Otherwise, the data will be sent and generated *repetition* number of times.
 This means that the DAC streaming has two modes of operation:
 
-* **One-pack mode:** If the data file size is smaller than the reserved memory block size, there is only a single data transfer between the board and computer and the data can be generated at the full 125 MS/s. The generation data is be stored in the DMM memory together with the specified number of repetitions.
-* **True streaming mode:** If the data file size is larger than the reserved memory block size, then the data is streamed from the computer to the board. To achieve the best performance, we recommend setting the block size to 8 MB and have the signal fit into the DMM region completely.
+* **One-pack mode:** If the data file size is smaller than the reserved memory block size, there is only a single data transfer between the board and computer and the data can be generated at the full 125 MS/s. The generation data is be stored in the :ref:`DMM memory <deepMemoryMode>` together with the specified number of repetitions.
+* **True streaming mode:** If the data file size is larger than the reserved memory block size, then the data is streamed from the computer to the board. To achieve the best performance, we recommend setting the block size to 8 MB and have the signal fit into the :ref:`DMM region <deepMemoryMode>` completely.
 
 .. note::
 
@@ -210,7 +210,7 @@ This means that the DAC streaming has two modes of operation:
 DAC streaming example
 ----------------------
 
-Here is an example of how to generate a sine wave signal on the DAC outputs using the command line client. We are assuming that the command line client is already installed on the computer and enough DMM memory is reserved for the DAC streaming.
+Here is an example of how to generate a sine wave signal on the DAC outputs using the command line client. We are assuming that the command line client is already installed on the computer and enough :ref:`DMM memory <deepMemoryMode>` is reserved for the DAC streaming.
 
 #. **Create a custom waveform.** Here we create a sine wave signal made of 1024 samples.
 
@@ -235,13 +235,13 @@ Here is an example of how to generate a sine wave signal on the DAC outputs usin
 
         wavfile.write('arb_waveform_signed16.wav', sample_rate, y_signed16)
     
-#. **Establish SSH connection.** Connect to the Red Pitaya board using SSH. For example, using the command line:
+#. **Establish SSH connection.** Connect to the Red Pitaya board using :ref:`SSH`. For example, using the command line:
 
     .. code-block:: console
 
         ssh root@<IP_ADDRESS or .LOCAL_ADDRESS>
 
-#. **Load the FPGA and start the streaming application.** We must load the FPGA first, then start the streaming application. The FPGA image can be loaded using the `overlay.sh` command.
+#. **Load the FPGA and start the streaming application.** We must load the FPGA first, then start the streaming application. The FPGA image can be loaded using the ``overlay.sh`` command.
 
     .. code-block:: console
 
@@ -254,7 +254,7 @@ Here is an example of how to generate a sine wave signal on the DAC outputs usin
 
         computer> .\rpsa_client.exe -c -g F
 
-#. **Edit the configuration file.** Open the configuration file using your favourite code editor and edit the DAC streaming parameters. We are using 8 MiB block size and 100 MiB of the DMM region for the DAC streaming. The *dac_rate* is set to 125 MHz, since our waveform is very short.
+#. **Edit the configuration file.** Open the configuration file using your favourite code editor and edit the DAC streaming parameters. We are using 8 MiB block size and 100 MiB of the DMM region for the DAC streaming. The ``dac_rate`` is set to 125 MHz, since our waveform is very short.
 
     .. code-block:: console
 
@@ -343,7 +343,7 @@ In this section, the user can specify the following settings:
   Lower values are recommended for low sampling rates (chunck are filled faster), while higher values are recommended for higher sampling rates (minimizing the amount of packets).
 * **ADC:** The size of the memory reserved for the ADC data streaming. The default value is 769.5 kB.
 * **DAC:** The size of the memory reserved for the DAC data streaming. The default value is 769.5 kB.
-* **GPIO:** The size of the memory reserved for the GPIO data streaming. The default value is 769.5 kB.
+* **GPIO (Not implemented):** The size of the memory reserved for the GPIO data streaming. The default value is 769.5 kB.
 
 The block size represents the minimum size of the memory block that can be sent over the internet. This size is set in the FPGA and then transmitted to the desktop application over the network.
 Block sizes can range from 2 kB to 8 MB.
@@ -351,10 +351,13 @@ Block sizes can range from 2 kB to 8 MB.
 The block size should be determined by the streaming speed.
 
 * Use **small block sizes for low streaming speeds**. Although small block sizes require more data to be transferred over the network, they also take less time to fill, especially at higher decimation values.
-* Use **large block sizes for high streaming speeds**. Large block sizes enable maximum network transfer performance (fewer transmissions over the network for the same amount of data), but take longer to fill (filling an 8 MB block at 10 kS/s will take some time). For a streaming frequency of 62.5 MHz, use a block size of at least 4 MB.
+* Use **large block sizes for high streaming speeds**. Large block sizes enable maximum network transfer performance (fewer transmissions over the network for the same amount of data), but take longer to fill (filling an 8 MB block at 10 kS/s will take about 800 seconds). For a streaming frequency of 62.5 MHz, use a block size of at least 4 MB.
 
-The memory manager features three sliders (ADC, DAC and GPIO) that set the amount of memory allocated to each mode.
-You can use the sliders to select the required memory size. You can specify either the entire volume of reserved memory or part of it.
+The memory manager features three sliders (ADC, DAC and GPIO) that set the amount of memory allocated to each mode:
+
+* The sliders are used to select the required memory size.
+* Either the entire volume of reserved memory or part of it can be specified.
+
 For example, if you allocate the entire volume to ADC streaming, you won't be able to use another mode as there won't be enough memory.
 When running ADC and DAC simultaneously, the memory must be allocated proportionally.
 
@@ -364,7 +367,7 @@ When running ADC and DAC simultaneously, the memory must be allocated proportion
 
 If a slider number appears in red, there is not enough memory reserved for the selected setting. Use the slider to adjust the reserved memory amount until the value changes back to white.
 
-The reserved :ref:`Deep Memory Mode <deepMemoryMode>` memory default size is 32 MB and can be changed under the :ref:`System info settings <system_info>` or :ref:`by manually chaging the size <DMM_change_reserved_memory>`.
+The reserved :ref:`Deep Memory Mode <deepMemoryMode>` region default size is 32 MB and can be changed under the :ref:`System info settings <system_info>` or :ref:`by manually chaging the size <DMM_change_reserved_memory>`.
 
 
 
@@ -376,7 +379,7 @@ Streaming status
 
 The streaming status section displays the current status of the ADC and DAC streaming process (GPIO will be added in the future). Each section has the following options:
 
-* **Status circle:** Indicates the current status of the streaming process. The circle is green when the streaming is running and red when it is stopped.
+* **Status circle:** Indicates the current status of the streaming process. The circle is green when the streaming is active and red when it is not.
 * **Start and stop buttons:** Start and stop the streaming process.
 * **Status message:** Displays the current status of the streaming process as well as any error messages that may occur during the streaming process.
 
@@ -511,7 +514,7 @@ The streaming application uses the following data transfer path.
 *Inputs ==> FPGA ==> DDR ==> Processor ==> PHY ==> Network ==> PC*
 
 The FPGA streams data directly from the fast analog inputs to the DDR memory. Two ping pong buffers are used to store the data in the DDR memory. FPGA first fills one buffer while the other is being read by the processor.
-Once the buffer is full the FPGA raises a "buffer full" flag. Then the FPGA checks whether the processor has finished reading the data from the second buffer. If yes, then it starts overwriting the second buffer. 
+Once the buffer is full the FPGA raises a "buffer full" flag. Then the FPGA checks whether the processor has finished reading the data from the second buffer. If the reading is finished, then the FPGA starts overwriting the second buffer. 
 Otherwise, it reports buffer overwrite error (which causes the processor to discard the read data and results in data loss) and starts overwriting the second buffer. This allows for continuous data streaming without any interruptions.
 The processor reads the data from the DDR memory and converts it into Ethernet packets, which are then sent over the network to the remote computer. The data is streamed in chunks (packets) of a specified size, which can be configured in the application settings.
 
@@ -533,8 +536,17 @@ Data rate limitations
 
 The maximum data rates (per board) are determined by the hardware capabilities of the Red Pitaya board and the network transfer rates. The following limitations apply:
 
-    * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance).
-    * 62.5 MB/s for streaming over 1 Gbit network (:ref:`connecting the board to a router <LAN>` is recommended to achieve the best streaming performance). This setting depends on the client.
+.. tabs::
+
+    .. group-tab:: OS IN DEV or newer
+
+        * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance).
+        * 62.5 MB/s for streaming over 1 Gbit network (:ref:`connecting the board to a router <LAN>` is recommended to achieve the best streaming performance). This setting depends on the client.
+
+    .. group-tab:: OS 1.04-28 to 2.05-37
+
+        * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance).
+        * 20 MB/s for streaming over 1 Gbit network (:ref:`connecting the board to a router <LAN>` is recommended to achieve the best streaming performance). This setting depends on the client.
 
 The main limiting factor for the maximum data rate is the processor which reads the data from the DDR and converts it into Ethernet packets. If the data rate exceeds the maximum data rate, the processor will not be able to keep up with the incoming data stream (reading the buffer before the FPGA overwrites it), leading to packet loss and consequently missing data.
 
@@ -546,7 +558,7 @@ Highest possible data rate
 
 The highest possible data rate is achieved using:
 
-1. The `Command line client <Remote streaming (command line client)>`_,
+1. `Command line client <Remote streaming (command line client)>`_,
 2. **RAW** data format,
 3. **Binary** file type.
 
@@ -566,7 +578,7 @@ The following calculation can be used to determine the maximum sampling frequenc
 
 Where:
 
-    * :math:`v_{max}` - is the maximum data rate for the selected streaming mode (10 MB/s for local streaming, 62.5 MB/s for network streaming).
+    * :math:`v_{S, max}` - is the maximum data rate for the selected streaming mode (10 MB/s for local streaming, 62.5 MB/s for network streaming).
     * :math:`N` - is the number of input channels selected for data acquisition (1, 2, 3 or 4).
     * :math:`Bps` - (Bytes per sample) is the number of bytes used to represent each sample (1 for 8-bit resolution, 2 for 16-bit resolution).
 
@@ -607,16 +619,18 @@ Ideally, the signal should fit completely into the specified block size.
 
 Here are limitations for the **dac_rate** variable for each of the two modes:
 
-* **One-pack mode**: The maximum **dac_rate** is 125 MHz (125 MS/s).
-* **True streaming mode**: The maximum stable **dac_rate** is about 5 MHz (5 MS/s) for 16-bit resolution. Setting the DAC rate higher may result in data loss and unstable signal generation.
+.. tabs::
+
+    .. group-tab:: OS IN DEV or newer
+
+        * **One-pack mode**: The maximum **dac_rate** is 125 MHz (125 MS/s).
+        * **True streaming mode**: The maximum stable **dac_rate** is about 5 MHz (5 MS/s) for 16-bit resolution. Setting the DAC rate higher may result in data loss and unstable signal generation.
 
 
 .. note::
 
     The DAC streaming is currently limited to 16-bit resolution and the WAV or TDMS file format.
     The WAV file format has a maximum size of 4 GB, which limits the maximum number of samples that can be generated to approximately 268 million samples (for 16-bit resolution).
-
-.. ! TODO: Document the new fast streaming feature and prepare the examples
 
 |
 
@@ -663,6 +677,7 @@ Source code
 The `Streaming application source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager>`_ is available on our GitHub.
 
 
+|
 
 .. substitutions
 

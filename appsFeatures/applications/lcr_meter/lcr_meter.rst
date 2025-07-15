@@ -7,7 +7,7 @@ LCR meter
 .. figure::  img/01_iPad_Combo_LCR.jpg
 	:width: 1600
 
-This application will turn your Red Pitaya into an affordable LCR meter. It is the perfect tool for educators, students, makers, hobbyists, and professionals seeking affordable, highly functional test and measurement equipment.
+This application will turn your Red Pitaya into an affordable LCR meter. It is the perfect tool for professionals, educators, students, makers, and hobbyists seeking affordable, highly functional test and measurement equipment.
 Resistors, capacitors, and inductors are basic components of all electrical circuits, and while working on your projects, you will need to measure some components lying around on your working bench. The Red Pitaya's LCR meter will enable you to speed up the procedure and accurately measure the components just by switching from one application to another.
 
 .. note:: 

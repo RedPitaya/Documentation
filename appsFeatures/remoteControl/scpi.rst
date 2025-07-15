@@ -14,11 +14,11 @@ The SCPI commands are extremely useful when complex signal analysis is required.
 
 **Features**
 
-- Quickly write control routines and programs using MATLAB, LabVIEW, or Python.
-- Use powerful data analysis tools like MATLAB, LabVIEW, or Python to analyse raw signals acquired by the Red Pitaya board.
-- Write testing scripts and routines.
-- Incorporate your Red Pitaya and LabVIEW into testing and production lines.
-- Take quick measurements directly on your PC.
+* Quickly write control routines and programs using MATLAB, LabVIEW, or Python.
+* Use powerful data analysis tools like MATLAB, LabVIEW, or Python to analyse raw signals acquired by the Red Pitaya board.
+* Write testing scripts and routines.
+* Incorporate your Red Pitaya and LabVIEW into testing and production lines.
+* Take quick measurements directly on your PC.
 
 .. note::
 
@@ -63,7 +63,7 @@ To run an example, follow the instructions below:
     .. note::
 
         Please refrain from running the SCPI server in parallel with other web applications like the Oscilloscope as it may result in undefined behaviour of both the application and the SCPI program.
-      
+
 .. contents::
     :local:
     :backlinks: none
@@ -75,12 +75,14 @@ To run an example, follow the instructions below:
 MATLAB
 ======
 
-**Requirements and Setup**
+Requirements and Setup
+-----------------------
 
 The basic MATLAB installation already has everything you need to control your Red Pitaya. However, we recommend installing the *Signal Processing* and
 *Instrumentat control* toolboxes, which might come in handy.
 
-**Running code**
+Running code
+---------------
 
 #.  Open MATLAB on your computer.
 #.  In the MATLAB workspace, paste the code from the :ref:`blink <blink>` tutorial example.
@@ -95,37 +97,38 @@ More examples of controlling Red Pitaya through MATLAB can be found :ref:`here <
 Python
 ======
 
-**Requirements and Setup**
+Requirements and Setup
+-----------------------
 
 Here are the requirements for setting up a Python environment to remotely control your Red Pitaya. Here we present setting up the environment in |VSCode|, due to high adaptability and easily expandable functionality.
 
-1.  Python version 3.10 or higher. Link to |python_main|.
+1.  **Install Python version 3.10 or higher.** Link to |python_main|.
     During the installation process, do not forget to check the **Add python.exe to PATH** box!
 
     .. figure:: img/install_python.png
         :width: 600
 
-2.  Install a coding environment. We recommend using |VSCode|.
+2.  **Install a coding environment.** We recommend using |VSCode|.
 
     .. figure:: img/install_vsc.png
         :width: 600
 
-3.  Install appropriate extensions for your coding environment (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
+3.  **Install appropriate extensions for your coding environment** (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
 
-4.  Setup or create a new |workspace|. Here are some |tutorials| for Visual Studio Code.
+4.  **Configure the workspace.** Setup or create a new |workspace|. Here are some |tutorials| for Visual Studio Code.
 
-5.  Choose a Python interpreter.
-    
+5.  **Choose a Python interpreter.**
+
     .. figure:: img/select_interpreter.png
         :width: 800
 
 6.  Optionally, create a |venv|.
 
-7.  Ensure that the Python packages are up to date and install following Python libraries:
+7.  **Update Python packages.** Ensure that the Python packages are up to date and install following Python libraries:
 
-    - pyvisa pyvisa-py (|PyVISA| library, in combination with the |PyVISA-py| backend)
-    - numpy
-    - matplotlib
+    * pyvisa pyvisa-py (|PyVISA| library, in combination with the |PyVISA-py| backend)
+    * numpy
+    * matplotlib
 
    |
 
@@ -148,9 +151,9 @@ Here are the requirements for setting up a Python environment to remotely contro
                $ pip install pyvisa pyvisa-py numpy matplotlib
 
 
-8.  Windows users must enable "Running Scripts" option. It should be located in **Settings > Update&Security > For developers** under the **Power Shell** section (or google "How to enable running scripts on Windows 10/11").
+8.  **Enable "Running Scripts" option.** Windows users must enable "Running Scripts" option. It should be located in **Settings > Update&Security > For developers** under the **Power Shell** section (or google "How to enable running scripts on Windows 10/11").
 
-9.  Double-check the Python verision and reselect the Python interpreter if necessary (See step 5).
+9.  **Double-check the Python version** and reselect the Python interpreter if necessary (See step 5).
 
     .. code-block:: shell-session
 
@@ -159,12 +162,12 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     On Windows, you can use **py** instead of **python** in the command line.
 
-10. Download and save the |redpitaya_scpi.py| library into the VS Code workspace folder/directory. This library must be in the same folder as the python scripts. You can find the source code of the library on GitHub: |redpitaya_scpi github|. Alternatively, you can download it directly from here: |redpitaya_scpi.py|.
+10. **Download and save the redpitaya_scpi.py library** into the VS Code workspace folder/directory. This library must be in the same folder as the python scripts. You can find the source code of the library on GitHub: |redpitaya_scpi lib github|. Alternatively, you can download it directly from here: |redpitaya_scpi.py|.
 
     .. figure:: img/scpi-examples.png
         :width: 600
 
-11. Create a new python file with the following code.
+11. **Create a new python file with the following code.**
 
     .. code-block:: python
 
@@ -174,11 +177,62 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     Once saved, check how the NumPy library is displayed. If it is underlined in yellow the current Python environment does not have the libraries installed correctly.
 
-12. Run the test file. There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
+12. **Run the test file.** There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
 
    .. figure:: img/hello_world.png
        :width: 800
 
+
+redpitaya_scpi.py library
+-----------------------------
+
+The |redpitaya_scpi.py| library is a Python script that establishes a socket connection between your computer and the Red Pitaya board. It provides an easy-to-use interface for sending SCPI commands to the Red Pitaya board and receiving responses. The library is designed to be simple and intuitive, allowing you to focus on writing your control routines without worrying about the underlying communication details.
+
+The library provides access to the following functions:
+
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| Function                  | Description                                                                                              |
++===========================+==========================================================================================================+
+| __init__(ip)              | Initializes the connection to the Red Pitaya board using the provided IP address.                        |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| __del__()                 | Closes the socket connection when the object is deleted.                                                 |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| check_error()             | Checks for errors in the response.                                                                       |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| close()                   | Closes the socket connection to the Red Pitaya board.                                                    |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| rx_txt()                  | Receives a text response from the Red Pitaya board.                                                      |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| rx_txt_check_error()      | Receives a text response and checks for errors.                                                          |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| rx_arb()                  | Receives binary data from the Red Pitaya board.                                                          |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| rx_arb_check_error()      | Receives binary data and checks for errors.                                                              |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| tx_txt(txt)               | Sends a text command to the Red Pitaya board.                                                            |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| tx_txt_check_error(txt)   | Sends a text command and checks for errors in the response.                                              |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+| txrx_txt(txt)             | Sends a text command and receives a text response.                                                       |
++---------------------------+----------------------------------------------------------------------------------------------------------+
+
+The ``tx`` functions are used to send commands to the Red Pitaya board, while the ``rx`` functions are used to receive responses. The ``check_error`` functions are used to check for errors in the responses. The library also provides a simple interface for sending and receiving binary data.
+
+.. note::
+
+    If an incorrect command is passed to the Red Pitaya board or an error occurs during the execution of a command, the **rx** functions will not return any data, resulting in an infinite loop as the program waits for a response that will never arrive.
+    To avoid this, please ensure that the SCPI commands are grammatically correct and regularly check for errors using the **check_error** function after sending a command.
+
+The GitHub repository of the **redpitaya_scpi.py** library contains several different libraries:
+
+* **redpitaya_scpi.py** - the main library for controlling the Red Pitaya board which also includes the optional functions for easier control of the Red Pitaya board (core functionality is included).
+* **redpitaya_scpi_core.py** - the core library that contains only the essential functions for establishing a connection and sending/receiving data.
+* **old** - contains older versions of the library that are no longer maintained.
+
+
+You can find the source code of the library on GitHub here:
+
+* |redpitaya_scpi lib github|.
 
 
 .. |PyVISA| raw:: html
@@ -209,16 +263,17 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     <a href="https://code.visualstudio.com/docs/python/environments" target="_blank">virtual environment</a>
 
-.. |redpitaya_scpi github| raw:: html
+.. |redpitaya_scpi lib github| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py GitHub source code</a>
+    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/lib/" target="_blank">redpitaya_scpi GitHub source code</a>
 
 .. |redpitaya_scpi.py| replace::
 
-    :download:`redpitaya_scpi.py <https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/redpitaya_scpi.py>`
+    :download:`redpitaya_scpi.py <https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/lib/redpitaya_scpi.py>`
 
 
-**Running code**
+Running code
+----------------
 
 1.  Open the :ref:`blink <blink>` tutorial and copy the code to your favourite text editor.
 
@@ -253,7 +308,8 @@ More examples of how to control Red Pitaya with Python can be found :ref:`here <
 LabVIEW
 =======
 
-**Requirements and Setup**
+Requirements and Setup
+-----------------------
 
 For proper operation, the |LabVIEW_driver| must be installed.
 
@@ -266,7 +322,8 @@ For proper operation, the |LabVIEW_driver| must be installed.
 The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya**. Depending on your settings, instrument I/O may be hidden. Please consult LabVIEW Help on how to activate or deactivate those categories. 
 
 
-**Running code**
+Running code
+--------------
 
 You can access example VIs by going to:
 

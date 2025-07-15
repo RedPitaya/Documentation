@@ -5,9 +5,10 @@
 Deep Memory Mode (DMM)
 #######################
 
-Deep Memory Mode (DMM) encompasses the Deep Memory Acquisition (DMA) and the Deep Memory Generator (DMG). It enables the user to utilize the full potential of Red Pitaya's DDR3 RAM for data acquisition and generation. The Deep Memory Acquisition allows for high-speed data capture, while the Deep Memory Generator enables the generation of complex waveforms with extended memory capabilities.
+Deep Memory Mode (DMM) encompasses the Deep Memory Acquisition (DMA) and the Deep Memory Generation (DMG). It enables the user to utilize the full potential of Red Pitaya's DDR3 RAM for data acquisition and generation. The Deep Memory Acquisition allows for high-speed data capture, 
+while the Deep Memory Generation enables the generation of complex waveforms with extended memory capabilities.
 
-All Deep Memory Mode features use direct memory access (commonly labelled with DMA) to the Red Pitaya's DDR3 RAM, allowing for high-speed data transfer and processing.
+All Deep Memory Mode features use direct memory access (commonly labelled with DMA) to the Red Pitaya's DDR3 RAM, allowing for high-speed data transfer and processing. The allocated RAM region is also referred to as the DMM region.
 
 .. contents::
    :local:
@@ -25,7 +26,7 @@ Description
 
 Deep memory acquisition is a special type of data acquisition that allows the user to stream data directly into Red Pitaya's DDR3 RAM at full sampling speed of 125 MS/s (depending on board model).
 The buffer length is variable and can be specified by the user (must be a multiple of 64 Bytes), but cannot exceed the size of the allocated RAM region. The amount of dedicated RAM can be increased by the user, but it is recommended to leave at least 100 MB
-of DDR for proper operation of the Linux OS. Deep memory acquisition is based on the `AXI protocol (AXI DMA and AXI4-Stream) <https://support.xilinx.com/s/article/1053914?language=en_US>`_. The Deep Memory Acuisition uses Direct Memory Access (double the acronym for double the meaning).
+of DDR for proper operation of the Linux OS. Deep memory acquisition is based on the `AXI protocol (AXI DMA and AXI4-Stream)`_. The Deep Memory Acuisition uses Direct Memory Access (double the acronym for double the meaning).
 
 Once the acquisition is complete, Red Pitaya needs some time to transfer the entire file to the computer (RAM needs to be cleared) before the acquisition can be reset.
 DMA can be configured using SCPI, Python API and C API commands.
@@ -65,20 +66,20 @@ The size of the whole buffer is **ADC_AXI_SIZE**. All the labels are just for re
 
 The starting address of the DMA buffer (**ADC_AXI_START**) and the size of the DMA buffer (**ADC_AXI_SIZE**) are acquired through the **rp_AcqAxiGetMemoryRegion** function.
 
-The memory region can capture data from a single channel (the whole memory is allocated to a single channel), or it can be split between multiple input channels (CH1 (IN1) and CH2 (IN2)) (also CH3 and CH4 on STEMlab 125-14 4-Input) by passing the following parameters to the *rp_AcqAxiSetBuffer()* function:
+The memory region can capture data from a single channel (the whole memory is allocated to a single channel), or it can be split between multiple input channels (CH1 (IN1) and CH2 (IN2)) (also CH3 and CH4 on *STEMlab 125-14 4-Input*) by passing the following parameters to the *rp_AcqAxiSetBuffer()* function:
 
-    * Captured channel number (*RP_CH_1* or *RP_CH_2*) (also *RP_CH_3* or *RP_CH_4* for STEMlab 125-14 4-Input).
+    * Captured channel number (*RP_CH_1* or *RP_CH_2*) (also *RP_CH_3* or *RP_CH_4* for *STEMlab 125-14 4-Input*).
     * Start address.
     * Number of samples (to be captured).
 
 In the example below, the memory region is split between both channels, where 1024 samples are captured on each channel.
 
-The **Mid Address** in the picture above represents the starting point of the *Channel 2 buffer* inside the reserved DMA region and is set to *ADC_AXI_START + (ADC_AXI_SIZE/2)* (both channels can capture the same amount of data).
+The **Mid Address** in the picture above represents the starting point of the *Channel 2 buffer* inside the reserved DMM region and is set to *ADC_AXI_START + (ADC_AXI_SIZE/2)* (both channels can capture the same amount of data).
 
 Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGetDataRaw* or *rp_AcqAxiGetDataV* functions by passing the following parameters:
 
     * Channel number.
-    * Address of triggering moment (by using the *rp_AcqAxiGetWritePointerAtTrig* function).
+    * Address of triggering moment (by using the ``rp_AcqAxiGetWritePointerAtTrig`` function).
     * Data size.
     * Location where to store the data (start address of buffer). An integer buffer is used to store RAW values and a float buffer for values in Volts.
 
@@ -89,8 +90,12 @@ Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGet
 
     * SCPI commands - acquire the data in binary format (``ACQ:DATA:FORMAT BIN``) - for long data buffers we recommend capturing the data on the Red Pitaya board itself (C or Python API) and then establishing a TCP connection with the Red Pitaya board to transfer the data to the computer. 
       The SCPI performs a string conversion before the transfer and then converts the string back to data on the other side, which slows the transfer a lot.
-    * Python API - use the new (IN DEV) functions ``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)`` and ``rp_AcqAxiGetDataVNP(channel, pos, np_buffer)`` that return the data as a Numpy buffer directly.
-    * Python or C API - to transfer the data to the computer establish a "web socket" TCP connection with the Red Pitaya and transfer the data over the socket. This is much faster than using the SCPI commands.
+    * Python API:
+
+        * Use the new functions ``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)`` and ``rp_AcqAxiGetDataVNP(channel, pos, np_buffer)`` that return the data as a Numpy buffer directly.
+        * The fastest possible acquisition is achieved by using the ``rp_AcqAxiGetDataRawDirect(channel, pos, size)``, which returns the data without copying it to a Numpy buffer.
+
+    * Python or C API - to transfer the data to the computer establish a `websocket TCP connection`_ with the Red Pitaya and transfer the data over the socket. This is much faster than using the SCPI commands as we avoid the overhead of string conversion.
 
 Once finished, please do not forget to free the resources and reserved memory locations. Otherwise, the performance of your Red Pitaya can decrease over time.
 
@@ -106,7 +111,7 @@ Description
 
 Deep memory generation is a special type of data generation that allows the user to stream data directly from Red Pitaya's DDR3 RAM to the fast analog outputs.
 The buffer length is variable and can be specified by the user (at least 128 Bytes), but cannot exceed the size of the allocated DMM region. The amount of dedicated RAM can be increased by the user, but it is recommended to leave at least 100 MB
-of DDR for proper operation of the Linux OS. Deep memory generation is based on the `AXI protocol (AXI DMA and AXI4-Stream) <https://support.xilinx.com/s/article/1053914?language=en_US>`_.
+of DDR for proper operation of the Linux OS. Deep memory generation is based on the `AXI protocol (AXI DMA and AXI4-Stream)`_.
 
 The generation frequency depends on the length of the DMG buffer size and decimation. The output waveform is generated at the full speed (125 MHz), but the maximum generation frequency (1.953 MHz) is limited by the minimum buffer size (if we consider a single period per buffer).
 
@@ -115,8 +120,8 @@ DMG can be configured using Python API and C API commands. We will add SCPI comm
 **Features**
 
 * Deep Memory Generation can generate custom waveforms with variable buffer length.
-* By default, the RAM memory reagion allocated for the DMM is set to 32 MB (maximum space to store data for all output channels).
-* Deep Memory Generations runs at maximum DAC speed, but the output frequency of continuous signals is limited to 1.953 MHz.
+* By default, the RAM memory region allocated for the DMM is set to 32 MB (maximum space to store data for all output channels).
+* Deep Memory Generations runs at maximum DAC speed, but the output frequency of continuous signals depends on the buffer contents.
 * The reserved memory can be assigned to only one buffer, thereby allocating all memory to a single output channel.
 
 
@@ -138,6 +143,9 @@ Functionality
 
 The Deep Memory Generation (DMG) uses the same reserved memory region as the Deep Memory Acquisition (DMA). The DMG can be used to generate complex waveforms with extended memory capabilities, allowing for longer and more detailed signals.
 The functionality is similar to the DMA, but instead of capturing data, it generates data from the reserved memory region and streams it to the DAC outputs.
+
+* The minimum buffer size is 64 samples (256 bytes). This results in a maximum continuous output frequency of 1.953 MHz (if we consider one period per buffer).
+* Buffer start addresses must be multiples of 4096 (DDR page size).
 
 .. TODO finish this section - create relevant pictures
 
@@ -181,12 +189,12 @@ The maximum memory allocation is restricted to the size of the board's DDR (512 
 
     .. math::
 
-        32 MiB = 32 * 1 MiB = 32 * 1024 * 1024 Bytes = 2^{25} Bytes = 0x2000000
-    ..    32 \text{ MiB} = 32 * 1 \text{ MiB} = 32 * 1024 * 1024 \text{ Bytes} = 2^{25} \text{ Bytes} = 0x2000000
+        32 MiB = 32 \cdot 1 MiB = 32 \cdot 1024 \cdot 1024 Bytes = 2^{25} Bytes = 0x2000000
 
     .. note::
 
-        1 MiB = 1024*1024 Bytes = 2^20 Bytes = 1048576 Bytes. We are using Mebibytes (MiB) instead of Megabytes (MB) to avoid confusion with the decimal system.
+        :math:`1 \text{ MiB} = 1024 \cdot 1024 \text{ Bytes} = 2^{20} \text{ Bytes} = 1048576 \text{ Bytes}`.
+        We are using Mebibytes (MiB) instead of Megabytes (MB) to avoid confusion with the decimal system.
 
 4. Finally, rebuild the tree and restart the board.
 
@@ -226,3 +234,13 @@ API Code Examples
 
 Check the :ref:`DMA and DMG sections under the examples <examples>`.
 
+
+
+
+
+.. links and references
+
+
+.. _websocket TCP connection: https://www.geeksforgeeks.org/web-tech/what-is-web-socket-and-how-it-is-different-from-the-http/
+
+.. _AXI protocol (AXI DMA and AXI4-Stream): https://support.xilinx.com/s/article/1053914?language=en_US
