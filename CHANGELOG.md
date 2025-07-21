@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file.
 - Added functionality overview for the commands under each command table section (currently only for SPI). Looking to expand this to all commands in the future.
 - Gen 2 supported features and apps.
 - Added links to measurements under each board model docs.
-- Added TItanium board documentation.
+- Added TI board documentation.
 - Gen 2 FAQ section added.
 - Additional Gen 2 measurements and improvements over Gen 1 boards.
 
