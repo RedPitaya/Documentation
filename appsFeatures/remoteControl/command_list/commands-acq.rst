@@ -104,6 +104,7 @@ Acquisition settings
 - ``<mode> = {AC, DC}`` Default ``DC``
 - ``<units> = {RAW, VOLTS}`` Default ``VOLTS``
 - ``<format> = {BIN, ASCII}`` Default ``ASCII``
+- ``<order> = {BEND, LEND}`` Default ``BEND``
 - ``<enable> = {true, false}`` Default: ``true``
 
 
@@ -248,6 +249,21 @@ Acquisition settings
 | | ``ACQ:DATA:FORMAT <format>``                      | | C: - (N/A)                                                                                   | | Select the format in which the acquired data will be returned.              | 1.04-18 and up     |
 | | Example:                                          | |                                                                                              | | Only for remote SCPI control.                                               |                    |
 | | ``ACQ:DATA:FORMAT ASCII``                         | | Python: - (N/A)                                                                              | |                                                                             |                    |
+| |                                                   | |                                                                                              | |                                                                             |                    |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:FORMAT?`` > ``<format>``               | | C: - (N/A)                                                                                   | | Returns the current format setting.                                         | 1.04-18 and up     |
+| | Example:                                          | |                                                                                              | | Only for remote SCPI control.                                               |                    |
+| | ``ACQ:DATA:FORMAT?`` > ``ASCII``                  | | Python: - (N/A)                                                                              | |                                                                             |                    |
+| |                                                   | |                                                                                              | |                                                                             |                    |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:BYTE:ORDER <order>``                   | | C: - (N/A)                                                                                   | | Sets the byte order that the server returns when queried in BIN mode.       | in dev             |
+| | Example:                                          | |                                                                                              | | For maximum performance, set the mode to LEND                               |                    |
+| | ``ACQ:DATA:BYTE:ORDER LEND``                      | | Python: - (N/A)                                                                              | | Only for remote SCPI control.                                               |                    |
+| |                                                   | |                                                                                              | |                                                                             |                    |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
+| | ``ACQ:DATA:BYTE:ORDER?`` > ``<order>``            | | C: - (N/A)                                                                                   | | Returns the current byte order setting.                                     | in dev             |
+| | Example:                                          | |                                                                                              | | Only for remote SCPI control.                                               |                    |
+| | ``ACQ:DATA:BYTE:ORDER?`` > ``LEND``               | | Python: - (N/A)                                                                              | |                                                                             |                    |
 | |                                                   | |                                                                                              | |                                                                             |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 | | ``ACQ:BUF:SIZE?`` > ``<size>``                    | | C: ``rp_AcqGetBufSize(uint32_t *size)``                                                      | | Returns the buffer size.                                                    | 1.04-18 and up     |
