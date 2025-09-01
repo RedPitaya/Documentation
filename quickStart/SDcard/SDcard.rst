@@ -75,8 +75,7 @@ Latest 2.00 OS
 
 **Red Pitaya OS 2.0**:
 
-* :download:`Latest Beta (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_beta.img.zip>`  - |CHANGELOG| (MD5 (extracted): ad55cb45cf92bf8e40e3901f24a677ba).
-* :download:`Latest Stable (2.04-35) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.04-35_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): d3d59bca29421987550289fce29b87b5).
+* :download:`Latest Stable (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): ad55cb45cf92bf8e40e3901f24a677ba).
 
 |
 
