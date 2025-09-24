@@ -32,6 +32,29 @@ Troubleshooting proceedure
 
 If you are experiencing problems with the Red Pitaya, please follow the steps below to troubleshoot the problem. If you are unable to solve the problem, please :ref:`contact us <report_problem>`.
 
+
+Check hardware connections
+--------------------------
+
+If you are not receiving a signal on the Red Pitaya, but the applications are working properly, there may be a problem with hardware connections. Please check the following:
+
+* Confirm that the SMA cables are not damaged, have bad contact, or are loose.
+* Confirm that the setup and connections are correct. Sometimes the signal is not being received because a lense in a laser system is misaligned, a probe is not connected properly, or a component is not powered.
+
+
+Check network settings
+-----------------------
+
+The next most common problem is a network connection issue, where the Red Pitaya board is working fine, but a network issue is preventing you from accessing it. Please check the following:
+
+* Make sure that your Red Pitaya and computer are both connected to the same :ref:`local network <faq_connected>`. Especially, if you have a complex network with multiple routers, switches, or access points.
+* Check the Ethernet cable and socket for damage (check if you can connect to the internet/access the local web from the same cable and socket).
+* Try connecting to the board from a different computer and router. Some networks may have security restrictions that prevent you from connecting to the board (for example, university networks require all devices to connect through a special web page to confirm a person's identity).
+
+
+Check the status LEDs
+----------------------
+
 .. figure:: img/blinking-pitaya-eth.gif
     :align: center
     :width: 600
@@ -42,10 +65,6 @@ Red Pitaya Status LED Description:
     * **Blue LED** - FPGA image loaded and OS booted.
     * **Red LED** - CPU heartbeat.
     * **Orange LED** - SD card access.
-
-
-Check the status LEDs
-----------------------
 
 Firstly, you should check the status LEDs as they will give you feedback on the type of error you are experiencing.
 
