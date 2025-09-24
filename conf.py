@@ -17,6 +17,9 @@ import os
 import datetime
 #import sphinx_rtd_theme     # import theme
 
+# ReadTheDocs environment detection
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -26,13 +29,13 @@ sys.path.append(os.path.abspath('.') + '/_extensions')
 sys.path.append(os.path.abspath('.')+ '/_links')
 sys.path.append(os.path.abspath('.'))
 
-from _links.link import *
-from _links import *
+# Import external links configuration
+from _links.link import EXTERNAL_LINKS, SPHINX_EXTLINKS
 
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-#needs_sphinx = '1.0'
+needs_sphinx = '6.0'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -44,12 +47,56 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.githubpages',
+    'sphinx.ext.extlinks',  # For external link shortcuts
     'sphinx_tabs.tabs',
+    'sphinx_copybutton',  # For better code copying
     'notfound.extension',
     'github',
     'myst_parser'
-#    'xref'
 ]
+
+# MyST Parser configuration
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "substitution",
+    "tasklist",
+]
+
+# External Links configuration
+extlinks = SPHINX_EXTLINKS
+
+# Sphinx copybutton configuration
+copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
+copybutton_prompt_is_regexp = True
+
+# Global RST substitutions (added to every RST file)
+rst_epilog = """
+.. Common external links - these can be used in any RST file as |link_name|
+
+.. |redpitaya| replace:: `Red Pitaya <https://redpitaya.com/>`__
+.. |redpitaya-github| replace:: `Red Pitaya GitHub <https://github.com/RedPitaya/>`__
+.. |redpitaya-forum| replace:: `Red Pitaya Forum <https://forum.redpitaya.com/>`__
+.. |redpitaya-store| replace:: `Red Pitaya Store <https://redpitaya.com/shop/>`__
+.. |sphinx-docs| replace:: `Sphinx Documentation <https://www.sphinx-doc.org/>`__
+.. |python| replace:: `Python <https://www.python.org/>`__
+.. |numpy| replace:: `NumPy <https://numpy.org/>`__
+.. |matplotlib| replace:: `Matplotlib <https://matplotlib.org/>`__
+.. |xilinx| replace:: `Xilinx <https://www.xilinx.com/>`__
+.. |vivado| replace:: `Vivado <https://www.xilinx.com/products/design-tools/vivado.html>`__
+.. |scpi| replace:: `SCPI <https://www.ivifoundation.org/scpi/>`__
+.. |br| raw:: html
+
+   <br/>
+
+"""
 
 sphinx_tabs_valid_builders = ['linkcheck']
 
@@ -85,8 +132,9 @@ nitpicky = True
 
 # General information about the project.
 project = "Red Pitaya"
-title = "Red Pitaya Documentation"
-copyright = f"{datetime.date.today().year}, Red Pitaya d.o.o"
+html_title = "Red Pitaya Documentation"
+project_copyright = f"{datetime.date.today().year}, Red Pitaya d.o.o"
+copyright = project_copyright  # Sphinx requires this variable name
 author = "Red Pitaya"
 
 # The version info for the project you're documenting, acts as a replacement for
@@ -140,6 +188,26 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+# Performance optimizations
+html_scaled_image_link = False
+html_copy_source = True
+html_show_sourcelink = False
+
+# Build performance
+numfig = True
+numfig_format = {
+    'figure': 'Figure %s',
+    'table': 'Table %s',
+    'code-block': 'Listing %s',
+    'section': 'Section %s',
+}
+
+# Suppress warnings for known issues
+suppress_warnings = [
+    'image.nonlocal_uri',
+    'ref.ref',
+]
+
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -153,8 +221,17 @@ html_theme = 'sphinx_rtd_theme'
 # html_theme_options = {'body_max_width':'70%'}
 html_theme_options = {
     'logo_only': True,
-    'collapse_navigation': True,
-    'navigation_depth': 5
+    'collapse_navigation': False,
+    'navigation_depth': 5,
+    'includehidden': True,
+    'titles_only': False,
+    'sticky_navigation': True,
+    'prev_next_buttons_location': 'bottom',
+    'style_external_links': True,
+    'vcs_pageview_mode': '',
+    # Analytics
+    'analytics_id': '',  # Add your Google Analytics ID here if needed
+    'analytics_anonymize_ip': False,
 }
 
 # Not needed (latest sphinx) Add any paths that contain custom themes here, relative to this directory.
@@ -175,16 +252,33 @@ html_static_path = ['_static']
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-# html_logo = "img/redpitaya-logo.svg"
-html_logo = "img/redpitaya-logo.png"
+html_logo = "img/redpitaya-logo.svg"
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
 html_favicon = "img/favicon.png"
 
+# SEO and metadata
+html_meta = {
+    'description': 'Official Red Pitaya technical documentation',
+    'keywords': 'Red Pitaya, FPGA, oscilloscope, signal generator, documentation',
+    'author': 'Red Pitaya d.o.o',
+    'viewport': 'width=device-width, initial-scale=1.0',
+}
+
+# Social media cards
+# Note: display_version option removed as it's deprecated in newer sphinx_rtd_theme versions
 
 
+
+html_css_files = [
+    'page_width.css',
+    'tabs.css',
+    'new_style.css'
+]
+
+# For compatibility with older Sphinx versions
 html_context = {
         'css_files': [
             'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
@@ -194,14 +288,6 @@ html_context = {
             '_static/new_style.css'
         ],
     }
-
-#html_css_files = [
-#            'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
-#            'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
-#            '_static/page_width.css',
-#            '_static/tabs.css',
-#            '_static/new_style.css'
-#        ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -287,7 +373,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (root_doc, 'RedPitaya-Documentation.tex', title, author, 'manual'),
+    (root_doc, 'RedPitaya-Documentation.tex', html_title, author, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -321,7 +407,7 @@ latex_logo = "img/head_logo.png"
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (root_doc, 'RedPitaya-Documetantion', title, author, 1)
+    (root_doc, 'RedPitaya-Documetantion', html_title, author, 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -334,7 +420,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (root_doc, 'RedPitaya-Documentation', title, author, 'RedPitaya',
+    (root_doc, 'RedPitaya-Documentation', html_title, author, 'RedPitaya',
     'Red Pitaya Techincal Documentation', 'Miscellaneous'),
 ]
 
@@ -353,6 +439,8 @@ texinfo_documents = [
 
 intersphinx_mapping = {
     'knowledgebase': ('https://redpitaya-knowledge-base.readthedocs.io/en/latest/', None),
+    'python': ('https://docs.python.org/3/', None),
+    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
 }
 
 # We recommend adding the following config value.
@@ -362,3 +450,30 @@ intersphinx_mapping = {
 # See also:
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
 intersphinx_disabled_reftypes = ["*"]
+
+# ReadTheDocs specific configuration
+if on_rtd:
+    # On ReadTheDocs, we don't need to specify the theme path
+    html_theme_path = []
+    # Use the RTD theme's built-in version dropdown
+    html_theme_options.update({
+        'canonical_url': 'https://redpitaya.readthedocs.io/',
+        'analytics_id': '',  # Add your analytics ID if you have one
+        'analytics_anonymize_ip': False,
+        'logo_only': True,
+        # 'display_version': True,  # Removed - deprecated in newer sphinx_rtd_theme versions
+        'prev_next_buttons_location': 'bottom',
+        'style_external_links': False,
+        'vcs_pageview_mode': '',
+        'style_nav_header_background': 'white',
+        'collapse_navigation': False,
+        'sticky_navigation': True,
+        'navigation_depth': 4,
+        'includehidden': True,
+        'titles_only': False
+    })
+else:
+    # Local development settings
+    html_theme_options.update({
+        'collapse_navigation': False,
+    })

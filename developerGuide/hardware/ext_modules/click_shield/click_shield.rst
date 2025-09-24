@@ -46,8 +46,9 @@ Compatibility
 
 The clock synchronisation is compatible only with the following board models:
 
-* :ref:`STEMlab 125-14 Pro Gen 2 (All Pro versions) <top_125_14_pro_gen2>`.
-* :ref:`STEMlab 125-14 External Clock (Gen 1) <top_125_14_EXT>` [#f1]_.
+* :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`.
+* :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`.
+* :ref:`STEMlab 125-14 External Clock <top_125_14_EXT>` [#f1]_.
 * :ref:`SDRlab 122-16 External Clock <top_122_16_EXT>`.
 * :ref:`STEMlab 125-14 4-Input <top_125_14_4-IN>`.
 
@@ -82,7 +83,7 @@ Here is a compatibility table:
     :align: center
 
     +------------------------------------+------------------------------+------------------------------+----------------------------------+------------------------------+------------------------------+
-    | Click Shield Feature Compatibility Gen 1                                                                                                                                                          |
+    | Click Shield Feature Compatibility Original Gen                                                                                                                                                   |
     +====================================+==============================+==============================+==================================+==============================+==============================+
     |                                    | **STEMlab 125-14** |br|      | **SDRlab 122-16**            | **STEMlab 125-14 ext. clk** |br| | **STEMlab 125-14 4-Input**   | **SIGNALlab 250-12**         |
     |                                    | **STEMlab 125-14 LN** |br|   |                              | **SDRlab 122-16 ext. clk**       |                              |                              |
@@ -462,7 +463,7 @@ Here are some examples of how to use click boards together with Click Shield and
 
 .. rubric:: Footnotes
 
-.. [#f1] This also includes other variations of STEMlab 125-14 external clock (Gen 1) boards, such as STEMlab 125-14 Z7020 external clock, STEMlab 125-14 LN external clock, etc.
+.. [#f1] This also includes other variations of STEMlab 125-14 external clock boards, such as *STEMlab 125-14 Z7020 external clock*, *STEMlab 125-14 LN external clock*, etc.
 
 
 
@@ -478,9 +479,7 @@ Here are some examples of how to use click boards together with Click Shield and
 
     <a href="https://www.mikroe.com/mikrobus" target="_blank">mikroBUS™</a>
 
-.. |br| raw:: html
 
-    <br/>
 
 .. |ZL40213| raw:: html
 

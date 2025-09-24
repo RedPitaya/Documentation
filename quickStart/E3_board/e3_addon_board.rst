@@ -3,16 +3,16 @@
 QSPI eMMC board connection
 ###########################
 
-.. note::
-
-    **This page is currently under construction.** All relevant information will be added before the official Gen 2 release.
-    Please check back later for updates.
 
 The QSPI eMMC module provides secure and robust Red Pitaya boot and shutdown options.
 
-.. figure:: img/E3_board.jpg
-    :align: center
-    :width: 600
+|e3_top| |e3_bottom|
+
+.. |e3_top| image:: img/QSPI_eMMC_module_Gen2_top.png
+   :width: 600
+
+.. |e3_bottom| image:: img/QSPI_eMMC_module_Gen2_bottom.png
+   :width: 600
 
 
 .. note::
@@ -38,17 +38,24 @@ Features
 The QSPI eMMC module is powered by the Red Pitaya board, so no additional power supply is needed.
 
 
+Contents
+===========
+
+* 1 QSPI eMMC add-on board,
+* 1 M2 screw.
+
+
 Hardware requirements
 ======================
 
 The QSPI eMMC module is compatible with the following Red Pitaya board modules:
 
-* STEMlab 125-14 Pro Gen 2.
-* STEMlab 125-14 Pro Z7020 Gen 2.
+* :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`.
+* :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`.
 
 .. note::
 
-    The high speed differential paris are only supported on the STEMlab 125-14 Pro Z7020 Gen 2 board model.
+    The high speed differential pairs are only supported on the STEMlab 125-14 PRO Z7020 Gen 2 board model.
 
 
 Installing the QSPI eMMC board
@@ -56,15 +63,23 @@ Installing the QSPI eMMC board
 
 Here is a quick installation guide for the QSPI eMMC board:
 
-1. Connect the QSPI eMMC board to the Red Pitaya board via the E3 connector.
+1. Make sure the Red Pitaya board is powered off and disconnected from the power supply.
 
-    .. figure:: img/RedPitaya_E3_board.jpg
+    .. figure:: img/E3_board_assembly_1.jpeg
+        :align: center
+        :width: 800
+
+#. Connect the QSPI eMMC board to the Red Pitaya board via the E3 connector.
+
+    .. figure:: img/E3_board_assembly_2.jpeg
         :align: center
         :width: 800
 
 #. Secure the QSPI eMMC board with an M2 screw. Please avoid over-tightening the screw as it may damage the board.
 
-    .. TODO Add picture
+    .. figure:: img/E3_board_assembly_3.jpeg
+        :align: center
+        :width: 800
 
 
 .. _QSPI_eMMC_board_boot:
@@ -75,10 +90,10 @@ Booting Red Pitaya with QSPI eMMC board
 Once the QSPI eMMC board is connected to the Red Pitaya board, you can power on the Red Pitaya board by pressing the **P-ON** button on the QSPI eMMC board. The Red Pitaya board will boot from the SD card. To boot from the eMMC or QSPI, Linux settings must be configured.
 
 1. Connect the power supply and ethernet cable to the Red Pitaya board. Unlike in normal operation, the Red Pitaya board **will not power on automatically**. You will see the **green power LED** on the Red Pitaya board perform a blink, then turn off.
-#. To start the booting process, press and hold the **P-ON** button on the QSPI eMMC board for 2 seconds. The **green power LED** on the Red Pitaya board will turn on and the boot process will start. The **green status LED** on the QSPI eMMC board will *blink during the boot process* and *turn on when the boot is complete* (1 minute).
+#. To start the booting process, press and hold the **P-ON** button on the QSPI eMMC board for 1 second. The **green power LED** on the Red Pitaya board will turn on and the boot process will start. The **green status LED** on the QSPI eMMC board will *blink during the boot process* and *turn on when the boot is complete* (1 minute).
 #. Once the Red Pitaya board is booted, the QSPI eMMC board will monitor the state of the Watchdog timer of the Red Pitaya board. If Red Pitaya freezes or hangs, the QSPI eMMC board will automatically reboot the Red Pitaya board.
-#. To power off the Red Pitaya board, press and hold the **P-ON** button on the QSPI eMMC board for 2 seconds. The Red Pitaya board will perform a safe shutdown and turn off.
-#. If the **P-ON** button is pressed and held for more than 10 seconds, the QSPI eMMC board will immediately power off the Red Pitaya board.
+#. To power off the Red Pitaya board, press and hold the **P-ON** button on the QSPI eMMC board for 1 second. The Red Pitaya board will perform a safe shutdown and turn off.
+#. If the **P-ON** button is pressed and held for more than 5 seconds, the QSPI eMMC board will immediately power off the Red Pitaya board.
 
 
 QSPI and eMMC boot options

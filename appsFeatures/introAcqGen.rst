@@ -32,7 +32,7 @@ The same applies to data generation options - applications such as oscilloscope 
 The signal generator can generate a predefined waveform, such as sine, square, saw up, saw down, etc. or act as an `arbitrary waveform generator <https://en.wikipedia.org/wiki/Arbitrary_waveform_generator>`_.
 The signal generator includes *burst* and *sweep* generation capabilities.
 
-To use the AWG functionality, a 16384 sample long waveform representing one period of a custom signal is uploaded via the :ref:`ARB manager application <arb_manager_app>` in CSV format.
+To use the AWG functionality, a 16384 sample long waveform representing one period of a custom signal is uploaded via the :ref:`ARB waveform manager application <arb_manager_app>` in CSV format.
 The uploaded custom waveform can be selected from the *Waveform Type* dropdown menu. There are a few things to keep in mind when creating a custom waveform. Read more about this in the `SCPI commands`_ section.
 
 For more information on the applications and how they work, click here:
@@ -142,7 +142,7 @@ We will start with continuous signal generation, which is the easiest to underst
 
 These are the minimum parameters required to generate a continuous signal. There are other parameters, but for the sake of simplicity we will skip them.
 
-Next we set the generator trigger source, which defines how and from where our generator will be triggered. This can be set to either internal (activated manually with a code command) or external positive or negative edge (triggered by an external trigger signal on pin DIO0_P on the :ref:`E1 extension connector <E1_gen1>`).
+Next we set the generator trigger source, which defines how and from where our generator will be triggered. This can be set to either internal (activated manually with a code command) or external positive or negative edge (triggered by an external trigger signal on pin DIO0_P on the :ref:`E1 extension connector <E1_orig_gen>`).
 
 The external trigger signal passes through a debounce filter when it enters the FPGA, which is set to 500 microseconds by default. This value can be changed using the ``SOUR:TRig:EXT:DEBouncer[:US]`` command.
 

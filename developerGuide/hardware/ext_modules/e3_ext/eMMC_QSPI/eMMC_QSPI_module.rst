@@ -3,24 +3,22 @@
 QSPI eMMC module - Hardware
 #############################
 
-.. note::
-
-    **This page is currently under construction.** All relevant information will be added before the official Gen 2 release.
-    Please check back later for updates.
-
 
 The QSPI eMMC module module provides secure and robust Red Pitaya boot and shutdown options.
 
-.. TODO QSPI eMMC module module picture
+|e3_top| |e3_bottom|
+
+.. |e3_top| image:: img/QSPI_eMMC_module_Gen2_top.png
+   :width: 600
+
+.. |e3_bottom| image:: img/QSPI_eMMC_module_Gen2_bottom.png
+   :width: 600
 
 .. contents:: **Index**
     :local:
     :backlinks: none
 
-.. note::
-
-    This page is currently under construction. The information provided here is subject to change.
-
+|
 
 Features
 ========
@@ -56,27 +54,23 @@ The QSPI eMMC module module is compatible with the following Red Pitaya board mo
 Installing the QSPI eMMC module
 ================================
 
-Here is a quick installation guide for the QSPI eMMC module:
-
-1. Connect the QSPI eMMC module to the Red Pitaya board via the E3 connector.
-
-    .. TODO Add picture
-
-#. Secure the QSPI eMMC module with an M2 screw. Please avoid over-tightening the screw as it may damage the board.
-
-    .. TODO Add picture
+You can find the QSPI eMMC module installation guide in the :ref:`E3 QSPI eMMC module installation guide <QSPI_eMMC_board>`.
 
 
 Buttons and switches
 =====================
 
-.. TODO add picture with button and switch locations
+.. figure:: img/QSPI_eMMC_module_Gen2_buttons.png
+   :alt: QSPI eMMC module buttons and switch
+   :align: center
+   :width: 800
+
 
 The QSPI eMMC module has two buttons and one switch:
 
-* **P-ON** - Power button. Press and hold to power on or off the Red Pitaya board. The functionality of the button is defined in the microcontroller firmware.
-* **RST** - Reset button. Press to reset the microcontroller and the eMMC.
-* **eMMC switch** - Drives the SDIO_SEL pin low in ON position and forces the Red Pitaya board to boot from the eMMC.
+1. **P-ON** - Power button. Press and hold to power on or off the Red Pitaya board. The functionality of the button is defined in the microcontroller firmware.
+2. **RST** - Reset button. Press to reset the microcontroller and the eMMC.
+3. **eMMC switch** - Drives the SDIO_SEL pin low in ON position and forces the Red Pitaya board to boot from the eMMC.
 
 
 Connectors
@@ -84,7 +78,16 @@ Connectors
 
 In this section we will describe the connectors on the QSPI eMMC module. For more detailed information regarding the functionaltiy and connector part numbers, please refer to the QSPI eMMC module schematics.
 
-.. TODO add picture with connector locations
+.. figure:: img/QSPI_eMMC_module_Gen2_connectors_top.png
+   :alt: QSPI eMMC module connectors top
+   :align: center
+   :width: 800
+
+.. figure:: img/QSPI_eMMC_module_Gen2_connectors_bottom.png
+   :alt: QSPI eMMC module connectors bottom
+   :align: center
+   :width: 800
+
 
 CN1
 ---
@@ -102,13 +105,13 @@ Connects QSPI eMMC module to Red Pitaya board. It has the following pins:
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | Pin | Description                        | FPGA pin number | FPGA pin description   | Voltage levels | Voltage levels | FPGA pin description   | FPGA pin number | Description                        | Pin |
 +=====+====================================+=================+========================+================+================+========================+=================+====================================+=====+
-| 1   | I2C0_SCL                           | -               | -                      | 3V3            | 3V3            | PS_MIO0_500            | E6              | E3_SHDN                            | 2   |
+| 1   | I2C0_SCL                           |                 |                        | 3V3            | 3V3            | PS_MIO0_500            | E6              | E3_SHDN                            | 2   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 3   | PS_POR#                            | C7              | PS_POR_B_500           | 3V3            | 3V3            | PS_MIO7_500            | D8              | E3_WDT_KICK                        | 4   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 5   | PWR_ON                             | -               | -                      | 3V3            | 3V3            | PS_MIO46_501           | D16             | SDIO_SEL [#f2]_                    | 6   |
+| 5   | PWR_ON                             |                 |                        | 3V3            | 3V3            | PS_MIO46_501           | D16             | SDIO_SEL [#f2]_                    | 6   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 7   | DIO17_P                            | T5              | IO_L19P_T3_13          | LVDS           | 3V3            | -                      | -               | I2C0_SDA                           | 8   |
+| 7   | DIO17_P                            | T5              | IO_L19P_T3_13          | LVDS           | 3V3            |                        |                 | I2C0_SDA                           | 8   |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 9   | DIO17_N                            | U5              | IO_L19N_T3_VREF_13     | LVDS           | 3V3            | PS_MIO41_501           | C17             | EMMC_CMD                           | 10  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
@@ -116,17 +119,17 @@ Connects QSPI eMMC module to Red Pitaya board. It has the following pins:
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 13  | DIO11_N                            | V7              | IO_L11N_T1_SRCC_13     | LVDS           | 3V3            | PS_MIO44_501           | F13             | EMMC_DAT2                          | 14  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 15  | DIO13_P                            | V8              | IO_L15P_T2_DQS_13      | LVDS           | -              | -                      | -               | GND                                | 16  |
+| 15  | DIO13_P                            | V8              | IO_L15P_T2_DQS_13      | LVDS           |                |                        |                 | GND                                | 16  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 17  | DIO13_N                            | W8              | IO_L15N_T2_DQS_13      | LVDS           | 3V3            | PS_MIO43_501           | A9              | EMMC_DAT1                          | 18  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 19  | DIO15_P                            | U9              | IO_L17P_T2_13          | LVDS           | 3V3            | PS_MIO42_501           | E12             | EMMC_DAT0                          | 20  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 21  | DIO15_N                            | U8              | IO_L17N_T2_13          | LVDS           | -              | -                      |                 | GND                                | 22  |
+| 21  | DIO15_N                            | U8              | IO_L17N_T2_13          | LVDS           |                |                        |                 | GND                                | 22  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 23  | DIO14_P                            | W10             | IO_L16P_T2_13          | LVDS           | 3V3            | PS_MIO40_501           | D14             | EMMC_CLK                           | 24  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 25  | DIO14_N                            | W9              | IO_L16N_T2_13          | LVDS           | -              | -                      | -               | GND                                | 26  |
+| 25  | DIO14_N                            | W9              | IO_L16N_T2_13          | LVDS           |                |                        |                 | GND                                | 26  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 27  | DIO16_P                            | W11             | IO_L18P_T2_13          | LVDS           | 3V3            | PS_MIO5_500            | A6              | SFSPI_IO3                          | 28  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
@@ -140,7 +143,7 @@ Connects QSPI eMMC module to Red Pitaya board. It has the following pins:
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 | 37  | DIO12_N (I2C1_SDA/UART_RX) [#f1]_  | U10             | IO_L12N_T1_MRCC_13     | LVDS           | 3V3            | PS_MIO6_500            | A5              | SFSPI_SCK                          | 38  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
-| 39  | +5V                                | -               | -                      | -              | -              |  -                     | -               | +5V                                | 40  |
+| 39  | +5V                                |                 |                        |                |                |                        |                 | +5V                                | 40  |
 +-----+------------------------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+------------------------------------+-----+
 
 
@@ -266,9 +269,9 @@ Serial Wire Debug connector for programming the STM microcontroller.
 +-----+--------------+-----------------+
 | 3   | R            | SWD_RES         |
 +-----+--------------+-----------------+
-| 4   | +            | VCC             |
+| 4   | Plus (+)     | VCC             |
 +-----+--------------+-----------------+
-| 5   | -            | GND             |
+| 5   | Minus (-)    | GND             |
 +-----+--------------+-----------------+
 
 

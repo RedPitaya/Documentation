@@ -53,12 +53,12 @@ Updating the OS
         An OS upgrade might cause your Red Pitaya desktop to freeze for a few minutes.
 
 
-Issues with the software update manager
+Software update manager troubleshooting
 ----------------------------------------
 
 The Software update manager may report one of the following issues during operation:
 
-#.  **Step 1** - *Your Red Pitaya is currently offline. Please follow the quick-start instructions to put it online*. If Red Pitaya is not connected to the internet, the software update manager will stop at step 1.
+#.  **Step 1: Your Red Pitaya is currently offline**. Please follow the quick-start instructions to put it online. If Red Pitaya is not connected to the internet, the software update manager will stop at step 1.
     
     .. figure:: img/No_connection.png
         :align: center
@@ -66,14 +66,12 @@ The Software update manager may report one of the following issues during operat
     
     To solve this, please make sure Red Pitaya has internet connection. Check the :ref:`network manager <network_manager>` section to connect your Red Pitaya to the internet.
 
-#.  **Step 3** - *The latest Ecosystem is not supported by the current Linux version*. If the update manager stops at step 3 and does not list any available OS versions, it means that the current Linux version is not compatible with the latest Ecosystem version.
+#.  **Step 3: The latest Ecosystem is not supported by the current Linux version**. If the update manager stops at step 3 and does not list any available OS versions, it means that the current Linux version is not compatible with the latest Ecosystem version.
+    Please :ref:`manually update the Red Pitaya OS <prepareSD>`.
 
     .. figure:: img/Ecosystem_not_supported.png
         :align: center
         :width: 800
-
-    To solve this, please :ref:`manually update the Red Pitaya OS <prepareSD>`.
-
 
 #.  If the update manager reports that the Linux version needs to be updated, please follow the :ref:`Download and install SD card image <prepareSD>` instructions and manually reinstall the SD card.
 

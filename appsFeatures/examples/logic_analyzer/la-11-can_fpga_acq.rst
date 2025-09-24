@@ -27,6 +27,7 @@ Without the CAN transceiver, the CAN protocol cannot be decoded.
 
 .. figure:: ../general_img/RedPitaya_general.png
 
+|
 
 Required software
 ===================

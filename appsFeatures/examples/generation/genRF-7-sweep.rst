@@ -121,7 +121,7 @@ Code - Python
     
     rp.close()
 
-**Using functions: (IN DEV)**
+**Using functions: (2.07-43 or higher OS)**
 
 .. code-block:: python
 

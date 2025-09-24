@@ -1,8 +1,22 @@
 
-import link
+# Example of how to extend the external links
+# This file shows how additional external links can be added
 
-link_name = "Sphinx External Links"
-user_text = "External Links Extension"
-url = "http://www.sphinx-doc.org/en/stable/ext/extlinks.html"
+from link import EXTERNAL_LINKS, SPHINX_EXTLINKS
 
-link.xref_links.update({link_name: (user_text, url)})
+# Add more specific links
+ADDITIONAL_LINKS = {
+    'redpitaya_quickstart': 'https://redpitaya.com/Documentation/QuickStart/',
+    'vivado_downloads': 'https://www.xilinx.com/support/download.html',
+}
+
+# Update the main dictionaries
+EXTERNAL_LINKS.update(ADDITIONAL_LINKS)
+
+# Add more extlinks patterns
+ADDITIONAL_EXTLINKS = {
+    'rp-doc': ('https://redpitaya.com/Documentation/%s', 'Red Pitaya Docs: %s'),
+    'xilinx-download': ('https://www.xilinx.com/support/download/%s', 'Xilinx: %s'),
+}
+
+SPHINX_EXTLINKS.update(ADDITIONAL_EXTLINKS)

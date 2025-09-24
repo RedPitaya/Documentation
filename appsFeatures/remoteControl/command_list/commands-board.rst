@@ -85,7 +85,7 @@ Parameters and command table
 | | ``RP:LOGmode SYSLOG``                              | |                                                |                                                           |                        |
 | |                                                    | |                                                |                                                           |                        |
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+------------------------+
-| | ``RP:RET_ON_ERROR <bool>``                         | | N/A                                            | | Enables a special mode for compatibility                | in dev                 |
+| | ``RP:RET_ON_ERROR <bool>``                         | | N/A                                            | | Enables a special mode for compatibility                | 2.07-43 and up         |
 | | Examples:                                          | |                                                | | with older SCPI clients. When this mode is enabled,     |                        |
 | | ``RP:RET_ON_ERROR ON``                             | |                                                | | if errors occur when executing query commands,          |                        |
 | |                                                    | |                                                | | the server will return empty data with delimiters "\r\n"|                        |

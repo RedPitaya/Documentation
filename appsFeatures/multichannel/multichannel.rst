@@ -8,7 +8,7 @@ Multiboard synchronisation is a feature that allows you to synchronise clock and
 There are two ways to achieve clock and trigger synchronisation across multiple Red Pitaya boards:
 
 1. **Red Pitaya Click Shield Synchronisation** - multiple *External clock* Red Pitaya boards synchronised with Click Shields. Minimal clock and trigger delay and jitter.
-#. **Red Pitaya X-Channel system** - one primary and multiple secondary Red Pitaya boards connected into a daisy chain with SATA (Gen 1) or USB-C (Gen 2) cables. Clock and trigger edges degrade slightly with each additional board in the chain.
+#. **Red Pitaya X-Channel system** - one primary and multiple secondary Red Pitaya boards connected into a daisy chain with SATA (Original Gen) or USB-C (Gen 2) cables. Clock and trigger edges degrade slightly with each additional board in the chain.
 
 The synchronized boards can be controlled as any normal Red Pitaya board. However, remote control from a computer is usually preferred to as it allows for more flexibility and easier control of multiple boards from the same program.
 
@@ -29,8 +29,8 @@ How can I control synchronised boards?
 
 .. note::
 
-    Any restrictions or limitations of applications and control methods also apply to multiboard synchronisation. However, these should be interpreted **per board** and not for the full system. For example, if the Streaming application has an input data limitation of 20 MB/s per board (OS 2.05-37).
-    Therefore, if you have three boards in the system, the total input data rate is 60 MB/s (20 MB/s per board).
+    Any restrictions or limitations of applications and control methods also apply to multiboard synchronisation. However, these should be interpreted **per board** and not for the full system.
+    For example, if the *Data stream control* application has an input data limitation of 20 MB/s per board (OS 2.05-37) and we have three boards in the system, the total input data rate is 60 MB/s (20 MB/s per board).
 
 
 
@@ -125,7 +125,7 @@ For more information on the Click Shield, please see the :ref:`Click Shield docu
 X-Channel Synchronisation
 ==========================
 
-The Red Pitaya X-Channel System is a system that allows you to synchronise clock and trigger signals between multiple Red Pitaya boards. The X-Channel System consists of one **primary** device and one or more **secondary** devices connected in a daisy chain with SATA (Gen 1) or USB-C (Gen 2) cables.
+The Red Pitaya X-Channel System is a system that allows you to synchronise clock and trigger signals between multiple Red Pitaya boards. The X-Channel System consists of one **primary** device and one or more **secondary** devices connected in a daisy chain with SATA (Original Gen) or USB-C (Gen 2) cables.
 
 .. note::
 
@@ -134,6 +134,7 @@ The Red Pitaya X-Channel System is a system that allows you to synchronise clock
 .. image:: img/RPs_to_PC_conn.png
     :width: 600
 
+|
 
 Setup
 -------
@@ -152,10 +153,10 @@ The Red Pitaya X-Channel system includes two types of devices:
 
         Both devices must be one of the Pro board models (STEMlab 125-14 Pro Gen 2, STEMlab 125-14 Pro Z7020 Gen 2).
 
-    .. group-tab:: Gen 1
+    .. group-tab:: Original Gen
 
-        * one STEMlab 125-14 primary device (STEMlab 125-14 Gen 1 Low Noise).
-        * one or more STEMlab 125-14 Gen 1 Low Noise secondary devices denoted by an "S" sticker.
+        * one STEMlab 125-14 primary device (STEMlab 125-14 Low Noise).
+        * one or more STEMlab 125-14 Low Noise secondary devices denoted by an "S" sticker.
 
 
 S1 and S2 connectors are used to connect the primary and secondary devices:
@@ -172,7 +173,7 @@ It should be noted that **the secondary devices differ from the primary device h
 Cable orientation
 ~~~~~~~~~~~~~~~~~~
 
-The S1 and S2 connectors are SATA connectors on Gen 1 boards and USB-C connectors on Gen 2 boards. Usually, USB-C cables are bipolar can be connected in either direction, however, the S1 and S2 connectors are meant for sharing the clock and trigger signals and not connecting external devices.
+The S1 and S2 connectors are SATA connectors on boards and USB-C connectors on Gen 2 boards. Usually, USB-C cables are bipolar and can be connected in either direction, however, the S1 and S2 connectors are meant for sharing the clock and trigger signals and not connecting external devices.
 Therefore, the orientation of the cable is important. On Gen 2 boards, two LEDs (**L** - Link and **O** - Orientation) are located next to the S1 connector:
 
 * The **O** LED indicates the orientation of the cable.
@@ -198,7 +199,7 @@ When connecting the boards, make sure both LEDs are lit. If the **O** LED is not
 Alternative uses of S1 and S2 connectors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The S1 and S2 connectors can also be used to connect to external devices directly to the FPGA. On Gen 1 boards where SATA connectors are used, this is slightly easier as the connectors are standard SATA. Gen 2 presents a challenge as the S1 and S2 connectors do not support the USB-C standard.
+The S1 and S2 connectors can also be used to connect to external devices directly to the FPGA. On original generation boards where SATA connectors are used, this is slightly easier as the connectors are standard SATA. Gen 2 presents a challenge as the S1 and S2 connectors do not support the USB-C standard.
 
 In either case, connecting external devices to the S1 and S2 connectors requires a modification in the FPGA as the default firmware does not support this feature.
 
@@ -208,13 +209,13 @@ Board compatibility
 
 The X-channel synchronisation is out-of-the-box compatible with the following Red Pitaya board models:
 
-* :ref:`STEMlab 125-14 Pro Gen 2 <top_125_14_pro_gen2>`.
-* :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_125_14_pro_Z7020_gen2>`.
-* :ref:`STEMlab 125-14 (Gen 1) <top_125_14>`.
-* :ref:`STEMlab 125-14 Low Noise (Gen 1) <top_125_14_LN>`.
-* :ref:`STEMlab 125-14 Z7020 Low Noise (Gen 1) <top_125_14_Z7020_LN>`.
+* :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`.
+* :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_Z7020_gen2>`.
+* :ref:`STEMlab 125-14 <top_125_14>`.
+* :ref:`STEMlab 125-14 Low Noise <top_125_14_LN>`.
+* :ref:`STEMlab 125-14 Z7020 Low Noise <top_125_14_Z7020_LN>`.
 
-Board models like STEMlab 125-14 4-Input, SDRlab 122-16 have the appropriate connectors, but the FPGA is not configured to support the X-channel system.
+Board models like *STEMlab 125-14 4-Input*, *SDRlab 122-16* have the appropriate connectors, but the FPGA is not configured to support the X-channel system.
 
 The secondary devices all require hardware modifications to be able to receive the clock signal from the primary device.
 
@@ -418,7 +419,7 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 
 .. [#f1] Exact measurements will be provided in the future.
 
-.. [#f2] Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Gen 1 <rp-board-comp-gen1>` or :ref:`Gen 2 <rp-board-comp-gen2>` comparison table for more information.
+.. [#f2] Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Original Gen <rp-board-comp-orig_gen>` or :ref:`Gen 2 <rp-board-comp-gen2>` comparison table for more information.
  
 .. [#f3] Through the microBUS connectors.
 

@@ -4,11 +4,6 @@
 STEMlab 125-14 Gen 2
 #######################
 
-.. note::
-
-    **This page is currently under construction.** All relevant information will be added before the official Gen 2 release.
-    Please check back later for updates.
-
 .. TODO replace pictures
 
 .. .. figure:: img/STEMlab-125-14.jpg
@@ -182,9 +177,7 @@ Technical specifications
     
     For more information, please refer to the |Gen 2 comparison table|.
 
-.. |br| raw:: html
 
-    <br/>
 
 
 Measurements
@@ -192,7 +185,7 @@ Measurements
 
 You can find the measurements of the fast analog frontend here:
 
-* :ref:`Gen 1 - STEMlab 125-14 Gen 1 <measurements_gen1>`.
+* :ref:`Original boards - STEMlab 125-14 <measurements_orig_gen>`.
 * :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
 
 
@@ -410,7 +403,7 @@ The pinout of the extension connectors is shown in the figure below.
 Extension connector E3
 -------------------------
 
-The E3 extension connector is available on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards only.
+The E3 extension connector is available on |STEMlab 125-14 PRO Gen 2| and |STEMlab 125-14 PRO Z7020 Gen 2| boards only.
 
 
 Auxiliary analog input channels
@@ -485,13 +478,13 @@ General purpose digital input/output channels
 Fast differential pairs
 ---------------------------
 
-The fast differential pairs are available on |STEMlab 125-14 Pro Z7020 Gen 2| board only.
+The fast differential pairs are available on |STEMlab 125-14 PRO Z7020 Gen 2| board only.
 
 
 Synchronisation connectors
 ---------------------------
 
-The synchronisation connectors are available on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards only.
+The synchronisation connectors are available on |STEMlab 125-14 PRO Gen 2| and |STEMlab 125-14 PRO Z7020 Gen 2| boards only.
 
 
 Powering Red Pitaya through extension connector
@@ -517,13 +510,13 @@ The +5V pin features a 3.0 A PTC resetable fuse, which protects the board from o
 External ADC clock
 ===================
 
-The external ADC clock is available on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards only.
+The external ADC clock is available on |STEMlab 125-14 PRO Gen 2| and |STEMlab 125-14 PRO Z7020 Gen 2| boards only.
 
 
 External booting options
 ==========================
 
-External QSPI and eMMC booting is available on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards only.
+External QSPI and eMMC booting is available on |STEMlab 125-14 PRO Gen 2| and |STEMlab 125-14 PRO Z7020 Gen 2| boards only.
 
 
 Other specifications and measurements
@@ -545,7 +538,6 @@ For all other specifications and measurements please refer to the commmon |Gen 2
 .. [#f3] The output is passed through a first-order low-pass filter. Should additional filtering be required, this can be applied externally in line with the specific requirements of the application.  
 
 
-
 .. substitutions
 
 .. |E1| replace:: :ref:`E1 connector <E1_gen2>`
@@ -553,7 +545,7 @@ For all other specifications and measurements please refer to the commmon |Gen 2
 .. |E3| replace:: :ref:`E3 connector <E3_gen2>`
 .. |Gen 2 hardware specs| replace:: :ref:`Gen 2 hardware specifications <hw_specs_gen2>`
 .. |Gen 2 comparison table| replace:: :ref:`Gen 2 board comparison table <rp-board-comp-gen2>`
-.. |STEMlab 125-14 Pro Gen 2| replace:: :ref:`STEMlab 125-14 Pro Gen 2 <top_125_14_pro_gen2>`
-.. |STEMlab 125-14 Pro Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
+.. |STEMlab 125-14 PRO Gen 2| replace:: :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`
+.. |STEMlab 125-14 PRO Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
 
 .. :xref:`NB6172_datasheet`

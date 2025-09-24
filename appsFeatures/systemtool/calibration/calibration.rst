@@ -4,6 +4,13 @@
 Calibration
 ###########
 
+Calibration is an essential part of the Red Pitaya system. It ensures that the ADCs and DACs are functioning correctly and that the measurements are accurate. The Calibration application allows you to perform both DC and frequency calibration.
+The easiest way to recalibrate the Red Pitaya board is through the Calibration application, which can be accessed from the *System Tools* menu. Of course, the calibration can also be achieved through one of the following methods:
+
+* :ref:`Calibration application <calibration_app>`.
+* :ref:`Calibration command line utility <calib_util>`.
+* :ref:`C or Python API commands <API_commands>`.
+
 To open the Calibration application click on **System Tools** and then select **Calibration**.
 
 .. image:: ../img/Main_menu_system.jpg
@@ -20,6 +27,8 @@ When the Calibration application opens, you will see four options:
 .. image:: img/Calibration_api.png
     :align: center
     :width: 600
+
+|
 
 ***************
 DC Calibration
@@ -60,7 +69,9 @@ Manual DC calibration
 
 Manual DC Calibration allows you to perform the calibration manually and fine tune all the variables.
 Apart from calibration, this option also allows you to identify any parasitics on your measurement lines.
-A **50 Ω load** should be connected to the outputs (DACs) during calibration.
+
+As the DACs on some boards have output impedance of **50 Ω**, a **50 Ω load** should be connected to the outputs (DACs) during calibration for accurate results.
+This is especially true for the original generation of board models.
 
 .. image:: img/DC_manual.jpg
     :align: center
@@ -306,3 +317,13 @@ Here is a MATLAB code to simulate the filter inside the FPGA:
     title(strcat('Frequency response for AA=',aa_hex,' BB=',bb_hex,' PP=',pp_hex,' KK=',kk_hex))
     xlabel('frequency (Hz)')
     ylabel('gain (dB)')
+
+
+**************************
+Command line calibration
+**************************
+
+The calibration application is not the only way to calibrate the Red Pitaya board. The command line utility *calib* can also be used for calibration tasks.
+
+For more information on the command line utility and the different calibration formats, please refer to the :ref:`calib_util documentation <calib_util>`.
+

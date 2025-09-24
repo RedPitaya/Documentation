@@ -5,12 +5,13 @@ QSPI eMMC module - software
 
 The QSPI eMMC module provides secure and robust Red Pitaya boot and shutdown options.
 
-.. note::
+|e3_top| |e3_bottom|
 
-    **This page is currently under construction.** All relevant information will be added before the official Gen 2 release.
-    Please check back later for updates.
+.. |e3_top| image:: img/QSPI_eMMC_module_Gen2_top.png
+   :width: 600
 
-.. TODO add picture of the QSPI eMMC board
+.. |e3_bottom| image:: img/QSPI_eMMC_module_Gen2_bottom.png
+   :width: 600
 
 .. contents::
     :local:
@@ -40,20 +41,25 @@ More information about the QSPI eMMC module can be found in the :ref:`hardware s
 Software and hardware requirements
 ====================================
 
-The QSPI eMMC module is designed to be used with the Red Pitaya STEMlab 125-14 Pro Gen 2 and STEMlab 125-14 Pro Z7020 Gen 2 boards. It is connected to the Red Pitaya board via the E3 connector. The E3 connector controls the power and booting of the Red Pitaya.
+The QSPI eMMC module is designed to be used with the Red Pitaya *STEMlab 125-14 Pro Gen 2* and *STEMlab 125-14 Pro Z7020 Gen 2* boards. It is connected to the Red Pitaya board via the E3 connector. The E3 connector controls the power and booting of the Red Pitaya.
 The QSPI eMMC module is powered by the Red Pitaya board, so no additional power supply is needed. To program the QSPI eMMC module you will need the following hardware:
 
-* Red Pitaya STEMlab 125-14 Pro Gen 2 board.
+* Red Pitaya STEMlab 125-14 PRO Gen 2 board.
 * QSPI eMMC module.
 
 And one of the following:
 
 * ST-Link/V2 programmer and 5 wire 2.54mm pitch to 2.0mm pitch cable (programming via SWD).
 * USB to micro USB cable (programming via USB).
-* USB to Serial cable (3.3 V) - for example TTL-232R-3V3 (programming through UART - currently not supported).
+* TTL to USB Serial Converter cable (3.3 V) - for example TTL-232R-3V3 (programming through UART - currently not supported).
 
 The ST-Link/V2 programmer is the recommended way to program the QSPI eMMC module. It is a versatile programmer that can be used to program a wide range of STM32 microcontrollers. The USB to micro USB cable can be used to program the QSPI eMMC module via the USB port.
-The USB to Serial cable can be used to program the QSPI eMMC module via the UART port, but is currently not supported.
+The TTL to USB Serial Converter cable can be used to program the QSPI eMMC module via the UART port, which is not directly accessible on the module.
+
+.. note::
+
+    To test the connection between the QSPI eMMC module and the computer, please attempt to connect to the QSPI eMMC module with the ST-Link/V2 programmer. If the connection is unsuccessful, please check the cables between the module and the computer and try switching the USB port on the computer.
+
 
 ST-Link/V2 programmer
 ---------------------
@@ -67,26 +73,30 @@ ST-Link/V2 programmer
         :align: center
         :width: 800px
 
+
 USB connection
 --------------
 
 Connect the USB to micro USB cable between the micro USB port (CN4 connector) on the QSPI eMMC module and the computer.
 
+
 UART connection (currently not supported)
 ------------------------------------------
 
-Connect the USB to Serial cable between the UART port on the QSPI eMMC module and the computer. Make sure that the TX and RX pins are connected correctly.
+1. Connect the TTL to USB Serial Converter cable between the UART port on the QSPI eMMC module and the computer. Make sure that the TX and RX pins are connected correctly.
 
-   .. .. figure:: img/USB_to_Serial_cable.png
+    .. figure:: img/FTDI_serial_cable_pinout.png
         :alt: USB to Serial cable
         :align: center
         :width: 800px
+
+Please note that not all USB ports on the computer may work. If you have problems connecting to the QSPI eMMC module, try using a different USB port.
 
 
 Software requirements
 =====================
 
-The QSPI eMMC module featureas an STM32 microcontroller (STM32L412K8T6) which can be programmed in multiple different ways, which include:
+The QSPI eMMC module features an STM32 microcontroller (STM32L412K8T6) which can be programmed in multiple different ways, which include:
 
 * Arduino IDE + STM32 cube programer.
 * STM32CubeIDE.
@@ -151,7 +161,7 @@ Arduino IDE setup
         :align: center
         :width: 800px
 
-6. Open the Arduino sketch for the QSPI eMMC module. You can find the sketch and the latest version of the QSPI eMMC module firmware in the .. !PLACEHOLDER!#.
+6. Open the Arduino sketch for the QSPI eMMC module. You can find the sketch and the latest version of the QSPI eMMC module firmware in the :github:`RedPitaya/` - Links to any GitHub repository.. !PLACEHOLDER!#.
 
 .. `Red Pitaya GitHub repository <>`_.
 
@@ -429,7 +439,6 @@ For information on hardware specifications such as pinout of the QSPI eMMC modul
 FAQ
 ===
 
-Troubleshooting
 
 .. Linked to E3_QSPI_eMMC_module_HW section, add instructions and explanation of the basic program 
 

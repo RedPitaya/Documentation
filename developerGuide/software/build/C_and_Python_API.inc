@@ -24,7 +24,7 @@ C and Python API functions
 
 .. note::
 
-    Python API functions are only available on OS 2.00-23 or newer.
+    Python API functions are only available on OS 2.00-23 or higher.
 
 All API functions have an "int" return value. If the returned value is 0 (equal to *RP_OK*), then the function executed successfully.
 
@@ -95,7 +95,7 @@ Compiling and running Example code
 
                 redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-        .. group-tab:: OS version 2.00 or newer
+        .. group-tab:: OS version 2.00 or higher
 
             .. code-block:: shell-session
 
@@ -232,7 +232,7 @@ Compiling and running custom code
                     $(RM) *.o
                     $(RM) $(OBJS)
 
-        .. group-tab:: OS version 2.00-30 and newer
+        .. group-tab:: OS version 2.00-30 and higher
 
             .. code-block:: shell-session
 
@@ -337,14 +337,14 @@ but we do recommend using the **"Home" ("/root")** directory for code storeage.
 
     .. code-block:: shell-session
 
-        scp "path/to/pythonAPI/file" root@rp-xxxxxx.local
+        scp "path/to/pythonAPI/file" root@rp-xxxxxx.local:/root
 
 
 3.  If copying a full directory do not forget to add the **-r** flag:
 
     .. code-block:: shell-session
 
-        scp -r "path/to/pythonAPI/folder" root@rp-xxxxxx.local
+        scp -r "path/to/pythonAPI/folder" root@rp-xxxxxx.local:/root
 
 
 4.  Connect to your Red Pitaya via :ref:`SSH <ssh>` and make the files executable:
@@ -426,7 +426,7 @@ Here is a full list of Red Pitaya libraries with functionalities you can include
 |                        |                                                                              |             |
 |                        |                                                                              |             |
 +------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_la**              | API commands for logic analyzer and decoding of UART, SPI, I2C and CAN data. | in dev      |
+| **rp_la**              | API commands for logic analyzer and decoding of UART, SPI, I2C and CAN data. | 2.07-43     |
 |                        |                                                                              |             |
 |                        |                                                                              |             |
 +------------------------+------------------------------------------------------------------------------+-------------+

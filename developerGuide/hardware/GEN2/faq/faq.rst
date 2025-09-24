@@ -43,7 +43,7 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 How to switch from internal to external clock?
 ------------------------------------------------
 
-The main FPGA CLK signal on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
+The main FPGA CLK signal on |STEMlab 125-14 PRO Gen 2| and |STEMlab 125-14 PRO Z7020 Gen 2| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
 
 Both the internal oscillator clock and the external clock signal are connected to the `NB6L72`_ Differential Crosspoint Switch.
 The **CLK_SEL** pin is used to select the clock source:
@@ -58,20 +58,20 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 
 .. note::
 
-    When synchronising multiple Red Pitaya *Pro Gen 2* boards, please keep in mind that:
+    When synchronising multiple Red Pitaya *PRO Gen 2* boards, please keep in mind that:
 
     * :ref:`Click Shield synchronisation <click_shield>` works out-of-the-box.
     * :ref:`X-channel synchronisation <x-ch_streaming>` requires a hardware modification as secondary boards differ from the primary board.
 
 .. note::
 
-    Switching between internal and external clock is only available on the Gen 2 Pro board models (STEMlab 125-14 Pro Gen 2, STEMlab 125-14 Pro Z7020 Gen 2).
+    Switching between internal and external clock is only available on the Gen 2 PRO board models (STEMlab 125-14 PRO Gen 2, STEMlab 125-14 PRO Z7020 Gen 2).
 
 
 How to synchronise Gen 2 boards (multichanneling)?
 ---------------------------------------------------
 
-The Gen 2 boards can be syncrhonised in the same way as Gen 1 boards:
+The Gen 2 boards can be syncrhonised in the same way as original boards:
 
 * :ref:`Click Shield synchronisation <click_shield>` works out-of-the-box.
 * :ref:`X-channel synchronisation <x-ch_streaming>` requires a hardware modification as secondary boards differ from the primary board. Also USB-C cables are used for synchronisation instead of SATA cables.
@@ -80,10 +80,16 @@ The Gen 2 boards can be syncrhonised in the same way as Gen 1 boards:
 How to synchronise Gen 2 boards over USB-C daisy chain connection?
 --------------------------------------------------------------------
 
+Connect the two boards together with a USB-C data cable. Make sure that the Orientation and Link LEDs are lit.
+
 Please check the :ref:`X-channel synchronisation <x-ch_streaming>` section for more information.
 
-.. TODO What cable is recommended?
 
+Can I connect other devices to the USB-C daisy chain connectors?
+------------------------------------------------------------------
+
+No, the USB-C daisy chain connectors do not meet the USB-C standard and are only meant for synchronisation between multiple Red Pitaya boards. Connecting other devices may damage the board.
+For connecting peripherals, use the dedicated USB-C connector (labelled **HOST**) on the bottom side of the board.
 
 
 E3 connector and QSPI eMMC module
@@ -159,10 +165,6 @@ When the QSPI eMMC module is connected to the Red Pitaya board, Red Pitaya will 
 Check the :ref:`QSPI eMMC board <QSPI_eMMC_board>` section for more information.
 
 
-.. TODO QSPI and eMMC booting instructions
-
-
-
 Power supply
 ==============
 
@@ -181,7 +183,7 @@ Other
 Where can I find Gen 2 board schematics?
 ------------------------------------------------
 
-Board development schematics are available under each board model hardware section. For example, the |STEMlab 125-14 Pro Gen 2| schematics are avaialable under |STEMlab 125-14 Pro Gen 2| specifications.
+Board development schematics are available under each board model hardware section. For example, the |STEMlab 125-14 PRO Gen 2| schematics are avaialable under |STEMlab 125-14 PRO Gen 2| specifications.
 
 
 
@@ -190,6 +192,6 @@ Board development schematics are available under each board model hardware secti
 
 .. substitutions
 
-.. |STEMlab 125-14 Pro Gen 2| replace:: :ref:`STEMlab 125-14 Pro Gen 2 <top_125_14_pro_gen2>`
-.. |STEMlab 125-14 Pro Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
+.. |STEMlab 125-14 PRO Gen 2| replace:: :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`
+.. |STEMlab 125-14 PRO Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
 .. _NB6L72: https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf

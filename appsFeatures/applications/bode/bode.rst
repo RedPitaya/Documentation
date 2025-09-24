@@ -43,6 +43,7 @@ To open the Bode analyzer, click on the coresponding icon in the main web interf
 .. figure:: img/Bode_analyzer.png
     :width: 1000
 
+|
 
 Top settings menu
 ==================
@@ -79,7 +80,7 @@ Settings
 - **End frequency [Hz]:** The Bode analyzer ends measuring the DUT frequency response at this frequency.
 - **Steps:** Number of measurements performed. The frequency range between **Start frequency** and **End frequency** is divided according to the **Scale** setting and measurements are performed at each point.
 - **Scale:** Either liner or logarithmic sweep mode (scale). The logarithmic sweep mode enables measurements in a large frequency range, while the linear sweep mode is used for measurements in a small frequency range.
-- **Analysis:** Determines how the calculations will be performed. Either U/I (voltage/current) or FFT.
+- **Analysis:** Determines the algorithm for the calculations. It can be set to either U/I (voltage/current) or FFT. The U/I analysis uses integration to calculate the gain and phase (fast, but less accurate), while the FFT analysis uses the Fast Fourier Transform method (slower, but more accurate). Both algorithms are based on decomposing the signal into complex numbers and calculating the phase difference between them.
 
 At each frequency point Red Pitaya sends out a burst signal with **Period number** periods, one=way amplitude of **Amplitdue [V]**, offset **DC bias[V]**, and the frequency recalculated from the settings above.
 The **Averaging** deterimines wheter the final measurement is an average of all sent pulses or not.
@@ -171,31 +172,31 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
 Specifications
 =============== 
 
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  |                                            | STEMlab 125-10 (discontinued) | | STEMlab 125-14               | SIGNALlab 250-12               |
-  |                                            |                               | | STEMlab 125-14 Z7020         |                                |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Frequency span                             | 1 Hz - 50 MHz                 | 1 Hz - 60 MHz                  | 1 Hz - 60 MHz                  |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Frequency resolution                       | 1 Hz                          | 1 Hz                           | 1 Hz                           |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Excitation signal amplitude                | 0 - 1 V                       | 0 - 1 V                        | 0 - 1 V                        |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Excitation signal DC bias                  | 0 - 1 V (max 1 V - Amplit.)   | 0 - 1 V (max 1 V - Amplit.)    | 0 - 1 V (max 1 V - Amplit.)    |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Resolution                                 | 10 bit                        | 14 bit                         | 12 bit                         |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Maximum number of steps per measurement    | 1000                          | 1000                           | 1000                           |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Max input amplitude                        | | ± 1 V (LV jumper settings), | |  ± 1 V (LV jumper settings), | |  ± 1 V (Low Gain),           |
-  |                                            | | ± 20 V (HV jumper settings) | |  ± 20 V (HV jumper settings) | |  ± 20 V (High Gain)          |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Measured parameters                        | Gain, Phase                   | Gain, Phase                    | Gain, Phase                    |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Frequency sweep modes                      | Linear/Logarithmic            | Linear/Logarithmic             | Linear/Logarithmic             |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
-  | Analysis modes                             | U/I, FFT                      | U/I, FFT                       | U/I, FFT                       |
-  +--------------------------------------------+-------------------------------+--------------------------------+--------------------------------+
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+|                                            | | STEMlab 125-14               | SIGNALlab 250-12               | STEMlab 125-10 (discontinued) |
+|                                            | | STEMlab 125-14 Z7020         |                                |                               |
++============================================+================================+================================+===============================+
+| Frequency span                             | 1 Hz - 60 MHz                  | 1 Hz - 60 MHz                  | 1 Hz - 50 MHz                 |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Frequency resolution                       | 1 Hz                           | 1 Hz                           | 1 Hz                          |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Excitation signal amplitude                | 0 - 1 V                        | 0 - 1 V                        | 0 - 1 V                       |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Excitation signal DC bias                  | 0 - 1 V (max 1 V - Amplit.)    | 0 - 1 V (max 1 V - Amplit.)    | 0 - 1 V (max 1 V - Amplit.)   |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Resolution                                 | 14 bit                         | 12 bit                         | 10 bit                        |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Maximum number of steps per measurement    | 1000                           | 1000                           | 1000                          |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Max input amplitude                        | |  ± 1 V (LV jumper settings), | |  ± 1 V (Low Gain),           | | ± 1 V (LV jumper settings), |
+|                                            | |  ± 20 V (HV jumper settings) | |  ± 20 V (High Gain)          | | ± 20 V (HV jumper settings) |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Measured parameters                        | Gain, Phase                    | Gain, Phase                    | Gain, Phase                   |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Frequency sweep modes                      | Linear/Logarithmic             | Linear/Logarithmic             | Linear/Logarithmic            |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
+| Analysis modes                             | U/I, FFT                       | U/I, FFT                       | U/I, FFT                      |
++--------------------------------------------+--------------------------------+--------------------------------+-------------------------------+
 
 .. note::
 

@@ -769,6 +769,4 @@ Free applications
 To build free applications, follow the instructions given :download:`here <https://github.com/RedPitaya/RedPitaya/blob/master/apps-free/README.md>`.
 
 
-.. |br| raw:: html
 
-   <br/>

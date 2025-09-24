@@ -63,7 +63,7 @@ Here are the main features of the Streaming application:
 * Continuous data streaming to Red Pitaya fast analog outputs (:ref:`maximum DAC data streaming rate limitations <streaming_limits>`):
 
     * Remotely from a file on a computer via the TCP ethernet protocol (:ref:`max 5 MHz DAC rate <streaming_limits>`).
-    * Locally from a file on the Red Pitaya SD card (:ref:`See <streaming_limits>`).
+    * Locally from a file on the Red Pitaya SD card (:ref:`See data streaming limitations <streaming_limits>`).
 
 * GPIO data streaming (**Future development**):
 
@@ -448,7 +448,7 @@ Configuration can be set over the WEB interface UI, which is afterwards stored i
 
 .. tabs::
 
-    .. group-tab:: OS version IN DEV or newer
+    .. group-tab:: OS version 2.07-43 or newer
 
         The configuration file has been updated to make all settings more user-friendly, but it is now incompatible with older versions.
 
@@ -538,7 +538,7 @@ The maximum data rates (per board) are determined by the hardware capabilities o
 
 .. tabs::
 
-    .. group-tab:: OS IN DEV or newer
+    .. group-tab:: OS 2.07-43 or newer
 
         * 10 MB/s for streaming to an SD card (SD card class 10 is recommended for optimal streaming performance).
         * 62.5 MB/s for streaming over 1 Gbit network (:ref:`connecting the board to a router <LAN>` is recommended to achieve the best streaming performance). This setting depends on the client.
@@ -558,7 +558,7 @@ Highest possible data rate
 
 The highest possible data rate is achieved using:
 
-1. `Command line client <Remote streaming (command line client)>`_,
+1. :ref:`Command line client <stream_command_client>`,
 2. **RAW** data format,
 3. **Binary** file type.
 
@@ -621,7 +621,7 @@ Here are limitations for the **dac_rate** variable for each of the two modes:
 
 .. tabs::
 
-    .. group-tab:: OS IN DEV or newer
+    .. group-tab:: OS 2.07-43 or newer
 
         * **One-pack mode**: The maximum **dac_rate** is 125 MHz (125 MS/s).
         * **True streaming mode**: The maximum stable **dac_rate** is about 5 MHz (5 MS/s) for 16-bit resolution. Setting the DAC rate higher may result in data loss and unstable signal generation.
@@ -694,7 +694,6 @@ The `Streaming application source code <https://github.com/RedPitaya/RedPitaya/t
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
 
-.. |br| raw:: html
 
     <br>
 

@@ -47,7 +47,7 @@ The Red Pitaya is used everywhere from the `International Space Station <https:/
 * :ref:`Connection <quickstart_connect>`.
 * :ref:`Applications <all_apps>`.
 * :ref:`Programming <programming>`.
-* :ref:`FPGA <build-fpga>`.
+* :ref:`FPGA <fpga_top>`.
 * :ref:`Customization <customization>`.
 * `Shop <https://redpitaya.com/shop/>`_.
 

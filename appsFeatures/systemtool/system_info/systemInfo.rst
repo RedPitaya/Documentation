@@ -16,6 +16,10 @@ In the four corners of the Red Pitaya web interface there are the following widg
 3. **Download system report:** Downloads a .zip file with information for the developers. Please attach it to the support mail with the issue description. The report should download after approx. 15 seconds.
 4. **Current OS and ecosystem version:** Reroutes to the :ref:`Software update tool <software_update_manager>` if clicked. At boot, Red Pitaya checks for software updates and displays a yellow exclamation mark here if a new release is available.
 
+.. note::
+
+    The ecosystem version for nightly builds is labelled 2.00-0, as shown in the image above.
+
 
 General OS and Ecosystem info
 =================================
@@ -27,10 +31,6 @@ Once the Info button is clicked, the following settings will be displayed:
     :width: 800
 
 In the **System Info** section, general information regarding *Board model*, *MAC address*, *DNA number*, etc. is displayed.
-
-.. note::
-
-    The ecosystem version for nightly builds is labelled 2.00-0, as shown in the image above.
 
 The **System Settings** section contains the following options:
 
@@ -70,14 +70,14 @@ As can be seen in the above picture, the system info page displays both the curr
 The maximum size of the allocated backup memory varies depending on the board model. The table below shows the maximum size of the allocated backup memory for each board model.
 
 +--------------------------------+--------------------------------------------+----------------------+----------------------+--------------------------------------------+
-|                                | **STEMlab 125-14 Gen 2** |br|              | **STEMlab 125-14 Pro Z7020 Gen 2** |br|     | **STEMlab 125-10 (discontinued)**          |
-|                                | **STEMlab 125-14 Pro Gen 2** |br|          | **SIGNALlab 250-12**                        |                                            |
-|                                | **STEMlab 125-14 (Gen 1)** |br|            |                                             |                                            |
+|                                | **STEMlab 125-14 Gen 2** |br|              | **STEMlab 125-14 PRO Z7020 Gen 2** |br|     | **STEMlab 125-10 (discontinued)**          |
+|                                | **STEMlab 125-14 PRO Gen 2** |br|          | **SIGNALlab 250-12**                        |                                            |
+|                                | **STEMlab 125-14** |br|                    |                                             |                                            |
 |                                | **STEMlab 125-14 4-Input** |br|            |                                             |                                            |
 |                                | **SDRlab 122-16**                          |                                             |                                            |
 |                                |                                            |                                             |                                            |
 +================================+============================================+======================+======================+============================================+
-| RAM mode                       |                                            | 512 MB mode          | 1 GB mode            |                                            |
+| RAM mode                       | N/A                                        | 512 MB mode          | 1 GB mode            | N/A                                        |
 +--------------------------------+--------------------------------------------+----------------------+----------------------+--------------------------------------------+
 | RAM on board                   | 512 MB                                     | 1 GB                                        | 256 MB                                     |
 +--------------------------------+--------------------------------------------+----------------------+----------------------+--------------------------------------------+
@@ -94,7 +94,3 @@ The board must be rebooted after changing the size of the reserved memory for th
 
 
 .. substitutions
-
-.. |br| raw:: html
-
-    <br/>

@@ -29,7 +29,7 @@ we have an extension module compatible with **Grove** modules from |Seeed®|. Al
 
 Want to use an Arduino Uno shield? They can be plugged directly into the Sensor extension board. The extension module can also be powered from the external power supply using a micro USB cable.
 
-A set of nine Jumpers can reconnect certain extension module connectors to different :ref:`E1 <E1_gen1>` or :ref:`E2 <E2_gen1>` pins or change power supply settings.
+A set of nine Jumpers can reconnect certain extension module connectors to different :ref:`E1 <E1_orig_gen>` or :ref:`E2 <E2_orig_gen>` pins or change power supply settings.
 For example, with J1 and J3, you can set the shield power source (VCC) to either an external power supply or get the power from Red Pitaya.
 A full schematic of the extension module is available below.
 

@@ -1,13 +1,8 @@
-.. _top_65_16_TI_gen2:
+.. _top_65_16_TI:
 
 #################################
-STEMlab 65-16 TI Gen 2
+STEMlab 65-16 TI
 #################################
-
-.. note::
-
-    **This page is currently under construction.** All relevant information will be added before the official Gen 2 release.
-    Please check back later for updates.
 
 
 .. TODO replace pictures
@@ -35,8 +30,8 @@ Features
 Pinout
 ========
 
-.. figure:: ../125-14_Gen2/img/RedPitaya_Gen2_pinout.png
-    :alt: Red Pitaya Gen 2 pinout
+.. figure:: img/RedPitaya_TI_pinout.png
+    :alt: Red Pitaya TI pinout
     :width: 800
 
 |
@@ -195,9 +190,7 @@ Technical specifications
     
     For more information, please refer to the |Gen 2 comparison table|.
 
-.. |br| raw:: html
 
-    <br/>
 
 
 Measurements
@@ -209,7 +202,7 @@ Measurements
     
 You can find the measurements of the fast analog frontend here:
 
-* :ref:`Gen 1 - STEMlab 125-14 Gen 1 <measurements_gen1>`.
+* :ref:`Original boards - STEMlab 125-14 <measurements_orig_gen>`.
 * :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
 
 
@@ -532,6 +525,71 @@ to the next board in the chain while the S2 connector is used exclusively for re
     The Connectors S1 and S2 are used only for interconnection between two Red Pitaya modules. Note that connection is not compliant with USB-C specification.
     Do not connect S1 or S2 to any other USB-C ports except Red Pitaya S1 and S2 connectors.
 
+S1
+-----
+
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| Pin | USB-C Signal | Description          | FPGA pin number | FPGA pin description   | Voltage levels | Voltage levels | FPGA pin description   | FPGA pin number | Description          | USB-C Signal | Pin |
++=====+==============+======================+=================+========================+================+================+========================+=================+======================+==============+=====+
+| A1  | GND          |                      |                 |                        |                |                |                        |                 |                      | GND          | B12 |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A2  | TX1+         | Daisy_IO0_P          | T12             | IO_L2P_T0_34           | 3V3            | 3V3            |                        |                 | NC                   | RX1+         | B11 |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A3  | TX1-         | Daisy_IO0_N          | U12             | IO_L2N_T0_34           | 3V3            | 3V3            |                        |                 | NC                   | RX1-         | B10 |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A4  | VBUS         | [#f7]_               |                 |                        | 3V3            | 3V3            |                        |                 | [#f7]_               | VBUS         | B9  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A5  | CC1          | S1_Orient [#f8]_     | W6              | IO_L22N_T3_13          | 3V3            | 3V3            |                        |                 | NC                   | SBU2         | B8  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A6  | D1+          | D2+                  |                 |                        | 3V3            | 3V3            |                        |                 | D1-                  | D2-          | B7  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A7  | D1-          | D2-                  |                 |                        | 3V3            | 3V3            |                        |                 | D1+                  | D2+          | B6  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A8  | SBU1         | NC                   |                 |                        | 3V3            | 3V3            | IO_L22P_T3_13          | V6              | S1_Link [#f8]_       | CC2          | B5  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A9  | VBUS         | [#f7]_               |                 |                        | 3V3            | 3V3            |                        |                 | [#f7]_               | VBUS         | B4  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A10 | RX2-         | NC                   |                 |                        | 3V3            | 3V3            | IO_L11N_T1_SRCC_34     | U14             | Daisy_IO1_N          | TX2-         | B3  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A11 | RX2+         | NC                   |                 |                        | 3V3            | 3V3            | IO_L11P_T1_SRCC_34     | U15             | Daisy_IO1_P          | TX2+         | B2  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A12 | GND          |                      |                 |                        |                |                |                        |                 |                      | GND          | B1  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+
+
+S2
+-----
+
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| Pin | USB-C Signal | Description          | FPGA pin number | FPGA pin description   | Voltage levels | Voltage levels | FPGA pin description   | FPGA pin number | Description          | USB-C Signal | Pin |
++=====+==============+======================+=================+========================+================+================+========================+=================+======================+==============+=====+
+| A1  | GND          |                      |                 |                        |                |                |                        |                 |                      | GND          | B12 |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A2  | TX1+         | NC                   |                 |                        | 3V3            | 1V8            |                        |                 | Daisy_IO2_P          | RX1+         | B11 |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A3  | TX1-         | NC                   |                 |                        | 3V3            | 1V8            |                        |                 | Daisy_IO2_N          | RX1-         | B10 |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A4  | VBUS         | [#f7]_               |                 |                        | 3V3            | 3V3            |                        |                 | [#f7]_               | VBUS         | B9  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A5  | CC1          | [#f9]_               |                 |                        | 3V3            | 3V3            |                        |                 | NC                   | SBU2         | B8  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A6  | D1+          | D2+                  |                 |                        | 3V3            | 3V3            |                        |                 | D1-                  | D2-          | B7  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A7  | D1-          | D2-                  |                 |                        | 3V3            | 3V3            |                        |                 | D1+                  | D2+          | B6  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A8  | SBU1         | NC                   |                 |                        | 3V3            | 3V3            |                        |                 | NC                   | CC2          | B5  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A9  | VBUS         | [#f7]_               |                 |                        | 3V3            | 3V3            |                        |                 | [#f7]_               | VBUS         | B4  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A10 | RX2-         | Daisy_IO3_N          |                 |                        | 1V8            | 3V3            |                        |                 | NC                   | TX2-         | B3  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A11 | RX2+         | Daisy_IO3_P          |                 |                        | 1V8            | 3V3            |                        |                 | NC                   | TX2+         | B2  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+| A12 | GND          |                      |                 |                        |                |                |                        |                 |                      | GND          | B1  |
++-----+--------------+----------------------+-----------------+------------------------+----------------+----------------+------------------------+-----------------+----------------------+--------------+-----+
+
+.. TODO check the voltage levels
+
 
 Powering Red Pitaya through extension connector
 ================================================
@@ -556,7 +614,7 @@ The +5V pin features a 3.0 A PTC resetable fuse, which protects the board from o
 External ADC clock
 ===================
 
-The main FPGA CLK signal on |STEMlab 125-14 Pro Gen 2| and |STEMlab 125-14 Pro Z7020 Gen 2| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
+The main FPGA CLK signal on |STEMlab 125-14 PRO Gen 2| and |STEMlab 125-14 PRO Z7020 Gen 2| boards can be supplied from an external source through the **Ext. ADC Clk±** ports.
 
 Both the internal oscillator clock and the external clock signal are connected to the `NB6L72`_ Differential Crosspoint Switch.
 The **CLK_SEL** pin is used to select the clock source:
@@ -571,7 +629,7 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 
 .. note::
 
-    When synchronising multiple Red Pitaya *Pro Gen 2* boards, please keep in mind that:
+    When synchronising multiple Red Pitaya *PRO Gen 2* boards, please keep in mind that:
 
     * :ref:`Click Shield synchronisation <click_shield>` works out-of-the-box.
     * :ref:`X-channel synchronisation <x-ch_streaming>` requires a hardware modification as secondary boards differ from the primary board.
@@ -591,14 +649,14 @@ For all other specifications and measurements please refer to the common |Gen 2 
 .. rubric:: Footnotes
 
 .. [#f1] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
-
 .. [#f2] The external ADC clock goes first to the `NB6L72`_ clock selector chip, then passes through the ADC to finally reach the FPGA pins.
-
 .. [#f3] For exact voltage levels, please refer to the `NB6L72`_ datasheet.
-
 .. [#f4] The default software enables sampling at a CPU-dependent speed. To acquire data at a 100 kS/s rate, additional FPGA processing must be implemented.
-
 .. [#f5] The output is passed through a first-order low-pass filter. Should additional filtering be required, this can be applied externally in line with the specific requirements of the application.  
+.. [#f7] VBUS connectors are connected together on the board. They are not connected to the board power supply.
+.. [#f8] On the S1 connector, the CC1 pin is connected to the Orient LED and to the S1_ORIENT FPGA pin (via resistor divider to reduce the voltage levels to 2V5). CC1 and CC2 pins are connected to an XOR gate which determines the state of the **Link LED**. The output of the XOR gate is also connected to the S1_LINK FPGA pin (via resistor divider to reduce the voltage levels to 2V5).
+.. [#f9] On the S2 connector, the CC1 pin is is protected with a Zenner diode to 3V3., but is not connected to the FPGA. CC2 pin is not connected.
+
 
 
 .. substitutions
@@ -607,8 +665,8 @@ For all other specifications and measurements please refer to the common |Gen 2 
 .. |E2| replace:: :ref:`E2 connector <E2_gen2>`
 .. |Gen 2 hardware specs| replace:: :ref:`Gen 2 hardware specifications <hw_specs_gen2>`
 .. |Gen 2 comparison table| replace:: :ref:`Gen 2 board comparison table <rp-board-comp-gen2>`
-.. |STEMlab 125-14 Pro Gen 2| replace:: :ref:`STEMlab 125-14 Pro Gen 2 <top_125_14_pro_gen2>`
-.. |STEMlab 125-14 Pro Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
+.. |STEMlab 125-14 PRO Gen 2| replace:: :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`
+.. |STEMlab 125-14 PRO Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
 .. _NB6L72: https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf
 
 

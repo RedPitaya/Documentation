@@ -52,7 +52,7 @@ After logging in, the main screen will display the directory contents of Red Pit
 .. figure:: ../img/Nautilus_root_fs.png
    :align: center
 
-
+|
 
 Copying data - Windows users
 ----------------------------
@@ -61,7 +61,7 @@ Windows users should use an SCP client such as |WinSCP|. Download and install it
 
 .. |WinSCP| raw:: html
 
-    <a href="http://winscp.net/download/winscp518setup.exe" target="_blank">WinSCP</a>
+    <a href="https://winscp.net/eng/index.php" target="_blank">WinSCP</a>
 
 
 .. figure:: ../img/WinSCP_login_screen.png

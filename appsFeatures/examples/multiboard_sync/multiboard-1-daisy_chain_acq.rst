@@ -36,7 +36,7 @@ SCPI Code Examples
 Code - MATLAB
 --------------
 
-.. note:: ../matlab.inc
+.. include:: ../matlab.inc
 
 .. code-block:: matlab
 

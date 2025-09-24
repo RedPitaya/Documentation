@@ -268,7 +268,7 @@ Convert tool
 
 .. tabs::
 
-    .. group-tab:: OS IN DEV or newer
+    .. group-tab:: OS 2.07-43 or newer
 
         The convert tool allows you to convert the *.bin* file format into a *.csv*, *.tdms*, or *.wav* file.
 
@@ -309,7 +309,6 @@ Convert tool
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
 
-.. |br| raw:: html
 
     <br>
 

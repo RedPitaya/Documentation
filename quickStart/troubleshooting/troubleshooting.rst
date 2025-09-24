@@ -78,7 +78,7 @@ Firstly, you should check the status LEDs as they will give you feedback on the 
 #.  If both the **Green** and **Blue** LEDs are **ON**, but the **Red** and **Orange** LEDs stop flashing a few seconds after booting, only to remain ON for about 2 seconds, and then the cycle repeats.
     This indicates that the **Red Pitaya is in a reboot cycle**. Note that the red and orange LEDs will always start flashing approximately 10 seconds after the green and blue LEDs are turned ON.
 
-    * Check your Red Pitaya board model. If you are using an external clock version, check that the external clock signal is correctly connected to the :ref:`E2 <E2_gen1>` connector. Make sure that the clock specifications match the recommended ones:
+    * Check your Red Pitaya board model. If you are using an external clock version, check that the external clock signal is correctly connected to the :ref:`E2 <E2_orig_gen>` connector. Make sure that the clock specifications match the recommended ones:
 
         * :ref:`STEMlab 125-14 External Clock <top_125_14_EXT>`.
         * :ref:`SDRlab 122-16 External Clock <top_122_16_EXT>`.
@@ -100,7 +100,7 @@ If the status LEDs are working normally, the Red Pitaya is booting correctly. If
 
     .. note::
 
-        **Windows 7/8** users should install `Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`_, otherwise access to ``*.local`` addresses will not work.
+        **Windows 7/8** users should install :download:`Bonjour Print Services <https://downloads.redpitaya.com/tools/BonjourPSSetup.exe>`, otherwise access to ``*.local`` addresses will not work.
 
         **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install any additional software.
 
@@ -114,7 +114,7 @@ Check the serial console boot log
 If the status LEDs are working normally and the network connection debugging does not resolve the issue, meaning that the board is inaccessible through the web interface or the :ref:`SSH connection <ssh>`, please try the following sequence:
 
 1. Power up the board and connect the Ethernet cable as normal.
-#. After booting the board, connect a serial console cable (micro-USB to USB-A for Gen 1 boards, or USB-C to USB-A for Gen 2 boards) between the Red Pitaya board and your computer.
+#. After booting the board, connect a serial console cable (micro-USB to USB-A for Original Gen of boards, or USB-C to USB-A for Gen 2 boards) between the Red Pitaya board and your computer.
 #. In a command prompt or terminal, type ``arp -a`` and check if the Red Pitaya is listed on the local network.
 #. ``ping`` the Red Pitaya IP address or the ``rp-xxxxxx.local`` address. Do this even if the IP address is unreachable or the board does not appear on the local network.
 #. Try connecting to the board's web interface using either the IP address or the ``rp-xxxxxx.local`` address in the browser's URL window.
@@ -145,10 +145,10 @@ Advanced Troubleshooting
         :width: 600
 
 #. If you have updated from 1.04 (or older) to 2.00 OS version, check GitHub issues |#250| and |#254|.
-#. For STEMlab 125-14 Gen 1 board models, check if the UART TX pin on the :ref:`E2 <E2_gen1>` connector is driven high (3V3) before or during the boot sequence, this can prevent you from logging into the unit.
+#. For Original Gen STEMlab 125-14 board models, check if the UART TX pin on the :ref:`E2 <E2_orig_gen>` connector is driven high (3V3) before or during the boot sequence, this can prevent you from logging into the unit.
 #. Try connecting via :ref:`serial console <console>`. Check the boot log and see if you can access the built-in Linux terminal.
 #. Check the :ref:`nightly builds changelog <nightly_builds>` for any relevant updates.
-#. Check the known hardware issues for :ref:`Gen 1 <known_hw_issues_gen1>` and ::ref:`Gen 2 <known_hw_issues_gen2>` boards and known software issues in the :ref:`software section <known_sw_issues>`.
+#. Check the known hardware issues for :ref:`Original Gen <known_hw_issues_orig_gen>` and :ref:`Gen 2 <known_hw_issues_gen2>` boards and known software issues in the :ref:`software section <known_sw_issues>`.
 
 
 Extremely rare cases
@@ -194,7 +194,7 @@ Red Pitaya is constantly rebooting?
       Check the external clock specifications and instructions for your Red Pitaya board model:
 
         * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
-        * :ref:`STEMlab 125-14 External clock (Gen 1) <top_125_14_EXT>`.
+        * :ref:`STEMlab 125-14 External clock <top_125_14_EXT>`.
         * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
 
 
@@ -202,7 +202,7 @@ How to connect the external clock to RP?
 ------------------------------------------
 
     * :ref:`STEMlab 125-14 Gen 2<top_125_14_gen2>`.
-    * :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 External clock (Gen 1) <top_125_14_EXT>`.
+    * :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 External clock <top_125_14_EXT>`.
     * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
 
 
@@ -460,26 +460,20 @@ Here is a compatibility table for all the lock-in and PID applications that are 
 | Linien                        | 3rd party            | | 2.00-15 and above                                  | STEMlab 125-14 (LN, Ext. clk)       | `Linien GitHub <https://github.com/linien-org/linien>`_                     |
 |                               |                      | | 1.04 (limited compatibility)                       |                                     |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
-| Lock-in+PID (Marcelo Luda)    | 3rd party            | 1.04-28 or older                                     | | STEMlab 125-14 (LN, Ext. clk)     | `Lock-in+PID GitHub <https://marceluda.github.io/rp_lock-in_pid/>`_         |
-|                               |                      |                                                      | | STEMlab 125-10 (discontinued)     |                                                                             |
+| Lock-in+PID (Marcelo Luda)    | 3rd party            | | 2.00 or higher                                     | | STEMlab 125-14 (LN, Ext. clk)     | `Lock-in+PID GitHub <https://marceluda.github.io/rp_lock-in_pid/>`_         |
+|                               |                      | | 1.04                                               | | STEMlab 125-10 (discontinued)     |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
-| PyRPL                         | 3rd party            | | 2.00 or higher (check :ref:`our docs <pyrpl>`)     | | STEMlab 125-14 (LN, Ext. clk)     | `PyRPL documentation <https://pyrpl.readthedocs.io/en/latest/>`_            |
-|                               |                      | | 1.04-28 or older (from PyRPL docs)                 | | STEMlab 125-10 (discontinued)     |                                                                             |
+| PyRPL                         | 3rd party            | | 2.00 or higher                                     | | STEMlab 125-14 (LN, Ext. clk)     | `PyRPL documentation <https://pyrpl.readthedocs.io/en/latest/>`_            |
+|                               |                      | | 1.04                                               | | STEMlab 125-10 (discontinued)     |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 
 |
 
 .. note::
 
-    Using other board models is possible, but requires a change in the FPGA to account for a different FPGA (Zynq 7020 instead of Zynq 7010).
-
-The PyRPL executables for 2.00 are available :ref:`here <pyrpl>`.
-
-.. note::
-
     With the 2.00 Unified OS, we also updated Ubuntu to 22.04 LTS, which introduced registry changes implemented by AMD Xilinx in the way the FPGA bitstream image is loaded into the FPGA. As a result, we had to update all official applications to work with the new structure.
-    Unfortunately, not all 3rd party applications have been updated, so they may not work with the latest OS versions. In this case, we recommend either downgrading the Red Pitaya OS version to 1.04 or using an alternative application.
-
+    Unfortunately, not all 3rd party applications have been updated, so they may not work with the latest OS versions. We recommend checking the specific application website for any updates that enable the 2.00 OS compatibility and installing them.
+    Alternatively, please downgrade the Red Pitaya OS version to 1.04 or use an alternative application.
 
 
 .. _faq_sw:
@@ -559,13 +553,13 @@ Where can I find Red Pitaya schematics, 3D models (.step), and important compone
 Please take a look at **Developers guide Hardware => board model => Schematics, Mechanical Specifications and 3D Models**. See the general link above, or board-specific links below.
 
     * :ref:`STEMllab 125-14 Gen 2 <top_125_14_gen2>`.
-    * :ref:`STEMlab 125-14 Gen 1 <top_125_14>`.
+    * :ref:`STEMlab 125-14 <top_125_14>`.
     * :ref:`SDRlab 122-16 <top_122_16>`.
     * :ref:`SIGNALlab 250-12 <top_250_12>`.
     * :ref:`STEMlab 125-10 <top_125_10>`.
 
 
-Is there a hardware difference between the STEMlab125-14 and the ISO17025 versions?
+Is there a hardware difference between the STEMlab 125-14 and the ISO17025 versions?
 --------------------------------------------------------------------------------------
 
 No, the hardware is identical. The only difference is that the latter would have been sent to a certification lab and the appropriate measurements would have been made.
@@ -596,7 +590,7 @@ What are the main differences between different Red Pitaya boards?
 
 Take a look at the board comparison tables:
 
-* :ref:`Gen 1 board comparison table <rp-board-comp-gen1>`.
+* :ref:`Original Gen board comparison table <rp-board-comp-orig_gen>`.
 * :ref:`Gen 2 board comparison table <rp-board-comp-gen2>`.
 
 
@@ -631,7 +625,7 @@ Please email us at support@redpitaya.com with the following information
 
 .. |Wifi channel| raw:: html
 
-    <a href="http://www.howtogeek.com/howto/21132/change-your-wi-fi-router-channel-to-optimize-your-wireless-signal/" target="_blank">change your wifi router channel in order to optimize your wireless signal</a>
+    <a href="https://helpdeskgeek.com/how-to-change-your-wi-fi-channel-and-improve-performance/" target="_blank">change your wifi router channel in order to optimize your wireless signal</a>
 
 .. |Wireless Diagnostic Tool| raw:: html
 

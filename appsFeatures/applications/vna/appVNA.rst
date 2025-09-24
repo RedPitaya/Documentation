@@ -37,6 +37,7 @@ Connect Vector Network Analyzer bridge to the Red Pitaya
    :align: center
    :width: 600
 
+|
 
 Install & run network Vector Network Analyzer control app
 =========================================================
@@ -153,6 +154,7 @@ Address: xxx.xxx.xxx.xxx .
     :width: 150 px
     :align: center
 
+|
 
 Connect by entering RedPitaya URL:
 ----------------------------------
@@ -169,6 +171,8 @@ Run the Vector Network Analyzer application on the Red Pitaya
     :width:  150px
     :align: center
 
+|
+
 Click "Connect" inside the Vector Network Analyzer control app
 ==============================================================
 
@@ -176,6 +180,7 @@ Click "Connect" inside the Vector Network Analyzer control app
     :align: center
     :width: 600
 
+|
 
 ***************************************
 Perform calibration and start measuring
@@ -219,6 +224,7 @@ Perform calibration and start measuring
         :align: center
         :width: 600
 
+|
 
 Examples:
 =========
@@ -241,6 +247,7 @@ Examples:
     :align: center
     :width: 600
 
+|
 
 Author & Source
 ===============

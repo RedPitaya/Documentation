@@ -37,10 +37,6 @@ Features
     .. figure:: img/Jupyter_kernel.png
         :width: 800
 
-.. |matplotlib| raw:: html
-
-    <a href="https://matplotlib.org/" target="_blank">matplotlib</a>
-    
 .. |Markdown| raw:: html
 
     <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a>

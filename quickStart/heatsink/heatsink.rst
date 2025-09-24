@@ -8,9 +8,23 @@ The heatsink interface is CNC machined from aluminium to match the profile of th
 
 Benefits of the heatsink interface:
 
-    * Better cooling than the standard heatsink on the STEMlab 125-14 (increased :ref:`temperature operating range <board_operation_gen1>`),
+    * Better cooling than the standard heatsink on the STEMlab 125-14 (increased :ref:`temperature operating range <board_operation_orig_gen>`),
     * Easy to install,
     * Can be used with any external heatsink.
+
+
+Compatibility
+===================
+
+The heatsink interface is compatible with the following Red Pitaya models:
+
+    * STEMlab 125-14 (also Ext. Clk. and Low-Noise versions),
+    * STEMlab 125-10.
+
+.. note::
+
+    Please note that STEMlab 125-14 4-Input is not compatible with the heatsink interface.
+
 
 Components
 ============
@@ -39,18 +53,6 @@ Heatsink interface dimensions:
     :width: 1000
 
     Dimensioned drawing of heatsink interface
-
-Compatibility
-===================
-
-The heatsink interface is compatible with the following Red Pitaya models and their variations:
-
-    * STEMlab 125-14 Gen 1,
-    * STEMlab 125-10 (discontinued).
-
-.. note::
-
-    Please note that STEMlab 125-14 4-Input is not compatible with the heatsink interface.
 
 
 Before the assembly

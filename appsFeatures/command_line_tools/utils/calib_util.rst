@@ -11,34 +11,34 @@ Usage instructions:
 
 .. code-block:: console
 
-    redpitaya> calib
-    calib version 2.07-494-d5436699b
+    root@rp-f0a235:~# calib
+    calib version 2.07-583-d4d522b21
 
     Usage: calib [OPTION]...
 
     OPTIONS:
-        -r    Read calibration values from eeprom (to stdout).
-            The -n flag has no effect. The system automatically determines the type of stored data.
+    -r    Read calibration values from eeprom (to stdout).
+        The -n flag has no effect. The system automatically determines the type of stored data.
 
-        -w    Write calibration values to eeprom (from stdin).
-            Possible combination of flags: -wn, -wf, -wfn, -wmn, -wfmn
+    -w    Write calibration values to eeprom (from stdin).
+        Possible combination of flags: -wn, -wf, -wfn, -wmn, -wfmn
 
-        -f    Use factory address space.
-        -d    Reset calibration values in eeprom from factory zone. WARNING: Saves automatic to a new format
+    -f    Use factory address space.
+    -d    Reset calibration values in eeprom from factory zone. WARNING: Saves automatic to a new format
 
-        -i    Reset calibration values in eeprom by default
-            Possible combination of flags: -in , -inf.
+    -i    Reset calibration values in eeprom by default
+        Possible combination of flags: -in , -inf.
 
-        -o    Converts the calibration from the user zone to the old calibration format. For ecosystem version 0.98
+    -o    Converts the calibration from the user zone to the old calibration format. For ecosystem version 0.98
 
-        -v    Produce verbose output.
-        -h    Print this info.
-        -x    Print in hex.
-        -u    Print stored calibration in unified format.
+    -v    Produce verbose output.
+    -h    Print this info.
+    -x    Print in hex.
+    -u    Print stored calibration in unified format.
 
-        -m    Modify specific parameter in universal calibration
-        -n    Flag for working with the new calibration storage format.
-        -e    Disables the ADC filter completely in the FPGA when the calibration is reset to default.
+    -m    Modify specific parameter in universal calibration
+    -n    Flag for working with the new calibration storage format.
+    -e    Disables the ADC filter completely in the FPGA when the calibration is reset to default.
 
 To properly calibrate the Red Pitaya using the *calib* utility, we need to understand the calibration format we are working with. There are 4 different types of calibration:
 
@@ -46,7 +46,7 @@ To properly calibrate the Red Pitaya using the *calib* utility, we need to under
     
     * STEMlab 125-14 and 125-10.
     * STEMlab 125-14 4-Input.
-    * SIGNALlab 250-12
+    * SIGNALlab 250-12.
     
     You can find the `calibration specifications here <https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api-hw-calib/src/calib_structs.h>`_.
 
