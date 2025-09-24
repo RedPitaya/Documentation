@@ -31,7 +31,7 @@ Contents:
     
 * On the inside, there is a block in the upper part of the case (on the right in the picture above) that dissipates heat to the case. So the whole case acts as a heat sink.
 * On the bottom of the case, there are openings for some air vents (left in the picture above).
-* The openings in the case expose the connections to the expansion ports :ref:`E1 <E1_gen1>` and :ref:`E2 <E2_gen1>`.
+* The openings in the case expose the connections to the expansion ports :ref:`E1 <E1_orig_gen>` and :ref:`E2 <E2_orig_gen>`.
 
 .. figure:: img/rp_alucase_04.jpg
     :align: center
@@ -47,10 +47,10 @@ Compatibility
 
 The aluminium case is compatible with the following Red Pitaya boards and their variations:
 
-* STEMlab 125-14 Gen 1.
+* STEMlab 125-14.
 * SDRlab 122-16.
 * STEMlab 125-14 4-Input.
-* STEMlab 125-10 (discontinued).
+* STEMlab 125-10.
 
 
 Assembly Instructions

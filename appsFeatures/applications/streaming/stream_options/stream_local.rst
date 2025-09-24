@@ -81,7 +81,6 @@ When using the local streaming option, the data is streamed to a file on the Red
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
 
-.. |br| raw:: html
 
     <br>
 

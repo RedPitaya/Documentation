@@ -12,17 +12,23 @@ The following items are required for proper board operation. They are already in
 
         .. tabs::
 
-            .. tab:: 125-14 Gen 2, 125-14 Pro Gen 2, 125-14 Pro Z7020 Gen 2
+            .. tab:: 125-14 Gen 2, 125-14 PRO Gen 2, 125-14 PRO Z7020 Gen 2
+
+                * 5 V / 3 A USB-C power supply.
+                * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
+                * Ethernet cable.
+            
+            .. tab:: 125-14 TI, 65-16 TI
 
                 * 5 V / 3 A USB-C power supply.
                 * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
                 * Ethernet cable.
 
-    .. group-tab:: Gen 1
+    .. group-tab:: Original Gen
 
         .. tabs::
 
-            .. tab:: 125-14, 122-16, 125-14 4-Input, 125-10 (discontinued)
+            .. tab:: 125-14, 122-16, 125-14 4-Input, 125-10
 
                 * 5 V / 2 A micro USB power supply.
                 * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
@@ -49,9 +55,9 @@ Additional items required that are not included in the Red Pitaya kits:
 
             Please refer to the :ref:`Gen 2 hardware specifications <hw_specs_gen2>` for further technical specifications regarding power supply, SD card and operating temperature range.
     
-        .. group-tab:: Gen 1
+        .. group-tab:: Original Gen
                 
-            Please refer to the :ref:`Gen 1 hardware specifications <hw_specs_gen1>` for further technical specifications regarding power supply, SD card and operating temperature range.
+            Please refer to the :ref:`Original Gen hardware specifications <hw_specs_orig_gen>` for further technical specifications regarding power supply, SD card and operating temperature range.
 
 
 .. substitutions

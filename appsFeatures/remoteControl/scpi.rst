@@ -140,7 +140,7 @@ Here are the requirements for setting up a Python environment to remotely contro
 
            .. code-block:: shell-session
    
-               $ sudo pip3 install pyvisa pyvisa-py numpy matplotlib
+               sudo pip3 install pyvisa pyvisa-py numpy matplotlib
 
        .. tab:: Windows
 
@@ -148,7 +148,7 @@ Here are the requirements for setting up a Python environment to remotely contro
 
            .. code-block:: shell-session
    
-               $ pip install pyvisa pyvisa-py numpy matplotlib
+               py -m pip install pyvisa pyvisa-py numpy matplotlib
 
 
 8.  **Enable "Running Scripts" option.** Windows users must enable "Running Scripts" option. It should be located in **Settings > Update&Security > For developers** under the **Power Shell** section (or google "How to enable running scripts on Windows 10/11").
@@ -321,7 +321,6 @@ For proper operation, the |LabVIEW_driver| must be installed.
 
 The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya**. Depending on your settings, instrument I/O may be hidden. Please consult LabVIEW Help on how to activate or deactivate those categories. 
 
-
 Running code
 --------------
 
@@ -332,11 +331,6 @@ You can access example VIs by going to:
 #.  In the Enter keyword(s) field, type **RedPitaya**. 
 
 More examples on how to control Red Pitaya from LabVIEW can be found :ref:`here <examples>`.
-
-
-.. |LabVIEW_driver| raw:: html
-
-    <a href="https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip" target="_blank">Red Pitaya LabVIEW driver</a>
 
 |
 
@@ -434,3 +428,8 @@ Query commands request data or a setting to be returned to the user. They always
 * Text data format: ``<ANSWER>\r\n`` or ``<ANSWER>;<ANSWER>;...;<ANSWER>\r\n`` (If you're sending multiple commands at once.) If an error occurs, the response format will be like this: ``\r\n``.
 * In ASCII mode, data buffers are represented in the form ``{dd,dd,dd,...,dd}``.
 * The API error code consists of two parts. ``9000`` or ``9500``, indicating whether the error is normal or critical, and the API error number. For example: ``9500 + RP_EOED = 9501`` (Failed to Open EEPROM Device).
+
+
+.. substitutions
+
+.. |LabVIEW_driver| replace:: `Red Pitaya LabVIEW driver <https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip>`__

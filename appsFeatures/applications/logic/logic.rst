@@ -35,6 +35,8 @@ Provides contol over the Logic analyzer application. The blue question mark lead
 .. figure:: img/03_LA_top_settings.png
     :width: 600
 
+|
+
 Settings
 ---------
 
@@ -70,6 +72,10 @@ The digital settings are split into four sections:
     * **Acq** - Set the sample rate and pre-sample data buffer.
 
 As long as no bus systems have been configured, the channels operate as purely digital inputs and correspondingly show progress. The **ACQ** tab opens the selection field for the sample rate settings. 
+
+.. note::
+
+    The sample rate (in the **Acq** tab) should be set to at least twice the baudrate of the measured digital signal.
 
 .. note::
 
@@ -205,9 +211,9 @@ The Logic Analyser extension module is recommended for maximum performance of th
 .. figure:: img/12_LA_probes.png
 	:width: 1000
 
-To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyser probes to the :ref:`E1 <E1_gen1>` on the Red Pitaya board (**3V3 logic ONLY**). The pins used for the logic analyser board are shown in the picture below.
+To use the Logic Analyzer without the extension module, you need to be more careful in connecting the logic analyser probes to the :ref:`E1 <E1_orig_gen>` on the Red Pitaya board (**3V3 logic ONLY**). The pins used for the logic analyser board are shown in the picture below.
 
-The direct use of the GPIO :ref:`E1 <E1_gen1>` pins of the Red Pitaya board works on any Red Pitaya model. A connection example is shown in the image below (left).
+The direct use of the GPIO :ref:`E1 <E1_orig_gen>` pins of the Red Pitaya board works on any Red Pitaya model. A connection example is shown in the image below (left).
     
 .. figure:: img/13_LA_connect.png
 	:width: 1000

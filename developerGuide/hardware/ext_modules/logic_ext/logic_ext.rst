@@ -16,8 +16,9 @@ What is in the box?
 
 The expansion module kit includes
 
-- Logic analyser board integrated in an aluminium case
-- 8 channel logic analyser cables with detachable probes
+* Logic analyser board integrated in an aluminium case
+* 8 channel logic analyser cables
+* 8 detachable probes
 
 .. figure:: img/LA_components.png
 	:width: 1000
@@ -73,7 +74,7 @@ Logic Analyser Q&A
 Can I use the Logic Analyser application without the extension connector?
 --------------------------------------------------------------------------
 
-Yes, you can. To use the logic analyser without the extension module, you must be careful when connecting the logic analyser probes to the :ref:`E1 <E1_gen1>` on the Red Pitaya board, as **only 3V3 logic** is supported.
+Yes, you can. To use the logic analyser without the extension module, you must be careful when connecting the logic analyser probes to the :ref:`E1 <E1_orig_gen>` on the Red Pitaya board, as **only 3V3 logic** is supported.
 The pins used for the logic analyser board are shown in the figure below.
     
 .. figure:: img/LA_connection.png
@@ -81,12 +82,12 @@ The pins used for the logic analyser board are shown in the figure below.
 
 .. note::
 
-    If DIO8_P (labelled GND in the picture above) can be used as a standard GPIO pin (SDRlab 122-16, STEMlab 125-14 4-Input, etc.), please use any GND pin on the Red Pitaya board to connect the GND pin.
+    On some Red Pitaya board models (SDRlab 122-16, STEMlab 125-14 4-Input, etc.) the DIO8_P pin (labelled GND in the picture above) can be used as a standard GPIO pin. In such case, please use any GND pin on the Red Pitaya board to connect the logic analyzer GND pin.
 
 
 Which Red Pitaya board models are compatible with the direct LA connection?
 ------------------------------------------------------------------------------
 
-Using the GPIO :ref:`E1 <E1_gen1>` pins of the Red Pitaya board directly will work on any Red Pitaya board model. An example connection is shown in the picture above.
+Using the GPIO :ref:`E1 <E1_orig_gen>` pins of the Red Pitaya board directly will work on any Red Pitaya board model. An example connection is shown in the picture above.
 
 

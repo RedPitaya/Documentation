@@ -1,8 +1,20 @@
-# Packages that need to be installed (update the versions from time to time)
-sphinx == 5.3 # (final version where bullet points work)
- 
-myst-parser
-sphinx_rtd_theme>=1.2.0
-sphinx-tabs>=3.0.0
-sphinx-notfound-page
-docutils<0.17   # bullet point problem
+# Packages that need to be installed (updated for better compatibility)
+# Core Sphinx - using a more recent stable version
+sphinx>=6.0,<8.0
+
+# Sphinx extensions
+myst-parser>=2.0.0
+sphinx_rtd_theme>=2.0.0
+sphinx-tabs>=3.4.0
+sphinx-notfound-page>=1.0.0
+
+# Documentation utilities
+docutils>=0.17,<0.21  # Updated to resolve bullet point issues
+sphinx-copybutton>=0.5.0  # For better code copying experience
+
+# MyST parser dependencies
+linkify-it-py>=2.0.0  # Required for MyST linkify extension
+
+# Optional but recommended
+Pillow>=9.0.0  # For image processing
+requests>=2.25.0  # For external link checking

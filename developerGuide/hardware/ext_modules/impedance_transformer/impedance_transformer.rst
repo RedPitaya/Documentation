@@ -7,6 +7,9 @@ Impedance Transformer
 
 The Red Pitaya 14:1 Impedance Transformer is optimized for connecting 50-Ω HF antennas and pre-amps to the high impedance Red Pitaya inputs. It improves sensitivity and overall receives performance.
 
+.. figure:: img/Impedance-transformer_screenshot.jpg
+    :width: 400
+
 
 Hardware compatibility
 ========================
@@ -61,8 +64,12 @@ Using a passive antenna (VE3DO loop) with a Clifton Labs Z10042 11 dB Norton amp
 .. figure:: img/N6TV_20m_With_No_Transformer.png
     :width: 1000
 
+|
+
 Inserting the 14:1 transformer between the pre-amp and the Red Pitaya reduced the intermodulation significantly, and atmospheric band noise (wideband sensitivity) improved by about 4 dB.
 
 .. figure:: img/N6TV_20m_With_14_to_1_Transformer.png
     :width: 1000
+
+|
 

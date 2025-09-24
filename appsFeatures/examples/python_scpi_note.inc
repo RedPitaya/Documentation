@@ -8,4 +8,4 @@
 
 .. |redpitaya_scpi| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>
+    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/lib/redpitaya_scpi.py" target="_blank">redpitaya_scpi.py</a>

@@ -4,18 +4,18 @@
 Known hardware issues (Gen 2)
 ###############################
 
-In this section is a list of known hardware issues with the Red Pitaya GEN 2 platforms. These issues will be fixed with the next hardware iteration of the boards.
+In this section is a list of known hardware issues with the Red Pitaya Gen 2 platforms. These issues will be fixed with the next hardware iteration of the boards.
 
 Boards and models Gen 2
 ========================
 
 * STEMlab 125-14 Gen 2 (HW V1r1 or higher)
-* STEMlab 125-14 Pro Gen 2 (HW V1r1 or higher)
-* STEMlab 125-14 Pro Z7020 Gen 2 (HW V1r1 or higher)
+* STEMlab 125-14 PRO Gen 2 (HW V1r1 or higher)
+* STEMlab 125-14 PRO Z7020 Gen 2 (HW V1r1 or higher)
 
 Issues
 ========
 
 .. note::
 
-    Currently, no hardware issues have been reported for the Red Pitaya GEN 2 platforms. If you encounter any issues, please report them to the :ref:`Red Pitaya support team <report_problem>`.
+    Currently, no hardware issues have been reported for the Red Pitaya Gen 2 platforms. If you encounter any issues, please report them to the :ref:`Red Pitaya support team <report_problem>`.

@@ -1,8 +1,8 @@
 
 .. _stream_util:
 
-Streaming application
-=====================
+Streaming application utility
+===============================
 
 The streaming server can also be started through the command line.
 
@@ -80,18 +80,19 @@ The configuration for streaming is automatically created and saved in the file: 
 Data streaming
 ----------------
 
-Once the streaming server is running, you can start streaming data from ADC and to DACs of the Red Pitaya board. For more information, please refer to the :ref:`Streaming application <streaming_top>` documentation.
+Once the streaming server is running, you can start streaming data from ADC and to DACs of the Red Pitaya board. For more information, please refer to the :ref:`Data stream control application <streaming_top>` documentation.
 
 
 Source Code
 ------------
 
-The Streaming app source code is available here: |streaming app|.
+|streaming app|.
 
-For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
+For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. 
+You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
 
 .. |streaming app| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">streaming app</a>
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Data stream control application source code</a>.
 
 

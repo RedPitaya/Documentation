@@ -87,7 +87,7 @@ To run the signal generation utility, perform the following steps:
                 redpitaya> generate 1 1 1000 noise
                 redpitaya> generate 2 1 1000 dc
 
-Signal generator performance varies between Red Pitaya models. For more information please refer to the Red Pitaya :ref:`Gen 1 <rp-board-comp-gen1>` or :ref:`Gen 2 <rp-board-comp-gen2>` comparison table.
+Signal generator performance varies between Red Pitaya models. For more information please refer to the Red Pitaya :ref:`Original Gen <rp-board-comp-orig_gen>` or :ref:`Gen 2 <rp-board-comp-gen2>` comparison table.
 
 Source code
 -----------

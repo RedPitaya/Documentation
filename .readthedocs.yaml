@@ -8,24 +8,40 @@ version: 2
 build:
   os: "ubuntu-22.04"
   tools:
-    python: "3.12"
+    python: "3.11"  # More stable for Sphinx builds than 3.12
     # You can also specify other tool versions:
     nodejs: "20"
-    # rust: "1.64"
-    # golang: "1.19"
+  jobs:
+    post_checkout:
+      # Install system dependencies if needed
+      - echo "Build started"
+    post_install:
+      # Any post-install commands
+      - echo "Dependencies installed"
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
   builder: html
   configuration: conf.py
   fail_on_warning: false
+  
+# Search integration
+search:
+  ranking:
+    conf.py: 1
+    index.rst: 2
+    "*.rst": 3
+  ignore:
+    - "_build/*"
+    - "*/.*"
 
 # Optionally build your docs in additional formats such as PDF, ePub, and HTML zip
 # Build the docs in epub and pdf version
 formats:
+  - htmlzip
   - epub
-  # - pdf    # Too many latex warnings, internal links do not work with this
-  # - htmlzip
+  # PDF disabled due to LaTeX warnings and internal link issues
+  # - pdf
 
 
 # Optional but recommended, declare the Python requirements required
@@ -36,8 +52,11 @@ formats:
 python:
   install:
     - requirements: requirements.txt
-#    - method: pip
-#      path: .
-#  system_packages: true
+    - requirements: .readthedocs-requirements.txt
+    # Install the project itself if it has a setup.py/pyproject.toml
+    # - method: pip
+    #   path: .
+  # Use system packages if needed for specific dependencies
+  # system_packages: true
       
       

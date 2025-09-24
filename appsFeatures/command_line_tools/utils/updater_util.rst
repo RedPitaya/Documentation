@@ -94,4 +94,4 @@ Source code
 
 The Red Pitaya GitHub repository contains the `source code for the Ecosystem update utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test>`_.
 
-.. TODO:: Update link to the source code.
+.. TODO Update link to the source code.

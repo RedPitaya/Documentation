@@ -7,11 +7,6 @@ Fast analog IO (Gen 2)
 
 .. note::
 
-    **This page is currently under construction.** All relevant information will be added before the official Gen 2 release.
-    Please check back later for updates.
-
-.. note::
-
     All measurements were made on the Gen 2 prototype boards. We will update the measurements with the final production boards.
 
 
@@ -35,7 +30,7 @@ Fast analog IO (Gen 2)
 Analog inputs
 *************************
 
-The measurements presented in this section have been perfomed on the *STEMlab 125-14 Pro Z7020 Gen 2* board. All STEMlab 125-14 Gen 2 boards have the same analog input specifications.
+The measurements presented in this section have been perfomed on the *STEMlab 125-14 PRO Z7020 Gen 2* board. All STEMlab 125-14 Gen 2 boards have the same analog input specifications.
 
 
 General Specifications
@@ -140,7 +135,9 @@ With the jumper pins correctly placed, the same waveform looks much better.
 Input stage schematics
 -----------------------
 
-**Under construction**
+.. note::
+
+    Coming soon
 
 
 Input coupling
@@ -218,26 +215,34 @@ Crosstalk measurements were performed between input channels 1 and 2 for both LV
 Input SFDR
 ------------------
 
-**Under construction**
+.. note::
+
+    Coming soon
 
 
 Input SNR
 -------------------
 
-**Under construction**
+.. note::
+
+    Coming soon
 
 
 Input noise
 -------------------
 
-**Under construction**
+.. note::
+
+    Coming soon
 
 
 
 Analog inputs calibration
 ============================
 
-**Under construction**
+.. note::
+
+    Coming soon
 
 
 
@@ -322,17 +327,17 @@ The output bandwidth flattness is within -1 dB from DC to full (-3 dB) bandwidth
 Output impedance
 ------------------
 
-The impedance of the output channels (output amplifier and filter) is shown in the figure below. STEMlab 125-14 (Gen 1) output impedance is shown for comparison.
+The impedance of the output channels (output amplifier and filter) is shown in the figure below. The original *STEMlab 125-14* output impedance is shown for comparison.
 
 .. figure:: img/measurements/RF_outputs/Output_impedance/Output_impedance.png
     :width: 800
 
-    Gen 1 and Gen 2 output impedance measurement.
+    Original board and Gen 2 output impedance measurement.
 
 .. figure:: img/measurements/RF_outputs/Output_impedance/SMITH_PITAYA_Gen1_VS_Gen2_markings.png
     :width: 800
 
-    Smith diagram of the output impedance of Gen 1 and Gen 2.
+    Smith diagram of the output impedance of original board and Gen 2.
 
 
 
@@ -428,14 +433,15 @@ Output SNR
 Analog output calibration
 ==========================
 
-**Under construction**
+.. note::
+
+    Coming soon
 
 
 
 
 .. substitutions
 
-.. |br| raw:: html
 
     <br />
 

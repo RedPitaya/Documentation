@@ -26,12 +26,7 @@ What do I need before I start?
 
 ..  note::
 
-    The PyRPL will not work on **SDRlab 122-16** and **SIGNALlab 250-12** without modifications to the source code. The neccessary changes include:
-    
-        * Modification to the FPGA code to make it compatible with the specific board (change in the xdc files).
-        * Changes in the software to recognize the board model and load the correct FPGA image.
-
-    PyRPL is currently incompatible with **STEMlab 125-14 4-Input** board model.
+    The PyRPL will not work on **SDRlab 122-16** and **SIGNALlab 250-12**.
 
 
 Install & run PyRPL
@@ -42,11 +37,8 @@ There are two ways to run the application:
     * Download the `pre-built application <https://downloads.redpitaya.com/downloads/Clients/pyrpl/>`_ for the appropriate platform.
     * Run source code from the repository: `rp_pyrpl_github <https://github.com/RedPitaya/pyrpl>`_.
 
+We recommend using the latest community version as it is continuously improving.
 
-.. note::
-
-    We recommend using the precompiled application from the link above on Red Pitaya OS versions 2.00 and above. Running the source code from the repository currently requires a special setup as it is designed to work with Python 3.6, which is outdated.
-    The community is working on updating the application to work with Python 3.10 and above. The latest information can be found on the `official PyRPL GitHub repository <https://github.com/pyrpl-fpga/pyrpl>`_
 
 Here is a link to a demonstration video by Leonard Neuhaus: |pyrpl_video|
 

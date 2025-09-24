@@ -2,7 +2,7 @@
 SPI interface
 #########################
 
-SPI interface support for the :ref:`E2 <E2_gen1>` connector without the need for a specific FPGA code.
+SPI interface support for the :ref:`E2 <E2_orig_gen>` connector without the need for a specific FPGA code.
 
 By default, on all RedPitaya boards, the CS state of the SPI is set to HIGH (inactive).
 

@@ -23,6 +23,7 @@ Required hardware
 
   <a href="https://www.mikroe.com/mcp2542-click" target="_blank">MCP2542 Click Board</a>
 
+|
 
 Required software
 ==================

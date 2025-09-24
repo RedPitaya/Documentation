@@ -162,7 +162,7 @@ To run the signal acquisition utility, perform the following steps:
                 -0.041509   0.001099
                 ...
 
-Acquisition performance varies between Red Pitaya models. For more information please refer to the Red Pitaya :ref:`Gen 1 board comparison <rp-board-comp-gen1>` or :ref:`Gen 2 board comparison <rp-board-comp-gen2>`.
+Acquisition performance varies between Red Pitaya models. For more information please refer to the Red Pitaya :ref:`Original Gen board comparison <rp-board-comp-orig_gen>` or :ref:`Gen 2 board comparison <rp-board-comp-gen2>`.
 
 Source code
 -----------

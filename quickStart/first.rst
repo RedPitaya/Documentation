@@ -32,7 +32,7 @@ Follow these five simple steps to start using your Red Pitaya:
 
         .. tabs::
 
-            .. tab:: 125-14 Gen 2, 125-14 Pro Gen 2, 125-14 Pro Z7020 Gen 2
+            .. tab:: 125-14 Gen 2, 125-14 PRO Gen 2, 125-14 PRO Z7020 Gen 2, 125-14 TI, 65-16 TI
 
                 #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
                 #. Insert the SD card into your Red Pitaya board.
@@ -75,7 +75,7 @@ Follow these five simple steps to start using your Red Pitaya:
                         :align: center
 
                 #. Connect the power supply to the Red Pitaya board.
-                #. Press and hold the **P-ON** button on the QSPI eMMC board for 2 seconds to turn on the Red Pitaya board. Read more about the QSPI eMMC board in the :ref:`QSPI eMMC board <QSPI_eMMC_board>` chapter.
+                #. Press and hold the **P-ON** button on the QSPI eMMC board for 1 seconds to turn on the Red Pitaya board. Read more about the QSPI eMMC board in the :ref:`QSPI eMMC board <QSPI_eMMC_board>` chapter.
                 #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
 
                     .. figure:: img/125_stiker.png
@@ -86,11 +86,11 @@ Follow these five simple steps to start using your Red Pitaya:
                         :width: 400
                         :align: center
 
-    .. group-tab:: Gen 1
+    .. group-tab:: Original Gen
 
         .. tabs::
 
-            .. tab:: 125-14, 122-16, 4-Input, 125-10 (discontinued)
+            .. tab:: 125-14, 122-16, 4-Input, 125-10
 
                 #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
                 #. Insert the SD card into your Red Pitaya board.

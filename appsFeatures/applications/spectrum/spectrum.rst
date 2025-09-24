@@ -12,8 +12,8 @@ The frequency span is from DC up to 62.5 MHz, where the frequency range can be a
 
 The graphical interface is divided into four main areas:
 
-    1. **Run/Stop** and **Export button:** The "Run/Stop" button is used to start and stop measurements. With the "Export" button, you can select in which format you want to download the measured data (plotted spectrum). Two formats are available: .png and .csv.
-    #. **Inputs / Cursors / Range / Axis control panel:** This menu provides controls for inputs, cursors, and frequency range settings. Horizontal +/- buttons are used to select the span of the X (frequency) axis (zooming in/out). The vertical +/- buttons change the Y (amplitude)-axis range.
+    1. **Run/Stop** and **Export button:** The "Run/Stop" button is used to start and stop measurements. With the "Export" button, you can select in which format you want to download the measured data (plotted spectrum). Two formats are available: .png and .csv.
+    #. **Inputs / Cursors / Range / Axis control panel:** This menu provides controls for inputs, cursors, and frequency range settings. Horizontal +/- buttons are used to select the span of the X (frequency) axis (zooming in/out). The vertical +/- buttons change the Y (amplitude)-axis range.
     #. **Graph area:** Here, the currently calculated signal spectrum is plotted in the selected frequency range.
     #. **Waterfall plots:** Waterfall plots are a different way of representing the signal spectrum where the colour of the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful to enable the representation of a signal spectrum in a time-dependent fashion.
 
@@ -21,30 +21,33 @@ The graphical interface is divided into four main areas:
 .. figure:: img/Slika_02_SA.png
 	:width: 1000
 
+|
+
 Features
 ==========
 
 The main features of the DFT Spectrum analyser are described below:
 
 
-INPUTS:
+Inputs
 ---------
 
-Input controls are shown in the picture below. With the "SHOW" select button, displaying the spectrum of the selected input can be enabled or disabled. The "FREEZE" button is used to stop the measurements of the selected input. The "MIN" and "MAX" select buttons are used to enable or disable the persist mode for the spectrum plot. The "MIN" signal spectrum plot will show the lowest values of the signal spectrum taken after enabling the "MIN" button. The same logic is used for the "MAX" signal, where the MAX values of the signal spectrum are shown. This feature is mostly used for detecting signal glitches and calculating the max/min spectrum amplitude values during the measurement.
+Input controls are shown in the picture below. With the "SHOW" select button, displaying the spectrum of the selected input can be enabled or disabled. The "FREEZE" button is used to stop the measurements of the selected input. The "MIN" and "MAX" select buttons are used to enable or disable the persist mode for the spectrum plot. The "MIN" signal spectrum plot will show the lowest values of the signal spectrum taken after enabling the "MIN" button. The same logic is used for the "MAX" signal, where the MAX values of the signal spectrum are shown. This feature is mostly used for detecting signal glitches and calculating the max/min spectrum amplitude values during the measurement.
 
 .. figure:: img/Slika_03_SA.png
 	:width: 1000
 
 For SIGNALlab 250-12, there are additional settings available where the user can select:
 
-    -   **Input attenuation**
-    -   **Coupling**
+    * **Input attenuation**
+    * **Coupling**
 
 .. figure:: img/Slika_09_SA.png
 	:width: 300
 
+|
 
-CURSORS:
+Cursors
 ----------
 
 The cursors are an additional vertical and horizontal pair of lines useful for extracting the values of the spectrum plots.
@@ -54,8 +57,9 @@ The cursors are interactive, and they can be set on any part of the graph while 
 .. figure:: img/Slika_04_SA.png
 	:width: 1000
 
+|
 
-RANGE:
+Range
 --------
 
 The range settings are used to set a frequency span. This feature is useful when the frequency range of interest is 
@@ -64,8 +68,9 @@ smaller than the full frequency range of the Spectrum analyzer application.
 .. figure:: img/Slika_05_SA.png
 	:width: 1000
 
+|
 
-PEAK DETECTION:
+Peak detection
 ----------------
 
 During the measurement, peak values of the signal spectrum are measured and shown in the "Peak Values" field. Peak values are the max values of the signal spectrum regardless of the selected frequency range. This peak finding prevents not seeing peak values that are outside the selected frequency span.
@@ -73,14 +78,15 @@ During the measurement, peak values of the signal spectrum are measured and show
 .. figure:: img/Slika_06_SA.png
 	:width: 1000
 
+|
 
-WATERFALL PLOTS:
+Waterfall plots
 ----------------
 
 Waterfall plots are a different way of representing the signal spectrum where the colour on the plot defines the signal amplitude for a certain frequency. The waterfall plot is also useful when enabling the representation of the signal spectrum in a time dependency.
 
 
-AXIS CONTROLS:
+Axis control
 ---------------
 
 Horizontal +/- buttons are used to select the span of the X (frequency) axis (zooming in/out). The vertical +/- buttons change the Y (amplitude)-axis range. When the Reset button is pressed, the frequency and amplitude span are reset to their default values.
@@ -88,7 +94,9 @@ Horizontal +/- buttons are used to select the span of the X (frequency) axis (zo
 .. figure:: img/Slika_07_SA.png
 	:width: 1000
 
-OUTPUTS:
+|
+
+Outputs
 ---------
 
 The Spectrum Analyzer applications also include a signal generator, so users can simultaneously generate a signal and observe the signal spectrum. For the signal generator settings and specifications, refer to :ref:`outputs <output-ref>`.
@@ -102,34 +110,35 @@ The external reference clock input can be enabled through the settings menu. Onc
 .. figure:: img/Slika_08_SA.png
     :width: 400
 
+|
 
 Specifications
 ===============
 
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-|                               | STEMlab 125-10       | STEMlab 125-14       | STEMlab 125-14 4-Input      | SDRlab 122-16        | SIGNALlab 250-12               |
-|                               | (discontinued)       |                      |                             |                      |                                |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Input channels                | 2                    | 2                    | 4                           | 2                    | 2                              |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Bandwidth                     | 0 - 50 MHz           | 0 - 60 MHz           | 0 - 60 MHz                  | 0 - 60 MHz           | 0 - 60 MHz                     |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Resolution                    | 10 bit               | 14 bit               | 14 bit                      | 16 bit               | 12 bit                         |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| DFT buffer                    | 16384                | 16384                | 16384                       | 16384                | 16384                          |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Dynamic Range                 | 60 dB                | 80 dB                | 80 dB                       | 96 dB                | 74 dB                          |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Input noise level             | < -100 dBm/Hz        | < -119 dBm/Hz        | < -119 dBm/Hz               |                      |                                |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Input range                   | 10 dBm               | 10 dBm               | 10 dBm                      | -2 dBm               | 10 dBm (when att. is disabled) |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Input impedance               | 1 MΩ / 10 pF         | 1 MΩ / 10 pF         | 1 MΩ / 10 pF                | 50 Ω                 | 1 MΩ / 10 pF                   |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Input coupling                | DC                   | DC                   | DC                          | AC                   | AC/DC                          |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
-| Spurious frequency components | < -70 dBFS Typically | < -90 dBFS Typically | < -90 dBFS Typically        |                      |                                |
-+-------------------------------+----------------------+----------------------+-----------------------------+----------------------+--------------------------------+
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+|                               | STEMlab 125-14       | STEMlab 125-14 4-Input      | SDRlab 122-16        | SIGNALlab 250-12               | STEMlab 125-10       |
+|                               |                      |                             |                      |                                | (discontinued)       |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Input channels                | 2                    | 4                           | 2                    | 2                              | 2                    |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Bandwidth                     | 0 - 60 MHz           | 0 - 60 MHz                  | 0 - 60 MHz           | 0 - 60 MHz                     | 0 - 50 MHz           |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Resolution                    | 14 bit               | 14 bit                      | 16 bit               | 12 bit                         | 10 bit               |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| DFT buffer                    | 16384                | 16384                       | 16384                | 16384                          | 16384                |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Dynamic Range                 | 80 dB                | 80 dB                       | 96 dB                | 74 dB                          | 60 dB                |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Input noise level             | < -119 dBm/Hz        | < -119 dBm/Hz               |                      |                                | < -100 dBm/Hz        |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Input range                   | 10 dBm               | 10 dBm                      | -2 dBm               | 10 dBm (when att. is disabled) | 10 dBm               |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Input impedance               | 1 MΩ / 10 pF         | 1 MΩ / 10 pF                | 50 Ω                 | 1 MΩ / 10 pF                   | 1 MΩ / 10 pF         |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Input coupling                | DC                   | DC                          | AC                   | AC/DC                          | DC                   |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
+| Spurious frequency components | < -90 dBFS Typically | < -90 dBFS Typically        |                      |                                | < -70 dBFS Typically |
++-------------------------------+----------------------+-----------------------------+----------------------+--------------------------------+----------------------+
 
 
 Source code

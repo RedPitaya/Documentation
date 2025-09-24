@@ -70,7 +70,7 @@ Example (reading system registers):
     14          AO2(0-1.8V)     0x00000075	    1.350
     15          AO3(0-1.8V)     0x0000009c	    1.800
 
-A more detailed description of the above pins can be found :ref:`here <E1_gen1>`.
+A more detailed description of the above pins can be found :ref:`here <E1_orig_gen>`.
 The -ams switch provides access to mixed analog signals including Zynq SoC temperature, auxiliary analog input reading, power supply voltages and configured auxiliary analog output settings. The auxiliary analog outputs can be set through the monitor utility using the -SADC switch:
 
 .. code-block:: console

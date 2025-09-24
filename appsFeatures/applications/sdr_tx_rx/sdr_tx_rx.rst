@@ -37,8 +37,8 @@ This SDR transceiver emulates a HPSDR transceiver similar to Hermes with a netwo
 
 The HPSDR/Metis communication protocol is described in the following documents:
 
-    * `Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`_.
-    * `HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`_.
+    * :download:`Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`.
+    * :download:`HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`.
 
 
 Software
@@ -94,7 +94,7 @@ More information
 For more information on hardware connections, software configuration, and other details, please refer to the Red Pitaya Notes. Please select the appropriate version of the Red Pitaya board:
 
     * `STEMlab 125-14 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-hpsdr/>`_.
-    * `SDRlab 122-16 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-122-88/>`_.
+    * `SDRlab 122-16 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-hpsdr-122-88/>`_.
 
 
 SDR Receiver compatible with HPSDR
@@ -107,8 +107,8 @@ This version of the Red Pitaya SDR receiver emulates:
 
 The HPSDR/Metis communication protocol is described in the following documents:
 
-    * `Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`_.
-    * `HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`_.
+    * :download:`Metis - How it works <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`.
+    * :download:`HPSDR - USB Data Protocol <https://github.com/TAPR/OpenHPSDR-SVN/raw/master/Documentation/USB_protocol_V1.58.doc>`.
 
 Software
 --------

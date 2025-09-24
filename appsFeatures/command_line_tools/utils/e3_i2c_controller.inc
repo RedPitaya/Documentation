@@ -59,4 +59,4 @@ Source code
 
 The Red Pitaya GitHub repository contains the `source code for the E3 I2C controller utility <https://github.com/RedPitaya/RedPitaya-Examples>`_.
 
-.. TODO:: Update link to the source code.
+.. TODO Update link to the source code.

@@ -193,7 +193,7 @@ The maximum memory allocation is restricted to the size of the board's DDR (512 
 
     .. note::
 
-        :math:`1 \text{ MiB} = 1024 \cdot 1024 \text{ Bytes} = 2^{20} \text{ Bytes} = 1048576 \text{ Bytes}`.
+        1 MiB = 1024·1024 Bytes = :math:`2^{20}` Bytes = 1048576 Bytes.
         We are using Mebibytes (MiB) instead of Megabytes (MB) to avoid confusion with the decimal system.
 
 4. Finally, rebuild the tree and restart the board.

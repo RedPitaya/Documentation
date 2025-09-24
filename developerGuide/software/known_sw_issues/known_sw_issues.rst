@@ -43,8 +43,33 @@ We also plan on adding support for new Wi-Fi dongles.
 
 
 
+I2C SCPI fails after 508 R/W attempts
+=======================================
+
+When using the SCPI server to continuously read an I2C device, the SCPI server hangs when retrieving data from the 508th transmission.
+
+.. code-block:: console
+
+    9560,"*I2C:IOctl:Write:Buffer2 Failed write buffer to i2c: Failed to init I2C."
+
+There was a problem with the I2C devices not closing and after a while crashing with an error that there weren't enough descriptors.
+
+The problem is fixed in Nightly Build versions 613 or higher.
+
+
+
+
+
 Fixed
 ======
+
+
+Web interface constantly reloading when using direct ethernet connection
+--------------------------------------------------------------------------
+
+**Fixed on OS version 2.05-37 and higher**
+
+When connecting the Red Pitaya directly to a computer via an ethernet cable, the web interface constantly reloads. This issue is not present when using a network switch or router.
 
 
 Local network visibility

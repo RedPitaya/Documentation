@@ -14,6 +14,7 @@ Required hardware
 
 .. figure:: ../general_img/RedPitaya_general.png
 
+|
 
 Required software
 ==================

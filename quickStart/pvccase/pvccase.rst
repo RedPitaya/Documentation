@@ -27,10 +27,13 @@ Compatibility
 
 The acrylic case is compatible with the following Red Pitaya models:
 
-    * STEMlab 125-14 Gen 1 and Gen 2 (all board models)
+    * STEMlab 125-14 Gen 2 (also PRO and PRO Z7020)
+    * STEMlab 125-14 TI
+    * STEMlab 65-16 TI
+    * STEMlab 125-14 (all board models)
     * STEMlab 122-16
     * STEMlab 125-14 4-Input
-    * STEMlab 125-10 (discontinued)
+    * STEMlab 125-10
 
 Assembly Instructions
 =====================

@@ -160,7 +160,3 @@ The three files are named **data_file_<board_IP>_<date>_<time>.<file type>**, wh
 
     <a href="https://downloads.redpitaya.com/downloads/Clients/streaming/desktop/" target="_blank">here</a>
 
-.. |br| raw:: html
-
-    <br>
-

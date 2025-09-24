@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file.
 - Added links to measurements under each board model docs.
 - Added TI board documentation.
 - Gen 2 FAQ section added.
-- Additional Gen 2 measurements and improvements over Gen 1 boards.
+- Additional Gen 2 measurements and improvements over Original Gen boards.
 
 **Minor updates:**
 
@@ -31,7 +31,7 @@ All notable changes to this project will be documented in this file.
 - Added examples on Deep Memory Acquisition comparison and Deep Memory Generation.
 - Added clarification on OS updater process check.
 - Documented new functionality in System Info section.
-- Updated measurements for Gen 1 boards.
+- Updated measurements for Original Gen boards.
 - Separated QSPI eMMC module into its own section.
 - Updated intro with new messaging.
 - Single reactor ignition on the doc bugs.
@@ -66,7 +66,7 @@ All notable changes to this project will be documented in this file.
 
 **Minor updates:**
 
-- Fixed and updated Gen 1 specifications.
+- Fixed and updated Original Gen specifications.
 - Updated and clarified E3 add-on board instructions.
 - Updated Gen 2 booting instructions.
 - Fixed Sphinx dependency issues with the documentation build process.
@@ -100,7 +100,7 @@ All notable changes to this project will be documented in this file.
 - Updated command line utilities.
 - Reorganized the API and SCPI command structure (advancing towards a separate page for each command).
 - Removed Scilab from SCPI command list (the command structure is similar to MATLAB).
-- Fixed a mistake in FPGA pin number labelling of the I2C pins for Gen 1 boards - the pin description was correct, but the pin numbering was switched.
+- Fixed a mistake in FPGA pin number labelling of the I2C pins for Original Gen boards - the pin description was correct, but the pin numbering was switched.
 - Moved pictures into img folders.
 - Ate one Red Pitaya fruit (it was delicious).
 - Removed title numbering for level 4 and higher titles.
@@ -108,7 +108,7 @@ All notable changes to this project will be documented in this file.
 
 **Broken links:**
 
-- Links to all Red Pitaya board docs - specific boards, jumpers, extension connectors, etc. (separated into Gen 1 and Gen 2 boards) including extension module links (click shield, etc.). Will try to relink all old links to the gen 1 hardware documentation page.
+- Links to all Red Pitaya board docs - specific boards, jumpers, extension connectors, etc. (separated into Original Gen and Gen 2 boards) including extension module links (click shield, etc.). Will try to relink all old links to the Original Gen hardware documentation page.
 - Links to specific command line tools (acquire, generate, monitor) (moved into a separete directory).
 - Links to specific SCPI commands on the command list (command list broken into separate pages).
 - Links to specific system tools (moved into a separate directory).

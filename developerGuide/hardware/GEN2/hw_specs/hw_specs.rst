@@ -4,18 +4,14 @@
 Common hardware specifications (Gen 2)
 #######################################
 
-.. note::
-
-    **This page is currently under construction.** All relevant information will be added before the official Gen 2 release.
-    Please check back later for updates.
 
 .. note::
 
-    Looking for :ref:`Gen 1 hardware specifications? <hw_specs_gen1>`
+    Looking for :ref:`Original Gen hardware specifications? <hw_specs_orig_gen>`
 
 .. TODO GEN 2 measurements and update text
 
-In this section you can find common hardware specifications for all Red Pitaya board models. The measurements were performed on the **STEMlab 125-14 Pro Z7020 Gen 2** board and are the same for all Gen 2 board models (except where specifically stated). Any future measurements will be added to this section.
+In this section you can find common hardware specifications for all Red Pitaya board models. The measurements were performed on the **STEMlab 125-14 PRO Z7020 Gen 2** board and are the same for all Gen 2 board models (except where specifically stated). Any future measurements will be added to this section.
 
 Please refer to the board model documentation for schematics, relevant components, mechanical specifications, and 3D models. Please note that the full hardware schematics for the Red Pitaya boards are not available. While Red Pitaya has open-source code, the hardware schematics are not open source. However, development schematics with information regarding hardware configuration, FPGA pin connections, and similar, are available.
 
@@ -50,7 +46,7 @@ All Red Pitaya Gen 2 boards use the same power supply:
 
     Power supply precautions:
 
-    * *STEMlab 125-14 Gen 2*, *STEMlab 125-14 Pro Gen 2* and *STEMlab 125-14 Pro Z7020 Gen 2* may only be powered by an isolated external power supply of 5 Volts DC with a maximum current of 3 A.
+    * *STEMlab 125-14 Gen 2*, *STEMlab 125-14 PRO Gen 2* and *STEMlab 125-14 PRO Z7020 Gen 2* may only be powered by an isolated external power supply of 5 Volts DC with a maximum current of 3 A.
       The recommended model is **Too be determined**. Any other external power supply used with Red Pitaya must comply with the relevant regulations and standards applicable in the country of use.
 
 .. TODO add recommended Gen2 power supply model
@@ -64,7 +60,7 @@ We recommend using an SD card with a minimum of 32 GB of space for Red Pitaya Ge
 Compatible OS versions
 =======================
 
-Red Pitaya Gen 2 boards are compatible with OS versions **2.07-IN DEV** or higher and should not be used with older versions of the Red Pitaya OS.
+Red Pitaya Gen 2 boards are compatible with OS versions **2.07-43** or higher and should not be used with older versions of the Red Pitaya OS.
 
 
 Fast analog IO
@@ -219,30 +215,30 @@ Board dimensions
 Please refer to the technical drawings in the Red Pitaya board specifications for exact board dimensions.
 
 * :ref:`STEMlab 125-14 Gen 2 <schematics_125_14_gen2>`.
-* :ref:`STEMlab 125-14 Pro Gen 2 <schematics_125_14_pro_gen2>`.
-* :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <schematics_125_14_pro_z7020_gen2>`.
+* :ref:`STEMlab 125-14 PRO Gen 2 <schematics_125_14_pro_gen2>`.
+* :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <schematics_125_14_pro_z7020_gen2>`.
 
 
 .. _gen2_improvements:
 
-Improvements over Gen 1 boards
+Improvements over original boards
 =================================
 
 STEMlab 125-14
 ---------------
 
-Here are some of the improvements made to the STEMlab 125-14 Gen 2 boards compared to the STEMlab 125-14 (Gen 1) boards:
+Here are some of the improvements made to the STEMlab 125-14 Gen 2 boards compared to the STEMlab 125-14 original board:
 
 * Reduced noise and crosstalk on the fast analog inputs and outputs.
 * Increased fast analog output voltage range (±1 V @ 50 Ω load, ±2 V @ Hi-Z load).
-* All connectors replaced with USB-C connectors (speed and characeristics are the same as on Gen 1 boards).
+* All connectors replaced with USB-C connectors (speed and characeristics are the same as on original boards).
 * Crisp clean 50 Ω output impedance.
 * SFDR improvements.
 * No voltage glitching on the outputs when the board is powered on (see the :ref:`Gen 2 FAQ <faq_gen2>` section for full details).
-* Switching between internal and external clock with the *CLK SEL* pin - (Pro boards only).
-* E3 add-on board with an STM32 microcontroller providing control over Power, WDT and diverse booting options (QSPI, eMMC) - (Pro boards only).
-* E3 connector with 8 fast differential pairs (16 GPIOs) and external eMMC and QSPI booting option - (STEMlab 125-14 Pro Z7020 Gen 2 only).
-* Twice as much RAM (1 GB) - (STEMlab 125-14 Pro Z7020 Gen 2 only).
+* Switching between internal and external clock with the *CLK SEL* pin - (PRO boards only).
+* E3 add-on board with an STM32 microcontroller providing control over Power, WDT and diverse booting options (QSPI, eMMC) - (PRO boards only).
+* E3 connector with 8 fast differential pairs (16 GPIOs) and external eMMC and QSPI booting option - (*STEMlab 125-14 PRO Z7020 Gen 2* only).
+* Twice as much RAM (1 GB) - (*STEMlab 125-14 PRO Z7020 Gen 2* only).
 
 For more information on specific improvements, please refer to Gen 2 `Fast analog IO`_ section above.
 

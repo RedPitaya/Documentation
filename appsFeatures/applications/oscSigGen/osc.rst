@@ -66,7 +66,7 @@ Settings
 
 Includes the following settings:
 
-- **ARB Manager** - Goes directly to the :ref:`Arbitrariy Manager application<arb_manager_app>`, where a custom waveform can be uploaded for generation.
+- **ARB Manager** - Goes directly to the :ref:`Arbitrariy Waveform Manager application <arb_manager_app>`, where a custom waveform can be uploaded for generation.
 - **Sys Info** - When checked, the Oscilloscope Application displays System information like, FPS, CPU Load, etc. in the bottom left corner of the application.
 - **IN/E2** - When checked, displays the voltages from slow analog inputs of the E2 connector.
 - **Reset** - Resets all Oscilloscope and Signal Generator settings to default versions.
@@ -81,6 +81,8 @@ The external reference clock input can be enabled through the settings menu. Onc
 .. figure:: img/Silka_EXT_CLOCK.png
     :width: 500
 
+|
+
 Export
 ---------
 
@@ -88,6 +90,8 @@ Exports the currently displayed data as either a "Graph" or a "File". If graph i
 
 .. figure:: img/Slika_14_OSC_Export_data.png
     :width: 500
+
+|
 
 Autoscale
 ----------
@@ -223,6 +227,7 @@ Here are the available settings:
 - **Period (μs):** Period between the start of the first burst and the start of the next burst. Burst will always have a minimum of 1 μs between them.
 - **TRIG GEN:** Manually trigger the signal generator.
 
+
 Sweep Mode
 -----------
 
@@ -266,7 +271,7 @@ The Source parameter defines the source used for this purpose. With the IN1, IN2
 
    .. tab:: STEMlab 125-10, 125-14, 125-14 4-Input, SDRlab 122-16
 
-      Pin 3 (DIO0_P) on the header row :ref:`E1 <E1_gen1>`.
+      Pin 3 (DIO0_P) on the header row :ref:`E1 <E1_orig_gen>`.
       
 
    .. tab:: SIGNALlab 250-12
@@ -299,6 +304,8 @@ Control the voltage on the slow analog outputs. Type in the value in Volts into 
 .. figure:: img/Slika_11_OSC_E2.png
     :width: 250
 
+|
+
 Cursor
 ======
 
@@ -307,6 +314,7 @@ This feature enables the user to easily get the data of relevant basic measureme
 .. figure:: img/Slika_09_OSC.png
     :width: 1000
 
+|
 
 Navigate
 ========
@@ -317,6 +325,7 @@ dragging the data where you want and effortlessly zooming in and out by using yo
 .. figure:: img/Slika_04_OSC.png
     :width: 1000
 
+|
 
 Measurements
 ============
@@ -337,6 +346,7 @@ The measurements are removed by clicking on the specific measurement from the li
 .. figure:: img/Slika_10_OSC.png
     :width: 1000
 
+|
 
 Specifications
 **************

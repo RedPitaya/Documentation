@@ -27,7 +27,7 @@ The settings for each connection are presented along with the instructions for s
 
 You can connect to the Red Pitaya boards via:
 
-.. contents:: Index
+.. contents::
     :local:
     :depth: 2
     :backlinks: none
@@ -133,7 +133,7 @@ To set up the **DHCP Server** mode, input the following settings:
     * ``<DNS>`` server.
 
 .. figure:: img/wired-settings-dhcp-server.png
-    :width: 600
+    :width: 400
 
 
 .. note::
@@ -161,7 +161,7 @@ To setup the **Static IP** mode, LAN connection must be established first to con
     * ``<DNS>`` server.
 
     .. figure:: img/wired-settings-static-IP.png
-        :width: 600
+        :width: 400
 
     For more information please check `Wikipedia subnetwork <https://en.wikipedia.org/wiki/Subnetwork>`_ and `Wikipedia IP address <https://en.wikipedia.org/wiki/IP_address>`_.
 
@@ -173,6 +173,7 @@ To setup the **Static IP** mode, LAN connection must be established first to con
     .. figure:: img/connection-static-IP.png
         :width: 1000
 
+|
 
 Direct Ethernet connection Static IP configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

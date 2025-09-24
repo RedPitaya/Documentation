@@ -14,7 +14,7 @@ Gen 2
 --------
 
 +------------------------------------+----------------------------------+----------------------------------+----------------------------------+
-|                                    | STEMlab 125-14 Gen 2             | STEMlab 125-14 Pro Gen 2         | STEMlab 125-14 Pro Z7020         |
+|                                    | STEMlab 125-14 Gen 2             | STEMlab 125-14 PRO Gen 2         | STEMlab 125-14 PRO Z7020         |
 +====================================+==================================+==================================+==================================+
 | |br|                                                                                                                                        |
 | **Applications**                                                                                                                            |
@@ -102,11 +102,11 @@ Gen 2
 +------------------------------------+----------------------------------+----------------------------------+----------------------------------+
 
 
-Gen 1
---------
+Original Generation
+----------------------
 
 +------------------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
-|                                    | STEMlab 125-14 (Gen 1)    | STEMlab 125-14-Z7020      | STEMlab 125-14 4-Input    | SDRlab 122-16             | SIGNALlab 250-12          | STEMlab 125-10 (discont.) |
+|                                    | STEMlab 125-14            | STEMlab 125-14-Z7020      | STEMlab 125-14 4-Input    | SDRlab 122-16             | SIGNALlab 250-12          | STEMlab 125-10 (discont.) |
 +====================================+===========================+===========================+===========================+===========================+===========================+===========================+
 | |br|                                                                                                                                                                                                       |
 | **Applications**                                                                                                                                                                                           |
@@ -200,10 +200,7 @@ Gen 1
 .. rubric:: Footnotes
 
 .. [#f1] The SDR applications were originally developed by Pavel Demin and adapted for use on other Red Pitaya board models. Please check the :ref:`SDR applications <sdr_tx_rx_apps>` page for more information.
-.. [#f2] PyRPL was originally developed for STEMlab 125-14 (Gen 1). Running it on other board models requires some modifications in the FPGA (pinout + different FPGA - Zynq 7020). Please check the :ref:`PyRPL <pyrpl>` page for more information.
+.. [#f2] PyRPL was originally developed for STEMlab 125-14. Running it on other board models requires some modifications in the FPGA (pinout + different FPGA - Zynq 7020). Please check the :ref:`PyRPL <pyrpl>` page for more information.
 .. [#f3] The Click Shields have a 125 MHz oscillator on board, which does not match the core clock frequncy of SDRlab 122-16 and SIGNALlab 250-12. We recommend using an external clock source with frequency matching the core clock frequency of these board models. Please check the :ref:`Click shields <click_shield>` page for more information.
 
 
-.. |br| raw:: html
-
-    <br/>
