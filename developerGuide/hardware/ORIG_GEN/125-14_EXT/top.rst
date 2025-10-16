@@ -150,7 +150,7 @@ Technical specifications
     :widths: 40 40
 
     +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 | 
+    | **Extension connector**                                                 |
     +====================================+====================================+
     | Digital IOs                        | 16                                 |
     +------------------------------------+------------------------------------+
@@ -238,7 +238,8 @@ You can find the measurements of the fast analog frontend here:
 Schematics
 ============
 
-- `Red_Pitaya_Schematics_v1.0.1.pdf <https://downloads.redpitaya.com/doc//Red_Pitaya_Schematics_v1.0.1.pdf>`_
+- `Schematics_STEM_125-14_v1.0.1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.0.1.pdf>`_
+- `Schematics_STEM_125-14_v1.1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1.pdf>`_
 
 .. note::
 
@@ -248,7 +249,7 @@ Schematics
 Mechanical Specifications and 3D Models
 ========================================
 
-- `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
+- `3D_STEM_125-14_v1.0.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14_v1.0.zip>`_
 
 
 ADC specifications

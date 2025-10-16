@@ -136,7 +136,7 @@ Technical specifications
     :widths: 40 40
 
     +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 | 
+    | **Extension connector**                                                 |
     +====================================+====================================+
     | Digital IOs                        | 22                                 |
     +------------------------------------+------------------------------------+
@@ -200,7 +200,7 @@ Technical specifications
     +------------------------------------+------------------------------------+
 
 .. note::
-    
+
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp-orig_gen>`.
 
 
@@ -225,7 +225,8 @@ You can find the measurements of the fast analog frontend here:
 Schematics
 ============
 
-- `User-DOC_STEMlab_125-14_V1.1_STEMlab 125-14 Z7020 LN.PDF <https://downloads.redpitaya.com/doc/User-DOC_STEMlab_125-14_V1.1%28STEMlab%20125-14%20Z7020%20LN%29.PDF>`_
+- `Schematics_STEM_125-14_v1.1_LN.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1_LN.pdf>`_
+- `Schematics_STEM_125-14_v1.1_LN_Z7020.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1_LN_Z7020.pdf>`_
 
 .. note::
 
@@ -235,7 +236,7 @@ Schematics
 Mechanical Specifications and 3D Models
 =========================================
 
-- `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
+- `3D_STEM_125-14_v1.0.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14_v1.0.zip>`_
 
 
 For all other specifications please refer to the standard :ref:`STEMlab 125-14 specs <top_125_14>`.
@@ -244,10 +245,10 @@ For all other specifications please refer to the standard :ref:`STEMlab 125-14 s
 Extension connector STEMlab 125-14 Z7020-LN
 =============================================
 
-- Connector: 2 x 26 pins IDC (M) 
-- Power supply: 
+- Connector: 2 x 26 pins IDC (M)
+- Power supply:
     - Available voltages: +5 V, +3.3 V, -4.2 V
-    - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA for -4.2 V supply. 
+    - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA for -4.2 V supply.
 
 
 
@@ -263,32 +264,32 @@ Extension connector E1
 ===  =====================  ===============  ========================  ==============
 Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
 ===  =====================  ===============  ========================  ==============
-1    3V3                                                                             
-2    3V3                                                                             
-3    DIO0_P / EXT TRIG      G17              IO_L16P_T2_35             3.3V          
-4    DIO0_N                 G18              IO_L16N_T2_35             3.3V          
-5    DIO1_P                 H16              IO_L13P_T2_MRCC_35        3.3V          
-6    DIO1_N                 H17              IO_L13N_T2_MRCC_35        3.3V          
-7    DIO2_P                 J18              IO_L14P_T2_AD4P_SRCC_35   3.3V          
-8    DIO2_N                 H18              IO_L14N_T2_AD4N_SRCC_35   3.3V          
-9    DIO3_P                 K17              IO_L12P_T1_MRCC_35        3.3V          
-10   DIO3_N                 K18              IO_L12N_T1_MRCC_35        3.3V          
-11   DIO4_P                 L14              IO_L22P_T3_AD7P_35        3.3V          
-12   DIO4_N                 L15              IO_L22N_T3_AD7N_35        3.3V          
-13   DIO5_P                 L16              IO_L11P_T1_SRCC_35        3.3V          
-14   DIO5_N                 L17              IO_L11N_T1_SRCC_35        3.3V          
-15   DIO6_P / CAN1_RX       K16              IO_L24P_T3_AD15P_35       3.3V          
-16   DIO6_N / CAN1_TX       J16              IO_L24N_T3_AD15N_35       3.3V          
-17   DIO7_P / CAN0_RX       M14              IO_L23P_T3_35             3.3V          
-18   DIO7_N / CAN0_TX       M15              IO_L23N_T3_35             3.3V          
-19   DIO8_P                 Y9               IO_L14P_T2_SRCC_13        3.3V          
-20   DIO8_N                 Y8               IO_L14N_T2_SRCC_13        3.3V          
-21   DIO9_P                 Y12              IO_L20P_T3_13             3.3V          
-22   DIO9_N                 Y13              IO_L20N_T3_13             3.3V          
-23   DIO10_P                Y7               IO_L13P_T2_MRCC_13        3.3V          
-24   DIO10_N                Y6               IO_L13N_T2_MRCC_13        3.3V          
-25   GND                                                                             
-26   GND                                                                             
+1    3V3
+2    3V3
+3    DIO0_P / EXT TRIG      G17              IO_L16P_T2_35             3.3V
+4    DIO0_N                 G18              IO_L16N_T2_35             3.3V
+5    DIO1_P                 H16              IO_L13P_T2_MRCC_35        3.3V
+6    DIO1_N                 H17              IO_L13N_T2_MRCC_35        3.3V
+7    DIO2_P                 J18              IO_L14P_T2_AD4P_SRCC_35   3.3V
+8    DIO2_N                 H18              IO_L14N_T2_AD4N_SRCC_35   3.3V
+9    DIO3_P                 K17              IO_L12P_T1_MRCC_35        3.3V
+10   DIO3_N                 K18              IO_L12N_T1_MRCC_35        3.3V
+11   DIO4_P                 L14              IO_L22P_T3_AD7P_35        3.3V
+12   DIO4_N                 L15              IO_L22N_T3_AD7N_35        3.3V
+13   DIO5_P                 L16              IO_L11P_T1_SRCC_35        3.3V
+14   DIO5_N                 L17              IO_L11N_T1_SRCC_35        3.3V
+15   DIO6_P / CAN1_RX       K16              IO_L24P_T3_AD15P_35       3.3V
+16   DIO6_N / CAN1_TX       J16              IO_L24N_T3_AD15N_35       3.3V
+17   DIO7_P / CAN0_RX       M14              IO_L23P_T3_35             3.3V
+18   DIO7_N / CAN0_TX       M15              IO_L23N_T3_35             3.3V
+19   DIO8_P                 Y9               IO_L14P_T2_SRCC_13        3.3V
+20   DIO8_N                 Y8               IO_L14N_T2_SRCC_13        3.3V
+21   DIO9_P                 Y12              IO_L20P_T3_13             3.3V
+22   DIO9_N                 Y13              IO_L20N_T3_13             3.3V
+23   DIO10_P                Y7               IO_L13P_T2_MRCC_13        3.3V
+24   DIO10_N                Y6               IO_L13N_T2_MRCC_13        3.3V
+25   GND
+26   GND
 ===  =====================  ===============  ========================  ==============
 
 
@@ -317,32 +318,32 @@ Extension connector E2
 ===  ======================  ===============  ==============================================  ==============
 Pin  Description             FPGA pin number  FPGA pin description                            Voltage levels
 ===  ======================  ===============  ==============================================  ==============
-1    +5V                                                                                                    
-2    -3V4                                                                                                   
-3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V         
-4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V         
-5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V         
-6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V         
-7    UART (TX)               D5               PS_MIO8_500                                     3.3 V         
-8    UART (RX)               B5               PS_MIO9_500                                     3.3 V         
-9    I2C (SCL)               B13              PS_MIO50_501                                    3.3 V         
-10   I2C (SDA)               B9               PS_MIO51_501                                    3.3 V         
-11   Ext com.mode                                                                             GND (default) 
-12   GND                                                                                                    
-13   Analog Input 0          B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V       
-14   Analog Input 1          C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V       
-15   Analog Input 2          E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V       
-16   Analog Input 3          E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V       
-17   Analog Output 0         T10              IO_L1N_T0_34                                    0-1.8 V       
-18   Analog Output 1         T11              IO_L1P_T0_34                                    0-1.8 V       
-19   Analog Output 2         P15              IO_L24P_T3_34                                   0-1.8 V       
-20   Analog Output 3         U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V       
-21   GND                                                                                              
-22   GND                                                                                                    
-23   Ext Adc CLK+                                                                             LVDS          
-24   Ext Adc CLK-                                                                             LVDS          
-25   GND                                                                                                    
-26   GND                                                                                                    
+1    +5V
+2    -3V4
+3    SPI (MOSI)              E9               PS_MIO10_500                                    3.3 V
+4    SPI (MISO)              C6               PS_MIO11_500                                    3.3 V
+5    SPI (SCK)               D9               PS_MIO12_500                                    3.3 V
+6    SPI (CS)                E8               PS_MIO13_500                                    3.3 V
+7    UART (TX)               D5               PS_MIO8_500                                     3.3 V
+8    UART (RX)               B5               PS_MIO9_500                                     3.3 V
+9    I2C (SCL)               B13              PS_MIO50_501                                    3.3 V
+10   I2C (SDA)               B9               PS_MIO51_501                                    3.3 V
+11   Ext com.mode                                                                             GND (default)
+12   GND
+13   Analog Input 0          B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V
+14   Analog Input 1          C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V
+15   Analog Input 2          E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V
+16   Analog Input 3          E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V
+17   Analog Output 0         T10              IO_L1N_T0_34                                    0-1.8 V
+18   Analog Output 1         T11              IO_L1P_T0_34                                    0-1.8 V
+19   Analog Output 2         P15              IO_L24P_T3_34                                   0-1.8 V
+20   Analog Output 3         U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V
+21   GND
+22   GND
+23   Ext Adc CLK+                                                                             LVDS
+24   Ext Adc CLK-                                                                             LVDS
+25   GND
+26   GND
 ===  ======================  ===============  ==============================================  ==============
 
 

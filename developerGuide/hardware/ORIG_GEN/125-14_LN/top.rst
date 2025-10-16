@@ -133,7 +133,7 @@ Technical specifications
     :widths: 40 40
 
     +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 | 
+    | **Extension connector**                                                 |
     +====================================+====================================+
     | Digital IOs                        | 16                                 |
     +------------------------------------+------------------------------------+
@@ -198,7 +198,7 @@ Technical specifications
 
 
 .. note::
-    
+
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp-orig_gen>`.
 
 
@@ -221,7 +221,8 @@ You can find the measurements of the fast analog frontend here:
 Schematics
 ===========
 
-- `User-DOC_STEMlab_125-14_V1.1_STEMlab 125-14 LN.PDF <https://downloads.redpitaya.com/doc/User-DOC_STEMlab_125-14_V1.1%28STEMlab%20125-14%20LN%29.PDF>`_
+- `Schematics_STEM_125-14_v1.1_LN.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1_LN.pdf>`_
+- `Schematics_STEM_125-14_v1.1_LN_Z7020.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1_LN_Z7020.pdf>`_
 
 .. note::
 
@@ -232,7 +233,7 @@ Schematics
 Mechanical Specifications and 3D Models
 =========================================
 
-- `Red_Pitaya_3Dmodel_v1.0.zip <https://downloads.redpitaya.com/doc/Red_Pitaya_3Dmodel_v1.0.zip>`_
+- `3D_STEM_125-14_v1.0.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14_v1.0.zip>`_
 
 
 Other specifications

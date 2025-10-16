@@ -13,9 +13,9 @@ The Red Pitaya Click Shield extension module enables users to extend Red Pitaya 
 
 **Highlights:**
 
-* Two |mikroBUS| sockets, allowing interface with more than 1500 |Click Boards| devices. 
+* Two |mikroBUS| sockets, allowing interface with more than 1500 |Click Boards| devices.
 * High-performance clock and trigger synchronisation between multiple Red Pitaya units or other devices.
-* Powering Red Pitaya through an external power supply (12-24 V or via USB-C connector). 
+* Powering Red Pitaya through an external power supply (12-24 V or via USB-C connector).
 
 
 |click_shield_front| |click_shield_back|
@@ -150,7 +150,7 @@ Connectors
     REF CLK IN connector is connected to the DIO10_P GPIO pin, which can act as a reference clock input, but the functionatlity is not included in the base FPGA image, so it must be added by the user.
 
 |
- 
+
 
 Switches
 ---------
@@ -205,7 +205,7 @@ Jumpers
 Power supply
 --------------
 
-The Click Shields provide two alternative ways to power the Red Pitaya: 
+The Click Shields provide two alternative ways to power the Red Pitaya:
 
 * USB-C external power supply.
 * 12-24 V External Power Supply (2-pin screw Terminal Block).
@@ -247,7 +247,7 @@ In short, you do not have to rely on the original Red Pitaya power supply but ca
     |
 
 #.  **Standard and external power supply**
-   
+
     .. image:: img/red-pitaya-power-03.png
         :width: 400
 
@@ -396,7 +396,7 @@ Components
 Schematics
 ================
 
-* `Click_shield_for_Red_Pitaya_v103_Schematic.pdf <https://downloads.redpitaya.com/doc/Click_shield_for_Red_Pitaya_v103_Schematic.pdf>`_
+* `Schematics_Click_Shields_v103.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_Click_Shields_v103.pdf>`_
 
 
 .. note::
@@ -411,7 +411,7 @@ Schematics
 Mechanical Specifications and 3D Models
 =========================================
 
-* `red-pitaya-click-shield-2d-3d-files.zip <https://downloads.redpitaya.com/doc/red-pitaya-click-shield-2d-3d-files.zip>`_
+* `3D_Click_Shield.zip <https://downloads.redpitaya.com/doc/3D_models/3D_Click_Shield.zip>`_
 
 
 

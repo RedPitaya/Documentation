@@ -149,7 +149,7 @@ Technical specifications
     :widths: 40 40
 
     +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 | 
+    | **Extension connector**                                                 |
     +====================================+====================================+
     | Digital IOs                        | 22                                 |
     +------------------------------------+------------------------------------+
@@ -221,7 +221,7 @@ Technical specifications
 
 
 .. note::
-    
+
     For more information, please refer to the :ref:`Product comparison table <rp-board-comp-orig_gen>`.
 
 
@@ -243,7 +243,7 @@ You can find the measurements of the fast analog frontend here:
 Schematics
 =============
 
-* `STEM122-16SDR_V1r1_Series1.PDF <https://downloads.redpitaya.com/doc/Customer_Schematics_STEM122-16SDR_V1r1%28Series1%29.PDF>`_.
+* `Schematics_STEM_122-16SDR_V1r1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_122-16SDR_V1r1.pdf>`_.
 
 .. note::
 
@@ -253,8 +253,8 @@ Schematics
 Mechanical Specifications and 3D Models
 ===========================================
 
-* PDF `STEM122-16SDR_V1r1_3Dpdf.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dpdf.zip>`_.
-* STEP `STEM122-16SDR_V1r1_3Dstep.zip <https://downloads.redpitaya.com/doc/STEM122-16SDR_V1r1_3Dstep.zip>`_.
+* PDF `3D_STEM_122-16SDR_V1r1.pdf.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.pdf.zip>`_.
+* STEP `3D_STEM_122-16SDR_V1r1.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.zip>`_.
 
 
 ADC specifications

@@ -33,7 +33,7 @@ A set of nine Jumpers can reconnect certain extension module connectors to diffe
 For example, with J1 and J3, you can set the shield power source (VCC) to either an external power supply or get the power from Red Pitaya.
 A full schematic of the extension module is available below.
 
-.. note:: 
+.. note::
 
     The extension module is available for purchase from the Red Pitaya |store|.
 
@@ -190,7 +190,7 @@ Jumpers
 Schematics
 ============
 
-* `Red_Pitaya_Sensor_Shield_Schematics.pdf <https://downloads.redpitaya.com/doc/STEMlab_ArduinoSensorShieldSch.PDF>`_.
+* `Schematics_Sensor_Shield.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_Sensor_Shield.pdf>`_.
 
 
 Examples of Groove Sensor
@@ -239,19 +239,19 @@ Accelerometer ``not supported at the moment``                                   
 .. |Button| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Button" target="_blank">Button</a>
-    
+
 .. |Switch| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Switch-P" target="_blank">Switch</a>
-    
+
 .. |Tilt| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Tilt_Switch" target="_blank">Tilt</a>
-    
+
 .. |Potentiometer| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Slide_Potentiometer" target="_blank">Potentiometer</a>
-    
+
 .. |Light sensor| raw:: html
 
     <a href="http://wiki.seeed.cc/Grove-Light_Sensor" target="_blank">Light sensor</a>
@@ -259,27 +259,27 @@ Accelerometer ``not supported at the moment``                                   
 .. |Air quality sensor| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Air_Quality_Sensor_v1.3" target="_blank">Air quality sensor</a>
-    
+
 .. |Vibration sensor| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Piezo_Vibration_Sensor" target="_blank">Vibration sensor</a>
-    
+
 .. |Moisture sensor| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Moisture_Sensor" target="_blank">Moisture sensor</a>
-    
+
 .. |Water sensor| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Water_Sensor" target="_blank">Water sensor</a>
-    
+
 .. |Barometer| raw:: html
 
     <a href="" target="_blank">Barometer</a>
-    
+
 .. |Alcohol sensor| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-Alcohol_Sensor" target="_blank">Alcohol sensor</a>
-    
+
 .. |Sound sensor| raw:: html
 
     <a href="http://wiki.seeed.cc/Grove-Sound_Sensor" target="_blank">Sound sensor</a>
@@ -324,15 +324,15 @@ LCD                                                                             
 .. |LED| raw:: html
 
     <a href="https://www.seeedstudio.com/grove-led-p-767.html?cPath=156_157" target="_blank">LED</a>
-    
+
 .. |7 segment display| raw:: html
 
     <a href="https://www.seeedstudio.com/Grove-0-54-Red-Dual-Alphanumeric-Display-p-4031.html?queryID=817e144e20d72ab54938d8288d8f4155&objectID=4031&indexName=bazaar_retailer_products" target="_blank">7 segment display</a>
-    
+
 .. |LED bar| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-LED_Bar" target="_blank">LED bar</a>
-    
+
 .. |Groove LCD| raw:: html
 
     <a href="https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight" target="_blank">Groove LCD</a>
