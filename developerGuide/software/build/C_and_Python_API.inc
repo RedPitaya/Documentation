@@ -1,448 +1,843 @@
 
-You can write simple C and Python algorithms, make executables, and run them directly on the Red Pitaya board. A list of
-built-in functions (APIs) are available providing full control over the Red Pitaya board (signal generation and
-acquisition, digital I/O control, communication (I2C, SPI, UART, CAN) and more).
+Red Pitaya provides C and Python APIs that enable direct control of the board's hardware. You can write applications, 
+compile them, and execute them directly on the Red Pitaya board. The APIs provide comprehensive control over signal 
+generation and acquisition, digital I/O, and communication interfaces (I2C, SPI, UART, CAN).
 
-.. warning::
 
-    Please make sure that your Red Pitaya OS and the downloaded GitHub ecosystem repository are compatible.
-    We recommend using a GitHub ecosystem that is meant to run on your current Red Pitaya OS version:
+.. contents:: Table of Contents
+    :backlinks: top
 
-    - 2.05-37 - Branch 2024.3
-    - 2.04-35 - Branch 2024.2
-    - 2.00-30 - Branch 2024.1
-    - 2.00-23 - Branch 2023.3
-    - 2.00-18 - Branch 2023.2
-    - 2.00-15 - Branch 2023.1
-    - 1.04-28 - Branch 2022.2
-    - 1.04-18 - Branch 2022.1
+|
 
-    Using an old OS with a newer GitHub ecosystem can result in compatibility isses.
 
-C and Python API functions
-============================
+Version compatibility
+======================
+
+.. tabs::
+
+    .. group-tab:: OS 1.04 or lower
+
+        .. warning::
+
+            The API examples are included in the main :rp-github:`Red Pitaya GitHub repository <RedPitaya>`.
+            Ensure your Red Pitaya OS version matches the downloaded :rp-github:`GitHub repository version <RedPitaya>`.
+            Using incompatible versions can cause functionality issues.
+
+        Use the **Tags** dropdown on GitHub to select the appropriate version.
+
+        .. figure:: img/GitHub_branch_tags.png
+            :align: center
+            :width: 800
+
+    .. group-tab:: OS 2.00 or higher
+
+        .. warning::
+
+            The API examples are located in the separate :rp-github:`Red Pitaya Examples GitHub repository <RedPitaya-Examples>`. Before running any examples, 
+            ensure it is compatible with your Red Pitaya OS version by comparing the example information with your current OS version.
+
+            Running a new example on an old OS can result in compatibility issues.
+
+|
+
+
+API overview
+=============
+
+There are two main APIs available for Red Pitaya:
+
+- **C API** - Native C library for low-level hardware control
+- **Python API** - Python wrappers around the C API for easier scripting and rapid development
 
 .. note::
 
     Python API functions are only available on OS 2.00-23 or higher.
 
-All API functions have an "int" return value. If the returned value is 0 (equal to *RP_OK*), then the function executed successfully.
 
-The Python API functions are just wrappers that call the corresponding C API function. Consequently, they have exactly the same names, and always return an array where the first element is the C API function return value (successful or not), and the other elements represent the expected return values.
+Return values
+--------------
 
+All API functions return an integer value:
 
-Examples on how to control Red Pitaya using APIs can be found :ref:`here <examples>`.
+* **0** (RP_OK) - Function executed successfully
+* **Non-zero** - An error occurred
 
+Python API functions are wrappers around the C API. They have identical names and return an array where:
 
-Compiling and running C applications
-=====================================
+* **First element** - C API function return value (success or error code)
+* **Subsequent elements** - Expected return values from the function
 
-When compiling on the target no special preparations are needed. A native toolchain is available directly on the Debian system.
+For API usage examples, see the :ref:`Examples section <examples>`.
 
-
-Compiling and running Example code
------------------------------------
-
-1.  **First connect to your board over the** :ref:`SSH <ssh>` **connection** (replace the IP, the default password is `root`).
-
-    .. code-block:: shell-session
-
-        ssh root@192.168.0.100
-
-    You can also use the .local address (not all computers support .local addresses) (replace 'xxxxxx' with the last 6 characters of the Red Pitaya's MAC address):
-
-    .. code-block:: shell-session
-
-        ssh root@rp-xxxxxx.local
+|
 
 
-2.  **Now make a clone of the Red Pitaya Git repository and enter the project directory.**
+Working with C Applications
+=============================
 
-    .. code-block:: shell-session
-
-        git clone https://github.com/RedPitaya/RedPitaya.git
-        cd RedPitaya
-
-    When you copy the source code from our repository you will also copy all available C API examples to your Red Pitaya board.
+The Red Pitaya board includes a native C toolchain on the Debian system, allowing you to compile C applications 
+directly on the target hardware.
 
 
-3.  **In order to compile one example just use the source file name without the `.c` extension.**
+Compiling example code
+-----------------------
 
-    .. code-block:: shell-session
+Step 1: Connect via SSH
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        cd Examples/C
-        gcc digital_led_blink.c -o digital_led_blink
+Connect to your Red Pitaya board via :ref:`SSH <ssh>`. Replace ``192.168.0.100`` with your Red Pitaya's IP address:
 
-    or
+.. code-block:: shell-session
 
-    .. code-block:: shell-session
+    ssh root@192.168.0.100
 
-        cd Examples/C
-        make digital_led_blink
+Alternatively, use the ``.local`` address (replace 'xxxxxx' with the last 6 characters of your Red Pitaya's MAC address):
 
+.. code-block:: shell-session
 
-    To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
-    there is a **Makefile** script in the same folder as the Example APIs, which links the libraries during the compilation process.
+    ssh root@rp-xxxxxx.local
 
-
-4.  **Applications based on the API require a specific FPGA image (v0.94) to be loaded:**
-
-    .. tabs::
-
-        .. group-tab:: OS version 1.04 or older
-
-            .. code-block:: shell-session
-
-                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
-        .. group-tab:: OS version 2.00 or higher
-
-            .. code-block:: shell-session
-
-                redpitaya> overlay.sh v0.94
+The default password is ``root``.
 
 
-5. **Execute the application.**
+Step 2: Clone the repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. tabs::
+Clone the Red Pitaya Git repository to access example code:
 
-        .. group-tab:: With Makefile
+.. tabs::
 
-            Since the libraries were linked during the compilation process, the application can be executed normally.
-        
-            .. code-block:: shell-session
+    .. group-tab:: OS version 1.04 or older
 
-                ./digital_led_blink
+        .. code-block:: shell-session
 
-        .. group-tab:: No Makefile
-    
-            The path to Red Pitaya shared libraries must be provided explicitly.
+                git clone https://github.com/RedPitaya/RedPitaya.git
+                cd RedPitaya/Examples
 
-            .. code-block:: shell-session
+    .. group-tab:: OS version 2.00 or higher
 
-                LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
+        .. code-block:: shell-session
 
-
-    Some of the applications run in a continuous loop - press `CTRL+C` to stop them.
+            git clone https://github.com/RedPitaya/RedPitaya-Examples.git
+            cd RedPitaya
 
 
-Compiling and running custom code
------------------------------------
+Step 3: Compile the example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Navigate to the C examples directory and compile:
+
+.. code-block:: shell-session
+
+    cd C
+    make digital_led_blink
+
+.. tabs::
+
+    .. group-tab:: 1.04 or older
+
+        Alternatively, compile manually using gcc:
+
+        .. code-block:: shell-session
+
+            cd C
+            gcc digital_led_blink.c -o digital_led_blink
+
+    .. group-tab:: 2.00 or higher
+
+        Alternatively, compile manually using g++:
+
+        .. code-block:: shell-session
+
+            cd C
+            g++ digital_led_blink.cpp -o digital_led_blink
+
+        .. note::
+
+            With the latest Red Pitaya OS versions (2.05-37 and higher), we are moving towards C++ for API examples.
+            For C examples, please use the `.c` files and compile them with `gcc` as shown above.
 
 .. note::
 
-   When creating custom C API programs on your computer, please make sure that **End of Line Sequence** in your code editor is set to **LF**
-   (*CRLF End of Line Sequence* causes already compiled C programs not to function after reboot). The recommended encoding is **UTF-8**.
+    The Makefile automatically links required libraries during compilation, eliminating the need to specify 
+    library paths when executing the application.
 
 
-1.  First, send the custom C code example from your computer to the Red Pitaya board. Here is an example of how to copy the code to */root* directory on the Red Pitaya.
+Step 4: Load FPGA image
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. code-block:: shell-session
+API applications require the v0.94 FPGA image:
 
-        scp /path/to/custom/c/api/ root@rp-xxxxxx.local:/root
+.. tabs::
 
-2.  Then connect to your board over :ref:`SSH <ssh>` (replace the IP, the default password is `root`).
+    .. group-tab:: OS version 1.04 or older
 
-    .. code-block:: shell-session
+        .. code-block:: shell-session
 
-        ssh root@192.168.0.100
+            cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
-    You can also use the .local address (not all computers support .local addresses) (replace 'xxxxxx' with the last 6 characters of the Red Pitaya's MAC address):
+    .. group-tab:: OS version 2.00 or higher
 
-    .. code-block:: shell-session
+        .. code-block:: shell-session
 
-        ssh root@rp-xxxxxx.local
+            overlay.sh v0.94
 
 
-3.  To avoid the step of having to specify the library path explicitly everytime before executing a C API script,
-    create a **Makefile** script in the same folder as the APIs, which will link the libraries during the compilation process.
-    Do not forget to include your C program under the *List of compiled object files* - **PRGS** variable.
-    Here is an example:
+Step 5: Execute the application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. tabs::
+Run the compiled application:
 
-        .. group-tab:: OS version 1.04 or older
+.. tabs::
 
-            .. code-block:: shell-session
+    .. group-tab:: With Makefile
 
-                MODEL ?= Z10
-
-                CFLAGS  = -std=gnu11 -Wall ## -Werror
-                CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
-                LDFLAGS = -L/opt/redpitaya/lib
-                LDLIBS = -static -lrp
-                
-                ifeq ($(MODEL),Z20_250_12)
-                INCLUDE += -I/opt/redpitaya/include/api250-12
-                LDLIBS += -lrp-gpio -lrp-i2c
-                endif
-                
-                LDLIBS += -lrp-hw -lm -lstdc++ -lpthread
-                
-                # List of compiled object files (not yet linked to executable)
-
-                PRGS = digital_led_blink \
-                       api_example_2 \
-                       api_example_3 \
-                       api_example_x
-
-                OBJS := $(patsubst %,%.o,$(PRGS))
-                SRC := $(patsubst %,%.c,$(PRGS))
-
-                all: $(PRGS)
-
-                $(PRGS): %: %.c
-                	$(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-
-                clean:
-                	$(RM) *.o
-                	$(RM) $(OBJS)
-
-        .. group-tab:: OS version between 2.00-15 and 2.00-23
-
-            .. code-block:: shell-session
-        
-                MODEL ?= Z10
-        
-                CFLAGS  = -std=gnu11 -Wall ## -Werror
-                CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
-                LDFLAGS = -L/opt/redpitaya/lib
-                LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
-        
-                INCLUDE += -I/opt/redpitaya/include/api250-12
-                LDLIBS += -lrp-gpio -lrp-i2c
-                LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
-        
-                # List of compiled object files (not yet linked to executable)
-        
-                PRGS = digital_led_blink \
-                       api_example_2 \
-                       api_example_3 \
-                       api_example_x
-        
-                OBJS := $(patsubst %,%.o,$(PRGS))
-                SRC := $(patsubst %,%.c,$(PRGS))
-        
-                all: $(PRGS)
-        
-                $(PRGS): %: %.c
-                    $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-        
-                clean:
-                    $(RM) *.o
-                    $(RM) $(OBJS)
-
-        .. group-tab:: OS version 2.00-30 and higher
-
-            .. code-block:: shell-session
-
-                CFLAGS  = -std=gnu11 -Wall ## -Werror
-                CFLAGS += -I/opt/redpitaya/include
-                LDFLAGS = -L/opt/redpitaya/lib
-                LDLIBS = -static -lrp-hw-can -lrp -lrp-hw-calib -lrp-hw-profiles
-
-                INCLUDE += -I/opt/redpitaya/include/api250-12
-                LDLIBS += -lrp-gpio -lrp-i2c
-                LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c -lsocketcan
-
-                # List of compiled object files (not yet linked to executable)
-
-                PRGS = digital_led_blink \
-                                       api_example_2 \
-                                       api_example_3 \
-                                       api_example_x
+        If you compiled using the Makefile, libraries are already linked:
     
-                OBJS := $(patsubst %,%.o,$(PRGS))
-                SRC := $(patsubst %,%.c,$(PRGS))
+        .. code-block:: shell-session
 
-                all: $(PRGS)
+            ./digital_led_blink
 
-                $(PRGS): %: %.c
-                	$(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+    .. group-tab:: Without Makefile
 
-                clean:
-                	$(RM) *.o
-                	$(RM) $(OBJS)
+        If you compiled manually, provide the library path explicitly:
 
-                clean_all: clean
-                	$(RM) $(PRGS)
+        .. code-block:: shell-session
 
-
-4.  In order to compile one example, just use the source file name without the `.c` extension.
-
-    .. code-block:: shell-session
-
-        cd Examples/C
-        make digital_led_blink
-
-
-5.  Applications based on the API require a specific FPGA image (v0.94) to be loaded:
-
-    .. tabs::
-
-        .. group-tab:: OS version 1.04 or older
-
-            .. code-block:: shell-session
-
-                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
-        .. group-tab:: OS version 2.00 or higher
-
-            .. code-block:: shell-session
-
-                redpitaya> overlay.sh v0.94
-
-
-6. Execute the application.
-
-    .. tabs::
-
-        .. group-tab:: With Makefile
-
-            Since the libraries were linked during the compilation process, the application can be executed normally.
-        
-            .. code-block:: shell-session
-
-                ./digital_led_blink
-
-        .. group-tab:: No Makefile
-    
-            The path to Red Pitaya shared libraries must be provided explicitly.
-
-            .. code-block:: shell-session
-
-                LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
-
-    If an application is running in a continuous loop - press `CTRL+C` to stop them.
-
-
-
-Running Python applications
-==============================
-
-The Python applications can be executed from anywhere inside the Red Pitaya directory system, 
-but we do recommend using the **"Home" ("/root")** directory for code storeage.
+            LD_LIBRARY_PATH=/opt/redpitaya/lib ./digital_led_blink
 
 .. note::
 
-    Please make sure that **End of Line Sequence** in your code editor is set to **LF** (*CRLF End of Line Sequence* causes a **Bad Interpreter error**).
-    The recommended encoding is **UTF-8**.
+    Press ``CTRL+C`` to stop applications running in continuous loops.
 
 
-1.  The best way to create Python APIs is to write the code on your computer (use the available examples as a reference).
-    Do not forget to include the **rp** library.
+Compiling custom code
+-----------------------
+
+When developing custom C or C++ applications, follow these steps to transfer and compile your code on Red Pitaya.
 
 
-2.  Copy the code to Red Pitaya using the **scp** (secure copy) command:
-
-    .. code-block:: shell-session
-
-        scp "path/to/pythonAPI/file" root@rp-xxxxxx.local:/root
-
-
-3.  If copying a full directory do not forget to add the **-r** flag:
-
-    .. code-block:: shell-session
-
-        scp -r "path/to/pythonAPI/folder" root@rp-xxxxxx.local:/root
-
-
-4.  Connect to your Red Pitaya via :ref:`SSH <ssh>` and make the files executable:
-
-    .. code-block:: shell-session
-
-        chmod +x pythonAPI_example1.py pythonAPI_example2.py pythonAPI_example3.py
-
-
-5.  Finally, run the code.
-
-    .. code-block:: shell-session
-
-       ./pythonAPI_example.py
-
+Prerequisites
+^^^^^^^^^^^^^^
 
 .. note::
 
-    If a **ModuleNotFoundError: No module named 'rp'** error pops-up, Python Path is not properly configured.
-    Add the following two lines to the end of the **.bashrc** file (inside home directory).
-
-    .. code-block:: shell-session
-
-        PYTHONPATH=/opt/redpitaya/lib/python/:$PYTHONPATH
-        export PYTHONPATH
-
-    Then execute the **.bashrc** or restart Red Pitaya:
-
-    .. code-block:: shell-session
-
-        source ./.bashrc
-
-
-Red Pitaya Python library list
--------------------------------
-
-Here is a full list of Red Pitaya libraries with functionalities you can include into your projects:
-
-+------------------------+------------------------------------------------------------------------------+-------------+
-| Library                | Description                                                                  | Ecosystem   |
-+========================+==============================================================================+=============+
-| **rp**                 | API commands for API initialisation, controlling LEDs, Analog pins, GPIOs,   | 2.00-23     |
-|                        | Generation, Acquisition, Board Control commands, and DMA.                    |             |
-|                        | Default library, should be included in almost every project.                 |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_hw**              | API commands for UART, SPI, and I2C interface, and Status LED control.       | 2.00-23     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_hw_calib**        | API commands for configuring calibration parameters and settings.            | 2.00-23     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_hw_profiles**     | API commands for the CAN interface.                                          | 2.00-23     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_dsp**             | API commands for digital signal processing (FFT, window functions, convert   | 2.00-23     |
-|                        | to dB, ...). Used by the Spectrum analyzer application.                      |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_overlay**         | Changing the current FPGA image.                                             | 2.00-30     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_hw_can**          | API commands for the CAN interface.                                          | 2.00-30     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_formatter**       | API commands for converting streamed data between wav, tdms and csv.         | 2.00-30     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_arb**             | API commands for uploading and configuring the arbitrary waveform manager.   | 2.00-30     |
-|                        | Used by the Arbitrary waveform manager application.                          |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_sweep**           | API commands for controlling Sweep mode.                                     | 2.04-35     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-| **rp_la**              | API commands for logic analyzer and decoding of UART, SPI, I2C and CAN data. | 2.07-43     |
-|                        |                                                                              |             |
-|                        |                                                                              |             |
-+------------------------+------------------------------------------------------------------------------+-------------+
-
-
-C and Python API all available commands
-========================================
-
-The API functions/commands are written in the :ref:`available commands' list <command_list>`.
-As of now the list does not include all possible options. If you want to check out all available API commands they are available here:
+    Configure your code editor with the following settings:
     
-    - C - Check the `"rp-api" section of the GitHub repository <https://github.com/RedPitaya/RedPitaya/blob/master/rp-api>`_ section of the GitHub repository (`Function info <https://github.com/RedPitaya/RedPitaya/blob/master/rp-api/api/include/rp.h>`_).
-    - Python - Establish an :ref:`SSH <ssh>` connection to your Red Pitaya and look into the "/opt/redpitaya/lib/python" directoy.
+    * **End of Line Sequence:** LF (not CRLF)
+    * **Encoding:** UTF-8
+   
+    Using CRLF line endings will cause compiled programs to straightup fail with errors or do so after a reboot.
 
 
-C and Python API examples
-===========================
+Step 1: Transfer code to Red Pitaya
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The examples are available :ref:`here <examples>`.
+Copy your custom C or C++ code from your computer to Red Pitaya using the ``scp`` command. Here is an example of transferring a single C file to the ``/root`` directory:
+
+.. code-block:: shell-session
+
+    scp /path/to/custom_program.c root@rp-xxxxxx.local:/root
+
+Alternatively, use a program like WinSCP for graphical file transfer.
+
+
+Step 2: Connect via SSH
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Connect to your Red Pitaya board via :ref:`SSH <ssh>`. Replace ``192.168.0.100`` with your Red Pitaya's IP address:
+
+.. code-block:: shell-session
+
+    ssh root@192.168.0.100
+
+Alternatively, use the ``.local`` address (replace 'xxxxxx' with the last 6 characters of your Red Pitaya's MAC address):
+
+.. code-block:: shell-session
+
+    ssh root@rp-xxxxxx.local
+
+
+Step 3: Create a Makefile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create a Makefile in the same directory as your C or C++ code to automate library linking. Add your program names 
+to the ``PRGS`` variable.
+
+Select the appropriate Makefile template for your OS version:
+
+.. tabs::
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: makefile
+
+            MODEL ?= Z10
+
+            CFLAGS  = -std=gnu11 -Wall
+            CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+            LDFLAGS = -L/opt/redpitaya/lib
+            LDLIBS = -static -lrp
+            
+            ifeq ($(MODEL),Z20_250_12)
+            INCLUDE += -I/opt/redpitaya/include/api250-12
+            LDLIBS += -lrp-gpio -lrp-i2c
+            endif
+            
+            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread
+            
+            # List of programs to compile
+            PRGS = digital_led_blink \
+                   custom_program_1 \
+                   custom_program_2
+
+            OBJS := $(patsubst %,%.o,$(PRGS))
+
+            all: $(PRGS)
+
+            $(PRGS): %: %.c
+                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+            clean:
+                $(RM) *.o $(OBJS)
+
+    .. group-tab:: OS version 2.00-15 to 2.00-23
+
+        .. code-block:: makefile
+    
+            MODEL ?= Z10
+    
+            CFLAGS  = -std=gnu11 -Wall
+            CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+            LDFLAGS = -L/opt/redpitaya/lib
+            LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+    
+            INCLUDE += -I/opt/redpitaya/include/api250-12
+            LDLIBS += -lrp-gpio -lrp-i2c
+            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
+    
+            # List of programs to compile
+            PRGS = digital_led_blink \
+                   custom_program_1 \
+                   custom_program_2
+    
+            OBJS := $(patsubst %,%.o,$(PRGS))
+
+            all: $(PRGS)
+    
+            $(PRGS): %: %.c
+                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+    
+            clean:
+                $(RM) *.o $(OBJS)
+
+    .. group-tab:: OS version 2.00-30 and higher
+
+        .. code-block:: makefile
+
+            CFLAGS  = -std=gnu11 -Wall
+            CFLAGS += -I/opt/redpitaya/include
+            LDFLAGS = -L/opt/redpitaya/lib
+            LDLIBS = -static -lrp-hw-can -lrp -lrp-hw-calib -lrp-hw-profiles
+
+            INCLUDE += -I/opt/redpitaya/include/api250-12
+            LDLIBS += -lrp-gpio -lrp-i2c
+            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c -lsocketcan
+
+            # List of programs to compile
+            PRGS = digital_led_blink \
+                   custom_program_1 \
+                   custom_program_2
+
+            OBJS := $(patsubst %,%.o,$(PRGS))
+
+            all: $(PRGS)
+
+            $(PRGS): %: %.c
+                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+            clean:
+                $(RM) *.o $(OBJS)
+
+            clean_all: clean
+                $(RM) $(PRGS)
+
+    .. group-tab:: OS version 2.05-37 or higher
+
+        With this OS version, C++ is the preferred language for API examples. Use the following Makefile template for C++ code:
+
+        .. code-block::
+
+            CFLAGS  = -Wall -std=c++20 ## -Werror
+            CFLAGS += -I/opt/redpitaya/include
+            LDFLAGS = -L/opt/redpitaya/lib
+            LDLIBS = -static -lrp-hw-can -lrp -lrp-hw-calib -lrp-hw-profiles
+
+            INCLUDE += -I/opt/redpitaya/include/api250-12
+            LDLIBS += -lrp-gpio -lrp-i2c
+            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c -lsocketcan
+
+            # List of programs to compile
+            PRGS = digital_led_blink \
+                   custom_program_1 \
+                   custom_program_2
+
+            OBJS := $(patsubst %,%.o,$(PRGS))
+            SRC := $(patsubst %,%.cpp,$(PRGS))
+
+            all: $(PRGS)
+
+            $(PRGS): %: %.cpp
+                $(CXX) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+            clean:
+                $(RM) *.o
+                $(RM) $(OBJS)
+
+            clean_all: clean
+                $(RM) $(PRGS)
+
+
+Step 4: Compile your program
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Compile using the program name without the .c or .cpp extension:
+
+.. code-block:: shell-session
+
+    make custom_program_1
+
+
+Step 5: Load FPGA image
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Load the required FPGA image:
+
+.. tabs::
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+    .. group-tab:: OS version 2.00 or higher
+
+        .. code-block:: shell-session
+
+            overlay.sh v0.94
+
+.. note::
+
+    When :ref:`uploading a custom FPGA image <>`, please note that some API functions may fail to work due to the changes in the FPGA.
+
+
+Step 6: Execute your program
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run the compiled application:
+
+.. tabs::
+
+    .. group-tab:: With Makefile
+
+        Libraries are already linked:
+    
+        .. code-block:: shell-session
+
+            ./custom_program_1
+
+    .. group-tab:: Without Makefile
+
+        Provide the library path explicitly:
+
+        .. code-block:: shell-session
+
+            LD_LIBRARY_PATH=/opt/redpitaya/lib ./custom_program_1
+
+.. note::
+
+    Press ``CTRL+C`` to stop applications running in continuous loops.
+
+|
+
+
+Working with Python Applications
+==================================
+
+Python applications can be executed from any directory on Red Pitaya, but we recommend storing code in the 
+``/root`` (home) directory.
+
+Python is pre-installed on Red Pitaya OS 2.00-23 and higher. The version depends on the OS version.
+
++-------------------------+-----------------------+
+| Red Pitaya OS Version   | Python Version        |
++=========================+=======================+
+| Pre 2.00-23             | Not available         |
++-------------------------+-----------------------+
+| 2.00-23 and higher      | Python 3.10.          |
++-------------------------+-----------------------+
+
+
+Prerequisites
+--------------
+
+.. note::
+
+    Configure your code editor with the following settings:
+    
+    * **End of Line Sequence:** LF (not CRLF)
+    * **Encoding:** UTF-8
+   
+    Using CRLF line endings will cause compiled programs to straightup fail with errors or do so after a reboot.
+
+
+Creating and deploying Python code
+------------------------------------
+
+Step 1: Write your Python code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create your Python application on your computer. Include the ``rp`` and any other necessary libraries. Use the available examples as reference:
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+    import rp
+
+
+Step 2: Copy code to Red Pitaya
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Transfer a single file:
+
+.. code-block:: shell-session
+
+    scp /path/to/pythonAPI_example.py root@rp-xxxxxx.local:/root
+
+Transfer an entire directory (use the ``-r`` flag):
+
+.. code-block:: shell-session
+
+    scp -r /path/to/python_project/ root@rp-xxxxxx.local:/root
+
+
+Step 3: Make files executable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Connect via :ref:`SSH <ssh>` and set executable permissions:
+
+.. code-block:: shell-session
+
+    ssh root@rp-xxxxxx.local
+    chmod +x pythonAPI_example.py
+
+
+Step 4: Execute the Python script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run your Python application:
+
+.. code-block:: shell-session
+
+   ./pythonAPI_example.py
+
+
+Troubleshooting Python path
+-----------------------------
+
+If you encounter a ``ModuleNotFoundError: No module named 'rp'`` error, the Python path is not configured correctly.
+
+Add the following lines to the end of the ``.bashrc`` file in your home directory:
+
+.. code-block:: bash
+
+    PYTHONPATH=/opt/redpitaya/lib/python/:$PYTHONPATH
+    export PYTHONPATH
+
+Apply the changes:
+
+.. code-block:: shell-session
+
+    source ~/.bashrc
+
+Alternatively, reboot Red Pitaya for the changes to take effect.
+
+|
+
+
+Running applications at boot
+=============================
+
+There are several ways to make your C or Python applications run automatically at Red Pitaya startup:
+
+1. **startup.sh script** (recommended) - Add your application commands to the ``/opt/redpitaya/sbin/startup.sh`` script.
+2. **etc/profile.d directory** - Create a script in the ``/etc/profile.d/`` directory that runs your application.
+3. **Other methods** - Use systemd services or cron jobs for more advanced startup configurations.
+
+
+Startup.sh script
+------------------
+
+The ``startup.sh`` script is the recommended method for running applications at boot. The application will run exactly once after the system starts.
+
+1. **Enable read-write mode**. Since we are modifying a system file, switch to read-write mode:
+
+    .. code-block:: shell-session
+
+        rw
+
+2. **Copy files to system directory**. Copy your application files to a suitable system directory, e.g., ``/opt/redpitaya/bin/``:
+
+    .. tabs::
+
+        .. group-tab:: Python API
+
+            .. code-block:: shell-session
+
+                cp /root/pythonAPI_example.py /opt/redpitaya/bin/
+
+        .. group-tab:: C API
+
+            Make sure the C application is **compiled and executable**.
+
+            .. code-block:: shell-session
+
+                cp /root/CAPI_example /opt/redpitaya/bin/
+
+3. **Open the startup.sh script for editing**:
+
+    .. code-block:: shell-session
+
+        nano /opt/redpitaya/sbin/startup.sh
+
+4. **Append application startup command**. Add a line at the end of the file to execute your application:
+
+    .. tabs::
+
+        .. group-tab:: Python API
+
+            .. code-block:: shell-session
+
+                export PYTHONPATH=/opt/redpitaya/lib/python/:\$PYTHONPATH
+                /opt/redpitaya/bin/pythonAPI_example.py
+
+        .. group-tab:: C API
+
+            .. code-block:: shell-session
+
+                /opt/redpitaya/bin/CAPI_example
+
+5. **Save and exit the editor**.
+
+6. **Reboot**. Restart Red Pitaya to apply the changes: 
+
+    .. code-block:: shell-session
+
+        reboot
+
+Stopping the application
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To stop a running application on Red Pitaya, you can use one of the following methods:
+
+1. **Kill by process name** (temporary stop):
+
+    .. tabs::
+
+        .. group-tab:: Python API
+
+            .. code-block:: shell-session
+
+                pkill -f pythonAPI_example.py
+
+        .. group-tab:: C API
+
+            .. code-block:: shell-session
+
+                pkill -f CAPI_example
+
+2. **Remove startup command** (permanent stop):
+
+    * First stop the application using the method above. 
+    * Edit the startup.sh script to remove or comment out the line that starts your application.
+    * Optionally, remove the application files from the system directory if no longer needed.
+    * Reboot Red Pitaya to apply the changes.
+
+
+Profile.d directory
+----------------------
+
+The ``/etc/profile.d/`` directory is used for system-wide environment variable settings and startup scripts. You can create a new script file in this directory to set environment variables for your application.
+The script will run for all users at every shell login (once at Red Pitaya boot and at each new terminal session).
+
+1. **Enable read-write mode**. Since we are modifying a system file, switch to read-write mode:
+
+    .. code-block:: shell-session
+
+        rw
+
+#. **Copy files to system directory**. Copy your application files to a suitable system directory, e.g., ``/opt/redpitaya/bin/``:
+
+    .. tabs::
+
+        .. group-tab:: Python API
+
+            .. code-block:: shell-session
+
+                cp /root/pythonAPI_example.py /opt/redpitaya/bin/
+
+        .. group-tab:: C API
+
+            Make sure the C application is **compiled and executable**.
+
+            .. code-block:: shell-session
+
+                cp /root/CAPI_example /opt/redpitaya/bin/
+
+#. **Create a new script file**. To prevent conflicts with existing scripts and variables, the file name should be last in alphabetical order. For example, create ``zzz_my_startup.sh``:
+
+    .. code-block:: shell-session
+
+        nano /etc/profile.d/zzz_my_startup.sh
+
+#. **Add application startup command**. Add the command to run your application:
+
+    .. tabs::
+
+        .. group-tab:: Python API
+
+            .. code-block:: shell-session
+
+                #!/bin/bash
+                export PYTHONPATH=/opt/redpitaya/lib/python/:\$PYTHONPATH
+                /opt/redpitaya/bin/pythonAPI_example.py &
+
+        .. group-tab:: C API
+
+            .. code-block:: shell-session
+
+                #!/bin/bash
+                /opt/redpitaya/bin/CAPI_example &
+
+#. **Make the script executable**:
+
+    .. code-block:: shell-session
+
+        chmod +x /etc/profile.d/zzz_my_startup.sh
+
+#. **Reboot**. Restart Red Pitaya to apply the changes:
+
+    .. code-block:: shell-session
+
+        reboot
+
+
+Stopping the application
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To stop a running application on Red Pitaya, you can use one of the following methods:
+
+1. **Kill by process name** (temporary stop):
+
+    .. tabs::
+
+        .. group-tab:: Python API
+
+            .. code-block:: shell-session
+
+                pkill -f pythonAPI_example.py
+
+        .. group-tab:: C API
+
+            .. code-block:: shell-session
+
+                pkill -f CAPI_example
+
+#. **Remove startup command** (permanent stop):
+
+    * First stop the application using the method above.
+    * Remove the script file from the ``/etc/profile.d/`` directory.
+    * Optionally, remove the application files from the system directory if no longer needed.
+    * Reboot Red Pitaya to apply the changes.
+
+
+Other methods
+----------------------
+
+You can also use other methods like creating a systemd service or using cron jobs to run applications at boot. These methods provide more advanced control over application startup and management.
+
+.. note::
+
+    The ``/etc/rc.local`` file method is deprecated in recent Red Pitaya OS versions and is not recommended for new setups.
+
+To learn more about these methods, refer to the official Linux documentation or relevant online resources.
+
+|
+
+
+Available Libraries
+======================
+
+Red Pitaya provides several libraries for different functionalities. The core libraries available for C and Python APIs are listed below:
+
++------------------------+------------------------------------------------------------------------------+----------------+
+| Library                | Description                                                                  | Available from |
++========================+==============================================================================+================+
+| **rp**                 | Core API for initialization, LEDs, analog pins, GPIOs, generation,           | OS 2.00-23     |
+|                        | acquisition, board control, and DMA. Required for most projects.             |                |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_hw**              | UART, SPI, I2C interfaces, and status LED control                            | OS 2.00-23     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_hw_calib**        | Calibration parameter configuration and settings                             | OS 2.00-23     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_hw_profiles**     | Hardware profile management                                                  | OS 2.00-23     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_dsp**             | Digital signal processing (FFT, window functions, dB conversion)             | OS 2.00-23     |
+|                        | Used by the Spectrum analyzer application                                    |                |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_overlay**         | FPGA image management and switching                                          | OS 2.00-30     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_hw_can**          | CAN interface control                                                        | OS 2.00-30     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_formatter**       | Data format conversion (WAV, TDMS, CSV) for streamed data                    | OS 2.00-30     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_arb**             | Arbitrary waveform manager for uploading and configuring custom waveforms    | OS 2.00-30     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_sweep**           | Sweep mode control                                                           | OS 2.04-35     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_la**              | Logic analyzer and protocol decoding (UART, SPI, I2C, CAN)                   | OS 2.07-43     |
++------------------------+------------------------------------------------------------------------------+----------------+
+| **rp_updater**         | Update Red Pitaya ecosystem remotely (Nightly Builds)                        | OS 2.07-43     |
++------------------------+------------------------------------------------------------------------------+----------------+
+
+|
+
+API Command Reference
+======================
+
+Complete documentation
+-----------------------
+
+The API functions and commands are documented in the :ref:`available commands list <command_list>`.
+
+For complete API reference:
+
+**C API:**
+
+    * GitHub repository: :rp-github:`rp-api section <RedPitaya/tree/master/rp-api>`
+    * Function declarations: :rp-github:`rp.h header file <RedPitaya/blob/master/rp-api/api/include/rp.h>`
+
+**Python API:**
+
+    * Connect via :ref:`SSH <ssh>` and explore: ``/opt/redpitaya/lib/python/``
+
+**FPGA:**
+
+    * :ref:`FPGA reprogramming guide <fpga_reprogramming>` for details on uploading custom FPGA images.
+
+
+API Examples
+=============
+
+Comprehensive examples demonstrating API usage are available in the :ref:`Examples section <examples>`.

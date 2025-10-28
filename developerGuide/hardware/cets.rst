@@ -5,19 +5,20 @@
 Certificates
 ##############
 
-Red Pitaya passed the safety and electromagnetic compatibility (EMC) and functioning tests at an external `testing and certification institute <http://www.siq.si/?L=3>`_.
+Red Pitaya passed the safety and electromagnetic compatibility (EMC) and functioning tests at an external `testing and certification institute <https://www.siq.si/en/>`_.
 
 
 CE, FCC - Declaration of conformity
 ====================================
 
-:download:`Red Pitaya CE Declaration of Conformity <certificates/CE-Declaration-of-conformity_2023.pdf>`
+* :rp-download:`Red Pitaya FCC Declaration of Conformity <doc/Certificates/CE-Declaration_of_conformity_2023.pdf>`
+
 
 
 CB Test certificate - EMC
 ===========================
 
-:download:`Red Pitaya CB test certificate - EMC <certificates/CB_certificate_EMC_SI-4169.pdf>`
+* :download:`Red Pitaya CB test certificate - EMC <certificates/CB_certificate_EMC_SI-4169.pdf>`
 
 This certificate complies with the following standards:
 
@@ -28,7 +29,7 @@ This certificate complies with the following standards:
 CB test certificate - Safety
 ==============================
 
-:download:`Red Pitaya CB test certificate - Safety <certificates/CB_certificate_safety_SI-4208.pdf>`
+* :download:`Red Pitaya CB test certificate - Safety <certificates/CB_certificate_safety_SI-4208.pdf>`
 
 This certificate complies with the following standards:
 
@@ -38,7 +39,7 @@ This certificate complies with the following standards:
 ROHS, REACH and Conflict Mineral Policy
 ========================================
 
-:download:`Red Pitaya ROHS, REACH and Conflict Mineral Policy <certificates/Cicor_Arad_ROHS_REACH_Conflict_Minerals.pdf>`
+* :download:`Red Pitaya ROHS, REACH and Conflict Mineral Policy <certificates/Cicor_Arad_ROHS_REACH_Conflict_Minerals.pdf>`
 
 This certificate complies with the following standards:
 
@@ -58,3 +59,10 @@ NRTLC Certification Record
 ===========================
 
 .. figure:: certificates/NRTLC_Certification_Record.jpg
+
+
+Letter of Volatility (LoV)
+=============================
+
+To get a letter of volatility for any of our products, please contact support@redpitaya.com.
+

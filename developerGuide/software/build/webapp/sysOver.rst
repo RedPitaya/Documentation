@@ -1,101 +1,149 @@
+.. _webApp_sysOver:
+
 ###############
-System overview
+System Overview
 ###############
 
-Almost all applications on Red Pitaya are made of two parts. We call them frontend and backend. You can see them on
-the picture below.
+Red Pitaya web applications use a client-server architecture with two distinct components: frontend and backend. 
+Understanding this architecture is essential for developing custom applications.
+
+Architecture Overview
+======================
+
+.. figure:: img/Common.png
+    :align: center
+    :width: 1200
 
 |
 
-.. figure:: Common.png
+Red Pitaya applications consist of:
 
-|
+**Frontend (Client)**
 
-Everything that works in your browser and you can see it this is the frontend. This is the part that can visualise
-data on screen or change some parameters to adjust settings inside your applications. Other things that are connected
-with hardware on Red Pitaya's board are called the backend. You can't see this application directly but this is the most
-important part of application which can help you to control hardware. Backend has ability to work with Digital PINS,
-control LEDs on board, load FPGA image, work with fast inputs and outputs and lots of other things.
-The frontend and backend require communication within each other. This is mostly done with Red Pitaya network APIs which
-are technically based on extended websocket connection. When you're writing your application you don't need to think
-about communication and data transfer. Our network APIs take care about data transfer. All you need is simply follow
-of some rules. You can read about this rules in How to
-:ref:`add a button to control LED <ABCLED>`.
+    The web-based user interface running in your browser. Handles visualization, user input, and presentation logic.
+
+**Backend (Server)**
+
+    The C/C++ controller running on Red Pitaya hardware. Manages hardware control, signal processing, and device state.
+
+These components communicate via WebSocket connections using Red Pitaya's network APIs, which handle all data transfer 
+automatically. You simply need to follow the API structure described in :ref:`Add a button to control LED <ABCLED>`.
 
 
-Frontend
-===========
+Frontend Component
+===================
 
-|
+.. figure:: img/Frontend-1.png
+    :align: center
+    :width: 1000
 
-.. figure:: Frontend-1.png
+The frontend is the browser-based interface that users interact with directly. It uses modern web technologies:
 
-|
+* **HTML5** - Application structure and layout
+* **CSS3** - Visual styling and responsive design
+* **JavaScript** - Application logic and interactivity
 
-Frontend is that thing that you can see on your screen. We prefer to use high technologies for creating modern looking
-applications with lots of possibilities. It's HTML5 for layout, CSS3 for element styles and JavaScript for
-creating fast and reliable web applications. Using all these tools you can create lots of innovative applications.
+Design philosophy
+------------------
 
-|
-
-.. figure:: Frontend-2.png
-
-|
-
-The basic idea of the frontend is to visualize data from Red Pitaya. And this should be it! You don't need to do lots of
-calculations inside UI. Let your Red Pitaya do this. So here is typical workflow of application:
-
-    - User changes some settings in application in Web UI
-    - Web UI may apply them immediately on the screen or
-    - Web UI may send them to controller for some specific calculations on device, for changing device state or for
-      something else
-    - Controller (= Backend) applies them to internal variabale and change device state (if necessary)
-    - Controller does some calculation according algorithms and as result it can return
-
-        - Change of some parameters
-        - New signals
-    - Controller sends parameters and signals to WebUI in JSON format
-    - Web UI recieves these parameters signals and then applies them on the screen
+The frontend should focus on visualization and user interaction. Heavy computation and hardware control belong in the 
+backend. Keep the frontend lightweight and responsive.
 
 
-Backend
-==========
+Application workflow
+---------------------
 
-In general backend is your Red Pitaya. But when we're talking about your application backend is controller of your
-application. Controller is shared linux library with .so extension. It operates with specific memebers which are
-called Parameters and Signals. First of them are needed for handling state of important variables of your app.
-Another one are needed for collecting number of data inside one container. You can use lots of them at the same time.
-None of them are necessary, so if you don't need singlas in your application you may not use them.
+.. figure:: img/Frontend-2.png
+    :align: center
+    :width: 1200
 
-|
+**Typical user interaction flow:**
 
-  .. figure:: Backend.png
+1. **User input** - User modifies settings in the web interface
+2. **Local update** - UI may apply visual changes immediately
+3. **Backend communication** - UI sends parameter changes to the controller via WebSocket
+4. **Backend processing** - Controller:
+   
+   * Updates internal variables
+   * Modifies device state
+   * Performs calculations based on algorithms
+   * Generates new parameters or signals
 
-|
+5. **Response** - Controller sends results back to UI in JSON format
+6. **Visualization** - UI receives data and updates the display
 
-System base on Nginx as fast platform for Web applications. Nginx allows us to load modules in runtime without
-restarting system.
 
-Here is typical workflow of executing application:
+Backend Component
+==================
 
-    - Nginx always works as web server for providing Web UI.
-    - When you click on your application in main menu Nginx will proceed with this steps:
+.. figure:: img/Backend.png
+    :align: center
+    :width: 800
 
-        - It opens your application user interface
-        - It loads specified FPGA image using APIs. If there was not any image specified it leaves current image. Make sure that you're using correct image when you're developing your own application
-        - It loads controller of your application
-        - When controller is loaded it starts WebSocket connection. Also it notifies UI that application was loaded. This means that JavaScript code can establish WebSocket connection
-        - During application workflow JavaScript and Controller can send data in JSON format to each other
-        - If controller needs to get some data from peripheral devices it can request this data from Red Pitaya APIs
-        - APIs can manipulate data inside FPGA
+The backend is a shared Linux library (`.so` file) that serves as your application's controller. It manages hardware 
+interaction and implements the core application logic.
 
-Step-by-step examples of creating your own web application are here: |web_tutorial|
 
+Backend capabilities
+---------------------
+
+The controller operates with Red Pitaya hardware through:
+
+**Parameters**
+
+    Variables that maintain application state and settings
+
+**Signals**
+
+    Data containers for collecting and transmitting arrays of measurement data
+
+**Hardware access**
+
+    Direct control of:
+    
+    * Digital I/O pins
+    * Onboard LEDs
+    * Fast analog inputs/outputs
+    * FPGA configuration
 
 .. note::
 
-   Nginx can only load one module at a time. If the next module is loaded, the previous module will be unloaded from memory. Keep this in mind when developing web applications for Red Pitaya. If internal errors occur in the module, nginx does not reload the module again. This should be taken care of by the application developer.
+    Parameters and signals are optional. Use only what your application requires.
 
-.. |web_tutorial| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/Examples/web-tutorial" target="_blank">Web Tutorial</a>
+Nginx Integration
+==================
+
+Red Pitaya uses Nginx as the web application platform, providing fast and reliable application hosting.
+
+
+Application lifecycle
+----------------------
+
+**When you launch an application:**
+
+1. **Web server** - Nginx serves the application's HTML/CSS/JavaScript files
+2. **FPGA loading** - System loads the specified FPGA image (or retains current image if none specified)
+3. **Controller loading** - Application's `.so` library is loaded into memory
+4. **WebSocket initialization** - Controller establishes WebSocket connection
+5. **Frontend notification** - JavaScript receives confirmation to establish client-side WebSocket
+6. **Data exchange** - Frontend and backend communicate via JSON messages over WebSocket
+7. **Hardware interaction** - Controller requests data from Red Pitaya APIs as needed
+8. **FPGA operations** - APIs manipulate data within the FPGA
+
+.. warning::
+
+    **Single module limitation:** Nginx can only load one controller module at a time. Loading a new module 
+    automatically unloads the previous one. If your controller encounters internal errors, Nginx will not 
+    automatically reload it - error handling is the developer's responsibility.
+
+.. note::
+
+    Always verify you're using the correct FPGA image when developing applications. The FPGA configuration must 
+    match your controller's requirements.
+
+
+Additional Resources
+=====================
+
+Step-by-step tutorials for creating web applications are available in the :rp-github:`Web Tutorial Example <RedPitaya-Examples/tree/dev/web-tutorial>` repository.

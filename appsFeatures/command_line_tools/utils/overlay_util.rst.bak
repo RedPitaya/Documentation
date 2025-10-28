@@ -1,0 +1,47 @@
+
+.. _overlay_util:
+
+Overlay script (FPGA configuration)
+======================================
+
+The Red Pitaya's overlay functionality allows users to manage and configure FPGA overlays through the command line. 
+This is particularly useful for applications that require specific FPGA configurations without the need for a full system reboot.
+
+The overlay script is accessible within the Red Pitaya Linux terminal. :ref:`SSH <ssh>` into your Red Pitaya device to use the script.
+
+To install the normal fpga from /opt/redpitaya/fpga: clears the old devicetree and installs the new one
+
+.. code-block:: console
+
+    overlay.sh v0.94
+
+To install a custom fpga using the devicetree from /opt/redpitaya/fpga: create a folder in /opt with appropriate name for the .bit.bin / .dtbo files
+
+.. code-block:: console
+
+    cp /home/redpitaya/custom.bit.bin /opt/v0.94/fpga.bit.bin
+    overlay.sh v0.94 custom
+
+To install a custom fpga using a custom devicetree
+
+.. code-block:: console
+
+    cp /home/redpitaya/custom.bit.bin /opt/v0.94/fpga.bit.bin
+    cp /home/redpitaya/custom.dtbo /opt/v0.94/fpga.dtbo
+    overlay.sh v0.94 custom dtbo
+
+To install a custom fpga using a custom devicetree into a custom reconfigurable Pblock
+
+.. code-block:: console
+
+    cp /home/redpitaya/custom.bit.bin /opt/v0.94/fpga.bit.bin
+    cp /home/redpitaya/custom.dtbo /opt/v0.94/fpga.dtbo
+    overlay.sh v0.94 custom dtbo Full
+
+Check what fpga is installed: the script saves the md5sum of the custom fpga so you can check what is installed matches what you wanted to install
+
+.. code-block:: console
+
+    cat /tmp/loaded_fpga.inf
+    cat /tmp/update_fpga.txt
+

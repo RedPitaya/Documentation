@@ -3,3 +3,4 @@ __pycache__/
 
 # Build artifacts
 _build/
+_Docs_build_info/

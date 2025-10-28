@@ -1,48 +1,81 @@
-.. _comStreaming:
+.. _SW_comp_Streaming:
 
-###################################################
-Compiling and running Streaming client applications
-###################################################
+###############################################
+Compiling Streaming client applications
+###############################################
 
-You can use the console client or the desktop client to connect to the streaming application. When releasing firmware images, we build client applications in parallel, but you can improve them yourself.
+Red Pitaya's streaming application supports two types of clients:
 
-Requirements
+- **Console client** - Command-line interface for streaming data
+- **Desktop client** - Graphical user interface (Qt-based) for streaming data
+
+Pre-built client applications are provided with each firmware release. However, you can customize and rebuild these clients according to your requirements.
+
+This guide explains how to build both client types using Qt Creator.
+
+
+Prerequisites
 ==============
 
-* CMake 3.18
-* QT 5.15.2
-* GCC 9 and higher
-* Windows or Ubuntu
+Before building the streaming clients, ensure you have the following installed:
+
+- CMake 3.18 or higher
+- Qt 5.15.2 with QtCharts module
+- GCC 9 or higher
+- Operating System: Windows or Ubuntu
 
 .. note::
 
-    You can download QT development tools from the `official site <https://www.qt.io/download>`_. When installing, you must specify an additional package QtCharts.
+    Download Qt development tools from the `official Qt website <https://www.qt.io/download-dev>`_. 
+    During installation, ensure you select the QtCharts module as an additional package.
 
 
-Build with QT Creator
+Building with Qt Creator
 =========================
 
-Client applications are easy to develop with QtCreator. To do this, just run the application and open the CMakeLists.txt file as a project.
-The CMakeLists.txt file is located along the path: ./apps-tools/streaming_manager/src
+Qt Creator provides an integrated development environment for building and modifying the streaming clients.
+
+
+Opening the project
+---------------------
+
+1. Launch Qt Creator
+2. Open the CMakeLists.txt file as a project
+3. Navigate to: ``./apps-tools/streaming_manager/src/CMakeLists.txt``
 
 .. figure:: qt/qt1.png   
    :align: center
 
-
-In this case, a project will open in which only the server and the console client will be available for assembly.
+After opening the project, you will see that only the server and console client are available for building by default.
 
 .. figure:: qt/qt2.png   
    :align: center
 
 
-By default, the project for building the desktop version is not active, to enable it you need to go to the project settings and check the box next to the parameter: BUILD_RPSA_CLIENT_QT.
+Enabling the desktop client build
+------------------------------------
+
+The desktop client (Qt GUI application) is disabled by default. To enable it:
+
+1. Open the project settings in Qt Creator
+2. Locate the CMake configuration options
+3. Enable the checkbox for: **BUILD_RPSA_CLIENT_QT**
 
 .. figure:: qt/qt3.png   
    :align: center
 
-
-After that, the ability to build a project for desktop systems will be available.
+Once enabled, the desktop client will become available as a build target.
 
 .. figure:: qt/qt4.png   
    :align: center
+
+
+Building the clients
+----------------------
+
+After configuring the build options:
+
+1. Select the desired build target (console client or desktop client)
+2. Click the build button in Qt Creator
+3. The compiled binaries will be available in the build output directory
 

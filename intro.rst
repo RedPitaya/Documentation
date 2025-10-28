@@ -2,9 +2,11 @@
 What is Red Pitaya?
 #####################
 
-Red Pitaya accelerates industrial innovation with compact, open-source, high-speed signal acquisition and processing boards and services designed to help companies reduce time-to-market and focus on what really matters - building better products, faster.
+Red Pitaya accelerates industrial innovation with compact, open-source, high-speed signal acquisition and processing boards and services designed to 
+help companies reduce time-to-market and focus on what really matters - building better products, faster.
 
-It combines the functionality of a software-defined multi-instrument, a digitiser and an open-source FPGA development platform. Out of the box, it can be used as multiple software-defined instruments such as an oscilloscope, signal generator, spectrum analyser and more,
+It combines the functionality of a software-defined multi-instrument, a digitiser and an open-source FPGA development platform. Out of the box, 
+it can be used as multiple software-defined instruments such as an oscilloscope, signal generator, spectrum analyser and more,
 all accessible as applications via a web interface.
 
 The main features of Red Pitaya are:
@@ -30,9 +32,10 @@ The board can be programmed in several ways:
 
 * Remotely via SCPI commands (Python, MATLAB or LabVIEW),
 * C and Python programs running directly on the board itself,
-* Completly customisable FPGA firmware that can be programmed using the Xilinx Vivado IDE.
+* Completly customisable FPGA firmware that can be programmed using the AMD Xilinx Vivado IDE.
 
-The Red Pitaya is used everywhere from the `International Space Station <https://content.redpitaya.com/blog/red-pitaya-an-open-source-software-measurement-and-control-board-used-in-spacecraft-atmosphere-monitor-for-nasa>`_ to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sorting-tomatoes-become-a-matter-for-tech>`_, which is why we call it the "Swiss Army Knife for Engineers".
+The Red Pitaya is used everywhere from the `International Space Station <https://content.redpitaya.com/blog/red-pitaya-an-open-source-software-measurement-and-control-board-used-in-spacecraft-atmosphere-monitor-for-nasa>`_ 
+to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sorting-tomatoes-become-a-matter-for-tech>`_, which is why we call it the "Swiss Army Knife for Engineers".
 
 **How can Red Pitaya help me?**
 
@@ -53,8 +56,8 @@ The Red Pitaya is used everywhere from the `International Space Station <https:/
 
 **GitHub source code:**
 
-* `Ecosystem and applications <https://github.com/RedPitaya/RedPitaya>`_.
-* `FPGA <https://github.com/RedPitaya/RedPitaya-FPGA>`_.
+* :rp-github:`Ecosystem and applications <RedPitaya>`.
+* :rp-github:`FPGA <RedPitaya-FPGA>`.
 
 **Use cases:**
 
@@ -63,4 +66,5 @@ The Red Pitaya is used everywhere from the `International Space Station <https:/
 
 **FPGA lessons and tutorials**
 
-* :ref:`FPGA tutorials <knowledgebase:learn_FPGA>`.
+* `Knowledge Base FPGA tutorials <https://learn.redpitaya.com/>`.
+* :ref:`FPGA section <fpga_top>`.

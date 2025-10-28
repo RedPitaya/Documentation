@@ -8,7 +8,6 @@ Build & compile instructions
     C&Python_API.rst
     comStreaming.rst
     e3-board/e3_software.rst
-    fpga/fpga_top.rst
     ecosystem/ecosystem.rst
     debian.rst
     webapp/webApps.rst

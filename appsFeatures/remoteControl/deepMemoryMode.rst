@@ -243,4 +243,4 @@ Check the :ref:`DMA and DMG sections under the examples <examples>`.
 
 .. _websocket TCP connection: https://www.geeksforgeeks.org/web-tech/what-is-web-socket-and-how-it-is-different-from-the-http/
 
-.. _AXI protocol (AXI DMA and AXI4-Stream): https://support.xilinx.com/s/article/1053914?language=en_US
+.. _AXI protocol (AXI DMA and AXI4-Stream): https://adaptivesupport.amd.com/s/article/1053914?language=en_US

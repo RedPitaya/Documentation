@@ -630,6 +630,56 @@ Updating nighlty build ecosystem
 To update just the nightly build ecosystem, you can use the :ref:`Ecosystem update utility <update_util>`.
 
 
+
+**********************************
+Installing older OS on new boards
+**********************************
+
+With the introduction of the 2.00 OS, a change was made to the calibration parameters storage format in the EEPROM, which makes it incompatible with older OS versions (1.04 and older).
+This causes issues when downgrading from 2.00 OS to 1.04 or older OS versions, as the older OS versions cannot read the new calibration parameters format stored in the EEPROM of newly produced boards.
+Unfortunately, the process is not as simple as installing the old OS to the SD card and running it, due to the mentioned change of EEPROM calibration format.
+
+.. note::
+
+    The procedure described below is only suitable for downgrading to OS version 0.98 to 1.04.
+
+.. note::
+
+    It is possible to install 1.04 or older OS to the following Gen 2 boards:
+
+    * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
+    * :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`.
+    
+    The other :ref:`Gen 2 and TI boards <dev_guide_hardware>` require OS 2.07-43 or newer for proper operation.
+
+Though we do not recommend it, some users may want to downgrade to an older OS version for various reasons. Here is a step-by-step guide on how to do it.
+
+    1. **Manually install the latest 2.00 OS version** onto the newly acquired board. See the :ref:`quick installation instructions <prepareSD>`.
+    #. **Establish an SSH connection** with the board to get access to the Red Pitaya's Linux terminal. See the :ref:`SSH connection instructions <ssh>`.
+
+        .. code-block:: shell-session
+
+            ssh root@<red_pitaya_ip_address>
+
+    #. **Convert the calibration to old format** using the :ref:`calib command line utility <calib_util>` command line utility:
+
+        .. code-block:: shell-session
+
+            calib -o
+    
+        This will convert the calibration data in the user space of the EEPROM to the old format.
+
+        .. note::
+
+            The conversion will **NOT** overwrite the factory calibration section in the EEPROM. Therefore, resetting to the calibration to "factory defaults" via
+            the :ref:`calib utility <calib_util>` or :ref:`Calibration application <calibration_app>` will not work.
+
+    #. **Install the older OS** to the SD card and boot the board.
+    #. **Adjust the frequency calibration** (Gen 2 boards only). We suggest 
+
+|
+
+
 ******************
 Resize file system
 ******************

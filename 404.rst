@@ -17,8 +17,9 @@ Here are a few suggestions:
 
 * :ref:`Quick start guide <quick_start>`.
 * :ref:`Applications and programming <appsFeatures>`.
-* :ref:`Red Pitaya Original Gen and Gen 2 hardware specifications <dev_guide_hardware>`.
+* :ref:`Red Pitaya hardware specifications <dev_guide_hardware>`.
 * :ref:`Software development guide <dev_guide_software>`.
+* :ref:`FPGA guide <fpga_top>`.
 * :ref:`FAQ and troubleshooting <faq>`.
 
 |

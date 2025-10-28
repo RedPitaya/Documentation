@@ -47,7 +47,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen1
+    .. group-tab:: STEMlab 125-14
 
         * Two +3V3 power sources.
         * 16 single ended or 8 differential digital I/Os with 3.3 V logic levels.
@@ -324,7 +324,7 @@ Please note that there are differences in the FPGA pin numbers for different Red
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen1
+    .. group-tab:: STEMlab 125-14
 
         * +5 V, -3V4 power sources.
         * SPI, UART, I2C.
@@ -652,7 +652,7 @@ To achieve the best performance, the GPIO pins are directly connected to the FPG
 
 .. tabs::
 
-    .. group-tab:: STEMlab 125-14 Gen1
+    .. group-tab:: STEMlab 125-14
 
         +--------------------------+----------------------------------+
         | Number of GPIOs          | 16                               |

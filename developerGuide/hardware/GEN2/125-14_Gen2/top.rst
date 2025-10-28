@@ -194,7 +194,7 @@ You can find the measurements of the fast analog frontend here:
 Schematics
 ============
 
-.. TODO add schematics
+* :download:`Schematics_STEM_125-14_Gen2_V2r0_RevA.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_Gen2_V2r0_RevA.pdf>`.
 
 
 .. note::
@@ -204,6 +204,8 @@ Schematics
 
 Mechanical Specifications and 3D Models
 ========================================
+
+* STEP :download:`3D_STEM_125-14-Gen2.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14-Gen2.zip>`.
 
 .. TODO add schematics and 3D models
 
