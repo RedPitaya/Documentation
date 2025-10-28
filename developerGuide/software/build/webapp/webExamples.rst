@@ -5,7 +5,7 @@ Examples
 ########
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     webexamples/webapp_ex1_addLEDbutton.rst
     webexamples/webapp_ex2_SlowVoltage.rst

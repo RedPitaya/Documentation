@@ -7,7 +7,9 @@ Installation of Xilinx SDK 2019.1
 This installation tutorial is intended for anyone who wants to develop FPGA projects that also require modifications to the software running on the ARM processor of the Red Pitaya board, such as creating custom device drivers or modifying the First Stage Boot Loader (FSBL).
 
 .. contents:: Table of Contents
-   :backlinks: top
+    :local:
+    :depth: 2
+    :backlinks: top
 
 |
 
@@ -781,7 +783,7 @@ Device Tree Compilation Fails
     # Verify installation
     dtc --version
 
-
+|
 
 Additional Resources
 =====================
@@ -808,7 +810,7 @@ Additional Resources
 
 - :ref:`Vivado Installation Guide <FPGA_install_vivado>`
 - :ref:`FPGA Project Creation <fpga_create_project>`
-- :ref:`Device Tree Configuration <fpga_device_tree>` (coming soon)
+- :ref:`Device Tree Configuration <device_tree>` (coming soon)
 - :rp-forum:`Red Pitaya Forum <>`
 
 **Community Support:**
@@ -825,8 +827,8 @@ Next Steps
 Now that SDK is installed, you can proceed to:
 
 1. :ref:`Create Your First FPGA Project <fpga_create_project>`
-2. :ref:`Build FPGA Projects <fpga_build_process>`
-3. :ref:`Generate Device Tree <fpga_device_tree>` (coming soon)
-4. :ref:`Program FPGA via JTAG <fpga_jtag_programming>` (coming soon)
+2. :ref:`Build FPGA Projects <fpga_create_project>`
+3. :ref:`Generate Device Tree <device_tree>`
+4. :ref:`Program FPGA via JTAG <fpga_jtag_programming>`
 
 For a complete FPGA development workflow, see :ref:`FPGA Development Guide <build-fpga>`.

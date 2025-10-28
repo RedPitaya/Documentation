@@ -26,7 +26,7 @@ This guide will cover creating and managing projects using Xilinx SDK (2019.1) a
     
     - :ref:`fpga_create_project` - Creating FPGA projects in Vivado
     - :ref:`fpga_modify_project` - Modifying existing FPGA designs
-    - :ref:`sdk_install` - SDK installation guide
+    - :ref:`fpga_install_sdk` - SDK installation guide
     - :ref:`fpga_reprogramming` - Loading FPGA bitstreams
 
 

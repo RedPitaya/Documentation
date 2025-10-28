@@ -6,7 +6,9 @@ Installation of Vivado 2020.1
 
 This installation tutorial is intended for anyone who wants to use the FPGA of the Red Pitaya board.
 
-.. contents:: Table of contents
+.. contents:: Table of Contents
+    :local:
+    :depth: 2
     :backlinks: top
 
 |
@@ -41,7 +43,7 @@ Additionally, having access to the **make** utility will simplify the FPGA proje
 
     The reason is quite simple actually, the automatic project build scripts are written for Vivado version 2020.1 and will not work with newer versions. It is possible to use newer version of Vivado, but you will have to manually create a new project and add all the files, which is not recommended for beginners.
 
-
+|
 
 Getting a WebPACK licence
 ============================
@@ -58,7 +60,6 @@ Regardless of the operating system we use, we will need to obtain the free **ISE
 #. The licence file will be sent to your registered e-mail address. Save the **.lic** file to a safe location, as we will need it later.
 
 |
-
 
 Download Vivado 2020.1
 =======================

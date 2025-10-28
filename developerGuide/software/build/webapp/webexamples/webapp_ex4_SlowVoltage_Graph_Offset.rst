@@ -8,6 +8,13 @@ This example extends the voltage graphing application by adding signal condition
 to apply gain and offset adjustments to analog measurements, allowing you to scale and shift signals for better 
 visualization and analysis.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Overview
 =========
 
@@ -26,6 +33,7 @@ can be applied to signal processing in the backend.
 Any of the four slow analog input pins (AI0-AI3) on the :ref:`E2 extension connector <E2_orig_gen>` can be 
 used for voltage measurement.
 
+|
 
 Prerequisites
 ==============
@@ -59,6 +67,7 @@ Understanding gain and offset
 
     Output = (Input × Gain) + Offset
 
+|
 
 Implementing the Frontend
 ===========================
@@ -144,6 +153,7 @@ Connect to the offset slider:
         APP.setOffset();
     });
 
+|
 
 Implementing the Backend
 ==========================
@@ -223,6 +233,7 @@ Modify the **UpdateSignals()** function to apply gain and offset when writing to
 * Gain and offset are applied only when writing to the VOLTAGE signal
 * This allows changing gain/offset without losing raw data
 
+|
 
 Understanding Signal Conditioning
 ===================================
@@ -285,6 +296,7 @@ This example applies: ``Output = (Input × Gain) + Offset``
     
     Result: (0.5 V × 2) + 0.5 V = 1.5 V
 
+|
 
 Data Flow with Signal Conditioning
 ====================================
@@ -311,6 +323,7 @@ Raw data is stored in ``g_data`` without gain/offset applied. This allows:
 * Re-processing historical data with new parameters
 * Accurate raw data logging if needed
 
+|
 
 Testing the Application
 ========================
@@ -353,6 +366,7 @@ Application testing
 * Values above 3.3 V (or graph Y-axis max) will be clipped
 * Reduce gain or adjust offset if clipping occurs
 
+|
 
 Practical Use Cases
 =====================
@@ -392,6 +406,7 @@ Dynamic range adjustment
 * Decrease gain when signal is large
 * Manually adjust or implement auto-ranging
 
+|
 
 Extending This Example
 =======================
@@ -408,6 +423,7 @@ Possible enhancements
 * **Multiple channels** - Independent gain/offset per channel
 * **Filtering** - Add low-pass, high-pass, or band-pass filters
 
+|
 
 Next Steps
 ===========

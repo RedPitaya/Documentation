@@ -11,8 +11,9 @@ To ease the creation of new FPGA projects or adding new features to existing one
     This section describes the process of creating a new project using just the Vivado development environment (FPGA projects only). For the complete building process using both the Vivado and the Vivado SDK (Vitis), please refer to the :ref:`creating a Vivado SDK/Vitis project section <fpga_create_sdk_project>`.
 
 .. contents:: Table of Contents
-   :depth: 2
-   :backlinks: top
+    :local:
+    :depth: 2
+    :backlinks: top
 
 |
 
@@ -44,27 +45,6 @@ Accessing older versions of the repository
 -------------------------------------------
 
 The instructions above are meant for the latest version of the Red Pitaya FPGA, located in the *master* branch. If you are looking for an older version, please check the corresponding branch or tag in the GitHub repository.
-Here is a quick reference guide:
-
-+------------------+------------------------+
-| OS version       | Release Branch         |
-+==================+========================+
-| 2.05-37          | Branch 2024.3          |
-+------------------+------------------------+
-| 2.04-35          | Branch 2024.2          |
-+------------------+------------------------+
-| 2.00-30          | Branch 2024.1          |
-+------------------+------------------------+
-| 2.00-23          | Branch 2023.3          |
-+------------------+------------------------+
-| 2.00-18          | Branch 2023.2          |
-+------------------+------------------------+
-| 2.00-15          | Branch 2023.1          |
-+------------------+------------------------+
-| 1.04-28          | Branch 2022.2          |
-+------------------+------------------------+
-| 1.04-18          | Branch 2022.1          |
-+------------------+------------------------+
 
 Before OS 1.04-18, the FPGA repository was a part of the main |Red Pitaya GitHub repository|, and the FPGA projects were located in the *fpga* directory.
 
@@ -157,7 +137,7 @@ There are five different script types available for non-project mode:
 
         Contrary to Linux and Vivado, Windows uses backslashes (``\``) instead of forward slashes (``/``) in file paths.
 
-#. **Generate the project**. Run the following command in the terminal or command prompt. Note the lack of the *project* keyword, which is used in the `Project mode`_.
+#. **Generate the project**. Run the following command in the terminal or command prompt. Note the **lack of the ``project`` keyword**, which is used in the `Project mode`_.
 
     .. code-block:: bash
 
@@ -181,7 +161,7 @@ Project mode
 The project mode generates a complete Vivado project structure, including all necessary files and directories. This allows users to open the project in the Vivado GUI and make changes as needed.
 Only the Red Pitaya FPGA repository is required to create a project in this mode. The project can be created using the following steps:
 
-1. **Open terminal or CMD**. Windows users have three options, depending on the availablity of the *make* utility on their computer:
+1.  **Open terminal or CMD**. Windows users have three options, depending on the availablity of the *make* utility on their computer:
 
     * **CMD**. If *make* utility is installed, then the easiest way to proceed is to follow the instructions using the *Command Prompt (CMD)*.
     * **Vivado HLS Command Prompt**. If *make* utility is not installed and you have installed Vivado, you can open the *Vivado HLS Command Prompt*, which is a command-line interface that comes with Vivado. Please note that Vitis doesn't come with *Vivado HLS Command Prompt*.
@@ -189,7 +169,7 @@ Only the Red Pitaya FPGA repository is required to create a project in this mode
 
     The final two options allow project creation without installing the *make* utility, but running the script will result in opening of a separate instance of Vivado window. The original window will remain open, running the script. Closing the original window will terminate the script execution and also exit the second Vivado GUI.
 
-#. **Navigate to the extracted FPGA repository**. In this instance, we have renamed the extracted folder to RedPitaya-FPGA. If you have not renamed the folder, please use the original name.
+#.  **Navigate to the extracted FPGA repository**. In this instance, we have renamed the extracted folder to RedPitaya-FPGA. If you have not renamed the folder, please use the original name.
 
     .. code-block:: bash
 
@@ -199,7 +179,7 @@ Only the Red Pitaya FPGA repository is required to create a project in this mode
 
         Contrary to Linux and Vivado, Windows uses backslashes (``\``) instead of forward slashes (``/``) in file paths.
 
-#. **Create the project**. Run the following command in the terminal or command prompt:
+#.  **Create the project**. Run the following command in the terminal or command prompt:
 
     .. code-block:: bash
 
@@ -225,26 +205,28 @@ Only the Red Pitaya FPGA repository is required to create a project in this mode
             :width: 800
             :align: center
 
-#. **Modify the project**. A new, blank project will be created automatically and all the necessary Red Pitaya files will be added.
+#.  **Modify the project**. A new, blank project will be created automatically and all the necessary Red Pitaya files will be added.
     You can then add or write your Verilog module at the end of the *red_pitaya_top.sv* file, or add a new source by right-clicking the *Design Sources* folder and selecting *Add Source*.
     For more information on how to add sources and connect them in the design, please refer to the :ref:`Modify project section <fpga_modify_project>`.
 
-#. **Bitstream generation**. You can now run the synthesis, implementation, and bitstream generation by clicking the corresponding buttons in the Vivado GUI.
+#.  **Bitstream generation**. You can now run the synthesis, implementation, and bitstream generation by clicking the corresponding buttons in the Vivado GUI.
     The resulting *.bit* file is located in **prj/<project_name>/project/redpitaya.runs/impl_1/** as **red_pitaya_top.bit** (the name of the bitstream file matches the name of the top module of the design).
 
     .. figure:: img/Vivado-GUI.png
        :width: 600
        :align: center
 
+|
+
 There are a few important things to note about the project creation process:
 
-4. **Reopen an existing project** - Open Vivado and select the project from the **Recent Projects** list.
+4.  **Reopen an existing project** - Open Vivado and select the project from the **Recent Projects** list.
 
     .. figure:: img/Vivado-recent-projects.png
         :width: 800
         :align: center
 
-#. **Recreating an existing project** - Rerunning the *make project* command will overwrite the existing project resources. Please consider backing-up the existing project or move the important RTL resources and IP cores to a separate directory.
+#.  **Recreating an existing project** - Rerunning the *make project* command will overwrite the existing project resources. Please consider backing-up the existing project or move the important RTL resources and IP cores to a separate directory.
 
 |
 
@@ -263,13 +245,13 @@ Both `Project mode`_ and `Non-project mode`_ scripts are designed to work with V
 
     BD_TCL-109" "ERROR" "This script was generated using Vivado 2020.1 ...
 
-1. First, **find the Vivado version line** in the script. It should look like this:
+1.  First, **find the Vivado version line** in the script. It should look like this:
 
     .. code-block:: shell-session
 
         set scripts_vivado_version 2020.1
 
-#. **Change 2020.1 to your version**. This is a quick and dirty way to get the build working in other versions of Vivado.
+#.  **Change 2020.1 to your version**. This is a quick and dirty way to get the build working in other versions of Vivado.
     However, this solution could cause problems if some of the IPs used are different in your version.
 
     To update the script properly, open the project in `Project mode`_ and select **Reports > Report IP Status** from the menu. A new tab will open below the code window.
@@ -279,13 +261,13 @@ Both `Project mode`_ and `Non-project mode`_ scripts are designed to work with V
         :width: 800
         :align: center
 
-#. **Update the script**. Once the IPs are up to date, go to the Tcl console tab and run the following command.
+#.  **Update the script**. Once the IPs are up to date, go to the Tcl console tab and run the following command.
 
     .. code-block:: shell-session
 
         write_bd_tcl systemZ10.tcl
 
-    This generates a new tcl script that replaces the old script in the *prj/<project name>/ip* directory.
+    This generates a new tcl script that replaces the old script in the ``prj/<project name>/ip`` directory.
 
     .. note::
 

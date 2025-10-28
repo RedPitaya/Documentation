@@ -10,6 +10,13 @@ Overview
 This example provides a complete, ready-to-use web application demonstrating common Red Pitaya web development 
 patterns. It's an excellent starting point for understanding the full application structure.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Download
 =========
 
@@ -17,6 +24,7 @@ Download the complete project:
 
 `Red Pitaya Web App Example (OS 2.0) <https://downloads.redpitaya.com/doc/Examples/RP_WEB_app_example_2.0.zip>`_
 
+|
 
 What's Included
 ================
@@ -35,6 +43,7 @@ The example demonstrates:
 **Complete application structure**
     All required files properly organized (HTML, CSS, JavaScript, C++ controller)
 
+|
 
 Features Demonstrated
 ======================
@@ -57,6 +66,7 @@ Backend features
 * Random data generation example
 * Proper initialization and cleanup
 
+|
 
 Using This Example
 ===================
@@ -94,6 +104,7 @@ This example is designed to be studied and modified. Key areas to explore:
 **Styling** (`css/style.css`)
     View professional CSS organization
 
+|
 
 Customization
 ==============
@@ -105,6 +116,7 @@ Use this example as a template for your own applications:
 3. **Implement your logic** - Replace random data generation with your algorithms
 4. **Test incrementally** - Make small changes and test frequently
 
+|
 
 Related Examples
 =================

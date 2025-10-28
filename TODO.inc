@@ -110,7 +110,7 @@
     If anyone uses older versions of the ecosystem, you need to specify that such and such an example will work with version 2.0-35, and new examples only with 2.07-50, permissible.
     In one folder with examples for the generator there can be examples for the old OS and the new OS
     
-9. Letter of Volatility - add the wipe command for EEPROM user space.
+9. Letter of Volatility - add the wipe command for EEPROM user space. Done - add to docs.
 
     SIZE=$(cat /sys/devices/soc0/axi/e0004000.i2c/i2c-0/0-0050/eeprom | wc -c)
     dd if=/dev/zero of=/sys/devices/soc0/axi/e0004000.i2c/i2c-0/0-0050/eeprom bs=1 count=$SIZE
@@ -128,6 +128,3 @@
 
     The clock rate setting in the system menu has been improved.
     This setting overrides the value in the profile, and all applications and modules will use this value instead of the default.
-
-12. Running Python and C API scripts at boot - add them to the startup.sh script.
-    Running Applications at boot.

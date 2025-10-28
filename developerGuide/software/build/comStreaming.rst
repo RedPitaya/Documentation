@@ -29,6 +29,7 @@ Before building the streaming clients, ensure you have the following installed:
     Download Qt development tools from the `official Qt website <https://www.qt.io/download-dev>`_. 
     During installation, ensure you select the QtCharts module as an additional package.
 
+|
 
 Building with Qt Creator
 =========================
@@ -51,6 +52,7 @@ After opening the project, you will see that only the server and console client 
 .. figure:: qt/qt2.png   
    :align: center
 
+|
 
 Enabling the desktop client build
 ------------------------------------
@@ -69,6 +71,7 @@ Once enabled, the desktop client will become available as a build target.
 .. figure:: qt/qt4.png   
    :align: center
 
+|
 
 Building the clients
 ----------------------

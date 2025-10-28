@@ -8,8 +8,9 @@ Project modification can include changing the functionality of the design, addin
 These two modifications will help you understand the process of working with FPGA projects and how to adapt them to your needs.
 
 .. contents:: Table of Contents
-   :depth: 2
-   :backlinks: top
+    :local:
+    :depth: 2
+    :backlinks: top
 
 |
 
@@ -32,27 +33,27 @@ If you are looking for detailed description of the v0.94 FPGA project, click on 
 
     Since Red Pitaya board models have slightly different variations of the v0.94 FPGA project due to the nature of the hardware, the exact code lines mentioned in the tutorial may differ slightly.
 
-
+|
 
 Removing extra design source files
 ===================================
 
 In this step, we will remove any unnecessary design source files from the project to keep it clean and organized.
 
-1. Inside the **Sources** panel in Vivado, locate the **Design Sources** directory. 
+1.  Inside the **Sources** panel in Vivado, locate the **Design Sources** directory. 
 
     .. figure:: img/Vivado-design-sources.png
         :width: 500
         :align: center
 
-#. As we can see, the **Design Sources** contains a lot of different Verilog files, of which most are not needed in the v0.94 project (most of the files contain old functionality or alternative functionality of v0.94 project for different board models).
-   The only file tree related to our project is at the top of the list, written in **bold**, with a small pyramid next to it. **Shift Select** all the other files. **Right-click** and select **Disable file** to "exclude" them from the project.
+#.  As we can see, the **Design Sources** contains a lot of different Verilog files, of which most are not needed in the v0.94 project (most of the files contain old functionality or alternative functionality of v0.94 project for different board models).
+    The only file tree related to our project is at the top of the list, written in **bold**, with a small pyramid next to it. **Shift Select** all the other files. **Right-click** and select **Disable file** to "exclude" them from the project.
 
     .. figure:: img/Vivado-design-sources-disable.png
         :width: 500
         :align: center
 
-#. As most of the disabled files have a tree-like file structure, repeat step number 2 until only the **red_pitaya_top** file tree remains.
+#.  As most of the disabled files have a tree-like file structure, repeat step number 2 until only the **red_pitaya_top** file tree remains.
 
     .. figure:: img/Vivado-design-sources-disable-step2.png
         :width: 500
@@ -75,26 +76,26 @@ To start, open the Vivado project you created in the previous section. If you ha
 
 To make things simple, we will only edit the top-level module **red_pitaya_top.sv** and work with existing signals.
 
-1. Open the **red_pitaya_top.sv** file. Go to the **Sources** panel in Vivado, and locate the **red_pitaya_top.sv** file under the **Design Sources** directory. Double-click the name to open it in the editor.
+1.  Open the **red_pitaya_top.sv** file. Go to the **Sources** panel in Vivado, and locate the **red_pitaya_top.sv** file under the **Design Sources** directory. Double-click the name to open it in the editor.
 
     .. figure:: img/Tutorial_blink/Vivado-redpitaya-top.png
         :width: 1200
         :align: center
 
-#. Change the **led_o** port in top level module/entity in line 119 from **inout logic** to **output logic**. This change will allow us to control the LED output directly from the FPGA design and skip the complicated three-state logic.
+#.  Change the **led_o** port in top level module/entity in line 119 from **inout logic** to **output logic**. This change will allow us to control the LED output directly from the FPGA design and skip the complicated three-state logic.
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-led-logic-change.png
         :width: 800
         :align: center
 
-#. Scroll down to the **House Keeping** section. We can also use *Ctrl+F* to search for the keyword **House Keeping**. This section contains the code that manages the LEDs and GPIOs.
-   Comment the **led_o** port.
+#.  Scroll down to the **House Keeping** section. We can also use *Ctrl+F* to search for the keyword **House Keeping**. This section contains the code that manages the LEDs and GPIOs.
+    Comment the **led_o** port.
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-comment-led.png
         :width: 800
         :align: center
 
-#. Scroll down a bit further to get to the empty **LED** section. Insert the following code to make the LED 0 blink
+#.  Scroll down a bit further to get to the empty **LED** section. Insert the following code to make the LED 0 blink
 
     .. code-block:: Verilog
 
@@ -123,9 +124,9 @@ To make things simple, we will only edit the top-level module **red_pitaya_top.s
        :width: 800
        :align: center
 
-#. Save the changes by clicking on the **Save** icon in the toolbar or using the shortcut *Ctrl+S*.
+#.  Save the changes by clicking on the **Save** icon in the toolbar or using the shortcut *Ctrl+S*.
 
-#. Now that we have modified the code, we need to synthesize the design to check for any errors. Click on the **Run ==> Synthesis** button (green play button) in the toolbar or click on the **Run Synthesis** option in the **Flow Navigator** panel on the far left.
+#.  Now that we have modified the code, we need to synthesize the design to check for any errors. Click on the **Run ==> Synthesis** button (green play button) in the toolbar or click on the **Run Synthesis** option in the **Flow Navigator** panel on the far left.
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-run-synthesis.png
         :width: 1200
@@ -135,17 +136,17 @@ To make things simple, we will only edit the top-level module **red_pitaya_top.s
        :width: 500
        :align: center
 
-#. After the synthesis is complete, Vivado will display a summary of the synthesis results. If there are no errors, we can proceed to the next step. If there are errors, review the messages in the **Synthesis** panel and fix them accordingly.
-   During the build process, Vivado will also check for any warnings or errors in the code. If there are any issues, they will be displayed in the **Messages** panel at the bottom of the Vivado window.
-   During the build of the v0.94 project, Vivado will report a few warnings, which can be safely ignored.
+#.  After the synthesis is complete, Vivado will display a summary of the synthesis results. If there are no errors, we can proceed to the next step. If there are errors, review the messages in the **Synthesis** panel and fix them accordingly.
+    During the build process, Vivado will also check for any warnings or errors in the code. If there are any issues, they will be displayed in the **Messages** panel at the bottom of the Vivado window.
+    During the build of the v0.94 project, Vivado will report a few warnings, which can be safely ignored.
 
-#. When the synthesis is finished, a window will pop up with the synthesis results and an option to proceed with implementation. If you are curious, click on the **Open Synthesized Design** button to open the synthesized design in the Vivado editor. 
+#.  When the synthesis is finished, a window will pop up with the synthesis results and an option to proceed with implementation. If you are curious, click on the **Open Synthesized Design** button to open the synthesized design in the Vivado editor. 
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-run-synthesis-finish.png
-        :width: 500
+        :width: 400
         :align: center
 
-#. We will proceed with the implementation step. Similarly to launching the synthesis, click on the **Run ==> Implementation** button (green play button) in the toolbar, click on the **Run Implementation** option in the **Flow Navigator** panel on the far left or select **Run implementation** option from the synthesis result pop-up.
+#.  We will proceed with the implementation step. Similarly to launching the synthesis, click on the **Run ==> Implementation** button (green play button) in the toolbar, click on the **Run Implementation** option in the **Flow Navigator** panel on the far left or select **Run implementation** option from the synthesis result pop-up.
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-run-implementation.png
         :width: 1200
@@ -155,15 +156,15 @@ To make things simple, we will only edit the top-level module **red_pitaya_top.s
        :width: 500
        :align: center
 
-#. At the end of implementation, the following pop-up window will appear.
+#.  At the end of implementation, the following pop-up window will appear.
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-run-implementation-finish.png
-        :width: 500
+        :width: 400
         :align: center
 
     Either open the *Implemented Design* to see the resource utilisation on the FPGA or proceed directly with Bitstream generation by opting for the **Generate Bitstream** option.
 
-#. The final step is bitstream generation, which can be launched from the **Program and Debug** section in the Flow Navigator or the **Generate Bitstream** button in the toolbar.
+#.  The final step is bitstream generation, which can be launched from the **Program and Debug** section in the Flow Navigator or the **Generate Bitstream** button in the toolbar.
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-generate-bitstream.png
         :width: 1200
@@ -171,17 +172,18 @@ To make things simple, we will only edit the top-level module **red_pitaya_top.s
 
     What we haven't mentioned is that you can also generate the bitstream file directly from the start. In this case Vivado will automatically run synthesis, implementation, and bitstream generation in one go, informing us of any additional steps that need to be taken.
 
-#. Once bitstream generation is complete, the following pop-up window will appear.
+#.  Once bitstream generation is complete, the following pop-up window will appear.
 
     .. figure:: img/Tutorial_blink/Vivado-tutorial-generate-bitstream-finish.png
-        :width: 500
+        :width: 400
         :align: center
 
-#. The bitstream file is named after the top module **red_pitaya_top.bit** and located in the **/prj/v0.94/project/repitaya.runs/impl_1** directory of the downloaded Red Pitaya FPGA Repository.
+#.  The bitstream file is named after the top module **red_pitaya_top.bit** and located in the **/prj/v0.94/project/repitaya.runs/impl_1** directory of the downloaded Red Pitaya FPGA Repository.
 
 
 The next step is transfering the bitstream to the Red Pitaya board and loading it into the FPGA. For this, please refer to the :ref:`Reprogramming the FPGA <fpga_reprogramming>` section.
 
+|
 
 .. _fpga_tutorial_cust_comp:
 
@@ -439,13 +441,13 @@ We will create both a Verilog and a VHDL version of the custom component.
 #.  As we are adding a new module, we need to select **Add or create design sources**.
 
     .. figure:: img/Tutorial_custom_comp/Vivado-tutorial-custom-add-sources-panel.png
-        :width: 500
+        :width: 600
         :align: center
 
     If we already have the HDL code for the custom component, we can select **Add Files** and browse to the file location. In this case, we will create a new file, so select **Create File**.
 
     .. figure:: img/Tutorial_custom_comp/Vivado-tutorial-custom-create-file.png
-        :width: 500
+        :width: 600
         :align: center
 
 #.  Select the **File type** (Verilog or VHDL) and enter the **File name** (red_pitaya_proc). Click **OK** to create the new file.
@@ -457,14 +459,14 @@ We will create both a Verilog and a VHDL version of the custom component.
 #.  The new file will be added to the list of files to be added to the project. Click **Finish** to complete the process.
 
     .. figure:: img/Tutorial_custom_comp/Vivado-tutorial-custom-create-file-finish.png
-        :width: 500
+        :width: 600
         :align: center
 
 #.  As soon as the file is created, another window will pop up, asking for the *Module definition* parameters like entity name, architecture name and I/O ports.
     We will click **OK** as it is much easier to edit the ports in the code editor directly.
 
     .. figure:: img/Tutorial_custom_comp/Vivado-tutorial-custom-define-module.png
-        :width: 500
+        :width: 600
         :align: center
 
 #.  Click **Yes**.
@@ -712,7 +714,7 @@ The upper twelve bits determine the section (``0x403`` for section 3), while the
 
 The easiest way to interact with the custom FPGA registers from inside Linux OS is through the ``monitor`` command line tool.
 
-17.  As soon as we save the changes, Vivado will update the project; our custom module ``red_pitaya_proc`` replaces the ``red_pitaya_pid`` module, which is now outside the top module.
+17. As soon as we save the changes, Vivado will update the project; our custom module ``red_pitaya_proc`` replaces the ``red_pitaya_pid`` module, which is now outside the top module.
 
     .. figure:: img/Tutorial_custom_comp/Vivado-tutorial-custom-component-finish.png
         :width: 500

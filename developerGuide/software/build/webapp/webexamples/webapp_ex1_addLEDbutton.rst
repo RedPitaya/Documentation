@@ -7,6 +7,13 @@ Controlling LED with Button Example
 This tutorial demonstrates how to control Red Pitaya's onboard LEDs through a web interface using parameters. 
 You'll learn the fundamentals of frontend-backend communication and hardware control through the Red Pitaya API.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Overview
 =========
 
@@ -17,6 +24,8 @@ The application demonstrates:
 * Sending parameters from frontend to backend
 * Controlling hardware peripherals through the Red Pitaya API
 * Updating UI based on hardware state
+
+|
 
 Prerequisites
 ==============
@@ -51,6 +60,7 @@ The Red Pitaya API requires the v0.94 FPGA bitstream to control LEDs. Load it be
 
     Always load the correct FPGA image before running applications that interact with hardware.
 
+|
 
 Implementing the Frontend
 ===========================
@@ -145,6 +155,7 @@ Add the following code to toggle the LED state and update the UI:
     The parameter name **LED_STATE** must match exactly between frontend and backend. Consistency in naming 
     is critical for proper communication.
 
+|
 
 Implementing the Backend
 ==========================
@@ -262,6 +273,7 @@ Release resources in **rp_app_exit()**:
         return 0;
     }
 
+|
 
 Building and Testing
 =====================
@@ -287,6 +299,7 @@ Test the application
 5. The button text and status indicator should update
 6. Click again to turn the LED off
 
+|
 
 Next Steps
 ===========

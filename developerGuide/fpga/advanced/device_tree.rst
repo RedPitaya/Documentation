@@ -20,7 +20,7 @@ On Red Pitaya, device trees are particularly important for:
 - Enabling Linux IIO drivers for XADC analog inputs
 
 
-.. contents:: FPGA index
+.. contents:: Table of Contents
     :local:
     :depth: 2
     :backlinks: top
@@ -74,7 +74,7 @@ When building **only FPGA projects** using the standalone RedPitaya-FPGA reposit
 
     Device tree generation requires **Xilinx SDK 2019.1** to be installed and the ``xsct`` command to be available in your PATH. See the :ref:`sdk_install` guide for installation instructions.
 
-
+|
 
 Device Tree File Types
 =========================
@@ -98,7 +98,7 @@ When working with Red Pitaya FPGA projects, the HSI tool generates several types
 
     The HSI tool automatically generates these files based on your Vivado hardware design. All Red Pitaya FPGA projects are configured for Vivado 2020.1, as specified in the project TCL scripts.
 
-
+|
 
 Generating Device Trees
 =========================
@@ -171,7 +171,7 @@ The complete HSI command sequence in the script:
 
 See the `red_pitaya_hsi_dts.tcl script <https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/red_pitaya_hsi_dts.tcl>`_ in the RedPitaya-FPGA repository for the complete implementation.
 
-
+|
 
 Compiling Device Trees
 ========================
@@ -211,7 +211,7 @@ Red Pitaya stores device trees in ``/opt/redpitaya/dts/`` with subdirectories fo
 
     Always reboot after updating the device tree. Changes are applied when U-Boot loads the new DTB during boot.
 
-
+|
 
 Modifying Device Trees
 ==========================
@@ -243,7 +243,7 @@ Device tree source files use a hierarchical structure with nodes representing ha
 
 Always maintain proper indentation and closing braces when editing device tree sources.
 
-
+|
 
 Loading Custom Device Trees
 ================================
@@ -262,7 +262,7 @@ The :ref:`overlay.sh <overlay_util>` script (OS 2.00+) provides a convenient way
 For detailed information on using the overlay script, see:
 
 - :ref:`overlay_util` - Quick reference for command-line usage
-- :ref:`overlay_detailed` - Comprehensive guide with advanced examples
+- :ref:`fpga_advanced_loading` - Comprehensive guide with advanced examples
 
 
 Manual Loading
@@ -278,7 +278,7 @@ For older OS versions or manual control, you can load device trees using the fpg
 
     The device tree must be in DTBO (Device Tree Blob Overlay) format for runtime loading. Use the ``-O dtb`` option with dtc to generate the correct format.
 
-
+|
 
 Troubleshooting
 =================
@@ -318,15 +318,15 @@ Device Tree Not Loaded
     - Check that system.dts includes pl.dtsi
     - Ensure AXI peripheral addresses match hardware design
 
-
+|
 
 Additional Resources
 =====================
 
-- :ref:`sdk_install` - SDK installation and HSI tool usage
+- :ref:`fpga_install_sdk` - SDK installation and HSI tool usage
 - :ref:`signal_mapping` - Physical signal connections and GPIO mapping
 - :ref:`overlay_util` - Quick reference for overlay script
-- :ref:`overlay_detailed` - Comprehensive overlay script guide
+- :ref:`fpga_advanced_loading` - Comprehensive FPGA and device tree reprogramming guide
 - `Device Tree Xilinx Repository <https://github.com/Xilinx/device-tree-xlnx>`_ - Official Xilinx device tree sources
 - `Linux Device Tree Documentation <https://www.kernel.org/doc/Documentation/devicetree/>`_ - Kernel documentation on device tree usage
 - `Device Tree Compiler (DTC) <https://git.kernel.org/pub/scm/utils/dtc/dtc.git>`_ - Official DTC tool repository

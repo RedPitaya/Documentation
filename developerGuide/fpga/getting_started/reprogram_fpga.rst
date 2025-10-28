@@ -52,6 +52,7 @@ Red Pitaya uses different FPGA loading mechanisms depending on the OS version:
 
     Starting with OS 2.00, Red Pitaya adopted the Linux FPGA Manager framework, which provides better integration with the kernel and enables device tree overlay support.
 
+|
 
 When to Use This Guide
 ======================
@@ -66,6 +67,7 @@ Use this guide when you need to:
 
 For advanced topics like boot loading, custom device trees, and partial reconfiguration, see the :ref:`Advanced FPGA Loading guide <fpga_advanced_loading>`.
 
+|
 
 Prerequisites
 =============
@@ -203,6 +205,7 @@ The ``bootgen`` tool converts the bitstream using a ``.bif`` (Boot Image Format)
     - **Linux:** Use ``echo -n`` to avoid newline characters
     - **Windows:** Standard ``echo`` without ``-n`` flag
 
+|
 
 Uploading Files to Red Pitaya
 ==============================
@@ -272,6 +275,7 @@ The FPGA is immediately reconfigured with your design.
 - No device tree management
 - No automatic verification
 
+|
 
 OS 2.00 to 2.05-37 (fpgautil Method)
 =====================================
@@ -295,6 +299,7 @@ Loading FPGA Bitstream
 - Validates bitstream compatibility
 - Reports loading status
 
+|
 
 OS 2.07-43 or Newer (Recommended)
 ==================================
@@ -411,6 +416,7 @@ Method 4: Test LED Patterns
 
 For designs that control LEDs, observe the 8 yellow LEDs on the board to verify your custom pattern.
 
+|
 
 Common Issues and Solutions
 ============================
@@ -548,6 +554,7 @@ Or restart your Red Pitaya:
 
     This works unless you've configured boot loading (see :ref:`fpga_boot_loading`) or replaced the default FPGA image.
 
+|
 
 Method 2: Disable Boot Loading
 ===============================
@@ -576,6 +583,7 @@ If you set up automatic FPGA loading at boot, disable it:
 
 See :ref:`fpga_boot_loading` for complete boot loading management.
 
+|
 
 Method 3: Restore Replaced FPGA Image
 ======================================
@@ -592,6 +600,7 @@ If you used the replacement script to overwrite system files (advanced method):
 
 This restores the backup created when you first replaced the default image.
 
+|
 
 Method 4: Manual Revert (OS 1.04)
 ==================================
@@ -619,11 +628,11 @@ Related Documentation
 
 **Developer Guides:**
 
-- :ref:`Red Pitaya FPGA Developer Guide <fpga>` - FPGA development overview
+- :ref:`Red Pitaya FPGA Developer Guide <fpga_top>` - FPGA development overview
 - :ref:`Adding a custom component <fpga_tutorial_cust_comp>` - FPGA tutorial
-- :ref:`C and Python API <runApp_api>` - Software interface
+- :ref:`C and Python API <C&Py_API>` - Software interface
 
 **Application Examples:**
 
-- Red Pitaya GitHub repository - Example designs
-- Red Pitaya forums - Community projects
+- :rp-github:`Red Pitaya GitHub repository - Example designs <RedPitaya-Examples>`
+- :rp-forum:`Red Pitaya forum - Community projects <>`

@@ -142,7 +142,7 @@ author = "Red Pitaya"
 # built documents.
 #
 # The short X.Y version.
-version = "2.05-37"
+version = "2.07-43"
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -222,7 +222,7 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     'logo_only': True,
     'collapse_navigation': False,
-    'navigation_depth': 5,
+    'navigation_depth': 3,
     'includehidden': True,
     'titles_only': False,
     'sticky_navigation': True,

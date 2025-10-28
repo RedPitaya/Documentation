@@ -7,7 +7,9 @@ Build Red Pitaya ecosystem
 This guide explains how to build the Red Pitaya ecosystem, which includes FPGA bitstreams, Linux kernel, boot files, 
 API libraries, SCPI server, and web applications.
 
-.. contents:: Table of contents
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
     :backlinks: top
 
 |
@@ -62,6 +64,7 @@ The Red Pitaya source code is organized across multiple directories:
 
 .. [#f1] The FPGA design is located in the :rp-github:`RedPitaya-FPGA` repository and will be cloned into the ``fpga/`` subdirectory during the build process.
 
+|
 
 .. _SW_ecosys_req:
 
@@ -84,6 +87,7 @@ Red Pitaya ecosystem must be built on a Linux host system.
 
 For additional OS build requirements, refer to the :ref:`OS build requirements <SW_os_req>` section.
 
+|
 
 Required software packages
 ----------------------------
@@ -128,6 +132,7 @@ Python 3.10 or higher is required for building some ecosystem components.
 
     The Meson build system is optional and primarily used during development on x86 PCs.
 
+|
 
 Xilinx Vivado and SDK
 ----------------------
@@ -196,6 +201,7 @@ If running Vivado from a virtual machine with installation on a host shared fold
 
 5. **Access shared folder** - After rebooting, the Xilinx shared folder will be accessible under ``/media/sf_Xilinx`` (requires root privileges)
 
+|
 
 Red Pitaya source code
 ------------------------
@@ -235,6 +241,7 @@ To make this permanent, add the line to your ``~/.bashrc`` file.
     Building the ecosystem on an encrypted home directory is not supported, as ``schroot`` cannot access encrypted directories. 
     Create a separate non-encrypted directory (e.g., ``/home/ecosystem_build``) for building.
 
+|
 
 Understanding the Build Process
 =================================
@@ -274,6 +281,7 @@ Before proceeding, understand these key points:
 
 4. **Disk space requirements** - Ensure at least 10 GB of free disk space for source code and compilation
 
+|
 
 .. _SW_ecosys_build_proc:
 
@@ -377,6 +385,7 @@ Replace placeholders with:
             personality=linux
             preserve-environment=true
 
+|
 
 Full build procedure
 ---------------------
@@ -524,6 +533,7 @@ Full build procedure
             Unlike Ecosystem 1.04, version 2.0 and higher builds for all board models simultaneously. 
             Board-specific differences only affect FPGA bitstream compilation.
 
+|
 
 Partial Rebuild
 ================
@@ -755,7 +765,7 @@ Build boot file
     
     .. group-tab:: Ecosystem 2.00 and higher
 
-        ..!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
@@ -766,7 +776,7 @@ Build user-space applications
 
     .. group-tab:: Ecosystem 1.04
 
-        ..!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
     .. group-tab:: Ecosystem 2.00 and higher
@@ -802,6 +812,7 @@ Build user-space applications
 
             Some components have dependencies on each other. Use ``make all`` to build everything at once.
 
+|
 
 
 Component-Specific Information

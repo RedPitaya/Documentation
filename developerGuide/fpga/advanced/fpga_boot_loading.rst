@@ -700,5 +700,5 @@ Related Documentation
 
 - :ref:`fpga_reprogramming` - Basic FPGA loading guide
 - :ref:`fpga_advanced_loading` - Advanced FPGA configurations
-- :ref:`C and Python API <runApp_api>` - startup.sh script details
+- :ref:`C and Python API <C&Py_API>` - startup.sh script details
 - :ref:`device_tree` - Device tree configuration

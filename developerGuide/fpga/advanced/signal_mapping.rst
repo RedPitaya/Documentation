@@ -12,7 +12,7 @@ This section describes the physical connections between Red Pitaya's FPGA pins a
 
 .. contents:: Table of Contents
     :local:
-    :depth: 2
+    :depth: 1
     :backlinks: top
 
 |
@@ -42,6 +42,8 @@ Physical Connections
 
 The input range is 0 - 3.5 V by default (unipolar mode).
 
+|
+
 Bipolar Mode Configuration
 ============================
 
@@ -68,8 +70,6 @@ Bipolar Mode Configuration
         
         Afterwards, open the Red Pitaya v0.94 (or v0.94_250 for SIGNALlab 250-12) FPGA project. In the block diagram, the XADC wizard has a setting in the 
         Channel Sequencer page to switch the XADCs to bipolar mode. After rebuilding the FPGA, the values are read as 12-bit 2's complement values.
-
-
 
 |
 
@@ -115,6 +115,7 @@ The ADC inputs connected to the slow analog inputs have an input voltage range o
 
     range = \frac{0.5 V}{ratio} = 3.50 V
 
+|
 
 Reading XADC Values
 ==========================
@@ -135,6 +136,7 @@ XADC values can be read from Linux userspace through the IIO interface:
 
     The scale factor converts raw ADC readings to millivolts. Remember to account for the voltage divider ratios when calculating actual input voltages.
 
+|
 
 **********************************
 GPIO and LEDs
@@ -157,6 +159,7 @@ MIO vs PL/EMIO
     The LEDs and GPIOs directly connected to the PS are accessible only if the FPGA is not loaded or if the FPGA code does not change the signal state. 
     Be aware that changing these signals when the FPGA is loaded can cause unpredictable behavior.
 
+|
 
 GPIO Pin Assignment
 ==========================
@@ -290,6 +293,7 @@ For GPIO pins, use the GPIO sysfs interface:
     # Unexport when done
     echo 960 > /sys/class/gpio/unexport
 
+|
 
 **********************************
 PS Pinctrl Overlays
@@ -317,6 +321,7 @@ Available Overlays
 
 These overlay files are typically included in the project's device tree source when specific signal configurations are needed.
 
+|
 
 **********************************
 SPI Configuration Example
@@ -326,31 +331,31 @@ The SPI interface on Red Pitaya can be configured through the device tree. A com
 
 By default, the CS state is HIGH (inactive) on all Red Pitaya boards. To set the default value to LOW (active), modify the device tree:
 
-1. Open the device tree source file:
+1.  Open the device tree source file:
 
-.. code-block:: console
+    .. code-block:: console
 
-    root@rp-f01c3d:~# rw
-    root@rp-f01c3d:~# nano /opt/redpitaya/dts/$(monitor -f)/dtraw.dts
+        root@rp-f01c3d:~# rw
+        root@rp-f01c3d:~# nano /opt/redpitaya/dts/$(monitor -f)/dtraw.dts
 
-2. Find the SPI device node ``spidev@0`` and add the ``spi-cs-high`` property:
+2.  Find the SPI device node ``spidev@0`` and add the ``spi-cs-high`` property:
 
-.. code-block:: dts
+    .. code-block:: dts
 
-    spidev@0 {
-        compatible = "spidev";
-        reg = <0>;
-        spi-max-frequency = <50000000>;
-        spi-cs-high;  /* Add this line */
-    };
+        spidev@0 {
+            compatible = "spidev";
+            reg = <0>;
+            spi-max-frequency = <50000000>;
+            spi-cs-high;  /* Add this line */
+        };
 
 3. Recompile and reboot:
 
-.. code-block:: console
+    .. code-block:: console
 
-    root@rp-f01c3d:~# cd /opt/redpitaya/dts/$(monitor -f)/
-    root@rp-f01c3d:~# dtc -I dts -O dtb ./dtraw.dts -o devicetree.dtb
-    root@rp-f01c3d:~# reboot
+        root@rp-f01c3d:~# cd /opt/redpitaya/dts/$(monitor -f)/
+        root@rp-f01c3d:~# dtc -I dts -O dtb ./dtraw.dts -o devicetree.dtb
+        root@rp-f01c3d:~# reboot
 
 .. note::
 
@@ -365,6 +370,7 @@ By default, the CS state is HIGH (inactive) on all Red Pitaya boards. To set the
     
     See the :ref:`hw api <command_list>` command reference for more details.
 
+|
 
 **********************************
 Troubleshooting
@@ -397,6 +403,7 @@ GPIO/LED Access Issues
     - Unload FPGA or use FPGA that doesn't control these pins
     - Use appropriate MIO pins instead of EMIO pins if PS control is needed
 
+|
 
 XADC Reading Issues
 ================================
@@ -419,14 +426,15 @@ XADC Reading Issues
     - Check if bipolar mode resistor R273 (original) or R255 (Gen 2) is present/removed as expected
     - Calibrate readings against known reference voltage
 
+|
 
 **********************************
 Additional Resources
 **********************************
 
 - :ref:`device_tree` - Device tree configuration and compilation
-- :ref:`sdk_install` - SDK installation and HSI tool usage
+- :ref:`_fpga_install_sdk` - SDK installation and HSI tool usage
 - :ref:`overlay_util` - Quick reference for overlay script
-- :ref:`overlay_detailed` - Comprehensive overlay script guide
+- :ref:`fpga_advanced_loading` - Comprehensive overlay script guide
 - `Linux IIO Documentation <https://www.kernel.org/doc/html/latest/driver-api/iio/index.html>`_ - Industrial I/O subsystem documentation
 - `GPIO Sysfs Interface <https://www.kernel.org/doc/Documentation/gpio/sysfs.txt>`_ - Kernel GPIO interface documentation

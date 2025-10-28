@@ -66,6 +66,8 @@ When you have a custom bitstream but want to use Red Pitaya's standard device tr
     - Use ``overlay.sh`` to load both bitstream and device tree together
     - Loading bitstream only is useful when hardware connections remain unchanged
 
+|
+
 Loading Custom Bitstream with Device Tree
 ==========================================
 
@@ -124,6 +126,8 @@ When your custom FPGA has different hardware configuration than the standard v0.
 .. note::
 
     OS 1.04 and older do not support runtime device tree overlay loading. Device tree modifications require recompiling the device tree or using a custom kernel.
+
+|
 
 Partial FPGA Reconfiguration
 =============================
@@ -221,6 +225,8 @@ Rapidly switch between multiple pre-built FPGA projects during development:
     # Switch to signal generator
     redpitaya> ./switch_fpga.sh signal_gen
 
+|
+
 Example 2: Development Iteration Workflow
 ==========================================
 
@@ -282,6 +288,8 @@ Streamline the development cycle when frequently updating and testing FPGA desig
 4. Test functionality
 5. Repeat
 
+|
+
 Example 3: Testing Custom FPGA Design
 ======================================
 
@@ -339,6 +347,8 @@ Systematically test a custom FPGA design with automated verification:
     echo "======================================"
     echo "All tests passed!"
     echo "======================================"
+
+|
 
 Example 4: Managing Multiple Configurations
 ============================================
@@ -408,6 +418,8 @@ Maintain multiple FPGA configurations with easy selection:
     redpitaya> ./fpga_manager.sh load my_project
     redpitaya> ./fpga_manager.sh info
     redpitaya> ./fpga_manager.sh backup my_project
+
+|
 
 Example 5: Custom Device Tree Workflow
 =======================================
@@ -482,6 +494,8 @@ Example device tree source:
     
     # Check kernel messages
     redpitaya> dmesg | tail -20
+
+|
 
 Example 6: Automated CI/CD Integration
 =======================================
@@ -565,6 +579,8 @@ Integrate FPGA testing into continuous integration/deployment pipelines:
           http://ci-server/artifacts/fpga.dtbo"
       dependencies:
         - build_fpga
+
+|
 
 Example 7: Multi-Region Partial Reconfiguration
 ================================================
@@ -703,6 +719,8 @@ The ``overlay.sh`` script (OS 2.07+) is Red Pitaya's primary tool for loading FP
     # Check kernel messages
     dmesg | tail -20
 
+|
+
 File Locations and Directory Structure
 =======================================
 
@@ -747,6 +765,8 @@ Understanding Red Pitaya's FPGA file organization:
     /boot/devicetree.dtb         # Base device tree
     /etc/profile.d/              # Login scripts
     /etc/systemd/system/         # systemd services
+
+|
 
 Internal FPGA Loading Operation
 ================================
@@ -825,6 +845,8 @@ Understanding how FPGA loading works internally:
     
     # Check registered devices
     ls /sys/bus/platform/devices/
+
+|
 
 Best Practices
 ==============
@@ -962,6 +984,8 @@ A: Check the loaded project:
 
 This shows the project name (e.g., "v0.94" or "my_custom_project").
 
+|
+
 Troubleshooting Questions
 ==========================
 
@@ -1029,6 +1053,8 @@ A: Something is using the current FPGA. Try:
     # Try loading again
     /opt/redpitaya/sbin/overlay.sh v0.94 my_project
 
+|
+
 Device Tree Questions
 =====================
 
@@ -1080,6 +1106,8 @@ A: Look at Red Pitaya's built-in overlays:
     
     # Decompile to source for reference
     dtc -I dtb -O dts -o example.dts fpga.dtbo
+
+|
 
 Persistence Questions
 =====================
@@ -1135,6 +1163,8 @@ A: See :ref:`fpga_reprogramming` for reverting to factory FPGA. Quick method:
     ro
     reboot
 
+|
+
 Advanced Questions
 ==================
 
@@ -1187,12 +1217,11 @@ Related Documentation
 
 **Developer Guides:**
 
-- :ref:`Red Pitaya FPGA Developer Guide <fpga>` - FPGA development overview
-- :ref:`C and Python API <runApp_api>` - Software interface
-- Vivado Design Guide - Xilinx FPGA development
+- :ref:`Red Pitaya FPGA Developer Guide <fpga_top>` - FPGA development overview
+- :ref:`C and Python API <C&Py_API>` - Software interface
+- :ref:`Vivado Installation Guide <FPGA_install_vivado>`- Xilinx FPGA development
 
 **Application Examples:**
 
-- Red Pitaya GitHub repository - Example designs
-- Red Pitaya forums - Community projects
-- Red Pitaya application notes
+- :rp-github:`Red Pitaya GitHub repository <RedPitaya>` - Example designs
+- :rp-forum:`Red Pitaya forum <>` - Community projects

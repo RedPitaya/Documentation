@@ -6,9 +6,12 @@ Build Red Pitaya OS
 
 This guide explains how to build a Debian/Ubuntu based SD card image for Red Pitaya.
 
-.. contents:: Table of contents
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
     :backlinks: top
 
+|
 
 Introduction
 ==============
@@ -21,6 +24,7 @@ Red Pitaya OS consists of two main components:
 Both components are required for a functional system. The OS provides the runtime environment, while the ecosystem 
 provides the hardware interface and Red Pitaya specific applications.
 
+|
 
 Build Script Overview
 ======================
@@ -82,6 +86,7 @@ Configuration files
 
 The ``overlay`` directory contains configuration files that are installed individually onto the OS by the build scripts.
 
+|
 
 Understanding the Build Process
 =================================
@@ -148,6 +153,7 @@ After completing the bootstrap procedure, you can build either component indepen
 a new ecosystem in an existing ``chroot`` environment and update the SD card. Once an ``ecosystem_*.zip`` file exists in 
 the project root directory, new OS images will automatically integrate it during the build process.
 
+|
 
 .. _SW_os_req:
 
@@ -184,6 +190,7 @@ Install the required packages on your host PC:
 
     $ sudo apt-get install debootstrap qemu-user-static
 
+|
 
 Building the OS Image
 =======================
@@ -301,6 +308,7 @@ During the build process, the following steps are performed:
     * :rp-github:`jupyter.sh <ubuntu/blob/main/debian/jupyter.sh>` - Installs Jupyter notebook
     * :rp-github:`tft.sh <ubuntu/blob/main/debian/tft.sh>` - Installs X-server and XFCE desktop environment
 
+|
 
 Updating an Existing Image
 ============================
@@ -327,6 +335,7 @@ After updating the image, write it to a micro SD card (minimum 16 GB):
 
     $ sudo dd bs=4M if=redpitaya_OS_*.img of=/dev/mmcblk0 status=progress
 
+|
 
 Image Maintenance
 ==================
@@ -369,6 +378,7 @@ Execute the following commands to remove APT temporary files and clear empty spa
     $ rm -f zero.file
     $ history -c
 
+|
 
 Managing the Running System
 =============================

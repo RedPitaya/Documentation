@@ -2,6 +2,8 @@ Project - stream_app_4ch
 ==========================
 
 .. contents:: Register index
+    :local:
+    :depth: 1
     :backlinks: top
 
 |

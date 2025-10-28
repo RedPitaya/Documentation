@@ -7,6 +7,13 @@ System Overview
 Red Pitaya web applications use a client-server architecture with two distinct components: frontend and backend. 
 Understanding this architecture is essential for developing custom applications.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Architecture Overview
 ======================
 
@@ -29,6 +36,7 @@ Red Pitaya applications consist of:
 These components communicate via WebSocket connections using Red Pitaya's network APIs, which handle all data transfer 
 automatically. You simply need to follow the API structure described in :ref:`Add a button to control LED <ABCLED>`.
 
+|
 
 Frontend Component
 ===================
@@ -57,6 +65,8 @@ Application workflow
     :align: center
     :width: 1200
 
+|
+
 **Typical user interaction flow:**
 
 1. **User input** - User modifies settings in the web interface
@@ -72,6 +82,7 @@ Application workflow
 5. **Response** - Controller sends results back to UI in JSON format
 6. **Visualization** - UI receives data and updates the display
 
+|
 
 Backend Component
 ==================
@@ -110,6 +121,7 @@ The controller operates with Red Pitaya hardware through:
 
     Parameters and signals are optional. Use only what your application requires.
 
+|
 
 Nginx Integration
 ==================
@@ -142,6 +154,7 @@ Application lifecycle
     Always verify you're using the correct FPGA image when developing applications. The FPGA configuration must 
     match your controller's requirements.
 
+|
 
 Additional Resources
 =====================

@@ -8,6 +8,13 @@ This example demonstrates how to read voltage from Red Pitaya's slow analog inpu
 in a web interface. You'll learn how to work with signals, trigger on-demand measurements, and handle data 
 compression in WebSocket communication.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Overview
 =========
 
@@ -25,6 +32,7 @@ and displays it in the web interface.
 
 Any of the four slow analog input pins (AI0-AI3) on the E2 connector can be used for voltage measurement.
 
+|
 
 Prerequisites
 ==============
@@ -34,6 +42,7 @@ Required libraries
 
 This example requires the **pako.js** library for decompressing data transmitted over WebSocket.
 
+|
 
 Implementing the Frontend
 ===========================
@@ -141,7 +150,7 @@ Connect this function to the button click event:
         APP.readValue();
     });
 
-
+|
 
 Implementing the Backend
 ==========================
@@ -249,6 +258,7 @@ Reads voltage from a slow analog input pin.
 * Typically 0 V to 3.3 V range
 * Exact range may vary by Red Pitaya model
 
+|
 
 Understanding the Data Flow
 =============================
@@ -278,6 +288,7 @@ WebSocket data is compressed to:
 
 This is especially important for signals with many data points (like in the graph example).
 
+|
 
 Testing the Application
 ========================
@@ -333,6 +344,7 @@ Troubleshooting
 * Check JavaScript console for errors
 * Ensure WebSocket is open before clicking
 
+|
 
 Extending This Example
 =======================
@@ -348,6 +360,7 @@ Possible enhancements
 * **Data logging** - Save voltage readings to file with timestamps
 * **Calibration** - Add offset and gain correction for improved accuracy
 
+|
 
 Next Steps
 ===========

@@ -5,6 +5,8 @@ generation and acquisition, digital I/O, and communication interfaces (I2C, SPI,
 
 
 .. contents:: Table of Contents
+    :local:
+    :depth: 1
     :backlinks: top
 
 |
@@ -210,8 +212,9 @@ Run the compiled application:
 
     Press ``CTRL+C`` to stop applications running in continuous loops.
 
+|
 
-Compiling custom code
+Compiling custom C code
 -----------------------
 
 When developing custom C or C++ applications, follow these steps to transfer and compile your code on Red Pitaya.
@@ -491,6 +494,7 @@ Prerequisites
    
     Using CRLF line endings will cause compiled programs to straightup fail with errors or do so after a reboot.
 
+|
 
 Creating and deploying Python code
 ------------------------------------
@@ -542,6 +546,7 @@ Run your Python application:
 
    ./pythonAPI_example.py
 
+|
 
 Troubleshooting Python path
 -----------------------------
@@ -575,6 +580,7 @@ There are several ways to make your C or Python applications run automatically a
 2. **etc/profile.d directory** - Create a script in the ``/etc/profile.d/`` directory that runs your application.
 3. **Other methods** - Use systemd services or cron jobs for more advanced startup configurations.
 
+|
 
 Startup.sh script
 ------------------
@@ -664,6 +670,7 @@ To stop a running application on Red Pitaya, you can use one of the following me
     * Optionally, remove the application files from the system directory if no longer needed.
     * Reboot Red Pitaya to apply the changes.
 
+|
 
 Profile.d directory
 ----------------------
@@ -761,6 +768,7 @@ To stop a running application on Red Pitaya, you can use one of the following me
     * Optionally, remove the application files from the system directory if no longer needed.
     * Reboot Red Pitaya to apply the changes.
 
+|
 
 Other methods
 ----------------------
@@ -836,6 +844,7 @@ For complete API reference:
 
     * :ref:`FPGA reprogramming guide <fpga_reprogramming>` for details on uploading custom FPGA images.
 
+|
 
 API Examples
 =============

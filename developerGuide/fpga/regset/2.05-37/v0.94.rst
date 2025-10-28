@@ -13,6 +13,8 @@ The memory block is divided into 8 parts. Each part is occupied by an individual
 For additional information and better understanding check other documents (schematics, specifications...).
 
 .. contents:: Register index
+    :local:
+    :depth: 1
     :backlinks: top
 
 |

@@ -9,6 +9,12 @@ This image is also used by most of Red Pitaya applications, so if you want to cr
 
 The v0.94 project does not have a IP Block Design hierarchy, instead all the connections are made in Verilog in the top module.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+   
+|
 
 Top module
 ------------
@@ -16,8 +22,8 @@ Top module
 Top module connects PS part with rest of Red Pitaya FPGA.
 
 .. figure:: img/v0.94/fpga-v094-top.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 Most of the Red Pitaya FPGA project is written in Verilog and System Verilog, but we can also include components written in VHDL. If we open the resource drop-down menu hidden under *red_pitaya_top*, we can see the 12 components that actually make up the system.
 The full relationship between them is described in the comments at the top of the *red_pitaya_top* module, where a brief description of the more important components is also available. 
@@ -78,8 +84,8 @@ The oscilloscope module, which can be referred to as either "red_pitaya_scope" o
 The second module can average and decimate the input signal. Currently, Direct Memory Access (DMA), which is used by the Deep Memory mode, is implemented here too, but it will be added as a separate module in future versions.
 
 .. figure:: img/v0.94/fpga-v094-scope.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 * The input data can be averaged and decimated optionally via an average filter.
 
@@ -95,8 +101,8 @@ The Arbitrary signal/waveform generator, located at the following address, allow
 either as one of the pre-selected formats or given by the user. The buffer signal is further scaled before output via a linear function defined by the calibration.
 
 .. figure:: img/v0.94/fpga-v094-asg.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 * The buffers are filled with the SW. They also set a finite state machine that takes control of the read pointer. All registers relating to reading from the buffer have an additional 16 bits that are used as decimal points. This enables us to achieve a better ratio between the clock cycle and the frequency of the output signal.
 
@@ -112,16 +118,16 @@ The PID controller (Proportional-Integral-Derivative controller) is represented 
 Each part then passes through its own PID block before being summed with the output of the other channel's PID block and fed to the high-speed analog output. Each output includes saturation protection.
 
 .. figure:: img/v0.94/fpga-v094-pid.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 This makes it easy to make the fast analog input dependent on both analog inputs, which is important for controlling different systems (e.g. laser stabilisation).
 
 Each PID block comprises a proportional, an integrator and a derivative part. The input signal to the PID block is subtracted from the set point. This difference represents the error and is fed to the inputs of the P, I and D parts. The outputs of these three parts are then summed and fed to the output.
 
 .. figure:: img/v0.94/fpga-v094-pid-submodule.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 The integral part can be reset using a special signal.
 
@@ -135,8 +141,8 @@ The Red Pitaya has four slow analog inputs and four slow analog outputs. The slo
 The analog outputs can be configured via the registers, with an output voltage range of 0 to 1.8 V.
 
 .. figure:: img/v0.94/fpga-v094-ams.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 The reading of the system and external voltages is performed by the XADC running in sequencer mode. It measures supply voltages, temperature, and voltages on the external connector. The measured values are then exposed to the software. In addition, the SW can set the registers that control the logic for the PWM DAC (analog module).
 
@@ -148,8 +154,8 @@ The Daisy Chaining Module is designed to connect and synchronise multiple Red Pi
 In a chain, the primary unit shares its clock and trigger signals with all secondary units, enabling synchronous data generation and capture. In addition to sharing the clock and trigger signals, the module also allows fast communication and data transmission between individual units. 
 
 .. figure:: img/v0.94/fpga-v094-daisy.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 A daisy chain module can be used to communicate with other boards and perform basic data transfers. The connection is made via fast serial lines with a separate clock and data line. The module consists of multiple submodules.
 
@@ -180,8 +186,8 @@ The processing system is located in the "red_pitaya_ps" or "ps" module and compr
 the serial console on the micro USB connector next to the power supply and the AXI bus. There is also a special AXI block inside the module that simplifies the AXI bus to make it more user-friendly, connecting it to the system bus.
 
 .. figure:: img/v0.94/fpga-v094-ps.png
-   :width: 600
-   :align: center
+    :width: 600
+    :align: center
 
 The PS module is also the wrapper for the block design.
 

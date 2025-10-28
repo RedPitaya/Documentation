@@ -2,8 +2,9 @@ Project - stream_app
 ======================
 
 .. contents:: Register index
+    :local:
+    :depth: 1
     :backlinks: top
-
 |
 
 .. tabularcolumns:: |p{15mm}|p{22mm}|p{22mm}|p{55mm}|

@@ -6,7 +6,9 @@ FPGA projects
 
 This section contains information about various FPGA projects available for Red Pitaya. Each project is designed to demonstrate different functionalities and capabilities of the FPGA hardware.
 
-.. contents:: Index
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
     :backlinks: top
 
 |
@@ -120,11 +122,11 @@ In-depth project descriptions
 ==============================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
-   v0_94.rst
-..   stream_app.rst
-..   logic.rst
+    v0_94.rst
+    stream_app.rst
+    logic.rst
 
 
 Board compatibility

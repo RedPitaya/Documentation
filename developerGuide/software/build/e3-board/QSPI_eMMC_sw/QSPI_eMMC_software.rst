@@ -16,8 +16,8 @@ boards. This guide covers software setup, programming the onboard STM32 microcon
 
 .. contents::
     :local:
-    :depth: 2
-    :backlinks: none
+    :depth: 1
+    :backlinks: top
 
 |
 
@@ -41,6 +41,7 @@ Module capabilities
 
 For hardware specifications and pinout details, refer to the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
 
+|
 
 Prerequisites
 =============
@@ -94,6 +95,7 @@ The STM32 microcontroller (STM32L412K8T6) can be programmed using various develo
 
 This guide uses Arduino IDE and STM32CubeProgrammer, but you can use any preferred STM32 development method.
 
+|
 
 Hardware Setup
 ===============
@@ -136,6 +138,7 @@ UART connection (currently not supported)
     Not all USB ports may work reliably. If you experience connection issues, try different USB ports or verify 
     cable connections using the ST-Link/V2 programmer connection test.
 
+|
 
 Software Installation
 ======================
@@ -173,6 +176,7 @@ Installing STM32CubeProgrammer
 2. Run the installer and ensure all necessary drivers are installed during setup.
 3. Launch STM32CubeProgrammer to verify installation.
 
+|
 
 Configuring Arduino IDE
 =========================
@@ -216,6 +220,7 @@ Opening the firmware
 Download the QSPI eMMC module firmware from the :github:`RedPitaya/RedPitaya-Examples/tree/dev/E3_module_code` repository 
 and open the Arduino sketch (.ino file) in Arduino IDE.
 
+|
 
 Firmware Configuration
 =======================
@@ -381,6 +386,7 @@ Configure all I/O pins in your **setup()** function:
 
     All configuration steps above are mandatory. Missing any step will result in improper microcontroller operation.
 
+|
 
 Programming the Module
 =======================
@@ -428,6 +434,7 @@ Method 3: USB to Serial cable (UART) - Currently not supported
 4. When Arduino IDE reaches the uploading stage, press the reset button on the QSPI eMMC module to enter 
    bootloader mode.
 
+|
 
 Using STM32CubeProgrammer
 ---------------------------
@@ -485,6 +492,7 @@ Step 2: Connect and program
 
 9. After programming completes, click **OK** on the confirmation dialogs.
 
+|
 
 Firmware Operation
 ===================
@@ -555,6 +563,7 @@ State diagram
 The firmware is designed for easy customization with clear code structure and comprehensive comments. State 
 transitions can be controlled from Red Pitaya using the E3 I2C controller.
 
+|
 
 .. _e3_i2c_controller_sw:
 
@@ -568,6 +577,7 @@ power states and firmware configuration.
 
 .. include:: ../../../../../appsFeatures/command_line_tools/utils/e3_i2c_controller.inc
 
+|
 
 Hardware Specifications
 ========================
@@ -575,6 +585,7 @@ Hardware Specifications
 For detailed hardware specifications, connector pinouts, and schematics, refer to the 
 :ref:`E3 hardware documentation <E3_QSPI_eMMC_module_HW>`.
 
+|
 
 Frequently Asked Questions
 ===========================

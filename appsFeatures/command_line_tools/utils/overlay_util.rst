@@ -8,7 +8,9 @@ The ``overlay.sh`` script is the recommended method for loading FPGA images on R
 It provides a simple interface for managing FPGA configurations, including custom bitstreams and device tree overlays.
 
 .. contents:: Table of Contents
+    :local:
     :backlinks: top
+    :depth: 1
 
 |
 
@@ -315,3 +317,11 @@ For comprehensive information about the overlay script, including advanced usage
 - :ref:`FPGA Reprogramming Guide <fpga_reprogramming>` - FPGA loading procedures for all OS versions and detailed overlay usage
 - :ref:`FPGA Project Creation <fpga_create_project>` - Building custom FPGA projects
 
+|
+
+Source Code
+=====================
+
+The overlay utility script source code is available on GitHub:
+
+- :rp-github:`overlay.sh <RedPitaya/blob/master/OS/filesystem/sbin/overlay.sh>`

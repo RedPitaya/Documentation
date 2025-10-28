@@ -8,6 +8,13 @@ For development and testing purposes, you can manually install web applications 
 SD card filesystem. This method is useful when you want to test applications without using the Red Pitaya's web 
 interface or when deploying custom applications to multiple devices.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Installation Methods
 =====================
 
@@ -100,6 +107,7 @@ Using WinSCP (Windows)
 2. Navigate to `/opt/redpitaya/www/apps/`
 3. Drag and drop your application folder from your computer to the remote directory
 
+|
 
 Verification
 =============
@@ -118,6 +126,7 @@ If the application doesn't appear, check:
 * The `info/icon.png` file exists
 * File permissions are correct (should match other applications)
 
+|
 
 Troubleshooting
 ================
@@ -189,6 +198,7 @@ Common issues:
 * Incorrect function signatures in controller code
 * FPGA image not loaded correctly
 
+|
 
 Best Practices
 ===============

@@ -12,7 +12,7 @@ This guide covers setting up and running simulations for Red Pitaya FPGA project
 
 .. contents:: Table of Contents
     :local:
-    :depth: 2
+    :depth: 1
     :backlinks: top
 
 |
@@ -41,6 +41,7 @@ Why Simulate?
 - For automated testing in CI/CD pipelines
 - To verify timing and signal integrity
 
+|
 
 Simulation vs. Hardware Testing
 ================================
@@ -150,6 +151,8 @@ Prerequisites
 - **Disk space:** 2 GB for ModelSim installation
 - **Display:** X11 server for GUI (Windows users: VcXsrv or Xming)
 
+|
+
 Step 1: Download ModelSim
 ==========================
 
@@ -170,6 +173,7 @@ Step 1: Download ModelSim
 
     Account registration may be required. It's free for Starter Edition.
 
+|
 
 Step 2: Install on Ubuntu/Linux
 ================================
@@ -199,6 +203,7 @@ Step 2: Install on Ubuntu/Linux
 
     $HOME/intelFPGA/20.1/modelsim_ase/
 
+|
 
 Step 3: Post-Installation Setup (Ubuntu)
 =========================================
@@ -242,6 +247,7 @@ Save and reload:
 
     source ~/.bashrc
 
+|
 
 Step 4: Verify Installation
 ============================
@@ -267,6 +273,7 @@ Step 4: Verify Installation
 
 ModelSim GUI should open. Close it after verifying.
 
+|
 
 Windows Installation (via WSL)
 ===============================
@@ -291,6 +298,7 @@ Windows Installation (via WSL)
 
 **Follow Ubuntu installation steps above**
 
+|
 
 Troubleshooting Installation
 =============================
@@ -347,6 +355,7 @@ Simulation Workflow
 5. View waveforms
 6. Analyze results
 
+|
 
 Red Pitaya Simulation Structure
 ================================
@@ -372,6 +381,7 @@ Red Pitaya Simulation Structure
 
     cd RedPitaya-FPGA/fpga/sim
 
+|
 
 Basic Simulation Commands
 ==========================
@@ -408,6 +418,7 @@ Default simulation time can be overridden.
 
 Removes compiled libraries and simulation artifacts.
 
+|
 
 Available Testbenches
 =====================
@@ -435,6 +446,7 @@ Available Testbenches
 
     Available testbenches depend on your Red Pitaya FPGA version. Check ``fpga/sim/`` for complete list.
 
+|
 
 Understanding Simulation Output
 ================================
@@ -496,6 +508,7 @@ Opening Waveform Viewer
 2. File → Open → Select workspace directory
 3. View → Wave window
 
+|
 
 Waveform Configuration Scripts
 ===============================
@@ -524,6 +537,7 @@ Many testbenches include ``.tcl`` scripts to organize waveforms:
 
 **These scripts automatically run when you use** ``WAV=1``
 
+|
 
 Reading Waveforms
 =================
@@ -556,6 +570,7 @@ Reading Waveforms
 - **Decimal:** 172
 - **Unsigned/Signed:** Interpretation of value
 
+|
 
 Waveform Navigation
 ===================
@@ -579,6 +594,7 @@ Waveform Navigation
 - Collapse/expand groups to manage visibility
 - Scripts like ``top_tb.tcl`` pre-organize signals
 
+|
 
 Exporting Waveforms
 ===================
@@ -708,6 +724,7 @@ Testbench Structure
         
     endmodule
 
+|
 
 Essential Testbench Components
 ===============================
@@ -856,6 +873,7 @@ Result Checking
             $display("FAIL: %0d errors detected", error_count);
     end
 
+|
 
 Adding Testbench to Makefile
 =============================
@@ -930,6 +948,7 @@ Using Tasks and Functions
         return crc;
     endfunction
 
+|
 
 Code Coverage
 =============
@@ -956,6 +975,7 @@ Code Coverage
 - **FSM:** State machine transitions
 - **Toggle:** Signal bit transitions
 
+|
 
 Constrained Random Testing
 ===========================
@@ -990,6 +1010,7 @@ Constrained Random Testing
         axi_write(tr.addr, tr.data);
     end
 
+|
 
 Performance Profiling
 ======================
@@ -1069,6 +1090,7 @@ Common Compilation Errors
 
 **Solution:** Check for missing semicolons, commas, or mismatched parentheses.
 
+|
 
 Runtime Errors
 ==============
@@ -1125,6 +1147,7 @@ Runtime Errors
         end
     end
 
+|
 
 Memory Issues
 =============
@@ -1148,6 +1171,7 @@ Memory Issues
         $dumpvars(1, my_module_tb.dut);  // Depth 1, only DUT
     end
 
+|
 
 Assertion Failures
 ==================
@@ -1198,6 +1222,7 @@ Simulation Strategy
 - Keep waveform configuration scripts
 - Maintain expected results documentation
 
+|
 
 Code Organization
 =================
@@ -1227,6 +1252,7 @@ Code Organization
 - Waveform scripts: ``<module>_tb.tcl``
 - Test vectors: ``<module>_vectors.txt``
 
+|
 
 Debugging Workflow
 ==================
@@ -1252,6 +1278,7 @@ Debugging Workflow
     
     // Compile with: vlog +define+DEBUG
 
+|
 
 Simulation Performance
 ======================
@@ -1299,6 +1326,7 @@ Simulating Red Pitaya Modules
 
     make red_pitaya_asg_tb WAV=1
 
+|
 
 Vivado Integration
 ==================
@@ -1312,6 +1340,7 @@ Vivado Integration
 
 **Note:** Red Pitaya Makefiles use ModelSim by default. To use XSIM, modify simulation scripts.
 
+|
 
 CI/CD Integration
 =================
@@ -1369,7 +1398,7 @@ Related Documentation
 
 - :ref:`fpga_create_project` - Creating FPGA projects
 - :ref:`fpga_modify_project` - Modifying existing projects
-- :ref:`jtag_programming` - Programming via JTAG
+- :ref:`fpga_jtag_programming` - Programming via JTAG
 - :ref:`fpga_reprogramming` - Programming via SSH
 
 **Advanced Topics:**

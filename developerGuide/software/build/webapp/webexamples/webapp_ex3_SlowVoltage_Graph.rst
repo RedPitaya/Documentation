@@ -7,6 +7,13 @@ Reading Analog Voltage from Slow Inputs with Graph
 This example extends the basic voltage reading example by adding real-time graphing capabilities. You'll learn 
 how to continuously sample analog inputs, buffer data efficiently, and visualize voltage measurements over time.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Overview
 =========
 
@@ -25,6 +32,7 @@ measurements on a real-time graph.
 Any of the four slow analog input pins (AI0-AI3) on the :ref:`E2 extension connector <E2_orig_gen>` can be 
 used for voltage measurement.
 
+|
 
 Prerequisites
 ==============
@@ -42,6 +50,7 @@ Required libraries
 * **pako.js** - For data decompression
 * **jquery** - For DOM manipulation
 
+|
 
 Implementing the Frontend
 ===========================
@@ -153,7 +162,7 @@ and update the graph:
 4. Update the Flot graph with new data points
 5. Redraw the graph to show changes
 
-
+|
 
 Implementing the Backend
 ==========================
@@ -243,6 +252,7 @@ This creates a sliding window buffer:
 * Oldest measurement is removed when new one arrives
 * Maintains constant buffer size
 
+|
 
 Understanding the Data Flow
 =============================
@@ -273,6 +283,7 @@ Continuous vs on-demand
 * Multiple values transmitted continuously
 * Frontend displays scrolling graph
 
+|
 
 Graph Visualization
 ====================
@@ -316,6 +327,7 @@ Set up periodic signal processing:
     // Call every 15ms
     setInterval(APP.signalHandler, 15);
 
+|
 
 Testing the Application
 ========================
@@ -349,6 +361,7 @@ Application testing
    * Verify data is not being dropped
    * Monitor CPU usage
 
+|
 
 Performance Considerations
 ===========================
@@ -393,6 +406,7 @@ Possible enhancements
 * **Adjustable time scale** - Change the time window dynamically
 * **Auto-scaling** - Automatically adjust Y-axis range based on signal amplitude
 
+|
 
 Next Steps
 ===========

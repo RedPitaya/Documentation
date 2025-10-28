@@ -8,6 +8,12 @@ This example demonstrates how to execute system commands and access the file sys
 You'll learn how to create custom Nginx locations with Lua scripting to extend your web application beyond 
 the standard WebSocket API.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
 
 Overview
 =========
@@ -28,6 +34,7 @@ with Red Pitaya's file system.
 This example demonstrates powerful capabilities that can pose security risks if not properly secured. Always 
 validate and sanitize inputs in production applications.
 
+|
 
 Prerequisites
 ==============
@@ -45,7 +52,7 @@ Required knowledge
 * Familiarity with HTTP GET requests
 * Basic Lua scripting concepts (helpful but not required)
 
-
+|
 
 Implementing the Frontend
 ===========================
@@ -144,7 +151,7 @@ In **APP.ws.onopen()** callback, open the root directory on connection:
         APP.openDir("/");
     };
 
-
+|
 
 Implementing the Backend
 ==========================
@@ -224,6 +231,7 @@ Lua script section
 5. **Close file handle** - Clean up resources
 6. **Send response** - Return file list to client
 
+|
 
 Understanding the Shell Command
 =================================
@@ -251,7 +259,7 @@ Command breakdown
     /home/user/downloads
     /home/user/pictures
 
-
+|
 
 Security Considerations
 ========================
@@ -312,7 +320,7 @@ Securing the application
         -- Process files safely
     end
 
-
+|
 
 Deploying Nginx Configuration
 ===============================
@@ -344,6 +352,7 @@ Apply configuration
 
     # systemctl restart nginx
 
+|
 
 Testing the Application
 ========================
@@ -385,6 +394,7 @@ Troubleshooting
 * Verify Lua syntax is correct
 * Test Lua code separately if possible
 
+|
 
 Understanding Nginx + Lua
 ==========================
@@ -427,6 +437,7 @@ Lua in Nginx
 * ``ngx.var.request_uri`` - Get current URI
 * ``ngx.req.get_headers()`` - Get request headers
 
+|
 
 Extending This Example
 =======================
@@ -455,6 +466,7 @@ Advanced integrations
 * **Caching** - Implement response caching with Nginx
 * **Authentication** - Add OAuth, JWT, or basic auth
 
+|
 
 Next Steps
 ===========

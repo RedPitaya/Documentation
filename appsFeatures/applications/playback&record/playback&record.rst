@@ -17,6 +17,7 @@ How it works
 3. **Generation**: Immediately replays the captured signal with configurable burst patterns
 4. **Loop**: Continues indefinitely until stopped
 
+|
 
 Features
 ========
@@ -32,6 +33,8 @@ Features
 .. note::
 
     This application is not meant to be used in parallel with the Red Pitaya WEB interface. As most processing resources is taken by the *Record and Play* application, the Web interface is severly slowed down. 
+
+|
 
 Requirements
 ============
@@ -54,6 +57,7 @@ Please make sure that Red Pitaya inputs and outputs are properly terminated (mat
 `ringing <https://incompliancemag.com/circuit-theory-model-of-ringing-on-a-transmission-line/>`_ on the `transmission line <https://en.wikipedia.org/wiki/Transmission_line>`_.
 Red Pitaya fast analog inputs have input impedance of 1 MΩ. The fast analog outputs have output impedace of 50 Ω.
 
+|
 
 Installation
 ============
@@ -139,6 +143,7 @@ Option B: Manual Setup
 
         reboot
 
+|
 
 Configuration
 =============
@@ -258,6 +263,7 @@ Example of "config.ini":
     - **Buffer sizes** should be identical for both channels
     - **Timing constraints** must be respected to avoid signal corruption
 
+|
 
 Usage
 =====
@@ -307,6 +313,7 @@ Stopping the Application
 
 3. You can also remove the *main.py* and *config.ini* from */opt/redpitaya/bin*.
 
+|
 
 Troubleshooting
 ===============
@@ -317,7 +324,7 @@ Common Issues
 **Error setting split trigger**
 
 - Ensure you're using compatible Red Pitaya OS version
-- Check system resources aren't exhausted
+- Check that system resources aren't exhausted
 
 **Invalid buffer size**
 
@@ -343,6 +350,7 @@ Performance Tuning
 - Monitor CPU usage with ``top`` command
 - Reduce the value of ``LOOP_DELAY`` to achieve faster trigger checking
 
+|
 
 FAQ
 ===
@@ -367,39 +375,7 @@ A: Adjust ``trigger_level`` in ADC sections (range: -1.0 to 1.0 Volts).
 
 A: Usually due to insufficient ``repetition_delay``. Ensure it's ≥ (buffer_time × count_burst + 1) µs.
 
-
-Disable the Record and Play
-============================
-
-Once the *Record and Play* application is set up, it will start each time Red Pitaya boots. Here is how you can disable the process.
-
-1. **One time disable** - to stop the application until the next boot use the ``top`` command inside Red Pitaya Linux and ``kill`` the *main.py* process. By entering the PID of the process, the Linux will kill it.
-  
-    .. figure:: img/Rec_and_play_top.png
-        :alt: Top command and kill PID
-        :align: center
-        :width: 800px
-
-    .. figure:: img/Rec_and_play_top_kill.png
-        :alt: Top command and kill PID
-        :align: center
-        :width: 800px
-
-    .. figure:: img/Rec_and_play_top_kill_signal.png
-        :alt: Top command and kill PID
-        :align: center
-        :width: 800px
-
-2. **Full disable** - First kill the *main.py* process as described in the point above. Then head to the "/opt/redpitaya/sbin" directory and find the **startup.sh** script (you may have to enter *rw* mode). Either delete or comment the following lines of code.
-  
-    .. code-block:: bash
-
-        # Here you can specify commands for autorun at system startup
-        export PYTHONPATH=/opt/redpitaya/lib/python/:$PYTHONPATH
-        /opt/redpitaya/bin/main.py
-
-    Afterwards, you can also remove the *main.py* and *config.ini* from */opt/redpitaya/bin*.
-
+|
 
 Source code
 ===========

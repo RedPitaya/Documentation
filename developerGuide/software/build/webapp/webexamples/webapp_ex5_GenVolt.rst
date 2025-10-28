@@ -8,6 +8,13 @@ This example demonstrates how to generate analog voltage signals using Red Pitay
 You'll learn how to control signal frequency, amplitude, and waveform from a web interface and apply 
 the generated signal to slow analog inputs for measurement verification.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Overview
 =========
 
@@ -26,6 +33,7 @@ adjust its characteristics in real-time through the web interface.
 * Output channel 1 (OUT1) generates the signal
 * Can be connected to slow analog input (AI0-AI3) for verification
 
+|
 
 Prerequisites
 ==============
@@ -55,7 +63,7 @@ Signal range considerations
 
 With 0.5 V amplitude: (-0.5 V to +0.5 V) + 0.5 V offset = 0 V to 1 V output
 
-
+|
 
 Implementing the Frontend
 ===========================
@@ -155,7 +163,7 @@ Setting waveform
         APP.ws.send(JSON.stringify({ parameters: local }));
     };
 
-
+|
 
 Implementing the Backend
 ==========================
@@ -314,6 +322,7 @@ Update parameters in **OnNewParams()**
 When any parameter changes from the frontend, update it in the backend and reconfigure the generator by calling 
 **set_generator_config()**.
 
+|
 
 Red Pitaya Generator API
 ==========================
@@ -410,6 +419,7 @@ Resets the trigger and starts signal generation.
 
 * **channel** - Output channel
 
+|
 
 Testing the Application
 ========================
@@ -451,6 +461,7 @@ Application testing
    * Observe different voltage patterns (if using loopback with fast enough refresh)
    * Verify waveform shape on oscilloscope
 
+|
 
 Understanding Signal Compatibility
 ===================================
@@ -485,6 +496,7 @@ The generator can produce signals from -1 V to +1 V, but the analog inputs can o
 
     Range: 0 V to 1 V ✓ (within AI readable range)
 
+|
 
 Extending This Example
 =======================
@@ -501,6 +513,7 @@ Possible enhancements
 * **Modulation** - Implement AM or FM modulation
 * **Synchronization** - Synchronize generation with acquisition
 
+|
 
 Next Steps
 ===========

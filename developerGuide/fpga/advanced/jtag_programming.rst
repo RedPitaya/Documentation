@@ -46,6 +46,7 @@ JTAG programming is ideal for:
 - Automated testing with Vivado TCL scripts
 - Initial board bring-up and validation
 
+|
 
 Advantages vs. SSH Upload
 ==========================
@@ -124,6 +125,7 @@ If using JTAG-HS3 or similar 14-pin cable:
 - Available from Digilent or third-party suppliers
 - Ensure correct pin mapping (see pinout section below)
 
+|
 
 Physical Connection
 ===================
@@ -191,6 +193,7 @@ Before starting, ensure you have:
 
     Need to install Vivado? See :ref:`Vivado Installation Guide <FPGA_install_vivado>`
 
+|
 
 Step 1: Install Digilent Adept 2
 =================================
@@ -249,6 +252,7 @@ Open Command Prompt and run:
 
     djtgcfg enum
 
+|
 
 Step 2: Verify JTAG Cable Detection
 ====================================
@@ -316,6 +320,7 @@ Open Command Prompt:
 
 Should list connected Digilent devices.
 
+|
 
 Troubleshooting Detection Issues
 =================================
@@ -373,69 +378,73 @@ Step 1: Open Hardware Manager
 
 From Vivado IDE:
 
-1. Click **Flow Navigator** → **Program and Debug** → **Open Hardware Manager**
+1.  Click **Flow Navigator** → **Program and Debug** → **Open Hardware Manager**
 
-   Or from menu: **Tools** → **Open Hardware Manager**
+    Or from menu: **Tools** → **Open Hardware Manager**
 
-2. Hardware Manager window opens
+2.  Hardware Manager window opens
 
+|
 
 Step 2: Auto Connect to Cable
 ==============================
 
 In Hardware Manager:
 
-1. Click **Open Target** → **Auto Connect**
+1.  Click **Open Target** → **Auto Connect**
 
-   .. figure:: img/JTAG-tutorial/JTAG-tutorial-program-menu.jpg
-       :width: 800
-       :align: center
-       
-       Opening Hardware Manager and auto-connecting to JTAG cable
+    .. figure:: img/JTAG-tutorial/JTAG-tutorial-program-menu.jpg
+        :width: 800
+        :align: center
+        
+        Opening Hardware Manager and auto-connecting to JTAG cable
 
-2. Vivado searches for JTAG cables
+2.  Vivado searches for JTAG cables
 
-3. If successful, cable appears under **localhost** in Hardware window
+3.  If successful, cable appears under **localhost** in Hardware window
 
-   .. figure:: img/JTAG-tutorial/JTAG-tutorial-cable.jpg
-       :width: 400
-       :align: center
-       
-       JTAG cable detected and listed under localhost
+    .. figure:: img/JTAG-tutorial/JTAG-tutorial-cable.jpg
+        :width: 500
+        :align: center
+        
+        JTAG cable detected and listed under localhost
 
+|
 
 Step 3: Connect Red Pitaya
 ===========================
 
-1. **Ensure Red Pitaya is powered on**
+1.  **Ensure Red Pitaya is powered on**
 
-2. **Connect JTAG cable** to Red Pitaya's 6-pin header
+2.  **Connect JTAG cable** to Red Pitaya's 6-pin header
 
-3. **In Vivado, click refresh** if device doesn't appear automatically
+3.  **In Vivado, click refresh** if device doesn't appear automatically
 
-4. **Zynq device appears** in Hardware window:
+4.  **Zynq device appears** in Hardware window:
 
-   - **STEMlab 125-10/14:** ``xc7z010_1`` (Zynq-7010)
-   - **STEMlab 125-14 Z7020, SDRlab, SIGNALlab:** ``xc7z020_1`` (Zynq-7020)
+    - **STEMlab 125-10/14:** ``xc7z010_1`` (Zynq-7010)
+    - **STEMlab 125-14 Z7020, SDRlab, SIGNALlab:** ``xc7z020_1`` (Zynq-7020)
 
-   .. figure:: img/JTAG-tutorial/JTAG-tutorial-program.jpg
-       :width: 800
-       :align: center
-       
-       Zynq device (xc7z010) detected via JTAG
+    .. figure:: img/JTAG-tutorial/JTAG-tutorial-program.jpg
+        :width: 500
+        :align: center
+        
+        Zynq device (xc7z010) detected via JTAG
 
+|
 
 Manual Connection (Alternative)
 ================================
 
 If auto-connect fails:
 
-1. Click **Open Target** → **Open New Target**
-2. Follow wizard:
-   - Select **Local server**
-   - Select detected hardware server
-   - Choose your JTAG cable
-   - Click **Finish**
+1.  Click **Open Target** → **Open New Target**
+2.  Follow wizard:
+
+    - Select **Local server**
+    - Select detected hardware server
+    - Choose your JTAG cable
+    - Click **Finish**
 
 |
 
@@ -449,37 +458,38 @@ Step 1: Select Device
 
 In Hardware window:
 
-1. Right-click on the Zynq device (e.g., ``xc7z010_1``)
-2. Select **Program Device...**
+1.  Right-click on the Zynq device (e.g., ``xc7z010_1``)
+2.  Select **Program Device...**
 
-   .. figure:: img/JTAG-tutorial/JTAG-tutorial-connected.jpg
-       :width: 800
-       :align: center
-       
-       Right-click menu showing "Program Device" option
+    .. figure:: img/JTAG-tutorial/JTAG-tutorial-connected.jpg
+        :width: 600
+        :align: center
+        
+        Right-click menu showing "Program Device" option
 
+|
 
 Step 2: Select Bitstream File
 ==============================
 
 Program Device dialog appears:
 
-1. **Bitstream file** field:
+1.  **Bitstream file** field:
    
-   - Click **Browse** button (📁)
-   - Navigate to your ``.bit`` file location
-   - Select the bitstream: ``red_pitaya_top.bit``
+    - Click **Browse** button (📁)
+    - Navigate to your ``.bit`` file location
+    - Select the bitstream: ``red_pitaya_top.bit``
 
-   .. figure:: img/JTAG-tutorial/JTAG-tutorial-file-select.jpg
-       :width: 600
-       :align: center
-       
-       Bitstream file selection dialog
+    .. figure:: img/JTAG-tutorial/JTAG-tutorial-file-select.jpg
+        :width: 600
+        :align: center
+        
+        Bitstream file selection dialog
 
-2. **Debug probes file** (optional):
+2.  **Debug probes file** (optional):
    
-   - Leave blank unless using Integrated Logic Analyzer (ILA)
-   - If using ILA, select corresponding ``.ltx`` file
+    - Leave blank unless using Integrated Logic Analyzer (ILA)
+    - If using ILA, select corresponding ``.ltx`` file
 
 .. note::
 
@@ -495,30 +505,32 @@ Program Device dialog appears:
     
         fpga/prj/<project_name>/project/redpitaya.runs/impl_1/red_pitaya_top.bit
 
+|
 
 Step 3: Program FPGA
 ====================
 
-1. Click **Program** button
+1.  Click **Program** button
 
-2. **Progress window** shows programming status:
+2.  **Progress window** shows programming status:
    
-   .. code-block:: text
-   
-       Programming device...
-       Loading configuration data...
-       Bitstream loaded successfully
-       Configuration complete
+    .. code-block:: text
+    
+        Programming device...
+        Loading configuration data...
+        Bitstream loaded successfully
+        Configuration complete
 
-3. **Success message** appears in TCL console:
-   
-   .. code-block:: text
-   
-       INFO: [Labtools 27-3164] End of startup status: HIGH
-       INFO: [Labtoolstcl 44-377] Flash programming completed successfully
+3.  **Success message** appears in TCL console:
 
-4. **FPGA is now configured** - Red Pitaya begins operating with new FPGA design
+    .. code-block:: text
 
+        INFO: [Labtools 27-3164] End of startup status: HIGH
+        INFO: [Labtoolstcl 44-377] Flash programming completed successfully
+
+4.  **FPGA is now configured** - Red Pitaya begins operating with new FPGA design
+
+|
 
 Step 4: Verify Programming
 ===========================
@@ -592,6 +604,7 @@ Automate JTAG programming using Vivado TCL commands:
 
     vivado -mode batch -source program_jtag.tcl
 
+|
 
 Adjusting JTAG Clock Frequency
 ===============================
@@ -617,6 +630,7 @@ Default JTAG clock is 10 MHz. Adjust for stability or speed:
 
     set_property PARAM.FREQUENCY 10000000 [get_hw_targets */xilinx_tcf/Digilent/*]
 
+|
 
 Using Integrated Logic Analyzer (ILA)
 ======================================
@@ -644,6 +658,7 @@ Debug internal FPGA signals with Vivado's ILA:
 
 See `Xilinx UG908 <https://www.xilinx.com/support/documents/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf>`_ Chapter 8 for complete ILA usage.
 
+|
 
 Batch Programming Multiple Boards
 ==================================
@@ -671,6 +686,7 @@ For production or testing multiple Red Pitayas:
     
     close_hw_target
 
+|
 
 Remote JTAG Programming
 ========================
@@ -705,38 +721,39 @@ Cable Not Detected in Vivado
 
 **Solutions:**
 
-1. **Verify USB connection:**
+1.  **Verify USB connection:**
    
-   .. code-block:: bash
-   
-       lsusb | grep -i ftdi  # Linux
-       # Or check Device Manager (Windows)
+    .. code-block:: bash
+    
+        lsusb | grep -i ftdi  # Linux
+        # Or check Device Manager (Windows)
 
-2. **Check Digilent drivers:**
-   
-   .. code-block:: bash
-   
-       djtgcfg enum
-   
-   If cable not listed, reinstall Adept 2
+2.  **Check Digilent drivers:**
 
-3. **Restart Hardware Server:**
+    .. code-block:: bash
+
+        djtgcfg enum
    
-   .. code-block:: bash
+    If cable not listed, reinstall Adept 2
+
+3.  **Restart Hardware Server:**
    
-       # Linux
-       killall hw_server
-       hw_server &
-   
-   In Vivado, reconnect to server
+    .. code-block:: bash
+    
+        # Linux
+        killall hw_server
+        hw_server &
+    
+    In Vivado, reconnect to server
 
 4. **Check Vivado cable drivers:**
    
-   .. code-block:: bash
-   
-       cd $XILINX_VIVADO/data/xicom/cable_drivers/lin64/install_script/install_drivers
-       sudo ./install_drivers
+    .. code-block:: bash
+    
+        cd $XILINX_VIVADO/data/xicom/cable_drivers/lin64/install_script/install_drivers
+        sudo ./install_drivers
 
+|
 
 Device Not Appearing After Cable Connection
 ============================================
@@ -745,34 +762,35 @@ Device Not Appearing After Cable Connection
 
 **Check:**
 
-1. **Red Pitaya is powered on:**
+1.  **Red Pitaya is powered on:**
    
-   - LEDs should be lit
-   - Power supply connected
-   - Check power LED
+    - LEDs should be lit
+    - Power supply connected
+    - Check power LED
 
-2. **JTAG cable properly connected:**
+2.  **JTAG cable properly connected:**
    
-   - Pins aligned correctly
-   - Pin 1 (VCC) matches square pad
-   - All 6 pins making contact
-   - Cable firmly seated
+    - Pins aligned correctly
+    - Pin 1 (VCC) matches square pad
+    - All 6 pins making contact
+    - Cable firmly seated
 
-3. **Refresh in Vivado:**
+3.  **Refresh in Vivado:**
    
-   - Right-click cable in Hardware window
-   - Select **Refresh Device**
+    - Right-click cable in Hardware window
+    - Select **Refresh Device**
 
-4. **Check JTAG chain:**
-   
-   In TCL console:
-   
+4.  **Check JTAG chain:**
+
+    In TCL console:
+
    .. code-block:: tcl
    
        get_hw_devices
    
-   Should return ``xc7z010_1`` or ``xc7z020_1``
+    Should return ``xc7z010_1`` or ``xc7z020_1``
 
+|
 
 Programming Fails with Error
 =============================
@@ -802,6 +820,7 @@ Programming Fails with Error
 - Ensure stable power supply
 - Check for USB hub issues (try direct connection)
 
+|
 
 FPGA Programs But Doesn't Work
 ===============================
@@ -810,40 +829,41 @@ FPGA Programs But Doesn't Work
 
 **Debug steps:**
 
-1. **Verify correct bitstream:**
+1.  **Verify correct bitstream:**
    
-   - Check board model in Vivado project matches hardware
-   - Z10 boards need Z10 bitstream
-   - Z20 boards need Z20 bitstream
+    - Check board model in Vivado project matches hardware
+    - Z10 boards need Z10 bitstream
+    - Z20 boards need Z20 bitstream
 
-2. **Check if Linux interferes:**
+2.  **Check if Linux interferes:**
    
-   JTAG programming doesn't load device tree, which may cause conflicts:
-   
-   .. code-block:: bash
-   
-       # Stop Red Pitaya services that access FPGA
-       ssh root@rp-xxxxxx.local
-       redpitaya> systemctl stop redpitaya_*
+    JTAG programming doesn't load device tree, which may cause conflicts:
+    
+    .. code-block:: bash
+    
+        # Stop Red Pitaya services that access FPGA
+        ssh root@rp-xxxxxx.local
+        redpitaya> systemctl stop redpitaya_*
 
-3. **Test with simple design:**
+3.  **Test with simple design:**
    
-   - Program with known-good bitstream (e.g., factory v0.94)
-   - If that works, issue is with custom design
-   - If that fails, hardware or connection issue
+    - Program with known-good bitstream (e.g., factory v0.94)
+    - If that works, issue is with custom design
+    - If that fails, hardware or connection issue
 
-4. **Check clock configuration:**
-   
-   - Ensure PS (ARM) clocks are configured
-   - Verify PL clock is enabled in FPGA design
-   - Check clock frequencies match constraints
+4.  **Check clock configuration:**
 
-5. **Use ILA to debug:**
-   
-   - Add ILA cores to monitor internal signals
-   - Check if expected signals are toggling
-   - Verify AXI bus transactions
+    - Ensure PS (ARM) clocks are configured
+    - Verify PL clock is enabled in FPGA design
+    - Check clock frequencies match constraints
 
+5.  **Use ILA to debug:**
+
+    - Add ILA cores to monitor internal signals
+    - Check if expected signals are toggling
+    - Verify AXI bus transactions
+
+|
 
 Linux XADC/GPIO Access After JTAG Programming
 ==============================================
@@ -866,6 +886,7 @@ Option 2 - Use SSH programming instead:
 
 For production use, :ref:`SSH upload with overlay.sh <fpga_reprogramming>` loads both FPGA and device tree.
 
+|
 
 Permission Denied Errors (Linux)
 =================================
@@ -901,26 +922,27 @@ Development Workflow
 
 **Recommended workflow for efficient FPGA development:**
 
-1. **Initial setup:**
+1.  **Initial setup:**
    
-   - Connect JTAG cable once
-   - Keep connection throughout development session
-   - Leave Hardware Manager open
+    - Connect JTAG cable once
+    - Keep connection throughout development session
+    - Leave Hardware Manager open
 
-2. **Design iteration:**
+2.  **Design iteration:**
    
-   - Make changes in Vivado
-   - Run synthesis and implementation
-   - Program via JTAG (one click)
-   - Test on hardware
-   - Repeat
+    - Make changes in Vivado
+    - Run synthesis and implementation
+    - Program via JTAG (one click)
+    - Test on hardware
+    - Repeat
 
-3. **Final deployment:**
-   
-   - Once design is stable, switch to SSH upload
-   - Configure boot loading if needed
-   - Test complete boot sequence
+3.  **Final deployment:**
 
+    - Once design is stable, switch to SSH upload
+    - Configure boot loading if needed
+    - Test complete boot sequence
+
+|
 
 Cable Management
 ================
@@ -931,6 +953,7 @@ Cable Management
 - Store cable properly when not in use
 - Label cables if using multiple boards
 
+|
 
 Safety Considerations
 =====================
@@ -941,6 +964,7 @@ Safety Considerations
 - Keep JTAG connector clean and free of debris
 - Don't force connections - pins should align naturally
 
+|
 
 Version Control
 ===============
@@ -952,6 +976,7 @@ When using JTAG for development:
 - **Document programming date/time** in log
 - **Keep notes** on what works vs. what doesn't
 
+|
 
 Production Considerations
 =========================

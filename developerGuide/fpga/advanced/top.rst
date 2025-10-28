@@ -20,7 +20,7 @@ These topics are intended for developers who need to:
 - Implement complex FPGA workflows
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     fpga_boot_loading.rst
     fpga_advanced_loading.rst

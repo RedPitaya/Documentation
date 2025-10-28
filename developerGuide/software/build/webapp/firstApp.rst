@@ -8,6 +8,13 @@ This guide walks you through creating a basic Red Pitaya web application from sc
 have configured your development environment following the :ref:`SSH connection guide <ssh>`. It's also recommended 
 to read the :ref:`System Overview <webApp_sysOver>` to understand the application architecture.
 
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
 Prerequisites
 =============
 
@@ -20,6 +27,7 @@ Required software and access:
 * Development environment configured (see :ref:`Setting development environment <ssh>`)
 * Understanding of Red Pitaya's frontend/backend architecture
 
+|
 
 Initial Setup
 --------------
@@ -66,7 +74,7 @@ Download the Red Pitaya project containing example applications:
 
 Example applications are located in `/root/RedPitaya-Examples/web-tutorial/`.
 
-
+|
 
 Understanding the File Structure
 ==================================
@@ -128,6 +136,7 @@ Each application contains both frontend and backend files in a single directory 
 
     The folder name defines your application's unique ID. Choose a descriptive name without spaces.
 
+|
 
 Creating Your Application
 ===========================
@@ -160,6 +169,7 @@ Edit `/info/info.json` to set your application's name and description:
 
 Optionally replace `/info/icon.png` with your own application icon.
 
+|
 
 Configuring the Frontend
 ==========================
@@ -298,7 +308,7 @@ Four essential callbacks handle WebSocket events:
 * **APP.ws.onerror()** - Called when connection error occurs
 * **APP.ws.onmessage()** - Called when message is received from backend
 
-
+|
 
 Configuring the Backend
 =========================
@@ -350,6 +360,7 @@ FPGA configuration
     The FPGA loading method changed in OS 2.00. The `xdevcfg` method no longer works with newer Linux kernels. 
     See :ref:`Add a button to control LED <webApp_example_LED>` for details.
 
+|
 
 Compiling Your Application
 ============================
@@ -387,6 +398,7 @@ Testing your application
     * After changing HTML, CSS, or JavaScript files
     * Simply refresh your browser to see frontend changes
 
+|
 
 Next Steps
 ===========

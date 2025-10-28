@@ -4,6 +4,8 @@ Project - stream_app
 =======================
 
 .. contents:: Register index
+    :local:
+    :depth: 1
     :backlinks: top
 
 |

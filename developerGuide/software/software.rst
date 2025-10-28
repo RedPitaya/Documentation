@@ -4,12 +4,12 @@ Software
 ########
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 1
 
-   console/console_con
-   build/build
-   other_info/info
-   known_sw_issues/known_sw_issues
+    console/console_con
+    build/build
+    other_info/info
+    known_sw_issues/known_sw_issues
 
 
 

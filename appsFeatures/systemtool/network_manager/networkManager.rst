@@ -21,7 +21,8 @@ The network manager interface is split into two sections:
 1. **Wired connection status** - shows the status of the wired connection (LAN) and the IP address assigned to the Red Pitaya board.
 2. **Wireless connection status** - shows the status of the wireless connection (WiFi) and the IP address assigned to the Red Pitaya board.
 
-If either of the two connections is unavailable, the corresponding settings will be unavailable, displaying a warning that the connection is not present (see the figure above).
+If either of the two connections is unavailable, the corresponding settings will be unavailable, displaying a warning that the connection is not present 
+(see the figure above).
 
 The settings for each connection are presented along with the instructions for setting up each type of connection.
 
@@ -58,6 +59,8 @@ You can connect to the Red Pitaya boards via:
     or networks with enhanced security layers (e.g. university networks where each user must log in via a dedicated login page).
     In such cases, we recommend using a direct connection between the Red Pitaya board and your PC, or contacting your network administrator for assistance.
 
+|
+
 Wired
 ======
 
@@ -66,11 +69,11 @@ via an Ethernet cable connected to the router or directly to the PC Ethernet soc
 
 There are three possible modes of operation:
 
-* **DHCP Client** (Default mode) - Red Pitaya will wait untill it is automatically assigned an IP address from the router (DHCP server). 
+*   **DHCP Client** (Default mode) - Red Pitaya will wait untill it is automatically assigned an IP address from the router (DHCP server). 
     Once the IP address is assigned, the Red Pitaya board will be available on the local network. If Red Pitaya does not receive an IP address 
     within 1 minute after boot, it will enter the **DHCP Server** mode.
-* **DHCP Server** - Red Pitaya will act as a DHCP server and assign IP addresses to itself other devices connected to the same network.
-* **Static IP** - Red Pitaya will use the specified static IP address.
+*   **DHCP Server** - Red Pitaya will act as a DHCP server and assign IP addresses to itself other devices connected to the same network.
+*   **Static IP** - Red Pitaya will use the specified static IP address.
 
 .. figure:: img/wired-settings-all.png
     :width: 1200
@@ -93,9 +96,9 @@ be available on the local network. The Red Pitaya board can be accessed via a we
     
     Connecting your Red Pitaya board to the LAN network.
 
-1. Connect the power supply and the ethernet cable to the Red Pitaya board.
-#. Connect the Red Pitaya board to the router or directly to the PC Ethernet socket.
-#. Open a web browser (Google Chrome is recommended) and type ``rp-xxxxxx.local/`` in the URL field. ``xxxxxx`` are the last 6 characters of your Red Pitaya 
+1.  Connect the power supply and the ethernet cable to the Red Pitaya board.
+#.  Connect the Red Pitaya board to the router or directly to the PC Ethernet socket.
+#.  Open a web browser (Google Chrome is recommended) and type ``rp-xxxxxx.local/`` in the URL field. ``xxxxxx`` are the last 6 characters of your Red Pitaya 
     board's MAC address, which is written on the Ethernet connector.
 
     .. figure:: img/Main-web-interface.png
@@ -108,7 +111,7 @@ To set up the Local Area Network (LAN) connection, set the mode to **DHCP Client
 .. figure:: img/wired-settings-dhcp-client.png
     :width: 600
 
-
+|
 
 .. _dir_cab_connect:
 
@@ -124,11 +127,11 @@ available or when you want to establish a direct connection without going throug
     Direct Ethernet connection between the Red Pitaya board and the PC.
 
 
-1. On **Linux**, open **Network settings**, go to **Edit Connection** and select **Share to other computers** under *LAN network IPv4 settings*.
-#. Plug the ethernet cable from your PC to the Red Pitaya board and wait approximately 2 minutes.
-#. Open a web browser (Google Chrome is recommended) and type ``rp-xxxxxx.local/`` in the URL field. ``xxxxxx`` are the last 6 characters of your 
+1.  On **Linux**, open **Network settings**, go to **Edit Connection** and select **Share to other computers** under *LAN network IPv4 settings*.
+#.  Plug the ethernet cable from your PC to the Red Pitaya board and wait approximately 2 minutes.
+#.  Open a web browser (Google Chrome is recommended) and type ``rp-xxxxxx.local/`` in the URL field. ``xxxxxx`` are the last 6 characters of your 
     Red Pitaya board's MAC address, which is written on the Ethernet connector.
-#. If the web interface doesn't open, try pinging the Red Pitaya board using the command line. Open the command line and type:
+#.  If the web interface doesn't open, try pinging the Red Pitaya board using the command line. Open the command line and type:
 
     .. code-block:: bash
 
@@ -162,9 +165,9 @@ Static IP configuration
 
 To setup the **Static IP** mode, LAN connection must be established first to configure the Network manager settings.
 
-1. Follow the :ref:`LAN connection <LAN>` instructions to connect the Red Pitaya board to the LAN network.
+1.  Follow the :ref:`LAN connection <LAN>` instructions to connect the Red Pitaya board to the LAN network.
 
-#. Under **Wired connection status** in the Network manager application. Choose the **Static** option. Input the following data and click **Apply**:
+#.  Under **Wired connection status** in the Network manager application. Choose the **Static** option. Input the following data and click **Apply**:
 
     * ``<IP address>/<subnet prefix>`` (subnet prefix == number of significant bits in subnet mask).
     * ``<Gateway>`` (router IP).
@@ -175,13 +178,12 @@ To setup the **Static IP** mode, LAN connection must be established first to con
 
     For more information please check `Wikipedia subnetwork <https://en.wikipedia.org/wiki/Subnet>`_ and `Wikipedia IP address <https://en.wikipedia.org/wiki/IP_address>`_.
 
-#. Even though nothing happens in the interface, Red Pitaya will automatically switch to the static IP address.
+#.  Even though nothing happens in the interface, Red Pitaya will automatically switch to the static IP address.
 
-#. Test the connection by openning a new browser window and typing the new IP address in the URL field.
-
+#.  Test the connection by openning a new browser window and typing the new IP address in the URL field.
 
     .. figure:: img/connection-static-IP.png
-        :width: 1000
+        :width: 800
 
 |
 

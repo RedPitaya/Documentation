@@ -149,10 +149,11 @@ background: white;
 .rst-content pre.literal-block, .rst-content div[class^='highlight'] pre, .rst-content .linenodiv pre {
     line-height: normal;
     font-family: 'Fira Mono', monospace;
+    font-size: 95%;
 }
 
 code, .rst-content tt, .rst-content code {
-    font-size: 90%;
+    font-size: 95%;
 }
 
 pre span {
