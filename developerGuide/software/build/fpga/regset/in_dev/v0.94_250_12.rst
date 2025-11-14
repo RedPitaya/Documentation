@@ -3,10 +3,10 @@
 Project - v0.94_250
 =======================
 
-Red Pitaya HDL design has multiple functions, which are configured by registers. It also uses memory locations to store capture data and generate output signals. All of these are described in this document. The memory location is written in a way that is seen by SW. 
+Red Pitaya HDL design has multiple functions, which are configured by registers. It also uses memory locations to store capture data and generate output signals. All of these are described in this document. The memory location is written in a way that is seen by SW.
 
 The table describes address space partitioning implemented on FPGA via the AXI GP0 interface. All registers have offsets aligned to 4 bytes and are 32-bit wide. Granularity is 32-bit, meaning that the minimum transfer size is 4 bytes. The organization is a little-endian.
-The memory block is divided into 8 parts. Each part is occupied by an individual IP core. The address space of individual applications is described in the subsection below. The size of each IP core address space is 4MByte. 
+The memory block is divided into 8 parts. Each part is occupied by an individual IP core. The address space of individual applications is described in the subsection below. The size of each IP core address space is 4MByte.
 For additional information and better understanding check other documents (schematics, specifications...).
 
 .. contents:: Register index
@@ -48,7 +48,7 @@ Housekeeping
 +====================+==============================================================+=======+=====+
 | **0x0**            | **ID**                                                       |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Reserved                                                     | 31:4  | R   | 
+|                    | Reserved                                                     | 31:4  | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Design ID                                                    |  3:0  | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
@@ -563,7 +563,7 @@ Arbitrary Signal Generator (ASG)
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | CH B SM reset                                                |    22 | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Reserved                                                     |    21 | R/W |
+|                    | CH B Use last sample                                         |    21 | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | CH B SM wrap pointer (if disabled starts at                  |    20 | R/W |
 |                    | address0 )                                                   |       |     |
@@ -588,7 +588,7 @@ Arbitrary Signal Generator (ASG)
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | CH A SM reset                                                |    6  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Reserved                                                     |    5  | R/W |
+|                    | CH A Use last sample                                         |    5  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | CH A SM wrap pointer (if disabled starts at                  |    4  | R/W |
 |                    | address 0)                                                   |       |     |
