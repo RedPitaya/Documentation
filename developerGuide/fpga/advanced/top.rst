@@ -4,6 +4,9 @@
 Advanced FPGA Topics
 ###########################################
 
+.. TODO add a description and quick intro to the Software development process
+.. Orientation for users - what does each section contain, what to expect, etc.
+
 This section covers advanced topics for Red Pitaya FPGA development, including boot loading configuration, advanced loading scenarios, JTAG programming, FPGA simulation, device tree configuration, and hardware signal mapping.
 
 These topics are intended for developers who need to:

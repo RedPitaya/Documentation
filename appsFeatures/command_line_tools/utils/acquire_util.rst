@@ -82,7 +82,7 @@ The Red Pitaya signal can be acquired using the acquire command line utility. It
         .. code-block:: console
 
             redpitaya> acquire
-            acquire Version: 2.07-494-d5436699b
+            acquire Version: 2.07-651-631657660
 
             Usage: acquire [OPTION]... SIZE <DEC>
 
@@ -98,6 +98,7 @@ The Red Pitaya signal can be acquired using the acquire command line utility. It
             --help          -h    Print this message.
             --hex           -x    Print value in hex.
             --volt          -o    Print value in volt.
+            --avg                 Outputs the average value for the values in the buffer.
             --calib         -c    Disable calibration parameters
             --hk            -k    Reset houskeeping (Reset state for GPIO). Default: disabled
             --axi           -a    Enable AXI interface. Also enable housekeeping reset. Default: disabled
@@ -105,7 +106,6 @@ The Red Pitaya signal can be acquired using the acquire command line utility. It
             --offset              Offset relative to the trigger pointer [-16384 .. 16384]
                 SIZE                Number of samples to acquire [0 - 16384].
                 DEC                 Decimation [1,2,4,8,16,...] (default: 1). Valid values are from 1 to 65536
-
 
         Example (acquire 1024 samples with decimation 8, ch1 with at 1:20, results displayed in voltage):
 
@@ -163,6 +163,11 @@ To run the signal acquisition utility, perform the following steps:
                 ...
 
 Acquisition performance varies between Red Pitaya models. For more information please refer to the Red Pitaya :ref:`Original Gen board comparison <rp-board-comp-orig_gen>` or :ref:`Gen 2 board comparison <rp-board-comp-gen2>`.
+
+.. note::
+
+    If all inputs are measuring the same signal, but produce different measurements, check the calibration of your Red Pitaya using the :ref:`calib utility <calib_util>` or the :ref:`Calibration application <calibration_app>`.
+
 
 Source code
 -----------

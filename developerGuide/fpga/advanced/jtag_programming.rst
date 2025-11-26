@@ -784,9 +784,9 @@ Device Not Appearing After Cable Connection
 
     In TCL console:
 
-   .. code-block:: tcl
+    .. code-block:: tcl
    
-       get_hw_devices
+        get_hw_devices
    
     Should return ``xc7z010_1`` or ``xc7z020_1``
 

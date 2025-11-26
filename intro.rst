@@ -66,5 +66,5 @@ to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sortin
 
 **FPGA lessons and tutorials**
 
-* `Knowledge Base FPGA tutorials <https://learn.redpitaya.com/>`.
+* `Knowledge Base FPGA tutorials <https://learn.redpitaya.com/>`_.
 * :ref:`FPGA section <fpga_top>`.

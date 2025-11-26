@@ -8,5 +8,6 @@ E3 module - software
     :maxdepth: 1
 
     QSPI_eMMC_sw/QSPI_eMMC_software.rst
+    external_booting.rst
 
 

@@ -17,6 +17,7 @@ For API commands you can find a detailed description in these C header files:
 
 .. toctree::
     :caption: Command list
+    :maxdepth: 1
 
     command_list/commands-init.rst
     command_list/commands-board.rst

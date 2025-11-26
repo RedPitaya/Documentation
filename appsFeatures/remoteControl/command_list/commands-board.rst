@@ -130,6 +130,11 @@ Parameters and command table
 | | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     | | Python: ``rp_GetVersion()``                    |                                                           |                        |
 | |                                                    | |                                                |                                                           |                        |
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+------------------------+
+| | ``SYSTem:VERSion?`` > ``OS version``               | | C: -                                           | Returns the Red Pitaya OS version.                        | IN DEV                 |
+| | Examples:                                          | |                                                |                                                           |                        |
+| | ``SYSTem:VERSion?`` > ``2.07-651``                 | | Python: -                                      |                                                           |                        |
+| |                                                    | |                                                |                                                           |                        |
++------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+------------------------+
 | | ``SYSTem:Help?`` > ``<List of SCPI commands>``     | | -                                              | | Returns a list of all commands                          | 2.04-35 and up         |
 | | Examples:                                          | |                                                | | that the SCPI server can process.                       |                        |
 | | ``SYSTem:Help?`` > ``*CLS\n*ESE\n...``             | |                                                |                                                           |                        |

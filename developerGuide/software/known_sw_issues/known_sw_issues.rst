@@ -4,6 +4,8 @@
 Known software issues
 ########################
 
+.. TODO Add new issues
+
 In this section is a list of known software issues with the Red Pitaya platforms on 2.00 OS. These issues will be fixed with the next major software updates.
 
 

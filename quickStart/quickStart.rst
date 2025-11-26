@@ -3,6 +3,9 @@
 Quick start
 ##############
 
+.. TODO add a description and quick intro to the Software development process
+.. Orientation for users - what does each section contain, what to expect, etc.
+
 .. toctree::
    :maxdepth: 1
    

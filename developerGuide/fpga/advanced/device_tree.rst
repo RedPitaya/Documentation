@@ -22,7 +22,7 @@ On Red Pitaya, device trees are particularly important for:
 
 .. contents:: Table of Contents
     :local:
-    :depth: 2
+    :depth: 1
     :backlinks: top
 
 |
