@@ -1,20 +1,48 @@
-# Packages that need to be installed (updated for better compatibility)
-# Core Sphinx - using a more recent stable version
-sphinx>=6.0,<8.0
+# Red Pitaya Documentation Build Dependencies
+# Updated: October 2025
+# Python 3.13+ compatible
 
-# Sphinx extensions
-myst-parser>=2.0.0
-sphinx_rtd_theme>=2.0.0
-sphinx-tabs>=3.4.0
-sphinx-notfound-page>=1.0.0
+# =============================================================================
+# Core Sphinx Documentation System
+# =============================================================================
+# Using Sphinx 7.x for stability (8.x has breaking changes)
+sphinx>=7.4,<8.0
 
-# Documentation utilities
-docutils>=0.17,<0.21  # Updated to resolve bullet point issues
-sphinx-copybutton>=0.5.0  # For better code copying experience
+# =============================================================================
+# Sphinx Themes and Extensions
+# =============================================================================
+# Read the Docs theme - latest stable version
+sphinx_rtd_theme>=3.0.0
+
+# MyST parser for Markdown support in Sphinx
+myst-parser>=4.0.0
+
+# Sphinx extensions for enhanced functionality
+sphinx-tabs>=3.4.5           # Tabbed content support
+sphinx-copybutton>=0.5.2     # Copy button for code blocks
+sphinx-notfound-page>=1.0.0  # Custom 404 page
+
+# =============================================================================
+# Documentation Utilities
+# =============================================================================
+# docutils - keep at 0.20.x for compatibility with Sphinx 7.x
+docutils>=0.20,<0.21
 
 # MyST parser dependencies
-linkify-it-py>=2.0.0  # Required for MyST linkify extension
+linkify-it-py>=2.0.0         # URL auto-linking in MyST
 
-# Optional but recommended
-Pillow>=9.0.0  # For image processing
-requests>=2.25.0  # For external link checking
+# =============================================================================
+# Optional but Recommended
+# =============================================================================
+# Image processing support
+Pillow>=12.0.0
+
+# HTTP requests for external link checking and downloads
+requests>=2.32.0
+
+# =============================================================================
+# Notes:
+# - Sphinx 8.x requires significant migration work (breaking changes)
+# - docutils 0.21+ may cause rendering issues with current RST files
+# - All packages tested with Python 3.13.7
+# =============================================================================

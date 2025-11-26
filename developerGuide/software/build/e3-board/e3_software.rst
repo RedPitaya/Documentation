@@ -5,8 +5,9 @@ E3 module - software
 #######################
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
-   QSPI_eMMC_sw/QSPI_eMMC_software.rst
+    QSPI_eMMC_sw/QSPI_eMMC_software.rst
+    external_booting.rst
 
 

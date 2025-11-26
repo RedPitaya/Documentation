@@ -48,9 +48,9 @@ The HPSDR compatible SDR transceiver should work with most programs that support
 
     * `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`_ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`_.
     * `QUISK <https://james.ahlstrom.name/quisk>`_ with the ``hermes/quisk_conf.py`` configuration file.
-    * `ghpsdr3-alex <https://napan.ca/ghpsdr3>`_ distributed client-server system.
-    * `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.be/2015/01/openhpsdr-android-application.html>`_.
-    * `Java desktop application <https://g0orx.blogspot.co.uk/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application.
+    * `ghpsdr3-alex <https://napan.ca/ghpsdr3/index.php/Main_Page>`_ distributed client-server system.
+    * `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.com/2015/01/openhpsdr-android-application.html>`_.
+    * `Java desktop application <https://g0orx.blogspot.com/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application.
 
 .. note::
 
@@ -117,9 +117,9 @@ The HPSDR compatible SDR receiver should work with most programs that support th
 
     * `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`_ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`_.
     * `QUISK <https://james.ahlstrom.name/quisk>`_ with the ``hermes/quisk_conf.py`` configuration file.
-    * `ghpsdr3-alex <https://napan.ca/ghpsdr3>`_ distributed client-server system.
-    * `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.be/2015/01/openhpsdr-android-application.html>`_.
-    * `Java desktop application <https://g0orx.blogspot.co.uk/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application.
+    * `ghpsdr3-alex <https://napan.ca/ghpsdr3/index.php/Main_Page>`_ distributed client-server system.
+    * `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.com/2015/01/openhpsdr-android-application.html>`_.
+    * `Java desktop application <https://g0orx.blogspot.com/2015/04/java-desktop-application-based-on.html>`_ based on the openHPSDR Android Application.
 
 .. note::
 
@@ -201,7 +201,7 @@ Getting started with GNU Radio
 
         git clone https://github.com/pavel-demin/red-pitaya-notes
 
-#. Run `GNU Radio Companion <https://wiki.gnuradio.org/index.php/GNURadioCompanion>`_ and open AM transceiver flow graph:
+#. Run `GNU Radio Companion <https://wiki.gnuradio.org/index.php?title=Guided_Tutorial_GRC>`_ and open AM transceiver flow graph:
 
     .. code-block:: bash
         

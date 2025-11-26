@@ -1,749 +1,870 @@
-.. _ecosystem:
+.. _SW_build_ecosystem:
 
 ##########################
 Build Red Pitaya ecosystem
 ##########################
 
-Go to the Red Pitaya (git) directory.
+This guide explains how to build the Red Pitaya ecosystem, which includes FPGA bitstreams, Linux kernel, boot files, 
+API libraries, SCPI server, and web applications.
+
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
+Introduction
+=============
+
+What is the ecosystem
+----------------------
+
+The Red Pitaya ecosystem comprises all software and hardware components required for the Red Pitaya to function:
+
+* **FPGA bitstreams** - Hardware logic designs for different applications
+* **Boot components** - FSBL, U-Boot, and boot scripts
+* **Linux kernel** - Operating system kernel and device tree files
+* **User-space components** - API libraries, SCPI server, and web applications
+* **Development tools** - Utilities and examples
+
+The ecosystem is packaged as a ``ecosystem_*.zip`` file that can be deployed to the FAT32 partition of an SD card.
+
+
+Ecosystem directory structure
+-------------------------------
+
+The Red Pitaya source code is organized across multiple directories:
+
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Directory         | Contents                                                                                                                                        |
++===================+=================================================================================================================================================+
+| ``rp-api``        | API source code for ``librp.so``, ``librp2.so``, ``librp-gpio.so``, ``librp-i2c.so``, ``librp-spi.so``, etc.                                    |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``apps-free``     | WEB applications for the old (pre-2.00) environment (also with controller modules & GUI clients)                                                |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``apps-tools``    | WEB interface home page and system management applications                                                                                      |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``Bazaar``        | Nginx server with dependencies, Bazaar module & application controller module loader                                                            |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fpga``          | FPGA design (RTL, bench, simulation, and synthesis scripts) - SystemVerilog based [#f1]_                                                        |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``OS``            | GNU/Linux operating system components                                                                                                           |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``patches``       | Patches applied to the official Linux OS                                                                                                        |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``scpi-server``   | SCPI server                                                                                                                                     |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``Test``          | Command line utilities (``acquire``, ``generate``, etc.) and tests                                                                              |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``Examples``      | Examples in different programming languages for working with peripherals                                                                        |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``build_scripts`` | Scripts for building an ecosystem and preparing images for memory cards                                                                         |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. [#f1] The FPGA design is located in the :rp-github:`RedPitaya-FPGA` repository and will be cloned into the ``fpga/`` subdirectory during the build process.
+
+|
+
+.. _SW_ecosys_req:
+
+Prerequisites
+==============
+
+Host system requirements
+-------------------------
+
+Red Pitaya ecosystem must be built on a Linux host system.
+
++---------------------------------+---------------------------------+
+| Red Pitaya ecosystem version    | Host platform OS                |
++=================================+=================================+
+| Ecosystem 2.0 and higher        | Ubuntu 22.04 LTS or higher      |
++---------------------------------+---------------------------------+
+| Ecosystem 1.04                  | Ubuntu 18.04 LTS or higher      |
++---------------------------------+---------------------------------+
+
+
+For additional OS build requirements, refer to the :ref:`OS build requirements <SW_os_req>` section.
+
+|
+
+Required software packages
+----------------------------
+
+Install the following packages on your Ubuntu host system.
+
+
+Basic development tools
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: shell-session
+
+    # Generic dependencies
+    sudo apt-get install make curl xz-utils git cmake
+
+    # U-Boot build dependencies
+    sudo apt-get install libssl-dev device-tree-compiler u-boot-tools
+
+    # Secure chroot
+    sudo apt-get install schroot
+
+    # QEMU for ARM emulation
+    sudo apt-get install qemu qemu-user qemu-user-static
+
+    # 32-bit libraries
+    sudo apt-get install lib32z1 lib32ncurses5 libbz2-1.0:i386 lib32stdc++6
+
+
+Python 3 and build tools
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Python 3.10 or higher is required for building some ecosystem components.
+
+.. code-block:: shell-session
+
+    sudo apt-get install python3 python3-pip
+    sudo pip3 install --upgrade pip
+    sudo pip3 install meson
+    sudo apt-get install ninja-build
 
 .. note::
-   
-   | It is recommended that you set ``$LC_ALL`` variable.
-   | To check whether it is set, type the following command into a terminal:
-   
-   .. code-block:: shell-session
-      
-       echo $LC_ALL
 
-   If it returns an empty line, set it up by typing the following command into the terminal:
+    The Meson build system is optional and primarily used during development on x86 PCs.
 
-   .. code-block:: shell-session
-      
-       export LC_ALL=C
-   
-   This line can also be added to the end of .bashrc and will automatically set the ``$LC_ALL`` variable each time the 
-   the terminal is started.
+|
 
-   
+Xilinx Vivado and SDK
+----------------------
+
+The build process requires AMD Xilinx Vivado and SDK (bare metal toolchain).
+
+Required versions
+^^^^^^^^^^^^^^^^^^
+
++---------------------------------+---------------------------------+
+| Red Pitaya ecosystem version    | FPGA development tools          |
++=================================+=================================+
+| Ecosystem 2.0 and higher        | Vivado 2020.1 and SDK 2019.1    |
++---------------------------------+---------------------------------+
+| Ecosystem 1.04                  | Vivado 2020.1 and SDK 2019.1    |
++---------------------------------+---------------------------------+
+
+.. warning::
+
+    The Vivado and SDK versions are critical. Different versions are not compatible with each other. 
+    Ensure you install the exact versions listed above.
+
 .. note::
-    
-    It is not possible to build an ecosystem on an encrypted home directory since schroot can not access that 
-    directory. We recommend that you make a separate directory in the home directory that is not encrypted e.g. 
-    ``/home/ecosystem_build``
 
+    Future Red Pitaya OS releases will migrate to Vitis. Currently, Vivado and SDK are still required.
+
+
+Installation requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Follow the installation instructions in the :ref:`Creating a Vivado SDK/Vitis project <fpga_create_sdk_project>` 
+   and :ref:`Installation of Vivado <FPGA_install_vivado>` sections
+
+2. **Install both Vivado and SDK** - During the Vivado installation, ensure the SDK (bare metal toolchain) is also selected
+
+3. **Use default installation paths** - Both tools should preferably be installed in their default locations (``/opt/Xilinx/``)
+
+4. **Create gmake symbolic link** - Vivado requires ``gmake``, which does not exist on Ubuntu:
+
+   .. code-block:: shell-session
+
+       sudo ln -s /usr/bin/make /usr/bin/gmake
+
+
+Virtual machine installation (optional)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If running Vivado from a virtual machine with installation on a host shared folder:
+
+1. **Use VirtualBox** - VMware has a bug in VMware-tools for Ubuntu guests that prevents proper mounting of shared filesystems
+
+2. **Install Ubuntu without encryption** - Encrypted installations block some Red Pitaya build procedures
+
+3. **Configure shared folders**:
+   
+   * Open VirtualBox settings for your Ubuntu VM
+   * Navigate to Shared Folders
+   * Add the Xilinx installation directory from the host (typically ``/opt/``)
+   * Enable the "Auto-mount" option
+
+4. **Install VirtualBox guest additions**:
+
+   .. code-block:: shell-session
+
+       sudo apt-get install virtualbox-guest-dkms
+
+5. **Access shared folder** - After rebooting, the Xilinx shared folder will be accessible under ``/media/sf_Xilinx`` (requires root privileges)
+
+|
+
+Red Pitaya source code
+------------------------
+
+Clone the repository
+^^^^^^^^^^^^^^^^^^^^^
+
+Navigate to your preferred development directory and clone the repository:
+
+.. code-block:: shell-session
+
+    git clone https://github.com/RedPitaya/RedPitaya.git
+    cd RedPitaya
+
+The choice of specific branches or tags depends on your requirements.
+
+
+Configure environment
+^^^^^^^^^^^^^^^^^^^^^^
+
+Set the ``LC_ALL`` environment variable to ``C`` (required for locale-sensitive build tools):
+
+.. code-block:: shell-session
+
+    echo $LC_ALL
+
+If the command returns an empty line, set it:
+
+.. code-block:: shell-session
+
+    export LC_ALL=C
+
+To make this permanent, add the line to your ``~/.bashrc`` file.
+
+.. warning::
+
+    Building the ecosystem on an encrypted home directory is not supported, as ``schroot`` cannot access encrypted directories. 
+    Create a separate non-encrypted directory (e.g., ``/home/ecosystem_build``) for building.
+
+|
+
+Understanding the Build Process
+=================================
+
+Build environment architecture
+--------------------------------
+
+The Red Pitaya build process uses multiple environments:
+
+* **Local machine (x86)** - FPGA bitstreams and Linux kernel are compiled here using cross-compilers
+* **Chroot environment (ARM)** - User-space applications (API, SCPI server, web apps) are compiled in an emulated ARM environment
+
+The build scripts automatically switch between these environments as needed.
+
+
+Important notes
+----------------
+
+Before proceeding, understand these key points:
+
+1. **Not a standard Linux build** - The build uses a Red Pitaya virtual ARM environment via ``schroot``, not a regular cross-compilation setup
+
+2. **Ubuntu host required** - The build must run on Ubuntu (native or VM). Windows, macOS, and WSL are not supported
+
+3. **Automatic environment switching** - The build scripts handle switching between x86 and ARM environments automatically. 
+   :rp-github:`Example of automatic switching <RedPitaya/blob/master/build_scripts/build_OS.sh#L184>`:
+
+   .. code-block:: shell-session
+
+       make -f Makefile.x86
        
-=====================================
-Red Pitaya ecosystem and applications
-=====================================
+       schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+       make -f Makefile CROSS_COMPILE="" REVISION=$GIT_COMMIT_SHORT
+       EOL_CHROOT
 
-Here you will find the sources of various software components of the
-Red Pitaya system. The components are mainly contained in dedicated
-directories, however, due to the nature of the Xilinx SoC "All 
-Programmable" paradigm and the way several components are interrelated,
-some components might be spread across many directories or found at
-different places one would expect.
+       make -f Makefile.x86 zip
 
-
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| directories  | contents                                                                                                                                        |
-+==============+=================================================================================================================================================+
-| rp-api       | API source code for ``librp.so`` , ``librp2.so`` , ``librp-gpio.so`` , ``librp-i2c.so`` , ``librp-spi.so``, etc ...                             |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| apps-free    | WEB application for the old environment (also with controller modules & GUI clients)                                                            |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| apps-tools   | WEB interface home page and some system management applications                                                                                 |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Bazaar       | Nginx server with dependencies, Bazaar module & application controller module loader                                                            |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| fpga         | FPGA design (RTL, bench, simulation, and synthesis scripts) SystemVerilog based for newer applications                                          |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| OS           | GNU/Linux operating system components                                                                                                           |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| patches      | Directory containing patches                                                                                                                    |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| scpi-server  | SCPI server                                                                                                                                     |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Test         | Command line utilities (acquire, generate, ...), tests                                                                                          |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Examples     | Examples in different programming languages for working with peripherals                                                                        |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| build_scripts| Scripts for building an ecosystem and preparing an image for writing to a memory card                                                           |
-+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+4. **Disk space requirements** - Ensure at least 10 GB of free disk space for source code and compilation
 
 |
 
--------------------
-Supported platforms
--------------------
+.. _SW_ecosys_build_proc:
 
-Red Pitaya is developed on Linux (64-bit Ubuntu 18.04),
-so Linux is also the only platform we support.
+Building the Ecosystem
+========================
 
-.. note::
-
-   Ecosystem version 2.0 or higher requires Ubuntu version 22.04
+The full build process creates a complete ecosystem package that can be deployed to Red Pitaya hardware.
 
 
-.. _sys-req-label:
+Prepare the build environment
+-------------------------------
 
----------------------
-Software requirements
----------------------
+Step 1: Load build settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You will need the following to build the Red Pitaya components:
+The ``settings.sh`` script configures environment variables for Vivado and SDK. Edit this file if you used non-default installation paths:
 
-1. Various development packages.
+.. code-block:: shell-session
 
-   .. code-block:: shell-session
-
-      # generic dependencies
-      sudo apt-get install make curl xz-utils
-      # U-Boot build dependencies
-      sudo apt-get install libssl-dev device-tree-compiler u-boot-tools
-      # secure chroot
-      sudo apt-get install schroot
-      # QEMU
-      sudo apt-get install qemu qemu-user qemu-user-static
-      #32-bit libraries
-      sudo apt-get install lib32z1 lib32ncurses5 libbz2-1.0:i386 lib32stdc++6
-
-|
-
-2. Meson Build system (depends on Python 3) is used for some new code.
-   It is not required but can be used during development on an x86 PC.
-
-   .. code-block:: shell-session
-
-      sudo apt-get install python3 python3-pip
-      sudo pip3 install --upgrade pip
-      sudo pip3 install meson
-      sudo apt-get install ninja-build
-
-|
-
-3. Xilinx `Vivado 2020.1 <http://www.xilinx.com/support/download.html>`_ FPGA development tools.
-   The SDK (bare metal toolchain) must also be installed, be careful during the installation process to select it.
-   Preferably use the default install location.
-
-   If you want to run Vivado from a virtual machine and Vivado is installed on a host shared
-   folder, then we suggest you use VirtualBox since VMware has a bug in VMware-tools
-   for Ubuntu guests and can not mount vmhgfs shared file system type.
-
-   Then install Ubuntu 18.04 in VirtualBox (NOTE: don't use encrypt installation, 
-   since it blocks some Red Pitaya build procedures).
-
-   After successfully installation, change the settings for Ubuntu virtual machine.
-   Go to the Shared Folders menu and choose the Xilinx installation directory on the host machine
-   (by default is under /opt/ directory). And choose the Auto-mount option (checkbox).
-
-   Then you must install (on Ubuntu guest) a package dkms.
-
-   .. code-block:: shell-session
-
-      $ sudo apt-get install virtualbox.guest-dkms
-
-   After rebooting Ubuntu guest, you can access (with superuser/root privileges) Xilinx shared
-   folder under /media/sf_Xilinx subdirectory.
-
-   Now you can manage this system to meet your requirements.
-
-   .. note::
-
-      Ecosystem version 2.0 requires Vivado version 2020.1 and SDK 2019.1
-
-|
-
-4. Missing ``gmake`` path
-
-   Vivado requires a ``gmake`` executable that does not exist on Ubuntu. It is necessary to create a symbolic link to the regular ``make`` executable.
-
-   .. code-block:: shell-session
-
-      $ sudo ln -s /usr/bin/make /usr/bin/gmake
+    source settings.sh
 
 
-.. _build-proc-label:
+Step 2: Create download cache (optional)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-=============
-Build process
-=============
+Create a cache directory to store downloaded source tarballs (speeds up subsequent builds):
 
-.. note::
+.. code-block:: shell-session
 
-   To implement the build process, at least 8 GB of available space on the PC's local machine is required.
+    mkdir -p dl
+    export DL=$PWD/dl
 
+
+Step 3: Download ARM Ubuntu environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Download the pre-built ARM Ubuntu root environment from the :rp-download:`Red Pitaya download server <>`.
 
 .. tabs::
 
-   .. group-tab:: Ecosystem 1.04
+    .. group-tab:: Ecosystem 1.04
 
-      **1.** Go to your preferred development directory and clone the Red Pitaya repository from GitHub.
-      The choice of specific branches or tags is up to the user.
+        .. code-block:: shell-session
 
-      .. code-block:: shell-session
+            wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_04-oct-2021.tar.gz
+            sudo chown root:root redpitaya_ubuntu_04-oct-2021.tar.gz
+            sudo chmod 664 redpitaya_ubuntu_04-oct-2021.tar.gz
 
-         git clone https://github.com/RedPitaya/RedPitaya.git
-         cd RedPitaya
+    .. group-tab:: Ecosystem 2.00 and higher
+
+        .. code-block:: shell-session
+
+            wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
+            sudo chown root:root redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
+            sudo chmod 664 redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
+
+.. note::
+
+    Alternatively, you can create your own root environment by following the :ref:`OS image build instructions <SW_build_os>`.
 
 
-      .. note:: 
+Step 4: Configure schroot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-         You can run a script that builds the ecosystem from the build_scripts folder. |br|
-         To build an ecosystem for boards 125-14:
+Create the schroot configuration file: ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``
 
-         .. code-block:: shell-session
+Replace placeholders with:
 
-            cd ./RedPitaya/build_scripts
-            sudo ./build_Z10.sh
+* Absolute path to the downloaded tarball
+* Comma-separated list of users who should have build access
 
-         To build an ecosystem for board 125-14 (Z7020):
+.. tabs::
 
-         .. code-block:: shell-session
-         
-            cd ./RedPitaya/build_scripts
-            sudo ./build_Z20_125.sh
+    .. group-tab:: Ecosystem 1.04
 
-         To build an ecosystem for board 125-14 4-Input (Z7020):
+        .. code-block:: none
 
-         .. code-block:: shell-session
-         
-            cd ./RedPitaya/build_scripts
-            sudo ./build_Z20_4CH.sh
-
-         To build an ecosystem for boards 122-16:
-
-         .. code-block:: shell-session
-         
-            cd ./RedPitaya/build_scripts
-            sudo ./build_Z20.sh
-
-         To build an ecosystem for board 250-12:
-         
-         .. code-block:: shell-session
-         
-            cd ./RedPitaya/build_scripts
-            sudo ./build_Z250_12.sh   
-
-         or follow the steps of the instructions and build yourself
-         
-      |
-
-      **2.**  An example script ``settings.sh`` is provided for setting all necessary environment variables.
-      The script assumes some default tool install paths, so it might need editing if install paths other than the ones described above were used.
-
-      .. code-block:: shell-session
-
-         settings.sh
-
-      |
-
-      **3.** Prepare a download cache for various source tarballs.
-      This is an optional step that will speed up the build process by avoiding downloads for all but the first build.
-      There is a default cache path defined in the ``settings.sh`` script, you can edit it and avoid a rebuild the next time.
-
-      .. code-block:: shell-session
-
-         mkdir -p dl
-         export DL=$PWD/dl
-
-      |
-
-      **4.** Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
-      You can also create your root environment following the instructions in :ref:`OS image build instructions <os>`.
-      Correct file permissions are required for ``schroot`` to work properly.
-
-      .. code-block:: shell-session
-
-         wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_04-oct-2021.tar.gz
-         sudo chown root:root redpitaya_ubuntu_04-oct-2021.tar.gz
-         sudo chmod 664 redpitaya_ubuntu_04-oct-2021.tar.gz
-
-      |
-
-      **5.** Create schroot configuration file ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``.
-      Replace the tarball path stub with the absolute path of the previously downloaded image.
-      Replace user names with a comma-separated list of users who should be able to compile Red Pitaya.
-
-      .. code-block:: none
-
-         [red-pitaya-ubuntu]
-         description=Red Pitaya Debian/Ubuntu OS image
-         type=file
-         file=absolute-path-to-red-pitaya-ubuntu.tar.gz
-         users=comma-separated-list-of-users-with-access-permissions
-         root-users=comma-separated-list-of-users-with-root-access-permissions
-         root-groups=root
-         profile=desktop
-         personality=linux
-         preserve-environment=true
-
-      .. note::
-
-         Example of configuration file:
-
-         .. code-block:: shell-session
-         
             [red-pitaya-ubuntu]
-            description= Red pitaya
+            description=Red Pitaya Debian/Ubuntu OS image
             type=file
-            file=/home/user/RedPitaya/redpitaya_ubuntu_04-oct-2021.tar.gz
-            users=root
-            root-users=root
+            file=/absolute/path/to/redpitaya_ubuntu_04-oct-2021.tar.gz
+            users=your-username
+            root-users=your-username
             root-groups=root
+            profile=desktop
             personality=linux
             preserve-environment=true
 
-      |
+    .. group-tab:: Ecosystem 2.00 and higher
 
-      **6.** To build everything a few ``make`` steps are required.
+        .. code-block:: none
 
-      .. code-block:: shell-session
+            [red-pitaya-ubuntu]
+            description=Red Pitaya Debian/Ubuntu OS image
+            type=file
+            file=/absolute/path/to/redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
+            users=your-username
+            root-users=your-username
+            root-groups=root
+            profile=desktop
+            personality=linux
+            preserve-environment=true
 
-         make -f Makefile.x86
-         schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-         make
-         EOL_CHROOT
-         make -f Makefile.x86 zip
+|
 
-      |
+Full build procedure
+---------------------
 
-      **7.** If you want to build for 122-16 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20 in the makefile
-      This parameter defines how to create projects and should be transferred to all makefiles.
+.. tabs::
 
-      .. code-block:: shell-session
+    .. group-tab:: Ecosystem 1.04
 
-         make -f Makefile.x86 MODEL=Z20
-         schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-         make MODEL=Z20
-         EOL_CHROOT
-         make -f Makefile.x86 zip MODEL=Z20
+        **Option 1: Automated build scripts**
 
-      |
+        Use pre-made build scripts for specific board models:
 
-      **8.** If you want to build for 125-14 4-Input based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_125_4CH in makefile
-      This parameter defines how to create projects and should be transferred to all makefiles.
+        .. tabs::
 
-      .. code-block:: shell-session
+            .. group-tab:: STEMlab 125-14 (Default)
+                
+                .. code-block:: shell-session
 
-         make -f Makefile.x86 MODEL=Z20_125_4CH
-         schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-         make MODEL=Z20_125_4CH
-         EOL_CHROOT
-         make -f Makefile.x86 zip MODEL=Z20_125_4CH
+                    cd build_scripts
+                    sudo ./build_Z10.sh
 
-      |
+            .. group-tab:: STEMlab 125-14 Z7020 LN
 
-      **9.** If you want to build for 250-12 based on Z7020 Xilinx, you must pass parameter FPGA MODEL=Z20_250_12 in the makefile
-      This parameter defines how to create projects and should be transferred to all makefiles.
+                .. code-block:: shell-session
+                
+                    cd build_scripts
+                    sudo ./build_Z20_125.sh
+            
+            .. group-tab:: STEMlab 125-14 4-Input
 
-      .. code-block:: shell-session
+                .. code-block:: shell-session
+                
+                    cd build_scripts
+                    sudo ./build_Z20_4CH.sh
 
-         make -f Makefile.x86 MODEL=Z20_250_12
-         schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-         make MODEL=Z20_250_12
-         EOL_CHROOT
-         make -f Makefile.x86 zip MODEL=Z20_250_12
+            .. group-tab:: SDRlab 122-16
 
-      |
+                .. code-block:: shell-session
+                
+                    cd build_scripts
+                    sudo ./build_Z20.sh
 
-      To get an interactive ARM shell do.
+            .. group-tab:: SIGNALlab 250-12
+            
+                .. code-block:: shell-session
+                
+                    cd build_scripts
+                    sudo ./build_Z250_12.sh
 
-      .. code-block:: shell-session
+        **Option 2: Manual build**
 
-         schroot -c red-pitaya-ubuntu
+        Build step-by-step with MODEL parameter selection:
+
+        .. tabs::
+
+            .. group-tab:: STEMlab 125-14 (Default)
+
+                STEMlab 125-14 uses Z7010, no MODEL parameter required:
+
+                .. code-block:: shell-session
+
+                    make -f Makefile.x86
+                    schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+                    make
+                    EOL_CHROOT
+                    make -f Makefile.x86 zip
+
+            .. group-tab:: STEMlab 125-14 4-Input
+
+                STEMlab 125-14 4-Input uses Z7020:
+                
+                .. code-block:: shell-session
+
+                    make -f Makefile.x86 MODEL=Z20_125_4CH
+                    schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+                    make MODEL=Z20_125_4CH
+                    EOL_CHROOT
+                    make -f Makefile.x86 zip MODEL=Z20_125_4CH
+
+            .. group-tab:: SDRlab 122-16
+
+                SDRlab 122-16 uses Z7020:
+
+                .. code-block:: shell-session
+
+                    make -f Makefile.x86 MODEL=Z20
+                    schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+                    make MODEL=Z20
+                    EOL_CHROOT
+                    make -f Makefile.x86 zip MODEL=Z20
+
+            .. group-tab:: SIGNALlab 250-12
+
+                SIGNALlab 250-12 uses Z7020:
+                
+                .. code-block:: shell-session
+
+                    make -f Makefile.x86 MODEL=Z20_250_12
+                    schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+                    make MODEL=Z20_250_12
+                    EOL_CHROOT
+                    make -f Makefile.x86 zip MODEL=Z20_250_12
+
+        **Interactive ARM shell**
+
+        To get an interactive ARM shell for debugging:
+
+        .. code-block:: shell-session
+
+            schroot -c red-pitaya-ubuntu
    
-   .. group-tab:: Ecosystem 2.00 and up
+    .. group-tab:: Ecosystem 2.00 and higher
 
-      **1.** Go to your preferred development directory and clone the Red Pitaya repository from GitHub.
-      The choice of specific branches or tags is up to the user.
+        **Option 1: Automated build script**
 
-      .. code-block:: shell-session
+        Build for all board models:
 
-         git clone https://github.com/RedPitaya/RedPitaya.git
-         cd RedPitaya
+        .. code-block:: shell-session
 
-      .. note:: 
-
-         You can run a script that builds the ecosystem from the build_scripts folder. |br|
-         To build an ecosystem for all boards:
-
-         .. code-block:: shell-session
-
-            cd ./RedPitaya/build_scripts
+            cd build_scripts
             sudo ./build_OS.sh
 
-         or follow the steps of the instructions and build yourself
-         
-      |
+        **Option 2: Manual build**
 
-      **2.**  An example script ``settings.sh`` is provided for setting all necessary environment variables.
-      The script assumes some default tool install paths, so it might need editing if install paths other than the ones described above were used.
+        Build step-by-step:
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-         settings.sh
+            make -f Makefile.x86
+            schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+            make
+            EOL_CHROOT
+            make -f Makefile.x86 zip
 
-      |
+        **Interactive ARM shell**
 
-      **3.** Prepare a download cache for various source tarballs.
-      This is an optional step that will speed up the build process by avoiding downloads for all but the first build.
-      There is a default cache path defined in the ``settings.sh`` script, you can edit it and avoid a rebuild the next time.
+        To get an interactive ARM shell for debugging:
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-         mkdir -p dl
-         export DL=$PWD/dl
+            schroot -c red-pitaya-ubuntu
 
-      |
+        .. note::
 
-      **4.** Download the ARM Ubuntu root environment (usually the latest) from Red Pitaya download servers.
-      You can also create your root environment following the instructions in :ref:`OS image build instructions <os>`.
-      Correct file permissions are required for ``schroot`` to work properly.
+            Unlike Ecosystem 1.04, version 2.0 and higher builds for all board models simultaneously. 
+            Board-specific differences only affect FPGA bitstream compilation.
 
-      .. code-block:: shell-session
+|
 
-         wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_OS_16-03-48_03-Nov-2022.tar.gz
-         sudo chown root:root redpitaya_OS_16-03-48_03-Nov-2022.tar.gz
-         sudo chmod 664 redpitaya_OS_16-03-48_03-Nov-2022.tar.gz
+Partial Rebuild
+================
 
-      |
-
-      **5.** Create schroot configuration file ``/etc/schroot/chroot.d/red-pitaya-ubuntu.conf``.
-      Replace the tarball path stub with the absolute path of the previously downloaded image.
-      Replace user names with a comma-separated list of users who should be able to compile Red Pitaya.
-
-      .. code-block:: none
-
-         [red-pitaya-ubuntu]
-         description=Red Pitaya Debian/Ubuntu OS image
-         type=file
-         file=absolute-path-to-red-pitaya-ubuntu.tar.gz
-         users=comma-separated-list-of-users-with-access-permissions
-         root-users=comma-separated-list-of-users-with-root-access-permissions
-         root-groups=root
-         profile=desktop
-         personality=linux
-         preserve-environment=true
-
-      .. note::
-
-         Example of configuration file:
-
-         .. code-block:: shell-session
-         
-            [red-pitaya-ubuntu]
-            description= Red pitaya
-            type=file
-            file=/home/user/RedPitaya/redpitaya_OS_16-03-48_03-Nov-2022.tar.gz
-            users=root
-            root-users=root
-            root-groups=root
-            personality=linux
-            preserve-environment=true
-       
-      |
-
-      **6.** To build everything a few ``make`` steps are required.
-
-      .. code-block:: shell-session
-
-         make -f Makefile.x86
-         schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-         make
-         EOL_CHROOT
-         make -f Makefile.x86 zip
-
-      |
-
-      To get an interactive ARM shell do.
-
-      .. code-block:: shell-session
-
-         schroot -c red-pitaya-ubuntu
-
-      .. note::
-
-         Ecosystem Build 2.0 cannot build for a specific board model as it was in version 1.04. Differences only in the assembly of FPGA for specific models.
+You can rebuild individual components without rebuilding the entire ecosystem.
 
 
-=======================
-Partial rebuild process
-=======================
+Available components
+--------------------
 
 .. tabs::
 
-   .. group-tab:: Ecosystem 1.04
+    .. group-tab:: Ecosystem 1.04
 
-      The next components can be built separately.
-      By default, the project is built for RedPitaya 125-14 (Z7010), if necessary build for the (RedPitaya 122-16) Z7020, use the parameter MODEL=Z20 and parameter MODEL=Z20_250_12 for RedPitaya (250-12) Z7020.
+        The following components can be built separately:
 
-      * FPGA + device tree
-      * u-Boot
-      * Linux kernel
-      * Debian/Ubuntu OS
-      * API
-      * SCPI server
-      * free applications
+        * FPGA and device tree
+        * U-Boot
+        * Linux kernel
+        * API
+        * SCPI server
+        * Free applications
 
-      |
+    .. group-tab:: Ecosystem 2.00 and higher
 
-      **Base system**
+        The following components can be built separately:
 
-      Here the *base system* represents everything before Linux user space.
+        * FPGA and overlays     
+        * U-Boot
+        * Linux kernel
+        * API
+        * SCPI server
+        * Console tools and web applications
 
-      To be able to compile FPGA and cross-compile *base system* software, it is necessary to set up the Vivado FPGA tools and ARM SDK.
 
+Setup build environment
+------------------------
 
-      .. code-block:: shell-session
+.. tabs::
 
-         $ . settings.sh
+    .. group-tab:: Ecosystem 1.04
 
-      On some systems (including Ubuntu 18.04) the library setup provided by Vivado conflicts with default system libraries.
-      To avoid this, disable library overrides specified by Vivado.
+        Configure Vivado and SDK for cross-compilation:
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-         $ export LD_LIBRARY_PATH=""
+            source settings.sh
 
-      Once an ecosystem is built, it can be packaged into an archive for ease of use.
+        On some systems (including Ubuntu 18.04), Vivado's library setup can conflict with system libraries. 
+        Disable Vivado library overrides if needed:
 
+        .. code-block:: shell-session
 
-      .. code-block:: shell-session
+            export LD_LIBRARY_PATH=""
 
-         $ make -f Makefile.x86 zip
+    .. group-tab:: Ecosystem 2.00 and higher
 
-      |
+        Configure Vivado, SDK, and cross-compilation tools:
 
-      ***FPGA and device tree sources***
+        .. code-block:: shell-session
 
+            source settings.sh
+            export CROSS_COMPILE=arm-linux-gnueabihf-
+            export ARCH=arm
+            export PATH=$PATH:/opt/Xilinx/Xilinx/Vivado/2020.1/bin
+            export PATH=$PATH:/opt/Xilinx/SDK/2019.1/bin
+            export PATH=$PATH:/opt/Xilinx/SDK/2019.1/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin/
 
-      .. code-block:: shell-session
 
-         $ make -f Makefile.x86 fpga
+Package the ecosystem
+----------------------
 
-      Detailed instructions are provided for :ref:`building the FPGA <buildprocess>`
-      including some :ref:`device tree details <devicetree>`.
+.. tabs::
 
-      **Device Tree compiler + overlay patches**
+    .. group-tab:: Ecosystem 1.04
 
-      Download the Device Tree compiler with overlay patches from Pantelis Antoniou.
-      Compile and install it.
-      Otherwise, a binary is available in ``tools/dtc``.
+        After building components, package them into a zip archive:
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-         $ sudo apt-get install flex bison
-         $ git clone git@github.com:pantoniou/dtc.git
-         $ cd dtc
-         $ git checkout overlays
-         $ make
-         $ sudo make install PREFIX=/usr
+            make -f Makefile.x86 zip
 
-      |
+    .. group-tab:: Ecosystem 2.00 and higher
 
-      ***U-boot***
+        After building components, package them into a zip archive:
 
-      To build the U-Boot binary and boot scripts (used to select between booting into Buildroot or Debian/Ubuntu):
+        .. code-block:: shell-session
 
-      .. code-block:: shell-session
+            make -f Makefile.x86 zip
 
-         make -f Makefile.x86 u-boot
 
-      The build process downloads the Xilinx version of U-Boot sources from Github, applies patches, and starts the build process.
-      Patches are available in the ``patches/`` directory.
+Build FPGA bitstream and device tree
+----------------------------------------
 
-      |
+.. tabs::
 
-      ***Linux kernel and device tree binaries***
+    .. group-tab:: Ecosystem 1.04
 
-      To build a Linux image:
+        Build FPGA bitstream and device tree sources:
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-         make -f Makefile.x86 linux
-         make -f Makefile.x86 linux-install
-         make -f Makefile.x86 devicetree
-         make -f Makefile.x86 devicetree-install
+            make -f Makefile.x86 fpga
 
-      The build process downloads the Xilinx version of Linux sources from Github, applies patches, and starts the build process.
-      Patches are available in the ``patches/`` directory.
+        For detailed instructions, see :ref:`building the FPGA <FPGA_project_flags>` and :ref:`device tree details <devicetree>`.
 
-      |
 
-      ***Boot file***
+        **Build device tree compiler (optional)**
 
-      The created boot file contains FSBL, FPGA bitstream, and U-Boot binary.
+        If you need the Device Tree Compiler with overlay patches:
 
-      .. code-block:: shell-session
+        .. code-block:: shell-session
 
-         make -f Makefile.x86 boot
-   
-   .. group-tab:: Ecosystem 2.00 and up
+            sudo apt-get install flex bison
+            git clone git@github.com:pantoniou/dtc.git
+            cd dtc
+            git checkout overlays
+            make
+            sudo make install PREFIX=/usr
 
-      The next components can be built separately.
+        .. note::
 
-      * FPGA + overlays     
-      * u-Boot
-      * Linux kernel
-      * API
-      * SCPI server
-      * Console tools and web app
+            A pre-compiled binary is available in the ``tools/dtc`` directory.
 
-      |
+    .. group-tab:: Ecosystem 2.00 and higher
 
-      **Base system**
+        Each FPGA version uses device tree overlays. Build for specific board models:
 
-      Here the *base system* represents everything before Linux user space.
+        .. code-block:: shell-session
 
-      To be able to compile FPGA and cross-compile *base system* software, it is necessary to set up the Vivado FPGA tools and ARM SDK.
+            make -f Makefile.x86 fpga MODEL=Z10
+            make -f Makefile.x86 fpga MODEL=Z20
+            make -f Makefile.x86 fpga MODEL=Z20_125
+            make -f Makefile.x86 fpga MODEL=Z20_125_4CH
+            make -f Makefile.x86 fpga MODEL=Z20_250_12
 
+        For detailed instructions, see :ref:`building the FPGA <FPGA_project_flags>`.
 
-      .. code-block:: shell-session
+        .. note::
 
-         ./settings.sh
-         export CROSS_COMPILE=arm-linux-gnueabihf-
-         export ARCH=arm
-         export PATH=$PATH:/opt/Xilinx/Xilinx/Vivado/2020.1/bin
-         export PATH=$PATH:/opt/Xilinx/SDK/2019.1/bin
-         export PATH=$PATH:/opt/Xilinx/SDK/2019.1/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin/
+            Build only the models you need to speed up the build process.
 
 
-      Once an ecosystem is built, it can be packaged into an archive for ease of use.
+Build U-Boot
+--------------
 
+.. tabs::
 
-      .. code-block:: shell-session
+    .. group-tab:: Ecosystem 1.04
 
-         $ make -f Makefile.x86 zip
+        Build U-Boot binary and boot scripts:
 
-      |
+        .. code-block:: shell-session
 
-      ***FPGA and overlays***
+            make -f Makefile.x86 u-boot
 
-      Each FPGA version uses its overlay with the devices necessary to work with FPGA. Previously, the device tree was fixed for a specific FPGA version and board. |br|
-      For each board, you need to call the assembly with the board version parameters. But to speed up the build, you can skip the unnecessary version.
+        This downloads the Xilinx U-Boot source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
 
-      .. code-block:: shell-session
+    .. group-tab:: Ecosystem 2.00 and higher
 
-         make -f Makefile.x86 fpga MODEL=Z10
-         make -f Makefile.x86 fpga MODEL=Z20
-         make -f Makefile.x86 fpga MODEL=Z20_125
-         make -f Makefile.x86 fpga MODEL=Z20_125_4CH
-         make -f Makefile.x86 fpga MODEL=Z20_250_12
+        Build U-Boot binary and boot scripts:
 
-      Detailed instructions are provided for :ref:`building the FPGA <buildprocess>`
+        .. code-block:: shell-session
 
-      |
+            make -f Makefile.x86 boot
 
-      ***U-boot*** 
+        This downloads the Xilinx U-Boot source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
 
-      To build the U-Boot binary and boot scripts:
+        .. note::
 
-      .. code-block:: shell-session
+            Two versions of ``boot.bin`` are created:
+            
+            * One for boards with 512 MB RAM
+            * One for boards with 1 GB RAM
+            
+            Two versions of Linux kernel boot scripts are also created.
 
-         make -f Makefile.x86 boot
+        .. note::
+            
+            The device tree for U-Boot is built using files from the ``dts_uboot/`` folder, defining minimum peripheral requirements for board startup.
 
-      The build process downloads the Xilinx version of U-Boot sources from Github, applies patches, and starts the build process.
-      Patches are available in the ``patches/`` directory.
 
-      .. note::
+Build Linux kernel and device tree binaries
+--------------------------------------------
 
-         The script builds two versions of boot.bin files. One version is for boards with 512 MB RAM, the second version is for boards with 1 GB of RAM. There are also two versions of the Linux kernel boot scripts.
+.. tabs::
 
-      .. note::
-         
-         The device tree for ``uboot`` is built using prepared files located in the `dts_uboot` folder. The device tree defines the minimum requirements for peripherals in order for the board to start.
+    .. group-tab:: Ecosystem 1.04
 
-      |
+        Build the Linux kernel and device tree binaries:
 
-      ***Linux kernel and device tree binaries***
+        .. code-block:: shell-session
 
-      To build a Linux image:
+            make -f Makefile.x86 linux
+            make -f Makefile.x86 linux-install
+            make -f Makefile.x86 devicetree
+            make -f Makefile.x86 devicetree-install
 
-      .. code-block:: shell-session
+        This downloads the Xilinx Linux kernel source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
 
-         make -f Makefile.x86 linux
-         make -f Makefile.x86 devicetree
+    .. group-tab:: Ecosystem 2.00 and higher
 
-      The build process downloads the Xilinx version of Linux sources from Github, applies patches, and starts the build process.
-      Patches are available in the ``patches/`` directory.
+        Build the Linux kernel and device tree:
 
-      .. note:: 
+        .. code-block:: shell-session
 
-         To build device trees, you must first build the necessary FPGA projects for the required boards. Since dtb and dts files are built based on FPGA `barebone` projects.
+            make -f Makefile.x86 linux
+            make -f Makefile.x86 devicetree
 
-      |
+        This downloads the Xilinx Linux kernel source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
 
-      ***API + SCPI server + Web Applications***
+        .. note:: 
 
-      You can build separately each of the projects. The build requires a Linux image, see :ref:`Build process <build-proc-label>`.
-      Use cases are shown below.:
+            Device tree builds require FPGA projects to be built first, as ``dtb`` and ``dts`` files are based on FPGA barebone projects.
 
-      .. code-block:: shell-session
 
-         schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-         make api
-         make nginx
-         make scpi
-         make sdr
-         make bode
-         make monitor
-         make generator
-         make acquire
-         make calib
-         make daisy_tool
-         make spectrum
-         make led_control
-         make ecosystem
-         make updater
-         make main_menu
-         make scpi_manager
-         make streaming_manager
-         make calib_app
-         make network_manager
-         make jupyter_manager
-         EOL_CHROOT
-
-      .. note::
-
-         Possible options for individual assemblies are listed. Some of them depend on each other. You can build everything at once if you start the build with `make all`.
-
-
-----------------
-Linux user space
+Build boot file
 ----------------
 
-Debian/Ubuntu OS
-~~~~~~~~~~~~~~~~
+.. tabs::
 
-`Debian/Ubuntu OS instructions <https://github.com/RedPitaya/RedPitaya/tree/master/OS/debian>`_ are detailed elsewhere.
+    .. group-tab:: Ecosystem 1.04
+
+        Create the boot file containing FSBL, FPGA bitstream, and U-Boot:
+
+        .. code-block:: shell-session
+
+            make -f Makefile.x86 boot
+    
+    .. group-tab:: Ecosystem 2.00 and higher
+
+        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-API
-~~~
 
-To compile the API run:
+Build user-space applications
+-------------------------------
+
+.. tabs::
+
+    .. group-tab:: Ecosystem 1.04
+
+        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+    .. group-tab:: Ecosystem 2.00 and higher
+
+        Build individual components in the ARM chroot environment:
+
+        .. code-block:: shell-session
+
+            schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+            make api
+            make nginx
+            make scpi
+            make sdr
+            make bode
+            make monitor
+            make generator
+            make acquire
+            make calib
+            make daisy_tool
+            make spectrum
+            make led_control
+            make ecosystem
+            make updater
+            make main_menu
+            make scpi_manager
+            make streaming_manager
+            make calib_app
+            make network_manager
+            make jupyter_manager
+            EOL_CHROOT
+
+        .. note::
+
+            Some components have dependencies on each other. Use ``make all`` to build everything at once.
+
+|
+
+
+Component-Specific Information
+================================
+
+The following sections provide additional details for specific components.
+
+
+API library
+------------
+
+Build the Red Pitaya API library:
 
 .. code-block:: shell-session
 
-   schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-   make api
-   EOL_CHROOT
+    schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+    make api
+    EOL_CHROOT
 
-The output of this process is the Red Pitaya ``librp.so`` library in ``api/lib`` directory.
-The header file for the API is ``redpitaya/rp.h`` and can be found in ``api/includes``.
-You can install it on Red Pitaya by copying it there:
+**Output files:**
+
+* Library: ``api/lib/librp.so``
+* Header file: ``api/includes/redpitaya/rp.h``
+
+**Install to Red Pitaya:**
 
 .. code-block:: shell-session
 
-   scp build/api/lib/*.so root@192.168.0.100:/opt/redpitaya/lib/
+    scp build/api/lib/*.so root@192.168.0.100:/opt/redpitaya/lib/
+
+Replace ``192.168.0.100`` with your Red Pitaya's IP address (or use the ``.local`` address).
+
+
+U-Boot EEPROM configuration
+----------------------------
+
+U-Boot variables are stored in EEPROM but are not read automatically during boot. Default constant values are used if EEPROM is not read.
+
+To update and recalculate variable values from EEPROM:
+
+.. code-block:: shell-session
+
+   i2c dev 0
+   # Offset 0x1800 + 0x4 (crc32)
+   eeprom read  0 0x50 0 0x1804 0x400
+   env import -b 0 0x400 hw_rev serial ethaddr
 
 
 SCPI server
-~~~~~~~~~~~
+------------
 
-Scpi server README can be found :download:`here <https://github.com/RedPitaya/RedPitaya/blob/master/scpi-server/README.md>`.
-
-To compile the server run:
+Build the SCPI server:
 
 .. code-block:: shell-session
 
@@ -751,22 +872,29 @@ To compile the server run:
    make scpi
    EOL_CHROOT
 
-The compiled executable is ``scpi-server/scpi-server``.
-You can install it on Red Pitaya by copying it there:
+**Output file:** ``scpi-server/scpi-server``
+
+**Install to Red Pitaya:**
 
 .. code-block:: shell-session
 
    scp scpi-server/scpi-server root@192.168.0.100:/opt/redpitaya/bin/
 
+Replace ``192.168.0.100`` with your Red Pitaya's IP address (or use the ``.local`` address).
+
 .. note::
 
-   To build the scpi server for RP, a special `version <https://github.com/RedPitaya/scpi-parser/tree/redpitaya>`_  of scpi-parser is used. It added and optimized some functions.
+   Red Pitaya uses a :rp-github:`customized SCPI parser <scpi-parser/tree/redpitaya>` with optimized functions for Red Pitaya hardware.
+
+For more information, see the :rp-github:`SCPI server README <RedPitaya/blob/master/scpi-server/README.md>`.
 
 
-Free applications
-~~~~~~~~~~~~~~~~~
+Legacy web applications
+------------------------
 
-To build free applications, follow the instructions given :download:`here <https://github.com/RedPitaya/RedPitaya/blob/master/apps-free/README.md>`.
+To build applications from the ``apps-free`` directory, follow the :rp-github:`instructions in the repository <RedPitaya/blob/master/apps-free/README.md>`.
 
+.. warning::
 
+    Applications in ``apps-free`` were developed for Ecosystem 1.04 and earlier. They require modification to work with Ecosystem 2.00 and higher.
 

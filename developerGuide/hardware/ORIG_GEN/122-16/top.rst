@@ -218,18 +218,18 @@ You can find the measurements of the fast analog frontend here:
 Schematics
 ============
 
-* `Schematics_STEM_122-16SDR_V1r1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_122-16SDR_V1r1.pdf>`_.
+* :download:`Schematics_STEM_122-16SDR_V1r1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_122-16SDR_V1r1.pdf>`.
 
 .. note::
 
-    Red Pitaya board HW FULL schematics are not available. Red Pitaya has an open-source code but not open hardware schematics. Nonetheless, DEVELOPMENT schematics are available. This schematic will give you information about HW configuration, FPGA pin connection and similar.
+    Full hardware schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, development schematics are available. This schematic will give you information about hardware configuration, FPGA pin connections, and similar.
 
 
 Mechanical Specifications and 3D Models
 ===========================================
 
-* `3D_STEM_122-16SDR_V1r1.pdf.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.pdf.zip>`_.
-* `3D_STEM_122-16SDR_V1r1.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.zip>`_.
+* PDF :download:`3D_STEM_122-16SDR_V1r1.pdf.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.pdf.zip>`.
+* STEP :download:`3D_STEM_122-16SDR_V1r1.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.zip>`.
 
 
 Components
@@ -237,11 +237,11 @@ Components
 
 * `ADC <https://www.analog.com/en/products/LTC2185.html>`_.
 * `DAC <https://www.analog.com/en/products/AD9767.html>`_.
-* `FPGA (Zynq 7020) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_.
+* `FPGA (Zynq 7020) <https://docs.amd.com/v/u/en-US/ds190-Zynq-7000-Overview>`_.
 * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_.
 * `Oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_.
 * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_.
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information).
+* `QSPI <https://www.infineon.com/part/S25FL128SAGNFI001>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information).
 
 
 Extension connector SDRlab

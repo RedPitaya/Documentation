@@ -52,7 +52,7 @@ General Specifications
 | Input stage voltage ranges [#]_ | | LV (±1 V)                                   |
 |                                 | | HV (±20 V)                                  |
 +---------------------------------+-----------------------------------------------+
-| Bandwidth                       | 50 MHz (3 dB)                                 |
+| Bandwidth                       | 50 MHz (-3 dB)                                |
 +---------------------------------+-----------------------------------------------+
 
 .. [#] Measurement performance is specified within this range. 
@@ -154,7 +154,7 @@ Input bandwidth
 ----------------
 
 +---------------------------------+-----------------------------------------------+
-| Bandwidth                       | 50 MHz (3 dB)                                 |
+| Bandwidth                       | 50 MHz (-3 dB)                                |
 +---------------------------------+-----------------------------------------------+
     
 In the picture below, the Frequency Response - Bandwidth of fast analog inputs is shown. Measurements are taken using an |Agilent 33250A| signal generator as a reference. The measured signal is acquired using :ref:`remote control commands <command_list>`. An amplitude voltage is extracted from the acquired signal and compared to the reference signal amplitude.
@@ -569,7 +569,7 @@ Output bandwidth
 -----------------
 
 +---------------------------------+-----------------------------------------------+
-| Bandwidth                       | 50 MHz (3 dB)                                 |
+| Bandwidth                       | 50 MHz (-3 dB)                                |
 +---------------------------------+-----------------------------------------------+
 
 Bandwidth measurements are shown in the picture below. Measurements are taken with the |Agilent MSO7104B| oscilloscope for each frequency step (10 Hz - 60 MHz) of the measured signal.

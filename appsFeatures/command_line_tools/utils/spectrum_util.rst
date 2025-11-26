@@ -10,7 +10,8 @@ The spectrum utility
 .. code-block:: console
 
     redpitaya> spectrum -h
-    spectrum Version: 2.07-494-d5436699b
+    spectrum Version: 2.07-651-631657660
+    
     usage:
     -h, --help: help
     -m, --min: minimum frequency (default: 0)
@@ -18,6 +19,7 @@ The spectrum utility
     -c, --count: iteration count (default: 1, negative: infinity)
     -a, --average: average the measurement from 10 times (default: enabled)
     -n, --no-average: disable average the measurement from 10 times
+    -v, --values: Display all values ​​for the signal.
     -C, --csv: print values by columns Frequency (Hz), ch0 (dB), ch1 (dB)
     -L, --csv-limit: print values by columns Frequency (Hz), ch0 min (dB), ch0 max (dB), ch1 min (dB), ch1 max (dB)
     -W, --window: window function. Available options: [rect, hanning, hamming, blackman_harris, flat_top, kaiser_4, kaiser_8] (default: hanning)

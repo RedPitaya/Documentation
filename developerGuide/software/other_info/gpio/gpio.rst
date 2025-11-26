@@ -34,13 +34,14 @@ Apropriate fpga bitstream can be applied using bash command.
             redpitaya> overlay.sh v0.94
 
 
-Although the Zynq SoC provides 118 GPIO lines, only 16 are accessible to the user. They can be found on the extension connector E1, as pins DIO0_P to DIO7_P and DIO0_N to DIO7_N. These pins can be identified by different numbering/naming schemes:
+Although the Zynq SoC provides 118 GPIO lines, only 16 are accessible to the user. They can be found on the extension connector E1, as pins DIO0_P to DIO7_P and DIO0_N to DIO7_N. 
+These pins can be identified by different numbering/naming schemes:
 
-#. the “line number”, used by the gpiod tools, libgpiod, and the underlying character device interface
-#. the “sysfs number”, used by the legacy sysfs interface: this is the line number offset by 906
-#. the “EMIO signal name”, documented in the device tree
-#. the “GPIO number”, also documented in the device tree
-#. the “pin name”, used in the SCPI interface, in the APIs (prefixed with ``RP_``), and throughout the Red Pitaya documentation.
+#. **line number**, used by the gpiod tools, libgpiod, and the underlying character device interface
+#. **sysfs number**, used by the legacy sysfs interface: this is the line number offset by 906
+#. **EMIO signal name**, documented in the device tree
+#. **GPIO number**, also documented in the device tree
+#. **pin name**, used in the SCPI interface, in the APIs (prefixed with ``RP_``), and throughout the Red Pitaya documentation.
 
 .. note::
 
@@ -52,7 +53,7 @@ Although the Zynq SoC provides 118 GPIO lines, only 16 are accessible to the use
 This is the mapping between all these numbering/naming schemes:
 
 +-------------+--------------+--------------------+-----------------+------------------+-----------------+
-| line number | sysfs number | FPGA signal name   | EMIO signal     | GPIO number      | pin name        |
+| Line number | sysfs number | FPGA signal name   | EMIO signal     | GPIO number      | Pin name        |
 +=============+==============+====================+=================+==================+=================+
 | 62 - 69     | 968 - 975    | exp_p_io[7:0]      | EMIO8  - EMIO15 | GPIO 0 - GPIO 7  | DIO0_P - DIO7_P |
 +-------------+--------------+--------------------+-----------------+------------------+-----------------+
@@ -76,39 +77,39 @@ SYSFS access
 --------------
 
 This document is used as reference:
-`Linux+GPIO+Driver <http://www.wiki.xilinx.com/Linux+GPIO+Driver>`_
+`Linux+GPIO+Driver <https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842398/Linux+GPIO+Driver>`_
 
 
 Bash example for writing to and reading from pin DIO0_P (sysfs number 968):
 
 .. code-block:: shell-session
 
-   #export pin 968
-   $ echo "968" > /sys/class/gpio/export
-   #set direction to output
-   $ echo "out" > /sys/class/gpio/gpio968/direction
-   #set pin to LOW
-   $ echo "0" > /sys/class/gpio/gpio968/value
-   #set pin to HIGH
-   $ echo "1" > /sys/class/gpio/gpio968/value
-   #set pin direction to input
-   $ echo "in" > /sys/class/gpio/gpio968/direction
-   #output pin value
-   $ cat /sys/class/gpio/gpio968/value
-   #when done with pin you should unexport it with
-   $ echo 968 > /sys/class/gpio/unexport
+    #export pin 968
+    $ echo "968" > /sys/class/gpio/export
+    #set direction to output
+    $ echo "out" > /sys/class/gpio/gpio968/direction
+    #set pin to LOW
+    $ echo "0" > /sys/class/gpio/gpio968/value
+    #set pin to HIGH
+    $ echo "1" > /sys/class/gpio/gpio968/value
+    #set pin direction to input
+    $ echo "in" > /sys/class/gpio/gpio968/direction
+    #output pin value
+    $ cat /sys/class/gpio/gpio968/value
+    #when done with pin you should unexport it with
+    $ echo 968 > /sys/class/gpio/unexport
 
 
-SYSFS GPIO C example is available at github: https://github.com/RedPitaya/RedPitaya/tree/master/Examples/gpio_sysfs
+Please check the :rp-github:`SYSFS GPIO C example code <RedPitaya-Examples/tree/dev/gpio_sysfs>` for more information.
 
 
 
 Character device access
 ------------------------
 
-Character device usersace access to gpio kernel subsystem is confirmed working on kernels newer and including 4.8.
+Character device userspace access to gpio kernel subsystem is confirmed working on kernels newer and including 4.8.
 
-References: `GPIO for Engineers and Maker <http://elinux.org/images/9/9b/GPIO_for_Engineers_and_Makers.pdf>`_
+References: `GPIO for Engineers and Maker <https://elinux.org/images/9/9b/GPIO_for_Engineers_and_Makers.pdf>`_
 
 .. raw:: html
 
@@ -119,7 +120,10 @@ References: `GPIO for Engineers and Maker <http://elinux.org/images/9/9b/GPIO_fo
 
 The Linux kernel contains GPIO utilities in its `tools <https://github.com/torvalds/linux/tree/master/tools/gpio>`_ directory.
 
-We isolated the sources and created a library from ``gpio-utils.c`` and
-executables from other source files.
+We isolated the sources and created a library from ``gpio-utils.c`` and executables from other source files.
 
-https://github.com/RedPitaya/gpio-utils
+
+Source code
+============
+
+You can access the source code and precompiled binaries on our GitHub in the :rp-github:`gpio-utils repository <gpio-utils>`.

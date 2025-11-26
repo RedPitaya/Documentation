@@ -7,6 +7,7 @@ EXTERNAL_LINKS = {
     # Red Pitaya related
     'redpitaya_website': 'https://redpitaya.com/',
     'redpitaya_github': 'https://github.com/RedPitaya/',
+    'redpitaya_downloads': 'https://downloads.redpitaya.com/',
     'redpitaya_forum': 'https://forum.redpitaya.com/',
     'redpitaya_store': 'https://redpitaya.com/shop/',
     
@@ -45,6 +46,8 @@ SPHINX_EXTLINKS = {
     'rp-web': ('https://redpitaya.com/%s', 'Red Pitaya: %s'),
     'rp-github': ('https://github.com/RedPitaya/%s', 'GitHub: %s'),
     'rp-forum': ('https://forum.redpitaya.com/%s', 'Forum: %s'),
+    'rp-download': ('https://downloads.redpitaya.com/%s', 'Red Pitaya Downloads: %s'),
+    'rp-store': ('https://redpitaya.com/shop/%s', 'Red Pitaya Store: %s'),
     'wikipedia': ('https://en.wikipedia.org/wiki/%s', 'Wikipedia: %s'),
     'github': ('https://github.com/%s', 'GitHub: %s'),
     'python-package': ('https://pypi.org/project/%s/', 'PyPI: %s'),

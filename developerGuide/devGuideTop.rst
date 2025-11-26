@@ -6,3 +6,4 @@ Developers guide
 
     hardware/hardware.rst
     software/software.rst
+    fpga/fpga_top.rst

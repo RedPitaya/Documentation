@@ -76,7 +76,8 @@ The QSPI eMMC module has two buttons and one switch:
 Connectors
 ==========
 
-In this section we will describe the connectors on the QSPI eMMC module. For more detailed information regarding the functionaltiy and connector part numbers, please refer to the QSPI eMMC module schematics.
+In this section we will describe the connectors on the QSPI eMMC module. For more detailed information regarding the functionality
+and connector part numbers, please refer to the QSPI eMMC module schematics.
 
 .. figure:: img/QSPI_eMMC_module_Gen2_connectors_top.png
    :alt: QSPI eMMC module connectors top
@@ -179,7 +180,8 @@ CN2
 
 **Type:** 4-pin 1 row 1.5 mm pitch connector
 
-CN2 connector provides a possiblity for external control of status LEDs and power pin (PWR_ON_CN). The microcontroller code accepts signals from either PWR_ON_CN pin or the P_ON button, which are effectively AND-ed together in the code.
+CN2 connector provides a possiblity for external control of status LEDs and power pin (PWR_ON_CN). The microcontroller code accepts signals 
+from either PWR_ON_CN pin or the P_ON button, which are effectively AND-ed together in the code.
 
 +-----+-----------------+
 | Pin | Description     |
@@ -282,7 +284,7 @@ The QSPI eMMC module is equipped with the following components:
 
 * `STM32L412K8T6 <https://www.st.com/en/microcontrollers-microprocessors/stm32l412k8.html>`_
 * `eMMC <https://shop.sandisk.com/en-sg/products/embedded-flash/industrial-inand-emmc-drives?sku=SDINBDG4-16G-XI2>`_ - 16 GB eMMC memory.
-* `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/serial-nor-flash/quad-spi-flash/s25fl256sagnfi001/>`_
+* `QSPI <https://www.infineon.com/part/S25FL256SAGNFI001>`_
 
 
 Schematics
@@ -311,7 +313,8 @@ Examples of use
 
 .. rubric:: Footnotes
 
-.. [#f1] DIO12 differential pin pair is connected by default. The I2C1 and UART pins can be connected by changing the position of the resistors on the QSPI eMMC module.
+.. [#f1] DIO12 differential pin pair is connected by default. The I2C1 and UART pins can be connected by changing the position of 
+        the resistors on the QSPI eMMC module.
 
 .. [#f2] negative logic in the FPGA.
 

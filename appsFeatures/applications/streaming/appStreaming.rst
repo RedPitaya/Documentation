@@ -437,12 +437,24 @@ The blue question mark icon leads to this documentation page.
 Configuration information
 ==========================
 
-The settings for ADC streaming have fixed values that are set in the application:
+The settings for streaming have fixed values that are set in the application:
 
-* 18900 - ADC streaming server.
-* 18901 - Configuration Server.
-* 18902 - Broadcast server.
-* 18903 - DAC streaming server.
+.. tabs::
+
+    .. group-tab:: OS version 1.04-28 to 2.05-37
+
+        * 8900 - ADC streaming server
+        * 8901 - Configuration Server
+        * 8902 - Broadcast server
+        * 8903 - DAC streaming server
+    
+    .. group-tab:: OS version 2.07-43 or newer
+
+        * 18900 - ADC streaming server
+        * 18901 - Configuration Server
+        * 18902 - Broadcast server
+        * 18903 - DAC streaming server
+
 
 Configuration can be set over the WEB interface UI, which is afterwards stored in **/root/.streaming_config** or **/root/.config/redpitaya/apps/streaming/streaming_config.json** (for version 2.00) on the Red Pitaya.
 

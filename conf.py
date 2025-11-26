@@ -142,7 +142,7 @@ author = "Red Pitaya"
 # built documents.
 #
 # The short X.Y version.
-version = "2.05-37"
+version = "2.07-43"
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -177,7 +177,8 @@ language = "en"
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# Options: 'friendly', 'colorful', 'monokai', 'vs', 'autumn', 'tango', 'default'
+pygments_style = 'friendly'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -222,7 +223,7 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     'logo_only': True,
     'collapse_navigation': False,
-    'navigation_depth': 5,
+    'navigation_depth': 3,
     'includehidden': True,
     'titles_only': False,
     'sticky_navigation': True,
@@ -455,9 +456,10 @@ intersphinx_disabled_reftypes = ["*"]
 if on_rtd:
     # On ReadTheDocs, we don't need to specify the theme path
     html_theme_path = []
+    # Set the base URL for the documentation
+    html_baseurl = 'https://redpitaya.readthedocs.io/'
     # Use the RTD theme's built-in version dropdown
     html_theme_options.update({
-        'canonical_url': 'https://redpitaya.readthedocs.io/',
         'analytics_id': '',  # Add your analytics ID if you have one
         'analytics_anonymize_ip': False,
         'logo_only': True,

@@ -1,9 +1,10 @@
 .. _E3_QSPI_eMMC_module_SW:
 
-QSPI eMMC module - software
+QSPI eMMC module - Software
 ##############################
 
-The QSPI eMMC module provides secure and robust Red Pitaya boot and shutdown options.
+The QSPI eMMC module is an extension board that provides secure boot options and power management for Red Pitaya 
+boards. This guide covers software setup, programming the onboard STM32 microcontroller, and firmware configuration.
 
 |e3_top| |e3_bottom|
 
@@ -15,58 +16,99 @@ The QSPI eMMC module provides secure and robust Red Pitaya boot and shutdown opt
 
 .. contents::
     :local:
-    :depth: 2
-    :backlinks: none
+    :depth: 1
+    :backlinks: top
 
 |
 
-Features
+Overview
 ========
 
-* Single button power on/off of Red Pitaya board.
-* QSPI and eMMC boot options.
-* An on-board STM microcontroller that provides.
+Module capabilities
+--------------------
 
-    * Red Pitaya power up.
-    * Safe Red Pitaya shutdown.
-    * Watchdog timer functionality.
-    * Boot media selection (SD card/eMMC).
+* Single button power on/off of Red Pitaya board
+* QSPI and eMMC boot options
+* STM32 microcontroller provides:
 
-* Arduino firmware with open source code.
-* Connector for 8 high-speed differential lines directly connected to the Zynq FPGA (or 16 GPIOs).
+    * Red Pitaya power control
+    * Safe shutdown management
+    * Watchdog timer functionality
+    * Boot media selection (SD card/eMMC)
 
-More information about the QSPI eMMC module can be found in the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
+* Arduino C++ firmware with open source code
+* 8 high-speed differential pairs (16 GPIOs) directly connected to Zynq FPGA
 
+For hardware specifications and pinout details, refer to the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
 
-Software and hardware requirements
-====================================
+|
 
-The QSPI eMMC module is designed to be used with the Red Pitaya *STEMlab 125-14 Pro Gen 2* and *STEMlab 125-14 Pro Z7020 Gen 2* boards. It is connected to the Red Pitaya board via the E3 connector. The E3 connector controls the power and booting of the Red Pitaya.
-The QSPI eMMC module is powered by the Red Pitaya board, so no additional power supply is needed. To program the QSPI eMMC module you will need the following hardware:
+Prerequisites
+=============
 
-* Red Pitaya STEMlab 125-14 PRO Gen 2 board.
-* QSPI eMMC module.
+Hardware requirements
+----------------------
 
-And one of the following:
+**Required components:**
 
-* ST-Link/V2 programmer and 5 wire 2.54mm pitch to 2.0mm pitch cable (programming via SWD).
-* USB to micro USB cable (programming via USB).
-* TTL to USB Serial Converter cable (3.3 V) - for example TTL-232R-3V3 (programming through UART - currently not supported).
+* Red Pitaya STEMlab 125-14 Pro Gen 2 or STEMlab 125-14 Pro Z7020 Gen 2 board
+* QSPI eMMC module
+* Red Pitaya power supply (the module is powered through the Red Pitaya board)
 
-The ST-Link/V2 programmer is the recommended way to program the QSPI eMMC module. It is a versatile programmer that can be used to program a wide range of STM32 microcontrollers. The USB to micro USB cable can be used to program the QSPI eMMC module via the USB port.
-The TTL to USB Serial Converter cable can be used to program the QSPI eMMC module via the UART port, which is not directly accessible on the module.
+**Programming hardware (choose one method):**
+
+* **ST-Link/V2 programmer** (recommended) + 5-wire 2.54mm to 2.0mm pitch cable
+* **USB to micro USB cable** for DFU programming
+* **TTL to USB Serial Converter cable** (3.3V, e.g., TTL-232R-3V3) - currently not supported
+
+The ST-Link/V2 programmer is the recommended method as it provides the most reliable programming experience 
+for STM32 microcontrollers.
 
 .. note::
 
-    To test the connection between the QSPI eMMC module and the computer, please attempt to connect to the QSPI eMMC module with the ST-Link/V2 programmer. If the connection is unsuccessful, please check the cables between the module and the computer and try switching the USB port on the computer.
+    The QSPI eMMC module connects to Red Pitaya via the E3 connector, which controls power and boot media selection. 
+    The module must be connected to a powered Red Pitaya board during programming.
 
 
-ST-Link/V2 programmer
----------------------
+Compatibility
+--------------
 
-1. Connect the ST-Link/V2 to the computer via the supplied USB cable. A red LED should light up on the programmer.
-#. If the drivers are not installed automatically, download and install the drivers from the `ST official website <https://www.st.com/en/development-tools/stsw-link009.html>`_.
-#. Connect the 5-wire 2.54mm pitch to 2.0mm pitch cable between the CN7 connector on the QSPI eMMC module and the ST-Link/V2 programmer.
+The QSPI eMMC module is compatible with:
+
+* :ref:`STEMlab 125-14 Pro Gen 2 <top_top_125_14_pro_gen2>`
+* :ref:`STEMlab 125-14 Pro Z7020 Gen 2 <top_top_125_14_pro_z7020_gen2>`
+
+.. note::
+
+    High-speed differential pairs are only supported on the STEMlab 125-14 Pro Z7020 Gen 2 board.
+
+
+Software requirements
+----------------------
+
+The STM32 microcontroller (STM32L412K8T6) can be programmed using various development environments:
+
+* **Arduino IDE + STM32CubeProgrammer** (covered in this guide)
+* STM32CubeIDE
+* Visual Studio Code + PlatformIO
+* Visual Studio Code + STM32 libraries and plugins
+
+This guide uses Arduino IDE and STM32CubeProgrammer, but you can use any preferred STM32 development method.
+
+|
+
+Hardware Setup
+===============
+
+Connection methods
+-------------------
+
+ST-Link/V2 programmer (recommended)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Connect the ST-Link/V2 to your computer via USB. A red LED should illuminate on the programmer.
+2. If drivers don't install automatically, download them from the `ST official website <https://www.st.com/en/development-tools/stsw-link009.html>`_.
+3. Connect the 5-wire jumper cable between the CN7 connector on the QSPI eMMC module (2.0mm pitch) and the ST-Link/V2 programmer (2.54mm pitch).
 
     .. figure:: img/ST-LinkV2_connections.png
         :alt: ST-Link/V2 programmer connections
@@ -74,373 +116,501 @@ ST-Link/V2 programmer
         :width: 800px
 
 
-USB connection
---------------
+USB connection (DFU mode)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Connect the USB to micro USB cable between the micro USB port (CN4 connector) on the QSPI eMMC module and the computer.
+Connect a USB to micro USB cable between the CN4 connector on the QSPI eMMC module and your computer.
 
 
 UART connection (currently not supported)
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Connect the TTL to USB Serial Converter cable between the UART port on the QSPI eMMC module and the computer. Make sure that the TX and RX pins are connected correctly.
+1. Connect the TTL to USB Serial Converter cable between the UART port on the QSPI eMMC module and your computer. 
+   Ensure TX and RX pins are connected correctly.
 
     .. figure:: img/FTDI_serial_cable_pinout.png
         :alt: USB to Serial cable
         :align: center
         :width: 800px
 
-Please note that not all USB ports on the computer may work. If you have problems connecting to the QSPI eMMC module, try using a different USB port.
+.. note::
+
+    Not all USB ports may work reliably. If you experience connection issues, try different USB ports or verify 
+    cable connections using the ST-Link/V2 programmer connection test.
+
+|
+
+Software Installation
+======================
+
+This section covers installing the development tools required to program the QSPI eMMC module.
 
 
-Software requirements
-=====================
+Installing Arduino IDE
+------------------------
 
-The QSPI eMMC module features an STM32 microcontroller (STM32L412K8T6) which can be programmed in multiple different ways, which include:
+1. Download the latest `Arduino IDE <https://www.arduino.cc/en/software>`_ from the Arduino official website.
+2. Open Arduino IDE and navigate to **File → Preferences**.
+3. In the **Additional Boards Manager URLs** field, add:
 
-* Arduino IDE + STM32 cube programer.
-* STM32CubeIDE.
-* Visual Studio Code + PlatformIO.
-* Visual Studio Code + various STM32 libraries & plugins.
+    .. code-block:: text
 
-The options listed above are just some of the most common ways to program any STM32 microcontroller. Here we will use the Arduino IDE and STM32 cube programer, but you are free to pick your favourite method.
+        https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json
 
-
-Installation steps
-==================
-
-Here is a detailed guide on how to install the necessary software to program the QSPI eMMC module.
-
-1. **Arduino IDE**
-
-    * Download the latest version of the Arduino IDE from the `Arduino official website <https://www.arduino.cc/en/software>`_.
-    * Open the Arduino IDE and go to *File -> Preferences*.
-    * In the Additional Boards Manager URLs field, add the following link:
-      ``https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json``
-    * Click OK to close the Preferences window.
-    * Go to *Tools -> Board -> Boards Manager*.
-    * In the Boards Manager window, type "STM32" in the search bar.
-    * Install the latest version of the "STM32 MCU based boards" package by STMicroelectronics.
-    * Restart Arduino IDE.
-
-2. **STM32 cube programer**
-
-    * Download the STM32 cube programer from the `official website <https://www.st.com/en/development-tools/stm32cubeprog.html>`_. You will need to create an STM account to download the software.
-    * Install the program and open it. During installation make sure you install all the necessary drivers.
+4. Click **OK** to close the Preferences window.
+5. Navigate to **Tools → Board → Boards Manager**.
+6. In the Boards Manager, search for "STM32".
+7. Install the latest version of **STM32 MCU based boards** by STMicroelectronics.
+8. Restart Arduino IDE.
 
 
-Arduino IDE setup
-=================
+Installing STM32CubeProgrammer
+--------------------------------
 
-1. Open the Arduino IDE and go to *Tools -> Board*.
-#. Select *STM32 MCU based boards -> Generic STM32L4 series*.
+1. Download `STM32CubeProgrammer <https://www.st.com/en/development-tools/stm32cubeprog.html>`_ from the ST official website.
+   
+    .. note::
+   
+        You will need to create an ST account to download the software.
+
+2. Run the installer and ensure all necessary drivers are installed during setup.
+3. Launch STM32CubeProgrammer to verify installation.
+
+|
+
+Configuring Arduino IDE
+=========================
+
+Board configuration
+--------------------
+
+1. Open Arduino IDE and navigate to **Tools → Board**.
+2. Select **STM32 MCU based boards → Generic STM32L4 series**.
 
     .. figure:: img/Arduino_IDE_board.png
         :alt: Arduino IDE board selection
         :align: center
         :width: 1000px
 
-#. Under *Tools -> Board Part Number*, select *Generic L412K8Tx*.
+3. Under **Tools → Board Part Number**, select **Generic L412K8Tx**.
 
     .. figure:: img/Arduino_IDE_board_part_num.png
         :alt: Arduino IDE board part number selection
         :align: center
         :width: 800px
 
-#. Under *Tools -> USB Support*, select *CDC (generic 'Serial' supersede U(S)ART)*.
-#. Under *Tools -> Upload Method*, select the preferred upload method:
+4. Under **Tools → USB Support**, select **CDC (generic 'Serial' supersede U(S)ART)**.
+5. Under **Tools → Upload Method**, select your programming method:
         
-    * *STM32CubeProgrammer (SWD)* for ST-Link V2 programmer.
-    * *STM32CubeProgrammer (Serial)* for USB to Serial cable.
-    * *STM32CubeProgrammer (DFU)* for USB to micro USB cable.
+    * **STM32CubeProgrammer (SWD)** - for ST-Link V2 programmer
+    * **STM32CubeProgrammer (DFU)** - for USB to micro USB cable
+    * **STM32CubeProgrammer (Serial)** - for USB to Serial cable (currently not supported)
 
-    Here are the recommended *Tools* settings:
+**Recommended Tools settings:**
 
-    .. figure:: img/Arduino_IDE_tool_settings.png
-        :alt: Arduino IDE tools settings
-        :align: center
-        :width: 800px
-
-6. Open the Arduino sketch for the QSPI eMMC module. You can find the sketch and the latest version of the QSPI eMMC module firmware in the :github:`RedPitaya/` - Links to any GitHub repository.. !PLACEHOLDER!#.
-
-.. `Red Pitaya GitHub repository <>`_.
-
-.. ..TODO add the link to the script
+.. figure:: img/Arduino_IDE_tool_settings.png
+    :alt: Arduino IDE tools settings
+    :align: center
+    :width: 800px
 
 
-Arduino script setup
-------------------------
-
-When programming the QSPI eMMC module we need to be careful to perform the following steps:
-
-1. **Create a new file named "build.opt" in the same directory as the Arduino sketch.** This file should contain the following lines:
-
-    .. code-block:: bash
-
-        -HAL_I2C_MODULE_ENABLED
-        -HAL_UART_MODULE_ENABLED
-        -HAL_PCD_MODULE_ENABLED
-        -HAL_HCD_MODULE_ENABLED
-
-    The definitions in the "build.opt" file are used to enable certain features in the STM32L412K8T6 microcontroller. The definitions above are used to enable the I2C, UART, USB pin configurations. 
-    The presence of *build.opt* file is automatically checked during the project build, so we don't need to worry about including it in the project.
-
-#. **Include libraries:** 
-
-    * **PeripheralPins.h** - this library provides the pin definitions for the STM32L412K8T6 microcontroller. It includes the pin definitions for all the peripherals on the microcontroller.
-    * **Wire.h** - this library provides the I2C communication functions.
-
-#. **Redefine the default weak pinmap declarations.** The pin declarations are defined as "weak" in the *PeripheralPins.h* library. We must redefine them in the arduino sketch as not all the interface pins are used or available on the microcontroller. Add the following lines at the beginning of the arduino sketch:
-
-   .. code-block:: c
-
-        /* REDEFINE DEFAULT PINMAP */
-        const PinMap PinMap_I2C_SDA[] = {
-        { PB_4, I2C3, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C3) },
-        { PB_7, I2C1, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C1) },
-        { NC, NP, 0 }
-        };
-
-        const PinMap PinMap_I2C_SCL[] = {
-        { PA_7, I2C3, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C3) },
-        { PB_6, I2C1, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C1) },
-        { NC, NP, 0 }
-        };
-
-        const PinMap PinMap_UART_TX[] = {
-        { PA_2, USART2, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, GPIO_AF7_USART2) },
-        { NC, NP, 0 }
-        };
-
-        const PinMap PinMap_UART_RX[] = {
-        { PA_3, USART2, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, GPIO_AF7_USART2) },
-        { NC, NP, 0 }
-        };
-
-        const PinMap PinMap_USB[] = {
-        { PA_11, USB, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_NOPULL, GPIO_AF10_USB_FS) },  // USB_DM
-        { PA_12, USB, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_NOPULL, GPIO_AF10_USB_FS) },  // USB_DP
-        { NC, NP, 0 }
-        };
-
-    .. note::
-
-        Pin redefinitions are cruicial for proper operation of the QSPI eMMC module. If the pins are not redefined, the microcontroller will not work as expected.
-
-#. **Redefine the pin names:**
-
-    .. code-block:: c
-
-        /* PIN DEFINITIONS */
-        #define PWR_ON_CN_PIN (PA0)     // Power On signal from CN7
-        #define PWR_ON_PB_PIN (PA1)     // Controlled with P-ON button
-        #define UART_TX_PIN (PA2)       // UART (NC) - Shares the bus with I2C1
-        #define UART_RX_PIN (PA3)       // Populate R17, R18, R3 and R4 to connect to DIO12_N, DIO12_P
-        #define E3_WDT_KICK_PIN (PA4)   // Watchdog timer
-        #define E3_SHDN_PIN (PA5)       // Shutdown signal
-        #define PS_POR_PIN (PA6)        // PS signal (Power-On reset) - Read only
-        #define PWR_ON_PIN (PB1)        // Power supply control
-        #define LED_RED_PIN (PA8)       // Red LED
-        #define LED_GREEN_PIN (PA9)     // Green LED
-        #define USB_N_PIN (PA11)
-        #define USB_P_PIN (PA12)
-        #define UC_SWDIO_PIN (PA13)     // ST-LINK SWD communication
-        #define UC_SWCLK_PIN (PA14)
-        #define I2C0_SCL_PIN (PB6)      // I2C0 bus connected to Red Pitaya I2C
-        #define I2C0_SDA_PIN (PB7)
-        #define I2C1_SCL_PIN (PA7)      // I2C1 (NC) - Shares the bus with UART
-        #define I2C1_SDA_PIN (PB4)      // Populate R3 and R4 to connect to DIO12_N, DIO12_P
-
-#. **Decleare UART and I2C buses:**
-
-    .. code-block:: c
-
-        // UART and I2C startup
-        HardwareSerial Serial1(UART_RX_PIN, UART_TX_PIN);
-        TwoWire Wire0(I2C0_SDA_PIN, I2C0_SCL_PIN);  // I2C 0
-        // TwoWire Wire1(I2C1_SDA_PIN, I2C1_SCL_PIN);     // I2C 1
-
-    I2C1 and UART are currently not supported (there is currently no connector on the QSPI eMMC module).
-
-#. **Configure the pins inside the *setup()* function:**
-
-    .. code-block:: c
-
-        // Initialize pin IO
-        pinMode(PWR_ON_CN_PIN, INPUT);    // Connector Power ON signal
-        pinMode(PWR_ON_PB_PIN, INPUT);    // Button Power ON signal
-        pinMode(E3_WDT_KICK_PIN, INPUT);  // Watchdog timer kick from Red Pitaya
-        pinMode(E3_SHDN_PIN, OUTPUT);     // Shutdown signal for Red Pitaya
-        pinMode(PS_POR_PIN, INPUT);       // Monitor Power Supply Ready activity from Red Pitaya (Power ON Reset)
-        pinMode(PWR_ON_PIN, OUTPUT);      // Power ON signal for Red Pitaya
-        pinMode(LED_GREEN_PIN, OUTPUT);   // Green LED
-        pinMode(LED_RED_PIN, OUTPUT);     // Red LED
-
-        // Disable LEDs
-        LED_off(LED_RED_PIN);
-        LED_off(LED_GREEN_PIN);
-
-        // I2C and UART init
-        Serial1.begin(115200);                  // Start UART interface
-        Wire0.begin(I2C_ADDR);                  // Start I2C0 - available at address I2C_ADDR
-        Wire0.setClock(400000);                 // Set I2C speed
-        Wire0.onReceive(I2C0_receive_handler);  // On I2C recieve and request from master execute a handler function
-        Wire0.onRequest(I2C0_request_handler);
-        /*
-        // I2C1 not implemented currently
-        Wire1.begin(I2C_ADDR);                  // Start I2C1
-        Wire1.setClock(400000);
-        Wire1.onReceive(I2C1_recieve_handler);
-        Wire1.onRequest(I2C1_request_handler);
-        */
-    
-.. note::
-
-    The steps above are necessary for proper operation of the microcontroller. If anything is missing, the microcontroller will not work as expected.
-
-
-Programming the board
-=====================
-
-The QSPI eMMC module must be connected to a powered Red Pitaya unit during the programming process. The Red Pitaya unit provides power to the QSPI eMMC module.
-
-
-Arduin IDE
-----------
-
-The program can be uploaded to the QSPI eMMC module with Arduino IDE in three different ways:
-
-* **ST-Link/V2 programmer (SWD)**.
-* **USB to micro USB cable (DFU)**.
-* **USB to Serial cable (UART)**.
-
-Before uploading the program, please verify the code in the Arduino IDE (green arrow button) in the top left corner of the window. If there are no errors, you can proceed with the upload.
-
-1. **ST-Link/V2 programmer (SWD)**
-
-    * Connect the ST-Link/V2 programmer to the computer and the QSPI eMMC module.
-    * Select *STM32CubeProgrammer (SWD)* as the upload method in the Arduino IDE.
-    * Click the upload button in the Arduino IDE.
-
-2. **USB to micro USB cable (DFU)**
-    
-    * Connect the USB to micro USB cable between the computer and the QSPI eMMC module.
-    * Select *STM32CubeProgrammer (DFU)* as the upload method in the Arduino IDE.
-    * Click the upload button in the Arduino IDE.
-    * If the upload fails, disconnect and reconnect the USB cable and try again. The USB cable must be reconnected after each upload. Please note that this will reset the board.
-
-3. **USB to Serial cable (UART) (currently not supported)**
-    
-    * Connect the USB to Serial cable between the computer and the QSPI eMMC module.
-    * Select *STM32CubeProgrammer (Serial)* as the upload method in the Arduino IDE.
-    * Click the upload button in the Arduino IDE.
-    * When Arduino IDE reaches the uploading stage, press the reset button on the QSPI eMMC module. This will put the board in the bootloader mode and the program will be uploaded.
-
-
-STM32 Cube Programmer
+Opening the firmware
 ---------------------
 
-Alternatively, you can use the STM32CubeProgrammer software to program the QSPI eMMC module with a compiled binary version of your program. You can use any of the three methods listed above to connect the QSPI eMMC module to the computer.
+Download the QSPI eMMC module firmware from the :github:`RedPitaya/RedPitaya-Examples/tree/dev/E3_module_code` repository 
+and open the Arduino sketch (.ino file) in Arduino IDE.
 
-1. Open the STM32CubeProgrammer software.
-#. Connect the QSPI eMMC module to the computer.
-#. Select the desired COM port from the dropdown in the STM32CubeProgrammer. Configure any additional settings if needed.
+|
 
-    .. figure:: img/STM32_cube_select.png
-        :alt: STM32CubeProgrammer select communication port
-        :align: center
-        :width: 400
+Firmware Configuration
+=======================
 
-#. Click the "Connect" button. The QSPI eMMC module should be automatically detected by the STM32CubeProgrammer.
+The QSPI eMMC module firmware requires specific configuration to function correctly with the STM32L412K8T6 microcontroller. 
+Follow these steps carefully when setting up your Arduino project.
 
-    .. figure:: img/STM32_cube_connected.png
-        :alt: STM32CubeProgrammer connected to the QSPI eMMC module
-        :align: center
-        :width: 1000
 
-#. Open the *Erasing & Programming* tab in the left hand menu.
+Step 1: Create build options file
+-----------------------------------
 
-    .. figure:: img/STM32_cube_menu.png
-        :alt: STM32CubeProgrammer erase and program tab
-        :align: center
-        :width: 400
+Create a file named **build.opt** in the same directory as your Arduino sketch with the following content:
 
-#. Click the "Browse" button and select the compiled binary file of your program. You can get the compiled binary file from the Arduino IDE by clicking the "Sketch -> Export compiled binary" option.
+.. code-block:: bash
+
+    -HAL_I2C_MODULE_ENABLED
+    -HAL_UART_MODULE_ENABLED
+    -HAL_PCD_MODULE_ENABLED
+    -HAL_HCD_MODULE_ENABLED
+
+These definitions enable I2C, UART, and USB peripheral support in the STM32 HAL library. The build system 
+automatically includes this file during compilation.
+
+
+Step 2: Include required libraries
+------------------------------------
+
+Add these library includes at the beginning of your Arduino sketch:
+
+.. code-block:: c
+
+    #include <PeripheralPins.h>  // Pin definitions for STM32L412K8T6
+    #include <Wire.h>             // I2C communication functions
+
+
+Step 3: Redefine peripheral pin mappings
+------------------------------------------
+
+The default pin mappings in the STM32 library must be overridden because not all pins are available on the 
+STM32L412K8T6 package. Add these pin map definitions at the beginning of your sketch:
+
+.. code-block:: c
+
+    /* REDEFINE DEFAULT PINMAP */
+    const PinMap PinMap_I2C_SDA[] = {
+      { PB_4, I2C3, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C3) },
+      { PB_7, I2C1, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C1) },
+      { NC, NP, 0 }
+    };
+
+    const PinMap PinMap_I2C_SCL[] = {
+      { PA_7, I2C3, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C3) },
+      { PB_6, I2C1, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C1) },
+      { NC, NP, 0 }
+    };
+
+    const PinMap PinMap_UART_TX[] = {
+      { PA_2, USART2, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, GPIO_AF7_USART2) },
+      { NC, NP, 0 }
+    };
+
+    const PinMap PinMap_UART_RX[] = {
+      { PA_3, USART2, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, GPIO_AF7_USART2) },
+      { NC, NP, 0 }
+    };
+
+    const PinMap PinMap_USB[] = {
+      { PA_11, USB, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_NOPULL, GPIO_AF10_USB_FS) },  // USB_DM
+      { PA_12, USB, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_NOPULL, GPIO_AF10_USB_FS) },  // USB_DP
+      { NC, NP, 0 }
+    };
+
+.. warning::
+
+    Pin redefinitions are critical for proper operation. Omitting these will cause the microcontroller to 
+    malfunction or fail to initialize peripherals correctly.
+
+
+Step 4: Define pin names
+--------------------------
+
+Define readable names for all I/O pins used by the QSPI eMMC module:
+
+.. code-block:: c
+
+    /* PIN DEFINITIONS */
+    #define PWR_ON_CN_PIN (PA0)     // Power On signal from CN2 connector
+    #define PWR_ON_PB_PIN (PA1)     // Power On signal from P-ON button
+    #define UART_TX_PIN (PA2)       // UART TX (not connected - shares bus with I2C1)
+    #define UART_RX_PIN (PA3)       // UART RX (populate R17, R18, R3, R4 for DIO12 connection)
+    #define E3_WDT_KICK_PIN (PA4)   // Watchdog timer signal from Red Pitaya
+    #define E3_SHDN_PIN (PA5)       // Shutdown signal to Red Pitaya
+    #define PS_POR_PIN (PA6)        // Power-On Reset signal (read-only)
+    #define PWR_ON_PIN (PB1)        // Power supply control output
+    #define LED_RED_PIN (PA8)       // Red LED control
+    #define LED_GREEN_PIN (PA9)     // Green LED control
+    #define USB_N_PIN (PA11)        // USB D- data line
+    #define USB_P_PIN (PA12)        // USB D+ data line
+    #define UC_SWDIO_PIN (PA13)     // SWD data line for programming
+    #define UC_SWCLK_PIN (PA14)     // SWD clock line for programming
+    #define I2C0_SCL_PIN (PB6)      // I2C0 clock connected to Red Pitaya
+    #define I2C0_SDA_PIN (PB7)      // I2C0 data connected to Red Pitaya
+    #define I2C1_SCL_PIN (PA7)      // I2C1 clock (not connected - shares bus with UART)
+    #define I2C1_SDA_PIN (PB4)      // I2C1 data (populate R3, R4 for DIO12 connection)
+
+
+Step 5: Declare communication interfaces
+------------------------------------------
+
+Initialize UART and I2C interfaces at the global scope:
+
+.. code-block:: c
+
+    // UART and I2C interface declarations
+    HardwareSerial Serial1(UART_RX_PIN, UART_TX_PIN);
+    TwoWire Wire0(I2C0_SDA_PIN, I2C0_SCL_PIN);  // I2C0 bus for Red Pitaya communication
+    // TwoWire Wire1(I2C1_SDA_PIN, I2C1_SCL_PIN);  // I2C1 (not currently supported)
+
+.. note::
+
+    I2C1 and UART interfaces are currently not supported as there is no physical connector on the QSPI eMMC module.
+
+
+Step 6: Initialize pins in setup()
+------------------------------------
+
+Configure all I/O pins in your **setup()** function:
+
+.. code-block:: c
+
+    void setup() {
+      // Configure pin directions
+      pinMode(PWR_ON_CN_PIN, INPUT);    // External power control input
+      pinMode(PWR_ON_PB_PIN, INPUT);    // Button power control input
+      pinMode(E3_WDT_KICK_PIN, INPUT);  // Watchdog signal from Red Pitaya
+      pinMode(E3_SHDN_PIN, OUTPUT);     // Shutdown signal to Red Pitaya
+      pinMode(PS_POR_PIN, INPUT);       // Power-on reset status from Red Pitaya
+      pinMode(PWR_ON_PIN, OUTPUT);      // Power control output
+      pinMode(LED_GREEN_PIN, OUTPUT);   // Green LED
+      pinMode(LED_RED_PIN, OUTPUT);     // Red LED
+
+      // Initialize LED states
+      LED_off(LED_RED_PIN);
+      LED_off(LED_GREEN_PIN);
+
+      // Initialize communication interfaces
+      Serial1.begin(115200);                  // UART at 115200 baud
+      Wire0.begin(I2C_ADDR);                  // I2C0 as slave at I2C_ADDR
+      Wire0.setClock(400000);                 // I2C speed: 400 kHz
+      Wire0.onReceive(I2C0_receive_handler);  // Register I2C receive callback
+      Wire0.onRequest(I2C0_request_handler);  // Register I2C request callback
+      
+      /*
+      // I2C1 initialization (not currently implemented)
+      Wire1.begin(I2C_ADDR);
+      Wire1.setClock(400000);
+      Wire1.onReceive(I2C1_receive_handler);
+      Wire1.onRequest(I2C1_request_handler);
+      */
+    }
+
+.. warning::
+
+    All configuration steps above are mandatory. Missing any step will result in improper microcontroller operation.
+
+|
+
+Programming the Module
+=======================
+
+.. important::
+
+    The QSPI eMMC module must be connected to a powered Red Pitaya board during programming. The Red Pitaya 
+    provides power to the module.
+
+
+Using Arduino IDE
+------------------
+
+The module can be programmed using three different connection methods. Before uploading, verify your code in 
+Arduino IDE using the verify button (checkmark icon) to ensure there are no compilation errors.
+
+
+Method 1: ST-Link/V2 programmer (SWD)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Connect the ST-Link/V2 programmer to your computer and the QSPI eMMC module.
+2. In Arduino IDE, select **Tools → Upload Method → STM32CubeProgrammer (SWD)**.
+3. Click the upload button (right arrow icon) in Arduino IDE.
+
+
+Method 2: USB to micro USB cable (DFU)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Connect the USB to micro USB cable between your computer and the QSPI eMMC module.
+2. In Arduino IDE, select **Tools → Upload Method → STM32CubeProgrammer (DFU)**.
+3. Click the upload button in Arduino IDE.
+
+.. note::
+
+    If upload fails, disconnect and reconnect the USB cable, then try again. The USB cable must be reconnected 
+    after each upload as the board resets during programming.
+
+
+Method 3: USB to Serial cable (UART) - Currently not supported
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Connect the USB to Serial cable between your computer and the QSPI eMMC module.
+2. In Arduino IDE, select **Tools → Upload Method → STM32CubeProgrammer (Serial)**.
+3. Click the upload button in Arduino IDE.
+4. When Arduino IDE reaches the uploading stage, press the reset button on the QSPI eMMC module to enter 
+   bootloader mode.
+
+|
+
+Using STM32CubeProgrammer
+---------------------------
+
+STM32CubeProgrammer can upload pre-compiled binary files to the module using any of the three connection methods above.
+
+
+Step 1: Export compiled binary from Arduino IDE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. In Arduino IDE, open your sketch.
+2. Navigate to **Sketch → Export compiled Binary**.
+3. The binary file will be saved in the sketch folder.
 
     .. figure:: img/Arduino_IDE_compiled_binary.png
         :alt: Arduino IDE compiled binary
         :align: center
         :width: 600px
 
-#. Check the "Verify programming" and "Run after programming" boxes.
-#. Click the "Start Programming" button to upload the program to the QSPI eMMC module.
+
+Step 2: Connect and program
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open STM32CubeProgrammer.
+2. Connect the QSPI eMMC module to your computer using your preferred method.
+3. In STM32CubeProgrammer, select the appropriate connection interface and COM port.
+
+    .. figure:: img/STM32_cube_select.png
+        :alt: STM32CubeProgrammer select communication port
+        :align: center
+        :width: 400
+
+4. Click **Connect**. The module should be automatically detected.
+
+    .. figure:: img/STM32_cube_connected.png
+        :alt: STM32CubeProgrammer connected to the QSPI eMMC module
+        :align: center
+        :width: 1000
+
+5. Open the **Erasing & Programming** tab in the left menu.
+
+    .. figure:: img/STM32_cube_menu.png
+        :alt: STM32CubeProgrammer erase and program tab
+        :align: center
+        :width: 400
+
+6. Click **Browse** and select the compiled binary file (.bin) exported from Arduino IDE.
+7. Enable both **Verify programming** and **Run after programming** checkboxes.
+8. Click **Start Programming** to upload the firmware.
 
     .. figure:: img/STM32_cube_program.png
         :alt: STM32CubeProgrammer programming the QSPI eMMC module
         :align: center
         :width: 1000px
-    
-#. After the programming is complete, STM32CubeProgrammer will display a few pop-up windows informing you of device disconnecting and that the programming was successful. Click "OK" on all of them.
+
+9. After programming completes, click **OK** on the confirmation dialogs.
+
+|
+
+Firmware Operation
+===================
+
+State machine overview
+-----------------------
+
+The QSPI eMMC module firmware implements a state machine that manages Red Pitaya power control based on user input 
+and system monitoring. The firmware is written in Arduino C++ and available in the 
+`Red Pitaya GitHub repository <https://github.com/RedPitaya/RedPitaya-Examples>`_.
+
+.. note::
+
+    Direct link to firmware will be available soon.
 
 
-QSPI eMMC module schematics and pinout
-========================================
+Power states
+-------------
 
-You can find the QSPI eMMC module schematics and pinout in the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
+The firmware manages the following power states:
+
+**Power Up**
+
+    Red Pitaya is booting. After a set timeout, the firmware monitors power and watchdog signals. If signals are 
+    not detected, transitions to Power Reset. Otherwise, transitions to Power On.
+
+**Power On**
+
+    Red Pitaya is fully operational. Monitors watchdog and power signals continuously. If the power button is held 
+    for one second, transitions to Power Down. If signals are lost, transitions to Power Reset.
+
+**Power Down**
+
+    Initiates graceful shutdown. Sends shutdown signal to Red Pitaya, then waits for a timeout before transitioning 
+    to Power Off.
+
+**Power Off**
+
+    Red Pitaya is powered off. Remains in this state until the power button is pressed, then transitions to Power Up.
+
+**Power Down Reset**
+
+    Similar to Power Down but transitions to Power Reset instead of Power Off, allowing automatic restart.
+
+**Power Reset**
+
+    Red Pitaya is powered off temporarily. After a timeout, automatically transitions to Power Up. If this state 
+    is reached multiple times consecutively, transitions to Power Fail to prevent boot loops.
+
+**Power Fail**
+
+    Safety state entered after repeated failed boots. Requires manual intervention (power button press) to return 
+    to Power Off state.
+
+.. note::
+
+    At any time, pressing and holding the power button forces an immediate power off, overriding the current state.
 
 
-QSPI eMMC module firmware
-==========================
-
-.. TODO decide on the final link to the firmware
-
-The QSPI eMMC module firmware is written in Arduino IDE C++ and is available in the `Red Pitaya GitHub repository <https://github.com/RedPitaya/RedPitaya-Examples>`_. (**Link not yet available**)
-
-The firmware program is a state machine that controls the power of Red Pitaya in acordance with the user input. The program is has the following states:
-
-* **Power up** - Red Pitaya is booting up. After a set amout of time, the power and watchdog signals are monitored. If the signals are not detected, the program will go to the power reset state, otherwise it will go to the power on state.
-* **Power on** - Red Pitaya is powered on. If the power button is held for two seconds, the state switches to power down. Watchdog and power signals are monitored. If the signals are not detected, the program will go to the power reset state, otherwise it will stay in the power on state.
-* **Power down** - Red Pitaya is shutting down. A singal is sent to Red Pitaya to start the power off process. After a set amount of time, the program enters the power off state.
-* **Power off** - Red Pitaya is powered off. The program will stay in this state until the power button is pressed.
-* **Power down reset** - Red Pitaya will reset after a power down. A singal is sent to Red Pitaya to start the power off process. After a set amount of time, the program enters the power reset state.
-* **Power reset** - Red Pitaya is powered off. After a set amount of time, the program enters the power up state. If reset state is reached multiple times in a row, the board will enter power fail state.
-* **Power fail** - Red Pitaya is powered off. The program will stay in this state until the power button is pressed. Then it goes to the power off state.
-
-At any point in time, the user can press and hold the power button to force the Red Pitaya to power off.
-
-The state machine diagram is shown below:
+State diagram
+--------------
 
 .. figure:: img/E3_state_diagram.png
     :alt: QSPI eMMC module state machine
     :align: center
     :width: 1200px
 
-The firmware program is written in a way that it can be easily modified to suit the user's needs. The program is well commented and structured so that the user can easily understand and modify it.
+The firmware is designed for easy customization with clear code structure and comprehensive comments. State 
+transitions can be controlled from Red Pitaya using the E3 I2C controller.
 
-The state changes can be controlled from the Red Pitaya with the E3 I2C controller.
-
+|
 
 .. _e3_i2c_controller_sw:
 
-E3 I2C controller
-=================
+E3 I2C Controller
+==================
 
-.. the text is located in another directory, so we need just include it here - make changes in that file and they will be reflected here
+The QSPI eMMC module can be controlled from Red Pitaya via I2C commands. This allows programmatic control of 
+power states and firmware configuration.
+
+
 
 .. include:: ../../../../../appsFeatures/command_line_tools/utils/e3_i2c_controller.inc
 
+|
 
-E3 Hardware specifications
-==========================
+Hardware Specifications
+========================
 
-For information on hardware specifications such as pinout of the QSPI eMMC module, please refer to the :ref:`hardware section <E3_QSPI_eMMC_module_HW>`.
+For detailed hardware specifications, connector pinouts, and schematics, refer to the 
+:ref:`E3 hardware documentation <E3_QSPI_eMMC_module_HW>`.
 
+|
 
-FAQ
-===
+Frequently Asked Questions
+===========================
 
+**Q: Why isn't my module connecting to the programmer?**
 
-.. Linked to E3_QSPI_eMMC_module_HW section, add instructions and explanation of the basic program 
+Try different USB ports on your computer. Verify cable connections match the diagrams. Test the ST-Link/V2 
+connection first as it's the most reliable method.
 
+**Q: The firmware uploaded but doesn't work correctly. What should I check?**
 
-`Back to top <E3_QSPI_eMMC_module_SW>`_
+Verify all six firmware configuration steps were completed correctly, especially the pin map redefinitions and 
+the build.opt file. Ensure your Red Pitaya board is compatible (Pro Gen 2 models only).
+
+**Q: Can I use I2C1 or UART interfaces?**
+
+These interfaces are not currently supported as there is no physical connector on the module. The hardware 
+pads exist for future expansion with resistor modifications.
+
+**Q: How do I modify the DIO12 differential pair functionality?**
+
+Refer to the :ref:`hardware documentation <E3_QSPI_eMMC_module_HW>` for resistor configuration instructions 
+to enable I2C1 or UART on the DIO12 pins.
+
+**Q: What happens if the Red Pitaya fails to boot?**
+
+The firmware automatically detects boot failures and enters Power Reset state. After multiple failed attempts, 
+it enters Power Fail state requiring manual intervention to prevent continuous boot loops.

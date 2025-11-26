@@ -229,7 +229,7 @@ You can find the measurements of the fast analog frontend here:
 Schematics
 ============
 
-- `Schematics_SIGNAL_250-12_V1r1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_SIGNAL_250-12_V1r1.pdf>`_
+- :download:`Schematics_SIGNAL_250-12_V1r1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_SIGNAL_250-12_V1r1.pdf>`
 
 .. note::
 
@@ -240,8 +240,8 @@ Schematics
 Mechanical Specifications and 3D Models
 ===========================================
 
-- `SIGNALlab 250-12 V1r2 3D pdf <https://downloads.redpitaya.com/doc/3D_models/3D_SIGNAL_250-12_V1r2.pdf.zip>`_
-- `SIGNALlab 250-12 V1r2 3D step <https://downloads.redpitaya.com/doc/3D_models/3D_SIGNAL_250-12_V1r2.zip>`_
+- PDF :download:`3D_SIGNAL_250-12_V1r2.pdf.zip <https://downloads.redpitaya.com/doc/3D_models/3D_SIGNAL_250-12_V1r2.pdf.zip>`
+- STEP :download:`3D_SIGNAL_250-12_V1r2.zip <https://downloads.redpitaya.com/doc/3D_models/3D_SIGNAL_250-12_V1r2.zip>`
 
 
 Components

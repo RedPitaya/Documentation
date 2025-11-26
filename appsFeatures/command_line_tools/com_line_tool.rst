@@ -40,4 +40,5 @@ Command-line tools
     utils/calib_util.rst
     utils/updater_util.rst
     utils/e3_i2c_util.rst
+    utils/overlay_util.rst
     utils/other_util.rst

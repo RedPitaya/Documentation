@@ -3,13 +3,16 @@
 Software
 ########
 
-.. toctree::
-   :maxdepth: 2
+.. TODO add a description and quick intro to the Software development process
+.. Orientation for users - what does each section contain, what to expect, etc.
 
-   console/console_con
-   build/build
-   other_info/info
-   known_sw_issues/known_sw_issues
+.. toctree::
+    :maxdepth: 1
+
+    console/console_con
+    build/build
+    other_info/info
+    known_sw_issues/known_sw_issues
 
 
 
