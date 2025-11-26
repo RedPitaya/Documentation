@@ -12,4 +12,4 @@ Build & compile instructions
     e3-board/e3_software.rst
     ecosystem/ecosystem.rst
     debian.rst
-    webapp/top.rst
+    webapp/webApps.rst
