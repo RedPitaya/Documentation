@@ -49,6 +49,8 @@ You can also find all SCPI commands that the board will accept depending on the 
 
 For all other Red Pitaya OS versions, go to the link above and change the branch version to:
 
+* 2.07-48 - Branch 2025.2 *(file ends in .cpp)*.
+* 2.07-43 - Branch 2025.1 *(file ends in .cpp)*.
 * 2.05-37 - Branch 2024.3 *(file ends in .cpp)*.
 * 2.04-35 - Branch 2024.2 *(file ends in .cpp)*.
 * 2.00-30 - Branch 2024.1 *(file ends in .cpp)*.
@@ -71,6 +73,6 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
     <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
 
 |
-   
+
 
 :ref:`Back to top <command_list>`
