@@ -79,7 +79,7 @@ Latest 2.00 OS
 
 |
 
-Other previous versions of OS can be found `here <https://downloads.redpitaya.com/downloads/Unify/old/>`
+Other previous versions of OS can be found `here <https://downloads.redpitaya.com/downloads/Unify/old>`
 
 |
 
