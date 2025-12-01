@@ -78,7 +78,9 @@ Latest 2.00 OS
 * :download:`Latest Stable (2.07-48) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.07-48_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): 5d02710fd87a71b4c049ffa5105b69e5).
 
 |
+
 Other previous versions of OS can be found `here <https://downloads.redpitaya.com/downloads/Unify/old/>`
+
 |
 
 .. note::
