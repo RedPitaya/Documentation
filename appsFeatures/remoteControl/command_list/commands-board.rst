@@ -17,7 +17,7 @@ They are meant to be executed once at the start of the application during the in
 Important notes
 ----------------
 
-*   ``RP:RET_ON_ERROR <bool>`` command is a non-standard SCPI command feature that enables a special mode for compatibility with older SCPI clients. When this mode is enabled, if errors occur when executing query commands, the server will return empty data with delimiters "\r\n", 
+*   ``RP:RET_ON_ERROR <bool>`` command is a non-standard SCPI command feature that enables a special mode for compatibility with older SCPI clients. When this mode is enabled, if errors occur when executing query commands, the server will return empty data with delimiters "\r\n",
     which will prevent SCPI data or parameter requests to end in an infinite waiting-for-return loop when an error occurs on the Red Pitaya side. This is useful for maintaining compatibility with legacy systems that expect this behavior.
 
 
@@ -130,7 +130,7 @@ Parameters and command table
 | | ``SYSTem:BRD:Name?`` > ``STEMlab 125-14 v1.0``     | | Python: ``rp_GetVersion()``                    |                                                           |                        |
 | |                                                    | |                                                |                                                           |                        |
 +------------------------------------------------------+--------------------------------------------------+-----------------------------------------------------------+------------------------+
-| | ``SYSTem:VERSion?`` > ``OS version``               | | C: -                                           | Returns the Red Pitaya OS version.                        | IN DEV                 |
+| | ``SYSTem:VERSion?`` > ``OS version``               | | C: -                                           | Returns the Red Pitaya OS version.                        | 2.07-48 and up         |
 | | Examples:                                          | |                                                |                                                           |                        |
 | | ``SYSTem:VERSion?`` > ``2.07-651``                 | | Python: -                                      |                                                           |                        |
 | |                                                    | |                                                |                                                           |                        |

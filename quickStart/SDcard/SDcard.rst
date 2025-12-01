@@ -75,9 +75,15 @@ Latest 2.00 OS
 
 **Red Pitaya OS 2.0**:
 
-* :download:`Latest Stable (2.05-37) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.05-37_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): ad55cb45cf92bf8e40e3901f24a677ba).
+* :download:`Latest Stable (2.07-48) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.07-48_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): 5d02710fd87a71b4c049ffa5105b69e5).
 
 |
+Other previous versions of OS can be found `here <https://downloads.redpitaya.com/downloads/Unify/old/>`
+|
+
+.. note::
+
+    If you have problems running the 2.00 version of the OS and you updated from the 1.04 or older OS image, please check |this GitHub solution|. For all other problems please contact the |SUPPORT TEAM|.
 
 .. note::
 
@@ -163,7 +169,7 @@ For manual ecosystem upgrade please refer to `Manual ecosystem upgrade`_.
 Nightly Builds
 ==============
 
-The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier 
+The nightly builds are snapshots of the development activity for upcoming Red Pitaya OS releases and include the newest features and bug fixes scheduled for the official releases. These builds are made available to make it easier
 for users to test their setup for potential issues with an upcoming release or to test new features and provide feedback on improving them before they are released as a Beta OS or Stable version.
 We have decided to release the nightly builds to ensure that our codebase stays healthy and to shorten the time to fix some of the reported issues or implement some new features reported as suggestions for improvement.
 As these builds are snapshots of the latest code, odds are you will encounter more issues compared to stable releases. Please report any issues to support@redpitaya.com so that our developers can review them and make any needed fixes.
@@ -506,7 +512,7 @@ A manual upgrade allows you to fix a corrupted SD card image (if only the FAT pa
 #. Download a zip file from our |Red Pitaya archive|.
 
 #. Insert the SD card into the card reader.
-    
+
     .. note::
 
         Do **not** format the SD card as this will also delete the Linux OS partition.
@@ -537,7 +543,7 @@ As mentioned in the :ref:`Red Pitaya OS partitions <SDcard_partitions>` chapter,
 
 * **Linux OS** - *red_pitaya_OS-beta_<Linux OS version>.img.zip* - which contains Ubuntu OS, Red Pitaya libraries, etc.
 * **Ecosystem** - *ecosystem-<Linux OS version>-<Nightly Build ecosystem number>-<ID>.zip* - Red Pitaya Web APIs.
-    
+
 The official Red Pitaya OS releases have both the Linux OS and the ecosystem combined into one image file. For new feature development used for Nightly build (alpha OS) versions it is easier to have the two separated, so the nightly builds are released as two separate files.
 
 +-----------------+-----------------+---------------------------------------+-------------------+
@@ -562,7 +568,7 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
 
 
 1.  Download the .zip containing the `Nightly Build Ecosystem <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_ (usually the highest number available).
-    
+
     * Nightly build (alpha) ecosystems are named **ecosystem-<Linux OS version>-<Nightly build ecosystem number>-<ID>.zip**.
 
 #.  Go to the *RedPitaya/downloads* page and download the `latest Linux OS <https://downloads.redpitaya.com/downloads/LinuxOS/>`_.
@@ -570,7 +576,7 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
     * Linux OS versions are named **red_pitaya_OS-beta_<Linux OS version>.img.zip**.
 
     .. note::
-    
+
         Make sure the Linux OS version is the same as the one listed in the name of selected Nightly build (alpha ecosystem).
 
     .. note::
@@ -586,7 +592,7 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
 
 **Please read this section carefully**
 
-When unpacking the alpha ecosystem, some files may be overwritten because the FAT file system is not case-sensitive. 
+When unpacking the alpha ecosystem, some files may be overwritten because the FAT file system is not case-sensitive.
 Files such as CONNMARK.h and connmark.h will appear to the search system to be the same file, so you will be prompted to choose which file to keep.
 Choose from the following options (depending on the byte size of the files):
 
@@ -649,7 +655,7 @@ Unfortunately, the process is not as simple as installing the old OS to the SD c
 
     * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
     * :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`.
-    
+
     The other :ref:`Gen 2 and TI boards <dev_guide_hardware>` require OS 2.07-43 or newer for proper operation.
 
 Though we do not recommend it, some users may want to downgrade to an older OS version for various reasons. Here is a step-by-step guide on how to do it.
@@ -666,7 +672,7 @@ Though we do not recommend it, some users may want to downgrade to an older OS v
         .. code-block:: shell-session
 
             calib -o
-    
+
         This will convert the calibration data in the user space of the EEPROM to the old format.
 
         .. note::
@@ -675,7 +681,7 @@ Though we do not recommend it, some users may want to downgrade to an older OS v
             the :ref:`calib utility <calib_util>` or :ref:`Calibration application <calibration_app>` will not work.
 
     #. **Install the older OS** to the SD card and boot the board.
-    #. **Adjust the frequency calibration** (Gen 2 boards only). We suggest 
+    #. **Adjust the frequency calibration** (Gen 2 boards only). We suggest
 
 |
 

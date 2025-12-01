@@ -15,4 +15,5 @@ List of FPGA registers separated by Red Pitaya OS version.
     2.00-30/list.rst
     2.04-35/list.rst
     2.05-37/list.rst
+    2.07-48/list.rst
     in_dev/list.rst
