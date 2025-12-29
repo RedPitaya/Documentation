@@ -292,7 +292,7 @@ Running code
 
     .. code-block:: shell-session
 
-        cd /home/Miha/Desktop/
+        cd <python_file_location>
         python blink.py
 
 
