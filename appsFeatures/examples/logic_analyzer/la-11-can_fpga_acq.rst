@@ -16,12 +16,8 @@ Required hardware
 ==================
 
     - Red Pitaya
-    - CAN transceiver (for example, the |MCP2542-click|)
+    - CAN transceiver (for example, the |MCP2542-Click|)
     - pin jumper wires
-
-.. |MCP2542-click| raw:: html
-
-  <a href="https://www.mikroe.com/mcp2542-click" target="_blank">MCP2542 Click Board</a>
 
 Without the CAN transceiver, the CAN protocol cannot be decoded.
 

@@ -5,6 +5,30 @@
 LCR mode
 ========
 
+Functionality overview
+------------------------
+
+LCR mode commands enable impedance measurements using Red Pitaya as an LCR meter. These commands support measurement of inductance (L), 
+capacitance (C), and resistance (R) in both series and parallel configurations, with optional external LCR extension module support.
+
+
+Important notes
+----------------
+
+* Requires appropriate signal amplitude and frequency for accurate measurements.
+* External LCR extension module provides improved measurement range and accuracy.
+* Shunt resistor selection affects measurement sensitivity.
+
+
+Code examples
+-----------------
+
+[To be added - examples specific to LCR measurements]
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<enable> = {OFF, ON}``  Default: ``ON``

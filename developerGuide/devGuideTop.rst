@@ -1,6 +1,8 @@
 Developers guide
 ################
 
+Comprehensive technical documentation for developing with Red Pitaya - from hardware specifications and FPGA design to software APIs and system-level programming.
+
 .. toctree::
     :maxdepth: 2
 

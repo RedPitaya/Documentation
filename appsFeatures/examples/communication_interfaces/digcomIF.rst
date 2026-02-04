@@ -3,6 +3,8 @@
 Digital communication interfaces
 ################################
 
+Use Red Pitaya's I2C, SPI, and UART interfaces for communicating with sensors and peripherals. Examples cover both internal and external device communication with hardware and software APIs.
+
 .. toctree::
    :maxdepth: 1
    

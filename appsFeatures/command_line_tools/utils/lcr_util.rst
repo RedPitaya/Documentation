@@ -74,4 +74,4 @@ To run the LCR meter, follow these three steps:
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the lcr utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/lcr>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the lcr utility <RedPitaya/tree/master/Test/lcr>`.

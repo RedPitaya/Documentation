@@ -5,6 +5,32 @@
 UART
 ====
 
+Functionality overview
+------------------------
+
+UART commands provide serial communication capabilities through Red Pitaya's extension connector. Configure baud rate, data bits, parity, and stop bits to interface with serial devices, sensors, and other microcontrollers.
+
+
+Important notes
+----------------
+
+* Always connect External Common Mode (GND) pin in addition to RX and TX for reliable communication.
+* Default settings: 9600 baud, 8 data bits, no parity, 1 stop bit.
+* Supported baud rates from 1200 to 4,000,000.
+
+
+Code examples
+-----------------
+
+Here are some examples of how to use UART communication:
+
+* :ref:`Digital communication examples <examples_digcom>`.
+* :ref:`Logic analyzer examples <examples_la>`.
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<bits> = {CS6, CS7, CS8}``  Default: ``CS8``

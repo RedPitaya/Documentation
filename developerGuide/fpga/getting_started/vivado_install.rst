@@ -64,7 +64,7 @@ Regardless of the operating system we use, we will need to obtain the free **ISE
 Download Vivado 2020.1
 =======================
 
-1. Head to |AMD's downloads webpage|.
+1. Head to |Vivado-downloads|.
 #. Go to **Vivado Archive** and select the **2020.1** option.
 
    .. figure:: img/Vivado-install/Vivado-archive.png
@@ -104,11 +104,6 @@ Download Vivado 2020.1
       :align: center
 
 #. Extract the .tar.gz file using your preffered method.
-
-.. |AMD's downloads webpage| raw:: html
-
-    <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html" target="_blank">AMD's downloads webpage</a>
-
 
 At this point you should have an extracted Vivado 2020.1 installation directory. Now we will focus on the installation process for each operating system.
 

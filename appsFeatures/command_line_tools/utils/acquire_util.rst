@@ -172,7 +172,7 @@ Acquisition performance varies between Red Pitaya models. For more information p
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the acquire utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/acquire>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the acquire utility <RedPitaya/tree/master/Test/acquire>`.
 
 
 

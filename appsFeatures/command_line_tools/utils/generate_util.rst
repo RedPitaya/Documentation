@@ -92,4 +92,4 @@ Signal generator performance varies between Red Pitaya models. For more informat
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the generate utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/generate>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the generate utility <RedPitaya/tree/master/Test/generate>`.

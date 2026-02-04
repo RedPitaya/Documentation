@@ -47,7 +47,7 @@ To run an example, follow the instructions below:
         :width: 800
 
 
-#.  Start the SCPI server by selecting the RUN button. Please note the IP addreess (in our case, *192.168.178.100*) or the .local address (in our case, *rp-f03e5f.local*) of your Red Pitaya board , as it will be needed to establish a socket communication with your board.
+#.  Start the SCPI server by selecting the RUN button. Please note the IP address (in our case, *192.168.178.100*) or the .local address (in our case, *rp-f03e5f.local*) of your Red Pitaya board, as it will be needed to establish a socket communication with your board.
 
     .. figure:: img/scpi-app-run.png
         :width: 800
@@ -79,7 +79,7 @@ Requirements and Setup
 -----------------------
 
 The basic MATLAB installation already has everything you need to control your Red Pitaya. However, we recommend installing the *Signal Processing* and
-*Instrumentat control* toolboxes, which might come in handy.
+*Instrumentation control* toolboxes, which might come in handy.
 
 Running code
 ---------------
@@ -235,37 +235,15 @@ You can find the source code of the library on GitHub here:
 * |redpitaya_scpi lib github|.
 
 
-.. |PyVISA| raw:: html
+.. |python_main| replace:: |python| download webpage
 
-    <a href="https://pyvisa.readthedocs.io/en/latest/" target="_blank">PyVISA</a>
-    
-.. |PyVISA-py| raw:: html
+.. |workspace| replace:: |vscode-workspace|
 
-    <a href="https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/" target="_blank">PyVISA-py</a>
+.. |tutorials| replace:: |vscode-tutorials|
 
-.. |python_main| raw:: html
+.. |venv| replace:: |vscode-venv|
 
-    <a href="https://www.python.org/downloads/" target="_blank">Python download webpage</a>
-
-.. |VSCode| raw:: html
-
-    <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>
-
-.. |workspace| raw:: html
-
-    <a href="https://code.visualstudio.com/docs/editor/workspaces" target="_blank">workspace</a>
-
-.. |tutorials| raw:: html
-
-    <a href="https://code.visualstudio.com/docs/getstarted/introvideos" target="_blank">tutorials</a>
-
-.. |venv| raw:: html
-
-    <a href="https://code.visualstudio.com/docs/python/environments" target="_blank">virtual environment</a>
-
-.. |redpitaya_scpi lib github| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/lib/" target="_blank">redpitaya_scpi GitHub source code</a>
+.. |redpitaya_scpi lib github| replace:: :github:`redpitaya_scpi GitHub source code <RedPitaya/RedPitaya-Examples/blob/dev/python/lib/>`
 
 .. |redpitaya_scpi.py| replace::
 

@@ -89,7 +89,7 @@ Booting Red Pitaya with QSPI eMMC board
 
 Once the QSPI eMMC board is connected to the Red Pitaya board, you can power on the Red Pitaya board by pressing the **P-ON** button on the QSPI eMMC board. The Red Pitaya board will boot from the SD card. To boot from the eMMC or QSPI, Linux settings must be configured.
 
-1. Connect the power supply and ethernet cable to the Red Pitaya board. Unlike in normal operation, the Red Pitaya board **will not power on automatically**. You will see the **green power LED** on the Red Pitaya board perform a blink, then turn off.
+1. Connect the power supply and Ethernet cable to the Red Pitaya board. Unlike in normal operation, the Red Pitaya board **will not power on automatically**. You will see the **green power LED** on the Red Pitaya board perform a blink, then turn off.
 #. To start the booting process, press and hold the **P-ON** button on the QSPI eMMC board for 1 second. The **green power LED** on the Red Pitaya board will turn on and the boot process will start. The **green status LED** on the QSPI eMMC board will *blink during the boot process* and *turn on when the boot is complete* (1 minute).
 #. Once the Red Pitaya board is booted, the QSPI eMMC board will monitor the state of the Watchdog timer of the Red Pitaya board. If Red Pitaya freezes or hangs, the QSPI eMMC board will automatically reboot the Red Pitaya board.
 #. To power off the Red Pitaya board, press and hold the **P-ON** button on the QSPI eMMC board for 1 second. The Red Pitaya board will perform a safe shutdown and turn off.

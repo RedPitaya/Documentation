@@ -17,7 +17,7 @@ Ordered from simplest to most complex:
 * `API commands (C, Python)`_.
 * `Deep Memory Acquisition (DMA)`_.
 * `Streaming application`_.
-* `Custom acquisition and generatiron (FPGA)`_.
+* `Custom acquisition and generation (FPGA)`_.
 
 
 Oscilloscope and other applications
@@ -32,7 +32,7 @@ from the application at the user's request. Remote data acquisition by an applic
 
 The same applies to data generation options - applications such as oscilloscope and spectrum analyzer also have signal generator capabilities so 
 that both inputs and outputs can be used simultaneously. The signal generator can generate a predefined waveform, such as sine, square, saw up, 
-saw down, etc. or act as an `arbitrary waveform generator <https://en.wikipedia.org/wiki/Arbitrary_waveform_generator>`_. The signal generator 
+saw down, etc. or act as an |wiki-arbitrary-waveform|. The signal generator 
 includes *burst* and *sweep* generation capabilities.
 
 To use the AWG functionality, a 16384 sample long waveform representing one period of a custom signal is uploaded via the 
@@ -51,7 +51,7 @@ SCPI commands
 
 To remotely control the Red Pitaya from a Python, MATLAB or LabVIEW program running on your computer, and to acquire data from the Red Pitaya 
 to your computer for further processing, use the SCPI commands. The code is executed on a computer and string commands are sent between 
-Red Pitaya and your computer via `socket communication <https://en.wikipedia.org/wiki/Network_socket>`_. Once the SCPI commands reach Red Pitaya, 
+Red Pitaya and your computer via |wiki-network-socket|. Once the SCPI commands reach Red Pitaya, 
 they are interpreted and an appropriate C API function is executed in the background.
 
 .. note::
@@ -300,7 +300,7 @@ General tips for programming with generation SCPI commands
     found in the :ref:`Ecosystem column of the command table <command_list>`.
 #. The :ref:`SCPI code examples <examples>` are intended to run on the latest version of the Red Pitaya OS.
 #. Start with the ``GEN:RST`` command.
-#. Set contiuous signal parameters.
+#. Set continuous signal parameters.
 #. Optionally, switch to burst mode and set the burst signal parameters.
 #. Optionally, switch to sweep mode and set the sweep signal parameters.
 #. Set the generator trigger settings.
@@ -350,7 +350,7 @@ For those looking for continuous data acquisition, check out :ref:`the streaming
 control"). It allows continuous data acquisition from one or both of Red Pitaya's inputs directly to a file on a computer. The data can be 
 captured indefinitely, but there are speed limitations and currently no triggering options.  The total data flow at the inputs (IN1 and IN2)
 when streaming directly to a computer or to the SD card is limited. More details and limitations are 
-available :ref:`here <streaming_top>`.
+available :ref:`here <streaming_limits>`.
 
 There are two ways to stream data. Either via Ethernet to a *bin*, *tdms* or *wav* file on a computer or to the Red Pitaya's SD card. 
 The streaming parameters can also be controlled from a desktop client application. If multiple boards are on the same network (such as 
@@ -385,7 +385,7 @@ All information on DMA is available from the links below:
 * :ref:`Deep Memory Acquisition <deepMemoryAcq>`.
 
 
-Custom acquisition and generatiron (FPGA)
+Custom acquisition and generation (FPGA)
 =============================================
 
 The final option for data acquisition and generation is to re-program and customise the FPGA image to create new methods or extend existing functionality. 

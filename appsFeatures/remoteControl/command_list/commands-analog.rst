@@ -5,6 +5,31 @@
 Analog Inputs and Outputs
 =========================
 
+Functionality overview
+------------------------
+
+Analog I/O commands control Red Pitaya's slow analog channels on the extension connector. These provide DC voltage measurements (0-3.5V inputs) and generation (0-1.8V outputs) for interfacing with sensors, control circuits, and other analog peripherals.
+
+
+Important notes
+----------------
+
+* Analog inputs: 0 to +3.5V range (12-bit resolution).
+* Analog outputs: 0 to +1.8V range (12-bit resolution).
+* Not to be confused with fast RF inputs/outputs used for signal acquisition and generation.
+
+
+Code examples
+-----------------
+
+Here are some examples of how to use the analog I/O commands on Red Pitaya:
+
+* :ref:`Analog examples <examples_analog>`.
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<ain> = {AIN0, AIN1, AIN2, AIN3}``

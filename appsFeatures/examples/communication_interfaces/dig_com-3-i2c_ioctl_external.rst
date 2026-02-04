@@ -150,7 +150,7 @@ Code - Python
 
 .. |redpitaya_scpi| raw:: html
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py" target="_blank">GitHub</a>
+    :github:`GitHub <RedPitaya/RedPitaya/blob/master/Examples/python/redpitaya_scpi.py>`
 
 
 

@@ -154,9 +154,7 @@ Auto DC calibration will guide you step-by-step through the calibration process 
 
 The YouTube video is also available |YT-video|.
 
-.. |YT-video| raw:: html
-
-   <a href="https://www.youtube.com/watch?v=vLCa9oU7DMI" target="_blank">on this link</a>
+.. |YT-video| replace:: `on this link <https://www.youtube.com/watch?v=vLCa9oU7DMI>`__
 
 |
 

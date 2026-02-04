@@ -45,7 +45,7 @@ Setup
 .. figure:: img/Primary-and-secondary.png
     :width: 800
 
-#.  Connect all Red Pitayas to the same network via ethernet cables (switch or router that is connected to the client PC).
+#.  Connect all Red Pitayas to the same network via Ethernet cables (switch or router that is connected to the client PC).
 
     .. note::
 

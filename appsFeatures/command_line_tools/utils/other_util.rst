@@ -59,11 +59,6 @@ Copying data - Windows users
 
 Windows users should use an SCP client such as |WinSCP|. Download and install it, following its installation instructions. To log in to Red Pitaya, see the example screen in the next figure.
 
-.. |WinSCP| raw:: html
-
-    <a href="https://winscp.net/eng/index.php" target="_blank">WinSCP</a>
-
-
 .. figure:: ../img/WinSCP_login_screen.png
    :align: center
 

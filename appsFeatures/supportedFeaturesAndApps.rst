@@ -8,7 +8,7 @@ Supported features and apps by Red Pitaya model
 
 .. note::
 
-    Due to unpopularity we have decided to move away from the Application Marketplace. This means that Applicaton Marketplace will not longer be available in the future OS versions. All unique applications will be moved to the official OS and accessible on the main web interface page.
+    Due to unpopularity, we have decided to move away from the Application Marketplace. This means that Application Marketplace will no longer be available in the future OS versions. All unique applications will be moved to the official OS and accessible on the main web interface page.
 
 Gen 2
 --------
@@ -78,7 +78,7 @@ Gen 2
 +------------------------------------+----------------------------------+----------------------------------+----------------------------------+
 | Generator                          | Y                                | Y                                | Y                                |
 +------------------------------------+----------------------------------+----------------------------------+----------------------------------+
-| Acqisition                         | Y                                | Y                                | Y                                |
+| Acquisition                        | Y                                | Y                                | Y                                |
 +------------------------------------+----------------------------------+----------------------------------+----------------------------------+
 | Spectrum analyzer                  | Y                                | Y                                | Y                                |
 +------------------------------------+----------------------------------+----------------------------------+----------------------------------+
@@ -170,7 +170,7 @@ Original Generation
 +------------------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
 | Generator                          | Y                         | Y                         | N/A                       | Y                         | Y                         | Y                         |
 +------------------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
-| Acqisition                         | Y                         | Y                         | Y                         | Y                         | Y                         | Y                         |
+| Acquisition                        | Y                         | Y                         | Y                         | Y                         | Y                         | Y                         |
 +------------------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
 | Spectrum analyzer                  | Y                         | Y                         | Y                         | Y                         | Y                         | Y                         |
 +------------------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
@@ -201,6 +201,6 @@ Original Generation
 
 .. [#f1] The SDR applications were originally developed by Pavel Demin and adapted for use on other Red Pitaya board models. Please check the :ref:`SDR applications <sdr_tx_rx_apps>` page for more information.
 .. [#f2] PyRPL was originally developed for STEMlab 125-14. Running it on other board models requires some modifications in the FPGA (pinout + different FPGA - Zynq 7020). Please check the :ref:`PyRPL <pyrpl>` page for more information.
-.. [#f3] The Click Shields have a 125 MHz oscillator on board, which does not match the core clock frequncy of SDRlab 122-16 and SIGNALlab 250-12. We recommend using an external clock source with frequency matching the core clock frequency of these board models. Please check the :ref:`Click shields <click_shield>` page for more information.
+.. [#f3] The Click Shields have a 125 MHz oscillator on board, which does not match the core clock frequency of SDRlab 122-16 and SIGNALlab 250-12. We recommend using an external clock source with frequency matching the core clock frequency of these board models. Please check the :ref:`Click shields <click_shield>` page for more information.
 
 

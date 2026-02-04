@@ -5,9 +5,29 @@
 Temperature protection and power
 =================================
 
-.. note::
+Functionality overview
+------------------------
 
-    These commands are available only on SIGNALlab 250-12
+Temperature protection and power commands monitor and control thermal management on SIGNALlab 250-12. These commands provide temperature 
+readings, fan control, and automatic thermal protection to prevent hardware damage from overheating.
+
+
+Important notes
+----------------
+
+* These commands are available only on SIGNALlab 250-12.
+* Temperature protection automatically throttles or shuts down outputs when thermal limits are exceeded (85 degrees Celsius).
+* Monitor temperature regularly during high-power operation.
+
+
+Code examples
+-----------------
+
+[To be added - examples specific to temperature monitoring and protection]
+
+
+Parameters and command table
+-----------------------------
 
 **Parameter options:**
 

@@ -9,7 +9,7 @@ Other documentation and examples:
 - [Red Pitaya Knowledge Base](https://redpitaya-knowledge-base.readthedocs.io/en/latest/)
 - [JupyterLab lessons](https://github.com/RedPitaya/jupyter)
 
-GitHub code repositorties:
+GitHub code repositories:
 
 - [Red Pitaya Ecosystem and Applications](https://github.com/RedPitaya)
 - [FPGA projects](https://github.com/RedPitaya/RedPitaya-FPGA)

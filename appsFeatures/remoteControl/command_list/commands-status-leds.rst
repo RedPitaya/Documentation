@@ -5,6 +5,28 @@
 Status LEDs
 =============
 
+Functionality overview
+------------------------
+
+Status LED commands control the operational behavior of Red Pitaya's status LEDs. Enable or disable the automatic LED patterns that indicate system status, allowing manual LED control for custom applications.
+
+
+Important notes
+----------------
+
+* Default state is ON (automatic status indication).
+* Disabling the Ethernet LEDs will help reduce the fast analog input and output noise on the :ref:`Original generation <dev_guide_hardware>` of boards.
+
+
+Code examples
+-----------------
+
+[To be added - examples specific to Status LEDs]
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<enable> = {OFF, ON}``  Default: ``ON``

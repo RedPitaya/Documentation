@@ -89,7 +89,7 @@ Assembly instructions
         :align: center
         :width: 600
 
-#. Use the dark grey thermal pad. This is a special thermal pad with protective film on both sides. Remove the protective film from the side facing the heat sink interface and attach it to the heat sink interface. Take care to remove the film from the correct side as the pad is not symmetrical. The interface should now look like this. The top side of the thermal pad will still have foil attached at this poin
+#. Use the dark grey thermal pad. This is a special thermal pad with protective film on both sides. Remove the protective film from the side facing the heat sink interface and attach it to the heat sink interface. Take care to remove the film from the correct side as the pad is not symmetrical. The interface should now look like this. The top side of the thermal pad will still have foil attached at this point.
 
     .. figure:: img/Heatsink_thermal_foam.png
         :align: center

@@ -3,6 +3,8 @@
 Generating signals at RF outputs
 ################################
 
+Generate waveforms using Red Pitaya's fast DAC outputs. Examples demonstrate continuous and burst modes, arbitrary waveforms, synchronization between channels, frequency sweeps, and external triggering.
+
 .. toctree::
    :maxdepth: 1
    

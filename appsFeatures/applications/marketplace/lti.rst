@@ -10,10 +10,12 @@ More about this application can be found here:
 
    -   |LTI DSP|
    -   |LTI DSP forum|
+   -   |Source code repository|
    
 .. note::
 
-   The LTI DSP workbench application is available on the Red Pitaya marketplace.
+   We were unable to find more information about the current maintenance status of this application. It appears that the original developer is no longer actively maintaining it, and there is limited documentation available. 
+   Users interested in this application should refer to the |LTI DSP forum| for any community support or discussions related to its usage.
    
 .. |LTI DSP| raw:: html
 
@@ -22,3 +24,7 @@ More about this application can be found here:
 .. |LTI DSP forum| raw:: html
 
    <a href="https://forum.redpitaya.com/viewtopic.php?f=7&t=57&sid=e7073cc489ceb830be22789df4bd9f3f&start=10" target="_blank">LTI DSP forum</a>
+
+.. |Source code repository| raw:: html
+
+   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/deprecated/lti" target="_blank">LTI DSP code - Red Pitaya GitHub</a>

@@ -83,19 +83,11 @@ Download SDK 2019.1 Installer
 
 1. **Create/Login to AMD Account**
 
-    Visit the |amd_account| and create a free account if you don't have one.
-
-.. |amd_account| raw:: html
-
-    <a href="https://login.amd.com/" target="_blank">AMD Registration Page</a>
+    Visit the |AMD-login| and create a free account if you don't have one.
 
 2. **Navigate to Vivado SDK Downloads**
 
-    Go to the |Vivado_SDK_download_page| (Vitis/SDK Archive page).
-
-.. |Vivado_SDK_download_page| raw:: html
-
-    <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html" target="_blank">AMD Xilinx Vivado SDK Downloads Page</a>
+    Go to the |Vivado-downloads-archive| (Vitis/SDK Archive page).
 
 3. **Select Vivado 2019.1**
 
@@ -438,11 +430,7 @@ Add these variables:
 
 7. **Restart your terminal** or computer for changes to take effect
 
-For detailed Windows PATH instructions, see |windows_path|.
-
-.. |windows_path| raw:: html
-
-    <a href="https://www.computerhope.com/issues/ch000549.htm" target="_blank">this Windows PATH guide</a>
+For detailed Windows PATH instructions, see `this Windows PATH guide <https://www.computerhope.com/issues/ch000549.htm>`__.
 
 |
 
@@ -790,21 +778,9 @@ Additional Resources
 
 **Official Documentation:**
 
-- |sdk_user_guide| (UG1027)
-- |hsi_user_guide| (UG1138)
-- Device Tree Xilinx Repository: |dt_xilinx_github|
-
-.. |sdk_user_guide| raw:: html
-
-    <a href="https://www.xilinx.com/support/documents/sw_manuals/xilinx2019_1/ug1027-sdsoc-user-guide.pdf" target="_blank">Xilinx SDK User Guide</a>
-
-.. |hsi_user_guide| raw:: html
-
-    <a href="https://www.amd.com/content/dam/xilinx/support/documents/sw_manuals/xilinx2019_1/ug1138-generating-basic-software-platforms.pdf" target="_blank">HSI Reference Guide</a>
-
-.. |dt_xilinx_github| raw:: html
-
-    <a href="https://github.com/Xilinx/device-tree-xlnx" target="_blank">GitHub - Xilinx Device Tree</a>
+- `Xilinx SDK User Guide (UG1027) <https://docs.xilinx.com/v/u/en-US/ug1027-sdk-user-guide>`_
+- `Xilinx HSI User Guide (UG1138) <https://docs.xilinx.com/v/u/en-US/ug1138-vivado-sw-hw-interface>`_
+- `Device Tree Xilinx Repository <https://github.com/Xilinx/device-tree-xlnx>`_
 
 **Red Pitaya Resources:**
 

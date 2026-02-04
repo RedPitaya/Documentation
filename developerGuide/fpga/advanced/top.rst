@@ -4,23 +4,16 @@
 Advanced FPGA Topics
 ###########################################
 
-.. TODO add a description and quick intro to the Software development process
-.. Orientation for users - what does each section contain, what to expect, etc.
+This section covers advanced topics for Red Pitaya FPGA development beyond basic project creation and modification. These topics are essential for production deployment, 
+hardware integration, and advanced debugging workflows.
 
-This section covers advanced topics for Red Pitaya FPGA development, including boot loading configuration, advanced loading scenarios, JTAG programming, FPGA simulation, device tree configuration, and hardware signal mapping.
+**What you'll find here:**
 
-These topics are intended for developers who need to:
-
-- Set up automatic FPGA loading at boot
-- Configure custom FPGA bitstreams with device trees
-- Program FPGA directly via JTAG for rapid development
-- Simulate and verify FPGA designs before hardware deployment
-- Create custom device tree configurations
-- Understand physical pin connections and signal routing
-- Integrate custom hardware peripherals
-- Debug hardware-software interfaces
-- Configure PS (Processing System) peripherals
-- Implement complex FPGA workflows
+* **FPGA Boot Loading** - Configure automatic FPGA bitstream loading at system boot
+* **Advanced FPGA Loading** - Overlay system for runtime FPGA switching and management
+* **JTAG Programming** - Direct FPGA programming via JTAG for rapid prototyping and debugging
+* **Device Tree Configuration** - Create and modify device trees for custom peripherals and hardware configurations
+* **Signal Mapping** - Hardware pin assignments, XADC inputs, GPIO connections, and physical signal routing
 
 .. toctree::
     :maxdepth: 1
@@ -28,6 +21,5 @@ These topics are intended for developers who need to:
     fpga_boot_loading.rst
     fpga_advanced_loading.rst
     jtag_programming.rst
-    simulation.rst
     device_tree.rst
     signal_mapping.rst

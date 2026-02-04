@@ -2,36 +2,34 @@
 .. _fpga_programming_environment:
 
 ###########################################
-Red Pitaya FPGA programming environment
+Getting Started with FPGA Development
 ###########################################
 
-Red Pitaya software is composed of two parts, the FPGA image and the Linux operating system with drivers for interfacing with the FPGA running on the ARM processor. The FPGA image is built using Vivado 2020.1, which is a development environment for Xilinx FPGAs. 
-To make the interface between the FPGA and the ARM processor easier, the Xilinx Vivado Software Development Kit 2019.1 (SDK for short) is used.
+This section guides you through setting up your FPGA development environment and creating your first Red Pitaya FPGA project. You'll install the necessary tools (Vivado 2020.1 and SDK 2019.1), learn to build and modify projects, simulate designs, and load bitstreams to your board.
 
-Depending on your project goal, you may need to modify the FPGA design or the software running on the ARM processor. This also means that you may not need to install all the necessary software tools. 
-If you are only interested in modifying the existing FPGA design, you will only need Vivado. If you want to modify the software running on the ARM processor, you will also need the Xilinx Vivado SDK.
+**What you'll find here:**
 
-The following sections will guide you through the installation of the necessary software and the creation of a simple FPGA project.
+* **Introduction** - Understand Red Pitaya FPGA architecture, required tools, and development workflow
+* **Vivado Installation** - Install Xilinx Vivado 2020.1 for FPGA development
+* **SDK Installation** - Install Xilinx SDK 2019.1 for ARM software development (optional)
+* **Project Creation** - Create your first FPGA project from scratch
+* **Modify Existing Projects** - Learn to customize existing Red Pitaya projects
+* **Simulation** - Verify your designs with behavioral simulation before hardware deployment
+* **Reprogram FPGA** - Load bitstreams to Red Pitaya and test your designs
+* **Copy Projects** - Set up project templates and workflows
+* **SDK Project Creation** - Create ARM software projects that interface with your FPGA design
 
 .. toctree::
     :maxdepth: 1
 
+    intro.rst
     vivado_install.rst
     sdk_install.rst
     project_creation.rst
     modify_project.rst
+    simulation.rst
     reprogram_fpga.rst
     copy_project.rst
     project_creation_sdk.rst
 ..    new_project.rst
-
-.. seealso::
-
-    **Advanced Topics:**
-    
-    For device tree configuration and hardware signal mapping, see:
-    
-    - :ref:`device_tree` - Device tree generation, compilation, and loading
-    - :ref:`signal_mapping` - XADC inputs, GPIO pins, and LED connections
-
 

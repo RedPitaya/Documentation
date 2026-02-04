@@ -20,7 +20,7 @@ Each Groove connector connects to the power (3V3), ground, and two digital or an
 Code examples of controlling the digital and analog inputs and outputs are available :ref:`here <examples>`.
 
 Getting started with electronics is way more fun and engaging when you have loads of sensors you can use straight away. Whether you want to measure temperature, vibration, movement, etc.,
-we have an extension module compatible with **Grove** modules from |Seeed®|. All you need to do is select the desired module, find the correct connector, and get going with your project.
+we have an extension module compatible with **Grove** modules from |Seeed-Grove|. All you need to do is select the desired module, find the correct connector, and get going with your project.
 
 .. figure:: img/extension_module_and_sensors.png
   :width: 500
@@ -35,15 +35,7 @@ A full schematic of the extension module is available below.
 
 .. note::
 
-    The extension module is available for purchase from the Red Pitaya |store|.
-
-.. |Seeed®| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Seeed®</a>
-
-.. |store| raw:: html
-
-    <a href="https://redpitaya.com/shop/" target="_blank">store</a>
+    The extension module is available for purchase from the Red Pitaya |redpitaya-store|.
 
 
 Connectors and Jumpers
@@ -55,11 +47,7 @@ The black connectors on the sides are compatible with Arduino, the white connect
 Grove module connectors
 --------------------------
 
-These are dedicated connectors compatible with |Grove modules|.
-
-.. |Grove modules| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove_System/" target="_blank">Grove modules</a>
+These are dedicated connectors compatible with `Grove modules <https://wiki.seeedstudio.com/Grove_System/>`_.
 
 There are six connector types available:
 
@@ -166,23 +154,23 @@ Jumpers
 +----------------+------------------+---------------------+--------------------+
 | **Jumper Num** |  **Output Pin**  | **Position 1**      | **Position 2**     |
 +================+==================+=====================+====================+
-| J1              | +5V_SEL         | +5V_EXT             | +5V (Red Pitaya)   |
+| J1             | +5V_SEL          | +5V_EXT             | +5V (Red Pitaya)   |
 +----------------+------------------+---------------------+--------------------+
-| J2              | VCC             | +3V3_SEL            | +5V_SEL            |
+| J2             | VCC              | +3V3_SEL            | +5V_SEL            |
 +----------------+------------------+---------------------+--------------------+
-| J3              | +3V3_SEL        | +3V3 (Red Pitaya)   | +3V3_LDO           |
+| J3             | +3V3_SEL         | +3V3 (Red Pitaya)   | +3V3_LDO           |
 +----------------+------------------+---------------------+--------------------+
-| J4              | IO13            | SPI_SCK             | DIO5_N             |
+| J4             | IO13             | SPI_SCK             | DIO5_N             |
 +----------------+------------------+---------------------+--------------------+
-| J5              | IO12            | SPI_MISO            | DIO4_N             |
+| J5             | IO12             | SPI_MISO            | DIO4_N             |
 +----------------+------------------+---------------------+--------------------+
-| J6              | IO11            | SPI_MOSI            | DIO3_N             |
+| J6             | IO11             | SPI_MOSI            | DIO3_N             |
 +----------------+------------------+---------------------+--------------------+
-| J7              | IO6             | SPI_CS              | DIO2_N             |
+| J7             | IO6              | SPI_CS              | DIO2_N             |
 +----------------+------------------+---------------------+--------------------+
-| J8              | IO1             | UART_TX             | DIO1_P             |
+| J8             | IO1              | UART_TX             | DIO1_P             |
 +----------------+------------------+---------------------+--------------------+
-| J9              | IO0             | UART_RX             | DIO0_P             |
+| J9             | IO0              | UART_RX             | DIO0_P             |
 +----------------+------------------+---------------------+--------------------+
 
 |
@@ -204,138 +192,50 @@ Sensors
 Sensor information                                                                          Connector
 ========================================================================================    ============
 **Analog**
-|Temperature sensor|                                                                        AI
-|Motion sensor|                                                                             DIO
-|Touch sensor|                                                                              DIO
-|Button|                                                                                    DIO
-|Switch|                                                                                    DIO
+|Seeed-temp|                                                                                AI
+|Seeed-motion|                                                                              DIO
+|Seeed-touch|                                                                               DIO
+|Seeed-button|                                                                              DIO
+|Seeed-switch|                                                                              DIO
 **Digital**
-|Tilt|                                                                                      DIO
-|Potentiometer|                                                                             AI
-|Light sensor|                                                                              AI
-|Air quality sensor|                                                                        AI
-|Vibration sensor|                                                                          AI
-|Moisture sensor|                                                                           AI
-|Water sensor|                                                                              AI
-|Alcohol sensor|                                                                            AI
+|Seeed-tilt|                                                                                DIO
+|Seeed-potentiometer|                                                                       AI
+`Light sensor <http://wiki.seeed.cc/Grove-Light_Sensor>`_                                   AI
+`Air quality sensor <https://wiki.seeedstudio.com/Grove-Air_Quality_Sensor_v1.3>`_          AI
+`Vibration sensor <https://wiki.seeedstudio.com/Grove-Piezo_Vibration_Sensor>`_             AI
+`Moisture sensor <https://wiki.seeedstudio.com/Grove-Moisture_Sensor>`_                     AI
+`Water sensor <https://wiki.seeedstudio.com/Grove-Water_Sensor>`_                           AI
+`Alcohol sensor <https://wiki.seeedstudio.com/Grove-Alcohol_Sensor>`_                       AI
 Barometer ``not supported at the moment``                                                   I2C
-|Sound sensor|                                                                              AI
-|UV sensor|                                                                                 AI
+`Sound sensor <http://wiki.seeed.cc/Grove-Sound_Sensor>`_                                   AI
+`UV sensor <https://wiki.seeedstudio.com/Grove-UV_Sensor>`_                                 AI
 Accelerometer ``not supported at the moment``                                               I2C
 ========================================================================================    ============
-
-.. |Temperature sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/" target="_blank">Temperature sensor</a>
-
-.. |Motion sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-PIR_Motion_Sensor" target="_blank">Motion sensor</a>
-
-.. |Touch sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Touch_Sensor" target="_blank">Touch sensor</a>
-
-.. |Button| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Button" target="_blank">Button</a>
-
-.. |Switch| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Switch-P" target="_blank">Switch</a>
-
-.. |Tilt| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Tilt_Switch" target="_blank">Tilt</a>
-
-.. |Potentiometer| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Slide_Potentiometer" target="_blank">Potentiometer</a>
-
-.. |Light sensor| raw:: html
-
-    <a href="http://wiki.seeed.cc/Grove-Light_Sensor" target="_blank">Light sensor</a>
-
-.. |Air quality sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Air_Quality_Sensor_v1.3" target="_blank">Air quality sensor</a>
-
-.. |Vibration sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Piezo_Vibration_Sensor" target="_blank">Vibration sensor</a>
-
-.. |Moisture sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Moisture_Sensor" target="_blank">Moisture sensor</a>
-
-.. |Water sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Water_Sensor" target="_blank">Water sensor</a>
-
-.. |Barometer| raw:: html
-
-    <a href="" target="_blank">Barometer</a>
-
-.. |Alcohol sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Alcohol_Sensor" target="_blank">Alcohol sensor</a>
-
-.. |Sound sensor| raw:: html
-
-    <a href="http://wiki.seeed.cc/Grove-Sound_Sensor" target="_blank">Sound sensor</a>
-
-.. |UV sensor| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-UV_Sensor" target="_blank">UV sensor</a>
-
-.. |Accelerometer| raw:: html
-
-    <a href="" target="_blank">Accelerometer</a>
 
 |
 
 ========================================================================================    ============
 Actuators                                                                                   Connector
 ========================================================================================    ============
-|Relay|                                                                                     DIO
+`Relay <https://wiki.seeedstudio.com/Grove-Relay>`_                                         DIO
 ========================================================================================    ============
-
-.. |Relay| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-Relay" target="_blank">Relay</a>
 
 |
 
 ========================================================================================    ============
 Indicators                                                                                  Connector
 ========================================================================================    ============
-|Buzzer|                                                                                    DIO
-|LED|                                                                                       DIO
-|7 segment display|                                                                         Digital pins
-|LED bar|                                                                                   Digital pins
-|Groove LCD|                                                                                Digital pins
+`Buzzer <https://wiki.seeedstudio.com/Grove-Buzzer>`_                                       DIO
+`LED <https://www.seeedstudio.com/grove-led-p-767.html?cPath=156_157>`_                     DIO
+|seven_segment_display|                                                                     Digital pins
+`LED bar <https://wiki.seeedstudio.com/Grove-LED_Bar>`_                                     Digital pins
+`Groove LCD <https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight>`_                        Digital pins
 LCD                                                                                         Digital pins
 ========================================================================================    ============
 
-.. |Buzzer| raw:: html
 
-    <a href="https://wiki.seeedstudio.com/Grove-Buzzer" target="_blank">Buzzer</a>
+.. |seven_segment_display| replace:: `7 segment display <https://www.seeedstudio.com/Grove-0-54-Red-Dual-Alphanumeric-Display-p-4031.html?queryID=817e144e20d72ab54938d8288d8f4155&objectID=4031&indexName=bazaar_retailer_products>`__
 
-.. |LED| raw:: html
-
-    <a href="https://www.seeedstudio.com/grove-led-p-767.html?cPath=156_157" target="_blank">LED</a>
-
-.. |7 segment display| raw:: html
-
-    <a href="https://www.seeedstudio.com/Grove-0-54-Red-Dual-Alphanumeric-Display-p-4031.html?queryID=817e144e20d72ab54938d8288d8f4155&objectID=4031&indexName=bazaar_retailer_products" target="_blank">7 segment display</a>
-
-.. |LED bar| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-LED_Bar" target="_blank">LED bar</a>
-
-.. |Groove LCD| raw:: html
-
-    <a href="https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight" target="_blank">Groove LCD</a>
 
 
 Code Examples

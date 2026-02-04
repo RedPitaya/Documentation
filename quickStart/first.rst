@@ -4,152 +4,174 @@
 Connect to Red Pitaya
 #####################
 
-Red Pitaya boards use *plug and play* approach. You can connect to the Red Pitaya board in multiple ways:
+This guide will help you connect to your Red Pitaya board and access its web interface in just a few simple steps.
 
-* **LAN network connection** (recommended),
-* **Direct Ethernet cable connection** (PC to Red Pitaya board),
-* **Wi-Fi connection**.
+.. contents::
+    :local:
+    :backlinks: top
+    :depth: 2
 
-We recommend using the LAN network connection as it is the most straightforward and reliable method, which gives you quick access to all Red Pitaya applications using only your web browser.
-The other methods of connection are described in the :ref:`Network manager tool <network_manager>` chapter.
+|
+
+***************************
+Identify your board model
+***************************
+
+Please refer to the :ref:`Identify your board model guide <ID_guide>` to determine which Red Pitaya board model you have before proceeding with the connection steps.
+
+|
+
+***********************
+Connection requirements
+***********************
+
+Before connecting your Red Pitaya, make sure you have:
+
+* **SD card** with Red Pitaya OS installed (see :ref:`Prepare SD card guide <prepareSD>`)
+* **Ethernet cable**
+* **Power supply**:
+
+    * 5V 3A minimum (for Gen 2 boards)
+    * 5V 2A minimum (for most Original Gen board models)
+    * 24V 0.5A (for SIGNALlab 250-12)
+
+* **Router or network switch** with DHCP enabled (|wiki-dhcp|)
+* **Computer** with a web browser (Chrome, Firefox, Safari, or Edge)
 
 .. note::
 
-    **Prerequisites:**
-    DHCP must be enabled on your local network. Here is a link to the `Wikipedia page with more information`_.
+    **Connection methods:**
+    
+    Red Pitaya supports multiple connection methods:
+    
+    * **LAN network connection** (recommended - covered in this guide)
+    * Direct Ethernet cable connection (PC to Red Pitaya)
+    * Wi-Fi connection
+    
+    For alternative connection methods, see the :ref:`Network manager tool <network_manager>` chapter.
 
 
-Follow these five simple steps to start using your Red Pitaya:
 
-.. tabs::
+***********************************
+Connection steps (all board models)
+***********************************
 
-    .. group-tab:: Gen 2
+Follow these five simple steps to connect to your Red Pitaya:
 
-        .. note::
+1. **Update the SD card** with the |latestOS|.
+
+#. **Insert the SD card** into your Red Pitaya board.
+
+    .. figure:: img/125_sticker_2.png
+        :width: 600
+        :align: center
+
+#. **Connect to your network** - Use an Ethernet cable to connect your Red Pitaya to your router (or a network socket connected to the router).
+
+    .. figure:: img/125_router.png
+        :width: 600
+        :align: center
         
-            When the QSPI eMMC board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the E3 tab below or the :ref:`QSPI eMMC board booting section <QSPI_eMMC_board_boot>` for more information.
+    *Note: For SIGNALlab 250-12, see the image below:*
 
+    .. figure:: img/250_router.png
+        :width: 600
+        :align: center
 
-        .. tabs::
+#. **Connect the power supply** to your Red Pitaya board.
 
-            .. tab:: 125-14 Gen 2, 125-14 PRO Gen 2, 125-14 PRO Z7020 Gen 2, 125-14 TI, 65-16 TI
-
-                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
-                #. Insert the SD card into your Red Pitaya board.
-
-                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-                        :width: 400
-                        :align: center
-
-                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
-
-                    .. figure:: img/125_router.png
-                        :width: 400
-                        :align: center
-
-                #. Connect the power supply to the Red Pitaya board.
-                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
-
-
-                    .. figure:: img/125_stiker.png
-                        :width: 400
-                        :align: center
-
-                    .. figure:: img/125_stiker_2.png
-                        :width: 400
-                        :align: center
-
-            .. tab:: QSPI eMMC board booting
-
-                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
-                #. Insert the SD card into your Red Pitaya board.
-
-                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-                        :width: 400
-                        :align: center
-
-                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
-
-                    .. figure:: img/125_router.png
-                        :width: 400
-                        :align: center
-
-                #. Connect the power supply to the Red Pitaya board.
-                #. Press and hold the **P-ON** button on the QSPI eMMC board for 1 seconds to turn on the Red Pitaya board. Read more about the QSPI eMMC board in the :ref:`QSPI eMMC board <QSPI_eMMC_board>` chapter.
-                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
-
-                    .. figure:: img/125_stiker.png
-                        :width: 400
-                        :align: center
-
-                    .. figure:: img/125_stiker_2.png
-                        :width: 400
-                        :align: center
-
-    .. group-tab:: Original Gen
-
-        .. tabs::
-
-            .. tab:: 125-14, 122-16, 4-Input, 125-10
-
-                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
-                #. Insert the SD card into your Red Pitaya board.
-
-                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-                        :width: 400
-                        :align: center
-
-                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
-
-                    .. figure:: img/125_router.png
-                        :width: 400
-                        :align: center
-
-                #. Connect the power supply to the Red Pitaya board.
-                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
-
-
-                    .. figure:: img/125_stiker.png
-                        :width: 400
-                        :align: center
-
-                    .. figure:: img/125_stiker_2.png
-                        :width: 400
-                        :align: center
-
-            .. tab:: 250-12
-
-                #. Update the Red Pitaya OS on the included SD card to the |latestOS|.
-                #. Insert the SD card into your Red Pitaya board.
-
-                    .. figure:: SDcard/img/pitaya-quick-start-insert-sd-card.png
-                        :width: 400
-                        :align: center
-
-                #. Connect your Red Pitaya board to the router (or an ethernet socket connected to the router).
-
-                    .. figure:: img/250_router.png
-                        :width: 400
-                        :align: center
-
-                #. Connect the power supply to the Red Pitaya board.
-                #. Open your web browser and type ``rp-xxxxxx.local/`` (or Red Pitaya's IP address) into the address bar.
-
-                    .. figure:: img/250_stiker.png
-                        :width: 800
-                        :align: center
-
-
-``xxxxxx`` are the last six characters of the MAC address of your Red Pitaya board. The MAC address is written on the Ethernet connector.
-Alternatively, you can replace the ``rp-xxxxxx.local`` with Red Pitaya's IP address, which you can get by matching Red Pitaya's MAC address in the APR table (type ``arp -a`` into the terminal/CMD).
+    .. warning::
+    
+        **QSPI eMMC board users only:**
         
-After the **fifth step**, you will get a Red Pitaya main page, as shown below.
+        If you have a QSPI eMMC board connected, your Red Pitaya will **not** boot automatically. After connecting power, you must press and hold the **P-ON button** on the QSPI eMMC board for 1 second to turn on the Red Pitaya.
+        
+        Read more in the :ref:`QSPI eMMC board chapter <QSPI_eMMC_board>`.
+
+    **What to expect during boot:**
+    
+    Watch the LED sequence on your board. It should follow this pattern:
+    
+    .. raw:: html
+
+        <div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
+            <iframe src="https://www.youtube.com/embed/9xZCAkXAkw8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        </div>
+
+    If you see unexpected LED behavior, check the :ref:`troubleshooting section <faq>`.
+
+#. **Open your web browser** and connect to Red Pitaya.
+
+|
+
+*************************************
+Find your Red Pitaya's web address
+*************************************
+
+There are two ways to access your Red Pitaya:
+
+Method 1: Using the hostname (recommended)
+===========================================
+
+Look at the Ethernet connector on your Red Pitaya. You'll see a sticker with a code like **rp-xxxxxx**.
+
+.. figure:: img/Ethernet_sticker.png
+    :width: 800
+    :align: center
+
+.. note:: 
+
+    Boards with enclosures (like SIGNALlab 250-12) have the sticker on the bottom of the enclosure instead.
+
+Type this address into your web browser's address bar, adding ``.local/`` at the end:
+
+.. code-block:: none
+
+    rp-xxxxxx.local/
+
+Replace ``xxxxxx`` with the six characters from your board's sticker.
+
+.. figure:: img/Browser_address_bar_example.png
+    :width: 600
+    :align: center
+    
+Example of entering the address in your browser
+
+|
+
+Method 2: Using the IP address
+===============================
+
+If the hostname method doesn't work, you can find your Red Pitaya's IP address:
+
+1. Open a terminal (macOS/Linux) or Command Prompt (Windows)
+2. Type: ``arp -a`` and press Enter
+3. Look for the MAC address that matches the one on your Red Pitaya's sticker
+4. Use the corresponding IP address in your browser
+
+Example:
+
+.. code-block:: none
+
+    192.168.1.100
+
+|
+
+***************************
+Success! You're connected
+***************************
+
+After following the steps above, you should see the Red Pitaya main page in your browser:
 
 .. figure:: img/main_web_interface.png
     :width: 800
     :align: center
 
-    Red Pitaya's main page user interface.
+    Red Pitaya's main page user interface
+
+**What's next?**
+
+Here's a quick video tutorial on using the Red Pitaya web interface:
 
 .. raw:: html
 
@@ -157,18 +179,49 @@ After the **fifth step**, you will get a Red Pitaya main page, as shown below.
         <iframe src="https://www.youtube.com/embed/I21xyTCiZ-8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-For connecting to the Red Pitaya board through 
+You can now:
 
-.. note::
+* Explore the built-in applications (Oscilloscope, Signal Generator, Spectrum Analyzer, etc.)
+* Check out the :ref:`Applications & Features <appsFeatures>` section for tutorials
+* For alternative connection methods (Wi-Fi, direct connection), see the :ref:`Network manager tool <network_manager>` chapter
 
-    For any issues during setup, check :ref:`troubleshooting <faq>` or look on the |forum| for a solution.
-    If you cannot find a solution, please write to support@redpitaya.com or post your problem on the forum, providing the following details:
+|
 
-    * **Red Pitaya board model** (STEMlab 125-14, SDRlab 122-16, SIGNALlab 250-12, etc.),
-    * Is the board a variation of any board models (Low Noise, External Clock, etc.),
-    * **Red Pitaya OS version** (bottom-right corner of the web interface),
-    * **Description of the problem** in as much detail as possible,
-    * Any other information you think might be relevant to the situation.
+***************
+Troubleshooting
+***************
+
+If you're having trouble connecting:
+
+**Can't access rp-xxxxxx.local:**
+
+* Verify you're using the correct MAC address from your board's sticker
+* Try adding or removing the trailing slash: ``rp-xxxxxx.local/`` vs ``rp-xxxxxx.local``
+* Make sure your computer and Red Pitaya are on the same network
+* Try Method 2 (IP address) instead
+
+**Red Pitaya doesn't boot (no LED activity):**
+
+* Check the power supply (must be 5V 2A minimum)
+* Verify the SD card is properly inserted
+* If using QSPI eMMC board, make sure you pressed the P-ON button
+
+**LED pattern looks wrong:**
+
+* Watch the :ref:`LED boot sequence video <quickstart_connect>` above to compare
+* The SD card may be corrupted - try re-imaging it
+
+**For more help:**
+
+Check the comprehensive :ref:`troubleshooting guide <faq>` or ask on the |redpitaya-forum|.
+
+If you need to contact support, please provide:
+
+* **Board model** (e.g., STEMlab 125-14 Gen 2, SIGNALlab 250-12)
+* **Board variation** (if any): Low Noise, External Clock, etc.
+* **OS version** (shown in bottom-right corner of web interface)
+* **Detailed description** of the problem
+* **Steps you've already tried**
 
 
 
@@ -178,8 +231,5 @@ For connecting to the Red Pitaya board through
 
 .. _Wikipedia page with more information: https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol
 
-
-.. |forum| raw:: html
-
-    <a href="https://forum.redpitaya.com/" target="_blank">forum</a>
+.. Note: Using global |redpitaya-forum| substitution instead of |forum|
 

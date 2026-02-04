@@ -43,6 +43,40 @@ The ``overlay.sh`` script provides:
 |
 
 
+Command Help
+=============
+
+Running ``overlay.sh`` without arguments displays the command help:
+
+.. code-block:: console
+
+    root@rp-f0ef2d:~# overlay.sh
+    Usage: /opt/redpitaya/sbin/overlay.sh <fpga_name> [custom_fpga] [custom_devicetree] [overlay_name]
+    
+    Load FPGA bitstream and device tree overlay
+    
+    Parameters:
+      <fpga_name>        - Name of FPGA configuration from /opt/redpitaya/fpga/z10_125_pro_v2/
+      [custom_fpga]      - Custom FPGA bitstream path (optional)
+      [custom_devicetree]- Custom device tree overlay path (optional)
+      [overlay_name]     - Custom overlay region name (optional, default: Full)
+    
+    Examples:
+      /opt/redpitaya/sbin/overlay.sh v0.94                          - Load default Mercury FPGA
+      /opt/redpitaya/sbin/overlay.sh oscillator /path/to/custom.bin - Load custom FPGA bitstream
+      /opt/redpitaya/sbin/overlay.sh sdr /path/to/custom.bin /path/to/custom.dtbo - Load custom FPGA and device tree
+      /opt/redpitaya/sbin/overlay.sh transmitter /path/to/fpga.bin /path/to/fpga.dtbo CustomRegion - Load with custom overlay name
+    
+    Available FPGA configurations:
+      - barebones
+      - logic
+      - pyrpl
+      - stream_app
+      - v0.94
+
+|
+
+
 Basic Usage
 ============
 
@@ -305,6 +339,65 @@ The overlay script requires binary bitstream files (``.bit.bin``). If you have a
 
     echo all:{ red_pitaya_top.bit } > red_pitaya_top.bif
     bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+
+|
+
+
+Advanced Usage - fpgautil
+===========================
+
+The ``fpgautil`` utility is the low-level tool that ``overlay.sh`` calls internally to load FPGA bitstreams. 
+While ``overlay.sh`` is recommended for most users, advanced users may use ``fpgautil`` directly for finer control over the FPGA loading process.
+
+Command Help
+-------------
+
+.. code-block:: console
+
+    root@rp-f0ef2d:~# fpgautil
+    
+    fpgautil: FPGA Utility for Loading/reading PL Configuration
+    
+    Usage:  fpgautil -b <bin file path> -o <dtbo file path>
+    
+    Options: -b <binfile>           (Bin file path)
+             -o <dtbofile>          (DTBO file path)
+             -f <flags>             Optional: <Bitstream type flags>
+                                       f := <Full | Partial >
+             -n <Fpga region info>  FPGA Regions represent FPGA's
+                                    and partial reconfiguration
+                                    regions of FPGA's in the
+                                    Device Tree
+    
+    Examples:
+    (Load Full bitstream using Overlay)
+    fpgautil -b top.bit.bin -o can.dtbo -f Full -n Full
+    (Load Partial bitstream using Overlay)
+    fpgautil -b rm0.bit.bin -o rm0.dtbo -f Partial -n PR0
+    (Load Full bitstream using sysfs interface)
+    fpgautil -b top.bit.bin -f Full
+    (Load Partial bitstream using sysfs interface)
+    fpgautil -b rm0.bit.bin -f Partial
+
+Usage Notes
+------------
+
+**When to use fpgautil directly:**
+
+- Custom automation scripts requiring direct control
+- Debugging FPGA loading issues
+- Advanced partial reconfiguration scenarios
+- Integration with custom deployment workflows
+
+**Key differences from overlay.sh:**
+
+- ``overlay.sh`` - Simplified interface, automatic model detection, handles file paths for you
+- ``fpgautil`` - Low-level control, requires explicit paths and parameters, direct FPGA Manager interface
+
+.. note::
+
+    Most users should use ``overlay.sh`` instead of ``fpgautil`` directly. The overlay script provides automatic model detection, 
+    simplified paths, and better error handling.
 
 |
 

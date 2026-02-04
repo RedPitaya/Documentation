@@ -3,6 +3,8 @@
 Generating and Acquiring signals at RF inputs/outputs
 #####################################################
 
+Combine signal generation and acquisition for synchronized measurements. These examples show how to generate test signals and capture responses simultaneously.
+
 .. toctree::
     :maxdepth: 1
    

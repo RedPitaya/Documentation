@@ -3,6 +3,8 @@
 Acquiring signals at RF inputs
 ##############################
 
+Capture high-speed signals using Red Pitaya's fast ADC inputs. Examples cover trigger modes, sampling rates, decimation, and split triggering for advanced acquisition control.
+
 .. toctree::
    :maxdepth: 1
    

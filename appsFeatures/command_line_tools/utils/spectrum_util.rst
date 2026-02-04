@@ -160,5 +160,5 @@ To run the spectrum analyzer utility, perform the following steps:
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the spectrum utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/spectrum>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the spectrum utility <RedPitaya/tree/master/Test/spectrum>`.
 

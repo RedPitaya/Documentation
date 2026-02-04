@@ -92,6 +92,6 @@ Other ways to update the ecosystem and Red Pitaya Linux OS
 Source code
 ------------
 
-The Red Pitaya GitHub repository contains the `source code for the Ecosystem update utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the Ecosystem update utility <RedPitaya/tree/master/Test>`.
 
 .. TODO Update link to the source code.

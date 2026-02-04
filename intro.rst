@@ -1,3 +1,4 @@
+.. _intro:
 
 What is Red Pitaya?
 #####################
@@ -32,7 +33,7 @@ The board can be programmed in several ways:
 
 * Remotely via SCPI commands (Python, MATLAB or LabVIEW),
 * C and Python programs running directly on the board itself,
-* Completly customisable FPGA firmware that can be programmed using the AMD Xilinx Vivado IDE.
+* Completely customisable FPGA firmware that can be programmed using the AMD Xilinx Vivado IDE.
 
 The Red Pitaya is used everywhere from the `International Space Station <https://content.redpitaya.com/blog/red-pitaya-an-open-source-software-measurement-and-control-board-used-in-spacecraft-atmosphere-monitor-for-nasa>`_ 
 to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sorting-tomatoes-become-a-matter-for-tech>`_, which is why we call it the "Swiss Army Knife for Engineers".
@@ -47,24 +48,24 @@ to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sortin
 
 **Resources**
 
-* :ref:`Connection <quickstart_connect>`.
-* :ref:`Applications <all_apps>`.
-* :ref:`Programming <programming>`.
-* :ref:`FPGA <fpga_top>`.
-* :ref:`Customization <customization>`.
-* `Shop <https://redpitaya.com/shop/>`_.
+* :ref:`Connection <quickstart_connect>`
+* :ref:`Applications <all_apps>`
+* :ref:`Programming <programming>`
+* :ref:`FPGA <fpga_top>`
+* :ref:`Customization <customization>`
+* |redpitaya-store|
 
 **GitHub source code:**
 
-* :rp-github:`Ecosystem and applications <RedPitaya>`.
-* :rp-github:`FPGA <RedPitaya-FPGA>`.
+* :rp-github:`Ecosystem and applications <RedPitaya>`
+* :rp-github:`FPGA <RedPitaya-FPGA>`
 
 **Use cases:**
 
-* `Industrial usecases <https://redpitaya.com/>`_.
-* `Red Pitaya blog <https://content.redpitaya.com/blog>`_.
+* `Industrial usecases <{redpitaya_website}>`__
+* `Red Pitaya blog <https://content.redpitaya.com/blog>`_
 
 **FPGA lessons and tutorials**
 
-* `Knowledge Base FPGA tutorials <https://learn.redpitaya.com/>`_.
-* :ref:`FPGA section <fpga_top>`.
+* `Knowledge Base FPGA tutorials <https://learn.redpitaya.com/>`_
+* :ref:`FPGA section <fpga_top>`

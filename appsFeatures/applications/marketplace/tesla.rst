@@ -8,8 +8,8 @@ EMC, or electromagnetic compatibility, is the property of the equipment that tel
 
 More about this application can be found here:
 
-   |teslameter|
+-   |teslameter|
 
 .. |teslameter| raw:: html
 
-   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-free/teslameter" target="_blank">Teslameter API code</a>
+   <a href="https://github.com/RedPitaya/RedPitaya/tree/master/deprecated/teslameter" target="_blank">Teslameter API code</a>

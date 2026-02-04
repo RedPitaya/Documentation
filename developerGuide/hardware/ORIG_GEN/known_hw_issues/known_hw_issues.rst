@@ -30,13 +30,9 @@ Red Pitaya uses a |TCA9406DCUR| level translator between PS I2C pins and the I2C
 
 A combination of physical design (i.e. bus capacitance) and interaction between the two buffer's rise time accelerators may cause I2C system failures. See the pink trace in the image below for the behavior-interaction effect due to 2 rise time accelerators on the bus.
 
-.. |TCA9406DCUR| raw:: html
+.. |TCA9406DCUR| replace:: `TCA9406DCUR <https://www.digikey.com/en/products/detail/texas-instruments/TCA9406DCUR/2510728>`__
 
-    <a href="https://www.digikey.com/en/products/detail/texas-instruments/TCA9406DCUR/2510728" target="_blank">TCA9406DCUR</a>
-
-.. |PCA9306| raw:: html
-
-    <a href="https://www.ti.com/lit/ds/symlink/pca9306.pdf" target="_blank">PCA9306</a>
+.. |PCA9306| replace:: `PCA9306 <https://www.ti.com/lit/ds/symlink/pca9306.pdf>`__
 
 
 .. figure:: img/i2c_accelerator.png

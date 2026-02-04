@@ -107,4 +107,4 @@ For example, the following sequence of monitor commands checks, modifies and ver
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the monitor utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/monitor>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the monitor utility <RedPitaya/tree/master/Test/monitor>`.

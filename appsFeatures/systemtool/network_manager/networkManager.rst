@@ -69,7 +69,7 @@ via an Ethernet cable connected to the router or directly to the PC Ethernet soc
 
 There are three possible modes of operation:
 
-*   **DHCP Client** (Default mode) - Red Pitaya will wait untill it is automatically assigned an IP address from the router (DHCP server). 
+*   **DHCP Client** (Default mode) - Red Pitaya will wait until it is automatically assigned an IP address from the router (DHCP server). 
     Once the IP address is assigned, the Red Pitaya board will be available on the local network. If Red Pitaya does not receive an IP address 
     within 1 minute after boot, it will enter the **DHCP Server** mode.
 *   **DHCP Server** - Red Pitaya will act as a DHCP server and assign IP addresses to itself other devices connected to the same network.
@@ -163,7 +163,7 @@ To set up the **DHCP Server** mode, input the following settings:
 Static IP configuration
 -------------------------
 
-To setup the **Static IP** mode, LAN connection must be established first to configure the Network manager settings.
+To set up the **Static IP** mode, LAN connection must be established first to configure the Network manager settings.
 
 1.  Follow the :ref:`LAN connection <LAN>` instructions to connect the Red Pitaya board to the LAN network.
 
@@ -176,7 +176,7 @@ To setup the **Static IP** mode, LAN connection must be established first to con
     .. figure:: img/wired-settings-static-IP.png
         :width: 400
 
-    For more information please check `Wikipedia subnetwork <https://en.wikipedia.org/wiki/Subnet>`_ and `Wikipedia IP address <https://en.wikipedia.org/wiki/IP_address>`_.
+    For more information please check |wiki-subnet| and |wiki-ip-address|.
 
 #.  Even though nothing happens in the interface, Red Pitaya will automatically switch to the static IP address.
 
@@ -261,7 +261,7 @@ The wireless connection status displays:
 Wireless Network Connection
 ----------------------------
 
-To setup a Wi-Fi interface with your Red Pitaya, a :ref:`LAN connection <LAN>` or :ref:`direct ethernet connection <dir_cab_connect>` must be established first.
+To set up a Wi-Fi interface with your Red Pitaya, a :ref:`LAN connection <LAN>` or :ref:`direct ethernet connection <dir_cab_connect>` must be established first.
 
 .. figure:: img/connection-scheme-wifi.png
     :width: 1200
@@ -311,14 +311,14 @@ Access Point Mode (currently not supported)
 Red Pitaya can act as an access point when there are no LAN or Wi-Fi networks available. This will allow you to connect your PC, laptop, tablet, or smartphone 
 directly to the Red Pitaya over Wi-fi.
 
-To setup the Access point mode, a :ref:`LAN connection <LAN>` or :ref:`direct ethernet connection <dir_cab_connect>` must be established with the board first.
+To set up the Access point mode, a :ref:`LAN connection <LAN>` or :ref:`direct ethernet connection <dir_cab_connect>` must be established with the board first.
 
 .. figure:: img/connection-scheme-access-point.png
     :width: 1200
 
-Here are the setps to set up the Access Point mode:
+Here are the steps to set up the Access Point mode:
 
-1. Connect the the Red Pitaya board using the :ref:`LAN connection <lan>` and open the *Network manager* application.
+1. Connect the Red Pitaya board using the :ref:`LAN connection <lan>` and open the *Network manager* application.
 #. Insert a Wi-Fi dongle into the USB port on the Red Pitaya board. The system will automatically recognise it and enable the **Wireless status settings** 
     on the right side of the web interface.
 #. From the dropdown menu select the *Access point mode*.

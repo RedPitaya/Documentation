@@ -6,9 +6,15 @@ RadioBox - (by Urlich Habel)
 
 The RadioBox is a complete transmitter and receiver done on the FPGA. You can directly connect an antenna to the SMA RF In 2 port for receiving. At the SMA RF Out 2 port, you can listen to the demodulated signal. The transmitter does it at the same time on the SMA In/Out 1 connectors. When an external SDR-software is desired, you can select the Linux AC97 sound driver as stereo channels in both directions to feed the FPGA or to grab the data streams. To connect to a SDR, you can set the two AC97 channels to the I- and Q-signals of the QMIXers modulation.
 
-More details about the project can be found at the Wiki of RadioBox at the following link: 
+More details about the project can be found at the Wiki of RadioBox at the following link:
 
-   |RadioBox|
+- |RadioBox|
+
+.. warning::
+
+   Unfortunately, the documentation regarding RadioBox as well as the corresponding GitHub page were deleted by the author, and we are unable to provide further information or support for this application.
+   Some information and code can be found in the |Source Forge archive|.
+
 
 .. note::
 
@@ -17,3 +23,7 @@ More details about the project can be found at the Wiki of RadioBox at the follo
 .. |RadioBox| raw:: html
 
    <a href="https://github.com/DF4IAH/RedPitaya_RadioBox/wiki" target="_blank">RadioBox</a>
+
+.. |Source Forge archive| raw:: html
+
+   <a href="https://sourceforge.net/projects/redpitaya-radiobox/" target="_blank">RadioBox Source Forge archive</a>

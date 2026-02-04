@@ -1,9 +1,9 @@
 
 .. _commands_gen:
 
-================
+#################
 Signal Generator
-================
+#################
 
 .. contents:: Generation command index
    :local:
@@ -12,11 +12,43 @@ Signal Generator
 
 |
 
-.. note::
+Functionality overview
+========================
 
-   For STEMlab 125-14 4-Input, the commands in this chapter are not applicable.
+Signal generator commands control Red Pitaya's fast analog outputs (DACs) for waveform generation. These commands support continuous signals, burst mode, frequency sweeps, and arbitrary waveform generation (AWG) with precise triggering and synchronization capabilities.
 
---------------------
+Key generation modes:
+
+* **Continuous** - Generate signals indefinitely until stopped
+* **Burst** - Generate a specific number of signal periods with controlled repetition
+* **Sweep** - Linear frequency sweep between two frequencies over specified time
+* **Arbitrary** - Generate custom waveforms defined by user data (16384 samples)
+
+
+Important notes
+========================
+
+* For STEMlab 125-14 4-Input, the commands in this chapter are not applicable.
+* Generation trigger is independent from acquisition trigger.
+* Outputs must be enabled (``OUTPUT:STATE ON``) before triggering generation.
+* AWG expects exactly 16384 samples per waveform period.
+* Frequency range: 1 Hz to 50 MHz (board dependent).
+* For detailed programming guidance, see :ref:`SCPI generation section <intro_gen_acq>` in the introduction.
+
+
+Code examples
+========================
+
+Here are some examples of how to use the signal generation commands on Red Pitaya:
+
+* :ref:`Signal generation examples <examples_genRF>`.
+* :ref:`Acquisition and generation examples <examples_acq_genRF>`.
+
+
+Parameters and command tables
+==============================
+
+
 Generator control
 --------------------
 
@@ -60,7 +92,7 @@ Generator control
 
 
 
--------------------
+
 Generator trigger
 -------------------
 
@@ -145,7 +177,7 @@ Generator trigger
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
 
---------------------
+
 Generator settings
 --------------------
 
@@ -299,7 +331,7 @@ Generator settings
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
 
-------------
+
 Burst mode
 ------------
 
@@ -395,7 +427,7 @@ Burst mode
 
 .. _commands_sweep:
 
-------------
+
 Sweep mode
 ------------
 
@@ -462,7 +494,7 @@ Set the waveform type to sweep to enable
 .. _commands_sweep_ext:
 
 Sweep mode extended
-~~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 
 **Parameter options:**

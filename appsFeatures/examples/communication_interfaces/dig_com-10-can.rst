@@ -19,10 +19,6 @@ Required hardware
 
 .. figure:: ../general_img/RedPitaya_general.png
 
-.. |MCP2542-click| raw:: html
-
-  <a href="https://www.mikroe.com/mcp2542-click" target="_blank">MCP2542 Click Board</a>
-
 |
 
 Required software
@@ -59,11 +55,7 @@ Here is the CAN pinout for the DB-9 connector:
 .. figure:: img/db9_pinout.png
     :width: 700 px
 
-    Image source: |can-intro|
-
-.. |can-intro| raw:: html
-
-  <a href="https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial" target="_blank">CSS Electronics</a>
+    Image source: |CSS-CAN|
 
 
   

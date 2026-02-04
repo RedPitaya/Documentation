@@ -91,8 +91,6 @@ Source Code
 For streaming, two versions of clients are available - console and desktop for Linux and Windows operating systems. You can download them from the WEB streaming application on Red Pitaya itself. 
 You can also build a version from source files under Mac OS using :ref:`QT Creator <comStreaming>`.
 
-.. |streaming app| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/streaming_manager" target="_blank">Data stream control application source code</a>.
+.. |streaming app| replace:: :rp-github:`Data stream control application source code <RedPitaya/tree/master/apps-tools/streaming_manager>`.
 
 

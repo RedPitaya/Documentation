@@ -69,4 +69,4 @@ To run the bode utility, perform the following steps:
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the bode utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/bode>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the bode utility <RedPitaya/tree/master/Test/bode>`.

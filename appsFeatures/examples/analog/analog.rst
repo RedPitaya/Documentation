@@ -3,6 +3,8 @@
 Analog
 ######
 
+Use Red Pitaya's slow analog I/O channels for DC measurements and control. Examples cover reading analog inputs and setting analog output voltages.
+
 .. toctree::
    :maxdepth: 1
 

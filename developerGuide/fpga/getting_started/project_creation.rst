@@ -283,15 +283,3 @@ Both `Project mode`_ and `Non-project mode`_ scripts are designed to work with V
 .. |FPGA GitHub repository| replace:: `FPGA GitHub repository <https://github.com/RedPitaya/RedPitaya-FPGA>`__
 .. |Red Pitaya GitHub repository| replace:: `Red Pitaya GitHub repository <https://github.com/RedPitaya/RedPitaya>`__
 .. |SDK/Vitis project creation| replace:: :ref:`SDK/Vitis project creation <fpga_create_sdk_project>`
-
-.. |dev_guide_software| raw:: html
-
-    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/build/fpga/fpga.html#build-fpga-image" target="_blank">Developers Guide Software</a>
-
-.. |batch_file_topic_1| raw:: html
-
-      <a href="https://superuser.com/questions/601282/%cc%81-is-not-recognized-as-an-internal-or-external-command" target="_blank">́╗┐' is not recognized as an internal or external command</a>
-
-.. |batch_file_topic_2| raw:: html
-
-      <a href="https://devblogs.microsoft.com/oldnewthing/20210726-00/?p=105483" target="_blank">Diagnosing why your batch file prints a garbage character, one character, and nothing more</a>

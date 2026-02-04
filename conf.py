@@ -78,25 +78,108 @@ copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: 
 copybutton_prompt_is_regexp = True
 
 # Global RST substitutions (added to every RST file)
+# These are automatically available in ALL .rst files without needing to define them
 rst_epilog = """
-.. Common external links - these can be used in any RST file as |link_name|
+.. ============================================================================
+.. CENTRALIZED EXTERNAL LINKS - Automatically available in all RST files
+.. To use: |link_name| in your text
+.. To update: Edit _links/link.py, then links update everywhere automatically
+.. ============================================================================
 
-.. |redpitaya| replace:: `Red Pitaya <https://redpitaya.com/>`__
-.. |redpitaya-github| replace:: `Red Pitaya GitHub <https://github.com/RedPitaya/>`__
-.. |redpitaya-forum| replace:: `Red Pitaya Forum <https://forum.redpitaya.com/>`__
-.. |redpitaya-store| replace:: `Red Pitaya Store <https://redpitaya.com/shop/>`__
-.. |sphinx-docs| replace:: `Sphinx Documentation <https://www.sphinx-doc.org/>`__
-.. |python| replace:: `Python <https://www.python.org/>`__
-.. |numpy| replace:: `NumPy <https://numpy.org/>`__
-.. |matplotlib| replace:: `Matplotlib <https://matplotlib.org/>`__
-.. |xilinx| replace:: `Xilinx <https://www.xilinx.com/>`__
-.. |vivado| replace:: `Vivado <https://www.xilinx.com/products/design-tools/vivado.html>`__
-.. |scpi| replace:: `SCPI <https://www.ivifoundation.org/scpi/>`__
+.. Red Pitaya Infrastructure
+.. |redpitaya| replace:: `Red Pitaya <{redpitaya_website}>`__
+.. |redpitaya-github| replace:: `Red Pitaya GitHub <{redpitaya_github}>`__
+.. |redpitaya-forum| replace:: `Red Pitaya Forum <{redpitaya_forum}>`__
+.. |redpitaya-store| replace:: `Red Pitaya Store <{redpitaya_store}>`__
+.. |redpitaya-downloads| replace:: `Red Pitaya Downloads <{redpitaya_downloads}>`__
+.. |redpitaya-contact| replace:: `Red Pitaya Contact <{redpitaya_contact}>`__
+
+.. Development Tools - Windows
+.. |WinSCP| replace:: `WinSCP <{winscp}>`__
+.. |PuTTy| replace:: `PuTTy <{putty}>`__
+.. |FTDI-driver| replace:: `FTDI driver <{ftdi_driver}>`__
+
+.. Development Tools - Cross-platform
+.. |VSCode| replace:: `Visual Studio Code <{vscode}>`__
+.. |vscode-workspace| replace:: `workspace <{vscode_workspace}>`__
+.. |vscode-tutorials| replace:: `tutorials <{vscode_tutorials}>`__
+.. |vscode-venv| replace:: `virtual environment <{vscode_python_env}>`__
+
+.. SD Card Tools
+.. |balenaEtcher| replace:: `balenaEtcher <{balena_etcher}>`__
+.. |ApplePi-Baker| replace:: `ApplePi-Baker <{applepi_baker}>`__
+
+.. Python Ecosystem
+.. |python| replace:: `Python <{python_downloads}>`__
+.. |numpy| replace:: `NumPy <{numpy}>`__
+.. |matplotlib| replace:: `Matplotlib <{matplotlib}>`__
+.. |scipy| replace:: `SciPy <{scipy}>`__
+.. |PyVISA| replace:: `PyVISA <{pyvisa}>`__
+.. |PyVISA-py| replace:: `PyVISA-py <{pyvisa_py}>`__
+
+.. Documentation Tools
+.. |sphinx-docs| replace:: `Sphinx Documentation <{sphinx_docs}>`__
+.. |Markdown| replace:: `Markdown <{markdown}>`__
+.. |Markdown-Daring| replace:: `Markdown <{markdown_daringfireball}>`__
+.. |MathJax| replace:: `MathJax <{mathjax}>`__
+.. |JSON| replace:: `JSON <{json}>`__
+.. |JSON-wiki| replace:: `JSON <{json_wiki}>`__
+.. |nbconvert| replace:: `nbconvert <{nbconvert}>`__
+
+.. Linux Tools
+.. |minicom| replace:: `Minicom <{minicom}>`__
+.. |screen| replace:: `screen <{screen}>`__
+.. |WSL| replace:: `Windows Subsystem for Linux <{wsl}>`__
+.. |WSL-USB| replace:: `Connect USB devices <{wsl_usb}>`__
+
+.. Hardware Vendors & FPGA Tools
+.. |xilinx| replace:: `Xilinx <{xilinx}>`__
+.. |vivado| replace:: `Vivado <{vivado}>`__
+.. |Vivado-downloads| replace:: `AMD's downloads webpage <{vivado_downloads}>`__
+.. |Vivado-downloads-archive| replace:: `AMD Xilinx Vivado SDK Downloads Page <{vivado_downloads_archive}>`__
+.. |AMD-login| replace:: `AMD Registration Page <{amd_login}>`__
+.. |Xilinx-device-tree| replace:: `GitHub - Xilinx Device Tree <{xilinx_device_tree}>`__
+.. |TI| replace:: `Texas Instruments <{texas_instruments}>`__
+.. |Microchip| replace:: `Microchip <{microchip}>`__
+.. |Seeed-Grove| replace:: `Seeed® <{seeed_grove}>`__
+.. |Seeed-temp| replace:: `Temperature sensor <{seeed_temp_sensor}>`__
+.. |Seeed-motion| replace:: `Motion sensor <{seeed_motion_sensor}>`__
+.. |Seeed-touch| replace:: `Touch sensor <{seeed_touch_sensor}>`__
+.. |Seeed-button| replace:: `Button <{seeed_button}>`__
+.. |Seeed-switch| replace:: `Switch <{seeed_switch}>`__
+.. |Seeed-tilt| replace:: `Tilt <{seeed_tilt}>`__
+.. |Seeed-potentiometer| replace:: `Potentiometer <{seeed_potentiometer}>`__
+
+.. Communication Protocols
+.. |scpi| replace:: `SCPI <{scpi_standard}>`__
+.. |MCP2542-Click| replace:: `MCP2542 Click Board <{mikroe_mcp2542}>`__
+.. |CSS-CAN| replace:: `CSS Electronics <{css_electronics_can}>`__
+.. |SMBUS-specs| replace:: `SMBUS specifcations <{smbus_specs}>`__
+
+.. Third-party Red Pitaya Projects
+.. |pavel-demin-notes| replace:: `Pavel Demin's Red Pitaya Notes <{pavel_demin_notes}>`__
+.. |Linien| replace:: `Linien <{linien}>`__
+.. |PyRPL| replace:: `PyRPL <{pyrpl}>`__
+.. |Marcelo-Lock-in| replace:: `Lock-in+PID <{marcelo_lock_in}>`__
+.. |jupyter-cadquery| replace:: `Jupyter CadQuery <{jupyter_cadquery}>`__
+
+.. Media & Community Tools
+.. |Audacity| replace:: `Audacity <{audacity}>`__
+
+.. Wikipedia & General Reference
+.. |wiki-dhcp| replace:: `more info <{wiki_dhcp}>`__
+.. |wiki-network-socket| replace:: `socket communication <{wiki_network_socket}>`__
+.. |wiki-arbitrary-waveform| replace:: `arbitrary waveform generator <{wiki_arbitrary_waveform}>`__
+.. |wiki-subnet| replace:: `Wikipedia subnetwork <{wiki_subnet}>`__
+.. |wiki-ip-address| replace:: `Wikipedia IP address <{wiki_ip_address}>`__
+.. |WikiHow-refresh| replace:: `link to the Wiki How page <{wikihow_refresh}>`__
+
+.. Special formatting
 .. |br| raw:: html
 
    <br/>
 
-"""
+""".format(**EXTERNAL_LINKS)
 
 sphinx_tabs_valid_builders = ['linkcheck']
 
@@ -274,6 +357,7 @@ html_meta = {
 
 
 html_css_files = [
+    'pygments.css',      # Syntax highlighting for code blocks
     'page_width.css',
     'tabs.css',
     'new_style.css'
@@ -284,6 +368,7 @@ html_context = {
         'css_files': [
             'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
             'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
+            '_static/pygments.css',
             '_static/page_width.css',
             '_static/tabs.css',
             '_static/new_style.css'

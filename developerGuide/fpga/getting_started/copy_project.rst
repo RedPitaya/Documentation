@@ -4,7 +4,7 @@
 Creating a copy for a new project
 ###################################
 
-Each of the projects and tutorials has it's own directory, which is forcibly cleared each time a "new" project with the same name is created.
+Each of the projects and tutorials has its own directory, which is forcibly cleared each time a "new" project with the same name is created.
 
 For example, running the following command, when the project already exists (perhaps it is just the LED blink project or a new custom FPGA image). 
 

@@ -4,6 +4,12 @@
 Command-line tools
 ##################
 
+Red Pitaya provides command-line utilities for direct hardware control through the terminal. These tools are ideal for scripting, automation, testing, 
+and quick hardware interactions without the web interface.
+
+**Available utilities:** Signal generation and acquisition (generate, acquire, spectrum, bode, lcr), streaming and multichannel (daisy, streaming), system control 
+and monitoring (monitor, LED, calibration, updater, E3 I2C, overlay), and additional tools.
+
 .. note::
 
     Command-line utilities must not be used in parallel with a WEB application.

@@ -30,7 +30,7 @@ Features
 Top Settings Menu
 =================
 
-Provides contol over the Logic analyzer application. The blue question mark leads to this exact documentation page.
+Provides control over the Logic analyzer application. The blue question mark leads to this exact documentation page.
 
 .. figure:: img/03_LA_top_settings.png
     :width: 600

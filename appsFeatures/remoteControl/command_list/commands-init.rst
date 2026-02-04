@@ -5,6 +5,31 @@
 Initialization commands
 =========================
 
+Functionality overview
+------------------------
+
+Initialization commands prepare the Red Pitaya's hardware and software interfaces for operation. These commands must be called before using any other API functions to ensure proper hardware configuration and memory allocation.
+
+
+Important notes
+----------------
+
+* Always call initialization commands before any other API operations.
+* For API programs, ``rp_Init()`` must be the first command executed.
+* SCPI server handles initialization automatically when connection is established.
+
+
+Code examples
+-----------------
+
+Here are some examples of how to use the initialization commands on Red Pitaya:
+
+* :ref:`Examples using API commands <examples>`.
+
+
+Parameters and command table
+-----------------------------
+
 Table of correlated SCPI and API commands for the Red Pitaya.
 
 .. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|

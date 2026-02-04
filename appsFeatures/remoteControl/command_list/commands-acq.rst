@@ -1,9 +1,9 @@
 
 .. _commands_acq:
 
-==============
+##############
 Acquisition
-==============
+##############
 
 .. contents:: Acquisition command index
    :local:
@@ -12,9 +12,43 @@ Acquisition
 
 |
 
---------------------
+Functionality overview
+=======================
+
+Acquisition commands control Red Pitaya's fast analog inputs (ADCs) for high-speed signal capture. These commands provide precise triggering, decimation control, and buffer management for capturing signals from DC to 50 MHz.
+
+Key acquisition concepts:
+
+* **Circular memory buffer** - Hardware buffer where ADC data is continuously written (16384 samples)
+* **Data buffer** - User-accessible buffer with trigger at sample 8192 (middle position)
+* **Trigger delay** - Adjusts the amount of pre-trigger vs post-trigger data
+* **Decimation** - Reduces effective sampling rate for longer time windows
+
+Understanding the difference between the circular memory buffer and data buffer is critical for proper data acquisition.
+
+
+Important notes
+=================
+
+* Always specify trigger conditions to avoid corrupted data.
+* Standard buffer size: 16384 samples (use Deep Memory Acquisition for longer captures).
+* Trigger position in data buffer is fixed at sample 8192.
+* Acquisition must be restarted (``ACQ:START``) between captures.
+* For detailed programming guidance, see :ref:`SCPI acquisition section <intro_gen_acq>` in the introduction.
+
+
+Code examples
+===============
+
+Here are some examples of how to use the acquisition commands on Red Pitaya:
+
+* :ref:`Acquisition examples <examples_acqRF>`.
+* :ref:`Acquisition and generation examples <examples_acq_genRF>`.
+
+
+
 Acquisition Control
---------------------
+========================
 
 **Parameter options:**
 
@@ -100,7 +134,7 @@ Acquisition Control
 
 
 
---------------------------
+
 Acquisition settings
 --------------------------
 
@@ -299,7 +333,7 @@ Acquisition settings
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
 
 
---------------------
+
 Acquisition trigger
 --------------------
 
@@ -498,7 +532,7 @@ Acquisition trigger
 
 
 
----------------
+
 Data pointers
 ---------------
 
@@ -544,7 +578,7 @@ even though it is displayed to happen at approximately 8192nd sample in the acqu
 +---------------------------------------+-----------------------------------------------------------------------------------+----------------------------------------------------------+--------------------+
 
 
------------
+
 Data read
 -----------
 

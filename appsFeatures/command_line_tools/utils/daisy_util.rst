@@ -37,4 +37,4 @@ The Red Pitaya Daisy utility is a command-line tool that enables the synchroniza
 Source code
 ------------
 
-The Red Pitaya GitHub repository contains the `source code for the daisy_tool utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/daisy_tool>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the daisy_tool utility <RedPitaya/tree/master/Test/daisy_tool>`.

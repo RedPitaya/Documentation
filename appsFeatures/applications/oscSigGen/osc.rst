@@ -56,7 +56,7 @@ The Oscilloscope & Signal generator's main features are listed below:
 Top Settings Menu
 ===================
 
-Provides contol over the Oscilloscope application. The blue question mark leads to this exact documentation page.
+Provides control over the Oscilloscope application. The blue question mark leads to this exact documentation page.
 
 .. figure:: img/Slika_OSC_top_menu.png
     :width: 600

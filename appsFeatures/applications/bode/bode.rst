@@ -21,7 +21,7 @@ The application is web-based and doesn't require the installation of any native 
 The graphical user interface of the Bode analyzer application is divided into 4 areas:
 
 #. **Top settings menu:** Export data, Calibration, and Start or Stop the measurements.
-#. **Measurement control pannel:** Set the measurement parameters, Plot settings, and put cursors on the main graph area.
+#. **Measurement control panel:** Set the measurement parameters, Plot settings, and put cursors on the main graph area.
 #. **Current measurement data:** The current step number and frequency of generated pulses required for the measurement.
 #. **Main graph area:** Main graph area is divided into Gain and Phase frequency response plots of the DUT (device under test).
 
@@ -38,7 +38,7 @@ The main features of the Bode analyzer application are:
    -   Excitation signal parameters (amplitude and DC bias) can be adjusted to make measurements in different sensitivities and conditions (amplifiers, etc.).
    -   The calibration function enables calibrating long leads and removing leads' and cables' effects on final measurements. The calibration will also calibrate your Red Pitaya if any parasitic effects are present. Bode calibration data is stored in **/tmp/ba_calib.data**.
 
-To open the Bode analyzer, click on the coresponding icon in the main web interface:
+To open the Bode analyzer, click on the corresponding icon in the main web interface:
 
 .. figure:: img/Bode_analyzer.png
     :width: 1000
@@ -53,10 +53,10 @@ Top settings menu
 
 Top settings menu contains the following functionality:
 
-#. **Question mark button:** Leads to Bode analyzer documenatation webpage (here)
+#. **Question mark button:** Leads to Bode analyzer documentation webpage (here)
 #. **Menu dropdown:**
 
-    - *Export data:* Export the currently displayed data as either a “Graph” or a “CSV file”. If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is donwloaded from the board.
+    - *Export data:* Export the currently displayed data as either a "Graph" or a "CSV file". If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is downloaded from the board.
     - *Reset:* Resets all Bode analyzer application settings back to default.
 
 #. **Calibrate button:** Start the calibration for the current setup.
@@ -82,19 +82,19 @@ Settings
 - **Scale:** Either liner or logarithmic sweep mode (scale). The logarithmic sweep mode enables measurements in a large frequency range, while the linear sweep mode is used for measurements in a small frequency range.
 - **Analysis:** Determines the algorithm for the calculations. It can be set to either U/I (voltage/current) or FFT. The U/I analysis uses integration to calculate the gain and phase (fast, but less accurate), while the FFT analysis uses the Fast Fourier Transform method (slower, but more accurate). Both algorithms are based on decomposing the signal into complex numbers and calculating the phase difference between them.
 
-At each frequency point Red Pitaya sends out a burst signal with **Period number** periods, one=way amplitude of **Amplitdue [V]**, offset **DC bias[V]**, and the frequency recalculated from the settings above.
-The **Averaging** deterimines wheter the final measurement is an average of all sent pulses or not.
+At each frequency point Red Pitaya sends out a burst signal with **Period number** periods, one=way amplitude of **Amplitude [V]**, offset **DC bias[V]**, and the frequency recalculated from the settings above.
+The **Averaging** determines whether the final measurement is an average of all sent pulses or not.
 
 - **Period number:** Number of signal periods in a single measurement.
 - **Amplitude [V]:** Excitation signal amplitude.
 - **DC bias [V]:** Excitation signal DC bias (offset).
 - **Averaging:** When set to ``1``, the result of each measurement is an average of all sent signal periods.
 - **Invalid input data:** Button to show invalid measurements on the graph.
-- **Analysis input threshold ppV:** Measured responses smaller than this setting will be treated as the minimal threshold value (for caluclation purposes).
+- **Analysis input threshold ppV:** Measured responses smaller than this setting will be treated as the minimal threshold value (for calculation purposes).
 
 .. note::
 
-    The sum of **Amplitdue** and **DC bias** is capped at 1 Volt. For example, if Amplitude is set to 0.4 V, the DC bias can be set to a maximum of 0.6 V.
+    The sum of **Amplitude** and **DC bias** is capped at 1 Volt. For example, if Amplitude is set to 0.4 V, the DC bias can be set to a maximum of 0.6 V.
 
 
 Plot settings
@@ -106,7 +106,7 @@ Plot settings
 Settings for the plot.
 
 - **Gain min, Gain max [dB]:** Minimum and maximum value on the amplitude axis (Y-axis, left side).
-- **Phase min, Phase max [deg]:** Minimum and manxumum value on the phase axis (Y-axis, right side).
+- **Phase min, Phase max [deg]:** Minimum and maximum value on the phase axis (Y-axis, right side).
 - **Autoscale:** When selected, the two settings above are ignored and calculated automatically from the measurements.
 
 
@@ -126,7 +126,7 @@ Calibration
 For optimal results, it is recommended to perform the Bode analyzer calibration each time the measurement setup is changed.
 The calibration function enables calibrating long leads and removing leads' and cables' effects on final measurements. The calibration will also calibrate your Red Pitaya if any parasitic effects are present. Bode calibration data is stored in **/tmp/ba_calib.data**.
 
-When uncalibrated, a **Red** light appears next to the **Calibration** status in the *Measurement control pannel*.
+When uncalibrated, a **Red** light appears next to the **Calibration** status in the *Measurement control panel*.
 
 .. figure:: img/Bode_analyzer_uncalibrated.png
     :width: 1000
@@ -160,7 +160,7 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
 
 #. Click on the **Calibrate** button in the bottom-right of the calibration screen. The **Reset Calibration** button deletes any stored Bode calibration data. 
 #. The calibration will perform a 500-point measurement between 100 Hz and 62.5 MHz in logarithmic mode. Wait for the calibration to finish.
-#. Once the calibration is complete a **Green** light appears next to the **Calibration** status in the *Measurement control pannel*.
+#. Once the calibration is complete a **Green** light appears next to the **Calibration** status in the *Measurement control panel*.
 
     .. figure:: img/Bode_analyzer_calibrated.png
         :width: 1000

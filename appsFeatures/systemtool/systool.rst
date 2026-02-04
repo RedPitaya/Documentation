@@ -2,6 +2,8 @@
 System tools 
 ############
 
+Configure and manage your Red Pitaya system through built-in tools. Access system information, configure network settings, update the operating system, and calibrate hardware.
+
 .. toctree::
     :maxdepth: 2
 

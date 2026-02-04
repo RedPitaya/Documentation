@@ -28,11 +28,12 @@ You can read more about the inner workings of the controller, the server, and th
 
 More about the Power Analyzer can be found here (click on the PDF icon to download the thesis) (please note that the thesis is in Slovene):
 
-   |Power Analyzer|
+-   |Power Analyzer|
 
 .. note::
 
-   The Power Analyzer application is available on the Red Pitaya marketplace.
+   The Power Analyzer application was created as a university thesis project and is no longer actively maintained. The thesis link itself is linked above for reference. The text is in Slovene.
+   Users interested in this application should be aware that it may not receive updates or support.
    
 .. |Power Analyzer| raw:: html
 

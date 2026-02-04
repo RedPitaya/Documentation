@@ -38,4 +38,4 @@ To enable the LEDs:
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the led control utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/led_control>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the led control utility <RedPitaya/tree/master/Test/led_control>`.

@@ -4,7 +4,7 @@
 What do I need before I start?
 ##############################
 
-The following items are required for proper board operation. They are already included in each of the Red Pitaya kits available on our |WEBstore|:
+The following items are required for proper board operation. They are already included in each of the Red Pitaya kits available on our :rp-store:`WEB store <>`:
 
 .. tabs::
 
@@ -36,7 +36,7 @@ The following items are required for proper board operation. They are already in
 
             .. tab:: 250-12
 
-                * 12 V / 1 A power adapter with jack connector.
+                * 24 V / 0.5 A power adapter with jack connector.
                 * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
                 * Ethernet cable.
 
@@ -58,10 +58,3 @@ Additional items required that are not included in the Red Pitaya kits:
         .. group-tab:: Original Gen
                 
             Please refer to the :ref:`Original Gen hardware specifications <hw_specs_orig_gen>` for further technical specifications regarding power supply, SD card and operating temperature range.
-
-
-.. substitutions
-
-.. |WEBstore| raw:: html
-
-    <a href="https://redpitaya.com/shop/" target="_blank">WEB store</a>

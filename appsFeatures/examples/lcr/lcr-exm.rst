@@ -32,8 +32,8 @@ Required software
 Circuit
 =======
 
-This tutorial requires either the *LCR meter extension module* or an *external shunt resitior*.
-Each method has its own upsides and downsides. Here is a quick guide on how to setup the hardware.
+This tutorial requires either the *LCR meter extension module* or an *external shunt resistor*.
+Each method has its own upsides and downsides. Here is a quick guide on how to set up the hardware.
 
 LCR extension module
 ---------------------
@@ -41,7 +41,7 @@ LCR extension module
 .. figure::  img/E_module_connection.png
     :width: 1000
 
-The LCR meter extension module is easier to connect and automatically switches between the following shunt reisistor values:
+The LCR meter extension module is easier to connect and automatically switches between the following shunt resistor values:
 
 - 10 Ω
 - 100 Ω
