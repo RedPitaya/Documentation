@@ -31,13 +31,13 @@ The graphical interface is divided into 6 main areas:
     #. **Logging table:** Used to log and export measured data. Logging is started by selecting the "Log Data" button. The maximum number of rows/measurements in the table is 1000.
     #. **Optional button field:** Used to manipulate the table. The "Clear Min/Max" button will reset the Min and Max values on the secondary display. The "Export table" button will export the measured data in .csv format. The "Clear all" button will delete all measurements from the table, and the "Clear" button will delete the currently selected measurement.
 
+|
 
 Connecting the LCR module
 ==========================
 
 .. figure::  img/E_module_connection.png
     :width: 1000
-
 
 
 Features
@@ -125,6 +125,7 @@ Equivalent circuit calculation mode: Parallel, Series
 
 The Parallel and Series measuring modes denote the use of a series or parallel equivalent circuit to calculate the parameters (R, C, L...) from the measured impedance Z. The LCR metre will only measure the complex value *Z=|Z|e(jP)*, where P is the measured phase and *|Z|* is the impedance amplitude. All other parameters are calculated from the series or parallel equivalent circuit.
 
+|
 
 Source code
 ============

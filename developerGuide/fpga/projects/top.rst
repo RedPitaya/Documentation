@@ -6,6 +6,11 @@ FPGA projects
 
 This section contains information about various FPGA projects available for Red Pitaya. Each project is designed to demonstrate different functionalities and capabilities of the FPGA hardware.
 
+**Related Documentation:**
+
+* :ref:`FPGA Register Maps <fpga_registers>` - Detailed register documentation for each project
+* :ref:`FPGA Development <fpga_top>` - General FPGA development guide
+
 .. contents:: Table of Contents
     :local:
     :depth: 1
@@ -81,14 +86,17 @@ We recommend using the **0.94** as the *default project*.
 |                   | |    available in the PS, was used. This improves speed and            | | LCR meter                      |                    |
 |                   | |    reliability, while reducing RTL complexity.                       | | JupyterLab                     |                    |
 |                   | | 2. A bug in the generator that caused a value increment was fixed;   | |                                |                    |
-|                   | |    this should improve the generated frequencies near the half-      | |                                |                    |
-|                   | |    sampling rate.                                                    | |                                |                    |
+|                   | |    this should improve the generated frequencies near the half-      | | **Register map:**              |                    |
+|                   | |    sampling rate.                                                    | | :ref:`v0.94 <fpga_094_dev>`    |                    |
 |                   | | 3. The XADC custom RTL wrapper was replaced with the Xilinx AXI      | |                                |                    |
 |                   | |    XADC. This enables the use of the Linux driver with IIO streaming | |                                |                    |
 |                   | |    support.                                                          | |                                |                    |
 +-------------------+------------------------------------------------------------------------+----------------------------------+--------------------+
 | stream_app        | | 1. Streaming of ADC and DAC data to and from DDR3 memory buffers.    | | Data stream control            | Active             |
 |                   | | 2. Streaming of GPIO inputs and outputs to/from DDR3 memory buffers. | | (streaming application)        |                    |
+|                   | |                                                                      | |                                |                    |
+|                   | |                                                                      | | **Register maps:**             |                    |
+|                   | |                                                                      | | :ref:`In Dev <regset_in_dev>`  |                    |
 +-------------------+------------------------------------------------------------------------+----------------------------------+--------------------+
 | logic             | | The DMA is used to transfer data to the main DDR3 RAM. The ADC and   | Logic analyzer                   | Active             |
 |                   | | DAC code is unfinished.                                              |                                  |                    |
@@ -138,35 +146,58 @@ The following table shows which projects are available on which boards.
 
 .. include:: fpga_project_table.inc
 
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| Build name        | Build Project Flag  | STEMlab 125-10 |br|       | SIGNALlab 250-12  | SDRlab 122-16             | STEMlab 125-14 4-Input    |
-|                   |                     | STEMlab 125-14 |br|       |                   |                           |                           |
-|                   |                     | STEMlab 125-14-Z7020 |br| |                   |                           |                           |
-|                   |                     |                           |                   |                           |                           |
-+===================+=====================+===========================+===================+===========================+===========================+
-| 0.94              | v0.94               | X                         |                   | X                         | X                         |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| 0.94_250          | v0.94_250           |                           | X                 |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| stream_app        | stream_app          | X                         |                   | X                         |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| stream_app_250    | stream_app_250      |                           | X                 |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| logic             | logic               | X                         |                   |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| logic_250         | logic_250           |                           | X                 |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| tft               | tft                 | X                         |                   |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| axi4lite          | axi4lite            | X                         |                   |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| classic           | classic             | X                         |                   |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
-| mercury           | mercury             | X                         |                   |                           |                           |
-+-------------------+---------------------+---------------------------+-------------------+---------------------------+---------------------------+
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| Build name        | Build Project Flag  | |125-10| |br|             | |125-14_gen2| |br|        | |250-12|          |
+|                   |                     | |125-14| |br|             | |125-14_pro_gen2| |br|    |                   |
+|                   |                     | |125-14_z7020| |br|       | |125-14_pro_z7020| |br|   |                   |
+|                   |                     |                           | |125-14_TI| |br|          |                   |
+|                   |                     |                           | |65-16_TI| |br|           |                   |
+|                   |                     |                           | |122-16| |br|             |                   |
+|                   |                     |                           | |125-14_4in| |br|         |                   |
+|                   |                     |                           |                           |                   |
++===================+=====================+===========================+===========================+===================+
+| **Active**                                                                                                          |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| 0.94              | v0.94               | X                         | X                         |                   |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| 0.94_250          | v0.94_250           |                           |                           | X                 |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| stream_app        | stream_app          | X                         | X                         |                   |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| stream_app_250    | stream_app_250      |                           |                           | X                 |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| logic             | logic               | X                         | X                         |                   |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| logic_250         | logic_250           |                           |                           | X                 |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| **Legacy**                                                                                                          |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| tft               | tft                 | X                         |                           |                   |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| axi4lite          | axi4lite            | X                         |                           |                   |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| classic           | classic             | X                         |                           |                   |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
+| mercury           | mercury             | X                         |                           |                   |
++-------------------+---------------------+---------------------------+---------------------------+-------------------+
 
+.. note::
+
+    Legacy projects are not actively maintained and may not be compatible with the latest hardware revisions or software versions. It is recommended to use active projects for new developments.
 
 .. substitutions
 
+.. Board references for FPGA compatibility table
+.. |125-10| replace:: :ref:`STEMlab 125-10 <top_125_10>`
+.. |125-14| replace:: :ref:`STEMlab 125-14 <top_125_14>`
+.. |125-14_z7020| replace:: :ref:`STEMlab 125-14 Z7020 <top_125_14_Z7020_LN>`
+.. |125-14_gen2| replace:: :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`
+.. |125-14_pro_gen2| replace:: :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`
+.. |125-14_pro_z7020| replace:: :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
+.. |125-14_TI| replace:: :ref:`STEMlab 125-14 TI <top_125_14_TI>`
+.. |65-16_TI| replace:: :ref:`STEMlab 65-16 TI <top_65_16_TI>`
+.. |122-16| replace:: :ref:`SDRlab 122-16 <top_122_16>`
+.. |125-14_4in| replace:: :ref:`STEMlab 125-14 4-Input <top_125_14_4-IN>`
+.. |250-12| replace:: :ref:`SIGNALlab 250-12 <top_250_12>`
 
 .. |FPGA GitHub repository| replace:: `FPGA GitHub repository <https://github.com/RedPitaya/RedPitaya-FPGA>`__

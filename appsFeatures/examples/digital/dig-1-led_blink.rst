@@ -100,30 +100,6 @@ Code - Python
 .. include:: ../python_scpi_note.inc
 
 
-Code - Scilab
---------------
-
-.. code-block:: scilab
-
-    clc
-
-    // Load SOCKET Toolbox. Steps 7&8
-    exec(SCI+'contribsocket_toolbox_2.0.1loader.sce'); 
-    SOCKET_init();
-
-    IP = '192.168.128.1';
-    port = 5000;
-    tcpipObj ='RedPitaya';
-
-    SOCKET_open(tcpipObj, IP, port);
-
-    SOCKET_write(tcpipObj, 'DIG:PIN LED1,1');
-    xpause(5*1E+6)
-    SOCKET_write(tcpipObj, 'DIG:PIN LED1,0');
-
-    SOCKET_close(tcpipObj);
-
-
 Code - LabVIEW
 ----------------
 

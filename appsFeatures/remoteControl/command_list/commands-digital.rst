@@ -5,6 +5,32 @@
 LEDs and GPIOs
 ==============
 
+Functionality overview
+------------------------
+
+Digital I/O commands control Red Pitaya's LEDs and GPIO pins on the extension connector. These commands allow you to read digital inputs, 
+set digital outputs, and control the onboard LEDs for status indication or custom applications.
+
+
+Important notes
+----------------
+
+* SDRlab 122-16 and STEMlab 125-14 4-Input have 10-bit DIO registers instead of 8-bit.
+* GPIO pins are 3.3V logic level - do not apply higher voltages.
+* Remember to set pin direction (IN/OUT) before use.
+
+
+Code examples
+-----------------
+
+Here are some examples of how to use the digital I/O commands on Red Pitaya:
+
+* :ref:`Digital examples <examples_digital>`.
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<dir> = {OUT,IN}``

@@ -13,7 +13,7 @@ The impedance analyzer uses the direct current-voltage method and has a frequenc
 All Red Pitaya applications are web-based and do not require the installation of any native software. Users can access them via a web browser using their smartphone, tablet, or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS).
 
 Features
-***********
+=========
 
 The impedance analyzer enables the measurement of the following parameters:
 
@@ -39,10 +39,11 @@ The impedance analyzer enables the measurement of the following parameters:
 The graphical user interface of the Impedance analyzer application is divided into 4 areas:
 
 #. **Top settings menu:** Export data, reset settings and start or stop the measurements.
-#. **Measurement control pannel:** Set the shunt resistior, measurement parameters, plot settings, and put cursors on the main graph area.
+#. **Measurement control panel:** Set the shunt resistior, measurement parameters, plot settings, and put cursors on the main graph area.
 #. **Current measurement data:** The current step number and frequency of generated pulses required for the measurement.
 #. **Main graph area:** Main graph area displays the impedance response of the DUT (device under test).
 
+|
 
 Top settings menu
 ==================
@@ -52,14 +53,15 @@ Top settings menu
 
 Top settings menu contains the following functionality:
 
-#. **Question mark button:** Leads to the impedance analyzer documenatation webpage (here)
+#. **Question mark button:** Leads to the impedance analyzer documentation webpage (here)
 #. **Menu dropdown:**
 
-    - *Export data:* Export the currently displayed data as either a “Graph” or a “CSV file”. If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is donwloaded from the board.
-    - *Reset:* Resets all impedance analyzer application settings back to default.
+    - **Export data:** Export the currently displayed data as either a "Graph" or a "CSV file". If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is downloaded from the board.
+    - **Reset:** Resets all impedance analyzer application settings back to default.
 
 #. **Stop/Run button:** Start and stop the measurement.
 
+|
 
 Measurement control panel
 ==========================
@@ -80,11 +82,11 @@ Settings
 - **Averaging:** Each final result is an average of "*Averaging*" number of measurements.
 - **Amplitude [V]:** Excitation signal amplitude.
 - **DC bias [V]:** Excitation signal DC bias (offset).
-- **Shunt [Ω]** Resistance value of the shunt reisistor.
+- **Shunt [Ω]** Resistance value of the shunt resistor.
 
 .. note::
 
-    The sum of **Amplitdue** and **DC bias** is capped at 1 Volt. For example, if Amplitude is set to 0.4 V, the DC bias can be set to a maximum of 0.6 V.
+    The sum of **Amplitude** and **DC bias** is capped at 1 Volt. For example, if Amplitude is set to 0.4 V, the DC bias can be set to a maximum of 0.6 V.
 
 
 Plot settings
@@ -128,13 +130,15 @@ LCR meter indicator
 
 The indicator displays a green light when the LCR meter extension board is connected. Otherwise, a red light is shown.
 
+|
+
 .. _impedance_connection:
 
 How to use the impedance analyzer
 ==================================
 
-The impedance analyzer requires either the *LCR meter extension module* or an *external shunt resitior* for proper operation.
-Each method has its own upsides and downsides. Here is a quick guide on how to setup the hardware.
+The impedance analyzer requires either the *LCR meter extension module* or an *external shunt resistor* for proper operation.
+Each method has its own upsides and downsides. Here is a quick guide on how to set up the hardware.
 
 LCR extension module
 ---------------------
@@ -142,7 +146,7 @@ LCR extension module
 .. figure::  img/E_module_connection.png
     :width: 1000
 
-The LCR meter extension module is easier to connect and automatically switches between the following shunt reisistor values:
+The LCR meter extension module is easier to connect and automatically switches between the following shunt resistor values:
 
 - 10 Ω
 - 100 Ω
@@ -183,6 +187,7 @@ Selecting the optimum shunt is an iterative process, maximising the dynamic inpu
 
     Example of measuring the impedance of a parallel RLC circuit.
 
+|
 
 Source code
 ==============

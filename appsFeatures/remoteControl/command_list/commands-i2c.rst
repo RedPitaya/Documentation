@@ -5,6 +5,34 @@
 I2C
 ===
 
+Functionality overview
+------------------------
+
+I2C commands enable communication with I2C devices connected to Red Pitaya's extension connector. Control I2C bus initialization, device 
+addressing, read/write operations, and clock stretching for interfacing with sensors, EEPROMs, and other I2C peripherals.
+
+
+Important notes
+----------------
+
+* I2C device path may vary between board models.
+* Device addresses are specified in 7-bit format (not including R/W bit).
+* Clock stretching support depends on connected device capabilities.
+* Use force mode carefully as it can interfere with devices in use.
+
+
+Code examples
+-----------------
+
+Here are some examples of how to use I2C communication:
+
+* :ref:`Digital communication examples <examples_digcom>`.
+* :ref:`Logic analyzer examples <examples_la>`.
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<mode> = {OFF, ON}``  Default: ``OFF``
@@ -94,7 +122,7 @@ I2C
 | | ``I2C:IOctl:Write:Buffer2  {0,1}``             | | Python: ``rp_I2C_IOCTL_WriteBuffer(<buffer>, <len>)``                         | |                                                                     |                    |
 | |                                                | |                                                                               | |                                                                     |                    |
 +--------------------------------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------+--------------------+
-| | - (NA)                                         | | C: NA                                                                         | Creates a buffer for sending and receiving data.                      | 2.04-35 and up     |
+| | - (NA)                                         | | C: N/A                                                                        | Creates a buffer for sending and receiving data.                      | 2.04-35 and up     |
 | |                                                | |                                                                               |                                                                       |                    |
 | |                                                | | Python: ``Buffer(<size>)``                                                    |                                                                       |                    |
 | |                                                | |                                                                               |                                                                       |                    |
@@ -103,11 +131,7 @@ I2C
 
 .. note::
 
-   SMBUS is a standardized protocol for communicating with I2C devices. Information about this protocol can be found in this link: |SMBUS specs|. IOCTL writes and reads data directly from I2C.
-
-.. |SMBUS specs| raw:: html
-
-    <a href="http://smbus.org/specs/" target="_blank">SMBUS specifcations</a>
+   SMBUS is a standardized protocol for communicating with I2C devices. Information about this protocol can be found in this link: |SMBUS-specs|. IOCTL writes and reads data directly from I2C.
 
 |
 

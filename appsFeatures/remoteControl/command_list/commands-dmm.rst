@@ -12,6 +12,35 @@ Deep Memory Mode (DMM)
 
 |
 
+========================
+Functionality overview
+========================
+
+Deep Memory Mode commands enable extended data acquisition and generation by streaming data directly to/from Red Pitaya's DDR3 RAM at full sampling speed. This overcomes the 16384 sample limitation of standard acquisition, allowing captures of millions of samples limited only by available RAM.
+
+Deep Memory Acquisition (DMA) uses AXI DMA protocol to transfer data between FPGA and DDR memory at high speed, while Deep Memory Generation allows playback of extended arbitrary waveforms.
+
+
+========================
+Important notes
+========================
+
+* Available from Red Pitaya OS version 2.00-23 onwards.
+* Requires sufficient DDR3 RAM allocation (recommend leaving 100 MB for Linux OS).
+* Transfer time to computer increases with buffer size.
+* Use binary format (``ACQ:DATA:FORMAT BIN``) for faster SCPI data transfer.
+* For detailed information, see :ref:`Deep Memory Acquisition overview <intro_gen_acq>`.
+
+
+========================
+Code examples
+========================
+
+Here are some examples of how to use Deep Memory Mode:
+
+* :ref:`Deep memory acquisition and generation examples <examples_dmm>`.
+
+
 .. _commands_dma:
 
 ===============================

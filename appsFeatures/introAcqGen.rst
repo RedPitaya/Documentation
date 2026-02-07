@@ -17,7 +17,7 @@ Ordered from simplest to most complex:
 * `API commands (C, Python)`_.
 * `Deep Memory Acquisition (DMA)`_.
 * `Streaming application`_.
-* `Custom acquisition and generatiron (FPGA)`_.
+* `Custom acquisition and generation (FPGA)`_.
 
 
 Oscilloscope and other applications
@@ -32,7 +32,7 @@ from the application at the user's request. Remote data acquisition by an applic
 
 The same applies to data generation options - applications such as oscilloscope and spectrum analyzer also have signal generator capabilities so 
 that both inputs and outputs can be used simultaneously. The signal generator can generate a predefined waveform, such as sine, square, saw up, 
-saw down, etc. or act as an `arbitrary waveform generator <https://en.wikipedia.org/wiki/Arbitrary_waveform_generator>`_. The signal generator 
+saw down, etc. or act as an |wiki-arbitrary-waveform|. The signal generator 
 includes *burst* and *sweep* generation capabilities.
 
 To use the AWG functionality, a 16384 sample long waveform representing one period of a custom signal is uploaded via the 
@@ -44,14 +44,14 @@ For more information on the applications and how they work, click here:
 * :ref:`Red Pitaya applications <all_apps>`
 * Application source code is available on our :rp-github:`GitHub <RedPitaya/tree/master/apps-tools>`.
 
-
+|
 
 SCPI commands
 ================
 
 To remotely control the Red Pitaya from a Python, MATLAB or LabVIEW program running on your computer, and to acquire data from the Red Pitaya 
 to your computer for further processing, use the SCPI commands. The code is executed on a computer and string commands are sent between 
-Red Pitaya and your computer via `socket communication <https://en.wikipedia.org/wiki/Network_socket>`_. Once the SCPI commands reach Red Pitaya, 
+Red Pitaya and your computer via |wiki-network-socket|. Once the SCPI commands reach Red Pitaya, 
 they are interpreted and an appropriate C API function is executed in the background.
 
 .. note::
@@ -66,27 +66,27 @@ For proper data acquisition using SCPI commands, a trigger condition must be spe
 as the FPGA can acquire data much faster than the Linux operating system can read it from the FPGA registers.
 
 After the capture is started and the first trigger condition is met, 16384 samples are captured on each of the Red Pitaya input channels and 
-stored in a *circular memory buffer*. The *circular memory buffer* stores 16384 samples. The trigger position is at a random sample within 
-the *circular memory buffer*:
+stored in a **circular memory buffer**. The **circular memory buffer** stores 16384 samples. The trigger position is at a random sample within 
+the **circular memory buffer**:
 
 .. figure:: img/Circ_mem_buff.png
     :width: 600
     :align: center
 
-The *circular memory buffer* is then converted into a 16384 sample long *data buffer* with the trigger position in the middle of the buffer 
-(at the position of the 8192nd sample). It is important to distinguish between the *circular memory buffer* and the *data buffer*. Most of 
-the SCPI commands refer to the *data buffer* and its position, but there are commands that refer to the position within the *circular memory buffer*. 
-The data pointer commands always refer to the position of the *circular memory buffer*.
+The **circular memory buffer** is then converted into a 16384 sample long **data buffer** with the trigger position in the middle of the buffer 
+(at the position of the 8192nd sample). It is important to distinguish between the **circular memory buffer** and the **data buffer**. Most of 
+the SCPI commands refer to the **data buffer** and its position, but there are commands that refer to the position within the **circular memory buffer**. 
+The data pointer commands always refer to the position of the **circular memory buffer**.
 
 .. note::
 
     **Circular memory buffer != Data buffer**
 
-    The trigger position inside the *circular memory buffer* depends on the start of the acquisition and can be considered random, while 
-    the trigger position inside the *data buffer* is fixed to the 8192nd sample. The *circular memory buffer* is generally not visible 
-    to the user. The *data buffer* is what the user gets when they request data.
+    The trigger position inside the **circular memory buffer** depends on the start of the acquisition and can be considered random, while 
+    the trigger position inside the **data buffer** is fixed to the 8192nd sample. The **circular memory buffer** is generally not visible 
+    to the user. The **data buffer** is what the user gets when they request data.
 
-The *data buffer* is converted to a string and sent to the computer on request. There it can be converted back to a floating-point format. 
+The **data buffer** is converted to a string and sent to the computer on request. There it can be converted back to a floating-point format. 
 The acquisition must be restarted before further data can be acquired, resulting in a dead time between two successive data acquisitions.
 
 To set up the trigger correctly, the following settings must be made:
@@ -95,7 +95,7 @@ To set up the trigger correctly, the following settings must be made:
 * Trigger channel - IN1, IN2 or External. IN3 and IN4 are also available on the 4-input STEMlab 125-14.
 * Trigger delay - see explanation below.
 
-When acquiring data via SCPI commands, the triggering moment is in the middle of the *data buffer* (8192nd sample). This means that half 
+When acquiring data via SCPI commands, the triggering moment is in the middle of the **data buffer** (8192nd sample). This means that half 
 the data is acquired before the trigger (samples between 0 and 8192) and half the data is acquired after the trigger (samples between 8193 
 and 16383). By changing the Trigger Delay parameter, you can either capture more data before the trigger event (by specifying a negative 
 trigger delay, where the maximum is -8192) or capture more data after the trigger event (by specifying a positive trigger delay). The 
@@ -107,12 +107,12 @@ situation is illustrated below:
 
 Data can be acquired in the following ways:
 
-#. Read the entire *data buffer* (``ACQ:SOUR<n>:DATA?``).
-#. Read the oldest samples in the *data buffer* (``ACQ:SOUR<n>:DATA:Old:N? <size>``).
-#. Read the latest samples in the *data buffer* (``ACQ:SOUR<n>:DATA:LATest:N? <size>``).
-#. Read samples relative to trigger condition from *data buffer* (``ACQ:SOUR<n>:DATA:TRig? <size>,<t_pos>``).
-#. Read a number of samples from start position to end position from the *circular memory buffer* (``ACQ:SOUR<n>:DATA:STArt:End?``).
-#. Read a number of samples from start position out of the *circular memory buffer* (``ACQ:SOUR<n>:DATA:STArt:N?``).
+#. Read the entire **data buffer** (``ACQ:SOUR<n>:DATA?``).
+#. Read the oldest samples in the **data buffer** (``ACQ:SOUR<n>:DATA:Old:N? <size>``).
+#. Read the latest samples in the **data buffer** (``ACQ:SOUR<n>:DATA:LATest:N? <size>``).
+#. Read samples relative to trigger condition from **data buffer** (``ACQ:SOUR<n>:DATA:TRig? <size>,<t_pos>``).
+#. Read a number of samples from start position to end position from the **circular memory buffer** (``ACQ:SOUR<n>:DATA:STArt:End?``).
+#. Read a number of samples from start position out of the **circular memory buffer** (``ACQ:SOUR<n>:DATA:STArt:N?``).
 
 Variable buffer lengths can be achieved by using the `Deep Memory Acquisition (DMA)`_ mode.
 
@@ -120,18 +120,18 @@ General tips for programming with acquisition SCPI commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Always check your Red Pitaya OS version, as not all commands are compatible with all OS versions. The command release version can be found 
-    in the :ref:`Ecosystem column of the command table <command_list>`.
+   in the :ref:`Ecosystem column of the command table <command_list>`.
 #. The :ref:`SCPI code examples <examples>` are intended to run on the latest version of the Red Pitaya OS.
 #. Start with the ``ACQ:RST`` command.
 #. Then set the capture parameters.
 #. Set the trigger settings.
 #. Start the capture (``ACQ:START``).
-#. Make sure there is enough time for Red Pitaya to update half of the data buffer (at the current decimation) before the trigger condition arrives. 
-    This avoids situations where the first half of the signal frequency in the first part of the buffer is different from the second half.
-#. Check that the trigger condition is met and that the data buffer is full.
+#. Make sure there is enough time for Red Pitaya to update half of the **data buffer** (at the current decimation) before the trigger condition arrives. 
+   This avoids situations where the first half of the signal frequency in the first part of the buffer is different from the second half.
+#. Check that the trigger condition is met and that the **data buffer** is full.
 #. Send a data request.
-#. To acquire another data buffer, restart the acquisition (``ACQ:START``). Note that the acquisition parameters remain the same until Red Pitaya 
-    is restarted or the ``ACQ:RST`` command is executed.
+#. To acquire another **data buffer**, restart the acquisition (``ACQ:START``). Note that the acquisition parameters remain the same until Red Pitaya 
+   is restarted or the ``ACQ:RST`` command is executed.
 
 
 SCPI generation
@@ -297,17 +297,17 @@ General tips for programming with generation SCPI commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Always check your Red Pitaya OS version, as not all commands are compatible with all OS versions. The command release version can be 
-    found in the :ref:`Ecosystem column of the command table <command_list>`.
+   found in the :ref:`Ecosystem column of the command table <command_list>`.
 #. The :ref:`SCPI code examples <examples>` are intended to run on the latest version of the Red Pitaya OS.
 #. Start with the ``GEN:RST`` command.
-#. Set contiuous signal parameters.
+#. Set continuous signal parameters.
 #. Optionally, switch to burst mode and set the burst signal parameters.
 #. Optionally, switch to sweep mode and set the sweep signal parameters.
 #. Set the generator trigger settings.
 #. Enable the outputs.
 #. Trigger the outputs.
 #. Remember that Red Pitaya remembers the settings, so to repeat the same signal at a later time, only the triggering needs to be done 
-    (there is no need to redefine the whole generated signal). Alternatively, you can change only certain parameters.
+   (there is no need to redefine the whole generated signal). Alternatively, you can change only certain parameters.
 #. By default, Red Pitaya is set to generate a 1kHz sine wave with an amplitude of 1 V. 
 
 More information about the SCPI server can be found here:
@@ -342,6 +342,7 @@ All information about running C and Python programs can be found here:
 * :ref:`C & Python API commands <API_commands>`.
 * :rp-github:`GitHub API source code <RedPitaya/tree/master/rp-api>`.
 
+|
 
 Streaming application
 ========================
@@ -350,7 +351,7 @@ For those looking for continuous data acquisition, check out :ref:`the streaming
 control"). It allows continuous data acquisition from one or both of Red Pitaya's inputs directly to a file on a computer. The data can be 
 captured indefinitely, but there are speed limitations and currently no triggering options.  The total data flow at the inputs (IN1 and IN2)
 when streaming directly to a computer or to the SD card is limited. More details and limitations are 
-available :ref:`here <streaming_top>`.
+available :ref:`here <streaming_limits>`.
 
 There are two ways to stream data. Either via Ethernet to a *bin*, *tdms* or *wav* file on a computer or to the Red Pitaya's SD card. 
 The streaming parameters can also be controlled from a desktop client application. If multiple boards are on the same network (such as 
@@ -361,6 +362,7 @@ All information about the streaming application is available from the links belo
 * :ref:`Streaming application<streaming_top>`.
 * :rp-github:`GitHub source code <RedPitaya/tree/master/apps-tools/streaming_manager>`.
 
+|
 
 Deep Memory Acquisition (DMA)
 ================================
@@ -384,8 +386,9 @@ All information on DMA is available from the links below:
 
 * :ref:`Deep Memory Acquisition <deepMemoryAcq>`.
 
+|
 
-Custom acquisition and generatiron (FPGA)
+Custom acquisition and generation (FPGA)
 =============================================
 
 The final option for data acquisition and generation is to re-program and customise the FPGA image to create new methods or extend existing functionality. 
@@ -395,6 +398,6 @@ Red Pitaya is an open source platform, so the software can be fine-tuned for spe
 * :rp-github:`Red Pitaya FPGA Github repository <RedPitaya-FPGA>`.
 * :ref:`Red Pitaya customization services <customization>`.
 
-
+|
 
 :ref:`Back to top <intro_gen_acq>`

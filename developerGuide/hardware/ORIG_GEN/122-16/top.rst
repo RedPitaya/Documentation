@@ -391,9 +391,9 @@ To perform the external clock modification, follow these steps. Any components c
         :align: center
         :width: 800
 
-#. Remove 0R resistors on positons C64 and R24. Yes, there is a 0R resitor placed across the capacitor C64.
+#. Remove 0R resistors on positions C64 and R24. Yes, there is a 0R resistor placed across the capacitor C64.
 #. Add 100 nF 0402 capacitors to positions C64 and C63.
-#. Add a 100R resitor to position R36.
+#. Add a 100R resistor to position R36.
 
     .. figure:: img/External_img3.png
         :align: center

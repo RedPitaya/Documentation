@@ -20,6 +20,7 @@ In the four corners of the Red Pitaya web interface there are the following widg
 
     The ecosystem version for nightly builds is labelled 2.00-0, as shown in the image above.
 
+|
 
 General OS and Ecosystem info
 =================================

@@ -14,7 +14,7 @@ The QSPI eMMC module module provides secure and robust Red Pitaya boot and shutd
 .. |e3_bottom| image:: img/QSPI_eMMC_module_Gen2_bottom.png
    :width: 600
 
-.. contents:: **Index**
+.. contents:: Table of Contents
     :local:
     :backlinks: none
 

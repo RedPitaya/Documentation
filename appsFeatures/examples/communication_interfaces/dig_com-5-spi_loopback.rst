@@ -72,8 +72,8 @@ Code - MATLAB®
     % Apply the settings to the SPI bus
     writeline(RP,'SPI:SETtings:SET');
 
-    %% Send and recieve SPI messages
-    writeline(RP, append('SPI:MSG:CREATE ', num2str(msg_num)));     % create 2 messages with diffrent buffers
+    %% Send and receive SPI messages
+    writeline(RP, append('SPI:MSG:CREATE ', num2str(msg_num)));     % create 2 messages with different buffers
 
     writeread(RP,'SPI:MSG:SIZE?')       % Check length of message queue
 

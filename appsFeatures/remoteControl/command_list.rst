@@ -36,7 +36,7 @@ For API commands you can find a detailed description in these C header files:
     command_list/commands-status-leds.rst
     command_list/commands-temp-prot.rst
 
-
+|
 
 **How to find all available SCPI commands per OS version?**
 
@@ -64,13 +64,9 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
     :width: 800
 
 
-.. |all_os_scpi_commands| raw:: html
+.. |all_os_scpi_commands| replace:: :rp-github:`Red Pitaya GitHub - scpi-server/src/scpi-commands.cpp <RedPitaya/blob/master/scpi-server/src/scpi-commands.cpp>`
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/scpi-server/src/scpi-commands.cpp" target="_blank">Red Pitaya GitHub - scpi-server/src/scpi-commands.cpp</a>
-
-.. |all_os_scpi_commands_2.00-15| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
+.. |all_os_scpi_commands_2.00-15| replace:: :rp-github:`Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c <RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c>`
 
 |
 

@@ -4,15 +4,20 @@
 Programming and remote-control tools
 ####################################
 
-Here you will find all the tools and examples you need to program and control your Red Pitaya. This section includes the following chapters
+Control your Red Pitaya remotely from your PC or develop custom applications that run directly on the board. This section provides documentation for programmers, researchers, and engineers who need automated control, custom signal processing, or integration into larger systems.
 
-- **SCPI Server** - How to set up an SCPI server on your Red Pitaya and control it remotely from Python, MATLAB or LabVIEW?
-- **C and Python Applications** - How to run C and Python programs directly on the Linux OS of your Red Pitaya board.
-- **JupyterLab** - How to use the JupyterLab application to create interactive documents with Python code.
-- **Deep Memory Mode** - How to acquire and generate data directly into and from the DDR RAM with variable buffer sizes at full speed.
-- **List of Supported SCPI & API Commands** - A list of all the SCPI and API commands available on the Red Pitaya, with a short description of each command and the OS version in which the command was first introduced.
-- **Examples** - Code examples for SCPI and API covering everything from LED control to data acquisition and generation to digital communication interfaces.
-- **Known SCPI & API Issues and Changes by OS Version** - Is your code not working as intended? Check this section for known command issues or release dates of newer commands.
+**Available approaches:**
+
+* **SCPI Server** - Remote control from MATLAB, LabVIEW, or Python using industry-standard commands over TCP/IP. No on-board programming required.
+* **C and Python API** - Develop applications that run directly on Red Pitaya's Linux OS for maximum performance and real-time processing.
+* **JupyterLab** - Interactive Python environment for prototyping and analysis with notebook-style documentation.
+* **Deep Memory Mode** - Acquire and generate signals using the full DDR3 RAM (up to 512 MB) at full sampling rates.
+
+**Support resources:**
+
+* Complete command reference for SCPI and API commands with OS version compatibility
+* Ready-to-run code examples covering signal acquisition, generation, I/O control, and communication interfaces
+* Known issues and changes by OS version for troubleshooting
 
 .. toctree::
     :maxdepth: 1

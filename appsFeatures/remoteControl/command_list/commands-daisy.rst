@@ -5,6 +5,31 @@
 Daisy chain clocks and triggers
 ===============================
 
+Functionality overview
+------------------------
+
+Daisy chain commands configure clock and trigger sharing between multiple Red Pitaya boards connected via extension connectors. This enables synchronized multi-board acquisition and generation for expanded channel counts and simultaneous measurements across multiple units.
+
+
+Important notes
+----------------
+
+* Requires hardware daisy chain connections between boards.
+* Proper cable length and impedance matching critical for signal integrity.
+* Clock distribution affects maximum achievable synchronization accuracy.
+
+
+Code examples
+-----------------
+
+Here are some examples of how to use daisy chain synchronization:
+
+* :ref:`Multi-board synchronization examples <examples_multiboard_sync>`.
+
+
+Parameters and command table
+-----------------------------
+
 **Parameter options:**
 
 - ``<state> = {OFF, ON}``

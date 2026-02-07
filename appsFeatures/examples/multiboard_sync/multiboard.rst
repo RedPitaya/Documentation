@@ -3,6 +3,8 @@
 Multi-board signal acquisition and generation
 ##############################################
 
+Synchronize multiple Red Pitaya boards for expanded channel count and simultaneous measurements. Examples cover daisy chain and click shield configurations for multi-board acquisition.
+
 .. toctree::
     :maxdepth: 1
    

@@ -4,8 +4,8 @@
 Red Pitaya DAQ Server
 *********************
 
-This application allows for the continuous generation and measurement of signals with up to 15.625 MS/s, which is not possible with the standard image of the RedPitaya.
-In addition, the software allows the synchronisation of a cluster of multiple RedPitayas (compatible with |X-channel|). This project contains the following parts:
+This application allows for the continuous generation and measurement of signals with up to 15.625 MS/s, which is not possible with the standard image of the Red Pitaya.
+In addition, the software allows the synchronisation of a cluster of multiple Red Pitayas (compatible with the :ref:`X-channel system <x-ch_streaming>`). This project contains the following parts:
 
     -   Alpine Linux image for the RedPitaya
     -   FPGA image
@@ -15,6 +15,7 @@ In addition, the software allows the synchronisation of a cluster of multiple Re
     
 Here you can find out more about the Red Pitaya DAQ server:
 
+    -   |DAQ server docs|
     -   |DAQ server Github|
   
 .. |X-channel| raw:: html
@@ -23,4 +24,8 @@ Here you can find out more about the Red Pitaya DAQ server:
    
 .. |DAQ server Github| raw:: html
 
-   <a href="https://tknopp.github.io/RedPitayaDAQServer.jl/dev/" target="_blank">DAQ server Github</a>
+   <a href="https://github.com/IBIResearch/RedPitayaDAQServer?tab=readme-ov-file" target="_blank">DAQ server Github</a>
+
+.. |DAQ server docs| raw:: html
+
+   <a href="https://ibiresearch.github.io/RedPitayaDAQServer/dev/" target="_blank">DAQ server docs</a>

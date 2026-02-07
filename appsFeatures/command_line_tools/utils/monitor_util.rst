@@ -10,20 +10,7 @@ The system and FPGA registers can be accessed through the monitor utility. Usage
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: console
-
-            redpitaya>  monitor
-            monitor version 1.03-0-ab43ad0-ab43ad0
-
-            Usage:
-                read addr: address
-                write addr: address value
-                read analog mixed signals: -ams
-                set slow DAC: -sdac AO0 AO1 AO2 AO3 [V]
-
-    .. group-tab:: OS version 2.00
+    .. group-tab:: OS version 2.00 or higher
 
         .. code-block:: console
 
@@ -45,6 +32,19 @@ The system and FPGA registers can be accessed through the monitor utility. Usage
                     Print Analog Mixed Signals regset: -pams
                     Print Daisy Chain regset: -pdaisy
                     Reserved memory for DMA: -r
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: console
+
+            redpitaya>  monitor
+            monitor version 1.03-0-ab43ad0-ab43ad0
+
+            Usage:
+                read addr: address
+                write addr: address value
+                read analog mixed signals: -ams
+                set slow DAC: -sdac AO0 AO1 AO2 AO3 [V]
 
 
 Example (reading system registers):
@@ -75,12 +75,13 @@ The -ams switch provides access to mixed analog signals including Zynq SoC tempe
 
 .. code-block:: console
 
-   redpitaya> monitor -sdac 0.9 0.8 0.7 0.6
+    redpitaya> monitor -sdac 0.9 0.8 0.7 0.6
 
 .. note::
 
     The expected VCCDDR voltage is 1.35 V for boards with 1 GB of RAM (SIGNALlab 250-12 and STEMlab 125-14 Pro Z7020 Gen 2) and 1.5 V for all other boards.
 
+|
 
 Accessing FPGA registers
 -------------------------
@@ -103,8 +104,9 @@ For example, the following sequence of monitor commands checks, modifies and ver
 
     The CPU algorithms communicate with the FPGA via these registers. Therefore, the user should be aware of possible interference with Red Pitaya applications that read or write to the same FPGA registers. However, for simple tasks, the monitor utility can be used by high-level scripts (Bash, Python, MATLAB, etc.) to communicate directly with the FPGA if necessary.
 
+|
 
 Source code
 -----------
 
-The Red Pitaya GitHub repository contains the `source code for the monitor utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test/monitor>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the monitor utility <RedPitaya/tree/master/Test/monitor>`.

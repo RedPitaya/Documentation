@@ -5,10 +5,27 @@
 Phase locked loop
 ==================
 
-.. note::
+Functionality overview
+------------------------
 
-   These commands only work on SIGNALlab 250-12
+Phase-locked loop (PLL) commands control the clock synchronization circuitry exclusive to SIGNALlab 250-12. The PLL allows precise 
+frequency and phase locking to external reference clock signals for applications requiring tight timing synchronization.
 
+
+Important notes
+----------------
+
+* These commands only work on SIGNALlab 250-12.
+* The external reference clock should be connected to the 10 MHz SMA connector at the back of the board.
+
+Code examples
+-----------------
+
+[To be added - examples specific to PLL usage]
+
+
+Parameters and command table
+-----------------------------
 
 **Parameter options:**
 

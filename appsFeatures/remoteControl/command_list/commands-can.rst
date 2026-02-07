@@ -5,9 +5,30 @@
 CAN
 ===
 
-.. note::
+Functionality overview
+------------------------
 
-   FPGA image *v0.94* is required to work with CAN.
+CAN (Controller Area Network) commands provide CAN bus communication through Red Pitaya's extension connector. Configure CAN interfaces, 
+set bitrate and timing parameters, manage filters, and transmit/receive CAN frames for automotive and industrial control applications.
+
+
+Important notes
+----------------
+
+* FPGA image *v0.94* is required to work with CAN.
+* Supports CAN0 and CAN1 interfaces.
+* Proper bitrate and sample point configuration critical for reliable communication.
+* Hardware CAN transceiver required on extension connector.
+
+
+Code examples
+-----------------
+
+[To be added - examples specific to CAN communication]
+
+
+Parameters and command table
+-----------------------------
 
 **Parameter options:**
 

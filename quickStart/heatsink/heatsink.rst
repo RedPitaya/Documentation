@@ -25,6 +25,7 @@ The heatsink interface is compatible with the following Red Pitaya models:
 
     Please note that STEMlab 125-14 4-Input is not compatible with the heatsink interface.
 
+|
 
 Components
 ============
@@ -54,6 +55,7 @@ Heatsink interface dimensions:
 
     Dimensioned drawing of heatsink interface
 
+|
 
 Before the assembly
 ======================
@@ -62,6 +64,7 @@ Before starting the installation, please consider where the Red Pitaya with heat
 
 If you have the Red Pitaya aluminium case, it is possible to attach the top of the aluminium case to the Red Pitaya with the heatsink interface. In this case, the four screws connecting the heatsink interface, the Red Pitaya board and the top of the aluminium case will have to be attached from underneath, so some additional planning may be required. If you decide to do this, please see the alternative instructions at the end.
 
+|
 
 Assembly instructions
 ======================
@@ -89,7 +92,7 @@ Assembly instructions
         :align: center
         :width: 600
 
-#. Use the dark grey thermal pad. This is a special thermal pad with protective film on both sides. Remove the protective film from the side facing the heat sink interface and attach it to the heat sink interface. Take care to remove the film from the correct side as the pad is not symmetrical. The interface should now look like this. The top side of the thermal pad will still have foil attached at this poin
+#. Use the dark grey thermal pad. This is a special thermal pad with protective film on both sides. Remove the protective film from the side facing the heat sink interface and attach it to the heat sink interface. Take care to remove the film from the correct side as the pad is not symmetrical. The interface should now look like this. The top side of the thermal pad will still have foil attached at this point.
 
     .. figure:: img/Heatsink_thermal_foam.png
         :align: center

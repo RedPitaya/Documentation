@@ -7,6 +7,7 @@ Here, you can find a list of known SCPI & API command issues and changes listed 
 
 If you are facing an issue with one of the examples, a command is not working, or your code does not work, we suggest checking the known issues list from the latest OS release to your current OS version for any applicable changes.
 
+|
 
 How to find all available SCPI commands per OS version?
 ========================================================
@@ -34,28 +35,27 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
    :width: 800
 
 
-.. |all_os_scpi_commands| raw:: html
+.. |all_os_scpi_commands| replace:: :rp-github:`Red Pitaya GitHub - scpi-server/src/scpi-commands.cpp <RedPitaya/blob/master/scpi-server/src/scpi-commands.cpp>`
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/scpi-server/src/scpi-commands.cpp" target="_blank">Red Pitaya GitHub - scpi-server/src/scpi-commands.cpp</a>
+.. |all_os_scpi_commands_2.00-15| replace:: :rp-github:`Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c <RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c>`
 
-.. |all_os_scpi_commands_2.00-15| raw:: html
+|
 
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c" target="_blank">Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c</a>
+..! TODO - add new commands and issues to the list
 
-
-IN-DEV
-=======
-
-New Commands
--------------
-
-
-Command changes
------------------
-
-
-Issues
---------
+.. IN-DEV
+.. =======
+.. 
+.. New Commands
+.. -------------
+.. 
+.. 
+.. Command changes
+.. -----------------
+.. 
+.. 
+.. Issues
+.. --------
 
 
 
@@ -286,9 +286,7 @@ Issues
 
 This is as far as our testing archives reach, for older versions, we suggest consulting the |Changelog| for specific Board versions (The link leads to STEMlab 125-14 changelog).
 
-.. |Changelog| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya/blob/master/CHANGELOG.md" target="_blank">Red Pitaya GitHub CHANGELOG</a>
+.. |Changelog| replace:: :rp-github:`Red Pitaya GitHub CHANGELOG <RedPitaya/blob/master/CHANGELOG.md>`
 
 
 

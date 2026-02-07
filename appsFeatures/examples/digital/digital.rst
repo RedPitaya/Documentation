@@ -3,6 +3,8 @@
 Digital
 #######
 
+Control Red Pitaya's digital I/O pins - LEDs, buttons, and GPIO. Examples demonstrate basic output control, reading inputs, and creating interactive interfaces.
+
 .. toctree::
    :maxdepth: 1
    

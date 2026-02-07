@@ -3,11 +3,17 @@
 Ecosystem update utility
 ========================
 
-**Software requirements:**
-
-* **IN-DEV** Red Pitaya OS version or newer.
-
 The ecosystem update utility is used to automatically update the Red Pitaya ecosystem to one of the latest Nightly Build versions. It can be run from the terminal on the Red Pitaya board. The utility can access the Nightly build database on the `Red Pitaya downloads website <https://downloads.redpitaya.com/downloads/>`_, download the specified Nightly build ecosystem version and install it on the board.
+
+Software requirements
+----------------------
+
+* **2.07-48** Red Pitaya OS version or newer.
+
+|
+
+Usage
+------
 
 .. code-block:: console
 
@@ -35,25 +41,27 @@ The ecosystem update utility is used to automatically update the Red Pitaya ecos
 
 Here are the setps to use the updater utility:
 
-#. List the ecosystems on the server using the **-r** option. THe program automatically checks the contents of the file and the contents of the archives and compares the MD5 sums.
+#.  List the ecosystems on the server using the **-r** option. THe program automatically checks the contents of the file and the contents of the archives and compares the MD5 sums.
     The list will show the file names and their status (``OK`` or ``BROKEN``), depending on the MD5 sum.
 
-#. Download the ecosystem from the Nightly build server using the **-n** option. The file name can be specified or the build number (for example, 495) can be used. The downloaded file will be saved in the **/home/redpitaya/ecosystems** directory.
+#.  Download the ecosystem from the Nightly build server using the **-n** option. The file name can be specified or the build number (for example, 495) can be used. The downloaded file will be saved in the **/home/redpitaya/ecosystems** directory.
     Alternatively, if Red Pitaya does not have access to the internet, the file can be downloaded from the Nightly build server, transfered to the Red Pitaya and copied to the **/home/redpitaya/ecosystems** directory.
 
-#. List the locally available ecosystems using the **-l** option. The list will show the file names and their status (``OK`` or ``BROKEN``).
+#.  List the locally available ecosystems using the **-l** option. The list will show the file names and their status (``OK`` or ``BROKEN``).
 
-#. Install the downloaded ecosystem using the **-i** option. The file name can be specified or the build number (for example, 495) can be used.
+#.  Install the downloaded ecosystem using the **-i** option. The file name can be specified or the build number (for example, 495) can be used.
 
-#. Reboot the Red Pitaya board to apply the changes.
+#.  Reboot the Red Pitaya board to apply the changes.
 
 .. note::
 
     Some Nightly build ecosystems will also require an update to the Red Pitaya Linux OS.
     The Ecosystem update utility cannot update the Red Pitaya Linux version. To update the Linux version, please follow the instructions in the :ref:`Prepare SD card <prepareSD>` section.
 
+|
 
-**Examples of use:**
+Examples of use
+----------------
 
 Downloading an ecosystem from the Nightly build server:
 
@@ -82,16 +90,18 @@ Installing a downloaded ecosystem:
     Install [==================================================] 100.0% (5009/5009)
     The board needs to be rebooted.
 
+|
 
 Other ways to update the ecosystem and Red Pitaya Linux OS
 ------------------------------------------------------------
 
 .. include:: ../../../quickStart/OS_update/OS_update_options.inc
 
+|
 
 Source code
 ------------
 
-The Red Pitaya GitHub repository contains the `source code for the Ecosystem update utility <https://github.com/RedPitaya/RedPitaya/tree/master/Test>`_.
+The Red Pitaya GitHub repository contains the :rp-github:`source code for the Ecosystem update utility <RedPitaya/tree/master/Test>`.
 
 .. TODO Update link to the source code.

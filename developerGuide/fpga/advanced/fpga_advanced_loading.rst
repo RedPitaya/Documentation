@@ -37,12 +37,12 @@ When you have a custom bitstream but want to use Red Pitaya's standard device tr
 
 .. tabs::
 
-    .. tab:: OS 1.04 or older
+    .. tab:: OS 2.07-43 or newer
 
         .. code-block:: bash
 
-            # Direct bitstream loading to configuration device
-            redpitaya> cat /path/to/your/custom.bit > /dev/xdevcfg
+            # Load bitstream only (keeps current device tree)
+            redpitaya> fpgautil -b /path/to/your/custom.bit.bin
 
     .. tab:: OS 2.00 to 2.05-37
 
@@ -50,13 +50,13 @@ When you have a custom bitstream but want to use Red Pitaya's standard device tr
 
             # Load using fpgautil (requires .bin format)
             redpitaya> fpgautil -b /path/to/your/custom.bit.bin
-
-    .. tab:: OS 2.07-43 or newer
+    
+    .. tab:: OS 1.04 or older
 
         .. code-block:: bash
 
-            # Load bitstream only (keeps current device tree)
-            redpitaya> fpgautil -b /path/to/your/custom.bit.bin
+            # Direct bitstream loading to configuration device
+            redpitaya> cat /path/to/your/custom.bit > /dev/xdevcfg
 
 .. note::
 
@@ -78,6 +78,8 @@ When your custom FPGA has different hardware configuration than the standard v0.
 - Custom bitstream file (``fpga.bit.bin``)
 - Custom device tree overlay (``fpga.dtbo``)
 - Understanding of your hardware modifications
+
+|
 
 **Option 1: Using overlay.sh (OS 2.07+)**
 
@@ -104,6 +106,8 @@ When your custom FPGA has different hardware configuration than the standard v0.
     
     The overlay.sh script requires these exact names.
 
+|
+
 **Option 2: Manual loading (OS 2.00 to 2.05-37)**
 
 .. code-block:: bash
@@ -115,6 +119,8 @@ When your custom FPGA has different hardware configuration than the standard v0.
     redpitaya> mkdir -p /sys/kernel/config/device-tree/overlays/my_custom
     redpitaya> cat /path/to/custom_devicetree.dtbo > \
                    /sys/kernel/config/device-tree/overlays/my_custom/dtbo
+
+|
 
 **Option 3: Direct loading (OS 1.04 or older)**
 
@@ -700,7 +706,7 @@ The ``overlay.sh`` script (OS 2.07+) is Red Pitaya's primary tool for loading FP
 
 **Project Directory Structure:**
 
-.. code-block:: text
+.. code-block:: console
 
     /opt/redpitaya/fpga/<model>/<project>/
     ├── fpga.bit.bin    # Required: FPGA bitstream
@@ -728,7 +734,7 @@ Understanding Red Pitaya's FPGA file organization:
 
 **Standard FPGA Directory:**
 
-.. code-block:: text
+.. code-block:: console
 
     /opt/redpitaya/fpga/
     ├── stemlab-125-14/          # STEMlab 125-14 (Z7020)
@@ -750,16 +756,16 @@ Understanding Red Pitaya's FPGA file organization:
 
 **Important Files:**
 
-.. code-block:: text
+.. code-block:: console
 
-    /tmp/loaded_fpga.inf         # Currently loaded project name
-    /dev/xdevcfg                 # FPGA configuration device (OS 1.04)
-    /sys/class/fpga_manager/     # FPGA manager interface (OS 2.00+)
-    /sys/kernel/config/device-tree/overlays/  # Device tree overlays
+    /tmp/loaded_fpga.inf                        # Currently loaded project name
+    /dev/xdevcfg                                # FPGA configuration device (OS 1.04)
+    /sys/class/fpga_manager/                    # FPGA manager interface (OS 2.00+)
+    /sys/kernel/config/device-tree/overlays/    # Device tree overlays
 
 **Configuration Files:**
 
-.. code-block:: text
+.. code-block:: console
 
     /boot/config.txt             # Boot configuration
     /boot/devicetree.dtb         # Base device tree
@@ -772,34 +778,6 @@ Internal FPGA Loading Operation
 ================================
 
 Understanding how FPGA loading works internally:
-
-**OS 1.04 and Older - Direct Loading:**
-
-.. code-block:: bash
-
-    # Direct write to configuration device
-    cat bitstream.bit > /dev/xdevcfg
-
-**Process:**
-
-1. Kernel driver (xdevcfg) receives bitstream data
-2. FPGA configuration engine processes bitstream
-3. FPGA hardware reconfigures
-4. Configuration complete when write finishes
-
-**OS 2.00 to 2.05-37 - FPGA Manager:**
-
-.. code-block:: bash
-
-    # Load via FPGA manager framework
-    fpgautil -b bitstream.bit.bin
-
-**Process:**
-
-1. fpgautil tool talks to FPGA manager kernel framework
-2. FPGA manager validates bitstream
-3. FPGA manager loads bitstream via appropriate driver
-4. Configuration status available through sysfs
 
 **OS 2.07+ - FPGA Manager + Device Tree Overlay:**
 
@@ -816,6 +794,40 @@ Understanding how FPGA loading works internally:
 4. New device tree overlay applied
 5. Kernel drivers probe new hardware
 6. Project name recorded in /tmp/loaded_fpga.inf
+
+|
+
+**OS 2.00 to 2.05-37 - FPGA Manager:**
+
+.. code-block:: bash
+
+    # Load via FPGA manager framework
+    fpgautil -b bitstream.bit.bin
+
+**Process:**
+
+1. fpgautil tool talks to FPGA manager kernel framework
+2. FPGA manager validates bitstream
+3. FPGA manager loads bitstream via appropriate driver
+4. Configuration status available through sysfs
+
+|
+
+**OS 1.04 and Older - Direct Loading:**
+
+.. code-block:: bash
+
+    # Direct write to configuration device
+    cat bitstream.bit > /dev/xdevcfg
+
+**Process:**
+
+1. Kernel driver (xdevcfg) receives bitstream data
+2. FPGA configuration engine processes bitstream
+3. FPGA hardware reconfigures
+4. Configuration complete when write finishes
+
+|
 
 **Device Tree Overlay Loading:**
 
@@ -907,11 +919,12 @@ General Questions
 
 A: It depends on your OS version:
 
-- **OS 1.04 or older**: Use ``cat bitstream.bit > /dev/xdevcfg``
-- **OS 2.00 to 2.05-37**: Use ``fpgautil -b bitstream.bit.bin``
 - **OS 2.07+**: Use ``overlay.sh v0.94 project_name`` (recommended)
+- **OS 2.00 to 2.05-37**: Use ``fpgautil -b bitstream.bit.bin``
+- **OS 1.04 or older**: Use ``cat bitstream.bit > /dev/xdevcfg``
 
 For most users on recent OS versions, ``overlay.sh`` is the simplest and most complete method.
+
 
 **Q: What's the difference between .bit and .bit.bin files?**
 
@@ -925,6 +938,7 @@ Convert with Vivado's ``write_cfgmem`` command or use ``dd`` to skip the header:
 .. code-block:: bash
 
     dd if=input.bit of=output.bit.bin bs=1 skip=120
+
 
 **Q: Can I load FPGA from Windows or Linux desktop?**
 
@@ -945,6 +959,7 @@ Or use a single command:
 
     ssh root@redpitaya-ip "fpgautil -b /root/my_fpga.bit.bin"
 
+
 **Q: How long does FPGA loading take?**
 
 A: Typical loading times:
@@ -954,6 +969,7 @@ A: Typical loading times:
 - Total with overlay.sh: 2-3 seconds
 
 Large bitstreams (multi-region PR) may take longer. Network transfer time is usually the bottleneck when loading remotely.
+
 
 **Q: Can I use my own Vivado projects with Red Pitaya?**
 
@@ -966,6 +982,7 @@ A: Yes, but you must:
 
 See the Red Pitaya FPGA Developer Guide for pinout and constraints.
 
+
 **Q: Do I need to reboot after loading FPGA?**
 
 A: No, FPGA loading takes effect immediately. Reboot is only needed when:
@@ -973,6 +990,7 @@ A: No, FPGA loading takes effect immediately. Reboot is only needed when:
 - Setting up boot loading (to test it works)
 - Modifying system files
 - Installing new kernel modules
+
 
 **Q: How can I verify which FPGA is currently loaded?**
 
@@ -1007,6 +1025,7 @@ A: Check these common issues:
     # For overlay.sh, check project directory structure
     ls -l /opt/redpitaya/fpga/$(monitor -f)/my_project/
 
+
 **Q: FPGA loads but device doesn't work correctly**
 
 A: Debug systematically:
@@ -1034,6 +1053,7 @@ Common issues:
 - Memory address conflicts
 - Incorrect pin assignments
 - Missing kernel drivers
+
 
 **Q: "Device or resource busy" error when loading**
 
@@ -1063,16 +1083,19 @@ Device Tree Questions
 A: It depends:
 
 - **No device tree needed** if:
+
   - Your FPGA uses same hardware configuration as v0.94
   - Only logic changes, no new hardware interfaces
   - Memory addresses and interrupts unchanged
 
 - **Device tree needed** if:
+
   - Adding new hardware peripherals
   - Changing memory addresses
   - Adding interrupt handlers
   - Modifying pin assignments
   - Adding kernel drivers
+
 
 **Q: How do I create a device tree overlay?**
 
@@ -1082,6 +1105,7 @@ A: See the comprehensive guide at :ref:`device_tree`. Basic steps:
 2. Compile to overlay binary (.dtbo)
 3. Place in project directory as ``fpga.dtbo``
 4. Load with overlay.sh
+
 
 **Q: Can I modify device tree without reloading FPGA?**
 
@@ -1094,6 +1118,7 @@ A: Yes, on OS 2.07+:
     cat new_overlay.dtbo > /sys/kernel/config/device-tree/overlays/my_overlay/dtbo
 
 But typically it's easier to reload both together with overlay.sh.
+
 
 **Q: Where can I find device tree examples?**
 
@@ -1132,6 +1157,7 @@ A: Check your boot loading configuration:
 
 See :ref:`fpga_boot_loading` for detailed boot loading setup.
 
+
 **Q: Can I make different FPGAs load at each boot?**
 
 A: Yes, use conditional logic in startup.sh:
@@ -1149,6 +1175,7 @@ A: Yes, use conditional logic in startup.sh:
     fi
 
 Or use environment variables, configuration files, or network checks.
+
 
 **Q: How do I revert to factory FPGA after setting up boot loading?**
 
@@ -1180,6 +1207,7 @@ A: Technically yes, but:
 
 Most users should use full reconfiguration instead.
 
+
 **Q: How can I load FPGA from a custom bootloader?**
 
 A: Advanced topic. You would need to:
@@ -1190,6 +1218,7 @@ A: Advanced topic. You would need to:
 4. Handle device tree initialization
 
 This is beyond typical Red Pitaya usage. Contact Red Pitaya support for custom bootloader requirements.
+
 
 **Q: Can I protect my FPGA bitstream from extraction?**
 

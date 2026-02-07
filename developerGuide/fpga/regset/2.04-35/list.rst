@@ -4,7 +4,7 @@ FPGA Register map (Release 2.04-35)
 ###################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    v0.94.rst
    v0.94_250_12.rst

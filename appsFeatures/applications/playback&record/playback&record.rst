@@ -55,7 +55,7 @@ Requirements
 
 Please make sure that Red Pitaya inputs and outputs are properly terminated (matched impedance). Failure to do so may lead to undefined behaviour of the *Record and Playback* application due to the 
 `ringing <https://incompliancemag.com/circuit-theory-model-of-ringing-on-a-transmission-line/>`_ on the `transmission line <https://en.wikipedia.org/wiki/Transmission_line>`_.
-Red Pitaya fast analog inputs have input impedance of 1 MΩ. The fast analog outputs have output impedace of 50 Ω.
+Red Pitaya fast analog inputs have input impedance of 1 MΩ. The fast analog outputs have output impedance of 50 Ω.
 
 |
 

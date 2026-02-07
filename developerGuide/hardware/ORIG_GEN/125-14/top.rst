@@ -204,8 +204,11 @@ Measurements
 
 You can find the measurements of the fast analog frontend here:
 
-* :ref:`Original boards - STEMlab 125-14 <measurements_orig_gen>`.
-* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
+.. toctree::
+    :maxdepth: 1
+
+    ../measurements/STEMlab-125-14/index
+
 
 
 .. _schematics_125_14:

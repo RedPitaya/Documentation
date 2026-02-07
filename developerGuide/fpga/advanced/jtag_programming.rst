@@ -109,12 +109,16 @@ Recommended Cables
       - 14-pin connector + adapter
       - Official Xilinx cable
 
+|
+
 Other Compatible Cables
 ------------------------
 
 Any Xilinx-compatible JTAG cable should work. For a complete list, see:
 
 - `Xilinx UG908 - Programming and Debugging <https://www.xilinx.com/support/documents/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf>`_ (Appendix D)
+
+|
 
 Required Adapters
 -----------------
@@ -426,7 +430,7 @@ Step 3: Connect Red Pitaya
     - **STEMlab 125-14 Z7020, SDRlab, SIGNALlab:** ``xc7z020_1`` (Zynq-7020)
 
     .. figure:: img/JTAG-tutorial/JTAG-tutorial-program.jpg
-        :width: 500
+        :width: 400
         :align: center
         
         Zynq device (xc7z010) detected via JTAG

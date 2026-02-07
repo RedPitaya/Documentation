@@ -8,7 +8,7 @@ EPICS driver support for Red Pitaya is based on asynPortDriver. This module is t
 
 More about the EPICS driver can be found here:
 
-   |EPICS|
+-   |EPICS|
    
 .. |EPICS| raw:: html
 

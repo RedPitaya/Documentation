@@ -48,6 +48,8 @@ The Makefile uses ``curl`` to download and extract the device tree repository (:
 
     DTREE_URL ?= https://github.com/Xilinx/device-tree-xlnx/archive/$(DTREE_TAG).tar.gz
 
+|
+
 **Manual Setup (Standalone FPGA Build)**
 
 When building **only FPGA projects** using the standalone RedPitaya-FPGA repository, you must manually provide the Device Tree Xilinx repository:

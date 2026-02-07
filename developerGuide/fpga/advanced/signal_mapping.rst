@@ -83,7 +83,7 @@ The XADC inputs use voltage dividers to scale input voltages to the safe range f
 
 The fourth XADC input (AD) is connected to a voltage divider for measuring the internal 5V power supply voltage:
 
-::
+.. code-block:: console
 
                            +-----------------0  Vout
               -----------  |  -----------
@@ -102,7 +102,7 @@ Slow Analog Inputs
 
 The ADC inputs connected to the slow analog inputs have an input voltage range of ±0.5 V. Resistor dividers are used to scale the input voltage range to ±3.5 V:
 
-::
+.. code-block:: console
 
                            +-----------------0  Vout
               -----------  |  -----------
@@ -149,10 +149,10 @@ MIO vs PL/EMIO
 ==========================
 
 - **MIO (Multiplexed I/O)**: Pins directly controlled by PS, accessed via standard GPIO ``sysfs`` interface. Each pin has a few multiplexed functions selectable via pinctrl overlays. 
-    The drivers for Linux are provided by AMD/Xilinx.
+  The drivers for Linux are provided by AMD/Xilinx.
 
 - **PL/EMIO**: Pins controlled by FPGA logic, require FPGA design to define access method (e.g., custom AXI GPIO peripheral). Access method depends on FPGA implementation. 
-    If the pin signals in the FPGA sources are wired to EMIO, they can be accessed via the PS GPIO interface.
+  If the pin signals in the FPGA sources are wired to EMIO, they can be accessed via the PS GPIO interface.
 
 .. warning::
 
@@ -331,14 +331,14 @@ The SPI interface on Red Pitaya can be configured through the device tree. A com
 
 By default, the CS state is HIGH (inactive) on all Red Pitaya boards. To set the default value to LOW (active), modify the device tree:
 
-1.  Open the device tree source file:
+1.  **Open the device tree source file:**
 
     .. code-block:: console
 
         root@rp-f01c3d:~# rw
         root@rp-f01c3d:~# nano /opt/redpitaya/dts/$(monitor -f)/dtraw.dts
 
-2.  Find the SPI device node ``spidev@0`` and add the ``spi-cs-high`` property:
+2.  **Find the SPI device** node ``spidev@0`` and add the ``spi-cs-high`` property:
 
     .. code-block:: dts
 
@@ -349,7 +349,7 @@ By default, the CS state is HIGH (inactive) on all Red Pitaya boards. To set the
             spi-cs-high;  /* Add this line */
         };
 
-3. Recompile and reboot:
+3.  **Recompile and reboot:**
 
     .. code-block:: console
 
@@ -433,7 +433,7 @@ Additional Resources
 **********************************
 
 - :ref:`device_tree` - Device tree configuration and compilation
-- :ref:`_fpga_install_sdk` - SDK installation and HSI tool usage
+- :ref:`fpga_install_sdk` - SDK installation and HSI tool usage
 - :ref:`overlay_util` - Quick reference for overlay script
 - :ref:`fpga_advanced_loading` - Comprehensive overlay script guide
 - `Linux IIO Documentation <https://www.kernel.org/doc/html/latest/driver-api/iio/index.html>`_ - Industrial I/O subsystem documentation

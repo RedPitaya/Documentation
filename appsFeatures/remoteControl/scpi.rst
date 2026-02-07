@@ -22,7 +22,7 @@ The SCPI commands are extremely useful when complex signal analysis is required.
 
 .. note::
 
-   Communicating with an SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
+    Communicating with an SCPI server and working with web-based instruments at the same time can diminish the performance of your Red Pitaya. This is because the same resource is used for both tasks.
 
 |
 
@@ -36,38 +36,46 @@ Alternatively, you can manually commence the SCPI server using the Terminal (ref
 
 To run an example, follow the instructions below:
 
-#.  Go to your Red Pitaya web interface and select the SCPI server in the *Development* section.
+#.  **Open Red Pitaya web interface and navigate to the Development section**.
 
     .. figure:: img/scpi-homepage.png
         :width: 800
 
-    |
+#.  **Open the SCPI server**
 
     .. figure:: img/scpi-development.png
         :width: 800
 
+#.  **Start the SCPI server** by selecting one of the ``RUN`` buttons.
 
-#.  Start the SCPI server by selecting the RUN button. Please note the IP addreess (in our case, *192.168.178.100*) or the .local address (in our case, *rp-f03e5f.local*) of your Red Pitaya board , as it will be needed to establish a socket communication with your board.
+    * **TCP** - Start the SCPI server with TCP protocol. It is the most commonly used protocol for SCPI communication and is compatible with most software environments that support SCPI commands.
+    * **UART** - Start the SCPI server through the UART interface. This option is used for serial communication and is suitable for environments that support serial communication protocols.
+    * **Arduino** - Start the SCPI server in Arduino mode. This option is designed for use with Arduino-based environments and allows for seamless integration with Arduino projects.
+    * **Arduino TCP** - Start the SCPI server in Arduino TCP mode. This option combines the features of both TCP and Arduino modes, providing a versatile solution for various applications.
 
-    .. figure:: img/scpi-app-run.png
+    .. figure:: img/scpi_app_run.png
         :width: 800
 
-    |
+#.  **Note the IP address** (in our case, *192.168.178.100*) or the .local address (in our case, *rp-f03e5f.local*) of your Red Pitaya board, as it will be needed to establish a socket communication with your board.
 
     .. figure:: img/scpi-app-stop.png
         :width: 800
 
 
-#.  Follow the instructions below depending on the OS environment of your computer.
-
-    .. note::
-
-        Please refrain from running the SCPI server in parallel with other web applications like the Oscilloscope as it may result in undefined behaviour of both the application and the SCPI program.
+#.  **Start programming**. Follow the instructions below depending on the OS environment of your computer.
 
 .. contents::
     :local:
     :backlinks: none
     :depth: 1
+
+6.  **Stop the SCPI server** by clicking the ``STOP`` button when you are done.
+
+    .. note::
+
+        Please refrain from running the SCPI server in parallel with other web applications like the :ref:`Oscilloscope <osc_app>` as it may result in undefined behaviour of both the application and the SCPI program.
+
+        To prevent undefined behaviour, the **SCPI server application cannot be exited without clicking the** ``STOP`` **button first** on the latest OS versions.
 
 |
 
@@ -78,16 +86,16 @@ MATLAB
 Requirements and Setup
 -----------------------
 
-The basic MATLAB installation already has everything you need to control your Red Pitaya. However, we recommend installing the *Signal Processing* and
-*Instrumentat control* toolboxes, which might come in handy.
+The basic MATLAB installation already has everything you need to control your Red Pitaya. However, we recommend installing the **Signal Processing** and
+**Instrumentation Control** toolboxes, which might come in handy.
 
 Running code
 ---------------
 
-#.  Open MATLAB on your computer.
-#.  In the MATLAB workspace, paste the code from the :ref:`blink <blink>` tutorial example.
-#.  Replace the IP in the example with the IP of your Red Pitaya board or the *"rp-xxxxxx.local"* address.
-#.  Hit *RUN* or the *F5* key on your keyboard to run the code.
+#.  **Open MATLAB** on your computer.
+#.  **Copy blink example code**. In the MATLAB workspace, paste the code from the :ref:`blink <blink>` tutorial example.
+#.  **Replace the IP** in the example with the IP of your Red Pitaya board or the **"rp-xxxxxx.local"** address.
+#.  **Run the example**. Hit ``RUN`` or the ``F5`` key on your keyboard to run the code.
 
 More examples of controlling Red Pitaya through MATLAB can be found :ref:`here <examples>`.
 
@@ -100,60 +108,56 @@ Python
 Requirements and Setup
 -----------------------
 
-Here are the requirements for setting up a Python environment to remotely control your Red Pitaya. Here we present setting up the environment in |VSCode|, due to high adaptability and easily expandable functionality.
+Python is a powerful programming language that is widely used for scientific computing, data analysis, and automation. It has a large ecosystem of libraries and tools that make it an excellent 
+choice for controlling the Red Pitaya board remotely. It is also a great option for users who prefer an open-source solution or are looking for a more flexible programming environment.
+
+Here we present setting up the environment in |VSCode|, due to high adaptability and easily expandable functionality. However, you can use any other coding environment that supports Python.
 
 1.  **Install Python version 3.10 or higher.** Link to |python_main|.
-    During the installation process, do not forget to check the **Add python.exe to PATH** box!
+#.  **Add python.exe to PATH** during the installation process (check the box)!
 
     .. figure:: img/install_python.png
         :width: 600
 
-2.  **Install a coding environment.** We recommend using |VSCode|.
+#.  **Install a coding environment.** We recommend using |VSCode|.
 
     .. figure:: img/install_vsc.png
         :width: 600
 
-3.  **Install appropriate extensions for your coding environment** (*Python Extension Pack* and *Better Comments* are a good combination for VS Code).
-
-4.  **Configure the workspace.** Setup or create a new |workspace|. Here are some |tutorials| for Visual Studio Code.
-
-5.  **Choose a Python interpreter.**
+#.  **Install extensions** for your coding environment (**Python Extension Pack** and **Better Comments** are a good combination for VS Code).
+#.  **Configure the workspace.** Setup or create a new |workspace|. Here are some |tutorials| for Visual Studio Code.
+#.  **Create a virtual environment (optional).** See the instructions here - |venv|.
+#.  **Choose a Python interpreter.**
 
     .. figure:: img/select_interpreter.png
         :width: 800
 
-6.  Optionally, create a |venv|.
+#.  **Update Python packages.** Ensure that the Python packages are up to date and install following Python libraries:
 
-7.  **Update Python packages.** Ensure that the Python packages are up to date and install following Python libraries:
-
-    * pyvisa pyvisa-py (|PyVISA| library, in combination with the |PyVISA-py| backend)
     * numpy
     * matplotlib
 
-   |
-
     .. tabs::
 
-       .. tab:: Linux
+        .. tab:: Linux
 
-           Open the Terminal or use the *Terminal* in VS Code and type:
+            Open the Terminal or use the *Terminal* in VS Code and type:
 
-           .. code-block:: shell-session
-   
-               sudo pip3 install pyvisa pyvisa-py numpy matplotlib
+            .. code-block:: shell-session
+    
+                sudo pip3 install numpy matplotlib
 
-       .. tab:: Windows
+        .. tab:: Windows
 
-           Open the *Command Prompt* or use the *Terminal* in VS Code and type:
+            Open the *Command Prompt* or use the *Terminal* in VS Code and type:
 
-           .. code-block:: shell-session
-   
-               py -m pip install pyvisa pyvisa-py numpy matplotlib
+            .. code-block:: shell-session
+    
+                py -m pip install numpy matplotlib
 
-
-8.  **Enable "Running Scripts" option.** Windows users must enable "Running Scripts" option. It should be located in **Settings > Update&Security > For developers** under the **Power Shell** section (or google "How to enable running scripts on Windows 10/11").
-
-9.  **Double-check the Python version** and reselect the Python interpreter if necessary (See step 5).
+#.  **Enable "Running Scripts" option**. Windows users must enable ``Running Scripts`` option. It should be located in **Settings > Update&Security > For developers** under the 
+    **Power Shell** section (or google ``How to enable running scripts on Windows 10/11``).
+#.  **Double-check the Python version** and reselect the Python interpreter if necessary (See step 5).
 
     .. code-block:: shell-session
 
@@ -162,12 +166,14 @@ Here are the requirements for setting up a Python environment to remotely contro
 
     On Windows, you can use **py** instead of **python** in the command line.
 
-10. **Download and save the redpitaya_scpi.py library** into the VS Code workspace folder/directory. This library must be in the same folder as the python scripts. You can find the source code of the library on GitHub: |redpitaya_scpi lib github|. Alternatively, you can download it directly from here: |redpitaya_scpi.py|.
+#.  **Download and save the redpitaya_scpi.py library** into the VS Code workspace folder/directory. This library must be in the same folder as the python scripts. 
+    You can find the source code of the library on GitHub: |redpitaya_scpi lib github|. Alternatively, you can download it directly from here: |redpitaya_scpi.py|.
 
     .. figure:: img/scpi-examples.png
         :width: 600
 
-11. **Create a new python file with the following code.**
+#.  **Create a new python file with the following code.** Once saved, check how the NumPy library is displayed. If it is underlined in yellow the current Python 
+    environment does not have the libraries installed correctly.
 
     .. code-block:: python
 
@@ -175,18 +181,19 @@ Here are the requirements for setting up a Python environment to remotely contro
 
         print("Hello world!\n")
 
-    Once saved, check how the NumPy library is displayed. If it is underlined in yellow the current Python environment does not have the libraries installed correctly.
+#.  **Run the test file.** There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
 
-12. **Run the test file.** There should be no errors or warnings displayed in the terminal ("Hello world!" is printed).
+    .. figure:: img/hello_world.png
+        :width: 1000
 
-   .. figure:: img/hello_world.png
-       :width: 800
-
+|
 
 redpitaya_scpi.py library
 -----------------------------
 
-The |redpitaya_scpi.py| library is a Python script that establishes a socket connection between your computer and the Red Pitaya board. It provides an easy-to-use interface for sending SCPI commands to the Red Pitaya board and receiving responses. The library is designed to be simple and intuitive, allowing you to focus on writing your control routines without worrying about the underlying communication details.
+The |redpitaya_scpi.py| library is a Python script that establishes a socket connection between your computer and the Red Pitaya board. It provides an easy-to-use interface for sending SCPI 
+commands to the Red Pitaya board and receiving responses. The library is designed to be simple and intuitive, allowing you to focus on writing your control routines without worrying about the 
+underlying communication details.
 
 The library provides access to the following functions:
 
@@ -216,12 +223,14 @@ The library provides access to the following functions:
 | txrx_txt(txt)             | Sends a text command and receives a text response.                                                       |
 +---------------------------+----------------------------------------------------------------------------------------------------------+
 
-The ``tx`` functions are used to send commands to the Red Pitaya board, while the ``rx`` functions are used to receive responses. The ``check_error`` functions are used to check for errors in the responses. The library also provides a simple interface for sending and receiving binary data.
+The ``tx`` functions are used to send commands to the Red Pitaya board, while the ``rx`` functions are used to receive responses. The ``check_error`` functions are used to check for 
+errors in the responses. The library also provides a simple interface for sending and receiving binary data.
 
 .. note::
 
-    If an incorrect command is passed to the Red Pitaya board or an error occurs during the execution of a command, the **rx** functions will not return any data, resulting in an infinite loop as the program waits for a response that will never arrive.
-    To avoid this, please ensure that the SCPI commands are grammatically correct and regularly check for errors using the **check_error** function after sending a command.
+    If an incorrect command is passed to the Red Pitaya board or an error occurs during the execution of a command, the **rx** functions will not return any data, resulting in an 
+    infinite loop as the program waits for a response that will never arrive. To avoid this, please ensure that the SCPI commands are grammatically correct and regularly check for 
+    errors using the **check_error** function after sending a command.
 
 The GitHub repository of the **redpitaya_scpi.py** library contains several different libraries:
 
@@ -235,72 +244,49 @@ You can find the source code of the library on GitHub here:
 * |redpitaya_scpi lib github|.
 
 
-.. |PyVISA| raw:: html
+.. |python_main| replace:: |python| download webpage
 
-    <a href="https://pyvisa.readthedocs.io/en/latest/" target="_blank">PyVISA</a>
-    
-.. |PyVISA-py| raw:: html
+.. |workspace| replace:: |vscode-workspace|
 
-    <a href="https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/" target="_blank">PyVISA-py</a>
+.. |tutorials| replace:: |vscode-tutorials|
 
-.. |python_main| raw:: html
+.. |venv| replace:: |vscode-venv|
 
-    <a href="https://www.python.org/downloads/" target="_blank">Python download webpage</a>
-
-.. |VSCode| raw:: html
-
-    <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>
-
-.. |workspace| raw:: html
-
-    <a href="https://code.visualstudio.com/docs/editor/workspaces" target="_blank">workspace</a>
-
-.. |tutorials| raw:: html
-
-    <a href="https://code.visualstudio.com/docs/getstarted/introvideos" target="_blank">tutorials</a>
-
-.. |venv| raw:: html
-
-    <a href="https://code.visualstudio.com/docs/python/environments" target="_blank">virtual environment</a>
-
-.. |redpitaya_scpi lib github| raw:: html
-
-    <a href="https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/lib/" target="_blank">redpitaya_scpi GitHub source code</a>
+.. |redpitaya_scpi lib github| replace:: :github:`redpitaya_scpi GitHub source code <RedPitaya/RedPitaya-Examples/blob/dev/python/lib/>`
 
 .. |redpitaya_scpi.py| replace::
 
     :download:`redpitaya_scpi.py <https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/lib/redpitaya_scpi.py>`
 
+|
 
-Running code
-----------------
+Running the code
+-----------------
 
-1.  Open the :ref:`blink <blink>` tutorial and copy the code to your favourite text editor.
-
-2.  Save the file to your working folder as ``blink.py``. Make sure that **redpitaya_scpi.py** is located next to it.
+1.  **Copy blink example code**. Open the :ref:`blink <blink>` tutorial and copy the code to your favourite text editor.
+#.  **Save the blink example** to your "work" folder as ``blink.py``. Make sure that **redpitaya_scpi.py** is located next to it.
 
     .. note::
 
-       The ``redpitaya_scpi.py`` library is a standard script needed to establish the connection between your PC and the Red Pitaya board. The execution of your code will fail without this library being in the same folder as your Python code.
+       The ``redpitaya_scpi.py`` library is a standard script needed to establish the connection between your PC and the Red Pitaya board. The execution of your code will fail 
+       without this library being in the same folder as your Python code.
 
     .. figure:: img/scpi-examples.png
         :width: 600
 
-3.  Edit ``blink.py`` so that the *IP* variable contains the IP or the "rp-xxxxxx.local" address of your Red Pitaya.
-
-4.  Run the ``blink.py``. Either select the left arrow in the VS Code or open the Terminal and navigate to the folder containing your Python script (``examples_py``), then type: ``python blink.py``
+#.  **Change the IP address**. Modify the ``IP`` variable in the ``blink.py`` so that it contains the IP or the "rp-xxxxxx.local" address of your Red Pitaya.
+#.  **Run the example**. Either select the left arrow in the upper right corner of VS Code or open the ``Terminal`` and navigate to the folder containing your Python script (``examples_py``), then type: ``python blink.py``
 
     .. code-block:: shell-session
 
         cd <python_file_location>
         python blink.py
 
-
 More examples of how to control Red Pitaya with Python can be found :ref:`here <examples>`.
 
 .. note::
    
-   Python examples can also be run directly from the RP device itself. To do so, first start the SCPI server and then use the local device IP: ``127.0.0.1``
+    Python examples can also be run directly from the RP device itself. To do so, first start the SCPI server and then use the local device IP: ``127.0.0.1``
 
 |
 
@@ -314,12 +300,14 @@ Requirements and Setup
 For proper operation, the |LabVIEW_driver| must be installed.
 
 1.  Download the |LabVIEW_driver|. 
-2.  Unpack the downloaded driver and copy the Red Pitaya folder to your LabVIEW installation ``instr.lib`` folder. Here are path examples for both 64- and 32-bit LabVIEW versions.
+#.  Unpack the downloaded driver and copy the Red Pitaya folder to your LabVIEW installation ``instr.lib`` folder. Here are path examples for both 64- and 32-bit LabVIEW versions.
     
     -  64-bit LabVIEW version (mostly paid): ``C:/Program Files/National Instruments/LabVIEW 2010/instr.lib``.
     -  32-bit LabVIEW version (e.g. free Community Edition): ``C:/Program Files (x86)/National Instruments/LabVIEW 2020/instr.lib``.
 
 The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya**. Depending on your settings, instrument I/O may be hidden. Please consult LabVIEW Help on how to activate or deactivate those categories. 
+
+|
 
 Running code
 --------------
@@ -339,15 +327,19 @@ More examples on how to control Red Pitaya from LabVIEW can be found :ref:`here 
 Starting SCPI server manually
 *****************************
 
-1. Connect to your Red Pitaya through :ref:`SSH <ssh>`.
+1.  **Establish SSH connection**. Connect to your Red Pitaya through :ref:`SSH <ssh>`.
 
-#. Before starting SCPI service, make sure Nginx service is not running. Running them at the same time will cause conflicts, since they access the same hardware.
+#.  **Stop the Nginx service**. Before starting SCPI server, make sure Nginx service is not running. Running them at the same time will cause conflicts, since they access the same hardware.
 
-   .. code-block:: shell-session
+    .. code-block:: shell-session
 
         systemctl stop redpitaya_nginx
 
-#. Start the SCPI server with the following command:
+    .. note::
+   
+        This only stops the web interface temporarily. It will restart on next boot. For service management details, see :ref:`Service Management <service_management>`.
+
+#.  **Start the SCPI server** with the following command:
 
     .. code-block:: shell-session
 
@@ -358,7 +350,7 @@ Starting SCPI server manually
 
 .. note::
 
-    Please make sure that the "default" *v0.94* FPGA image is loaded. With OS versions 2.00-23 or higher, exectue the following command:
+    Please make sure that the "default" **v0.94 FPGA image** is loaded. With OS versions 2.00-23 or higher, execute the following command:
 
     .. figure:: img/scpi-run2.png
         :width: 400
@@ -369,33 +361,44 @@ Starting SCPI server manually
 
         RP:LOGmode CONSOLE
 
+|
+
+.. _scpi_boot_time:
 
 **********************************
 Starting SCPI server at boot time
 **********************************
 
-The next commands will enable running SCPI service at boot time and disable Nginx service.
+The next commands will enable running SCPI server at boot time and disable Nginx service.
 
-.. code-block::
+.. code-block:: shell-session
 
-   systemctl disable redpitaya_nginx
-   systemctl enable  redpitaya_scpi
+    systemctl disable redpitaya_nginx
+    systemctl enable  redpitaya_scpi
 
+.. note::
 
+    These commands configure which service starts at boot. For more service management options, see :ref:`Service Management <service_management>`.
+
+|
 
 ***************************
 How do SCPI commands work?
 ***************************
 
 Here we explain the "behind the scenes" functionality of the redpitaya_SCPI.py script, which establishes the socket connection between Red Pitaya (host) and the computer (client).
-The principles explained here can also be applied to other environments that already support SCPI commands (MATLAB, LabVIEW), or used as a basis for developing a script that enables SCPI commands in another environment.
+The principles explained here can also be applied to other environments that already support SCPI commands (MATLAB, LabVIEW), or used as a basis for developing a script that enables 
+SCPI commands in another environment.
 
-SCPI commands are basically string commands that either contain a user-defined parameter that needs to be changed in the board settings, or are a request to the board to return a specific setting or captured data.
-Consequently, we can divide the SCPI commands into two categories, *control commands* and *query commands*, which we will discuss in the following chapters.
+SCPI commands are basically string commands that either contain a user-defined parameter that needs to be changed in the board settings, or are a request to the board to return a 
+specific setting or captured data. Consequently, we can divide the SCPI commands into two categories, *control commands* and *query commands*, which we will discuss in the following 
+chapters.
 
-SCPI commands are easy to use and memorise, but suffer from a lack of speed because all data, regardless of size or type, must be converted into a string which is then sent over the TCP connection.
-When an SCPI command string arrives at the Red Pitaya board, it is compared with the list of all possible SCPI commands, if the correct command is found, the parameters are taken from the string and converted back into the usual format, 
-then the appropriate C API function is executed. Otherwise an error is returned.
+SCPI commands are easy to use and memorise, but suffer from a lack of speed because all data, regardless of size or type, must be converted into a string which is then sent over 
+the TCP connection. When an SCPI command string arrives at the Red Pitaya board, it is compared with the list of all possible SCPI commands, if the correct command is found, the 
+parameters are taken from the string and converted back into the usual format, then the appropriate C API function is executed. Otherwise an error is returned.
+
+|
 
 ==================
 Control commands
@@ -410,6 +413,8 @@ Control commands send user-defined settings to the Red Pitaya.
 * Error checking is done via the status byte.
 * Error checking is optional.
 * The error code from the API consists of two parts. ``9000`` or ``9500``, indicating whether the error is normal or critical, and the API error number. For example: ``9500 + RP_EOED = 9501`` (Failed to Open EEPROM Device)
+
+|
 
 ================
 Query commands
@@ -429,6 +434,7 @@ Query commands request data or a setting to be returned to the user. They always
 * In ASCII mode, data buffers are represented in the form ``{dd,dd,dd,...,dd}``.
 * The API error code consists of two parts. ``9000`` or ``9500``, indicating whether the error is normal or critical, and the API error number. For example: ``9500 + RP_EOED = 9501`` (Failed to Open EEPROM Device).
 
+|
 
 .. substitutions
 

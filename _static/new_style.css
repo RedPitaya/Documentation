@@ -15,7 +15,9 @@ html, body, html * {
 }
 
 /* Display logo using background image while letting logo_only handle text */
-.wy-side-nav-search a.icon.icon-home {
+/* Use very specific selector to ONLY target sidebar logo, not breadcrumbs */
+.wy-side-nav-search > a.icon.icon-home,
+.wy-side-nav-search > a[href*="redpitaya.com"].icon-home {
     display: block !important;
     text-align: center !important;
     padding: 10px !important;
@@ -25,17 +27,6 @@ html, body, html * {
     background-position: center 10px !important;
     background-size: 160px auto !important;
     min-height: 70px !important;
-}
-
-/* Alternative approach: target any link in the search area */
-.wy-side-nav-search a {
-    background-image: url('redpitaya-logo.png') !important;
-    background-repeat: no-repeat !important;
-    background-position: center 10px !important;
-    background-size: 160px auto !important;
-    min-height: 70px !important;
-    padding-top: 60px !important;
-    display: block !important;
 }
 
 /* Ensure the search area has enough space for the logo */
@@ -215,7 +206,7 @@ pre span {
 }
 
 .toctree-expand {
-    visibility: hidden;
+    display: none;
 }
 
 /* Position and style copy buttons - moved to top right corner */
@@ -279,6 +270,12 @@ nav.contents.local ul {
     line-height: 1.4 !important;
 }
 
+.wy-breadcrumbs ul {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 /* Force inline display and remove bullets */
 .wy-breadcrumbs li {
     display: inline !important;
@@ -286,6 +283,12 @@ nav.contents.local ul {
     list-style-type: none !important;
     padding: 0 !important;
     margin: 0 !important;
+}
+
+/* Ensure breadcrumb icons and links stay inline */
+.wy-breadcrumbs a,
+.wy-breadcrumbs .icon {
+    display: inline !important;
 }
 
 /* Remove bullet points from breadcrumbs - override any global list styles */
@@ -307,10 +310,41 @@ nav.contents.local ul {
     color: #999 !important;
 }
 
+/* Ensure all breadcrumb content stays inline - be very specific */
+.wy-breadcrumbs li,
+.wy-breadcrumbs li a,
+.wy-breadcrumbs li .icon,
+.wy-breadcrumbs li code.docutils.literal {
+    display: inline !important;
+}
+
+/* Override any sidebar logo styles that might affect breadcrumb home icon */
+/* Use high specificity to ensure breadcrumb icon stays inline */
+.wy-breadcrumbs li a.icon.icon-home,
+.wy-breadcrumbs a.icon.icon-home,
+.wy-breadcrumbs .icon-home {
+    display: inline !important;
+    padding: 0 !important;
+    padding-top: 0 !important;
+    background-image: none !important;
+    background: none !important;
+    min-height: auto !important;
+    height: auto !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+}
+
 /* Make breadcrumb links more compact */
 .wy-breadcrumbs a {
     display: inline !important;
     padding: 0.2em 0 !important;
+}
+
+/* Ensure home icon text doesn't break to new line */
+.wy-breadcrumbs li:first-child,
+.wy-breadcrumbs li:first-child a {
+    display: inline !important;
+    white-space: nowrap !important;
 }
 
 /* Style the current page in breadcrumbs */

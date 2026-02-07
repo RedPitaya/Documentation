@@ -1,13 +1,14 @@
 
-1. FPGA register access
+
+# FPGA
+
+##. FPGA register access
 
     Kar se tiče ARMa, so dostopi do BRAM še hitrejši kot do DDR. (Če se prav spomnim) Zynq PS dostope do BRAM tretira enako kot DDR, samo da se preadresira na drug kontroler. Ker pa je BRAM v bistvu on board spomin, je zelo hiter - dosti manjše latence. 
 
     "Single read" registrov je pa seveda dosti počasnejši, ker vsako branje ustvari nekaj overhead-a.
 
-2. Include the Question list information into the docs.
-
-3. FPGA Ethernet
+##. FPGA Ethernet
 
     The Ethernet should be accessible but you have to use the baremetal connection - double check this with Jure and Črt.
 
@@ -42,80 +43,13 @@
     Red Pitaya's architecture fundamentally requires the Linux operating system running on the ARM processors to handle Ethernet communication. The Ethernet hardware is not accessible directly from the FPGA fabric.
     <<<
 
-4. Calibration - no 50 Ohm termination for calibrating Gen 2 boards. Calibration is performed without the FPGA filter. Filter must be calibrated separately.
+##.  Missing from FPGA docs:
 
-5. Current limits - Need to check the FPGA settings (config file) for E3 diff pair current and voltage limits
+    - Building Vivado project from scratch (without using the automated scripts) - should work on any Vivado version
+    - Constraint files for all boards (.xdc) and which FPGA part is used (aka board file)
+    - Building FPGA on Gen 2 boards - za Z10 Gen2 ni treba narediti nič posebnega. Za Z20 Gen2 moraš buildat MODEL=Z20_G2 . Razlika je zaradi E3 konektorja
 
-7. SCPI BIN mode improvements.
-
-    These commands set the data transfer mode in BIN mode. They do not affect the ASCI mode.
-    Now the byte order is big-endian, it also remains the default.
-    I added little-endian support, the same as used on RP.
-    This allowed us to get rid of data conversion.
-
-    I also worked out the logic of working with memory when transferring data from RP to the client.
-    The changes affected both the normal mode and AXI.
-    So both modes need to be checked.
-
-    In normal mode, byte order affects BIN - (RAW/VOLT)
-
-    There are some nuances in AXI mode
-    There can be 6 types of flag combinations in AXI:
-    - (RAW/BIN/BEND) - The data is not copied from memory, but requires transformation.
-    - (RAW/BIN/LEND) - Data is not copied from memory, sent as is. (maximum data transfer rate).
-    - (RAW/ASCII) - The data is not copied from memory, but requires transformation. (Excessive amount of data as the data is in text format)
-    - (VOLT/BIN/BEND) - Data is copied from memory and requires transformation.
-    - (VOLT/BIN/LEND) - Data is copied from memory. No conversion is required, but requires enough RAM for an intermediate buffer.
-    - (VOLT/ASCII) - Data is copied and formatted. (The slowest data transfer method)
-
-    We have an example that works in any BIN mode, but it can be modified.
-    https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/acquire_trigger_posedge_axi_bigbuffer.py
-    This example shows that transferring a large amount of data requires an interactive data request, since the intermediate buffer on SCPI can be limited by the size of free RAM memory.
-    After optimization in RAW mode, you can request the entire buffer. For example, you can request 128MB of data at once.
-    For VOLT mode, we still have to request data in portions.
-
-    I also increased the size of the data to read.
-    If you read 4096 bytes, the transfer is quite slow.
-    https://github.com/RedPitaya/RedPitaya-Examples/commit/95bec06cb4c42e522e696cdd7aa44f2079c45c5b
-
-    On my side I checked the tests. For me, transferring 32MB of data in LEND/RAW/BIN mode took 1-2 seconds.
-
-8. GitHub examples:
-
-    Looking at the examples, it looks like we'll have a merge conflict since we've made changes to the main branch.
-    Also, I think we should add the ecosystem version it runs on to the title of each example. This is because we currently have a separate repository and no direct connection to the ecosystem version.
-
-    And most likely, you need to add this:
-    import lib.redpitaya_scpi as scpi
-
-    https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/python
-
-    Specify the versions of examples (Red Pitaya OS)
-    Red Pitaya.
-    Python is the simplest there, so I'm not sure there will be any compatibility issues.
-    Again, we're not responsible for the client's Python installation.
-    If anyone uses older versions of the ecosystem, you need to specify that such and such an example will work with version 2.0-35, and new examples only with 2.07-50, permissible.
-    In one folder with examples for the generator there can be examples for the old OS and the new OS
-    
-10. Oscilloscope - I added an implicit feature to scopegenpro: if you select a channel, hold Shift, and turn the wheel, you can scale along the Y axis.
-    Also, selecting the cursor on the left changes the active channel.
-
-    Update the application docs with the new functionality:
-    - Interpolation
-    - Tracing
-
-11. Being able to enter the actual Sampling Rate of the External clock into the GUI. Currently the GUI assumes that I am clocking my RP with a 122.880 MS/s clock. 
-    I am using the EXT Clock version of the 16 bits ADC board (STEM-122). In terms of precision, I would appreciate if I could enter up to a very high resolution (i.e. 80.12345678 MHz). 
-    This feature is quite important to me because currently all the Measurement Parameters in the GUI are calculated assuming the sampling clock is 122.880 MS/s.
-
-    The clock rate setting in the system menu has been improved.
-    This setting overrides the value in the profile, and all applications and modules will use this value instead of the default.
-
-12. Decoding the Streaming data from the computer on a custom application. How is stream data encoded and how to decode it.
-
-13. Commands to remotely start/stop the stream - explanation so users can perform this on their own.
-
-14. FPGA examples:
+##.  FPGA examples:
 
     - Create a basic project (together with Vivado IP cores):
         - ADC frontend
@@ -177,9 +111,6 @@
     - Stopwatch
     - Interfacing with DDR
 
-
-
-
     In the prj section of the Github repository https://github.com/RedPitaya/RedPitaya-FPGA, there is a frequency counter. 
     There is an IP in the core section called axis_red_pitaya_dac_v1.0. This appears to take one combined output from a DDS 
     Complier that is configured to create a multiplexed Cosine and SIne output and outputs one to DAC port A and another to 
@@ -192,32 +123,144 @@
     Example : acquisition of multi-channels, preprocessing in the FPGA, then streaming of I/Q data where I can do Radar / Sonar processing. 
 
 
-15. Missing from FPGA docs:
 
-    - Building Vivado project from scratch (without using the automated scripts) - should work on any Vivado version
-    - Constraint files
-    - Guide through the GitHub FPGA repository and where to find stuff
-    - Building FPGA on Gen 2 boards - za Z10 Gen2 ni treba narediti nič posebnega. Za Z20 Gen2 moraš buildat MODEL=Z20_G2 . Razlika je zaradi E3 konektorja
 
-16. Converting RAW to Volts and plotting on the computer.
+# HARDWARE
+
+##. Current limits - Need to check the FPGA settings (config file) for E3 diff pair current and voltage limits
+
+##.  Add Calibration section to hardware docs of each board - linking to the calib command line tool and the calibration util. Add a special calibration page which includes links all the options.
+
+##.  Add output coupling to technical documentation tables
+
+
+
+# SOFTWARE
+
+##.  UART supports 115200 or higher and CS8. Other settings need a rebuild of the server.
+
+    g_settings.c_cflag &= ~CSIZE;
+    g_settings.c_cflag |= CS8 | CLOCAL | CREAD;             /* 8 bits /
+    g_settings.c_cflag &= ~CRTSCTS;                         // Disable flow control
+    g_settings.c_iflag &= ~(IXON | IXOFF | IXANY);          // Disable XON/XOFF flow control both input & output
+    g_settings.c_iflag &= ~(ICANON | ECHO | ECHOE | ISIG);  // Non Cannonical mode
+    g_settings.c_iflag &= ~ICRNL;
+    g_settings.c_oflag &= ~OPOST; / raw output */
+
+    g_settings.c_lflag = 0;     //  enable raw input instead of canonical,
+    g_settings.c_cc[VMIN] = 1;  // Read at least 1 character
+    cfsetspeed(&g_settings, UART_RATE);
+    tcsetattr(uart_fd, TCSANOW, &g_settings);
+
+    Rebuilding the server - You need to change the settings in main.cpp and recompile using "make scpi". But it's best not to mess around with it unnecessarily. Not many people really need this functionality, and it's not guaranteed to work reliably. Plus, not all modes are supported by UART.
+
+##. Starting and logging measurements:
+
+    https://forum.redpitaya.com/viewtopic.php?t=27488&sid=2cf977ce7f7246648d40434b21271377
+
+##. Invalid EEPROM values
+
+    The new NB (680 and higher) display a warning icon if the EEPROM value is invalid.
+
+##. Synchronising multiple SIGNALlab 250-12 boards:
+
+    There are three steps to synchronising multiple 250-12 units:
+    
+    1. Connect an external 10 MHz reference clock to the SMA connector in the back.
+    2. Connect the external trigger signal to the middle BNC connector
+    3. Start the PLL synchronisation on the SIGNALlab boards by running the following commands: https://redpitaya.readthedocs.io/en/latest/appsFeatures/remoteControl/command_list/commands-pll.html#phase-locked-loop
+
+    The easiest would be to have the C++ or Python API script executed during the boot, by adding it to the stratup.sh routine: https://redpitaya.readthedocs.io/en/latest/appsFeatures/remoteControl/API_scripts.html#running-applications-at-boot
+
+##. Kernel Panic
+
+    Happens when a program corrupts memory or accesses invalid memory. This can be due to bugs in the program, hardware issues, or conflicts between different software components.
+    Please reinstall the latest version of the official Red Pitaya OS and check if the problem persists. If it does, please contact us.
+
+
+
+# SCPI & API
+
+##. SCPI BIN mode improvements.
+
+    These commands set the data transfer mode in BIN mode. They do not affect the ASCI mode.
+    Now the byte order is big-endian, it also remains the default.
+    I added little-endian support, the same as used on RP.
+    This allowed us to get rid of data conversion.
+
+    I also worked out the logic of working with memory when transferring data from RP to the client.
+    The changes affected both the normal mode and AXI.
+    So both modes need to be checked.
+
+    In normal mode, byte order affects BIN - (RAW/VOLT)
+
+    There are some nuances in AXI mode
+    There can be 6 types of flag combinations in AXI:
+    - (RAW/BIN/BEND) - The data is not copied from memory, but requires transformation.
+    - (RAW/BIN/LEND) - Data is not copied from memory, sent as is. (maximum data transfer rate).
+    - (RAW/ASCII) - The data is not copied from memory, but requires transformation. (Excessive amount of data as the data is in text format)
+    - (VOLT/BIN/BEND) - Data is copied from memory and requires transformation.
+    - (VOLT/BIN/LEND) - Data is copied from memory. No conversion is required, but requires enough RAM for an intermediate buffer.
+    - (VOLT/ASCII) - Data is copied and formatted. (The slowest data transfer method)
+
+    We have an example that works in any BIN mode, but it can be modified.
+    https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/acquire_trigger_posedge_axi_bigbuffer.py
+    This example shows that transferring a large amount of data requires an interactive data request, since the intermediate buffer on SCPI can be limited by the size of free RAM memory.
+    After optimization in RAW mode, you can request the entire buffer. For example, you can request 128MB of data at once.
+    For VOLT mode, we still have to request data in portions.
+
+    I also increased the size of the data to read.
+    If you read 4096 bytes, the transfer is quite slow.
+    https://github.com/RedPitaya/RedPitaya-Examples/commit/95bec06cb4c42e522e696cdd7aa44f2079c45c5b
+
+    On my side I checked the tests. For me, transferring 32MB of data in LEND/RAW/BIN mode took 1-2 seconds.
+
+##.  Converting RAW to Volts and plotting on the computer.
 
     It all depends on the board you're capturing on. If you're using a 125-14 board, you need to divide the values ​​by 8192.
     If the resolution is different, divide accordingly. Keep in mind that the RAW data is likely uncalibrated.
 
-17. Split and organize the OS installation instructions.
+##.  Simple lessons on Data acquisition and generation - C & Python API commands.
 
-    The current guide is too hard to follow.
+##. Move the code examples to GitHub and only link them in the documentation - much easier maintenance.
 
-18. Fix the spacing in between Index links. Index should have depth 1 and not 2 - makes it easier for users to read.
+##. New SCPI server settings. Connecting to Arduino (UART, WiFi, etc.). Create block schemes, etc. Describe the new functionality.
 
-19. Fix the indents in points 2, 3, 4 in the left side menu.
-
-20. Fix the spacing of titles at the top (navigation)
-
-21. Simple lessons on Data acquisition and generation - C & Python API commands.
+##. Debug files from inside Red Pitaya: Run the following script /opt/redpitaya/sbin/scripts/bug_report.sh
 
 
-22. Running multiple applications:
+# APPLICATIONS
+
+##.  LA API does not crash on STEMlab 125-10 with the latest OS - software issues
+
+##. Calibration - Calibration is now performed without the FPGA filter. Filter must be calibrated separately.
+    Proper calibration proceedure:
+        1. Reset frequency calibration filter to default values
+        2. Perform DC calibration
+        3. Perform frequency calibration
+        4. Perform DC calibration again to account for the frequency calibration changes
+
+    Gen 2 boards do not use the FPGA equalisation filter for calibration - it is disabled by default (do not frequency calibrate Gen 2 boards).
+
+##.  Oscilloscope - I added an implicit feature to scopegenpro: if you select a channel, hold Shift, and turn the wheel, you can scale along the Y axis.
+    Also, selecting the cursor on the left changes the active channel.
+
+    Update the application docs with the new functionality:
+    - Interpolation
+    - Tracing
+
+##.  Info buttom - system settings. Being able to enter the actual Sampling Rate of the External clock into the GUI. Currently the GUI assumes that I am clocking my RP with a 122.880 MS/s clock. 
+    I am using the EXT Clock version of the 16 bits ADC board (STEM-122). In terms of precision, I would appreciate if I could enter up to a very high resolution (i.e. 80.12345678 MHz). 
+    This feature is quite important to me because currently all the Measurement Parameters in the GUI are calculated assuming the sampling clock is 122.880 MS/s.
+
+    The clock rate setting in the system menu has been improved.
+    This setting overrides the value in the profile, and all applications and modules will use this value instead of the default.
+
+##.  Decoding the Streaming data from the computer on a custom application. How is stream data encoded and how to decode it. - rpsa client, streaming server
+
+##.  Commands to remotely start/stop the stream - explanation so users can perform this on their own - check the rpsa.client code on GitHub for example.
+
+##.  Running multiple applications:
 
     Technically, you can run the oscilloscope and Jupyter.
     But you need to be careful.
@@ -233,8 +276,7 @@
 
     It is also possible to execute code from the console simultaneously with the oscilloscope.
 
-
-23. SDR on macOS and Red Pitaya
+##.  SDR on macOS and Red Pitaya
 
     Software Defined Radio (SDR) clients on macOS expect a specific connection protocol and device profile. Red Pitaya's SDRLab (and the SDR applications provided for Red Pitaya) expose HPSDR/Metis-compatible streams (Hermes/Metis protocol) and also can be accessed by clients that support ExtIO/plug‑ins or by using a bridge that translates the Red Pitaya stream to a more widely supported interface. On macOS the ecosystem is smaller than on Windows/Linux and compatibility depends on the exact client supporting Hermes/Metis or having a plugin/bridge. Because you’re not an SDR stack expert (and that helps me explain things better!), here’s the practical background and options.
 
@@ -279,54 +321,57 @@
     Pavel Demin’s Red Pitaya Notes (community SDR tools & instructions): https://pavel-demin.github.io/red-pitaya-notes/
     Known software issues (mac direct connection, websockets): https://redpitaya.readthedocs.io/en/lat ... ssues.html
 
-24. LA API does not crash on STEMlab 125-10 with the latest OS
-
-25. Issues with I2C communication have been fixed in the latest OS.
-
-26. Add Calibration section to hardware docs of each board - linking to the calib command line tool and the calibration util. Add a special calibration page which includes links all the options.
-
-27. Add output coupling to technical documentation tables
-
-28. UART supports 115200 or higher and CS8. Other settings need a rebuild of the server.
-
-    g_settings.c_cflag &= ~CSIZE;
-    g_settings.c_cflag |= CS8 | CLOCAL | CREAD;             /* 8 bits /
-    g_settings.c_cflag &= ~CRTSCTS;                         // Disable flow control
-    g_settings.c_iflag &= ~(IXON | IXOFF | IXANY);          // Disable XON/XOFF flow control both input & output
-    g_settings.c_iflag &= ~(ICANON | ECHO | ECHOE | ISIG);  // Non Cannonical mode
-    g_settings.c_iflag &= ~ICRNL;
-    g_settings.c_oflag &= ~OPOST; / raw output */
-
-    g_settings.c_lflag = 0;     //  enable raw input instead of canonical,
-    g_settings.c_cc[VMIN] = 1;  // Read at least 1 character
-    cfsetspeed(&g_settings, UART_RATE);
-    tcsetattr(uart_fd, TCSANOW, &g_settings);
-
-    Rebuilding the server - You need to change the settings in main.cpp and recompile using "make scpi". But it's best not to mess around with it unnecessarily. Not many people really need this functionality, and it's not guaranteed to work reliably. Plus, not all modes are supported by UART.
-
-29. How to disable/enable the web interface:
-
-    systemctl stop redpitaya_nginx
-
-    This should stop the nginx and the web interface with it. To disable it please use the following command:
-
-    systemctl disable redpitaya_nginx
-
-    If you want to permanently disable the web interface, I would suggest running the command at Red Pitaya boot by adding it into the startup.sh script located in "/opt/redpitaya/sbin" directory.
-
-    First stop, then disable. To reenable first enable then start.
-
-30. Starting streaming server from the command line. Instructions missing. Connect the command line tool and the remote start of stream server from the board (command line tool).
-
-    How to do this? Chapters in the Streaming applicaiton
-
-    Further divide and simplify the streaming documentation
-
-    Add more examples and define a testing script for this
-
-    What are the optimal packet sizes for different speeds (higher speeds should have bigger packets - I remember something about 2 MB packets being good)
 
 
-31. VNA and SDR apps should clearly state instructions for installing the ported clients for the official OS and refer to Pavel's version for the most up-to-date instructions.
+# FORMATING
+
+##.  Fix the spacing in between Index links. Index should have depth 1 and not 2 - makes it easier for users to read.
 
 
+
+# OTHER
+
+##. Include the Question list information into the docs.
+
+##. GitHub examples:
+
+    Looking at the examples, it looks like we'll have a merge conflict since we've made changes to the main branch.
+    Also, I think we should add the ecosystem version it runs on to the title of each example. This is because we currently have a separate repository and no direct connection to the ecosystem version.
+
+    And most likely, you need to add this:
+    import lib.redpitaya_scpi as scpi
+
+    https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/python
+
+    Specify the versions of examples (Red Pitaya OS)
+    Red Pitaya.
+    Python is the simplest there, so I'm not sure there will be any compatibility issues.
+    Again, we're not responsible for the client's Python installation.
+    If anyone uses older versions of the ecosystem, you need to specify that such and such an example will work with version 2.0-35, and new examples only with 2.07-50, permissible.
+    In one folder with examples for the generator there can be examples for the old OS and the new OS
+
+
+
+
+#### Update #####
+
+FPGA testi za simulacijo ob releaseu novega OS - OBVEZNI TESTI pred releasom OS.
+
+Potrebne neke obvezne simulacije za delovanje FPGA.
+
+
+
+POPIS eMMC
+
+SD kartica daš v pitayo in staraš - startaš uboot in ustaviš
+
+Pogledaš če vidi eMMC - vržeš ven SD akrtico
+
+EMMC vidiš kot Must storage in vpišeš gor kot da bi bil USB ključek
+
+
+
+
+E3 SW
+
+Popravi E3 SW za deaktivacijo watchdog timerja.

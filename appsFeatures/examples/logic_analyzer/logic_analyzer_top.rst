@@ -3,6 +3,8 @@
 Logic Analyzer 
 ##############
 
+Analyze digital protocols and signals using Red Pitaya's logic analyzer functionality. Examples demonstrate UART, SPI, and I2C protocol capture and analysis with FPGA-based triggering.
+
 .. toctree::
     :maxdepth: 1
 

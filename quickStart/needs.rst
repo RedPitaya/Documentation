@@ -4,64 +4,40 @@
 What do I need before I start?
 ##############################
 
-The following items are required for proper board operation. They are already included in each of the Red Pitaya kits available on our |WEBstore|:
+.. note::
 
-.. tabs::
+    Not sure which board model you have? Check our :ref:`board identification guide <ID_guide>` to help you identify your Red Pitaya.
 
-    .. group-tab:: Gen 2
+The following items are required for proper board operation and are included in each Red Pitaya kit available on our :rp-store:`WEB store <>`:
 
-        .. tabs::
+**For most Red Pitaya boards:**
 
-            .. tab:: 125-14 Gen 2, 125-14 PRO Gen 2, 125-14 PRO Z7020 Gen 2
+* Power supply:
 
-                * 5 V / 3 A USB-C power supply.
-                * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
-                * Ethernet cable.
-            
-            .. tab:: 125-14 TI, 65-16 TI
+    * **Gen 2 boards** (USB-C connector): 5 V / 3 A USB-C power supply
+    * **Original Gen boards** (micro USB connector): 5 V / 2 A micro USB power supply
 
-                * 5 V / 3 A USB-C power supply.
-                * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
-                * Ethernet cable.
+* 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS
+* Ethernet cable
 
-    .. group-tab:: Original Gen
+**Exception - STEMlab 250-12:**
 
-        .. tabs::
+* 24 V / 0.5 A power adapter with jack connector
+* 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS
+* Ethernet cable
 
-            .. tab:: 125-14, 122-16, 125-14 4-Input, 125-10
+|
 
-                * 5 V / 2 A micro USB power supply.
-                * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
-                * Ethernet cable.
+Additional items required (not included in kits):
 
-            .. tab:: 250-12
-
-                * 12 V / 1 A power adapter with jack connector.
-                * 32 GB (or bigger) class 10 micro SD card with pre-loaded Red Pitaya OS.
-                * Ethernet cable.
-
-Additional items required that are not included in the Red Pitaya kits:
-
-    * A computer with an internet browser (Google Chrome is recommended).
-    * Router with DHCP server enabled and access to the internet.
+* A computer with an internet browser (Google Chrome is recommended)
+* Router with DHCP server enabled and access to the internet
 
 .. note::
 
     The board should be powered by the included power supply or an external power supply with appropriate specifications. Computer USB ports do not provide sufficient power to operate the Red Pitaya card.
 
-    .. tabs::
-
-        .. group-tab:: Gen 2
-
-            Please refer to the :ref:`Gen 2 hardware specifications <hw_specs_gen2>` for further technical specifications regarding power supply, SD card and operating temperature range.
+    For detailed technical specifications regarding power supply, SD card, and operating temperature range, please refer to:
     
-        .. group-tab:: Original Gen
-                
-            Please refer to the :ref:`Original Gen hardware specifications <hw_specs_orig_gen>` for further technical specifications regarding power supply, SD card and operating temperature range.
-
-
-.. substitutions
-
-.. |WEBstore| raw:: html
-
-    <a href="https://redpitaya.com/shop/" target="_blank">WEB store</a>
+    * :ref:`Gen 2 hardware specifications <hw_specs_gen2>`
+    * :ref:`Original Gen hardware specifications <hw_specs_orig_gen>`

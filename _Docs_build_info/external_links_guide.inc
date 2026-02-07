@@ -53,6 +53,14 @@ For links used across multiple files, you can define them in ``conf.py``:
 
 These global substitutions are already available: |redpitaya|, |redpitaya-forum|, |matplotlib|, etc.
 
+Old method (for reference only)
+--------------------------------
+
+.. |Red Pitaya GitHub repository| raw:: html
+
+    <a href="https://github.com/RedPitaya/RedPitaya/tree/master/deprecated" target="_blank">Red Pitaya GitHub repository - deprecated applications</a>
+
+
 
 Configuration in conf.py
 -------------------------

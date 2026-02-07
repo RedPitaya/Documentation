@@ -23,19 +23,16 @@ The user interface consists of the following elements:
     #. **Time and Trigger Info:** Displays the current time frame per division, trigger position and sampling rate.
     #. **Status Display:** Displays information about the current recording status (stop, wait, ready).
 
-
-Features
-********
+|
 
 Top Settings Menu
 =================
 
-Provides contol over the Logic analyzer application. The blue question mark leads to this exact documentation page.
+Provides control over the Logic analyzer application. The blue question mark leads to this exact documentation page.
 
 .. figure:: img/03_LA_top_settings.png
     :width: 600
 
-|
 
 Settings
 ---------
@@ -55,6 +52,7 @@ Autoscale
 
 Automatically sets up the Logic analyzer graph to best display the input signal.
 
+|
 
 Digital signal settings
 =======================
@@ -191,6 +189,7 @@ By clicking the **RUN** button, the recording is started. The status display inf
 Additional trigger options, LOW and HIGH, are used for the so-called pattern triggering. For example, if you set the trigger source to be DIN0 - Rising edge (to have one channel defined as a trigger source with a rising or falling edge is a mandatory condition for the acquisition to start), 
 DIN1 to HIGH and DIN2 to LOW, this will cause such behaviour that the application logic will wait for the state where DIN0 goes from 0 to 1, DIN1 is 1, and DIN2 is 0 to start the acquisition.
 
+|
 
 Cursors
 ========
@@ -204,7 +203,7 @@ When enabled, the cursors will show the relative time to zero point (trigger eve
 |
 
 Hardware/Connections
-********************
+=====================
 
 The Logic Analyser extension module is recommended for maximum performance of the Logic Analyzer application and protection of your Red Pitaya board. Using the LA extension module is straightforward; plug it into your Red Pitaya and connect the leads to the desired measurement points.
 
@@ -221,7 +220,7 @@ The direct use of the GPIO :ref:`E1 <E1_orig_gen>` pins of the Red Pitaya board 
 |
 
 Specifications
-**************
+===============
 
 .. table::
     :widths: 30 40 40
@@ -258,7 +257,7 @@ Specifications
 
 
 How to decode bus data?
-***********************
+========================
 
 Here is a quick tutorial on how to decode bus data using the Logic Analyzer application.
 
@@ -272,13 +271,13 @@ Here is a quick tutorial on how to decode bus data using the Logic Analyzer appl
 .. figure:: img/14_LA_decode.png
 	:width: 1200
 
-|
-
 The caputred data is detected automatically and decoded acording to the selected format.
 The decoded data is placed as a separate layer in the graph directly on the signal and is available in table format in the *DIGITAL DATA* menu.
 
+|
+
 Source code
-************
+=============
 
 The `Logic Analyzer source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/la_pro>`_ is available on our GitHub.
 

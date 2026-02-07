@@ -4,7 +4,8 @@
 Examples
 =========
 
-In the list below, you will find examples of how to control Red Pitaya remotely through SCPI commands, as well as with onboard C and Python API commands. JupyterLab also falls into the second category. These examples cover all basic Red Pitaya functionalities, such as:
+In the list below, you will find examples of how to control Red Pitaya remotely through SCPI commands, as well as with onboard C and Python API commands. JupyterLab also falls into the second category. 
+These examples cover all basic Red Pitaya functionalities, such as:
 
     * Signal generation.
     * Signal acquisition.
@@ -27,10 +28,11 @@ You can edit and change them according to your needs and develop customized prog
     ../examples/communication_interfaces/digcomIF.rst
     ../examples/lcr/lcr-exm.rst
     ../examples/logic_analyzer/logic_analyzer_top.rst
+    ../examples/streaming/examples_streaming_top.rst
 
 
 Web application examples
 ------------------------
 
-    * :ref:`Web application prerequisites <firstWebApp>`.
-    * :ref:`Web application examples <webAppExamples>`.
+    * :ref:`Web application prerequisites <webApp_top>`.
+    * :ref:`Web application examples <webApp_firstWebApp>`.

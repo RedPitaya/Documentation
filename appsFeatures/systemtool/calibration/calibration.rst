@@ -30,18 +30,19 @@ The easiest way to recalibrate the Red Pitaya board is through the Calibration a
 
 To open the Calibration application click on **System Tools** and then select **Calibration**.
 
-.. image:: ../img/Main_menu_system.jpg
+.. figure:: ../img/Main_menu_system.jpg
     :align: center
     :width: 1200
 
-.. image:: img/Calibration_app_menu.jpg
+.. figure:: img/Calibration_app_menu.jpg
     :align: center
     :width: 1200
 
+|
 
 When the Calibration application opens, you will see four options:
 
-.. image:: img/Calibration_api.png
+.. figure:: img/Calibration_api.png
     :align: center
     :width: 600
 
@@ -73,12 +74,12 @@ The equipment needed depends on your board generation and the calibration type:
 **For all boards:**
 
 * Two good-quality SMA or BNC cables (with appropriate adapters in case of BNC cables)
-* One or two SMA T adapters
+* One or two SMA-T adapters
 * Two SMA short terminators (for DC calibration)
 
 **Original generation boards only:**
 
-* Two 50 Ω terminators (for impedance matching during calibration)
+* Two 50-Ω terminators (for impedance matching during calibration)
 
 **DC Calibration:**
 
@@ -154,9 +155,7 @@ Auto DC calibration will guide you step-by-step through the calibration process 
 
 The YouTube video is also available |YT-video|.
 
-.. |YT-video| raw:: html
-
-   <a href="https://www.youtube.com/watch?v=vLCa9oU7DMI" target="_blank">on this link</a>
+.. |YT-video| replace:: `on this link <https://www.youtube.com/watch?v=vLCa9oU7DMI>`__
 
 |
 
@@ -166,24 +165,25 @@ Manual DC calibration
 Manual DC Calibration allows you to perform the calibration manually and fine tune all the variables.
 Apart from calibration, this option also allows you to identify any parasitics on your measurement lines.
 
-As the DACs on some boards have output impedance of **50 Ω**, a **50 Ω load** should be connected to the outputs (DACs) during calibration for accurate results.
-This is especially true for the original generation of board models.
+.. note::
 
-.. image:: img/DC_manual.jpg
+    As the DACs on the **original generation boards** have output impedance of **50 Ω**, a **50 Ω load** should be connected to the outputs (DACs) during calibration for accurate results.
+
+.. figure:: img/DC_manual.jpg
     :align: center
     :width: 1200
 
-1. **RESET**:
+1.  **RESET**:
 
     * **DEFAULT** - reset all offset values to 0 and gain values to 1.
     * **FACTORY** - reset the board to the factory calibration parameters.
 
-#. **APPLY** the calibration - save the DC offset in the system settings.
-#. **CLOSE** the calibration.
+#.  **APPLY** the calibration - save the DC offset in the system settings.
+#.  **CLOSE** the calibration.
 
 When closing the application without saving the values, the following prompt will appear:
 
-.. image:: img/Calib_save.png
+.. figure:: img/Calib_save.png
     :align: center
     :width: 800
 
@@ -191,14 +191,14 @@ When closing the application without saving the values, the following prompt wil
 
     SDRlab 122-16 only has access to manual DC calibration. The interface has less functionality as SDRlab 122-16 has no jumpers to switch the voltage range and can only generate sine waveforms due to AC coupling.
 
-    .. image:: img/DC_manual_sdr.png
+    .. figure:: img/DC_manual_sdr.png
         :align: center
         :width: 1200
 
 ADC calibration parameters
 ---------------------------
 
-.. image:: img/DC_manual_ADC.jpg
+.. figure:: img/DC_manual_ADC.jpg
     :align: center
     :width: 800
 
@@ -214,7 +214,7 @@ ADC calibration parameters
 DAC calibration parameters
 ---------------------------
 
-.. image:: img/DC_manual_DAC.jpg
+.. figure:: img/DC_manual_DAC.jpg
     :align: center
     :width: 800
 
@@ -231,11 +231,14 @@ DAC calibration parameters
 Frequency calibration
 **********************
 
-**Purpose:** Frequency calibration compensates for component mismatches in the analog front-end resistor and capacitor divider circuits when switching between LV and HV voltage ranges. This ensures accurate amplitude measurements across the frequency spectrum by applying a digital correction filter in the FPGA.
+**Purpose:** Frequency calibration compensates for component mismatches in the analog front-end resistor and capacitor divider circuits when switching between LV and HV voltage ranges. 
+This ensures accurate amplitude measurements across the frequency spectrum by applying a digital correction filter in the FPGA.
 
 .. note::
 
     While component matching could theoretically eliminate the need for frequency calibration, the filter approach enables mass production while maintaining reasonable board costs, high accuracy and small form-factor.
+
+|
 
 Auto Frequency calibration
 ===========================
@@ -250,7 +253,7 @@ Auto Frequency calibration will guide you step-by-step through the calibration p
 
 Once the auto frequency calibration is started, you will be presented with the following window:
 
-.. image:: img/Calib_freq_auto_start.png
+.. figure:: img/Calib_freq_auto_start.png
     :align: center
     :width: 1200
 
@@ -265,15 +268,15 @@ The header columns represent the following:
 Please pay attention to the **STATE** column, as clickable buttons which progress the process will appear. 
 
 
-1. **LV calibration**:
+1.  **LV calibration**:
 
-    .. image:: img/Calib_freq_auto_LV.png
+    .. figure:: img/Calib_freq_auto_LV.png
         :align: center
         :width: 1200
 
     * Clicking on the "START" button will provide further instructions and a choice between an internal and external reference generator:
 
-    .. image:: img/Calib_freq_auto_LV_int.png
+    .. figure:: img/Calib_freq_auto_LV_int.png
         :align: center
         :width: 800
 
@@ -282,7 +285,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
     * Click on Calibrate button to start the calibration process.
 
 
-    .. image:: img/Calib_freq_auto_LV_ext.png
+    .. figure:: img/Calib_freq_auto_LV_ext.png
         :align: center
         :width: 800
 
@@ -290,49 +293,49 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
     * Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.
     * Click on Calibrate button to start the calibration process.
 
-2. **LV calibration in progress**:
+2.  **LV calibration in progress**:
 
-    .. image:: img/Calib_freq_auto_LV_load.png
+    .. figure:: img/Calib_freq_auto_LV_load.png
         :align: center
         :width: 1200
 
     Please wait until the LV calibration is finished.
 
-3. **HV calibration**:
+3.  **HV calibration**:
 
-    .. image:: img/Calib_freq_auto_HV.png
+    .. figure:: img/Calib_freq_auto_HV.png
         :align: center
         :width: 1200
 
     * Change the jumpers to the HV position and choose the generator source.
 
-    .. image:: img/Calib_freq_auto_HV_int.png
+    .. figure:: img/Calib_freq_auto_HV_int.png
         :align: center
         :width: 800
 
-    .. image:: img/Calib_freq_auto_HV_ext.png
+    .. figure:: img/Calib_freq_auto_HV_ext.png
         :align: center
         :width: 800
 
     * The external reference generator amplitude should be set to at least 10 V (up to ±20 V maximum) for HV calibration.
 
-4. **HV calibration in progress**:
+4.  **HV calibration in progress**:
 
-    .. image:: img/Calib_freq_auto_HV_load.png
+    .. figure:: img/Calib_freq_auto_HV_load.png
         :align: center
         :width: 1200
 
     * Please wait until the HV calibration is finished.
 
-5. **Save calibration values**:
+5.  **Save calibration values**:
 
-    .. image:: img/Calib_freq_auto_save.png
+    .. figure:: img/Calib_freq_auto_save.png
         :align: center
         :width: 1200
 
-6. **Finish the calibration**:
+6.  **Finish the calibration**:
 
-    .. image:: img/Calib_freq_auto_complete.png
+    .. figure:: img/Calib_freq_auto_complete.png
         :align: center
         :width: 1200
 
@@ -346,9 +349,9 @@ Manual Frequency calibration
 Manual Frequency calibration allows you to perform the calibration manually and fine-tune all the variables.
 Apart from calibration, this option also allows you to identify any parasitics on your measurement lines.
 
-.. image:: img/Calib_freq_manual.jpg
-        :align: center
-        :width: 1200
+.. figure:: img/Calib_freq_manual.jpg
+    :align: center
+    :width: 1200
 
 **Interface elements:**
 
@@ -364,52 +367,6 @@ For technical details about the FPGA filter coefficients, see the :ref:`Technica
 
 |
 
-.. code-block:: matlab
-    
-    clc
-    close all
-    clear
-
-    % Filter parameters %
-    aa_hex = '7D93'
-    bb_hex = '437C7'
-    pp_hex = '2666'
-    kk_hex = 'D9999A'
-
-    aa = hex2dec(aa_hex)
-    bb = hex2dec(bb_hex)
-    pp = hex2dec(pp_hex) 
-    kk = hex2dec(kk_hex)
-
-    % H[z]=K*(z-B) / (z^4*(z-P) * (z-A))
-    % where:
-    % K = KK / 2^24
-    % B = 1 - (BB / 2^28)
-    % P = PP / 2^16
-    % A = 1 - (AA / 2^25)
-
-    fs = 125e6;
-    f = 0:1e3:fs;
-
-    z = exp(j*2*pi*f/fs);
-
-    k = kk/(2^24);
-    b = 1-(bb/2^28);
-    p = pp/2^16;
-    a = 1-(aa/2^25);
-
-    h = k*(z-b)./(z.^4.*(z-p).*(z-a));
-
-    % Figure
-    % plot(f,20*log10(abs(h)))
-    figure
-    semilogx(f, 20*log10(abs(h)))
-    title(strcat('Frequency response for AA=',aa_hex,' BB=',bb_hex,' PP=',pp_hex,' KK=',kk_hex))
-    xlabel('frequency (Hz)')
-    ylabel('gain (dB)')
-
-|
-
 .. _disable_frequency_filter:
 
 Disabling frequency calibration filter
@@ -417,10 +374,10 @@ Disabling frequency calibration filter
 
 To disable the frequency calibration filter, follow these steps:
 
-1. Open the Calibration application from the *System Tools* menu.
-2. Click on the **Manual Frequency Calibration** option.
-3. Click on the **Disable** button in the settings menu. Repeat the process for each input channel and each voltage range (LV and HV).
-4. If you are using an older OS interface, you can disable the frequency calibration filter by inputing the following calibration parameters:
+1.  Open the Calibration application from the *System Tools* menu.
+2.  Click on the **Manual Frequency Calibration** option.
+3.  Click on the **Disable** button in the settings menu. Repeat the process for each input channel and each voltage range (LV and HV).
+4.  If you are using an older OS interface, you can disable the frequency calibration filter by inputing the following calibration parameters:
 
     * AA = 0
     * BB = 0
