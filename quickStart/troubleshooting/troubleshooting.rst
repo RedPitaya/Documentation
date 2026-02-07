@@ -7,18 +7,20 @@ FAQ
 .. note::
 
     Not found what you are looking for? Please :ref:`contact us <report_problem>`. Please include all the relevant information regarding the problem.
-    For easier debugging on OS versions 2.00 and above, please also include the :ref:`Downloaded system report <system_info>` in the bottom left corner of your Red Pitaya main webpage.
-
-.. tip::
-
-    **Application showing errors?** Check the :ref:`Application-specific troubleshooting <app_troubleshooting_section>` section below for links to dedicated troubleshooting guides for specific applications.
+    For easier debugging on OS versions 2.00 and above, please also include the :ref:`Downloaded system report <system_info>` in the bottom left corner 
+    of your Red Pitaya main webpage.
 
 |
 
 General troubleshooting
 ========================
 
-Here is a comprehensive guide to troubleshooting common problems with Red Pitaya. If you are experiencing problems with your Red Pitaya, please refer to the following sections:
+Here is a comprehensive guide to troubleshooting common problems with Red Pitaya. If you are experiencing problems with your Red Pitaya, please refer to 
+the following sections:
+
+**General troubleshooting proceedure:**
+
+    * :ref:`Troubleshooting procedure <troubleshooting>` - Step-by-step guide to troubleshooting common issues with Red Pitaya
 
 **Quick Start & Basic Issues:**
 
@@ -41,8 +43,6 @@ Here is a comprehensive guide to troubleshooting common problems with Red Pitaya
     * :ref:`Multiboard synchronisation FAQ <faq_multiboard>` - X-channel system and Click Shield questions
     * :ref:`Gen 2 FAQ <faq_gen2>` - Gen 2 board specific questions
 
-
-
 |
 
 .. _app_troubleshooting_section:
@@ -64,27 +64,28 @@ Some applications have their own dedicated troubleshooting sections:
 Troubleshooting procedure
 ==========================
 
-If you are experiencing problems with the Red Pitaya, please follow the steps below to troubleshoot the problem:
+The troubleshooting procedure is a step-by-step guide to troubleshooting common issues with Red Pitaya. It is recommended to follow the steps in order, as they are designed to help 
+you identify and solve the problem efficiently.
 
-#. **Update the OS/firmware to the latest version**
-#. **Check the status LEDs on the Red Pitaya board**
-#. **Check the network connection**
-#. **Check hardware connections**
-#. **Check the serial console boot log**
-#. **Advanced troubleshooting steps**
-#. **Extremely rare cases**
-
-If you are unable to solve the problem, please :ref:`contact us <report_problem>`.
-
-
-1. Update the OS/firmware to the latest version
------------------------------------------------
+1. Update the OS/firmware
+--------------------------
 
 A lot of problems can be solved by updating the OS/firmware to the latest version. Please refer to the :ref:`OS update instructions <os_update>`.
 
+Updating or reinstalling the OS can solve a wide range of issues, including:
 
-2. Check the status LEDs
--------------------------
+* Boot problems
+* Network connectivity issues
+* Application errors
+* Remenants of old software code or FPGA images that may be causing problems
+* And many more
+
+It is always recommended to keep your Red Pitaya OS up to date to ensure the best performance and stability.
+
+|
+
+2. Status LEDs
+---------------
 
 .. figure:: img/blinking-pitaya-eth.gif
     :align: center
@@ -97,68 +98,89 @@ Red Pitaya Status LED Description:
     * **Red LED** - CPU heartbeat.
     * **Orange LED** - SD card access.
 
-Firstly, you should check the status LEDs as they will give you feedback on the type of error you are experiencing.
+Firstly, we should check the status LEDs as they will give us feedback on the type of error we are experiencing.
 
-#. If the **green LED** is **OFF** or **blinking**. There appears to be something wrong with the power supply or USB cable. Make sure that:
+#.  **Green LED** is **OFF** or **blinking**. There appears to be something wrong with the power supply. Make sure that:
 
-    * You have plugged the power cable into the correct USB port on the Red Pitaya.
-    * Your power supply is capable of delivering 5 V/2 A (12 V/1 A for SIGNALlab 250-12 or 5 V/3 A for Gen 2 boards). Please note that computer USB ports typically provide only 0.5 A, which is not enough to power the Red Pitaya board.
-    * Try replacing the power cable and the USB power supply.
-        
-    If none of the above helps, please :ref:`contact us <report_problem>`.
+    a. **Confirm power supply port**. Confirm the power supply is plugged into the ``PWR`` USB port.
+    #. **Bad connector contact**. Try unplugging and plugging the power cable again, or try a different power cable.
+    #. **Power supply power delivery**. The power supply should capable of delivering **5V 3A for Gen 2** boards, **5V 2A for Original Gen**, or **24V 0.5A for SIGNALlab 250-12**. Please note 
+       that computer USB ports typically provide only 0.5 A, which is not enough to power the Red Pitaya board.
 
-#. If the **green LED** is turned **ON** but the **blue LED** is turned **OFF** and the **orange LED** is **barely lit**. In this case, there is an error loading the Red Pitaya file system from the SD card. Make sure that:
+    **NEXT STEPS:** If none of the above helps, please :ref:`contact us <report_problem>`.
 
-    * You have connected the power cable to the correct USB port on the Red Pitaya.
-    * You have inserted the Red Pitaya SD card correctly and the Red Pitaya OS is installed (Note that Red Pitaya boards come with a pre-installed OS on SD cards. However, SD cards can become corrupted - in this case follow these instructions to :ref:`Prepare SD card <prepareSD>` to properly reinstall the Red Pitaya OS on the SD card).
-    * If you have recently upgraded your OS and Red Pitaya was working and now it is not, this is probably due to an incorrect ``hw_rev`` number in the EEPROM. Please see this GitHub issue |#250|.
-      The RMA terms in the GitHub issue will be offered to anyone with this issue, regardless of warranty.
-    * Use a different SD card.
-    * Connect via the :ref:`serial console <console>` and check the boot sequence for feedback:
-            
-        1. Red Pitaya should print information about the boot sequence.
-        #. Check that the Zynq SoC (U-Boot) is booting (message *Autoboot will start in 3...2...1... (Hit any key to stop)*).
-        #. Check that the Linux kernel boot sequence shows no :ref:`signs of looping <faq_rebooting>`. If you detect looping, please check if you have an *External Clock* board and the external clock is connected and has the correct specifications.
-        #. If the kernel boot reaches the Linux welcome message, then the Red Pitaya is fine. Check that the **blue LED** is not damaged.
+#.  **Green LED** is **ON**, but the **blue LED** is turned **OFF** and the **orange LED** is **barely lit or OFF**. This likely indicates an error loading the Red Pitaya file system from the SD card. 
+    Make sure that:
 
-        If the serial console gives no feedback during the boot sequence, please :ref:`contact us <report_problem>`.
+    a. **Confirm power supply port**. Confirm the power supply is plugged into the ``PWR`` USB port.
+    #. **SD card present**. The micro SD card with the Red Pitaya OS installed must be plugged into the board. 
+    #. **Red Pitaya OS is installed on the SD card**. :ref:`Reinstall the Red Pitaya OS on the SD card <prepareSD>`. All Red Pitaya SD cards included with the boards should arrive with a pre-installed 
+       official OS, however, it is possible the SD card arrives with no or outdated OS.
+    #. **3rd party OS image**. If you have **Pavel Demin's Alpine Linux** or a different 3rd party OS image installed, this may indicate normal behaviour. The status LEDs are normally off, 
+       see the |red_pitaya_notes| or the relevant 3rd party documentation for more information.
+    #. **Incorrect** ``hw_rev`` **number or EEPROM reading issue**. Updates to 2.00 or higher OS require a correct ``hw_rev`` number in the EEPROM. Should a recent OS update cause a board boot failure, 
+       please confirm the ``hw_rev`` number - see this GitHub issue |#250|. The RMA terms in the GitHub issue will be offered to anyone with this issue, regardless of warranty.
+    #. **Corrupted SD**. SD cards can become corrupted overtime. Confirm the SD card on a different Red Pitaya board, or replace it with a new one and install the OS on it.
 
-    * If you have **Pavel Demin's Alpine Linux OS** image installed, this may indicate normal behaviour. The status LEDs are normally off, see the |red_pitaya_notes| for more information.
+    **NEXT STEPS:** Skip to chapter :ref:`4. Check the serial console boot log <serial_console_debug>` and check the boot log for any errors related to the SD card or file 
+       system loading.
 
-#.  If both the **Green** and **Blue** LEDs are **ON**, but the **Red** and **Orange** LEDs stop flashing a few seconds after booting, only to remain ON for about 2 seconds, and then the cycle repeats.
+#.  **Both Green and Blue LEDs** are **ON**, but the **Red and Orange LEDs** stop flashing a few seconds after booting, only to remain ON for about 2 seconds, and then the cycle repeats.
     This indicates that the **Red Pitaya is in a reboot cycle**. Note that the red and orange LEDs will always start flashing approximately 10 seconds after the green and blue LEDs are turned ON.
 
-    * Check your Red Pitaya board model. If you are using an *External Clock* version, check that the external clock signal is correctly connected to the :ref:`E2 <E2_orig_gen>` connector. Make sure that the clock specifications match the recommended ones:
+    a. **Check your Red Pitaya board model**. If you are using an **External Clock version**, check that the external clock signal is correctly connected to the :ref:`E2 <E2_orig_gen>` connector. 
+       Make sure that the :ref:`clock specifications match the recommended ones <faq_clock_specifications>`.
 
-        * :ref:`STEMlab 125-14 External Clock <top_125_14_EXT>`.
-        * :ref:`SDRlab 122-16 External Clock <top_122_16_EXT>`.
+    **NEXT STEPS:** If the external clock is connected and has the correct specifications, please :ref:`contact us <report_problem>`.
 
+#.  **Green and Blue LEDs** are **ON**, **Red LED** flashes in a heartbeat pattern, and the **Orange LED** flashes sporadically during boot, then turns off after about 1 minute.
 
-3. Check the network connection
---------------------------------
+    **Awesome!** This means that the Red Pitaya is booting properly and there are no hardware issues.
 
-If the status LEDs are working normally, then the Red Pitaya is booting correctly. The next most common problem is a network connection issue, where the Red Pitaya board is working fine, but a network issue is preventing you from accessing it or is disrupting the connection. Please check the following:
+    **NEXT STEPS:** Check the **Network connection troubleshooting section**.
 
+|
 
-1. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faq_connected>`. Especially, if you have a complex network with multiple routers, switches, or access points.
-#. Consult the :ref:`connection guide <quickstart_connect>` for advice.
-#. Try using the recommended up-to-date Google Chrome browser.
-#. Disable any adblockers for the ``rp-xxxxxx.local`` website.
-#. Disable the VPN as it may be preventing the connection.
-#. Type ``arp -a`` in a command prompt or terminal and look for Red Pitaya's IP. Then try using the IP instead of ``rp-xxxxxx.local`` in the URL window of the browser.
-#. Check that DHCP is enabled on your router.
-#. Connect the board to a router instead of directly to the computer and retry the steps above.
-#. Try connecting to the board from a different computer and router. Some networks may have security restrictions that prevent you from connecting (for example, university networks require all devices to connect through a special web page to confirm a person's identity).
-#. Check the Ethernet cable and socket for damage (check if you can connect to the internet/access the local web from the same cable and socket).
-#. If you are a Windows user, please see the note below.
+3. Network connection
+----------------------
+
+Use this section if:
+
+* **The status LEDs are working normally**. This indicates that the Red Pitaya board itself is good, but we are still having trouble connecting to the Red Pitaya web interface or :ref:`SSH <ssh>`.
+
+Before proceeding with the steps below, please check if you can :ref:`connect to the board via the web interface <quickstart_connect>`. If you cannot connect to the web interface, please 
+follow the steps below to troubleshoot the network connection.
+
+At this point the most likely problem is a network connection issue.
+
+1.  **Same local network**. Make sure your Red Pitaya and computer are both connected to the same :ref:`local network <faq_connected>`. Especially, if you have a complex network with multiple 
+    routers, switches, or access points.
+#.  **Verify cable connections**. Consult the :ref:`connection guide <quickstart_connect>` for advice.
+#.  **Use updated Google Chrome**. Use the latest version of Google Chrome as your web browser. Some features of the web interface may not work properly on other browsers or older versions of Chrome.
+#.  **Disable adblockers** for the ``rp-xxxxxx.local`` website.
+#.  **Disable the VPN** as it may be preventing the connection.
+#.  **Check network listing**. Use ``arp -a`` command to locate Red Pitaya's MAC and IP address using ``Command Prompt`` or ``Terminal``.
+#.  **Ping the Red Pitaya**. Use the ``ping`` command with the Red Pitaya IP address or the ``rp-xxxxxx.local`` address. Do this even if the IP address is unreachable or the board does not 
+    appear on the local network.
+#.  **Use IP address instead of .local**.  Use the IP address in place of ``rp-xxxxxx.local`` in the URL window of the browser.
+#.  **Connect the board to a router** instead of directly to the computer and retry the steps above.
+#.  **Restart router**. If you recently update the OS, try restarting the router (or clearing the internal cache/ARP table of the router) and try connecting to the board again.
+#.  **Check that DHCP is enabled** on your router.
+#.  **Check the Ethernet cable and socket for damage**. Plug the Red Pitaya's Ethernet cable into the computer and verify internet connection. Replace the Ethernet cable and/or try a different 
+    Ethernet socket on the router.
+#.  **Use a different computer and router**. Some networks may have security restrictions that prevent you from connecting (for example, university networks require all devices to connect through 
+    a special web page to confirm identity).
+#.  **Install Bonjour Print Services (Windows only)**. Please see the note below.
 
     .. note::
 
         * **Windows 7/8** users should install :rp-download:`Bonjour Print Services <tools/BonjourPSSetup.exe>`, otherwise access to ``*.local`` addresses will not work.
         * **Windows 10 or higher** already supports mDNS and DNS-SD, so there is no need to install any additional software.
 
-#. If you are a Linux or MacOS user and the Red Pitaya is connected directly to the computer (via the Ethernet cable), check the Ethernet port IPv4 and IPv6 settings to see if they are set to **DHCP** and **Local Only**. Alternatively, connect to the Red Pitaya via a router.
-#. If a MAC computer will not connect to the Red Pitaya, it is possible that **Content and privacy settings** are blocking websockets.  After updating the settings you will need to log out and log in again.
+#.  **Verify Ethernet port settings (Linux and MacOS only)**. If you are a Linux or MacOS user and the Red Pitaya is connected directly to the computer (via the Ethernet cable), check the Ethernet 
+    port IPv4 and IPv6 settings to see if they are set to **DHCP** and **Local Only**. Alternatively, connect to the Red Pitaya via a router.
+#.  **Content and privacy settings (MacOS)**. If a MAC computer will not connect to the Red Pitaya, it is possible that **Content and privacy settings** are blocking websockets.  After updating 
+    the settings you will need to log out and log in again. It may be necessary to completely disable content and privacy settings.
 
     .. figure:: img/MAC_content_privacy.png
         :width: 800
@@ -166,57 +188,113 @@ If the status LEDs are working normally, then the Red Pitaya is booting correctl
     .. figure:: img/MAC_content_privacy2.png
         :width: 600
 
-    It may be necessary to completely disable content and privacy settings.
-
     .. figure:: img/MAC_content_privacy3.png
         :width: 600
 
+**NEXT STEPS:** If the issue persists, please check the **Serial console boot log** chapter.
+
 |
 
-4. Check hardware connections
-------------------------------
+.. _serial_console_debug:
 
-If you are not receiving a signal on the Red Pitaya, but the applications are working properly, there may be a problem with hardware connections. Please check the following:
+4. Serial console boot log
+---------------------------
 
-* Confirm that the SMA cables are not damaged, have bad contact, or are loose.
-* Confirm that the setup and connections are correct. Sometimes the signal is not being received because a lens in a laser system is misaligned, a probe is not connected properly, or a component is not powered.
+Use this section if:
 
+* **Status LEDs are not working properly**. If the status LEDs are not working properly, this indicates that there is a problem with the Red Pitaya board itself.
+* **Status LEDs are working normally** and we are having **trouble connecting to the board**. This indicates that the Red Pitaya board is good, but we are still having trouble 
+  connecting to the Red Pitaya web interface or :ref:`SSH <ssh>`.
 
-5. Check the serial console boot log
--------------------------------------
+The only option now is to connect to the Red Pitaya board over a :ref:`serial console <console>` and check the boot log for any errors. Please follow the steps below:
 
-If the status LEDs are working normally and the network connection debugging does not resolve the issue, meaning that the board is inaccessible through the web interface or the :ref:`SSH connection <ssh>`, please try the following sequence:
+1. **Power-up the board**. Power up the board and connect the Ethernet cable as normal.
+#. **Connect serial console**. After booting the board, connect a :ref:`serial console <console>` cable between the Red Pitaya board and your computer. Follow the instructions in 
+   the :ref:`serial console connection guide <console>` to establish a connection. After establishing the connection, return back to this section and follow the next steps.
+#. **Boot log present**. Red Pitaya should print information about the boot sequence. If there is no feedback, there is a high chance the Zynq SoC is damaged. Please :ref:`contact us <report_problem>`.
+#. **U-Boot booting**. Check that the Zynq SoC (U-Boot) is booting (message *Autoboot will start in 3...2...1... (Hit any key to stop)*).
+#. **Linux kernel booting**. Check that the Linux kernel boot sequence shows no :ref:`signs of looping <faq_rebooting>`. If the board is rebooting, please check if you have an 
+   **External Clock board and the external clock is connected** and has the correct :ref:`specifications <faq_clock_specifications>`.
+#. **Ubuntu welcome message reached**. If the kernel boot reaches the Linux Ubuntu welcome message and does not reboot, then the Red Pitaya hardware is fine:
 
-1. Power up the board and connect the Ethernet cable as normal.
-#. After booting the board, connect a serial console cable (micro-USB to USB-A for Original Gen of boards, or USB-C to USB-A for Gen 2 boards) between the Red Pitaya board and your computer.
-#. In a command prompt or terminal, type ``arp -a`` and check if the Red Pitaya is listed on the local network.
-#. ``ping`` the Red Pitaya IP address or the ``rp-xxxxxx.local`` address. Do this even if the IP address is unreachable or the board does not appear on the local network.
-#. Try connecting to the board's web interface using either the IP address or the ``rp-xxxxxx.local`` address in the browser's URL window.
-#. Restart the router (or clear the internal cache/ARP table of the router) and try connecting to the board again.
+    a. **rp-888888**. If the boot log shows that the board is booting with the name ``rp-888888``, this means that the board is not able to read the MAC address from the EEPROM. Please install 
+       the :ref:`latest 3.00 OS version <prepareSD>` and check if the issue persists. If it does, please :ref:`contact us <report_problem>`.
+    #. **OPENBSD failed to start error**. If the boot log shows the message **OPENBSD failed to start**, please restart the router (or clear the internal cache/ARP table of the router) 
+       and reboot the board, then try connecting to the board again. This should resolve most issues related to this error.
+    #. **Ping the Red Pitaya**. Use the ``ping`` command with the Red Pitaya IP address or the ``rp-xxxxxx.local`` address with the serial console open. Do this even if the IP address is unreachable 
+       or the board does not appear on the local network.
 
-If you are unable to connect to the board after an OS update, please use the above sequence. This issue may occur when connecting to the board for the first time after an OS update, but it should not happen again after the first boot.
-This should resolve most issues related to the **OPENBSD failed to start** error reported in the serial console boot log.
+#. **No serial console feedback during boot sequence**. If there is no feedback during the boot sequence, there is a high chance the Zynq SoC is damaged. Please :ref:`contact us <report_problem>`.
 
-If the issue persists, please establish a :ref:`serial console <console>` connection and check the boot log sequence for feedback. Then, :ref:`report the problem <report_problem>` and attach the boot log file.
+**NEXT STEPS:** Check the **Advanced troubleshooting** chapter for more specific hardware issues and solutions.
 
+|
 
-6. Advanced Troubleshooting
+5. Hardware connections
+-----------------------
+
+Use this section if:
+
+* **Web interface is accessible, but no signal is received**. If you are able to access the web interface and the applications are working properly, but you are not receiving 
+  any signal on the inputs or outputs of your Red Pitaya.
+  
+The most likely cause is a problem with hardware connections.
+
+#. **Input jumpers**. Check the :ref:`input jumpers <jumper_pos>`. Sometimes the jumpers have poor contact and need to be removed and replaced. If the jumpers are loose or missing, please replace them.
+#. **SMA cables**. Confirm that the SMA cables are not damaged, have bad contact, or are loose.
+#. **T-connectors and 50-Ohm terminators**. If you are using T-connectors and 50-Ohm terminators, check that they are properly connected and not damaged.
+#. **Other cables and connections**. Confirm signal connections and power of the system. A misalignment in a laser system lens, an improperly connected probe, or an unpowered component 
+   can sometimes cause the signal to not be received.
+#. **Calibration settings**. A bad calibration can cause Red Pitaya to display incorrect measurements or even appear to detect no signal at all. This applies to both the inputs and outputs 
+   of the Red Pitaya. Check the :ref:`calibration settings <calibration_app>` in the web interface and reset to factory defaults if necessary. This will also fix problems with signals not showing
+   in the web interface.
+
+**NEXT STEPS:** Check the **Web application** chapter for application-specific troubleshooting.
+
+|
+
+6. Web applications
+--------------------
+
+Use this section if:
+
+* **Web interface is accessible, but applications are not working properly**. If you are able to access the web interface, but the applications are not working properly or are freezing.
+* **All the sections above have been checked and the problem persists**. If you have checked all the sections above and the problem persists, but you are able to access the web interface 
+  and the applications. Check the **Hardware connections** chapter to make sure there are no issues with the hardware connections, then continue.
+
+The most likely cause is a problem with the web applications or the web browser.
+
+1. **Use updated Google Chrome**. Use the latest version of Google Chrome as your web browser. Some features of the web interface may not work properly on other browsers or older versions of Chrome.
+#. **Clear browser cache**. Clear the browser cache and cookies, then try accessing the web interface again.
+#. **Delete board application data**. Clear the application data on the Red Pitaya board by going to the :ref:`System info button <system_info>` in the web interface and clicking on 
+   **Delete application data**. This will reset all applications to their default settings and may resolve any issues caused by corrupted application data.
+
+**NEXT STEPS:** If the issue persists, please check the **Advanced troubleshooting** chapter for more specific software issues and solutions.
+
+|
+
+7. Advanced Troubleshooting
 ----------------------------
 
-#. If you have updated from 1.04 (or older) to 2.00 OS version, check GitHub issues |#250| and |#254|.
-#. For Original Gen STEMlab 125-14 board models, check if the UART TX pin on the :ref:`E2 <E2_orig_gen>` connector is driven high (3V3) before or during the boot sequence, this can prevent you from logging into the unit.
-#. Try connecting via :ref:`serial console <console>`. Check the boot log and see if you can access the built-in Linux terminal.
-#. Check the :ref:`nightly builds changelog <nightly_builds>` for any relevant updates.
-#. Check the known hardware issues for :ref:`Original Gen <known_hw_issues_orig_gen>` and :ref:`Gen 2 <known_hw_issues_gen2>` boards and known software issues in the :ref:`software section <known_sw_issues>`.
+Use this section if:
 
+* **The problem persists after checking all the sections above**. If you have checked all the sections above and the problem persists, but you are able to access the web interface and the applications.
 
-7. Extremely rare cases
-------------------------
+The most likely cause is a more specific hardware or software issue. Please check the following:
 
-#. If the board works normally but the **blue LED** is **OFF**, check that the LED is not damaged. If the board is under warranty, we will replace it.
-#. Check that one of the pins of the SD card holder is bent upwards and not in contact with the pins of the SD card. Remove the SD card and push it into the normal position.
+#. **Damaged blue LED**. Check that the **blue LED** is not damaged. If the board is under warranty, we will replace it.
+#. **SD card holder pins**. Check the pins on the SD card holder. If any are bent upwards and are not in contact with the pins of the SD card. Remove the SD card and push them into the normal position.
+#. **UART TX pin on E2 connector**. For **Original Gen** board models, check if the UART TX pin on the :ref:`E2 <E2_orig_gen>` connector is driven high (3V3) before or during the boot sequence, 
+   this can prevent you from logging into the unit.
+#. **Updating from 1.04 or older OS**. If you have updated from 1.04 (or older) to 2.00 OS or higher version, check GitHub issues |#250| and |#254|.
+#. **Nightly builds**. Check the :ref:`nightly builds changelog <nightly_builds>` for any relevant updates.
+#. **Known hardware and software issues**. Check the known hardware issues for :ref:`Original Gen <known_hw_issues_orig_gen>` and :ref:`Gen 2 <known_hw_issues_gen2>` boards and known software issues in the :ref:`software section <known_sw_issues>`.
+
+**NEXT STEPS:** If the issue persists, please :ref:`contact us <report_problem>` with all the relevant information regarding the problem, including the :ref:`Downloaded system report <system_info>` if possible.
 
 |
+
+
 
 .. _faq_connectivity:
 
@@ -256,11 +334,25 @@ Red Pitaya is constantly rebooting?
         * :ref:`STEMlab 125-14 External clock <top_125_14_EXT>`.
         * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
 
+.. _faq_clock_specifications:
 
-How to connect the external clock to RP?
-------------------------------------------
+How to connect the external clock to Red Pitaya?
+-------------------------------------------------
 
-    * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
+The external clock signal is used to provide the main clock for the ADC, DAC and FPGA on Red Pitaya. Note that this is **not an External Reference Clock** that is used for the frequency 
+reference of the ADC and DAC, but rather the main clock signal that drives the entire system. The only board the supports a 10 MHz External Reference Clock is the :ref:`SIGNALlab 250-12 <top_250-12>`, 
+and the external reference clock signal for this is supplied from the SMA port in the back.
+
+The main ADC and FPGA CLK signal can be supplied from an external source through the **Ext. ADC Clk±** ports on the :ref:`E2 <E2_gen2>` connector.
+The external clock signal should have the following specifications:
+
+* **Differential LVDS signaling**
+* **Power supply:** 3V3
+* **Connector:** Pins 23 (Clk+) and 24 (Clk-) on E2 connector
+
+For exact voltage levels and timing requirements, please refer to the board specifications and schematics for your Red Pitaya board model:
+
+    * :ref:`STEMlab 125-14 Gen 2 <top_125_14_pro_gen2>`.
     * :ref:`STEMlab 125-14 & STEMlab 125-14-Z7020 External clock <top_125_14_EXT>`.
     * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
 
@@ -270,8 +362,8 @@ How to connect the external clock to RP?
 How can I make sure that my Red Pitaya has access to the internet?
 --------------------------------------------------------------------
 
-1. Connect to your Red Pitaya over :ref:`SSH <ssh>`.
-2. Make sure that you can ``ping google.com`` website:
+1.  Connect to your Red Pitaya over :ref:`SSH <ssh>`.
+2.  Make sure that you can ``ping google.com`` website:
 
     .. code-block:: console
 
@@ -296,14 +388,14 @@ The most common answer would be: just make sure that your Red Pitaya and your PC
 
 In order to test it, you can use a PC that is connected to the same local network as your Red Pitaya and try the following:
 
-1. Open the terminal window.
+1.  Open the terminal window.
 
     * **Windows**: Go to RUN, type in ``cmd`` and press enter.
     * **Linux**: Click on the application button, type in the *Terminal* and press enter.
     * **macOS**: Hit ``cmd`` + ``space``, type in the *Terminal* and press enter.
 
-#. Enter the ``arp -a`` command to get a list of all devices in your local area network
-   and try to find your Red Pitaya MAC address on the list.
+#.  Enter the ``arp -a`` command to get a list of all devices in your local area network
+    and try to find your Red Pitaya MAC address on the list.
 
     .. code-block:: console
 
@@ -324,7 +416,7 @@ In order to test it, you can use a PC that is connected to the same local networ
 
         If you have established a :ref:`wireless connection <network_manager>`, then you should check the MAC address of your wireless USB dongle. The MAC addresses are typically written on the USB dongles. 
 
-#. Type your Red Pitaya IP into your WEB browser and connect to it.
+#.  Type your Red Pitaya IP into your WEB browser and connect to it.
 
     .. figure:: img/Browser_IP.png
         :align: center
@@ -338,15 +430,15 @@ If your Red Pitaya is not listed on the list of your local network devices on th
 Is Red Pitaya connected to my local network?
 ----------------------------------------------
 
-1. Connect your Red Pitaya to a PC over a :ref:`Serial Console <console>`.
+1.  Connect your Red Pitaya to a PC over a :ref:`Serial Console <console>`.
 
-2. Type ``ip a`` and hit enter to check the status of your Ethernet connection on Red Pitaya.
+2.  Type ``ip a`` and hit enter to check the status of your Ethernet connection on Red Pitaya.
 
     a. If you have connected to your Red Pitaya over a wireless connection, you should check the status of the ``wlan0`` interface.
 
     b. If you have connected to your Red Pitaya over a cable connection, you should check the ``eth0`` interface.
 
-3. Type Red Pitaya IP into your web browser to see if you can connect to it.
+3.  Type Red Pitaya IP into your web browser to see if you can connect to it.
 
     .. figure:: img/Browser_IP.png
         :align: center
@@ -425,10 +517,10 @@ Is Red Pitaya failing to update?
 
 There are two possible solutions to this problem:
 
-    * If the :ref:`Software update tool <software_update_manager>` reports that your Red Pitaya is offline, please connect the Red Pitaya into an Ethernet socket with internet access.
-      Internet connection is not shared with the directly connected devices without some setting configurations.
+1. If the :ref:`Software update tool <software_update_manager>` reports that your Red Pitaya is offline, please connect the Red Pitaya into an Ethernet socket with internet access.
+   Internet connection is not shared with the directly connected devices without some setting configurations.
 
-    * Please use the Balena Etcher application to :ref:`manually rewrite the Red Pitaya OS on the SD card <prepareSD>`.
+#. Please use the Balena Etcher application to :ref:`manually rewrite the Red Pitaya OS on the SD card <prepareSD>`.
 
 Balena Etcher archive corrupted error?
 ----------------------------------------
@@ -440,7 +532,6 @@ If you are getting the following error when trying to flash the OS image to the 
     :width: 600
 
 Please delete the partitions on the SD card and try flashing the OS image again. You can find instructions on how to delete partitions on the SD card in the :ref:`OS partitions <SDcard_partitions>` section.
-
 This error sometimes occurs when installing new OS versions on SD cards that already contain older Red Pitaya OS versions.
 
 |
@@ -453,7 +544,7 @@ Applications & Web Interface
 How can I start using RP measurement applications?
 ----------------------------------------------------
 
-    * :ref:`Connect to Red Pitaya <quickstart_connect>`.
+* :ref:`Connect to Red Pitaya <quickstart_connect>`.
 
 
 My device shows the wrong measurements. How can I calibrate it?
@@ -491,12 +582,12 @@ Please ensure that your browser's ad blockers are turned off for the ``rp-xxxxxx
 
 Here are a few things you can try:
 
-* Update the Google Chrome browser.
-* Disable ad blocker's for the ``rp-xxxxxx.local`` website.
-* Disable VPN.
-* Clear cookies for the ``rp-xxxxxx.local`` website.
-* Try *incognito mode*.
-* Update the Red Pitaya OS to the :ref:`latest version <prepareSD>`.
+1. Update the Google Chrome browser.
+2. Disable ad blocker's for the ``rp-xxxxxx.local`` website.
+3. Disable VPN.
+4. Clear cookies for the ``rp-xxxxxx.local`` website.
+5. Try *incognito mode*.
+6. Update the Red Pitaya OS to the :ref:`latest version <prepareSD>`.
 
 
 Undesired disconnections?
@@ -545,8 +636,6 @@ are developed by 3rd parties and may not be supported by the Red Pitaya team.
 |                               |                      | | 1.04                                               | | STEMlab 125-10 (discontinued)     |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 
-|
-
 .. note::
 
     With the 2.00 Unified OS, we also updated Ubuntu to 22.04 LTS, which introduced registry changes implemented by AMD Xilinx in the way the FPGA bitstream 
@@ -591,7 +680,7 @@ Where can I find the ecosystem, software, and FPGA images?
     * |RP_GitHub| - please check the specific branches for older ecosystem versions.
     * |RP_GitHub_FPGA|.
     * |RP_archive| - software archive (some images may require separate ecosystem and Linux OS installation). Check the 
-        :ref:`nightly build installation instructions <nighly_build_installation>`.
+      :ref:`nightly build installation instructions <nightly_build_installation>`.
 
 .. note::
 
@@ -707,9 +796,8 @@ analog frontend modules are required (for example, frequency mixers).
 Gen 2 FAQ
 ==========
 
-For Gen 2 board-specific questions, hardware specifications, external clock connections, USB-C daisy chain synchronisation, and E3 connector information, 
-please refer to the :ref:`Gen 2 FAQ <faq_gen2>` section.
-
+* Check the :ref:`Gen 2 FAQ section <faq_gen2>` to get information on Gen 2 board-specific questions, hardware specifications, external clock connections, USB-C daisy chain synchronisation, 
+  and E3 connector information. 
 
 
 |

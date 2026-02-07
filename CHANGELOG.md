@@ -6,6 +6,148 @@ orphan: true
 
 All notable changes to this project will be documented in this file.
 
+## February 2026 - Update 1
+
+**Major updates:**
+
+- **Streaming application documentation completely reorganized:**
+
+  - Split into four main sections: Configuration, Usage, Advanced, and Reference.
+  - Added new web interface streaming documentation.
+  - Added multiboard streaming setup guide.
+  - New streaming API examples and quickstart guide.
+  - Added DAC streaming examples.
+  - Improved technical details and limitations documentation.
+
+- **Software documentation restructured:**
+
+  - Reorganized into: Getting Started, Configuration, App Development, System Development, and Troubleshooting.
+  - New "Getting Started" section with console access, SSH, and WSL setup guides.
+  - New "Configuration" section consolidating GPIO, network, SPI, TFT, and remote deployment.
+  - Separated "App Development" from "System Development".
+  - Created dedicated troubleshooting section with OS compatibility guide.
+
+- **New documentation added:**
+
+  - Service management guide (systemd services, starting/stopping services, boot configuration).
+  - C++ compiler and Make utility setup for Windows (MinGW-w64, Chocolatey).
+  - WSL (Windows Subsystem for Linux) setup guide for development.
+  - Board identification guide with visual reference images for all Red Pitaya models.
+  - Advanced SD card preparation instructions.
+  - Matplotlib update script for fixing NumPy 2.x compatibility issues.
+
+- **Hardware documentation improvements:**
+
+  - Reorganized hardware measurements into dedicated folders for each board model.
+  - Moved fast analog input/output measurements from hw_specs to separate measurement sections.
+  - Improved Gen 2 FAQ with new images (JP5 position, fast differential pairs).
+  - Updated Gen 2 hardware specifications page structure.
+
+- **Marketplace applications:**
+
+  - Added Linien (laser spectroscopy and frequency stabilization) application documentation.
+  - Removed deprecated PID application documentation.
+  - Updated documentation for multiple marketplace apps (LTI, DAQ server, DSP, etc.).
+
+- **Quick Start improvements:**
+
+  - New board identification guide with visual references for all models.
+  - Enhanced troubleshooting section with Balena Etcher error images.
+  - Advanced SD card preparation instructions including partition management.
+  - Updated board sticker reference images.
+  - Browser address bar example image added.
+
+**Minor updates:**
+
+- Reorganized FPGA documentation (moved simulation guide, added intro page).
+- Added new FPGA register set for 4-input boards (v0.94_cs2_4input).
+- Updated command line utility documentation across all tools.
+- Improved Logic Analyzer and CAN examples.
+- Updated SCPI and API command documentation.
+- Enhanced multichannel synchronization documentation.
+- Updated QSPI eMMC module documentation.
+- Sensor extension module documentation updates.
+- Fixed various image paths and references throughout documentation.
+- Grammar and syntax improvements across multiple pages.
+- Updated calibration and network manager documentation.
+- Improved remote control and Jupyter notebook documentation.
+
+**File structure changes:**
+
+- Moved webapp documentation from `build/webapp/` to `app_development/webapp/`.
+- Relocated console and SSH documentation to `getting_started/`.
+- Moved network, GPIO, SPI, TFT configuration to `configuration/` folder.
+- Reorganized E3 software documentation into `system_development/e3_software/`.
+- Moved known software issues to `troubleshooting/known_issues/`.
+- Restructured streaming application documentation with new folder hierarchy.
+- Relocated hardware measurements to board-specific folders.
+
+**Links affected:**
+
+- All links to streaming application pages (complete restructure with new paths).
+- Links to software build/configuration pages (moved to new folder structure).
+- Links to console/SSH documentation (relocated to getting_started).
+- Links to hardware measurements (moved from hw_specs to measurements folders).
+- Links to webapp development docs (new path structure).
+- Links to E3 board software documentation (new organization).
+- Deprecated PID marketplace application links.
+
+## December 2025 - Update 1
+
+**Updates:**
+
+- Released OS version 2025.2 documentation.
+- Added FPGA register sets for release 2.07-48 (all board variants).
+- Updated SD card preparation instructions for latest OS version.
+- Minor SCPI command updates (Board, DMM commands).
+
+## November 2025 - Update 1
+
+**Major updates:**
+
+- **Gen 2 hardware documentation reorganized:**
+
+  - Complete restructure of all Gen 2 board documentation pages (125-14 Gen2, 125-14 Gen2 Pro, 125-14 Gen2 Z7020 Pro, 125-14 TI, 65-16 TI).
+  - Created common specification includes for Gen 2 boards (E1/E2/E3 connectors, boot options, sync connectors, power supply, slow analog I/O, external ADC clock).
+  - Added new board images and pinout diagrams for all Gen 2 models.
+  - Added TI board images (front and side views).
+  - Improved Gen 2 fast I/O documentation with new schematics.
+  - Updated Gen 2 comparison table.
+
+- **Calibration documentation expanded:**
+
+  - Significantly expanded calibration procedures and documentation.
+
+- **FPGA documentation updates:**
+
+  - Added new register sets for release 2.07-48 (streaming app, v0.94 registers for all board variants).
+  - Updated register documentation for 2.00-18 release.
+  - Added "use last sample value" register functionality.
+  - Updated FPGA device tree and JTAG programming documentation.
+
+- **New SCPI commands:**
+
+  - Added DMA/GEN commands.
+  - Added SOUR<n>:RISE:TIME, SOUR<n>:FALL:TIME commands and queries for signal generation.
+
+**Minor updates:**
+
+- Updated SD card preparation instructions (release 2025.2).
+- Updated command line utilities documentation (acquire, spectrum).
+- Updated click shield examples documentation.
+- Updated DMM SCPI commands.
+- Added board identification SCPI command.
+- Improved CSS styling for better documentation readability.
+- Updated streaming application documentation.
+- Updated external booting instructions for E3 board.
+- Fixed various links throughout documentation.
+- Updated intro and index pages.
+- Minor fixes to software and FPGA documentation structure.
+
+**Links affected:**
+
+- Gen 2 board documentation pages (complete restructure with new common includes).
+
 ## July 2025 - Update 2
 
 **Major updates:**

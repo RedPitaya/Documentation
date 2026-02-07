@@ -36,6 +36,12 @@ Each component in this path plays a specific role in the data streaming process:
 * **Network:** TCP/IP connection to client
 * **PC:** Client application receiving streamed data
 
+.. note::
+
+    For local streaming to SD card, the data path is similar but replaces the Ethernet and network components with the SD card interface:
+
+    **Inputs → FPGA → DDR → Processor → SD card**
+
 |
 
 ADC streaming architecture
@@ -100,7 +106,13 @@ DAC streaming architecture
 
 The logic for DAC streaming is symmetrical to the ADC streaming, but the pipeline is reversed:
 
-**PC → Network → PHY → Processor → DDR → FPGA → Outputs**
+**PC → Network → Ethernet → Processor → DDR → FPGA → Outputs**
+
+.. note::
+
+    For one-pack mode, the data is pre-loaded into the DDR memory and streamed directly to the FPGA without continuous network transfer.
+
+    Streaming from the SD card is also supported, but at lower rates due to SD card speed limitations.
 
 |
 

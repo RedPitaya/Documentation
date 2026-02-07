@@ -13,3 +13,5 @@ For custom boot configurations please use AMD (Xilinx) tools and documentation t
 .. note::
 
     More information regarding booting the Red Pitaya board from external storage will be provided in future documentation updates.
+
+..! TODO - Add the documentation

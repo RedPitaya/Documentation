@@ -7,22 +7,51 @@ When using the local streaming option, the data is streamed to a file on the Red
 
 .. tabs::
 
+    .. group-tab:: OS version 2.00-23 or newer
+
+        #.  **Configure the stream properties** & click **Start**
+
+            .. figure:: ../img/streaming_interface.png
+                :width: 1000
+            
+            Example: streaming on CH1 and CH2, 8-bit resolution, 100 ksps into WAV file format
+
+        #.  Press **Stop** to stop streaming
+
+        #.  Check the **Files on SD card** section for the data files. Each data file has three buttons:
+
+            * **Log** - data log of the specific stream,
+            * **Lost** - report on lost packets,
+            * **Download** - collected data stream.
+
+            Click on the selected file to download it from Red Pitaya to the computer.
+
+            .. figure:: ../img/streaming_interface.png
+                :width: 1000
+                :align: center
+
+        #.  **Open the file in a program** that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
+
+            .. figure:: ../img/diadem_tdms_file_viewer.png
+                :width: 800
+                :align: center
+
     .. group-tab:: OS version 2.00-15 or older
 
-        #. Configure the stream propertie & click **Run**
+        #.  Configure the stream propertie & click **Run**
 
             .. figure:: ../img/streaming_interface_104.png
                 :width: 800
             
             Example: streaming on CH1, 8-bit resolution, 5.208 MS/s into TDMS file format
 
-        #. Press **STOP** to stop streaming
+        #.  Press **STOP** to stop streaming
 
-        #. Click *Browse* to open the data file directory. Each data stream is split into three sections:
+        #.  Click **Browse** to open the data file directory. Each data stream is split into three sections:
 
-            * *DATA* - collected data stream,
-            * *.log* - data log of the specific stream,
-            * *.log.lost* - report on lost packets.
+            * **DATA** - collected data stream,
+            * **.log** - data log of the specific stream,
+            * **.log.lost** - report on lost packets.
 
             Click on the selected file to download it from Red Pitaya to the computer.
 
@@ -30,42 +59,11 @@ When using the local streaming option, the data is streamed to a file on the Red
                 :width: 600
                 :align: center
 
-        #. Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
+        #.  Open the file in a program that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
 
             .. figure:: ../img/diadem_tdms_file_viewer.png
                 :width: 800
                 :align: center
-
-    .. group-tab:: OS version 2.00-23 or newer
-
-        #. **Configure the stream properties** & click **Start**
-
-            .. figure:: ../img/streaming_interface.png
-                :width: 1000
-            
-            Example: streaming on CH1 and CH2, 8-bit resolution, 100 ksps into WAV file format
-
-        #. Press **Stop** to stop streaming
-
-        #. Check the *Files on SD card* section for the data files. Each data file has three buttons:
-
-            * *Log* - data log of the specific stream,
-            * *Lost* - report on lost packets,
-            * *Download* - collected data stream.
-
-            Click on the selected file to download it from Red Pitaya to the computer.
-
-            .. figure:: ../img/streaming_interface.png
-                :width: 1000
-                :align: center
-
-        #. **Open the file in a program** that supports the selected file format, visualisation, and processing, such as |DIAdem| for TDMS files, or |Audacity| for WAV.
-
-            .. figure:: ../img/diadem_tdms_file_viewer.png
-                :width: 800
-                :align: center
-
-
 
 .. substitutions
 

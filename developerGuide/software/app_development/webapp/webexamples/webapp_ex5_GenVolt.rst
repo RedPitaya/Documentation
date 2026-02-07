@@ -45,6 +45,8 @@ This example builds upon :ref:`Reading analog voltage from slow inputs <webApp_e
 Use that example as the base application, as it provides the simplest way to verify the generated voltage using 
 one device.
 
+|
+
 Signal range considerations
 ----------------------------
 
@@ -111,6 +113,7 @@ Add three control blocks to ``index.html`` for frequency, amplitude, and wavefor
         </select>
     </div>
 
+|
 
 JavaScript implementation
 --------------------------
@@ -219,6 +222,7 @@ Value Description
 2     Square
 ===== =============
 
+|
 
 Generator configuration function
 ---------------------------------
@@ -282,6 +286,7 @@ Setting waveform
 * **RP_WAVEFORM_PWM** - PWM signal
 * **RP_WAVEFORM_ARBITRARY** - User-defined waveform
 
+|
 
 Application lifecycle
 ----------------------
@@ -439,6 +444,8 @@ Hardware setup
 2. Observe the signal characteristics directly
 3. Verify frequency, amplitude, and waveform visually
 
+|
+
 Application testing
 --------------------
 
@@ -523,3 +530,5 @@ Build upon this example with these tutorials:
 * :ref:`Reading voltage with graph <webApp_example_SlowVoltage_Graph>` - Visualize generated signals in real-time
 * :ref:`Voltage with gain and offset <webApp_example_SlowVoltage_Graph_Offset>` - Apply signal conditioning to measurements
 * Signal acquisition examples - Capture and analyze generated signals using the oscilloscope
+
+|

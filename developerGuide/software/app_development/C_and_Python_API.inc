@@ -17,6 +17,15 @@ Version compatibility
 
 .. tabs::
 
+    .. group-tab:: OS 2.00 or higher
+
+        .. warning::
+
+            The API examples are located in the separate :rp-github:`Red Pitaya Examples GitHub repository <RedPitaya-Examples>`. Before running any examples, 
+            ensure it is compatible with your Red Pitaya OS version by comparing the example information with your current OS version.
+
+            Running a new example on an old OS can result in compatibility issues.
+
     .. group-tab:: OS 1.04 or lower
 
         .. warning::
@@ -30,15 +39,6 @@ Version compatibility
         .. figure:: img/GitHub_branch_tags.png
             :align: center
             :width: 800
-
-    .. group-tab:: OS 2.00 or higher
-
-        .. warning::
-
-            The API examples are located in the separate :rp-github:`Red Pitaya Examples GitHub repository <RedPitaya-Examples>`. Before running any examples, 
-            ensure it is compatible with your Red Pitaya OS version by comparing the example information with your current OS version.
-
-            Running a new example on an old OS can result in compatibility issues.
 
 |
 
@@ -111,19 +111,19 @@ Clone the Red Pitaya Git repository to access example code:
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: shell-session
-
-                git clone https://github.com/RedPitaya/RedPitaya.git
-                cd RedPitaya/Examples
-
     .. group-tab:: OS version 2.00 or higher
 
         .. code-block:: shell-session
 
             git clone https://github.com/RedPitaya/RedPitaya-Examples.git
             cd RedPitaya
+    
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+                git clone https://github.com/RedPitaya/RedPitaya.git
+                cd RedPitaya/Examples
 
 
 Step 3: Compile the example
@@ -138,15 +138,6 @@ Navigate to the C++ examples directory and compile:
 
 .. tabs::
 
-    .. group-tab:: 1.04 or older
-
-        Alternatively, compile manually using gcc:
-
-        .. code-block:: shell-session
-
-            cd C
-            gcc digital_led_blink.c -o digital_led_blink
-
     .. group-tab:: 2.00 or higher
 
         Alternatively, compile manually using g++:
@@ -160,6 +151,15 @@ Navigate to the C++ examples directory and compile:
 
             With the latest Red Pitaya OS versions (2.05-37 and higher), we are moving towards C++ for API examples.
             For C examples, please use the `.c` files and compile them with `gcc` as shown above.
+    
+    .. group-tab:: 1.04 or older
+
+        Alternatively, compile manually using gcc:
+
+        .. code-block:: shell-session
+
+            cd C
+            gcc digital_led_blink.c -o digital_led_blink
 
 .. note::
 
@@ -174,17 +174,17 @@ API applications require the v0.94 FPGA image:
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: shell-session
-
-            cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
     .. group-tab:: OS version 2.00 or higher
 
         .. code-block:: shell-session
 
             overlay.sh v0.94
+    
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
 
 Step 5: Execute the application
@@ -275,100 +275,6 @@ Select the appropriate Makefile template for your OS version:
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: makefile
-
-            MODEL ?= Z10
-
-            CFLAGS  = -std=gnu11 -Wall
-            CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
-            LDFLAGS = -L/opt/redpitaya/lib
-            LDLIBS = -static -lrp
-            
-            ifeq ($(MODEL),Z20_250_12)
-            INCLUDE += -I/opt/redpitaya/include/api250-12
-            LDLIBS += -lrp-gpio -lrp-i2c
-            endif
-            
-            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread
-            
-            # List of programs to compile
-            PRGS = digital_led_blink \
-                   custom_program_1 \
-                   custom_program_2
-
-            OBJS := $(patsubst %,%.o,$(PRGS))
-
-            all: $(PRGS)
-
-            $(PRGS): %: %.c
-                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-
-            clean:
-                $(RM) *.o $(OBJS)
-
-    .. group-tab:: OS version 2.00-15 to 2.00-23
-
-        .. code-block:: makefile
-    
-            MODEL ?= Z10
-    
-            CFLAGS  = -std=gnu11 -Wall
-            CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
-            LDFLAGS = -L/opt/redpitaya/lib
-            LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
-    
-            INCLUDE += -I/opt/redpitaya/include/api250-12
-            LDLIBS += -lrp-gpio -lrp-i2c
-            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
-    
-            # List of programs to compile
-            PRGS = digital_led_blink \
-                   custom_program_1 \
-                   custom_program_2
-    
-            OBJS := $(patsubst %,%.o,$(PRGS))
-
-            all: $(PRGS)
-    
-            $(PRGS): %: %.c
-                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-    
-            clean:
-                $(RM) *.o $(OBJS)
-
-    .. group-tab:: OS version 2.00-30 and 2.05-37
-
-        .. code-block:: makefile
-
-            CFLAGS  = -std=gnu11 -Wall
-            CFLAGS += -I/opt/redpitaya/include
-            LDFLAGS = -L/opt/redpitaya/lib
-            LDLIBS = -static -lrp-hw-can -lrp -lrp-hw-calib -lrp-hw-profiles
-
-            INCLUDE += -I/opt/redpitaya/include/api250-12
-            LDLIBS += -lrp-gpio -lrp-i2c
-            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c -lsocketcan
-
-            # List of programs to compile
-            PRGS = digital_led_blink \
-                   custom_program_1 \
-                   custom_program_2
-
-            OBJS := $(patsubst %,%.o,$(PRGS))
-
-            all: $(PRGS)
-
-            $(PRGS): %: %.c
-                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-
-            clean:
-                $(RM) *.o $(OBJS)
-
-            clean_all: clean
-                $(RM) $(PRGS)
-
     .. group-tab:: OS version 2.07-43 or higher
 
         With this OS version, C++ 20 is the preferred language for API examples. Use the following Makefile template for C++ code:
@@ -404,6 +310,100 @@ Select the appropriate Makefile template for your OS version:
             clean_all: clean
                 $(RM) $(PRGS)
 
+    .. group-tab:: OS version 2.00-30 and 2.05-37
+
+        .. code-block:: makefile
+
+            CFLAGS  = -std=gnu11 -Wall
+            CFLAGS += -I/opt/redpitaya/include
+            LDFLAGS = -L/opt/redpitaya/lib
+            LDLIBS = -static -lrp-hw-can -lrp -lrp-hw-calib -lrp-hw-profiles
+
+            INCLUDE += -I/opt/redpitaya/include/api250-12
+            LDLIBS += -lrp-gpio -lrp-i2c
+            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c -lsocketcan
+
+            # List of programs to compile
+            PRGS = digital_led_blink \
+                   custom_program_1 \
+                   custom_program_2
+
+            OBJS := $(patsubst %,%.o,$(PRGS))
+
+            all: $(PRGS)
+
+            $(PRGS): %: %.c
+                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+            clean:
+                $(RM) *.o $(OBJS)
+
+            clean_all: clean
+                $(RM) $(PRGS)
+
+    .. group-tab:: OS version 2.00-15 to 2.00-23
+
+        .. code-block:: makefile
+    
+            MODEL ?= Z10
+    
+            CFLAGS  = -std=gnu11 -Wall
+            CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+            LDFLAGS = -L/opt/redpitaya/lib
+            LDLIBS = -static -lrp -lrp-hw-calib -lrp-hw-profiles
+    
+            INCLUDE += -I/opt/redpitaya/include/api250-12
+            LDLIBS += -lrp-gpio -lrp-i2c
+            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread -li2c
+    
+            # List of programs to compile
+            PRGS = digital_led_blink \
+                   custom_program_1 \
+                   custom_program_2
+    
+            OBJS := $(patsubst %,%.o,$(PRGS))
+
+            all: $(PRGS)
+    
+            $(PRGS): %: %.c
+                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+    
+            clean:
+                $(RM) *.o $(OBJS)
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: makefile
+
+            MODEL ?= Z10
+
+            CFLAGS  = -std=gnu11 -Wall
+            CFLAGS += -I/opt/redpitaya/include -D$(MODEL)
+            LDFLAGS = -L/opt/redpitaya/lib
+            LDLIBS = -static -lrp
+            
+            ifeq ($(MODEL),Z20_250_12)
+            INCLUDE += -I/opt/redpitaya/include/api250-12
+            LDLIBS += -lrp-gpio -lrp-i2c
+            endif
+            
+            LDLIBS += -lrp-hw -lm -lstdc++ -lpthread
+            
+            # List of programs to compile
+            PRGS = digital_led_blink \
+                   custom_program_1 \
+                   custom_program_2
+
+            OBJS := $(patsubst %,%.o,$(PRGS))
+
+            all: $(PRGS)
+
+            $(PRGS): %: %.c
+                $(CC) $< $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+
+            clean:
+                $(RM) *.o $(OBJS)
+
 
 Step 4: Compile your program
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -422,17 +422,17 @@ Load the required FPGA image:
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: shell-session
-
-            cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
     .. group-tab:: OS version 2.00 or higher
 
         .. code-block:: shell-session
 
             overlay.sh v0.94
+    
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
 .. note::
 
@@ -480,10 +480,11 @@ Python is pre-installed on Red Pitaya OS 2.00-23 and higher. The version depends
 +-------------------------+-----------------------+
 | Red Pitaya OS Version   | Python Version        |
 +=========================+=======================+
-| Pre 2.00-23             | Not available         |
-+-------------------------+-----------------------+
 | 2.00-23 and higher      | Python 3.10.          |
 +-------------------------+-----------------------+
+| Pre 2.00-23             | Not available         |
++-------------------------+-----------------------+
+
 
 
 Prerequisites
@@ -591,13 +592,13 @@ Startup.sh script
 
 The ``startup.sh`` script is the recommended method for running applications at boot. The application will run exactly once after the system starts.
 
-1. **Enable read-write mode**. Since we are modifying a system file, switch to read-write mode:
+1.  **Enable read-write mode**. Since we are modifying a system file, switch to read-write mode:
 
     .. code-block:: shell-session
 
         rw
 
-2. **Copy files to system directory**. Copy your application files to a suitable system directory, e.g., ``/opt/redpitaya/bin/``:
+2.  **Copy files to system directory**. Copy your application files to a suitable system directory, e.g., ``/opt/redpitaya/bin/``:
 
     .. tabs::
 
@@ -615,13 +616,13 @@ The ``startup.sh`` script is the recommended method for running applications at 
 
                 cp /root/CAPI_example /opt/redpitaya/bin/
 
-3. **Open the startup.sh script for editing**:
+3.  **Open the startup.sh script for editing**:
 
     .. code-block:: shell-session
 
         nano /opt/redpitaya/sbin/startup.sh
 
-4. **Append application startup command**. Add a line at the end of the file to execute your application:
+4.  **Append application startup command**. Add a line at the end of the file to execute your application:
 
     .. tabs::
 
@@ -638,9 +639,9 @@ The ``startup.sh`` script is the recommended method for running applications at 
 
                 /opt/redpitaya/bin/CAPI_example
 
-5. **Save and exit the editor**.
+5.  **Save and exit the editor**.
 
-6. **Reboot**. Restart Red Pitaya to apply the changes: 
+6.  **Reboot**. Restart Red Pitaya to apply the changes: 
 
     .. code-block:: shell-session
 
@@ -651,7 +652,7 @@ Stopping the application
 
 To stop a running application on Red Pitaya, you can use one of the following methods:
 
-1. **Kill by process name** (temporary stop):
+1.  **Kill by process name** (temporary stop):
 
     .. tabs::
 
@@ -667,7 +668,7 @@ To stop a running application on Red Pitaya, you can use one of the following me
 
                 pkill -f CAPI_example
 
-2. **Remove startup command** (permanent stop):
+2.  **Remove startup command** (permanent stop):
 
     * First stop the application using the method above. 
     * Edit the startup.sh script to remove or comment out the line that starts your application.
@@ -682,13 +683,13 @@ Profile.d directory
 The ``/etc/profile.d/`` directory is used for system-wide environment variable settings and startup scripts. You can create a new script file in this directory to set environment variables for your application.
 The script will run for all users at every shell login (once at Red Pitaya boot and at each new terminal session).
 
-1. **Enable read-write mode**. Since we are modifying a system file, switch to read-write mode:
+1.  **Enable read-write mode**. Since we are modifying a system file, switch to read-write mode:
 
     .. code-block:: shell-session
 
         rw
 
-#. **Copy files to system directory**. Copy your application files to a suitable system directory, e.g., ``/opt/redpitaya/bin/``:
+#.  **Copy files to system directory**. Copy your application files to a suitable system directory, e.g., ``/opt/redpitaya/bin/``:
 
     .. tabs::
 
@@ -706,13 +707,13 @@ The script will run for all users at every shell login (once at Red Pitaya boot 
 
                 cp /root/CAPI_example /opt/redpitaya/bin/
 
-#. **Create a new script file**. To prevent conflicts with existing scripts and variables, the file name should be last in alphabetical order. For example, create ``zzz_my_startup.sh``:
+#.  **Create a new script file**. To prevent conflicts with existing scripts and variables, the file name should be last in alphabetical order. For example, create ``zzz_my_startup.sh``:
 
     .. code-block:: shell-session
 
         nano /etc/profile.d/zzz_my_startup.sh
 
-#. **Add application startup command**. Add the command to run your application:
+#.  **Add application startup command**. Add the command to run your application:
 
     .. tabs::
 
@@ -731,13 +732,13 @@ The script will run for all users at every shell login (once at Red Pitaya boot 
                 #!/bin/bash
                 /opt/redpitaya/bin/CAPI_example &
 
-#. **Make the script executable**:
+#.  **Make the script executable**:
 
     .. code-block:: shell-session
 
         chmod +x /etc/profile.d/zzz_my_startup.sh
 
-#. **Reboot**. Restart Red Pitaya to apply the changes:
+#.  **Reboot**. Restart Red Pitaya to apply the changes:
 
     .. code-block:: shell-session
 
@@ -749,7 +750,7 @@ Stopping the application
 
 To stop a running application on Red Pitaya, you can use one of the following methods:
 
-1. **Kill by process name** (temporary stop):
+1.  **Kill by process name** (temporary stop):
 
     .. tabs::
 
@@ -765,7 +766,7 @@ To stop a running application on Red Pitaya, you can use one of the following me
 
                 pkill -f CAPI_example
 
-#. **Remove startup command** (permanent stop):
+#.  **Remove startup command** (permanent stop):
 
     * First stop the application using the method above.
     * Remove the script file from the ``/etc/profile.d/`` directory.

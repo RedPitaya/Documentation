@@ -22,7 +22,6 @@ Here is how you can separate create a separate project folder that contains all 
 #.  Add or copy any existing *VHDL* or *Verilog* files to the "New_project/rtl" directory.
 #.  Create a new folder named **tbn** inside the *New_project* directory. This is where any testbench files should be placed.
 #.  Make a copy of the **red_pitaya_vivado_project_Z10.tcl** script from the **RedPitaya-FPGA** directory and rename it to **new_project.tcl**.
-
 #.  If the **new_project.tcl** is located in a different directory, edit the following lines of code:
 
     .. code-block:: bash

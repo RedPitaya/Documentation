@@ -57,8 +57,8 @@ Set up your Git identity:
 
 .. code-block:: shell-session
 
-   $ git config --global user.name "Your Name"
-   $ git config --global user.email "your.email@example.com"
+    $ git config --global user.name "Your Name"
+    $ git config --global user.email "your.email@example.com"
 
 Replace "Your Name" and "your.email@example.com" with your actual information.
 
@@ -69,8 +69,8 @@ Download the Red Pitaya project containing example applications:
 
 .. code-block:: shell-session
 
-   $ cd /root/
-   $ git clone https://github.com/RedPitaya/RedPitaya-Examples.git
+    $ cd /root/
+    $ git clone https://github.com/RedPitaya/RedPitaya-Examples.git
 
 Example applications are located in `/root/RedPitaya-Examples/web-tutorial/`.
 
@@ -108,6 +108,7 @@ Key directories for application development:
 
     Shared libraries for linking with your application.
 
+|
 
 Application folder structure
 -----------------------------
@@ -197,6 +198,7 @@ Edit `index.html` to set your application title and structure:
     </body>
     </html>
 
+|
 
 CSS styling
 ------------
@@ -227,6 +229,7 @@ Customize the appearance in `css/style.css`:
         font-size: 24px;
     }
 
+|
 
 JavaScript application logic
 -----------------------------
@@ -319,6 +322,7 @@ Backend overview
 The backend is a C/C++ application compiled into a shared library (`controller.so`) that controls Red Pitaya hardware. 
 Source code is located in the `src/` folder.
 
+|
 
 Required functions
 -------------------
@@ -341,19 +345,20 @@ Your main file must implement 11 mandatory functions called by Nginx:
 
 These functions provide the interface between Nginx and your hardware control logic.
 
+|
 
 FPGA configuration
 -------------------
 
 .. tabs::
 
-    .. group-tab:: OS 1.04 and older
-
-        The `fpga.conf` file specifies which FPGA image to load at startup. FPGA images are located in `/opt/redpitaya/fpga/`.
-
     .. group-tab:: OS 2.00 and higher
 
         Use the `fpga.sh` script to load FPGA images. The `fpga.conf` file is deprecated.
+
+    .. group-tab:: OS 1.04 and older
+
+        The `fpga.conf` file specifies which FPGA image to load at startup. FPGA images are located in `/opt/redpitaya/fpga/`.
 
 .. note::
 
@@ -409,3 +414,5 @@ Now that you have a basic application running, explore the examples to learn mor
 * :ref:`Web Application Examples <webApp_Examples>` - More complex examples
 
 For detailed API documentation, refer to the :rp-github:`Web Tutorial Example <RedPitaya-Examples/tree/dev/web-tutorial>` repository.
+
+|

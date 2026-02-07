@@ -18,6 +18,7 @@ Quick setup
     
     In order to set wireless or direct Ethernet connection you need to access Red Pitaya :ref:`Console interface <console>`.
 
+|
 
 WiFi client
 ===========
@@ -45,6 +46,7 @@ Restart WPA supplicant:
 
     # systemctl restart wpa_supplicant@wlan0.service
 
+|
 
 WiFi access point
 =================
@@ -79,6 +81,7 @@ The decision to focus on ``systemd-networkd`` is arbitrary, while at the same ti
 
 Most of the WiFi configuration complexity comes from support for switching between WiFi access point and client mode
 
+|
 
 UDEV
 ====
@@ -114,6 +117,7 @@ possible to deactivate the rule by creating a override file which links to ``/de
 
    	# ln -s /dev/null /etc/udev/rules.d/73-usb-net-by-mac.rules
 
+|
 
 Wired setup
 ===========
@@ -139,6 +143,7 @@ A fixed IP address can be configured by adding the next lines to
 	Address=192.168.0.15/24
 	Gateway=192.168.0.1
 
+|
 
 Wireless setup
 ==============
@@ -171,6 +176,7 @@ WiFi will not be configured.
 | ``hostapd.conf``           | Access point configuration   |
 +----------------------------+------------------------------+
 
+|
 
 Wireless client setup
 ---------------------
@@ -213,6 +219,7 @@ This configuration file can be created using the `wpa_passphrase` tool can be us
 
    	$ wpa_passphrase <ssid> [passphrase] > /opt/redpitaya/wpa_supplicant.conf
 
+|
 
 Wireless access point setup
 ---------------------------
@@ -249,6 +256,7 @@ must be removed. Inside a shell on Red Pitaya this file is visible as ``/opt/red
 This file must be edited to set the chosen ``<ssid>`` and ``<passphrase>``.
 Other settings are for the currently most secure personal encryption.
 
+|
 
 Wireless router
 ~~~~~~~~~~~~~~~
@@ -273,6 +281,7 @@ is enbled by the iptables service :rp-github:`/etc/systemd/system/iptables.servi
 	This functionality combined with default passwords can be a serious security issue.
    	And since it is not needed to provide advertized functionality, we might remove it in the future.
 
+|
 
 .. _support_wifi_adapter:
 
@@ -298,7 +307,7 @@ driver was copied from the Raspberry PI repository and applied as a patch.
 Other WiFi USB devices might also be supported by upstream kernel drivers,
 but there is no comprehensive list for now.
 
-
+|
 
 DNS Resolver
 ============
@@ -317,7 +326,7 @@ It is also possible to add default DNS servers by adding them to ``*.network`` f
 	nameserver=8.8.8.8
 	nameserver=8.8.4.4
 
-
+|
 
 NTP (Network Time Protocol)
 ===========================
@@ -340,7 +349,7 @@ To enable the service do.
 
    	# timedatectl set-ntp true
 
-
+|
 
 SSH server
 ==========
@@ -352,7 +361,7 @@ They are again created on the first boot by :rp-github:`/etc/systemd/system/ssh-
 Due to this the first boot takes a bit longer.
 This way the SSH encryption certificates are unique on each board.
 
-
+|
 
 Zero-configuration networking
 =============================
@@ -365,7 +374,7 @@ if this is enabled inside ``systemd.network`` files with the line ``LinkLocalAdd
 All interfaces have this setting enabled, this way each active interface will
 acquire an address in the reserved ``169.254.0.0/16`` address block.
 
-
+|
 
 Zeroconf
 --------
@@ -409,6 +418,7 @@ Three configuration files are provided.
 	
 	This services were enabled just recently, so full extent of their usefulness is still unknown.
 
+|
 
 ``systemd`` services
 ====================
@@ -434,7 +444,7 @@ Services handling the described configuration are enabled with.
 	# enable service for creating SSH keys on first boot
 	systemctl enable ssh-reconfigure
 
-
+|
 
 Supported USB Wi-Fi adapters
 ------------------------------
@@ -462,6 +472,7 @@ To check what modes (managed, AP, ...) are supported by an adapter use ``iw``.
 	If it is not possible to simply add support for v2, please state that it is not compatible with v2 
 	`here <https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un_v2/>`_
 
+|
 
 BCM43143 chipset
 ================
@@ -596,6 +607,7 @@ Recommended USB Wi-Fi device for Raspberry PI
 			total <= 4, #channels <= 1
 		Device supports scan flush.
 
+|
 
 rtl8192cu chipset
 =================
@@ -780,6 +792,7 @@ Edimax EW-7811Un
 		Driver supports full state transitions for AP/GO clients
 		Driver supports a userspace MPM
 
+|
 
 Generic Realtek Semiconductor Corp. RTL8188CUS 802.11n
 ------------------------------------------------------
@@ -823,3 +836,5 @@ Generic Realtek Semiconductor Corp. RTL8188CUS 802.11n
 
 	# lsusb
 	Bus 001 Device 003: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n WLAN Adapter
+
+|

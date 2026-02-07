@@ -31,8 +31,7 @@ The Red Pitaya Daisy utility is a command-line tool that enables the synchroniza
     Notice: Application does not reset register settings when enabling modes.
             If the flag does not have a parameter, it returns the value from the register.
 
-
-
+|
 
 Source code
 ------------

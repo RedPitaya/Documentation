@@ -86,6 +86,7 @@ Installation
 4. Access your Red Pitaya web interface
 5. The application should appear in the application list
 
+|
 
 Learning from the example
 --------------------------
@@ -127,3 +128,5 @@ After understanding this complete example, explore specific topics:
 * :ref:`Analog voltage reading <webApp_example_SlowVoltage>` - Working with signals
 * :ref:`Voltage generation <webApp_example_GenVolt>` - Controlling analog outputs
 * :ref:`Nginx requests <webApp_example_Nginx>` - Advanced server-side operations
+
+|

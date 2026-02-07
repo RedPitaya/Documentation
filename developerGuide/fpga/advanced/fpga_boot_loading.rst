@@ -79,6 +79,8 @@ Why startup.sh?
 - Quick prototyping and testing
 - When you want Red Pitaya standard practices
 
+|
+
 Basic Procedure
 ----------------
 
@@ -111,7 +113,7 @@ The exact command depends on your OS version. Add **before** the final comment l
 
 .. tabs::
 
-    .. tab:: OS 1.04 or older
+    .. tab:: OS 2.07-43 or newer
 
         .. code-block:: bash
 
@@ -119,8 +121,8 @@ The exact command depends on your OS version. Add **before** the final comment l
             
             # ... existing startup.sh content ...
             
-            # Load custom FPGA at boot
-            cat /opt/redpitaya/fpga/$(monitor -f)/my_project/fpga.bit > /dev/xdevcfg
+            # Load custom FPGA with device tree overlay
+            /opt/redpitaya/sbin/overlay.sh v0.94 my_project
             
             # Here you can specify commands for autorun at system startup
 
@@ -137,7 +139,7 @@ The exact command depends on your OS version. Add **before** the final comment l
             
             # Here you can specify commands for autorun at system startup
 
-    .. tab:: OS 2.07-43 or newer
+    .. tab:: OS 1.04 or older
 
         .. code-block:: bash
 
@@ -145,10 +147,11 @@ The exact command depends on your OS version. Add **before** the final comment l
             
             # ... existing startup.sh content ...
             
-            # Load custom FPGA with device tree overlay
-            /opt/redpitaya/sbin/overlay.sh v0.94 my_project
+            # Load custom FPGA at boot
+            cat /opt/redpitaya/fpga/$(monitor -f)/my_project/fpga.bit > /dev/xdevcfg
             
             # Here you can specify commands for autorun at system startup
+
 
 .. note::
 
@@ -174,6 +177,8 @@ After reboot, check the loaded FPGA:
 .. code-block:: bash
 
     redpitaya> cat /tmp/loaded_fpga.inf
+
+|
 
 To Disable or Modify
 ----------------------
@@ -236,6 +241,8 @@ Use systemd services when you need:
 - Integration with other systemd services
 - Service-level resource limits
 
+|
+
 Create systemd Service
 -----------------------
 
@@ -250,7 +257,7 @@ Create systemd Service
 
 .. tabs::
 
-    .. tab:: OS 1.04 or older
+    .. tab:: OS 2.07-43 or newer
 
         .. code-block:: ini
 
@@ -260,7 +267,7 @@ Create systemd Service
             
             [Service]
             Type=oneshot
-            ExecStart=/bin/bash -c 'cat /root/red_pitaya_top.bit > /dev/xdevcfg'
+            ExecStart=/opt/redpitaya/sbin/overlay.sh v0.94 my_project
             RemainAfterExit=yes
             
             [Install]
@@ -282,7 +289,7 @@ Create systemd Service
             [Install]
             WantedBy=multi-user.target
 
-    .. tab:: OS 2.07-43 or newer
+    .. tab:: OS 1.04 or older
 
         .. code-block:: ini
 
@@ -292,7 +299,7 @@ Create systemd Service
             
             [Service]
             Type=oneshot
-            ExecStart=/opt/redpitaya/sbin/overlay.sh v0.94 my_project
+            ExecStart=/bin/bash -c 'cat /root/red_pitaya_top.bit > /dev/xdevcfg'
             RemainAfterExit=yes
             
             [Install]
@@ -341,6 +348,8 @@ Use this method **only** if you specifically want FPGA loading triggered by user
 
     Since Red Pitaya automatically logs in the ``root`` user on boot, this method effectively runs at boot time for default setups. However, it still executes on every login.
 
+|
+
 Setup Procedure
 -----------------
 
@@ -355,12 +364,12 @@ Setup Procedure
 
 .. tabs::
 
-    .. tab:: OS 1.04 or older
+    .. tab:: OS 2.07-43 or newer
 
         .. code-block:: bash
 
             #!/bin/bash
-            cat /root/red_pitaya_top.bit > /dev/xdevcfg
+            /opt/redpitaya/sbin/overlay.sh v0.94 my_project
 
     .. tab:: OS 2.00 to 2.05-37
 
@@ -369,12 +378,12 @@ Setup Procedure
             #!/bin/bash
             fpgautil -b /root/red_pitaya_top.bit.bin
 
-    .. tab:: OS 2.07-43 or newer
+    .. tab:: OS 1.04 or older
 
         .. code-block:: bash
 
             #!/bin/bash
-            /opt/redpitaya/sbin/overlay.sh v0.94 my_project
+            cat /root/red_pitaya_top.bit > /dev/xdevcfg
 
 **Step 3: Make executable**
 
@@ -421,6 +430,8 @@ Replace the default FPGA when:
 .. important::
 
     After using this method, commands like ``overlay.sh v0.94`` will load your custom FPGA instead of the factory default.
+
+|
 
 Replacement Script
 -------------------
@@ -486,6 +497,8 @@ This script safely replaces the default FPGA with automatic backup:
 
     redpitaya> reboot
 
+|
+
 To Restore Original FPGA
 -------------------------
 
@@ -535,12 +548,12 @@ If the service is not found or is disabled, use Method 1 or Method 2 instead.
 
 .. tabs::
 
-    .. tab:: OS 1.04 or older
+    .. tab:: OS 2.07-43 or newer
 
         .. code-block:: bash
 
             #!/bin/bash
-            cat /root/red_pitaya_top.bit > /dev/xdevcfg
+            /opt/redpitaya/sbin/overlay.sh v0.94 my_project
             exit 0
 
     .. tab:: OS 2.00 to 2.05-37
@@ -551,12 +564,12 @@ If the service is not found or is disabled, use Method 1 or Method 2 instead.
             fpgautil -b /root/red_pitaya_top.bit.bin
             exit 0
 
-    .. tab:: OS 2.07-43 or newer
+    .. tab:: OS 1.04 or older
 
         .. code-block:: bash
 
             #!/bin/bash
-            /opt/redpitaya/sbin/overlay.sh v0.94 my_project
+            cat /root/red_pitaya_top.bit > /dev/xdevcfg
             exit 0
 
 **Step 4: Make executable**
@@ -643,6 +656,8 @@ FPGA Not Loading at Boot
     redpitaya> journalctl -b | grep -i fpga
     redpitaya> dmesg | grep -i fpga
 
+|
+
 Service Won't Start (systemd)
 -------------------------------
 
@@ -669,6 +684,8 @@ Service Won't Start (systemd)
 .. code-block:: bash
 
     redpitaya> systemctl daemon-reload
+
+|
 
 Wrong FPGA Loads at Boot
 -------------------------

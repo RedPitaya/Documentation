@@ -11,6 +11,7 @@ This section contains advanced SD card information, including older OS versions,
     :backlinks: top
     :depth: 2
 
+|
 
 .. note::
 
@@ -36,11 +37,7 @@ Latest 2.00 OS
 
 * :download:`Latest Stable (2.07-48) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.07-48_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): 5d02710fd87a71b4c049ffa5105b69e5).
 
-|
-
-Other previous versions of OS can be found |download_os_old|
-
-|
+Previous 2.00 OS versions can be found |download_os_old|
 
 .. |download_os_old| replace:: :rp-download:`here <downloads/Unify/old>`
 
@@ -361,7 +358,7 @@ If you wish to keep wireless settings, skip deleting the next files:
 
 |
 
-.. _nighly_build_installation:
+.. _nightly_build_installation:
 
 **********************************
 Nightly build installation guide

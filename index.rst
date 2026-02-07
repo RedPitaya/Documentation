@@ -14,7 +14,7 @@ to get your board up and running.
     :maxdepth: 2
     :numbered: 3
     :caption: Documentation Contents
-        
+
     intro
     quickStart/quickStart
     appsFeatures/appsFeatures
@@ -23,7 +23,7 @@ to get your board up and running.
 
 |
 
-**Search and Navigation**
-
-* :ref:`genindex` - General index of all terms
-* :ref:`search` - Search the documentation
+.. **Search and Navigation**
+.. 
+.. * :ref:`genindex` - General index of all terms
+.. * :ref:`search` - Search the documentation

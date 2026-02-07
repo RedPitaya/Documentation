@@ -25,9 +25,10 @@ The graphical user interface of the Bode analyzer application is divided into 4 
 #. **Current measurement data:** The current step number and frequency of generated pulses required for the measurement.
 #. **Main graph area:** Main graph area is divided into Gain and Phase frequency response plots of the DUT (device under test).
 
+|
 
 Features
-*********
+==========
 
 The main features of the Bode analyzer application are:
 
@@ -62,7 +63,7 @@ Top settings menu contains the following functionality:
 #. **Calibrate button:** Start the calibration for the current setup.
 #. **Stop/Run button:** Start and stop the measurement.
 
-
+|
 
 Measurement control panel
 ==========================
@@ -119,6 +120,7 @@ Cursor settings
 Up to two cursors can be put on each of the axis. **F** stands for frequency, **G** for gain, and **P** for phase. The cursors each show the current value and the absolute difference between the two cursors on the same axis.
 Cursors can be moved with *Click+Drag*.
 
+|
 
 Calibration
 ============
@@ -131,11 +133,11 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
 .. figure:: img/Bode_analyzer_uncalibrated.png
     :width: 1000
 
-#. To perform the calibration, click on the **Calibrate** button in the *Top settings menu*. The following windows will pop up:
+#.  To perform the calibration, click on the **Calibrate** button in the *Top settings menu*. The following windows will pop up:
 
     .. tabs::
 
-        .. tab:: STEMlab 125-10, 125-14
+        .. tab:: STEMlab 125-14, 125-10
     
             .. figure:: img/Bode_analyzer_calibration_menu.png
                 :width: 600
@@ -145,7 +147,7 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
             .. figure:: img/Bode_analyzer_calibration_menu_siglab.png
                 :width: 600
 
-#. Check your setup and make sure all the connections correspond to the ones shown in the picture:
+#.  Check your setup and make sure all the connections correspond to the ones shown in the picture:
 
     - **IN1** connected to the input of the DUT (measures generated pulses).
     - **IN2** connected to the output of the DUT (measures filtered pulses).
@@ -158,16 +160,17 @@ When uncalibrated, a **Red** light appears next to the **Calibration** status in
 
         For optimal results use 50 Ω termination on the OUT1.
 
-#. Click on the **Calibrate** button in the bottom-right of the calibration screen. The **Reset Calibration** button deletes any stored Bode calibration data. 
-#. The calibration will perform a 500-point measurement between 100 Hz and 62.5 MHz in logarithmic mode. Wait for the calibration to finish.
-#. Once the calibration is complete a **Green** light appears next to the **Calibration** status in the *Measurement control panel*.
+#.  Click on the **Calibrate** button in the bottom-right of the calibration screen. The **Reset Calibration** button deletes any stored Bode calibration data. 
+#.  The calibration will perform a 500-point measurement between 100 Hz and 62.5 MHz in logarithmic mode. Wait for the calibration to finish.
+#.  Once the calibration is complete a **Green** light appears next to the **Calibration** status in the *Measurement control panel*.
 
     .. figure:: img/Bode_analyzer_calibrated.png
         :width: 1000
 
-#. **Disconnect the SHORT between input and ouput of DUT**.
-#. Configure the settings and start the measurements.
+#.  **Disconnect the SHORT between input and ouput of DUT**.
+#.  Configure the settings and start the measurements.
 
+|
 
 Specifications
 =============== 
@@ -202,8 +205,9 @@ Specifications
 
     Please take care that the jumpers behind the :ref:`analog inputs <anain>` are set to the correct input range!
 
+|
 
 Source code
-*************
+============
 
 The `Bode Analyzer source code <https://github.com/RedPitaya/RedPitaya/tree/master/apps-tools/ba_pro>`_ is available on our GitHub.

@@ -25,6 +25,7 @@ The heatsink interface is compatible with the following Red Pitaya models:
 
     Please note that STEMlab 125-14 4-Input is not compatible with the heatsink interface.
 
+|
 
 Components
 ============
@@ -54,6 +55,7 @@ Heatsink interface dimensions:
 
     Dimensioned drawing of heatsink interface
 
+|
 
 Before the assembly
 ======================
@@ -62,6 +64,7 @@ Before starting the installation, please consider where the Red Pitaya with heat
 
 If you have the Red Pitaya aluminium case, it is possible to attach the top of the aluminium case to the Red Pitaya with the heatsink interface. In this case, the four screws connecting the heatsink interface, the Red Pitaya board and the top of the aluminium case will have to be attached from underneath, so some additional planning may be required. If you decide to do this, please see the alternative instructions at the end.
 
+|
 
 Assembly instructions
 ======================

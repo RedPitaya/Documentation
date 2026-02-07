@@ -9,6 +9,7 @@ This section covers configuring Red Pitaya's operating system and integrating wi
 **What you'll find here:**
 
 * **Network Configuration** - Set up Wi-Fi, Ethernet, and custom network configurations
+* **Service Management** - Control system services (web interface, SCPI server, etc.)
 * **GPIO Control** - Access and control digital I/O pins from software
 * **SPI Interface** - Use the SPI communication interface for peripherals
 * **TFT Display** - Connect and configure TFT displays
@@ -18,6 +19,7 @@ This section covers configuring Red Pitaya's operating system and integrating wi
     :maxdepth: 1
 
     network
+    service_management
     gpio/gpio
     spi/spi
     tft/TFT

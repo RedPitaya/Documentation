@@ -318,20 +318,20 @@ To set up the Access point mode, a :ref:`LAN connection <LAN>` or :ref:`direct e
 
 Here are the steps to set up the Access Point mode:
 
-1. Connect the Red Pitaya board using the :ref:`LAN connection <lan>` and open the *Network manager* application.
-#. Insert a Wi-Fi dongle into the USB port on the Red Pitaya board. The system will automatically recognise it and enable the **Wireless status settings** 
+1.  Connect the Red Pitaya board using the :ref:`LAN connection <lan>` and open the *Network manager* application.
+#.  Insert a Wi-Fi dongle into the USB port on the Red Pitaya board. The system will automatically recognise it and enable the **Wireless status settings** 
     on the right side of the web interface.
-#. From the dropdown menu select the *Access point mode*.
-#. Input a name and password to create an access point network. The password name should be at least eight characters long. Special characters are not allowed. 
+#.  From the dropdown menu select the *Access point mode*.
+#.  Input a name and password to create an access point network. The password name should be at least eight characters long. Special characters are not allowed. 
     The name of the access point network can be anything you like, but it is recommended to use a name that is easy to remember.
-#. Disconnect the LAN cable from the Red Pitaya board. The Red Pitaya board will automatically switch to Access Point mode and create a new Wi-Fi network with 
+#.  Disconnect the LAN cable from the Red Pitaya board. The Red Pitaya board will automatically switch to Access Point mode and create a new Wi-Fi network with 
     the name you specified in the previous step.
 
     .. figure:: img/instructions-access-point.png
         :width: 800
 
-#. Connect your PC, laptop, tablet, or phone to the network created by the Red Pitaya board.
-#. Input the Access Point network IP address into the web browser URL field and press enter.
+#.  Connect your PC, laptop, tablet, or phone to the network created by the Red Pitaya board.
+#.  Input the Access Point network IP address into the web browser URL field and press enter.
     
 .. note::
 

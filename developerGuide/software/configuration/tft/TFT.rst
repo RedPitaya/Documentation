@@ -39,7 +39,7 @@ The given setup has advantages and drawbacks.
   calibration data in the EEPROM.
 * Backlight control is not supported.
 
-
+|
 
 *****************
 Hardware setup
@@ -133,6 +133,7 @@ The maximum clock speed for this SPI controller is 50 MHz.
 |            200.0 MHz | 50.0 | 25.0 | 12.5 | 6.25 | 3.125 | 1.56  | 0.781 |
 +----------------------+------+------+------+------+-------+-------+-------+
 
+|
 
 ****************
 Software setup
@@ -177,6 +178,7 @@ Over SSH start the X server:
 
    startx
 
+|
 
 **************************
 Tested/Supported devices
@@ -266,6 +268,7 @@ Otherwise, it would be possible to repurpose a LED on Red Pitaya.
 
 The 95-ads7846.rules UDEV rule will create a symbolik link ``/dev/input/touchscreen``.
 
+|
 
 Adafruit PiTFT 3.5"
 ===================
@@ -377,6 +380,7 @@ A calibration file should be added to the system 99-calibration.conf.
 
     <a href="https://github.com/RedPitaya/RedPitaya/blob/release-2022.2/OS/debian/overlay/etc/X11/xorg.conf.d/99-calibration.conf" target="_blank">99-calibration.conf</a>
 
+|
 
 Block diagram
 --------------
@@ -391,6 +395,7 @@ Block diagram
 
    Simplified graphical representation of Red Pitayas :ref:`E2 <E2_orig_gen>` connetor to the Adafruit PiTFT 3.5". For pin locations please look at the top picture.
 
+|
 
 .. _assembled_hw_mods:
 
@@ -487,6 +492,7 @@ and pin 1 on the JP1 connector connected to an unmounted resistor pad.
 .. figure:: img/assembled_hw_mod.jpg
    :align: center
 
+|
 
 ***************************
 Debugging/Troubleshooting
@@ -515,6 +521,7 @@ To see the status of interrupts try:
 
    $ cat /proc/interrupts
 
+|
 
 Touch
 =====
@@ -524,3 +531,5 @@ Touch
 .. code-block:: shell-session
 
    sudo apt-get install -y evtest
+
+|

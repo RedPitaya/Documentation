@@ -75,6 +75,7 @@ Step 4: Safely eject and restart
 3. Power on or restart Red Pitaya
 4. Your application should appear in the application list
 
+|
 
 Method 2: SCP file transfer
 -----------------------------
@@ -160,6 +161,7 @@ The file must be valid JSON:
         "description": "Application description"
     }
 
+|
 
 Application appears but fails to load
 ---------------------------------------
@@ -182,6 +184,7 @@ Ensure files are readable:
 
     $ chmod -R 755 /opt/redpitaya/www/apps/your_app
 
+|
 
 Backend fails to load
 ----------------------
@@ -222,3 +225,4 @@ Before deploying to multiple devices:
 * Document any OS version requirements
 * Test with different browsers if applicable
 
+|

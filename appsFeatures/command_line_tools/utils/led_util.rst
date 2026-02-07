@@ -34,6 +34,7 @@ To enable the LEDs:
 
     root@rp-f09508:~# led_control -y=On -e=On -r=On
 
+|
 
 Source code
 -----------

@@ -18,6 +18,7 @@ Connection instructions are available for:
     :backlinks: none
     :depth: 1
 
+|
 
 Windows 10
 ==========
@@ -89,6 +90,7 @@ The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (th
 
     Alternatively, open Explorer and go to **C:/Users/<your-username>/.ssh** and open the **known_hosts** file. Delete all lines containing *rp-xxxxxx.local*.
 
+|
 
 Connection via a program (PuTTy, WinSCP, ...)
 -----------------------------------------------
@@ -135,6 +137,7 @@ When connected to RP via SSH, you get the following command prompt screen:
 
 The last command prompt/terminal line should read as “root@rp-xxxxxx:~#“ (the default home directory on Red Pitaya is /root).
 
+|
 
 Linux
 =====
@@ -151,6 +154,7 @@ Start Terminal and type (replace the IP address with the right one):
 .. figure:: img/linux_terminal.png
    :align: center
 
+|
 
 macOS
 =====
@@ -163,3 +167,5 @@ Run terminal **Launchpad → Other → Terminal** and type (replace the IP addre
    root@10.0.3.249's password: root
    Red Pitaya GNU/Linux/Ecosystem version 0.90-299
    redpitaya>
+
+|

@@ -51,12 +51,15 @@ The frontend is the browser-based interface that users interact with directly. I
 * **CSS3** - Visual styling and responsive design
 * **JavaScript** - Application logic and interactivity
 
+|
+
 Design philosophy
 ------------------
 
 The frontend should focus on visualization and user interaction. Heavy computation and hardware control belong in the 
 backend. Keep the frontend lightweight and responsive.
 
+|
 
 Application workflow
 ---------------------
@@ -94,6 +97,7 @@ Backend Component
 The backend is a shared Linux library (`.so` file) that serves as your application's controller. It manages hardware 
 interaction and implements the core application logic.
 
+|
 
 Backend capabilities
 ---------------------

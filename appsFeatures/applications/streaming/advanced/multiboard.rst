@@ -50,13 +50,13 @@ For each Red Pitaya board in your system:
    * Direct Ethernet connection between boards and computer will **not** work - the application requires a router or switch for automatic board detection
    * Each board will receive an IP address from the router's DHCP server
 
-2. Ensure each board has a unique IP address
-3. Load the streaming application:
+2. **Ensure each board has a unique IP address**
+3. **Load the streaming application:**
    
    * Via web interface: Open the Streaming application
    * Via SSH: Run ``overlay.sh stream_app && streaming-server``
 
-4. Verify the application is running (LED 2 on, LED 0 blinking)
+4. **Verify the application is running** (LED 2 on, LED 0 blinking)
 
 |
 
@@ -84,6 +84,10 @@ Download and install either:
 * :ref:`Command line client <stream_command_client>` - For scripting and automation
 
 The client will automatically discover all boards running the streaming application on the local network.
+
+.. note::
+
+    Ensure all boards are connected to a router and that your computer's firewall or antivirus software allows network communication for the client application (ports :ref:`18900-18903 <stream_port_numbers>`).
 
 |
 
@@ -209,6 +213,10 @@ Stagger streaming start
 If starting all boards simultaneously causes network congestion, consider staggering the start times by a few milliseconds. 
 This can help distribute the initial burst of data packets.
 
+.. note::
+
+    This requires customizing the streaming client.
+
 |
 
 Troubleshooting
@@ -223,7 +231,7 @@ Boards not detected
 
 1.  **Check network topology** - Boards must be connected through a router or switch. Direct Ethernet connection between computer and 
     boards will not work
-2.  Verify all boards are on the same network subnet
+2.  **Verify all boards are on the same network subnet**
 3.  **Check firewall/antivirus settings** - Ensure Python, C++ and the streaming client are allowed network access (ports :ref:`18900-18903 <stream_port_numbers>`)
    
     If you see errors like:
@@ -244,23 +252,9 @@ Boards not detected
     check the firewall/antivirus logs to see if it blocked the application, and create an exception for it (look for "Network access troubleshooting", "Resolve blocked communication", 
     etc. in your security software documentation).
 
-4.  Ensure streaming application is running on all boards (LED 2 on, LED 0 blinking)
-5.  Try pinging each board from your computer
-6.  Restart the streaming application on affected boards
-
-|
-
-Synchronization issues
-=======================
-
-**Problem:** Data from boards is not synchronized
-
-**Solutions:**
-
-1. Check that all boards have the same sampling rate
-2. Verify hardware synchronization is properly configured
-3. Use :ref:`X-channel system <x-ch_streaming>` for precise synchronization
-4. Check for clock drift in long acquisitions
+4.  **Ensure streaming application is running** on all boards (LED 2 on, LED 0 blinking)
+5.  **Try pinging each board from your computer**
+6.  **Restart the streaming application on affected boards**
 
 |
 

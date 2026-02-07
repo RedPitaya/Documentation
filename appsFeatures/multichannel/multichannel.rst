@@ -8,13 +8,14 @@ achieve a higher number of fast analog channels for acquisition or generation.
 
 There are two ways to achieve clock and trigger synchronisation across multiple Red Pitaya boards:
 
-1.  **Red Pitaya Click Shield Synchronisation** - Multiple *External clock* Red Pitaya boards synchronised with Click Shields using dedicated 
+1.  **Red Pitaya Click Shield Synchronisation** - **Multiple External clock Red Pitaya boards** synchronised with Click Shields using dedicated 
     ZL40213 LVDS clock fanout buffers. Provides optimal signal integrity across extended daisy chains with minimal clock and trigger jitter.
 
-#.  **Red Pitaya X-Channel system** - One primary and multiple secondary Red Pitaya boards connected in a daisy chain with SATA (Original 
+#.  **Red Pitaya X-Channel system** - **One primary and multiple secondary Red Pitaya boards** connected in a daisy chain with SATA (Original 
     Gen) or USB-C (Gen 2) cables. Cost-effective solution ideal for 2-3 board systems at moderate to high sampling rates.
 
-The synchronized boards can be controlled as any normal Red Pitaya board. However, remote control from a computer is usually preferred as it allows for more flexibility and easier control of multiple boards from the same program.
+The synchronized boards can be controlled as any normal Red Pitaya board. However, remote control from a computer is usually preferred as it allows for more flexibility and easier control 
+of multiple boards from the same program.
 
 For detailed comparison of the two systems, please see the :ref:`Q&A section <faq_multiboard>`.
 
@@ -27,7 +28,7 @@ For detailed comparison of the two systems, please see the :ref:`Q&A section <fa
     For streaming application multiboard setup (network configuration, client detection, bandwidth considerations), see the 
     :ref:`Multiboard Streaming documentation <multiboard_stream>`.
 
-
+|
 
 How can I control synchronised boards?
 ======================================
@@ -41,7 +42,7 @@ How can I control synchronised boards?
     Any restrictions or limitations of applications and control methods also apply to multiboard synchronisation. However, these should be interpreted **per board** and not for the full system.
     For example, if the *Data stream control* application has an input data limitation of 20 MB/s per board (OS 2.05-37) and we have three boards in the system, the total input data rate is 60 MB/s (20 MB/s per board).
 
-
+|
 
 .. _click_shield_sync:
 
@@ -74,6 +75,7 @@ and minimal jitter regardless of daisy chain length.
     clock (External clock models, STEMlab 125-14 4-Input and Pro versions of Gen 2 boards). Please see the :ref:`Click Shield compatibility section <click_shield_compatibility>` 
     for more information.
 
+|
 
 Setup
 -------
@@ -88,7 +90,7 @@ schemes depending on whether you want to connect an external clock or use the os
 Use the configuration for the secondary board for any additional boards in the chain.
 
 Oscillator
-~~~~~~~~~~~~
+----------
 
 .. figure:: img/Click_Shield_Oscillator_Sync.png
     :width: 700
@@ -118,7 +120,7 @@ trigger input.
 
 
 External Clock
-~~~~~~~~~~~~~~~~
+---------------
 
 .. figure:: img/Click_Shield_Ext_Clock_Sync.png
     :width: 700
@@ -231,9 +233,10 @@ chain, connect the S1 connector of the first secondary device to the S2 connecto
 It should be noted that **the secondary devices differ from the primary device hardware-wise**. The secondary devices are a special type 
 of external clock Red Pitaya that receives the clock signal from the "FPGA".
 
+|
 
 Cable orientation
-~~~~~~~~~~~~~~~~~~
+------------------
 
 The S1 and S2 connectors are SATA connectors on boards and USB-C connectors on Gen 2 boards. Usually, USB-C cables are bipolar and can 
 be connected in either direction, however, the S1 and S2 connectors are meant for sharing the clock and trigger signals and not connecting 
@@ -259,10 +262,10 @@ When connecting the boards, make sure both LEDs are lit. If the **O** LED is not
     * With 2.00 OS both the primary and the secondary devices use the SAME OS!
     * With 1.04 OS the primary and secondary boards use DIFFERENT OS!
 
-
+|
 
 Alternative uses of S1 and S2 connectors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------
 
 The S1 and S2 connectors can also be used to connect to external devices directly to the FPGA. On original generation boards where SATA 
 connectors are used, this is slightly easier as the connectors are standard SATA. Gen 2 presents a challenge as the S1 and S2 connectors 
@@ -274,6 +277,7 @@ not support this feature.
 For more information on using S1 and S2 connectors for external devices, please see the :ref:`FPGA development <fpga_development>` documentation
 and consult the :ref:`hardware schematics <dev_guide_hardware>` for the specific board model.
 
+|
 
 Board compatibility
 ---------------------
@@ -306,6 +310,7 @@ X-channel systems.
 Board models like *STEMlab 125-14 4-Input* and *SDRlab 122-16* have S1/S2 connectors, but the FPGA is not configured to support 
 the X-channel system. These boards cannot be used in X-channel configurations without FPGA modifications.
 
+|
 
 Example - signal acquisition (streaming client)
 -------------------------------------------------
@@ -320,8 +325,8 @@ input channels. For client installation and usage, please see the :ref:`Streamin
     PRIMARY_IP=192.168.2.141, SECONDARY1_IP=192.168.2.60 SECONDARY2_IP=192.168.2.25
 
 
-1. **Open the streaming app** on all Red Pitaya boards (primary and secondary) via the web interface.
-#. **Adjust the streaming mode and settings.** For more information on specific settings check the :ref:`Streaming Configuration <streaming_configuration_top>`.
+1.  **Open the streaming app** on all Red Pitaya boards (primary and secondary) via the web interface.
+#.  **Adjust the streaming mode and settings.** For more information on specific settings check the :ref:`Streaming Configuration <streaming_configuration_top>`.
 
     .. code-block:: shell-session
 
@@ -343,7 +348,7 @@ input channels. For client installation and usage, please see the :ref:`Streamin
         2022.06.02-15.20.21.357:  SAVE TO FILE: 192.168.2.25 [OK]
         2022.06.02-15.20.21.363:  SAVE TO FILE: 192.168.2.60 [OK]
 
-#. **Start the X-channel streaming** of 6 inputs.
+#.  **Start the X-channel streaming** of 6 inputs.
 
     .. code-block:: shell-session
 
@@ -419,14 +424,14 @@ input channels. For client installation and usage, please see the :ref:`Streamin
                           +...................+...................+...................+...................+..................|
         =====================================================================================================================
 
-#. To **view acquired data**, drag the .wav files from **/acq** to |Audacity|.
+#.  To **view acquired data**, drag the .wav files from **/acq** to |Audacity|.
 
     .. figure:: img/audacity_2.png
         :width: 800
 
     In this example, a 1 kHz sinewave signal was connected to all 6 inputs.
 
-
+|
 
 Code examples
 =================
@@ -435,7 +440,7 @@ Here are examples for synchronising the X-channel system and Click shields throu
 
 * :ref:`Multiboard synchronisation examples <examples_multiboard_sync>`.
 
-
+|
 
 .. _faq_multiboard:
 

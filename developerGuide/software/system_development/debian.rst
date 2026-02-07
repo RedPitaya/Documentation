@@ -96,7 +96,7 @@ OS image contents
 
 A complete SD card image contains:
 
-1. **Debian/Ubuntu OS** (Ext4 partition):
+1.  **Debian/Ubuntu OS** (Ext4 partition):
 
     * Base operating system files
     * Additional operating system applications and libraries
@@ -105,20 +105,21 @@ A complete SD card image contains:
     * Jupyter workspace
 
 
-2. **Ecosystem** (FAT32 partition):
+2.  **Ecosystem** (FAT32 partition):
 
-    * **Bare metal components:**
+    *   **Bare metal components:**
 
         * ``boot.bin`` - Contains FSBL, FPGA bitstream and U-Boot
         * Linux kernel image and device tree files
         * Alternative FPGA bitstreams and corresponding device tree overlays
 
-    * **User space components:**
+    *   **User space components:**
 
         * Bazaar server (Nginx) and WEB applications
         * Red Pitaya API library
         * SCPI server
 
+|
 
 Bootstrap procedure
 --------------------
@@ -129,20 +130,20 @@ built inside a ``chroot`` environment with an emulated ARM CPU.
 
 This creates a chicken-and-egg problem. The first-time build procedure is:
 
-1. **Build the OS image without the ecosystem**
+1.  **Build the OS image without the ecosystem**
     
     This creates:
     
     * ``redpitaya_OS_*.img`` - A non-functional SD card image (missing boot files and kernel)
     * ``redpitaya_OS_*.tar.gz`` - Archive for creating the ``chroot`` environment
 
-2. **Build the ecosystem inside the chroot environment**
+2.  **Build the ecosystem inside the chroot environment**
     
     * Use the ``redpitaya_OS_*.tar.gz`` file to create a ``chroot`` environment
     * Execute the necessary scripts inside ``chroot`` to build the ecosystem
     * Generate the ``ecosystem_*.zip`` file
 
-3. **Combine the OS image with the ecosystem**
+3.  **Combine the OS image with the ecosystem**
 
     .. code-block:: shell-session
 
@@ -202,16 +203,6 @@ Step 1: Clone the GitHub repository
 
 .. tabs::
 
-    .. group-tab:: OS 1.04 or lower
-
-        The OS build scripts are maintained in the main :rp-github:`Red Pitaya repository <RedPitaya>`:
-
-        .. code-block:: shell-session
-
-            $ git clone https://github.com/RedPitaya/RedPitaya.git
-            cd RedPitaya
-
-
     .. group-tab:: OS 2.0 or higher
 
         The OS build scripts are maintained in a separate :rp-github:`Ubuntu repository <ubuntu>`:
@@ -221,6 +212,16 @@ Step 1: Clone the GitHub repository
             $ git clone https://github.com/RedPitaya/ubuntu.git
             cd ubuntu
 
+    .. group-tab:: OS 1.04 or lower
+
+        The OS build scripts are maintained in the main :rp-github:`Red Pitaya repository <RedPitaya>`:
+
+        .. code-block:: shell-session
+
+            $ git clone https://github.com/RedPitaya/RedPitaya.git
+            cd RedPitaya
+
+|
 
 Step 2: Build the ecosystem
 -----------------------------
@@ -233,6 +234,7 @@ section to complete this step.
     For the first-time bootstrap procedure, you can skip this step and build a non-functional OS image first, 
     then use it to create the ``chroot`` environment for building the ecosystem.
 
+|
 
 Step 3: Build the OS image
 ----------------------------
@@ -241,12 +243,6 @@ Execute the build script with root privileges:
 
 .. tabs::
 
-    .. group-tab:: OS 1.04 or lower
-
-        .. code-block:: shell-session
-
-            $ sudo OS/debian/image.sh
-
     .. group-tab:: OS 2.00 or higher
 
         .. code-block:: shell-session
@@ -254,6 +250,12 @@ Execute the build script with root privileges:
             $ sudo build.sh
 
         The ``build.sh`` script calls :rp-github:`image.sh <ubuntu/blob/main/debian/image.sh>`, which performs the complete OS image build procedure.
+
+    .. group-tab:: OS 1.04 or lower
+
+        .. code-block:: shell-session
+
+            $ sudo OS/debian/image.sh
 
 .. warning::
 
@@ -265,13 +267,14 @@ Execute the build script with root privileges:
     If the ``ecosystem_*.zip`` file exists in the project root directory, it will be automatically integrated 
     into the OS image, creating a fully functional SD card image.
 
+|
 
 What happens during the build
 -------------------------------
 
 During the build process, the following steps are performed:
 
-1. **Image creation**
+1.  **Image creation**
     
     :rp-github:`image.sh <ubuntu/blob/main/debian/image.sh>` creates an SD card image with a timestamp in the filename. 
     Two partitions are created:
@@ -279,7 +282,7 @@ During the build process, the following steps are performed:
     * 1024 MB FAT32 partition for the ecosystem
     * Ext4 partition for the OS on the remaining SD Card space
 
-2. **Base system installation**
+2.  **Base system installation**
     
     :rp-github:`image.sh <ubuntu/blob/main/debian/image.sh>` calls :rp-github:`ubuntu.sh <ubuntu/blob/main/debian/ubuntu.sh>`,
     which installs the base system and additional packages, and configures:
@@ -292,18 +295,18 @@ During the build process, the following steps are performed:
     * U-Boot
     * Users and UART console access
 
-3. **Network configuration**
+3.  **Network configuration**
     
     :rp-github:`ubuntu.sh <ubuntu/blob/main/debian/ubuntu.sh>` executes :rp-github:`network.sh <ubuntu/blob/main/debian/network.sh>`,
     which creates a ``systemd-networkd`` based wired and wireless network setup.
 
-4. **Red Pitaya specific configuration**
+4.  **Red Pitaya specific configuration**
     
     :rp-github:`redpitaya.sh <ubuntu/blob/main/debian/redpitaya.sh>` installs additional Debian packages 
     (mostly libraries) required by Red Pitaya applications and extracts the ``ecosystem*.zip`` file 
     (if present) into the FAT partition.
 
-5. **Optional components** (can be commented out)
+5.  **Optional components** (can be commented out)
     
     * :rp-github:`jupyter.sh <ubuntu/blob/main/debian/jupyter.sh>` - Installs Jupyter notebook
     * :rp-github:`tft.sh <ubuntu/blob/main/debian/tft.sh>` - Installs X-server and XFCE desktop environment
@@ -353,6 +356,7 @@ Run this script on images prior to release:
 
     $ sudo OS/debian/image-fsck.sh redpitaya_OS_*.img
 
+|
 
 Reducing image size
 --------------------
@@ -427,6 +431,7 @@ Check the status of a service:
 
     $ systemctl status {service_name}
 
+|
 
 System debugging
 -----------------
@@ -442,3 +447,5 @@ Generate visual representations of the boot process:
     $ systemd-analyze dot | dot -Tsvg > /opt/redpitaya/www/apps/systemd-dot.svg
 
 These commands create SVG files showing the boot timeline and service dependency graph, which can be viewed through the web interface.
+
+|

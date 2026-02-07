@@ -124,7 +124,6 @@ Log button
     * Any error messages during streaming
     * Configuration parameters used
 
-|
 
 Lost button
 ------------
@@ -138,7 +137,6 @@ Lost button
     It is recommended to check the lost packets file after each streaming session to verify that no data was lost during the 
     acquisition.
 
-|
 
 Download button
 ----------------
@@ -159,7 +157,6 @@ Refresh button
 * **Function:** Refresh the file list to show newly created files
 * **Usage:** Click after completing a streaming session to update the file list
 
-|
 
 Delete all button
 ------------------
@@ -218,6 +215,7 @@ Command line client (Windows, Linux)
     * Scriptable and automatable
     * Advanced configuration options
     * Remote DAC streaming support
+    * Multi-board synchronization
 
 * **Recommended for:** Users who prefer command line tools or need automation
 * **Documentation:** See :ref:`Streaming to a remote computer via Command Line or Terminal <stream_command_client>`
@@ -237,6 +235,22 @@ Red Pitaya command line client
     * Direct access to Red Pitaya storage
 
 * **Recommended for:** Local operations via SSH
+* **Documentation:** See :ref:`Red Pitaya command line client <stream_command_client>`
+
+|
+
+Raspberry Pi command line client
+--------------------------------
+
+* **Icon:** Console icon
+* **Platform:** Raspberry Pi Linux
+* **Type:** Console client
+* **Capabilities:**
+    
+    * Stream data to and from the Raspberry Pi
+    * Local network control
+
+* **Recommended for:** Limited speed local network operations
 * **Documentation:** See :ref:`Red Pitaya command line client <stream_command_client>`
 
 |

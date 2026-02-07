@@ -4,8 +4,8 @@
 Introduction to Red Pitaya Software Development
 ##################################################
 
-Understanding Red Pitaya Software Architecture
-==============================================
+1. Understanding Red Pitaya Software Architecture
+==================================================
 
 Red Pitaya runs a complete Linux operating system (based on Debian) on its ARM Cortex-A9 processor. The software stack consists of:
 
@@ -21,9 +21,10 @@ This architecture allows you to:
 * Build web-based user interfaces
 * Integrate with existing Linux tools and frameworks
 
+|
 
-Development Approaches
-======================
+2. Development Approaches
+==========================
 
 Application Development
 -----------------------
@@ -60,9 +61,10 @@ Configure and extend Red Pitaya's capabilities:
 
 **Best for:** System administration, hardware integration, deployment automation
 
+|
 
-Development Workflow
-====================
+3. Development Workflow
+========================
 
 Typical Application Development
 --------------------------------
@@ -81,9 +83,10 @@ Typical System Development
 4. **Test** - Deploy to Red Pitaya and verify
 5. **Package** - Create Debian packages or SD card images
 
+|
 
-Prerequisites
-=============
+4. Prerequisites
+=================
 
 **For Application Development:**
 
@@ -99,20 +102,24 @@ Prerequisites
 * Understanding of Debian package management
 * Cross-compilation experience helpful
 
+|
 
-Getting Help
-============
+5. Getting Help
+================
 
 * **API Documentation** - Refer to C/Python API guides for function references
 * **Examples** - Study example code in the Applications & Features section
 * **Known Issues** - Check troubleshooting section for common problems
 * **Community** - Red Pitaya forum for community support
 
+|
 
-Next Steps
-==========
+6. Next Steps
+==============
 
 * **New to Red Pitaya?** Start with Getting Started → Console Access
 * **Building applications?** Go to Application Development section
 * **Modifying the OS?** See System Development section
 * **Configuring hardware?** Check Configuration section
+
+|

@@ -44,6 +44,7 @@ However, running older OS versions on Gen 2 boards is **strongly discouraged** d
 * Potential calibration problems
 * No official support for this configuration
 
+|
 
 OS 2.00 Versions (Older than 2.07-43)
 ---------------------------------------
@@ -65,6 +66,7 @@ To bypass the board-ID check, you must modify the boot scripts. This requires:
 
 .. |u-boot.script| replace:: :rp-github:`u-boot.script <RedPitaya/blob/master/patches/u-boot/u-boot.script>`
 
+|
 
 OS 1.04 and Earlier
 --------------------
@@ -86,6 +88,7 @@ OS 1.04 and earlier use an older calibration format that is incompatible with Ge
 
     If you install OS 1.04 without reverting the calibration format first, your analog inputs and outputs will not measure correctly.
 
+|
 
 Custom OS Builds
 -----------------
@@ -142,3 +145,4 @@ For OS update instructions and official OS downloads, see:
 * :ref:`OS Update Guide <os_update>`
 * `Red Pitaya Downloads <https://redpitaya.com/downloads/>`_
 
+|

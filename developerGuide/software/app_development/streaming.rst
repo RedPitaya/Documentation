@@ -13,6 +13,7 @@ Pre-built client applications are provided with each firmware release. However, 
 
 This guide explains how to build both client types using Qt Creator.
 
+|
 
 Prerequisites
 ==============

@@ -52,6 +52,7 @@ The aluminium case is compatible with the following Red Pitaya boards and their 
 * STEMlab 125-14 4-Input.
 * STEMlab 125-10.
 
+|
 
 Assembly Instructions
 =======================

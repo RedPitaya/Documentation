@@ -1,7 +1,7 @@
-.. _streaming_adc_example:
+.. _streaming_adc_api_example:
 
-ADC Data Streaming Tutorial
-#############################
+ADC API Streaming Tutorial
+############################
 
 This tutorial demonstrates how to continuously stream data from Red Pitaya ADC channels to your computer using the streaming client library. 
 You'll learn how to configure acquisition parameters, handle incoming data packets, and efficiently store samples using numpy arrays.
@@ -30,15 +30,19 @@ This example shows a complete implementation of ADC streaming with:
 Prerequisites
 ==============
 
+.. TODO fix picture
+
 **Hardware:**
+
     - Red Pitaya device (any model)
 
-.. figure:: ../../img/RedPitaya_general.png
+.. figure:: ../../../img/STEMlab125-14V1-0.svg
     :width: 400
     :align: center
 
 **Software:**
-    - Python 3.7 or newer
+
+    - Python 3.8 or newer
     - Red Pitaya streaming library (included in the :ref:`Streaming command line client <streaming_pc_clients>`)
     - NumPy library: ``pip install numpy``
     - Streaming application running on Red Pitaya (see :ref:`Quick Start <streaming_top>`)
@@ -53,22 +57,26 @@ Architecture
 
 The example uses a **callback-based architecture** for efficient data handling:
 
-.. code-block:: text
+.. code-block:: console
 
     Your Computer                           Red Pitaya
-    ┌─────────────────────┐                ┌──────────────────┐
-    │ ADCStreamClient     │    TCP/IP      │ Streaming Server │
-    │   │                 │◄───────────────┤   │              │
-    │   ├─► connect()     │                │   └─► FPGA ADC   │
-    │   ├─► sendConfig()  │                │                  │
-    │   └─► startStream() │                │   Deep Memory    │
-    │                     │                │   Buffer (4 MB)  │
-    │ Callback Class      │                └──────────────────┘
-    │   └─► recievePack() │ ◄─── Data arrives automatically
-    │         └─► Store   │
-    └─────────────────────┘
+    +---------------------+                +------------------+
+    | ADCStreamClient     |    TCP/IP      | Streaming Server |
+    |   |                 |<---------------|   |              |
+    |   +--> connect()    |                |   +--> FPGA ADC  |
+    |   +--> sendConfig() |                |                  |
+    |   +--> startStream()|                |   Deep Memory    |
+    |                     |                |   Buffer (4 MB)  |
+    | Callback Class      |                +------------------+
+    |   +--> receivePack()|<--- Data arrives automatically
+    |         +--> Store  |
+    +---------------------+
 
 |
+
+.. note::
+
+    The code examples below are simplified for clarity. For complete, production-ready code with full error handling, see the :rp-github:`complete example on GitHub <RedPitaya-Examples/blob/main/python-api/Streaming/adc_1_stream.py>`.
 
 Sample Rate Configuration
 --------------------------
@@ -82,27 +90,27 @@ Red Pitaya ADC runs at a base rate of **125 MS/s**. The actual sample rate is co
 **Examples:**
 
 .. list-table::
-   :header-rows: 1
-   :widths: 30 35 35
+    :header-rows: 1
+    :widths: 30 35 35
 
-   * - Decimation
-     - Sample Rate
-     - Samples/Second
-   * - 1
-     - 125 MS/s
-     - 125,000,000
-   * - 8
-     - 15.625 MS/s
-     - 15,625,000
-   * - 256
-     - 488.28 kS/s
-     - 488,281
-   * - 1024
-     - 122.07 kS/s
-     - 122,070
-   * - 65536
-     - 1.907 kS/s
-     - 1,907
+    * - Decimation
+      - Sample Rate
+      - Samples/Second
+    * - 1
+      - 125 MS/s
+      - 125,000,000
+    * - 8
+      - 15.625 MS/s
+      - 15,625,000
+    * - 256
+      - 488.28 kS/s
+      - 488,281
+    * - 1024
+      - 122.07 kS/s
+      - 122,070
+    * - 65536
+      - 1.907 kS/s
+      - 1,907
 
 |
 
@@ -125,7 +133,7 @@ The callback class handles incoming data packets and stores them efficiently:
             self.counter = 0
             self.fpgaLost = 0
         
-        def recievePack(self, client, pack):
+        def receivePack(self, client, pack):
             """Called automatically when new data arrives"""
             # Extract channel data
             ch1_data = np.array(pack.channel1.raw, dtype=np.int16)
@@ -189,7 +197,7 @@ Create and configure the streaming client:
     # Create client and callback
     client = streaming.ADCStreamClient()
     callback = Callback(max_samples_per_channel=max_samples)
-    client.setReciveDataFunction(callback.__disown__())
+    client.setReceiveDataCallback(callback.__disown__())
     
     # Connect to Red Pitaya
     if not client.connect():
@@ -242,7 +250,7 @@ Expected Results
 
 When you run the example, you should see output similar to:
 
-.. code-block:: text
+.. code-block:: console
 
     ======================================================================
     Red Pitaya ADC Streaming Configuration
@@ -336,7 +344,7 @@ Next Steps
 
 Now that you understand basic ADC streaming:
 
-* **Process in real-time** - Add signal processing in ``recievePack()`` callback
+* **Process in real-time** - Add signal processing in ``receivePack()`` callback
 * **Save to file** - Export data as CSV, HDF5, or binary formats
 * **Visualize live** - Use matplotlib for real-time plotting
 * **Multi-channel** - Synchronize multiple boards for 4+ channel acquisition

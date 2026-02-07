@@ -30,6 +30,7 @@ The Red Pitaya ecosystem comprises all software and hardware components required
 
 The ecosystem is packaged as a ``ecosystem_*.zip`` file that can be deployed to the FAT32 partition of an SD card.
 
+|
 
 Ecosystem directory structure
 -------------------------------
@@ -256,6 +257,7 @@ The Red Pitaya build process uses multiple environments:
 
 The build scripts automatically switch between these environments as needed.
 
+|
 
 Important notes
 ----------------
@@ -322,14 +324,6 @@ Download the pre-built ARM Ubuntu root environment from the :rp-download:`Red Pi
 
 .. tabs::
 
-    .. group-tab:: Ecosystem 1.04
-
-        .. code-block:: shell-session
-
-            wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_04-oct-2021.tar.gz
-            sudo chown root:root redpitaya_ubuntu_04-oct-2021.tar.gz
-            sudo chmod 664 redpitaya_ubuntu_04-oct-2021.tar.gz
-
     .. group-tab:: Ecosystem 2.00 and higher
 
         .. code-block:: shell-session
@@ -337,6 +331,14 @@ Download the pre-built ARM Ubuntu root environment from the :rp-download:`Red Pi
             wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
             sudo chown root:root redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
             sudo chmod 664 redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
+    
+    .. group-tab:: Ecosystem 1.04
+
+        .. code-block:: shell-session
+
+            wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_ubuntu_04-oct-2021.tar.gz
+            sudo chown root:root redpitaya_ubuntu_04-oct-2021.tar.gz
+            sudo chmod 664 redpitaya_ubuntu_04-oct-2021.tar.gz
 
 .. note::
 
@@ -355,6 +357,21 @@ Replace placeholders with:
 
 .. tabs::
 
+    .. group-tab:: Ecosystem 2.00 and higher
+
+        .. code-block:: none
+
+            [red-pitaya-ubuntu]
+            description=Red Pitaya Debian/Ubuntu OS image
+            type=file
+            file=/absolute/path/to/redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
+            users=your-username
+            root-users=your-username
+            root-groups=root
+            profile=desktop
+            personality=linux
+            preserve-environment=true
+    
     .. group-tab:: Ecosystem 1.04
 
         .. code-block:: none
@@ -370,27 +387,48 @@ Replace placeholders with:
             personality=linux
             preserve-environment=true
 
-    .. group-tab:: Ecosystem 2.00 and higher
-
-        .. code-block:: none
-
-            [red-pitaya-ubuntu]
-            description=Red Pitaya Debian/Ubuntu OS image
-            type=file
-            file=/absolute/path/to/redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
-            users=your-username
-            root-users=your-username
-            root-groups=root
-            profile=desktop
-            personality=linux
-            preserve-environment=true
-
 |
 
 Full build procedure
 ---------------------
 
 .. tabs::
+
+    .. group-tab:: Ecosystem 2.00 and higher
+
+        **Option 1: Automated build script**
+
+        Build for all board models:
+
+        .. code-block:: shell-session
+
+            cd build_scripts
+            sudo ./build_OS.sh
+
+        **Option 2: Manual build**
+
+        Build step-by-step:
+
+        .. code-block:: shell-session
+
+            make -f Makefile.x86
+            schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+            make
+            EOL_CHROOT
+            make -f Makefile.x86 zip
+
+        **Interactive ARM shell**
+
+        To get an interactive ARM shell for debugging:
+
+        .. code-block:: shell-session
+
+            schroot -c red-pitaya-ubuntu
+
+        .. note::
+
+            Unlike Ecosystem 1.04, version 2.0 and higher builds for all board models simultaneously. 
+            Board-specific differences only affect FPGA bitstream compilation.
 
     .. group-tab:: Ecosystem 1.04
 
@@ -496,42 +534,6 @@ Full build procedure
         .. code-block:: shell-session
 
             schroot -c red-pitaya-ubuntu
-   
-    .. group-tab:: Ecosystem 2.00 and higher
-
-        **Option 1: Automated build script**
-
-        Build for all board models:
-
-        .. code-block:: shell-session
-
-            cd build_scripts
-            sudo ./build_OS.sh
-
-        **Option 2: Manual build**
-
-        Build step-by-step:
-
-        .. code-block:: shell-session
-
-            make -f Makefile.x86
-            schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-            make
-            EOL_CHROOT
-            make -f Makefile.x86 zip
-
-        **Interactive ARM shell**
-
-        To get an interactive ARM shell for debugging:
-
-        .. code-block:: shell-session
-
-            schroot -c red-pitaya-ubuntu
-
-        .. note::
-
-            Unlike Ecosystem 1.04, version 2.0 and higher builds for all board models simultaneously. 
-            Board-specific differences only affect FPGA bitstream compilation.
 
 |
 
@@ -568,6 +570,7 @@ Available components
         * SCPI server
         * Console tools and web applications
 
+|
 
 Setup build environment
 ------------------------
@@ -602,19 +605,12 @@ Setup build environment
             export PATH=$PATH:/opt/Xilinx/SDK/2019.1/bin
             export PATH=$PATH:/opt/Xilinx/SDK/2019.1/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin/
 
+|
 
 Package the ecosystem
 ----------------------
 
 .. tabs::
-
-    .. group-tab:: Ecosystem 1.04
-
-        After building components, package them into a zip archive:
-
-        .. code-block:: shell-session
-
-            make -f Makefile.x86 zip
 
     .. group-tab:: Ecosystem 2.00 and higher
 
@@ -624,11 +620,38 @@ Package the ecosystem
 
             make -f Makefile.x86 zip
 
+    .. group-tab:: Ecosystem 1.04
+
+        After building components, package them into a zip archive:
+
+        .. code-block:: shell-session
+
+            make -f Makefile.x86 zip
+
+|
 
 Build FPGA bitstream and device tree
 ----------------------------------------
 
 .. tabs::
+
+    .. group-tab:: Ecosystem 2.00 and higher
+
+        Each FPGA version uses device tree overlays. Build for specific board models:
+
+        .. code-block:: shell-session
+
+            make -f Makefile.x86 fpga MODEL=Z10
+            make -f Makefile.x86 fpga MODEL=Z20
+            make -f Makefile.x86 fpga MODEL=Z20_125
+            make -f Makefile.x86 fpga MODEL=Z20_125_4CH
+            make -f Makefile.x86 fpga MODEL=Z20_250_12
+
+        For detailed instructions, see :ref:`building the FPGA <FPGA_project_flags>`.
+
+        .. note::
+
+            Build only the models you need to speed up the build process.
 
     .. group-tab:: Ecosystem 1.04
 
@@ -658,39 +681,12 @@ Build FPGA bitstream and device tree
 
             A pre-compiled binary is available in the ``tools/dtc`` directory.
 
-    .. group-tab:: Ecosystem 2.00 and higher
-
-        Each FPGA version uses device tree overlays. Build for specific board models:
-
-        .. code-block:: shell-session
-
-            make -f Makefile.x86 fpga MODEL=Z10
-            make -f Makefile.x86 fpga MODEL=Z20
-            make -f Makefile.x86 fpga MODEL=Z20_125
-            make -f Makefile.x86 fpga MODEL=Z20_125_4CH
-            make -f Makefile.x86 fpga MODEL=Z20_250_12
-
-        For detailed instructions, see :ref:`building the FPGA <FPGA_project_flags>`.
-
-        .. note::
-
-            Build only the models you need to speed up the build process.
-
+|
 
 Build U-Boot
 --------------
 
 .. tabs::
-
-    .. group-tab:: Ecosystem 1.04
-
-        Build U-Boot binary and boot scripts:
-
-        .. code-block:: shell-session
-
-            make -f Makefile.x86 u-boot
-
-        This downloads the Xilinx U-Boot source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
 
     .. group-tab:: Ecosystem 2.00 and higher
 
@@ -715,24 +711,22 @@ Build U-Boot
             
             The device tree for U-Boot is built using files from the ``dts_uboot/`` folder, defining minimum peripheral requirements for board startup.
 
+    .. group-tab:: Ecosystem 1.04
+
+        Build U-Boot binary and boot scripts:
+
+        .. code-block:: shell-session
+
+            make -f Makefile.x86 u-boot
+
+        This downloads the Xilinx U-Boot source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
+
+|
 
 Build Linux kernel and device tree binaries
 --------------------------------------------
 
 .. tabs::
-
-    .. group-tab:: Ecosystem 1.04
-
-        Build the Linux kernel and device tree binaries:
-
-        .. code-block:: shell-session
-
-            make -f Makefile.x86 linux
-            make -f Makefile.x86 linux-install
-            make -f Makefile.x86 devicetree
-            make -f Makefile.x86 devicetree-install
-
-        This downloads the Xilinx Linux kernel source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
 
     .. group-tab:: Ecosystem 2.00 and higher
 
@@ -749,11 +743,29 @@ Build Linux kernel and device tree binaries
 
             Device tree builds require FPGA projects to be built first, as ``dtb`` and ``dts`` files are based on FPGA barebone projects.
 
+    .. group-tab:: Ecosystem 1.04
+
+        Build the Linux kernel and device tree binaries:
+
+        .. code-block:: shell-session
+
+            make -f Makefile.x86 linux
+            make -f Makefile.x86 linux-install
+            make -f Makefile.x86 devicetree
+            make -f Makefile.x86 devicetree-install
+
+        This downloads the Xilinx Linux kernel source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
+
+|
 
 Build boot file
 ----------------
 
 .. tabs::
+
+    .. group-tab:: Ecosystem 2.00 and higher
+
+        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     .. group-tab:: Ecosystem 1.04
 
@@ -763,21 +775,11 @@ Build boot file
 
             make -f Makefile.x86 boot
     
-    .. group-tab:: Ecosystem 2.00 and higher
-
-        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 
 Build user-space applications
 -------------------------------
 
 .. tabs::
-
-    .. group-tab:: Ecosystem 1.04
-
-        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 
     .. group-tab:: Ecosystem 2.00 and higher
 
@@ -812,6 +814,11 @@ Build user-space applications
 
             Some components have dependencies on each other. Use ``make all`` to build everything at once.
 
+    .. group-tab:: Ecosystem 1.04
+
+        .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 |
 
 
@@ -845,6 +852,7 @@ Build the Red Pitaya API library:
 
 Replace ``192.168.0.100`` with your Red Pitaya's IP address (or use the ``.local`` address).
 
+|
 
 U-Boot EEPROM configuration
 ----------------------------
@@ -855,11 +863,12 @@ To update and recalculate variable values from EEPROM:
 
 .. code-block:: shell-session
 
-   i2c dev 0
-   # Offset 0x1800 + 0x4 (crc32)
-   eeprom read  0 0x50 0 0x1804 0x400
-   env import -b 0 0x400 hw_rev serial ethaddr
+    i2c dev 0
+    # Offset 0x1800 + 0x4 (crc32)
+    eeprom read  0 0x50 0 0x1804 0x400
+    env import -b 0 0x400 hw_rev serial ethaddr
 
+|
 
 SCPI server
 ------------
@@ -868,9 +877,9 @@ Build the SCPI server:
 
 .. code-block:: shell-session
 
-   schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
-   make scpi
-   EOL_CHROOT
+    schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
+    make scpi
+    EOL_CHROOT
 
 **Output file:** ``scpi-server/scpi-server``
 
@@ -878,16 +887,17 @@ Build the SCPI server:
 
 .. code-block:: shell-session
 
-   scp scpi-server/scpi-server root@192.168.0.100:/opt/redpitaya/bin/
+    scp scpi-server/scpi-server root@192.168.0.100:/opt/redpitaya/bin/
 
 Replace ``192.168.0.100`` with your Red Pitaya's IP address (or use the ``.local`` address).
 
 .. note::
 
-   Red Pitaya uses a :rp-github:`customized SCPI parser <scpi-parser/tree/redpitaya>` with optimized functions for Red Pitaya hardware.
+    Red Pitaya uses a :rp-github:`customized SCPI parser <scpi-parser/tree/redpitaya>` with optimized functions for Red Pitaya hardware.
 
 For more information, see the :rp-github:`SCPI server README <RedPitaya/blob/master/scpi-server/README.md>`.
 
+|
 
 Legacy web applications
 ------------------------
@@ -898,3 +908,4 @@ To build applications from the ``apps-free`` directory, follow the :rp-github:`i
 
     Applications in ``apps-free`` were developed for Ecosystem 1.04 and earlier. They require modification to work with Ecosystem 2.00 and higher.
 
+|

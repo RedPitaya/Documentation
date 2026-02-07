@@ -13,11 +13,15 @@ The Windows Subsystem for Linux (WSL) provides a Linux environment directly on W
 
 This guide covers installing WSL, configuring it for optimal performance, and setting up USB device access.
 
+|
+
 Prerequisites
 =============
 
 - Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11
 - Administrator access to your Windows system
+
+|
 
 Basic WSL Installation
 ======================
@@ -43,6 +47,7 @@ Quick installation (recommended):
 
     The default WSL installation uses WSL 2, which provides better performance and full system call compatibility.
 
+|
 
 USB Device Access Setup
 ========================
@@ -74,6 +79,7 @@ In your WSL terminal, install the required Linux tools:
     sudo apt install linux-tools-generic hwdata minicom
     sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
 
+|
 
 WSL Configuration (.wslconfig)
 ==============================
@@ -88,6 +94,8 @@ The ``.wslconfig`` file should be placed in your Windows user directory: ``C:\Us
 .. note::
 
     This file affects **all** WSL 2 distributions running on your machine.
+
+|
 
 Recommended configuration
 -------------------------
@@ -115,6 +123,7 @@ Configuration explanation:
 
     Then restart your WSL distribution normally.
 
+|
 
 Additional configuration options
 --------------------------------
@@ -141,6 +150,7 @@ You can add additional settings to optimize WSL for your needs. Here are some co
 
 For a complete list of configuration options, see the |WSL-config| page.
 
+|
 
 Verifying the installation
 ===========================
@@ -169,6 +179,7 @@ To verify that WSL is installed correctly:
 
 4. You should now be in a Linux terminal where you can run Linux commands.
 
+|
 
 Next steps
 ==========
@@ -179,6 +190,7 @@ Now that WSL is set up, you can:
 - Install development tools for building Red Pitaya software
 - Access the Red Pitaya SD card contents from your Windows machine
 
+|
 
 Troubleshooting
 ===============
@@ -207,14 +219,7 @@ Network connectivity issues
 2. Restart WSL with ``wsl --shutdown`` and start it again
 3. In WSL, try updating DNS settings in ``/etc/resolv.conf``
 
-
-.. |WSL| raw:: html
-
-    <a href="https://learn.microsoft.com/en-us/windows/wsl/install" target="_blank">Windows Subsystem for Linux Installation Guide</a>
-
-.. |WSL-USB| raw:: html
-
-    <a href="https://learn.microsoft.com/en-us/windows/wsl/connect-usb" target="_blank">Connect USB devices to WSL</a>
+|
 
 .. |WSL-config| raw:: html
 

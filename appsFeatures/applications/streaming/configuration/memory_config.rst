@@ -98,6 +98,7 @@ Single mode operation
 If you only need one mode (e.g., ADC streaming only), you can allocate the entire reserved memory to that mode.
 
 Example:
+
 * ADC: 32 MB
 * DAC: 0 MB
 * GPIO: 0 MB
@@ -110,11 +111,13 @@ Dual mode operation
 When running ADC and DAC simultaneously, the memory must be allocated proportionally based on your needs.
 
 Example for balanced ADC/DAC:
+
 * ADC: 16 MB
 * DAC: 16 MB
 * GPIO: 0 MB
 
 Example for ADC-heavy workload:
+
 * ADC: 24 MB
 * DAC: 8 MB
 * GPIO: 0 MB

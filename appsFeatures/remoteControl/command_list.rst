@@ -36,7 +36,7 @@ For API commands you can find a detailed description in these C header files:
     command_list/commands-status-leds.rst
     command_list/commands-temp-prot.rst
 
-
+|
 
 **How to find all available SCPI commands per OS version?**
 

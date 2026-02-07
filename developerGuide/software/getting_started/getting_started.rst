@@ -9,10 +9,12 @@ This section covers the basics of accessing and connecting to your Red Pitaya fo
 **What you'll find here:**
 
 * **Console Access** - Connect to Red Pitaya via SSH or serial console for command-line access
+* **C++ Compiler & Make** - Install development tools for building C++ applications (Windows users)
 * **WSL Setup** - Configure Windows Subsystem for Linux for Red Pitaya development (Windows users)
 
 .. toctree::
     :maxdepth: 1
 
     console_access.rst
+    cpp_make_install.rst
     wsl_setup.rst

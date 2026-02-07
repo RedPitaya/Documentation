@@ -14,6 +14,7 @@ Red Pitaya software is composed of two main parts working together:
 
 The FPGA and ARM processor are integrated into a single Xilinx Zynq System-on-Chip (SoC), allowing seamless communication between hardware and software components.
 
+|
 
 Required Development Tools
 ===========================
@@ -41,6 +42,7 @@ Xilinx SDK 2019.1
 **When you need it:** Only required if you're modifying the software running on the ARM processor (drivers, APIs, custom applications). If you're only changing 
 the FPGA logic and using existing software, you don't need SDK.
 
+|
 
 What You Can Accomplish
 ========================
@@ -69,6 +71,7 @@ Depending on your project goals, you can:
 * Integrate custom hardware peripherals
 * **Tools needed:** Both Vivado and SDK
 
+|
 
 Development Workflow Overview
 ==============================
@@ -85,6 +88,7 @@ The typical FPGA development workflow follows these steps:
 8. **Test on Hardware** - Load to Red Pitaya and verify
 9. **Integrate Software** - Create/update drivers and applications (if needed)
 
+|
 
 Next Steps
 ==========
@@ -97,3 +101,5 @@ Now that you understand the architecture and tools, proceed with:
 4. **Learn Simulation** - Essential for efficient development
 
 The following sections will guide you through each step in detail.
+
+|

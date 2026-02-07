@@ -59,7 +59,7 @@ Usage instructions:
 
 To properly calibrate the Red Pitaya using the *calib* utility, we need to understand the calibration format we are working with. There are 4 different types of calibration:
 
-* The first four are used in 1.04 OS versions and depend on the Red Pitaya board model.
+* **Old calibration**. The first four are used in 1.04 OS versions and depend on the Red Pitaya board model.
     
     1. STEMlab 125-14 and 125-10.
     2. SIGNALlab 250-12.
@@ -68,13 +68,14 @@ To properly calibrate the Red Pitaya using the *calib* utility, we need to under
 
     You can find the :rp-github:`calibration specifications here <RedPitaya/blob/master/rp-api/api-hw-calib/src/calib_structs.h>`.
 
-* The new universal calibration used in OS versions 2.00 and higher:
+* **New universal calibration** used in OS versions 2.00 and higher:
 
     5. Universal calibration parameters Version 5 - calibration occurs in the API.
     6. Universal calibration parameters Version 6 - calibration occurs in the FPGA.
 
 The calibration API allows you to work with all types of structures, but the old ones only work in backward compatibility mode (so there are no problems when moving to OS version 2.0).
 
+|
 
 New calibration storage format
 --------------------------------
@@ -121,7 +122,7 @@ Load from a file:
 
     root@rp-f0a235:~# cat calib.txt | calib -wn
 
-
+|
 
 Old calibration storage format
 --------------------------------
@@ -162,6 +163,7 @@ Load from a file:
 
     root@rp-f0a235:~# cat calib.txt | calib -w
 
+|
 
 Source code
 ------------

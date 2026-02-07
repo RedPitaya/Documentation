@@ -20,43 +20,43 @@ The streaming server can also be started through the command line.
 
 To start the server, follow these steps:
 
-    #. Load the FPGA image for streaming.
+#.  Load the FPGA image for streaming.
 
-        .. tabs::
+    .. tabs::
 
-            .. group-tab:: OS version 1.04 or older
+        .. group-tab:: OS version 2.00
 
-                .. code-block:: console
+            .. code-block:: console
 
-                    redpitaya> cat /opt/redpitaya/fpga/fpga_streaming.bit > /dev/xdevcfg
-                    redpitaya> /opt/redpitaya/sbin/mkoverlay.sh stream_app
+                redpitaya> overlay.sh stream_app
 
-            .. group-tab:: OS version 2.00
+        .. group-tab:: OS version 1.04 or older
 
-                .. code-block:: console
+            .. code-block:: console
 
-                    redpitaya> overlay.sh stream_app
+                redpitaya> cat /opt/redpitaya/fpga/fpga_streaming.bit > /dev/xdevcfg
+                redpitaya> /opt/redpitaya/sbin/mkoverlay.sh stream_app
 
-        .. note::
+    .. note::
 
-            **SIGNALlab 250-12** uses **stream_app_250** FPGA image.
+        **SIGNALlab 250-12** uses **stream_app_250** FPGA image.
 
-    #. Prepare a configuration file.
+#.  Prepare a configuration file.
 
-        .. note::
+    .. note::
 
-            In version 2.00, the configuration file has been moved to a new location: **/root/.config/redpitaya/apps/streaming/streaming_config.json**
+        In version 2.00, the configuration file has been moved to a new location: **/root/.config/redpitaya/apps/streaming/streaming_config.json**
 
-    #. Launch the console application.
+#.  Launch the console application.
 
-        .. code-block:: console
+    .. code-block:: console
 
-            root@rp-f07167:/# streaming-server -c /root/.streaming_config
-            streaming-server started
-            Lost rate: 0 / 763 (0 %)
-            Lost rate: 0 / 766 (0 %)
-            Lost rate: 0 / 766 (0 %)
-            Lost rate: 0 / 766 (0 %)
+        root@rp-f07167:/# streaming-server -c /root/.streaming_config
+        streaming-server started
+        Lost rate: 0 / 763 (0 %)
+        Lost rate: 0 / 766 (0 %)
+        Lost rate: 0 / 766 (0 %)
+        Lost rate: 0 / 766 (0 %)
 
 The configuration for streaming is automatically created and saved in the file: **/root/.streaming_config** during the editing of the parameters in the web application.
 
@@ -71,17 +71,20 @@ The configuration for streaming is automatically created and saved in the file: 
 
 .. note::
 
-    Streaming always creates two files:
+    Streaming always creates three files:
 
-        *   The first stores of streamed data
-        *   The second stores the data transfer report
+        * The first stores the streamed data
+        * The second stores the log of the streaming process.
+        * The third stores the log of lost packets during streaming.
 
 
 Data streaming
 ----------------
 
-Once the streaming server is running, you can start streaming data from ADC and to DACs of the Red Pitaya board. For more information, please refer to the :ref:`Data stream control application <streaming_top>` documentation.
+Once the streaming server is running, you can start streaming data from ADC and to DACs of the Red Pitaya board. For more information, please refer to the 
+:ref:`Data stream control application <streaming_top>` documentation.
 
+|
 
 Source Code
 ------------

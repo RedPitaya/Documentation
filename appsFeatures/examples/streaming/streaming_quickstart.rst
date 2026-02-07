@@ -126,7 +126,7 @@ Understanding the Code
 
 The example demonstrates the three key components of streaming:
 
-1. **Callback Class** - Handles incoming data packets
+1.  **Callback Class** - Handles incoming data packets
 
     .. code-block:: python
 
@@ -135,7 +135,7 @@ The example demonstrates the three key components of streaming:
                 # Process data as it arrives
                 self.data_ch1.extend(pack.channel1.raw)
 
-2. **Client Setup** - Configure connection and parameters
+2.  **Client Setup** - Configure connection and parameters
 
     .. code-block:: python
 
@@ -143,7 +143,7 @@ The example demonstrates the three key components of streaming:
         client.connect()  # Auto-discovery
         client.sendConfig('adc_decimation', '256')
 
-3. **Streaming Control** - Start and wait for data
+3.  **Streaming Control** - Start and wait for data
 
     .. code-block:: python
 
@@ -174,23 +174,23 @@ Common configuration options you can adjust:
     :widths: 30 50 20
 
     * - Parameter
-        - Description
-        - Default
+      - Description
+      - Default
     * - ``adc_decimation``
-        - Sample rate = 125 MS/s ÷ decimation (1, 2, 4, 8, 16, 17, 18, ..., 65536)
-        - 1
+      - Sample rate = 125 MS/s ÷ decimation (1, 2, 4, 8, 16, 17, 18, ..., 65536)
+      - 1
     * - ``channel_state_1``
-        - Enable channel 1 (ON/OFF)
-        - OFF
+      - Enable channel 1 (ON/OFF)
+      - OFF
     * - ``channel_state_2``
-        - Enable channel 2 (ON/OFF)
-        - OFF
+      - Enable channel 2 (ON/OFF)
+      - OFF
     * - ``block_size``
-        - Network packet size in bytes (2048-2097152)
-        - 131072
+      - Network packet size in bytes (2048-2097152)
+      - 131072
     * - ``adc_pass_mode``
-        - Destination (NET or FILE for SD card)
-        - NET
+      - Destination (NET or FILE for SD card)
+      - NET
 
 For complete configuration reference, see :ref:`Streaming Configuration <stream_configuration>`.
 
@@ -219,11 +219,13 @@ Troubleshooting
     etc. in your security software documentation).
 
 **No data received**
+
    * Verify channels are enabled (``channel_state_1`` and ``channel_state_2``)
    * Check if streaming server is still running
    * Review Red Pitaya logs: ``journalctl -u streaming-server``
 
 **Data loss reported (``fpgaLost > 0``)**
+
    * Reduce sample rate (increase decimation)
    * Increase ``block_size`` for more efficient network transfer
    * Check network bandwidth and latency
@@ -233,25 +235,27 @@ Troubleshooting
 Complete Examples
 ******************
 
-For production-ready examples with error handling, memory management, and advanced features:
+For production-ready examples with error handling, memory management, and advanced features, see :ref:`Streaming Examples <examples_streaming>`.
 
-.. toctree::
-   :maxdepth: 1
+**Python Examples:**
 
-   examples_streaming_top
+* :rp-github:`ADC Streaming <RedPitaya-Examples/blob/main/python-api/Streaming/adc_1_stream.py>` - Full-featured ADC streaming with numpy arrays
+* :rp-github:`Multi-Board ADC <RedPitaya-Examples/blob/main/python-api/Streaming/adc_2_stream.py>` - Synchronized acquisition from multiple boards
+* :rp-github:`DAC Streaming <RedPitaya-Examples/blob/main/python-api/Streaming/dac_1_stream.py>` - Generate waveforms from WAV files
+* :rp-github:`Stereo DAC <RedPitaya-Examples/blob/main/python-api/Streaming/dac_2_stream.py>` - Dual channel DAC output
+* :rp-github:`Memory Streaming <RedPitaya-Examples/blob/main/python-api/Streaming/dac_3_stream.py>` - Direct memory buffer streaming
 
-* :rp-github:`ADC Streaming Example <RedPitaya-Examples/blob/main/python-api/Streaming/adc_1_stream.py>` - Full-featured ADC streaming with numpy arrays
-* :rp-github:`DAC Streaming Example <RedPitaya-Examples/blob/main/python-api/Streaming/dac_1_stream.py>` - Generate waveforms on DAC outputs
-* :rp-github:`Memory Streaming Example <RedPitaya-Examples/blob/main/python-api/Streaming/dac_3_stream.py>` - High-performance memory streaming
+**C++ Examples:**
+
+* :rp-github:`ADC Streaming <RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_adc_1.cpp>` - High-performance ADC acquisition
+* :rp-github:`Multi-Board ADC <RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_adc_2.cpp>` - Synchronized multi-board streaming
+* :rp-github:`DAC Streaming <RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_dac_1.cpp>` - WAV file generation and streaming
+* :rp-github:`Stereo DAC <RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_dac_2.cpp>` - Stereo WAV output
+* :rp-github:`Memory Streaming <RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_dac_3.cpp>` - Memory buffer streaming
 
 |
 
 API Documentation
 ******************
 
-For detailed class and method documentation:
-
-.. toctree::
-   :maxdepth: 1
-
-   streaming_api_reference
+For detailed class and method documentation, see :ref:`Streaming API Reference <streaming_api_reference>`.

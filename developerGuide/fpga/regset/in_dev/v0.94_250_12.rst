@@ -990,10 +990,10 @@ Channel A Signal Generation
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:30 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Value where counter wraps around (16 bits for decimals).     | 29:0  | R/W |
-|                    | Depends on SM wrap setting:                                  |       |     |
-|                    |  * 1 - New value is acquired by wrap                         |       |     |
-|                    |  * 0 - Counter goes to offset value                          |       |     |
+|                    | | Value where counter wraps around (16 bits for decimals).   | 29:0  | R/W |
+|                    | | Depends on SM wrap setting:                                |       |     |
+|                    | |   * 1 - New value is acquired by wrap                      |       |     |
+|                    | |   * 0 - Counter goes to offset value                       |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0xC**            |**CH A start offset**                                         |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
@@ -1098,10 +1098,10 @@ Channel B Signal Generation
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:30 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Value where counter wraps around (16 bits for decimals).     | 29:0  | R/W |
-|                    | Depends on SM wrap setting:                                  |       |     |
-|                    |  * 1 - New value is acquired by wrap                         |       |     |
-|                    |  * 0 - Counter goes to offset value                          |       |     |
+|                    | | Value where counter wraps around (16 bits for decimals).   | 29:0  | R/W |
+|                    | | Depends on SM wrap setting:                                |       |     |
+|                    | |   * 1 - New value is acquired by wrap                      |       |     |
+|                    | |   * 0 - Counter goes to offset value                       |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x2C**           | **CH B start offset**                                        |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+

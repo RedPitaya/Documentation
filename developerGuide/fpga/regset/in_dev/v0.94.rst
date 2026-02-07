@@ -8,17 +8,16 @@ FPGA Register Map - v0.94
 
 **Compatible Boards:**
 
-    * STEMlab 125-10
-    * STEMlab 125-14
-    * STEMlab 125-14 Z7020
-    * SDRlab 122-16
-    * STEMlab 125-14 4-Input
     * STEMlab 125-14 Gen 2
     * STEMlab 125-14 PRO Gen 2
     * STEMlab 125-14 PRO Z7020 Gen 2
     * STEMlab 125-14 TI
     * STEMlab 65-16 TI
-
+    * STEMlab 125-14
+    * STEMlab 125-14 Z7020
+    * STEMlab 125-14 4-Input
+    * SDRlab 122-16
+    * STEMlab 125-10
 
 **Compatible applications:** 
 
@@ -391,19 +390,19 @@ TI boards Only
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:9  | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | PLL locked status                                            |    8  | R   |
+|                    | PLL locked status:                                           |    8  | R   |
 |                    |   * 1 = locked                                               |       |     |
 |                    |   * 0 = not locked                                           |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     |  7:5  | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Reference clock detected                                     |    4  | R   |
+|                    | Reference clock detected:                                    |    4  | R   |
 |                    |   * 1 = detected                                             |       |     |
 |                    |   * 0 = no external clock detected                           |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     |  3:1  | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Enable PLL (1=enable, 0=disable)                             |    0  | R/W |
+|                    | Enable PLL:                                                  |    0  | R/W |
 |                    |   * 1 = enabled                                              |       |     |
 |                    |   * 0 = disabled                                             |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
@@ -549,6 +548,7 @@ Quick Reference
 | 0x20000-0x2FFFC  | CH B memory buffer (16k samples)            | R     |
 +------------------+---------------------------------------------+-------+
 
+|
 
 Trigger Sources
 ---------------
@@ -585,7 +585,6 @@ The trigger source register (0x4) accepts the following values:
 | 13    | CH D threshold negative edge (4-Input only)    |
 +-------+------------------------------------------------+
 
-|
 
 Configuration and Control
 -------------------------
@@ -697,9 +696,9 @@ Write Pointers and Configuration
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x2C**           | **PreTrigger Counter**                                       |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Unsigned counter holding the number of samples               | 31:0  | R   |
-|                    | captured between acquisition start and trigger.              |       |     |
-|                    | Stops incrementing at 0xffffffff (no overflow).              |       |     |
+|                    | | Unsigned counter holding the number of samples             | 31:0  | R   |
+|                    | | captured between acquisition start and trigger.            |       |     |
+|                    | | Stops incrementing at 0xffffffff (no overflow).            |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 
 
@@ -865,9 +864,9 @@ Additional Configuration
 +====================+==============================================================+=======+=====+
 | **0x90**           | **Trigger debouncer time**                                   |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Number of ADC clock periods trigger is disabled              | 19:0  | R/W |
-|                    | after activation. Reset value is decimal 62500,              |       |     |
-|                    | equivalent to 0.5 ms.                                        |       |     |
+|                    | | Number of ADC clock periods trigger is disabled            | 19:0  | R/W |
+|                    | | after activation. Reset value is decimal 62500,            |       |     |
+|                    | | equivalent to 0.5 ms.                                      |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x94**           | **Trigger protection clear**                                 |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
@@ -1182,10 +1181,10 @@ Channel A Signal Generation
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:30 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Value where counter wraps around (16 bits for decimals).     | 29:0  | R/W |
-|                    | Depends on SM wrap setting:                                  |       |     |
-|                    |    * 1 - New value is acquired by wrap                       |       |     |
-|                    |    * 0 - Counter goes to offset value                        |       |     |
+|                    | | Value where counter wraps around (16 bits for decimals).   | 29:0  | R/W |
+|                    | | Depends on SM wrap setting:                                |       |     |
+|                    | |   * 1 - New value is acquired by wrap                      |       |     |
+|                    | |   * 0 - Counter goes to offset value                       |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0xC**            | **CH A start offset**                                        |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
@@ -1292,10 +1291,10 @@ Channel B Signal Generation
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Reserved                                                     | 31:30 | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Value where counter wraps around (16 bits for decimals).     | 29:0  | R/W |
-|                    | Depends on SM wrap setting:                                  |       |     |
-|                    |    * 1 - New value is acquired by wrap                       |       |     |
-|                    |    * 0 - Counter goes to offset value                        |       |     |
+|                    | | Value where counter wraps around (16 bits for decimals).   | 29:0  | R/W |
+|                    | | Depends on SM wrap setting:                                |       |     |
+|                    | |   * 1 - New value is acquired by wrap                      |       |     |
+|                    | |   * 0 - Counter goes to offset value                       |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x2C**           | **CH B start offset**                                        |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
@@ -2131,5 +2130,4 @@ Control
 |
 
 :ref:`Back to top <fpga_094_dev>`
-
 

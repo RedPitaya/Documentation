@@ -1,3 +1,5 @@
+.. _webApp_top:
+
 Create your own WEB applications
 ################################
 
@@ -11,7 +13,7 @@ Develop custom browser-based interfaces for Red Pitaya using the web application
 * **Manual Application Management** - Install and manage web apps without marketplace
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     sysOver
     firstApp

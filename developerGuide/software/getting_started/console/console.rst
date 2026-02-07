@@ -28,6 +28,7 @@ The debug console can be used to follow the boot process:
         User name: ``root``
         Password: ``root``
 
+|
 
 Hardware setup
 ==============
@@ -49,6 +50,7 @@ Connect your Red Pitaya and PC with a micro USB to USB-A cable and follow the in
 .. figure:: img/pitaya-USB-connection-300x164.png
     :width: 400
 
+|
 
 Software requirements
 ======================
@@ -67,6 +69,8 @@ To adjust the connection settings for serial communication, right-click on the C
 .. figure:: img/Comm_port.png
 
 Boot reference must be done through ``Minicom`` or a similar serial console application.
+
+|
 
 **Using Windows Subsystem for Linux (WSL)**
 
@@ -123,6 +127,7 @@ Once WSL is set up, here's how to connect the Red Pitaya serial console:
 
         usbipd detach --busid <bus-id>
 
+|
 
 Linux and Mac
 --------------
@@ -131,7 +136,7 @@ There is broad support for USB-to-serial converters in the Linux kernel, so in m
 
 - |minicom|, |screen| or a similar program for setting up a remote serial console.
 
-
+|
 
 Establishing serial console connection
 =======================================
@@ -156,10 +161,12 @@ Check the driver output in the kernel log using ``dmesg``:
     [95074.891157] usb 1-2.4.3: FTDI USB Serial Device converter now attached to ttyUSB0
 
 
-The first Red Pitaya board connected to your PC will create a device named ``/dev/ttyUSB0``. If **N** USB or serial devices are connected, they will appear as ``/dev/ttyUSBn``, where **n** is **{0, 1, ..., N-1}**. To access these devices, programs should be run with ``sudo``.
+The first Red Pitaya board connected to your PC will create a device named ``/dev/ttyUSB0``. If **N** USB or serial devices are connected, they will appear as ``/dev/ttyUSBn``, where **n** is 
+**{0, 1, ..., N-1}**. To access these devices, programs should be run with ``sudo``.
 
 Minicom or a similar serial console application must be used to view the boot reference log.
 
+|
 
 ``minicom``
 ------------
@@ -176,7 +183,7 @@ To configure ``minicom`` use the ``-s`` option.
 
 A configuration menu will open.
 
-.. code-block:: none
+.. code-block:: console
 
     +-----[configuration]------+
     | Filenames and paths      |
@@ -190,14 +197,13 @@ A configuration menu will open.
     | Exit from Minicom        |
     +--------------------------+
 
-
 Go to ``Serial Port Setup``, press **Enter**, and set up the next options:
 
 * Serial Device: ``/dev/ttyUSB0`` (device index ``0`` or a higher number)
 * Bps/Par/Bits: ``115200 8N1`` (baud rate, byte length, parity, and stop bits)
 * Hardware/Software Flow Control: No (flow control should be disabled)
 
-.. code-block:: none
+.. code-block:: console
 
     +-----------------------------------------------------------------------+
     | A -    Serial Device      : /dev/ttyUSB0                              |
@@ -241,6 +247,7 @@ At the begginning of the boot sequence, you can press any key to stop the autobo
 
 If you are not able to see the boot sequence, please check the connection between the Red Pitaya and your PC, and the settings in Minicom.
 
+|
 
 ``screen``
 ------------
@@ -259,6 +266,7 @@ Please see the |screen| manual for details.
 
 The configuration is the same as for ``Minicom``. Please refer to the previous section for details.
 
+|
 
 Reference boot sequence
 =======================
@@ -270,86 +278,7 @@ U-Boot
 
 .. tabs::
 
-    .. tab:: OS version 1.04
-
-        .. code-block:: none
-
-            U-Boot 2016.01 (Nov 16 2016 - 12:23:28 +0100), Build: jenkins-redpitaya-master-156
-            
-            Model: Red Pitaya Board
-            Board: Xilinx Zynq
-            I2C:   ready
-            DRAM:  ECC disabled 480 MiB
-            I2C:EEPROM selection failed
-            MMC:   sdhci@e0100000: 0
-            In:    serial@e0000000
-            Out:   serial@e0000000
-            Err:   serial@e0000000
-            Model: Red Pitaya Board
-            Board: Xilinx Zynq
-            Net:   ZYNQ GEM: e000b000, phyaddr 1, interface rgmii-id
-            eth0: ethernet@e000b000
-            Hit any key to stop autoboot:  0
-            Running script from SD...
-            Device: sdhci@e0100000
-            Manufacturer ID: 19
-            OEM: 4459
-            Name: 00000
-            Tran Speed: 25000000
-            Rd Block Len: 512
-            SD version 1.0   
-            High Capacity: Yes
-            Capacity: 3.7 GiB
-            Bus Width: 4-bit 
-            Erase Group Size: 512 Bytes
-            reading u-boot.scr
-            1203 bytes read in 17 ms (68.4 KiB/s)
-            ## Executing script at 02000000
-            Set devicetree and ramdisk high loading address to 0x20000000
-            Loading from SD card (FAT file system) to memory
-            Device: sdhci@e0100000
-            Manufacturer ID: 19
-            OEM: 4459
-            Name: 00000
-            Tran Speed: 25000000
-            Rd Block Len: 512
-            SD version 1.0   
-            High Capacity: Yes
-            Capacity: 3.7 GiB
-            Bus Width: 4-bit 
-            Erase Group Size: 512 Bytes
-            reading u-boot.scr
-            1203 bytes read in 17 ms (68.4 KiB/s)
-            ## Executing script at 02000000
-            Set devicetree and ramdisk high loading address to 0x20000000
-            Loading from SD card (FAT file system) to memory
-            Device: sdhci@e0100000
-            Manufacturer ID: 19
-            OEM: 4459
-            Name: 00000
-            Tran Speed: 25000000
-            Rd Block Len: 512
-            SD version 1.0   
-            High Capacity: Yes
-            Capacity: 3.7 GiB
-            Bus Width: 4-bit 
-            Erase Group Size: 512 Bytes
-            reading uImage   
-            4590664 bytes read in 404 ms (10.8 MiB/s)
-            reading devicetree.dtb
-            17342 bytes read in 19 ms (890.6 KiB/s)
-            Booting Linux kernel with ramdisk and devicetree
-            ## Booting kernel from Legacy Image at 02004000 ...
-                Image Name:   Linux-4.4.0-xilinx
-                Image Type:   ARM Linux Kernel Image (uncompressed)
-                Data Size:    4590600 Bytes = 4.4 MiB
-                Load Address: 00008000
-                Entry Point:  00008000
-                Verifying Checksum ... OK
-            ## Flattened Device Tree blob at 04000000
-                Booting using the fdt blob at 0x4000000
-                Loading Kernel Image ... OK
-                Loading Device Tree to 1d33c000, end 1d3433bd ... OK
+    
       
     .. tab:: OS 2.00
 
@@ -906,6 +835,88 @@ U-Boot
             ##############################################################################
             root@rp-f0a235:~# 
 
+    .. tab:: OS version 1.04
+
+        .. code-block:: none
+
+            U-Boot 2016.01 (Nov 16 2016 - 12:23:28 +0100), Build: jenkins-redpitaya-master-156
+            
+            Model: Red Pitaya Board
+            Board: Xilinx Zynq
+            I2C:   ready
+            DRAM:  ECC disabled 480 MiB
+            I2C:EEPROM selection failed
+            MMC:   sdhci@e0100000: 0
+            In:    serial@e0000000
+            Out:   serial@e0000000
+            Err:   serial@e0000000
+            Model: Red Pitaya Board
+            Board: Xilinx Zynq
+            Net:   ZYNQ GEM: e000b000, phyaddr 1, interface rgmii-id
+            eth0: ethernet@e000b000
+            Hit any key to stop autoboot:  0
+            Running script from SD...
+            Device: sdhci@e0100000
+            Manufacturer ID: 19
+            OEM: 4459
+            Name: 00000
+            Tran Speed: 25000000
+            Rd Block Len: 512
+            SD version 1.0   
+            High Capacity: Yes
+            Capacity: 3.7 GiB
+            Bus Width: 4-bit 
+            Erase Group Size: 512 Bytes
+            reading u-boot.scr
+            1203 bytes read in 17 ms (68.4 KiB/s)
+            ## Executing script at 02000000
+            Set devicetree and ramdisk high loading address to 0x20000000
+            Loading from SD card (FAT file system) to memory
+            Device: sdhci@e0100000
+            Manufacturer ID: 19
+            OEM: 4459
+            Name: 00000
+            Tran Speed: 25000000
+            Rd Block Len: 512
+            SD version 1.0   
+            High Capacity: Yes
+            Capacity: 3.7 GiB
+            Bus Width: 4-bit 
+            Erase Group Size: 512 Bytes
+            reading u-boot.scr
+            1203 bytes read in 17 ms (68.4 KiB/s)
+            ## Executing script at 02000000
+            Set devicetree and ramdisk high loading address to 0x20000000
+            Loading from SD card (FAT file system) to memory
+            Device: sdhci@e0100000
+            Manufacturer ID: 19
+            OEM: 4459
+            Name: 00000
+            Tran Speed: 25000000
+            Rd Block Len: 512
+            SD version 1.0   
+            High Capacity: Yes
+            Capacity: 3.7 GiB
+            Bus Width: 4-bit 
+            Erase Group Size: 512 Bytes
+            reading uImage   
+            4590664 bytes read in 404 ms (10.8 MiB/s)
+            reading devicetree.dtb
+            17342 bytes read in 19 ms (890.6 KiB/s)
+            Booting Linux kernel with ramdisk and devicetree
+            ## Booting kernel from Legacy Image at 02004000 ...
+                Image Name:   Linux-4.4.0-xilinx
+                Image Type:   ARM Linux Kernel Image (uncompressed)
+                Data Size:    4590600 Bytes = 4.4 MiB
+                Load Address: 00008000
+                Entry Point:  00008000
+                Verifying Checksum ... OK
+            ## Flattened Device Tree blob at 04000000
+                Booting using the fdt blob at 0x4000000
+                Loading Kernel Image ... OK
+                Loading Device Tree to 1d33c000, end 1d3433bd ... OK
+
+|
 
 FAQ
 ======
@@ -913,9 +924,9 @@ FAQ
 Boot sequence not visible on the serial console
 ---------------------------------------------------------
 
-1. Make sure that the serial console is connected to the correct port and that the baud rate is set to 115200.
-2. Check whether the FTDI drivers for Windows are installed correctly.
-3. Check the status LEDs on Red Pitaya:
+1.  Make sure that the serial console is connected to the correct port and that the baud rate is set to 115200.
+2.  Check whether the FTDI drivers for Windows are installed correctly.
+3.  Check the status LEDs on Red Pitaya:
 
     - If the **green and blue LEDs are ON** and the other status LEDs are working correctly, unplug the power and repower the board. If the issue persists, please double-check the serial console instructions above or use a different cable.
     
@@ -926,3 +937,5 @@ Boot sequence not visible on the serial console
             If the board is still under warranty, we will replace it.
 
     - If the **green LED is OFF**, please check whether the power supply is connected and working correctly. If the power supply is good, then the board might be damaged.
+
+|

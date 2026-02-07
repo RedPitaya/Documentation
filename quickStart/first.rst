@@ -6,7 +6,7 @@ Connect to Red Pitaya
 
 This guide will help you connect to your Red Pitaya board and access its web interface in just a few simple steps.
 
-.. contents::
+.. contents:: Table of Contents
     :local:
     :backlinks: top
     :depth: 2

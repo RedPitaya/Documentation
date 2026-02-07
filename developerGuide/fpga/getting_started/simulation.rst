@@ -85,6 +85,8 @@ Available Simulators
 
 Red Pitaya FPGA projects support multiple simulation tools:
 
+|
+
 ModelSim (Recommended)
 ----------------------
 
@@ -105,6 +107,8 @@ ModelSim (Recommended)
 
 **Download** `ModelSim-Altera Starter Edition 20.1.1 <https://www.intel.com/content/www/us/en/software-kit/750666/modelsim-intel-fpgas-standard-edition-software-version-20-1-1.html>`_
 
+|
+
 Vivado Simulator (XSIM)
 ------------------------
 
@@ -121,6 +125,8 @@ Vivado Simulator (XSIM)
 - Slower than ModelSim for complex designs
 - Waveform viewer less feature-rich
 - Command-line usage less convenient
+
+|
 
 Questa Sim (Commercial)
 -----------------------
@@ -362,7 +368,7 @@ Red Pitaya Simulation Structure
 
 **Simulation directory:**
 
-.. code-block:: text
+.. code-block:: console
 
     RedPitaya-FPGA/
     └── fpga/
@@ -453,7 +459,7 @@ Understanding Simulation Output
 
 **Console output during simulation:**
 
-.. code-block:: text
+.. code-block:: console
 
     # Compilation phase
     vlog -work work ../rtl/red_pitaya_top.sv
@@ -472,7 +478,7 @@ Understanding Simulation Output
 
 **Successful simulation ends with:**
 
-.. code-block:: text
+.. code-block:: console
 
     # ** Note: Simulation finished
     #    Time: 10000 ns  Iteration: 0  Instance: /top_tb
@@ -480,7 +486,7 @@ Understanding Simulation Output
 
 **Errors appear as:**
 
-.. code-block:: text
+.. code-block:: console
 
     # ** Error: Assertion failed at address 0x1000
     #    Time: 5000 ns  Iteration: 0  Instance: /top_tb
@@ -544,7 +550,7 @@ Reading Waveforms
 
 **Basic waveform elements:**
 
-.. code-block:: text
+.. code-block:: console
 
     Signal Name         │ Waveform
     ────────────────────┼───────────────────────────────
@@ -759,6 +765,8 @@ Clock Generation
         forever #50 clk_slow = ~clk_slow;  // 100 ns period
     end
 
+|
+
 Reset Handling
 --------------
 
@@ -792,6 +800,8 @@ Reset Handling
         repeat(5) @(posedge clk);
         rst_sync = 0;  // Sync reset release
     end
+
+|
 
 Stimulus Generation
 -------------------
@@ -828,6 +838,8 @@ Stimulus Generation
         end
         $fclose(file);
     end
+
+|
 
 Result Checking
 ---------------
@@ -1229,7 +1241,7 @@ Code Organization
 
 **Recommended directory structure:**
 
-.. code-block:: text
+.. code-block:: console
 
     fpga/
     └── sim/
@@ -1398,8 +1410,8 @@ Related Documentation
 
 - :ref:`fpga_create_project` - Creating FPGA projects
 - :ref:`fpga_modify_project` - Modifying existing projects
-- :ref:`fpga_jtag_programming` - Programming via JTAG
-- :ref:`fpga_reprogramming` - Programming via SSH
+- :ref:`FPGA JTAG Programming <fpga_jtag_programming>` - Programming via JTAG
+- :ref:`FPGA Reprogramming Guide <fpga_reprogramming>` - Programming via SSH
 
 **Advanced Topics:**
 

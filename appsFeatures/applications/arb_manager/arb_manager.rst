@@ -20,6 +20,7 @@ Features
 #. **Signal name and colour:** Change custom signal name and waveform colour.
 #. **Delete waveform:** Delete custom waveform.
 
+|
 
 Uploading custom waveforms
 ============================
@@ -69,6 +70,7 @@ Here is an example of Python code for creating a custom waveform.
     pd.DataFrame(x).to_csv('arb_waveform1.csv', index=False, header=False, float_format=np.float64)
     pd.DataFrame(y).to_csv('arb_waveform2.csv', index=False, header=False, float_format=np.float64)
   
+|
 
 Source code
 =============

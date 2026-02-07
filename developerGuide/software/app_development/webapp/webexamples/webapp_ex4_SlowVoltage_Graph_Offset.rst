@@ -103,6 +103,7 @@ Add gain and offset control blocks to ``index.html``:
 * Default: 0V (no offset)
 * Step: 0.1V precision
 
+|
 
 JavaScript implementation
 --------------------------
@@ -187,6 +188,7 @@ In ``main.cpp``, add two new parameters for gain and offset:
 * Minimum: 0.0V
 * Maximum: 5.0V
 
+|
 
 Parameter updates
 ------------------
@@ -200,6 +202,7 @@ Update parameters in **OnNewParams()** function:
         OFFSET.Update();
     }
 
+|
 
 Applying signal conditioning
 ------------------------------
@@ -260,6 +263,8 @@ Apply gain to amplify the signal for better visualization:
     With gain = 10: 0.05 V × 10 = 0.5 V (displayed)
     With gain = 50: 0.05 V × 50 = 2.5 V (displayed)
 
+|
+
 Why use offset?
 ----------------
 
@@ -278,6 +283,8 @@ Apply offset to shift the signal baseline:
     
     In this example, offset is added (positive), not subtracted. To center a signal around 0 V, you would
     need negative offset capability.
+
+|
 
 Combined gain and offset
 --------------------------
@@ -312,6 +319,8 @@ Signal processing pipeline
 6. **Transmit** → Signal sent to frontend
 7. **Display** → Graph shows conditioned voltage (1.73V)
 
+|
+
 Preserving raw data
 --------------------
 
@@ -334,6 +343,8 @@ Hardware setup
 1. Connect a voltage source to one of the analog input pins (e.g., AI0)
 2. Use a source with small variations for best demonstration of gain/offset effects
 3. Recommended: potentiometer or low-amplitude signal generator
+
+|
 
 Application testing
 --------------------
@@ -382,6 +393,8 @@ Amplifying sensor signals
 * Full sensor range now uses full display range
 * Improved visualization and resolution
 
+|
+
 Centering AC signals
 ---------------------
 
@@ -394,6 +407,8 @@ Centering AC signals
 * Use gain to amplify AC component
 * Offset limited to positive values only
 * For true centering, negative offset would be needed (feature enhancement)
+
+|
 
 Dynamic range adjustment
 -------------------------
@@ -433,3 +448,5 @@ Build upon this example with these tutorials:
 * :ref:`Generating voltage <webApp_example_genVolt>` - Create test signals with known amplitudes
 * Advanced signal processing - FFT, filtering, statistics
 * Data acquisition examples - Triggered capture with signal conditioning
+
+|

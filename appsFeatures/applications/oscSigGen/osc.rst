@@ -14,13 +14,17 @@ High-end specifications will satisfy more demanding users looking for powerful t
 
 .. tabs::
 
-   .. tab:: STEMlab 125-14, 125-10, SDRlab 122-16, SIGNALlab 250-12
+   .. tab:: 2-channel devices
 
         .. figure:: img/Slika_02_OSC.png
             :width: 1000
             :align: center
 
-   .. tab:: STEMlab 125-14 4-Input
+   .. tab:: 4-channel devices
+
+        .. note::
+
+            STEMlab 125-14 4-Input has an oscilloscope, and it does not have a signal generator.
 
         .. figure:: img/Slika_02_OSC_4-in.png
             :width: 1000
@@ -115,7 +119,7 @@ The available settings by device model:
 
 .. tabs::
 
-    .. tab:: STEMlab 125-10, 125-14, 125-14 4-Input
+    .. tab:: STEMlab 125-14, 125-10, 4-Input
 
         .. figure:: img/Slika_05_OSC_IN_125.png
             :height: 400
@@ -167,7 +171,7 @@ The available settings are the following:
 
 .. tabs::
 
-  .. tab:: STEMlab 125-10, 125-14, SDRlab 122-16
+  .. tab:: STEMlab 125-14, 125-10, SDRlab 122-16
 
       .. figure:: img/Slika_06_OSC_OUT_125.png
           :height: 500
@@ -243,6 +247,7 @@ Here are the available settings:
 - **Sweep Mode:** Sweep mode. Either LINEAR or LOG.
 - **Sweep Dir:** Sweep direction. Either NORMAL or UP-DOWN.
 
+|
 
 Trigger
 =======
@@ -253,8 +258,8 @@ Trigger
 The trigger is used to enable the scope to display changing waveforms on the scope screen in a steady fashion. Here are the available settings:
 
     - **Source:** The trigger source can be input channel 1 (IN1), input channel 2 (IN2), or an external source. On the STEMlab 125-14 4-Input the trigger source can also be set to input channel 3 (IN3), or input channel 4 (IN4).
-    -   **Edge:** During the time sweep (acquisition), signal amplitude can cross the trigger level from a higher value to a lower one or vice versa. The edge setting determines in which case the trigger condition is set to "true".
-    -   **Level/V:** The trigger level value is used to determine at which value of signal amplitude the trigger condition is satisfied (true). When signal amplitude achieves or crosses this value, the trigger state is set to "true". Following the "true" trigger condition, the acquisition and signal plotting will be executed.
+    - **Edge:** During the time sweep (acquisition), signal amplitude can cross the trigger level from a higher value to a lower one or vice versa. The edge setting determines in which case the trigger condition is set to "true".
+    - **Level/V:** The trigger level value is used to determine at which value of signal amplitude the trigger condition is satisfied (true). When signal amplitude achieves or crosses this value, the trigger state is set to "true". Following the "true" trigger condition, the acquisition and signal plotting will be executed.
     - **Hysteresis/V:** Minimal jump in voltage around the trigger level that can create another trigger condition. Used to prevent the noise from creating additional triggers if the signal amplitude is close to the trigger level.
     - **Mode:** Oscilloscope trigger mode
 
@@ -267,17 +272,10 @@ The trigger is used to enable the scope to display changing waveforms on the sco
 
 The Source parameter defines the source used for this purpose. With the IN1, IN2, IN3, or IN4, the signal at the respective input is selected; with the EXT, you can invoke the trigger from outside through:
 
-.. tabs::
+* DIO0_P pin on the :ref:`E1 connector <E1_gen2>`.
+* BNC connector on the front panel (only SIGNALlab 250-12).
 
-   .. tab:: STEMlab 125-10, 125-14, 125-14 4-Input, SDRlab 122-16
-
-      Pin 3 (DIO0_P) on the header row :ref:`E1 <E1_orig_gen>`.
-      
-
-   .. tab:: SIGNALlab 250-12
-
-      BNC connector available on the front panel
-
+|
 
 Math
 =====
@@ -295,6 +293,7 @@ Among the more interesting features of a digital oscilloscope is the "math" chan
     -   **ydt** Give a time integration of the selected signal.
     -   **INVERT** Invert the signal.
 
+|
 
 Out/E2
 ========
@@ -410,12 +409,11 @@ Signal generator
     +----------------------+---------------------------------+---------------------------------+------------------------------+-----------------------------------------+---------------------------------+
 
 
-.. [#f1]
-    jumper selectable
+.. [#f1] jumper selectable
 
-.. [#f2]
-    software selectable
+.. [#f2] software selectable
 
+|
 
 Source code
 ************

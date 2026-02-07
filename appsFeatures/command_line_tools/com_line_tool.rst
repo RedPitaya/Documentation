@@ -7,9 +7,6 @@ Command-line tools
 Red Pitaya provides command-line utilities for direct hardware control through the terminal. These tools are ideal for scripting, automation, testing, 
 and quick hardware interactions without the web interface.
 
-**Available utilities:** Signal generation and acquisition (generate, acquire, spectrum, bode, lcr), streaming and multichannel (daisy, streaming), system control 
-and monitoring (monitor, LED, calibration, updater, E3 I2C, overlay), and additional tools.
-
 .. note::
 
     Command-line utilities must not be used in parallel with a WEB application.
@@ -19,17 +16,17 @@ and monitoring (monitor, LED, calibration, updater, E3 I2C, overlay), and additi
 
     .. tabs::
 
-        .. group-tab:: OS version 1.04 or older
-
-            .. code-block:: console
-
-                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
         .. group-tab:: OS version 2.00
 
             .. code-block:: console
 
                 redpitaya> overlay.sh v0.94
+        
+        .. group-tab:: OS version 1.04 or older
+
+            .. code-block:: console
+
+                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
 .. toctree::
     :maxdepth: 1

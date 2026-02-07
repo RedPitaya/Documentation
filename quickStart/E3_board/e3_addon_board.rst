@@ -19,6 +19,7 @@ The QSPI eMMC module provides secure and robust Red Pitaya boot and shutdown opt
         
     When the QSPI eMMC board is connected to the Red Pitaya board, Red Pitaya will not boot automatically. Check the `Booting Red Pitaya with QSPI eMMC board`_ chapter for more information.
 
+|
 
 Features
 ========
@@ -38,12 +39,15 @@ Features
 The QSPI eMMC module is powered by the Red Pitaya board, so no additional power supply is needed.
 
 
+|
+
 Contents
 ===========
 
-* 1 QSPI eMMC add-on board,
-* 1 M2 screw.
+* QSPI eMMC add-on board,
+* M2 screw.
 
+|
 
 Hardware requirements
 ======================
@@ -57,6 +61,7 @@ The QSPI eMMC module is compatible with the following Red Pitaya board modules:
 
     The high speed differential pairs are only supported on the STEMlab 125-14 PRO Z7020 Gen 2 board model.
 
+|
 
 Installing the QSPI eMMC board
 ================================
@@ -81,6 +86,7 @@ Here is a quick installation guide for the QSPI eMMC board:
         :align: center
         :width: 800
 
+|
 
 .. _QSPI_eMMC_board_boot:
 
@@ -95,6 +101,7 @@ Once the QSPI eMMC board is connected to the Red Pitaya board, you can power on 
 #. To power off the Red Pitaya board, press and hold the **P-ON** button on the QSPI eMMC board for 1 second. The Red Pitaya board will perform a safe shutdown and turn off.
 #. If the **P-ON** button is pressed and held for more than 5 seconds, the QSPI eMMC board will immediately power off the Red Pitaya board.
 
+|
 
 QSPI and eMMC boot options
 ==========================

@@ -35,7 +35,7 @@ from _links.link import EXTERNAL_LINKS, SPHINX_EXTLINKS
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '6.0'
+needs_sphinx = '7.0'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -52,6 +52,7 @@ extensions = [
     'sphinx.ext.extlinks',  # For external link shortcuts
     'sphinx_tabs.tabs',
     'sphinx_copybutton',  # For better code copying
+    'sphinx_design',  # For grid layouts and cards
     'notfound.extension',
     'github',
     'myst_parser'
@@ -225,7 +226,7 @@ author = "Red Pitaya"
 # built documents.
 #
 # The short X.Y version.
-version = "2.07-43"
+version = "2.07-51"
 # The full version, including alpha/beta/rc tags.
 release = version
 

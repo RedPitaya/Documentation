@@ -209,6 +209,6 @@ When editing configuration files manually, ensure:
 Next steps
 ***********
 
-* Try the :ref:`DAC Streaming Example <stream_dac_example>` which includes configuration file editing
+* Try the :ref:`DAC Streaming Example <stream_dac_cli_example>` which includes configuration file editing
 * Learn about :ref:`Command Line Client usage <stream_command_client>`
 * Review :ref:`Data Streaming Limitations <streaming_limits>` to validate your configuration

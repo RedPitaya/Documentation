@@ -105,12 +105,12 @@ Save modes
 When streaming data locally, you can select the save mode:
 
 * **RAW:** Saves raw data in ADC counts (native format from the ADC).
-* **VOLTS:** Converts and saves data in Volts based on the calibration and attenuation settings.
+* **VOLTS:** Converts and saves data in Volts based on the attenuation settings.
 
 .. note::
 
-    The VOLTS mode applies calibration and attenuation automatically, which may slightly reduce the maximum streaming 
-    performance compared to RAW mode.
+    RAW mode is more compact and faster to save, while VOLTS mode is more user-friendly for analysis. The choice depends on your specific use case and post-processing requirements.
+    Both mode automatically include the calibration if the "Use calibration" option is selected.
 
 |
 

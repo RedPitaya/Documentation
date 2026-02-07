@@ -4,7 +4,8 @@
 Spectrum analyzer utility
 =========================
 
-The Red Pitaya spectrum analyzer utility is a command-line tool that enables the measurement of the frequency spectrum of the input signal. The utility can be used to set the minimum and maximum frequency, the iteration count, and the window function. The utility can also be used to enable or disable averaging and to print the values in CSV format.
+The Red Pitaya spectrum analyzer utility is a command-line tool that enables the measurement of the frequency spectrum of the input signal. The utility can be used to set the minimum and 
+maximum frequency, the iteration count, and the window function. The utility can also be used to enable or disable averaging and to print the values in CSV format.
 The spectrum utility 
 
 .. code-block:: console
@@ -111,15 +112,9 @@ Examples:
 
 To run the spectrum analyzer utility, perform the following steps:
 
-#. Load the FPGA image.
+#.  Load the FPGA image.
 
     .. tabs::
-
-        .. group-tab:: OS version 1.04 or older
-
-            .. code-block:: console
-
-                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
         .. group-tab:: OS version 2.00
 
@@ -127,8 +122,14 @@ To run the spectrum analyzer utility, perform the following steps:
 
                 redpitaya> overlay.sh v0.94
 
+        .. group-tab:: OS version 1.04 or older
 
-#. Start the console application.
+            .. code-block:: console
+
+                redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+
+#.  Start the console application.
     
     .. code-block:: console
 
@@ -156,6 +157,8 @@ To run the spectrum analyzer utility, perform the following steps:
         ch1 peak: 14991.21 Hz, -5.98 dB
         ch0 peak summary: 9994.14 Hz, -5.66 dB
         ch1 peak summary: 14991.21 Hz, -5.98 dB
+
+|
 
 Source code
 -----------

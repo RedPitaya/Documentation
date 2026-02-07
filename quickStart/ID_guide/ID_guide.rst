@@ -49,13 +49,12 @@ Before starting to work with the Red Pitaya board, it's helpful to know which Re
         :align: center
 
 2.  **Look for the model name printed on the board:** The model name is usually printed directly on the PCB near the center or edges of the board. Both top and bottom side of the PCB should be checked.
+    While the printed model name may not always match the exact commercial name, it usually contains key identifiers such as "125-14", "250-12", or "65-16", which correspond to different Red Pitaya models.
 
     .. figure:: img/Board_model_location.png
         :width: 600
         :align: center
         :alt: Board model location
-
-    While the printed model name may not always match the exact commercial name, it usually contains key identifiers such as "125-14", "250-12", or "65-16", which correspond to different Red Pitaya models.
 
 3.  **Visual comparison:** If you're still unsure, you can follow the visual comparison guide below to help identify your board model based on its layout and components.
 
@@ -188,7 +187,7 @@ For hardware documentation, see the :ref:`STEMlab 125-14 hardware documentation 
 
 STEMlab 125-14 also comes in five different variations, which are extremely hard to differentiate visually:
 
-    1. :ref:`Standard STEMlab 125-14 <top_125_14>`
+    1. :ref:`STEMlab 125-14 <top_125_14>` - the standard version
     2. :ref:`STEMlab 125-14 External Clock <top_125_14_EXT>`
     3. :ref:`STEMlab 125-14 Low Noise <top_125_14_LN>`
     4. :ref:`STEMlab 125-14 Z7020 Low Noise <top_125_14_Z7020_LN>`

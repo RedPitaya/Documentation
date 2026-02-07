@@ -12,7 +12,7 @@ To implement this, modification of the following two files from Red Pitaya Githu
   
     http://downloads.redpitaya.com/downloads/$1
   
- is replaced with the user-defined server address.
+is replaced with the user-defined server address.
 
 * |list.sh|
 * |download.sh|

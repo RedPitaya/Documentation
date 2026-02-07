@@ -35,7 +35,9 @@ Maximum data rates
         * **Network streaming:** 20 MB/s for streaming over 1 Gbit network (:ref:`connecting the board to a router <LAN>` is recommended to achieve the best streaming performance)
 
 The main limiting factor for the maximum data rate is the processor which reads the data from the DDR memory buffer and converts it 
-into Ethernet packets for network transmission. The data path is: **Inputs → FPGA → DDR → Processor → Ethernet → Network → PC**.
+into Ethernet packets for network transmission. The data path is: 
+
+**Inputs → FPGA → DDR → Processor → Ethernet → Network → PC**.
 
 If the data rate exceeds the maximum sustainable rate, the processor will not be able to keep up with the incoming data stream 
 (reading the buffer before the FPGA overwrites it), leading to packet loss and consequently missing data. The :ref:`block size <stream_memory_config>` 
@@ -72,7 +74,7 @@ The highest possible data rate is achieved using:
 1. :ref:`Command line client <stream_command_client>`
 2. **RAW** data format (no conversion)
 3. **Binary (BIN)** file type (minimal overhead)
-4. **Web interface closed** (no UI updates)
+4. **Web interface disabled** (no UI updates)
 5. **Single streaming mode** (ADC or DAC, not both)
 
 This is the most efficient way to transfer data as no data conversion is performed before it is sent over the network.
@@ -86,14 +88,14 @@ The following calculation can be used to determine the maximum **continuous** sa
 
 .. math::
 
-    f_{S, max} = \frac{v_{max}}{N \times Bps}
+    f_{S, max} = \frac{v_{max}}{N \times BpS}
 
 Where:
 
 * :math:`f_{S, max}` - is the maximum continuous sampling frequency
 * :math:`v_{max}` - is the maximum data rate for the selected streaming mode (10 MB/s for local streaming, 62.5 MB/s for network streaming on OS 2.07-43+)
 * :math:`N` - is the number of input channels selected for data acquisition (1, 2, 3 or 4)
-* :math:`Bps` - (Bytes per sample) is the number of bytes used to represent each sample (1 for 8-bit resolution, 2 for 16-bit resolution)
+* :math:`BpS` - (Bytes per sample) is the number of bytes used to represent each sample (1 for 8-bit resolution, 2 for 16-bit resolution)
 
 .. note::
 
@@ -115,7 +117,7 @@ Example 1: Network streaming, single channel, 16-bit
 
 * :math:`v_{max}` = 62.5 MB/s = 62,500,000 Bytes/s
 * :math:`N` = 1 channel
-* :math:`Bps` = 2 Bytes (16-bit)
+* :math:`BpS` = 2 Bytes (16-bit)
 
 .. math::
 
@@ -128,7 +130,7 @@ Example 2: Network streaming, two channels, 8-bit
 
 * :math:`v_{max}` = 62.5 MB/s = 62,500,000 Bytes/s
 * :math:`N` = 2 channels
-* :math:`Bps` = 1 Byte (8-bit)
+* :math:`BpS` = 1 Byte (8-bit)
 
 .. math::
 
@@ -141,7 +143,7 @@ Example 3: Local (SD card) streaming, single channel, 16-bit
 
 * :math:`v_{max}` = 10 MB/s = 10,000,000 Bytes/s
 * :math:`N` = 1 channel
-* :math:`Bps` = 2 Bytes (16-bit)
+* :math:`BpS` = 2 Bytes (16-bit)
 
 .. math::
 
@@ -156,7 +158,7 @@ For OS versions 1.04-28 to 2.05-37 with 20 MB/s network limit:
 
 * :math:`v_{max}` = 20 MB/s = 20,000,000 Bytes/s
 * :math:`N` = 1 channel
-* :math:`Bps` = 2 Bytes (16-bit)
+* :math:`BpS` = 2 Bytes (16-bit)
 
 .. math::
 
@@ -269,7 +271,7 @@ ADC streaming optimization
 
 1. Use **RAW** data format instead of VOLTS
 2. Use **BIN** file format for minimal overhead
-3. Close the web interface during streaming
+3. Disable the web interface during streaming
 4. Use appropriate :ref:`block size <stream_memory_config>` for your sampling rate
 5. Connect board to a router for stable network streaming
 6. Use a high-quality Class 10 SD card for local streaming
@@ -282,7 +284,7 @@ DAC streaming optimization
 ===========================
 
 1. Keep waveforms small enough for :ref:`one-pack mode <stream_dac_config>`
-2. Use 2 MB block size for true streaming mode
+2. Use 2 MB or bigger block size for true streaming mode
 3. Pre-load data into :ref:`DMM memory <stream_memory_config>`
 4. Ensure waveform has at least 1024 samples per channel
 5. Avoid streaming DAC and ADC simultaneously at maximum rates

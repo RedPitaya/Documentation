@@ -25,6 +25,7 @@ If the Red Pitaya board has access to the internet, it will notify you if a new 
 
 The software update manager checks and compares the current OS version with the files in the `Red Pitaya downloads repository <https://downloads.redpitaya.com/downloads/Unify/ecosystems/>`_.
 
+|
 
 Updating the OS
 ----------------
@@ -52,6 +53,7 @@ Updating the OS
 
         An OS upgrade might cause your Red Pitaya desktop to freeze for a few minutes.
 
+|
 
 Software update manager troubleshooting
 ----------------------------------------
@@ -75,6 +77,7 @@ The Software update manager may report one of the following issues during operat
 
 #.  If the update manager reports that the Linux version needs to be updated, please follow the :ref:`Download and install SD card image <prepareSD>` instructions and manually reinstall the SD card.
 
+|
 
 Other ways to update the ecosystem and Red Pitaya Linux OS
 ------------------------------------------------------------

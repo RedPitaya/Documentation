@@ -83,14 +83,14 @@ File Requirements
 
 Depending on your use case, you'll need:
 
-**For OS 1.04 or older:**
-
-* FPGA bitstream file (``.bit``)
-
 **For OS 2.00 or newer:**
 
 * Binary bitstream file (``.bit.bin``)
 * Device tree overlay file (``.dtbo``) - optional for custom peripherals (see :ref:`fpga_advanced_loading`)
+
+**For OS 1.04 or older:**
+
+* FPGA bitstream file (``.bit``)
 
 **Command Line Notation**
 
@@ -109,28 +109,6 @@ For experienced users who just need the commands:
 
 .. tabs::
 
-    .. tab:: OS 1.04 or older
-
-        .. code-block:: bash
-
-            # Upload bitstream
-            scp red_pitaya_top.bit root@rp-xxxxxx.local:/root
-            
-            # Load FPGA
-            ssh root@rp-xxxxxx.local
-            redpitaya> cat /root/red_pitaya_top.bit > /dev/xdevcfg
-
-    .. tab:: OS 2.00 to 2.05-37
-
-        .. code-block:: bash
-
-            # Upload bitstream
-            scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
-            
-            # Load FPGA
-            ssh root@rp-xxxxxx.local
-            redpitaya> fpgautil -b /root/red_pitaya_top.bit.bin
-
     .. tab:: OS 2.07-43 or newer
 
         .. code-block:: bash
@@ -144,6 +122,28 @@ For experienced users who just need the commands:
             
             # Or load pre-built project
             redpitaya> /opt/redpitaya/sbin/overlay.sh v0.94 v0.94
+
+    .. tab:: OS 2.00 to 2.05-37
+
+        .. code-block:: bash
+
+            # Upload bitstream
+            scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
+            
+            # Load FPGA
+            ssh root@rp-xxxxxx.local
+            redpitaya> fpgautil -b /root/red_pitaya_top.bit.bin
+
+    .. tab:: OS 1.04 or older
+
+        .. code-block:: bash
+
+            # Upload bitstream
+            scp red_pitaya_top.bit root@rp-xxxxxx.local:/root
+            
+            # Load FPGA
+            ssh root@rp-xxxxxx.local
+            redpitaya> cat /root/red_pitaya_top.bit > /dev/xdevcfg
 
 |
 
@@ -160,6 +160,7 @@ If you have a ``.bit`` file from Vivado, convert it to ``.bit.bin`` format for O
 
     This conversion is only needed for Red Pitaya OS 2.00 or newer. OS 1.04 uses ``.bit`` files directly.
 
+|
 
 Navigate to .bit File Location
 -------------------------------
@@ -174,6 +175,7 @@ Open your terminal and go to the directory containing your bitstream:
 
     On **Windows**, change forward slashes to backward slashes in paths.
 
+|
 
 Create .bif File and Generate .bit.bin
 ---------------------------------------
@@ -231,6 +233,7 @@ Use the ``scp`` command to copy files from your computer to Red Pitaya:
 
     For graphical file transfer on Windows, use WinSCP or FileZilla.
 
+|
 
 Verify File Upload
 ------------------
@@ -252,54 +255,6 @@ Loading FPGA
 
 Choose the method appropriate for your Red Pitaya OS version.
 
-OS 1.04 or Older (Legacy Method)
-=================================
-
-This method uses direct access to the ``/dev/xdevcfg`` device for FPGA configuration.
-
-Loading FPGA Bitstream
-----------------------
-
-1. Ensure the ``.bit`` file is uploaded to Red Pitaya
-
-2. Load the bitstream:
-
-    .. code-block:: bash
-
-        redpitaya> cat red_pitaya_top.bit > /dev/xdevcfg
-
-The FPGA is immediately reconfigured with your design.
-
-**Limitations:**
-
-- No device tree management
-- No automatic verification
-
-|
-
-OS 2.00 to 2.05-37 (fpgautil Method)
-=====================================
-
-Starting with OS 2.00, Red Pitaya adopted the Linux FPGA Manager framework. Use the ``fpgautil`` command to load bitstreams.
-
-Loading FPGA Bitstream
-----------------------
-
-1. Ensure the ``.bit.bin`` file is uploaded to Red Pitaya
-
-2. Load using ``fpgautil``:
-
-    .. code-block:: bash
-
-        redpitaya> fpgautil -b red_pitaya_top.bit.bin
-
-**Features:**
-
-- Uses Linux FPGA Manager framework
-- Validates bitstream compatibility
-- Reports loading status
-
-|
 
 OS 2.07-43 or Newer (Recommended)
 ==================================
@@ -336,6 +291,55 @@ For advanced custom configurations with device trees, see :ref:`fpga_advanced_lo
 
 |
 
+OS 2.00 to 2.05-37 (fpgautil Method)
+=====================================
+
+Starting with OS 2.00, Red Pitaya adopted the Linux FPGA Manager framework. Use the ``fpgautil`` command to load bitstreams.
+
+Loading FPGA Bitstream
+----------------------
+
+1. Ensure the ``.bit.bin`` file is uploaded to Red Pitaya
+
+2. Load using ``fpgautil``:
+
+    .. code-block:: bash
+
+        redpitaya> fpgautil -b red_pitaya_top.bit.bin
+
+**Features:**
+
+- Uses Linux FPGA Manager framework
+- Validates bitstream compatibility
+- Reports loading status
+
+|
+
+OS 1.04 or Older (Legacy Method)
+=================================
+
+This method uses direct access to the ``/dev/xdevcfg`` device for FPGA configuration.
+
+Loading FPGA Bitstream
+----------------------
+
+1. Ensure the ``.bit`` file is uploaded to Red Pitaya
+
+2. Load the bitstream:
+
+    .. code-block:: bash
+
+        redpitaya> cat red_pitaya_top.bit > /dev/xdevcfg
+
+The FPGA is immediately reconfigured with your design.
+
+**Limitations:**
+
+- No device tree management
+- No automatic verification
+
+|
+
 **********************************
 Verification and Troubleshooting
 **********************************
@@ -344,6 +348,8 @@ Confirming FPGA Configuration
 ==============================
 
 There are several ways to confirm that the FPGA has been successfully reprogrammed.
+
+|
 
 Method 1: Check Status Files (OS 2.07+)
 ----------------------------------------
@@ -378,6 +384,7 @@ The overlay script creates verification files:
     FPGA md5sum: d41d8cd98f00b204e9800998ecf8427e  /opt/redpitaya/fpga/Z10/v0.94/fpga.bit.bin
     Tue Oct 24 10:30:45 UTC 2025
 
+|
 
 Method 2: Check FPGA Manager State
 -----------------------------------
@@ -398,6 +405,7 @@ Verify the FPGA Manager successfully loaded the configuration:
 - ``write complete`` - Bitstream written successfully
 - ``write error`` - Configuration failed
 
+|
 
 Method 3: Check Custom Register
 --------------------------------
@@ -410,6 +418,7 @@ If your FPGA design includes an ID register, verify it directly:
 
 The command should return your expected register value (e.g., ``0xfeedbacc`` from the :ref:`Adding a custom component tutorial <fpga_tutorial_cust_comp>`).
 
+|
 
 Method 4: Test LED Patterns
 ----------------------------
@@ -465,6 +474,7 @@ Error: "BIN FILE loading through FPGA manager failed"
     
     Verify bootgen command completed without errors and retry conversion
 
+|
 
 Error: "Device tree overlay not found"
 ---------------------------------------
@@ -486,6 +496,7 @@ Ensure file exists and has correct name:
 
     redpitaya> ls /opt/my_project/fpga.dtbo
 
+|
 
 FPGA Loads But Applications Don't Work
 ---------------------------------------

@@ -68,6 +68,7 @@ Create a container to display file system contents in ``index.html``:
 
 This div will be populated dynamically with files and folders.
 
+|
 
 JavaScript implementation
 --------------------------
@@ -277,6 +278,8 @@ The current implementation directly passes user input to shell commands, which i
 
 **Vulnerability:** Malicious input like ``/home; rm -rf /`` could execute dangerous commands.
 
+|
+
 Securing the application
 --------------------------
 
@@ -331,6 +334,8 @@ Configuration file placement
 1. Copy your ``nginx.conf`` to the appropriate location on Red Pitaya
 2. Typical path: ``/opt/redpitaya/www/apps/your_app/nginx.conf``
 
+|
+
 Apply configuration
 --------------------
 
@@ -371,6 +376,8 @@ Application testing
    * Verify file and folder names display correctly
 
 6. **Check browser console** for any errors
+
+|
 
 Troubleshooting
 ----------------
@@ -418,6 +425,8 @@ Why use Nginx locations?
 * Integration with external tools
 * Custom APIs not fitting WebSocket model
 
+|
+
 Lua in Nginx
 -------------
 
@@ -456,6 +465,8 @@ Possible enhancements
 * **Security** - Add authentication and input validation
 * **Icons** - Add file type icons for better UX
 
+|
+
 Advanced integrations
 ----------------------
 
@@ -483,3 +494,5 @@ Related tutorials:
 * Server-side file processing
 * Advanced HTTP API development
 * Integration with external services
+
+|

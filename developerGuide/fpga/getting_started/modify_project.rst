@@ -205,6 +205,7 @@ Our custom component will have the following functionality:
 
 As discussed in :ref:`v0.94 FPGA project description <fpga_project_v0_94>`, the system bus on Red Pitaya is split into eight sections. Generally, we could have connected the custom component to one of the free sections, but for this example, we will be replacing the existing **PID** component.
 
+|
 
 Changes to red_pitaya_top
 --------------------------
@@ -260,6 +261,7 @@ Changes to red_pitaya_top
 
     As there are quite a few changes we need to make, we will go through them step by step.
 
+|
 
 GPIO and LEDs
 ~~~~~~~~~~~~~~~
@@ -336,6 +338,7 @@ Each of these signals' widths corresponds to the number of GPIO pins on the E1 c
             .sys_ack        (sys[3].ack      ), // Acknowledge
         );
 
+|
 
 ADC and DAC
 ~~~~~~~~~~~~~~~

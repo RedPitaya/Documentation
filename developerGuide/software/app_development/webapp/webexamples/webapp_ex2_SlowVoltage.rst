@@ -58,6 +58,7 @@ Add the following scripts to your ``index.html``:
     <script src="js/pako.js"></script>
     <script src="js/app.js"></script>
 
+|
 
 HTML structure
 ---------------
@@ -74,6 +75,7 @@ Add a button to trigger voltage reading:
 
     <button id='read_button'>Read</button>
 
+|
 
 JavaScript implementation
 --------------------------
@@ -175,6 +177,7 @@ In ``main.cpp``, declare a global signal to transmit voltage data:
     **SIGNAL_SIZE_DEFAULT** determines how many measurements are transmitted. For this example, set it to 1 
     since we only need the current reading.
 
+|
 
 Parameter declaration
 ----------------------
@@ -194,6 +197,7 @@ Declare a parameter to trigger voltage reading:
 
 This parameter acts as a trigger - when set to true by the frontend, the backend reads the voltage.
 
+|
 
 Reading analog input
 ---------------------
@@ -229,6 +233,7 @@ Update the parameter in **OnNewParams()** and read voltage when triggered:
 4. **Store in signal** - Write value to VOLTAGE signal array
 5. **Reset trigger** - Set READ_VALUE back to false for next request
 
+|
 
 Red Pitaya API functions
 --------------------------
@@ -307,6 +312,8 @@ Hardware setup
 * Another Red Pitaya output pin
 * Battery with voltage divider
 
+|
+
 Application testing
 --------------------
 
@@ -320,6 +327,8 @@ Application testing
    * 0 V input (connect to GND)
    * 3.3 V input (connect to 3.3 V supply)
    * Mid-range voltages
+
+|
 
 Troubleshooting
 ----------------
@@ -370,3 +379,5 @@ Build upon this example with these tutorials:
 * :ref:`Reading voltage with graph <webApp_example_SlowVoltage_Graph>` - Add real-time graphing
 * :ref:`Voltage with gain and offset <webApp_example_SlowVoltage_Graph_Offset>` - Add signal conditioning
 * :ref:`Generating voltage <webApp_example_genVolt>` - Learn about analog outputs
+
+|

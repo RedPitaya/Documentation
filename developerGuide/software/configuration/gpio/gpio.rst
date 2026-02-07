@@ -10,6 +10,7 @@ and is accesible as general purpose input / output pins on Extension conector E1
 
 There are two interfaces legacy sysfs interface and new character device based one.
 
+|
 
 PINS
 ====
@@ -21,17 +22,17 @@ Appropriate fpga bitstream can be applied using bash command.
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: shell-session
-
-            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
     .. group-tab:: OS version 2.00
 
         .. code-block:: shell-session
 
             redpitaya> overlay.sh v0.94
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
 
 Although the Zynq SoC provides 118 GPIO lines, only 16 are accessible to the user. They can be found on the extension connector E1, as pins DIO0_P to DIO7_P and DIO0_N to DIO7_N. 
@@ -69,6 +70,7 @@ The command ``gpioinfo``, from the package ``gpiod``, can be used to list the av
             line  63: "EMIO9  (GPIO 1)" unused input active-high
             ...
 
+|
 
 Linux access to GPIO
 ====================
@@ -102,7 +104,7 @@ Bash example for writing to and reading from pin DIO0_P (sysfs number 968):
 
 Please check the :rp-github:`SYSFS GPIO C example code <RedPitaya-Examples/tree/dev/gpio_sysfs>` for more information.
 
-
+|
 
 Character device access
 ------------------------
@@ -122,8 +124,11 @@ The Linux kernel contains GPIO utilities in its `tools <https://github.com/torva
 
 We isolated the sources and created a library from ``gpio-utils.c`` and executables from other source files.
 
+|
 
 Source code
 ============
 
 You can access the source code and precompiled binaries on our GitHub in the :rp-github:`gpio-utils repository <gpio-utils>`.
+
+|

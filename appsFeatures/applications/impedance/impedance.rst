@@ -13,7 +13,7 @@ The impedance analyzer uses the direct current-voltage method and has a frequenc
 All Red Pitaya applications are web-based and do not require the installation of any native software. Users can access them via a web browser using their smartphone, tablet, or a PC running any popular operating system (MAC, Linux, Windows, Android, and iOS).
 
 Features
-***********
+=========
 
 The impedance analyzer enables the measurement of the following parameters:
 
@@ -43,6 +43,7 @@ The graphical user interface of the Impedance analyzer application is divided in
 #. **Current measurement data:** The current step number and frequency of generated pulses required for the measurement.
 #. **Main graph area:** Main graph area displays the impedance response of the DUT (device under test).
 
+|
 
 Top settings menu
 ==================
@@ -55,11 +56,12 @@ Top settings menu contains the following functionality:
 #. **Question mark button:** Leads to the impedance analyzer documentation webpage (here)
 #. **Menu dropdown:**
 
-    - *Export data:* Export the currently displayed data as either a "Graph" or a "CSV file". If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is downloaded from the board.
-    - *Reset:* Resets all impedance analyzer application settings back to default.
+    - **Export data:** Export the currently displayed data as either a "Graph" or a "CSV file". If graph is chosen, a screenshot of the application is taken and automatically downloads via the browser. Otherwise, a CSV file with data is downloaded from the board.
+    - **Reset:** Resets all impedance analyzer application settings back to default.
 
 #. **Stop/Run button:** Start and stop the measurement.
 
+|
 
 Measurement control panel
 ==========================
@@ -128,6 +130,8 @@ LCR meter indicator
 
 The indicator displays a green light when the LCR meter extension board is connected. Otherwise, a red light is shown.
 
+|
+
 .. _impedance_connection:
 
 How to use the impedance analyzer
@@ -183,6 +187,7 @@ Selecting the optimum shunt is an iterative process, maximising the dynamic inpu
 
     Example of measuring the impedance of a parallel RLC circuit.
 
+|
 
 Source code
 ==============

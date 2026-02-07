@@ -37,12 +37,6 @@ The Red Pitaya API requires the v0.94 FPGA bitstream to control LEDs. Load it be
 
 .. tabs::
 
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: shell-session
-
-            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
     .. group-tab:: OS version 2.00 or newer
 
         OS 2.00 introduced a new FPGA loading system using the **overlay.sh** script, which loads both the 
@@ -51,6 +45,12 @@ The Red Pitaya API requires the v0.94 FPGA bitstream to control LEDs. Load it be
         .. code-block:: shell-session
 
             redpitaya> overlay.sh v0.94
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
 
 .. |xlinx_doc| raw:: html
 
@@ -87,6 +87,7 @@ Add these elements to your `index.html` file:
 
     The **led_on** div is hidden by default since LEDs are off when the application starts.
 
+|
 
 CSS styling
 ------------
@@ -109,6 +110,7 @@ Add styles to `css/style.css` for visual feedback:
         padding: 10px;
     }
 
+|
 
 JavaScript logic
 -----------------
@@ -169,6 +171,7 @@ The backend controller code is located in:
 
     src/main.cpp
 
+|
 
 Parameter declaration
 ----------------------
@@ -196,6 +199,7 @@ Declare a global parameter to receive the LED state from the frontend:
     
     Choose the type that matches your JavaScript variable type.
 
+|
 
 Handling parameter updates
 ---------------------------
@@ -224,6 +228,7 @@ sends new parameters:
 2. **ledState.Value()** - Returns the current parameter value
 3. **rp_DpinSetState()** - Red Pitaya API function to set pin state
 
+|
 
 Red Pitaya API functions
 --------------------------
@@ -248,6 +253,7 @@ Red Pitaya has 8 controllable LEDs:
 * **RP_HIGH** - LED on
 * **RP_LOW** - LED off
 
+|
 
 Initialization and cleanup
 ---------------------------
@@ -315,3 +321,5 @@ Explore more advanced examples:
 
 * :ref:`Reading analog voltage <webApp_example_SlowVoltage>` - Learn about signals
 * :ref:`Generating voltage <webApp_example_genVolt>` - Control analog outputs
+
+|

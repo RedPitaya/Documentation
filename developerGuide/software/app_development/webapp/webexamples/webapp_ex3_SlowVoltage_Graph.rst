@@ -67,6 +67,7 @@ Add the following scripts to your ``index.html``:
     <script src="js/pako.js"></script>
     <script src="js/app.js"></script>
 
+|
 
 HTML structure
 ---------------
@@ -83,6 +84,7 @@ You can also keep the numeric display from the basic example:
 
     <div id='value'></div>
 
+|
 
 JavaScript implementation
 --------------------------
@@ -182,6 +184,7 @@ In ``main.cpp``, declare a global signal with a larger buffer to transmit contin
 * This means 1024 data points will be transmitted to the web UI
 * Creates a scrolling window of voltage measurements
 
+|
 
 Setting signal update interval
 --------------------------------
@@ -194,6 +197,7 @@ In **rp_app_init()**, configure how often the backend sends data:
 
 **SIGNAL_UPDATE_INTERVAL** is a constant (typically 10ms) that determines how often **UpdateSignals()** is called.
 
+|
 
 Continuous signal updates
 ---------------------------
@@ -229,6 +233,7 @@ Implement the **UpdateSignals()** function to continuously read and buffer volta
 4. Copy entire buffer to the VOLTAGE signal
 5. Signal is automatically transmitted to frontend
 
+|
 
 Data buffer management
 -----------------------
@@ -270,6 +275,8 @@ Complete signal acquisition cycle
 8. **Process signals** → Extract values, build point arrays
 9. **Graph updated** → Flot redraws with new data
 
+|
+
 Continuous vs on-demand
 -------------------------
 
@@ -310,6 +317,8 @@ Initialize the Flot plot in your **APP.init()** or similar function:
         }
     });
 
+|
+
 Signal handler setup
 ---------------------
 
@@ -338,6 +347,8 @@ Hardware setup
 1. Connect a voltage source (0-3.3 V) to one of the analog input pins (e.g., AI0)
 2. For dynamic testing, use a signal generator or potentiometer
 3. Ensure proper grounding
+
+|
 
 Application testing
 --------------------
@@ -381,6 +392,8 @@ Update interval tuning
 * Too slow: Display lag, stack overflow if data arrives faster than processed
 * Recommended: 15-30 ms
 
+|
+
 Buffer size optimization
 -------------------------
 
@@ -390,6 +403,7 @@ Buffer size optimization
 * Smaller buffer: Less history, lower overhead, faster updates
 * Recommended: 512-2048 points depending on requirements
 
+|
 
 Extending This Example
 =======================
@@ -416,3 +430,5 @@ Build upon this example with these tutorials:
 * :ref:`Voltage with gain and offset <webApp_example_SlowVoltage_Graph_Offset>` - Add signal conditioning controls
 * :ref:`Generating voltage <webApp_example_genVolt>` - Generate signals to test with
 * Advanced graphing examples - Multiple plots, cursors, measurements
+
+|

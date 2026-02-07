@@ -48,6 +48,7 @@ Notebooks may be exported to a range of static formats, including HTML (for exam
 
 Furthermore, any *.ipynb* notebook document available from a public URL can be shared via the Jupyter Notebook Viewer (nbviewer). This service loads the notebook document from the URL and renders it as a static web page. The results may thus be shared with a colleague, or as a public blog post, without other users needing to install the Jupyter notebook themselves. In effect, nbviewer is simply nbconvert as a web service, so you can do your own static conversions with nbconvert without relying on nbviewer.
 
+|
 
 Hardware - Sensor extension module
 ======================================
@@ -59,7 +60,7 @@ Although the usage of the JupyterLab does not require any additional hardware ex
 
 Here you can find more information regarding the :ref:`Sensor extension module <sensor_extension_module>`.
 
-
+|
 
 Examples
 ===========

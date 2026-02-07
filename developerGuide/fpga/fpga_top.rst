@@ -8,6 +8,8 @@ This section describes how to build and modify the FPGA design for Red Pitaya bo
 
 **Prerequisites:** Basic knowledge of digital logic design, Verilog/VHDL, and familiarity with Xilinx Vivado development environment. Experience with Linux command line is helpful.
 
+|
+
 ===========================================
 Navigating the FPGA Documentation
 ===========================================
@@ -24,11 +26,12 @@ Navigating the FPGA Documentation
 
 * Modifying existing projects? → Start with :ref:`Getting Started <fpga_programming_environment>`
 * Looking for project examples? → Go to :ref:`FPGA Projects <fpga_projects>`
-* Setting up simulation? → See :ref:`Simulation <simulation>` in Getting Started
+* Setting up simulation? → See :ref:`Simulation <fpga_simulation>` in Getting Started
 * Step-by-step guides? → Check :ref:`FPGA Tutorials <fpga_tutorials_top>` (coming soon)
 * Need register addresses? → Check :ref:`Registers <fpga_registers>` for your OS version
 * Advanced configurations? → See :ref:`Advanced Topics <fpga_advanced>`
 
+|
 
 ===========================================
 Typical FPGA Development Workflow
@@ -73,6 +76,7 @@ f. **Test:** Load bitstream to Red Pitaya and verify functionality
 * Load at runtime using the ``overlay`` system
 * Configure automatic loading at boot (optional)
 
+|
 
 ======================
 What's in each section

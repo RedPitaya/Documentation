@@ -137,22 +137,6 @@
 
 # SOFTWARE
 
-##.  How to disable/enable the web interface:
-
-    systemctl stop redpitaya_nginx
-
-    This should stop the nginx and the web interface with it. To disable it please use the following command:
-
-    systemctl disable redpitaya_nginx
-
-    If you want to permanently disable the web interface, I would suggest running the command at Red Pitaya boot by adding it into the startup.sh script located in "/opt/redpitaya/sbin" directory.
-
-    First stop, then disable. To reenable first enable then start.
-
-##.  How to start SCPI server:
-
-    systemctl start redpitaya_scpi &
-
 ##.  UART supports 115200 or higher and CS8. Other settings need a rebuild of the server.
 
     g_settings.c_cflag &= ~CSIZE;
@@ -249,7 +233,7 @@
 
 ##.  LA API does not crash on STEMlab 125-10 with the latest OS - software issues
 
-##. Calibration - no 50 Ohm termination for calibrating Gen 2 boards. Calibration is now performed without the FPGA filter. Filter must be calibrated separately.
+##. Calibration - Calibration is now performed without the FPGA filter. Filter must be calibrated separately.
     Proper calibration proceedure:
         1. Reset frequency calibration filter to default values
         2. Perform DC calibration
@@ -272,7 +256,7 @@
     The clock rate setting in the system menu has been improved.
     This setting overrides the value in the profile, and all applications and modules will use this value instead of the default.
 
-##.  Decoding the Streaming data from the computer on a custom application. How is stream data encoded and how to decode it.
+##.  Decoding the Streaming data from the computer on a custom application. How is stream data encoded and how to decode it. - rpsa client, streaming server
 
 ##.  Commands to remotely start/stop the stream - explanation so users can perform this on their own - check the rpsa.client code on GitHub for example.
 
@@ -337,26 +321,11 @@
     Pavel Demin’s Red Pitaya Notes (community SDR tools & instructions): https://pavel-demin.github.io/red-pitaya-notes/
     Known software issues (mac direct connection, websockets): https://redpitaya.readthedocs.io/en/lat ... ssues.html
 
-##.  Starting streaming server from the command line. Instructions missing - Connect the command line tool and the remote start of stream server from the board (command line tool) - ``streaming-server``.
-
-    How to do this? Chapters in the Streaming applicaiton
-
-    Add more examples and define a testing script for this
-
-    What are the optimal packet sizes for different speeds (higher speeds should have bigger packets - I remember something about 2 MB packets being good)
-
-##.  Streaming application command line APIs and client - MUST UNBLOCK IN ANTIVIRUS (Network access troubleshooting)
-
 
 
 # FORMATING
 
 ##.  Fix the spacing in between Index links. Index should have depth 1 and not 2 - makes it easier for users to read.
-
-##.  Fix the indents in points 2, 3, 4 in the left side menu. Likely a problem with 0 level bullet list
-
-##.  Fix the spacing of titles at the top (navigation). The "home button (house)" is in a separate line - should be in the same line as the page path
-
 
 
 
@@ -406,15 +375,3 @@ EMMC vidiš kot Must storage in vpišeš gor kot da bi bil USB ključek
 E3 SW
 
 Popravi E3 SW za deaktivacijo watchdog timerja.
-
-
-
-
-
-
-
-
-
-
-
-

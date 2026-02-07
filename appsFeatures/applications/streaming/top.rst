@@ -8,7 +8,7 @@ Data stream control (also called the Streaming application) unlocks the capabili
 This functionality can be extended by synchronising multiple boards together to create a multi-channel system (:ref:`X-channel system <x-ch_streaming>` 
 and :ref:`Click Shield synchronisation <click_shield_sync>`).
 
-.. figure:: img/streaming_app_features.png
+.. figure:: img/Streaming_web_interface.png
     :width: 1000
     :align: center
 
@@ -27,8 +27,6 @@ both ADC and DAC streaming, allowing users to acquire data from the fast analog 
 The application uses the reserved memory region that is shared with the :ref:`Deep Memory Mode <deepMemoryMode>` to temporarily store the 
 data that is streamed to and from the board. This allows for efficient data transfer and processing, while also providing a flexible and 
 scalable solution for a wide range of applications.
-
-|
 
 Key features
 =============
@@ -67,10 +65,7 @@ The Streaming application can be started in three ways:
         :width: 600
         :align: center
 
-#.  **From inside the Red Pitaya Linux OS** by running **/opt/redpitaya/bin/streaming-server.run.sh**. For example, when connected through 
-    :ref:`SSH <ssh>`.
-
-#.  **Using the remote command line client** by loading the **stream_app** FPGA image and running the streaming server:
+#.  **From inside the Red Pitaya Linux OS** (:ref:`SSH connection <ssh>`) by loading the **stream_app** FPGA image and running **streaming-server**.
 
     .. code-block:: bash
 
@@ -83,6 +78,10 @@ Once the streaming server is running, LED 2 will turn on and LED 0 will blink, i
 
 Application interface
 =======================
+
+.. figure:: img/streaming_app_features.png
+    :width: 1000
+    :align: center
 
 The application interface is divided into the following sections:
 
@@ -116,7 +115,6 @@ This documentation is organized into the following sections:
 
     Configuration <configuration/configuration_top>
     Usage guides <usage/usage_top>
-    Examples <examples/examples_top>
     Reference <reference/reference_top>
     Advanced topics <advanced/advanced_top>
 
@@ -126,7 +124,8 @@ Getting help
 =============
 
 * Check the :ref:`Data Streaming Limitations <streaming_limits>` section to understand performance constraints
-* Review the :ref:`Examples <streaming_examples_top>` for practical use cases
+* Learn about :ref:`Performance Optimization <streaming_performance_optimization>` to achieve maximum streaming rates
+* Review the :ref:`Examples <examples_streaming>` for practical use cases
 * Visit the :rp-github:`Streaming application source code <RedPitaya/tree/master/apps-tools/streaming_manager>` on GitHub
 * Refer to the :ref:`Technical Details <streaming_technical_details>` section to understand how the application works
 
@@ -137,6 +136,9 @@ Compatibility
 
 Red Pitaya boards are compatible with any computer operating system. However, the same cannot be said for the streaming client 
 applications which are meant to run on the computer, which are available for Linux and Windows operating systems. Any specific 
-requirements for the operating systems are listed below.
+requirements for the operating systems are listed below. We always recommend using the :ref:`latest version of the OS <prepareSD>` 
+and the streaming client application to ensure the best performance and compatibility.
 
 * **Windows 11** - Please use Red Pitaya OS 2.05-37 or newer as older streaming client versions are incompatible with Windows 11.
+
+|

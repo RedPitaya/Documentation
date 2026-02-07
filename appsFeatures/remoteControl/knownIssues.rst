@@ -7,6 +7,7 @@ Here, you can find a list of known SCPI & API command issues and changes listed 
 
 If you are facing an issue with one of the examples, a command is not working, or your code does not work, we suggest checking the known issues list from the latest OS release to your current OS version for any applicable changes.
 
+|
 
 How to find all available SCPI commands per OS version?
 ========================================================
@@ -38,20 +39,23 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 
 .. |all_os_scpi_commands_2.00-15| replace:: :rp-github:`Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c <RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c>`
 
+|
 
-IN-DEV
-=======
+..! TODO - add new commands and issues to the list
 
-New Commands
--------------
-
-
-Command changes
------------------
-
-
-Issues
---------
+.. IN-DEV
+.. =======
+.. 
+.. New Commands
+.. -------------
+.. 
+.. 
+.. Command changes
+.. -----------------
+.. 
+.. 
+.. Issues
+.. --------
 
 
 

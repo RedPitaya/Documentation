@@ -1,11 +1,15 @@
-.. _stream_dac_example:
+.. _stream_dac_cli_example:
 
-#########################
-DAC streaming example
-#########################
+#####################################
+DAC Streaming Example (Command Line)
+#####################################
 
-This example demonstrates how to generate a custom sine wave signal on the DAC outputs using the command line client. 
+This example demonstrates how to generate a custom sine wave signal on the DAC outputs using the **rpsa_client** command-line tool. 
 This tutorial covers the complete workflow from creating a waveform to streaming it to the Red Pitaya.
+
+.. note::
+
+    This tutorial uses the **rpsa_client** command-line tool, not the Python/C++ API. For API-based DAC streaming, see :ref:`DAC API Streaming Tutorial <streaming_dac_api_example>`.
 
 .. contents:: Table of contents
     :local:
@@ -37,7 +41,7 @@ This example will guide you through:
 4. Configuring the DAC streaming parameters
 5. Starting the DAC streaming
 
-The example uses the **one-pack mode** for maximum performance, where the entire waveform fits in the DMM memory.
+The example uses **one-pack mode** for maximum performance, where the entire waveform fits in DDR memory, allowing full 125 MS/s output rate. For network streaming limitations, see :ref:`Streaming Performance Limits <streaming_limits>`.
 
 |
 
@@ -150,60 +154,39 @@ The configuration file will be downloaded to the ``configs`` folder of the comma
 
 **Edit the configuration file:**
 
-Open the downloaded configuration file (usually named something like ``streaming_config.json``) with your favorite text editor. Edit the DAC streaming parameters as follows:
+Open the downloaded configuration file (usually named something like ``streaming_config.json``) with your favorite text editor.
 
-.. code-block:: json
+For this example, configure DAC streaming at maximum rate with the generated waveform:
+
+.. code-block:: javascript
 
     {
-        "adc_streaming" : 
-        {
-            "adc_decimation" : 125,
-            "adc_pass_mode" : "NET",
-            "channel_ac_dc_1" : "DC",
-            "channel_ac_dc_2" : "DC",
-            "channel_ac_dc_3" : "DC",
-            "channel_ac_dc_4" : "DC",
-            "channel_attenuator_1" : "A_1_1",
-            "channel_attenuator_2" : "A_1_1",
-            "channel_attenuator_3" : "A_1_1",
-            "channel_attenuator_4" : "A_1_1",
-            "channel_state_1" : "OFF",
-            "channel_state_2" : "OFF",
-            "channel_state_3" : "OFF",
-            "channel_state_4" : "OFF",
-            "data_type_sd" : "RAW",
-            "format_sd" : "BIN",
-            "resolution" : "BIT_16",
-            "samples_limit_sd" : 0,
-            "use_calib" : "ON"
-        },
-        "dac_streaming" : 
-        {
+        "dac_streaming" : {
             "channel_gain_1" : "X1",
-            "channel_gain_2" : "X1",
             "dac_pass_mode" : "DAC_NET",
             "dac_rate" : 125000000,
             "file_sd" : "arb_waveform_signed16.wav",
             "file_type_sd" : "WAV",
             "repeat" : "DAC_REP_ON",
-            "repeatCount" : 1
+            "repeatCount" : 1,
+            ...
         },
-        "memory_manager" : 
-        {
-            "adc_size" : 0,
+        "memory_manager" : {
             "block_size" : 8388608,
             "dac_size" : 104857600,
-            "gpio_size" : 0
+            ...
         }
     }
 
-Key parameters explained:
+Key parameters:
 
-* ``dac_rate: 125000000`` - 125 MHz output rate (maximum performance)
-* ``block_size: 8388608`` - 8 MiB (8,388,608 bytes)
-* ``dac_size: 104857600`` - 100 MiB (104,857,600 bytes) reserved for DAC
-* ``repeat: "DAC_REP_ON"`` - Enable repetition
-* ``repeatCount: 1`` - Generate once
+* ``dac_rate: 125000000`` - 125 MS/s output rate (when waveform fits in memory)
+* ``block_size: 8388608`` - 8 MiB network packet size (max supported)
+* ``dac_size: 104857600`` - 100 MiB reserved for DAC buffer
+* ``repeat: "DAC_REP_ON"`` - Enable waveform repetition
+* ``repeatCount: 1`` - Number of times to repeat (or use infinite mode)
+
+For complete configuration options and :ref:`DAC rate limitations <streaming_limits>`, see :ref:`DAC Configuration Reference <stream_dac_config>`
 
 .. note::
 
@@ -391,6 +374,7 @@ Next steps
 
 * Experiment with different waveforms and parameters
 * Learn about :ref:`DAC Configuration <stream_dac_config>` for more control options
+* Optimize performance by :ref:`disabling the web interface <streaming_performance_optimization>`
 * Review :ref:`Data Generation Limitations <stream_dac_limitations>` to understand performance boundaries
 * Try combining with :ref:`ADC streaming <stream_adc_config>` to create a signal processing loop
 * Explore :ref:`Advanced Configuration <stream_advanced_config>` for fine-tuning

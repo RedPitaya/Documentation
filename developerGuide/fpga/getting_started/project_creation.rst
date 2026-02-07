@@ -90,7 +90,7 @@ The automatic project generation scripts have two possible modes of operation:
 * **Non-project mode**: This mode generates a set of files that can be used to build the project without opening the Vivado GUI. It is useful for users who prefer to work with command-line tools or want to automate the build process.
 * **Project mode**: This mode generates a Vivado project that can be opened in the Vivado GUI for further editing and customization. It is useful for users who want to work with the graphical interface of Vivado and make changes to the design interactively.
 
-
+|
 
 Non-project mode
 -----------------

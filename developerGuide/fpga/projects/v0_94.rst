@@ -70,12 +70,14 @@ The AXI address space of the Red Pitaya bus in the v0.94 project is divided into
 
 The architecture of the Red Pitaya is 32-bit, which means that each register occupies 32 bits (4 bytes). The registers are memory-mapped, which means that each register has a specific address in the memory space. The registers are used to configure and control the different modules in the FPGA.
 
+|
 
 House Keeping
 ----------------
 
 The housekeeping module, named "red_pitaya_hk" or "i_hk" within the v0.94 project, takes care of the system identification via DNA readout at startup and ID register which user can define at compile time, while also controlling eight LEDs and digital inputs and outputs (GPIOs). 
 
+|
 
 Oscilloscope
 --------------
@@ -93,6 +95,7 @@ The second module can average and decimate the input signal. Currently, Direct M
 
 * The data capture buffer is implemented using a BRAM. Writing to RAM is performed using the ARM/TRIG logic. Writing is enabled with the ADC_ARM_DO signal (SW), which remains active until the trigger arrives and the ADC_DLY_CNT counts to zero. The value of adc_wp_trig serves as a pointer showing when the trigger arrived. This value is used to display the pre-trigger data.
 
+|
 
 Arbitrary signal generator (ASG)
 ---------------------------------
@@ -110,6 +113,7 @@ either as one of the pre-selected formats or given by the user. The buffer signa
 
 * The output data is scaled using a linear transformation.
 
+|
 
 PID controller
 ------------------
@@ -131,6 +135,7 @@ Each PID block comprises a proportional, an integrator and a derivative part. Th
 
 The integral part can be reset using a special signal.
 
+|
 
 Mixed analog signals (AMS)
 ---------------------------
@@ -146,6 +151,7 @@ The analog outputs can be configured via the registers, with an output voltage r
 
 The reading of the system and external voltages is performed by the XADC running in sequencer mode. It measures supply voltages, temperature, and voltages on the external connector. The measured values are then exposed to the software. In addition, the SW can set the registers that control the logic for the PWM DAC (analog module).
 
+|
 
 Daisy chaining
 ---------------
@@ -165,6 +171,7 @@ A daisy chain module can be used to communicate with other boards and perform ba
 
 * The testing submodule creates random values that can be selected for use by the TX module. After some time, it checks the received values and compares them to see if they are the same.
 
+|
 
 Free
 ------
@@ -172,12 +179,14 @@ Free
 As mentioned at the beginning of this chapter, the address bus in the v0.94 project is divided into eight address spaces. Six of these are occupied by the components listed above and two are free and connected to a leading stub/terminator ('system stub').
 The leading stub prevents system errors when reading free or unconnected addresses.
 
+|
 
 System bus interconnect
 -------------------------
 
 The system bus interconnect, represented by the "system_bus_interconnect" module in the FPGA, is used to divide the address bus/space into several smaller ones. In the v0.94 project, for example, it divides the address space into eight parts, each with a 20-bit address.
 
+|
 
 Process System (PS)
 --------------------
@@ -190,6 +199,4 @@ the serial console on the micro USB connector next to the power supply and the A
     :align: center
 
 The PS module is also the wrapper for the block design.
-
-
 

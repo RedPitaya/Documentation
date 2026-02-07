@@ -147,6 +147,6 @@ signals on the fast analog outputs at the same time.
 Next steps
 ***********
 
-* Try the :ref:`DAC Streaming Example <stream_dac_example>` to learn how to generate custom waveforms
+* Try the :ref:`DAC Streaming Example <stream_dac_cli_example>` to learn how to generate custom waveforms
 * Review :ref:`Data Generation Limitations <stream_dac_limitations>` for performance constraints
 * Configure :ref:`Memory settings <stream_memory_config>` to optimize DAC streaming performance

@@ -41,15 +41,13 @@ Follow these steps to install the Red Pitaya OS on an SD card:
         :align: center
         :width: 400
 
-#. Connect the power supply and Ethernet cable and check the status LED sequence during boot.
+#. Connect the power supply and Ethernet cable and check the status LED sequence during boot. If you spot any unexpected behaviour, please check the :ref:`FAQ troubleshooting section <faq>`.
 
     .. raw:: html
 
         <div style="position: relative; padding-bottom: 30.25%; overflow: hidden; max-width: 50%; margin-left:auto; margin-right:auto;">
             <iframe src="https://www.youtube.com/embed/9xZCAkXAkw8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
         </div>
-
-    If you spot any unexpected behaviour, please check the :ref:`FAQ troubleshooting section <faq>`.
 
 #. Connect to the board via the web interface. For more information check the :ref:`quick start instructions <quickstart_connect>`.
 
