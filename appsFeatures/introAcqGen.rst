@@ -14,7 +14,7 @@ Ordered from simplest to most complex:
 
 * `Oscilloscope and other applications`_.
 * `SCPI commands`_.
-* `API commands (C, Python)`_.
+* `API commands (C++, Python)`_.
 * `Deep Memory Acquisition (DMA)`_.
 * `Streaming application`_.
 * `Custom acquisition and generation (FPGA)`_.
@@ -52,7 +52,7 @@ SCPI commands
 To remotely control the Red Pitaya from a Python, MATLAB or LabVIEW program running on your computer, and to acquire data from the Red Pitaya 
 to your computer for further processing, use the SCPI commands. The code is executed on a computer and string commands are sent between 
 Red Pitaya and your computer via |wiki-network-socket|. Once the SCPI commands reach Red Pitaya, 
-they are interpreted and an appropriate C API function is executed in the background.
+they are interpreted and an appropriate C++ API function is executed in the background.
 
 .. note::
 
@@ -317,29 +317,29 @@ More information about the SCPI server can be found here:
 * :ref:`SCPI examples<examples>`.
 
 
-API commands (C, Python)
+API commands (C++, Python)
 ==========================
 
-Another way to control the Red Pitaya is to use the C and Python API commands that run on the Red Pitaya's Linux OS. The advantage over 
+Another way to control the Red Pitaya is to use the C++ and Python API commands that run on the Red Pitaya's Linux OS. The advantage over 
 the SCPI commands is that the API commands are faster because there is no need to convert the data into strings, send it over the Ethernet 
 and then reconstruct it. In addition, you have full access to the Linux operating system, which means you can configure programs to run 
 directly at boot time, customise data interpretation, or write your own drivers to enhance the existing code. Finally, you have direct 
 access to the FPGA's registry space, making it much easier to write your own software.
 
-The Python API commands are the same as the C API commands, as they are simply a Python front-end to the C commands. You can run Python 
+The Python API commands are the same as the C++ API commands, as they are simply a Python front-end to the C++ commands. You can run Python 
 code directly on Red Pitaya starting with Red Pitaya 2.00-30 OS (out of the box).
 
 The overall functionality is exactly the same as with the SCPI commands, with the exception of using functions instead of string commands 
 and the fact that there are more commands available that have not yet received their SCPI versions.
 
-One thing to note here is that deep memory acquisition of long sequences of data can be speeded up by using a C or Python program to 
+One thing to note here is that deep memory acquisition of long sequences of data can be speeded up by using a C++ or Python program to 
 acquire the data and then establishing a TCP connection to the computer to achieve a much faster transfer than using the SCPI commands.
 This requires custom code to establish the connection, transmit the data to the computer, and receive the data from a program such as 
 MATLAB, where it can be processed. 
 
-All information about running C and Python programs can be found here:
+All information about running C++ and Python programs can be found here:
 
-* :ref:`C & Python API commands <API_commands>`.
+* :ref:`C++ & Python API commands <API_commands>`.
 * :rp-github:`GitHub API source code <RedPitaya/tree/master/rp-api>`.
 
 |
@@ -378,7 +378,7 @@ of DDR for proper operation of the Linux OS. Deep memory acquisition is based on
 `AXI protocol (AXI DMA and AXI4-Stream) <https://adaptivesupport.amd.com/s/article/1053914?language=en_US>`_ (double the acronym for double the meaning).
 
 Once the acquisition is complete, Red Pitaya needs some time to transfer the entire file to the computer (RAM needs to be cleared) before the acquisition can be reset.
-DMA can be configured using SCPI, Python API and C API commands. The triggering options are also the same.
+DMA can be configured using SCPI, Python API and C++ API commands. The triggering options are also the same.
 
 To increase the speed of transferring the DMA data to the computer with SCPI, the data should be acquired in binary format (``ACQ:DATA:FORMAT BIN``).
 

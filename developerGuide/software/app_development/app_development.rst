@@ -8,7 +8,7 @@ This section covers developing custom applications that run on Red Pitaya. Wheth
 
 **What you'll find here:**
 
-* **C & Python API** - Native API libraries for application development with complete hardware access
+* **C++ & Python API** - Native API libraries for application development with complete hardware access
 * **Streaming Applications** - High-speed continuous data streaming between Red Pitaya and PC
 * **Web Applications** - Create browser-based user interfaces for Red Pitaya
 

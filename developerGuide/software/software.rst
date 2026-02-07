@@ -10,7 +10,7 @@ Whether you're developing measurement tools, integrating hardware peripherals, o
 
 * **Introduction** - Understand Red Pitaya software architecture, development approaches, and workflows
 * **Getting Started** - Establish console access via SSH or serial connection
-* **Application Development** - Build applications using C/Python APIs, streaming, and web interfaces
+* **Application Development** - Build applications using C++/Python APIs, streaming, and web interfaces
 * **System Development** - Compile the OS ecosystem, create Debian packages, and build custom images
 * **Configuration & Integration** - Set up networking, GPIO, SPI, displays, and remote deployment
 * **Troubleshooting** - Known software issues and workarounds

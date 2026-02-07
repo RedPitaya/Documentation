@@ -104,7 +104,7 @@
     - IQ modulation/demodulation
     - Simple Lock-In amplifier
 
-    Interfacing with C and Python:
+    Interfacing with C++ and Python:
     
     - Creating an FPGA register
     - Reading and writing from registers
@@ -220,7 +220,7 @@
     It all depends on the board you're capturing on. If you're using a 125-14 board, you need to divide the values ​​by 8192.
     If the resolution is different, divide accordingly. Keep in mind that the RAW data is likely uncalibrated.
 
-##.  Simple lessons on Data acquisition and generation - C & Python API commands.
+##.  Simple lessons on Data acquisition and generation - C++ & Python API commands.
 
 ##. Move the code examples to GitHub and only link them in the documentation - much easier maintenance.
 

@@ -641,7 +641,7 @@ Related Documentation
 
 - :ref:`Red Pitaya FPGA Developer Guide <fpga_top>` - FPGA development overview
 - :ref:`Adding a custom component <fpga_tutorial_cust_comp>` - FPGA tutorial
-- :ref:`C and Python API <C&Py_API>` - Software interface
+- :ref:`C++ and Python API <C&Py_API>` - Software interface
 
 **Application Examples:**
 

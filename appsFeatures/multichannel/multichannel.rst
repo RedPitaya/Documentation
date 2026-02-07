@@ -34,7 +34,7 @@ How can I control synchronised boards?
 ======================================
 
 * :ref:`SCPI commands <scpi_commands>`.
-* :ref:`C & Python API commands <API_commands>` (harder to configure as a program must be executed on each board separately).
+* :ref:`C++ & Python API commands <API_commands>` (harder to configure as a program must be executed on each board separately).
 * :ref:`Streaming application <streaming_top>` (either :ref:`Desktop client application <stream_desktop_app>` or :ref:`command line client <stream_command_client>`).
 
 .. note::

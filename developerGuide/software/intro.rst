@@ -31,7 +31,7 @@ Application Development
 
 Develop applications that run on Red Pitaya using the provided APIs:
 
-* **C/C++ API** - Native performance, direct hardware access
+* **C++ API** - Native performance, direct hardware access
 * **Python API** - Rapid prototyping, easier development
 * **Web Applications** - Browser-based user interfaces
 * **Streaming Applications** - High-speed data transfer to PC
@@ -70,7 +70,7 @@ Typical Application Development
 --------------------------------
 
 1. **Access Red Pitaya** - Connect via SSH or serial console
-2. **Choose Your API** - C for performance, Python for ease
+2. **Choose Your API** - C++ for performance, Python for ease
 3. **Develop & Test** - Write code, test on device
 4. **Deploy** - Copy to Red Pitaya or build into package
 
@@ -107,7 +107,7 @@ Typical System Development
 5. Getting Help
 ================
 
-* **API Documentation** - Refer to C/Python API guides for function references
+* **API Documentation** - Refer to C++/Python API guides for function references
 * **Examples** - Study example code in the Applications & Features section
 * **Known Issues** - Check troubleshooting section for common problems
 * **Community** - Red Pitaya forum for community support

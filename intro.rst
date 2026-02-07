@@ -32,7 +32,7 @@ As Ethernet is used to transfer data between the board and the computer, it is c
 The board can be programmed in several ways:
 
 * Remotely via SCPI commands (Python, MATLAB or LabVIEW),
-* C and Python programs running directly on the board itself,
+* C++ and Python programs running directly on the board itself,
 * Completely customisable FPGA firmware that can be programmed using the AMD Xilinx Vivado IDE.
 
 The Red Pitaya is used everywhere from the `International Space Station <https://content.redpitaya.com/blog/red-pitaya-an-open-source-software-measurement-and-control-board-used-in-spacecraft-atmosphere-monitor-for-nasa>`_ 

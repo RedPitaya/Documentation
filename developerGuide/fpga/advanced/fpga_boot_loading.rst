@@ -58,7 +58,7 @@ The **startup.sh script** is Red Pitaya's recommended method for running command
 
 .. seealso::
 
-    For more details on the startup.sh script and running applications at boot, see the :ref:`C and Python API Documentation <runApp_api>`.
+    For more details on the startup.sh script and running applications at boot, see the :ref:`C++ and Python API Documentation <runApp_api>`.
 
 Why startup.sh?
 -----------------
@@ -717,5 +717,5 @@ Related Documentation
 
 - :ref:`fpga_reprogramming` - Basic FPGA loading guide
 - :ref:`fpga_advanced_loading` - Advanced FPGA configurations
-- :ref:`C and Python API <C&Py_API>` - startup.sh script details
+- :ref:`C++ and Python API <C&Py_API>` - startup.sh script details
 - :ref:`device_tree` - Device tree configuration
