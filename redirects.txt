@@ -7,11 +7,7 @@
 # Added: February 2026
 
 ## Quickstart
-# Network manager
-quickStart/connect* appsFeatures/systemtool/network_manager/networkManager
 
-# OS Update paths
-quickStart/os* quickStart/OS_update/OS_update
 
 ## Applications
 # Streaming app restructure
@@ -26,12 +22,10 @@ appsFeatures/sdr_transceiver/sdr_transceiver appsFeatures/applications/sdr_tx_rx
 appsFeatures/apps-featured/sdr/appSDR appsFeatures/applications/sdr_tx_rx/sdr_tx_rx
 
 # Remote Control
-appsFeatures/remoteControl/deepMemoryAcquisition* appsFeatures/remoteControl/deepMemoryMode
 appsFeatures/remoteControl/remoteControl appsFeatures/remoteControl/remoteAndProg
-appsFeatures/remoteControl/commandReference* appsFeatures/remoteControl/command_list
 
 # Deprecated marketplace apps
-appsFeatures/apps-featured/marketplace/pid* appsFeatures/applications/marketplace/marketplace
+appsFeatures/apps-featured/marketplace/pid appsFeatures/applications/marketplace/marketplace
 
 
 
@@ -39,7 +33,7 @@ appsFeatures/apps-featured/marketplace/pid* appsFeatures/applications/marketplac
 developerGuide/os/console/console developerGuide/software/getting_started/console/console
 developerGuide/software/console/ssh/ssh developerGuide/software/getting_started/ssh/ssh
 
-developerGuide/software/build/C%26Python_API developerGuide/software/app_development/C_and_Python_API
+developerGuide/software/build/C&Python_API developerGuide/software/app_development/C_and_Python_API
 developerGuide/software/update/update quickStart/OS_update/OS_update
 
 # Configuration paths (moved from other_info to configuration)
@@ -49,16 +43,12 @@ developerGuide/software/other_info/spi developerGuide/software/configuration/spi
 developerGuide/software/other_info/tft developerGuide/software/configuration/tft/TFT
 
 # Webapp paths (moved from build to app_development)
-
-developerGuide/software/build/webapp/webexamples* developerGuide/software/app_development/webapp/webExamples
 developerGuide/software/build/webapp/webapps developerGuide/software/app_development/webapp/webApps
 developerGuide/software/build/webapp/firstApp developerGuide/software/app_development/webapp/firstApp
 developerGuide/software/build/webapp/webapp developerGuide/software/app_development/webapp/webApps
 
 # System development paths
 developerGuide/software/build/ecosystem developerGuide/software/system_development/ecosystem/ecosystem
-developerGuide/software/ecosystem* developerGuide/software/system_development/ecosystem/ecosystem
-developerGuide/software/e3* developerGuide/software/system_development/e3_software/e3_software
 
 # Known issues paths
 developerGuide/software/known_sw_issues developerGuide/software/troubleshooting/known_issues/known_sw_issues
@@ -66,15 +56,8 @@ developerGuide/software/known_sw_issues developerGuide/software/troubleshooting/
 
 ## Hardware
 developerGuide/hardware/quickStart/troubleshooting/troubleshooting quickStart/troubleshooting/troubleshooting
-developerGuide/hardware/GEN1* developerGuide/hardware/hardware
 developerGuide/hardware/platforms developerGuide/hardware/hardware
-developerGuide/hardware/2* developerGuide/hardware/hardware
-developerGuide/hardware/12* developerGuide/hardware/hardware
-developerGuide/12* developerGuide/hardware/hardware
 
-developerGuide/hardware/hw_specs/* developerGuide/hardware/ORIG_GEN/hw_specs/hw_specs
-developerGuide/hardware/known_hw_issues* developerGuide/hardware/ORIG_GEN/known_hw_issues/known_hw_issues
-developerGuide/hardware/compares* developerGuide/hardware/ORIG_GEN/compares/vs
 developerGuide/hardware/ORIG_GEN/hw_specs/extent developerGuide/hardware/ORIG_GEN/hw_specs/hw_specs
 developerGuide/hardware/ORIG_GEN/hw_specs/fastIO developerGuide/hardware/ORIG_GEN/hw_specs/hw_specs
 developerGuide/hardware/GEN2/hw_specs/fastIO developerGuide/hardware/GEN2/hw_specs/hw_specs
@@ -86,8 +69,24 @@ developerGuide/hardware/ext_modules developerGuide/hardware/hardware
 
 ## FPGA
 # FPGA documentation moved from software/build to its own section
-developerGuide/software/build/fpga/* developerGuide/fpga/fpga_top
 developerGuide/fpga/advanced/simulation developerGuide/fpga/getting_started/simulation
 
 
 
+
+# quickStart/connect* appsFeatures/systemtool/network_manager/networkManager
+# quickStart/os* quickStart/OS_update/OS_update
+# appsFeatures/remoteControl/deepMemoryAcquisition* appsFeatures/remoteControl/deepMemoryMode
+# appsFeatures/remoteControl/commandReference* appsFeatures/remoteControl/command_list
+# developerGuide/software/build/webapp/webexamples* developerGuide/software/app_development/webapp/webExamples
+# developerGuide/software/ecosystem* developerGuide/software/system_development/ecosystem/ecosystem
+# developerGuide/software/e3* developerGuide/software/system_development/e3_software/e3_software
+# 
+# developerGuide/hardware/GEN1* developerGuide/hardware/hardware
+# developerGuide/hardware/2* developerGuide/hardware/hardware
+# developerGuide/hardware/12* developerGuide/hardware/hardware
+# developerGuide/12* developerGuide/hardware/hardware
+# developerGuide/hardware/hw_specs/* developerGuide/hardware/ORIG_GEN/hw_specs/hw_specs
+# developerGuide/hardware/known_hw_issues* developerGuide/hardware/ORIG_GEN/known_hw_issues/known_hw_issues
+# developerGuide/hardware/compares* developerGuide/hardware/ORIG_GEN/compares/vs
+# developerGuide/software/build/fpga/* developerGuide/fpga/fpga_top
