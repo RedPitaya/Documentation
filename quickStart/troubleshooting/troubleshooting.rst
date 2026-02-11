@@ -123,7 +123,7 @@ Firstly, we should check the status LEDs as they will give us feedback on the ty
     #. **Corrupted SD**. SD cards can become corrupted overtime. Confirm the SD card on a different Red Pitaya board, or replace it with a new one and install the OS on it.
 
     **NEXT STEPS:** Skip to chapter :ref:`4. Check the serial console boot log <serial_console_debug>` and check the boot log for any errors related to the SD card or file 
-       system loading.
+    system loading.
 
 #.  **Both Green and Blue LEDs** are **ON**, but the **Red and Orange LEDs** stop flashing a few seconds after booting, only to remain ON for about 2 seconds, and then the cycle repeats.
     This indicates that the **Red Pitaya is in a reboot cycle**. Note that the red and orange LEDs will always start flashing approximately 10 seconds after the green and blue LEDs are turned ON.
@@ -327,12 +327,12 @@ Red Pitaya not booting anymore?
 Red Pitaya is constantly rebooting?
 ------------------------------------
 
-    * A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations.
-      Check the external clock specifications and instructions for your Red Pitaya board model:
+A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations.
+Check the external clock specifications and instructions for your Red Pitaya board model:
 
-        * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
-        * :ref:`STEMlab 125-14 External clock <top_125_14_EXT>`.
-        * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
+    * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
+    * :ref:`STEMlab 125-14 External clock <top_125_14_EXT>`.
+    * :ref:`SDRlab 122-16 External clock <top_122_16_EXT>`.
 
 .. _faq_clock_specifications:
 
@@ -349,6 +349,20 @@ The external clock signal should have the following specifications:
 * **Differential LVDS signaling**
 * **Power supply:** 3V3
 * **Connector:** Pins 23 (Clk+) and 24 (Clk-) on E2 connector
+
+.. note::
+
+    The Red Pitaya FPGA is designed, tested, and guaranteed to operate correctly at the board's specified core clock frequency 
+    (125 MHz for STEMlab 125-14, 122.88 MHz for SDRlab 122-16, etc).
+    
+    While it is possible to run the board at different clock frequencies, please be aware that:
+    
+    - The FPGA may not function as intended at non-standard frequencies and requires thorough testing
+    - The ADC and DAC sampling rates will change proportionally with the clock frequency
+    - Lower clock frequencies will reduce the analog bandwidth of the board
+    - Red Pitaya does not guarantee proper operation at frequencies other than the specified core clock
+    
+    The board will boot with any valid external clock signal. 2.07-48 and higher OS versions do not block boot-up if the external clock is absent.
 
 For exact voltage levels and timing requirements, please refer to the board specifications and schematics for your Red Pitaya board model:
 

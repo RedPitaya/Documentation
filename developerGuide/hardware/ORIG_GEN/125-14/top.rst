@@ -440,6 +440,19 @@ The ADC clock can be provided by:
 
     Clock schematic
 
+.. note::
+
+    The Red Pitaya FPGA is designed, tested, and guaranteed to operate correctly at the board's specified core clock frequency 
+    (125 MHz for STEMlab 125-14, 122.88 MHz for SDRlab 122-16, etc).
+    
+    While it is possible to run the board at different clock frequencies, please be aware that:
+    
+    - The FPGA may not function as intended at non-standard frequencies and requires thorough testing
+    - The ADC and DAC sampling rates will change proportionally with the clock frequency
+    - Lower clock frequencies will reduce the analog bandwidth of the board
+    - Red Pitaya does not guarantee proper operation at frequencies other than the specified core clock
+    
+    The board will boot with any valid external clock signal. 2.07-48 and higher OS versions do not block boot-up if the external clock is absent.
 
 .. warning::
 

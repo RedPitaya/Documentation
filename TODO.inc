@@ -328,6 +328,11 @@
 ##.  Fix the spacing in between Index links. Index should have depth 1 and not 2 - makes it easier for users to read.
 
 
+# LINKS
+
+##. Add a not to common hardware specs to check specific board docs for measurements and further details.
+
+
 
 # OTHER
 

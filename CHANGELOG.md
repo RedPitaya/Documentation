@@ -6,6 +6,13 @@ orphan: true
 
 All notable changes to this project will be documented in this file.
 
+## February 2026 - Update 2
+
+**Minor updates:**
+
+- Added link redirects to the documentation.
+- Added external clock speed note to the external clock specifications.
+
 ## February 2026 - Update 1
 
 **Major updates:**
