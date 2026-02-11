@@ -31,7 +31,7 @@ appsFeatures/remoteControl/remoteControl appsFeatures/remoteControl/remoteAndPro
 appsFeatures/remoteControl/commandReference* appsFeatures/remoteControl/command_list
 
 # Deprecated marketplace apps
-appsFeatures/apps-featured/marketplace/pid* appsFeatures/apps-featured/marketplace/marketplace
+appsFeatures/apps-featured/marketplace/pid* appsFeatures/applications/marketplace/marketplace
 
 
 
@@ -50,7 +50,7 @@ developerGuide/software/other_info/tft developerGuide/software/configuration/tft
 
 # Webapp paths (moved from build to app_development)
 
-developerGuide/software/build/webapp/webexamples* developerGuide/software/app_development/webapp/webApps/webExamples
+developerGuide/software/build/webapp/webexamples* developerGuide/software/app_development/webapp/webExamples
 developerGuide/software/build/webapp/webapps developerGuide/software/app_development/webapp/webApps
 developerGuide/software/build/webapp/firstApp developerGuide/software/app_development/webapp/firstApp
 developerGuide/software/build/webapp/webapp developerGuide/software/app_development/webapp/webApps
