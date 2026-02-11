@@ -54,6 +54,7 @@ extensions = [
     'sphinx_copybutton',  # For better code copying
     'sphinx_design',  # For grid layouts and cards
     'notfound.extension',
+    'sphinxext.rediraffe',  # URL redirects from old to new locations
     'github',
     'myst_parser'
 ]
@@ -185,6 +186,11 @@ rst_epilog = """
 sphinx_tabs_valid_builders = ['linkcheck']
 
 sphinx_tabs_disable_tab_closing = True
+
+# Rediraffe configuration - manages URL redirects
+rediraffe_redirects = "redirects.txt"
+rediraffe_branch = "master"  # Branch to use for redirects on Read the Docs
+rediraffe_auto_redirect_perc = 100  # Automatically redirect if 100% match
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
