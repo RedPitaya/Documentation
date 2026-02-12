@@ -134,7 +134,7 @@ I2C Device Descriptor Exhaustion
 
 **Symptoms**
 
-SCPI server or C/Python API hangs after several hundred I2C read/write operations. Error message:
+SCPI server or C++/Python API hangs after several hundred I2C read/write operations. Error message:
 
 .. code-block:: console
 

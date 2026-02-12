@@ -654,7 +654,7 @@ To create a bare-metal application that runs on the ARM processor:
 3. **Write your application:**
 
     - Select "Empty Application" template
-    - Add your C source files
+    - Add your C++ source files
 
 4. **Build and run:**
 

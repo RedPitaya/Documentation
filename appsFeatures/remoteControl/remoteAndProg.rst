@@ -9,7 +9,7 @@ Control your Red Pitaya remotely from your PC or develop custom applications tha
 **Available approaches:**
 
 * **SCPI Server** - Remote control from MATLAB, LabVIEW, or Python using industry-standard commands over TCP/IP. No on-board programming required.
-* **C and Python API** - Develop applications that run directly on Red Pitaya's Linux OS for maximum performance and real-time processing.
+* **C++ and Python API** - Develop applications that run directly on Red Pitaya's Linux OS for maximum performance and real-time processing.
 * **JupyterLab** - Interactive Python environment for prototyping and analysis with notebook-style documentation.
 * **Deep Memory Mode** - Acquire and generate signals using the full DDR3 RAM (up to 512 MB) at full sampling rates.
 

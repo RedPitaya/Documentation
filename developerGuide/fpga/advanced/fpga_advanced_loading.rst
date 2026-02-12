@@ -1247,7 +1247,7 @@ Related Documentation
 **Developer Guides:**
 
 - :ref:`Red Pitaya FPGA Developer Guide <fpga_top>` - FPGA development overview
-- :ref:`C and Python API <C&Py_API>` - Software interface
+- :ref:`C++ and Python API <C&Py_API>` - Software interface
 - :ref:`Vivado Installation Guide <FPGA_install_vivado>`- Xilinx FPGA development
 
 **Application Examples:**

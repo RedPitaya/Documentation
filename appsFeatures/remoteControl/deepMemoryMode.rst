@@ -29,7 +29,7 @@ The buffer length is variable and can be specified by the user (must be a multip
 of DDR for proper operation of the Linux OS. Deep memory acquisition is based on the `AXI protocol (AXI DMA and AXI4-Stream)`_. The Deep Memory Acuisition uses Direct Memory Access (double the acronym for double the meaning).
 
 Once the acquisition is complete, Red Pitaya needs some time to transfer the entire file to the computer (RAM needs to be cleared) before the acquisition can be reset.
-DMA can be configured using SCPI, Python API and C API commands.
+DMA can be configured using SCPI, Python API and C++ API commands.
 
 **Features**
 
@@ -91,15 +91,15 @@ Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGet
     Here are a few tips to speed things up:
 
     * **SCPI commands** - acquire the data in **RAW binary** format (``ACQ:DATA:FORMAT BIN``, ``ACQ:AXI:DATA:UNITS RAW``). With the latest OS versions, we have optimized the SCPI server to transfer the **RAW binary** data in binary format, 
-      which is much faster than transferring it as a string (any other combination - VOTLS, ASCII). This method is still slightly slower than creating a custom TCP server with optimized commands using the Python or C API, but not
+      which is much faster than transferring it as a string (any other combination - VOTLS, ASCII). This method is still slightly slower than creating a custom TCP server with optimized commands using the Python or C++ API, but not
       by much.
     * **Python API**:
 
         * Use the new functions ``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)`` and ``rp_AcqAxiGetDataVNP(channel, pos, np_buffer)`` that return the data as a Numpy buffer directly.
         * The fastest possible acquisition is achieved by using the ``rp_AcqAxiGetDataRawDirect(channel, pos, size)``, which directly returns the memory region without copying it to a Numpy buffer.
 
-    * **Python or C API** - to transfer the data to the computer establish a `websocket TCP connection`_ with the Red Pitaya and transfer the data over the socket. This is slightly faster than **RAW BIN** SCPI and much faster 
-      than **VOLTS ASCII** using the SCPI commands as we avoid the overhead of string and voltage conversion. Custom TCP server (perhaps based on the SCPI server) can be created using the Python or C API to handle the data transfer.
+    * **Python or C++ API** - to transfer the data to the computer establish a `websocket TCP connection`_ with the Red Pitaya and transfer the data over the socket. This is slightly faster than **RAW BIN** SCPI and much faster 
+      than **VOLTS ASCII** using the SCPI commands as we avoid the overhead of string and voltage conversion. Custom TCP server (perhaps based on the SCPI server) can be created using the Python or C++ API to handle the data transfer.
 
 Once finished, please do not forget to free the resources and reserved memory locations. Otherwise, the performance of your Red Pitaya can decrease over time.
 
@@ -120,7 +120,7 @@ of DDR for proper operation of the Linux OS. Deep memory generation is based on 
 
 The generation frequency depends on the length of the DMG buffer size and decimation. The output waveform is generated at the full speed (125 MHz), but the maximum generation frequency (1.953 MHz) is limited by the minimum buffer size (if we consider a single period per buffer).
 
-DMG can be configured using Python API and C API commands. We will add SCPI command support in the future.
+DMG can be configured using Python API and C++ API commands. We will add SCPI command support in the future.
 
 **Features**
 

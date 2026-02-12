@@ -26,7 +26,7 @@ The easiest way to recalibrate the Red Pitaya board is through the Calibration a
 
 * :ref:`Calibration application <calibration_app>`.
 * :ref:`Calibration command line utility <calib_util>`.
-* :ref:`C or Python API commands <API_commands>`.
+* :ref:`C++ or Python API commands <API_commands>`.
 
 To open the Calibration application click on **System Tools** and then select **Calibration**.
 

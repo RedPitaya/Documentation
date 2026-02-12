@@ -396,7 +396,7 @@ chapters.
 
 SCPI commands are easy to use and memorise, but suffer from a lack of speed because all data, regardless of size or type, must be converted into a string which is then sent over 
 the TCP connection. When an SCPI command string arrives at the Red Pitaya board, it is compared with the list of all possible SCPI commands, if the correct command is found, the 
-parameters are taken from the string and converted back into the usual format, then the appropriate C API function is executed. Otherwise an error is returned.
+parameters are taken from the string and converted back into the usual format, then the appropriate C++ API function is executed. Otherwise an error is returned.
 
 |
 

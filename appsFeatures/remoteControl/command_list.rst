@@ -4,12 +4,12 @@
 List of supported SCPI & API commands
 ********************************************
 
-Here is a list of all available SCPI, API, and JupyterLab commands. The commands are organized into tables by functionality. Each table row represents the same command in SCPI, Python API, C API, and JupyterLAB.
+Here is a list of all available SCPI, API, and JupyterLab commands. The commands are organized into tables by functionality. Each table row represents the same command in SCPI, Python API, C++ API, and JupyterLAB.
 The Jupyter commands are identical to Python API commands, so please refer to them. In the final two columns is a command description and ecosystem version in which the command first appeared.
 
 At the beginning of each table are all command parameter options and available macros.
 
-For API commands you can find a detailed description in these C header files:
+For API commands you can find a detailed description in these C++ header files:
 
 * `Red Pitaya GitHub API header files <https://github.com/RedPitaya/RedPitaya/tree/master/rp-api/api/include>`_.
 
