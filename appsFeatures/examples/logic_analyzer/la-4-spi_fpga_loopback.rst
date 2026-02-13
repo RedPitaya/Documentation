@@ -204,6 +204,6 @@ Code - Python
         print(f"{rp_cla.getAnnotation(rp_la.LA_DECODER_SPI, decode[index]['control'])} = {decode[index]}")
 
     # Delete all messages and release SPI resources
-    rp_hw.rp_SPI_DestoryMessage()
+    rp_hw.rp_SPI_DestroyMessage()
     rp_hw.rp_SPI_Release()
     del rp_cla

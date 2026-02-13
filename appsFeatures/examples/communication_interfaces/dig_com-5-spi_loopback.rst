@@ -186,7 +186,7 @@ Using functions:
 .. code-block:: python
 
     #!/usr/bin/env python3
-    
+
     IP = 'rp-f07f1e.local'          # IP working Red Pitaya
 
     spi_mode = 'list'
@@ -233,19 +233,19 @@ Using functions:
 
     rp.tx_txt('SPI:MSG1:CS?')
     print("CS state for message 2:",rp_test.rx_txt())
-    
+
 
     rp.tx_txt('SPI:MSG:DEL')
     print("Delete message")
 
     rp.tx_txt('SPI:RELEASE')
     print("Release SPI")
-    
+
     rp.close()
 
 
 .. include:: ../python_scpi_note.inc
-    
+
 
 API Code Examples
 ==================
@@ -282,10 +282,10 @@ Code - C
 
         int res = rp_SPI_InitDevice("/dev/spidev1.0"); // Init spi api.
         printf("Init result: %d\n",res);
-        
+
         res = rp_SPI_SetDefaultSettings(); // Set default settings.
         printf("Set default settings: %d\n",res);
-        
+
         res = rp_SPI_GetSettings(); // Get uart speed.
         printf("Get current settings of spi: %d\n",res);
 
@@ -309,18 +309,18 @@ Code - C
 
         res = rp_SPI_SetBufferForMessage(1,0,true,100,false); // Create RX buffer.
         printf("Set buffers for second msg: %d\n",res);
-        
+
         res = rp_SPI_ReadWrite(); // Pass message to SPI.
         printf("Read/Write to spi: %d\n",res);
 
         uint8_t *rx_buffer = 0;
         size_t rx_size = 0;
-        res = rp_SPI_GetRxBuffer(0,&rx_buffer,&rx_size); // Get pointer to rx buffer. No need free buffer. Api itself destroy buffer. 
+        res = rp_SPI_GetRxBuffer(0,&rx_buffer,&rx_size); // Get pointer to rx buffer. No need free buffer. Api itself destroy buffer.
 
         if (rx_buffer)
             printf("Read message: %s (res %d)\n",rx_buffer,res);
-        
-        res = rp_SPI_DestoryMessage();
+
+        res = rp_SPI_DestroyMessage();
 
         res = rp_SPI_Release(); // Close spi api.
         printf("UnInit result: %d\n",res);
@@ -375,7 +375,7 @@ Code - Python
         tx_buff = rp_hw.Buffer(data_size)
         for i in range(data_size):
             tx_buff[i] = data_int[i]
-            
+
         tx_buff1 = rp_hw.Buffer(data_size1)
         for i in range(data_size1):
             tx_buff1[i] = data_int1[i]
@@ -406,6 +406,6 @@ Code - Python
         print(f"MSG0: {data}\nMSG1: {data1}\nTX0 {data_tx0}")
 
         # Delete all messages and release buffers
-        rp_hw.rp_SPI_DestoryMessage()
+        rp_hw.rp_SPI_DestroyMessage()
         # Release SPI resources
         rp_hw.rp_SPI_Release()
