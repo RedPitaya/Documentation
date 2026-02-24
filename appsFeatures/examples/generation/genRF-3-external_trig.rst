@@ -168,12 +168,12 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C API
+Code - C++ API
 ---------------
 
-.. code-block:: c
+.. code-block:: cpp
 
-    /* Red Pitaya C API example of Generation a signal on a external trigger */
+    /* Red Pitaya C++ API example of Generation a signal on a external trigger */
 
     #include <stdio.h>
     #include <stdlib.h>

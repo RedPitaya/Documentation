@@ -142,12 +142,12 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C API
+Code - C++ API
 ---------------
 
-.. code-block:: c
+.. code-block:: cpp
 
-    /* Red Pitaya C API example LED Bar graph */
+    /* Red Pitaya C++ API example LED Bar graph */
     #include <stdio.h>
     #include <stdlib.h>
     #include <unistd.h>

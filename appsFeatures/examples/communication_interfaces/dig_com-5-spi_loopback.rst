@@ -253,10 +253,10 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C
----------
+Code - C++
+-----------
 
-.. code-block:: c
+.. code-block:: cpp
 
     /* @brief This is a simple application for testing SPI communication on a RedPitaya
     *

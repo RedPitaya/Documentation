@@ -557,16 +557,16 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C API
+Code - C++ API
 ---------------
 
 .. tabs::
 
     .. tab:: 125-10, 125-14, 122-16, 250-12
 
-        .. code-block:: c
+        .. code-block:: cpp
 
-            /* Red Pitaya C API example of Acquiring a signal on external trigger on a specific channel */
+            /* Red Pitaya C++ API example of Acquiring a signal on external trigger on a specific channel */
             
             #include <stdio.h>
             #include <stdlib.h>
@@ -643,9 +643,9 @@ Code - C API
 
     .. tab:: 125-14 4-Input
 
-        .. code-block:: c
+        .. code-block:: cpp
 
-            /* Red Pitaya C API example of Acquiring a signal on external trigger on a specific channel */
+            /* Red Pitaya C++ API example of Acquiring a signal on external trigger on a specific channel */
 
             #include <stdio.h>
             #include <stdlib.h>

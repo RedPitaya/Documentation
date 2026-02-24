@@ -65,7 +65,7 @@ Code - C++ API
 
 .. code-block:: cpp
 
-    /* Red Pitaya C API example Generating continuous signal via DMG
+    /* Red Pitaya C++ API example Generating continuous signal via DMG
     * This application generates a specific signal */
 
     #include <math.h>

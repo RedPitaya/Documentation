@@ -6,7 +6,7 @@ Description
 ============
 
 This example demonstrates communication with the internal 24LC64 EEPROM memory on the Red Pitaya using the I2C protocol. The code below writes a message to a given address inside the EEPROM and read the message from the EEPROM.
-While the previous example uses the C API commands, this example uses the ioctl and other functions accessible directly from C code.
+While the previous example uses the C++ API commands, this example uses the ioctl and other functions accessible directly from C code.
 
 Required hardware
 ====================

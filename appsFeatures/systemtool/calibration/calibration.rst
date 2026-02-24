@@ -38,8 +38,6 @@ To open the Calibration application click on **System Tools** and then select **
     :align: center
     :width: 1200
 
-|
-
 When the Calibration application opens, you will see four options:
 
 .. figure:: img/Calibration_api.png
@@ -109,8 +107,10 @@ additional terminators are needed when connecting inputs to outputs during the c
 
 .. warning::
 
-    For original generation boards, the frequency calibration filter can affect the amplitude of measured input data (particularly the peak-to-peak values). The filter should remain disabled during DC calibration to ensure accurate measurements. 
-    The DC calibration process on OS version 2.07-44 and above automatically handles this. For older OS versions, please refer to the :ref:`Disabling frequency calibration filter instructions <disable_frequency_filter>`.
+    For original generation boards, the frequency calibration filter can affect the amplitude of measured input data (particularly the 
+    peak-to-peak values). The filter should remain disabled during DC calibration to ensure accurate measurements. The DC calibration 
+    process on OS version 2.07-44 and above automatically handles this. For older OS versions, please refer to the 
+    :ref:`Disabling frequency calibration filter instructions <disable_frequency_filter>`.
 
 **Calibration procedure:**
 
@@ -121,7 +121,8 @@ additional terminators are needed when connecting inputs to outputs during the c
 Second generation boards
 ========================
 
-Second Generation boards (STEMlab 125-14 Gen 2, STEMlab 125-14 PRO Gen 2, STEMlab 65-16 TI, etc.) have improved analog front-end circuitry that eliminates the need for 50 Ω terminators during calibration. The calibration procedure is simplified.
+Second Generation boards (STEMlab 125-14 Gen 2, STEMlab 125-14 PRO Gen 2, STEMlab 65-16 TI, etc.) have improved analog front-end circuitry that 
+eliminates the need for 50 Ω terminators during calibration. The calibration procedure is simplified.
 
 **Calibration procedure:**
 
@@ -136,7 +137,8 @@ Second Generation boards (STEMlab 125-14 Gen 2, STEMlab 125-14 PRO Gen 2, STEMla
 DC Calibration
 ***************
 
-**Purpose:** DC calibration corrects DC offset and gain errors in the ADCs and DACs, ensuring accurate voltage measurements and signal generation at DC and low frequencies.
+**Purpose:** DC calibration corrects DC offset and gain errors in the ADCs and DACs, ensuring accurate voltage measurements and signal 
+generation at DC and low frequencies.
 
 With the DC calibration, you can fine-tune Red Pitaya's ADCs and DACs to compensate for component tolerances and drift.
 
@@ -145,7 +147,8 @@ With the DC calibration, you can fine-tune Red Pitaya's ADCs and DACs to compens
 Auto DC calibration
 ====================
 
-Auto DC calibration will guide you step-by-step through the calibration process and is the option we recommend for beginners. Step-by-step video guide:
+Auto DC calibration will guide you step-by-step through the calibration process and is the option we recommend for beginners. Step-by-step video 
+guide:
 
 .. raw:: html
 
@@ -167,7 +170,8 @@ Apart from calibration, this option also allows you to identify any parasitics o
 
 .. note::
 
-    As the DACs on the **original generation boards** have output impedance of **50 Ω**, a **50 Ω load** should be connected to the outputs (DACs) during calibration for accurate results.
+    As the DACs on the **original generation boards** have output impedance of **50 Ω**, a **50 Ω load** should be connected to the outputs 
+    (DACs) during calibration for accurate results.
 
 .. figure:: img/DC_manual.jpg
     :align: center
@@ -189,7 +193,8 @@ When closing the application without saving the values, the following prompt wil
 
 .. note::
 
-    SDRlab 122-16 only has access to manual DC calibration. The interface has less functionality as SDRlab 122-16 has no jumpers to switch the voltage range and can only generate sine waveforms due to AC coupling.
+    SDRlab 122-16 only has access to manual DC calibration. The interface has less functionality as SDRlab 122-16 has no jumpers to switch the 
+    voltage range and can only generate sine waveforms due to AC coupling.
 
     .. figure:: img/DC_manual_sdr.png
         :align: center
@@ -231,12 +236,13 @@ DAC calibration parameters
 Frequency calibration
 **********************
 
-**Purpose:** Frequency calibration compensates for component mismatches in the analog front-end resistor and capacitor divider circuits when switching between LV and HV voltage ranges. 
-This ensures accurate amplitude measurements across the frequency spectrum by applying a digital correction filter in the FPGA.
+**Purpose:** Frequency calibration compensates for component mismatches in the analog front-end resistor and capacitor divider circuits when 
+switching between LV and HV voltage ranges. This ensures accurate amplitude measurements across the frequency spectrum by applying a digital correction filter in the FPGA.
 
 .. note::
 
-    While component matching could theoretically eliminate the need for frequency calibration, the filter approach enables mass production while maintaining reasonable board costs, high accuracy and small form-factor.
+    While component matching could theoretically eliminate the need for frequency calibration, the filter approach enables mass production while 
+    maintaining reasonable board costs, high accuracy and small form-factor.
 
 |
 
@@ -394,7 +400,8 @@ To disable the frequency calibration filter, follow these steps:
 Command Line Calibration
 **************************
 
-The calibration application is not the only way to calibrate the Red Pitaya board. The command line utility *calib* can also be used for calibration tasks.
+The calibration application is not the only way to calibrate the Red Pitaya board. The command line utility *calib* can also be used for 
+calibration tasks.
 
 For more information on the command line utility and the different calibration formats, please refer to the :ref:`calib_util documentation <calib_util>`.
 

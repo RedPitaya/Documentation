@@ -133,6 +133,9 @@
 
 ##.  Add output coupling to technical documentation tables
 
+##.  Note on placing extension modules. The connectors on the board are actually wider than neccessary and allow for 3 possible ways to connect the extension module. The correct way is to connect it in the 
+    middle, so that the pins are aligned with the connectors on the board. This is important for proper operation and to avoid damaging the board or the module.
+
 
 
 # SOFTWARE
@@ -176,6 +179,13 @@
 
     Happens when a program corrupts memory or accesses invalid memory. This can be due to bugs in the program, hardware issues, or conflicts between different software components.
     Please reinstall the latest version of the official Red Pitaya OS and check if the problem persists. If it does, please contact us.
+
+##. Identify external QSPI or eMMC storage:
+
+    You can check the dmesg logs to see if the external storage is detected. Look for lines mentioning "mmc" or "spi" which indicate the presence of eMMC or QSPI devices respectively. 
+    You can also check the /dev directory for entries like /dev/mmcblk0 (for eMMC) or /dev/spidev0.0 (for QSPI). Additionally, you can use the "lsblk" command to list all block devices 
+    and their details.
+
 
 
 
@@ -230,6 +240,14 @@
 
 
 # APPLICATIONS
+
+
+##.  Click Shield. Make the internal external clock source select clearer. Clarify the INT is meant as Red Pitaya Oscillator and not the one on the Click Shield.
+
+##.  Update Deep Memory Generation and DAC streaming. Account for the SIGNALlab and update the documentation to mention that as long as the data fits into the DDR, it can be generated at the maximum rate of the board. 
+    For example, on the 125-14, you can generate at 125 MS/s as long as the data fits into the DDR. If you want to generate longer waveforms, you need to reduce the sampling rate.
+
+##.  Note on streaming - downloaded client and the OS must be the same version. If you have an older client, it may not work with the latest OS and vice versa. This is because of the changes in the streaming protocol and data formats.
 
 ##.  LA API does not crash on STEMlab 125-10 with the latest OS - software issues
 

@@ -576,7 +576,7 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
     
-.. Code - C API
+.. Code - C++ API
 .. ---------------
 
 

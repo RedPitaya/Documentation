@@ -311,12 +311,12 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C API
+Code - C++ API
 ---------------
 
-.. code-block:: c
+.. code-block:: cpp
 
-    /*  Red Pitaya C API example of acquiring 1024 samples of data 
+    /*  Red Pitaya C++ API example of acquiring 1024 samples of data 
         on both channels using DMA */
     
     #include <stdio.h>

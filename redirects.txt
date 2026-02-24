@@ -70,23 +70,3 @@ developerGuide/hardware/ext_modules developerGuide/hardware/hardware
 ## FPGA
 # FPGA documentation moved from software/build to its own section
 developerGuide/fpga/advanced/simulation developerGuide/fpga/getting_started/simulation
-
-
-
-
-# quickStart/connect* appsFeatures/systemtool/network_manager/networkManager
-# quickStart/os* quickStart/OS_update/OS_update
-# appsFeatures/remoteControl/deepMemoryAcquisition* appsFeatures/remoteControl/deepMemoryMode
-# appsFeatures/remoteControl/commandReference* appsFeatures/remoteControl/command_list
-# developerGuide/software/build/webapp/webexamples* developerGuide/software/app_development/webapp/webExamples
-# developerGuide/software/ecosystem* developerGuide/software/system_development/ecosystem/ecosystem
-# developerGuide/software/e3* developerGuide/software/system_development/e3_software/e3_software
-# 
-# developerGuide/hardware/GEN1* developerGuide/hardware/hardware
-# developerGuide/hardware/2* developerGuide/hardware/hardware
-# developerGuide/hardware/12* developerGuide/hardware/hardware
-# developerGuide/12* developerGuide/hardware/hardware
-# developerGuide/hardware/hw_specs/* developerGuide/hardware/ORIG_GEN/hw_specs/hw_specs
-# developerGuide/hardware/known_hw_issues* developerGuide/hardware/ORIG_GEN/known_hw_issues/known_hw_issues
-# developerGuide/hardware/compares* developerGuide/hardware/ORIG_GEN/compares/vs
-# developerGuide/software/build/fpga/* developerGuide/fpga/fpga_top

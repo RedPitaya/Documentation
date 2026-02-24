@@ -236,9 +236,7 @@ Code - C++ API
 
 .. code-block:: cpp
 
-    /* Red Pitaya C API example for acquiring data from all 4 channels in split trigger mode */
-
-    #include <stdio.h>
+        /* Red Pitaya C++ API example for acquiring data from all 4 channels in split trigger mode */
     #include <stdlib.h>
     #include <unistd.h>
     #include <iostream>
