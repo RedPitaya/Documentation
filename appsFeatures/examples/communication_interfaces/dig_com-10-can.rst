@@ -339,12 +339,12 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C
+Code - C++
 -------------
 
 .. include:: ../c_code_note.inc
 
-.. code-block:: c
+.. code-block:: cpp
     
     /* @brief This application demonstrates communication between two devices on a CAN bus
     * using CAN0 and CAN1 ports on the Red Pitaya.

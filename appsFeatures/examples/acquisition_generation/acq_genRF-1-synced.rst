@@ -290,12 +290,12 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C API
+Code - C++ API
 --------------
 
-.. code-block:: c
+.. code-block:: cpp
 
-    /* Red Pitaya C API example of Synced Generation and acquisition 
+    /* Red Pitaya C++ API example of Synced Generation and acquisition 
     on a specific channel */
 
     #include <stdio.h>

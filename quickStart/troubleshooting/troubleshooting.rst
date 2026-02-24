@@ -18,7 +18,7 @@ General troubleshooting
 Here is a comprehensive guide to troubleshooting common problems with Red Pitaya. If you are experiencing problems with your Red Pitaya, please refer to 
 the following sections:
 
-**General troubleshooting proceedure:**
+**General troubleshooting procedure:**
 
     * :ref:`Troubleshooting procedure <troubleshooting>` - Step-by-step guide to troubleshooting common issues with Red Pitaya
 
@@ -148,7 +148,7 @@ Use this section if:
 
 * **The status LEDs are working normally**. This indicates that the Red Pitaya board itself is good, but we are still having trouble connecting to the Red Pitaya web interface or :ref:`SSH <ssh>`.
 
-Before proceeding with the steps below, please check if you can :ref:`connect to the board via the web interface <quickstart_connect>`. If you cannot connect to the web interface, please 
+Before proceding with the steps below, please check if you can :ref:`connect to the board via the web interface <quickstart_connect>`. If you cannot connect to the web interface, please 
 follow the steps below to troubleshoot the network connection.
 
 At this point the most likely problem is a network connection issue.

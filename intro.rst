@@ -62,7 +62,7 @@ to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sortin
 
 **Use cases:**
 
-* `Industrial usecases <{redpitaya_website}>`__
+* `Industrial use cases <{redpitaya_website}>`__
 * `Red Pitaya blog <https://content.redpitaya.com/blog>`_
 
 **FPGA lessons and tutorials**

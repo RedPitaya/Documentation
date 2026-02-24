@@ -36,13 +36,13 @@ API Code Examples
 
 .. include:: ../c_code_note.inc
 
-Code - C API
+Code - C++ API
 --------------
 
 
-.. code-block:: c
+.. code-block:: cpp
 
-    /* Red Pitaya C API example of Generating and acquiring a signal on a specific channel 
+    /* Red Pitaya C++ API example of Generating and acquiring a signal on a specific channel 
     then checking the signal shape */
 
     #include <stdio.h>

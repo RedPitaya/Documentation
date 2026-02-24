@@ -232,12 +232,12 @@ API Code Examples
 .. include:: ../c_code_note.inc
 
 
-Code - C API
+Code - C++ API
 --------------
 
 The LCR meter requires two additional libraries ("-lrpapp_lcr -lrp-dsp") to be inlcuded into the "Makefile". Check if they are added and add them into *line 7* if not.
 
-.. code-block:: c
+.. code-block:: cpp
 
     #include <stdio.h>
     #include <stdlib.h>

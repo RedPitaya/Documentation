@@ -106,7 +106,7 @@ Older OS versions
 
 All older OS versions that are in our database are available in our archive:
 
-* |Red Pitaya archive| - some images may require separate ecosystem and Linux OS installation. Check the :ref:`nightly build installation instructions <nighly_build_installation>`.
+* |Red Pitaya archive| - some images may require separate ecosystem and Linux OS installation. Check the :ref:`nightly build installation instructions <nightly_build_installation>`.
 
 .. note::
 
@@ -134,7 +134,7 @@ As these builds are snapshots of the latest code, odds are you will encounter mo
 * |nightly builds|  -  `NIGHTLY CHANGELOG <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/CHANGELOG.txt>`_.
 
 
-The instructions for installing the Nightly Builds are available in the :ref:`Nightly build installation guide <nighly_build_installation>` below.
+The instructions for installing the Nightly Builds are available in the :ref:`Nightly build installation guide <nightly_build_installation>` below.
 
 .. note::
 
@@ -379,22 +379,25 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
 +-----------------+-----------------+---------------------------------------+-------------------+
 | Red Pitaya OS   | OS release date | Nightly Build (alpha) versions        | Linux version     |
 +=================+=================+=======================================+===================+
-| 2.00-18         | 26.7.2023       | up to NB 141                          | 2.00              |
+| IN DEV          | -               | NB 656 and later                      | 3.00              |
 +-----------------+-----------------+---------------------------------------+-------------------+
-| 2.00-22         | 4.10.2023       | up to NB 160                          | 2.01              |
-+-----------------+-----------------+---------------------------------------+-------------------+
-| 2.00-23         | 5.10.2023       | up to NB 162                          | 2.01              |
-+-----------------+-----------------+---------------------------------------+-------------------+
-| 2.00-30         | 11.1.2024       | up to NB 215                          | 2.03              |
-+-----------------+-----------------+---------------------------------------+-------------------+
-| 2.04-35         | 15.3.2024       | up to NB 258                          | 2.04              |
-+-----------------+-----------------+---------------------------------------+-------------------+
-| 2.05-37         | 7.8.2024        | up to NB 345                          | 2.05              |
+| 2.07-48         | 1.12.2025       | up to NB 655                          | 2.07              |
 +-----------------+-----------------+---------------------------------------+-------------------+
 | 2.07-43         | 4.9.2025        | up to NB 622                          | 2.07              |
 +-----------------+-----------------+---------------------------------------+-------------------+
-| IN DEV          | -               | 623 and later                         | 2.07 and newer    |
+| 2.05-37         | 7.8.2024        | up to NB 345                          | 2.05              |
 +-----------------+-----------------+---------------------------------------+-------------------+
+| 2.04-35         | 15.3.2024       | up to NB 258                          | 2.04              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.00-30         | 11.1.2024       | up to NB 215                          | 2.03              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.00-23         | 5.10.2023       | up to NB 162                          | 2.01              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.00-22         | 4.10.2023       | up to NB 160                          | 2.01              |
++-----------------+-----------------+---------------------------------------+-------------------+
+| 2.00-18         | 26.7.2023       | up to NB 141                          | 2.00              |
++-----------------+-----------------+---------------------------------------+-------------------+
+
 
 
 1.  Download the .zip containing the `Nightly Build Ecosystem <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_ (usually the highest number available).
@@ -423,41 +426,16 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
 **Please read this section carefully**
 
 When unpacking the alpha ecosystem, some files may be overwritten because the FAT file system is not case-sensitive.
-Files such as CONNMARK.h and connmark.h will appear to the file system to be the same file, so you will be prompted to choose which file to keep.
-Choose from the following options (depending on the byte size of the files):
-
-+---------------+------------------+-------------------+
-| File name     | File byte size   | Prompt overwrite? |
-+===============+==================+===================+
-| ipt_ttl.h     | 375              | No                |
-+---------------+------------------+-------------------+
-| ipt_ECN.h     | 901              | Yes               |
-+---------------+------------------+-------------------+
-| ip6t_HL.h     | 408              | Yes               |
-+---------------+------------------+-------------------+
-| xt_MARK.h     | 184              | Yes               |
-+---------------+------------------+-------------------+
-| xt_DSCP.h     | 697              | Yes               |
-+---------------+------------------+-------------------+
-| xt_tcpmss.h   | 235              | No                |
-+---------------+------------------+-------------------+
-| xt_RATEEST.h  | 859              | No                |
-+---------------+------------------+-------------------+
-| xt_CONNMARK.h | 901              | No                |
-+---------------+------------------+-------------------+
+Files such as ``CONNMARK.h`` and ``connmark.h`` will appear to the file system to be the same file, so you will be prompted to choose which file to keep.
 
 .. note::
 
-    Please note that the file names are approximate.
-
-    **As a general rule, always choose the smaller file unless the difference in size is more than 200 bytes.**
-    (For example, if you are asked to choose between file sizes of 199 bytes and 901 bytes, choose 901.
-    If the choice is between 235 bytes and 253 bytes, choose 235 (the smaller size)).
+    For normal system operation any file can be chosen, since they **do not affect the system operation**.
+    
+    For development purposes, you should already be using a Linux Ubuntu native OS, so this warning will not popup. The files are crucial for development and both versions of each file must be present on the development system.
 
 * This will also happen if you first extract to a folder, but you may not be informed of the change (it happens automatically).
-* There may be other file combinations that work, this is one that works for us.
-* This is a problem with the FAT file system, which is not case-sensitive, so files like "connmark.h" and "CONNMARK.h" are interpreted as the same file.
-* If you use a different combination of files, you may not be able to connect to Red Pitaya.
+* This is a problem with the FAT file system, which is not case-sensitive, so files like ``connmark.h`` and ``CONNMARK.h`` are interpreted as the same file.
 
 ================================
 Updating nightly build ecosystem
