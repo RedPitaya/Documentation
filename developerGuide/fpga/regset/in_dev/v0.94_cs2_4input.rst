@@ -8,7 +8,7 @@ CS[2] - Oscilloscope CH C/D (4-Input) (0x40200000-0x402FFFFF)
 
 **Board:** STEMlab 125-14 4-Input
 
-This document describes the CS[2] register space for the STEMlab 125-14 4-Input board. On this board, CS[2] contains 
+This document describes the CS[2] register space for the STEMlab 125-14 4-Input board. On this board, CS[2] contains
 Oscilloscope channels C and D instead of the Arbitrary Signal Generator found on other boards.
 
 .. note::
@@ -182,7 +182,7 @@ Trigger Source and Thresholds
 
 .. tip::
 
-    **Hysteresis usage:** Set hysteresis to prevent trigger noise. The signal must move outside 
+    **Hysteresis usage:** Set hysteresis to prevent trigger noise. The signal must move outside
     the hysteresis band before the trigger can fire again.
 
 Trigger Timing
@@ -231,7 +231,9 @@ Data Processing
 +--------------------+--------------------------------------------------------------+-------+-----+
 | **0x28**           | **Signal average enable**                                    |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
-|                    | Reserved                                                     | 31:1  | R   |
+|                    | Reserved                                                     | 31:2  | R   |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Enables 16-bit mode. Data is expanded to 16 bits.            |    1  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Enable signal average at decimation                          |    0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
