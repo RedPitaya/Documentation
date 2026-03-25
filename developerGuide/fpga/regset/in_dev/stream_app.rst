@@ -22,7 +22,7 @@ Stream App FPGA Project
 
     * :ref:`Data stream control <streaming_top>`
 
-The Stream App FPGA project provides high-speed data streaming capabilities for ADC, DAC, and GPIO interfaces. It enables continuous data 
+The Stream App FPGA project provides high-speed data streaming capabilities for ADC, DAC, and GPIO interfaces. It enables continuous data
 streaming with configurable triggering, decimation, filtering, and DMA-based data transfer for real-time signal processing applications.
 
 .. contents:: Register index
@@ -354,7 +354,16 @@ Calibration
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Calibration gain value CH2                                   | 15:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
+| **0x84**           | **Calibration mode control register**                        |       |     |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Reserved                                                     | 31:1  | R   |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Enabling legacy calibration mode.                            | 0     | R/W |
++--------------------+--------------------------------------------------------------+-------+-----+
 
+.. note::
+
+    Legacy calibration mode is enabled for calibration values in versions 1 through 5. This calibration occurs after the frequency filter. Calibration version 6 calibrates values before the frequency filter.
 
 Status and Diagnostics
 ------------------------
@@ -852,7 +861,7 @@ Quick Reference
 RLE Output Encoding
 -------------------
 
-**RLE output encoding:** 
+**RLE output encoding:**
 
 The written number of samples equals *(desired number - 1)*, max 0xFF (8 bits available).
 Not less than 1 - limited to one change per 2 clock cycles.

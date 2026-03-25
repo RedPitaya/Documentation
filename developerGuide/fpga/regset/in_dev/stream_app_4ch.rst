@@ -358,6 +358,16 @@ Calibration (Channels 1-2)
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Calibration gain value CH2                                   | 15:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
+| **0x84**           | **Calibration mode control register**                        |       |     |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Reserved                                                     | 31:1  | R   |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Enabling legacy calibration mode.                            | 0     | R/W |
++--------------------+--------------------------------------------------------------+-------+-----+
+
+.. note::
+
+    Legacy calibration mode is enabled for calibration values in versions 1 through 5. This calibration occurs after the frequency filter. Calibration version 6 calibrates values before the frequency filter.
 
 |
 
@@ -664,7 +674,7 @@ Quick Reference
 Status and Configuration
 ------------------------
 
-**RLE output encoding:** 
+**RLE output encoding:**
 
   The written number of samples equals to *(desired number - 1)*, max 0xFF (8 bits available)
   Not less than 1 - limited to one change per 2 clock cycles.
