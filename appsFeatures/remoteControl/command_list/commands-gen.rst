@@ -341,6 +341,7 @@ Burst mode
 - ``<mode> = {BURST, CONTINUOUS}`` Default: ``CONTINUOUS``
 - ``<num>, <repetitions> = {1...65536}`` Default: ``1``
 - ``<period> = {1 µs - 500 s}`` Value in *µs*.
+- ``<period2> = {0.001 µs - 4 s}`` Value in *µs*.
 
 **Available Jupyter and API macros:**
 
@@ -389,6 +390,16 @@ Burst mode
 |                                                     | |                                                                                       | | default to 1 us between bursts.                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | ``SOUR<n>:BURS:INT:PER?`` > ``<period>``          | | C++: ``rp_GenGetBurstPeriod(rp_channel_t channel, uint32_t *period)``                 | Get the period of a bursts in microseconds.                                                  | 1.04-18 and up     |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:INT:PER?`` > ``1000000``             | | Python: ``rp_GenGetBurstPeriod(<channel>)``                                           |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER <period2>``                | | C++: ``rp_GenBurstPeriod(rp_channel_t channel, float period)``                        | | Set the duration of a single burst in microseconds (**P**). This specifies the time        | in dev             |
+| | Examples:                                         | |                                                                                       | | between the start of one and the start of the next burst.                                  |                    |
+| | ``SOUR1:BURS:INT:PER 1000000``                    | | Python: ``rp_GenBurstPeriod(<channel>, <period>)``                                    | | The fractional part is given in nanoseconds.                                               |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:INT:PER?`` > ``<period2>``         | | C++: ``rp_GenGetBurstPeriod(rp_channel_t channel, float *period)``                    | Get the period of a bursts in microseconds.                                                  | in dev             |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR1:BURS:INT:PER?`` > ``1000000``             | | Python: ``rp_GenGetBurstPeriod(<channel>)``                                           |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
