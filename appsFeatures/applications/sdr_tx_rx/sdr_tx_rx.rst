@@ -25,6 +25,7 @@ The instructions in this section refer to operating the applications above on th
 
    <a href="https://github.com/pavel-demin/red-pitaya-notes" target="_blank">Pavel Demin's Red Pitaya Notes GitHub</a>
 
+|
 
 SDR Transceiver compatible with HPSDR
 =====================================
@@ -96,6 +97,7 @@ For more information on hardware connections, software configuration, and other 
     * `STEMlab 125-14 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-hpsdr/>`_.
     * `SDRlab 122-16 SDR transceiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-hpsdr-122-88/>`_.
 
+|
 
 SDR Receiver compatible with HPSDR
 =====================================
@@ -115,7 +117,7 @@ Software
 
 The HPSDR compatible SDR receiver should work with most programs that support the HPSDR/Metis communication protocol:
 
-    * `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`_ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`_.
+    * `PowerSDR mRX PS <https://openhpsdr.org/wiki/index.php?title=PowerSDR>`__ which can be downloaded from this `link <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`__.
     * `QUISK <https://james.ahlstrom.name/quisk>`_ with the ``hermes/quisk_conf.py`` configuration file.
     * `ghpsdr3-alex <https://napan.ca/ghpsdr3/index.php/Main_Page>`_ distributed client-server system.
     * `openHPSDR Android application <https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr>`_ described in more detail at `this link <https://g0orx.blogspot.com/2015/01/openhpsdr-android-application.html>`_.
@@ -142,7 +144,7 @@ For more information on hardware connections, software configuration, and other 
     * `STEMlab 125-14 SDR receiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-receiver-hpsdr/>`_.
     * `SDRlab 122-16 SDR receiver HPSDR <https://pavel-demin.github.io/red-pitaya-notes/sdr-receiver-hpsdr-122-88/>`_.
 
-
+|
 
 SDR transceiver
 ===============
@@ -231,6 +233,46 @@ For more information on hardware connections, software configuration, and other 
     * `STEMlab 125-14 SDR transceiver <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver/>`_.
     * `SDRlab 122-16 SDR transceiver <https://pavel-demin.github.io/red-pitaya-notes/sdr-transceiver-122-88/>`_.
 
+|
+
+.. _sdr_macos:
+
+macOS compatibility
+===================
+
+Red Pitaya SDR applications expose an **HPSDR/Metis (Hermes) compatible** network stream. On macOS the SDR client ecosystem is smaller than on Windows or Linux, and most popular clients either do not natively support Hermes/Metis or require additional configuration.
+
+Known issues on macOS
+---------------------
+
+* **SDR++** does not include a Hermes/Metis source plugin by default on macOS.
+* **SparkSDR / Spark++** may fail to discover Red Pitaya if there is a Hermes protocol version mismatch. Inconsistent behaviour (works once, then crashes) often points to mismatched protocol versions or a corrupted configuration file — try clearing the application preferences between reinstalls.
+* **Gqrx** requires a SoapySDR or OsmoSDR backend and cannot connect to Red Pitaya directly.
+* macOS firewall or content/privacy settings can silently block the UDP/TCP ports used by the Hermes/Metis protocol.
+
+Recommended approaches
+----------------------
+
+1. **Use ghpsdr3-alex on a Linux host or Linux VM (recommended)**
+
+   Install `ghpsdr3-alex <https://napan.ca/ghpsdr3/index.php/Main_Page>`_ on a Linux machine (or a Linux VM running on your Mac via Parallels, VMware, or VirtualBox). Configure it to connect to Red Pitaya over Hermes/Metis. ghpsdr3-alex will act as a server that many SDR clients — including macOS ones — can connect to, bypassing the protocol mismatch.
+
+2. **Use PowerSDR mRX in a Windows VM**
+
+   `PowerSDR mRX PS <https://github.com/TAPR/OpenHPSDR-PowerSDR/releases>`__ with the Red Pitaya/HAMlab profile is known to work reliably. Run it inside a Windows VM on your Mac (Parallels, VMware, or VirtualBox) and use remote desktop or audio/IQ streaming to macOS if needed.
+
+3. **Hermes → SoapySDR bridge (advanced)**
+
+   SDR++ supports SoapySDR backends. A bridge that translates Red Pitaya's Hermes/Metis stream into a SoapySDR-compatible source allows SDR++ to use Red Pitaya as a Soapy device. No official bridge exists at the time of writing, but community tools or a small wrapper using ``libmetis`` / ``ghpsdr3`` code can be used. This approach requires Linux or macOS build toolchain knowledge.
+
+Useful references
+-----------------
+
+* `HPSDR/Metis protocol documentation <https://raw.githubusercontent.com/TAPR/OpenHPSDR-SVN/master/Metis/Documentation/Metis-%20How%20it%20works_V1.33.pdf>`_
+* `Pavel Demin's Red Pitaya Notes (community SDR tools) <https://pavel-demin.github.io/red-pitaya-notes/>`_
+* :ref:`Red Pitaya known software issues <known_sw_issues>`
+
+|
 
 Author & Source
 ===============

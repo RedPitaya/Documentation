@@ -8,8 +8,22 @@ Common hardware specifications (Original Gen)
 
     Looking for :ref:`Gen 2 hardware specifications? <hw_specs_gen2>`
 
-This section contains information that applies to **all** Red Pitaya Original Generation boards. For board-specific specifications, measurements, power requirements, and 
-detailed technical data, please refer to the individual product documentation pages.
+This section contains information that applies to **all** Red Pitaya Original Generation boards.
+
+.. note::
+
+    For board-specific specifications, measurements, power requirements, connector pinouts, and detailed technical data, please refer to your board's documentation page:
+
+    * :ref:`STEMlab 125-14 <top_125_14>`
+    * :ref:`STEMlab 125-14 Z7020-LN <top_125_14_Z7020_LN>`
+    * :ref:`SDRlab 122-16 <top_122_16>`
+    * :ref:`SDRlab 122-16 External Clock <top_122_16_EXT>`
+    * :ref:`SIGNALlab 250-12 <top_250_12>`
+    * :ref:`STEMlab 125-14 4-Input <top_125_14_4-IN>`
+    * :ref:`STEMlab 125-14 External Clock (Discontinued) <top_125_14_EXT>`
+    * :ref:`STEMlab 125-14 LN (Discontinued) <top_125_14_LN>`
+    * :ref:`STEMlab 125-14 X-Channel System (Discontinued) <top_125_14_MULTI>`
+    * :ref:`STEMlab 125-10 (Discontinued) <top_125_10>`
 
 Please note that the full hardware schematics for the Red Pitaya boards are not available. While Red Pitaya has open-source code, the hardware schematics are not open 
 source. However, development schematics with information regarding hardware configuration, FPGA pin connections, and similar, are available.
@@ -33,7 +47,7 @@ Power supply (varies by board model)
 Original Generation boards have different power supply requirements depending on the model:
 
 * **STEMlab 125-14, SDRlab 122-16, STEMlab 125-14 variants**: 5V, 2A Micro USB power supply
-* **SIGNALlab 250-12**: 12V, 1A power adapter with jack connector (or PoE for PoE version)
+* **SIGNALlab 250-12**: 24V, 0.5A power adapter with jack connector (or PoE for PoE version)
 
 .. note::
 
@@ -136,7 +150,7 @@ It is not uncommon for Red Pitaya boards to reach temperatures of 60°C or above
 
     It is imperative that a heatsink is installed and that the board is operated on a flat surface devoid of any obstructions that could impede airflow.
     In order to mitigate the effects of elevated ambient temperatures and reduced pressure conditions within enclosures, it is necessary to implement an effective ventilation strategy.
-    The product's operational functionality is automatically disabled at temperatures of 85°C to prevent any potential damage.
+    The product's operational functionality is automatically disabled at internal temperatures of 85°C to prevent any potential damage.
 
 
 Cooling options
@@ -145,7 +159,7 @@ Cooling options
 For enhanced cooling, we suggest utilising one or more of the following options:
 
 * :ref:`Original Aluminium case <alucase>` - to improve heat dissipation and protect the board from external factors.
-* :ref:`Original Heatsink interface <heatsink>` - to improve heat dissipation and connect the board to an external heatsink.
+* :ref:`Original Heatsink interface <heatsink>` (STEMlab 125-14 only) - to improve heat dissipation and connect the board to an external heatsink.
 * External cooling fan - to increase airflow around the board.
 
 You can utilise a 30 mm or 25 mm fan. The board's power connector can be employed to power the fan, however, it is important to note that it provides a maximum of 5 V. The power connector is situated between the micro-SD socket and the host USB connector.
@@ -319,9 +333,11 @@ Optional features
 External booting options
 -------------------------
 
-Red Pitaya original boards can be booted from an on-board QSPI flash memory chip or from an external SD card. The QSPI flash memory chip is not populated by default on Red Pitaya boards, but it can be added later if needed. The QSPI flash memory chip is used for booting the board and can be used to store the operating system and other files.
+Red Pitaya original boards can be booted from an on-board QSPI flash memory chip or from an external SD card. The QSPI flash memory chip is not populated by default on Red Pitaya boards, but it can be added later if needed. 
+The QSPI flash memory chip is used for booting the board and can be used to store the operating system and other files.
 
-Please note that the `QSPI chip <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_, located on the top layer of the board just to the right of TP1A under the heatsink (:ref:`STEMlab 125-14 schematics <schematics_125_14>`), is not populated by default on Red Pitaya boards. For further information on board modifications, please contact support@redpitaya.com or info@redpitaya.com.
+Please note that the `QSPI chip <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_, located on the top layer of the board just to the right of TP1A under 
+the heatsink (:ref:`STEMlab 125-14 schematics <schematics_125_14>`), is not populated by default on Red Pitaya boards. For further information on board modifications, please contact support@redpitaya.com or info@redpitaya.com.
 
 .. warning::
 

@@ -1,331 +1,212 @@
 .. _top_125_14_MULTI:
 
-###################################
-Red Pitaya X-Channel System
-###################################
-
-The Red Pitaya X-Channel system consists of multiple Low-Noise STEMlab 125-14 devices that are modified for clock and trigger synchronisation and also comes with SATA synchronisation cables and software that supports multi-channel RF signal acquisition and generation.
-
-Red Pitaya X-Channel system consists of:
-
-* **One Primary Low-Noise STEMlab 125-14** device, a standard Low-Noise STEMlab 125-14 device that provides clock and trigger signals to other *Secondary* Low-Noise STEMlab 125-14 devices.
-* One or **multiple Secondary Low-Noise STEMlab 125-14 devices**, that are modified in a way that they can receive clock and trigger signals from a *Primary* device and distribute them to the next *Secondary* device. These are marked with an “S” sticker.
-
-The *Primary* device provides a clock and trigger over the SATA S1 connector that is then connected to the S2 of the *Secondary* 1 board. *Secondary* 1 then passes the clock forward to *Secondary* 2, *Secondary* 2 to *Secondary* 3, and so on (*Secondary* N to *Secondary* N+1). This way, we can achieve clock and trigger synchronisation of all boards in the system.
-
-For more information about the software, please refer to: :ref:`X-Channel streaming <x-ch_streaming>`.
-
-.. note::
-    
-    We recommend using :ref:`OS 2.00-23 or higher <prepareSD>` for the X-channel system.
-
-    * With 2.00 OS both the *Primary* and the *Secondary* devices use the **same** Red Pitaya OS images!
-    * With 1.04 OS the Primanry and *Secondary* boards use **different** Red Pitaya OS images!
-
-
-.. note::
-
-    **Booting without the external clock present?**
-    The official Red Pitaya OS will not boot on *Secondary* devices without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
-    However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
-
-.. note::
-
-    When synchronising multiple Red Pitaya boards, please keep in mind that:
-
-    * :ref:`Click Shield synchronisation <click_shield>` requires external clock models.
-    * :ref:`X-channel synchronisation <x-ch_streaming>` requires the X-channel system (master and slave boards) which differ from external clock models.
-
-    For more information about Red Pitaya synchronisation, please refer to the :ref:`multiboard synchronisation chapter <multiboard_sync>`.
-
-
-Setup
-=========
+###############################################
+STEMlab 125-14 X-Channel System (Discontinued)
+###############################################
 
 .. figure:: img/Primary-and-secondary.png
-    :width: 800
-
-#.  Connect all Red Pitayas to the same network via Ethernet cables (switch or router that is connected to the client PC).
-
-    .. note::
-
-        Make sure that your network has enough throughput for all the data you are about to stream. It is also recommended to use a dedicated network only for the X-channel system.
-
-
-#.  Connect the SATA cables between the *Primary* and *Secondary* devices.
-
-    *Primary* SATA S1 -> *Secondary* 1 SATA S2
-    *Secondary* 1 SATA S1 -> *Secondary* 2 SATA S2
-    *Secondary* 2 SATA S1 -> *Secondary* 3 SATA S2
-    ...
-
-
-Pinout
-===========
-
-.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
     :width: 700
+    :align: center
 
 |
 
-Technical specifications (one board)
-------------------------------------
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Basic**                                                               |
-    +====================================+====================================+
-    | Processor                          | Dual core ARM Cortex-A9            |
-    +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7010 SoC          |
-    +------------------------------------+------------------------------------+
-    | RAM                                | 512 MB (4 Gb)                      |
-    +------------------------------------+------------------------------------+
-    | System memory                      | Micro SD up to 32 GB               |
-    +------------------------------------+------------------------------------+
-    | Console connector                  | Micro USB                          |
-    +------------------------------------+------------------------------------+
-    | Power connector                    | Micro USB                          |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Power consumption                  | 5 V, 2 A max                       |
-    +------------------------------------+------------------------------------+
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
 
 |
 
-.. table::
-    :widths: 40 40
+Overview
+========
 
-
-    +------------------------------------+------------------------------------+
-    | **Connectivity**                                                        |
-    +====================================+====================================+
-    | Ethernet                           | 1 Gbit                             |
-    +------------------------------------+------------------------------------+
-    | USB                                | USB-A 2.0                          |
-    +------------------------------------+------------------------------------+
-    | Wi-Fi                              | requires Wi-Fi dongle              |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **RF inputs**                                                           |
-    +====================================+====================================+
-    | RF input channels                  | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 125 MS/s                           |
-    +------------------------------------+------------------------------------+
-    | ADC resolution                     | 14 bit                             |
-    +------------------------------------+------------------------------------+
-    | Input impedance                    | 1 MΩ / 10 pF                       |
-    +------------------------------------+------------------------------------+
-    | Full scale voltage range           | ±1 V (LV) and ±20 V (HV)           |
-    +------------------------------------+------------------------------------+
-    | Input coupling                     | DC                                 |
-    +------------------------------------+------------------------------------+
-    | | **Absolute max.**                | | **LV ±6 V**                      |
-    | | **Input voltage**                | | **HV ±30 V**                     |
-    +------------------------------------+------------------------------------+
-    | Input ESD protection               | Yes                                |
-    +------------------------------------+------------------------------------+
-    | Overload protection                | Protection diodes                  |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 60 MHz                        |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **RF outputs**                                                          |
-    +====================================+====================================+
-    | RF output channels                 | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 125 MS/s                           |
-    +------------------------------------+------------------------------------+
-    | DAC resolution                     | 14 bit                             |
-    +------------------------------------+------------------------------------+
-    | Load impedance                     | 50 Ω                               |
-    +------------------------------------+------------------------------------+
-    | Voltage range                      | ±1 V                               |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Short circuit protection           | Yes                                |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Output slew rate                   | 2 V / 10 ns                        |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 50 MHz                        |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 | 
-    +====================================+====================================+
-    | Digital IOs                        | 16                                 |
-    +------------------------------------+------------------------------------+
-    | Digital voltage levels             | 3.3 V                              |
-    +------------------------------------+------------------------------------+
-    | Analog inputs                      | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 - 3.5 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bit                             |
-    +------------------------------------+------------------------------------+
-    | Analog input sample rate           | 100 kS/s                           |
-    +------------------------------------+------------------------------------+
-    | Analog outputs                     | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 - 1.8 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bit                              |
-    +------------------------------------+------------------------------------+
-    | Analog output sample rate          | ≲ 3.2 MS/s                         |
-    +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
-    +------------------------------------+------------------------------------+
-    | Communication interfaces           | I2C, SPI, UART, CAN                |
-    +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3V3, -4 V                   |
-    +------------------------------------+------------------------------------+
-    | External ADC clock                 | SATA connector (Secondary units)   |
-    +------------------------------------+------------------------------------+
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Synchronisation**                                                     |
-    +====================================+====================================+
-    | External trigger input             | E1 connector (DIO0_P)              |
-    +------------------------------------+------------------------------------+
-    | External trigger input impedance   | Hi-Z (digital input)               |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Trigger output [#f1]_              | E1 connector (DIO0_N)              |
-    +------------------------------------+------------------------------------+
-    | Daisy chain connection             | SATA connectors |br|               |
-    |                                    | (up to 500 Mbps)                   |
-    +------------------------------------+------------------------------------+
-    | Ref. clock input                   | N/A                                |
-    +------------------------------------+------------------------------------+
-
-.. rubric:: Footnotes
-
-.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
-
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Boot options**                                                        |
-    +====================================+====================================+
-    | SD card                            | Yes                                |
-    +------------------------------------+------------------------------------+
-    | QSPI                               | Not populated                      |
-    +------------------------------------+------------------------------------+
-    | eMMC                               | N/A                                |
-    +------------------------------------+------------------------------------+
-
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+-------------------------------------------+
-    | **More**                                                                       |
-    +====================================+===========================================+
-    | Options                            | 4-Ch IN + 4-Ch OUT                        |
-    |                                    +-------------------------------------------+
-    |                                    | 6-Ch IN + 6-Ch OUT                        |
-    |                                    +-------------------------------------------+
-    |                                    | (2*x)-Ch IN + (2*x)-Ch OUT; (3 < x < 8)   |
-    |                                    +-------------------------------------------+
-    |                                    | 16-Ch IN + 16-Ch OUT                      |
-    +------------------------------------+-------------------------------------------+
-
+The Red Pitaya X-Channel system is a multi-board configuration built from :ref:`STEMlab 125-14 LN <top_125_14_LN>` devices connected in a daisy-chain via SATA cables.
+One board acts as the **Primary** (unmodified) and provides the master clock and trigger signals. The remaining boards are **Secondary** boards, hardware-modified 
+so that their ADC clock is driven from the SATA connector rather than the on-board oscillator, enabling phase-coherent operation across all channels.
 
 .. note::
 
-    For more information, please refer to the :ref:`Product comparison table <rp-board-comp-orig_gen>` and :ref:`STEMlab 125-14 Low-Noise <top_125_14_LN>`.
+    This is the original X-channel system configuration. For X-channel 2.0 (Click Shields), see the 
 
+|
 
-
-
-Measurements
+System Components
 =================
 
+The X-Channel system consists of:
+
+* **One Primary Low-Noise STEMlab 125-14** - A standard Low-Noise STEMlab 125-14 device that provides clock and trigger signals to Secondary devices
+* **One or more Secondary Low-Noise STEMlab 125-14 devices** - Modified devices that receive clock and trigger signals from the Primary device and can distribute them to the next Secondary device (marked with an "S" sticker)
+* **SATA synchronisation cables** - For connecting boards in a daisy-chain configuration
+* **Software** - Supports multi-channel RF signal acquisition and generation
+
+|
+
+Features
+========
+
+* **Scalable multi-channel acquisition:** 2 inputs per board (4, 6, 8+ channels possible)
+* **Phase-coherent operation:** All boards share the same clock and trigger
+* **Linear power supplies:** Reduced noise for high-quality measurements
+* **Daisy-chain topology:** Simple connection via SATA cables
+* **Software support:** Multi-channel acquisition and generation applications
+* Standard STEMlab 125-14 LN specifications per board
+
+|
+
+Quick Reference
+===============
+
+.. table::
+    :widths: 40 60
+
+    +----------------------------+--------------------------------------------------+
+    | **Category**               | **Key Specifications**                           |
+    +============================+==================================================+
+    | Channels per board         | 2 input + 2 output channels                      |
+    +----------------------------+--------------------------------------------------+
+    | ADC                        | 2 channels, 14-bit, 125 MS/s (per board)         |
+    +----------------------------+--------------------------------------------------+
+    | DAC                        | 2 channels, 14-bit, 125 MS/s (per board)         |
+    +----------------------------+--------------------------------------------------+
+    | Synchronisation            | SATA daisy-chain, shared clock & trigger         |
+    +----------------------------+--------------------------------------------------+
+    | System scalability         | Multiple boards (4, 6, 8+ channels)              |
+    +----------------------------+--------------------------------------------------+
+    | Special Features           | Phase coherence, Low noise, Multi-channel        |
+    +----------------------------+--------------------------------------------------+
+
+|
+
+Hardware Configuration & Differences
+======================================
+
+Primary Board
+-------------
+
+The Primary board is a standard :ref:`STEMlab 125-14 LN <top_125_14_LN>` used **without any hardware modification**. It:
+
+* Provides the master clock signal via its on-board oscillator
+* Distributes the clock and trigger to Secondary boards via the SATA connectors
+
+Secondary Boards
+----------------
+
+Secondary boards are :ref:`STEMlab 125-14 LN <top_125_14_LN>` boards with a single hardware modification (identified by an "S" sticker):
+
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| **Parameter**                        | **STEMlab 125-14 LN (Primary)**             | **STEMlab 125-14 LN Secondary**             |
++======================================+=============================================+=============================================+
+| ADC clock source                     | On-board oscillator (default)               | SATA connector (from Primary/previous board)|
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| Resistors R25, R26                   | In default position                         | Relocated to R27, R28                       |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| External ADC clock                   | No                                          | Yes (from SATA daisy-chain)                 |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| Operation without SATA clock input   | Normal (uses on-board oscillator)           | FPGA non-functional; PS boots from 33 MHz   |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| Identification                       | No marking                                  | "S" sticker on the board                    |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+
 .. note::
 
-    Although we do not have specific measurements for the STEMlab 125-14 LN boards, the performance of the fast analog inputs is the same as for STEMlab 125-14. The output performance is covered in Leonhard Neuhaus's blog about |Red Pitaya DAC performance| (measurements with added linear power supplies).
+    Secondary boards **cannot be used as standalone boards** without an external clock source or relocating the resistors back to the original positions.
 
-You can find the measurements of the fast analog frontend here:
+|
 
-* :ref:`Original boards - STEMlab 125-14 <measurements_orig_gen>`.
-* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
+Synchronisation
+===============
 
+The X-Channel system uses:
 
-Other specifications
-=====================
+* **Shared clock:** Distributed from Primary through SATA daisy-chain
+* **Shared trigger:** Synchronized trigger signals via SATA connectors
+* **SATA cables:** Up to 500 Mb/s data rate for clock/trigger distribution
 
-For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.
+For detailed synchronisation information, see:
 
+* :ref:`X-channel synchronisation <x-ch_streaming>`
+* :ref:`Multi-board synchronisation examples <examples_multiboard_sync>`
 
-FAQ
-=====
+|
 
-Comparison between Red Pitaya X-channel System and Click Shield synchronisation?
----------------------------------------------------------------------------------
+Technical Specifications
+=========================
 
-The comparison between :ref:`Red Pitaya X-Channel System and Red Pitaya Click Shield Synchronisation is available here <faq_multiboard>`.
+Each board in the X-Channel system has the same specifications as the :ref:`STEMlab 125-14 Low Noise <top_125_14_LN>` board.
 
+For full technical specifications, please refer to the :ref:`STEMlab 125-14 LN specifications <top_125_14_LN>`.
 
-Can a different Red Pitaya STEMlab 125-14 unit be used as a primary device in the X-channel system?
---------------------------------------------------------------------------------------------------------
+.. seealso::
 
-Yes, you can use any version of the STEMlab 125-14 as the *Primary* device. This includes:
+    For more detailed information, please refer to the |Original Gen comparison table|.
 
-* STEMlab 125-14 LN
-* STEMlab 125-14 LN Z7020
-* STEMlab 125-14 4-Input
-* STEMlab 125-14 Ext Clk (Please note that an external clock must be provided)
+|
 
+Performance & Measurements
+============================
 
-What is the difference between Primary and Secondary devices in the X-channel system?
----------------------------------------------------------------------------------------
+.. note::
 
-The *Primary* device is a standard STEMlab 125-14 Low-Noise device. The *Secondary* devices are STEMlab 125-14 Low-Noise Red Pitayas that are hardware modified to receive the clock and trigger signal from the "SATA" connectors.
-Using a normal STEMlab 125-14 as a *Secondary* device will not work as it does not have the necessary hardware modifications.
-
-
-Can I boot the secondary/external clock devices without the external clock present?
----------------------------------------------------------------------------------------
-
-The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
-However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
-
-
-
-
-.. Substitutions
+    Although we do not have specific measurements for the STEMlab 125-14 LN boards in X-Channel configuration, 
+    the performance of the fast analog inputs is the same as for STEMlab 125-14. 
+    The output performance is covered in Leonhard Neuhaus's blog about |Red Pitaya DAC performance| (measurements with added linear power supplies).
 
 .. |Red Pitaya DAC performance| raw:: html
 
     <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 
+You can find reference measurements here:
+
+* :ref:`Original Gen - STEMlab 125-14 <measurements_orig_gen>`.
+
+|
+
+FAQs
+====
+
+Can a different Red Pitaya STEMlab 125-14 unit be used as a primary device?
+----------------------------------------------------------------------------
+
+Yes, you can use any version of the STEMlab 125-14 as the Primary device. This includes:
+
+* STEMlab 125-14 LN
+* STEMlab 125-14
+* STEMlab 125-14 Z7020
+
+However, for best performance, it is recommended to use the STEMlab 125-14 LN as the Primary device for its improved noise characteristics.
+
+Can I use X-Channel Secondary boards standalone?
+-------------------------------------------------
+
+No, Secondary boards are hardware-modified to receive an external clock and cannot operate standalone without:
+
+1. An external clock source, or
+2. Relocating the SMD resistors back to the original positions (reversing the modification)
+
+|
+
+Additional Resources
+====================
+
+For additional specifications and setup information, please refer to:
+
+* :ref:`STEMlab 125-14 LN <top_125_14_LN>` - Individual board specifications
+* |Original Gen hardware specs| - Common Original Gen specifications
+* |Original Gen comparison table| - Comparison across all Red Pitaya Original Gen models
+* :ref:`X-channel synchronisation documentation <x-ch_streaming>`
+* :ref:`Multi-board synchronisation examples <examples_multiboard_sync>`
+
+|
+
+Legal & Disclaimers
+===================
+
+.. include:: ../_specs_common/disclaimer.inc
+
+|
+
+.. substitutions
+
+.. |Original Gen hardware specs| replace:: :ref:`Original Gen hardware specifications <hw_specs_orig_gen>`
+.. |Original Gen comparison table| replace:: :ref:`Original Gen board comparison table <rp-board-comp-orig_gen>`

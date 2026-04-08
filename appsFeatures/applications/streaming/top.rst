@@ -6,7 +6,7 @@ Data stream control
 
 Data stream control (also called the Streaming application) unlocks the capability to stream data between Red Pitaya and the computer. 
 This functionality can be extended by synchronising multiple boards together to create a multi-channel system (:ref:`X-channel system <x-ch_streaming>` 
-and :ref:`Click Shield synchronisation <click_shield_sync>`).
+and :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>`).
 
 .. figure:: img/Streaming_web_interface.png
     :width: 1000
@@ -138,6 +138,12 @@ Red Pitaya boards are compatible with any computer operating system. However, th
 applications which are meant to run on the computer, which are available for Linux and Windows operating systems. Any specific 
 requirements for the operating systems are listed below. We always recommend using the :ref:`latest version of the OS <prepareSD>` 
 and the streaming client application to ensure the best performance and compatibility.
+
+.. warning::
+
+    The streaming client application and the Red Pitaya OS **must be the same version**. Using a client that does not match the OS 
+    version may result in connection failures or corrupted data, due to changes in the streaming protocol and data formats between 
+    releases. Always download the matching client from the streaming application interface when updating the OS.
 
 * **Windows 11** - Please use Red Pitaya OS 2.05-37 or newer as older streaming client versions are incompatible with Windows 11.
 

@@ -66,11 +66,11 @@ Quick Reference
     +----------------------------+--------------------------------------------------+
     | Analog I/O                 | 4 inputs (12-bit), 4 outputs (8-bit)             |
     +----------------------------+--------------------------------------------------+
-    | Jitter Performance         | 5 ps RMS @ 40 MHz (ultra-low)                    |
+    | Jitter Performance         | 5 ps RMS @ 40 MHz                                |
     +----------------------------+--------------------------------------------------+
     | Connectivity               | Ethernet, USB-C, Extension connectors            |
     +----------------------------+--------------------------------------------------+
-    | Special Features           | TI components, High-precision ADC                |
+    | Special Features           | High-precision ADC, External ADC clock, PLL      |
     +----------------------------+--------------------------------------------------+
 
 |
@@ -152,7 +152,7 @@ Technical Specifications
     | Absolute max. input voltage        | | ±6 (LV)                          | V         | DC values [#f1]_                 |
     |                                    | | ±30 (HV)                         |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Input ESD protection               | Yes                                | \-        |                                  |
+    | Input ESD protection               | 1500                               | V         | DC                               |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Overload protection                | Protection diodes                  | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -173,6 +173,8 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Voltage range                      | | ±1 @ 50 Ω                        | V         |                                  |
     |                                    | | ±2 @ Hi-Z                        |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Output coupling                    | DC                                 | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Short circuit protection           | Yes                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -220,7 +222,7 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | External ADC clock                 | Yes                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | E3 connector                       | No                                 | \-        |                                  |
+    | E3 connector                       | N/A                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Synchronisation**                                                                                                    |
@@ -237,7 +239,11 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Daisy chain connectors type        | USB-C                              | \-        | Not standard USB-C [#f3]_        |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Ref. clock input                   | N/A                                | \-        |                                  |
+    | Ref. clock input                   | Yes                                | \-        | Via Ext. ADC Clk± [#f4]_         |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock frequency               | 1 - 300                            | MHz       | Default: 125 MHz                 |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock connector type          | Ext. ADC Clk±                      | \-        | Pins 23/24 on |E2|               |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Boot options**                                                                                                       |
@@ -246,7 +252,7 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | QSPI                               | Not populated                      | \-        | See `Booting options`_           |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | eMMC                               | No                                 | \-        |                                  |
+    | eMMC                               | N/A                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
@@ -358,11 +364,6 @@ The STEMlab 65-16 TI uses high-performance Texas Instruments components for the 
     * High-precision reference oscillator
     * Low jitter performance
 
-**Clock Selector:** `NB6L72`_
-
-    * Differential Crosspoint Switch
-    * Enables external clock input
-
 |
 
 Supporting Components
@@ -434,16 +435,24 @@ Connector Physical Specifications
 
 **E1 and E2 Extension Connectors:**
 
-* Connector type: `2 x 13 pins IDC 2.54 mm pitch <https://www.digikey.com/en/products/detail/adam-tech/BHR-26-VUA/9832284>`_
-* Pin count: 26 pins each (2x13 configuration)
-* Pitch: 2.54 mm (0.1")
+* **Connector type:** `2 x 13 pins IDC 2.54 mm pitch <https://www.digikey.com/en/products/detail/adam-tech/BHR-26-VUA/9832284>`_
+* **Pin count:** 26 pins each (2x13 configuration)
+* **Pitch:** 2.54 mm (0.1")
 
 **Mating Connectors:**
 
 .. note::
 
     When looking for mating connectors for custom Red Pitaya shields, `double height elevated sockets <https://www.digikey.com/en/products/detail/samtec-inc/ESW-113-33-T-D/6693225>`_ are needed to clear the heatsink and ethernet connector on the board.
-    Any connectors with *insulation height* of 0.635" (16.13mm) or greater will work.
+    Any connectors with *insulation height* of 0.635" (16.13 mm) or greater will work. This clearance requirement is based on the tallest components on the Red Pitaya board (heatsink and ethernet connector).
+
+.. note::
+
+    To prevent damage to the board or the shield, when connecting shields to the E1 and E2 connectors, please ensure:
+    
+    * **Proper alignment of connectors** - ensure the connectors are correctly aligned. The connectors on the Red Pitaya board have additional space in the socket housing, making it possible 
+      to misalign the shields by ±1 pin while still appearing physically connected. This can cause damage to the board and/or the shield, so please double-check the alignment before powering on the board.
+    * **Tight-fitting counterparts** - use connectors that fit securely to prevent accidental disconnections or damage.
 
 |
 
@@ -507,8 +516,8 @@ Synchronisation Connectors (S1 & S2)
 Advanced Features
 ==================
 
-Extension Connector Power
---------------------------
+Power Supply
+-------------
 
 .. include:: ../_specs_common/power_supply.inc
 
@@ -517,7 +526,7 @@ Extension Connector Power
 External ADC Clock
 -------------------
 
-.. include:: ../_specs_common/ext_adc_clk.inc
+.. include:: ../_specs_common/ext_adc_clk_TI.inc
 
 |
 
@@ -529,6 +538,13 @@ STEMlab 65-16 TI supports QSPI booting, but the QSPI chip is not populated by de
 .. warning::
 
     Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
+
+|
+
+Calibration
+------------
+
+.. include:: ../_specs_common/calibration.inc
 
 |
 
@@ -552,16 +568,16 @@ Legal & Disclaimers
 .. rubric:: Footnotes
 
 .. [#f1] The absolute maximum input voltage values are for frequencies below 1 kHz. For higher frequencies, please use the input voltage range specifications as **Absolute maximum**.
-.. [#f2] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>` for trigger output configuration.
+.. [#f2] See the :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` and :ref:`X-channel 2.0 (Click Shield) synchronisation examples <examples_multiboard_sync>` for trigger output configuration.
 .. [#f3] Not compatible with USB-C standard (DC-coupled). Use only for daisy-chaining multiple Red Pitaya boards.
-.. [#f4] The external ADC clock goes first to the `NB6L72`_ clock selector chip, then passes through the ADC to finally reach the FPGA pins.
-.. [#f5] For exact voltage levels, please refer to the `NB6L72`_ datasheet.
+.. [#f4] The external ADC clock goes first to the `LMK03318`_ clock generator, which generates the required clock signals for the ADC, DAC, and FPGA.
+.. [#f5] For exact voltage levels, please refer to the `LMK03318`_ datasheet.
 .. [#f8] The default software enables sampling at a CPU-dependent speed. To acquire data at a 100 kS/s rate, additional FPGA processing must be implemented.
 .. [#f9] The output is passed through a first-order low-pass filter. Should additional filtering be required, this can be applied externally in line with the specific requirements of the application.  
 .. [#f10] VBUS connectors are connected together on the board. They are not connected to the board power supply.
 .. [#f11] On the S1 connector, the CC1 pin is connected to the Orient LED and to the S1_ORIENT FPGA pin (via resistor divider to reduce the voltage levels to 2V5). CC1 and CC2 pins are connected to an XOR gate which determines the state of the **Link LED**. The output of the XOR gate is also connected to the S1_LINK FPGA pin (via resistor divider to reduce the voltage levels to 2V5).
 .. [#f12] On the S2 connector, the CC1 pin is protected with a Zener diode to 3V3, but is not connected to the FPGA. CC2 pin is not connected.
-.. [#f13] Application specific. The output current is shared between the extension module and the USB devices, and can be higher if other peripheral units are not in use.
+.. [#f13] Application specific. The output current is shared between the extension connectors and the connected USB devices, and can be higher if other peripheral units are not in use.
 
 |
 
@@ -574,4 +590,4 @@ Legal & Disclaimers
 .. |Gen 2 comparison table| replace:: :ref:`Gen 2 board comparison table <rp-board-comp-gen2>`
 .. |STEMlab 125-14 PRO Gen 2| replace:: :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`
 .. |STEMlab 125-14 PRO Z7020 Gen 2| replace:: :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
-.. _NB6L72: https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf
+.. _LMK03318: https://www.ti.com/lit/ds/symlink/lmk03318.pdf

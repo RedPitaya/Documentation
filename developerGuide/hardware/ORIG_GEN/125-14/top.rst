@@ -4,464 +4,502 @@
 STEMlab 125-14
 ################
 
-The original Red Pitaya STEMlab 125-14.
-
 .. figure:: img/STEMlab-125-14.jpg
     :width: 500
-
-
-Pinout
-========
-
-.. figure:: img/Red_Pitaya_pinout.jpg
-    :alt: Red Pitaya pinout
-    :width: 700
-
-|
-
-Technical specifications
-==========================
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Basic**                                                               |
-    +====================================+====================================+
-    | Processor                          | Dual core ARM Cortex-A9            |
-    +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7010 SoC          |
-    +------------------------------------+------------------------------------+
-    | RAM                                | 512 MB (4 Gb)                      |
-    +------------------------------------+------------------------------------+
-    | System memory                      | Micro SD up to 32 GB               |
-    +------------------------------------+------------------------------------+
-    | Console connector                  | Micro USB                          |
-    +------------------------------------+------------------------------------+
-    | Power connector                    | Micro USB                          |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Power consumption                  | 5 V, 2 A max                       |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-
-    +------------------------------------+------------------------------------+
-    | **Connectivity**                                                        |
-    +====================================+====================================+
-    | Ethernet                           | 1 Gbit                             |
-    +------------------------------------+------------------------------------+
-    | USB                                | USB-A 2.0                          |
-    +------------------------------------+------------------------------------+
-    | Wi-Fi                              | requires Wi-Fi dongle              |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **RF inputs**                                                           |
-    +====================================+====================================+
-    | RF input channels                  | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 125 MS/s                           |
-    +------------------------------------+------------------------------------+
-    | ADC resolution                     | 14 bit                             |
-    +------------------------------------+------------------------------------+
-    | Input impedance                    | 1 MΩ / 10 pF                       |
-    +------------------------------------+------------------------------------+
-    | Full scale voltage range           | ±1 V (LV) and ±20 V (HV)           |
-    +------------------------------------+------------------------------------+
-    | Input coupling                     | DC                                 |
-    +------------------------------------+------------------------------------+
-    | | **Absolute max.**                | | **LV ±6 V**                      |
-    | | **Input voltage**                | | **HV ±30 V**                     |
-    +------------------------------------+------------------------------------+
-    | Input ESD protection               | Yes                                |
-    +------------------------------------+------------------------------------+
-    | Overload protection                | Protection diodes                  |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 60 MHz                        |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **RF outputs**                                                          |
-    +====================================+====================================+
-    | RF output channels                 | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 125 MS/s                           |
-    +------------------------------------+------------------------------------+
-    | DAC resolution                     | 14 bit                             |
-    +------------------------------------+------------------------------------+
-    | Load impedance                     | 50 Ω                               |
-    +------------------------------------+------------------------------------+
-    | Voltage range                      | ±1 V                               |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Short circuit protection           | Yes                                |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Output slew rate                   | 2 V / 10 ns                        |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 50 MHz                        |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 |
-    +====================================+====================================+
-    | Digital IOs                        | 16                                 |
-    +------------------------------------+------------------------------------+
-    | Digital voltage levels             | 3.3 V                              |
-    +------------------------------------+------------------------------------+
-    | Analog inputs                      | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 - 3.5 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bit                             |
-    +------------------------------------+------------------------------------+
-    | Analog input sample rate           | 100 kS/s                           |
-    +------------------------------------+------------------------------------+
-    | Analog outputs                     | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 - 1.8 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bit                              |
-    +------------------------------------+------------------------------------+
-    | Analog output sample rate          | ≲ 3.2 MS/s                         |
-    +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
-    +------------------------------------+------------------------------------+
-    | Communication interfaces           | I2C, SPI, UART, CAN                |
-    +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3V3, -4 V                   |
-    +------------------------------------+------------------------------------+
-    | External ADC clock                 | No [#f1]_                          |
-    +------------------------------------+------------------------------------+
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Synchronisation**                                                     |
-    +====================================+====================================+
-    | External trigger input             | E1 connector (DIO0_P)              |
-    +------------------------------------+------------------------------------+
-    | External trigger input impedance   | Hi-Z (digital input)               |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Trigger output [#f2]_              | E1 connector (DIO0_N)              |
-    +------------------------------------+------------------------------------+
-    | Daisy chain connection             | SATA connectors |br|               |
-    |                                    | (up to 500 Mbps)                   |
-    +------------------------------------+------------------------------------+
-    | Ref. clock input                   | N/A                                |
-    +------------------------------------+------------------------------------+
-
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Boot options**                                                        |
-    +====================================+====================================+
-    | SD card                            | Yes                                |
-    +------------------------------------+------------------------------------+
-    | QSPI                               | Not populated                      |
-    +------------------------------------+------------------------------------+
-    | eMMC                               | N/A                                |
-    +------------------------------------+------------------------------------+
-
-.. note::
-
-    For more information, please refer to the :ref:`Product comparison table <rp-board-comp-orig_gen>`.
-
-
-
-
-
-Measurements
-=================
-
-You can find the measurements of the fast analog frontend here:
-
-.. toctree::
-    :maxdepth: 1
-
-    ../measurements/STEMlab-125-14/index
-
-
-
-.. _schematics_125_14:
-
-Schematics
-============
-
-    * :download:`Schematics_STEM_125-14_v1.1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1.pdf>`.
-
-.. note::
-
-    Full hardware schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, development schematics are available. This schematic will give you information about hardware configuration, FPGA pin connections, and similar.
-
-
-Mechanical Specifications and 3D Models
-========================================
-
-    * STEP :download:`3D_STEM_125-14_v1.0.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14_v1.0.zip>`.
-
-
-Components
-===========
-
-    * `ADC <https://www.analog.com/en/products/ltc2145-14.html>`_.
-    * `DAC <https://www.analog.com/en/products/AD9767.html>`_.
-    * `FPGA (Zynq 7010) <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_.
-    * `DC-DC converter <https://www.analog.com/en/products/LTC3615.html>`_.
-    * `Oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_.
-    * `SRAM-DDR3 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_.
-    * `QSPI <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_ (NOT POPULATED - see :ref:`QSPI section <qspi_chip>` for more information).
-
-.. note::
-
-    STEMlab 125-14 Low Noise and STEMlab 125-14 4-Input feature Zynq 7020 instead of Zynq 7010.
-
-
-Extension connector STEMlab 125-14
-====================================
-
-    * Connector: 2 x 26 pins IDC.
-
-Power Supply
---------------
-
-    * **Available voltages**: +5 V, +3.3 V, -3.4 V .
-    * **Current limitations**:
-
-        * 500 mA for +5 V (to be shared between extension module and USB devices).
-        * 500 mA for +3V3 (to be shared between extension module and USB devices).
-        * 50 mA for -3.4 V supply.
-
-
-.. _E1_stem:
-
-Extension connector E1
-------------------------
-
-    * +3V3 power source
-    * 16 single ended or 8 differential digital I/Os with 3.3 V logic levels
-    * 2 CAN busses
-
-===  =====================  ===============  ========================  ==============
-Pin  Description            FPGA pin number  FPGA pin description      Voltage levels
-===  =====================  ===============  ========================  ==============
-1    3V3
-2    3V3
-3    DIO0_P / EXT TRIG      G17              IO_L16P_T2_35             3.3V
-4    DIO0_N                 G18              IO_L16N_T2_35             3.3V
-5    DIO1_P                 H16              IO_L13P_T2_MRCC_35        3.3V
-6    DIO1_N                 H17              IO_L13N_T2_MRCC_35        3.3V
-7    DIO2_P                 J18              IO_L14P_T2_AD4P_SRCC_35   3.3V
-8    DIO2_N                 H18              IO_L14N_T2_AD4N_SRCC_35   3.3V
-9    DIO3_P                 K17              IO_L12P_T1_MRCC_35        3.3V
-10   DIO3_N                 K18              IO_L12N_T1_MRCC_35        3.3V
-11   DIO4_P                 L14              IO_L22P_T3_AD7P_35        3.3V
-12   DIO4_N                 L15              IO_L22N_T3_AD7N_35        3.3V
-13   DIO5_P                 L16              IO_L11P_T1_SRCC_35        3.3V
-14   DIO5_N                 L17              IO_L11N_T1_SRCC_35        3.3V
-15   DIO6_P / CAN1_RX       K16              IO_L24P_T3_AD15P_35       3.3V
-16   DIO6_N / CAN1_TX       J16              IO_L24N_T3_AD15N_35       3.3V
-17   DIO7_P / CAN0_RX       M14              IO_L23P_T3_35             3.3V
-18   DIO7_N / CAN0_TX       M15              IO_L23N_T3_35             3.3V
-19   NC
-20   NC
-21   NC
-22   NC
-23   NC
-24   NC
-25   GND
-26   GND
-===  =====================  ===============  ========================  ==============
-
-.. note::
-
-    To change the functionality of DIO6_P, DIO6_N, DIO7_P and DIO7_N from GPIO to CAN, please modify the **housekeeping** register value at **address 0x34**. For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
-
-    The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
-
-All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
-
-    * Min. -0.40 V
-    * Max. 3.3 V + 0.55 V
-    * < 8 mA drive strength
-
-
-.. _E2_stem:
-
-Extension connector E2
-------------------------
-
-    * +5 V, -3V4 power sources.
-    * SPI, UART, I2C.
-    * 4 slow ADCs.
-    * 4 slow DACs.
-    * Ext. clock for fast ADC.
-
-
-===  ===========================  ===============  ==============================================  ==============
-Pin  Description                  FPGA pin number  FPGA pin description                            Voltage levels
-===  ===========================  ===============  ==============================================  ==============
-1    +5 V
-2    -3.3 V / -3.4 V [1]_
-3    SPI (MOSI)                   E9               PS_MIO10_500                                    3.3 V
-4    SPI (MISO)                   C6               PS_MIO11_500                                    3.3 V
-5    SPI (SCK)                    D9               PS_MIO12_500                                    3.3 V
-6    SPI (CS)                     E8               PS_MIO13_500                                    3.3 V
-7    UART (TX)                    D5               PS_MIO8_500                                     3.3 V
-8    UART (RX)                    B5               PS_MIO9_500                                     3.3 V
-9    I2C (SCL)                    B13              PS_MIO50_501                                    3.3 V
-10   I2C (SDA)                    B9               PS_MIO51_501                                    3.3 V
-11   Ext com. mode                                                                                 GND (default)
-12   GND
-13   Analog Input 0               B19, A20         IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35            0-3.5 V
-14   Analog Input 1               C20, B20         IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35            0-3.5 V
-15   Analog Input 2               E17, D18         IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35    0-3.5 V
-16   Analog Input 3               E18, E19         IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35            0-3.5 V
-17   Analog Output 0              T10              IO_L1N_T0_34                                    0-1.8 V
-18   Analog Output 1              T11              IO_L1P_T0_34                                    0-1.8 V
-19   Analog Output 2              P15              IO_L24P_T3_34                                   0-1.8 V
-20   Analog Output 3              U13              IO_L3P_T0_DQS_PUDC_B_34                         0-1.8 V
-21   GND
-22   GND
-23   Ext Adc CLK+                                                                                  LVDS
-24   Ext Adc CLK-                                                                                  LVDS
-25   GND
-26   GND
-===  ===========================  ===============  ==============================================  ==============
-
-.. [1] Red Pitaya Version 1.0 has -3.3 V on pin 2. Red Pitaya Version 1.1 has -3.4 V on pin 2.
-
-.. note::
-
-    **UART TX (PS_MIO08)** is an output only. It must be connected to GND or left floating at power-up (no external pull-ups)!
-
-
-The pinout of the extension connectors is shown in the figure below.
-
-.. figure:: img/Red_Pitaya_pinout.jpg
-    :width: 700
     :align: center
 
 |
 
-
-Auxiliary analog input channels
---------------------------------
-
-    * Number of channels: 4
-    * Nominal sampling rate: 100 ksps (H)
-    * ADC resolution 12 bits
-    * Input voltage range: 0 - 3.5 V
-    * Input coupling: DC
-    * Connector: dedicated pins on IDC connector :ref:`E2 <E2_orig_gen>` (pins 13, 14, 15, 16)
-
-
-Auxiliary analog output channels
----------------------------------
-
-    * Number of channels: 4
-    * Output type: Low pass filtered PWM (I)
-    * PWM time resolution: 4 ns (1/250 MHz)
-    * Analog output resolution: 8 bit
-    * Analog output sample rate ≲ 3.2 MS/s
-    * Analog output bandwidth ≈ 160 kHz
-    * Analog outputs voltage range: 0 - 1.8 V
-    * Output coupling: DC
-    * Connector: dedicated pins on IDC connector :ref:`E2 <E2_orig_gen>` (pins 17, 18, 19, 20) V
-
-
-General purpose digital input/output channels
-----------------------------------------------
-
-    * Number of digital input/output pins: 16
-    * Voltage level: 3.3 V
-    * Abs. min. voltage: -0.40 V
-    * Abs. max. voltage: 3.3 V + 0.55 V
-    * Current limitation: < 8 mA drive strength
-    * Direction: configurable
-    * Location: IDC connector :ref:`E1 <E1_orig_gen>`
-
-
-Powering Red Pitaya through extension connector
-================================================
-
-The Red Pitaya can also be powered through pin 1 of the extension connector :ref:`E2 <E2_orig_gen>`, but in such a case, external protection must be provided by the user in order to protect the board!
-
-.. figure:: img/schematics/Protection.png
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
 
 |
 
-Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension connector :ref:`E2 <E2_orig_gen>`.
+Overview
+========
+
+The STEMlab 125-14 is the original Red Pitaya board, a versatile and compact measurement and control platform designed for a wide range of applications in electronics, 
+signal processing, and embedded systems development. It features a dual-core ARM Cortex-A9 processor, an FPGA Xilinx Zynq 7010 SoC, and high-speed ADCs and DACs, 
+making it suitable for tasks such as data acquisition, signal generation, and real-time processing.
+
+|
+
+Features
+========
+
+* 14-bit, 125 MS/s ADC and DAC
+* Dual-core ARM Cortex-A9 processor
+* FPGA Xilinx Zynq 7010 SoC
+* 512 MB RAM
+* 16 digital I/Os, 4 analog inputs, 4 analog outputs
+* Multiple communication interfaces: I2C, SPI, UART, CAN
+* Micro USB connectivity for power and console
+* SATA daisy-chain connectors for multi-board synchronisation
+
+|
+
+Quick Reference
+===============
+
+.. table::
+    :widths: 40 60
+
+    +----------------------------+--------------------------------------------------+
+    | **Category**               | **Key Specifications**                           |
+    +============================+==================================================+
+    | ADC                        | 2 channels, 14-bit, 125 MS/s, DC-50 MHz          |
+    +----------------------------+--------------------------------------------------+
+    | DAC                        | 2 channels, 14-bit, 125 MS/s, DC-50 MHz          |
+    +----------------------------+--------------------------------------------------+
+    | Processor                  | Dual-core ARM Cortex-A9                          |
+    +----------------------------+--------------------------------------------------+
+    | FPGA                       | Xilinx Zynq 7010 SoC                             |
+    +----------------------------+--------------------------------------------------+
+    | RAM                        | 512 MB                                           |
+    +----------------------------+--------------------------------------------------+
+    | Digital I/O                | 16 GPIOs @ 3.3V                                  |
+    +----------------------------+--------------------------------------------------+
+    | Analog I/O                 | 4 inputs (12-bit), 4 outputs (8-bit)             |
+    +----------------------------+--------------------------------------------------+
+    | Connectivity               | Ethernet, USB, Extension connectors              |
+    +----------------------------+--------------------------------------------------+
+
+|
+
+Board Layout & Pinout
+======================
+
+.. figure:: img/Red_Pitaya_pinout.jpg
+    :alt: Red Pitaya pinout
+    :width: 700
+    :align: center
+
+The pinout diagram shows all external connectors including RF inputs/outputs (IN1, IN2, OUT1, OUT2) and extension connectors (E1, E2).
+
+|
+
+Technical Specifications
+=========================
+
+.. table::
+    :widths: 30 30 15 15
+
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | **Parameter**                      | **Value**                          | **Units** | **Notes**                        |
+    +====================================+====================================+===========+==================================+
+    | |br|                                                                                                                   |
+    | **Basic**                                                                                                              |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Processor                          | Dual core ARM Cortex-A9            | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | FPGA                               | FPGA AMD (Xilinx) Zynq 7010 SoC    | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | RAM                                | 512                                | MB        | (4 Gb)                           |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Core clock frequency               | 125                                | MHz       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | System memory                      | Micro SD up to 32 GB               | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Serial console connector           | Micro USB                          | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Power connector                    | Micro USB                          | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Power consumption                  | 5 V, 2 A                           | \-        | max                              |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **Connectivity**                                                                                                       |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ethernet                           | 1                                  | Gbit      |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | USB                                | USB-A 2.0                          | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Wi-Fi                              | Requires Wi-Fi dongle              | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **RF inputs**                                                                                                          |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | RF input channels                  | 2                                  | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Sampling rate                      | 125                                | MS/s      |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | ADC resolution                     | 14                                 | bit       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Input impedance                    | 1 MΩ / 10 pF                       | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Full scale voltage range           | | ±1 (LV)                          | V         |                                  |
+    |                                    | | ±20 (HV)                         |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Input coupling                     | DC                                 | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Absolute max. input voltage        | | ±6 (LV)                          | V         | DC values [#f1]_                 |
+    |                                    | | ±30 (HV)                         |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Input ESD protection               | 1500                               | V         | DC                               |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Overload protection                | Protection diodes                  | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Bandwidth                          | DC - 50                            | MHz       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Connector type                     | SMA                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **RF outputs**                                                                                                         |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | RF output channels                 | 2                                  | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Sampling rate                      | 125                                | MS/s      |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | DAC resolution                     | 14                                 | bit       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Load impedance                     | 50 Ω                               | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Voltage range                      | ±1                                 | V         |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Output coupling                    | DC                                 | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Short circuit protection           | Yes                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Output slew rate                   | 2 V / 10 ns                        | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Bandwidth                          | DC - 50                            | MHz       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Connector type                     | SMA                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **Extension connectors**                                                                                               |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Digital GPIOs                      | 16                                 | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Digital voltage levels             | 3.3                                | V         |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog inputs                      | 4                                  | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog input voltage range         | 0 - 3.5                            | V         |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog input resolution            | 12                                 | bit       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog input sampling rate         | 100                                | kS/s      |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog outputs                     | 4                                  | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog output voltage range        | 0 - 1.8                            | V         |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog output resolution           | 8                                  | bit       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog output sampling rate        | ≲ 3.2                              | MS/s      |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Analog output bandwidth            | ≈ 160                              | kHz       |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Communication interfaces           | I2C, SPI, UART, CAN                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Available voltages                 | +5, +3.3, -3.4                     | V         |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | External ADC clock                 | No                                 | \-        | See [#f2]_                       |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **Synchronisation**                                                                                                    |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | External trigger input             | DIO0_P                             | \-        | E1 connector                     |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | External trigger input impedance   | Hi-Z                               | \-        | Digital input                    |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Trigger output                     | DIO0_N                             | \-        | E1 connector [#f3]_              |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Daisy chain connectors (S1 & S2)   | Yes                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Daisy chain connectors speed       | up to 500                          | Mb/s      |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Daisy chain connectors type        | SATA                               | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+    
+    | Ref. clock input                   | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock frequency               | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock connector type          | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **Boot options**                                                                                                       |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | SD card                            | Yes                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | QSPI                               | Not populated                      | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | eMMC                               | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **Environmental Specifications**                                                                                       |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Humidity Range           | < 90%                              | RH        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | |br|                                                                                                                   |
+    | **Dimensions**                                                                                                         |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Size (L x W x H)                   | 106.8 x 60.0 x 21.1                | mm        | See `Schematics`_ for details    |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
 
 
+
+.. warning::
+
+    **Maximum Input Voltage**
+    
+    * **LV mode:** ±6 V absolute maximum
+    * **HV mode:** ±30 V absolute maximum
+    
+    Exceeding these values may damage the board permanently.
+
+.. seealso::
+
+    For more detailed information, please refer to the |Original Gen comparison table|.
+
+|
+
+Performance & Measurements
+============================
+    
+You can find the measurements of the fast analog frontend here:
+
+* :ref:`Original Gen - STEMlab 125-14 <measurements_orig_gen>`.
+
+|
+
+
+.. _schematics_125_14:
+
+Schematics & 3D Models
+========================
+
+Schematics
+----------
+
+* :download:`Schematics_STEM_125-14_v1.1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1.pdf>`.
+
+
+.. note::
+
+    Full hardware schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. 
+    Nonetheless, development schematics are available. This schematic will give you information about hardware configuration, FPGA pin connections, and similar.
+
+Mechanical Specifications & 3D Models
+--------------------------------------
+
+* STEP :download:`3D_STEM_125-14_v1.0.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14_v1.0.zip>`.
+
+|
+
+Hardware Details
+==================
+
+Components
+----------
+
+The STEMlab 125-14 uses high-performance analog components from Linear Technology (now Analog Devices) for the signal chain.
+
+**ADC:** Analog Devices `LTC2145-14 <https://www.analog.com/en/products/ltc2145-14.html>`_
+
+    * Dual 14-bit, 125 MS/s ADC
+    * Low power consumption
+    * High dynamic range
+
+**DAC:** Analog Devices `AD9767 <https://www.analog.com/en/products/AD9767.html>`_
+
+    * Dual 14-bit, 125 MS/s DAC
+    * High SFDR performance
+    * Low power operation
+
+**FPGA:** Xilinx `Zynq 7010 <https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview>`_
+
+    * Dual-core ARM Cortex-A9 @ 667 MHz
+    * Programmable logic fabric
+    * Integrated peripherals and memory controllers
+
+**Oscillator:** `125 MHz oscillator <https://eu.mouser.com/datasheet/2/417/bf-8746.pdf>`_
+
+    * High-precision 125 MHz reference oscillator
+
+**DC-DC Converter:** `LTC3615 <https://www.analog.com/en/products/LTC3615.html>`_
+
+    * High-efficiency step-down regulator
+
+**DDR3 SRAM:** `MT41J256M16HA-125 <https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785>`_
+
+    * 512 MB DDR3 RAM
+
+**QSPI Flash:** `S25FL128SAGNFI001 <https://www.infineon.com/cms/en/product/memories/nor-flash/standard-spi-nor-flash/quad-spi-flash/s25fl128sagnfi001/>`_
+
+    * Not populated on standard boards
+
+|
+
+Extension Connectors & Interfaces
+===================================
+
+Overview
+---------
+
+The STEMlab 125-14 board features the following connectors and interfaces:
+
+* **E1 and E2 connectors:** Primary expansion connectors with digital I/O, analog I/O, and communication interfaces. These connectors allow users to interface with additional hardware, sensors, or peripherals, enhancing the board's capabilities.
+* **S1 and S2 connectors:** Daisy-chain connectors for synchronising multiple Red Pitaya boards. These connectors enable clock and trigger synchronisation between boards.
+
+|
+
+Connector Physical Specifications
+----------------------------------
+
+**E1 and E2 Extension Connectors:**
+
+* Connector type: `2 x 13 pins IDC 2.54 mm pitch <https://www.digikey.com/en/products/detail/adam-tech/BHR-26-VUA/9832284>`_
+* Pin count: 26 pins each (2x13 configuration)
+* Pitch: 2.54 mm (0.1")
+
+**Mating Connectors:**
+
+.. note::
+
+    When looking for mating connectors for custom Red Pitaya shields, `double height elevated sockets <https://www.digikey.com/en/products/detail/samtec-inc/ESW-113-33-T-D/6693225>`_ are needed to clear the heatsink and ethernet connector on the board.
+    Any connectors with *insulation height* of 0.635" (16.13 mm) or greater will work. This clearance requirement is based on the tallest components on the Red Pitaya board (heatsink and ethernet connector).
+
+.. note::
+
+    To prevent damage to the board or the shield, when connecting shields to the E1 and E2 connectors, please ensure:
+    
+    * **Proper alignment of connectors** - ensure the connectors are correctly aligned. The connectors on the Red Pitaya board have additional space in the socket housing, making it possible 
+      to misalign the shields by ±1 pin while still appearing physically connected. This can cause damage to the board and/or the shield, so please double-check the alignment before powering on the board.
+    * **Tight-fitting counterparts** - use connectors that fit securely to prevent accidental disconnections or damage.
+
+|
+
+E1 Connector - Digital I/O & CAN
+----------------------------------
+
+.. include:: ../_specs_common/E1_connector_7010.inc
+
+|
+
+E2 Connector - Analog & Communication
+--------------------------------------
+
+.. include:: ../_specs_common/E2_connector_125-14.inc
+
+|
+
+Auxiliary Analog Inputs & Outputs
+------------------------------------
+
+.. include:: ../_specs_common/slow_analog_io.inc
+
+|
+
+General Purpose Digital I/O Channels
+--------------------------------------
+
+.. table::
+    :widths: 30 30 15 15
+
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | **Parameter**                      | **Value**                          | **Units** | **Notes**              |
+    +====================================+====================================+===========+========================+
+    | Number of GPIOs                    | 16                                 | \-        |                        |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | Digital voltage level              | 3.3                                | V         |                        |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | Abs. min. voltage                  | -0.40                              | V         |                        |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | Abs. max. voltage                  | 3.3 + 0.55                         | V         |                        |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | Current limitation                 | < 8                                | mA        | Drive strength         |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | Direction                          | Configurable                       | \-        |                        |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | Time resolution                    | 8                                  | ns        | (1/125 MHz)            |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+    | Connector location                 | Extension connector |E1|           | \-        |                        |
+    +------------------------------------+------------------------------------+-----------+------------------------+
+
+|
+
+
+Synchronisation Connectors (S1 & S2)
+--------------------------------------
+
+.. include:: ../_specs_common/Sync_connectors_SATA.inc
+    
+|
+
+
+Advanced Features
+==================
+
+Power Supply
+-------------
+
+.. include:: ../_specs_common/power_supply.inc
+
+|
+
+External ADC Clock
+-------------------
+
+.. note::
+
+    The standard STEMlab 125-14 does not support external ADC clock without hardware modification. If you need external clock support without modification, consider these pre-modified boards:
+    
+    * :ref:`STEMlab 125-14 External Clock <top_125_14_EXT>` - Board with external clock capability
+    * :ref:`STEMlab 125-14 4-Input <top_125_14_4IN>` - Board with 4 input channels and external clock capability
 
 .. _external_125_14:
 
-External ADC clock
-===================
+**Clock Sources**
 
-The ADC clock can be provided by:
+The ADC clock can be provided from three sources:
 
-    * On board 125 MHz XO (default).
-    * From an external source (through extension connector) - External clock :ref:`E2 <E2_orig_gen>`. (R25, R26 should be moved to location R23, R24).
-    * From SATA connectors (directly from FPGA) - X-channel secondary/slave (R25, R26 should be relocated to R27, R28).
+* **On-board 125 MHz oscillator (default):** Internal clock source
+* **External source through E2 connector:** External clock via Ext. ADC Clk± pins (requires hardware modification: R25, R26 → R23, R24)
+* **SATA connectors (from FPGA):** For X-channel secondary/slave configuration (requires hardware modification: R25, R26 → R27, R28)
 
 .. figure:: img/schematics/External_clk.png
     :align: center
     :width: 800
 
-    Clock schematic
+    Clock source options for the ADC
 
-.. note::
+|
 
-    The Red Pitaya FPGA is designed, tested, and guaranteed to operate correctly at the board's specified core clock frequency 
-    (125 MHz for STEMlab 125-14, 122.88 MHz for SDRlab 122-16, etc).
-    
-    While it is possible to run the board at different clock frequencies, please be aware that:
-    
-    - The FPGA may not function as intended at non-standard frequencies and requires thorough testing
-    - The ADC and DAC sampling rates will change proportionally with the clock frequency
-    - Lower clock frequencies will reduce the analog bandwidth of the board
-    - Red Pitaya does not guarantee proper operation at frequencies other than the specified core clock
-    
-    The board will boot with any valid external clock signal. 2.07-48 and higher OS versions do not block boot-up if the external clock is absent.
+**External Clock Specifications**
 
-.. warning::
+The external ADC clock should be a differential LVDS signal:
 
-    We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards.
-    Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
++-------------------------------------------------------+----------------------------------------------+---------+---------+---------+---------+
+| Parameter                                             | Description                                  | Min     | Typ     | Max     | Unit    |
++=============================+=========================+==============================================+=========+=========+=========+=========+
+|                             | Clock input pins        | 23 (Clk+) and 24 (Clk-) on |E2|              |         |         |         |         |
++-----------------------------+-------------------------+----------------------------------------------+---------+---------+---------+---------+
+|                             | Input standards         | LVDS                                         |         |         |         |         |
++-----------------------------+-------------------------+----------------------------------------------+---------+---------+---------+---------+
+|                             | Input clock coupling    | AC (on-board capacitors)                     |         |         |         |         |
++-----------------------------+-------------------------+----------------------------------------------+---------+---------+---------+---------+
+| :math:`f_{CLK}`             | Input frequency range   |                                              | 1       | 125     | 125     | MHz     |
++-----------------------------+-------------------------+----------------------------------------------+---------+---------+---------+---------+
+| :math:`V_{ID,DIFF,PP}`      | Input voltage swing     | Differential peak-to-peak                    |         | 0.35    | 0.8     | V       |
++-----------------------------+-------------------------+----------------------------------------------+---------+---------+---------+---------+
+| IDC                         | Input clock duty cycle  |                                              | 45%     |         | 55%     |         |
++-----------------------------+-------------------------+----------------------------------------------+---------+---------+---------+---------+
 
-**Instructions**
 
-#. Remove R25 and R26 from the top side of the board.
+|
+
+**Hardware Modification Instructions**
+
+To enable external clock input, SMD resistors must be relocated on the PCB:
+
+1.  Remove R25 and R26 from the top side of the board
 
     .. figure:: img/schematics/External_clock_top.png
         :alt: Top side schematic
@@ -470,51 +508,95 @@ The ADC clock can be provided by:
 
         Top side schematic
 
-#. Relocate the desoldered resistors from R25 and R26 to:
+2.  Relocate the desoldered resistors from R25 and R26 to:
 
-    * R23 and R24 for external clock (Ext. ADC CLK+- pins).
-    * R27 and R28 for X-channel secondary (SATA connectors).
-
-    .. figure:: img/schematics/External_clock_bottom.png
-        :alt: Bottom side schematic
-        :align: center
-        :width: 400
-
-        Bottom side schematic
+    * **R23 and R24** for external clock (Ext. ADC CLK± pins on E2 connector)
+    * **R27 and R28** for X-channel secondary (SATA connectors)
 
     .. figure:: img/schematics/External_clock_bottom_photo.png
         :alt: Bottom side photo
         :align: center
         :width: 400
 
-        Bottom side photo
+        Bottom side photo showing the location of the resistors
 
     .. figure:: img/schematics/External_clock_resistors.jpeg
-        :alt: Bottom side all
+        :alt: Full schematic with highlighted resistors
         :align: center
-        :width: 800
+        :width: 400
 
-        Bottom side
+        Full schematic with highlighted resistor positions
 
-QSPI
-===========
+.. warning::
 
-The QSPI chip is by default not populated on Red Pitaya boards. For further information on board modifications, please contact support@redpitaya.com or info@redpitaya.com.
+    **Changing the external clock frequency during operation is not supported**
+
+    The Red Pitaya FPGA is designed, tested, and guaranteed to operate correctly at 125 MHz.
+    
+    While it is possible to run the board at different clock frequencies, please be aware that:
+    
+    * The FPGA may not function as intended at non-standard frequencies and requires thorough testing
+    * The ADC and DAC sampling rates will change proportionally with the clock frequency
+    * Lower clock frequencies will reduce the analog bandwidth of the board
+    * Red Pitaya does not guarantee proper operation at frequencies other than 125 MHz
+    
+    The board will boot with any valid external clock signal. OS versions 2.07-48 and higher do not block boot-up if the external clock is absent.
 
 .. warning::
 
     Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
-Other specifications
-=====================
+|
 
-For all other specifications please refer to the :ref:`Original Gen common hardware specifications <hw_specs_orig_gen>`.
+QSPI Flash
+-----------
+
+The QSPI flash chip is by default not populated on Red Pitaya boards. For further information on board modifications, please contact support@redpitaya.com or info@redpitaya.com.
+
+.. warning::
+
+    Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
 
 |
 
+Calibration
+------------
+
+.. include:: ../_specs_common/calibration.inc
+
+|
+
+Additional Resources
+====================
+
+For additional specifications and measurements, please refer to:
+
+* |Original Gen hardware specs| - Common Original Gen specifications
+* |Original Gen comparison table| - Comparison across all Red Pitaya Original Gen models
+
+|
+
+Legal & Disclaimers
+===================
+
+.. include:: ../_specs_common/disclaimer.inc
+
+|
+
+
 .. rubric:: Footnotes
 
-.. [#f1]  See the :ref:`STEMlab 125-14 External clock <top_125_14_EXT>` board for more information.
-.. [#f2]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
+.. [#f1] The absolute maximum input voltage values are for frequencies below 1 kHz. For higher frequencies, please use the input voltage range specifications as **Absolute maximum**.
+.. [#f2] See the :ref:`STEMlab 125-14 External Clock <top_125_14_EXT>` board for more information, or refer to the :ref:`External ADC Clock section <external_125_14>` for hardware modification instructions.
+.. [#f3] See the :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` and :ref:`X-channel 2.0 (Click Shield) synchronisation examples <examples_multiboard_sync>` for trigger output configuration.
+.. [#f7] Red Pitaya Version 1.0 has -3.3 V on pin 2. Red Pitaya Version 1.1 has -3.4 V on pin 2.
+.. [#f8] The default software enables sampling at a CPU-dependent speed. To acquire data at a 100 kS/s rate, additional FPGA processing must be implemented.
+.. [#f9] The output is passed through a first-order low-pass filter. Should additional filtering be required, this can be applied externally in line with the specific requirements of the application.
+.. [#f10] Application specific. The output current is shared between the extension connectors and the connected USB devices, and can be higher if other peripheral units are not in use.
 
+.. substitutions
 
+.. |E1| replace:: :ref:`E1 connector <E1_orig_gen>`
+.. |E2| replace:: :ref:`E2 connector <E2_orig_gen>`
+.. |Original Gen hardware specs| replace:: :ref:`Original Gen hardware specifications <hw_specs_orig_gen>`
+.. |Original Gen comparison table| replace:: :ref:`Original Gen board comparison table <rp-board-comp-orig_gen>`

@@ -72,7 +72,7 @@ The external ADC clock should comply with `NB6L72`_ input specifications. The ch
 
     When synchronising multiple Red Pitaya *PRO Gen 2* boards, please keep in mind that:
 
-    * :ref:`Click Shield synchronisation <click_shield>` works out-of-the-box.
+    * :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` works out-of-the-box.
     * :ref:`X-channel synchronisation <x-ch_streaming>` requires a hardware modification as secondary boards differ from the primary board.
 
 .. note::
@@ -85,7 +85,7 @@ How to synchronise Gen 2 boards (multichanneling)?
 
 The Gen 2 boards can be syncrhonised in the same way as original boards:
 
-*   :ref:`Click Shield synchronisation <click_shield>` works out-of-the-box.
+*   :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` works out-of-the-box.
 *   :ref:`X-channel synchronisation <x-ch_streaming>` requires a hardware modification as secondary boards differ from the primary board. Also USB-C cables 
     are used for synchronisation instead of SATA cables.
 

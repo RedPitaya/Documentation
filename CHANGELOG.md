@@ -6,6 +6,77 @@ orphan: true
 
 All notable changes to this project will be documented in this file.
 
+## April 2026 - Update 1
+
+**Major updates:**
+
+- **Calibration documentation restructured:**
+
+  - Split into three pages: overview, DC calibration, and frequency calibration.
+  - Separate procedures for Original Gen boards (requires 50 Ω termination) and Gen 2 boards (no termination needed).
+  - Updated calibration images.
+
+- **Original Gen hardware documentation overhauled:**
+
+  - All board pages rewritten with Overview, Features, and Quick Reference sections.
+  - Updated board comparison tables with new rows: ESD protection, E3 connector, daisy-chain connectors, and reference clock specifications.
+  - Power supply, external ADC clock, and calibration content unified into shared include files.
+
+- **Gen 2 hardware documentation improvements:**
+
+  - All Gen 2 board pages updated with new and corrected specifications.
+  - Added detailed power supply documentation: USB-C and E2 connector powering scenarios.
+  - Extended external ADC clock specifications with sync behaviour and MMCM/PLL reconfiguration notes.
+  - Updated Gen 2 board comparison table.
+
+- **FPGA tutorials section added:**
+
+  - New step-by-step FPGA tutorials section with: FPGA Configuration, Base Project, and RF Inputs tutorials.
+  - Modify Project guide fully rewritten with expanded instructions and new screenshots.
+
+- **Multichannel/X-channel documentation expanded:**
+
+  - Click Shield Synchronisation renamed to **X-channel 2.0 (Click Shield) Synchronisation** (new official name).
+  - Added comparison table between X-Channel System and X-channel 2.0 (Click Shield) Synchronisation.
+  - Clarified board compatibility for multi-board setups.
+
+- **Oscilloscope & Signal Generator updates:**
+
+  - Added Interpolation section (Linear, Cubic, Sinc) and Trace Mode documentation.
+
+- **Streaming – technical details expanded:**
+
+  - Added RAW-to-Volts conversion guide with formula, per-board ADC reference table, and code examples.
+
+- **FPGA register maps updated:**
+
+  - Added complete register map set for OS release **2.07-48** (v0.94, v0.94 SIGNALlab 250-12, stream_app, stream_app 4-Input, stream_app SIGNALlab 250-12).
+  - Added new **v0.94 CS[2] register map for STEMlab 125-14 4-Input** (`v0.94_cs2_4input`) — documents the Oscilloscope CH C/D register space specific to the 4-Input board.
+  - All in-development register maps (v0.94, stream_app variants) updated with board compatibility lists, compatible application references, and improved descriptions.
+  - Register map navigation page updated with usage instructions and version selection guidance.
+  - v0.94 register maps: documented the **16-bit data mode** register bit (enables expanding ADC data to 16 bits).
+  - Streaming register maps: added **calibration mode control** register — allows switching between legacy calibration (pre-v6) and the new calibration mode introduced in version 6.
+  - Streaming register maps: added **timestamp counter** registers — expose a 64-bit hardware tick counter and the timestamps of when data was written to each DMA buffer, useful for precise sample timing.
+
+**Minor updates:**
+
+- SD card preparation guide restructured with clearer steps for Windows, macOS, and Linux.
+- Troubleshooting guide reorganised with dedicated sections for each troubleshooting step.
+- SDR applications: added macOS compatibility workarounds.
+- SPI API: corrected function name `rp_SPI_DestoryMessage()` → `rp_SPI_DestroyMessage()` in examples and SCPI reference.
+- Signal generator SCPI/API: added burst period commands `SOUR<n>:BURS:INT:PER` with higher precision range (0.001 µs – 4 s, nanosecond resolution). Available in development builds.
+- Acquisition SCPI/API: added calibration-corrected data read commands for all acquisition modes — returns data with calibration applied. Available in development builds.
+- Original Gen STEMlab 125-14 performance measurements page added to the hardware navigation.
+
+## February 2026 - Update 3
+
+**Minor updates:**
+
+- Grammar and wording fixes across acquisition, generation, analog, digital, and communication examples.
+- Calibration guide updated with improved instructions and step flow.
+- Advanced SD card preparation guide cleaned up and simplified.
+- Removed stale redirect entries from `redirects.txt`.
+
 ## February 2026 - Update 2
 
 **Minor updates:**

@@ -8,7 +8,7 @@ achieve a higher number of fast analog channels for acquisition or generation.
 
 There are two ways to achieve clock and trigger synchronisation across multiple Red Pitaya boards:
 
-1.  **Red Pitaya Click Shield Synchronisation** - **Multiple External clock Red Pitaya boards** synchronised with Click Shields using dedicated 
+1.  **Red Pitaya X-Channel 2.0 (Click Shield) Synchronisation** - **Multiple External clock Red Pitaya boards** synchronised with Click Shields using dedicated 
     ZL40213 LVDS clock fanout buffers. Provides optimal signal integrity across extended daisy chains with minimal clock and trigger jitter.
 
 #.  **Red Pitaya X-Channel system** - **One primary and multiple secondary Red Pitaya boards** connected in a daisy chain with SATA (Original 
@@ -46,8 +46,8 @@ How can I control synchronised boards?
 
 .. _click_shield_sync:
 
-Click Shield Synchronisation
-=============================
+X-Channel 2.0 (Click Shield) Synchronisation
+=============================================
 
 Red Pitaya Click Shields enable high-performance clock and trigger synchronisation between multiple Red Pitaya units or other devices 
 using dedicated ZL40213 LVDS clock fanout buffers. This professional-grade clock distribution solution maintains optimal signal integrity 
@@ -172,7 +172,7 @@ The X-Channel System consists of one **primary** device and one or more **second
 **Ideal for:**
 
 * **Small to medium systems:** 2-3 boards where signal quality remains excellent
-* **Moderate to high sampling rates:** Performance is comparable to Click Shield synchronization
+* **Moderate to high sampling rates:** Performance is comparable to X-channel 2.0 (Click Shield) synchronisation
 * **Cost-effective setups:** No additional synchronization hardware required beyond cables
 * **Quick deployment:** Simple cable connections between boards without external components
 * **Full GPIO access:** All GPIO pins remain available for user applications
@@ -186,7 +186,7 @@ The X-Channel System consists of one **primary** device and one or more **second
 
 .. note::
 
-    For larger systems (4+ boards) or applications requiring maximum sampling rates across many boards, the :ref:`Click Shield synchronization <click_shield_sync>` 
+    For larger systems (4+ boards) or applications requiring maximum sampling rates across many boards, the :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` 
     provides dedicated clock buffers that maintain optimal signal integrity throughout longer daisy chains.
 
 .. note::
@@ -307,8 +307,8 @@ X-channel systems.
 
 **Boards with connectors but no X-channel support:**
 
-Board models like *STEMlab 125-14 4-Input* and *SDRlab 122-16* have S1/S2 connectors, but the FPGA is not configured to support 
-the X-channel system. These boards cannot be used in X-channel configurations without FPGA modifications.
+Board models like *STEMlab 125-14 4-Input* and *SDRlab 122-16* have S1/S2 connectors, but the hardware itself does not allow for 
+sharing the clock signal through these connectors. These boards cannot be used in X-channel configurations.
 
 |
 
@@ -454,8 +454,9 @@ Can I synchronise multiple different Red Pitaya board models with the Click Shie
 --------------------------------------------------------------------------------------
 
 Yes, you can. There can be different board models in a Red Pitaya Click Shield daisy chain. For example, the primary device can be a 
-*STEMlab 125-14 4-Input* board, the first secondary device a *STEMlab 125-14 ext. clk.*, and the second secondary device another *4-Input*. 
-We recommend daisy chaining only devices with the same core clock speed.
+*STEMlab 125-14 4-Input* board, the first secondary device a *STEMlab 125-14 ext. clk.*, and the second secondary device another *4-Input*.
+This allows for great flexibility in building a multichannel system achieving different combinations of the number of channels. We recommend 
+daisy chaining only devices with the same core clock speed.
 
 Please take into account that *SDRlab 122-16 ext. clk.* is meant to receive a 122.88 MHz clock signal, so although synchronisation with 
 *STEMlab 125-14* boards is possible, we do not recommend it.
@@ -463,13 +464,11 @@ Please take into account that *SDRlab 122-16 ext. clk.* is meant to receive a 12
 While multiple different board models can be daisy chained, some features might be unavailable. See the :ref:`Click Shield compatibility section <click_shield_compatibility>`.
 
 
-What is the difference between Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation?
---------------------------------------------------------------------------------------------------------
+What is the difference between Red Pitaya X-channel System and Red Pitaya X-channel 2.0 (Click Shield) Synchronisation?
+------------------------------------------------------------------------------------------------------------------------
 
-In this section we will talk about the difference between the Red Pitaya X-channel System and Red Pitaya Click Shield Synchronisation. 
+In this section we will talk about the difference between the Red Pitaya X-channel System and Red Pitaya X-channel 2.0 (Click Shield) Synchronisation. 
 It might seem like these two are completely the same, but that is far from the truth.
-
-More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
 
 .. note::
 
@@ -477,50 +476,56 @@ More info on :ref:`Red Pitaya X-channel System <top_125_14_MULTI>`.
     is available :ref:`here <streaming_limits>`.
 
 
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-|                                | **X-Channel System**                       | **Click Shield Synchronisation**           |
-+================================+============================================+============================================+
-| **Clock & Sampling rate**                                                                                                |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Recommended sampling rate      | Up to 100 ksps                             | Up to full sampling rate                   |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Shared clock signal            | Primary device CLK                         | Click Shield Oscillator OR external clock  |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| External clock type            | N/A                                        | See |ZL40213| AC clock input specs         |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Clock signal delays            | | Slightly higher delay per unit           | 1x clock buffer per unit - |ZL40213|       |
-|                                | | (signal through each FPGA) [#f1]_        |                                            |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Trigger signal delays          | | Slightly higher delay per unit           | 1x Trigger buffer per unit -               |
-|                                | | (signal through each FPGA) [#f1]_        |  |74FCT38072DCGI|                          |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| **Pinout**                                                                                                               |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| GPIO access                    | Full access [#f2]_                         | Max 10 digital pins [#f3]_                 |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Slow analog access             | Full access (4/4)                          | Max 2 pins (2/4) [#f3]_                    |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Digital communication pins     | 1x UART, 1x SPI, 1x I2C, 2x CAN            | 2x UART, 2x SPI, 2x I2C (no CAN) [#f3]_    |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| **Units**                                                                                                                |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| | Compatible Red Pitaya board  | | Primary - STEMlab 125-14 LN              | | STEMlab 125-14 Pro Gen 2                 |
-| | models                       | |                                          | | STEMlab 125-14 (LN) Ext Clk              |
-| |                              | | Secondary - STEMlab 125-14 LN Secondary  | | SDRlab 122-16 Ext Clk                    |
-| |                              | |                                          | | STEMlab 125-14 4-Input                   |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| | Choosing between External    | No                                         | Yes [#f4]_                                 |
-| | and Internal clock           |                                            |                                            |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
-| Aluminium case compatibility   | No                                         | Yes                                        |
-+--------------------------------+--------------------------------------------+--------------------------------------------+
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+|                                | **X-Channel System**                             | **X-channel 2.0 (Click Shield) Synchronisation** |
++================================+==================================================+==================================================+
+| **Clock & Sampling rate**                                                                                                            |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Recommended sampling rate      | Up to 100 ksps                                   | Up to full sampling rate                         |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Shared clock signal            | Primary device CLK                               | Click Shield Oscillator OR external clock        |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| External clock type            | N/A                                              | See |ZL40213| AC clock input specs               |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Clock signal delays            | | Slightly higher delay per unit                 | Clock buffer (1x per unit) - |ZL40213|           |
+|                                | | (signal through each FPGA) [#f1]_              |                                                  |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Trigger signal delays          | | Slightly higher delay per unit                 | Trigger buffer (1x per unit) -                   |
+|                                | | (signal through each FPGA) [#f1]_              |  |74FCT38072DCGI|                                |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| **Pinout**                                                                                                                           |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| GPIO access                    | Full access [#f2]_                               | Max 10 digital pins [#f3]_                       |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Slow analog access             | Full access (4/4)                                | Max 2 pins (2/4) [#f3]_                          |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Digital communication pins     | UART (1x), SPI (1x), I2C (1x), CAN (2x)          | UART (2x), SPI (2x), I2C (2x) (no CAN) [#f3]_    |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| **Units**                                                                                                                            |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Compatible Red Pitaya board    | | Primary - STEMlab 125-14 LN                    | | STEMlab 125-14 Pro Gen 2 series                |
+| models                         | |                                                | | STEMlab 125-14 4-Input                         |
+|                                | | Secondary - STEMlab 125-14 LN Secondary        | | STEMlab TI series                              |
+|                                | |                                                | | SDRlab 122-16 Ext Clk                          |
+|                                | |                                                | | STEMlab 125-14 (LN) Ext Clk                    |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Choosing between External      | No                                               | Yes [#f4]_                                       |
+| and Internal clock             |                                                  |                                                  |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+| Aluminium case compatibility   | No                                               | Yes                                              |
++--------------------------------+--------------------------------------------------+--------------------------------------------------+
+
+More information on the hardware is available here:
+
+* :ref:`Red Pitaya Click Shields <click_shield>` are used for the X-channel 2.0 synchronisation.
+* :ref:`X-channel hardware <top_125_14_MULTI>`
 
 .. rubric:: Footnotes
 
 .. [#f1] Exact measurements will be provided in the future.
 .. [#f2] Depending on the board model there can be either 16, 19, or 22 GPIO pins. Check the :ref:`Original Gen <rp-board-comp-orig_gen>` or :ref:`Gen 2 <rp-board-comp-gen2>` comparison table for more information.
 .. [#f3] Through the microBUS connectors.
-.. [#f4] 4-Input and future HW board redesigns only.
+.. [#f4] PRO Gen 2 series, TI series and 4-Input.
 
 
 .. substitutions

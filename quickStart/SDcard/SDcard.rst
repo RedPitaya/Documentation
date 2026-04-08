@@ -18,7 +18,7 @@ Installation steps
 
 Follow these steps to install the Red Pitaya OS on an SD card:
 
-1. Download the latest Red Pitaya OS 2.00 image:
+1.  **Download the latest Red Pitaya OS 2.00 image**:
 
     * :download:`Latest Stable (2.07-48) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.07-48_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): 5d02710fd87a71b4c049ffa5105b69e5).
 
@@ -29,19 +29,19 @@ Follow these steps to install the Red Pitaya OS on an SD card:
     .. figure:: img/microSDcard-RP.png
         :width: 200
 
-#. Use a disk image writing tool to write the image onto the SD card. We recommend |balenaEtcher|. Installation instructions:
+#.  **Write the image to the SD card**: Use a disk image writing tool to write the image onto the SD card. We recommend |balenaEtcher|. Installation instructions:
 
     * :ref:`Windows <windows_gui>`
     * :ref:`Linux <linux_gui>`
     * :ref:`macOS <macos_gui>`
 
-#. Insert the SD card into the Red Pitaya.
+#.  **Insert the SD card into the Red Pitaya**.
 
     .. figure:: img/pitaya-quick-start-insert-sd-card.png
         :align: center
         :width: 400
 
-#. Connect the power supply and Ethernet cable and check the status LED sequence during boot. If you spot any unexpected behaviour, please check the :ref:`FAQ troubleshooting section <faq>`.
+#.  **Connect the power supply and Ethernet cable** and check the status LED sequence during boot. If you spot any unexpected behaviour, please check the :ref:`FAQ troubleshooting section <faq>`.
 
     .. raw:: html
 
@@ -49,9 +49,8 @@ Follow these steps to install the Red Pitaya OS on an SD card:
             <iframe src="https://www.youtube.com/embed/9xZCAkXAkw8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
         </div>
 
-#. Connect to the board via the web interface. For more information check the :ref:`quick start instructions <quickstart_connect>`.
-
-#. When updating between major software releases (for example, from 1.04 to 2.00), reset the calibration parameters to **Factory Default** (or :ref:`recalibrate your Red Pitaya <calibration_app>`).
+#.  **Connect to the board via the web interface**. For more information check the :ref:`quick start instructions <quickstart_connect>`.
+#.  **When updating between major software releases** (for example, from 1.04 to 2.00), reset the calibration parameters to **Factory Default** (or :ref:`recalibrate your Red Pitaya <calibration_app>`).
 
 
 .. note::
@@ -62,7 +61,7 @@ Follow these steps to install the Red Pitaya OS on an SD card:
 
     To see all options for updating the OS, please refer to the :ref:`Update Red Pitaya OS <os_update>` section.
 
-
+|
 
 *******************************************************
 Installation instructions for Windows, Linux and macOS
@@ -82,27 +81,27 @@ Select your operating system for specific instructions on writing the Red Pitaya
 Windows
 =======
 
-#. Insert the SD card into your PC or SD card reader.
+#.  **Insert the SD card into your PC or SD card reader**.
 
     .. figure:: img/SDcard_insert.jpg
         :align: center
         :width: 600
 
-#. Download |balenaEtcher| and install it.
+#.  **Download** |balenaEtcher| and install it.
 
-#. Open the Balena Etcher application.
+#.  **Open the Balena Etcher application**.
 
     .. figure:: img/SDcard_Win_BalenaEtcher.png
         :align: center
         :width: 160
 
-#. Under **Flash from file** select the downloaded Red Pitaya image file (Balena Etcher accepts both zipped and unzipped files).
+#.  **Flash from file**: select the downloaded Red Pitaya image file (Balena Etcher accepts both zipped and unzipped files).
 
     .. figure:: img/SDcard_Win_BalEtc_FlashFromFile.png
         :align: center
         :width: 800
 
-#. Under **Select target** choose the drive letter of the SD card. Balena Etcher will only show you external drives.
+#.  **Select target**: choose the drive letter of the SD card. Balena Etcher will only show you external drives.
 
     .. figure:: img/SDcard_Win_BalEtc_SelectTarget.png
         :align: center
@@ -117,19 +116,19 @@ Windows
         :align: center
         :width: 800
 
-#. When you click **Flash** the computer will prompt you to allow the operation. Click **yes** and wait for the flashing and validation to be completed.
+#.  **Flash**: When you click **Flash** the computer will prompt you to allow the operation. Click **yes** and wait for the flashing and validation to be completed.
 
     .. figure:: img/SDcard_Win_BalEtc_Flash.png
         :align: center
         :width: 800
 
-#. Close Balena Etcher.
+#.  **Close Balena Etcher**.
 
     .. figure:: img/SDcard_Win_BalEtc_FlashComplete.png
         :align: center
         :width: 800
 
-
+|
 
 .. _linux_gui:
 
@@ -143,26 +142,29 @@ Linux
 
 Alternatively, use the built-in Image Writer tool:
 
-#. Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
+#.  **Open the extracted SD card image**: Right-click on the extracted SD card image and select **Open With > Disk Image Writer**.
 
     .. figure:: img/DIW_1.png
         :align: center
         :width: 800
 
-#. In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
-   Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
+#.  **Select the SD card**: In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
+
+    .. note:: 
+
+        Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
 
     .. figure:: img/DIW_3.png
         :align: center
         :width: 800
 
-#. You will be asked to confirm your choice and enter a password.
+#.  **Confirm your choice**: You will be asked to confirm your choice and enter a password.
 
 .. note::
 
     For command-line installation using ``dd`` and other advanced options, see the :ref:`Advanced SD card guide <sdcard_advanced>`.
 
-
+|
 
 .. _macos_gui:
 
@@ -176,23 +178,23 @@ macOS
 
 Alternatively, use ApplePi-Baker:
 
-#. Insert the SD card into your PC or SD card reader.
+#.  **Insert the SD card** into your PC or SD card reader.
 
     .. figure:: img/SDcard_insert.jpg
         :align: center
         :width: 600
 
-#. Download |ApplePi-Baker|.
+#.  **Download** |ApplePi-Baker|.
 
-#. Open ApplePi-Baker and enter your admin password when prompted.
+#.  **Open ApplePi-Baker** and enter your admin password when prompted.
 
-#. Select the SD card drive by recognizing its size.
+#.  **Select the SD card drive** by recognizing its size.
 
     .. figure:: img/SDcard_macOS_ApplePi-Baker_drive.png
         :align: center
         :width: 1000
 
-#. Select the Red Pitaya OS image file and wait for the writing process to complete.
+#.  **Select the Red Pitaya OS image file**: select the downloaded Red Pitaya image file and wait for the writing process to complete.
 
     .. figure:: img/SDcard_macOS_ApplePi-Baker_image.png
         :align: center

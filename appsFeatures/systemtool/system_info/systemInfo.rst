@@ -13,8 +13,12 @@ In the four corners of the Red Pitaya web interface there are the following widg
 
 1. **General System information button:** Includes optional features that can be turned ON/OFF. For more information see the section below.
 2. **Power button:** Manual *Power Off* or *Reboot* of the board.
-3. **Download system report:** Downloads a .zip file with information for the developers. Please attach it to the support mail with the issue description. The report should download after approx. 15 seconds.
+3. **Download system bug report:** Downloads a .zip file with information for the developers. Please attach it to the support mail with the issue description. The report should download after approx. 15 seconds.
 4. **Current OS and ecosystem version:** Reroutes to the :ref:`Software update tool <software_update_manager>` if clicked. At boot, Red Pitaya checks for software updates and displays a yellow exclamation mark here if a new release is available.
+
+.. note::
+
+    Starting with OS 3.00, a **warning icon** is displayed on the General System information button if the EEPROM contains invalid calibration values. If you see this icon, please reinstall the :ref:`latest OS version <prepareSD>` and perform a :ref:`factory calibration reset <calibration_app>`. If the problem persists, please :ref:`contact us <report_problem>`.
 
 .. note::
 
@@ -45,6 +49,9 @@ The **System Settings** section contains the following options:
 
             To manually change the DMA reserved memory size, please refer to the :ref:`Changing reserved memory chapter under the DMM <deepMemoryMode>`.
 
+    #.  **Clock Rate:** Allows entering a custom external clock sampling rate (in MHz) with high precision (e.g. 80.12345678 MHz). This setting overrides the default software clock rate stored in the board profile. Once set, all applications and modules on the PS side will use 
+        this value instead of the default. This is particularly useful for boards using an external clock source (e.g. SDRlab 122-16 Ext Clk), where the actual sampling rate may differ from the nominal rate assumed by the OS. Leave the field empty or set it to 0 to use the 
+        default profile value.
 
 .. figure:: img/Info_button_250-12.png
     :align: center

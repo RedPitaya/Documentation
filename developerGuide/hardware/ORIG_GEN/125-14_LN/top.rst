@@ -1,255 +1,170 @@
 .. _top_125_14_LN:
 
-##################
-STEMlab 125-14-LN
-##################
-
+#################################
+STEMlab 125-14 LN (Discontinued)
+#################################
 
 .. figure:: ../125-14/img/STEMlab-125-14.jpg
     :width: 500
-
-
-STEMlab 125-14 low noise is a STEMlab 125-14 board that is populated with additional linear analog power supplies to reduce RF output noise and consequently increase ENOB.
-
-To find out more about the performance of the STEMlab 125-14 with DC analog power supplies, we suggest you refer to Leonhard Neuhaus's blog.
-
-- |Red Pitaya DAC performance|
-
-
-
-Pinout
-=========
-
-.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
-    :width: 700
+    :align: center
 
 |
 
-Technical specifications
-==========================
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Basic**                                                               |
-    +====================================+====================================+
-    | Processor                          | Dual core ARM Cortex-A9            |
-    +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7010 SoC          |
-    +------------------------------------+------------------------------------+
-    | RAM                                | 512 MB (4 Gb)                      |
-    +------------------------------------+------------------------------------+
-    | System memory                      | Micro SD up to 32 GB               |
-    +------------------------------------+------------------------------------+
-    | Console connector                  | Micro USB                          |
-    +------------------------------------+------------------------------------+
-    | Power connector                    | Micro USB                          |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Power consumption                  | 5 V, 2 A max                       |
-    +------------------------------------+------------------------------------+
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
 
 |
 
-.. table::
-    :widths: 40 40
+Overview
+========
 
+The STEMlab 125-14 Low Noise (LN) is a variant of the standard :ref:`STEMlab 125-14 <top_125_14>` with populated linear analog power supply regulators.
+Replacing the default switching regulators with linear ones reduces noise on the analog power rails, lowering the noise floor of the RF inputs and outputs and improving ENOB (Effective Number of Bits).
 
-    +------------------------------------+------------------------------------+
-    | **Connectivity**                                                        |
-    +====================================+====================================+
-    | Ethernet                           | 1 Gbit                             |
-    +------------------------------------+------------------------------------+
-    | USB                                | USB-A 2.0                          |
-    +------------------------------------+------------------------------------+
-    | Wi-Fi                              | requires Wi-Fi dongle              |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **RF inputs**                                                           |
-    +====================================+====================================+
-    | RF input channels                  | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 125 MS/s                           |
-    +------------------------------------+------------------------------------+
-    | ADC resolution                     | 14 bit                             |
-    +------------------------------------+------------------------------------+
-    | Input impedance                    | 1 MΩ / 10 pF                       |
-    +------------------------------------+------------------------------------+
-    | Full scale voltage range           | ±1 V (LV) and ±20 V (HV)           |
-    +------------------------------------+------------------------------------+
-    | Input coupling                     | DC                                 |
-    +------------------------------------+------------------------------------+
-    | | **Absolute max.**                | | **LV ±6 V**                      |
-    | | **Input voltage**                | | **HV ±30 V**                     |
-    +------------------------------------+------------------------------------+
-    | Input ESD protection               | Yes                                |
-    +------------------------------------+------------------------------------+
-    | Overload protection                | Protection diodes                  |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 60 MHz                        |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **RF outputs**                                                          |
-    +====================================+====================================+
-    | RF output channels                 | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 125 MS/s                           |
-    +------------------------------------+------------------------------------+
-    | DAC resolution                     | 14 bit                             |
-    +------------------------------------+------------------------------------+
-    | Load impedance                     | 50 Ω                               |
-    +------------------------------------+------------------------------------+
-    | Voltage range                      | ±1 V                               |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Short circuit protection           | Yes                                |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Output slew rate                   | 2 V / 10 ns                        |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | DC - 50 MHz                        |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 |
-    +====================================+====================================+
-    | Digital IOs                        | 16                                 |
-    +------------------------------------+------------------------------------+
-    | Digital voltage levels             | 3.3 V                              |
-    +------------------------------------+------------------------------------+
-    | Analog inputs                      | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog input voltage range         | 0 - 3.5 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bit                             |
-    +------------------------------------+------------------------------------+
-    | Analog input sample rate           | 100 kS/s                           |
-    +------------------------------------+------------------------------------+
-    | Analog outputs                     | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog output voltage range        | 0 - 1.8 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bit                              |
-    +------------------------------------+------------------------------------+
-    | Analog output sample rate          | ≲ 3.2 MS/s                         |
-    +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
-    +------------------------------------+------------------------------------+
-    | Communication interfaces           | I2C, SPI, UART, CAN                |
-    +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3V3, -4 V                   |
-    +------------------------------------+------------------------------------+
-    | External ADC clock                 | No [#f1]_                          |
-    +------------------------------------+------------------------------------+
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Synchronisation**                                                     |
-    +====================================+====================================+
-    | External trigger input             | E1 connector (DIO0_P)              |
-    +------------------------------------+------------------------------------+
-    | External trigger input impedance   | Hi-Z (digital input)               |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Trigger output [#f2]_              | E1 connector (DIO0_N)              |
-    +------------------------------------+------------------------------------+
-    | Daisy chain connection             | SATA connectors |br|               |
-    |                                    | (up to 500 Mbps)                   |
-    +------------------------------------+------------------------------------+
-    | Ref. clock input                   | N/A                                |
-    +------------------------------------+------------------------------------+
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Boot options**                                                        |
-    +====================================+====================================+
-    | SD card                            | Yes                                |
-    +------------------------------------+------------------------------------+
-    | QSPI                               | Not populated                      |
-    +------------------------------------+------------------------------------+
-    | eMMC                               | N/A                                |
-    +------------------------------------+------------------------------------+
-
-
-.. note::
-
-    For more information, please refer to the :ref:`Product comparison table <rp-board-comp-orig_gen>`.
-
-
-
-
-
-Measurements
-=================
-
-.. note::
-
-    Although we do not have specific measurements for the STEMlab 125-14 LN board, the performance of the fast analog inputs is the same as for STEMlab 125-14. The output performance is covered in Leonhard Neuhaus's blog about |Red Pitaya DAC performance| (measurements with added linear power supplies).
-
-You can find the measurements of the fast analog frontend here:
-
-* :ref:`Original boards - STEMlab 125-14 <measurements_orig_gen>`.
-* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
-
-
-Schematics
-===========
-
-- :download:`Schematics_STEM_125-14_v1.1_LN.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1_LN.pdf>`.
-
-.. note::
-
-    Full hardware schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, development schematics are available. This schematic will give you information about hardware configuration, FPGA pin connections, and similar.
-
-
-
-Mechanical Specifications and 3D Models
-=========================================
-
-- STEP :download:`3D_STEM_125-14_v1.0.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14_v1.0.zip>`.
-
-
-Other specifications
-=====================
-
-For all other specifications please refer to standard :ref:`STEMlab 125-14 specs <top_125_14>`.
-
-
-
-.. Substitutions
+To find out more about the performance improvements, refer to Leonhard Neuhaus's blog: |Red Pitaya DAC performance|.
 
 .. |Red Pitaya DAC performance| raw:: html
 
     <a href="https://ln1985blog.wordpress.com/2016/02/07/red-pitaya-dac-performance/" target="_blank">Red Pitaya DAC performance</a>
 
+|
 
-.. rubric:: Footnotes
+Features
+========
 
-.. [#f1]  It is possible to convert the "STEMlab 125-14 LN" board into an "STEMlab 125-14 LN Ext. Clk" board. Please contact us for more information (info@redpitaya.com).
-.. [#f2]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
+* 14-bit, 125 MS/s ADC and DAC
+* Linear analog power supplies for improved noise performance
+* Dual-core ARM Cortex-A9 processor
+* FPGA Xilinx Zynq 7010 SoC
+* 512 MB RAM
+* 16 digital I/Os, 4 analog inputs, 4 analog outputs
+* Multiple communication interfaces: I2C, SPI, UART, CAN
+* Micro USB connectivity for power and console
+* SATA daisy-chain connectors for multi-board synchronisation
+
+|
+
+Quick Reference
+===============
+
+.. table::
+    :widths: 40 60
+
+    +----------------------------+--------------------------------------------------+
+    | **Category**               | **Key Specifications**                           |
+    +============================+==================================================+
+    | ADC                        | 2 channels, 14-bit, 125 MS/s, DC-50 MHz          |
+    +----------------------------+--------------------------------------------------+
+    | DAC                        | 2 channels, 14-bit, 125 MS/s, DC-50 MHz          |
+    +----------------------------+--------------------------------------------------+
+    | Processor                  | Dual-core ARM Cortex-A9                          |
+    +----------------------------+--------------------------------------------------+
+    | FPGA                       | Xilinx Zynq 7010 SoC                             |
+    +----------------------------+--------------------------------------------------+
+    | RAM                        | 512 MB                                           |
+    +----------------------------+--------------------------------------------------+
+    | Digital I/O                | 16 GPIOs @ 3.3V                                  |
+    +----------------------------+--------------------------------------------------+
+    | Analog I/O                 | 4 inputs (12-bit), 4 outputs (8-bit)             |
+    +----------------------------+--------------------------------------------------+
+    | Connectivity               | Ethernet, USB, Extension connectors              |
+    +----------------------------+--------------------------------------------------+
+    | Special Features           | Linear power supplies, Low Noise                 |
+    +----------------------------+--------------------------------------------------+
+
+|
+
+Differences from Standard STEMlab 125-14
+==========================================
+
+This board is electrically identical to the :ref:`STEMlab 125-14 <top_125_14>` with the following difference:
+
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| **Parameter**                        | **STEMlab 125-14**                          | **STEMlab 125-14 LN**                       |
++======================================+=============================================+=============================================+
+| Analog power supply regulators       | Switching regulators (not populated)        | Linear regulators (populated)               |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| Analog power supply noise            | Higher (switching artefacts present)        | Lower (clean linear supply)                 |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| RF output noise floor                | Standard                                    | Reduced                                     |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| Output ENOB                          | Standard                                    | Improved                                    |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| Power consumption                    | Lower                                       | Slightly higher (linear regulators)         |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+
+|
+
+Technical Specifications
+=========================
+
+The STEMlab 125-14 LN has the same specifications as the :ref:`standard STEMlab 125-14 <top_125_14>`, with the following enhancement:
+
+* **Linear analog power supply regulators:** Populated linear regulators replace the default switching regulators, reducing noise on the analog rails and improving output ENOB.
+
+For full technical specifications, please refer to the :ref:`STEMlab 125-14 specifications <top_125_14>`.
+
+.. seealso::
+
+    For more detailed information, please refer to the |Original Gen comparison table|.
+
+|
+
+Performance & Measurements
+============================
+
+.. note::
+
+    Although we do not have specific measurements for the STEMlab 125-14 LN board, the performance of the fast analog inputs is the same as for STEMlab 125-14. 
+    The output performance with linear power supplies is covered in Leonhard Neuhaus's blog about |Red Pitaya DAC performance|.
+    
+You can find the measurements of the fast analog frontend here:
+
+* :ref:`Original Gen - STEMlab 125-14 <measurements_orig_gen>`.
+
+|
+
+Schematics & 3D Models
+========================
+
+Schematics
+----------
+
+* :download:`Schematics_STEM_125-14_v1.1_LN.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_125-14_v1.1_LN.pdf>`.
+
+.. note::
+
+    Full hardware schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. 
+    Nonetheless, development schematics are available. This schematic will give you information about hardware configuration, FPGA pin connections, and similar.
+
+Mechanical Specifications & 3D Models
+--------------------------------------
+
+* STEP :download:`3D_STEM_125-14_v1.0.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_125-14_v1.0.zip>`.
+
+|
+
+Additional Resources
+====================
+
+For additional specifications and measurements, please refer to:
+
+* :ref:`STEMlab 125-14 <top_125_14>` - Standard STEMlab 125-14 specifications
+* |Original Gen hardware specs| - Common Original Gen specifications
+* |Original Gen comparison table| - Comparison across all Red Pitaya Original Gen models
+
+|
+
+Legal & Disclaimers
+===================
+
+.. include:: ../_specs_common/disclaimer.inc
+
+|
+
+.. substitutions
+
+.. |Original Gen hardware specs| replace:: :ref:`Original Gen hardware specifications <hw_specs_orig_gen>`
+.. |Original Gen comparison table| replace:: :ref:`Original Gen board comparison table <rp-board-comp-orig_gen>`

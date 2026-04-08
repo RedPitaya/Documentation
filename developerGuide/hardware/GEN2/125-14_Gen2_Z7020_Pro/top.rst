@@ -152,7 +152,7 @@ Technical Specifications
     | Absolute max. input voltage        | | ±6 (LV)                          | V         | DC values [#f1]_                 |
     |                                    | | ±30 (HV)                         |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Input ESD protection               | Yes                                | \-        |                                  |
+    | Input ESD protection               | 1500                               | V         | DC                               |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Overload protection                | Protection diodes                  | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -173,6 +173,8 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Voltage range                      | | ±1 @ 50 Ω                        | V         |                                  |
     |                                    | | ±2 @ Hi-Z                        |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Output coupling                    | DC                                 | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Short circuit protection           | Yes                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -238,6 +240,10 @@ Technical Specifications
     | Daisy chain connectors type        | USB-C                              | \-        | Not standard USB-C [#f3]_        |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Ref. clock input                   | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock frequency               | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock connector type          | N/A                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Boot options**                                                                                                       |
@@ -379,7 +385,15 @@ Connector Physical Specifications
 .. note::
 
     When looking for mating connectors for custom Red Pitaya shields, `double height elevated sockets <https://www.digikey.com/en/products/detail/samtec-inc/ESW-113-33-T-D/6693225>`_ are needed to clear the heatsink and ethernet connector on the board.
-    Any connectors with *insulation height* of 0.635" (16.13mm) or greater will work.
+    Any connectors with *insulation height* of 0.635" (16.13 mm) or greater will work. This clearance requirement is based on the tallest components on the Red Pitaya board (heatsink and ethernet connector).
+
+.. note::
+
+    To prevent damage to the board or the shield, when connecting shields to the E1 and E2 connectors, please ensure:
+    
+    * **Proper alignment of connectors** - ensure the connectors are correctly aligned. The connectors on the Red Pitaya board have additional space in the socket housing, making it possible 
+      to misalign the shields by ±1 pin while still appearing physically connected. This can cause damage to the board and/or the shield, so please double-check the alignment before powering on the board.
+    * **Tight-fitting counterparts** - use connectors that fit securely to prevent accidental disconnections or damage.
 
 |
 
@@ -479,8 +493,8 @@ Synchronisation Connectors (S1 & S2)
 Advanced Features
 ==================
 
-Extension Connector Power
---------------------------
+Power Supply
+-------------
 
 .. include:: ../_specs_common/power_supply.inc
 
@@ -497,6 +511,13 @@ External Booting Options
 --------------------------
 
 .. include:: ../_specs_common/Ext_boot_options.inc
+
+|
+
+Calibration
+------------
+
+.. include:: ../_specs_common/calibration.inc
 
 |
 
@@ -522,7 +543,7 @@ Legal & Disclaimers
 .. rubric:: Footnotes
 
 .. [#f1] The absolute maximum input voltage values are for frequencies below 1 kHz. For higher frequencies, please use the input voltage range specifications as **Absolute maximum**.
-.. [#f2] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>` for trigger output configuration.
+.. [#f2] See the :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` and :ref:`X-channel 2.0 (Click Shield) synchronisation examples <examples_multiboard_sync>` for trigger output configuration.
 .. [#f3] Not compatible with USB-C standard (DC-coupled). Use only for daisy-chaining multiple Red Pitaya boards.
 .. [#f4] The external ADC clock goes first to the `NB6L72`_ clock selector chip, then passes through the ADC to finally reach the FPGA pins.
 .. [#f5] For exact voltage levels, please refer to the `NB6L72`_ datasheet.

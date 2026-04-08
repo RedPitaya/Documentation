@@ -115,7 +115,7 @@ API Code Examples
 
 
 Code - C++ API
--------------
+----------------
 
 .. code-block:: cpp
 
