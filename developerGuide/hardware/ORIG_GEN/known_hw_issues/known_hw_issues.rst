@@ -12,8 +12,8 @@ This page lists known hardware issues with Red Pitaya Original Generation platfo
 Affected Boards and Models
 ===========================
 
-:Hardware Generation: Original Gen
-:Boards Covered:
+**Boards Covered:**
+
     * STEMlab 125-14 (HW rev up to 1.1)
     * SDRlab 122-16 (HW rev 1.0)
     * SIGNALlab 250-12 (HW rev up to 1.2b)
@@ -34,11 +34,11 @@ These hardware issues affect Original Generation boards and require hardware mod
 I2C System Failures
 -------------------
 
-:Affected Hardware: All Original Gen boards
-:Affected Component: |TCA9406DCUR| I2C level translator
-:Severity: Major
-:Workaround: Hardware modification required
-:Status: Fixed in Gen 2
+* **Affected Hardware:** All Original Gen boards
+* **Affected Component:** |TCA9406DCUR| I2C level translator
+* **Severity:** Major
+* **Workaround:** Hardware modification required
+* **Status:** Fixed in Gen 2
 
 **Symptoms**
 
@@ -74,15 +74,16 @@ For Original Gen boards, replace the existing |TCA9406DCUR| I2C level translator
 
 Fixed in Gen 2 boards by replacing the |TCA9406DCUR| with |PCA9306|, which does not feature one-shot accelerators.
 
+|
 
 UART TX Boot Prevention
 ------------------------
 
-:Affected Hardware: All Original Gen boards
-:Affected Component: UART TX pin on :ref:`E2 connector <E2_orig_gen>`
-:Severity: Critical
-:Workaround: Hardware design consideration required
-:Status: Fixed in Gen 2
+**Affected Hardware:** All Original Gen boards
+**Affected Component:** UART TX pin on :ref:`E2 connector <E2_orig_gen>`
+**Severity:** Critical
+**Workaround:** Hardware design consideration required
+**Status:** Fixed in Gen 2
 
 **Symptoms**
 

@@ -1,276 +1,189 @@
 .. _top_122_16_EXT:
 
 #############################
-SDRlab 122-16 external clock
+SDRlab 122-16 External Clock
 #############################
 
 .. figure:: ../122-16/img/SDRlab-122-16.jpg
     :width: 500
+    :align: center
 
+|
 
-This version of the SDRlab is a standard SDRlab 122-16 which has been modified in such a way that the ADC, the DAC and the FPGA clock can be provided by an external clock source. An external clock should be connected to the Ext ADC CLK- and + pin
+.. contents:: Table of Contents
+    :local:
+    :depth: 1
+    :backlinks: top
 
-**External clock specifications:**
+|
 
-The Ext ADC CLK+ and - pins are connected to the ENC+ and ENC- pins of the ADC. The clock from the ADC is then passed to the FPGA.
-The ports operate differentially and should be driven with **LVDS** clock with voltage levels similar to the one provided by the SDRlab 122-16 on-board `oscillator <https://abracon.com/Precisiontiming/ABLNO.pdf>`_.
-
-The maximum and minimum clock frequencies are limited by the ADC specifications.
-
-The operating voltage of the Red Pitaya is 3V3.
-
-.. note::
-
-    **Booting without the external clock present?**
-    The official Red Pitaya OS will not boot without providing an external clock as it relies on reading the FPGA register map, which is available if the ADC clock is present.
-    However, by modifying the software, the Linux OS itself can boot even without the external clock present, but please note it will crash when trying to read from the FPGA without the external clock present.
-
-.. note::
-
-    When synchronising multiple Red Pitaya boards, please keep in mind that:
-
-    * :ref:`Click Shield synchronisation <click_shield>` requires external clock models.
-    * :ref:`X-channel synchronisation <x-ch_streaming>` requires the X-channel system (master and slave boards) which differ from external clock models.
-
-
-Pinout
+Overview
 ========
 
-.. figure:: ../125-14/img/Red_Pitaya_pinout.jpg
-    :width: 700
+The SDRlab 122-16 External Clock is a modified version of the standard SDRlab 122-16 that has been hardware-modified to accept an external clock source. 
+This variant is optimized for SDR applications requiring clock synchronisation with external equipment.
 
 |
 
-Technical specifications
-==========================
+Features
+========
 
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Basic**                                                               |
-    +====================================+====================================+
-    | Processor                          | Dual core ARM Cortex-A9            |
-    +------------------------------------+------------------------------------+
-    | FPGA                               | FPGA Xilinx Zynq 7020 SoC          |
-    +------------------------------------+------------------------------------+
-    | RAM                                | 512 MB (4 Gb)                      |
-    +------------------------------------+------------------------------------+
-    | System memory                      | Micro SD up to 32 GB               |
-    +------------------------------------+------------------------------------+
-    | Console connector                  | Micro USB                          |
-    +------------------------------------+------------------------------------+
-    | Power connector                    | Micro USB                          |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Power consumption                  | 5 V, 2 A max                       |
-    +------------------------------------+------------------------------------+
+* 16-bit ADC and 14-bit DAC, 122.88 MS/s (at 122.88 MHz clock)
+* AC-coupled 50 Ω RF inputs and outputs
+* SDR-optimized clock frequency (122.88 MHz)
+* External clock input support (pre-modified hardware)
+* Dual-core ARM Cortex-A9 processor
+* FPGA Xilinx Zynq 7020 SoC
+* 512 MB RAM
+* 22 digital I/Os, 4 analog inputs, 4 analog outputs
+* Multiple communication interfaces: I2C, SPI, UART, CAN
+* Micro USB connectivity for power and console
 
 |
 
+Quick Reference
+===============
+
 .. table::
-    :widths: 40 40
+    :widths: 40 60
 
-
-    +------------------------------------+------------------------------------+
-    | **Connectivity**                                                        |
-    +====================================+====================================+
-    | Ethernet                           | 1 Gbit                             |
-    +------------------------------------+------------------------------------+
-    | USB                                | USB-A 2.0                          |
-    +------------------------------------+------------------------------------+
-    | Wi-Fi                              | requires Wi-Fi dongle              |
-    +------------------------------------+------------------------------------+
+    +----------------------------+--------------------------------------------------+
+    | **Category**               | **Key Specifications**                           |
+    +============================+==================================================+
+    | ADC                        | 2 channels, 16-bit, 122.88 MS/s                  |
+    +----------------------------+--------------------------------------------------+
+    | DAC                        | 2 channels, 14-bit, 122.88 MS/s                  |
+    +----------------------------+--------------------------------------------------+
+    | Processor                  | Dual-core ARM Cortex-A9                          |
+    +----------------------------+--------------------------------------------------+
+    | FPGA                       | Xilinx Zynq 7020 SoC                             |
+    +----------------------------+--------------------------------------------------+
+    | RAM                        | 512 MB                                           |
+    +----------------------------+--------------------------------------------------+
+    | Digital I/O                | 22 GPIOs @ 3.3V                                  |
+    +----------------------------+--------------------------------------------------+
+    | Analog I/O                 | 4 inputs (12-bit), 4 outputs (8-bit)             |
+    +----------------------------+--------------------------------------------------+
+    | Connectivity               | Ethernet, USB-C, Extension connectors            |
+    +----------------------------+--------------------------------------------------+
+    | Input Impedance            | 50 Ω (AC-coupled)                                |
+    +----------------------------+--------------------------------------------------+
+    | Special Features           | AC-coupling, External clock input (LVDS)         |
+    +----------------------------+--------------------------------------------------+
 
 |
 
-.. table::
-    :widths: 40 40
+Differences from Standard SDRlab 122-16
+========================================
 
-    +------------------------------------+------------------------------------+
-    | **RF inputs**                                                           |
-    +====================================+====================================+
-    | RF input channels                  | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 122.88 MS/s                        |
-    +------------------------------------+------------------------------------+
-    | ADC resolution                     | 16 bit                             |
-    +------------------------------------+------------------------------------+
-    | Input impedance                    | 50 Ω                               |
-    +------------------------------------+------------------------------------+
-    | Full scale voltage range           | 0.5 Vpp/-2 dBm                     |
-    +------------------------------------+------------------------------------+
-    | Input coupling                     | AC                                 |
-    +------------------------------------+------------------------------------+
-    | | **Absolute max.**                | | **DC max 50 V (AC-coupled)**     |
-    | | **Input voltage**                | | **1 Vpp for RF**                 |
-    +------------------------------------+------------------------------------+
-    | Input ESD protection               | Yes                                |
-    +------------------------------------+------------------------------------+
-    | Overload protection                | DC voltage protection              |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | 300 kHz - 550 MHz (undersampling)  |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
+This board is electrically identical to the :ref:`SDRlab 122-16 <top_122_16>` with the following hardware changes already applied at the factory:
 
-|
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| **Parameter**                        | **SDRlab 122-16**                           | **SDRlab 122-16 External Clock**            |
++======================================+=============================================+=============================================+
+| On-board 122.88 MHz oscillator       | Active (drives ADC, FPGA, DAC)              | Bypassed (disconnected from clock path)     |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| E2 pins 23-24 (Ext. ADC Clk±)        | Not connected                               | Active — must receive a valid LVDS clock    |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| External ADC clock                   | No (requires hardware modification)         | Yes (pre-modified, plug-and-use)            |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
+| Operation without external clock     | Normal (uses onboard oscillator)            | FPGA non-functional; PS boots from 33 MHz   |
++--------------------------------------+---------------------------------------------+---------------------------------------------+
 
-.. table::
-    :widths: 40 40
+.. warning::
 
-    +------------------------------------+------------------------------------+
-    | **RF outputs**                                                          |
-    +====================================+====================================+
-    | RF output channels                 | 2                                  |
-    +------------------------------------+------------------------------------+
-    | Sample rate                        | 122.88 MS/s                        |
-    +------------------------------------+------------------------------------+
-    | DAC resolution                     | 14 bit                             |
-    +------------------------------------+------------------------------------+
-    | Load impedance                     | 50 Ω                               |
-    +------------------------------------+------------------------------------+
-    | Voltage range                      | 0.5 Vpp/ -2 dBm                    |
-    |                                    | (50 Ω load)                        |
-    +------------------------------------+------------------------------------+
-    | Short circuit protection           | N/A, RF transformer                |
-    |                                    | & AC-coupled                       |
-    +------------------------------------+------------------------------------+
-    | Output slew rate                   | N/A                                |
-    +------------------------------------+------------------------------------+
-    | Bandwidth                          | 300 kHz - 60 MHz                   |
-    +------------------------------------+------------------------------------+
-    | Connector type                     | SMA                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Extension connector**                                                 |
-    +====================================+====================================+
-    | Digital IOs                        | 22                                 |
-    +------------------------------------+------------------------------------+
-    | Digital voltage levels             | 3.3 V                              |
-    +------------------------------------+------------------------------------+
-    | Analog inputs                      | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog inputs voltage range        | 0 - 3.5 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog input resolution            | 12 bit                             |
-    +------------------------------------+------------------------------------+
-    | Analog input sample rate           | 100 kS/s                           |
-    +------------------------------------+------------------------------------+
-    | Analog outputs                     | 4                                  |
-    +------------------------------------+------------------------------------+
-    | Analog outputs voltage range       | 0 - 1.8 V                          |
-    +------------------------------------+------------------------------------+
-    | Analog output resolution           | 8 bit                              |
-    +------------------------------------+------------------------------------+
-    | Analog output sample rate          | ≲ 3.2 MS/s                         |
-    +------------------------------------+------------------------------------+
-    | Analog output bandwidth            | ≈ 160 kHz                          |
-    +------------------------------------+------------------------------------+
-    | Communication interfaces           | I2C, SPI, UART, CAN                |
-    +------------------------------------+------------------------------------+
-    | Available voltages                 | +5 V, +3V3, -4 V                   |
-    +------------------------------------+------------------------------------+
-    | External ADC clock                 | Yes                                |
-    +------------------------------------+------------------------------------+
-
-|
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Synchronisation**                                                     |
-    +====================================+====================================+
-    | External trigger input             | E1 connector (DIO0_P)              |
-    +------------------------------------+------------------------------------+
-    | External trigger input impedance   | Hi-Z (digital input)               |
-    |                                    |                                    |
-    +------------------------------------+------------------------------------+
-    | Trigger output [#f1]_              | E1 connector (DIO0_N)              |
-    +------------------------------------+------------------------------------+
-    | Daisy chain connection             | SATA connectors |br|               |
-    |                                    | (up to 500 Mbps)                   |
-    +------------------------------------+------------------------------------+
-    | Ref. clock input                   | N/A                                |
-    +------------------------------------+------------------------------------+
-
-.. rubric:: Footnotes
-
-.. [#f1]  See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>`.
-
-
-.. table::
-    :widths: 40 40
-
-    +------------------------------------+------------------------------------+
-    | **Boot options**                                                        |
-    +====================================+====================================+
-    | SD card                            | Yes                                |
-    +------------------------------------+------------------------------------+
-    | QSPI                               | Not populated                      |
-    +------------------------------------+------------------------------------+
-    | eMMC                               | N/A                                |
-    +------------------------------------+------------------------------------+
-
+    The onboard oscillator is bypassed. The board **will not perform signal acquisition or generation** without a valid external
+    LVDS clock on E2 pins 23-24. Supplying the wrong signal level or leaving the pins floating will prevent FPGA operation.
 
 .. note::
 
-    For more information, please refer to the :ref:`Product comparison table <rp-board-comp-orig_gen>`.
+    When using this board with synchronisation features:
 
+    * :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` is compatible with this board.
+    * :ref:`X-channel synchronisation <x-ch_streaming>` is **not** compatible.
+    
+|
 
+Technical Specifications
+=========================
 
+The SDRlab 122-16 External Clock has the same specifications as the :ref:`standard SDRlab 122-16 <top_122_16>`, with the following addition:
 
-Measurements
-=================
+* **External ADC clock:** Yes (hardware pre-modified for external clock input)
+* **Hardware modification:** Resistors relocated to enable external clock input
+
+For full technical specifications, please refer to the :ref:`SDRlab 122-16 specifications <top_122_16>`.
+
+.. seealso::
+
+    For more detailed information, please refer to the |Original Gen comparison table|.
+
+|
+
+Performance & Measurements
+============================
 
 .. note::
 
     We do not have explicit measurements for the SDRlab 122-16 board.
 
-You can find the measurements of the fast analog frontend here:
+You can find the measurements of the fast analog frontend for similar boards here:
 
-* :ref:`Original boards - STEMlab 125-14 <measurements_orig_gen>`.
-* :ref:`Gen 2 - STEMlab 125-14 Gen 2 <measurements_gen2>`.
+* :ref:`Original Gen - STEMlab 125-14 <measurements_orig_gen>`.
 
+|
+
+Schematics & 3D Models
+========================
 
 Schematics
-=============
+----------
 
 * :download:`Schematics_STEM_122-16SDR_V1r1.pdf <https://downloads.redpitaya.com/doc/Schematics/Schematics_STEM_122-16SDR_V1r1.pdf>`.
 
 .. note::
 
-    Full hardware schematics for the Red Pitaya board are not available. Red Pitaya has open-source code but not open hardware schematics. Nonetheless, development schematics are available. This schematic will give you information about hardware configuration, FPGA pin connections, and similar.
+    The external clock variant uses the same PCB as the standard SDRlab 122-16. The only physical difference is the relocation of resistors R25, R26 to R23, R24.
 
-
-Mechanical Specifications and 3D Models
-===========================================
+Mechanical Specifications & 3D Models
+--------------------------------------
 
 * PDF :download:`3D_STEM_122-16SDR_V1r1.pdf.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.pdf.zip>`.
 * STEP :download:`3D_STEM_122-16SDR_V1r1.zip <https://downloads.redpitaya.com/doc/3D_models/3D_STEM_122-16SDR_V1r1.zip>`.
 
+|
 
-ADC specifications
-====================
-
-* `Data sheets <https://www.analog.com/en/products/LTC2185.html>`_.
-
-
-
-RP clock wiring
+Advanced Features
 ==================
 
-* :ref:`External ADC clock <external_122_16>`.
+External ADC Clock
+-------------------
 
+.. include:: ../_specs_common/ext_adc_clk.inc
 
-Other specifications
-=====================
+|
 
-For all other specifications please refer to standard :ref:`SDRlab 122-16 specs <top_122_16>`.
+Additional Resources
+====================
+
+For additional specifications, please refer to:
+
+* :ref:`SDRlab 122-16 <top_122_16>` - Standard SDRlab 122-16 specifications
+* |Original Gen hardware specs| - Common Original Gen specifications
+* |Original Gen comparison table| - Comparison across all Red Pitaya Original Gen models
+
+|
+
+Legal & Disclaimers
+===================
+
+.. include:: ../_specs_common/disclaimer.inc
+
+|
+
+.. substitutions
+
+.. |E2| replace:: :ref:`E2 connector <E2_sdr>`
+.. |Original Gen hardware specs| replace:: :ref:`Original Gen hardware specifications <hw_specs_orig_gen>`
+.. |Original Gen comparison table| replace:: :ref:`Original Gen board comparison table <rp-board-comp-orig_gen>`
+.. _NB6L72: https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf

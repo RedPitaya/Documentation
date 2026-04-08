@@ -92,8 +92,8 @@ What's in each section
     :maxdepth: 1
 
     getting_started/top.rst
+    fpga_tutorials/tutorial_top
     projects/top.rst
     advanced/top.rst
     regset/top.rst
-..    fpga_tutorials/top.rst
 

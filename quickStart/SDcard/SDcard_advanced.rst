@@ -49,6 +49,7 @@ Previous 2.00 OS versions can be found |download_os_old|
 
     When updating the OS to 2.00 version from 1.04 or older (or downgrading from 2.00 to 1.04 or older), a factory reset of calibration parameters must be performed. Please open the Red Pitaya's web interface and head to **System => Calibration => Manual DC calibration**. Click on **Reset**, select **Factory**, and confirm the reset. For more details on calibration, please see the :ref:`Calibration application <calibration_app>`.
 
+|
 
 =========
 1.04 OS
@@ -98,7 +99,7 @@ Here is a video on how to identify the Red Pitaya board model and install 1.04 o
 * :download:`1.04-30 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-30_beta.img.zip>`  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 2acb0579dbf67a40828a9b60a59be9e8).
 * :download:`1.04-27 <https://downloads.redpitaya.com/downloads/SIGNALlab-250-12/SIGNALlab_250-12_OS_1.04-27_stable.img.zip>`  - |CHANGELOG_Z20_250_12| (MD5 (zipped): 40601a42fb06cf23f43aefe15d042a01).
 
-
+|
 
 =================
 Older OS versions
@@ -116,7 +117,7 @@ All older OS versions that are in our database are available in our archive:
 
 For manual ecosystem upgrade please refer to `Manual ecosystem upgrade`_.
 
-
+|
 
 .. _nightly_builds:
 
@@ -161,11 +162,11 @@ Linux
     If you specify the wrong device in the instructions below, you could delete your primary Linux partition.
     Please be careful.
 
-#. Insert the SD card into your PC or SD card reader.
+#.  **Insert the SD card into your PC or SD card reader.**
 
-#. Open the terminal and check the available disks with ``df -h``.
-   Our SD card is 16 GB. It is named ``/dev/sdx`` and divided into two partitions, ``/dev/sdx1`` and ``/dev/sdx2``.
-   The drive mounted at ``/`` is your main drive. Be careful not to use it.
+#.  **Open the terminal** and check the available disks with ``df -h``.
+    Our SD card is 16 GB. It is named ``/dev/sdx`` and divided into two partitions, ``/dev/sdx1`` and ``/dev/sdx2``.
+    The drive mounted at ``/`` is your main drive. Be careful not to use it.
 
     .. code-block:: console
 
@@ -174,21 +175,22 @@ Linux
         /dev/sdx1        118M   27M     92M   23%  /media/somebody/CAD5-1E3D
         /dev/sdx2       15.9G 1013M   15.8G   33%  /media/somebody/7b2d3ba8-95ed-4bf4-bd67-eb52fe65df55
 
-#. Unmount all SD card partitions with ``umount /dev/sdxN`` (make sure you replace N with the right numbers).
+#.  **Unmount all SD card partitions** with ``umount /dev/sdxN`` (make sure you replace N with the right numbers).
 
     .. code-block:: console
 
         $ sudo umount /dev/sdx1 /dev/sdx2
 
-#. Write the image onto the SD card with the following command.
-   Replace the ``red_pitaya_image_file.img`` with the name of the unzipped Red Pitaya SD Card Image and replace ``/dev/device_name`` with the path to the SD card.
+#.  **Write the image onto the SD card** with the following command.
+    Replace the ``red_pitaya_image_file.img`` with the name of the unzipped Red Pitaya SD Card Image and replace ``/dev/device_name`` with the path to the SD card.
 
     .. code-block:: console
 
         $ sudo dd bs=1M if=red_pitaya_image_file.img of=/dev/device_name
 
-#. Wait until the process has finished.
+#.  **Wait until the process has finished.**
 
+|
 
 .. _macos_cli:
 
@@ -196,39 +198,34 @@ Linux
 macOS
 =====
 
-#. Insert the SD card into your PC or SD card reader.
-
-#. Click **cmd + space**, type **Disk Utility** into the search box and press enter. From the menu, select your SD card and click on the **Erase** button (be careful not to delete your disk!).
+#.  **Insert the SD card into your PC or SD card reader.**
+#.  **Open Disk Utility**: Click ``cmd + space``, type **Disk Utility** into the search box and press enter. From the menu, select your SD card and click on the **Erase** button (be careful not to delete your disk!).
 
     .. figure:: img/SDcard_macOS_DiskUtility.png
         :align: center
         :width: 1000
 
-#. Click **cmd + space**, then open the **Terminal**. Type ``cd Desktop`` and press enter.
-
-#. Unmount the partition so that you will be able to overwrite the disk. Type ``diskutil list`` into the Terminal and press enter. This will show you the list of all memory devices.
+#.  **Open the Terminal**: Click ``cmd + space``, type **Terminal** into the search box and press enter. Type ``cd Desktop`` and press enter.
+#.  **Unmount the partition** so that you will be able to overwrite the disk. Type ``diskutil list`` into the Terminal and press enter. This will show you the list of all memory devices.
 
     .. figure:: img/Screen-Shot-2015-08-07-at-16.59.50.png
         :align: center
         :width: 800
 
-#. Unmount with: ``diskutil UnmountDisk /dev/diskn`` (insert the number ``n`` of your disk correctly!)
+#.  **Unmount with**: ``diskutil UnmountDisk /dev/diskn`` (insert the number ``n`` of your disk correctly!)
 
     .. figure:: img/Screen-Shot-2015-08-07-at-17.14.34.png
         :align: center
         :width: 800
 
-#. Type: ``sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn``. Remember to replace ``n`` with the number that you noted before. Notice that there is a letter ``r`` in front of the disk name, use that as well!
+#.  **Write the image onto the SD card**: Type ``sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn``. Remember to replace ``n`` with the number that you noted before. Notice that there is a letter ``r`` in front of the disk name, use that as well!
 
     .. figure:: img/Screen-Shot-2015-08-07-at-17.14.45.png
         :align: center
         :width: 800
 
-#. Type in your password and wait a few minutes for the image to be written.
-
-#. When the image is written, type: ``diskutil eject /dev/diskn`` and press enter.
-
-#. Safely eject the SD card.
+#.  **Wait for the process to complete**: Type in your password and wait a few minutes for the image to be written.
+#.  **Eject the SD card**: When the image is written, type: ``diskutil eject /dev/diskn`` and press enter.
 
 |
 
@@ -240,7 +237,7 @@ Red Pitaya OS partitions
 
 The Red Pitaya OS image on the SD card contains two partitions. As of OS 2.05-37, the partitions are as follows:
 
-1. The 1 GB FAT contains the **ecosystem**:
+1.  **1 GB FAT** contains the **ecosystem**:
 
     * Boot files: FSBL, FPGA images, U-Boot, Linux kernel;
     * Red Pitaya API libraries and header files;
@@ -248,7 +245,7 @@ The Red Pitaya OS image on the SD card contains two partitions. As of OS 2.05-37
     * Customized Nginx web server.
 
 
-2. The ~8 GB Ext4 contains the **OS**:
+2.  **~8 GB Ext4** contains the **Linux OS**:
 
     * Ubuntu/Debian OS,
     * various libraries,
@@ -266,6 +263,8 @@ The Linux OS is updated less frequently.
 .. note::
 
     A list of new features, bug fixes, and known bugs for each Red Pitaya release can be found in our |CHANGELOG|.
+
+|
 
 ==================================
 Delete partitions on the SD card
@@ -286,36 +285,33 @@ Deleting the old partitions on the SD card is sometimes necessary when preparing
 Windows
 --------
 
-#. Reinsert the SD card into the PC or SD card reader.
-
-#. Open the **Computer Management > Disk Management** utility. Admin privilieges are required.
+#.  **Insert the SD card** into the PC or SD card reader.
+#.  **Open the Disk Management utility**: Open the **Computer Management > Disk Management** utility. Admin privilieges are required.
 
     .. figure:: img/Disk_management_delete_partitions.png
         :align: center
         :width: 800
 
-#. Right-click on each partition of the SD card and select **Delete Volume**.
+#.  **Delete partitions**: Right-click on each partition of the SD card and select **Delete Volume**.
 
     .. figure:: img/Disk_management_delete_volume.png
         :align: center
         :width: 800
 
-#. After deleting all partitions, the SD card should show as **Unallocated**.
+#.  **Check the SD card**: After deleting all partitions, the SD card should show as **Unallocated**.
 
     .. figure:: img/Disk_management_unallocated.png
         :align: center
         :width: 800
 
-#. Close the **Disk Management** utility and proceed with the Red Pitaya OS installation using BalenaEtcher as described in the :ref:`Prepare SD card guide <prepareSD>`.
+#.  Close the **Disk Management** utility and proceed with the Red Pitaya OS installation using BalenaEtcher as described in the :ref:`Prepare SD card guide <prepareSD>`.
 
 Linux
 --------
 
-#. Reinsert the SD card into the PC or SD card reader.
-
-#. List the available disks with ``lsblk`` or ``fdisk -l``.
-
-#. Select the SD card device (e.g., ``/dev/sdx``) and delete all existing partitions with ``sudo fdisk /dev/sdx``:
+#.  **Insert the SD card**: Reinsert the SD card into the PC or SD card reader.
+#.  **List the available disks**: Use ``lsblk`` or ``fdisk -l`` to list the available disks.
+#.  **Select the SD card device**: Choose the SD card device (e.g., ``/dev/sdx``) and delete all existing partitions with ``sudo fdisk /dev/sdx``:
 
     * Type ``d`` and press enter to delete a partition.
     * If there are multiple partitions, repeat the previous step until all partitions are deleted.
@@ -324,9 +320,8 @@ Linux
 MACOS
 --------
 
-#. Reinsert the SD card into the PC or SD card reader.
-
-#. Follow the instructions on the `official Apple support page <https://support.apple.com/en-gb/guide/disk-utility/dskutl14079/mac>`_ to delete all existing partitions on the SD card using the **Disk Utility** application.
+#.  **Insert the SD card**: Reinsert the SD card into the PC or SD card reader.
+#.  **Delete partitions**: Follow the instructions on the `official Apple support page <https://support.apple.com/en-gb/guide/disk-utility/dskutl14079/mac>`_ to delete all existing partitions on the SD card using the **Disk Utility** application.
 
 |
 
@@ -339,17 +334,15 @@ Manual ecosystem upgrade
 Instead of writing the whole SD card image, it is possible to upgrade only the ecosystem.
 A manual upgrade allows you to fix a corrupted SD card image (if only the FAT partition is corrupted) or to install older, newer, or custom ecosystem zip files compatible with the current Linux version.
 
-#. Download a zip file from our |Red Pitaya archive|.
-
-#. Insert the SD card into the card reader.
+#.  **Download a zip file** from our |Red Pitaya archive|.
+#.  **Insert the SD card** into the card reader.
 
     .. note::
 
         Do **not** format the SD card as this will also delete the Linux OS partition.
 
-#. Delete all files from the FAT partition. Use ``Shift + Delete`` to avoid placing files into the trash bin on the same partition.
-
-#. Extract the ecosystem zip file contents onto the now empty partition.
+#.  **Delete all files** from the FAT partition. Use ``Shift + Delete`` to avoid placing files into the trash bin on the same partition.
+#.  **Extract the ecosystem zip file contents** onto the now empty partition.
 
 If you wish to keep wireless settings, skip deleting the next files:
 
@@ -379,7 +372,7 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
 +-----------------+-----------------+---------------------------------------+-------------------+
 | Red Pitaya OS   | OS release date | Nightly Build (alpha) versions        | Linux version     |
 +=================+=================+=======================================+===================+
-| IN DEV          | -               | NB 656 and later                      | 3.00              |
+| IN DEV          |                 | NB 656 and later                      | 3.00              |
 +-----------------+-----------------+---------------------------------------+-------------------+
 | 2.07-48         | 1.12.2025       | up to NB 655                          | 2.07              |
 +-----------------+-----------------+---------------------------------------+-------------------+
@@ -400,11 +393,12 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
 
 
 
-1.  Download the .zip containing the `Nightly Build Ecosystem <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_ (usually the highest number available).
+1.  **Download the Nightly Build Ecosystem**: Download the .zip containing the `Nightly Build Ecosystem <https://downloads.redpitaya.com/downloads/Unify/nightly_builds/>`_ 
+    (usually the highest number available).
 
     * Nightly build (alpha) ecosystems are named **ecosystem-<Linux OS version>-<Nightly build ecosystem number>-<ID>.zip**.
 
-#.  Go to the *RedPitaya/downloads* page and download the `latest Linux OS <https://downloads.redpitaya.com/downloads/LinuxOS/>`_.
+#.  **Go to the RedPitaya downloads page**: Download the `latest Linux OS <https://downloads.redpitaya.com/downloads/LinuxOS/>`_.
 
     * Linux OS versions are named **red_pitaya_OS-beta_<Linux OS version>.img.zip**.
 
@@ -414,13 +408,13 @@ The official Red Pitaya OS releases have both the Linux OS and the ecosystem com
 
     .. note::
 
-        Please note that **Official Red Pitaya OS != Red Pitaya Linux OS**. The Linux contains just the Linux, while the official release contains both the ecosystem and the Linux. We are looking for just the Linux here.
+        Please note that **Official Red Pitaya OS != Red Pitaya Linux OS**. The Linux contains just the Linux, while the official release contains both the ecosystem and the Linux. 
+        We are looking for just the Linux here.
 
-#.  Write the Linux OS to the SD card using BalenaEtcher. As BalenaEtcher will automatically close the connection between the SD and the computer at the end of the installation process, reinsert the SD card into the computer.
-
-#.  Extract the alpha ecosystem from the .zip directly to the SD card (if possible without first extracting it to a folder on the computer).
-
-#.  Insert the SD card into the Red Pitaya and power it on.
+#.  **Write the Linux OS to the SD card** using BalenaEtcher. As BalenaEtcher will automatically close the connection between the SD and the computer at the end of the installation process, 
+    reinsert the SD card into the computer.
+#.  **Extract the alpha ecosystem** from the .zip directly to the SD card (if possible without first extracting it to a folder on the computer).
+#.  **Insert the SD card** into the Red Pitaya and power it on.
 
 
 **Please read this section carefully**
@@ -432,16 +426,20 @@ Files such as ``CONNMARK.h`` and ``connmark.h`` will appear to the file system t
 
     For normal system operation any file can be chosen, since they **do not affect the system operation**.
     
-    For development purposes, you should already be using a Linux Ubuntu native OS, so this warning will not popup. The files are crucial for development and both versions of each file must be present on the development system.
+    For development purposes, you should already be using a Linux Ubuntu native OS, so this warning will not popup. The files are crucial for development and both versions 
+    of each file must be present on the development system.
 
 * This will also happen if you first extract to a folder, but you may not be informed of the change (it happens automatically).
 * This is a problem with the FAT file system, which is not case-sensitive, so files like ``connmark.h`` and ``CONNMARK.h`` are interpreted as the same file.
+
+|
 
 ================================
 Updating nightly build ecosystem
 ================================
 
-To update just the nightly build ecosystem, you can use the :ref:`Ecosystem update utility <update_util>`.
+To update just the nightly build ecosystem, you can use the :ref:`Ecosystem update utility <update_util>` or perform the update manually by following the instructions 
+in the :ref:`Manual ecosystem upgrade <manual_ecosystem_upgrade>` section above.
 
 |
 
@@ -468,14 +466,14 @@ Unfortunately, the process is not as simple as installing the old OS to the SD c
 
 Though we do not recommend it, some users may want to downgrade to an older OS version for various reasons. Here is a step-by-step guide on how to do it.
 
-    1. **Manually install the latest 2.00 OS version** onto the newly acquired board. See the :ref:`quick installation instructions <prepareSD>`.
-    #. **Establish an SSH connection** with the board to get access to the Red Pitaya's Linux terminal. See the :ref:`SSH connection instructions <ssh>`.
+    1.  **Manually install the latest 2.00 OS version** onto the newly acquired board. See the :ref:`quick installation instructions <prepareSD>`.
+    #.  **Establish an SSH connection** with the board to get access to the Red Pitaya's Linux terminal. See the :ref:`SSH connection instructions <ssh>`.
 
         .. code-block:: shell-session
 
             ssh root@<red_pitaya_ip_address>
 
-    #. **Convert the calibration to old format** using the :ref:`calib command line utility <calib_util>`:
+    #.  **Convert the calibration to old format** using the :ref:`calib command line utility <calib_util>`:
 
         .. code-block:: shell-session
 
@@ -488,8 +486,8 @@ Though we do not recommend it, some users may want to downgrade to an older OS v
             The conversion will **NOT** overwrite the factory calibration section in the EEPROM. Therefore, resetting the calibration to "factory defaults" via
             the :ref:`calib utility <calib_util>` or :ref:`Calibration application <calibration_app>` will not work.
 
-    #. **Install the older OS** to the SD card and boot the board.
-    #. **Adjust the frequency calibration** (Gen 2 boards only).
+    #.  **Install the older OS** to the SD card and boot the board.
+    #.  **Adjust the frequency calibration** (Gen 2 boards only).
 
 |
 
@@ -498,15 +496,15 @@ Though we do not recommend it, some users may want to downgrade to an older OS v
 Resize file system
 ******************
 
-When an image is written to a flash card of any size, the file system partitions are limited to the size defined in the image (typically 4 GB).
+When an image is written to a flash card of any size, the file system partitions are limited to the size defined in the image (typically 8 GB).
 To increase the available free space, run the following script:
 
 .. code-block:: shell-session
 
     root@rp-f03dee:~# /opt/redpitaya/sbin/resize.sh
 
-When the script is finished, the system will ask you to reboot your Red Pitaya.
-If everything is done correctly, the system will start with an increased disk size. This can be checked with the following command:
+When the script is finished, the system will ask you to reboot your Red Pitaya. If everything is done correctly, the system will start 
+with an increased disk size. This can be checked with the following command:
 
 .. code-block:: shell-session
 
@@ -542,8 +540,6 @@ If everything is done correctly, the system will start with an increased disk si
 .. |CHANGELOG_Z20_4CH| replace:: :rp-github:`CHANGELOG <RedPitaya/blob/master/CHANGELOG_Z20_4CH.md>`
 
 .. |Red Pitaya archive| replace:: :rp-download:`Red Pitaya archive <downloads/>`
-
-.. Note: Using global |redpitaya-forum| substitution instead of |RP_forum|
 
 .. |nightly builds| replace:: :rp-download:`Red Pitaya downloads <downloads/Unify/nightly_builds/>`
 

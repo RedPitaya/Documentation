@@ -218,6 +218,53 @@ ADC data formats
 
 |
 
+Converting RAW values to Volts
+================================
+
+RAW data contains native ADC counts. To convert to Volts on the computer, divide the raw integer values by the half-scale count for your board's ADC resolution:
+
+.. math::
+
+    V = \frac{RAW}{2^{N-1}} \times V_{range}
+
+Where :math:`N` is the ADC bit depth and :math:`V_{range}` is the peak input voltage of the selected gain setting.
+
+For standard boards at the default input range:
+
++------------------------------------------+-------------+---------------+--------------------------------------+
+| **Board**                                | **ADC bits**| **Divisor**   | **Default input range**              |
++==========================================+=============+===============+======================================+
+| STEMlab 125-14, STEMlab 125-14 Gen 2     | 14-bit      | 8192          | ±1 V (LV) / ±20 V (HV)               |
++------------------------------------------+-------------+---------------+--------------------------------------+
+| SDRlab 122-16                            | 16-bit      | 32768         | ±0.25 V                              |
++------------------------------------------+-------------+---------------+--------------------------------------+
+| SIGNALlab 250-12                         | 12-bit      | 2048          | ±1 V / ±20 V (selectable)            |
++------------------------------------------+-------------+---------------+--------------------------------------+
+| STEMlab 65-16 TI                         | 16-bit      | 32768         | ±1 V (LV) / ±20 V (HV)               |
++------------------------------------------+-------------+---------------+--------------------------------------+
+
+**Example — STEMlab 125-14 at LV (±1 V):**
+
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # raw_data is a list/array of 14-bit signed integer ADC counts
+    volts = np.array(raw_data, dtype=float) / 8192.0      # result in Volts
+
+    # Plot
+    plt.plot(volts)
+    plt.ylabel("Voltage (V)")
+    plt.xlabel("Sample")
+    plt.show()
+
+.. note::
+
+    RAW data is **uncalibrated** — it does not apply ADC offset or gain calibration corrections. For calibrated measurements, use the **VOLTS** format in the streaming settings instead.
+
+|
+
 File formats
 =============
 

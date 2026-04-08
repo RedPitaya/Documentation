@@ -149,7 +149,7 @@ Technical Specifications
     | Absolute max. input voltage        | | ±6 (LV)                          | V         | DC values [#f1]_                 |
     |                                    | | ±30 (HV)                         |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Input ESD protection               | Yes                                | \-        |                                  |
+    | Input ESD protection               | 1500                               | V         | DC                               |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Overload protection                | Protection diodes                  | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -170,6 +170,8 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Voltage range                      | | ±1 @ 50 Ω                        | V         |                                  |
     |                                    | | ±2 @ Hi-Z                        |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Output coupling                    | DC                                 | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Short circuit protection           | Yes                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -236,6 +238,10 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Ref. clock input                   | N/A                                | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock frequency               | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Ref. clock connector type          | N/A                                | \-        |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Boot options**                                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -260,6 +266,10 @@ Technical Specifications
     | Size (L x W x H)                   | 106.8 x 60.0 x 17.9                | mm        | See `Schematics`_ for details    |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
 
+.. seealso::
+
+    For more detailed information, please refer to the |Gen 2 comparison table|.
+
 .. warning::
 
     **Maximum Input Voltage**
@@ -268,10 +278,6 @@ Technical Specifications
     * **HV mode:** ±30 V absolute maximum
     
     Exceeding these values may damage the board permanently.
-
-.. seealso::
-
-    For more detailed information, please refer to the |Gen 2 comparison table|.
 
 |
 
@@ -374,7 +380,15 @@ Connector Physical Specifications
 .. note::
 
     When looking for mating connectors for custom Red Pitaya shields, `double height elevated sockets <https://www.digikey.com/en/products/detail/samtec-inc/ESW-113-33-T-D/6693225>`_ are needed to clear the heatsink and ethernet connector on the board.
-    Any connectors with *insulation height* of 0.635" (16.13mm) or greater will work.
+    Any connectors with *insulation height* of 0.635" (16.13 mm) or greater will work. This clearance requirement is based on the tallest components on the Red Pitaya board (heatsink and ethernet connector).
+
+.. note::
+
+    To prevent damage to the board or the shield, when connecting shields to the E1 and E2 connectors, please ensure:
+    
+    * **Proper alignment of connectors** - ensure the connectors are correctly aligned. The connectors on the Red Pitaya board have additional space in the socket housing, making it possible 
+      to misalign the shields by ±1 pin while still appearing physically connected. This can cause damage to the board and/or the shield, so please double-check the alignment before powering on the board.
+    * **Tight-fitting counterparts** - use connectors that fit securely to prevent accidental disconnections or damage.
 
 |
 
@@ -446,8 +460,8 @@ Synchronisation Connectors (S1 & S2)
 Advanced Features
 ==================
 
-Extension Connector Power
---------------------------
+Power Supply
+-------------
 
 .. include:: ../_specs_common/power_supply.inc
 
@@ -464,6 +478,13 @@ External Booting Options
 --------------------------
 
 .. include:: ../_specs_common/Ext_boot_options.inc
+
+|
+
+Calibration
+------------
+
+.. include:: ../_specs_common/calibration.inc
 
 |
 
@@ -489,7 +510,7 @@ Legal & Disclaimers
 .. rubric:: Footnotes
 
 .. [#f1] The absolute maximum input voltage values are for frequencies below 1 kHz. For higher frequencies, please use the input voltage range specifications as **Absolute maximum**.
-.. [#f2] See the :ref:`Click Shield synchronisation section <click_shield>` and :ref:`Click Shield synchronisation examples <examples_multiboard_sync>` for trigger output configuration.
+.. [#f2] See the :ref:`X-channel 2.0 (Click Shield) synchronisation <click_shield_sync>` and :ref:`X-channel 2.0 (Click Shield) synchronisation examples <examples_multiboard_sync>` for trigger output configuration.
 .. [#f3] Not compatible with USB-C standard (DC-coupled). Use only for daisy-chaining multiple Red Pitaya boards.
 .. [#f4] The external ADC clock goes first to the `NB6L72`_ clock selector chip, then passes through the ADC to finally reach the FPGA pins.
 .. [#f5] For exact voltage levels, please refer to the `NB6L72`_ datasheet.
@@ -499,7 +520,7 @@ Legal & Disclaimers
 .. [#f10] VBUS connectors are connected together on the board. They are not connected to the board power supply.
 .. [#f11] On the S1 connector, the CC1 pin is connected to the Orient LED and to the S1_ORIENT FPGA pin (via resistor divider to reduce the voltage levels to 2V5). CC1 and CC2 pins are connected to an XOR gate which determines the state of the **Link LED**. The output of the XOR gate is also connected to the S1_LINK FPGA pin (via resistor divider to reduce the voltage levels to 2V5).
 .. [#f12] On the S2 connector, the CC1 pin is protected with a Zener diode to 3V3, but is not connected to the FPGA. CC2 pin is not connected.
-.. [#f13] Application specific. The output current is shared between the extension module and the USB devices, and can be higher if other peripheral units are not in use.
+.. [#f13] Application specific. The output current is shared between the extension connectors and the connected USB devices, and can be higher if other peripheral units are not in use.
 
 |
 

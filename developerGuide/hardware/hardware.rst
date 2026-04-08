@@ -107,11 +107,8 @@ The original generation of Red Pitaya boards.
     :maxdepth: 1
 
     ORIG_GEN/125-14/top.rst
-    ORIG_GEN/125-14_EXT/top.rst
-    ORIG_GEN/125-14_LN/top.rst
     ORIG_GEN/125-14_4IN/top.rst
     ORIG_GEN/125-14_Z7020/top.rst
-    ORIG_GEN/125-14_MULTI/top.rst
     ORIG_GEN/122-16/top.rst
     ORIG_GEN/122-16_EXT/top.rst
     ORIG_GEN/250-12/top.rst
@@ -140,6 +137,9 @@ Discontinued boards and extensions are no longer manufactured, but are still sup
 .. toctree::
     :maxdepth: 1
 
+    ORIG_GEN/125-14_EXT/top.rst
+    ORIG_GEN/125-14_LN/top.rst
+    ORIG_GEN/125-14_MULTI/top.rst
     ORIG_GEN/125-10/top.rst
 
 
@@ -195,6 +195,18 @@ This section lists known hardware issues for each generation of Red Pitaya produ
 
     GEN2/known_hw_issues/known_hw_issues.rst
     ORIG_GEN/known_hw_issues/known_hw_issues.rst
+
+
+
+Performance & Measurements
+============================
+
+Measured performance data for Red Pitaya boards.
+
+.. toctree::
+    :maxdepth: 1
+
+    ORIG_GEN/measurements/STEMlab-125-14/index.rst
 
 
 

@@ -9,11 +9,13 @@ This page lists known hardware issues with Red Pitaya Gen 2 platforms. Hardware 
 Affected Boards and Models
 ===========================
 
-:Hardware Generation: Gen 2
-:Boards Covered:
-    * STEMlab 125-14 Gen 2 (HW V1r1 or higher)
-    * STEMlab 125-14 PRO Gen 2 (HW V1r1 or higher)
-    * STEMlab 125-14 PRO Z7020 Gen 2 (HW V1r1 or higher)
+* **Boards Covered:**
+
+    * STEMlab 125-14 Gen 2
+    * STEMlab 125-14 PRO Gen 2
+    * STEMlab 125-14 PRO Z7020 Gen 2
+    * STEMlab 65-16 TI
+    * STEMlab 125-14 TI
 
 
 Active Issues

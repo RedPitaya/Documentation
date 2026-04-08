@@ -115,7 +115,7 @@ For applications requiring precise timing synchronization between boards, Red Pi
 ensure phase-aligned data acquisition across multiple boards:
 
 * **X-channel system** - Cost-effective daisy-chain synchronization using SATA or USB-C cables. Ideal for 2-3 boards at moderate to high sampling rates.
-* **Click Shield synchronization** - Professional clock distribution using dedicated LVDS buffers. Recommended for larger systems (4+ boards) and maximum sampling rates.
+* **X-channel 2.0 (Click Shield) synchronisation** - Professional clock distribution using dedicated LVDS buffers. Recommended for larger systems (4+ boards) and maximum sampling rates.
 
 Both systems enable synchronized multi-board acquisition for applications such as beamforming, phase-sensitive measurements, and multi-channel signal processing.
 

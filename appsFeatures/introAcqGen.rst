@@ -44,6 +44,25 @@ For more information on the applications and how they work, click here:
 * :ref:`Red Pitaya applications <all_apps>`
 * Application source code is available on our :rp-github:`GitHub <RedPitaya/tree/master/apps-tools>`.
 
+Running multiple web applications simultaneously
+---------------------------------------------------
+
+.. warning::
+
+    Running multiple web applications at the same time (for example, the oscilloscope and the SCPI server) is **not recommended**. 
+    Each web module runs in *exclusive mode* to prevent FPGA conflicts, so launching a second application may cause conflicts in data 
+    acquisition and generation leading to undefined behaviour.
+
+An exception is running one of the web applications which uses the v0.94 FPGA image (like **Oscilloscope**) and **JupyterLab** simultaneously, which is possible with some precautions:
+
+-   The JupyterLab code must **not** interfere with the oscilloscope (e.g. do not set triggers, decimation, or channel settings that 
+    conflict with the oscilloscope).
+-   The JupyterLab code must **not** reboot the FPGA — doing so will most likely freeze the board.
+-   Use :code:`rp.rp_InitReset(False)` in the JupyterLab initialisation code instead of the standard init call. This function 
+    initialises memory access **without** resetting the FPGA settings, allowing both applications to coexist.
+
+It is also possible to execute API code from an SSH console simultaneously with the oscilloscope (or another web application), with the same precautions as above.
+
 |
 
 SCPI commands

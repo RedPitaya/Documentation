@@ -67,6 +67,8 @@ Troubleshooting procedure
 The troubleshooting procedure is a step-by-step guide to troubleshooting common issues with Red Pitaya. It is recommended to follow the steps in order, as they are designed to help 
 you identify and solve the problem efficiently.
 
+.. _troubleshooting_os_update:
+
 1. Update the OS/firmware
 --------------------------
 
@@ -83,6 +85,8 @@ Updating or reinstalling the OS can solve a wide range of issues, including:
 It is always recommended to keep your Red Pitaya OS up to date to ensure the best performance and stability.
 
 |
+
+.. _troubleshooting_status_leds:
 
 2. Status LEDs
 ---------------
@@ -106,8 +110,7 @@ Firstly, we should check the status LEDs as they will give us feedback on the ty
     #. **Bad connector contact**. Try unplugging and plugging the power cable again, or try a different power cable.
     #. **Power supply power delivery**. The power supply should capable of delivering **5V 3A for Gen 2** boards, **5V 2A for Original Gen**, or **24V 0.5A for SIGNALlab 250-12**. Please note 
        that computer USB ports typically provide only 0.5 A, which is not enough to power the Red Pitaya board.
-
-    **NEXT STEPS:** If none of the above helps, please :ref:`contact us <report_problem>`.
+    #. **NEXT STEPS:** If none of the above helps, please :ref:`contact us <report_problem>`.
 
 #.  **Green LED** is **ON**, but the **blue LED** is turned **OFF** and the **orange LED** is **barely lit or OFF**. This likely indicates an error loading the Red Pitaya file system from the SD card. 
     Make sure that:
@@ -121,25 +124,25 @@ Firstly, we should check the status LEDs as they will give us feedback on the ty
     #. **Incorrect** ``hw_rev`` **number or EEPROM reading issue**. Updates to 2.00 or higher OS require a correct ``hw_rev`` number in the EEPROM. Should a recent OS update cause a board boot failure, 
        please confirm the ``hw_rev`` number - see this GitHub issue |#250|. The RMA terms in the GitHub issue will be offered to anyone with this issue, regardless of warranty.
     #. **Corrupted SD**. SD cards can become corrupted overtime. Confirm the SD card on a different Red Pitaya board, or replace it with a new one and install the OS on it.
-
-    **NEXT STEPS:** Skip to chapter :ref:`4. Check the serial console boot log <serial_console_debug>` and check the boot log for any errors related to the SD card or file 
-    system loading.
+    #. **NEXT STEPS:** Skip to chapter :ref:`step 4 serial console boot log <troubleshooting_serial_console>` and check the boot log for any errors related to the SD card or file 
+       system loading.
 
 #.  **Both Green and Blue LEDs** are **ON**, but the **Red and Orange LEDs** stop flashing a few seconds after booting, only to remain ON for about 2 seconds, and then the cycle repeats.
     This indicates that the **Red Pitaya is in a reboot cycle**. Note that the red and orange LEDs will always start flashing approximately 10 seconds after the green and blue LEDs are turned ON.
 
     a. **Check your Red Pitaya board model**. If you are using an **External Clock version**, check that the external clock signal is correctly connected to the :ref:`E2 <E2_orig_gen>` connector. 
        Make sure that the :ref:`clock specifications match the recommended ones <faq_clock_specifications>`.
-
-    **NEXT STEPS:** If the external clock is connected and has the correct specifications, please :ref:`contact us <report_problem>`.
+    b. **NEXT STEPS:** If the external clock is connected and has the correct specifications, please :ref:`contact us <report_problem>`.
 
 #.  **Green and Blue LEDs** are **ON**, **Red LED** flashes in a heartbeat pattern, and the **Orange LED** flashes sporadically during boot, then turns off after about 1 minute.
 
     **Awesome!** This means that the Red Pitaya is booting properly and there are no hardware issues.
 
-    **NEXT STEPS:** Check the **Network connection troubleshooting section**.
+    **NEXT STEPS:** Check the :ref:`step 3 network connection <troubleshooting_network>` section.
 
 |
+
+.. _troubleshooting_network:
 
 3. Network connection
 ----------------------
@@ -191,11 +194,11 @@ At this point the most likely problem is a network connection issue.
     .. figure:: img/MAC_content_privacy3.png
         :width: 600
 
-**NEXT STEPS:** If the issue persists, please check the **Serial console boot log** chapter.
+**NEXT STEPS:** If the issue persists, please check the :ref:`step 4 serial console boot log <troubleshooting_serial_console>` chapter.
 
 |
 
-.. _serial_console_debug:
+.. _troubleshooting_serial_console:
 
 4. Serial console boot log
 ---------------------------
@@ -226,9 +229,11 @@ The only option now is to connect to the Red Pitaya board over a :ref:`serial co
 
 #. **No serial console feedback during boot sequence**. If there is no feedback during the boot sequence, there is a high chance the Zynq SoC is damaged. Please :ref:`contact us <report_problem>`.
 
-**NEXT STEPS:** Check the **Advanced troubleshooting** chapter for more specific hardware issues and solutions.
+**NEXT STEPS:** Check the :ref:`step 7 advanced troubleshooting <troubleshooting_advanced>` chapter for more specific hardware issues and solutions.
 
 |
+
+.. _troubleshooting_hardware_connections:
 
 5. Hardware connections
 -----------------------
@@ -249,9 +254,11 @@ The most likely cause is a problem with hardware connections.
    of the Red Pitaya. Check the :ref:`calibration settings <calibration_app>` in the web interface and reset to factory defaults if necessary. This will also fix problems with signals not showing
    in the web interface.
 
-**NEXT STEPS:** Check the **Web application** chapter for application-specific troubleshooting.
+**NEXT STEPS:** Check the :ref:`step 6 web applications <troubleshooting_web_applications>` chapter for application-specific troubleshooting.
 
 |
+
+.. _troubleshooting_web_applications:
 
 6. Web applications
 --------------------
@@ -269,9 +276,11 @@ The most likely cause is a problem with the web applications or the web browser.
 #. **Delete board application data**. Clear the application data on the Red Pitaya board by going to the :ref:`System info button <system_info>` in the web interface and clicking on 
    **Delete application data**. This will reset all applications to their default settings and may resolve any issues caused by corrupted application data.
 
-**NEXT STEPS:** If the issue persists, please check the **Advanced troubleshooting** chapter for more specific software issues and solutions.
+**NEXT STEPS:** If the issue persists, please check the :ref:`step 7 advanced troubleshooting <troubleshooting_advanced>` chapter for more specific software issues and solutions.
 
 |
+
+.. _troubleshooting_advanced:
 
 7. Advanced Troubleshooting
 ----------------------------
@@ -289,6 +298,8 @@ The most likely cause is a more specific hardware or software issue. Please chec
 #. **Updating from 1.04 or older OS**. If you have updated from 1.04 (or older) to 2.00 OS or higher version, check GitHub issues |#250| and |#254|.
 #. **Nightly builds**. Check the :ref:`nightly builds changelog <nightly_builds>` for any relevant updates.
 #. **Known hardware and software issues**. Check the known hardware issues for :ref:`Original Gen <known_hw_issues_orig_gen>` and :ref:`Gen 2 <known_hw_issues_gen2>` boards and known software issues in the :ref:`software section <known_sw_issues>`.
+#. **Kernel Panic**. A kernel panic occurs when the operating system detects an unrecoverable error — typically caused by a program corrupting or accessing invalid memory, hardware issues, or conflicts between software components. Please reinstall 
+   the :ref:`latest version of the official Red Pitaya OS <prepareSD>` and check if the problem persists. If it does, please :ref:`contact us <report_problem>`.
 
 **NEXT STEPS:** If the issue persists, please :ref:`contact us <report_problem>` with all the relevant information regarding the problem, including the :ref:`Downloaded system report <system_info>` if possible.
 
@@ -327,8 +338,9 @@ Red Pitaya not booting anymore?
 Red Pitaya is constantly rebooting?
 ------------------------------------
 
-A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations.
-Check the external clock specifications and instructions for your Red Pitaya board model:
+A board reset during boot-up is indicated by the green and blue LEDs lighting up, followed by the orange and red LEDs pausing their blinking to remain ON for about 2 seconds, then the cycle repeats. 
+Repeated board resets suggest an **external clock signal is missing** (not connected) on the **external clock board** variations. Check the external clock specifications and instructions for your 
+Red Pitaya board model:
 
     * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`.
     * :ref:`STEMlab 125-14 External clock <top_125_14_EXT>`.
@@ -445,11 +457,9 @@ Is Red Pitaya connected to my local network?
 ----------------------------------------------
 
 1.  Connect your Red Pitaya to a PC over a :ref:`Serial Console <console>`.
-
 2.  Type ``ip a`` and hit enter to check the status of your Ethernet connection on Red Pitaya.
 
     a. If you have connected to your Red Pitaya over a wireless connection, you should check the status of the ``wlan0`` interface.
-
     b. If you have connected to your Red Pitaya over a cable connection, you should check the ``eth0`` interface.
 
 3.  Type Red Pitaya IP into your web browser to see if you can connect to it.
@@ -481,7 +491,6 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 #.  Check the Wi-Fi signal strength of your Red Pitaya.
 
     a. Connect to your Red Pitaya via an :ref:`SSH <ssh>` connection.
-
     b. Enter the ``cat /proc/net/wireless`` command to get information about link quality and signal strength.
 
         .. figure:: img/cat_wireless.png
@@ -493,7 +502,6 @@ If your wireless connection with Red Pitaya works very slowly and all the applic
 
 #.  If you are in an area with many routers around you, more of them might operate on the same Wi-Fi channel, which drastically decreases data throughput and slows down 
     connection. Here are the instructions on how to |Wifi channel|. For MAC users, we recommend using the Scan feature of the |Wireless Diagnostic Tool| in order to find the best Wi-Fi channel.
-
 
 .. note::
     
@@ -533,7 +541,6 @@ There are two possible solutions to this problem:
 
 1. If the :ref:`Software update tool <software_update_manager>` reports that your Red Pitaya is offline, please connect the Red Pitaya into an Ethernet socket with internet access.
    Internet connection is not shared with the directly connected devices without some setting configurations.
-
 #. Please use the Balena Etcher application to :ref:`manually rewrite the Red Pitaya OS on the SD card <prepareSD>`.
 
 Balena Etcher archive corrupted error?
@@ -823,32 +830,35 @@ How to report a problem?
 
 Please email us at support@redpitaya.com with the following information:
 
-    * The model of Red Pitaya you are using.
-    * The version of Red Pitaya OS.
-    * Information about the problem you are experiencing and any additional information that may be relevant.
-    * Any visual material showing the status LEDs or the state of the board is welcome.
-    * Clear instructions on how to reproduce the problem.
+    * **Red Pitaya model:** The model of Red Pitaya you are using.
+    * **OS version:** The version of Red Pitaya OS.
+    * **Problem description:** Information about the problem you are experiencing and any additional information that may be relevant.
+    * **Visual material:** Any visual material showing the status LEDs or the state of the board is welcome.
+    * **Reproduction steps:** Clear instructions on how to reproduce the problem.
+    * **Bug report:** The easiest way to get this is from the web interface: 
+    
+        1.  Click the operator button in the **bottom-left corner** of the :ref:`Red Pitaya web interface <system_info>` and select **Download system bug report** button.
+        2.  If the web interface is not accessible, you can generate the report by running the following script directly on Red Pitaya via :ref:`SSH <ssh>`:
+
+            .. code-block:: bash
+
+                /opt/redpitaya/sbin/scripts/bug_report.sh
 
 
 .. substitutions - using new centralized link management system
 
 .. |Wifi channel| replace:: `change your wifi router channel in order to optimize your wireless signal <https://helpdeskgeek.com/how-to-change-your-wi-fi-channel-and-improve-performance/>`__
-
 .. |Wireless Diagnostic Tool| replace:: `Wireless Diagnostic Tool <https://www.howtogeek.com/211034/troubleshoot-and-analyze-your-macs-wi-fi-with-the-wireless-diagnostics-tool/>`__
 
 
 .. Note: The following use the new extlinks system for easier maintenance
 .. |red_pitaya_notes| replace:: :github:`Pavel Demin's Red Pitaya Notes <pavel-demin/red-pitaya-notes>`
-
 .. |#250| replace:: :rp-github:`#250 <RedPitaya/issues/250>`
-
 .. |#254| replace:: :rp-github:`#254 <RedPitaya/issues/254>`
 
 .. Note: The following use global substitutions defined in conf.py rst_epilog
 .. |RP_GitHub| replace:: |redpitaya-github| ecosystem
-
 .. |RP_GitHub_FPGA| replace:: :rp-github:`Red Pitaya FPGA <RedPitaya-FPGA>`
-
 .. |RP_archive| replace:: :rp-download:`Red Pitaya archive <downloads/>`
 
 

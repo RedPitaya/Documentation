@@ -114,8 +114,8 @@ Automatically sets up the Oscilloscope to best display the input signal. By pres
 Inputs
 ======
   
-On the right side of the Oscilloscope & Sig. Generator application interface, the IN1 and IN2 channels are listed. With a simple click on the name of a channel (not the gear), the channel gets highlighted, and you can simply control all the settings of the respective channel.
-The available settings by device model:
+On the right side of the Oscilloscope & Sig. Generator application interface, the IN1 and IN2 channels are listed. With a simple click on the name of a channel (not the gear), the channel gets highlighted, and you can simply 
+control all the settings of the respective channel. The available settings by device model:
 
 .. tabs::
 
@@ -129,11 +129,11 @@ The available settings by device model:
         -   **Probe attenuation:** (must be selected manually) The division that was set on the probe.
         -   **Vertical offset:** Moves the input curve up or down.
         -   **LV and HV:** Must be selected according to the :ref:`jumper position <anain>` on each channel.
-        -   **Interpolation:** Select the desired input interpolation.
-
+        -   **Interpolation:** See `Interpolation`_ below.
+        -   **Trace Mode:** See `Trace Mode`_ below.
 
     .. tab:: SDRlab 122-16
-     
+
         .. figure:: img/Slika_05_OSC_IN_122.png
             :height: 400
 
@@ -141,7 +141,8 @@ The available settings by device model:
         -   **INVERT:** Reflects the graph on the X-axis.
         -   **Probe attenuation:** (must be selected manually) The division that was set on the probe.
         -   **Vertical offset:** Moves the input curve up or down.
-        -   **Interpolation:** Select the desired input interpolation.
+        -   **Interpolation:** See `Interpolation`_ below.
+        -   **Trace Mode:** See `Trace Mode`_ below.
 
     .. tab:: SIGNALlab 250-12
 
@@ -152,10 +153,37 @@ The available settings by device model:
         -   **INVERT:** Reflects the graph on the X-axis.
         -   **Probe attenuation:** (must be selected manually) The division that was set on the probe.
         -   **Vertical offset:** Moves the curve up or down.
-        -   **Input attenuation:** 1:1 (± 1V) / 1:20 (± 20V) is selected automatically when adjusting the V/div setting, user can also select the range manually through WEB interface settings.
-        -   **AC/DC coupling** - Select input coupling.
-        -   **Interpolation:** Select the desired input interpolation.
+        -   **Input attenuation:** 1:1 (± 1V) / 1:20 (± 20V) is selected automatically when adjusting the V/div setting; the user can also select the range manually through the web interface.
+        -   **AC/DC coupling:** Select input coupling.
+        -   **Interpolation:** See `Interpolation`_ below.
+        -   **Trace Mode:** See `Trace Mode`_ below.
 
+|
+
+Interpolation
+-------------
+
+Controls how the sampled data points are rendered between each other on screen. When **disabled** (default), individual samples are shown directly as discrete points. When enabled, samples are connected using one of the following algorithms:
+
+1. **Linear** — straight lines between samples.
+2. **B-Spline** — smooth curve fitting.
+3. **Catmull-Rom** — smooth curve that passes exactly through each sample point.
+4. **Lanczos** — high-quality reconstruction filter.
+
+|
+
+Trace Mode
+----------
+
+When **Trace Mode** is enabled, historical waveform data is retained on the screen as new data arrives, creating a persistence display similar to analog oscilloscopes. This allows visualisation of signal variations and rare events over time.
+
+The following options are available:
+
+-   **Fast mode:** Optimises the trace rendering for high data throughput.
+-   **Inverted opacity:** Reverses the opacity of the trace, so older data appears brighter and newer data appears dimmer.
+-   **Trace colour selection:** Select the colour scheme used to represent the density of data points — frequently occurring values appear in one colour while rare values appear in another.
+
+|
 
 .. _output-ref:
 
@@ -323,6 +351,11 @@ dragging the data where you want and effortlessly zooming in and out by using yo
 
 .. figure:: img/Slika_04_OSC.png
     :width: 1000
+
+.. tip::
+
+    -   **Shift + scroll wheel** while a channel is selected scales the signal along the **Y-axis** (voltage scale) for that channel only.
+    -   **Clicking a cursor** on the left side of the screen sets that channel as the **active channel**.
 
 |
 

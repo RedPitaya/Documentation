@@ -8,8 +8,17 @@ Common hardware specifications (Gen 2)
 
     Looking for :ref:`Original Gen hardware specifications? <hw_specs_orig_gen>`
 
-This section contains information that applies to **all** Red Pitaya Gen 2 boards. For board-specific specifications, measurements, power requirements, and detailed technical data, 
-please refer to the individual product documentation pages.
+This section contains information that applies to **all** Red Pitaya Gen 2 boards.
+
+.. note::
+
+    For board-specific specifications, measurements, power requirements, connector pinouts, and detailed technical data, please refer to your board's documentation page:
+
+    * :ref:`STEMlab 125-14 Gen 2 <top_125_14_gen2>`
+    * :ref:`STEMlab 125-14 PRO Gen 2 <top_125_14_pro_gen2>`
+    * :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`
+    * :ref:`STEMlab 125-14 TI <top_125_14_TI>`
+    * :ref:`STEMlab 65-16 TI <top_65_16_TI>`
 
 Please note that the full hardware schematics for the Red Pitaya boards are not available. While Red Pitaya has open-source code, the hardware schematics are not open source. However, 
 development schematics with information regarding hardware configuration, FPGA pin connections, and similar, are available.
@@ -32,7 +41,9 @@ Power supply (all Gen 2 boards)
 
 **All Red Pitaya Gen 2 boards use the same power supply:**
 
-* **5 V, 3 A USB-C power supply** (including STEMlab Gen 2 models and TI variants)
+* **5 V, 3 A USB-C power supply**
+
+We currently use the following power supply model for all Gen 2 boards: MKE2-P27WSFAD (5 V, 5 A, USB-C output). This power supply is included in all Red Pitaya Gen 2 kits available on the |redpitaya-store|.
 
 .. note::
 
@@ -47,8 +58,6 @@ Power supply (all Gen 2 boards)
 
     * All Gen 2 boards may only be powered by an isolated external power supply of 5 Volts DC with a maximum current of 3 A delivered via USB-C connector.
       Any external power supply used with Red Pitaya must comply with the relevant regulations and standards applicable in the country of use.
-
-.. TODO add recommended Gen2 power supply model
 
 |
 
@@ -167,7 +176,7 @@ It is not uncommon for Red Pitaya boards to reach temperatures of 60°C or above
 
     It is imperative that a heatsink is installed and that the board is operated on a flat surface devoid of any obstructions that could impede airflow.
     In order to mitigate the effects of elevated ambient temperatures and reduced pressure conditions within enclosures, it is necessary to implement an effective ventilation strategy.
-    The product's operational functionality is automatically disabled at temperatures of 85°C to prevent any potential damage.
+    The product's operational functionality is automatically disabled at internal temperatures of 85°C to prevent any potential damage.
 
 
 Cooling options
@@ -178,9 +187,6 @@ For enhanced cooling, we suggest utilising one or more of the following options:
 * :ref:`Gen 2 Aluminium case <alucase>` (**not yet available**) - to improve heat dissipation and protect the board from external factors.
 * :ref:`Gen 2 Heatsink interface <heatsink>` (**not yet available**) - to improve heat dissipation and connect the board to an external heatsink.
 * External cooling fan - to increase airflow around the board.
-
-
-.. TODO add cooling options for Gen 2 boards.
 
 |
 

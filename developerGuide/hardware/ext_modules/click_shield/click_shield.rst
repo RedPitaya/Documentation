@@ -8,7 +8,9 @@ Click Shield
     :width: 900
     :align: center
 
-The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two |Click Boards| and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt external power supply. Using U.FL patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units and/or other devices. An external reference clock can also be connected to the shield through the U.FL connector.
+The Red Pitaya Click Shield extension module enables users to extend Red Pitaya hardware with two |Click Boards| and power them and the Red Pitaya from either an external USB C power adapter or a 12-24 Volt 
+external power supply. Using U.FL patch cables, the shield can also be utilised for high-performance clock and trigger synchronisation between multiple Red Pitaya units and/or other devices. An external 
+reference clock can also be connected to the shield through the U.FL connector.
 
 
 **Highlights:**
@@ -103,12 +105,14 @@ Here is a compatibility table:
 What are Click Boards?
 =======================
 
-|Click Boards| by |MIKROE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
+|Click Boards| by |MIKROE| are small add-on boards designed to simplify the process of developing electronic projects by providing a pre-built and tested module with specific functionality. Currently, over 1500 click boards are available 
+in different categories, including communication, display, sensors, storage, motor control, mixed signals, and others.
 
 .. figure:: img/click-boards-header-banner.jpg
     :width: 450
 
-These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard |mikroBUS| socket connector that can be easily plugged into the Red Pitaya Click Shield.
+These Click Boards are an innovative and efficient way to develop hardware projects, whether for beginners or experienced developers. MikroElektronika Click Boards are very easy to use. They come with a standard |mikroBUS| socket 
+connector that can be easily plugged into the Red Pitaya Click Shield.
 
 
 Technical specifications
@@ -122,6 +126,11 @@ Technical specifications
 
 Connectors
 -------------
+
+.. warning::
+
+    The E1 and E2 extension connectors on Red Pitaya boards are wider than the Click Shield's mating connector, which physically allows the shield to be seated in up to three different positions. **Only the centre position is correct**, 
+    where all pins are aligned. Connecting the shield in the wrong position will result in incorrect pin mapping and may damage the board or the shield. Always double-check the alignment before powering on.
 
 .. image:: img/red-pitaya-click-shield-connectors.png
     :width: 500
@@ -159,15 +168,21 @@ Switches
     :width: 500
     :align: center
 
-+-------------------------+--------------------+------------------------------------------------------------+
-| **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                                                  |
-+-------------------------+--------------------+------------------------------------------------------------+
-| Clock Select            | ADC CLK Select     | External (LOW) or internal clock (HIGH)                    |
-+-------------------------+--------------------+------------------------------------------------------------+
-| CLK OSC                 | NA                 | Turn the 125 MHz Oscillator on the Click Shield ON/OFF     |
-+-------------------------+--------------------+------------------------------------------------------------+
-| VCC Select (2x)         | NA                 | Select the digital logic levels for mikroBUS™ 3V3/5V       |
-+-------------------------+--------------------+------------------------------------------------------------+
++-------------------------+--------------------+-----------------------------------------------------------+
+| **Click Shield Label**  | **Red Pitaya Pin** | **Notes**                                                 |
++=========================+====================+===========================================================+
+| Clock Select            | ADC CLK Select     | | * **EXT (LOW):** external clock via CLK IN± pins.       |
+|                         |                    | | * **INT (HIGH):** Red Pitaya's own internal oscillator. |
++-------------------------+--------------------+-----------------------------------------------------------+
+| CLK OSC                 | NA                 | Turn the 125 MHz Oscillator on the Click Shield ON/OFF    |
++-------------------------+--------------------+-----------------------------------------------------------+
+| VCC Select (2x)         | NA                 | Select the digital logic levels for mikroBUS™ 3V3/5V      |
++-------------------------+--------------------+-----------------------------------------------------------+
+
+.. note::
+
+    **INT** on the Clock Select switch uses the **Red Pitaya's own oscillator**, not the Click Shield's 125 MHz oscillator — that is a separate circuit controlled by the **CLK OSC** switch, used to distribute a common clock via CLK OUT±.
+    To use the Click Shield oscillator as the ADC sampling clock, set Clock Select to **EXT** and enable the CLK OSC switch.
 
 |
 
@@ -214,8 +229,8 @@ The Click Shields provide two alternative ways to power the Red Pitaya:
 
     Set the VIN SEL jumper into the correct position depending on whether the USB-C or External Power supply (Terminal Block) is used.
 
-The external power supply powers both the Red Pitaya and the Red Pitaya Click Shield. The maximum power consumption of Red Pitaya is 10 W (5 V, 2 A). The power consumption of the Click Shield greatly depends on the type of Click Boards attached to it (we recommend leaving 5 W just in case).
-Minimal requirements for the external power supplies:
+The external power supply powers both the Red Pitaya and the Red Pitaya Click Shield. The maximum power consumption of Red Pitaya is 10 W (5 V, 2 A). The power consumption of the Click Shield greatly depends on the type 
+of Click Boards attached to it (we recommend leaving 5 W just in case). Minimal requirements for the external power supplies:
 
 * USB-C - 5 V, 3 A (15 W).
 * External Power Supply - 12-24 V, 1.5 A (15 W).
@@ -392,6 +407,7 @@ Components
 * |ZL40213| LVDS clock fanout buffer.
 * |TXS0108| level-shifting voltage translators.
 
+|
 
 Schematics
 ================
@@ -406,14 +422,14 @@ Schematics
 .. TODO E1 and E2 connectors mixed up and have reverse pin numbers
 .. TODO should add a LDO after the DC/DC converter for both rails.
 
-
+|
 
 Mechanical Specifications and 3D Models
 =========================================
 
 * `3D_Click_Shield.zip <https://downloads.redpitaya.com/doc/3D_models/3D_Click_Shield.zip>`_
 
-
+|
 
 External clock specifications
 ==============================
@@ -428,6 +444,7 @@ According to the datasheet the |ZL40213| fanout buffer supports a wide range of 
 
 For more information on the external clock signal, please check the |ZL40213| datasheet. The inputs are in the AC coupling configuration. The chip is powered by a 3V3 power supply.
 
+|
 
 Examples of use
 ================
