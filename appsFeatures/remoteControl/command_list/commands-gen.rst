@@ -342,6 +342,7 @@ Burst mode
 - ``<num>, <repetitions> = {1...65536}`` Default: ``1``
 - ``<period> = {1 µs - 500 s}`` Value in *µs*.
 - ``<period2> = {0.001 µs - 4 s}`` Value in *µs*.
+- ``<state> = {ON,OFF}`` Default: ``OFF``
 
 **Available Jupyter and API macros:**
 
@@ -422,6 +423,16 @@ Burst mode
 | | ``SOUR<n>:BURS:LASTValue?`` > ``<amplitude>``     | | C++: ``rp_GenGetBurstLastValue(rp_channel_t channel, float *amplitude)``              | Get the end value of the generated burst signal.                                             | 2.00-18 and up     |
 | | Examples:                                         | |                                                                                       |                                                                                              |                    |
 | | ``SOUR1:BURS:LASTValue`` > ``0.5``                | | Python: ``rp_GenGetBurstLastValue(<channel>)``                                        |                                                                                              |                    |
+|                                                     | |                                                                                       |                                                                                              |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:USE:LASTSample <state>``           | | C++: ``rp_GenSetUseLastSample(rp_channel_t channel, bool enable)``                    | | Enables the mode where the last sample in the buffer is used instead of the Last Value.    | in dev             |
+| | Examples:                                         | |                                                                                       | | The output will stay on this value until a new signal is generated.                        |                    |
+| | ``SOUR1:BURS:USE:LASTSample ON``                  | | Python: ``rp_GenSetUseLastSample(<channel>, <state>)``                                | |                                                                                            |                    |
+|                                                     | |                                                                                       | |                                                                                            |                    |
++-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+| | ``SOUR<n>:BURS:USE:LASTSample?`` > ``<state>``    | | C++: ``rp_GenGetUseLastSample(rp_channel_t channel, bool *enable)``                   | Returns the current setting of the 'Use Last Sample' mode.                                   | in dev             |
+| | Examples:                                         | |                                                                                       |                                                                                              |                    |
+| | ``SOUR1:BURS:USE:LASTSample`` > ``ON``            | | Python: ``rp_GenGetUseLastSample(<channel>)``                                         |                                                                                              |                    |
 |                                                     | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 | | ``SOUR<n>:INITValue <amplitude>``                 | | C++: ``rp_GenSetInitGenValue(rp_channel_t channel, float amplitude)``                 | | Set the initial voltage value that appears on the fast analog output once it is enabled    | 2.00-18 and up     |
