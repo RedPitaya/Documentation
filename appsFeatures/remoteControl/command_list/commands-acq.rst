@@ -383,7 +383,8 @@ Acquisition trigger
 - ``<pre_counter> = {0...4294967295}``
 - ``<voltage> = {value in V}`` Default: ``0``
 - ``<timeout_ms> = {timeout in milliseconds}`` (For disable timeout use: -1)
-
+- ``<mode> = {TRIG, FILL}`` (interrupt event type)
+- ``<enable> = {ON, OFF}`` Default: ``OFF``
 
 *STEMlab 125-14 4-Input only (additional):*
 
@@ -398,7 +399,7 @@ Acquisition trigger
 - Acquisition trigger any edge - ``RP_TRIG_SRC_CHA_AE, RP_TRIG_SRC_CHB_AE, RP_TRIG_SRC_EXT_AE, RP_TRIG_SRC_AWG_AE`` **In dev**
 - Acquisition trigger state - ``RP_TRIG_STATE_TRIGGERED, RP_TRIG_STATE_WAITING``
 - Buffer size - ``ADC_BUFFER_SIZE, DAC_BUFFER_SIZE``
-
+- Interrupt modes - ``RP_INT_TRIGGER, RP_INT_FILL``
 
 *STEMlab 125-14 4-Input only (additional):*
 
@@ -438,6 +439,29 @@ Acquisition trigger
 | | ``ACQ:TRig:STAT:CH1?`` > ``WAIT``                         | | Python: ``rp_AcqGetTriggerStateCh(<channel>)``                                     | | Used only in split trigger mode                                             |                         |
 | |                                                           | |                                                                                    | | (Only STEMlab 125-14 4-Input)                                               |                         |
 | |                                                           | |                                                                                    | | (All boards from 2.07-48)                                                   |                         |
++-------------------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------------+
+| | ``ACQ:TRig:INT:ENABLE <mode>,<enable>``                   | | C++: ``rp_AcqSetIntMask(rp_int_mode_t mode, bool enable)``                         | | Enables or disables interrupt generation for the specified                  | in dev                  |
+| | Example:                                                  | |                                                                                    | | interrupt event.                                                            |                         |
+| | ``ACQ:TRig:INT:ENABLE TRIG,ON``                           | | Python: ``rp_AcqSetIntMask(<mode>, <enable>)``                                     | |                                                                             |                         |
+| |                                                           | |                                                                                    | | - ``TRIG``: Trigger condition met (edge, level, etc.)                       |                         |
+| |                                                           | |                                                                                    | | - ``FILL``: Buffer full, data ready for processing                          |                         |
++-------------------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------------+
+| | ``ACQ:TRig:INT:ENABLE? <mode>`` > ``<enable>``            | | C++: ``rp_AcqGetIntMask(rp_int_mode_t mode, bool* enable)``                        | | Returns the current interrupt enable/disable status for the                 | in dev                  |
+| | Example:                                                  | |                                                                                    | | specified interrupt event.                                                  |                         |
+| | ``ACQ:TRig:INT:ENABLE? TRIG`` > ``1``                     | | Python: ``rp_AcqGetIntMask(<mode>)``                                               | |                                                                             |                         |
+| |                                                           | |                                                                                    | | Returns ``1`` (ON) if enabled, ``0`` (OFF) if disabled.                     |                         |
++-------------------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------------+
+| | ``ACQ:TRig:INT:ENABLE:CH<n> <mode>,<enable>``             | | C++: ``rp_AcqSetIntMaskCh(rp_channel_t channel, rp_int_mode_t mode,                | | Enables or disables interrupt generation for the specified                  | in dev                  |
+| | Example:                                                  | |      bool enable)``                                                                | | channel and interrupt event.                                                |                         |
+| | ``ACQ:TRig:INT:ENABLE:CH1 TRIG,ON``                       | | Python: ``rp_AcqSetIntMaskCh(<channel>, <mode>, <enable>)``                        | | Used only in split trigger mode.                                            |                         |
+| |                                                           | |                                                                                    | |                                                                             |                         |
+| |                                                           | |                                                                                    | |                                                                             |                         |
++-------------------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------------+
+| | ``ACQ:TRig:INT:ENABLE:CH<n>? <mode>`` >                   | | C++: ``rp_AcqGetIntMaskCh(rp_channel_t channel, rp_int_mode_t mode,                | | Returns the current interrupt enable/disable status for the                 | in dev                  |
+| | ``<enable>``                                              | |      bool* enable)``                                                               | | specified channel and interrupt event.                                      |                         |
+| | Example:                                                  | | Python: ``rp_AcqGetIntMaskCh(<channel>, <mode>)``                                  | | Used only in split trigger mode.                                            |                         |
+| | ``ACQ:TRig:INT:ENABLE:CH1? TRIG`` > ``1``                 | |                                                                                    | |                                                                             |                         |
+| |                                                           | |                                                                                    | |                                                                             |                         |
 +-------------------------------------------------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------------+
 | | ``ACQ:TRig:INT<timeout_ms>:STAT?`` > ``<tr_state>``       | | C++: ``rp_AcqIntTriggerRead(int timeout_ms)``                                      | | Waits for a trigger interrupt event on any channel with timeout in ms.      | in dev                  |
 | | Example:                                                  | |                                                                                    | | Use -1 to disable timeout.                                                  |                         |
