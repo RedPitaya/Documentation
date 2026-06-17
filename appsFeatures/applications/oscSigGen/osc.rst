@@ -70,7 +70,7 @@ Settings
 
 Includes the following settings:
 
-- **ARB Manager** - Goes directly to the :ref:`Arbitrariy Waveform Manager application <arb_manager_app>`, where a custom waveform can be uploaded for generation.
+- **ARB Manager** - Goes directly to the :ref:`Arbitrary Waveform Manager application <arb_manager_app>`, where a custom waveform can be uploaded for generation.
 - **Sys Info** - When checked, the Oscilloscope Application displays System information like, FPS, CPU Load, etc. in the bottom left corner of the application.
 - **IN/E2** - When checked, displays the voltages from slow analog inputs of the E2 connector.
 - **Reset** - Resets all Oscilloscope and Signal Generator settings to default versions.

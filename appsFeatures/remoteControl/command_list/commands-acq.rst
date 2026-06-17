@@ -15,7 +15,8 @@ Acquisition
 Functionality overview
 =======================
 
-Acquisition commands control Red Pitaya's fast analog inputs (ADCs) for high-speed signal capture. These commands provide precise triggering, decimation control, and buffer management for capturing signals from DC to 50 MHz.
+Acquisition commands control Red Pitaya's fast analog inputs (ADCs) for high-speed signal capture. These commands provide precise triggering, decimation control, and buffer management for capturing signals 
+from DC to 50 MHz.
 
 Key acquisition concepts:
 
@@ -183,7 +184,8 @@ Acquisition settings
 **Available Jupyter and API macros:**
 
 - Fast analog channels - ``RP_CH_1, RP_CH_2``
-- Decimation - ``RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16, RP_DEC_32, RP_DEC_64, RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048, RP_DEC_4096, RP_DEC_8192, RP_DEC_16384, RP_DEC_32768, RP_DEC_65536``
+- Decimation - ``RP_DEC_1, RP_DEC_2, RP_DEC_4, RP_DEC_8, RP_DEC_16, RP_DEC_32, RP_DEC_64, RP_DEC_128, RP_DEC_256, RP_DEC_512, RP_DEC_1024, RP_DEC_2048,``
+  ``RP_DEC_4096, RP_DEC_8192, RP_DEC_16384, RP_DEC_32768, RP_DEC_65536``
 
 *SIGNALlab 250-12 only (additional):*
 
@@ -395,7 +397,8 @@ Acquisition trigger
 **Available Jupyter and API macros:**
 
 - Fast analog channels - ``RP_CH_1, RP_CH_2``
-- Acquisition trigger - ``RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE, RP_TRIG_SRC_CHB_NE, RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE``
+- Acquisition trigger - ``RP_TRIG_SRC_DISABLED, RP_TRIG_SRC_NOW, RP_TRIG_SRC_CHA_PE, RP_TRIG_SRC_CHA_NE, RP_TRIG_SRC_CHB_PE, RP_TRIG_SRC_CHB_NE,``
+  ``RP_TRIG_SRC_EXT_PE, RP_TRIG_SRC_EXT_NE, RP_TRIG_SRC_AWG_PE, RP_TRIG_SRC_AWG_NE``
 - Acquisition trigger any edge - ``RP_TRIG_SRC_CHA_AE, RP_TRIG_SRC_CHB_AE, RP_TRIG_SRC_EXT_AE, RP_TRIG_SRC_AWG_AE`` **In dev**
 - Acquisition trigger state - ``RP_TRIG_STATE_TRIGGERED, RP_TRIG_STATE_WAITING``
 - Buffer size - ``ADC_BUFFER_SIZE, DAC_BUFFER_SIZE``

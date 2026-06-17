@@ -672,37 +672,39 @@ The ``overlay.sh`` script (OS 2.07+) is Red Pitaya's primary tool for loading FP
 
 .. code-block:: bash
 
-    /opt/redpitaya/sbin/overlay.sh <old_project> <new_project>
+    /opt/redpitaya/sbin/overlay.sh <fpga_name> [custom_fpga] [custom_devicetree] [overlay_name]
 
 **Parameters:**
 
-- ``old_project`` - Project currently loaded (typically ``v0.94``)
-- ``new_project`` - Project to load (directory name in ``/opt/redpitaya/fpga/<model>/``)
+- ``fpga_name`` - Project to load from ``/opt/redpitaya/fpga/<model>/``
+- ``custom_fpga`` - Optional full path to a custom ``fpga.bit.bin`` file
+- ``custom_devicetree`` - Optional full path to a custom ``fpga.dtbo`` file
+- ``overlay_name`` - Optional target overlay region name, default ``Full``
 
 **What overlay.sh Does:**
 
-1. Unloads current device tree overlay
-2. Removes current FPGA configuration
-3. Loads new FPGA bitstream (``fpga.bit.bin``)
-4. Loads new device tree overlay (``fpga.dtbo``)
-5. Records loaded project in ``/tmp/loaded_fpga.inf``
+1. Detects the current Red Pitaya board profile
+2. Removes existing overlay regions except the reserved ``Led`` region
+3. Selects standard files from ``/opt/redpitaya/fpga/<model>/<fpga_name>/`` unless custom paths are provided
+4. Loads the selected FPGA bitstream with ``fpgautil``
+5. Applies the selected device tree overlay
+6. Records the loaded configuration in ``/tmp/loaded_fpga.inf``
 
 **Common Usage Patterns:**
 
 .. code-block:: bash
 
     # Load built-in project
-    overlay.sh v0.94 v0.94
+    overlay.sh v0.94
     
-    # Load custom project
-    overlay.sh v0.94 my_custom_project
+    # Load custom bitstream with standard device tree
+    overlay.sh v0.94 /root/my_custom.bit.bin
     
-    # Switch between projects
-    overlay.sh my_project_a my_project_b
+    # Load custom bitstream and custom device tree
+    overlay.sh v0.94 /root/my_custom.bit.bin /root/my_custom.dtbo
     
-    # Reload current project
-    CURRENT=$(cat /tmp/loaded_fpga.inf)
-    overlay.sh $CURRENT $CURRENT
+    # Load into a specific reconfigurable region
+    overlay.sh v0.94 /root/my_custom.bit.bin /root/my_custom.dtbo Region0
 
 **Project Directory Structure:**
 
@@ -720,7 +722,7 @@ The ``overlay.sh`` script (OS 2.07+) is Red Pitaya's primary tool for loading FP
     ls -l /opt/redpitaya/sbin/overlay.sh
     
     # Run with verbose output
-    bash -x /opt/redpitaya/sbin/overlay.sh v0.94 my_project
+    bash -x /opt/redpitaya/sbin/overlay.sh v0.94 /root/my_custom.bit.bin /root/my_custom.dtbo
     
     # Check kernel messages
     dmesg | tail -20

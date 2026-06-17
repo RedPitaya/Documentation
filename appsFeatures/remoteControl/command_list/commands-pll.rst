@@ -16,13 +16,14 @@ Important notes
 ----------------
 
 * These commands only work on SIGNALlab 250-12.
-* The external reference clock should be connected to the 10 MHz SMA connector at the back of the board.
+* A 10 MHz external reference clock (3V3 or 5V TTL) should be connected to the SMA connector at the back of the board.
 
 Code examples
 -----------------
 
 [To be added - examples specific to PLL usage]
 
+|
 
 Parameters and command table
 -----------------------------
@@ -38,8 +39,8 @@ Parameters and command table
 | SCPI                                                | API, Jupyter                                                                       | DESCRIPTION                                                                       |  ECOSYSTEM         |
 +=====================================================+====================================================================================+===================================================================================+====================+
 | | ``RP:PLL:ENable <enable>``                        | | C++: ``rp_SetPllControlEnable(bool enable)``                                     | | Enables/disables PLL control (SIGNALlab 250-12 only).                           | 2.04-35 and up     |
-| | Examples:                                         | |                                                                                  | | Enables synchronisation with the 10 MHz reference clock connected to the        |                    |
-| | ``RP:PLL:ENable ON``                              | | Python: ``rp_SetPllControlEnable(<enable>)``                                     | | SMA connector at the back.                                                      |                    |
+| | Examples:                                         | |                                                                                  | | Enables synchronisation with the 10 MHz external reference clock connected to   |                    |
+| | ``RP:PLL:ENable ON``                              | | Python: ``rp_SetPllControlEnable(<enable>)``                                     | | the SMA connector at the back.                                                  |                    |
 | |                                                   | |                                                                                  | |                                                                                 |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 | | ``RP:PLL:ENable?`` > ``<enable>``                 | | C++: ``rp_GetPllControlEnable(bool *enable)``                                    | Get the state of the PLL enable setting (SIGNALlab 250-12 only).                  | 2.04-35 and up     |

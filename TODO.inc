@@ -3,19 +3,16 @@
 
 ##. FPGA register access
 
-    Kar se tiče ARMa, so dostopi do BRAM še hitrejši kot do DDR. (Če se prav spomnim) Zynq PS dostope do BRAM tretira enako kot DDR, samo da se preadresira na drug kontroler. Ker pa je BRAM v bistvu on board spomin, je zelo hiter - dosti manjše latence. 
-
-    "Single read" registrov je pa seveda dosti počasnejši, ker vsako branje ustvari nekaj overhead-a.
+    As for ARM, accesses to BRAM are even faster than to DDR. (If I remember correctly) Zynq PS treats accesses to BRAM the same as DDR, only it is redirected to a different controller. But since BRAM is essentially on-board memory, it is very fast - much lower latency.
+    "Single read" of registers is of course much slower, because each read creates some overhead.
 
 ##. FPGA Ethernet
 
-    The Ethernet should be accessible but you have to use the baremetal connection - double check this with Jure and Črt.
+    The Ethernet should be accessible but you have to use the baremetal connection.
 
-    žal ne gre. Ethernet je integriran v PS del.
-
-    Mogoče bi se dalo kaj narediti, će bi imel kam priklopit še kak dodatni PHY in ga potem krmilit iz PL pinov. Ampak to je potem že potrebna HW sprememba na redpitayi.
-
-    Možna bi bila implementacija dodatnega PHY direktno na E3 konektor hitre differencialne linije
+    Unfortunately it doesn't work on the normal FPGA + Linux configuration. Ethernet is integrated into the PS part.
+    Maybe something could be done if there was a place to connect an additional PHY and then control it from the PL pins. But that would require a HW change on the redpitaya.
+    It would be possible to implement an additional PHY directly on the E3 connector of the fast differential line
 
     CLAUDE SONNET 4.5>>>
     No, baremetal FPGA Ethernet connection without Linux is not practically possible with Red Pitaya.
@@ -131,6 +128,12 @@
 
 ##. Differential pair voltage levels, comment on resistor values for S1 Link and Orient USB-C lines - these also need to be updated.
 
+##. Booting with 1GB RAM: 
+    The Red Pitaya OS will, due to board compatibility reasons, normally boot with only 512 MB enabled. To enable the full 1GB capacity, please head to the blue info button in the top left corner of the web interface, select the System Settings tab and switch the "BOOT mode" to "up to 1 GB".
+    Click close and restart the board via the top-right power button.
+
+    This should let the board boot with 1 GB of RAM on every consecutive boot (the setting is static and will only be affected if the SD card is rewritten completely).
+
 
 
 # SOFTWARE
@@ -155,6 +158,25 @@
 ##. Starting and logging measurements:
 
     https://forum.redpitaya.com/viewtopic.php?t=27488&sid=2cf977ce7f7246648d40434b21271377
+
+##. Are returned values calibrated? How to return uncalibrated values?
+
+    For VOLTS there are two modes:
+
+    If calibration was performed on a FPGA, version 6 parameters; the returned voltage data is always calibrated.
+    If other calibration versions are used, you can return the values to volts without calibration.
+
+    For RAW values:
+
+    Same for RAW. For version 6, uncalibrated data can be obtained only by disabling calibration in the EEPROM.
+
+##. Serial console access: 
+    Please check if the USB-C cable used is actually an USB to USB-C data cable. Power cables do not have the necessary communication lines connected.
+
+    The COM port is directly beneath the Ethernet connector.
+
+    TODO - Need pictures of the bottom side of the Gen 2 board.
+
 
 
 # SCPI & API
@@ -199,6 +221,56 @@
 
 ##. New SCPI server settings. Connecting to Arduino (UART, WiFi, etc.). Create block schemes, etc. Describe the new functionality.
 
+##. Command table cleanup and per-command detail sections.
+
+    The current command tables mix three distinct types of entries that should be handled differently:
+
+    1. **Truly deprecated commands** (e.g. Python list-based acquisition functions replaced by NumPy buffer variants):
+       Move these out of the main table into a collapsed ``.. dropdown::`` section (from sphinx-design) at the
+       bottom of each functional group, styled with ``:color: warning``. The dropdown is collapsed by default,
+       keeping the main table clean while preserving legacy information for users on older OS versions.
+
+    2. **Version-additive variants** (e.g. ``ACQ:DEC`` vs ``ACQ:DEC:CH<n>`` for split trigger mode):
+       These coexist and are NOT replacements. Keep them in the same table but add a thin visual separator row
+       between the base command and its per-version additions to make the grouping visually clear.
+
+    3. **Board-limited commands** (e.g. SIGNALlab 250-12 only, STEMlab 125-14 4-Input only):
+       No structural change needed — description column already handles this adequately.
+
+    Priority: start with (1) as it requires no new files, no link changes, and immediately reduces main-table clutter.
+    The ``.. dropdown::`` directive requires the ``sphinx-design`` extension (check conf.py).
+
+##. Per-command prose sections and GitHub example linking.
+
+    Within each existing ``commands-*.rst`` file, add a short prose section above each logical command group
+    (e.g. one section for the entire decimation group, not one per command). The section should explain
+    *behaviour and intent* — how the commands relate, when to use which variant, and key constraints or gotchas.
+    Do NOT duplicate parameter ranges or types already present in the "Parameter options" block.
+
+    Link to runnable code on GitHub rather than embedding code blocks in the docs. This way examples can be
+    tested and updated without touching RST files. Link to the **folder level** where possible, or use a
+    version-tagged permalink rather than ``main``/``master`` to avoid link rot:
+
+    ``https://github.com/RedPitaya/RedPitaya-Examples/tree/v2.07-48/python/acquisition/``
+
+    The resulting three-layer structure per command group:
+
+    - **Table** — quick syntax lookup (existing, unchanged)
+    - **Prose section** — behaviour, intent, relationships between commands (new, short)
+    - **GitHub link** — runnable examples (external, no maintenance burden in docs)
+
+##. New acquisition functions based on interrupts. These functions avoid the usual polling method and instead rely on interrupts to signal when the trigger condition is met and when the data is ready.
+    This allows for more efficient data acquisition, as the CPU can perform other tasks while waiting for the trigger condition to be met. The functions block the thread execution until the interrupt condition is met
+    or when the timeout is reached. While not directly allowing for non-blocking acquisition, they can be used in a separate thread to achieve a similar effect.
+
+##. Add Logic Analyzer commands to the documentation. The base is there, but most commands are missing.
+
+##. Add calibration commands to the documentation (C++ and Python API).
+
+##. Add link to system info change of DMM memory to the DMM docs (changing reserved memory)
+
+
+
 
 # APPLICATIONS
 
@@ -208,6 +280,15 @@
 ##.  Decoding the Streaming data from the computer on a custom application. How is stream data encoded and how to decode it. - rpsa client, streaming server
 
 ##.  Commands to remotely start/stop the stream - explanation so users can perform this on their own - check the rpsa.client code on GitHub for example.
+
+##.  VNA - add specifications: Bandwidth, measurement types (s-parameters, TDR/time domain, crosstalk (NEXT/FEXT)), diffferential pair support, return loss/insertion loss, port count, calibration support, accessories, software.
+     Check the VNA specifications and find the specified parameters to publish.
+     RF bandwidth is 300 kHz-60 MHz, S11/S21 measurements, 1 port, calibration support (manual Red Pitaya hardware calibration and software VNA calibration), 
+
+##. SA - the peak amplitude depends on the chosen window function and buffer size. Generally, diferences of 0.5 -2.5 dB can be expected between different window functions. The buffer size also affects the resolution bandwidth, which in turn affects the noise floor and the ability to resolve closely spaced signals. A larger buffer size allows for a narrower resolution bandwidth, which can help to resolve closely spaced signals and reduce the noise floor, but it also increases the time required for each measurement.
+
+
+
 
 # FORMATING
 
@@ -246,26 +327,12 @@
 
 #### Update #####
 
-FPGA testi za simulacijo ob releaseu novega OS - OBVEZNI TESTI pred releasom OS.
+FPGA tests for simulation at the release of a new OS - MANDATORY TESTS before the release of the OS.
 
-Potrebne neke obvezne simulacije za delovanje FPGA.
-
-
-# eMMC boot image creation
-
-POPIS eMMC
-
-SD kartica daš v pitayo in staraš - startaš uboot in ustaviš
-
-Pogledaš če vidi eMMC - vržeš ven SD akrtico
-
-EMMC vidiš kot Must storage in vpišeš gor kot da bi bil USB ključek
+Some mandatory simulations are needed for the operation of the FPGA.
 
 
 
 
-# E3 SW
 
-Add an option to deactivate watchdog timer with a combination of P_ON button.
 
-Add changelog file.

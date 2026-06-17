@@ -79,7 +79,7 @@ Updating or reinstalling the OS can solve a wide range of issues, including:
 * Boot problems
 * Network connectivity issues
 * Application errors
-* Remenants of old software code or FPGA images that may be causing problems
+* Remnants of old software code or FPGA images that may be causing problems
 * And many more
 
 It is always recommended to keep your Red Pitaya OS up to date to ensure the best performance and stability.
@@ -151,7 +151,7 @@ Use this section if:
 
 * **The status LEDs are working normally**. This indicates that the Red Pitaya board itself is good, but we are still having trouble connecting to the Red Pitaya web interface or :ref:`SSH <ssh>`.
 
-Before proceding with the steps below, please check if you can :ref:`connect to the board via the web interface <quickstart_connect>`. If you cannot connect to the web interface, please 
+Before proceeding with the steps below, please check if you can :ref:`connect to the board via the web interface <quickstart_connect>`. If you cannot connect to the web interface, please 
 follow the steps below to troubleshoot the network connection.
 
 At this point the most likely problem is a network connection issue.
@@ -548,12 +548,23 @@ Balena Etcher archive corrupted error?
 
 If you are getting the following error when trying to flash the OS image to the SD card using Balena Etcher:
 
-.. figure:: img/Balena_writer_error.png
+.. figure:: img/BalenaEtcher_archive_error.png
     :align: center
     :width: 600
 
 Please delete the partitions on the SD card and try flashing the OS image again. You can find instructions on how to delete partitions on the SD card in the :ref:`OS partitions <SDcard_partitions>` section.
 This error sometimes occurs when installing new OS versions on SD cards that already contain older Red Pitaya OS versions.
+
+Balena Etcher Error(0, h.requestMetadata) is not a function error?
+-------------------------------------------------------------------
+
+If you are getting the following error when trying to flash the OS image to the SD card using Balena Etcher:
+
+.. figure:: img/BalenaEtcher_open_error.png
+    :align: center
+    :width: 600
+
+Please restart Balena Etcher in administrator mode and try flashing the OS image again.
 
 |
 
@@ -647,14 +658,17 @@ are developed by 3rd parties and may not be supported by the Red Pitaya team.
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 | **Lock-in PID application**   | **Application type** | **Compatible Red Pitaya OS**                         | **Red Pitaya board compatibility**  | **Link to documentation**                                                   |
 +===============================+======================+======================================================+=====================================+=============================================================================+
-| Linien                        | 3rd party            | | 2.00-15 and above                                  | STEMlab 125-14 (LN, Ext. clk)       | :github:`Linien GitHub <linien-org/linien>`                                 |
-|                               |                      | | 1.04 (limited compatibility)                       |                                     |                                                                             |
+| Linien                        | 3rd party            | | 2.00-15 and above                                  | | STEMlab 125-14 (LN, Ext. clk)     | :github:`Linien GitHub <linien-org/linien>`                                 |
+|                               |                      | | 1.04 (limited compatibility)                       | | STEMlab 125-14 (PRO) Gen 2        |                                                                             |
+|                               |                      | |                                                    | |                                   |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 | Lock-in+PID (Marcelo Luda)    | 3rd party            | | 2.00 or higher                                     | | STEMlab 125-14 (LN, Ext. clk)     | |Marcelo-Lock-in|                                                           |
-|                               |                      | | 1.04                                               | | STEMlab 125-10 (discontinued)     |                                                                             |
+|                               |                      | | 1.04                                               | | STEMlab 125-10                    |                                                                             |
+|                               |                      | |                                                    | | STEMlab 125-14 (PRO) Gen 2        |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 | PyRPL                         | 3rd party            | | 2.00 or higher                                     | | STEMlab 125-14 (LN, Ext. clk)     | |PyRPL|                                                                     |
-|                               |                      | | 1.04                                               | | STEMlab 125-10 (discontinued)     |                                                                             |
+|                               |                      | | 1.04                                               | | STEMlab 125-10                    |                                                                             |
+|                               |                      | |                                                    | | STEMlab 125-14 (PRO) Gen 2        |                                                                             |
 +-------------------------------+----------------------+------------------------------------------------------+-------------------------------------+-----------------------------------------------------------------------------+
 
 .. note::
@@ -781,6 +795,8 @@ What is the difference between STEMlab 125-14 and STEMlab 125-14 Low Noise?
 
 STEMlab 125-14 Low Noise has additional linear power regulators that reduce the noise on the fast analog outputs. This is the only difference between the two boards.
 You can find more information in the :ref:`STEMlab 125-14 Low Noise documentation <top_125_14_LN>`.
+
+All Gen 2 boards are Low Noise by default.
 
 
 Is the STEMlab 125-14 board in the "Calibrated kit" calibrated?

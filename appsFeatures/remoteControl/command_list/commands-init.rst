@@ -26,6 +26,7 @@ Here are some examples of how to use the initialization commands on Red Pitaya:
 
 * :ref:`Examples using API commands <examples>`.
 
+|
 
 Parameters and command table
 -----------------------------

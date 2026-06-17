@@ -1,20 +1,22 @@
 .. _fpga_stream_app_4ch_dev:
 
 #########################################
-Stream App 4-Channel FPGA Project
+Stream App 4-Input FPGA Project
 #########################################
 
 **FPGA Project:** stream_app_4ch
 
 **Compatible Boards:**
+
     * STEMlab 125-14 4-Input
 
 **Applications:**
+
     * Multi-channel data acquisition (4 ADC channels)
     * Simultaneous 4-channel streaming
     * GPIO streaming and monitoring
 
-The Stream App 4-Channel FPGA project enables simultaneous high-speed data streaming from four ADC input channels on Red Pitaya's 4-Input board.
+The Stream App 4-Input FPGA project enables simultaneous high-speed data streaming from four ADC input channels on Red Pitaya's 4-Input board.
 It provides comprehensive triggering, decimation, filtering, and DMA-based data transfer capabilities for all four channels.
 
 .. contents:: Register index
@@ -66,7 +68,11 @@ Quick Reference
 +------------------+----------------------------------------------------------+-------+
 | 0xC0-0xDC        | Equalization filter coefficients (CH1/CH2)               | W     |
 +------------------+----------------------------------------------------------+-------+
+| 0xE0-0xEC        | Diagnostic registers                                     | R     |
++------------------+----------------------------------------------------------+-------+
 | 0x100            | Board status (clock, mode)                               | R     |
++------------------+----------------------------------------------------------+-------+
+| 0x200-0x214      | Timestamp counters / buffer timestamps                   | R/W   |
 +------------------+----------------------------------------------------------+-------+
 | 0x15C-0x170      | DMA addressing for CH3/CH4                               | R/W   |
 +------------------+----------------------------------------------------------+-------+
@@ -367,7 +373,8 @@ Calibration (Channels 1-2)
 
 .. note::
 
-    Legacy calibration mode is enabled for calibration values in versions 1 through 5. This calibration occurs after the frequency filter. Calibration version 6 calibrates values before the frequency filter.
+    Legacy calibration mode is enabled for calibration values in versions 1 through 5. This calibration occurs after the frequency filter. Calibration version 6 calibrates values 
+    before the frequency filter.
 
 |
 
@@ -394,6 +401,22 @@ Status and Diagnostics (Channels 1-2)
 | **0xA8**           | **Diagnostics - current write pointer CH2**                  |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Write pointer                                                | 31:0  | R   |
++--------------------+--------------------------------------------------------------+-------+-----+
+| **0xE0**           | **Diagnostic register 1**                                    |       |     |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Diagnostic value                                             | 31:0  | R   |
++--------------------+--------------------------------------------------------------+-------+-----+
+| **0xE4**           | **Diagnostic register 2**                                    |       |     |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Diagnostic value                                             | 31:0  | R   |
++--------------------+--------------------------------------------------------------+-------+-----+
+| **0xE8**           | **Diagnostic register 3**                                    |       |     |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Diagnostic value                                             | 31:0  | R   |
++--------------------+--------------------------------------------------------------+-------+-----+
+| **0xEC**           | **Diagnostic register 4**                                    |       |     |
++--------------------+--------------------------------------------------------------+-------+-----+
+|                    | Diagnostic value                                             | 31:0  | R   |
 +--------------------+--------------------------------------------------------------+-------+-----+
 
 |
@@ -658,19 +681,19 @@ Counter for timestamps
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | High part of uint64 counter                                  | 31:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
-| **0x208**          | **Start writing to the first buffer**                        |       |     |
+| **0x208**          | **Buffer 1 start timestamp LO**                              |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Low part of uint64 counter                                   | 31:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
-| **0x20C**          | **Start writing to the first buffer**                        |       |     |
+| **0x20C**          | **Buffer 1 start timestamp HI**                              |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | High part of uint64 counter                                  | 31:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
-| **0x210**          | **Start writing to the second buffer**                       |       |     |
+| **0x210**          | **Buffer 2 start timestamp LO**                              |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | Low part of uint64 counter                                   | 31:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+
-| **0x214**          | **Start writing to the second buffer**                       |       |     |
+| **0x214**          | **Buffer 2 start timestamp HI**                              |       |     |
 +--------------------+--------------------------------------------------------------+-------+-----+
 |                    | High part of uint64 counter                                  | 31:0  | R/W |
 +--------------------+--------------------------------------------------------------+-------+-----+

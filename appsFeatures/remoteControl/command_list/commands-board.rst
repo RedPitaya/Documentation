@@ -8,8 +8,8 @@ Board control commands
 Functionality overview
 ------------------------
 
-Board control commands provide general information about the Red Pitaya board, such as its ID, version, and date/time settings. They allow you to set general parameters for how the board operates, including logging modes and error handling.
-These commands are essential for managing the board's configuration and ensuring it operates correctly.
+Board control commands provide general information about the Red Pitaya board, such as its ID, version, and date/time settings. They allow you to set general parameters for how the board operates, 
+including logging modes and error handling. These commands are essential for managing the board's configuration and ensuring it operates correctly.
 
 They are meant to be executed once at the start of the application during the initialisation phase.
 
@@ -17,8 +17,9 @@ They are meant to be executed once at the start of the application during the in
 Important notes
 ----------------
 
-*   ``RP:RET_ON_ERROR <bool>`` command is a non-standard SCPI command feature that enables a special mode for compatibility with older SCPI clients. When this mode is enabled, if errors occur when executing query commands, the server will return empty data with delimiters "\r\n",
-    which will prevent SCPI data or parameter requests to end in an infinite waiting-for-return loop when an error occurs on the Red Pitaya side. This is useful for maintaining compatibility with legacy systems that expect this behavior.
+*   ``RP:RET_ON_ERROR <bool>`` command is a non-standard SCPI command feature that enables a special mode for compatibility with older SCPI clients. When this mode is enabled, if errors occur 
+    when executing query commands, the server will return empty data with delimiters "\r\n", which will prevent SCPI data or parameter requests from ending in an infinite waiting-for-return 
+    loop when an error occurs on the Red Pitaya side. This is useful for maintaining compatibility with legacy systems that expect this behavior.
 
 
 Code examples
@@ -47,30 +48,31 @@ Parameters and command table
 
 **Available Jupyter and API macros:**
 
-- Red Pitaya states and errors:
-    - ``RP_OK`` - OK
-    - ``RP_EOED`` - Failed to Open EEPROM Device.
-    - ``RP_EOMD`` - Failed to open memory device.
-    - ``RP_ECMD`` - Failed to close memory device.
-    - ``RP_EMMD`` - Failed to map memory device.
-    - ``RP_EUMD`` - Failed to unmap memory device.
-    - ``RP_EOOR`` - Value out of range.
-    - ``RP_ELID`` - LED input direction is not valid.
-    - ``RP_EMRO`` - Modifying read only filed is not allowed.
-    - ``RP_EWIP`` - Writing to input pin is not valid.
-    - ``RP_EPN`` - Invalid Pin number.
-    - ``RP_UIA`` - Uninitialized Input Argument.
-    - ``RP_FCA`` - Failed to Find Calibration Parameters.
-    - ``RP_RCA`` - Failed to Read Calibration Parameters.
-    - ``RP_BTS`` - Buffer too small
-    - ``RP_EIPV`` - Invalid parameter value
-    - ``RP_EUF`` - Unsupported Feature
-    - ``RP_ENN`` - Data not normalized
-    - ``RP_EFOB`` - Failed to open bus
-    - ``RP_EFCB`` - Failed to close bus
-    - ``RP_EABA`` - Failed to acquire bus access
-    - ``RP_EFRB`` - Failed to read from the bus
-    - ``RP_EFWB`` - Failed to write to the bus
+Red Pitaya states and errors:
+
+- ``RP_OK`` - OK
+- ``RP_EOED`` - Failed to Open EEPROM Device.
+- ``RP_EOMD`` - Failed to open memory device.
+- ``RP_ECMD`` - Failed to close memory device.
+- ``RP_EMMD`` - Failed to map memory device.
+- ``RP_EUMD`` - Failed to unmap memory device.
+- ``RP_EOOR`` - Value out of range.
+- ``RP_ELID`` - LED input direction is not valid.
+- ``RP_EMRO`` - Modifying read only filed is not allowed.
+- ``RP_EWIP`` - Writing to input pin is not valid.
+- ``RP_EPN`` - Invalid Pin number.
+- ``RP_UIA`` - Uninitialized Input Argument.
+- ``RP_FCA`` - Failed to Find Calibration Parameters.
+- ``RP_RCA`` - Failed to Read Calibration Parameters.
+- ``RP_BTS`` - Buffer too small
+- ``RP_EIPV`` - Invalid parameter value
+- ``RP_EUF`` - Unsupported Feature
+- ``RP_ENN`` - Data not normalized
+- ``RP_EFOB`` - Failed to open bus
+- ``RP_EFCB`` - Failed to close bus
+- ``RP_EABA`` - Failed to acquire bus access
+- ``RP_EFRB`` - Failed to read from the bus
+- ``RP_EFWB`` - Failed to write to the bus
 
 ..    - ``RP_EMNC`` -
 ..    - ``RP_NOTS`` -

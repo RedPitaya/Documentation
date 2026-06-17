@@ -190,8 +190,16 @@ The settings menu allows you to manage the calibration process. The options are 
 
     The calibration version and values are explained in more detail in the :ref:`Calibration parameters section <calib_params>`.
 
-    The EEPROM Info menu also allows you to backup the current calibration values to a file and restore them from a file. This is useful if you want to save your 
-    calibration settings or revert to previous settings.
+    The EEPROM Info menu also allows you to **backup** the current calibration values to a file and **restore** them from a previously saved file:
+
+    * **Backup** - saves either the **Factory** or **User** calibration zone to a binary ``.bin`` file on your computer. The file contains the board model, MAC address, creation timestamp, and an MD5 checksum to ensure data integrity.
+    * **Restore** - loads a previously saved ``.bin`` backup file and writes the calibration parameters back to the EEPROM. The MD5 checksum is verified before writing; if the file is corrupted or modified, the restore will be rejected.
+
+    This is useful for preserving calibration settings across OS updates, quickly reverting to a known-good state, or transferring calibration data.
+
+    .. tip::
+
+        Save a backup of the factory calibration immediately after receiving the board and after every successful recalibration.
 
     .. figure:: img/Calib_DC_EEPROM.png
         :align: center

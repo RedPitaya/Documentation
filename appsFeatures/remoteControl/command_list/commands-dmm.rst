@@ -16,7 +16,8 @@ Deep Memory Mode (DMM)
 Functionality overview
 ========================
 
-Deep Memory Mode commands enable extended data acquisition and generation by streaming data directly to/from Red Pitaya's DDR3 RAM at full sampling speed. This overcomes the 16384 sample limitation of standard acquisition, allowing captures of millions of samples limited only by available RAM.
+Deep Memory Mode commands enable extended data acquisition and generation by streaming data directly to/from Red Pitaya's DDR3 RAM at full sampling speed. This overcomes the 16384 sample limitation 
+of standard acquisition, allowing captures of millions of samples limited only by available RAM.
 
 Deep Memory Acquisition (DMA) uses AXI DMA protocol to transfer data between FPGA and DDR memory at high speed, while Deep Memory Generation allows playback of extended arbitrary waveforms.
 
@@ -40,6 +41,7 @@ Here are some examples of how to use Deep Memory Mode:
 
 * :ref:`Deep memory acquisition and generation examples <examples_dmm>`.
 
+|
 
 .. _commands_dma:
 
@@ -153,7 +155,7 @@ DMA settings
 | |                                                         | |                                                                                                                          | | Replaced by functions returning NumPy buffers.                                |                    |
 +-----------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
 
-
+|
 
 ----------------
 DMA data read
@@ -217,7 +219,7 @@ DMA data read
 | |                                                  | |                                                                                                                          | |                                                                               |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
 
-
+|
 
 .. _commands_dmg:
 

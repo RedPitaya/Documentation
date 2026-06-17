@@ -48,7 +48,7 @@ To run an example, follow the instructions below:
 
 #.  **Start the SCPI server** by selecting one of the ``RUN`` buttons.
 
-    * **TCP** - Start the SCPI server with TCP protocol. It is the most commonly used protocol for SCPI communication and is compatible with most software environments that support SCPI commands.
+    * **TCP (Recommended)** - Start the SCPI server with TCP protocol. It is the most commonly used protocol for SCPI communication and is compatible with most software environments that support SCPI commands.
     * **UART** - Start the SCPI server through the UART interface. This option is used for serial communication and is suitable for environments that support serial communication protocols.
     * **Arduino** - Start the SCPI server in Arduino mode. This option is designed for use with Arduino-based environments and allows for seamless integration with Arduino projects.
     * **Arduino TCP** - Start the SCPI server in Arduino TCP mode. This option combines the features of both TCP and Arduino modes, providing a versatile solution for various applications.
@@ -297,15 +297,32 @@ LabVIEW
 Requirements and Setup
 -----------------------
 
-For proper operation, the |LabVIEW_driver| must be installed.
+For proper operation, the |LabVIEW_driver| must be installed. The driver is functional; additional examples and code updates will be added in the future.
 
-1.  Download the |LabVIEW_driver|. 
-#.  Unpack the downloaded driver and copy the Red Pitaya folder to your LabVIEW installation ``instr.lib`` folder. Here are path examples for both 64- and 32-bit LabVIEW versions.
-    
-    -  64-bit LabVIEW version (mostly paid): ``C:/Program Files/National Instruments/LabVIEW 2010/instr.lib``.
-    -  32-bit LabVIEW version (e.g. free Community Edition): ``C:/Program Files (x86)/National Instruments/LabVIEW 2020/instr.lib``.
+1.  Download the |LabVIEW_driver| from Framatome GitLab.
+#.  Unpack the downloaded archive and copy the **RedPitaya** driver folder into the ``instr.lib`` folder of your LabVIEW installation.
+    The required path for **LabVIEW 2020 32-bit** (e.g. the free Community Edition) is:
 
-The Red Pitaya driver should appear after restarting LabVIEW in **Block Diagram -> Instrument I/O -> Instr Drivers -> RedPitaya**. Depending on your settings, instrument I/O may be hidden. Please consult LabVIEW Help on how to activate or deactivate those categories. 
+    .. code-block:: none
+
+        C:\Program Files (x86)\National Instruments\LabVIEW 2020\instr.lib
+
+    For other LabVIEW versions adjust the year and the ``Program Files`` / ``Program Files (x86)`` folder accordingly (64-bit builds install under ``Program Files``).
+
+    .. note::
+
+        If you are using a **newer version of LabVIEW**, the driver can be upgraded from within LabVIEW itself by saving the library in the newer format. This does not affect the
+        functionality of the driver.
+
+#.  **Restart LabVIEW** after copying the folder.
+
+The Red Pitaya cores are then available in the Block Diagram under:
+
+**Block Diagram → Functions → Instrument I/O → Instr Drivers → RedPitaya**
+
+.. note::
+
+    Depending on your settings, the *Instrument I/O* palette may be hidden. Please consult LabVIEW Help on how to show or hide palette categories.
 
 |
 
@@ -438,4 +455,4 @@ Query commands request data or a setting to be returned to the user. They always
 
 .. substitutions
 
-.. |LabVIEW_driver| replace:: `Red Pitaya LabVIEW driver <https://downloads.redpitaya.com/downloads/Clients/labview/Red_Pitaya_LabVIEW_Driver%26Examples.zip>`__
+.. |LabVIEW_driver| replace:: `Red Pitaya LabVIEW driver <https://gitlab.com/framatome-atms-community/red-pitaya-labview-driver>`__

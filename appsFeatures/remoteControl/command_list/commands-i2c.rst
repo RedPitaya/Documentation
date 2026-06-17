@@ -29,6 +29,7 @@ Here are some examples of how to use I2C communication:
 * :ref:`Digital communication examples <examples_digcom>`.
 * :ref:`Logic analyzer examples <examples_la>`.
 
+|
 
 Parameters and command table
 -----------------------------

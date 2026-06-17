@@ -166,17 +166,20 @@ For OS versions 1.04-28 to 2.05-37 with 20 MB/s network limit:
 
 |
 
-Short duration high-speed acquisition
-=======================================
+Short duration high-speed acquisition (DMA one buffer mode)
+=============================================================
 
 .. note::
 
-    **Burst mode capability:** If acquiring a limited amount of samples in a short duration, it is possible to reach higher sampling 
-    frequencies (up to the full sampling speed of fast analog inputs - 125 MS/s). This works because the :ref:`Deep Memory Mode <deepMemoryMode>` 
-    buffer in DDR memory can temporarily store data much faster than it can be continuously streamed out to the network or SD card.
-    
-    The amount of data that can be acquired at full speed depends on the available DDR buffer size. Once the buffer fills, the 
-    acquisition rate is limited by the maximum continuous streaming rate listed above.
+    **One buffer mode (DMA):** The :ref:`Deep Memory Acquisition (DMA) <deepMemoryAcq>` supports a dedicated **one buffer mode** where
+    data is captured directly into the DDR memory buffer at the full ADC core clock speed (up to 125 MS/s) — without the 62.5 MB/s
+    network throughput constraint of true streaming mode. Once the buffer is full, acquisition stops and the data is then transferred
+    to the computer. This mode can be triggered from the :ref:`streaming command line client <stream_command_client>` or configured
+    directly via the SCPI, Python API, and C++ API commands.
+
+    The maximum amount of data that can be captured at full speed is determined by the reserved DDR buffer size. Once the buffer is
+    filled, any further acquisition is limited by the maximum continuous streaming rate (62.5 MB/s network, 10 MB/s SD card).
+    See :ref:`Deep Memory Mode <deepMemoryMode>` for details on configuring the reserved memory region.
 
 |
 
@@ -233,6 +236,15 @@ Here are limitations for the **dac_rate** variable for each of the two modes:
         .. warning::
 
             Setting the DAC rate higher than 5 MHz in true streaming mode may result in data loss and unstable signal generation.
+
+.. note::
+
+    The :ref:`Deep Memory Generation (DMG) <deepMemoryGen>` also supports **one buffer mode** and **true streaming mode** (see above).
+    In one buffer mode, the full DAC core clock rate (125 MHz) is available, giving a maximum output signal frequency of 1.953 MHz
+    (64-sample minimum buffer, one period per buffer). In true streaming mode the data rate is limited to 62.5 MB/s and the output
+    waveform is **held constant between consecutive samples** (zero-order hold — no FPGA interpolation). True streaming mode for
+    DMG requires significantly more reserved DDR memory than one buffer mode; the application and code will warn you if insufficient
+    memory is reserved. See :ref:`Deep Memory Generation <deepMemoryGen>` for details.
 
 |
 

@@ -20,6 +20,9 @@ then they can be managed using Linux drivers intended for the PS block. This is 
 
 Appropriate fpga bitstream can be applied using bash command.
 
+On current Red Pitaya OS releases, ``overlay.sh`` is the board-aware loader used by the ecosystem. It detects the board profile and loads the matching
+``fpga.bit.bin`` and ``fpga.dtbo`` files from ``/opt/redpitaya/fpga/<model>/<project>/``.
+
 .. tabs::
 
     .. group-tab:: OS version 2.00

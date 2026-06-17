@@ -41,7 +41,7 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 
 |
 
-..! TODO - add new commands and issues to the list
+.. ! TODO - add new commands and issues to the list
 
 .. IN-DEV
 .. =======
@@ -69,7 +69,7 @@ New Commands
 * LCR meter commands (:ref:`LCR mode<commands_lcr>`).
 * DMA API commands to return data as Numpy array (``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)``, ``rp_AcqAxiGetDataVNP``). Check */opt/redpitaya/lib/python/rp.py* on the Red Pitaya board for more options.
 * Acquisition API commands to return data as Numpy array (``rp_AcqGetDataPosRawNP``, ``rp_AcqGetDataPosVNP``, ``rp_AcqGetLatestDataRawNP``, etc.). Check */opt/redpitaya/lib/python/rp.py* on the Red Pitaya board for more options.
-* Acquisition get data around trigger postion ``ACQ:SOUR<n>:DATA:TRig? <size>,<t_pos>``.
+* Acquisition get data around trigger position ``ACQ:SOUR<n>:DATA:TRig? <size>,<t_pos>``.
 * Burst Init and Last value commands: ``SOUR<n>:BURS:INITValue <amplitude>`` and ``SOUR<n>:BURS:LASTValue <amplitude>`` - the same functionality as ``SOUR<n>:INITValue <amplitude>`` and ``SOUR<n>:LASTValue <amplitude>``.
 * Additional sweep command ``SOUR:SWeep:DEFault``.
 
@@ -276,7 +276,7 @@ New commands
 Issues
 ---------
 
-* ``SOUR:TRIG:INT`` command does not work. It is supposed to synchronously trigger both outputs, but is ignored. Use ``SOUR<n>:TRIG:INT`` to trigger individual outputs seperately.
+* ``SOUR:TRIG:INT`` command does not work. It is supposed to synchronously trigger both outputs, but is ignored. Use ``SOUR<n>:TRIG:INT`` to trigger individual outputs separately.
 * ``ACQ:SOUR<n>:STA:END?`` does not work.
 
 

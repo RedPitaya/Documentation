@@ -8,10 +8,10 @@ achieve a higher number of fast analog channels for acquisition or generation.
 
 There are two ways to achieve clock and trigger synchronisation across multiple Red Pitaya boards:
 
-1.  **Red Pitaya X-Channel 2.0 (Click Shield) Synchronisation** - **Multiple External clock Red Pitaya boards** synchronised with Click Shields using dedicated 
+1.  **Red Pitaya X-Channel System 2.0 (Click Shield)** - **Multiple External clock Red Pitaya boards** synchronised with Click Shields using dedicated 
     ZL40213 LVDS clock fanout buffers. Provides optimal signal integrity across extended daisy chains with minimal clock and trigger jitter.
 
-#.  **Red Pitaya X-Channel system** - **One primary and multiple secondary Red Pitaya boards** connected in a daisy chain with SATA (Original 
+#.  **Red Pitaya X-Channel System** - **One primary and multiple secondary Red Pitaya boards** connected in a daisy chain with SATA (Original 
     Gen) or USB-C (Gen 2) cables. Cost-effective solution ideal for 2-3 board systems at moderate to high sampling rates.
 
 The synchronized boards can be controlled as any normal Red Pitaya board. However, remote control from a computer is usually preferred as it allows for more flexibility and easier control 
@@ -46,8 +46,8 @@ How can I control synchronised boards?
 
 .. _click_shield_sync:
 
-X-Channel 2.0 (Click Shield) Synchronisation
-=============================================
+X-Channel System 2.0 (Click Shield) Synchronisation
+===================================================
 
 Red Pitaya Click Shields enable high-performance clock and trigger synchronisation between multiple Red Pitaya units or other devices 
 using dedicated ZL40213 LVDS clock fanout buffers. This professional-grade clock distribution solution maintains optimal signal integrity 

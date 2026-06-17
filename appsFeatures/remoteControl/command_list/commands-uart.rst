@@ -27,6 +27,7 @@ Here are some examples of how to use UART communication:
 * :ref:`Digital communication examples <examples_digcom>`.
 * :ref:`Logic analyzer examples <examples_la>`.
 
+|
 
 Parameters and command table
 -----------------------------
@@ -37,7 +38,7 @@ Parameters and command table
 - ``<stop> = {STOP1, STOP2}``  Default: ``STOP1``
 - ``<parity> = {NONE, EVEN, ODD, MARK, SPACE}``  Default: ``NONE``
 - ``<timeout> = {0...255} in (1/10 seconds)`` Default: ``0``
-- ``<speed> = {1200,2400,4800,9600,19200,38400,57600,115200,230400,576000,921000,1000000,1152000,1500000,2000000,2500000,3000000,3500000,4000000}`` Default: ``9600``
+- ``<speed> = {1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200, 230400, 576000, 921000, 1000000, 1152000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000}`` Default: ``9600``
 - ``<data> = {XXX, ... | #HXX, ... | #QXXX, ... | #BXXXXXXXX, ... }`` Array of data separated by commas
 
    - ``XXX`` = Dec format
@@ -53,7 +54,8 @@ Parameters and command table
 
 .. note::
 
-    When establishing UART communication with Red Pitaya and another device, do not forget to connect the External Common Mode (GND) pin (in addition to the RX and TX pins). Otherwise, the communication might be unreliable.
+    When establishing UART communication with Red Pitaya and another device, do not forget to connect the External Common Mode (GND) pin (in addition to the RX and TX pins). Otherwise, the 
+    communication might be unreliable.
 
 
 .. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|

@@ -43,6 +43,18 @@ To upload a custom signal to Arbitrary waveform generator follow the setps below
     .. figure:: img/ARB_Osc_waveforms.png
         :width: 300
 
+.. note::
+
+    **Waveform Data Format and Amplitude Control**
+
+    - **All waveform values must be normalized** to the range ``[-1, 1]``, where value ``1`` represents the maximum DAC output and ``-1`` represents the minimum.
+    - The waveform data is a **template** that defines the signal **shape** only; it does NOT contain amplitude information.
+    - The actual output **amplitude** is controlled independently via the amplitude/voltage slider in the Oscilloscope/Spectrum Analyzer app or via the ``SOUR<n>:VOLT`` SCPI command.
+    - The FPGA applies the formula: **Output = (Waveform Template Value × Calibrated Amplitude Multiplier) + Calibration Offset**
+    - The calibration multipliers account for the DAC's full-scale range, which the FPGA does not inherently know.
+
+|
+
 Example code for creating a custom waveform
 --------------------------------------------
 
@@ -59,16 +71,24 @@ Here is an example of Python code for creating a custom waveform.
     N = 16384                               # Number of samples
     t = np.linspace(0, 1, N)*2*np.pi
     
-    x = np.sin(t) + 1/3*np.sin(3*t)         # Custom wavefrom definition
+    x = np.sin(t) + 1/3*np.sin(3*t)         # Custom waveform definition
     y = 1/2*np.sin(t) + 1/4*np.sin(4*t)
+    
+    # IMPORTANT: Ensure all waveform values are normalized to [-1, 1]
+    # The waveform is a TEMPLATE that defines only the signal SHAPE
+    # The actual output AMPLITUDE is set separately via the volume slider or SOUR<n>:VOLT command
     
     plt.plot(t, x, t, y)                    # Double-check with plot
     plt.title('Custom waveform')
     plt.show()
     
-    # Port waveforms to CSV fromat
-    pd.DataFrame(x).to_csv('arb_waveform1.csv', index=False, header=False, float_format=np.float64)
-    pd.DataFrame(y).to_csv('arb_waveform2.csv', index=False, header=False, float_format=np.float64)
+    # Normalize values to ensure they're in [-1, 1] range
+    x_norm = x / np.max(np.abs(x))
+    y_norm = y / np.max(np.abs(y))
+    
+    # Port waveforms to CSV format
+    pd.DataFrame(x_norm).to_csv('arb_waveform1.csv', index=False, header=False, float_format=np.float64)
+    pd.DataFrame(y_norm).to_csv('arb_waveform2.csv', index=False, header=False, float_format=np.float64)
   
 |
 

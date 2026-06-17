@@ -25,6 +25,7 @@ Code examples
 
 [To be added - examples specific to temperature monitoring and protection]
 
+|
 
 Parameters and command table
 -----------------------------

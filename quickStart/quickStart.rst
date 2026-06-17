@@ -25,6 +25,7 @@ Most users should start with the :ref:`Board Identification Guide <ID_guide>`, f
     SDcard/SDcard.rst
     SDcard/SDcard_advanced.rst
     E3_board/e3_addon_board.rst
+    E3_board/emmc_flash.rst
     alucase/alucase.rst
     pvccase/pvccase.rst
     heatsink/heatsink.rst

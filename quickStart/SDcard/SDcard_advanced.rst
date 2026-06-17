@@ -496,7 +496,11 @@ Though we do not recommend it, some users may want to downgrade to an older OS v
 Resize file system
 ******************
 
-When an image is written to a flash card of any size, the file system partitions are limited to the size defined in the image (typically 8 GB).
+.. note::
+
+    **(OS 2.07-43 and higher)** During the initial boot after flashing the OS to the SD card, the memory card partitions are **automatically resized** to use the full capacity of the card. To complete the process, the board reboots a second time. This increases the initial boot time somewhat. No manual action is required.
+
+For **older OS versions**, the file system partitions are limited to the size defined in the image (typically 8 GB) and must be resized manually.
 To increase the available free space, run the following script:
 
 .. code-block:: shell-session
