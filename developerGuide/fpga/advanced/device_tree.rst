@@ -259,7 +259,9 @@ The :ref:`overlay.sh <overlay_util>` script (OS 2.00+) provides a convenient way
 
 .. code-block:: bash
 
-    overlay.sh v0.94 -d custom_devicetree.dtbo
+    overlay.sh v0.94 /root/custom.bit.bin /root/custom.dtbo
+
+This keeps the standard Red Pitaya project name as the board-model anchor while replacing the built-in FPGA and device tree files with your custom paths.
 
 For detailed information on using the overlay script, see:
 

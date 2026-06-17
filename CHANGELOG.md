@@ -6,6 +6,26 @@ orphan: true
 
 All notable changes to this project will be documented in this file.
 
+## June 2026 - Update 1
+
+**Major updates:**
+
+- QSPI eMMC module - eMMC booting instructions added to the documentation.
+
+**Minor updates:**
+
+- Streaming documentation clarified: calibration version 5 (API-based) introduced in OS 2.07-43; calibration version 6 (FPGA-based) will be added in OS 3.00.
+- Clarified arbitrary waveform data format and amplitude control
+- Deep Memory Generation docs expanded
+- Calib tool updated - added info on calibration backup and restore
+- Clarified overlay utility
+- LabVIEW example code link to Framatome GitHub repository
+- Slow analog input range corrected from 0 - 3.5 V to 0 - 7.0 V (for all Red Pitaya boards)
+- Added Gen 2 and TI boards to FPGA project build instructions (flags)
+- Updated FPGA register maps
+- Hardware documentation updated (new discontinued boards, SIGNALlab 250-12 power jack specs, ...)
+- Fixed links and grammar issues in various pages
+
 ## April 2026 - Update 1
 
 **Major updates:**

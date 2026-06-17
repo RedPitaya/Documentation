@@ -35,8 +35,8 @@ The board can be programmed in several ways:
 * C++ and Python programs running directly on the board itself,
 * Completely customisable FPGA firmware that can be programmed using the AMD Xilinx Vivado IDE.
 
-The Red Pitaya is used everywhere from the `International Space Station <https://content.redpitaya.com/blog/red-pitaya-an-open-source-software-measurement-and-control-board-used-in-spacecraft-atmosphere-monitor-for-nasa>`_ 
-to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sorting-tomatoes-become-a-matter-for-tech>`_, which is why we call it the "Swiss Army Knife for Engineers".
+The Red Pitaya is used everywhere from the :rp-blog:`International Space Station <red-pitaya-an-open-source-software-measurement-and-control-board-used-in-spacecraft-atmosphere-monitor-for-nasa>` 
+to :rp-blog:`sorting tomatoes <when-picking-and-sorting-tomatoes-become-a-matter-for-tech>`, which is why we call it the "Swiss Army Knife for Engineers".
 
 **How can Red Pitaya help me?**
 
@@ -53,19 +53,20 @@ to `sorting tomatoes <https://content.redpitaya.com/blog/when-picking-and-sortin
 * :ref:`Programming <programming>`
 * :ref:`FPGA <fpga_top>`
 * :ref:`Customization <customization>`
-* |redpitaya-store|
+* :rp-store:`Red Pitaya Store <>`
 
 **GitHub source code:**
 
 * :rp-github:`Ecosystem and applications <RedPitaya>`
 * :rp-github:`FPGA <RedPitaya-FPGA>`
+* :rp-github:`Examples <RedPitaya-Examples>`
 
 **Use cases:**
 
-* `Industrial use cases <{redpitaya_website}>`__
-* `Red Pitaya blog <https://content.redpitaya.com/blog>`_
+* :rp-web:`Industrial use cases <>`
+* :rp-blog:`Red Pitaya blog <>`
 
 **FPGA lessons and tutorials**
 
-* `Knowledge Base FPGA tutorials <https://learn.redpitaya.com/>`_
+* :rp-knowledge:`Knowledge Base FPGA tutorials <>`
 * :ref:`FPGA section <fpga_top>`

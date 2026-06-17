@@ -8,6 +8,10 @@ STEMlab 125-14 External Clock (Discontinued)
     :width: 500
     :align: center
 
+.. note::
+
+    STEMlab 125-14 External Clock is discontinued (no longer produced). The documentation here is provided as a reference for existing users.
+
 |
 
 .. contents:: Table of Contents
@@ -50,9 +54,9 @@ Quick Reference
     +----------------------------+--------------------------------------------------+
     | **Category**               | **Key Specifications**                           |
     +============================+==================================================+
-    | ADC                        | 2 channels, 14-bit, 125 MS/s, DC-50 MHz          |
+    | ADC                        | 2 channels, 14-bit, 125 MS/s, DC-60 MHz          |
     +----------------------------+--------------------------------------------------+
-    | DAC                        | 2 channels, 14-bit, 125 MS/s, DC-50 MHz          |
+    | DAC                        | 2 channels, 14-bit, 125 MS/s, DC-60 MHz          |
     +----------------------------+--------------------------------------------------+
     | Processor                  | Dual-core ARM Cortex-A9                          |
     +----------------------------+--------------------------------------------------+

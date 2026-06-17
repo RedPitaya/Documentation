@@ -148,10 +148,25 @@ Calibration Methods
 
 |
 
-Command Line Calibration
-==========================
+.. _calibration_backup_restore:
 
-The calibration application is not the only way to calibrate the Red Pitaya board. The command line utility *calib* can also be used for 
+Calibration Backup and Restore (EEPROM)
+=========================================
+
+The Calibration application provides a built-in backup and restore feature available inside the **Manual DC Calibration**
+view under **Settings menu → EEPROM Info**. This allows you to save and reload calibration data — either the factory
+calibration or the current user calibration — without needing to use the command line.
+
+For full details on the EEPROM Info menu and backup/restore steps, see the :ref:`Manual DC Calibration — Settings menu <dc_calibration>` section.
+
+For command-line backup and restore options, see the :ref:`calib utility documentation <calib_util>`.
+
+|
+
+Command Line Calibration
+=========================
+
+The command line utility *calib* can also be used for 
 calibration tasks.
 
 For more information on the command line utility and the different calibration formats, please refer to the :ref:`calib_util documentation <calib_util>`.

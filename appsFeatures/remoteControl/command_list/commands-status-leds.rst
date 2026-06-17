@@ -23,6 +23,7 @@ Code examples
 
 [To be added - examples specific to Status LEDs]
 
+|
 
 Parameters and command table
 -----------------------------

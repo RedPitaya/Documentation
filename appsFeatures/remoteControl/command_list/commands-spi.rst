@@ -51,7 +51,7 @@ Here are some examples of how to use the SPI commands on Red Pitaya:
 
 * :ref:`Digital communication examples <examples_digcom>`.
 
-
+|
 
 Parameters and command table
 -----------------------------

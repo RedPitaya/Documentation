@@ -15,7 +15,8 @@ Signal Generator
 Functionality overview
 ========================
 
-Signal generator commands control Red Pitaya's fast analog outputs (DACs) for waveform generation. These commands support continuous signals, burst mode, frequency sweeps, and arbitrary waveform generation (AWG) with precise triggering and synchronization capabilities.
+Signal generator commands control Red Pitaya's fast analog outputs (DACs) for waveform generation. These commands support continuous signals, burst mode, frequency sweeps, and arbitrary 
+waveform generation (AWG) with precise triggering and synchronization capabilities.
 
 Key generation modes:
 
@@ -44,6 +45,7 @@ Here are some examples of how to use the signal generation commands on Red Pitay
 * :ref:`Signal generation examples <examples_genRF>`.
 * :ref:`Acquisition and generation examples <examples_acq_genRF>`.
 
+|
 
 Parameters and command tables
 ==============================
@@ -90,8 +92,7 @@ Generator control
 | |                                                   | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
-
-
+|
 
 Generator trigger
 -------------------
@@ -176,7 +177,7 @@ Generator trigger
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
-
+|
 
 Generator settings
 --------------------
@@ -193,16 +194,36 @@ Generator settings
 - ``<ratio> = {0 ... 1}`` Default: ``0.5`` Where 1 corresponds to 100%
 - ``<time> = {0 ... 10000}`` Default: ``1`` The minimum and maximum value depends on the signal frequency.
 - ``<array> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1
-- ``<waveform> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1 (``arbBuffer`` for Python API and Jupyter)
+- ``<waveform> = {value1, ...}`` Max 16384 values, floats in the range -1 to 1 (``arbBuffer`` or ``NumPy array`` for Python API and Jupyter)
 - ``<lenght>`` waveform array length
 - ``<load_mode> = {INF, L50}`` Default: ``INF``
 
 **Available Jupyter and API macros:**
 
 - Fast analog channels - ``RP_CH_1, RP_CH_2``
-- Waveforms - ``RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP, RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM, RP_WAVEFORM_ARBITRARY, RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP``
+- Waveforms - ``RP_WAVEFORM_SINE, RP_WAVEFORM_SQUARE, RP_WAVEFORM_TRIANGLE, RP_WAVEFORM_RAMP_UP, RP_WAVEFORM_RAMP_DOWN, RP_WAVEFORM_DC, RP_WAVEFORM_PWM,``
+  ``RP_WAVEFORM_ARBITRARY, RP_WAVEFORM_DC_NEG, RP_WAVEFORM_SWEEP``
 - Rise and fall times - ``RISE_FALL_MIN_RATIO, RISE_FALL_MAX_RATIO``
 - Load modes - ``RP_GEN_HI_Z, RP_GEN_50Ohm``
+
+**Waveform Template and Amplitude**
+
+All waveforms (built-in and arbitrary) are defined as **templates** with normalized values in the range ``-1`` to ``1``. These template values represent:
+
+- Value ``1`` → Maximum DAC output value
+- Value ``-1`` → Minimum DAC output value
+- Value ``0`` → Center/zero point
+
+The actual output voltage is determined by the **amplitude multiplier** set via the ``SOUR<n>:VOLT`` command. The FPGA applies the following formula:
+
+    **Output = (Waveform Template Value × Calibrated Amplitude Multiplier) + Calibration Offset**
+
+Key points:
+
+- The waveform template only defines the **shape** of the signal; it does not carry amplitude information
+- Amplitude is controlled independently via ``SOUR<n>:VOLT`` (set amplitude in Volts)
+- The FPGA does not inherently know the DAC's full-scale voltage; it uses calibrated multipliers to convert template values to the correct output voltage
+- For custom/arbitrary waveforms (``SOUR<n>:TRAC:DATA:DATA``), ensure all values are normalized to the ``[-1, 1]`` range before sending to Red Pitaya
 
 *SIGNALlab 250-12 only:*
 
@@ -330,7 +351,7 @@ Generator settings
 |                                                     | |                                                                                        |                                                                                              |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
-
+|
 
 Burst mode
 ------------
@@ -446,9 +467,9 @@ Burst mode
 |                                                     | |                                                                                       | |                                                                                            |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
+|
 
 .. _commands_sweep:
-
 
 Sweep mode
 ------------
@@ -512,6 +533,8 @@ Set the waveform type to sweep to enable
 | |                                                   | | Python: ``rp_GenGetSweepDir(<channel>)``                                              |                                                                                              |                    |
 | |                                                   | |                                                                                       |                                                                                              |                    |
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+
+|
 
 .. _commands_sweep_ext:
 

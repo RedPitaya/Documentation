@@ -29,18 +29,18 @@ Physical Connections
 +--------+----------+---------+-----------------------+--------------------+------------------+
 | E2     | ZYNQ p/n | XADC in | IIO filename          | Measurement target | Full scale range |
 +========+==========+=========+=======================+====================+==================+
-| AI0    | B19/A20  | AD8     | in_voltage11_raw      | general purpose    | 3.50 V           |
+| AI0    | B19/A20  | AD8     | in_voltage11_raw      | general purpose    | 7.00 V           |
 +--------+----------+---------+-----------------------+--------------------+------------------+
-| AI1    | C20/B20  | AD0     | in_voltage9_raw       | general purpose    | 3.50 V           |
+| AI1    | C20/B20  | AD0     | in_voltage9_raw       | general purpose    | 7.00 V           |
 +--------+----------+---------+-----------------------+--------------------+------------------+
-| AI2    | E17/D18  | AD1     | in_voltage10_raw      | general purpose    | 3.50 V           |
+| AI2    | E17/D18  | AD1     | in_voltage10_raw      | general purpose    | 7.00 V           |
 +--------+----------+---------+-----------------------+--------------------+------------------+
-| AI3    | E18/E19  | AD9     | in_voltage12_raw      | general purpose    | 3.50 V           |
+| AI3    | E18/E19  | AD9     | in_voltage12_raw      | general purpose    | 7.00 V           |
 +--------+----------+---------+-----------------------+--------------------+------------------+
 |        | K9 /L10  | AD      | in_voltage8_vpvn_raw  | 5V power supply    | 6.10 V           |
 +--------+----------+---------+-----------------------+--------------------+------------------+
 
-The input range is 0 - 3.5 V by default (unipolar mode).
+The input range is 0 - 7.0 V by default (unipolar mode).
 
 |
 
@@ -100,7 +100,8 @@ The fourth XADC input (AD) is connected to a voltage divider for measuring the i
 Slow Analog Inputs
 ------------------------------------
 
-The ADC inputs connected to the slow analog inputs have an input voltage range of ±0.5 V. Resistor dividers are used to scale the input voltage range to ±3.5 V:
+The XADC auxiliary inputs connected to the slow analog inputs operate in unipolar mode with an input voltage range of 0-1 V. Resistor dividers are used to 
+scale the external input voltage range to 0-7.0 V:
 
 .. code-block:: console
 
@@ -113,7 +114,12 @@ The ADC inputs connected to the slow analog inputs have an input voltage range o
 
     ratio = \frac{4.99 k\Omega}{30.0 k\Omega + 4.99  k\Omega} = 0.143
 
-    range = \frac{0.5 V}{ratio} = 3.50 V
+    range = \frac{1.0 V}{ratio} = 7.00 V
+
+.. seealso::
+
+    The voltage dividers were originally designed for a 0-3.5 V range based on an incorrect assumption about the XADC unipolar input range.
+    For the full background, see :ref:`slow_analog_voltage_note_orig_gen` (Original Generation boards) and :ref:`slow_analog_voltage_note_gen2` (Gen 2 boards).
 
 |
 
@@ -142,17 +148,17 @@ XADC values can be read from Linux userspace through the IIO interface:
 GPIO and LEDs
 **********************************
 
-Red Pitaya's GPIO pins and LEDs can be controlled from Linux userspace via ``sysfs``. The handling depends on whether the pins are connected to the PS (Processing System) or the PL (Programmable Logic). 
-The device tree defines which pins are managed by the PS and which are in the PL.
+Red Pitaya's GPIO pins and LEDs can be controlled from Linux userspace via ``sysfs``. The handling depends on whether the pins are connected to the PS 
+(Processing System) or the PL (Programmable Logic). The device tree defines which pins are managed by the PS and which are in the PL.
 
 MIO vs PL/EMIO
 ==========================
 
-- **MIO (Multiplexed I/O)**: Pins directly controlled by PS, accessed via standard GPIO ``sysfs`` interface. Each pin has a few multiplexed functions selectable via pinctrl overlays. 
-  The drivers for Linux are provided by AMD/Xilinx.
+- **MIO (Multiplexed I/O)**: Pins directly controlled by PS, accessed via standard GPIO ``sysfs`` interface. Each pin has a few multiplexed functions 
+  selectable via pinctrl overlays. The drivers for Linux are provided by AMD/Xilinx.
 
-- **PL/EMIO**: Pins controlled by FPGA logic, require FPGA design to define access method (e.g., custom AXI GPIO peripheral). Access method depends on FPGA implementation. 
-  If the pin signals in the FPGA sources are wired to EMIO, they can be accessed via the PS GPIO interface.
+- **PL/EMIO**: Pins controlled by FPGA logic, require FPGA design to define access method (e.g., custom AXI GPIO peripheral). Access method depends on 
+  FPGA implementation. If the pin signals in the FPGA sources are wired to EMIO, they can be accessed via the PS GPIO interface.
 
 .. warning::
 
@@ -299,7 +305,8 @@ For GPIO pins, use the GPIO sysfs interface:
 PS Pinctrl Overlays
 **********************************
 
-Red Pitaya provides device tree overlay files that allow you to repurpose PS MIO signals. These overlays modify the pinctrl configuration to reassign pins from their default functions (SPI, I2C, UART) to GPIO.
+Red Pitaya provides device tree overlay files that allow you to repurpose PS MIO signals. These overlays modify the pinctrl configuration to reassign pins 
+from their default functions (SPI, I2C, UART) to GPIO.
 
 Available Overlays
 ==========================
@@ -359,7 +366,8 @@ By default, the CS state is HIGH (inactive) on all Red Pitaya boards. To set the
 
 .. note::
 
-    The settings are applied only after the device tree is loaded. When the board starts up, the CS value is in the HIGH state but will change to LOW after the boot is complete.
+    The settings are applied only after the device tree is loaded. When the board starts up, the CS value is in the HIGH state but will change to LOW after 
+    the boot is complete.
 
 .. note::
 

@@ -269,13 +269,18 @@ Red Pitaya includes pre-built FPGA images. Load them directly by name:
 .. code-block:: bash
 
     # Load default v0.94 project
-    redpitaya> /opt/redpitaya/sbin/overlay.sh v0.94 v0.94
+    redpitaya> /opt/redpitaya/sbin/overlay.sh v0.94
     
     # Load streaming application
-    redpitaya> /opt/redpitaya/sbin/overlay.sh v0.94 stream_app
+    redpitaya> /opt/redpitaya/sbin/overlay.sh stream_app
     
     # Load logic analyzer
-    redpitaya> /opt/redpitaya/sbin/overlay.sh v0.94 logic
+    redpitaya> /opt/redpitaya/sbin/overlay.sh logic
+
+.. note::
+
+    ``overlay.sh`` reads the Red Pitaya board profile and then loads the matching files from ``/opt/redpitaya/fpga/<model>/<project>/``.
+    This is why the same command name works across different board models.
 
 Loading Custom Bitstream
 -------------------------

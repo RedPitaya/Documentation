@@ -25,6 +25,7 @@ Code examples
 
 [To be added - examples specific to LCR measurements]
 
+|
 
 Parameters and command table
 -----------------------------

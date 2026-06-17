@@ -12,6 +12,8 @@ EXTERNAL_LINKS = {
     'redpitaya_forum': 'https://forum.redpitaya.com/',
     'redpitaya_store': 'https://redpitaya.com/shop/',
     'redpitaya_contact': 'https://redpitaya.com/contact-us/',
+    'redpitaya_blog': 'https://content.redpitaya.com/blog',
+    'redpitaya_knowledge_base': 'https://learn.redpitaya.com/',
     
     # Development tools - Windows
     'winscp': 'https://winscp.net/eng/index.php',
@@ -118,6 +120,8 @@ SPHINX_EXTLINKS = {
     'rp-forum': ('https://forum.redpitaya.com/%s', 'Forum: %s'),
     'rp-download': ('https://downloads.redpitaya.com/%s', 'Red Pitaya Downloads: %s'),
     'rp-store': ('https://redpitaya.com/shop/%s', 'Red Pitaya Store: %s'),
+    'rp-blog': ('https://content.redpitaya.com/blog/%s', 'Red Pitaya Blog: %s'),
+    'rp-knowledge': ('https://learn.redpitaya.com/%s', 'Red Pitaya Knowledge Base: %s'),
     
     # General external services
     'wikipedia': ('https://en.wikipedia.org/wiki/%s', 'Wikipedia: %s'),

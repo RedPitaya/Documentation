@@ -49,6 +49,10 @@ Follow these steps to install the Red Pitaya OS on an SD card:
             <iframe src="https://www.youtube.com/embed/9xZCAkXAkw8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
         </div>
 
+    .. note::
+
+        **(OS 2.07-43 and higher)** During the initial boot after flashing the OS to the SD card, the memory card partitions are automatically resized to use the full capacity of the card. To complete the process, the board reboots a second time. This increases the initial boot time somewhat.
+
 #.  **Connect to the board via the web interface**. For more information check the :ref:`quick start instructions <quickstart_connect>`.
 #.  **When updating between major software releases** (for example, from 1.04 to 2.00), reset the calibration parameters to **Factory Default** (or :ref:`recalibrate your Red Pitaya <calibration_app>`).
 

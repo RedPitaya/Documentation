@@ -8,7 +8,8 @@ Analog Inputs and Outputs
 Functionality overview
 ------------------------
 
-Analog I/O commands control Red Pitaya's slow analog channels on the extension connector. These provide DC voltage measurements (0-3.5V inputs) and generation (0-1.8V outputs) for interfacing with sensors, control circuits, and other analog peripherals.
+Analog I/O commands control Red Pitaya's slow analog channels on the extension connector. These provide DC voltage measurements (0-3.5V inputs) and generation (0-1.8V outputs) for 
+interfacing with sensors, control circuits, and other analog peripherals.
 
 
 Important notes

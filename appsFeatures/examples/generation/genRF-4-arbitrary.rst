@@ -59,6 +59,9 @@ Code - MATLAB®
 
     %% Calcualte arbitrary waveform with 16384 samples
     % Values of arbitrary waveform must be in range from -1 to 1.
+    % NOTE: The waveform data is a TEMPLATE that defines the signal SHAPE.
+    %       The actual output amplitude is set by SOUR<n>:VOLT (amplitude multiplier).
+    %       The FPGA multiplies template values by the calibrated amplitude and adds offset.
     N = 16383;
     t = 0:(2*pi)/N:2*pi;
     x = sin(t) + 1/3*sin(3*t);
@@ -121,6 +124,11 @@ Code - Python
 
     x = np.sin(t) + 1/3*np.sin(3*t)
     y = 1/2*np.sin(t) + 1/4*np.sin(4*t)
+
+    # NOTE: The waveform data is a TEMPLATE that defines the signal SHAPE.
+    #       All values must be in range [-1, 1].
+    #       The actual output amplitude is set separately via SOUR<n>:VOLT.
+    #       The FPGA multiplies template values by the calibrated amplitude multiplier and adds offset.
 
     plt.plot(t, x, t, y)
     plt.title('Custom waveform')

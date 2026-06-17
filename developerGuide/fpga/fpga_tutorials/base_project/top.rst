@@ -200,18 +200,11 @@ Signal Flow Diagram
 
 Understanding the signal path in the base project:
 
-.. code-block:: text
+.. figure:: img/Base_project_signal_flow_diagram.png
+    :width: 600 
+    :align: center
+    :alt: Base project signal flow diagram
 
-                          System Bus
-                         (0x40300000)
-                              |
-                              v
-    ADC (IN1/IN2) -----> [red_pitaya_proc] -----> Oscilloscope module
-                               ^     |
-                               |     v
-    ASG output ---------> [red_pitaya_proc] -----> DAC (OUT1/OUT2)
-                               |
-                         GPIO / LED
 
 ``red_pitaya_proc`` sits in-line in both chains. By default signals pass straight through.
 You add processing logic inside the component, with no top-level wiring changes required.

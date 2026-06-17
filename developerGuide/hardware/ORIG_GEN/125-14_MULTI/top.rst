@@ -10,6 +10,11 @@ STEMlab 125-14 X-Channel System (Discontinued)
 
 |
 
+.. note::
+
+    STEMlab 125-14 X-Channel System is discontinued (no longer produced). The documentation here is provided as a reference for existing users.
+    X-Channel System 2.0 (Click Shields) is the current multi-board solution, please refer to :ref:`X-Channel 2.0 documentation <click_shield_sync>` for the latest information.
+
 .. contents:: Table of Contents
     :local:
     :depth: 1
@@ -26,7 +31,7 @@ so that their ADC clock is driven from the SATA connector rather than the on-boa
 
 .. note::
 
-    This is the original X-channel system configuration. For X-channel 2.0 (Click Shields), see the 
+    This is the original X-channel system configuration. For X-channel System 2.0 (Click Shields), see the :ref:`X-Channel 2.0 documentation <click_shield_sync>`.
 
 |
 

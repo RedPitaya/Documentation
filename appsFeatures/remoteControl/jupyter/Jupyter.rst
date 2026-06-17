@@ -4,9 +4,11 @@
 Jupyter Lab
 #################
 
-JupyterLab is the latest web-based interactive development environment for notebooks, code, and data. Its flexible interface allows users to configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning. A modular design invites extensions to expand and enrich functionality.
+JupyterLab is the latest web-based interactive development environment for notebooks, code, and data. Its flexible interface allows users to configure and arrange workflows in data science, 
+scientific computing, computational journalism, and machine learning. A modular design invites extensions to expand and enrich functionality.
 
-JupyterLab includes all the functionality of the Jupyter Notebook (an open-source web application that allows you to create and share documents that contain live code, equations, visualizations, explanatory text, and direct control or monitor hardware).
+JupyterLab includes all the functionality of the Jupyter Notebook (an open-source web application that allows you to create and share documents that contain live code, equations, 
+visualizations, explanatory text, and direct control or monitor hardware).
 
 JupyterLab is located in the **Development** section of the Red Pitaya web interface.
 
@@ -29,8 +31,9 @@ Features
 
 .. note::
 
-    We do not recommend running more than 10 JupyterLab kernels simultaneously, as the board can run out of memory and force the shutdown of the JupyterLab application.
-    Red Pitaya remembers which Notebooks were opened the last time JupyterLab was used, so exiting the application without closing most of the Notebooks can lead to very long JupyterLab loading times. Therefore, it is inadvisable to exit JupyterLab with more than 5 tabs (Notebooks) open.
+    **Minimize the number of active kernels and open notebooks:** We do not recommend running more than 10 JupyterLab kernels simultaneously (number of open notebooks), as the board can run out of memory and 
+    force the shutdown of the JupyterLab application. Red Pitaya remembers which Notebooks were opened the last time JupyterLab was used, so exiting the application without closing most of the Notebooks 
+    can lead to very long JupyterLab loading times. Therefore, it is inadvisable to exit JupyterLab with more than 5 tabs (Notebooks) open.
 
     Active kernels are found here:
 
@@ -40,20 +43,24 @@ Features
 Notebook documents
 ----------------------
 
-Notebook documents contain the inputs and outputs of an interactive session as well as additional text that accompanies the code but is not meant for execution. In this way, notebook files can serve as a complete computational
-record of a session, interleaving executable code with explanatory text, mathematics, and rich representations of resulting objects. These documents are internal |JSON-wiki| files and are saved with 
-the *.ipynb* extension. Since JSON is a plain text format, they can be version-controlled and shared with colleagues.
+Notebook documents contain the inputs and outputs of an interactive session as well as additional text that accompanies the code but is not meant for execution. In this way, notebook files can serve 
+as a complete computational record of a session, interleaving executable code with explanatory text, mathematics, and rich representations of resulting objects. These documents are internal 
+|JSON-wiki| files and are saved with the *.ipynb* extension. Since JSON is a plain text format, they can be version-controlled and shared with colleagues.
 
 Notebooks may be exported to a range of static formats, including HTML (for example, for blog posts), reStructuredText, LaTeX, PDF, and slide shows, via the |nbconvert| command.
 
-Furthermore, any *.ipynb* notebook document available from a public URL can be shared via the Jupyter Notebook Viewer (nbviewer). This service loads the notebook document from the URL and renders it as a static web page. The results may thus be shared with a colleague, or as a public blog post, without other users needing to install the Jupyter notebook themselves. In effect, nbviewer is simply nbconvert as a web service, so you can do your own static conversions with nbconvert without relying on nbviewer.
+Furthermore, any *.ipynb* notebook document available from a public URL can be shared via the Jupyter Notebook Viewer (nbviewer). This service loads the notebook document from the URL and renders 
+it as a static web page. The results may thus be shared with a colleague, or as a public blog post, without other users needing to install the Jupyter notebook themselves. In effect, nbviewer is 
+simply nbconvert as a web service, so you can do your own static conversions with nbconvert without relying on nbviewer.
 
 |
 
 Hardware - Sensor extension module
 ======================================
 
-Although the usage of the JupyterLab does not require any additional hardware except the Red Pitaya board, getting started with electronics is way more fun and interesting when you have loads of sensors that you can put to good use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from |Seeed-Grove|. All you need to do is to select the desired module, find the correct connector, and get going with your project. We have also placed the Arduino shield headers on the extension module.
+Although the usage of the JupyterLab does not require any additional hardware except the Red Pitaya board, getting started with electronics is way more fun and interesting when you have loads 
+of sensors that you can put to good use straight away. Whether you want to measure temperature, vibration, movement, etc., we have an extension module compatible with **Grove** modules from 
+|Seeed-Grove|. All you need to do is to select the desired module, find the correct connector, and get going with your project. We have also placed the Arduino shield headers on the extension module.
 
 .. figure:: img/extension_module_and_sensors.png
     :width: 500

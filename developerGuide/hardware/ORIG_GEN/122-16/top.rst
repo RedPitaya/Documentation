@@ -175,7 +175,7 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Analog inputs                      | 4                                  | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Analog input voltage range         | 0 - 3.5                            | V         |                                  |
+    | Analog input voltage range         | 0 - 7.0                            | V         |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Analog input resolution            | 12                                 | bit       |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -245,6 +245,17 @@ Technical Specifications
 .. note::
 
     The SDRlab 122-16 operates at 122.88 MHz, which is a standard clock frequency for SDR applications.
+
+.. note::
+
+    **RF signal polarity**
+
+    The SDRlab 122-16 analog front end introduces a 180 degree phase inversion on both RF inputs and RF outputs.
+
+    * A sine burst applied to IN1 or IN2 is acquired as ``-sine``.
+    * A generated sine burst appears at the corresponding RF output as ``-sine``.
+
+    In analog loopback, the input and output inversions add up to 360 degrees, so this polarity change is usually not noticeable.
 
 .. seealso::
 
@@ -432,13 +443,13 @@ The E2 extension connector provides analog I/O and communication interfaces for 
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 12  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 13  | Analog Input 0        | B19, A20          | IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35          | 0-3.5 V        |
+| 13  | Analog Input 0        | B19, A20          | IO_L2P_T0_AD8P_35, IO_L2N_T0_AD8N_35          | 0-7.0 V        |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 14  | Analog Input 1        | C20, B20          | IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35          | 0-3.5 V        |
+| 14  | Analog Input 1        | C20, B20          | IO_L1P_T0_AD0P_35, IO_L1N_T0_AD0N_35          | 0-7.0 V        |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 15  | Analog Input 2        | E17, D18          | IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35  | 0-3.5 V        |
+| 15  | Analog Input 2        | E17, D18          | IO_L3P_T0_DQS_AD1P_35, IO_L3N_T0_DQS_AD1N_35  | 0-7.0 V        |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 16  | Analog Input 3        | E18, E19          | IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35          | 0-3.5 V        |
+| 16  | Analog Input 3        | E18, E19          | IO_L5P_T0_AD9P_35, IO_L5N_T0_AD9N_35          | 0-7.0 V        |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 17  | Analog Output 0       | T10               | IO_L1N_T0_34                                  | 0-1.8 V        |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+

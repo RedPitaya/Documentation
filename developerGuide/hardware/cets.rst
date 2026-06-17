@@ -39,14 +39,30 @@ This certificate complies with the following standards:
 ROHS, REACH and Conflict Mineral Policy
 ========================================
 
-* :download:`Red Pitaya ROHS, REACH and Conflict Mineral Policy <certificates/Cicor_Arad_ROHS_REACH_Conflict_Minerals.pdf>`
+* :download:`Red Pitaya REACH <certificates/REACH_20261805.pdf>`
+* :download:`Red Pitaya PFAS statement <certificates/PFAS_20260114.pdf>`
+
+.. * :download:`Red Pitaya ROHS, REACH and Conflict Mineral Policy <certificates/Cicor_Arad_ROHS_REACH_Conflict_Minerals.pdf>`
 
 This certificate complies with the following standards:
 
 * ROHS 2011/65.
 * EU 2015/863.
 * REACH 1907/2006.
-* Dodd-Frank Wallstreet Reform Act Section 1502 (Conflict Minerals).
+* Dodd-Frank Wall Street Reform Act Section 1502 (Conflict Minerals).
+
+For more information about the Red Pitaya ROHS, REACH and Conflict Mineral Policy, please contact support@redpitaya.com.
+
+
+PCB material and flammability rating
+=====================================
+
+* PCB material: FR4 (S1000H/S1000HB)
+* Flammability rating: UL94V-0
+
+The materials are tested under C-48/23/50 and E-24/125 conditions.
+
+This information is provided for reference purposes. For more details about the PCB material and flammability rating, please contact support@redpitaya.com
 
 
 MET Approval Letter
@@ -66,3 +82,9 @@ Letter of Volatility (LoV)
 
 To get a letter of volatility for any of our products, please contact support@redpitaya.com.
 
+|
+
+Additional information
+==========================
+
+For additional information on the certifications, please contact support@redpitaya.com.

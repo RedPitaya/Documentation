@@ -10,8 +10,11 @@
 
 
 ## Applications
+appsFeatures/systemtool/systemInfo appsFeatures/systemtool/system_info/systemInfo
+
 # Streaming app restructure
 appsFeatures/applications/streaming/appStreaming appsFeatures/applications/streaming/top
+appsFeatures/apps-featured/streaming/appStreaming appsFeatures/applications/streaming/top
 
 # Calibration
 appsFeatures/applications/calib/calib appsFeatures/systemtool/calibration/calibration
@@ -20,25 +23,35 @@ appsFeatures/systemtool/calibration appsFeatures/systemtool/calibration/calibrat
 # SDR
 appsFeatures/sdr_transceiver/sdr_transceiver appsFeatures/applications/sdr_tx_rx/sdr_tx_rx
 appsFeatures/apps-featured/sdr/appSDR appsFeatures/applications/sdr_tx_rx/sdr_tx_rx
+appsFeatures/apps-featured/vna/appVNA appsFeatures/applications/vna/appVNA
+
 
 # Remote Control
 appsFeatures/remoteControl/remoteControl appsFeatures/remoteControl/remoteAndProg
 
 # Deprecated marketplace apps
 appsFeatures/apps-featured/marketplace/pid appsFeatures/applications/marketplace/marketplace
+appsFeatures/applications/marketplace/pid appsFeatures/applications/marketplace/Lock-in
 
+
+## Examples
+appsFeatures/examples/acquisition/acqRF-exm1 appsFeatures/examples/acquisition/acqRF-1-treshold
+appsFeatures/examples/acqRF-exm1 appsFeatures/examples/acquisition/acqRF-1-treshold
+appsFeatures/examples/generation/genRF-exm2 appsFeatures/examples/generation/genRF-2-burst
+appsFeatures/examples/generation/genRF-exm4 appsFeatures/examples/generation/genRF-4-arbitrary
+appsFeatures/examples/generation/genRF-exm5 appsFeatures/examples/generation/genRF-5-two-synced-signals
+appsFeatures/examples/DMA/deepMemoryAcq appsFeatures/examples/DMM/deepMemoryAcq
 
 
 ## Software
 developerGuide/os/console/console developerGuide/software/getting_started/console/console
+developerGuide/comC developerGuide/software/getting_started/console/console
 developerGuide/software/console/ssh/ssh developerGuide/software/getting_started/ssh/ssh
-
-developerGuide/software/build/C&Python_API developerGuide/software/app_development/C_and_Python_API
-developerGuide/software/update/update quickStart/OS_update/OS_update
 
 # Configuration paths (moved from other_info to configuration)
 developerGuide/software/other_info/os/network developerGuide/software/configuration/network
 developerGuide/software/other_info/gpio developerGuide/software/configuration/gpio/gpio
+developerGuide/software/other_info/gpio/gpio developerGuide/software/configuration/gpio/gpio
 developerGuide/software/other_info/spi developerGuide/software/configuration/spi/spi
 developerGuide/software/other_info/tft developerGuide/software/configuration/tft/TFT
 
@@ -46,9 +59,16 @@ developerGuide/software/other_info/tft developerGuide/software/configuration/tft
 developerGuide/software/build/webapp/webapps developerGuide/software/app_development/webapp/webApps
 developerGuide/software/build/webapp/firstApp developerGuide/software/app_development/webapp/firstApp
 developerGuide/software/build/webapp/webapp developerGuide/software/app_development/webapp/webApps
+developerGuide/software/webApps developerGuide/software/app_development/webapp/webApps
 
 # System development paths
+
+developerGuide/software/build/C&Python_API developerGuide/software/app_development/C_and_Python_API
+developerGuide/software/update/update quickStart/OS_update/OS_update
+developerGuide/software/build/ecosystem/ecosystem developerGuide/software/system_development/ecosystem/ecosystem
 developerGuide/software/build/ecosystem developerGuide/software/system_development/ecosystem/ecosystem
+developerGuide/software/build/build developerGuide/software/system_development/system_development
+
 
 # Known issues paths
 developerGuide/software/known_sw_issues developerGuide/software/troubleshooting/known_issues/known_sw_issues

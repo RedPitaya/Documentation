@@ -15,8 +15,8 @@ set digital outputs, and control the onboard LEDs for status indication or custo
 Important notes
 ----------------
 
-* SDRlab 122-16 and STEMlab 125-14 4-Input have 10-bit DIO registers instead of 8-bit.
-* GPIO pins are 3.3V logic level - do not apply higher voltages.
+* Zynq 7020 boards have 10-bit wide DIO registers instead of 8-bit wide.
+* GPIO pins are 3.3V logic level (TTL) - do not apply higher voltages.
 * Remember to set pin direction (IN/OUT) before use.
 
 
@@ -38,8 +38,8 @@ Parameters and command table
 - ``<led> = {LED0...LED7}``
 - ``<pin> = {gpio, led}``
 - ``<state> = {0,1}``
-- ``<reg_state> = {0b00000000}`` - One LED/DIO per bit.  *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
-- ``<reg_direction> = {0b00000000}`` - One DIO per bit.  *(10 bit DIO register on SDRlab and STEMlab 4-Input)*
+- ``<reg_state> = {0b00000000}`` - One LED/DIO per bit.  *(10 bit DIO register on Zynq 7020 boards)*
+- ``<reg_direction> = {0b00000000}`` - One DIO per bit.  *(10 bit DIO register on Zynq 7020 boards)*
 
 
 **Available Jupyter and API macros:**
@@ -47,8 +47,8 @@ Parameters and command table
 - States - ``RP_LOW, RP_HIGH``
 - Directions - ``RP_IN, RP_OUT``
 - LEDs - ``RP_LED0, RP_LED1, ..., RP_LED7``
-- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` *Goes up to 9 on SDRlab and STEMlab 4-Input*
-- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` *Goes up to 9 on SDRlab and STEMlab 4-Input*
+- DIOx_P - ``RP_DIO0_P, RP_DIO1_P, ..., RP_DIO7_P`` *Goes up to 9 on Zynq 7020 boards*
+- DIOx_N - ``RP_DIO0_N, RP_DIO1_N, ..., RP_DIO7_N`` *Goes up to 9 on Zynq 7020 boards*
 
 
 .. tabularcolumns:: |p{50mm}|p{50mm}|p{60mm}|p{30mm}|
