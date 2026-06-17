@@ -120,7 +120,7 @@ SPHINX_EXTLINKS = {
     'rp-forum': ('https://forum.redpitaya.com/%s', 'Forum: %s'),
     'rp-download': ('https://downloads.redpitaya.com/%s', 'Red Pitaya Downloads: %s'),
     'rp-store': ('https://redpitaya.com/shop/%s', 'Red Pitaya Store: %s'),
-    'rp-blog': ('https://content.redpitaya.com/%s', 'Red Pitaya Blog: %s'),
+    'rp-blog': ('https://content.redpitaya.com/blog/%s', 'Red Pitaya Blog: %s'),
     'rp-knowledge': ('https://learn.redpitaya.com/%s', 'Red Pitaya Knowledge Base: %s'),
     
     # General external services

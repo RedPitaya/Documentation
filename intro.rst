@@ -59,6 +59,7 @@ to :rp-blog:`sorting tomatoes <when-picking-and-sorting-tomatoes-become-a-matter
 
 * :rp-github:`Ecosystem and applications <RedPitaya>`
 * :rp-github:`FPGA <RedPitaya-FPGA>`
+* :rp-github:`Examples <RedPitaya-Examples>`
 
 **Use cases:**
 

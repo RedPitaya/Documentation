@@ -37,6 +37,7 @@ Features
 
 The QSPI eMMC module module is powered by the Red Pitaya board, so no additional power supply is needed.
 
+|
 
 Hardware requirements
 ======================
@@ -50,12 +51,16 @@ The QSPI eMMC module module is compatible with the following Red Pitaya board mo
 
     The high speed differential paris are only supported on the STEMlab 125-14 Pro Z7020 Gen 2 board model.
 
+|
 
 Installing the QSPI eMMC module
 ================================
 
 You can find the QSPI eMMC module installation guide in the :ref:`E3 QSPI eMMC module installation guide <QSPI_eMMC_board>`.
 
+|
+
+.. _eMMC_switch:
 
 Buttons and switches
 =====================
@@ -72,6 +77,7 @@ The QSPI eMMC module has two buttons and one switch:
 2. **RST** - Reset button. Press to reset the microcontroller and the eMMC.
 3. **eMMC switch** - Drives the SDIO_SEL pin low in ON position and forces the Red Pitaya board to boot from the eMMC.
 
+|
 
 Connectors
 ==========
@@ -276,6 +282,7 @@ Serial Wire Debug connector for programming the STM microcontroller.
 | 5   | Minus (-)    | GND             |
 +-----+--------------+-----------------+
 
+|
 
 Components
 ==========
@@ -286,18 +293,21 @@ The QSPI eMMC module is equipped with the following components:
 * `eMMC <https://shop.sandisk.com/en-sg/products/embedded-flash/industrial-inand-emmc-drives?sku=SDINBDG4-16G-XI2>`_ - 16 GB eMMC memory.
 * `QSPI <https://www.infineon.com/part/S25FL256SAGNFI001>`_
 
+|
 
 Schematics
 ==============
 
 .. TODO add schematics
 
+|
 
 Mechanical Specifications and 3D Models
 =========================================
 
 .. TODO add mechanical specifications and 3D models
 
+|
 
 Software specifications
 =======================

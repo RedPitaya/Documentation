@@ -184,7 +184,7 @@ Step 7: Remove the SD card and boot from eMMC
 
 1.  Power off the Red Pitaya by pressing and holding the **P-ON** button for 1 second.
 #.  Remove the microSD card from the SD card slot.
-#.  Turn on the switch on the QSPI eMMC module to enable eMMC boot.
+#.  Turn on the :ref:`eMMC switch <eMMC_switch>` on the QSPI eMMC module to enable eMMC boot.
 #.  Press the **P-ON** button to power the board on. Red Pitaya will now boot from the eMMC.
 
 |
@@ -198,4 +198,4 @@ Summary of steps
 #.  Flash the OS image to the eMMC from the PC.
 #.  Reboot into the full OS from the SD card.
 #.  Write ``boot.bin`` to QSPI flash with ``flashcp /opt/redpitaya/boot.bin /dev/mtd0``.
-#.  Power off, remove the SD card, enable eMMC boot, and power on.
+#.  Power off, remove the SD card, enable :ref:`eMMC boot <eMMC_switch>`, and power on.
