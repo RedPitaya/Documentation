@@ -4,7 +4,7 @@
 Build Red Pitaya ecosystem
 ##########################
 
-This guide explains how to build the Red Pitaya ecosystem, which includes FPGA bitstreams, Linux kernel, boot files, 
+This guide explains how to build the Red Pitaya ecosystem, which includes FPGA bitstreams, Linux kernel, boot files,
 API libraries, SCPI server, and web applications.
 
 .. contents:: Table of Contents
@@ -80,6 +80,8 @@ Red Pitaya ecosystem must be built on a Linux host system.
 +---------------------------------+---------------------------------+
 | Red Pitaya ecosystem version    | Host platform OS                |
 +=================================+=================================+
+| Ecosystem 3.0 and higher        | Ubuntu 24.04 LTS or higher      |
++---------------------------------+---------------------------------+
 | Ecosystem 2.0 and higher        | Ubuntu 22.04 LTS or higher      |
 +---------------------------------+---------------------------------+
 | Ecosystem 1.04                  | Ubuntu 18.04 LTS or higher      |
@@ -146,6 +148,8 @@ Required versions
 +---------------------------------+---------------------------------+
 | Red Pitaya ecosystem version    | FPGA development tools          |
 +=================================+=================================+
+| Ecosystem 3.0 and higher        | Vivado 2025.1 and Vitis 2025.1  |
++---------------------------------+---------------------------------+
 | Ecosystem 2.0 and higher        | Vivado 2020.1 and SDK 2019.1    |
 +---------------------------------+---------------------------------+
 | Ecosystem 1.04                  | Vivado 2020.1 and SDK 2019.1    |
@@ -153,7 +157,7 @@ Required versions
 
 .. warning::
 
-    The Vivado and SDK versions are critical. Different versions are not compatible with each other. 
+    The Vivado and SDK versions are critical. Different versions are not compatible with each other.
     Ensure you install the exact versions listed above.
 
 .. note::
@@ -164,7 +168,7 @@ Required versions
 Installation requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Follow the installation instructions in the :ref:`Creating a Vivado SDK/Vitis project <fpga_create_sdk_project>` 
+1. Follow the installation instructions in the :ref:`Creating a Vivado SDK/Vitis project <fpga_create_sdk_project>`
    and :ref:`Installation of Vivado <FPGA_install_vivado>` sections
 
 2. **Install both Vivado and SDK** - During the Vivado installation, ensure the SDK (bare metal toolchain) is also selected
@@ -188,7 +192,7 @@ If running Vivado from a virtual machine with installation on a host shared fold
 2. **Install Ubuntu without encryption** - Encrypted installations block some Red Pitaya build procedures
 
 3. **Configure shared folders**:
-   
+
    * Open VirtualBox settings for your Ubuntu VM
    * Navigate to Shared Folders
    * Add the Xilinx installation directory from the host (typically ``/opt/``)
@@ -239,7 +243,7 @@ To make this permanent, add the line to your ``~/.bashrc`` file.
 
 .. warning::
 
-    Building the ecosystem on an encrypted home directory is not supported, as ``schroot`` cannot access encrypted directories. 
+    Building the ecosystem on an encrypted home directory is not supported, as ``schroot`` cannot access encrypted directories.
     Create a separate non-encrypted directory (e.g., ``/home/ecosystem_build``) for building.
 
 |
@@ -268,13 +272,13 @@ Before proceeding, understand these key points:
 
 2. **Ubuntu host required** - The build must run on Ubuntu (native or VM). Windows, macOS, and WSL are not supported
 
-3. **Automatic environment switching** - The build scripts handle switching between x86 and ARM environments automatically. 
+3. **Automatic environment switching** - The build scripts handle switching between x86 and ARM environments automatically.
    :rp-github:`Example of automatic switching <RedPitaya/blob/master/build_scripts/build_OS.sh#L184>`:
 
    .. code-block:: shell-session
 
        make -f Makefile.x86
-       
+
        schroot -c red-pitaya-ubuntu <<- EOL_CHROOT
        make -f Makefile CROSS_COMPILE="" REVISION=$GIT_COMMIT_SHORT
        EOL_CHROOT
@@ -331,7 +335,7 @@ Download the pre-built ARM Ubuntu root environment from the :rp-download:`Red Pi
             wget https://downloads.redpitaya.com/downloads/LinuxOS/redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
             sudo chown root:root redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
             sudo chmod 664 redpitaya_OS_17-31-47_20-Mar-2025.tar.gz
-    
+
     .. group-tab:: Ecosystem 1.04
 
         .. code-block:: shell-session
@@ -371,7 +375,7 @@ Replace placeholders with:
             profile=desktop
             personality=linux
             preserve-environment=true
-    
+
     .. group-tab:: Ecosystem 1.04
 
         .. code-block:: none
@@ -427,7 +431,7 @@ Full build procedure
 
         .. note::
 
-            Unlike Ecosystem 1.04, version 2.0 and higher builds for all board models simultaneously. 
+            Unlike Ecosystem 1.04, version 2.0 and higher builds for all board models simultaneously.
             Board-specific differences only affect FPGA bitstream compilation.
 
     .. group-tab:: Ecosystem 1.04
@@ -439,7 +443,7 @@ Full build procedure
         .. tabs::
 
             .. group-tab:: STEMlab 125-14 (Default)
-                
+
                 .. code-block:: shell-session
 
                     cd build_scripts
@@ -448,28 +452,28 @@ Full build procedure
             .. group-tab:: STEMlab 125-14 Z7020 LN
 
                 .. code-block:: shell-session
-                
+
                     cd build_scripts
                     sudo ./build_Z20_125.sh
-            
+
             .. group-tab:: STEMlab 125-14 4-Input
 
                 .. code-block:: shell-session
-                
+
                     cd build_scripts
                     sudo ./build_Z20_4CH.sh
 
             .. group-tab:: SDRlab 122-16
 
                 .. code-block:: shell-session
-                
+
                     cd build_scripts
                     sudo ./build_Z20.sh
 
             .. group-tab:: SIGNALlab 250-12
-            
+
                 .. code-block:: shell-session
-                
+
                     cd build_scripts
                     sudo ./build_Z250_12.sh
 
@@ -494,7 +498,7 @@ Full build procedure
             .. group-tab:: STEMlab 125-14 4-Input
 
                 STEMlab 125-14 4-Input uses Z7020:
-                
+
                 .. code-block:: shell-session
 
                     make -f Makefile.x86 MODEL=Z20_125_4CH
@@ -518,7 +522,7 @@ Full build procedure
             .. group-tab:: SIGNALlab 250-12
 
                 SIGNALlab 250-12 uses Z7020:
-                
+
                 .. code-block:: shell-session
 
                     make -f Makefile.x86 MODEL=Z20_250_12
@@ -563,7 +567,7 @@ Available components
 
         The following components can be built separately:
 
-        * FPGA and overlays     
+        * FPGA and overlays
         * U-Boot
         * Linux kernel
         * API
@@ -585,7 +589,7 @@ Setup build environment
 
             source settings.sh
 
-        On some systems (including Ubuntu 18.04), Vivado's library setup can conflict with system libraries. 
+        On some systems (including Ubuntu 18.04), Vivado's library setup can conflict with system libraries.
         Disable Vivado library overrides if needed:
 
         .. code-block:: shell-session
@@ -701,14 +705,14 @@ Build U-Boot
         .. note::
 
             Two versions of ``boot.bin`` are created:
-            
+
             * One for boards with 512 MB RAM
             * One for boards with 1 GB RAM
-            
+
             Two versions of Linux kernel boot scripts are also created.
 
         .. note::
-            
+
             The device tree for U-Boot is built using files from the ``dts_uboot/`` folder, defining minimum peripheral requirements for board startup.
 
     .. group-tab:: Ecosystem 1.04
@@ -739,7 +743,7 @@ Build Linux kernel and device tree binaries
 
         This downloads the Xilinx Linux kernel source from GitHub, applies Red Pitaya patches (from ``patches/`` directory), and builds.
 
-        .. note:: 
+        .. note::
 
             Device tree builds require FPGA projects to be built first, as ``dtb`` and ``dts`` files are based on FPGA barebone projects.
 
@@ -774,7 +778,7 @@ Build boot file
         .. code-block:: shell-session
 
             make -f Makefile.x86 boot
-    
+
 
 Build user-space applications
 -------------------------------

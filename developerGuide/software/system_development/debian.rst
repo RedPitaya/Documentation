@@ -21,7 +21,7 @@ Red Pitaya OS consists of two main components:
 1. **Debian/Ubuntu OS** (Ext4 partition) - Contains the base operating system, applications, libraries, and services
 2. **Ecosystem** (FAT32 partition) - Contains boot files, FPGA bitstreams, kernel, and user-space applications
 
-Both components are required for a functional system. The OS provides the runtime environment, while the ecosystem 
+Both components are required for a functional system. The OS provides the runtime environment, while the ecosystem
 provides the hardware interface and Red Pitaya specific applications.
 
 |
@@ -124,21 +124,21 @@ A complete SD card image contains:
 Bootstrap procedure
 --------------------
 
-In order to build a functional OS image, the ecosystem is required since without the ``boot.bin`` and the Linux kernel, 
-the system will not start. Similarly, the OS image is required to build the ecosystem, since user-space applications are 
+In order to build a functional OS image, the ecosystem is required since without the ``boot.bin`` and the Linux kernel,
+the system will not start. Similarly, the OS image is required to build the ecosystem, since user-space applications are
 built inside a ``chroot`` environment with an emulated ARM CPU.
 
 This creates a chicken-and-egg problem. The first-time build procedure is:
 
 1.  **Build the OS image without the ecosystem**
-    
+
     This creates:
-    
+
     * ``redpitaya_OS_*.img`` - A non-functional SD card image (missing boot files and kernel)
     * ``redpitaya_OS_*.tar.gz`` - Archive for creating the ``chroot`` environment
 
 2.  **Build the ecosystem inside the chroot environment**
-    
+
     * Use the ``redpitaya_OS_*.tar.gz`` file to create a ``chroot`` environment
     * Execute the necessary scripts inside ``chroot`` to build the ecosystem
     * Generate the ``ecosystem_*.zip`` file
@@ -150,8 +150,8 @@ This creates a chicken-and-egg problem. The first-time build procedure is:
         OS/debian/image-update.sh redpitaya_OS_*.img ecosystem_*.zip
 
 
-After completing the bootstrap procedure, you can build either component independently. The typical workflow is to build 
-a new ecosystem in an existing ``chroot`` environment and update the SD card. Once an ``ecosystem_*.zip`` file exists in 
+After completing the bootstrap procedure, you can build either component independently. The typical workflow is to build
+a new ecosystem in an existing ``chroot`` environment and update the SD card. Once an ``ecosystem_*.zip`` file exists in
 the project root directory, new OS images will automatically integrate it during the build process.
 
 |
@@ -169,6 +169,8 @@ To build the Red Pitaya Debian/Ubuntu OS image, you need a host PC running Ubunt
 +---------------------------------+---------------------------------+
 | Red Pitaya OS version           | Host platform OS                |
 +=================================+=================================+
+| OS 3.0 and higher               | Ubuntu 24.04 LTS or higher      |
++---------------------------------+---------------------------------+
 | OS 2.0 and higher               | Ubuntu 22.04 LTS or higher      |
 +---------------------------------+---------------------------------+
 | OS 1.04                         | Ubuntu 18.04 LTS or higher      |
@@ -176,7 +178,7 @@ To build the Red Pitaya Debian/Ubuntu OS image, you need a host PC running Ubunt
 
 .. note::
 
-    Vivado 2020 (required for FPGA assembly) cannot be installed on Ubuntu 18.04. Therefore, for OS 2.0 and higher, 
+    Vivado 2020 (required for FPGA assembly) cannot be installed on Ubuntu 18.04. Therefore, for OS 2.0 and higher,
     Ubuntu 22.04 or higher is required.
 
 
@@ -226,12 +228,12 @@ Step 1: Clone the GitHub repository
 Step 2: Build the ecosystem
 -----------------------------
 
-Before building the OS image, you must build the ecosystem. Follow the instructions in the :ref:`Ecosystem <SW_build_ecosystem>` 
+Before building the OS image, you must build the ecosystem. Follow the instructions in the :ref:`Ecosystem <SW_build_ecosystem>`
 section to complete this step.
 
 .. note::
 
-    For the first-time bootstrap procedure, you can skip this step and build a non-functional OS image first, 
+    For the first-time bootstrap procedure, you can skip this step and build a non-functional OS image first,
     then use it to create the ``chroot`` environment for building the ecosystem.
 
 |
@@ -259,12 +261,12 @@ Execute the build script with root privileges:
 
 .. warning::
 
-    This script must be executed as the ``root`` user. If run with ``sudo`` without switching to root, 
+    This script must be executed as the ``root`` user. If run with ``sudo`` without switching to root,
     some configuration files will be placed in the wrong user's home directory.
 
 .. note::
 
-    If the ``ecosystem_*.zip`` file exists in the project root directory, it will be automatically integrated 
+    If the ``ecosystem_*.zip`` file exists in the project root directory, it will be automatically integrated
     into the OS image, creating a fully functional SD card image.
 
 |
@@ -275,15 +277,15 @@ What happens during the build
 During the build process, the following steps are performed:
 
 1.  **Image creation**
-    
-    :rp-github:`image.sh <ubuntu/blob/main/debian/image.sh>` creates an SD card image with a timestamp in the filename. 
+
+    :rp-github:`image.sh <ubuntu/blob/main/debian/image.sh>` creates an SD card image with a timestamp in the filename.
     Two partitions are created:
-    
+
     * 1024 MB FAT32 partition for the ecosystem
     * Ext4 partition for the OS on the remaining SD Card space
 
 2.  **Base system installation**
-    
+
     :rp-github:`image.sh <ubuntu/blob/main/debian/image.sh>` calls :rp-github:`ubuntu.sh <ubuntu/blob/main/debian/ubuntu.sh>`,
     which installs the base system and additional packages, and configures:
 
@@ -296,18 +298,18 @@ During the build process, the following steps are performed:
     * Users and UART console access
 
 3.  **Network configuration**
-    
+
     :rp-github:`ubuntu.sh <ubuntu/blob/main/debian/ubuntu.sh>` executes :rp-github:`network.sh <ubuntu/blob/main/debian/network.sh>`,
     which creates a ``systemd-networkd`` based wired and wireless network setup.
 
 4.  **Red Pitaya specific configuration**
-    
-    :rp-github:`redpitaya.sh <ubuntu/blob/main/debian/redpitaya.sh>` installs additional Debian packages 
-    (mostly libraries) required by Red Pitaya applications and extracts the ``ecosystem*.zip`` file 
+
+    :rp-github:`redpitaya.sh <ubuntu/blob/main/debian/redpitaya.sh>` installs additional Debian packages
+    (mostly libraries) required by Red Pitaya applications and extracts the ``ecosystem*.zip`` file
     (if present) into the FAT partition.
 
 5.  **Optional components** (can be commented out)
-    
+
     * :rp-github:`jupyter.sh <ubuntu/blob/main/debian/jupyter.sh>` - Installs Jupyter notebook
     * :rp-github:`tft.sh <ubuntu/blob/main/debian/tft.sh>` - Installs X-server and XFCE desktop environment
 
@@ -346,8 +348,8 @@ Image Maintenance
 File system check
 ------------------
 
-If the image was created through multiple user-performed steps (for example, installation or setup procedures on a live Red Pitaya), 
-the file system might become corrupted. The :rp-github:`image-fsck.sh <ubuntu/blob/main/debian/image-fsck.sh>` script performs 
+If the image was created through multiple user-performed steps (for example, installation or setup procedures on a live Red Pitaya),
+the file system might become corrupted. The :rp-github:`image-fsck.sh <ubuntu/blob/main/debian/image-fsck.sh>` script performs
 a file system check without making any modifications.
 
 Run this script on images prior to release:

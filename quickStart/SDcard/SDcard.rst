@@ -18,9 +18,9 @@ Installation steps
 
 Follow these steps to install the Red Pitaya OS on an SD card:
 
-1.  **Download the latest Red Pitaya OS 2.00 image**:
+1.  **Download the latest Red Pitaya OS 3.00 image**:
 
-    * :download:`Latest Stable (2.07-48) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.07-48_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): 5d02710fd87a71b4c049ffa5105b69e5).
+    * :download:`Latest Stable (3.00-57) <https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_3.00-57_stable.img.zip>`  - |CHANGELOG| (MD5 (extracted): 930574230e45249e1cd23d735e93ca3a).
 
     .. note::
 
@@ -154,7 +154,7 @@ Alternatively, use the built-in Image Writer tool:
 
 #.  **Select the SD card**: In the **Restore Disk Image** window, select your SD card in the **Destination** pull-down menu.
 
-    .. note:: 
+    .. note::
 
         Be careful to select the correct device; use the size for orientation (for example, a 16 GB SD card).
 

@@ -4,7 +4,7 @@
 Registers
 ###########
 
-This section contains FPGA register maps for different Red Pitaya OS versions. Each OS version may include different FPGA projects 
+This section contains FPGA register maps for different Red Pitaya OS versions. Each OS version may include different FPGA projects
 with varying functionality.
 
 **How to use this section:**
@@ -27,4 +27,5 @@ For more information about FPGA projects and their features, see :ref:`FPGA Proj
     2.04-35/list.rst
     2.05-37/list.rst
     2.07-48/list.rst
+    3.00-57/list.rst
     in_dev/list.rst

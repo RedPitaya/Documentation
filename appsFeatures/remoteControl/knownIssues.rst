@@ -20,6 +20,7 @@ You can also find all SCPI commands that the board will accept depending on the 
 
 For all other Red Pitaya OS versions, go to the link above and change the branch version to:
 
+* 3.00-57 - Branch 2026.1 *(file ends in .cpp)*.
 * 2.07-48 - Branch 2025.2 *(file ends in .cpp)*.
 * 2.07-43 - Branch 2025.1 *(file ends in .cpp)*.
 * 2.05-37 - Branch 2024.3 *(file ends in .cpp)*.
@@ -45,15 +46,15 @@ For all other Red Pitaya OS versions, go to the link above and change the branch
 
 .. IN-DEV
 .. =======
-.. 
+..
 .. New Commands
 .. -------------
-.. 
-.. 
+..
+..
 .. Command changes
 .. -----------------
-.. 
-.. 
+..
+..
 .. Issues
 .. --------
 
