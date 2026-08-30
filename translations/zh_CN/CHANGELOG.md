@@ -1,5 +1,12 @@
 # 中文翻译变更记录
 
+## 2026-08-30 — PR 收尾
+
+- 完成全部 378 个官方 RST 页面的翻译登记，Quick Start、Hardware、Software、FPGA Current、Core Applications 与 Examples/Archive 均达到 100%。
+- 刷新翻译覆盖率、结构一致性、STEMlab 125-10 优先队列和限时外链检查报告。
+- 最终检查确认中文树无缺失页面、无与英文完全相同的待翻译页面、无新增重复 label，且 URL、引用、include、图片、下载目标、toctree、代码块及内联字面量均与锁定英文源保持结构一致。
+- 严格 Sphinx Dummy 与 HTML 构建通过；外链检查保留上游既有的失效链接、第三方 403/证书错误和超时结果，未在翻译稿中擅自修改官方链接目标。
+
 ## 2026-08-29 — 批次 001
 
 - 锁定 Read the Docs `latest` 对应的官方 revision。
