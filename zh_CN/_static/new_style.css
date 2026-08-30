@@ -1,0 +1,407 @@
+/* Red Pitaya Documentation Branding Styles */
+
+/* Font imports - using Poppins to match redpitaya.com website */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
+
+html, body, html * {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Clean logo display - combine logo_only: True with background image */
+.wy-side-nav-search {
+    padding: 6px !important;
+    min-height: 80px !important;
+}
+
+/* Display logo using background image while letting logo_only handle text */
+/* Use very specific selector to ONLY target sidebar logo, not breadcrumbs */
+.wy-side-nav-search > a.icon.icon-home,
+.wy-side-nav-search > a[href*="redpitaya.com"].icon-home {
+    display: block !important;
+    text-align: center !important;
+    padding: 10px !important;
+    padding-top: 60px !important;
+    background-image: url('redpitaya-logo.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center 10px !important;
+    background-size: 160px auto !important;
+    min-height: 70px !important;
+}
+
+/* Ensure the search area has enough space for the logo */
+
+section {
+    text-align: justify;
+}
+
+.wy-side-nav-search{
+    background-color: #fcfcfc;
+}
+
+.wy-nav-top{
+    background-color: rgb(208,35,33);
+}
+
+.wy-menu-vertical li.current a {
+    color: #444444;
+}
+
+.wy-menu-vertical a {
+    color: #444444;
+    font-size: 100%;
+}
+
+.wy-menu-vertical a:hover {
+    background-color: rgb(208,35,33);
+}
+
+.wy-nav-side {
+    background: #fcfcfc;
+}
+
+.wy-side-scroll{
+    background-color: #fcfcfc;
+}
+
+.wy-menu-vertical li.current>a {
+    color: rgb(208,35,33);
+}
+
+/* Comprehensive bullet point fix for docutils 0.20+ */
+/* Target all possible list variations that docutils 0.20+ generates */
+.rst-content ul.simple li { 
+    list-style-type: disc !important; 
+    list-style-position: outside !important; 
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+.rst-content ul.simple { 
+    list-style: disc !important; 
+    padding-left: 1.5em !important; 
+    margin-left: 0 !important;
+}
+.rst-content ul li { 
+    list-style-type: disc !important; 
+    display: list-item !important;
+}
+.rst-content ul {
+    list-style: disc !important;
+    padding-left: 1.5em !important;
+    margin-bottom: 1.5em !important;
+}
+/* Fix for nested lists */
+.rst-content ul ul {
+    list-style-type: circle !important;
+    padding-left: 1.5em !important;
+    margin-bottom: 0.5em !important;
+}
+.rst-content ul ul ul {
+    list-style-type: square !important;
+    padding-left: 1.5em !important;
+    margin-bottom: 0.5em !important;
+}
+
+/* Add space after ordered lists to match */
+.rst-content ol {
+    margin-bottom: 1.5em !important;
+}
+
+/* Fix bullet point spacing to match ordered lists */
+/* Remove excessive paragraph margins inside unordered list items */
+.rst-content ul li p {
+    margin-bottom: 0.5em !important;
+    line-height: 1.5 !important;
+}
+
+/* Make unordered list items more compact, like ordered lists */
+.rst-content ul li {
+    margin-bottom: 0.5em !important;
+}
+
+/* Remove extra margin from the last item in lists */
+.rst-content ul li:last-child,
+.rst-content ol li:last-child {
+    margin-bottom: 0 !important;
+}
+/* End of bullet point fix */
+
+/* Add space after figures and tables for better separation */
+.rst-content .figure,
+.rst-content figure {
+    margin-bottom: 1.5em !important;
+}
+
+.rst-content table.docutils,
+.rst-content table.docutils-table {
+    margin-bottom: 1.5em !important;
+}
+
+/* Ensure table captions have proper spacing */
+.rst-content table.docutils caption,
+.rst-content .table > caption {
+    margin-bottom: 0.5em !important;
+}
+
+.rst-versions .rst-current-version{
+    background-color: rgb(208,35,33);
+}
+
+.rst-versions{
+    background-color: rgb(143, 21, 19);
+}
+  
+[role="tablist"] {
+border-bottom: 1px solid rgb(208,35,33);
+}
+
+.sphinx-tabs-tab {
+font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+color: rgb(208,35,33);
+}
+
+.sphinx-tabs-tab[aria-selected="true"] {
+border: 1px solid rgb(208,35,33);
+border-bottom: 1px solid white;
+background-color: white;
+}
+
+.sphinx-tabs-panel {
+border: 1px solid rgb(208,35,33);
+border-top: 0;
+background: white;
+}
+
+.wy-alert.wy-alert-info, .rst-content .note, .rst-content .wy-alert-info.attention, .rst-content .wy-alert-info.caution, .rst-content .wy-alert-info.danger, .rst-content .wy-alert-info.error, .rst-content .wy-alert-info.hint, .rst-content .wy-alert-info.important, .rst-content .wy-alert-info.tip, .rst-content .wy-alert-info.warning, .rst-content .seealso, .rst-content .wy-alert-info.admonition-todo, .rst-content .wy-alert-info.admonition {
+    background: #ffdddd;
+}
+
+.wy-alert.wy-alert-info .wy-alert-title, .rst-content .note .wy-alert-title, .rst-content .wy-alert-info.attention .wy-alert-title, .rst-content .wy-alert-info.caution .wy-alert-title, .rst-content .wy-alert-info.danger .wy-alert-title, .rst-content .wy-alert-info.error .wy-alert-title, .rst-content .wy-alert-info.hint .wy-alert-title, .rst-content .wy-alert-info.important .wy-alert-title, .rst-content .wy-alert-info.tip .wy-alert-title, .rst-content .wy-alert-info.warning .wy-alert-title, .rst-content .seealso .wy-alert-title, .rst-content .wy-alert-info.admonition-todo .wy-alert-title, .rst-content .wy-alert-info.admonition .wy-alert-title, .wy-alert.wy-alert-info .rst-content .admonition-title, .rst-content .wy-alert.wy-alert-info .admonition-title, .rst-content .note .admonition-title, .rst-content .wy-alert-info.attention .admonition-title, .rst-content .wy-alert-info.caution .admonition-title, .rst-content .wy-alert-info.danger .admonition-title, .rst-content .wy-alert-info.error .admonition-title, .rst-content .wy-alert-info.hint .admonition-title, .rst-content .wy-alert-info.important .admonition-title, .rst-content .wy-alert-info.tip .admonition-title, .rst-content .wy-alert-info.warning .admonition-title, .rst-content .seealso .admonition-title, .rst-content .wy-alert-info.admonition-todo .admonition-title, .rst-content .wy-alert-info.admonition .admonition-title {
+    background: rgb(208,35,33);
+}
+
+.rst-content pre.literal-block, .rst-content div[class^='highlight'] pre, .rst-content .linenodiv pre {
+    line-height: normal;
+    font-family: 'Fira Mono', monospace;
+    font-size: 95%;
+}
+
+code, .rst-content tt, .rst-content code {
+    font-size: 95%;
+}
+
+pre span {
+    font-family: 'Fira Mono', monospace;
+}
+
+.rst-content dl:not(.docutils) dt {
+    border-top: none;
+    color: #404040;
+    font-weight: 400;
+    background: none;
+}
+
+.line-block .line{
+    font-size: 100%;
+}
+
+.toctree-expand {
+    display: none;
+}
+
+/* Position and style copy buttons - moved to top right corner */
+button.copybtn {
+    position: absolute !important;
+    top: 0.3em !important;
+    right: 0.3em !important;
+    width: 1.5em !important;
+    height: 1.5em !important;
+    padding: 0.2em !important;
+    font-size: 0.8em !important;
+    opacity: 0.3 !important;
+    transition: opacity 0.3s ease-in-out !important;
+}
+
+button.copybtn:hover {
+    opacity: 1 !important;
+}
+
+button.copybtn svg {
+    width: 1em !important;
+    height: 1em !important;
+}
+
+/* Ensure code blocks have relative positioning for absolute button positioning */
+.rst-content div[class^='highlight'] {
+    position: relative !important;
+}
+
+
+/* Fix table of contents spacing to match toctree */
+/* The .. contents:: directive generates nav.contents with nested ul > li > p > a structure */
+/* We need to remove the extra paragraph margins to make it compact like toctree */
+/* IMPORTANT: Use very specific selectors to avoid affecting regular bullet lists */
+
+/* Reduce overall spacing in the contents list */
+nav.contents.local ul {
+    margin-bottom: 0.5em !important;
+}
+
+/* Remove paragraph margins inside TOC list items - this is the key issue */
+/* Must be more specific than the general .rst-content ul li p rule */
+.rst-content nav.contents.local ul li p {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    line-height: 1.3 !important;
+}
+
+/* Make TOC list items themselves more compact */
+.rst-content nav.contents.local ul li {
+    margin-bottom: 0.1em !important;
+    line-height: 1.3 !important;
+}
+
+
+/* Breadcrumb navigation improvements */
+/* Make breadcrumbs more compact and use separators instead of bullets */
+.wy-breadcrumbs {
+    margin-bottom: 0.5em !important;
+    font-size: 90% !important;
+    line-height: 1.4 !important;
+}
+
+.wy-breadcrumbs ul {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Force inline display and remove bullets */
+.wy-breadcrumbs li {
+    display: inline !important;
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure breadcrumb icons and links stay inline */
+.wy-breadcrumbs a,
+.wy-breadcrumbs .icon {
+    display: inline !important;
+}
+
+/* Remove bullet points from breadcrumbs - override any global list styles */
+.wy-breadcrumbs li::before {
+    content: none !important;
+    display: none !important;
+}
+
+.wy-breadcrumbs li::marker {
+    content: none !important;
+    display: none !important;
+}
+
+/* Add separator between breadcrumb items */
+.wy-breadcrumbs li + li::before {
+    content: "›" !important;
+    display: inline !important;
+    padding: 0 0.5em !important;
+    color: #999 !important;
+}
+
+/* Ensure all breadcrumb content stays inline - be very specific */
+.wy-breadcrumbs li,
+.wy-breadcrumbs li a,
+.wy-breadcrumbs li .icon,
+.wy-breadcrumbs li code.docutils.literal {
+    display: inline !important;
+}
+
+/* Shared color roles defined in conf.py */
+.text-bold-blue {
+    color: #005bbb;
+}
+
+.text-bold-orange {
+    color: #d97706;
+}
+
+.text-bold-green {
+    color: #15803d;
+}
+
+.text-bold-red {
+    color: #dc2626;
+}
+
+/* Override any sidebar logo styles that might affect breadcrumb home icon */
+/* Use high specificity to ensure breadcrumb icon stays inline */
+.wy-breadcrumbs li a.icon.icon-home,
+.wy-breadcrumbs a.icon.icon-home,
+.wy-breadcrumbs .icon-home {
+    display: inline !important;
+    padding: 0 !important;
+    padding-top: 0 !important;
+    background-image: none !important;
+    background: none !important;
+    min-height: auto !important;
+    height: auto !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+}
+
+/* Make breadcrumb links more compact */
+.wy-breadcrumbs a {
+    display: inline !important;
+    padding: 0.2em 0 !important;
+}
+
+/* Ensure home icon text doesn't break to new line */
+.wy-breadcrumbs li:first-child,
+.wy-breadcrumbs li:first-child a {
+    display: inline !important;
+    white-space: nowrap !important;
+}
+
+/* Style the current page in breadcrumbs */
+.wy-breadcrumbs li.wy-breadcrumbs-aside {
+    float: right !important;
+    margin-left: 1em !important;
+}
+
+.wy-breadcrumbs li.breadcrumb-item {
+    display: inline !important;
+}
+
+
+/* Fix left sidebar indentation for numbered items */
+/* Reset the default RTD theme indentation and apply consistent padding */
+
+.wy-menu-vertical li.toctree-l1 {
+    padding-left: 0 !important;
+}
+
+.wy-menu-vertical li.toctree-l1 > a {
+    padding: 0.4045em 1.618em !important;
+    display: block !important;
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+    padding: 0.4045em 1.618em !important;
+}
+
+/* Ensure all level 2 items have consistent indentation relative to level 1 */
+.wy-menu-vertical li.toctree-l2 > a {
+    padding: 0.4045em 2.427em !important;
+}
+
+/* Level 3 indentation */
+.wy-menu-vertical li.toctree-l3 > a {
+    padding: 0.4045em 3.236em !important;
+}
+
+/* Level 4 indentation */
+.wy-menu-vertical li.toctree-l4 > a {
+    padding: 0.4045em 4.045em !important;
+}

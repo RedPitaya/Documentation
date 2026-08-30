@@ -4,8 +4,3 @@ __pycache__/
 # Build artifacts
 _build/
 _Docs_build_info/
-build/
-
-# Local development files
-.venv/
-.DS_Store
