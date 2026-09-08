@@ -1,0 +1,11 @@
+Usage: <path/to/tool>/convert_tool.exe file_name [-i][-s start][-e end][-f format][-t][-ci][-cb|-cs|-cn]
+        -i get info about BIN file
+        -ia get info about BIN file. Including information on all segments.
+        -s Segment from which the conversion starts
+        -e Segment where the conversion will end
+        -f File format. [CSV|WAV|TDMS]. By default used CSV format
+        -t Creates test data files for DAC streaming
+        -ci Adds an index column to the CSV file.
+        -cb Adds a block time column to the CSV file.
+        -cs Adds a sample time column to the CSV file.
+        -cn Adds a sample time column in nanoseconds to the CSV file.
