@@ -1,0 +1,172 @@
+# 图片标签词表：英文标签<TAB>中文<TAB>[路径过滤子串]
+# 英文列匹配 OCR 识别到的整行（或合并后的多行块），忽略大小写和 : . , ; ( ) [ ]
+direct usb connection	直接 USB 连接
+direct connection	直接连接
+access point	接入点
+my_wifi network	my_WiFi 网络
+network	网络	connection-scheme-wifi
+network	网络	RPs_to_PC_conn
+client pc	客户端 PC
+multiple red pitaya devices	多台 Red Pitaya 设备
+circular memory buffer	循环内存缓冲区
+relative memory adress	相对内存地址
+captured data	采集的数据
+acquisition write pointer	采集写指针
+trigger position inside memory	触发位置（内存中）
+trigger position	触发位置
+captured data buffer	采集数据缓冲区
+received array index	接收数组索引
+trigger delay	触发延迟
+secondary 2	从板 2
+secondary 1	从板 1
+primary	主板
+clock and trigger	时钟与触发
+circular buffer	循环缓冲区
+ch1 buffer	CH1 缓冲区
+chi buffer	CH1 缓冲区
+ch2 buffer	CH2 缓冲区
+mid address	中间地址
+ddr address	DDR 地址
+previous commands	之前的命令
+send control command	发送控制命令
+send query command	发送查询命令
+check error	检查错误
+the following commands	后续命令
+read answer from server	从服务器读取应答
+error 9000 + rp api error code	错误：9000 + RP API 错误码
+fatal error 9500 + rp api error code	致命错误：9500 + RP API 错误码
+stop	停止	SCPI_
+not connected	未连接
+4 not connected	4 未连接
+8 not connected	8 未连接
+can low	CAN 低
+can high	CAN 高
+7 can high	7 CAN 高
+ground	地
+5 shield - optional	5（屏蔽，可选）
+6 ground -optional	6（地，可选）
+9 power	9 电源
+agilent 33250a signal generator	Agilent 33250A 信号发生器
+signal generator	信号发生器
+output	输出	Measurement_setup
+generated signal	生成的信号
+agilent e4404b spectrum analyzer	Agilent E4404B 频谱分析仪
+spectrum analyzer	频谱分析仪
+red pitaya board	Red Pitaya 板卡
+fft analysis	FFT 分析
+•local address	.local 地址
+local address	.local 地址
+qr code	二维码
+board name	板卡名称
+mac address	MAC 地址
+notice proper position of bumps	注意凸起的正确位置
+follow the specified jumper orientation to improve step-response of input channel	按指定的跳线方向安装，以改善输入通道的阶跃响应
+follow the specified jumper orientation to	按指定的跳线方向安装，
+improve step-response of input channel	以改善输入通道的阶跃响应
+backend	后端
+frontend	前端
+application	应用程序
+json data	JSON 数据
+son data	JSON 数据
+layout	布局
+style	样式
+logic	逻辑
+controller	控制器
+params	参数
+signals	信号
+your application	你的应用程序
+process	处理
+handle	处理
+settings	设置	webapp
+web ui	Web 界面
+start	启动	webapp
+communicate	通信
+load image	加载镜像
+load	加载	webapp
+received array index •	接收数组索引
+received array	接收数组
+index	索引	Python_buff
+draw	绘制	webapp
+user	用户	webapp
+# ---- 第二批 ----
+two input jumpers	两个输入跳线
+four input jumpers	四个输入跳线
+sata connectors	SATA 连接器
+micro-usb power connector	Micro-USB 电源接口
+no input	无输入	ID_SDRlab
+jumpers	跳线	ID_SDRlab
+metallic	金属	ID_SDRlab
+oscillator	振荡器	ID_SDRlab
+micro usb	Micro USB	ID_SDRlab
+power connector	电源接口	ID_SDRlab
+gain [dB]	增益 [dB]
+amplitude [dB]	幅度 [dB]
+amplitude	幅度	Sin(x)x
+frequency [Hz]	频率 [Hz]
+frequency [MHz]	频率 [MHz]
+freq [MHz]	频率 [MHz]
+bandwidth of fast analog inputs	快速模拟输入带宽
+fast analog outputs bandwidth	快速模拟输出带宽
+output impedance of fast analog outputs	快速模拟输出的输出阻抗
+output impedance[ohm]|	输出阻抗 [ohm]
+hv setting, dec = 1	HV 设置，DEC = 1
+lv setting, dec = 1	LV 设置，DEC = 1
+bw of ch1	CH1 带宽
+bandwidth = 52.77 mhz	带宽 = 52.77 MHz
+bandwidth = 52.02 mhz	带宽 = 52.02 MHz
+samples	采样点	Sin(x)x
+sin(x)/x interpolation of	Sin(x)/x 插值：
+40 mhz sine signal	40 MHz 正弦信号
+raw signal sampled @ 125ms/s	原始信号，采样率 125 MS/s
+- sin(x)/x interpolated signal 20x	- Sin(x)/x 插值信号（20 倍）
+full scale	满量程
+input connector	输入连接器
+impedance analyzer measurement range	阻抗分析仪测量范围
+figure 10. jtag debugging flat ribbon layout	图 10. JTAG 调试排线布局
+notch	缺口
+viewed from above pcb	从 PCB 上方看
+# default project	# 默认工程
+# alternative naming	# 别名
+# your projects here	# 你的工程放这里
+# required: fpga bitstream	# 必需：FPGA 比特流
+# required: device tree overlay	# 必需：设备树覆盖
+gnd (schwarz/black)	GND（黑）
+din7 (weiß/white)	DIN7（白）
+din6 (grau/gray)	DIN6（灰）
+din5 (braun/brown)	DIN5（棕）
+din4 (blau/blue)	DIN4（蓝）
+din3 (grün/green)	DIN3（绿）
+din2 (gelb/yellow)	DIN2（黄）
+din1 (orange)	DIN1（橙）
+dino (rot/red)	DIN0（红）
+one shot accelerator	单次加速器
+one shot accnerator	单次加速器
+one shat accelerator	单次加速器
+gate bias	栅极偏置
+gate biss	栅极偏置
+sdr block diagram	SDR 框图
+gale bias	栅极偏置
+gate blas	栅极偏置
+oneshot accelerator	单次加速器
+from rp output	来自 RP 输出
+to rp input o	至 RP 输入
+pwrout t	电源输出
+pwrout ]	电源输出
+ctrl in	控制输入
+rx filters	RX 滤波器
+rx out	RX 输出
+- rx in	- RX 输入
+preselectors	预选器
+opti onal ext.	可选外置
+filter or amp	滤波器或放大器
+ant 2	天线 2
+• ant 1	• 天线 1
+protection	保护电路
+network	网络	connection-types
+connection for impedance analyzer with manual r_shunt setting	阻抗分析仪手动 R_shunt 设置的接线方式
+jumper setting for impedance analyzer.	阻抗分析仪的跳线设置。
+connect two central pins to set high input impedance.	连接中间两针以设为高输入阻抗。
+no input jumpers	无输入跳线
+metallic oscillator	金属振荡器
+micro usb power connector	Micro USB 电源接口
+jumper setting for impedance analyzer. connect two central pins to set high input impedance.	阻抗分析仪的跳线设置：连接中间两针以设为高输入阻抗。
