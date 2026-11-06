@@ -249,6 +249,11 @@ The voltages must be in the specified range.
 If the power is supplied through the Red Pitaya Click Shield, the microUSB power connector on the Red Pitaya board can be disconnected.
 In short, you do not have to rely on the original Red Pitaya power supply but can use a better power supply if available.
 
+.. note::
+
+    The **Gen 2 boards cannot be powered from the Click Shield**, as the power supply on there is not sufficient. The Click Shield can still be used with Gen 2 boards, but the Red Pitaya 
+    must be powered from its original power supply.
+
 
 **Power options**
 

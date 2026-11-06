@@ -39,12 +39,14 @@ This certificate complies with the following standards:
 ROHS, REACH and Conflict Mineral Policy
 ========================================
 
+.. TODO ROHS, Conflict Mineral Policy need to be added
+
 * :download:`Red Pitaya REACH <certificates/REACH_20261805.pdf>`
 * :download:`Red Pitaya PFAS statement <certificates/PFAS_20260114.pdf>`
 
 .. * :download:`Red Pitaya ROHS, REACH and Conflict Mineral Policy <certificates/Cicor_Arad_ROHS_REACH_Conflict_Minerals.pdf>`
 
-This certificate complies with the following standards:
+These certificates comply with the following standards:
 
 * ROHS 2011/65.
 * EU 2015/863.

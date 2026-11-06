@@ -85,12 +85,12 @@ Output bandwidth
 +------------------------------------+------------------------------------+
 
 .. figure:: img/RF_outputs/Bandwidth/OUT1LOW.png
-    :width: 800
+    :width: 1000
 
 Bandwidth measurement of the output channel 1 at 50 Ω load.
 
 .. figure:: img/RF_outputs/Bandwidth/OUT1HIGH.png
-    :width: 800
+    :width: 1000
 
 Bandwidth measurement of the output channel 1 at high impedance load.
 
@@ -99,7 +99,12 @@ Bandwidth measurement of the output channel 1 at high impedance load.
 Output bandwidth flatness
 --------------------------
 
-The output bandwidth flattness is within -1 dB from DC to full (-3 dB) bandwidth.
+.. note::
+
+    The output bandwidth flatness measurement is limited by the resolution bandwidth of the spectrum analyzer.
+
+The output bandwidth flatness is within -1 dB from DC to 40 MHz for both 50 Ω and high impedance loads (see the pictures above). Below 2 MHz, the measurements are 
+not realistic due to high resolution bandwidth, which picks up the DC noise of the SA.
 
 |
 
@@ -109,12 +114,12 @@ Output impedance
 The impedance of the output channels (output amplifier and filter) is shown in the figure below. The original *STEMlab 125-14* output impedance is shown for comparison.
 
 .. figure:: img/RF_outputs/Output_impedance/Output_impedance.png
-    :width: 800
+    :width: 1200
 
 Original board and Gen 2 output impedance measurement.
 
 .. figure:: img/RF_outputs/Output_impedance/SMITH_PITAYA_Gen1_VS_Gen2_markings.png
-    :width: 800
+    :width: 1200
 
 Smith diagram of the output impedance of original board and Gen 2.
 
@@ -123,11 +128,14 @@ Smith diagram of the output impedance of original board and Gen 2.
 Output phase noise
 ------------------
 
-
 .. figure:: img/RF_outputs/Phase_noise/noise_generation_Gen2.png
-    :width: 800
+    :width: 1200
 
 Phase noise measurements between 1 Hz and 1 MHz.
+
+* Blue line - Phase noise (PN)
+* Black line - Amplitude noise (AM)
+* Green line - Total noise (PN + AM)
 
 |
 
@@ -153,39 +161,39 @@ Output SFDR
 +------------------+-----------------+-----------------+
 
 .. figure:: img/RF_outputs/SFDR/SFDR_measurements.png
-    :width: 800
+    :width: 1000
 
 SFDR measurement for both output channels.
 
 **Measurements at specific frequencies**
 
 .. figure:: img/RF_outputs/SFDR/SFDR_OUT1_100k.png
-    :width: 800
+    :width: 1000
 
 SFDR at 100 kHz.
 
 .. figure:: img/RF_outputs/SFDR/SFDR_OUT1_1M.png
-    :width: 800
+    :width: 1000
 
 SFDR at 1 MHz.
 
 .. figure:: img/RF_outputs/SFDR/SFDR_OUT1_10M.png
-    :width: 800
+    :width: 1000
 
 SFDR at 10 MHz.
 
 .. figure:: img/RF_outputs/SFDR/SFDR_OUT1_20M.png
-    :width: 800
+    :width: 1000
 
 SFDR at 20 MHz.
 
 .. figure:: img/RF_outputs/SFDR/SFDR_OUT1_30M.png
-    :width: 800
+    :width: 1000
 
 SFDR at 30 MHz.
 
 .. figure:: img/RF_outputs/SFDR/SFDR_OUT1_40M.png
-    :width: 800
+    :width: 1000
 
 SFDR at 40 MHz.
 
@@ -195,17 +203,17 @@ Output SNR
 -------------------
 
 .. figure:: img/RF_outputs/SNR/SNR_OUT1.png
-    :width: 800
+    :width: 1000
 
 SNR measurement of the output channel 1 (whole specturm).
 
 .. figure:: img/RF_outputs/SNR/SNR_OUT1_MEAS.png
-    :width: 800
+    :width: 1000
 
 SNR measurement of the output channel 1 (VBW 100 kHz).
 
 .. figure:: img/RF_outputs/SNR/SNR_OUT1_NO_SIGNAL.png
-    :width: 800
+    :width: 1000
 
 SNR measurement of the output channel 1 (no signal).
 

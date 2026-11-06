@@ -12,10 +12,12 @@ STEMlab 125-10 (discontinued)
 
 .. warning::
 
-    **Product Discontinued**
+    **Product Discontinuation Notice**
     
-    STEMlab 125-10 is discontinued (no longer produced). The documentation here is provided as a reference for existing users.
-    Please note that the board will soon reach end-of-life for software support (exact date to be determined). All users will be informed in advance.
+    STEMlab 125-10 was discontinued as of Q4 2023 (no longer produced) and has reached its end-of-life for software support. The documentation here is provided as a reference 
+    for existing users.
+
+    **OS 2.07-51** is the last supported version. OS versions released afterwards can still run on the board, but may cause issues due to lower amount of RAM.
 
 |
 
@@ -249,11 +251,15 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 30                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, small fan      |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    | Automatic Shutdown Temperature     | 85                                 | ℃         | Internally monitored             |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Dimensions**                                                                                                         |
@@ -277,6 +283,10 @@ Technical Specifications
     * **HV mode:** ±30 V absolute maximum
     
     Exceeding these values may damage the board permanently.
+
+.. note::
+
+    Removing the heatsink can reduce the effectiveness of the thermal heat paste, leading to higher board temperatures.
 
 |
 

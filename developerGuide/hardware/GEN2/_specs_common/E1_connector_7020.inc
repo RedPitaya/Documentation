@@ -9,11 +9,30 @@ The E1 extension connector provides digital I/O and CAN bus interfaces for contr
 
 **Electrical Specifications:**
 
-All DIOx_y pins are LVCMOS33, with the following absolute maximum ratings:
+The absolute maximum ratings for the E1 connector pins are as follows:
 
-* Min. voltage: -0.40 V
+For DIOx_y pins, where X is between 0 and 7:
+
+* Voltage level: 3.3 V (LVCMOS33)
 * Max. voltage: 3.3 V + 0.55 V
+* Min. voltage: -0.40 V
 * Drive strength: < 8 mA
+
+For DIOx_y pins, where X is between 8 and 10:
+
+* Voltage level: 2.5 V (LVCMOS25)
+* Max. voltage: 2.5 V + 0.55 V
+* Min. voltage: -0.30 V
+* Drive strength: < 8 mA
+
+.. note::
+
+    The maximum voltage levels depends on the power supply voltage of the FPGA bank to which the DIOx_y pin is connected. It is possible to switch the GPIO voltage level from 2V5 to 3V3 
+    via hardware modification.
+
+    Refer to the Zynq-7000 SoC data sheet for the applicable GPIO voltage limits and output-drive specifications. 
+    Do not connect GPIOs directly to loads that draw substantial current, or allow external circuitry to drive a 
+    GPIO beyond its specified voltage limits. Use an external driver or current-limiting circuit where needed.
 
 **E1 Pinout:**
         
@@ -56,17 +75,17 @@ All DIOx_y pins are LVCMOS33, with the following absolute maximum ratings:
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 18  | DIO7_N / CAN0_TX      | M15               | IO_L23N_T3_35                                 | 3V3            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 19  | DIO8_P                | Y9                | IO_L14P_T2_SRCC_13                            | 3V3            |
+| 19  | DIO8_P                | Y9                | IO_L14P_T2_SRCC_13                            | 2V5            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 20  | DIO8_N                | Y8                | IO_L14N_T2_SRCC_13                            | 3V3            |
+| 20  | DIO8_N                | Y8                | IO_L14N_T2_SRCC_13                            | 2V5            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 21  | DIO9_P                | Y12               | IO_L20P_T3_13                                 | 3V3            |
+| 21  | DIO9_P                | Y12               | IO_L20P_T3_13                                 | 2V5            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 22  | DIO9_N                | Y13               | IO_L20N_T3_13                                 | 3V3            |
+| 22  | DIO9_N                | Y13               | IO_L20N_T3_13                                 | 2V5            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 23  | DIO10_P               | Y7                | IO_L13P_T2_MRCC_13                            | 3V3            |
+| 23  | DIO10_P               | Y7                | IO_L13P_T2_MRCC_13                            | 2V5            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
-| 24  | DIO10_N               | Y6                | IO_L13N_T2_MRCC_13                            | 3V3            |
+| 24  | DIO10_N               | Y6                | IO_L13N_T2_MRCC_13                            | 2V5            |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
 | 25  | GND                   |                   |                                               |                |
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+
@@ -79,3 +98,7 @@ All DIOx_y pins are LVCMOS33, with the following absolute maximum ratings:
     For further details, please refer to the :ref:`FPGA register section <fpga_registers>`.
         
     The change can also be performed with the appropriate SCPI or API command. Please refer to the :ref:`CAN commands section <commands_can>` for further details.
+
+.. note::
+
+    The voltage level of pins connected to Bank 13 of the Zynq 7020 FPGA (DIO8 to DIO18) can be switched to 3V3.

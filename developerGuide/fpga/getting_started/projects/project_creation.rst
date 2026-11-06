@@ -9,7 +9,7 @@ To ease the creation of new FPGA projects or adding new features to existing one
 .. note::
 
     This section describes the current build flow for **Vivado 2025.1** (OS 3.00+), based on the scripts in the RedPitaya-FPGA repository.
-    The legacy Vivado 2020.1 method is still available for backward compatibility and is summarized in the `Legacy Vivado 2020.1 compatibility`_ section.
+    The legacy Vivado 2020.1 method is still available for backward compatibility and is summarized in the :ref:`Legacy Vivado 2020.1 compatibility <fpga_legacy_2020_flow>` section.
 
 .. contents:: Table of Contents
     :local:
@@ -19,10 +19,10 @@ To ease the creation of new FPGA projects or adding new features to existing one
 |
 
 
-Download FPGA GitHub repository
-================================
+1. Download FPGA GitHub repository
+====================================
 
-First, we will transfer the |FPGA GitHub repository| to our local machine. Go to the |FPGA GitHub repository| and download the ZIP folder of this project.
+First, we will transfer the :rp-github:`FPGA GitHub repository <RedPitaya-FPGA>` to our local machine. Go to the :rp-github:`FPGA GitHub repository <RedPitaya-FPGA>` and download the ZIP folder of this project.
 
 .. figure:: img/FPGA-repository.png
     :width: 1000
@@ -48,14 +48,14 @@ Accessing older versions of the repository
 
 The instructions above are meant for the latest version of the Red Pitaya FPGA, located in the *master* branch. If you are looking for an older version, please check the corresponding branch or tag in the GitHub repository.
 
-Before OS 1.04-18, the FPGA repository was a part of the main |Red Pitaya GitHub repository|, and the FPGA projects were located in the *fpga* directory.
+Before OS 1.04-18, the FPGA repository was a part of the main :rp-github:`Red Pitaya GitHub repository`, and the FPGA projects were located in the *fpga* directory.
 
 |
 
 .. _FPGA_project_flags:
 
-Build project options
-=======================
+2. Build project options
+===========================
 
 When creating a new FPGA project, each user must consider the specific requirements and constraints of their target hardware platform. Each Red Pitaya board has its own specifications, which may require different configurations and optimizations in the FPGA design.
 To make things easier, the Red Pitaya FPGA repository provides a set of scripts and templates that can be used as a starting point for new projects. These templates include pre-configured settings and example designs that can be customized to meet the needs of individual projects.
@@ -79,8 +79,8 @@ The scripts automatically build the project depending on the selected flags. The
 
 |
 
-Building process
-=================
+3. Building process
+=====================
 
 .. note::
 
@@ -164,7 +164,7 @@ The current repository contains these relevant script types:
 .. note::
 
     If an error occurs during the project generation, it is likely due to an incorrect Vivado version or missing dependencies. Please ensure that you have the correct version of Vivado installed and that all necessary dependencies are met.
-    For more information on this issue, please refer to the `Running the scripts in a different Vivado version`_ section.
+    For more information on this issue, please refer to the :ref:`Running the scripts in a different Vivado version <running_scripts_in_different_vivado_version>` section.
 
 |
 
@@ -176,35 +176,35 @@ Only the Red Pitaya FPGA repository is required to create a project in this mode
 
 1.  **Open terminal or shell**.
 
-    * **Linux/Unix-like shell**:
+    *   **Linux/Unix-like shell**:
 
-      .. code-block:: bash
+        .. code-block:: bash
 
-          ./open_vivado.sh <project_name> <model>
+            ./open_vivado.sh <project_name> <model>
 
-      Example:
+        Example:
 
-      .. code-block:: bash
+        .. code-block:: bash
 
-          ./open_vivado.sh v0.94 Z20_250
+            ./open_vivado.sh v0.94 Z20_250
 
-    * **Windows CMD/PowerShell (native)**:
+    *   **Windows CMD/PowerShell (native)**:
 
-      .. code-block:: bat
+        .. code-block:: bat
 
-          open_vivado.bat <project_name> <model>
+            open_vivado.bat <project_name> <model>
 
-      Example:
+        Example:
 
-      .. code-block:: bat
+        .. code-block:: bat
 
-          open_vivado.bat v0.94 Z20_250
+            open_vivado.bat v0.94 Z20_250
 
-    * **Alternative (Linux or Unix-like shell on Windows):**
+    *   **Alternative (Linux or Unix-like shell on Windows):**
 
-      .. code-block:: bash
+        .. code-block:: bash
 
-          make project PRJ=<project_name> MODEL=<model>
+            make project PRJ=<project_name> MODEL=<model>
 
 #.  **Navigate to the extracted FPGA repository**. In this instance, we have renamed the extracted folder to RedPitaya-FPGA. If you have not renamed the folder, please use the original name.
 
@@ -220,19 +220,19 @@ Only the Red Pitaya FPGA repository is required to create a project in this mode
 
     Here are reference pictures for the command-line options:
 
-    * **Terminal/CMD**
+    *   **Terminal/CMD**
 
         .. figure:: img/Vivado-CMD.png
             :width: 800
             :align: center
 
-    * **Vivado HLS Command Prompt**
+    *   **Vivado HLS Command Prompt**
 
         .. figure:: img/Vivado-hls-command-prompt.png
             :width: 800
             :align: center
 
-    * **Vivado TCL Console**
+    *   **Vivado TCL Console**
 
         .. figure:: img/Vivado-tcl-console.png
             :width: 800
@@ -265,16 +265,19 @@ There are a few important things to note about the project creation process:
 
 .. _fpga_copy_project:
 
-Creating a Safe Project Copy
-=============================
+4. Creating a Safe Project Copy
+==================================
 
 .. note::
 
-    The information in this section is relevant for **automatic project generation**. For manual project creation, the process is much simpler and 
-    only requires copying the baseline project and modifying the RTL and constraints as needed. For more information, see :ref:`Creating a Custom Project from Scratch <fpga_project_from_scratch>`.
+    The information in this section is relevant for **automatic project generation**. For manual project creation, the process is much simpler and only requires copying 
+    the baseline project and modifying the RTL and constraints as needed. For more information, see :ref:`Creating a Custom Project from Scratch <fpga_project_from_scratch>`.
 
 A safe project copy is a duplicate of an existing project that can be modified without affecting the original project. This is useful when you may need to access the 
 original project later or when you want to keep a backup of the custom design as rerunning the automatic project generation scripts can overwrite the custom design.
+
+The name of the copied directory becomes the value of the ``PRJ`` build constant. For example, copying ``prj/v0.94`` to ``prj/template`` creates a new project named ``template``; 
+it does not require changing the original ``v0.94`` project or the root build scripts.
 
 Why this matters:
 
@@ -291,26 +294,33 @@ These scripts are selected by ``MODEL`` and then use the folder name passed as `
 
 Recommended steps:
 
-1. Create a new project folder under ``prj/``.
-2. Copy a baseline project (for example ``prj/v0.94``) into your new folder.
+1. Copy a baseline project into a new directory under ``prj/``. The new directory name is the new ``PRJ`` value.
+2. If the copied directory contains prior build output, delete its generated ``out``, ``project``, ``build``, ``sdk``, ``.Xil``, and ``.gen`` directories before building.
 3. Put your custom RTL in ``prj/<new_project>/rtl``.
 4. Keep testbenches in ``prj/<new_project>/tbn``.
-5. Build with explicit model flags.
+5. Build with an explicit project name and model.
 
-Example:
+Example: create and build a ``template`` copy of ``v0.94``:
 
 .. code-block:: bash
 
     cd RedPitaya-FPGA
-    cp -r prj/v0.94 prj/new_project
-    make project PRJ=new_project MODEL=Z10
-    make PRJ=new_project MODEL=Z10
+    cp -r prj/v0.94 prj/template
+    rm -rf prj/template/out prj/template/project prj/template/build prj/template/sdk prj/template/.Xil prj/template/.gen
+    make project PRJ=template MODEL=Z10
+    make PRJ=template MODEL=Z10
+
+The first command creates a Vivado GUI project for ``template``. The second command builds the template bitstream. Both commands select files from ``prj/template`` and leave ``prj/v0.94`` unchanged.
 
 Windows native project-open example:
 
 .. code-block:: bat
 
-    open_vivado.bat new_project Z10
+    open_vivado.bat template Z10
+
+For the ``make`` commands on Windows, use Git Bash, MSYS2, or WSL as described in :ref:`Project mode`.
+
+|
 
 Additional checks after copying
 --------------------------------
@@ -346,8 +356,8 @@ For manual file-selection details (constraints and config files) when creating p
 
 .. _fpga_legacy_2020_flow:
 
-Legacy Vivado 2020.1 compatibility
-====================================
+5. Legacy Vivado 2020.1 compatibility
+========================================
 
 The current RedPitaya-FPGA ``master`` branch targets **Vivado 2025.1**. For older OS branches or archived projects that were created for Vivado 2020.1, keep using the legacy flow.
 
@@ -409,10 +419,12 @@ Windows and Linux notes for legacy flow
 
       C:\Xilinx\Vivado\2020.1\bin\vivado.bat -source red_pitaya_vivado_Z10.tcl -tclargs v0.94
 
-| 
+|
 
-Running the scripts in a different Vivado version
-==================================================
+.. _running_scripts_in_different_vivado_version:
+
+6. Running the scripts in a different Vivado version
+======================================================
 
 Running the auto-project generation scripts in a different Vivado version than the one they were generated for may result in errors. This is because the scripts are tailored to specific Vivado versions and may not be compatible with others.
 If possible, please install the Vivado version that the scripts were generated for. If you cannot do this, you can try to modify the scripts to make them compatible with your Vivado version.
@@ -452,7 +464,7 @@ Both `Project mode`_ and `Non-project mode`_ scripts are designed for a specific
 
     .. note::
 
-        Depending on the board model you are using, the script name may differ. Please check the `Build project options`_ to identify the correct script name from the project flags.
+        Depending on the board model you are using, the script name may differ. Please check the :ref:`Build project options <FPGA_project_flags>` to identify the correct script name from the project flags.
 
 
 

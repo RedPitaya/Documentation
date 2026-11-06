@@ -6,19 +6,21 @@ System Info
 
 In the four corners of the Red Pitaya web interface there are the following widgets:
 
-.. image:: img/System_info.jpg
+.. image:: img/Main_interface_info.jpg
     :align: center
     :width: 1000
 
 
-1. **General System information button:** Includes optional features that can be turned ON/OFF. For more information see the section below.
+1. **System information and settings:** Includes system information and optional features that can be turned ON/OFF.
 2. **Power button:** Manual *Power Off* or *Reboot* of the board.
 3. **Download system bug report:** Downloads a .zip file with information for the developers. Please attach it to the support mail with the issue description. The report should download after approx. 15 seconds.
 4. **Current OS and ecosystem version:** Reroutes to the :ref:`Software update tool <software_update_manager>` if clicked. At boot, Red Pitaya checks for software updates and displays a yellow exclamation mark here if a new release is available.
 
 .. note::
 
-    Starting with OS 3.00, a **warning icon** is displayed on the General System information button if the EEPROM contains invalid calibration values. If you see this icon, please reinstall the :ref:`latest OS version <prepareSD>` and perform a :ref:`factory calibration reset <calibration_app>`. If the problem persists, please :ref:`contact us <report_problem>`.
+    Starting with OS 3.00, a **warning icon** is displayed on the General System information button if the EEPROM contains invalid calibration values. 
+    If you see this icon, please reinstall the :ref:`latest OS version <prepareSD>` and perform a :ref:`factory calibration reset <calibration_app>`. 
+    If the problem persists, please :ref:`contact us <report_problem>`.
 
 .. note::
 
@@ -26,16 +28,23 @@ In the four corners of the Red Pitaya web interface there are the following widg
 
 |
 
-General OS and Ecosystem info
+System information and settings
 =================================
 
-Once the Info button is clicked, the following settings will be displayed:
+The blue information button in the top-left corner of the web interface provides access to system information and settings. The button displays a pop-up window which contains two tabs:
 
-.. image:: img/Info_button.png
+* **System Info:** Displays general information about the board, such as the board model, MAC address, DNA number, and more.
+* **System Settings:** Provides access to various system settings, including boot-up file consistency check, LED control, BOOT mode, restoring default app settings, DMA reserved memory size, and clock rate.
+
+In the **System Info** section, consists of three columns:
+
+* General information on board and ecosystem - general information on the board and ecosystem is displayed, including *Board model*, *MAC address*, *DNA number*, etc.
+
+.. figure:: img/System_info.png
     :align: center
-    :width: 800
+    :width: 1000
 
-In the **System Info** section, general information regarding *Board model*, *MAC address*, *DNA number*, etc. is displayed.
+|
 
 The **System Settings** section contains the following options:
 
@@ -45,7 +54,7 @@ The **System Settings** section contains the following options:
     #.  **Restore default app settings:** Restores all saved application settings to default values.
     #.  **DMA reserved memory size:** Memory manager for selecting the size of reserved memory for the :ref:`Deep Memory Mode <deepMemoryMode>`. Select the amount of reserved memory from the dropdown menu. The default value is 32 MB. Changing the reserved memory size requires a reboot.
 
-        .. note ::
+        .. note::
 
             To manually change the DMA reserved memory size, please refer to the :ref:`Changing reserved memory chapter under the DMM <deepMemoryMode>`.
 
@@ -63,6 +72,8 @@ The **System Settings** section contains the following options:
 
     The expected VCCDDR voltage displayed in the *Sensors* section is 1.35 V for boards with 1 GB of RAM (SIGNALlab 250-12 and STEMlab 125-14 Pro Z7020 Gen 2) and 1.5 V for all other boards.
 
+|
+
 DMM memory manager
 --------------------
 
@@ -70,7 +81,7 @@ The :ref:`Deep Memory Mode <deepMemoryMode>` memory manager can automatically ad
 
 .. figure:: img/dmm_memory_manager.png
     :align: center
-    :width: 800
+    :width: 1000
 
     DMM memory manager.
 

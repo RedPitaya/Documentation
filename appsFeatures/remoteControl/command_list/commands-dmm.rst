@@ -29,8 +29,14 @@ Important notes
 * Available from Red Pitaya OS version 2.00-23 onwards.
 * Requires sufficient DDR3 RAM allocation (recommend leaving 100 MB for Linux OS).
 * Transfer time to computer increases with buffer size.
-* Use binary format (``ACQ:DATA:FORMAT BIN``) for faster SCPI data transfer.
-* For detailed information, see :ref:`Deep Memory Acquisition overview <intro_gen_acq>`.
+* The fastest transfer is achieved using (no intermediate copy):
+
+  - SCPI commands: ``BIN`` data format, ``LEND`` byte order, and ``RAW`` acquisition units.
+  - C++ or Python API: ``rp_AcqAxiGetDataRawDirect``
+
+* For transfer paths, buffer sizing, and an example, see :ref:`SCPI Acquisition <intro_gen_acq>`.
+* For detailed information, see :ref:`Deep Memory Acquisition overview <deepMemoryMode>`.
+* Use the write pointer instead of the trigger pointer when the trigger delay differs from the number of samples per channel.
 
 
 ========================
@@ -212,9 +218,9 @@ DMA data read
 | |                                                  | |                                                                                                                          | | Faster than the Python functions above.                                       |                    |
 | |                                                  | |                                                                                                                          | |                                                                               |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+
-| | ''                                               | | Python: ``rp_AcqAxiGetDataRawDirect(<channel>, <pos>, <size>)``                                                          | | Returns a memory region without copying data (the fastest method).            | 2.07-43 and up     |
-| |                                                  | |                                                                                                                          | | Use ``frombuffer`` function to extract the data.                              |                    |
-| |                                                  | |                                                                                                                          | |                                                                               |                    |
+| | ''                                               | | C++: ``rp_AcqAxiGetDataRawDirect(rp_channel_t channel, uint32_t pos, uint32_t size,``                                    | | Returns a memory region without copying data (the fastest method).            | 2.07-43 and up     |
+| |                                                  | |      ``std::vector<std::span<int16_t>>* data)``                                                                          | | Use ``frombuffer`` function to extract the data.                              |                    |
+| |                                                  | | Python: ``rp_AcqAxiGetDataRawDirect(<channel>, <pos>, <size>)``                                                          | |                                                                               |                    |
 | |                                                  | |                                                                                                                          | |                                                                               |                    |
 | |                                                  | |                                                                                                                          | |                                                                               |                    |
 +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+--------------------+

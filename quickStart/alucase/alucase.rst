@@ -6,11 +6,51 @@ Red Pitaya Aluminium Case Assembly
 
 Whether you bought your Red Pitaya aluminium case in a kit or as a separate add-on, you will need to assemble it by hand.
 
+The aluminium case comes in two flavours:
+
+* Aluminium case Gen 2
+* Aluminium case (original)
+
+Compatibility
+==================
+
+Aluminium case Gen 2
+----------------------
+
+.. figure:: img/Alu_case_gen_2.png
+    :align: center
+    :width: 600
+
+The second generation aluminium case is compatible with the following Red Pitaya boards and their variations:
+
+* STEMlab 125-14 PRO Z7020 Gen 2
+* STEMlab 125-14 PRO Gen 2
+* STEMlab 125-14 Gen 2
+
+
+Aluminium case (original)
+--------------------------
+
+.. figure:: img/Alu_case_original.png
+    :align: center
+    :width: 600
+
+The aluminium case (original) is compatible with the following Red Pitaya boards and their variations:
+
+* STEMlab 125-14.
+* SDRlab 122-16.
+* STEMlab 125-14 4-Input.
+* STEMlab 125-10.
+
+.. note::
+    The original aluminium case is not compatible with the second generation Red Pitaya boards.
+
+|
 
 Components
 ============
 
-.. figure:: img/rp_alucase_02.jpg
+.. figure:: img/Alu_case_original.png
     :align: center
     :width: 600
 
@@ -27,11 +67,16 @@ Contents:
    :align: center
    :width: 600
 
-   The inside of the Red Pitaya aluminium case.
+   The inside of the Red Pitaya aluminium case (original).
+
+.. figure:: img/Alu_case_gen2_inside.png
+    :align: center
+    :width: 600
+
+    The inside of the Red Pitaya aluminium case Gen 2.
     
-* On the inside, there is a block in the upper part of the case (on the right in the picture above) that dissipates heat to the case. So the whole case acts as a heat sink.
-* On the bottom of the case, there are openings for some air vents (left in the picture above).
-* The openings in the case expose the connections to the expansion ports :ref:`E1 <E1_orig_gen>` and :ref:`E2 <E2_orig_gen>`.
+The inside of the Red Pitaya aluminium case is designed to efficiently dissipate the heat by connecting directly to the Zynq 7000 FPGA SoC and contains opennings for air circulation 
+on the bottom side and the side of the case.
 
 .. figure:: img/rp_alucase_04.jpg
     :align: center
@@ -41,16 +86,22 @@ Contents:
     :align: center
     :width: 600
 
+|
 
-Compatibility
-==================
+Backdrilled holes (Gen 2 aluminium case)
+=========================================
 
-The aluminium case is compatible with the following Red Pitaya boards and their variations:
+There are opennings for E1 and E2 expansion ports on the top side of the case. Gen 2 version also includes backdrilled holes for:
 
-* STEMlab 125-14.
-* SDRlab 122-16.
-* STEMlab 125-14 4-Input.
-* STEMlab 125-10.
+* DIN rail mounting (bottom side)
+* E3 expansion port and QSPI eMMC fast differential connector (top side)
+* S1 and S2 synchronisation connectors (top side)
+
+.. figure:: img/Alu_case_gen2_backdrills.png
+    :align: center
+    :width: 1000
+
+    Backdrilled holes in the Gen 2 aluminium case.
 
 |
 

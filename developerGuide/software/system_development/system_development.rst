@@ -9,6 +9,7 @@ This section covers building and modifying the Red Pitaya operating system and e
 **What you'll find here:**
 
 * **Ecosystem Building** - Compile the complete Red Pitaya OS and software ecosystem from source
+* **Docker Images** - Build and use Docker containers as a portable alternative for compiling the ecosystem, FPGA tools, and streaming client
 * **Debian Packages** - Create and build Debian packages for Red Pitaya applications
 * **E3 Board Software** - Specific software development for E3 extension boards
 
@@ -16,5 +17,6 @@ This section covers building and modifying the Red Pitaya operating system and e
     :maxdepth: 1
 
     ecosystem/ecosystem
+    docker/docker
     debian
     e3_software/e3_software

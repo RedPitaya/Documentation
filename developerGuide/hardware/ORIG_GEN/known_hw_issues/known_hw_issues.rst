@@ -30,6 +30,35 @@ Active Issues
 
 These hardware issues affect Original Generation boards and require hardware modifications or workarounds. All issues have been resolved in Gen 2 boards.
 
+Board overheating
+------------------
+
+* **Affected Hardware:** All boards besides SIGNALlab 250-12
+* **Severity:** Medium
+* **Workaround:** Active cooling or additional thermal paste
+* **Status:** Ongoing
+
+**Symptoms**
+
+The board exhibits elevated temperatures in coparison to similar boards under similar operating conditions, potentially leading to thermal throttling
+or instability during operation.
+
+**Root Cause**
+
+The Zynq SoC generates quite a lot of heat during operation, which needs to be dispersed through the on-board heatsink or other cooling solutions. 
+Sometimes the boards have inadequate thermal paste added between the SoC and the heatsink, leading to poor heat dissipation and elevated board temperatures.
+
+**Resolution/Workaround**
+
+Ensure proper application of thermal paste between the Zynq SoC and the on-board heatsink to improve heat dissipation and reduce board temperature. The difference
+is about 5 °C lower operating temperature for the board. Further cooling can be achieved by adding active cooling solutions such as fans or improving airflow around the board, 
+which further decreases the board temperature by about 25 °C.
+
+.. note::
+
+    Removing and replacing the heatsink can reduce the effectiveness of the thermal heat paste, leading to higher board temperatures.
+
+|
 
 I2C System Failures
 -------------------

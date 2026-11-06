@@ -16,6 +16,7 @@ Important notes
 
 * Default state is ON (automatic status indication).
 * Disabling the Ethernet LEDs will help reduce the fast analog input and output noise on the :ref:`Original generation <dev_guide_hardware>` of boards.
+* Disabling the Red LED on PRO Gen 2 boards while the E3 board is present will cause the board to reboot.
 
 
 Code examples

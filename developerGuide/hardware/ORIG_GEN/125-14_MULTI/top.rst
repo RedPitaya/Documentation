@@ -8,12 +8,16 @@ STEMlab 125-14 X-Channel System (Discontinued)
     :width: 700
     :align: center
 
-|
+.. warning::
 
-.. note::
+    **Product Discontinuation Notice**
 
-    STEMlab 125-14 X-Channel System is discontinued (no longer produced). The documentation here is provided as a reference for existing users.
+    STEMlab 125-14 X-Channel System was discontinued in Q2 2026 (is no longer produced). However, it remains available through the customization service until STEMlab 125-14 is 
+    discontinued at the end of Q4 2026. The documentation here is provided as a reference for existing users.
+
     X-Channel System 2.0 (Click Shields) is the current multi-board solution, please refer to :ref:`X-Channel 2.0 documentation <click_shield_sync>` for the latest information.
+
+|
 
 .. contents:: Table of Contents
     :local:

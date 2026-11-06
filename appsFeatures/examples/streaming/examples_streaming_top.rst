@@ -39,6 +39,8 @@ For installation instructions, see :ref:`Streaming Client Setup <stream_command_
 
 |
 
+.. _streaming_examples_quickstart:
+
 Quick Start
 ************
 
@@ -457,12 +459,7 @@ Stream waveforms directly from memory buffers for zero-latency playback.
 API Reference
 **************
 
-For detailed information about the streaming client classes, methods, and callback system:
-
-.. toctree::
-    :maxdepth: 1
-
-    streaming_api_reference
+For detailed information about the streaming client classes, methods, and callback system, refer to the :ref:`Quick start section<streaming_examples_quickstart>`.
 
 |
 

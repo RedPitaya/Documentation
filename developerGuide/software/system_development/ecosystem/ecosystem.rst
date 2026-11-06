@@ -90,6 +90,11 @@ Red Pitaya ecosystem must be built on a Linux host system.
 
 For additional OS build requirements, refer to the :ref:`OS build requirements <SW_os_req>` section.
 
+.. note::
+
+    Prefer not to set up a native Ubuntu host with ``schroot``? See :ref:`Build Red Pitaya with Docker images <SW_build_docker>`
+    for a container-based alternative.
+
 |
 
 Required software packages
