@@ -95,12 +95,12 @@ Input bandwidth
 +------------------------------------+------------------------------------+
 
 .. figure:: img/RF_inputs/Bandwidth/IN1_LV_DEC1.jpg
-    :width: 800
+    :width: 1000
 
 Bandwidth measurement of the input channel 1 in LV mode.
 
 .. figure:: img/RF_inputs/Bandwidth/IN1_HV_DEC1.jpg
-    :width: 800
+    :width: 1000
 
 Bandwidth measurement of the input channel 1 in HV mode.
 
@@ -109,10 +109,11 @@ Bandwidth measurement of the input channel 1 in HV mode.
 Input bandwidth flatness
 --------------------------
 
-The bandwidth flatness is <0.05 dB from DC to full (-3 dB) bandwidth on LV gain setting.
+The bandwidth flatness is <0.05 dB from DC to 10 MHz on LV gain setting. Afterwards, we see a slow roll-off of the frequency response due to the anti-aliasing filter. 
+The response is still <0.7 dB up to 40 MHz.
 
 .. figure:: img/RF_inputs/Bandwidth_flatness/IN1_LV_DEC1_flatness.jpg
-    :width: 800
+    :width: 1000
 
 Bandwidth flatness measurement of the input channel 1 in LV mode.
 
@@ -144,7 +145,7 @@ Crosstalk measurements were performed between input channels 1 and 2 for both LV
 
 
 .. figure:: img/RF_inputs/Cross-talk/Cross_talk_IN1@HV_IN2@HV.jpg
-    :width: 800
+    :width: 1000
 
 Crosstalk measurements between input channels 1 and 2 in HV mode.
 

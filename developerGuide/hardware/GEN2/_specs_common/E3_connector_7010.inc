@@ -12,11 +12,21 @@ The E3 extension connector provides external boot storage interfaces (QSPI/eMMC)
 
 **Electrical Specifications:**
 
-All E3 pins are LVCMOS33 (3.3V), with the following absolute maximum ratings:
+E3 pins are LVCMOS33 (3.3V), with the following absolute maximum ratings:
 
 * Abs. Min. voltage: -0.40 V
 * Abs. Max. voltage: 3.3 V + 0.55 V
 * Voltage levels: 3.3 V
+
+.. note::
+
+    Refer to the Zynq-7000 SoC data sheet for the applicable GPIO voltage limits and output-drive specifications. 
+    Do not connect GPIOs directly to loads that draw substantial current, or allow external circuitry to drive a 
+    GPIO beyond its specified voltage limits. Use an external driver or current-limiting circuit where needed.
+
+.. note::
+
+    The STEMlab 125-14 PRO Gen 2 does not provide the eight fast differential pairs on E3; their pin positions are NC on this model. The pairs are available on the STEMlab 125-14 PRO Z7020 Gen 2.
 
 
 **E3 Pinout:**

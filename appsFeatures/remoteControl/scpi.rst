@@ -27,9 +27,8 @@ The SCPI commands are extremely useful when complex signal analysis is required.
 |
 
 
-***********
-Quick start
-***********
+1. Quick start
+****************
 
 To initiate the SCPI server, just click on the SCPI server icon. Once the SCPI server is operational, your board's IP address will be displayed. This IP address should be incorporated into your scripts. 
 Alternatively, you can manually commence the SCPI server using the Terminal (refer to the instructions below).
@@ -79,9 +78,50 @@ To run an example, follow the instructions below:
 
 |
 
-======
-MATLAB
-======
+
+1.1. SCPI server modes
+=======================
+
+The SCPI server can operate in different modes depending on the communication protocol you choose. The available modes include TCP, UART, Arduino, and Arduino TCP. Each mode has its own setup and usage instructions, 
+which are detailed below.
+
+.. figure:: img/scpi_app_run.png
+    :width: 800
+
+TCP mode (Recommended)
+-----------------------
+
+TCP mode is the recommended mode for operating the SCPI server. It uses the TCP/IP protocol for communication, which is widely supported and allows for reliable and efficient data transfer between your computer 
+and the Red Pitaya board. This mode is used for most SCPI communication scenarios and is generally the preferred choice for users.
+
+UART mode
+----------
+
+UART mode is used for sending SCPI commands over a serial interface. It is suitable for environments where TCP/IP communication is not available or preferred, and it allows for direct communication with the Red Pitaya 
+board through the UART interface. The principle of operation is exactly the same as for standard TCP/IP communication, except that the data is transmitted over the UART interface instead of the network. The commands 
+are the same as those used in TCP mode, ensuring consistency across different communication protocols.
+
+
+Arduino mode
+-------------
+
+Arduino mode is used for controlling Red Pitaya from an Arduino via UART. It allows for direct communication between the Arduino and the Red Pitaya board, enabling the Arduino to send SCPI commands and control the 
+Red Pitaya's functionality. You can find the library, setup instructions, and examples on our GitHub :rp-github:`SCPI-red-pitaya-arduino <SCPI-red-pitaya-arduino/tree/master>`.
+
+Yes, we are fully aware that using an Arduino to control a Red Pitaya is like asking a Dacia Sandero to lead a convoy of supercars — brave, optimistic, and possibly holding up traffic. But hey, we don't judge creativity in engineering!
+
+Arduino TCP mode
+-----------------
+
+Arduino TCP mode is used for controlling Red Pitaya from an Arduino via TCP/IP. It combines the features of both TCP and Arduino modes, allowing the Arduino to communicate with the Red Pitaya board over the network using 
+SCPI commands. This mode is useful for scenarios where network-based communication is preferred while still leveraging the Arduino as a controller. See :rp-github:`SCPI-red-pitaya-arduino <SCPI-red-pitaya-arduino/tree/master>`
+repository for more information.
+
+|
+
+
+1.2. MATLAB
+=============
 
 Requirements and Setup
 -----------------------
@@ -101,9 +141,8 @@ More examples of controlling Red Pitaya through MATLAB can be found :ref:`here <
 
 |
 
-======
-Python
-======
+1.3. Python
+============
 
 Requirements and Setup
 -----------------------
@@ -290,16 +329,16 @@ More examples of how to control Red Pitaya with Python can be found :ref:`here <
 
 |
 
-=======
-LabVIEW
-=======
+
+1.4. LabVIEW
+==============
 
 Requirements and Setup
 -----------------------
 
-For proper operation, the |LabVIEW_driver| must be installed. The driver is functional; additional examples and code updates will be added in the future.
+For proper operation, the |Red-Pitaya-LabVIEW-driver| must be installed. The driver is functional; additional examples and code updates will be added in the future.
 
-1.  Download the |LabVIEW_driver| from Framatome GitLab.
+1.  Download the |Red-Pitaya-LabVIEW-driver| from Framatome GitLab.
 #.  Unpack the downloaded archive and copy the **RedPitaya** driver folder into the ``instr.lib`` folder of your LabVIEW installation.
     The required path for **LabVIEW 2020 32-bit** (e.g. the free Community Edition) is:
 
@@ -340,9 +379,8 @@ More examples on how to control Red Pitaya from LabVIEW can be found :ref:`here 
 |
 
 
-*****************************
-Starting SCPI server manually
-*****************************
+2. Starting SCPI server manually
+**********************************
 
 1.  **Establish SSH connection**. Connect to your Red Pitaya through :ref:`SSH <ssh>`.
 
@@ -382,9 +420,8 @@ Starting SCPI server manually
 
 .. _scpi_boot_time:
 
-**********************************
-Starting SCPI server at boot time
-**********************************
+3. Starting SCPI server at boot time
+**************************************
 
 The next commands will enable running SCPI server at boot time and disable Nginx service.
 
@@ -397,11 +434,12 @@ The next commands will enable running SCPI server at boot time and disable Nginx
 
     These commands configure which service starts at boot. For more service management options, see :ref:`Service Management <service_management>`.
 
+For an overview of other boot-time options, see :ref:`Autostart and Boot Configuration <software_autostart>`.
+
 |
 
-***************************
-How do SCPI commands work?
-***************************
+4. How do SCPI commands work?
+*******************************
 
 Here we explain the "behind the scenes" functionality of the redpitaya_SCPI.py script, which establishes the socket connection between Red Pitaya (host) and the computer (client).
 The principles explained here can also be applied to other environments that already support SCPI commands (MATLAB, LabVIEW), or used as a basis for developing a script that enables 
@@ -417,9 +455,8 @@ parameters are taken from the string and converted back into the usual format, t
 
 |
 
-==================
-Control commands
-==================
+4.1. Control commands
+=======================
 
 Control commands send user-defined settings to the Red Pitaya.
 
@@ -433,9 +470,8 @@ Control commands send user-defined settings to the Red Pitaya.
 
 |
 
-================
-Query commands
-================
+4.2. Query commands
+====================
 
 Query commands request data or a setting to be returned to the user. They always have a question mark (?) at the end.
 
@@ -455,4 +491,4 @@ Query commands request data or a setting to be returned to the user. They always
 
 .. substitutions
 
-.. |LabVIEW_driver| replace:: `Red Pitaya LabVIEW driver <https://gitlab.com/framatome-atms-community/red-pitaya-labview-driver>`__
+

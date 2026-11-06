@@ -1,7 +1,7 @@
-.. _fpga_tutrials_base_project:
+.. _fpga_tutorials_base_project:
 
 ##########################
-Base FPGA Project
+Tutorial FPGA Project
 ##########################
 
 The Base FPGA Project serves as the foundation for all tutorials in the FPGA series. This tutorial will guide you through setting up a custom FPGA component 

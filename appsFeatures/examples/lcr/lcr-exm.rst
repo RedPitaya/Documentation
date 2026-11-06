@@ -26,7 +26,7 @@ Required software
 
 .. note::
 
-    This code is written for **2.05-37 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verisons).
+    This code is written for **2.05-37 or higher OS**. For older OS versions, please check when specific commands were released (a note is added to each command introduced in 2.00 or higher verison).
 
 
 Circuit
@@ -235,7 +235,7 @@ API Code Examples
 Code - C++ API
 --------------
 
-The LCR meter requires two additional libraries ("-lrpapp_lcr -lrp-dsp") to be inlcuded into the "Makefile". Check if they are added and add them into *line 7* if not.
+The LCR meter requires two additional libraries ("-lrpapp_lcr -lrp-dsp") to be included into the "Makefile". Check if they are added and add them into *line 7* if not.
 
 .. code-block:: cpp
 

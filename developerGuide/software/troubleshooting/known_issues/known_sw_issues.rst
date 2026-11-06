@@ -50,10 +50,84 @@ macOS **Content and Privacy Settings** block WebSocket connections by default.
 
 |
 
+JupyterLab library error
+-----------------------------
+
+* **Affected OS**: 3.00-57
+* **Affected Hardware**: All models
+* **Severity**: Major
+* **Workaround**: None
+
+**Symptoms**
+
+JupyterLab fails to import Python libraries correctly.
+
+**Root Cause**
+
+Error in the Linux build process caused the Python libraries to Jbe unrecognised by the JupyterLab.
+
+**Status**
+
+Resolved in NB 872 or higher running Linux 3.03-64 or higher.
+
+|
+
+Static IP setting issue
+-----------------------------
+
+* **Affected OS**: 3.00-57
+* **Affected Hardware**: All models
+* **Severity**: Medium
+* **Workaround**: None
+
+**Symptoms**
+
+Static IP settings are not correctly read from the wired.network file and consequently not applied correctly in the Linux operating system.
+
+**Root Cause**
+
+Error in the Linux build process caused the static IP settings to not be applied correctly in the operating system.
+
+**Status**
+
+Resolved in NB 872 or higher running Linux 3.03-64 or higher.
+
+|
+
+Turning off the Red LED on PRO Gen 2 boards while the E3 board is present
+--------------------------------------------------------------------------
+
+* **Affected OS**: All versions
+* **Affected Hardware**: PRO Gen 2 boards with E3 board present
+* **Severity**: Major
+* **Workaround**: Avoid turning off the Red LED while the E3 board is present
+
+**Symptoms**
+
+Turning off the Red LED on PRO Gen 2 boards while the E3 board is present causes the board to reboot.
+
+**Root Cause**
+
+Conflict between the Red LED control circuitry and the presence of the E3 board triggers an unintended reboot.
+
+**Status**
+
+Partially resolved in NB 874 and higher. The board will display a reboot warning if the Red LED is turned off while the E3 board is present.
+
+|
+
+
+Resolved Issues
+===============
+
+These issues have been fixed in specific OS versions. Upgrade to the indicated version or higher to resolve.
+
+
 Wi-Fi Signal Level Reporting
 -----------------------------
 
 * **Affected OS**: 2.00 to 2.07-51
+* **Fixed in**: OS 3.00 or higher
 * **Affected Hardware**: All models with Wi-Fi dongles
 * **Severity**: Minor
 * **Workaround**: None
@@ -66,16 +140,7 @@ Wi-Fi dongles connected to Red Pitaya show incorrect signal strength (0 out of 5
 
 Legacy Linux kernel driver has compatibility issues with signal strength reporting for certain Wi-Fi chipsets.
 
-**Status**
-
-Will be resolved in OS 3.00 by updating the Linux kernel driver and adding support for newer Wi-Fi dongles.
-
 |
-
-Resolved Issues
-===============
-
-These issues have been fixed in specific OS versions. Upgrade to the indicated version or higher to resolve.
 
 
 JupyterLab Matplotlib NumPy Compatibility

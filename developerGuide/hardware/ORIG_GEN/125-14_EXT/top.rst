@@ -8,9 +8,12 @@ STEMlab 125-14 External Clock (Discontinued)
     :width: 500
     :align: center
 
-.. note::
+.. warning::
 
-    STEMlab 125-14 External Clock is discontinued (no longer produced). The documentation here is provided as a reference for existing users.
+    **Product Discontinuation Notice**
+
+    STEMlab 125-14 Ext. Clk. was discontinued in Q2 2026 (is no longer produced). However, it remains available through the customization service until STEMlab 125-14 is 
+    discontinued at the end of Q4 2026. The documentation here is provided as a reference for existing users.
 
 |
 

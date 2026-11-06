@@ -8,6 +8,12 @@ STEMlab 125-14
     :width: 500
     :align: center
 
+.. warning::
+
+    **Product Discontinuation Notice**
+
+    STEMlab 125-14 is planned for discontinuation at the end of Q4 2026.
+
 |
 
 .. contents:: Table of Contents
@@ -233,11 +239,15 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 30                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, small fan      |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    | Automatic Shutdown Temperature     | 85                                 | ℃         | Internally monitored             |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Dimensions**                                                                                                         |
@@ -245,6 +255,12 @@ Technical Specifications
     | Size (L x W x H)                   | 106.8 x 60.0 x 21.1                | mm        | See `Schematics`_ for details    |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
 
+
+.. seealso::
+
+    For more detailed information, please refer to the |Original Gen comparison table|.
+
+|
 
 
 .. warning::
@@ -256,9 +272,10 @@ Technical Specifications
     
     Exceeding these values may damage the board permanently.
 
-.. seealso::
+.. note::
 
-    For more detailed information, please refer to the |Original Gen comparison table|.
+    Removing the heatsink can reduce the effectiveness of the thermal heat paste, leading to higher board temperatures.
+
 
 |
 
@@ -267,7 +284,10 @@ Performance & Measurements
     
 You can find the measurements of the fast analog frontend here:
 
-* :ref:`Original Gen - STEMlab 125-14 <measurements_orig_gen>`.
+.. toctree::
+    :maxdepth: 1
+
+    ../measurements/STEMlab-125-14/index
 
 |
 

@@ -4,7 +4,8 @@
 Applications
 ############
 
-All Red Pitaya applications are web-based and don't require the installation of any native software. Users can access them via a browser using their smartphone, tablet or a PC running any popular operating system (macOS, Linux, Windows, Android, and iOS). All official applications are accessible through the :ref:`main web interface <quickstart_connect>`.
+All Red Pitaya applications are web-based and don't require the installation of any native software. Users can access them via a browser using their smartphone, tablet or 
+a PC running any popular operating system (macOS, Linux, Windows, Android, and iOS). All official applications are accessible through the :ref:`main web interface <quickstart_connect>`.
 
 This section provides comprehensive guides for all available Red Pitaya applications:
 
