@@ -10,8 +10,9 @@ All notable changes to this project will be documented in this file.
 
 **Major updates:**
 
-- Added a migration guide for moving from Original Gen boards to Gen 2, covering hardware differences, pinout and voltage changes, connectors, synchronisation, and a migration checklist.
-- Added a Docker-based build guide for Vivado/Vitis 2025.1 and Red Pitaya development, plus a guide to configuring programs, services, and FPGA images at boot.
+- Added a migration guide for moving from Original Gen boards to Gen 2, covering hardware differences, pinout and voltage changes, connectors, synchronisation, and a migration checklist to help users migrate to Gen 2 boards.
+- Added a Docker-based build guide for Vivado/Vitis 2025.1 and Red Pitaya development. Covers building your own versions of Red Pitaya OS and ecosystem on your computer.
+- Added a guide to configuring programs, services, and FPGA images at boot.
 - Added a C++ and Python calibration API reference and substantially expanded the Logic Analyzer API documentation.
 - Reworked the introduction to data acquisition and generation, with guidance for choosing between applications, SCPI, APIs, Deep Memory Mode, streaming, and custom FPGA designs.
 - Added hardware certification information and Gen 2 enclosure documentation, including case images and SIGNALlab 250-12 enclosure drawings and a 3D model.
@@ -21,9 +22,10 @@ All notable changes to this project will be documented in this file.
 - Expanded Original Gen and Gen 2 board specifications, connector details, safety information, temperature limits, measurements, and known hardware issues.
 - Fixed incorrect information for GPIOs on PRO Z7020 Gen 2 boards.
 - Updated System Info and settings documentation and screenshots, including the warning shown for invalid or incompatible EEPROM calibration data and the use of default calibration values.
-- Documented HTTPS support in the network manager and clarified the Red LED control issue on PRO Gen 2 boards when an E3 board is connected.
+- Documented HTTPS support in the network manager
+- Clarified the Red LED control issue on PRO Gen 2 boards when an E3 board is connected.
 - Updated SCPI and API references, including acquisition, generation, Deep Memory Mode, and command-list details; refreshed FPGA boot/build instructions and application examples.
-- Improved quick-start instructions for SD cards and aluminum cases, and corrected links, wording, and references across the documentation.
+- Improved quick-start instructions for SD cards and aluminum cases, and corrected links, wording, and references across the documentation. Removed 1.04 images from the docs - they are outdated at this point and this makes it easier to keep track for users.
 
 **Future update:**
 
