@@ -61,7 +61,7 @@ For all other Red Pitaya OS versions, go to the link above and select the approp
 
 .. |all_os_scpi_commands| replace:: :rp-github:`Red Pitaya GitHub - scpi-server/src/scpi-commands.cpp <RedPitaya/blob/master/scpi-server/src/scpi-commands.cpp>`
 
-.. |all_os_scpi_commands_2.00-15| replace:: :rp-github:`Red Pitaya GitHub 2023.2- scpi-server/src/scpi-commands.c <RedPitaya/blob/Release-2023.2/scpi-server/src/scpi-commands.c>`
+.. |all_os_scpi_commands_2.00-15| replace:: :rp-github:`Red Pitaya GitHub 2023.1- scpi-server/src/scpi-commands.c <RedPitaya/blob/Release-2023.1/scpi-server/src/scpi-commands.c>`
 
 |
 
