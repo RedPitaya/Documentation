@@ -259,21 +259,21 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 25                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, small fan      |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    | Automatic Shutdown Temperature     | 77                                 | ℃         |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Dimensions**                                                                                                         |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Size (L x W x H)                   | 106.8 x 60.0 x 17.9                | mm        | See `Schematics`_ for details    |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-
-.. seealso::
-
-    For more detailed information, please refer to the |Gen 2 comparison table|.
 
 .. warning::
 
@@ -283,6 +283,21 @@ Technical Specifications
     * **HV mode:** ±30 V absolute maximum
     
     Exceeding these values may damage the board permanently.
+
+.. seealso::
+
+    For general information on Red Pitaya Gen 2 boards, which includes:
+
+    * Power supply requirements
+    * General hardware requirements
+    * Operating conditions
+    * Heating and cooling requirements
+    * Regulatory information
+    * Environmental specifications
+
+    Please refer to the :ref:`Common hardware specifications (Gen 2) <hw_specs_gen2>` for this information.
+
+    For comparison table of all Red Pitaya Gen 2 boards, please refer to the |Gen 2 comparison table|.
 
 |
 
@@ -360,7 +375,7 @@ Overview
 The STEMlab 125-14 PRO Gen 2 board features the following connectors and interfaces:
 
 * **E1 and E2 connectors:** Primary expansion connectors with digital I/O, analog I/O, and communication interfaces. These connectors allow users to interface with additional hardware, sensors, or peripherals, enhancing the board's capabilities.
-* **E3 connector:** Secondary expansion connector designed for high-speed differential pairs, QSPI/eMMC storage, power management, and watchdog control. This connector is ideal for advanced applications requiring additional storage or specialized interfaces.
+* **E3 connector:** Secondary expansion connector for QSPI/eMMC storage, power management, and watchdog control. High-speed differential pairs are available on the Z7020 Gen 2 variant.
 * **S1 and S2 connectors:** Daisy-chain connectors for synchronizing multiple Red Pitaya boards. These connectors enable clock and trigger synchronization between boards.
 
 |

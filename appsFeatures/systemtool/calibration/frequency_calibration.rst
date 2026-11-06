@@ -57,7 +57,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. figure:: img/Calib_freq_auto_LV_int.png
         :align: center
-        :width: 800
+        :width: 600
 
     * Please select "INTERNAL" if you do not have an external reference generator. Red Pitaya will use OUT1 to generate a 0.9 Volt 1 kHz Square signal.
     * Set the jumpers to the LV position and connect OUT1 to IN1 and IN2 using the SMA cables and the T adapter.
@@ -66,7 +66,7 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. figure:: img/Calib_freq_auto_LV_ext.png
         :align: center
-        :width: 800
+        :width: 600
 
     * Please configure the external reference generator to produce a 1 kHz square signal and input the "reference voltage" (one-way amplitude) of the signal.
     * Set the jumpers to the LV position and connect the output of the external generator to IN1 and IN2 of the Red Pitaya using SMA or BNC cables and the T adapter.
@@ -90,11 +90,11 @@ Please pay attention to the **STATE** column, as clickable buttons which progres
 
     .. figure:: img/Calib_freq_auto_HV_int.png
         :align: center
-        :width: 800
+        :width: 600
 
     .. figure:: img/Calib_freq_auto_HV_ext.png
         :align: center
-        :width: 800
+        :width: 600
 
     * The external reference generator amplitude should be set to at least 10 V (up to ±20 V maximum) for HV calibration.
 

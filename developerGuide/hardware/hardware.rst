@@ -108,7 +108,6 @@ The original generation of Red Pitaya boards.
 
     ORIG_GEN/125-14/top.rst
     ORIG_GEN/125-14_4IN/top.rst
-    ORIG_GEN/125-14_Z7020/top.rst
     ORIG_GEN/122-16/top.rst
     ORIG_GEN/122-16_EXT/top.rst
     ORIG_GEN/250-12/top.rst
@@ -137,22 +136,41 @@ Discontinued boards and extensions are no longer manufactured, but are still sup
 .. toctree::
     :maxdepth: 1
 
+    ORIG_GEN/125-14_Z7020/top.rst
     ORIG_GEN/125-14_EXT/top.rst
     ORIG_GEN/125-14_LN/top.rst
     ORIG_GEN/125-14_MULTI/top.rst
+
+
+End of life
+------------
+
+End of life boards and extensions are no longer manufactured, and are not supported by the current Red Pitaya software.
+The last working software version is listed under each product.
+
+.. toctree::
+    :caption: End of Life Boards
+    :maxdepth: 1
+
     ORIG_GEN/125-10/top.rst
 
+.. toctree::
+    :caption: End of Life Extensions
+    :maxdepth: 1
 
-Obsolete
----------
+    ext_modules/sdr_module/sdr_module.rst
 
-Obsolete boards and extensions are no longer manufactured, and are not supported by the current Red Pitaya software.
-The last working software version is listed under each product.
+|
+
+Migration Guide
+=================
+
+The migration guide provides instructions and information for users transitioning from older generations of Red Pitaya boards to the newer ones.
 
 .. toctree::
     :maxdepth: 1
 
-    ext_modules/sdr_module/sdr_module.rst
+    migration_guide/migration_guide_OG_Gen2.rst
 
 |
 
@@ -203,11 +221,8 @@ Performance & Measurements
 
 Measured performance data for Red Pitaya boards.
 
-.. toctree::
-    :maxdepth: 1
-
-    ORIG_GEN/measurements/STEMlab-125-14/index.rst
-
+* :ref:`Gen 2 measurements - STEMlab 125-14 Gen 2 <measurements_gen2>`
+* :ref:`Original Gen measurements - STEMlab 125-14 <measurements_orig_gen>`
 
 
 Certificates
@@ -218,4 +233,4 @@ Here you can find and download certificates for Red Pitaya products.
 .. toctree::
     :maxdepth: 1
     
-    cets.rst
+    certs.rst

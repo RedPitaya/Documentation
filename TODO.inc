@@ -126,115 +126,33 @@
 
 # HARDWARE
 
-##. Current limits - Need to check the FPGA settings (config file) for E3 diff pair current and voltage limits
+##. Should we add the S1 and S2 clock modification to the docs?
 
-##. Differential pair voltage levels, comment on resistor values for S1 Link and Orient USB-C lines - these also need to be updated.
+##. Add info on connecting Red Pitaya and general information on connecting the board. It needs to include basic info on security (safe use of device)
+    Which power supply to use, conditions of use, symbols explained, etc. A list with safety warnings and instructions.
+
+##. Data line lengths on Red Pitaya boards:
+    Minimum data length is 1.8 mm.
+    Maximum data length is 15.7 mm.
+    Clock data length is 6.6 mm.
+    All mentioned lengths are actually longer for the lengths of the "bond wire" inside the Zynq. 
+    Delta between the longest and shortest data is ~14 mm which results in roughly 100 ps. The clock period is 8 ns. 100ps dispersion of the data lines compared to 8ns is a 
+    little more than 1% which in my opinion is still perfect. We consciously decided for non tuned lengths as this requires a lot of space which we anyway lack on this design.
+
+##. STEMlab 125-14 HV gain input amplitude problems???
+
 
 
 
 # SOFTWARE
 
-##.  UART supports 115200 or higher and CS8. Other settings need a rebuild of the server.
-
-    g_settings.c_cflag &= ~CSIZE;
-    g_settings.c_cflag |= CS8 | CLOCAL | CREAD;             /* 8 bits /
-    g_settings.c_cflag &= ~CRTSCTS;                         // Disable flow control
-    g_settings.c_iflag &= ~(IXON | IXOFF | IXANY);          // Disable XON/XOFF flow control both input & output
-    g_settings.c_iflag &= ~(ICANON | ECHO | ECHOE | ISIG);  // Non Cannonical mode
-    g_settings.c_iflag &= ~ICRNL;
-    g_settings.c_oflag &= ~OPOST; / raw output */
-
-    g_settings.c_lflag = 0;     //  enable raw input instead of canonical,
-    g_settings.c_cc[VMIN] = 1;  // Read at least 1 character
-    cfsetspeed(&g_settings, UART_RATE);
-    tcsetattr(uart_fd, TCSANOW, &g_settings);
-
-    Rebuilding the server - You need to change the settings in main.cpp and recompile using "make scpi". But it's best not to mess around with it unnecessarily. Not many people really need this functionality, and it's not guaranteed to work reliably. Plus, not all modes are supported by UART.
-
-##. Starting and logging measurements:
-
-    https://forum.redpitaya.com/viewtopic.php?t=27488&sid=2cf977ce7f7246648d40434b21271377
-
-##. Are returned values calibrated? How to return uncalibrated values?
-
-    For VOLTS there are two modes:
-
-    If calibration was performed on a FPGA, version 6 parameters; the returned voltage data is always calibrated.
-    If other calibration versions are used, you can return the values to volts without calibration.
-
-    For RAW values:
-
-    Same for RAW. For version 6, uncalibrated data can be obtained only by disabling calibration in the EEPROM.
-
 
 
 # SCPI & API
 
-##. SCPI BIN mode improvements.
-
-    These commands set the data transfer mode in BIN mode. They do not affect the ASCI mode.
-    Now the byte order is big-endian, it also remains the default.
-    I added little-endian support, the same as used on RP.
-    This allowed us to get rid of data conversion.
-
-    I also worked out the logic of working with memory when transferring data from RP to the client.
-    The changes affected both the normal mode and AXI.
-    So both modes need to be checked.
-
-    In normal mode, byte order affects BIN - (RAW/VOLT)
-
-    There are some nuances in AXI mode
-    There can be 6 types of flag combinations in AXI:
-    - (RAW/BIN/BEND) - The data is not copied from memory, but requires transformation.
-    - (RAW/BIN/LEND) - Data is not copied from memory, sent as is. (maximum data transfer rate).
-    - (RAW/ASCII) - The data is not copied from memory, but requires transformation. (Excessive amount of data as the data is in text format)
-    - (VOLT/BIN/BEND) - Data is copied from memory and requires transformation.
-    - (VOLT/BIN/LEND) - Data is copied from memory. No conversion is required, but requires enough RAM for an intermediate buffer.
-    - (VOLT/ASCII) - Data is copied and formatted. (The slowest data transfer method)
-
-    We have an example that works in any BIN mode, but it can be modified.
-    https://github.com/RedPitaya/RedPitaya-Examples/blob/dev/python/acquire_trigger_posedge_axi_bigbuffer.py
-    This example shows that transferring a large amount of data requires an interactive data request, since the intermediate buffer on SCPI can be limited by the size of free RAM memory.
-    After optimization in RAW mode, you can request the entire buffer. For example, you can request 128MB of data at once.
-    For VOLT mode, we still have to request data in portions.
-
-    I also increased the size of the data to read.
-    If you read 4096 bytes, the transfer is quite slow.
-    https://github.com/RedPitaya/RedPitaya-Examples/commit/95bec06cb4c42e522e696cdd7aa44f2079c45c5b
-
-    On my side I checked the tests. For me, transferring 32MB of data in LEND/RAW/BIN mode took 1-2 seconds.
-
-##. Add the following explanation to the generation intro:
-
-    I have found the reason behind the original problem. It is quite simple actually (see the attached picture for the explanation). Here is the description:
-
-    Since we are generating a continuous signal, the signal generates continuously regardless of the state of the output (after the trigger it does not matter whether the output is on or off).
-    Output turned ON/OFF affects the signal on the actual OUT1 port, but not the internal signal generation in the FPGA. Turning the output OFF after generating the signal will cut the signal on the actual output, but will not stop the internal generation. Think of it as switching the output to High-Z mode. The FPGA will continue to generate the signal.
-    Generator reset will clear all settings and stop the generation of the continuous signal, which explains why it solves the problem here and produces the expected output.
-    Without generator reset, the sequence is as follows:
-    First iteration, we setup the generator and trigger the generation. Since there was no previous signal generated, the acquired data is as expected.
-    Second and further iterations, we turn off the output (internally, the FPGA still generates the signal) and we reconfigure the generator to exactly the same specs. There is another important aspect here corelated to triggering itself, which I will explain later on.
-    Then we start the acquisition and specify the trigger as "immediate acquisition trigger".
-    Since the output is turned off at this point, the acquisition starts capturing data without the output signal present, resulting in a short zero data line in the results (see the trig_now picture).
-    Then the output is turned ON, resulting in the output immediately jumping to whatever state it was in (not necessarily starting at 0).
-    The generation continuous for a short time before the Generator trigger command arrives (non-zero network and processing delay). The generator trigger does the following:
-    Immediately resets the internal waveform generation counter to 0 - starting the generation from 0.
-    Applies any configured settings to the waveform (change in amplitude, frequency waveform, etc.)
-    Since the settings are the same, the trigger will only reset the read pointer of the arbitrary waveform generation to the start of the internally saved waveform (since this is a sine waveform, the first sample is always 0), resulting in the jump in the waveform.
-    This can clearly be seen by setting the trigger level to a non-zero value and setting the acquisition trigger to CH1_PE. This actually shows that the acquisition triggers before the actual jump in value. So, this is not a glitch in acquisition or data collection, but rather a reset of the generation.
-    With generator reset, the FPGA resets the generation completely in between iterations, so the generation starts with the trigger and not with turning on the output on the second and later generations.
-    This behaviour is visible since we are generating a continuous waveform and would not be so obvious with a burst waveform generation.
-
-
-    A few other important but easily missed things that can be relevant:
-
-    SOUR:TRig:INT command will reset the generated waveform to the start and clear the generator read counter (resets the FPGA generation), while SOUR:TRig:INT:ONLY will apply the generator trigger, but will NOT reset the generator read counter, resulting in a smooth transition between different settings (for example changing frequency of the generated signal on the fly)
-
 ##.  Simple lessons on Data acquisition and generation - C++ & Python API commands.
 
 ##. Move the code examples to GitHub and only link them in the documentation - much easier maintenance.
-
-##. New SCPI server settings. Connecting to Arduino (UART, WiFi, etc.). Create block schemes, etc. Describe the new functionality.
 
 ##. Command table cleanup and per-command detail sections.
 
@@ -278,41 +196,7 @@
     This allows for more efficient data acquisition, as the CPU can perform other tasks while waiting for the trigger condition to be met. The functions block the thread execution until the interrupt condition is met
     or when the timeout is reached. While not directly allowing for non-blocking acquisition, they can be used in a separate thread to achieve a similar effect.
 
-##. Add Logic Analyzer commands to the documentation. The base is there, but most commands are missing.
-
 ##. Add calibration commands to the documentation (C++ and Python API).
-
-##. Add link to system info change of DMM memory to the DMM docs (changing reserved memory)
-
-##. DMG - For one-pack mode, the data-pack must be at least twice the size of the number of samples in the generated waveform otherwise the waveform will not be generated correctly.
-          The waveform must still fit inside the DDR memory.
-
-        To avoid problems with flat regions between generated waveforms (very small buffer), increase the buffer size to 128-256 kB. One-pack mode eliminates unnecessary data transfer over the network, but the logic of two buffers still remains. Essentially, after the first buffer is generated, we swap the address for the second buffer with the first. Due to the slow speed of swapping buffers, we experience some delay in signal generation.
-        To avoid this delay, the buffer needs to be large enough. Alternatively, the FPGA can be modified to allow the one-pack mode to operate inside the FPGA itself (independent of RAM)
-
-        When streaming data in 8-bit mode, the data only has 256 possible values, which can lead to flat regions in the generated wavefrom (conversion from float to int8). Especially if the waveform itself is very long (for example a single sine wave in a 1 MSample buffer). When generating such a waveform, 
-        it will likely have a small flat zero region in the middle of the sine wave.
-
-##. DMA - trigger delay: It works the same as in normal mode. The buffer is circular. Data is written in a loop. As soon as a trigger occurs, the number of samples after the trigger specified in the delay is written.
-
-    We get a pointer to the trigger sample.
-
-    https://github.com/RedPitaya/RedPitaya-Examples/blob/main/C/axi.cpp#L98
-
-    There is also a function
-    /**
-    Returns current position of AXI ADC write pointer.
-    @param channel channel index
-    @param pos Write pointer position
-    @return If the function is successful, the return value is RP_OK.
-    If the function is unsuccessful, the return value is any of RP_E* values ​​that indicate an error.
-    /
-    int rp_AcqAxiGetWritePointer(rp_channel_t channel, uint32_t pos);
-    The difference between them should be equal to trigger delay
-
-
-    Use the write pointer instead of the trigger pointer when looking to return data in the correct chronological order when trig_dly != samples_per_channel.
-
 
 
 
@@ -331,11 +215,15 @@
 
 ##. SA - revise the measurements for SA for different boards
 
+##. Info button - Calibration now displays an error if the data in the EEPROM is corrupted or uses an older incompatible format (info button). The default calibration values are used in such a case.
+
+##. Network manager - add HTTPS info
+
+##. Vigo Photonics - describe the application and the functionality
+
 
 
 # QUICKSTART
-
-##. Alucase Gen 2 update - add info on backdrilling the Gen 2 alu case to get access to different parts of the Red Pitaya board (for example, DIN holes, etc.). Pictures!
 
 
 

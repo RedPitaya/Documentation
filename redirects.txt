@@ -86,6 +86,8 @@ developerGuide/hardware/GEN2/hw_specs/extent developerGuide/hardware/GEN2/hw_spe
 developerGuide/hardware/ext_modules/click_shield developerGuide/hardware/ext_modules/click_shield/click_shield
 developerGuide/hardware/ext_modules developerGuide/hardware/hardware
 
+developerGuide/hardware/cets developerGuide/hardware/certs
+
 
 ## FPGA
 # FPGA documentation moved from software/build to its own section

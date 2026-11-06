@@ -8,9 +8,12 @@ STEMlab 125-14 Z7020 LN (Discontinued)
     :width: 500
     :align: center
 
-.. note::
+.. warning::
 
-    STEMlab 125-14 Z7020 LN is discontinued (no longer produced). The documentation here is provided as a reference for existing users.
+    **Product Discontinuation Notice**
+
+    STEMlab 125-14 Z7020 LN was discontinued in Q2 2026 (is no longer produced). However, it remains available through the customization service until STEMlab 125-14 is 
+    discontinued at the end of Q4 2026. The documentation here is provided as a reference for existing users.
 
 |
 
@@ -254,17 +257,27 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 30                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, small fan      |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    | Automatic Shutdown Temperature     | 85                                 | ℃         | Internally monitored             |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Dimensions**                                                                                                         |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Size (L x W x H)                   | 106.8 x 60.0 x 21.1                | mm        | See `Schematics`_ for details    |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
+
+.. seealso::
+
+    For more detailed information, please refer to the |Original Gen comparison table|.
+
+|
 
 .. warning::
 
@@ -275,9 +288,9 @@ Technical Specifications
     
     Exceeding these values may damage the board permanently.
 
-.. seealso::
+.. note::
 
-    For more detailed information, please refer to the |Original Gen comparison table|.
+    Removing the heatsink can reduce the effectiveness of the thermal heat paste, leading to higher board temperatures.
 
 |
 

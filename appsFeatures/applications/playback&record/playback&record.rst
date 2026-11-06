@@ -8,6 +8,8 @@ RF Signal Record and Playback script captures RF signal pulses from Red Pitaya's
 
 Once installed, the application is set to start automatically at boot. The application is controlled through the configuration file located in the */opt/redpitaya/bin/* directory.
 
+For a broader guide to boot-time configuration, including custom Python/C++ programs and FPGA images, see :ref:`Autostart and Boot Configuration <software_autostart>`.
+
 
 How it works
 ============

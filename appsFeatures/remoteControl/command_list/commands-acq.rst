@@ -15,8 +15,9 @@ Acquisition
 Functionality overview
 =======================
 
-Acquisition commands control Red Pitaya's fast analog inputs (ADCs) for high-speed signal capture. These commands provide precise triggering, decimation control, and buffer management for capturing signals
-from DC to 50 MHz.
+Acquisition commands control Red Pitaya's fast analog inputs (ADCs) for high-speed signal capture. These commands provide precise triggering, decimation control,
+and buffer management for capturing signals from DC to 50 MHz. SCPI data queries can return raw ADC counts or calibrated voltages in ASCII or binary format; 
+binary byte order can be selected for the client.
 
 Key acquisition concepts:
 
@@ -337,7 +338,8 @@ Acquisition settings
 | | ``ACQ:DATA:FORMAT?`` > ``ASCII``                  | | Python: - (N/A)                                                                              | |                                                                             |                    |
 | |                                                   | |                                                                                              | |                                                                             |                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------+
-| | ``ACQ:DATA:BYTE:ORDER <order>``                   | | C++: - (N/A)                                                                                 | | Sets the byte order that the server returns when queried in BIN mode.       | 2.07-43 and up     |
+| | ``ACQ:DATA:BYTE:ORDER <order>``                   | | C++: - (N/A)                                                                                 | | Sets byte order in ``BIN`` mode; ``ASCII`` is unaffected.                   | 2.07-43 and up     |
+| |                                                   | |                                                                                              | | ``BEND`` is the default; use ``LEND`` for best performance.                 |                    |
 | | Example:                                          | |                                                                                              | | For maximum performance, set the mode to LEND                               |                    |
 | | ``ACQ:DATA:BYTE:ORDER LEND``                      | | Python: - (N/A)                                                                              | | Only for remote SCPI control.                                               |                    |
 | |                                                   | |                                                                                              | |                                                                             |                    |
@@ -672,8 +674,18 @@ even though it is displayed to happen at approximately 8192nd sample in the acqu
 
 
 
+.. _acq_data_read:
+
 Data read
 -----------
+
+Acquired samples can be returned as voltage values (``VOLTS``) or raw ADC counts (``RAW``). Whether calibration is applied depends on the calibration parameters used by the FPGA:
+
+* With version 6 calibration parameters, values returned in ``VOLTS`` are always calibrated.
+* With older calibration versions, the API can return voltage values without calibration.
+* For ``RAW`` data with version 6 parameters, uncalibrated values can be obtained only by disabling calibration in the EEPROM.
+
+The data-read table below lists the API functions for each format and indicates when calibration is applied.
 
 **Parameter options:**
 

@@ -93,6 +93,7 @@ EXTERNAL_LINKS = {
     'pyrpl': 'https://pyrpl.readthedocs.io/en/latest/',
     'marcelo_lock_in': 'https://marceluda.github.io/rp_lock-in_pid/',
     'jupyter_cadquery': 'https://github.com/bernhard-42/jupyter-cadquery',
+    'rp_labview_driver': 'https://gitlab.com/framatome-atms-community/red-pitaya-labview-driver',
     
     # Media & community
     'audacity': 'https://www.audacityteam.org',

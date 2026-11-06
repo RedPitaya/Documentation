@@ -191,7 +191,8 @@ Technical Specifications
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Digital GPIOs                      | 22                                 | \-        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Digital voltage levels             | 3.3                                | V         |                                  |
+    | Digital voltage levels             | | 3.3                              | V         | | DIO0-7 are 3V3                 |
+    |                                    | | 2.5                              |           | | DIO8-10 are 2V5 [#f14]_        |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | GPIO time resolution               | 8                                  | ns        | Core clock frequency             |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -262,11 +263,15 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 25                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, small fan      |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    | Automatic Shutdown Temperature     | 77                                 | ℃         |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Dimensions**                                                                                                         |
@@ -285,7 +290,18 @@ Technical Specifications
 
 .. seealso::
 
-    For more detailed information, please refer to the |Gen 2 comparison table|.
+    For general information on Red Pitaya Gen 2 boards, which includes:
+
+    * Power supply requirements
+    * General hardware requirements
+    * Operating conditions
+    * Heating and cooling requirements
+    * Regulatory information
+    * Environmental specifications
+
+    Please refer to the :ref:`Common hardware specifications (Gen 2) <hw_specs_gen2>` for this information.
+
+    For comparison table of all Red Pitaya Gen 2 boards, please refer to the |Gen 2 comparison table|.
 
 |
 
@@ -401,6 +417,8 @@ Connector Physical Specifications
     * **Tight-fitting counterparts** - use connectors that fit securely to prevent accidental disconnections or damage.
 
 |
+
+.. _Gen2_Bank13_levels:
 
 E1 Connector - Digital I/O & CAN
 ----------------------------------
@@ -560,6 +578,7 @@ Legal & Disclaimers
 .. [#f11] On the S1 connector, the CC1 pin is connected to the Orient LED and to the S1_ORIENT FPGA pin (via resistor divider to reduce the voltage levels to 2V5). CC1 and CC2 pins are connected to an XOR gate which determines the state of the **Link LED**. The output of the XOR gate is also connected to the S1_LINK FPGA pin (via resistor divider to reduce the voltage levels to 2V5).
 .. [#f12] On the S2 connector, the CC1 pin is protected with a Zener diode to 3V3, but is not connected to the FPGA. CC2 pin is not connected.
 .. [#f13] Application specific. The output current is shared between the extension module and the USB devices, and can be higher if other peripheral units are not in use.
+.. [#f14] See :ref:`E1 connector <Gen2_Bank13_levels>` for details on the voltage levels of DIO8 to DIO10.
 
 |
 

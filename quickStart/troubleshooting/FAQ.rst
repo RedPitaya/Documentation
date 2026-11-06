@@ -512,6 +512,12 @@ How can I acquire data with Red Pitaya?
     * :ref:`Introduction to data acquisition and generation with Red Pitaya <intro_gen_acq>`.
 
 
+Are acquired values calibrated, and how can I get uncalibrated data?
+---------------------------------------------------------------------
+
+See :ref:`Calibration of returned acquisition data <acq_data_read>` for how calibration affects values returned in ``VOLTS`` and ``RAW`` formats.
+
+
 How can I generate data with Red Pitaya?
 ------------------------------------------------
 

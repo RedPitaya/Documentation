@@ -262,11 +262,15 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 25                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, small fan      |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    | Automatic Shutdown Temperature     | 80                                 | ℃         |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Dimensions**                                                                                                         |
@@ -286,7 +290,18 @@ Technical Specifications
 
 .. seealso::
 
-    For more detailed information, please refer to the |Gen 2 comparison table|.
+    For general information on Red Pitaya Gen 2 boards, which includes:
+
+    * Power supply requirements
+    * General hardware requirements
+    * Operating conditions
+    * Heating and cooling requirements
+    * Regulatory information
+    * Environmental specifications
+
+    Please refer to the :ref:`Common hardware specifications (Gen 2) <hw_specs_gen2>` for this information.
+
+    For comparison table of all Red Pitaya Gen 2 boards, please refer to the |Gen 2 comparison table|.
 
 |
 

@@ -293,6 +293,8 @@ Running Custom Commands at Boot
 
 The startup script (``/opt/redpitaya/sbin/startup.sh``) can be used to run custom commands at every boot. This is useful for tasks that need to execute after the system starts, but should not be managed as systemd services.
 
+For a decision guide covering startup scripts, systemd services, FPGA images, and application-specific options, see :ref:`Autostart and Boot Configuration <software_autostart>`.
+
 .. note::
 
     **Use `enable`/`disable` for permanent service configuration**

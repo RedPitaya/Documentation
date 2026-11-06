@@ -15,6 +15,12 @@ All DIOx_y pins are LVCMOS33, with the following absolute maximum ratings:
 * Max. voltage: 3.3 V + 0.55 V
 * Drive strength: < 8 mA
 
+.. note::
+
+    Refer to the Zynq-7000 SoC data sheet for the applicable GPIO voltage limits and output-drive specifications. 
+    Do not connect GPIOs directly to loads that draw substantial current, or allow external circuitry to drive a 
+    GPIO beyond its specified voltage limits. Use an external driver or current-limiting circuit where needed.
+
 **E1 Pinout:**
 
 +-----+-----------------------+-------------------+-----------------------------------------------+----------------+

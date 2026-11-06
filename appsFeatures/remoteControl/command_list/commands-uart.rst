@@ -15,8 +15,26 @@ Important notes
 ----------------
 
 * Always connect External Common Mode (GND) pin in addition to RX and TX for reliable communication.
-* Default settings: 9600 baud, 8 data bits, no parity, 1 stop bit.
-* Supported baud rates from 1200 to 4,000,000.
+* Default API settings: 9600 baud, 8 data bits, no parity, 1 stop bit.
+* API-supported baud rates: 1200 to 4,000,000.
+
+.. note::
+
+    **SCPI command limitation:** UART settings cannot be dynamically reconfigured through the SCPI command interface. The standard SCPI server build supports baud rates of 115200 or higher and uses ``CS8`` (8 data bits). To use other baud rates or data sizes, such as ``CS6`` or ``CS7``, modify the UART ``termios`` settings in the SCPI server's ``main.cpp`` and rebuild it with ``make scpi``. See the :ref:`ecosystem build instructions <SW_build_ecosystem>`. These changes are not guaranteed to work in every SCPI mode; make them only when necessary.
+
+    For example, to configure seven data bits, the UART initialization code can use:
+
+    .. code-block:: cpp
+
+        g_settings.c_cflag &= ~CSIZE;
+        g_settings.c_cflag |= CS7 | CLOCAL | CREAD;
+        g_settings.c_cflag &= ~CRTSCTS;
+        g_settings.c_iflag &= ~(IXON | IXOFF | IXANY | ICRNL);
+        g_settings.c_oflag &= ~OPOST;
+        g_settings.c_lflag = 0;
+        g_settings.c_cc[VMIN] = 1;
+        cfsetspeed(&g_settings, UART_RATE);
+        tcsetattr(uart_fd, TCSANOW, &g_settings);
 
 
 Code examples

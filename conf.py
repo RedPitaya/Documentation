@@ -148,6 +148,7 @@ rst_epilog = """
 .. |PyRPL| replace:: `PyRPL <{pyrpl}>`__
 .. |Marcelo-Lock-in| replace:: `Lock-in+PID <{marcelo_lock_in}>`__
 .. |jupyter-cadquery| replace:: `Jupyter CadQuery <{jupyter_cadquery}>`__
+.. |Red-Pitaya-LabVIEW-driver| replace:: `Red Pitaya LabVIEW driver <{rp_labview_driver}>`__
 
 .. Media & Community Tools
 .. |Audacity| replace:: `Audacity <{audacity}>`__

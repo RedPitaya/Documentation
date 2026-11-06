@@ -262,7 +262,11 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, fan            |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
@@ -277,6 +281,8 @@ Technical Specifications
 .. seealso::
 
     For more detailed information, please refer to the |Original Gen comparison table|.
+
+|
 
 .. warning::
 
@@ -321,7 +327,9 @@ Mechanical Specifications & 3D Models
 
 * PDF :download:`3D_SIGNAL_250-12_V1r2.pdf.zip <https://downloads.redpitaya.com/doc/3D_models/3D_SIGNAL_250-12_V1r2.pdf.zip>`
 * STEP :download:`3D_SIGNAL_250-12_V1r2.zip <https://downloads.redpitaya.com/doc/3D_models/3D_SIGNAL_250-12_V1r2.zip>`
-* Hole dimensions :download:`SIGNALlab 250-12 hole dimensions <SIGNALlab_hole_dimensions.pdf>`
+* Board and hole dimensions :download:`SIGNALlab 250-12 board and hole dimensions <SIGNALlab_hole_dimensions.pdf>`
+* Enclosure STEP :download:`SIGNAL_250-12_Enclosure_3Dstep <SIGNALlab_250-12_enclosure_3Dstep.zip>`
+* Enclosure dimensions :download:`SIGNAL_250-12_Enclosure_dimensions <SIGNALlab250-12_enclosure_dimensions.pdf>`
 
 |
 
@@ -689,7 +697,7 @@ Multiple SIGNALlab 250-12 boards can be synchronised by following these three st
 .. tip::
 
     The easiest way to run the PLL synchronisation automatically at startup is to add the C++ or Python API call to the ``startup.sh`` script.
-    See :ref:`Running applications at boot <API_commands>` for details.
+    See :ref:`Autostart and Boot Configuration <software_autostart>` for details.
 
 |
 

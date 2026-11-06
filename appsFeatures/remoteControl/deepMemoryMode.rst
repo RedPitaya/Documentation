@@ -20,8 +20,8 @@ for proper operation of the Linux OS.
 
 .. _deepMemoryAcq:
 
-Deep Memory Acquisition (DMA)
-==============================
+1. Deep Memory Acquisition (DMA)
+=================================
 
 Description
 -----------
@@ -100,6 +100,17 @@ In the example below, the memory region is split between both channels, where 10
 The **Mid Address** in the picture above represents the starting point of the *Channel 2 buffer* inside the reserved DMM region and is set to *ADC_AXI_START + (ADC_AXI_SIZE/2)* (both channels can 
 capture the same amount of data).
 
+**Trigger delay**
+
+The trigger delay works the same as in normal acquisition mode. The buffer is circular and data is written in a loop. After a trigger occurs, the number of samples specified by the delay is written.
+The function ``rp_AcqAxiGetWritePointerAtTrig`` returns a pointer to the trigger sample (see the :rp-github:`axi.cpp example <RedPitaya-Examples/blob/main/API_examples/C%2B%2B/DMM/axi.cpp#L104>`). The current position of
+the AXI ADC write pointer is returned by ``rp_AcqAxiGetWritePointer(channel, pos)``. The difference between the two pointers equals the trigger delay.
+
+.. note::
+
+    When the trigger delay differs from the number of samples per channel (``trig_dly != samples_per_channel``), use the **write pointer** instead of the trigger pointer to read the data in the correct
+    chronological order.
+
 Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGetDataRaw* or *rp_AcqAxiGetDataV* functions by passing the following parameters:
 
     * Channel number.
@@ -112,9 +123,9 @@ Once the acquisition is complete, the data is acquired through the *rp_AcqAxiGet
     Depending on the size of the acquired data and how much DDR memory is reserved for the Deep Memory Acquisition, the data transfer from DDR might take a while.
     Here are a few tips to speed things up:
 
-    * **SCPI commands** - acquire the data in **RAW binary** format (``ACQ:DATA:FORMAT BIN``, ``ACQ:AXI:DATA:UNITS RAW``). With the latest OS versions, we have optimized the SCPI server to transfer 
-      the **RAW binary** data in binary format, which is much faster than transferring it as a string (any other combination - VOTLS, ASCII). This method is still slightly slower than creating a 
-      custom TCP server with optimized commands using the Python or C++ API, but not by much.
+    * **SCPI commands** - for the fastest path, use ``ACQ:DATA:FORMAT BIN``, ``ACQ:DATA:BYTE:ORDER LEND``, and ``ACQ:AXI:DATA:UNITS RAW``. This allows the server to send the captured data 
+      without an intermediate copy or byte-order conversion. Other combinations may require copying, conversion, or text formatting and can use more RAM. See :ref:`SCPI Acquisition <intro_gen_acq>` 
+      for the transfer paths and guidance on requesting large buffers.
     * **Python API**:
 
         * Use the new functions ``rp_AcqAxiGetDataRawNP(channel, pos, np_buffer)`` and ``rp_AcqAxiGetDataVNP(channel, pos, np_buffer)`` that return the data as a Numpy buffer directly.
@@ -130,8 +141,8 @@ Once finished, please do not forget to free the resources and reserved memory lo
 
 .. _deepMemoryGen:
 
-Deep Memory Generation (DMG)
-==============================
+2. Deep Memory Generation (DMG)
+=================================
 
 
 Description
@@ -247,6 +258,23 @@ without increasing the buffer size must **implement interpolation in the FPGA** 
 
     Boards with different core clock frequencies will still generate the samples at the full core clock rate (250 MHz for SIGNALlab 250-12 or 122.88 MHz for SDRlab 122-16).
 
+.. note::
+
+    **One-pack mode buffer size**
+
+    * In one-pack mode, the data pack must be at least **twice the number of samples** in the generated waveform. Otherwise, the waveform will not be generated correctly. The waveform must still fit
+      inside the reserved DDR memory.
+    * One-pack mode avoids unnecessary data transfer over the network, but the two-buffer logic remains: after the first buffer is generated, the addresses of the first and second buffer are swapped.
+      Swapping is slow, which can introduce a delay and result in **flat regions between repeats of the waveform** when the buffer is very small.
+    * To avoid this, increase the buffer size to **128-256 kB**. Alternatively, the FPGA can be modified to run one-pack mode entirely inside the FPGA (independent of RAM).
+
+.. note::
+
+    **8-bit data**
+
+    When streaming data in 8-bit mode, only 256 different values are available (conversion from float to int8). This can result in **flat regions in the generated waveform**, especially if the waveform
+    is very long (for example, a single sine period in a 1 MSample buffer). Such a waveform will likely show a small flat region at zero in the middle of the sine wave.
+
 **True streaming mode**
 
 In true streaming mode the waveform data is sent from the host computer to Red Pitaya as a **sequence of buffers** over the network. The buffer length is specified by the user in the
@@ -272,8 +300,31 @@ For more information on the 62.5 MB/s network throughput limit, see :ref:`Data S
 
 .. _DMM_change_reserved_memory: 
 
-Changing reserved memory
-=========================
+3. Changing reserved memory
+=============================
+
+The reserved memory for the Deep Memory Mode can be changed in two ways:
+
+* **System settings** - For simple adjustments, you can change the reserved memory through the System Information interface in the Red Pitaya web interface.
+* **Device tree file** - For more advanced adjustments, you can modify the reserved memory by editing the device tree file directly, as described in the following steps.
+
+System settings
+---------------
+
+For simple adjustments, changing the reserved memory through the system settings is usually sufficient.
+To change the reserved memory through the :ref:`System Information <system_info>` interface, follow these steps:
+
+#. Open the Red Pitaya web interface.
+#. Open the **System Info** in the top left corner of the web interface.
+#. Navigate to the **System settings** section.
+#. Locate the **Reserved memory size for DMA mode** settings.
+#. Select the reserved memory size from the dropdown menu. The available options are typically 32 MB, 64 MB, 128 MB, and 256 MB. On boards with 1 GB of RAM, 512 MB is also available.
+#. Close the **System settings** section and reboot the Red Pitaya through the **Power settings** in the top right corner of the web interface.
+
+|
+
+Device tree file
+----------------
 
 The default memory region for the Deep Memory Mode is set to 32 MB, which is enough for most simple applications. However, if you need more memory for your application, you can increase 
 the size of the reserved region in the device tree file. The device tree file is located in the **/opt/redpitaya/dts/$(monitor -f)** directory. The device tree file is a binary file that 
@@ -350,15 +401,15 @@ and size in bytes. Here is an example of the command and the output:
 
 |
 
-API functions
-===============
+4. API functions
+=================
 
 Check the :ref:`DMA and DMG sections under the commands' list <commands_dmm>`.
 
 |
 
-API Code Examples
-===================
+5. API Code Examples
+======================
 
 * :ref:`DMA and DMG API/SCPI/Python/C++ code examples <examples_dmm>`.
 * :ref:`Streaming command line client examples (ADC) <stream_adc_cli_example>` and :ref:`(DAC) <stream_dac_cli_example>` — demonstrates one buffer mode and true streaming mode triggered 

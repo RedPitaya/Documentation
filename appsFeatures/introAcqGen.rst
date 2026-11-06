@@ -3,46 +3,50 @@
 Introduction to data acquisition and generation with Red Pitaya
 *******************************************************************
 
-In this section we will discuss all the options available for generating and acquiring data with Red Pitaya, from the simplest to the most advanced. 
-We will also discuss the limitations of each mode and possible implementation issues.
+Red Pitaya can generate signals on its analog outputs and acquire signals on its analog inputs using web applications, remote commands, or programs 
+running on the board. This introduction explains how to choose an approach, configure and trigger a capture or output, and find the detailed command 
+references and examples. Available channels, rates, memory sizes, trigger sources, and features depend on the board model, FPGA image, and OS version; 
+check the relevant hardware and command references before relying on a specific limit.
 
 .. note::
 
-    Some boards like :ref:`SDRlab 122-16 <top_122_16>` have AC coupling on inputs and outputs, which may limit the available acquisition and generation frequency range.
+    Some boards like :ref:`SDRlab 122-16 <top_122_16>` have AC coupling on inputs and outputs, which may limit the available acquisition and generation 
+    frequency range.
 
-Ordered from simplest to most complex:
+Choose the method that best fits the task:
 
-* `Oscilloscope and other applications`_.
-* `SCPI commands`_.
-* `API commands (C++, Python)`_.
-* `Deep Memory Acquisition (DMA)`_.
-* `Streaming application`_.
-* `Custom acquisition and generation (FPGA)`_.
+* Use `Oscilloscope and other applications`_ to interactively view signals and make measurements.
+* Use `SCPI commands`_ to control the board remotely from a host program, for example MATLAB, Python, or LabVIEW.
+* Use `API commands (C++, Python)`_ to write programs that run on the board and need direct access to its APIs or operating system.
+* Use `Deep Memory Mode (DMM)`_ when a larger buffer is needed for generating or acquiring data.
+* Use the `Streaming application`_ for continuous data transfer to a computer or storage; its supported rates and trigger capabilities differ from triggered acquisition.
+* Use `Custom acquisition and generation (FPGA)`_ when the existing interfaces do not meet the timing or functionality requirements.
 
+|
 
 Oscilloscope and other applications
 ======================================
 
-The easiest way to acquire data is to use the pre-built applications such as oscilloscope, spectrum analyser, bode analyser, etc. that are accessible 
-through the web interface. Use this option if you want to use Red Pitaya as a software-defined instrument and rarely need to download data to your 
-computer and process it (usually screenshots and CSV data tables are sufficient).
+The easiest way to acquire or generate signals is to use a pre-built application, such as the oscilloscope, spectrum analyser, or Bode analyser, 
+available through the web interface. This approach is useful for interactive measurement and setup; application features and export options vary.
 
-Data from each channel is captured in a 16384 sample buffer, processed and displayed in the web interface. The data can currently only be extracted 
-from the application at the user's request. Remote data acquisition by an application other than :ref:`Data stream control <streaming_top>` is not currently available.
+Applications acquire data into buffers, process it, and display the results. When supported by the application, data can be exported or saved on 
+request. For automated remote acquisition, use SCPI, an API, or the :ref:`Data stream control application <streaming_top>`.
 
-The same applies to data generation options - applications such as oscilloscope and spectrum analyzer also have signal generator capabilities so 
-that both inputs and outputs can be used simultaneously. The signal generator can generate a predefined waveform, such as sine, square, saw up, 
-saw down, etc. or act as an |wiki-arbitrary-waveform|. The signal generator 
-includes *burst* and *sweep* generation capabilities.
+Some applications also control the signal generator, allowing inputs and outputs to be used together. Depending on the application and board, the 
+generator may provide predefined waveforms, |wiki-arbitrary-waveform| generation, bursts, or sweeps.
 
-To use the AWG functionality, a 16384 sample long waveform representing one period of a custom signal is uploaded via the 
-:ref:`ARB waveform manager application <arb_manager_app>` in CSV format. The uploaded custom waveform can be selected from the *Waveform Type* dropdown menu. 
-There are a few things to keep in mind when creating a custom waveform. Read more about this in the `SCPI commands`_ section.
+Where supported, the AWG functionality lets you upload a custom waveform using the :ref:`ARB waveform manager application <arb_manager_app>` 
+and select it from the *Waveform Type* menu. Waveform length, amplitude limits, and upload format depend on the application and board. See 
+the `SCPI commands`_ section and the application documentation for details. Generally, the uploaded waveform will be used as-is by the AWG, 
+the amplitude will be normalised to fit within the allowed output range.
 
 For more information on the applications and how they work, click here:
 
 * :ref:`Red Pitaya applications <all_apps>`
 * Application source code is available on our :rp-github:`GitHub <RedPitaya/tree/master/apps-tools>`.
+
+|
 
 Running multiple web applications simultaneously
 ---------------------------------------------------
@@ -53,15 +57,17 @@ Running multiple web applications simultaneously
     Each web module runs in *exclusive mode* to prevent FPGA conflicts, so launching a second application may cause conflicts in data 
     acquisition and generation leading to undefined behaviour.
 
-An exception is running one of the web applications which uses the v0.94 FPGA image (like **Oscilloscope**) and **JupyterLab** simultaneously, which is possible with some precautions:
+An exception is running one of the web applications which uses the v0.94 FPGA image (like **Oscilloscope**) and **JupyterLab** simultaneously, 
+which is possible with some precautions:
 
 -   The JupyterLab code must **not** interfere with the oscilloscope (e.g. do not set triggers, decimation, or channel settings that 
-    conflict with the oscilloscope).
+    conflict with the oscilloscope). Refrain from using the same functionality in both applications simultaneously.
 -   The JupyterLab code must **not** reboot the FPGA — doing so will most likely freeze the board.
 -   Use :code:`rp.rp_InitReset(False)` in the JupyterLab initialisation code instead of the standard init call. This function 
     initialises memory access **without** resetting the FPGA settings, allowing both applications to coexist.
 
-It is also possible to execute API code from an SSH console simultaneously with the oscilloscope (or another web application), with the same precautions as above.
+It is also possible to execute API code from an SSH console simultaneously with the oscilloscope (or another web application), with the same 
+precautions as above.
 
 |
 
@@ -75,50 +81,77 @@ they are interpreted and an appropriate C++ API function is executed in the back
 
 .. note::
 
-    **Never** use the oscilloscope or other web applications while the SCPI server is running. This may cause unpredictable behaviour of the SCPI commands.
+    **Never** use the oscilloscope or other web applications while the SCPI server is running. This may cause unpredictable behaviour of the 
+    SCPI commands. In the 3.00 or later versions of the OS, the SCPI server cannot be exited unless stopped, thus preventing accidental conflicts 
+    with other applications that access the same hardware resources.
 
+|
 
 SCPI Acquisition
 -------------------
 
-For proper data acquisition using SCPI commands, a trigger condition must be specified, otherwise the data returned may be invalid or corrupted, 
-as the FPGA can acquire data much faster than the Linux operating system can read it from the FPGA registers.
+Acquisition records samples from the analog inputs. A trigger condition determines when a capture is considered to start or where an event lies 
+within the captured data. Choose a trigger source and condition appropriate for the signal; if the capture is read before it is complete, or the 
+trigger is not configured as intended, the returned data may not contain the event of interest. Trigger choices and timing depend on the board 
+and mode.
 
-After the capture is started and the first trigger condition is met, 16384 samples are captured on each of the Red Pitaya input channels and 
-stored in a **circular memory buffer**. The **circular memory buffer** stores 16384 samples. The trigger position is at a random sample within 
-the **circular memory buffer**:
+In the standard SCPI acquisition mode described here, samples are continuously written to a finite **circular memory buffer**. On supported standard 
+configurations this buffer contains 16384 samples per channel; buffer size and behavior may vary by model or acquisition mode. After a trigger, the 
+captured data is presented as a data buffer, with its position relative to the trigger determined by the configured delay. The trigger can occur at 
+any position in the circular buffer:
 
 .. figure:: img/Circ_mem_buff.png
     :width: 600
     :align: center
 
-The **circular memory buffer** is then converted into a 16384 sample long **data buffer** with the trigger position in the middle of the buffer 
-(at the position of the 8192nd sample). It is important to distinguish between the **circular memory buffer** and the **data buffer**. Most of 
-the SCPI commands refer to the **data buffer** and its position, but there are commands that refer to the position within the **circular memory buffer**. 
-The data pointer commands always refer to the position of the **circular memory buffer**.
+In the standard configuration, the buffer is arranged as a 16384-sample **data buffer** with the trigger at its midpoint (sample 8191 when counting 
+from zero). It is important to distinguish between the circular memory buffer and the data buffer: most data queries refer to the arranged data 
+buffer, while pointer queries and some data queries refer to positions in the circular buffer. Check each command description to confirm which 
+buffer and position convention it uses.
 
 .. note::
 
     **Circular memory buffer != Data buffer**
 
-    The trigger position inside the **circular memory buffer** depends on the start of the acquisition and can be considered random, while 
-    the trigger position inside the **data buffer** is fixed to the 8192nd sample. The **circular memory buffer** is generally not visible 
-    to the user. The **data buffer** is what the user gets when they request data.
+    The trigger position inside the **circular memory buffer** depends on when the trigger occurs. In the standard configuration described above, 
+    the trigger position inside the **data buffer** is fixed to sample 8191. The **data buffer** is what the user gets when requesting captured 
+    data.
 
-The **data buffer** is converted to a string and sent to the computer on request. There it can be converted back to a floating-point format. 
-The acquisition must be restarted before further data can be acquired, resulting in a dead time between two successive data acquisitions.
+On request, the data buffer is sent to the computer in the selected SCPI data format. The default ``ASCII`` format returns textual values; 
+``BIN`` returns a binary block and is generally faster, especially for larger transfers. ``ACQ:DATA:UNITS`` selects ``RAW`` ADC counts or 
+``VOLTS``. In ``BIN`` mode, ``ACQ:DATA:BYTE:ORDER`` selects the byte order (Big Endian ``BEND`` or Little Endian ``LEND``); ``BEND`` is the 
+default, while ``LEND`` can avoid byte swapping and provide the best transfer performance. Byte order applies only to ``BIN`` responses; it 
+does not affect ``ASCII``. These settings apply to standard acquisition and Deep Memory Acquisition (DMA), although the amount of memory 
+needed for a response differs.
 
-To set up the trigger correctly, the following settings must be made:
+For standard acquisition, byte order matters for both ``RAW`` and ``VOLTS`` binary responses. For DMA, the transfer path depends on the 
+combination of units, format, and byte order:
 
-* Trigger level.
-* Trigger channel - IN1, IN2 or External. IN3 and IN4 are also available on the 4-input STEMlab 125-14.
-* Trigger delay - see explanation below.
+* ``RAW`` / ``BIN`` / ``BEND``: data is not copied from memory, but is transformed to the requested byte order.
+* ``RAW`` / ``BIN`` / ``LEND``: data is sent as stored, without an extra copy or byte-order conversion; this is the fastest combination.
+* ``RAW`` / ``ASCII``: data is not copied from memory, but is converted to text. Text output is substantially larger than binary data.
+* ``VOLTS`` / ``BIN`` / ``BEND``: data is copied and transformed to the requested byte order.
+* ``VOLTS`` / ``BIN`` / ``LEND``: data is copied to an intermediate buffer, but no byte-order conversion is needed; sufficient free RAM is required.
+* ``VOLTS`` / ``ASCII``: data is copied and formatted as text; this is the slowest combination.
 
-When acquiring data via SCPI commands, the triggering moment is in the middle of the **data buffer** (8192nd sample). This means that half 
-the data is acquired before the trigger (samples between 0 and 8192) and half the data is acquired after the trigger (samples between 8193 
-and 16383). By changing the Trigger Delay parameter, you can either capture more data before the trigger event (by specifying a negative 
-trigger delay, where the maximum is -8192) or capture more data after the trigger event (by specifying a positive trigger delay). The 
-situation is illustrated below:
+Large DMA transfers can be constrained by the SCPI server's intermediate buffers and available RAM. Requesting data in portions is the reliable 
+approach, particularly for ``VOLTS`` or ``ASCII``. With optimized ``RAW`` / ``BIN`` / ``LEND`` transfers, a single request may cover a much larger 
+buffer (for example, 128 MB), subject to the available memory and client/server limits. Avoid very small requests such as 4096 bytes, which add 
+substantial request overhead. A :rp-github:`Python AXI acquisition example <RedPitaya-Examples/blob/dev/python/acquire_trigger_posedge_axi_bigbuffer.py>` 
+demonstrates requesting a large capture. In one test, a 32 MB ``RAW`` / ``BIN`` / ``LEND`` transfer took 1–2 seconds; actual throughput depends on 
+the board, OS, network, and client.
+
+The acquisition must be restarted before further standard data can be acquired, resulting in a dead time between two successive acquisitions.
+
+To configure a triggered capture, select the settings supported by the chosen board and acquisition mode:
+
+* Trigger source and channel (for example, an analog input or a supported external trigger).
+* Trigger condition and level, if applicable.
+* Trigger delay or pre-trigger/post-trigger position, if supported.
+
+In the standard SCPI configuration shown below, the trigger is initially positioned at the midpoint of the data buffer, providing samples both 
+before and after the event. The trigger delay moves this position to capture more pre-trigger or post-trigger data. Exact ranges and conventions 
+depend on the command and acquisition mode.
 
 .. figure:: img/Python_buff.png
     :width: 800
@@ -133,7 +166,9 @@ Data can be acquired in the following ways:
 #. Read a number of samples from start position to end position from the **circular memory buffer** (``ACQ:SOUR<n>:DATA:STArt:End?``).
 #. Read a number of samples from start position out of the **circular memory buffer** (``ACQ:SOUR<n>:DATA:STArt:N?``).
 
-Variable buffer lengths can be achieved by using the `Deep Memory Acquisition (DMA)`_ mode.
+Variable buffer lengths can be achieved by using the `Deep Memory Mode (DMM)`_ mode.
+
+|
 
 General tips for programming with acquisition SCPI commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -152,6 +187,7 @@ General tips for programming with acquisition SCPI commands
 #. To acquire another **data buffer**, restart the acquisition (``ACQ:START``). Note that the acquisition parameters remain the same until Red Pitaya 
    is restarted or the ``ACQ:RST`` command is executed.
 
+|
 
 SCPI generation
 ------------------
@@ -165,31 +201,24 @@ Red Pitaya's SCPI generation commands can be divided into four sections:
 
 The general functionality is similar in all sections, but each section has a few special cases that need to be mentioned.
 
+|
+
 Continuous signal generation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will start with continuous signal generation, which is the easiest to understand. First we define the signal parameters:
 
 * Waveform type (sine, square, triangle, saw up, saw down, etc.).
-* Frequency [Hz] - between 1 Hz and 50 MHz.
-* Amplitude [V] - unidirectional amplitude referenced to GND between +-1 V.
+* Frequency and amplitude within the limits of the selected board and output configuration.
 
-.. note::
+These are common signal parameters; the available ranges and additional settings depend on the board and waveform mode. Consult the signal-generator 
+command reference and hardware documentation for the supported values.
 
-    The limitations are written for STEMlab 125-14 and may be different for other board models.
+Next, choose the generator trigger source. Depending on the board and configuration, generation may be triggered by a software command or by an 
+external signal. The external connector, edge selection, and any input filtering are board-specific; see the hardware documentation and command 
+list.
 
-These are the minimum parameters required to generate a continuous signal. There are other parameters, but for the sake of simplicity 
-we will skip them.
-
-Next we set the generator trigger source, which defines how and from where our generator will be triggered. This can be set to either 
-internal (activated manually with a code command) or external positive or negative edge (triggered by an external trigger signal on pin 
-DIO0_P on the :ref:`E1 extension connector <E1_orig_gen>`).
-
-The external trigger signal passes through a debounce filter when it enters the FPGA, which is set to 500 microseconds by default. This 
-value can be changed using the ``SOUR:TRig:EXT:DEBouncer[:US]`` command.
-
-All that remains is to trigger the signal generation, but this is where the tricky part comes in. Normally you would just trigger the 
-generation and that would be it, but with Red Pitaya we need to enable the output first and then trigger the generation.
+For the SCPI software-trigger example below, enable the output and then issue the generator trigger:
 
 * ``OUTPUT<n>:STATE ON`` - enables the specified output.
 * ``SOUR<n>:TRig:INT`` - triggers the specified output generation.
@@ -199,13 +228,37 @@ To enable both outputs simultaneously, use the following commands.
 * ``OUTPUT:STATE ON`` - enables both outputs.
 * ``SOUR:TRig:INT`` - triggers generation on both outputs.
 
-Of course, the second command is not necessary if the trigger source is configured to the external trigger.
+If an external trigger source is selected, generation starts when that trigger arrives instead of when the software trigger command is sent.
 
 .. note::
 
     **Generation trigger != Acquisition trigger**
     Generation and acquisition triggers are completely different and have separate logic behind them.
 
+Output state and waveform generation are separate controls. Turning an output off stops the signal from reaching the physical output, but it does 
+not stop the FPGA from advancing a continuous waveform. Turning the output back on therefore exposes the waveform at its current phase; it does not 
+restart it from the beginning. The output may resume at a non-zero voltage.
+
+For a repeatable continuous-signal cycle, use ``GEN:RST`` between runs to stop generation and reset generator settings, then configure the required 
+waveform and trigger settings again. Without a reset, the waveform continues internally while the output is disabled. ``SOUR:TRig:INT`` triggers 
+generation and resets the waveform playback counter to the beginning, which can cause a discontinuity or phase jump when used to retrigger an active 
+waveform. By contrast, ``SOUR:TRig:INT:ONLY`` applies the generator trigger without resetting the waveform read counter. This can preserve waveform 
+continuity when applying settings such as a frequency change during generation. The ``:ONLY`` command is available in supported OS versions; check 
+the command table for compatibility.
+
+Acquisition and generation triggers are independent. When they are issued as separate software commands, communication and processing delays can mean 
+that acquisition starts before the generator trigger resets playback. The capture may then contain an initial interval with the output disabled, or 
+the waveform may change phase during the capture. For repeatable measurements, reset and configure the generator deliberately, and coordinate the 
+acquisition trigger with the signal event rather than assuming that toggling the output or issuing two commands makes them simultaneous. This is 
+particularly noticeable with continuous waveforms; a finite burst may make the transition less apparent.
+
+For example, in a repeated SCPI measurement loop without ``GEN:RST``, the output can be disabled while the FPGA continues generating. If acquisition 
+is started with an immediate trigger while the output is disabled, the beginning of the capture contains no output signal. Enabling the output reveals 
+the waveform at its current phase; a later ``SOUR:TRig:INT`` can then reset playback to the start, producing a phase jump. Since the acquisition and 
+generator commands are not simultaneous, an acquisition triggered by a signal edge may also occur before that playback reset. Such a transition is 
+generator behavior, not necessarily an acquisition or data-transfer glitch.
+
+|
 
 Burst signal generation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,7 +274,8 @@ continuous signals:
 These and the parameters for defining continuous signals are the minimum parameters required to generate any burst signal. There are other 
 parameters, but for the sake of simplicity we will leave them out.
 
-Besides defining new parameters, we also need to switch the Red Pitaya to burst mode instead of continuous mode, which we do with the following command:
+Besides defining new parameters, we also need to switch the Red Pitaya to burst mode instead of continuous mode, which we do with the following 
+command:
 
 * ``SOUR<n>:BURS:STAT BURST``.
 
@@ -237,6 +291,7 @@ signal generation. To do this, set the Red Pitaya to the maximum possible NOR va
 The other thing to watch out for with burst generation is sequential triggering. We must be careful not to trigger another generation on the 
 same channel after we are sure that the previous burst has ended. Otherwise, the Red Pitaya may superimpose the two bursts.
 
+|
 
 Sweep signal generation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -248,7 +303,8 @@ signal parameters together with
 * Sweep end frequency [Hz].
 * Sweep time [µs] - how long it takes the sweep signal to move from the start to the end frequency.
 
-These are the minimum parameters required to generate any sweep signal. There are other parameters, but for the sake of simplicity we will ignore them.
+These are the minimum parameters required to generate any sweep signal. There are other parameters, but for the sake of simplicity we will 
+ignore them.
 
 The sweep mode is switched on manually with the following command:
 
@@ -259,13 +315,14 @@ of the last sweep mode step. For example, suppose we had a sweep between 1 kHz a
 and execute the command. At the moment the command is executed, the sweep is generating an 8.5 kHz signal, which will continue to be generated 
 as a continuous signal when the sweep mode is switched off.
 
+|
 
 Arbitrary waveform signal generation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The final generation option is the Arbitrary Waveform Generator (AWG), which generates a user-defined custom signal waveform. The Red Pitaya 
-expects the user to pass a 16384 sample long waveform representing one period of the custom signal. The voltage levels should be within the 
-output limits (+-1 V), otherwise Red Pitaya will normalise the entire waveform.
+The final generation option is the Arbitrary Waveform Generator (AWG), which generates a user-defined custom signal waveform. In the standard 
+SCPI AWG mode described here, the waveform buffer contains 16384 samples. Buffer length, voltage limits, and waveform scaling depend on the 
+board and generation mode; check the applicable command reference before preparing waveform data.
 
 The custom period is passed to Red Pitaya with the following SCPI command:
 
@@ -293,24 +350,26 @@ To calculate the actual output frequency we can use the following formula:
     f_{output} = f_{buff}\cdot\frac{N_{buff}}{N_{period}}
 
 Where :math:`f_{output}` is the actual output frequency, :math:`f_{buff}` is the frequency of the whole buffer (passed to Red Pitaya as 
-a parameter), :math:`N_{buff}` is the total number of samples in the numpy buffer (16384), and :math:`N_{period}` is the number of samples 
-a signal period takes in the numpy buffer.
-
-It is possible to force Red Pitaya to generate frequency pulses higher than 50 MHz using the AWG.
+a parameter), :math:`N_{buff}` is the total number of samples in the waveform buffer, and :math:`N_{period}` is the number of samples 
+a signal period takes in that buffer.
 
 .. note::
 
-    Scenarios where the calculated output frequency exceeds 50 MHz should be avoided if possible, as this can lead to unpredictable results 
-    due to Red Pitaya not having enough points to create a nice waveform.
+    The maximum usable output frequency and waveform fidelity depend on the board's analog bandwidth, DAC rate, and the number of samples per 
+    waveform period. Check the board specifications rather than assuming a universal frequency limit.
 
-**What happens if less than 16384 samples are passed?**.
+**What happens if fewer than 16384 samples are passed to this standard SCPI AWG mode?**
 
-**Avoid passing less than 16384 samples to Red Pitaya, as this may lead to unpredictable results.** In this case, the result is similar to 
-the example above. Suppose we define a custom waveform buffer of 8192 samples containing one sine period. We pass this buffer to Red Pitaya 
-and specify the frequency as 10 kHz, the amplitude as 1 V and generate the signal. The actual output is a 20 kHz sine wave.
+With the release of 3.00 OS, passing fewer than 16384 samples is fully supported and will not cause a deviation in the output frequency. Of
+course, the resolution of the output waveform may be affected if fewer samples are used.
 
-Here the waveform is duplicated within the buffer (the read pointer moves through the waveform twice as fast).
+For older OS versions, it is recommended to provide the full 16384-sample buffer as passing fewer samples will lead to a deviation in the 
+output frequency. For example, if an 8192-sample buffer containing one sine period is interpreted across the 16384-sample waveform period, 
+the waveform is repeated and a 10 kHz setting produces a 20 kHz output. Other modes may accept different buffer lengths or behave differently.
 
+In this example, the waveform is duplicated within the buffer (the read pointer moves through the supplied samples twice per waveform period).
+
+|
 
 General tips for programming with generation SCPI commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -318,23 +377,23 @@ General tips for programming with generation SCPI commands
 #. Always check your Red Pitaya OS version, as not all commands are compatible with all OS versions. The command release version can be 
    found in the :ref:`Ecosystem column of the command table <command_list>`.
 #. The :ref:`SCPI code examples <examples>` are intended to run on the latest version of the Red Pitaya OS.
-#. Start with the ``GEN:RST`` command.
-#. Set continuous signal parameters.
+#. If a clean restart is needed, use ``GEN:RST``; then configure all parameters required by the application.
+#. Set the waveform and continuous signal parameters.
 #. Optionally, switch to burst mode and set the burst signal parameters.
 #. Optionally, switch to sweep mode and set the sweep signal parameters.
 #. Set the generator trigger settings.
 #. Enable the outputs.
 #. Trigger the outputs.
-#. Remember that Red Pitaya remembers the settings, so to repeat the same signal at a later time, only the triggering needs to be done 
-   (there is no need to redefine the whole generated signal). Alternatively, you can change only certain parameters.
-#. By default, Red Pitaya is set to generate a 1kHz sine wave with an amplitude of 1 V. 
+#. Settings may remain active between runs. For a repeat run, either reapply the required settings or trigger the configured generator again, 
+   taking into account whether generation should continue at its current phase or restart from the beginning.
 
 More information about the SCPI server can be found here:
 
 * :ref:`Installation instructions <scpi_commands>`.
 * :ref:`Complete table of SCPI commands <command_list>`.
-* :ref:`SCPI examples<examples>`.
+* :ref:`SCPI examples <examples>`.
 
+|
 
 API commands (C++, Python)
 ==========================
@@ -348,8 +407,8 @@ access to the FPGA's registry space, making it much easier to write your own sof
 The Python API commands are the same as the C++ API commands, as they are simply a Python front-end to the C++ commands. You can run Python 
 code directly on Red Pitaya starting with Red Pitaya 2.00-30 OS (out of the box).
 
-The overall functionality is exactly the same as with the SCPI commands, with the exception of using functions instead of string commands 
-and the fact that there are more commands available that have not yet received their SCPI versions.
+The APIs provide functionality similar to SCPI using function calls instead of string commands. Available functions and options can differ 
+between APIs, OS versions, and SCPI, so consult the relevant API reference.
 
 One thing to note here is that deep memory acquisition of long sequences of data can be speeded up by using a C++ or Python program to 
 acquire the data and then establishing a TCP connection to the computer to achieve a much faster transfer than using the SCPI commands.
@@ -366,10 +425,9 @@ All information about running C++ and Python programs can be found here:
 Streaming application
 ========================
 
-For those looking for continuous data acquisition, check out :ref:`the streaming application <streaming_top>` (also known as "data stream 
-control"). It allows continuous data acquisition from one or both of Red Pitaya's inputs directly to a file on a computer. The data can be 
-captured indefinitely, but there are speed limitations and currently no triggering options.  The total data flow at the inputs (IN1 and IN2)
-when streaming directly to a computer or to the SD card is limited. More details and limitations are 
+For continuous data acquisition, see :ref:`the streaming application <streaming_top>` (also known as "data stream control"). It streams supported 
+input channels to a file on a computer or to the board's storage. Streaming is designed for continuous transfer rather than event-triggered capture; 
+the available trigger options, channels, and data rates depend on the application and board. More details and limitations are 
 available :ref:`here <streaming_limits>`.
 
 There are two ways to stream data. Either via Ethernet to a *bin*, *tdms* or *wav* file on a computer or to the Red Pitaya's SD card. 
@@ -378,32 +436,44 @@ when using the :ref:`X-channel system <x-ch_streaming>`), they can all be contro
 
 All information about the streaming application is available from the links below:
 
-* :ref:`Streaming application<streaming_top>`.
+* :ref:`Streaming application <streaming_top>`.
 * :rp-github:`GitHub source code <RedPitaya/tree/master/apps-tools/streaming_manager>`.
 
 |
 
+Deep Memory Mode (DMM)
+=======================
+
+Deep Memory Mode (DMM) allows the user to stream and generate data directly into or from the Red Pitaya's DDR3 RAM. DMM is composed of Deep Memory Generation (DMG)
+and Deep Memory Acquisition (DMA).
+
 Deep Memory Acquisition (DMA)
-================================
+------------------------------
 
-.. note:: 
-
-    Deep memory acquisition is available on Red Pitaya OS versions 2.00-23 and later.
-
-Deep memory acquisition is a special type of data acquisition that allows the user to stream data directly into Red Pitaya's DDR3 RAM 
-at full sampling speed of 125 Msps (depending on board model). The buffer length is variable and can be specified by the user, but cannot 
-exceed the size of the allocated RAM region. The amount of dedicated RAM can be increased by the user, but it is recommended to leave at least 100 MB
-of DDR for proper operation of the Linux OS. Deep memory acquisition is based on the 
-`AXI protocol (AXI DMA and AXI4-Stream) <https://adaptivesupport.amd.com/s/article/1053914?language=en_US>`_ (double the acronym for double the meaning).
+Deep memory acquisition is a special type of data acquisition that allows the user to stream data directly into Red Pitaya's DDR3 RAM at full sampling speed of 
+125 MSps (depending on board model). The buffer length is variable and can be specified by the user, but cannot exceed the size of the allocated RAM region. 
+The amount of dedicated RAM can be increased by the user, but it is recommended to leave at least 100 MB of DDR for proper operation of the Linux OS. Deep 
+Memory Acquisition is based on the `AXI protocol (AXI DMA and AXI4-Stream) <https://adaptivesupport.amd.com/s/article/1053914?language=en_US>`_ (double the 
+acronym for double the meaning).
 
 Once the acquisition is complete, Red Pitaya needs some time to transfer the entire file to the computer (RAM needs to be cleared) before the acquisition can be reset.
 DMA can be configured using SCPI, Python API and C++ API commands. The triggering options are also the same.
 
-To increase the speed of transferring the DMA data to the computer with SCPI, the data should be acquired in binary format (``ACQ:DATA:FORMAT BIN``).
+For increasing the speed of transferring the DMA data to the computer, follow the same recommendations as for regular data acquisition. Note that switching to binary
+format is done with the same command (``ACQ:DATA:FORMAT BIN``).
 
-All information on DMA is available from the links below:
+See the :ref:`Deep Memory Acquisition guide <deepMemoryAcq>` for mode details, configuration, and examples.
 
-* :ref:`Deep Memory Acquisition <deepMemoryAcq>`.
+|
+
+Deep Memory Generation (DMG)
+------------------------------
+
+Deep Memory Generation plays waveform data from the reserved DDR memory region to the analog outputs, enabling waveform buffers larger than those used by the standard 
+generator. In one-buffer mode, the waveform is loaded into memory and played back at the DAC core clock rate. A streaming mode can instead send successive waveform buffers 
+from a host, subject to memory and data-rate limits. The memory region is shared with Deep Memory Acquisition, so its allocation must accommodate both features when used 
+together. See the :ref:`Deep Memory Generation guide <deepMemoryGen>` for mode details, configuration, and examples.
+
 
 |
 

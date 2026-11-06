@@ -232,11 +232,15 @@ Technical Specifications
     | |br|                                                                                                                   |
     | **Environmental Specifications**                                                                                       |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Operating Temperature Range        | 0 to 55                            | ℃         | With default heatsink            |
+    | Operating Temperature Range        | 0 to 30                            | ℃         | Default heatsink                 |
+    | (passive cooling)                  |                                    |           |                                  |
+    +------------------------------------+------------------------------------+-----------+----------------------------------+
+    | Operating Temperature Range        | 0 to 55                            | ℃         | Default heatsink, small fan      |
+    | (active cooling)                   |                                    |           |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | Operating Humidity Range           | < 90%                              | RH        |                                  |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
-    | Automatic Shutdown Temperature     | 85                                 | ℃         |                                  |
+    | Automatic Shutdown Temperature     | 85                                 | ℃         | Internally monitored             |
     +------------------------------------+------------------------------------+-----------+----------------------------------+
     | |br|                                                                                                                   |
     | **Dimensions**                                                                                                         |
@@ -273,6 +277,10 @@ Technical Specifications
     * **DC voltage:** up to 50 V (inputs are AC-coupled — DC will not pass to the ADC)
 
     Exceeding the RF input level may damage the board permanently.
+
+.. note::
+
+    Removing the heatsink can reduce the effectiveness of the thermal heat paste, leading to higher board temperatures.
 
 |
 

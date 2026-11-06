@@ -12,9 +12,9 @@ For additional resources, please see the :ref:`Developer Guide <developer_guide>
 * **Introduction to Data Acquisition & Generation** - Overview of all methods from simple applications to advanced streaming and FPGA customization
 * **Applications** - Guides for oscilloscope, spectrum analyzer, Bode analyzer, streaming, and community applications
 * **System Tools** - Network configuration, OS updates, calibration, and system information management
-* **Multiboard Synchronisation** - Create multi-channel systems with Click Shield or X-Channel configurations
-* **Programming & Remote Control** - SCPI commands, Python/C++ APIs, MATLAB, LabVIEW, JupyterLab, and Deep Memory Mode
 * **Command Line Tools** - Terminal utilities for scripting and automation
+* **Programming & Remote Control** - SCPI commands, Python/C++ APIs, MATLAB, LabVIEW, JupyterLab, and Deep Memory Mode
+* **Multiboard Synchronisation** - Create multi-channel systems with Click Shield or X-Channel configurations
 * **Supported Features by Model** - Compatibility information for different Red Pitaya board models
 
 .. toctree::
@@ -23,7 +23,7 @@ For additional resources, please see the :ref:`Developer Guide <developer_guide>
     introAcqGen.rst
     applications/apps-featured.rst
     systemtool/systool.rst
-    multichannel/multichannel.rst
-    remoteControl/remoteAndProg.rst
     command_line_tools/com_line_tool.rst
+    remoteControl/remoteAndProg.rst
+    multichannel/multichannel.rst
     supportedFeaturesAndApps.rst
