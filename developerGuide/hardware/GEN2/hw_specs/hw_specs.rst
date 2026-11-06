@@ -239,7 +239,7 @@ Symbols on the board
 
 The following symbols and warning signs are used on the board:
 
-.. figure:: img/symbols/danger_symbol.png
+.. figure:: img/symbols/Danger_symbol.png
     :align: center
     :width: 200
 
