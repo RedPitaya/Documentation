@@ -10,9 +10,9 @@ STEMlab 125-14
 
 .. warning::
 
-    **Product Discontinuation Notice**
+    **Product End of Life Notice**
 
-    STEMlab 125-14 is planned for discontinuation at the end of Q4 2026.
+    STEMlab 125-14 will reach End of Life at the end of Q4 2026.
 
 |
 

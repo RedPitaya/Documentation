@@ -257,9 +257,9 @@ The following symbols and warning signs are used on the board:
 
     Hot surface symbol
 
-All three symbols warn the user about hot surface. As indicated in the :ref:`Heating and cooling section <hw_gen2_heating_cooling>` above, the boards can easily reach high 
-temperatures during operation, so it is not recommended to touch the heatsink during or recently after operation. If necessary, pick the board up using the edges 
-(E1 and E2 connectors) to avoid burning yourself on the hot surface.
+All three symbols warn the user about hot heatsink surface. As indicated in the :ref:`Heating and cooling section <hw_gen2_heating_cooling>` above, the boards can easily reach high 
+temperatures during operation, so it is recommended to avoid touching the heatsink during or recently after operation. If necessary, pick the board up using the edges 
+(E1 and E2 connectors) to avoid burning yourself on the hot surface of the heatsink.
 
 |
 

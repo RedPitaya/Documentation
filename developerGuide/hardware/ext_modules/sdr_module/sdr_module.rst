@@ -1,11 +1,11 @@
 .. _sdr_module:
 
-SDR Module and HAMlab (obsolete)
+SDR Module and HAMlab (EoS)
 ################################
 
 .. note::
 
-	The Red Pitaya SDR module and accompanying HAMlab software are **obsolete**. The information provided here is for reference only.
+	The Red Pitaya SDR module and accompanying HAMlab software have reached **End of Sale (EoS)** and are no longer available for purchase. The information provided here is for reference only.
 	
 For proper operation, the Red Pitaya SDR module requires a special HAMlab program that was part of the older HAMlab Red Pitaya OS images released between April 2017 and February 2019.
 The HAMlab program required to operate the SDR module is not available in the current OS images. The older OS images are available in the |red_pitaya_archive|. The Red Pitaya SDR module only supports *STEMlab 125-14* board model.

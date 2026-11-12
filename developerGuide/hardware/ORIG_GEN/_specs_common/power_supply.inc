@@ -2,7 +2,7 @@
 Red Pitaya boards can be powered through two methods:
 
 1. **Micro USB connector**
-2. **+5V pin (pin 1) and GND pin (pin 25, 26) on the |E2| connector**
+2. **+5V pin (pin 1) and GND pin (pin 25, 26) on the** |E2| **connector**
 
 **Power Supply Specifications:**
 

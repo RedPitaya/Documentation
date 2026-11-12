@@ -1,7 +1,7 @@
 .. _top_125_10:
 
 ################################
-STEMlab 125-10 (discontinued)
+STEMlab 125-10 (EoS)
 ################################
 
 .. figure:: img/STEMlab-125-10.jpg
@@ -12,12 +12,12 @@ STEMlab 125-10 (discontinued)
 
 .. warning::
 
-    **Product Discontinuation Notice**
+    **Product End of Support Notice**
     
-    STEMlab 125-10 was discontinued as of Q4 2023 (no longer produced) and has reached its end-of-life for software support. The documentation here is provided as a reference 
+    STEMlab 125-10 has reached End of Life in Q4 2023 and End of Support in Q4 2025. The documentation here is provided as a reference 
     for existing users.
 
-    **OS 2.07-51** is the last supported version. OS versions released afterwards can still run on the board, but may cause issues due to lower amount of RAM.
+    **OS 2.07-51** is the last supported software version. OS versions released afterwards can still run on the board, but may cause issues due to lower amount of RAM.
 
 |
 
@@ -35,8 +35,6 @@ The STEMlab 125-10 was an entry-level Red Pitaya board featuring 10-bit ADC and 
 It was a versatile and compact measurement and control platform designed for a wide range of applications in electronics, signal processing, and embedded systems development. 
 It featured a dual-core ARM Cortex-A9 processor, an FPGA Xilinx Zynq 7010 SoC, and high-speed ADCs and DACs, making it suitable for tasks such as data acquisition, signal generation, 
 and real-time processing.
-
-This board has been discontinued and is no longer in production.
 
 |
 

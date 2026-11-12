@@ -225,7 +225,7 @@
 
 # QUICKSTART
 
-
+##. Scope no traces problem - check the calibration. Add to FAQ.
 
 # FORMATING
 
