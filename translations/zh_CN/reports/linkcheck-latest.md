@@ -1,0 +1,62 @@
+# 最新限时外链检查
+
+- 时间上限：180 秒
+- 状态：超时（结果为部分扫描）
+- 退出码：124
+- 状态计数：broken=53, redirected=24, timeout=7, unchecked=221, working=292
+
+## Broken
+
+- `CHANGELOG.md:26` — http://conf.py — HTTPConnectionPool(host='conf.py', port=80): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPConnection(host='conf.py', port=80): Failed to resolve 'conf.py' ([Errno 8] nodename nor servname provided, or not known)"))
+- `developerGuide/fpga/getting_started/sdk_install.rst:818` — https://docs.xilinx.com/v/u/en-US/ug1138-vivado-sw-hw-interface — HTTPSConnectionPool(host='docs.xilinx.com', port=443): Max retries exceeded with url: /v/u/en-US/ug1138-vivado-sw-hw-interface (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+- `developerGuide/fpga/getting_started/sdk_install.rst:817` — https://docs.xilinx.com/v/u/en-US/ug1027-sdk-user-guide — HTTPSConnectionPool(host='docs.xilinx.com', port=443): Max retries exceeded with url: /v/u/en-US/ug1027-sdk-user-guide (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+- `developerGuide/hardware/ORIG_GEN/125-10/top.rst:472` — https://docs.xilinx.com/v/u/en-US/ds190-Zynq-7000-Overview — HTTPSConnectionPool(host='docs.xilinx.com', port=443): Max retries exceeded with url: /v/u/en-US/ds190-Zynq-7000-Overview (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+- `developerGuide/fpga/advanced/jtag_programming.rst:222` — https://digilent.com/reference/software/adept/start — 403 Client Error: Forbidden for url: https://digilent.com/reference/software/adept/start
+- `404.rst:31` — http://www.ftdichip.com/Drivers/VCP.htm — 403 Client Error: Forbidden for url: http://www.ftdichip.com/Drivers/VCP.htm
+- `quickStart/SDcard/SDcard_advanced.rst:42` — https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.07-48_stable.img.zip — 404 Client Error: Not Found for url: https://downloads.redpitaya.com/downloads/Unify/RedPitaya_OS_2.07-48_stable.img.zip
+- `developerGuide/software/configuration/service_management.rst:404` — https://forum.redpitaya.com — 403 Client Error: Forbidden for url: https://forum.redpitaya.com/
+- `appsFeatures/examples/streaming/examples_streaming_top.rst:160` — https://github.com/RedPitaya/RedPitaya-Examples/blob/main/API_examples/C++/Streaming/stream_adc_capture.cpp — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/blob/main/API_examples/C++/Streaming/stream_adc_capture.cpp
+- `appsFeatures/examples/streaming/streaming_quickstart.rst:248` — https://github.com/RedPitaya/RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_adc_1.cpp — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_adc_1.cpp
+- `404.rst:23` — https://forum.redpitaya.com/ — 403 Client Error: Forbidden for url: https://forum.redpitaya.com/
+- `appsFeatures/examples/streaming/examples_streaming_top.rst:376` — https://github.com/RedPitaya/RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_dac_2.cpp — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/blob/main/C/API_Examples/Streaming/stream_dac_2.cpp
+- `appsFeatures/examples/streaming/streaming_dac_api_example.rst:27` — https://github.com/RedPitaya/RedPitaya-Examples/blob/main/python-api/Streaming/stream_dac_1.py — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/blob/main/python-api/Streaming/stream_dac_1.py
+- `appsFeatures/examples/streaming/examples_streaming_top.rst:13` — https://github.com/RedPitaya/RedPitaya-Examples/tree/main/python-api/Streaming — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/tree/main/python-api/Streaming
+- `appsFeatures/examples/streaming/streaming_adc_api_example.rst:26` — https://github.com/RedPitaya/RedPitaya-Examples/blob/main/python-api/Streaming/adc_1_stream.py — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/blob/main/python-api/Streaming/adc_1_stream.py
+- `appsFeatures/examples/streaming/examples_streaming_top.rst:416` — https://github.com/RedPitaya/RedPitaya-Examples/blob/main/python-api/Streaming/dac_3_stream.py — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/blob/main/python-api/Streaming/dac_3_stream.py
+- `developerGuide/software/configuration/tft/TFT.rst:52` — https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/dts/tft/tft-E2.dtsi — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-FPGA/blob/master/dts/tft/tft-E2.dtsi
+- `developerGuide/software/system_development/e3_software/QSPI_eMMC_sw/QSPI_eMMC_software.rst:217` — https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/E3_module_code — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/E3_module_code
+- `developerGuide/software/system_development/ecosystem/ecosystem.rst:918` — https://github.com/RedPitaya/RedPitaya/blob/master/apps-free/README.md — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya/blob/master/apps-free/README.md
+- `appsFeatures/examples/streaming/streaming_api_reference.rst:1304` — https://github.com/RedPitaya/streaming-client — 404 Client Error: Not Found for url: https://github.com/RedPitaya/streaming-client
+- `developerGuide/software/configuration/network.rst:74` — https://linux.die.net/man/8/dhclient — 403 Client Error: Forbidden for url: https://linux.die.net/man/8/dhclient
+- `404.rst:48` — https://pyvisa.readthedocs.io/en/latest/ — HTTPSConnectionPool(host='pyvisa.readthedocs.io', port=443): Max retries exceeded with url: /en/latest/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))
+- `404.rst:49` — https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/ — HTTPSConnectionPool(host='pyvisa.readthedocs.io', port=443): Max retries exceeded with url: /projects/pyvisa-py/en/latest/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))
+- `appsFeatures/applications/sdr_tx_rx/sdr_tx_rx.rst:107` — https://openhpsdr.org/hermes.php — 404 Client Error: Not Found for url: https://openhpsdr.org/hermes.php
+- `404.rst:61` — https://linux.die.net/man/1/minicom — 403 Client Error: Forbidden for url: https://linux.die.net/man/1/minicom
+- `appsFeatures/applications/sdr_tx_rx/sdr_tx_rx.rst:50` — https://openhpsdr.org/wiki/index.php?title=PowerSDR — 404 Client Error: Not Found for url: https://openhpsdr.org/wiki/index.php?title=PowerSDR
+- `appsFeatures/applications/sdr_tx_rx/sdr_tx_rx.rst:53` — https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr — 404 Client Error: Not Found for url: https://play.google.com/store/apps/details?id=org.g0orx.openhpsdr
+- `404.rst:21` — https://redpitaya.com/ — 403 Client Error: Forbidden for url: https://redpitaya.com/
+- `customization/custom.rst:7` — https://redpitaya.com/customization-solutions/ — 403 Client Error: Forbidden for url: https://redpitaya.com/customization-solutions/
+- `developerGuide/software/configuration/network.rst:381` — https://redpitaya.com/product/red-pitaya-wi-fi-dongle — 403 Client Error: Forbidden for url: https://redpitaya.com/product/red-pitaya-wi-fi-dongle
+- `appsFeatures/systemtool/network_manager/networkManager.rst:239` — https://redpitaya.com/product/red-pitaya-wi-fi-dongle/ — 403 Client Error: Forbidden for url: https://redpitaya.com/product/red-pitaya-wi-fi-dongle/
+- `quickStart/troubleshooting/FAQ.rst:118` — https://redpitaya.com/shop/stemlab-125-14-iso17025 — 403 Client Error: Forbidden for url: https://redpitaya.com/shop/stemlab-125-14-iso17025
+- `404.rst:26` — https://redpitaya.com/contact-us/ — 403 Client Error: Forbidden for url: https://redpitaya.com/contact-us/
+- `quickStart/SDcard/SDcard_advanced.rst:50` — https://redpitaya.com/contact-us — 403 Client Error: Forbidden for url: https://redpitaya.com/contact-us
+- `appsFeatures/applications/sdr_tx_rx/sdr_tx_rx.rst:206` — https://wiki.gnuradio.org/index.php?title=Guided_Tutorial_GRC — 403 Client Error: Forbidden for url: https://wiki.gnuradio.org/index.php?title=Guided_Tutorial_GRC
+- `404.rst:24` — https://redpitaya.com/shop/ — 403 Client Error: Forbidden for url: https://redpitaya.com/shop/
+- `developerGuide/software/troubleshooting/os_compatibility.rst:146` — https://redpitaya.com/downloads/ — 403 Client Error: Forbidden for url: https://redpitaya.com/downloads/
+- `developerGuide/hardware/ext_modules/e3_ext/eMMC_QSPI/eMMC_QSPI_module.rst:408` — https://www.digikey.com/en/products/detail/samtec-inc/HLCD-10-06-00-TR-TR-1/13683996 — 403 Client Error: Forbidden for url: https://www.digikey.com/en/products/detail/samtec-inc/HLCD-10-06-00-TR-TR-1/13683996
+- `developerGuide/fpga/getting_started/sdk_install.rst:449` — https://www.computerhope.com/issues/ch000549.htm — 403 Client Error: Forbidden for url: https://www.computerhope.com/issues/ch000549.htm
+- `developerGuide/hardware/ORIG_GEN/122-16/top.rst:349` — https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785 — 403 Client Error: Forbidden for url: https://www.digikey.com/en/products/detail/micron-technology-inc/MT41J256M16HA-125-E/4315785
+- `developerGuide/hardware/GEN2/125-14_Gen2/top.rst:514` — https://www.digikey.com/en/products/detail/adam-tech/BHR-26-VUA/9832284 — 403 Client Error: Forbidden for url: https://www.digikey.com/en/products/detail/adam-tech/BHR-26-VUA/9832284
+- `developerGuide/hardware/GEN2/125-14_Gen2/top.rst:522` — https://www.digikey.com/en/products/detail/samtec-inc/ESW-113-33-T-D/6693225 — 403 Client Error: Forbidden for url: https://www.digikey.com/en/products/detail/samtec-inc/ESW-113-33-T-D/6693225
+- `developerGuide/hardware/ORIG_GEN/known_hw_issues/known_hw_issues.rst:9` — https://www.digikey.com/en/products/detail/texas-instruments/TCA9406DCUR/2510728 — 403 Client Error: Forbidden for url: https://www.digikey.com/en/products/detail/texas-instruments/TCA9406DCUR/2510728
+- `appsFeatures/multichannel/multichannel.rst:483` — https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578 — 403 Client Error: Forbidden for url: https://www.digikey.si/en/products/detail/renesas-electronics-corporation/74FCT38072DCGI/2017578
+- `404.rst:86` — https://www.mikroe.com/mcp2542-click — 403 Client Error: Forbidden for url: https://www.mikroe.com/mcp2542-click
+- `developerGuide/fpga/getting_started/simulation.rst:114` — https://www.intel.com/content/www/us/en/software-kit/750666/modelsim-intel-fpgas-standard-edition-software-version-20-1-1.html — 403 Client Error: Forbidden for url: https://www.intel.com/content/www/us/en/software-kit/750666/modelsim-intel-fpgas-standard-edition-software-version-20-1-1.html
+- `404.rst:74` — https://www.microchip.com/ — 403 Client Error: Forbidden for url: https://www.microchip.com/
+- `developerGuide/hardware/GEN2/125-14_Gen2_Pro/top.rst:6` — https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf — 403 Client Error: Forbidden for url: https://www.onsemi.com/pdf/datasheet/nb6l72-d.pdf
+- `developerGuide/software/configuration/network.rst:296` — https://www.ntp.org/ntpfaq/NTP-s-def/#AEN1271 — Anchor 'AEN1271' not found
+- `404.rst:85` — https://www.ivifoundation.org/scpi/ — 404 Client Error: Not Found for url: https://www.ivifoundation.org/scpi/
+- `developerGuide/fpga/advanced/jtag_programming.rst:119` — https://www.xilinx.com/support/documents/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf — 404 Client Error: Not Found for url: https://www.xilinx.com/support/documents/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf
+- `developerGuide/software/app_development/webapp/firstApp.rst:415` — https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/web-tutorial — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/web-tutorial
+- `developerGuide/software/configuration/gpio/gpio.rst:123` — https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/gpio_sysfs — 404 Client Error: Not Found for url: https://github.com/RedPitaya/RedPitaya-Examples/tree/dev/gpio_sysfs

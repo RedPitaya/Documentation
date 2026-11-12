@@ -1,0 +1,29 @@
+:orphan:
+
+####################
+404 页面未找到
+####################
+
+.. figure:: img/RedPitayaFruit.jpg
+    :width: 600
+
+    这不是您要找的 Pitaya？
+
+|
+
+请尝试使用下方链接，或使用搜索栏查找所需内容。
+
+以下是一些建议：
+
+* :ref:`快速入门指南 <quick_start>`。
+* :ref:`应用与编程 <appsFeatures>`。
+* :ref:`Red Pitaya 硬件规格 <dev_guide_hardware>`。
+* :ref:`软件开发指南 <dev_guide_software>`。
+* :ref:`FPGA 指南 <fpga_top>`。
+* :ref:`常见问题与故障排除 <faq>`。
+
+|
+
+仍未找到所需内容？
+
+* :ref:`联系我们 <report_problem>`。

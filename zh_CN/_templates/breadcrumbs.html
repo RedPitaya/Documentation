@@ -1,0 +1,15 @@
+{%- extends "sphinx_rtd_theme/breadcrumbs.html" %}
+{#
+  Language switch. The Chinese tree mirrors the English tree file for file, so the
+  same page path exists on the official English site. `pagename` is the document
+  path without suffix (e.g. "quickStart/first"), which maps directly onto
+  https://redpitaya.readthedocs.io/en/latest/<pagename>.html
+#}
+{% block breadcrumbs_aside %}
+  <li class="wy-breadcrumbs-aside rp-lang-switch">
+    <a href="https://redpitaya.readthedocs.io/en/latest/{{ pagename }}.html"
+       hreflang="en" title="查看本页的英文原版（官方文档）">English</a>
+    <span class="rp-lang-sep">|</span>
+    <span class="rp-lang-current" lang="zh-CN">简体中文</span>
+  </li>
+{% endblock %}

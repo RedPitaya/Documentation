@@ -1,0 +1,286 @@
+lightsaver@DESKTOP-5C9M56I:/mnt/c/Users/miha.gjura/Downloads$ sudo ./updatematplotlib.sh /dev/sdf2
+[sudo] password for lightsaver:
+Using partition: /dev/sdf2
+Chroot architecture: armv7l
+Installing/upgrading matplotlib...
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=118 time=42.5 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=118 time=25.1 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=118 time=23.8 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=118 time=24.1 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=118 time=22.8 ms
+
+--- 8.8.8.8 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4006ms
+rtt min/avg/max/mdev = 22.801/27.648/42.456/7.440 ms
+Installing build dependencies...
+Hit:1 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease [128 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease [127 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease [129 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf Packages [1325 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main Translation-en [489 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates/restricted armhf Packages [21.6 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports jammy-updates/restricted Translation-en [973 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe armhf Packages [979 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe Translation-en [313 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports jammy-updates/multiverse armhf Packages [7080 B]
+Get:12 http://ports.ubuntu.com/ubuntu-ports jammy-updates/multiverse Translation-en [13.5 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports jammy-backports/main armhf Packages [69.0 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports jammy-backports/main Translation-en [11.5 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports jammy-backports/universe armhf Packages [30.1 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports jammy-backports/universe Translation-en [16.9 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports jammy-security/main armhf Packages [1090 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports jammy-security/main Translation-en [419 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports jammy-security/restricted armhf Packages [19.3 kB]
+Get:20 http://ports.ubuntu.com/ubuntu-ports jammy-security/restricted Translation-en [929 kB]
+Get:21 http://ports.ubuntu.com/ubuntu-ports jammy-security/universe armhf Packages [754 kB]
+Get:22 http://ports.ubuntu.com/ubuntu-ports jammy-security/universe Translation-en [223 kB]
+Get:23 http://ports.ubuntu.com/ubuntu-ports jammy-security/multiverse armhf Packages [4096 B]
+Get:24 http://ports.ubuntu.com/ubuntu-ports jammy-security/multiverse Translation-en [10.6 kB]
+Fetched 8083 kB in 7s (1088 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+build-essential is already the newest version (12.9ubuntu3).
+python3-dev is already the newest version (3.10.6-1~22.04.1).
+zlib1g-dev is already the newest version (1:1.2.11.dfsg-2ubuntu9.2).
+zlib1g-dev set to manually installed.
+The following additional packages will be installed:
+  libbrotli-dev libdeflate-dev libfreetype-dev libjbig-dev libjpeg-turbo8-dev libjpeg8-dev liblzma-dev libopenjp2-7
+  libpng-dev libpng16-16 libtiff5 libtiffxx5
+Suggested packages:
+  freetype2-doc liblzma-doc
+Recommended packages:
+  libpng-tools
+The following NEW packages will be installed:
+  libbrotli-dev libdeflate-dev libfreetype-dev libfreetype6-dev libjbig-dev libjpeg-dev libjpeg-turbo8-dev
+  libjpeg8-dev liblcms2-dev liblzma-dev libopenjp2-7-dev libpng-dev libtiff-dev libtiffxx5 libwebp-dev
+The following packages will be upgraded:
+  libopenjp2-7 libpng16-16 libtiff5
+3 upgraded, 15 newly installed, 0 to remove and 113 not upgraded.
+Need to get 4615 kB of archives.
+After this operation, 8415 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libpng16-16 armhf 1.6.37-3ubuntu0.3 [171 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports jammy/main armhf libbrotli-dev armhf 1.0.9-2build6 [320 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports jammy/main armhf libdeflate-dev armhf 1.10-2 [49.9 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libpng-dev armhf 1.6.37-3ubuntu0.3 [176 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libfreetype-dev armhf 2.11.1+dfsg-1ubuntu0.3 [498 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libfreetype6-dev armhf 2.11.1+dfsg-1ubuntu0.3 [8296 B]
+Get:7 http://ports.ubuntu.com/ubuntu-ports jammy/main armhf libjpeg-turbo8-dev armhf 2.1.2-0ubuntu1 [231 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports jammy/main armhf libjpeg8-dev armhf 8c-2ubuntu10 [1476 B]
+Get:9 http://ports.ubuntu.com/ubuntu-ports jammy/main armhf libjpeg-dev armhf 8c-2ubuntu10 [1474 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports jammy/main armhf liblcms2-dev armhf 2.12~rc1-2build2 [1887 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libjbig-dev armhf 2.1-3.1ubuntu0.22.04.1 [24.4 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports jammy/main armhf liblzma-dev armhf 5.2.5-2ubuntu1 [149 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libtiff5 armhf 4.3.0-6ubuntu0.12 [167 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libtiffxx5 armhf 4.3.0-6ubuntu0.12 [5662 B]
+Get:15 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libtiff-dev armhf 4.3.0-6ubuntu0.12 [298 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libopenjp2-7 armhf 2.4.0-6ubuntu0.4 [147 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libopenjp2-7-dev armhf 2.4.0-6ubuntu0.4 [228 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main armhf libwebp-dev armhf 1.2.2-2ubuntu0.22.04.2 [252 kB]
+Fetched 4615 kB in 2s (2852 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 78, <> line 18.)
+debconf: falling back to frontend: Readline
+(Reading database ... 68360 files and directories currently installed.)
+Preparing to unpack .../00-libpng16-16_1.6.37-3ubuntu0.3_armhf.deb ...
+Unpacking libpng16-16:armhf (1.6.37-3ubuntu0.3) over (1.6.37-3build5) ...
+Selecting previously unselected package libbrotli-dev:armhf.
+Preparing to unpack .../01-libbrotli-dev_1.0.9-2build6_armhf.deb ...
+Unpacking libbrotli-dev:armhf (1.0.9-2build6) ...
+Selecting previously unselected package libdeflate-dev:armhf.
+Preparing to unpack .../02-libdeflate-dev_1.10-2_armhf.deb ...
+Unpacking libdeflate-dev:armhf (1.10-2) ...
+Selecting previously unselected package libpng-dev:armhf.
+Preparing to unpack .../03-libpng-dev_1.6.37-3ubuntu0.3_armhf.deb ...
+Unpacking libpng-dev:armhf (1.6.37-3ubuntu0.3) ...
+Selecting previously unselected package libfreetype-dev:armhf.
+Preparing to unpack .../04-libfreetype-dev_2.11.1+dfsg-1ubuntu0.3_armhf.deb ...
+Unpacking libfreetype-dev:armhf (2.11.1+dfsg-1ubuntu0.3) ...
+Selecting previously unselected package libfreetype6-dev:armhf.
+Preparing to unpack .../05-libfreetype6-dev_2.11.1+dfsg-1ubuntu0.3_armhf.deb ...
+Unpacking libfreetype6-dev:armhf (2.11.1+dfsg-1ubuntu0.3) ...
+Selecting previously unselected package libjpeg-turbo8-dev:armhf.
+Preparing to unpack .../06-libjpeg-turbo8-dev_2.1.2-0ubuntu1_armhf.deb ...
+Unpacking libjpeg-turbo8-dev:armhf (2.1.2-0ubuntu1) ...
+Selecting previously unselected package libjpeg8-dev:armhf.
+Preparing to unpack .../07-libjpeg8-dev_8c-2ubuntu10_armhf.deb ...
+Unpacking libjpeg8-dev:armhf (8c-2ubuntu10) ...
+Selecting previously unselected package libjpeg-dev:armhf.
+Preparing to unpack .../08-libjpeg-dev_8c-2ubuntu10_armhf.deb ...
+Unpacking libjpeg-dev:armhf (8c-2ubuntu10) ...
+Selecting previously unselected package liblcms2-dev:armhf.
+Preparing to unpack .../09-liblcms2-dev_2.12~rc1-2build2_armhf.deb ...
+Unpacking liblcms2-dev:armhf (2.12~rc1-2build2) ...
+Selecting previously unselected package libjbig-dev:armhf.
+Preparing to unpack .../10-libjbig-dev_2.1-3.1ubuntu0.22.04.1_armhf.deb ...
+Unpacking libjbig-dev:armhf (2.1-3.1ubuntu0.22.04.1) ...
+Selecting previously unselected package liblzma-dev:armhf.
+Preparing to unpack .../11-liblzma-dev_5.2.5-2ubuntu1_armhf.deb ...
+Unpacking liblzma-dev:armhf (5.2.5-2ubuntu1) ...
+Preparing to unpack .../12-libtiff5_4.3.0-6ubuntu0.12_armhf.deb ...
+Unpacking libtiff5:armhf (4.3.0-6ubuntu0.12) over (4.3.0-6ubuntu0.10) ...
+Selecting previously unselected package libtiffxx5:armhf.
+Preparing to unpack .../13-libtiffxx5_4.3.0-6ubuntu0.12_armhf.deb ...
+Unpacking libtiffxx5:armhf (4.3.0-6ubuntu0.12) ...
+Selecting previously unselected package libtiff-dev:armhf.
+Preparing to unpack .../14-libtiff-dev_4.3.0-6ubuntu0.12_armhf.deb ...
+Unpacking libtiff-dev:armhf (4.3.0-6ubuntu0.12) ...
+Preparing to unpack .../15-libopenjp2-7_2.4.0-6ubuntu0.4_armhf.deb ...
+Unpacking libopenjp2-7:armhf (2.4.0-6ubuntu0.4) over (2.4.0-6ubuntu0.3) ...
+Selecting previously unselected package libopenjp2-7-dev:armhf.
+Preparing to unpack .../16-libopenjp2-7-dev_2.4.0-6ubuntu0.4_armhf.deb ...
+Unpacking libopenjp2-7-dev:armhf (2.4.0-6ubuntu0.4) ...
+Selecting previously unselected package libwebp-dev:armhf.
+Preparing to unpack .../17-libwebp-dev_1.2.2-2ubuntu0.22.04.2_armhf.deb ...
+Unpacking libwebp-dev:armhf (1.2.2-2ubuntu0.22.04.2) ...
+Setting up libjpeg-turbo8-dev:armhf (2.1.2-0ubuntu1) ...
+Setting up libjbig-dev:armhf (2.1-3.1ubuntu0.22.04.1) ...
+Setting up libwebp-dev:armhf (1.2.2-2ubuntu0.22.04.2) ...
+Setting up libpng16-16:armhf (1.6.37-3ubuntu0.3) ...
+Setting up liblcms2-dev:armhf (2.12~rc1-2build2) ...
+Setting up liblzma-dev:armhf (5.2.5-2ubuntu1) ...
+Setting up libopenjp2-7:armhf (2.4.0-6ubuntu0.4) ...
+Setting up libtiff5:armhf (4.3.0-6ubuntu0.12) ...
+Setting up libjpeg8-dev:armhf (8c-2ubuntu10) ...
+Setting up libdeflate-dev:armhf (1.10-2) ...
+Setting up libbrotli-dev:armhf (1.0.9-2build6) ...
+Setting up libtiffxx5:armhf (4.3.0-6ubuntu0.12) ...
+Setting up libpng-dev:armhf (1.6.37-3ubuntu0.3) ...
+Setting up libjpeg-dev:armhf (8c-2ubuntu10) ...
+Setting up libfreetype-dev:armhf (2.11.1+dfsg-1ubuntu0.3) ...
+Setting up libtiff-dev:armhf (4.3.0-6ubuntu0.12) ...
+Setting up libopenjp2-7-dev:armhf (2.4.0-6ubuntu0.4) ...
+Setting up libfreetype6-dev:armhf (2.11.1+dfsg-1ubuntu0.3) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.9) ...
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  fonts-lyx libqhull-r8.0 python-matplotlib-data python3-appdirs python3-attr python3-brotli python3-cycler
+  python3-fonttools python3-fs python3-kiwisolver python3-lz4 python3-mpmath python3-packaging python3-pyparsing
+  python3-sympy python3-ufolib2 python3-unicodedata2 unicode-data
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  python3-matplotlib
+0 upgraded, 0 newly installed, 1 to remove and 113 not upgraded.
+After this operation, 18.2 MB disk space will be freed.
+(Reading database ... 68663 files and directories currently installed.)
+Removing python3-matplotlib (3.5.1-2build1) ...
+Collecting matplotlib
+  Downloading matplotlib-3.10.8.tar.gz (34.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.8/34.8 MB 13.5 MB/s eta 0:00:00
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Installing backend dependencies ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Using cached contourpy-1.3.2-cp310-cp310-linux_armv7l.whl
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib)
+  Downloading fonttools-4.61.1-py3-none-any.whl.metadata (114 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib)
+  Downloading kiwisolver-1.4.9.tar.gz (97 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting numpy>=1.23 (from matplotlib)
+  Downloading numpy-2.2.6.tar.gz (20.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.3/20.3 MB 12.8 MB/s eta 0:00:00
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Installing backend dependencies ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting packaging>=20.0 (from matplotlib)
+  Using cached packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pillow>=8 (from matplotlib)
+  Downloading pillow-12.1.0.tar.gz (47.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.0/47.0 MB 11.2 MB/s eta 0:00:00
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting pyparsing>=3 (from matplotlib)
+  Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.61.1-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 8.1 MB/s eta 0:00:00
+Using cached packaging-26.0-py3-none-any.whl (74 kB)
+Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Building wheels for collected packages: matplotlib, kiwisolver, numpy, pillow
+  Building wheel for matplotlib (pyproject.toml) ... done
+  Created wheel for matplotlib: filename=matplotlib-3.10.8-cp310-cp310-linux_armv7l.whl size=8172729 sha256=8e41c4d076d319c7ae4baff7236958a815f4f3734f84c2e2b3c09e5ae0192cf4
+  Stored in directory: /root/.cache/pip/wheels/ba/89/55/716aced5b3c044b39211924ee1b35fe9c3fd2bb68e2e1019b7
+  Building wheel for kiwisolver (pyproject.toml) ... done
+  Created wheel for kiwisolver: filename=kiwisolver-1.4.9-cp310-cp310-linux_armv7l.whl size=1084207 sha256=e5549451c971f3878cf2c4b361be7a11f599bf70e7e8988b978e6f6cc9867c00
+  Stored in directory: /root/.cache/pip/wheels/32/70/24/7ab12e46713e0b3742479a55c9e2fcc8d013c9f8939e8c7d1c
+  Building wheel for numpy (pyproject.toml) ... done
+  Created wheel for numpy: filename=numpy-2.2.6-cp310-cp310-linux_armv7l.whl size=5972894 sha256=7c63f13db43b7da0ab6f803f48331b1926a1ce42a22f416e3cf47b3363df86cd
+  Stored in directory: /root/.cache/pip/wheels/dc/d0/67/8f1fcc63394bfdb073864c9f8a81d8bd6cfa94ce989bbcc98b
+  Building wheel for pillow (pyproject.toml) ... done
+  Created wheel for pillow: filename=pillow-12.1.0-cp310-cp310-linux_armv7l.whl size=1331264 sha256=ef7e74e61eb2025fc6d9d64bf4a3c3a0a461c5254b073e77dde43e89bb39e76c
+  Stored in directory: /root/.cache/pip/wheels/89/30/fb/1c753d3ad2969105dd296424eaded2a74cf6bad93294c553a3
+Successfully built matplotlib kiwisolver numpy pillow
+Installing collected packages: six, pyparsing, pillow, packaging, numpy, kiwisolver, fonttools, cycler, python-dateutil, contourpy, matplotlib
+  Attempting uninstall: six
+    Found existing installation: six 1.16.0
+    Uninstalling six-1.16.0:
+      Successfully uninstalled six-1.16.0
+  Attempting uninstall: pyparsing
+    Found existing installation: pyparsing 2.4.7
+    Uninstalling pyparsing-2.4.7:
+      Successfully uninstalled pyparsing-2.4.7
+  Attempting uninstall: pillow
+    Found existing installation: Pillow 9.0.1
+    Uninstalling Pillow-9.0.1:
+      Successfully uninstalled Pillow-9.0.1
+  Attempting uninstall: packaging
+    Found existing installation: packaging 25.0
+    Uninstalling packaging-25.0:
+      Successfully uninstalled packaging-25.0
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.2.5
+    Uninstalling numpy-2.2.5:
+      Successfully uninstalled numpy-2.2.5
+  Attempting uninstall: kiwisolver
+    Found existing installation: kiwisolver 1.3.2
+    Uninstalling kiwisolver-1.3.2:
+      Successfully uninstalled kiwisolver-1.3.2
+  Attempting uninstall: fonttools
+    Found existing installation: fonttools 4.29.1
+    Uninstalling fonttools-4.29.1:
+      Successfully uninstalled fonttools-4.29.1
+  Attempting uninstall: cycler
+    Found existing installation: cycler 0.11.0
+    Uninstalling cycler-0.11.0:
+      Successfully uninstalled cycler-0.11.0
+  Attempting uninstall: python-dateutil
+    Found existing installation: python-dateutil 2.9.0.post0
+    Uninstalling python-dateutil-2.9.0.post0:
+      Successfully uninstalled python-dateutil-2.9.0.post0
+  Attempting uninstall: contourpy
+    Found existing installation: contourpy 1.3.2
+    Uninstalling contourpy-1.3.2:
+      Successfully uninstalled contourpy-1.3.2
+Successfully installed contourpy-1.3.2 cycler-0.12.1 fonttools-4.61.1 kiwisolver-1.4.9 matplotlib-3.10.8 numpy-2.2.6 packaging-26.0 pillow-12.1.0 pyparsing-3.3.2 python-dateutil-2.9.0.post0 six-1.17.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.0
+[notice] To update, run: python3 -m pip install --upgrade pip
+
+Verifying installation...
+NumPy version: 2.2.6
+Matplotlib version: 3.10.8
+3D projection: OK
+Operation completed successfully.
+Unmounting...
+Script finished. Partition /dev/sdf2 unmounted.
+lightsaver@DESKTOP-5C9M56I:/mnt/c/Users/miha.gjura/Downloads$

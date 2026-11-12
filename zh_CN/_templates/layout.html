@@ -1,0 +1,38 @@
+
+{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{# Tell search engines that the official English page is the same document in another language. #}
+{% block linktags %}
+{{ super() }}
+    <link rel="alternate" hreflang="en" href="https://redpitaya.readthedocs.io/en/latest/{{ pagename }}.html" />
+    <link rel="alternate" hreflang="zh-CN" href="https://redpitaya-zh-cn.readthedocs.io/zh-cn/latest/{{ pagename }}.html" />
+{% endblock %}
+
+{# Small style for the language switch in the breadcrumb bar (see _templates/breadcrumbs.html). #}
+{% block extrahead %}
+{{ super() }}
+    <style>
+      .rp-lang-switch a { font-weight: 600; }
+      .rp-lang-switch .rp-lang-sep { margin: 0 0.4em; color: #999; }
+      .rp-lang-switch .rp-lang-current { color: #999; }
+    </style>
+{% endblock %}
+
+{% block sidebartitle %}
+
+{% if logo and theme_logo_only %}
+  <a href="https://redpitaya.com" target="_blank">
+{% else %}
+  <a href="https://redpitaya.com" target="_blank" class="icon icon-home"> {{ project }}
+{% endif %}
+
+{% if logo %}
+  {# Not strictly valid HTML, but it's the only way to display/scale it properly, without weird scripting or heaps of work #}
+  <img src="{{ pathto('_static/' + logo, 1) }}" class="logo" />
+{% endif %}
+</a>
+
+{% include "searchbox.html" %}
+
+{% endblock %}

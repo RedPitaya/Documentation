@@ -1,0 +1,113 @@
+English	简体中文	说明
+board	板卡	指 Red Pitaya 硬件板
+Quick Start	快速入门	章节名
+power supply	电源	按上下文可用“电源适配器”
+signal acquisition	信号采集	
+signal generator	信号发生器	
+oscilloscope	示波器	
+spectrum analyser	频谱分析仪	采用英式原文，但中文统一
+digitiser	数字化仪	
+bitstream	比特流	文件名、命令中不翻译
+firmware	固件	
+heatsink	散热器	
+jumper	跳线	
+web interface	Web 界面	
+Original Gen	初代	产品代际
+Gen 2	第二代	产品代际
+Customization	定制	章节名
+troubleshooting	故障排除	
+acrylic case	亚克力外壳	
+aluminium case	铝合金外壳	
+thermal pad	导热垫	
+spacer	隔离柱	硬件装配语境
+shield	扩展板	指连接到主板的扩展硬件
+nightly build	每夜构建版	
+status LED	状态 LED	
+reboot loop	重启循环	
+serial console	串口控制台	
+boot log	启动日志	
+client isolation	客户端隔离	网络语境
+network adapter	网络适配器	
+browser cache	浏览器缓存	
+disk image	磁盘镜像	
+flash (image)	写入（镜像）	UI 按钮 Flash 保持原文
+drive letter	驱动器号	Windows 语境
+Factory Default	出厂默认值	UI 文案保持原文
+board model	板卡型号	
+visual identification	外观识别	
+console connector	控制台连接器	
+populated	已装配	描述 PCB 元件
+oscillator	振荡器	
+variation	变体	硬件型号语境
+heatsink interface	散热器接口	
+thermal compound	导热材料	
+thermal adhesive	导热胶	
+protective film	保护膜	
+add-on board	扩展板	
+watchdog timer	看门狗定时器	
+boot media	启动介质	
+high-speed differential pair	高速差分信号对	
+state machine diagram	状态机图	
+USB Mass Storage	USB 大容量存储	命令与 UMS 名称保持原文
+watchdog kick signal	看门狗喂狗信号	
+power reset	电源复位	
+device index	设备索引	
+boot loader	引导加载程序	
+QSPI flash	QSPI 闪存	
+analog frontend	模拟前端	
+crosstalk	串扰	
+power-on glitch	上电毛刺	
+place and route	布局布线	
+behavioral simulation	行为仿真	
+register map	寄存器映射	
+memory-mapped register	内存映射寄存器	
+toolchain	工具链	
+workaround	规避方法	
+discontinued	已停产	
+obsolete	已淘汰	
+software stack	软件栈	
+cross-compilation	交叉编译	
+build system	构建系统	
+system library	系统库	
+background service	后台服务	
+signal mapping	信号映射	
+physical signal routing	物理信号路由	
+pin assignment	引脚分配	
+logic analyzer	逻辑分析仪	
+testbench	测试平台	代码、路径中的名称不翻译
+bitstream	bitstream	保留常用 FPGA 术语原文
+device tree overlay	设备树覆盖层	
+processing system	处理系统（PS）	首次出现可注明缩写
+programmable logic	可编程逻辑（PL）	首次出现可注明缩写
+daisy chain	菊花链	
+housekeeping module	housekeeping 模块	模块标识符保持原文
+constraint file	约束文件	
+board part	板卡部件	Vivado 语境
+device tree source	设备树源文件	
+device tree blob	设备树二进制文件	
+hardware handoff	硬件交接	
+release	版本	软件/寄存器映射版本语境
+overlay manager	覆盖层管理器	
+partial reconfiguration	部分重配置	
+bitstream loading	bitstream 加载	
+boot-time loading	启动时加载	
+project mode	项目模式	Vivado 语境
+non-project mode	非项目模式	Vivado 语境
+implementation	实现	Vivado 流程语境
+synthesis	综合	Vivado 流程语境
+logic simulation	逻辑仿真	
+test fixture	测试夹具	
+waveform viewer	波形查看器	
+JTAG chain	JTAG 链	
+boundary scan	边界扫描	
+run-length encoding	游程编码（RLE）	
+calibration mode	校准模式	
+write pointer	写指针	
+read pointer	读指针	
+channel selector	通道选择器	寄存器说明语境
+trigger source selector	触发源选择器	寄存器说明语境
+split trigger mode	分离触发模式	
+wrap pointer	回绕指针	寄存器说明语境
+burst repetition	突发重复	信号发生器语境
+receiver buffer	接收缓冲区	AXI 语境
+STEMlab 125-14 4-Input	STEMlab 125-14 4-Input	官方型号保持原文

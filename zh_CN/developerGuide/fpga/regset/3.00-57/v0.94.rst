@@ -1,0 +1,5450 @@
+.. _fpga_094_3.00_57:
+
+###########################
+FPGA 寄存器映射 - v0.94
+###########################
+
+**FPGA Project:** :ref:`v0.94 <fpga_projects>`
+
+**兼容板卡：**
+
+    * STEMlab 125-14 Gen 2
+    * STEMlab 125-14 PRO Gen 2
+    * STEMlab 125-14 PRO Z7020 Gen 2
+    * STEMlab 125-14 TI
+    * STEMlab 65-16 TI
+    * STEMlab 125-14
+    * STEMlab 125-14 Z7020
+    * STEMlab 125-14 4-Input
+    * SDRlab 122-16
+    * STEMlab 125-10
+
+**兼容应用：**
+
+    * :ref:`示波器 <osc_app>`
+    * :ref:`Signal Generator <osc_app>`
+    * :ref:`Arbitrary Waveform Generator <arb_manager_app>`
+    * :ref:`Spectrum Analyzer <spec_anal_app>`
+    * :ref:`Bode Analyzer <bode_app>`
+    * :ref:`Impedance Analyzer <impedance_app>`
+    * :ref:`LCR Meter <lrc_app>`
+    * :ref:`JupyterLab <jupyterlab>`
+
+本文档描述 v0.94 项目的 FPGA 寄存器映射；该项目是大多数 Red Pitaya 应用的**推荐默认项目**。
+它包含核心功能，并作为后续开发的基础。
+
+Red Pitaya HDL 设计包含多个由寄存器配置的功能，同时使用内存位置存储采集数据并生成输出信号。
+本文档对上述内容均有说明。内存位置按照软件可见的方式编写。
+
+下表描述通过 AXI GP0 接口在 FPGA 上实现的地址空间划分。所有寄存器偏移均按 4 字节对齐，宽度为 32 位。
+粒度为 32 位，即最小传输大小为 4 字节。数据采用小端组织。内存块划分为 8 个部分，每个部分
+由一个独立 IP 核占用。各应用的地址空间将在下文小节中说明。每个 IP 核的地址空间大小为 4 MByte。
+
+.. contents:: Register index
+    :local:
+    :depth: 1
+    :backlinks: top
+
+|
+
+===================
+内存映射概览
+===================
+
+.. list-table::
+    :widths: auto
+
+    * - 
+      - 起始
+      - 结束
+      - 模块名称
+      - 
+      - 
+      - 
+      - 
+    * - CS[0]
+      - 0x40000000
+      - 0x400FFFFF
+      - Housekeeping
+      - 
+      - 
+      - 
+      - 
+    * - CS[1]
+      - 0x40100000
+      - 0x401FFFFF
+      - Oscilloscope (CH A/B)
+      - 
+      - 
+      - 
+      - 
+    * - CS[2]
+      - 0x40200000
+      - 0x402FFFFF
+      - 
+      - Arbitrary signal generator (ASG)
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - 
+      - 
+      - STEMlab 125-14 4-输入:
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - 
+      - 
+      - 
+      - OscilloscopeCD
+      - 
+      - 
+    * - CS[3]
+      - 0x40300000
+      - 0x403FFFFF
+      - PID controller
+      - 
+      - 
+      - 
+      - 
+    * - CS[4]
+      - 0x40400000
+      - 0x404FFFFF
+      - Analog mixed signals (AMS)
+      - 
+      - 
+      - 
+      - 
+    * - CS[5]
+      - 0x40500000
+      - 0x405FFFFF
+      - Daisy chain
+      - 
+      - 
+      - 
+      - 
+    * - CS[6]
+      - 0x40600000
+      - 0x406FFFFF
+      - 
+      - Free / inactive (stubbed in 当前 RTL)
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - 
+      - 
+      - STEMlab 125-14 PRO Z7020 Gen 2:
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - 
+      - 
+      - E3 connector serial lines 测试
+      - 
+      - 
+      - 
+    * - CS[7]
+      - 0x40700000
+      - 0x407FFFFF
+      - Free / inactive (stubbed in 当前 RTL)
+      - 
+      - 
+      - 
+      - 
+
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    v0.94_cs2_4input.rst
+
+.. |OscilloscopeCD| replace:: :ref:`Oscilloscope CH C/D <fpga_094_cs2_4input_3.00_57>`
+
+
+|
+
+============================================
+CS[0] - 系统管理（0x40000000-0x400FFFFF）
+============================================
+
+系统管理模块提供系统标识、GPIO 控制和板卡专属功能。
+
+
+快速参考
+---------------
+
+通用寄存器（所有板卡）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{25mm}|p{105mm}|p{10mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x0
+      - 设计 ID
+      - R
+      - 
+    * - 0x4-0x8
+      - 设备 DNA (唯一 标识符)
+      - R
+      - 
+    * - 0xC
+      - Digital loopback
+      - R/W
+      - 
+    * - 0x10-0x24
+      - GPIO 方向 和 数据 (P/N)
+      - R/W
+      - 
+    * - 0x2C
+      - Diagnostic register
+      - R
+      - 
+    * - 0x30
+      - LED 控制
+      - R/W
+      - 
+    * - 0x34
+      - CAN bus 启用
+      - R/W
+      - 
+    * - 0x100
+      - FPGA ready 状态
+      - R
+      - 
+    * - 0x104
+      - ADC 时钟频率计
+      - R
+      - 
+    * - 0x1000
+      - 外部触发覆盖
+      - R/W
+      - 
+
+
+
+板卡专属寄存器
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**TI boards:**
+
+.. tabularcolumns:: |p{25mm}|p{105mm}|p{10mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x40
+      - IDELAY 控制
+      - R/W
+      - 
+    * - 0x44
+      - IDELAY invert
+      - R/W
+      - 
+    * - 0x50-0x58
+      - ADC SPI interface
+      - R/W
+      - 
+
+
+**125-14 4-Input board:**
+
+.. tabularcolumns:: |p{25mm}|p{105mm}|p{10mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x40
+      - PLL 控制
+      - R/W
+      - 
+    * - 0x44
+      - IDELAY reset
+      - R/W
+      - 
+    * - 0x48-0x54
+      - IDELAY CH A/B/C/D
+      - R/W
+      - 
+    * - 0x80
+      - ADC SPI command
+      - W
+      - 
+
+
+|
+
+
+
+通用寄存器 - 所有板卡
+------------------------------
+
+系统标识
+~~~~~~~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x0
+      - 设计 ID
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:4
+      - R
+      - 
+    * - 
+      - 设计 ID:
+      - 3:0
+      - R
+      - 
+    * - 
+      - * 0 = 原型
+      - 
+      - 
+      - 
+    * - 
+      - * 1 = 发布
+      - 
+      - 
+      - 
+    * - 0x4
+      - DNA part 1
+      - 
+      - 
+      - 
+    * - 
+      - 设备唯一标识符 [31:0]
+      - 31:0
+      - R
+      - 
+    * - 0x8
+      - DNA part 2
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - 设备唯一标识符 [56:32]
+      - 24:0
+      - R
+      - 
+
+
+
+GPIO 控制
+~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x10
+      - Expansion connector 方向 P
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:8
+      - R
+      - 
+    * - 
+      - 方向 P lines:
+      - 7:0
+      - R/W
+      - 
+    * - 
+      - * 1 = 输出
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = 输入
+      - 
+      - 
+      - 
+    * - 0x14
+      - Expansion connector 方向 N
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:8
+      - R
+      - 
+    * - 
+      - 方向 N lines:
+      - 7:0
+      - R/W
+      - 
+    * - 
+      - * 1 = 输出
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = 输入
+      - 
+      - 
+      - 
+    * - 0x18
+      - Expansion connector 输出 P
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:8
+      - R
+      - 
+    * - 
+      - P pins 输出 值
+      - 7:0
+      - R/W
+      - 
+    * - 0x1C
+      - Expansion connector 输出 N
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:8
+      - R
+      - 
+    * - 
+      - N pins 输出 值
+      - 7:0
+      - R/W
+      - 
+    * - 0x20
+      - Expansion connector 输入 P
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:8
+      - R
+      - 
+    * - 
+      - P pins 输入 值
+      - 7:0
+      - R
+      - 
+    * - 0x24
+      - Expansion connector 输入 N
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:8
+      - R
+      - 
+    * - 
+      - N pins 输入 值
+      - 7:0
+      - R
+      - 
+
+
+
+系统控制
+~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0xC
+      - Digital Loopback
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+    * - 
+      - Digital loopback 控制值 (non-4-输入 boards)
+      - 1:0
+      - R/W
+      - 
+    * - 
+      - * 当前 non-4-输入 RTL uses two 控制 位
+      - 
+      - 
+      - 
+    * - 
+      - 启用 digital loopback (4-输入 board)
+      - 0
+      - R/W
+      - 
+    * - 
+      - * 1 = 启用
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = 禁用
+      - 
+      - 
+      - 
+    * - 0x2C
+      - Diagnostic register
+      - 
+      - 
+      - 
+    * - 
+      - 读取-仅 诊断值 来自 housekeeping logic
+      - 31:0
+      - R
+      - 
+    * - 0x30
+      - LED 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:8
+      - R
+      - 
+    * - 
+      - LED state:
+      - 7:0
+      - R/W
+      - 
+    * - 
+      - * 1 = on
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = off
+      - 
+      - 
+      - 
+    * - 0x34
+      - CAN pins 启用
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - 启用 CAN0 和 CAN1 pins:
+      - 0
+      - R/W
+      - 
+    * - 
+      - * CAN0_rx: GPIO_P 7
+      - 
+      - 
+      - 
+    * - 
+      - * CAN0_tx: GPIO_N 7
+      - 
+      - 
+      - 
+    * - 
+      - * CAN1_rx: GPIO_P 6
+      - 
+      - 
+      - 
+    * - 
+      - * CAN1_tx: GPIO_N 6
+      - 
+      - 
+      - 
+    * - 0x100
+      - FPGA ready
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - Programmable logic 是 out 的 reset
+      - 0
+      - R
+      - 
+    * - 
+      - * 1 = ready
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = not ready
+      - 
+      - 
+      - 
+    * - 0x104
+      - ADC 时钟 频率 meter
+      - 
+      - 
+      - 
+    * - 
+      - 近似 频率 的 ADC 时钟 (Hz)
+      - 31:0
+      - R
+      - 
+
+
+
+触发控制
+~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x1000
+      - External 触发 override
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:3
+      - R
+      - 
+    * - 
+      - 触发 输出 选择器:
+      - 2
+      - R/W
+      - 
+    * - 
+      - * 1 = DAC 触发
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = ADC 触发
+      - 
+      - 
+      - 
+    * - 
+      - Override GPIO_N 0 到 输出 ADC 或 DAC 触发
+      - 1
+      - R/W
+      - 
+    * - 
+      - 通过菊链启用外部触发:
+      - 0
+      - R/W
+      - 
+    * - 
+      - * 1 = 启用
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = disable
+      - 
+      - 
+      - 
+
+
+|
+
+板卡专属寄存器
+-------------------------
+
+仅 TI 板卡
+~~~~~~~~~~~~~~~~~~~
+
+.. ? Add serial invert/idelay invert field on address 0x44 for TI boards (hidden as reserved)?? Not sure if this is correctly patched
+
+**IDELAY Control**
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x40
+      - IDELAY 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - IDELAY 抽头值 (pair ADB1)
+      - 24:20
+      - R/W
+      - 
+    * - 
+      - IDELAY 抽头值 (pair ADB0)
+      - 19:15
+      - R/W
+      - 
+    * - 
+      - IDELAY 抽头值 (pair ADA1)
+      - 14:10
+      - R/W
+      - 
+    * - 
+      - IDELAY 抽头值 (pair ADA0)
+      - 9:5
+      - R/W
+      - 
+    * - 
+      - IDELAY 抽头值 (pair ADFCLK)
+      - 4:0
+      - R/W
+      - 
+    * - 0x44
+      - IDELAY invert
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:0
+      - R
+      - 
+
+
+
+**ADC SPI Interface**
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x50
+      - ADC SPI 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - 控制字
+      - 15:0
+      - R/W
+      - 
+    * - 0x54
+      - ADC SPI 写入
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - 向 ADC 写入数据 (仅低 8 位有效)
+      - 15:0
+      - R/W
+      - 
+    * - 0x58
+      - ADC SPI 读取
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:17
+      - R
+      - 
+    * - 
+      - 传输忙
+      - 16
+      - R
+      - 
+    * - 
+      - * 1 = busy
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = 准备传输
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:8
+      - R
+      - 
+    * - 
+      - 读取数据 (仅低 8 位有效)
+      - 7:0
+      - R
+      - 
+
+
+|
+
+仅 125-14 4-Input
+~~~~~~~~~~~~~~~~~~~
+
+**PLL and Clock Control**
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x40
+      - PLL 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:9
+      - R
+      - 
+    * - 
+      - PLL 锁定状态:
+      - 8
+      - R
+      - 
+    * - 
+      - * 1 = 锁定
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = not 锁定
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 7:5
+      - R
+      - 
+    * - 
+      - 检测到参考时钟:
+      - 4
+      - R
+      - 
+    * - 
+      - * 1 = detected
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = 未检测到外部时钟
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 3:1
+      - R
+      - 
+    * - 
+      - 启用 PLL:
+      - 0
+      - R/W
+      - 
+    * - 
+      - * 1 = 启用
+      - 
+      - 
+      - 
+    * - 
+      - * 0 = 禁用
+      - 
+      - 
+      - 
+
+
+
+**IDELAY Configuration**
+
+.. note::
+
+    通道 A/B/C/D 的 IDELAY 寄存器具有相同结构。每个通道包含：
+
+    * **inc/dec** bits [14:8] - 递增/递减延迟抽头
+    * **enable** bits [6:0] - 启用延迟调整
+    * **stage** bits [4:0] - 当前延迟级 (read-only)
+
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x44
+      - IDELAY reset
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:15
+      - R
+      - 
+    * - 
+      - CH B[6:0] idelay reset
+      - 14:8
+      - R/W
+      - 
+    * - 
+      - 保留
+      - 7
+      - R
+      - 
+    * - 
+      - CH A[6:0] idelay reset
+      - 6:0
+      - R/W
+      - 
+    * - 0x48
+      - IDELAY CH A
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:15
+      - R
+      - 
+    * - 
+      - CH A[6:0] inc/dec
+      - 14:8
+      - W
+      - 
+    * - 
+      - 保留
+      - 7
+      - R
+      - 
+    * - 
+      - CH A[6:0] idelay 启用
+      - 6:0
+      - W
+      - 
+    * - 
+      - CH A[0] 当前 idelay tap 值
+      - 4:0
+      - R
+      - 
+    * - 0x4C
+      - IDELAY CH B (相同 structure as CH A)
+      - 
+      - 
+      - 
+    * - 0x50
+      - IDELAY CH C (相同 structure as CH A)
+      - 
+      - 
+      - 
+    * - 0x54
+      - IDELAY CH D (相同 structure as CH A)
+      - 
+      - 
+      - 
+
+
+
+**SPI configuration**
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x80
+      - ADC SPI command
+      - 
+      - 
+      - 
+    * - 
+      - 仅写命令/控制字 用于 该 board ADC SPI path
+      - 31:0
+      - W
+      - 
+
+
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+|
+
+===============================================
+CS[1] - 示波器 (0x40100000-0x401FFFFF)
+===============================================
+
+示波器模块负责 ADC 数据采集、触发和缓冲。
+
+.. note::
+
+    **STEMlab 125-14 4-Input：** 寄存器写入会同时应用于通道 A/B 和 C/D。
+    输出寄存器（ASG）由通道 C/D（IN3/IN4）的镜像输入寄存器取代。
+    完整的 CH C/D 寄存器请参阅 :ref:`CS[2] 示波器 CH C/D <fpga_094_osc_4input_3.00_57>`。
+
+
+快速参考
+---------------
+
+.. ? 0xAC-0xB8 registers ???? Do these exist in the current RTL? Are they just hidden as reserved??
+
+.. tabularcolumns:: |p{25mm}|p{105mm}|p{10mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x0
+      - 配置 & 状态
+      - R/W
+      - 
+    * - 0x4
+      - 触发源选择器
+      - R/W
+      - 
+    * - 0x8-0xC
+      - CH A/B 阈值
+      - R/W
+      - 
+    * - 0x10
+      - 触发后延迟 (CH A)
+      - R/W
+      - 
+    * - 0x14
+      - 数据抽取 (CH A)
+      - R/W
+      - 
+    * - 0x18-0x1C
+      - 写入 pointers (当前/触发)
+      - R
+      - 
+    * - 0x20-0x24
+      - CH A/B hysteresis
+      - R/W
+      - 
+    * - 0x28
+      - 信号平均使能
+      - R/W
+      - 
+    * - 0x2C
+      - PreTrigger 计数器
+      - R
+      - 
+    * - 0x30-0x4C
+      - CH A/B Equalization filters (AA/BB/KK/PP)
+      - R/W
+      - 
+    * - 0x50-0x64
+      - CH A AXI DMA 控制
+      - R/W
+      - 
+    * - 0x70-0x84
+      - CH B AXI DMA 控制
+      - R/W
+      - 
+    * - 0x88
+      - AXI state registers
+      - R
+      - 
+    * - 0x90
+      - 触发去抖时间
+      - R/W
+      - 
+    * - 0x94
+      - 触发保护清除
+      - W
+      - 
+    * - 0x98
+      - 重构滤波器旁路
+      - R/W
+      - 
+    * - 0xA0
+      - 累加器 数据 sequence length
+      - R
+      - 
+    * - 0xA4-0xA8
+      - 累加器 偏移 correction (CH A/B)
+      - R/W
+      - 
+    * - 0x110
+      - 触发后延迟 (CH B)
+      - R/W
+      - 
+    * - 0x114
+      - 数据抽取 (CH B)
+      - R/W
+      - 
+    * - 0x118-0x11C
+      - CH B 写入 pointers (当前/触发)
+      - R
+      - 
+    * - 0x120-0x12C
+      - 校准 (TI 和 122-16 models)
+      - R/W
+      - 
+    * - 0x200-0x20C
+      - 校准 (其他 models)
+      - R/W
+      - 
+    * - 0x220-0x244
+      - 时间戳 registers
+      - R
+      - 
+    * - 0x10000-0x1FFFC
+      - CH A 内存 缓冲区 (16k 采样点)
+      - R
+      - 
+    * - 0x20000-0x2FFFC
+      - CH B 内存 缓冲区 (16k 采样点)
+      - R
+      - 
+
+
+|
+
+触发源
+---------------
+
+触发源寄存器（0x4）接受以下值：
+
+.. list-table::
+    :widths: auto
+
+    * - 值
+      - 触发 源
+      - 
+    * - 0
+      - 禁用
+      - 
+    * - 1
+      - 触发 immediately
+      - 
+    * - 2
+      - CH A 阈值 positive edge
+      - 
+    * - 3
+      - CH A 阈值 negative edge
+      - 
+    * - 4
+      - CH B 阈值 positive edge
+      - 
+    * - 5
+      - CH B 阈值 negative edge
+      - 
+    * - 6
+      - External 触发 positive edge (DIO0_P pin)
+      - 
+    * - 7
+      - External 触发 negative edge
+      - 
+    * - 8
+      - AWG application positive edge
+      - 
+    * - 9
+      - AWG application negative edge
+      - 
+    * - 10
+      - CH C 阈值 positive edge (4-输入 仅)
+      - 
+    * - 11
+      - CH C 阈值 negative edge (4-输入 仅)
+      - 
+    * - 12
+      - CH D 阈值 positive edge (4-输入 仅)
+      - 
+    * - 13
+      - CH D 阈值 negative edge (4-输入 仅)
+      - 
+    * - 18
+      - CH A 阈值 any edge
+      - 
+    * - 20
+      - CH B 阈值 any edge
+      - 
+    * - 22
+      - External 触发 any edge
+      - 
+    * - 24
+      - AWG any edge
+      - 
+    * - 26
+      - CH C 阈值 any edge (4-输入 仅)
+      - 
+    * - 28
+      - CH D 阈值 any edge (4-输入 仅)
+      - 
+
+
+
+配置与控制
+-------------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x0
+      - 配置
+      - 
+      - 
+      - 
+    * - 
+      - Channel 1 (CH A)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 7:6
+      - R
+      - 
+    * - 
+      - 启用 split 触发 mode
+      - 5
+      - R/W
+      - 
+    * - 
+      - Acquisition 延迟 complete (所有 数据 written 到 缓冲区)
+      - 4
+      - R
+      - 
+    * - 
+      - 触发 remains armed 之后 acquisition 延迟 completes
+      - 3
+      - W
+      - 
+    * - 
+      - 触发 has arrived (stays 1 until next arm 或 reset)
+      - 2
+      - R
+      - 
+    * - 
+      - Reset 写入 state machine
+      - 1
+      - W
+      - 
+    * - 
+      - 起始 writing 数据 into 内存 (ARM 触发)
+      - 0
+      - W
+      - 
+    * - 
+      - Channel 2 (CH B)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:14
+      - R
+      - 
+    * - 
+      - 启用 split 触发 mode
+      - 13
+      - R/W
+      - 
+    * - 
+      - Acquisition 延迟 complete (所有 数据 written 到 缓冲区)
+      - 12
+      - R
+      - 
+    * - 
+      - 触发 remains armed 之后 acquisition 延迟 completes
+      - 11
+      - W
+      - 
+    * - 
+      - 触发 has arrived (stays 1 until next arm 或 reset)
+      - 10
+      - R
+      - 
+    * - 
+      - Reset 写入 state machine
+      - 9
+      - W
+      - 
+    * - 
+      - 起始 writing 数据 into 内存 (ARM 触发)
+      - 8
+      - W
+      - 
+    * - 
+      - Channel 3 (CH C) — 4-输入 仅
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 23:22
+      - R
+      - 
+    * - 
+      - 启用 split 触发 mode
+      - 21
+      - R/W
+      - 
+    * - 
+      - Acquisition 延迟 complete (所有 数据 written 到 缓冲区)
+      - 20
+      - R
+      - 
+    * - 
+      - 触发 remains armed 之后 acquisition 延迟 completes
+      - 19
+      - W
+      - 
+    * - 
+      - 触发 has arrived (stays 1 until next arm 或 reset)
+      - 18
+      - R
+      - 
+    * - 
+      - Reset 写入 state machine
+      - 17
+      - W
+      - 
+    * - 
+      - 起始 writing 数据 into 内存 (ARM 触发)
+      - 16
+      - W
+      - 
+    * - 
+      - Channel 4 (CH D) — 4-输入 仅
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+    * - 
+      - 启用 split 触发 mode
+      - 29
+      - R/W
+      - 
+    * - 
+      - Acquisition 延迟 complete (所有 数据 written 到 缓冲区)
+      - 28
+      - R
+      - 
+    * - 
+      - 触发 remains armed 之后 acquisition 延迟 completes
+      - 27
+      - W
+      - 
+    * - 
+      - 触发 has arrived (stays 1 until next arm 或 reset)
+      - 26
+      - R
+      - 
+    * - 
+      - Reset 写入 state machine
+      - 25
+      - W
+      - 
+    * - 
+      - 起始 writing 数据 into 内存 (ARM 触发)
+      - 24
+      - W
+      - 
+    * - 0x4
+      - 触发 源 - See 触发 源 table above
+      - 
+      - 
+      - 
+    * - 
+      - Channel 1 (CH A)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 7:6
+      - R
+      - 
+    * - 
+      - 触发 lock 状态 (1 = 锁定/armed, 0 = waiting/idle)
+      - 5
+      - R
+      - 
+    * - 
+      - 触发源选择器 (当 触发 延迟 ends → 0)
+      - 4:0
+      - R/W
+      - 
+    * - 
+      - Channel 2 (CH B)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:14
+      - R
+      - 
+    * - 
+      - 触发 lock 状态 (1 = 锁定/armed, 0 = waiting/idle)
+      - 13
+      - R
+      - 
+    * - 
+      - 触发源选择器 (当 触发 延迟 ends → 0)
+      - 12:8
+      - R/W
+      - 
+    * - 
+      - Channel 3 (CH C) — 4-输入 仅
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 23:22
+      - R
+      - 
+    * - 
+      - 触发 lock 状态 (1 = 锁定/armed, 0 = waiting/idle)
+      - 21
+      - R
+      - 
+    * - 
+      - 触发源选择器 (当 触发 延迟 ends → 0)
+      - 20:16
+      - R/W
+      - 
+    * - 
+      - Channel 4 (CH D) — 4-输入 仅
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+    * - 
+      - 触发 lock 状态 (1 = 锁定/armed, 0 = waiting/idle)
+      - 29
+      - R
+      - 
+    * - 
+      - 触发源选择器 (当 触发 延迟 ends → 0)
+      - 28:24
+      - R/W
+      - 
+
+
+
+阈值与时序
+--------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x8
+      - CH A 阈值
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - 触发 当 ADC 值 crosses this 阈值
+      - 13:0
+      - R/W
+      - 
+    * - 0xC
+      - CH B 阈值
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - 触发 当 ADC 值 crosses this 阈值
+      - 13:0
+      - R/W
+      - 
+    * - 0x10
+      - 延迟 之后 触发
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 decimated 采样点 到 capture 之后 触发
+      - 31:0
+      - R/W
+      - 
+    * - 0x14
+      - 数据 抽取
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:17
+      - R
+      - 
+    * - 
+      - 抽取 factor:
+      - 16:0
+      - R/W
+      - 
+    * - 
+      - * 1, 2, 4, 8: Supported 用于 values < 16
+      - 
+      - 
+      - 
+    * - 
+      - * ≥16: Averaging 的 any number supported (max 65535)
+      - 
+      - 
+      - 
+    * - 0x20
+      - CH A hysteresis
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - 阈值 hysteresis - 值 must be outside 到 re-触发
+      - 13:0
+      - R/W
+      - 
+    * - 0x24
+      - CH B hysteresis
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - 阈值 hysteresis - 值 must be outside 到 re-触发
+      - 13:0
+      - R/W
+      - 
+
+
+.. tip::
+
+    迟滞用法： 设置迟滞以防止触发噪声。信号必须移出
+    迟滞带后，触发器才能再次触发。
+
+
+
+写指针与配置
+---------------------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+      - 
+    * - 0x18
+      - 写入 指针 - 当前
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+      - 
+    * - 
+      - 当前 写入 指针
+      - 13:0
+      - R
+      - 
+      - 
+    * - 0x1C
+      - 写入 指针 - 触发
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+      - 
+    * - 
+      - 写入 指针 at time 当 触发 arrived
+      - 13:0
+      - R
+      - 
+      - 
+    * - 0x28
+      - Signal average 启用
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - Channel 1
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 7:2
+      - R
+      - 
+      - 
+    * - 
+      - Enables 16-bit mode. 数据 是 expanded 到 16 位.
+      - 1
+      - R/W
+      - 
+      - 
+    * - 
+      - 启用 signal average at 抽取
+      - 0
+      - R/W
+      - 
+      - 
+    * - 
+      - Channel 2
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:10
+      - R
+      - 
+      - 
+    * - 
+      - Enables 16-bit mode. 数据 是 expanded 到 16 位.
+      - 9
+      - R/W
+      - 
+      - 
+    * - 
+      - 启用 signal average at 抽取
+      - 8
+      - R/W
+      - 
+      - 
+    * - 
+      - Channel 3 — 4-输入 仅
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 23:18
+      - R
+      - 
+      - 
+    * - 
+      - Enables 16-bit mode. 数据 是 expanded 到 16 位.
+      - 17
+      - R/W
+      - 
+      - 
+    * - 
+      - 启用 signal average at 抽取
+      - 16
+      - R/W
+      - 
+      - 
+    * - 
+      - Channel 4 — 4-输入 仅
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:26
+      - R
+      - 
+      - 
+    * - 
+      - Enables 16-bit mode. 数据 是 expanded 到 16 位.
+      - 25
+      - R/W
+      - 
+      - 
+    * - 
+      - 启用 signal average at 抽取
+      - 24
+      - R/W
+      - 
+      - 
+    * - 0x2C
+      - PreTrigger 计数器
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - Unsigned 计数器 holding 该 number 的 采样点
+      - 31:0
+      - R
+      - 
+    * - 
+      - 
+      - captured 之间 acquisition 起始 和 触发.
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - Stops incrementing at 0xffffffff (no overflow).
+      - 
+      - 
+      - 
+
+
+
+均衡滤波器
+--------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x30
+      - CH A Equalization filter AA
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:18
+      - R
+      - 
+    * - 
+      - AA Coefficient
+      - 17:0
+      - R/W
+      - 
+    * - 0x34
+      - CH A Equalization filter BB
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - BB Coefficient
+      - 24:0
+      - R/W
+      - 
+    * - 0x38
+      - CH A Equalization filter KK
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - KK Coefficient
+      - 24:0
+      - R/W
+      - 
+    * - 0x3C
+      - CH A Equalization filter PP
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - PP Coefficient
+      - 24:0
+      - R/W
+      - 
+    * - 0x40
+      - CH B Equalization filter AA
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:18
+      - R
+      - 
+    * - 
+      - AA Coefficient
+      - 17:0
+      - R/W
+      - 
+    * - 0x44
+      - CH B Equalization filter BB
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - BB Coefficient
+      - 24:0
+      - R/W
+      - 
+    * - 0x48
+      - CH B Equalization filter KK
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - KK Coefficient
+      - 24:0
+      - R/W
+      - 
+    * - 0x4C
+      - CH B Equalization filter PP
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - PP Coefficient
+      - 24:0
+      - R/W
+      - 
+
+
+
+AXI DMA 控制
+---------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x50
+      - CH A AXI 低 address
+      - 
+      - 
+      - 
+    * - 
+      - 起始ing 写入 address 用于 DMA 缓冲区
+      - 31:0
+      - R/W
+      - 
+    * - 0x54
+      - CH A AXI 高 address
+      - 
+      - 
+      - 
+    * - 
+      - 高 address limit (wraps 到 低 address)
+      - 31:0
+      - R/W
+      - 
+    * - 0x58
+      - CH A AXI 延迟 之后 触发
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 decimated 采样点 到 写入 之后 触发
+      - 31:0
+      - R/W
+      - 
+    * - 0x5C
+      - CH A AXI 启用 master
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - 启用 AXI master 用于 DMA transfers
+      - 0
+      - R/W
+      - 
+    * - 0x60
+      - CH A AXI 写入 指针 - 触发
+      - 
+      - 
+      - 
+    * - 
+      - 写入 指针 at time 当 触发 arrived
+      - 31:0
+      - R
+      - 
+    * - 0x64
+      - CH A AXI 写入 指针 - 当前
+      - 
+      - 
+      - 
+    * - 
+      - 当前 写入 指针
+      - 31:0
+      - R
+      - 
+    * - 0x70
+      - CH B AXI 低 address
+      - 
+      - 
+      - 
+    * - 
+      - 起始ing 写入 address 用于 DMA 缓冲区
+      - 31:0
+      - R/W
+      - 
+    * - 0x74
+      - CH B AXI 高 address
+      - 
+      - 
+      - 
+    * - 
+      - 高 address limit (wraps 到 低 address)
+      - 31:0
+      - R/W
+      - 
+    * - 0x78
+      - CH B AXI 延迟 之后 触发
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 decimated 采样点 到 写入 之后 触发
+      - 31:0
+      - R/W
+      - 
+    * - 0x7C
+      - CH B AXI 启用 master
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - 启用 AXI master 用于 DMA transfers
+      - 0
+      - R/W
+      - 
+    * - 0x80
+      - CH B AXI 写入 指针 - 触发
+      - 
+      - 
+      - 
+    * - 
+      - 写入 指针 at time 当 触发 arrived
+      - 31:0
+      - R
+      - 
+    * - 0x84
+      - CH B AXI 写入 指针 - 当前
+      - 
+      - 
+      - 
+    * - 
+      - 当前 写入 指针
+      - 31:0
+      - R
+      - 
+    * - 0x88
+      - AXI state registers
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:21
+      - R
+      - 
+    * - 
+      - CH B AXI - Acquisition 延迟 complete
+      - 20
+      - R
+      - 
+    * - 
+      - (所有 数据 written 到 缓冲区)
+      - 
+      - 
+      - 
+    * - 
+      - CH B AXI - 触发 remains armed 之后
+      - 
+      - 
+      - 
+    * - 
+      - acquisition 延迟 completes
+      - 19
+      - R
+      - 
+    * - 
+      - CH B AXI - 触发 has arrived (stays 1 until next arm
+      - 
+      - R
+      - 
+    * - 
+      - 或 reset)
+      - 18
+      - 
+      - 
+    * - 
+      - 保留
+      - 17
+      - R
+      - 
+    * - 
+      - CH A AXI - 触发 armed
+      - 16
+      - R
+      - 
+    * - 
+      - 保留
+      - 15:5
+      - R
+      - 
+    * - 
+      - CH A AXI - Acquisition 延迟 complete
+      - 4
+      - R
+      - 
+    * - 
+      - (所有 数据 written 到 缓冲区)
+      - 
+      - 
+      - 
+    * - 
+      - CH A AXI - 触发 remains armed 之后
+      - 
+      - 
+      - 
+    * - 
+      - acquisition 延迟 completes
+      - 3
+      - R
+      - 
+    * - 
+      - CH A AXI - 触发 has arrived (stays 1 until next arm
+      - 2
+      - 
+      - 
+    * - 
+      - 或 reset)
+      - 
+      - R
+      - 
+    * - 
+      - 保留
+      - 1
+      - R
+      - 
+    * - 
+      - CH A AXI - 触发 armed
+      - 0
+      - R
+      - 
+
+
+
+其他配置
+------------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+      - 
+    * - 0x90
+      - 触发 debouncer time
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - Number 的 ADC 时钟 periods 触发 是 禁用
+      - 19:0
+      - R/W
+      - 
+    * - 
+      - 
+      - 之后 activation. Reset 值 是 decimal 62500,
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - equivalent 到 0.5 ms.
+      - 
+      - 
+      - 
+    * - 0x94
+      - 触发 protection clear
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - Channel 1 (CH A)
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 7:1
+      - R
+      - 
+      - 
+    * - 
+      - Clear 触发 protection mechanism
+      - 0
+      - W
+      - 
+      - 
+    * - 
+      - Channel 2 (CH B)
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:9
+      - R
+      - 
+      - 
+    * - 
+      - Clear 触发 protection mechanism
+      - 8
+      - W
+      - 
+      - 
+    * - 
+      - Channel 3 (CH C) — 4-输入 仅
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 23:17
+      - R
+      - 
+      - 
+    * - 
+      - Clear 触发 protection mechanism
+      - 16
+      - W
+      - 
+      - 
+    * - 
+      - Channel 4 (CH D) — 4-输入 仅
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+      - 
+    * - 
+      - Clear 触发 protection mechanism
+      - 24
+      - W
+      - 
+      - 
+    * - 0x98
+      - Reconstruction filter bypass
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+      - 
+    * - 
+      - Filter bypass CH B
+      - 1
+      - R/W
+      - 
+      - 
+    * - 
+      - Filter bypass CH A
+      - 0
+      - R/W
+      - 
+      - 
+
+
+
+
+.. note::
+
+    对于 4 通道板卡（STEMlab 125-14 4-输入），该寄存器的值必须同时写入 CS[1]（0x40100090）和 CS[2]（0x40200090），以确保去抖器在所有通道上正常工作。
+
+
+中断控制（IRQ）
+------------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0xAC
+      - IRQ Mask
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+    * - 
+      - 缓冲区 full interrupt 启用
+      - 1
+      - R/W
+      - 
+    * - 
+      - 触发 interrupt 启用
+      - 0
+      - R/W
+      - 
+    * - 0xB0
+      - IRQ 状态 / Clear
+      - 
+      - 
+      - 
+    * - 
+      - 读取: latched 状态; 写入 1 到 clear 该 bit
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+    * - 
+      - 缓冲区 full interrupt pending
+      - 1
+      - R/W
+      - 
+    * - 
+      - 触发 interrupt pending
+      - 0
+      - R/W
+      - 
+    * - 0xB4
+      - Split IRQ Mask (independent mode 仅)
+      - 
+      - 
+      - 
+    * - 
+      - Reserve/padding
+      - 31:8
+      - R
+      - 
+    * - 
+      - 缓冲区 full 启用 CH4
+      - 7
+      - R/W
+      - 
+    * - 
+      - 缓冲区 full 启用 CH3
+      - 6
+      - R/W
+      - 
+    * - 
+      - 缓冲区 full 启用 CH2
+      - 5
+      - R/W
+      - 
+    * - 
+      - 缓冲区 full 启用 CH1
+      - 4
+      - R/W
+      - 
+    * - 
+      - 触发 启用 CH4
+      - 3
+      - R/W
+      - 
+    * - 
+      - 触发 启用 CH3
+      - 2
+      - R/W
+      - 
+    * - 
+      - 触发 启用 CH2
+      - 1
+      - R/W
+      - 
+    * - 
+      - 触发 启用 CH1
+      - 0
+      - R/W
+      - 
+    * - 0xB8
+      - Split IRQ 状态 / Clear
+      - 
+      - 
+      - 
+    * - 
+      - *读取: per-channel latched 状态; 写入 1 到 clear*
+      - 
+      - 
+      - 
+    * - 
+      - Reserve/padding
+      - 31:8
+      - R
+      - 
+    * - 
+      - 缓冲区 full pending CH4
+      - 7
+      - R/W
+      - 
+    * - 
+      - 缓冲区 full pending CH3
+      - 6
+      - R/W
+      - 
+    * - 
+      - 缓冲区 full pending CH2
+      - 5
+      - R/W
+      - 
+    * - 
+      - 缓冲区 full pending CH1
+      - 4
+      - R/W
+      - 
+    * - 
+      - 触发 pending CH4
+      - 3
+      - R/W
+      - 
+    * - 
+      - 触发 pending CH3
+      - 2
+      - R/W
+      - 
+    * - 
+      - 触发 pending CH2
+      - 1
+      - R/W
+      - 
+    * - 
+      - 触发 pending CH1
+      - 0
+      - R/W
+      - 
+
+
+
+
+
+Channel B Specific 寄存器s
+----------------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x110
+      - 延迟 之后 触发 CHB
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 decimated 采样点 到 写入 之后 触发
+      - 31:0
+      - R/W
+      - 
+    * - 0x114
+      - 数据 抽取 CH B
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:17
+      - R
+      - 
+    * - 
+      - 抽取 factor:
+      - 16:0
+      - R/W
+      - 
+    * - 
+      - * 1, 2, 4, 8: Supported 用于 values < 16
+      - 
+      - 
+      - 
+    * - 
+      - * ≥16: Averaging 的 any number supported (max 65535)
+      - 
+      - 
+      - 
+    * - 0x118
+      - 写入 指针 - 当前 CH B
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - 当前 写入 指针
+      - 13:0
+      - R
+      - 
+    * - 0x11C
+      - 写入 指针 - 触发 CH B
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - 写入 指针 at time 当 触发 arrived
+      - 13:0
+      - R
+      - 
+    * - 0x12C
+      - PreTrigger 计数器 CH B (其他 models)
+      - 
+      - 
+      - 
+    * - 
+      - Unsigned 计数器 holding 该 number 的 采样点
+      - 31:0
+      - R
+      - 
+    * - 
+      - captured 之间 acquisition 起始 和 触发.
+      - 
+      - 
+      - 
+    * - 
+      - Stops incrementing at 0xffffffff (no overflow)
+      - 
+      - 
+      - 
+
+
+校准 寄存器s
+---------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x200
+      - CH A 校准 偏移 (其他 models)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - 校准 偏移 (16 bit signed)
+      - 15:0
+      - R/W
+      - 
+    * - 0x204
+      - CH A 校准 gain (其他 models)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - 校准 gain (16 bit signed)
+      - 15:0
+      - R/W
+      - 
+    * - 0x208
+      - CH B 校准 偏移 (其他 models)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - 校准 偏移 (16 bit signed)
+      - 15:0
+      - R/W
+      - 
+    * - 0x20C
+      - CH B 校准 gain (其他 models)
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - 校准 gain (16 bit signed)
+      - 15:0
+      - R/W
+      - 
+
+
+时间戳 寄存器s
+-------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x220
+      - 全局 时间戳 计数器 LO
+      - 
+      - 
+      - 
+    * - 
+      - 低 32 位 的 该 全局 64-bit timer.
+      - 
+      - 
+      - 
+    * - 
+      - 重要：读取此寄存器会锁存（快照）该值
+      - 
+      - 
+      - 
+    * - 
+      - full 64-bit 计数器 值 into a temporary 缓冲区.
+      - 
+      - 
+      - 
+    * - 
+      - Always 读取 LO first.
+      - 
+      - 
+      - 
+    * - 
+      - 全局 时间戳 计数器 位 [31:0]
+      - 31:0
+      - R
+      - 
+    * - 0x224
+      - 全局 时间戳 计数器 HI
+      - 
+      - 
+      - 
+    * - 
+      - 高 32 位 的 该 全局 64-bit timer.
+      - 
+      - 
+      - 
+    * - 
+      - Returns 该 高 32 位 的 该 值 latched 当 LO
+      - 
+      - 
+      - 
+    * - 
+      - was 读取.
+      - 
+      - 
+      - 
+    * - 
+      - 全局 时间戳 计数器 位 [63:32]
+      - 31:0
+      - R
+      - 
+    * - 0x228
+      - CH1 触发 时间戳 LO
+      - 
+      - 
+      - 
+    * - 
+      - 低 32 位 的 该 时间戳 captured at 该 last
+      - 
+      - 
+      - 
+    * - 
+      - CH1 触发 event.
+      - 
+      - 
+      - 
+    * - 
+      - CH1 触发 时间戳 位 [31:0]
+      - 31:0
+      - R
+      - 
+    * - 0x22C
+      - CH1 触发 时间戳 HI
+      - 
+      - 
+      - 
+    * - 
+      - 高 32 位 的 该 时间戳 captured at 该 last
+      - 
+      - 
+      - 
+    * - 
+      - CH1 触发 event.
+      - 
+      - 
+      - 
+    * - 
+      - CH1 触发 时间戳 位 [63:32]
+      - 31:0
+      - R
+      - 
+    * - 0x230
+      - CH2 触发 时间戳 LO
+      - 
+      - 
+      - 
+    * - 
+      - 低 32 位 的 该 时间戳 captured at 该 last
+      - 
+      - 
+      - 
+    * - 
+      - CH2 触发 event.
+      - 
+      - 
+      - 
+    * - 
+      - CH2 触发 时间戳 位 [31:0]
+      - 31:0
+      - R
+      - 
+    * - 0x234
+      - CH2 触发 时间戳 HI
+      - 
+      - 
+      - 
+    * - 
+      - 高 32 位 的 该 时间戳 captured at 该 last
+      - 
+      - 
+      - 
+    * - 
+      - CH2 触发 event.
+      - 
+      - 
+      - 
+    * - 
+      - CH2 触发 时间戳 位 [63:32]
+      - 31:0
+      - R
+      - 
+
+
+
+.. note::
+
+    对于 4 通道板卡（STEMlab 125-14 4-输入），全局计数器寄存器（0x220–0x224）必须同时写入 CS[1]（0x40100220）和 CS[2]（0x40200220），以实现通道对 A/B 与 C/D 之间的时间戳同步。
+
+
+内存数据缓冲区
+-------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x10000 到
+      - 内存 数据 (16k 采样点)
+      - 
+      - 
+      - 
+    * - 0x1FFFC
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - Captured 数据 用于 CH A
+      - 15:0
+      - R
+      - 
+    * - 0x20000 到
+      - 内存 数据 (16k 采样点)
+      - 
+      - 
+      - 
+    * - 0x2FFFC
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+    * - 
+      - Captured 数据 用于 CH B
+      - 15:0
+      - R
+      - 
+
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+|
+
+==============================================================
+CS[2] - 任意信号发生器 (0x40200000-0x402FFFFF)
+==============================================================
+
+任意信号发生器模块提供双通道波形生成，支持 DMA、突发模式和可配置触发。
+
+.. note::
+
+    **STEMlab 125-14 4-Input**
+
+    在 STEMlab 125-14 4-Input 板卡上，此地址空间（CS[2]）包含**示波器 CH C 和 CH D**，而不是任意信号发生器。
+
+    参阅：:ref:`CS[2] - 示波器 CH C/D（4-Input）<fpga_094_cs2_4input_3.00_57>`
+
+
+快速参考
+---------------
+
+**任意信号发生器 寄存器s**
+
+.. tabularcolumns:: |p{25mm}|p{105mm}|p{10mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - Address 偏移
+      - 说明
+      - R/W
+      - 
+    * - 0x0
+      - 配置 (CH A/B triggers, SM 控制)
+      - R/W
+      - 
+    * - 0x4
+      - CH A amplitude scale 和 偏移
+      - R/W
+      - 
+    * - 0x8-0x14
+      - CH A 计数器 控制 (wrap, 偏移, step, repeats)
+      - R/W
+      - 
+    * - 0x18-0x20
+      - CH A burst 配置 (repetitions, 延迟, 状态)
+      - R/W
+      - 
+    * - 0x24
+      - CH B amplitude scale 和 偏移
+      - R/W
+      - 
+    * - 0x28-0x34
+      - CH B 计数器 控制 (wrap, 偏移, step, repeats)
+      - R/W
+      - 
+    * - 0x38-0x40
+      - CH B burst 配置 (repetitions, 延迟, 状态)
+      - R/W
+      - 
+    * - 0x44-0x48
+      - CH A/B last sample 值 输出
+      - R/W
+      - 
+    * - 0x54
+      - External 触发 debouncer
+      - R/W
+      - 
+    * - 0x68-0x6C
+      - CH A/B initial generator 值
+      - R/W
+      - 
+    * - 0x70-0x74
+      - CH A/B last 值 state length
+      - R/W
+      - 
+    * - 0x78-0x7C
+      - CH A/B LFSR 随机 seed
+      - R/W
+      - 
+    * - 0x80-0x84
+      - CH A/B noise generator 启用
+      - R/W
+      - 
+    * - 0xAC
+      - IRQ Mask
+      - R/W
+      - 
+    * - 0xB0
+      - IRQ 状态 / Clear
+      - R/W
+      - 
+    * - 0xB4
+      - Split IRQ Mask (independent mode)
+      - R/W
+      - 
+    * - 0xB8
+      - Split IRQ 状态 / Clear
+      - R/W
+      - 
+    * - 0x100
+      - AXI interface state (FIFO 状态 用于 both channels)
+      - R
+      - 
+    * - 0x104-0x10C
+      - CH A AXI 接收器 控制 (启用, 缓冲区 addresses)
+      - R/W
+      - 
+    * - 0x114-0x11C
+      - CH B AXI 接收器 控制 (启用, 缓冲区 addresses)
+      - R/W
+      - 
+    * - 0x120-0x124
+      - CH A AXI 错误 和 transfer counts
+      - R
+      - 
+    * - 0x128-0x12C
+      - CH B AXI 错误 和 transfer counts
+      - R
+      - 
+    * - 0x130-0x134
+      - CH A/B AXI 输出 抽取
+      - R/W
+      - 
+    * - 0x220-0x224
+      - 全局 时间戳 计数器
+      - R
+      - 
+    * - 0x228-0x234
+      - 触发 时间戳s (CH1/CH2)
+      - R
+      - 
+    * - 0x10000-0x1FFFC
+      - CH A 内存 数据 缓冲区 (16k 采样点)
+      - R/W
+      - 
+    * - 0x20000-0x2FFFC
+      - CH B 内存 数据 缓冲区 (16k 采样点)
+      - R/W
+      - 
+
+
+|
+
+配置与控制
+-------------------------
+
+配置 and 触发控制
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x0
+      - 配置
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:25
+      - R
+      - 
+    * - 
+      - CH B external gated repetitions
+      - 24
+      - R/W
+      - 
+    * - 
+      - CH B set 输出 到 0
+      - 23
+      - R/W
+      - 
+    * - 
+      - CH B SM reset
+      - 22
+      - R/W
+      - 
+    * - 
+      - CH B Use last sample
+      - 21
+      - R/W
+      - 
+    * - 
+      - CH B SM wrap 指针 (如果 禁用 starts at address 0)
+      - 20
+      - R/W
+      - 
+    * - 
+      - CH B 触发 选择器 (don't change 当 SM 是 active):
+      - 19:16
+      - R/W
+      - 
+    * - 
+      - * 1 - Trig immediately
+      - 
+      - 
+      - 
+    * - 
+      - * 2 - External 触发 positive edge - DIO0_P pin
+      - 
+      - 
+      - 
+    * - 
+      - * 3 - External 触发 negative edge
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:9
+      - R
+      - 
+    * - 
+      - CH A external gated bursts
+      - 8
+      - R/W
+      - 
+    * - 
+      - CH A set 输出 到 0
+      - 7
+      - R/W
+      - 
+    * - 
+      - CH A SM reset
+      - 6
+      - R/W
+      - 
+    * - 
+      - CH A Use last sample
+      - 5
+      - R/W
+      - 
+    * - 
+      - CH A SM wrap 指针 (如果 禁用 starts at address 0)
+      - 4
+      - R/W
+      - 
+    * - 
+      - CH A 触发 选择器 (don't change 当 SM 是 active):
+      - 3:0
+      - R/W
+      - 
+    * - 
+      - * 1 - Trig immediately
+      - 
+      - 
+      - 
+    * - 
+      - * 2 - External 触发 positive edge - DIO0_P pin
+      - 
+      - 
+      - 
+    * - 
+      - * 3 - External 触发 negative edge
+      - 
+      - 
+      - 
+    * - 0x54
+      - External 触发 debouncer
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 ADC 时钟 periods 触发 是 禁用
+      - 19:0
+      - R/W
+      - 
+    * - 
+      - 之后 activation. Default 值 是 decimal 62500 或
+      - 
+      - 
+      - 
+    * - 
+      - equivalent 到 0.5 ms
+      - 
+      - 
+      - 
+
+
+
+Channel A 信号生成
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+      - 
+    * - 0x4
+      - CH A amplitude scale 和 偏移
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - out = (数据*scale)/0x2000 + 偏移
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - Amplitude 偏移
+      - 29:16
+      - R/W
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:14
+      - R
+      - 
+      - 
+    * - 
+      - Amplitude scale. Unsigned
+      - 13:0
+      - R/W
+      - 
+      - 
+    * - 
+      - 0x2000 == multiply by 1
+      - 
+      - 
+      - 
+      - 
+    * - 0x8
+      - CH A 计数器 wrap
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - 
+      - 值 where 计数器 wraps around (16 位 用于 decimals).
+      - 29:0
+      - R/W
+      - 
+    * - 
+      - 
+      - Depends on SM wrap setting:
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - * 1 - New 值 是 acquired by wrap
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - * 0 - 计数器 goes 到 偏移 值
+      - 
+      - 
+      - 
+    * - 0xC
+      - CH A 起始 偏移
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - 计数器 起始 偏移 (16 位 用于 decimals).
+      - 29:0
+      - R/W
+      - 
+      - 
+    * - 
+      - 起始 偏移 当 触发 arrives.
+      - 
+      - 
+      - 
+      - 
+    * - 0x10
+      - CH A 计数器 step
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - 计数器 step (16 位 用于 decimals).
+      - 29:0
+      - R/W
+      - 
+      - 
+    * - 
+      - Updates 当 writing 到 该 CH B 计数器 step reg.
+      - 
+      - 
+      - 
+      - 
+    * - 0x14
+      - CH A 计数器 step- 低 位
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 计数器 step extra 32 decimals.
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 
+      - Updates 当 writing 到 该 CH B 计数器 step 低
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 位 reg (0x34).
+      - 
+      - 
+      - 
+      - 
+    * - 0x18
+      - CH A number 的 读取 cycles in one burst (NCYC)
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+      - 
+    * - 
+      - Number 的 repeats 的 table readout (NCYC):
+      - 15:0
+      - R/W
+      - 
+      - 
+    * - 
+      - * 0 - Disable burst mode
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * X - X repeats
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * 65535 (0xffff) - 65535 repeats (max 值)
+      - 
+      - 
+      - 
+      - 
+    * - 0x1C
+      - CH A number 的 burst repetitions (NOR)
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+      - 
+    * - 
+      - Number 的 repetitions (NOR):
+      - 15:0
+      - R/W
+      - 
+      - 
+    * - 
+      - * 0 - 1 repetition
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * X - X+1 repetitions
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * 65535 (0xffff) - infinite (max 值)
+      - 
+      - 
+      - 
+      - 
+    * - 0x20
+      - CH A 延迟 之间 burst repetitions
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 延迟 之间 repetitions. Granularity = 1 us
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x44
+      - CH A 值 的 last sample in burst
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - Last 值 的 burst
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x68
+      - CH A initial 值 的 generator
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - First 值
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x70
+      - CH A length 的 last 值 state
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - Length 的 last 值 state (in ADC periods)
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x78
+      - CH A LFSR 随机 seed
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 随机 number seed 用于 linear-feedback
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - shift register
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x80
+      - CH A 启用 noise generator
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+      - 
+    * - 
+      - 启用 pseudo-随机 noise generator
+      - 0
+      - R/W
+      - 
+      - 
+
+
+
+Channel B 信号生成
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+      - 
+    * - 0x24
+      - CH B amplitude scale 和 偏移
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - out = (数据*scale)/0x2000 + 偏移
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - Amplitude 偏移
+      - 29:16
+      - R/W
+      - 
+      - 
+    * - 
+      - 保留
+      - 15:14
+      - R
+      - 
+      - 
+    * - 
+      - Amplitude scale. Unsigned
+      - 13:0
+      - R/W
+      - 
+      - 
+    * - 
+      - 0x2000 == multiply by 1
+      - 
+      - 
+      - 
+      - 
+    * - 0x28
+      - CH B 计数器 wrap
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - 
+      - 值 where 计数器 wraps around (16 位 用于 decimals).
+      - 29:0
+      - R/W
+      - 
+    * - 
+      - 
+      - Depends on SM wrap setting:
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - * 1 - New 值 是 acquired by wrap
+      - 
+      - 
+      - 
+    * - 
+      - 
+      - * 0 - 计数器 goes 到 偏移 值
+      - 
+      - 
+      - 
+    * - 0x2C
+      - CH B 起始 偏移
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - 计数器 起始 偏移 (16 位 用于 decimals).
+      - 29:0
+      - R/W
+      - 
+      - 
+    * - 
+      - 起始 偏移 当 触发 arrives.
+      - 
+      - 
+      - 
+      - 
+    * - 0x30
+      - CH B 计数器 step
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:30
+      - R
+      - 
+      - 
+    * - 
+      - 计数器 step (16 位 用于 decimals).
+      - 29:0
+      - R/W
+      - 
+      - 
+    * - 
+      - Updates 当 writing 到 该 CH B 计数器 step reg.
+      - 
+      - 
+      - 
+      - 
+    * - 0x34
+      - CH B 计数器 step- 低 位
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 计数器 step extra 32 decimals.
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 
+      - Updates 当 writing 到 该 CH B 计数器 step 低
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 位 reg (0x34).
+      - 
+      - 
+      - 
+      - 
+    * - 0x38
+      - CH B number 的 读取 cycles in one burst (NCYC)
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+      - 
+    * - 
+      - Number 的 repeats 的 table readout (NCYC):
+      - 15:0
+      - R/W
+      - 
+      - 
+    * - 
+      - * 0 - Disable burst mode
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * X - X repeats
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * 65535 (0xffff) - 65535 repeats (max 值)
+      - 
+      - 
+      - 
+      - 
+    * - 0x3C
+      - CH B number 的 burst repetitions (NOR)
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:16
+      - R
+      - 
+      - 
+    * - 
+      - Number 的 repetitions (NOR):
+      - 15:0
+      - R/W
+      - 
+      - 
+    * - 
+      - * 0 - 1 repetition
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * X - X+1 repetitions
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - * 65535 (0xffff) - infinite (max 值)
+      - 
+      - 
+      - 
+      - 
+    * - 0x40
+      - CH B 延迟 之间 burst repetitions
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 延迟 之间 repetitions. Granularity = 1 us
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x48
+      - CH B 值 的 last sample in burst
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - Last 值 的 burst
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x6C
+      - CH B initial 值 的 generator
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - First 值
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x74
+      - CH B length 的 last 值 state
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - Length 的 last 值 state (in ADC periods)
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x7C
+      - CH B LFSR 随机 seed
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 随机 number seed 用于 linear-feedback shift register
+      - 31:0
+      - R/W
+      - 
+      - 
+    * - 0x84
+      - CH B 启用 noise generator
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+      - 
+    * - 
+      - 启用 pseudo-随机 noise generator
+      - 0
+      - R/W
+      - 
+      - 
+
+
+
+AXI Interface Control
+~~~~~~~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x100
+      - AXI interface ASG state
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:20
+      - R
+      - 
+    * - 
+      - FIFOs being reset CH B
+      - 19
+      - R
+      - 
+    * - 
+      - Receive FIFO reading 启用 CH B
+      - 18
+      - R
+      - 
+    * - 
+      - First 数据 读取 out 到 输出 CH B
+      - 17
+      - R
+      - 
+    * - 
+      - 触发 接收, generating 读取 requests CH B
+      - 16
+      - R
+      - 
+    * - 
+      - 保留
+      - 15:4
+      - R
+      - 
+    * - 
+      - FIFOs being reset CH A
+      - 3
+      - R
+      - 
+    * - 
+      - Receive FIFO reading 启用 CH A
+      - 2
+      - R
+      - 
+    * - 
+      - First 数据 读取 out 到 输出 CH A
+      - 1
+      - R
+      - 
+    * - 
+      - 触发 接收, generating 读取 requests CH A
+      - 0
+      - R
+      - 
+    * - 0x104
+      - CH A 启用 AXI 接收器
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - 启用 AXI 接收器
+      - 0
+      - R/W
+      - 
+    * - 0x108
+      - CH A AXI 接收器 缓冲区 起始 address
+      - 
+      - 
+      - 
+    * - 
+      - 缓冲区 起始 address.
+      - 31:0
+      - R/W
+      - 
+    * - 
+      - Reads 是 performed in chunks 的 16*64 bit.
+      - 
+      - 
+      - 
+    * - 
+      - 该 缓冲区 size must therefore be N*0x80.
+      - 
+      - 
+      - 
+    * - 0x10C
+      - CH A AXI 接收器 缓冲区 结束 address
+      - 
+      - 
+      - 
+    * - 
+      - 缓冲区 结束 address.
+      - 31:0
+      - R/W
+      - 
+    * - 
+      - 读取 指针 cannot pass this address.
+      - 
+      - 
+      - 
+    * - 
+      - 该 last 读取 是 performed at
+      - 
+      - 
+      - 
+    * - 
+      - 回绕前为 [VALUE of this reg]-8
+      - 
+      - 
+      - 
+    * - 0x114
+      - CH B 启用 AXI 接收器
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - 启用 AXI 接收器
+      - 0
+      - R/W
+      - 
+    * - 0x118
+      - CH B AXI 接收器 缓冲区 起始 address
+      - 
+      - 
+      - 
+    * - 
+      - 缓冲区 起始 address.
+      - 31:0
+      - R/W
+      - 
+    * - 
+      - Reads 是 performed in chunks 的 16*64 bit.
+      - 
+      - 
+      - 
+    * - 
+      - 该 缓冲区 size must therefore be N*0x80.
+      - 
+      - 
+      - 
+    * - 0x11C
+      - CH B AXI 接收器 缓冲区 结束 address
+      - 
+      - 
+      - 
+    * - 
+      - 缓冲区 结束 address.
+      - 31:0
+      - R/W
+      - 
+    * - 
+      - 读取 指针 cannot pass this address.
+      - 
+      - 
+      - 
+    * - 
+      - 该 last 读取 是 performed at
+      - 
+      - 
+      - 
+    * - 
+      - 回绕前为 [VALUE of this reg]-8
+      - 
+      - 
+      - 
+    * - 0x120
+      - CH A AXI 错误 count
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 attempted empty FIFO reads per second
+      - 31:0
+      - R
+      - 
+    * - 0x124
+      - CH A AXI transfer count
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 成功 FIFO reads per second
+      - 31:0
+      - R
+      - 
+    * - 0x128
+      - CH B AXI 错误 count
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 attempted empty FIFO reads per second
+      - 31:0
+      - R
+      - 
+    * - 0x12C
+      - CH B AXI transfer count
+      - 
+      - 
+      - 
+    * - 
+      - Number 的 成功 FIFO reads per second
+      - 31:0
+      - R
+      - 
+    * - 0x130
+      - CH A AXI 输出 抽取
+      - 
+      - 
+      - 
+    * - 
+      - How many clocks 到 keep a sample on 该 输出
+      - 31:0
+      - R/W
+      - 
+    * - 0x134
+      - CH B AXI 输出 抽取
+      - 
+      - 
+      - 
+    * - 
+      - How many clocks 到 keep a sample on 该 输出
+      - 31:0
+      - R/W
+      - 
+
+
+
+内存数据缓冲区
+~~~~~~~~~~~~~~~~~~~
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x10000 到
+      - CH A 内存 数据 (16k 采样点)
+      - 
+      - 
+      - 
+    * - 0x1FFFC
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - CH A 数据
+      - 31:0
+      - R/W
+      - 
+    * - 0x20000 到
+      - CH B 内存 数据 (16k 采样点)
+      - 
+      - 
+      - 
+    * - 0x2FFFC
+      - 
+      - 
+      - 
+      - 
+    * - 
+      - CH B 数据
+      - 31:0
+      - R/W
+      - 
+
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+|
+
+====================================================
+CS[3] - PID 控制器 (0x40300000-0x403FFFFF)
+====================================================
+
+PID 控制器模块为反馈控制应用提供四个 PID 控制器（PID11、PID12、PID21、PID22）。
+
+
+快速参考
+---------------
+
+.. tabularcolumns:: |p{25mm}|p{105mm}|p{10mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x0
+      - 配置 (integrator reset 用于 所有 PIDs)
+      - R/W
+      - 
+    * - 0x10-0x1C
+      - PID11 parameters (设定点, Kp, Ki, Kd)
+      - R/W
+      - 
+    * - 0x20-0x2C
+      - PID12 parameters (设定点, Kp, Ki, Kd)
+      - R/W
+      - 
+    * - 0x30-0x3C
+      - PID21 parameters (设定点, Kp, Ki, Kd)
+      - R/W
+      - 
+    * - 0x40-0x4C
+      - PID22 parameters (设定点, Kp, Ki, Kd)
+      - R/W
+      - 
+
+
+|
+
+配置
+-------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x0
+      - 配置
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:4
+      - R
+      - 
+    * - 
+      - PID22 integrator reset
+      - 3
+      - R/W
+      - 
+    * - 
+      - PID21 integrator reset
+      - 2
+      - R/W
+      - 
+    * - 
+      - PID12 integrator reset
+      - 1
+      - R/W
+      - 
+    * - 
+      - PID11 integrator reset
+      - 0
+      - R/W
+      - 
+
+
+
+PID11 Controller
+----------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x10
+      - PID11 set point
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID11 设定点
+      - 13:0
+      - R/W
+      - 
+    * - 0x14
+      - PID11 proportional coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID11 Kp
+      - 13:0
+      - R/W
+      - 
+    * - 0x18
+      - PID11 integral coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID11 Ki
+      - 13:0
+      - R/W
+      - 
+    * - 0x1C
+      - PID11 derivative coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID11 Kd
+      - 13:0
+      - R/W
+      - 
+
+
+
+PID12 Controller
+----------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x20
+      - PID12 set point
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID12 设定点
+      - 13:0
+      - R/W
+      - 
+    * - 0x24
+      - PID12 proportional coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID12 Kp
+      - 13:0
+      - R/W
+      - 
+    * - 0x28
+      - PID12 integral coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID12 Ki
+      - 13:0
+      - R/W
+      - 
+    * - 0x2C
+      - PID12 derivative coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID12 Kd
+      - 13:0
+      - R/W
+      - 
+
+
+
+PID21 Controller
+----------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x30
+      - PID21 set point
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID21 设定点
+      - 13:0
+      - R/W
+      - 
+    * - 0x34
+      - PID21 proportional coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID21 Kp
+      - 13:0
+      - R/W
+      - 
+    * - 0x38
+      - PID21 integral coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID21 Ki
+      - 13:0
+      - R/W
+      - 
+    * - 0x3C
+      - PID21 derivative coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID21 Kd
+      - 13:0
+      - R/W
+      - 
+
+
+
+PID22 Controller
+----------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x40
+      - PID22 set point
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID22 设定点
+      - 13:0
+      - R/W
+      - 
+    * - 0x44
+      - PID22 proportional coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID22 Kp
+      - 13:0
+      - R/W
+      - 
+    * - 0x48
+      - PID22 integral coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID22 Ki
+      - 13:0
+      - R/W
+      - 
+    * - 0x4C
+      - PID22 derivative coefficient
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:14
+      - R
+      - 
+    * - 
+      - PID22 Kd
+      - 13:0
+      - R/W
+      - 
+
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+|
+
+============================================================
+CS[4] - 模拟混合信号 (0x40400000-0x404FFFFF)
+============================================================
+
+模拟混合信号（AMS）模块提供对 XADC 输入和 PWM DAC 输出的访问。
+
+
+快速参考
+---------------
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x0-0x10
+      - XADC analog 输入s (AIF0-AIF4, 5V)
+      - R
+      - 
+    * - 0x20-0x2C
+      - PWM DAC 输出s (DAC0-DAC3)
+      - R/W
+      - 
+
+
+|
+
+XADC Analog Inputs
+------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x0
+      - XADC AIF0
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:12
+      - R
+      - 
+    * - 
+      - AIF0 值
+      - 11:0
+      - R
+      - 
+    * - 0x4
+      - XADC AIF1
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:12
+      - R
+      - 
+    * - 
+      - AIF1 值
+      - 11:0
+      - R
+      - 
+    * - 0x8
+      - XADC AIF2
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:12
+      - R
+      - 
+    * - 
+      - AIF2 值
+      - 11:0
+      - R
+      - 
+    * - 0xC
+      - XADC AIF3
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:12
+      - R
+      - 
+    * - 
+      - AIF3 值
+      - 11:0
+      - R
+      - 
+    * - 0x10
+      - XADC AIF4
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:12
+      - R
+      - 
+    * - 
+      - AIF4 值 (5V power supply)
+      - 11:0
+      - R
+      - 
+
+
+
+PWM DAC Outputs
+---------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x20
+      - PWM DAC0
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:24
+      - R
+      - 
+    * - 
+      - PWM 值 (100% == 255)
+      - 23:16
+      - R/W
+      - 
+    * - 
+      - Bit select 用于 PWM repetition that has 值 PWM+1
+      - 15:0
+      - R/W
+      - 
+    * - 0x24
+      - PWM DAC1
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:24
+      - R
+      - 
+    * - 
+      - PWM 值 (100% == 255)
+      - 23:16
+      - R/W
+      - 
+    * - 
+      - Bit select 用于 PWM repetition that has 值 PWM+1
+      - 15:0
+      - R/W
+      - 
+    * - 0x28
+      - PWM DAC2
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:24
+      - R
+      - 
+    * - 
+      - PWM 值 (100% == 255)
+      - 23:16
+      - R/W
+      - 
+    * - 
+      - Bit select 用于 PWM repetition that has 值 PWM+1
+      - 15:0
+      - R/W
+      - 
+    * - 0x2C
+      - PWM DAC3
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:24
+      - R
+      - 
+    * - 
+      - PWM 值 (100% == 255)
+      - 23:16
+      - R/W
+      - 
+    * - 
+      - Bit select 用于 PWM repetition that has 值 PWM+1
+      - 15:0
+      - R/W
+      - 
+
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+|
+
+===============================================
+CS[5] - 菊链 (0x40500000-0x405FFFFF)
+===============================================
+
+菊链模块支持多个 Red Pitaya 板卡之间的同步。
+
+
+快速参考
+---------------
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x0
+      - 控制 (TX/RX 启用)
+      - R/W
+      - 
+    * - 0x4
+      - 发送器 数据 选择器
+      - R/W
+      - 
+    * - 0x8
+      - 接收器 训练 控制 和 状态
+      - R/W
+      - 
+    * - 0xC
+      - 接收数据
+      - R
+      - 
+    * - 0x10
+      - 测试控制 (计数器 reset)
+      - R/W
+      - 
+    * - 0x14
+      - 测试错误计数器
+      - R
+      - 
+    * - 0x18
+      - 测试数据计数器
+      - R
+      - 
+
+
+|
+
+控制与配置
+-------------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x0
+      - 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+    * - 
+      - RX 启用
+      - 1
+      - R/W
+      - 
+    * - 
+      - TX 启用
+      - 0
+      - R/W
+      - 
+    * - 0x4
+      - 发送器 数据 选择器
+      - 
+      - 
+      - 
+    * - 
+      - 自定义数据
+      - 31:16
+      - R/W
+      - 
+    * - 
+      - 保留
+      - 15:4
+      - R
+      - 
+    * - 
+      - 数据源:
+      - 3:0
+      - R/W
+      - 
+    * - 
+      - * 0 - 数据 是 0
+      - 
+      - 
+      - 
+    * - 
+      - * 1 - 用户数据 (来自 logic)
+      - 
+      - 
+      - 
+    * - 
+      - * 2 - 自定义 数据 (来自 this register)
+      - 
+      - 
+      - 
+    * - 
+      - * 3 - 训练数据 (0x00FF)
+      - 
+      - 
+      - 
+    * - 
+      - * 4 - transmit 接收 数据 (loop back)
+      - 
+      - 
+      - 
+    * - 
+      - * 5 - 随机数据 (用于 测试)
+      - 
+      - 
+      - 
+
+
+
+接收器
+--------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x8
+      - 接收器 训练
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+    * - 
+      - 训练成功
+      - 1
+      - R
+      - 
+    * - 
+      - 启用训练
+      - 0
+      - R/W
+      - 
+    * - 0xC
+      - 接收 数据
+      - 
+      - 
+      - 
+    * - 
+      - 接收数据 that 是 不同 than 0
+      - 31:16
+      - R
+      - 
+    * - 
+      - 接收 原始数据
+      - 15:0
+      - R
+      - 
+
+
+
+测试
+-------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x10
+      - 测试 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - Reset 测试 counters (错误 & 数据)
+      - 0
+      - R/W
+      - 
+    * - 0x14
+      - 测试 错误 计数器
+      - 
+      - 
+      - 
+    * - 
+      - 当接收数据不匹配时错误计数器递增
+      - 31:0
+      - R
+      - 
+    * - 
+      - 已发送的测试数据
+      - 
+      - 
+      - 
+    * - 0x18
+      - 测试 数据 计数器
+      - 
+      - 
+      - 
+    * - 
+      - 接收到非零值时计数器递增
+      - 31:0
+      - R
+      - 
+
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+|
+
+==============================================================================
+CS[6] - 空闲 / E3 Connector Serial 线路s Test (0x40600000-0x406FFFFF)
+==============================================================================
+
+.. note::
+
+    In the 当前 v0.94 RTL, CS[6] 用于测试 the E3 connector serial lines. 这仅适用于 :ref:`STEMlab 125-14 PRO Z7020 Gen 2 <top_125_14_pro_z7020_gen2>`.
+    对于所有其他板卡型号, these registers are free and 连接到 ``sys_bus_stub``. 请将此地址范围视为空闲。
+
+
+快速参考
+---------------
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - Register
+      - R/W
+      - 
+    * - 0x0
+      - 控制 (TX/RX 启用)
+      - R/W
+      - 
+    * - 0x4
+      - 发送器 数据 选择器
+      - R/W
+      - 
+    * - 0x8
+      - 接收器 训练 控制 和 状态
+      - R/W
+      - 
+    * - 0xC
+      - 接收数据 线路 0
+      - R
+      - 
+    * - 0x10
+      - 测试控制 (计数器 reset)
+      - R/W
+      - 
+    * - 0x14-0x18
+      - 线路 0 测试 counters (错误, 数据)
+      - R
+      - 
+    * - 0x20
+      - 接收数据 线路 1
+      - R
+      - 
+    * - 0x24-0x28
+      - 线路 1 测试 counters (错误, 数据)
+      - R
+      - 
+    * - 0x2C
+      - 接收数据 线路 2
+      - R
+      - 
+    * - 0x30-0x34
+      - 线路 2 测试 counters (错误, 数据)
+      - R
+      - 
+    * - 0x38
+      - 接收数据 线路 3
+      - R
+      - 
+    * - 0x3C-0x40
+      - 线路 3 测试 counters (错误, 数据)
+      - R
+      - 
+
+
+|
+
+控制与配置
+-------------------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x0
+      - 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+    * - 
+      - RX 启用
+      - 1
+      - R/W
+      - 
+    * - 
+      - TX 启用
+      - 0
+      - R/W
+      - 
+    * - 0x4
+      - 发送器 数据 选择器
+      - 
+      - 
+      - 
+    * - 
+      - 自定义数据
+      - 31:1
+      - R/W
+      - 
+    * - 
+      - 保留
+      - 15:8
+      - R
+      - 
+    * - 
+      - 数据源
+      - 3:0
+      - R/W
+      - 
+    * - 
+      - * 0 - 数据 是 0
+      - 
+      - 
+      - 
+    * - 
+      - * 1 - 用户数据 (来自 logic)
+      - 
+      - 
+      - 
+    * - 
+      - * 2 - 自定义 数据 (来自 this register)
+      - 
+      - 
+      - 
+    * - 
+      - * 3 - 训练数据 (0x00FF)
+      - 
+      - 
+      - 
+    * - 
+      - * 4 - transmit 接收 数据 (loop back)
+      - 
+      - 
+      - 
+    * - 
+      - * 5 - 随机数据 (用于 测试)
+      - 
+      - 
+      - 
+    * - 0x8
+      - 接收器 训练
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:2
+      - R
+      - 
+    * - 
+      - 训练成功
+      - 1
+      - R
+      - 
+    * - 
+      - 启用训练
+      - 0
+      - R/W
+      - 
+    * - 0xC
+      - 接收 数据 线路 0
+      - 
+      - 
+      - 
+    * - 
+      - 接收数据 which 是 不同 than 0
+      - 31:1
+      - R
+      - 
+    * - 
+      - 接收 原始数据
+      - 15:0
+      - R
+      - 
+    * - 0x10
+      - 测试 控制
+      - 
+      - 
+      - 
+    * - 
+      - 保留
+      - 31:1
+      - R
+      - 
+    * - 
+      - Reset 测试 counters (错误 & 数据)
+      - 0
+      - R/W
+      - 
+    * - 0x14
+      - 测试 错误 计数器 线路 0
+      - 
+      - 
+      - 
+    * - 
+      - 当接收数据不匹配时错误计数器递增
+      - 31:0
+      - R
+      - 
+    * - 
+      - 已发送的测试数据
+      - 
+      - 
+      - 
+    * - 0x18
+      - 测试 数据 计数器 线路 0
+      - 
+      - 
+      - 
+    * - 
+      - 接收到非零值时计数器递增
+      - 31:0
+      - R
+      - 
+
+
+
+线路 1 测试
+--------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x20
+      - 接收 数据 线路 1
+      - 
+      - 
+      - 
+    * - 
+      - 接收数据 that 是 不同 than 0
+      - 31:1
+      - R
+      - 
+    * - 
+      - 接收 原始数据
+      - 15:0
+      - R
+      - 
+    * - 0x24
+      - 测试 错误 计数器 线路 1
+      - 
+      - 
+      - 
+    * - 
+      - 当接收数据不匹配时错误计数器递增
+      - 31:0
+      - R
+      - 
+    * - 
+      - 已发送的测试数据
+      - 
+      - 
+      - 
+    * - 0x28
+      - 测试 数据 计数器 线路 1
+      - 
+      - 
+      - 
+    * - 
+      - 接收到非零值时计数器递增
+      - 31:0
+      - R
+      - 
+
+
+
+线路 2 测试
+--------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x2C
+      - 接收 数据 线路 2
+      - 
+      - 
+      - 
+    * - 
+      - 接收数据 that 是 不同 than 0
+      - 31:1
+      - R
+      - 
+    * - 
+      - 接收 原始数据
+      - 15:0
+      - R
+      - 
+    * - 0x30
+      - 测试 错误 计数器 线路 2
+      - 
+      - 
+      - 
+    * - 
+      - 当接收数据不匹配时错误计数器递增
+      - 31:0
+      - R
+      - 
+    * - 
+      - 已发送的测试数据
+      - 
+      - 
+      - 
+    * - 0x34
+      - 测试 数据 计数器 线路 2
+      - 
+      - 
+      - 
+    * - 
+      - 接收到非零值时计数器递增
+      - 31:0
+      - R
+      - 
+
+
+
+线路 3 测试
+--------------
+
+.. tabularcolumns:: |p{15mm}|p{105mm}|p{15mm}|p{15mm}|
+
+.. list-table::
+    :widths: auto
+
+    * - 偏移
+      - 说明
+      - 位
+      - R/W
+      - 
+    * - 0x38
+      - 接收 数据 线路 3
+      - 
+      - 
+      - 
+    * - 
+      - 接收数据 that 是 不同 than 0
+      - 31:1
+      - R
+      - 
+    * - 
+      - 接收 原始数据
+      - 15:0
+      - R
+      - 
+    * - 0x3C
+      - 测试 错误 计数器 线路 3
+      - 
+      - 
+      - 
+    * - 
+      - 当接收数据不匹配时错误计数器递增
+      - 31:0
+      - R
+      - 
+    * - 
+      - 已发送的测试数据
+      - 
+      - 
+      - 
+    * - 0x40
+      - 测试 数据 计数器 线路 3
+      - 
+      - 
+      - 
+    * - 
+      - 接收到非零值时计数器递增
+      - 31:0
+      - R
+      - 
+
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+|
+
+===============================================================
+CS[7] - 空闲 (0x40700000-0x407FFFFF)
+===============================================================
+
+.. note::
+
+    In the 当前 v0.94 RTL, CS[7] is 连接到 ``sys_bus_stub``. 请将此地址范围视为空闲。
+    在较旧 RTL 版本中, CS[7] 用于电源测试.
+
+|
+
+:ref:`Back to top <fpga_094_3.00_57>`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
