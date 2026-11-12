@@ -22,7 +22,6 @@ Additional suffixes indicate variants:
 * **PRO** = Professional features (internal/external clock switching, external QSPI & eMMC booting, expanded connectivity)
 * **Z7020** = Zynq 7020 FPGA (double the logic capacity of standard Zynq 7010)
 * **4-Input** = Four input channels instead of two
-* **LN** = Low Noise variant
 * **EXT** = External clock capability
 
 |
@@ -58,6 +57,11 @@ Gen 2 boards feature significant hardware improvements over the original generat
 
 For detailed comparison, see the :ref:`Gen 2 comparison table <rp-board-comp-gen2>` and :ref:`Original Gen comparison table <rp-board-comp-orig_gen>`.
 
+.. toctree::
+    :maxdepth: 1
+
+    GEN2/faq/faq.rst
+
 |
 
 
@@ -91,11 +95,6 @@ The second generation of Red Pitaya boards is designed to provide enhanced perfo
     GEN2/125-14_Gen2_Z7020_Pro/top.rst
     GEN2/65-16_TI/top.rst
     GEN2/125-14_TI/top.rst
-    GEN2/faq/faq.rst
-
-.. note::
-
-    The second generation products differ from the original generation even if the name itself is similar.
 
 
 Original boards
@@ -128,10 +127,10 @@ Extension modules
     ext_modules/extent_template/extent_template.rst
 
 
-Discontinued
+End of Life
 --------------
 
-Discontinued boards and extensions are no longer manufactured, but are still supported by the Red Pitaya software.
+End of Life boards and extensions are no longer manufactured, but are still supported by the Red Pitaya software.
 
 .. toctree::
     :maxdepth: 1
@@ -142,20 +141,23 @@ Discontinued boards and extensions are no longer manufactured, but are still sup
     ORIG_GEN/125-14_MULTI/top.rst
 
 
-End of life
-------------
+End of Support
+----------------
 
-End of life boards and extensions are no longer manufactured, and are not supported by the current Red Pitaya software.
+End of Support boards and extensions are no longer manufactured, and are not supported by the current Red Pitaya software.
 The last working software version is listed under each product.
 
+**EoS Boards**
+
 .. toctree::
-    :caption: End of Life Boards
     :maxdepth: 1
 
     ORIG_GEN/125-10/top.rst
 
+
+**EoS Extensions**
+
 .. toctree::
-    :caption: End of Life Extensions
     :maxdepth: 1
 
     ext_modules/sdr_module/sdr_module.rst
