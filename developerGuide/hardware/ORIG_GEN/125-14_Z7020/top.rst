@@ -1,7 +1,7 @@
 .. _top_125_14_Z7020_LN:
 
 ########################################
-STEMlab 125-14 Z7020 LN (Discontinued)
+STEMlab 125-14 Z7020 LN (EoL)
 ########################################
 
 .. figure:: ../125-14/img/STEMlab-125-14.jpg
@@ -10,10 +10,10 @@ STEMlab 125-14 Z7020 LN (Discontinued)
 
 .. warning::
 
-    **Product Discontinuation Notice**
+    **Product End of Life Notice**
 
-    STEMlab 125-14 Z7020 LN was discontinued in Q2 2026 (is no longer produced). However, it remains available through the customization service until STEMlab 125-14 is 
-    discontinued at the end of Q4 2026. The documentation here is provided as a reference for existing users.
+    STEMlab 125-14 Z7020 LN reached End of Life in Q2 2026 (is no longer produced). However, it remains available through the customization service until STEMlab 125-14 reaches End of Life at the end of Q4 2026. 
+    The documentation here is provided as a reference for existing users.
 
 |
 
